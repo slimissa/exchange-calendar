@@ -324,12 +324,6 @@
         "source_url": "https://www.nyse.com/markets/hours-calendars"
       },
       {
-        "date": "2028-12-24",
-        "name": "Christmas Eve",
-        "status": "closed",
-        "source_url": "https://www.nyse.com/markets/hours-calendars"
-      },
-      {
         "date": "2028-12-25",
         "name": "Christmas Day",
         "status": "closed",

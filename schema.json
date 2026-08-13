@@ -30,9 +30,9 @@
       "pattern": "^[A-Z0-9]{4}$"
     },
     "timezone": {
-      "type": "string",
-      "description": "IANA timezone identifier.",
-      "pattern": "^[A-Za-z]+/[A-Za-z_]+(?:/[A-Za-z_]+)?$"
+        "type": "string",
+        "description": "IANA timezone identifier.",
+        "pattern": "^[A-Za-z0-9_+\\-]+/[A-Za-z0-9_+\\-]+(?:/[A-Za-z0-9_+\\-]+)?$"
     },
     "regular_hours": {
       "type": "object",
@@ -74,54 +74,54 @@
       "additionalProperties": false
     },
     "sessions": {
-      "type": "array",
-      "description": "Additional non-trading periods within a regular day (e.g., lunch breaks, auctions).",
-      "items": {
-        "type": "object",
-        "required": ["type"],
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": ["lunch_break", "auction", "other"]
-          },
-          "open": {
-            "type": "string",
-            "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
-            "description": "Session start time. Required for interval sessions."
-          },
-          "close": {
-            "type": "string",
-            "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
-            "description": "Session end time. Required for interval sessions."
-          },
-          "at": {
-            "type": "string",
-            "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
-            "description": "Point-in-time session moment. Required for auction sessions."
-          }
-        },
-        "additionalProperties": false,
-        "allOf": [
-          {
-            "if": {
-              "properties": {"type": {"const": "lunch_break"}},
-              "required": ["type"]
+        "type": "array",
+        "description": "Additional non-trading periods within a regular day (e.g., lunch breaks, auctions).",
+        "items": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": ["lunch_break", "auction"]
+                },
+                "open": {
+                    "type": "string",
+                    "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+                    "description": "Session start time. Required for lunch_break sessions."
+                },
+                "close": {
+                    "type": "string",
+                    "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+                    "description": "Session end time. Required for lunch_break sessions."
+                },
+                "at": {
+                    "type": "string",
+                    "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+                    "description": "Point-in-time session moment. Required for auction sessions."
+                }
             },
-            "then": {
-              "required": ["open", "close"]
-            }
-          },
-          {
-            "if": {
-              "properties": {"type": {"const": "auction"}},
-              "required": ["type"]
+            "additionalProperties": false,
+            "allOf": [
+            {
+                "if": {
+                    "properties": {"type": {"const": "lunch_break"}},
+                    "required": ["type"]
+                },
+                "then": {
+                    "required": ["open", "close"]
+                }
             },
-            "then": {
-              "required": ["at"]
+            {
+                "if": {
+                    "properties": {"type": {"const": "auction"}},
+                    "required": ["type"]
+                },
+                "then": {
+                "required": ["at"]
+                }
             }
-          }
         ]
-      }
+        }
     },
     "holidays": {
       "type": "object",
