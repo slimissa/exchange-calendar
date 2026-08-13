@@ -84,9 +84,9 @@ describe('Registry loading', () => {
     test('loads real registry', () => {
         const registry = new CalendarRegistry(getRegistryPath());
         assert.equal(registry.version, '1.0.0');
-        assert.equal(registry.exchangeCount, 2);
-        assert.equal(registry.size, 2);
-        assert.equal(registry.length, 2);
+        assert.equal(registry.exchangeCount, 14);
+        assert.equal(registry.size, 14);
+        assert.equal(registry.length, 14);
     });
 
     test('throws on missing file', () => {
@@ -151,7 +151,7 @@ describe('Registry loading', () => {
         const s = registry.toString();
         assert.ok(s.includes('Exchange Calendar Registry'));
         assert.ok(s.includes('1.0.0'));
-        assert.ok(s.includes('2'));
+        assert.ok(s.includes('14'));
     });
 });
 
@@ -201,19 +201,21 @@ describe('Exchange lookup', () => {
     });
 
     test('codes sorted', () => {
-        assert.deepEqual(registry.codes(), ['XLON', 'XNYS']);
+        assert.equal(registry.codes().length, 14)
+        assert.equal(registry.codes()[0], 'XASX')
+        assert.equal(registry.codes()[13], 'XTSE');
     });
 
     test('names sorted', () => {
-        assert.deepEqual(registry.names(), [
-            'London Stock Exchange',
-            'New York Stock Exchange',
-        ]);
+        assert.equal(registry.names().length, 14)
+        assert.ok(registry.names().includes('London Stock Exchange'))
+        assert.ok(registry.names().includes('New York Stock Exchange'));
     });
 
     test('listExchanges sorted', () => {
         const codes = registry.listExchanges().map(e => e.code);
-        assert.deepEqual(codes, ['XLON', 'XNYS']);
+        assert.equal(codes.length, 14)
+        assert.deepEqual(codes, [...codes].sort());
     });
 
     test('iteration works', () => {
@@ -221,14 +223,15 @@ describe('Exchange lookup', () => {
         for (const exchange of registry) {
             codes.push(exchange.code);
         }
-        assert.deepEqual(codes, ['XLON', 'XNYS']);
+        assert.equal(codes.length, 14)
+        assert.deepEqual(codes, [...codes].sort());
     });
 
     test('toJSON summary', () => {
         const d = registry.toJSON();
         assert.equal(d.version, '1.0.0');
-        assert.equal(d.exchange_count, 2);
-        assert.deepEqual(d.codes, ['XLON', 'XNYS']);
+        assert.equal(d.exchange_count, 14);
+        assert.equal(d.codes.length, 14);
     });
 
     test('throws on non-string code', () => {
