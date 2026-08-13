@@ -256,6 +256,12 @@
         "source_url": "https://www.nyse.com/markets/hours-calendars"
       },
       {
+        "date": "2027-12-31",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.nyse.com/markets/hours-calendars"
+      },
+      {
         "date": "2028-01-01",
         "name": "New Year's Day",
         "status": "closed",
