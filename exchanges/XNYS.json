@@ -250,19 +250,7 @@
         "source_url": "https://www.nyse.com/markets/hours-calendars"
       },
       {
-        "date": "2027-12-25",
-        "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.nyse.com/markets/hours-calendars"
-      },
-      {
         "date": "2027-12-31",
-        "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.nyse.com/markets/hours-calendars"
-      },
-      {
-        "date": "2028-01-01",
         "name": "New Year's Day",
         "status": "closed",
         "source_url": "https://www.nyse.com/markets/hours-calendars"
@@ -503,13 +491,9 @@
       }
     ]
   },
-  "ad_hoc_closures": [
-    {
-      "date": "2025-01-09",
-      "name": "National Day of Mourning (Jimmy Carter)",
-      "status": "closed",
-      "source_url": "https://www.nyse.com/trader-update/history#110000921074"
-    }
-  ],
-  "generation_range": ["2025-01-01", "2029-12-31"]
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
 }
