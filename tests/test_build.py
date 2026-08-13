@@ -88,7 +88,7 @@ class TestBuildRegistry:
 
         registry = builder.build_registry(tmp_path)
 
-        assert registry["meta"]["exchange_count"] == 2
+        assert registry["meta"]["exchange_count"] == 14
         codes = [e["code"] for e in registry["exchanges"]]
         assert codes == ["ALPHA", "ZED"]  # Sorted by code
 
@@ -334,7 +334,7 @@ class TestRealExchanges:
 
         registry = builder.build_registry(exchanges_dir)
 
-        assert registry["meta"]["exchange_count"] == 2
+        assert registry["meta"]["exchange_count"] == 14
         codes = [e["code"] for e in registry["exchanges"]]
         assert "XLON" in codes
         assert "XNYS" in codes
