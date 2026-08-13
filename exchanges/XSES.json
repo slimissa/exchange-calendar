@@ -1,0 +1,425 @@
+{
+  "code": "XSES",
+  "name": "Singapore Exchange",
+  "mic": "XSES",
+  "timezone": "Asia/Singapore",
+  "regular_hours": {
+    "open": "09:00",
+    "close": "17:00"
+  },
+  "extended_hours": {
+    "pre_market": {
+      "open": "08:30",
+      "close": "09:00"
+    },
+    "after_hours": {
+      "open": "17:00",
+      "close": "17:06"
+    }
+  },
+  "sessions": [
+    {
+      "type": "auction",
+      "at": "09:00"
+    },
+    {
+      "type": "auction",
+      "at": "17:00"
+    }
+  ],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2025-01-28",
+        "name": "Chinese New Year Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2025-01-29",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2025-01-30",
+        "name": "Chinese New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Hari Raya Puasa",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2025-05-12",
+        "name": "Vesak Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2025-10-20",
+        "name": "Deepavali",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2025-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2025-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-02-16",
+        "name": "Chinese New Year Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-02-17",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-02-18",
+        "name": "Chinese New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-03-20",
+        "name": "Hari Raya Puasa",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Hari Raya Haji",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-06-01",
+        "name": "Vesak Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-08-10",
+        "name": "National Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-11-09",
+        "name": "Deepavali (observed)",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2027-02-05",
+        "name": "Chinese New Year Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2027-02-08",
+        "name": "Chinese New Year (observed)",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2027-03-09",
+        "name": "Hari Raya Puasa",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Hari Raya Haji",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2027-05-20",
+        "name": "Vesak Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2027-08-09",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2027-10-28",
+        "name": "Deepavali",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2027-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2028-01-25",
+        "name": "Chinese New Year Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2028-01-26",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2028-01-27",
+        "name": "Chinese New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2028-03-28",
+        "name": "Hari Raya Puasa",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2028-05-05",
+        "name": "Hari Raya Haji",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2028-05-09",
+        "name": "Vesak Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2028-08-09",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2028-10-17",
+        "name": "Deepavali",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-02-12",
+        "name": "Chinese New Year Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-02-13",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Chinese New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-03-16",
+        "name": "Hari Raya Puasa",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-05-25",
+        "name": "Hari Raya Haji",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-05-28",
+        "name": "Vesak Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-08-09",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-11-05",
+        "name": "Deepavali",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "early_close_time": "12:30",
+        "source_url": "https://www.sgx.com/trading/trading-hours"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
