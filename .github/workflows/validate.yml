@@ -50,6 +50,10 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Build calendar.json
+        run: |
+          python3 tools/build.py
+
       - name: Install wrapper and test dependencies
         run: |
           pip install -e wrappers/python/
