@@ -30,4 +30,4 @@ calendar.json
 
 # OS
 .DS_Store
-Thumbs.db
+Thumbs.dbwrappers/rust/target/
