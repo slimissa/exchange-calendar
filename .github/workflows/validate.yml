@@ -50,9 +50,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install wrapper
+      - name: Install wrapper and test dependencies
         run: |
           pip install -e wrappers/python/
+          pip install pytest
 
       - name: Run wrapper tests
         run: |
