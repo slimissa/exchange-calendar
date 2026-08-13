@@ -15,11 +15,14 @@ maintain data integrity — the core value of this project.
 - [Development Environment](#development-environment)
 - [Adding a New Exchange](#adding-a-new-exchange)
 - [Correcting Exchange Data](#correcting-exchange-data)
+- [Common Data Errors](#common-data-errors)
 - [Writing Tests](#writing-tests)
 - [Code Style](#code-style)
 - [Commit Messages](#commit-messages)
 - [Pull Request Process](#pull-request-process)
+- [Review Priorities](#review-priorities)
 - [Release Process](#release-process)
+- [Getting Help](#getting-help)
 
 ---
 
@@ -94,6 +97,19 @@ exchange-calendar/
 | `tools/build.py` | Produces `calendar.json` distribution artifact |
 | `tools/generate_dates.py` | Expands recurrence rules into dates |
 
+### ⚠️ Stale Data Warning
+
+**After any change to `exchanges/*.json`, you MUST rebuild `calendar.json`:**
+
+```bash
+python3 tools/build.py
+```
+
+The Go and Rust wrappers read from `calendar.json` at test time. The Python
+and JavaScript wrappers load it at runtime. If you forget this step, local
+tests may pass against a stale file while CI fails. **CI runs `tools/build.py`
+automatically — do it locally to save a failed PR.**
+
 ---
 
 ## Adding a New Exchange
@@ -111,6 +127,17 @@ Before writing any JSON, gather:
 - **Holiday calendar** — the next 5 years of official closures
 - **Early close days** — half-days with specific close times
 - **Source URL** — the official exchange page listing the holiday calendar
+
+### Source Priority
+
+Use sources in this order when verifying exchange data:
+
+1. **Exchange official calendar page** — the definitive source
+2. **Exchange press release or regulatory filing** — for recent changes
+3. **Official national regulator** — SEC (US), FCA (UK), FSA (Japan), MAS (Singapore)
+4. **Exchange trader update / market notice** — for ad-hoc closures
+
+Never use Wikipedia, memory, or third-party aggregators as primary sources.
 
 ### Step 2: Create the File
 
@@ -153,36 +180,7 @@ Follow the schema in `schema.json`. Every entry must include:
 }
 ```
 
-### Step 4: Critical Rules
-
-#### Holiday Models
-
-Different exchanges follow different rules. Verify before submitting:
-
-| Model | Example | Rule |
-|-------|---------|------|
-| US weekend adjustment | NYSE, NASDAQ, TSX | Saturday→Friday, Sunday→Monday |
-| UK substitute days | LSE | Bank Holidays shift to Monday |
-| No substitutes | Germany, Switzerland | Holidays on weekends are NOT shifted |
-| Open on civil holidays | Euronext, BME | Exchange trades on legal holidays |
-| Lunisolar explicit-only | China, Japan, Korea, HK, Singapore | No recurrence rules possible |
-| Half-day sessions | ASX, SGX, HKEX | Early close on eves |
-
-#### Key Mistakes to Avoid
-
-1. **Including weekend dates in explicit array** — the market is already closed on weekends. Only weekdays should appear.
-
-2. **Using `fixed_with_weekend_adjustment` when the exchange does NOT shift** — Germany and Switzerland do not substitute.
-
-3. **Treating civil holidays as market closures** — Euronext Paris is OPEN on Bastille Day. BME is OPEN on Epiphany. Verify the exchange calendar, not the national holiday list.
-
-4. **Using `last_weekday` for Victoria Day** — Victoria Day is "Monday preceding May 25", which is NOT always the last Monday of May (2027: May 24, not May 31).
-
-5. **Including CNY Eve as a full closure when it's a half-day** — Singapore and Hong Kong have early closes on CNY Eve.
-
-6. **Forgetting observed days for Sunday holidays** — Singapore, Australia, and Korea observe Sunday holidays on Monday.
-
-### Step 5: Validate
+### Step 4: Validate
 
 ```bash
 python3 tools/validate.py
@@ -190,7 +188,7 @@ python3 tools/validate.py
 
 Must pass with 0 errors before submitting.
 
-### Step 6: Write Tests
+### Step 5: Write Tests
 
 Create `tests/test_XXXX_holidays.py` following the pattern of existing tests.
 
@@ -203,6 +201,12 @@ Minimum test coverage:
 - No weekend dates
 - No duplicate dates
 - All entries have source URLs
+
+### Step 6: Rebuild calendar.json
+
+```bash
+python3 tools/build.py
+```
 
 ### Step 7: Run All Tests
 
@@ -217,7 +221,7 @@ All tests must pass.
 Commit and push:
 
 ```bash
-git add exchanges/XXXX.json tests/test_XXXX_holidays.py
+git add exchanges/XXXX.json tests/test_XXXX_holidays.py calendar.json
 git commit -m "Add [Exchange Name] (XXXX): [brief description]"
 git push
 ```
@@ -233,13 +237,77 @@ git push
 3. **Fix the data** — update `exchanges/XXXX.json`
 4. **Fix or add the test** — so the error can't recur
 5. **Run the full test suite** — ensure nothing else broke
-6. **Document the fix** in the commit message
+6. **Rebuild `calendar.json`** — `python3 tools/build.py`
+7. **Document the fix** in the commit message
 
 ### Source Citation
 
 Every explicit holiday entry must include a `source_url` pointing to the
 official exchange calendar page. If the exchange publishes a PDF or a page
 that changes frequently, use the most stable URL available.
+
+---
+
+## Common Data Errors
+
+These are the errors that most frequently appear in PRs and get rejected.
+Please review before submitting.
+
+### 1. Weekend Dates in Explicit Arrays
+
+The market is closed on Saturdays and Sundays. Including a weekend date in
+`explicit` is redundant data. **Only weekdays should appear.**
+
+### 2. Wrong Weekend Observation Model
+
+| Model | Exchange | Rule |
+|-------|----------|------|
+| US weekend adjustment | NYSE, NASDAQ, TSX | Saturday→Friday, Sunday→Monday |
+| UK substitute days | LSE | Bank Holidays shift to Monday |
+| No substitutes | Germany, Switzerland, Australia (Saturday) | Holidays on weekends are NOT shifted |
+| Open on civil holidays | Euronext, BME | Exchange trades on legal holidays |
+| Lunisolar explicit-only | China, Japan, Korea, HK, Singapore | No recurrence rules possible |
+| Half-day sessions | ASX, SGX, HKEX, TSX | Early close on eves |
+
+### 3. Civil Holidays as Market Closures
+
+Euronext Paris is **OPEN** on Bastille Day (July 14).  
+BME Madrid is **OPEN** on Epiphany (January 6).  
+Deutsche Börse is **OPEN** on German Unity Day (October 3).
+
+**Always verify the exchange calendar, not the national holiday list.**
+
+### 4. Victoria Day Miscalculation
+
+Victoria Day is **"Monday preceding May 25"**, not "last Monday of May."
+
+| Year | Correct Date | Last Monday (wrong) |
+|------|-------------|---------------------|
+| 2025 | May 19 | May 26 |
+| 2027 | May 24 | May 31 |
+| 2028 | May 22 | May 29 |
+
+### 5. Black Friday Miscalculation
+
+Black Friday is **"day after 4th Thursday of November"**, not "4th Friday."
+
+These dates diverge when Thanksgiving falls early:
+- 2035: Thanksgiving Nov 22, Black Friday Nov 23 (4th Friday is Nov 25)
+
+### 6. CNY Eve as Full Closure
+
+Singapore and Hong Kong have **half-day sessions** (early close at 12:30)
+on Chinese New Year Eve, not full closures.
+
+### 7. Forgetting Observed Days for Sunday Holidays
+
+Singapore, Australia, and Korea observe Sunday holidays on Monday.
+Germany and Switzerland do NOT.
+
+### 8. Missing Lunch Break
+
+Tokyo (11:30-12:30), Hong Kong (12:00-13:00), and Shanghai (11:30-13:00)
+have lunch breaks. Singapore and Korea do **NOT** (continuous trading).
 
 ---
 
@@ -333,23 +401,40 @@ Docs: update README with 14 exchanges
 
 1. **Create a feature branch** — `git checkout -b add-XXXX`
 2. **Make changes** — follow the guidelines above
-3. **Run tests** — all 1127+ tests must pass
-4. **Update CHANGELOG.md** — under `[Unreleased]`
-5. **Push** — `git push origin add-XXXX`
-6. **Open PR** — describe what you added and why
-7. **CI must pass** — GitHub Actions will run validation and tests
-8. **Review** — at least one maintainer approval
+3. **Run tests** — all 1,127+ tests must pass
+4. **Rebuild `calendar.json`** — `python3 tools/build.py`
+5. **Update CHANGELOG.md** — under `[Unreleased]`
+6. **Push** — `git push origin add-XXXX`
+7. **Open PR** — describe what you added and why
+8. **CI must pass** — GitHub Actions will run validation and tests
+9. **Review** — at least one maintainer approval
 
 ### PR Checklist
 
 - [ ] Exchange data validated with `python3 tools/validate.py`
 - [ ] Test file created with minimum coverage
 - [ ] All tests pass (`python3 -m pytest tests/ -v`)
+- [ ] `calendar.json` rebuilt after data changes
 - [ ] Source URL provided for every holiday entry
 - [ ] No weekend dates in explicit array
 - [ ] No duplicate dates
 - [ ] CHANGELOG.md updated
 - [ ] Commit messages follow format
+
+---
+
+## Review Priorities
+
+When reviewing PRs, maintainers will check:
+
+1. **Data accuracy** — Is every holiday date backed by an official exchange source?
+2. **Schema compliance** — Does the file validate against `schema.json`?
+3. **Test coverage** — Do all 1,127+ tests pass? Are new tests added?
+4. **Weekend observation** — Is the correct model applied (shift vs. no-shift)?
+5. **Early close times** — Are half-day times correct for the specific exchange?
+6. **Lunch breaks** — Is the exchange continuous or does it have a break?
+7. **Documentation** — Is CHANGELOG.md updated? Is the commit message clear?
+8. **Stale calendar.json** — Has the build artifact been regenerated?
 
 ---
 
@@ -361,17 +446,20 @@ Docs: update README with 14 exchanges
    - Minor: new exchanges, new features
    - Patch: data corrections
 3. **Update wrappers** — sync version across Python (`__init__.py`), JavaScript (`package.json`), Go (no version), Rust (`Cargo.toml`)
-4. **Run full test suite** — all tests must pass
-5. **Tag the release** — `git tag -a v1.1.0 -m "Release v1.1.0"`
-6. **Push tag** — `git push origin v1.1.0`
-7. **Publish wrappers** — PyPI, npm, crates.io (if applicable)
+4. **Rebuild calendar.json** — `python3 tools/build.py`
+5. **Run full test suite** — all tests must pass
+6. **Tag the release** — `git tag -a v1.1.0 -m "Release v1.1.0"`
+7. **Push tag** — `git push origin v1.1.0`
+8. **Publish wrappers** — PyPI, npm, crates.io (if applicable)
 
 ---
 
-## Questions?
+## Getting Help
 
-Open an issue on GitHub with the `question` label. For data corrections,
-use the `holiday_update` issue template.
+- **Questions?** Open an issue with the `question` label
+- **Not sure if something is correct?** Open an issue with the `discussion` label
+- **Found a bug but can't fix it?** Open an issue with the `bug` label and as much detail as possible
+- **Data correction?** Use the `holiday_update` issue template
 
 ---
 
@@ -379,3 +467,12 @@ use the `holiday_update` issue template.
 
 Every contribution improves the registry for everyone. Precise data,
 rigorous tests, and clear documentation are what make this project valuable.
+
+---
+
+## License
+
+By contributing, you agree that your contributions will be licensed under
+the Apache 2.0 License, the same as this project. Exchange calendar data
+is factual information sourced from official exchange publications. The
+compilation, schema, tooling, and wrappers are licensed works.
