@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = { text = "Apache-2.0" }
 authors = [
-    { name = "slimissa", email = "slimissa@users.noreply.github.com" }
+    { name = "Le P'tit" }
 ]
 keywords = ["exchange", "calendar", "trading", "holidays", "finance", "market-data"]
 classifiers = [
