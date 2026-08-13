@@ -18,8 +18,8 @@ setup(
     description="Canonical, versioned, machine-readable registry of global exchange trading calendars",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
-    author="slimissa",
-    author_email="slimissa@users.noreply.github.com",
+    author="Le P'tit",
+    
     url="https://github.com/slimissa/exchange-calendar",
     license="Apache-2.0",
     packages=find_packages(where="."),

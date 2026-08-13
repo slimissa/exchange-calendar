@@ -20,7 +20,7 @@ categories = [
     "data-structures",
     "date-and-time",
 ]
-authors = ["slimissa <slimissa@users.noreply.github.com>"]
+authors = ["Le P'tit"]
 repository = "https://github.com/slimissa/exchange-calendar"
 homepage = "https://github.com/slimissa/exchange-calendar"
 documentation = "https://docs.rs/exchange-calendar"
