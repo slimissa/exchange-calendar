@@ -1,4 +1,3 @@
-```markdown
 # exchange-calendar-registry (JavaScript)
 
 JavaScript wrapper for the QuantOS exchange calendar registry.
@@ -244,6 +243,3 @@ Apache 2.0 — see [LICENSE](../LICENSE).
 - [Bug reports](https://github.com/slimissa/exchange-calendar/issues)
 - [Contributing guide](../CONTRIBUTING.md)
 - [Python wrapper](../python/)
-```
-
----

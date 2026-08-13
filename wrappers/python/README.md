@@ -202,16 +202,3 @@ Apache 2.0 — see [LICENSE](../LICENSE).
 ```
 
 ---
-
-## What this covers
-
-- Installation from PyPI and source
-- Quick start with 10+ copy-paste examples
-- Complete API reference for all 3 public classes
-- Data format documentation
-- Thread safety guarantee
-- Error handling table
-- Type hints note
-- License and links
-
----
