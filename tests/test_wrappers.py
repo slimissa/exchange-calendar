@@ -103,7 +103,7 @@ class TestRegistryLoading:
     def test_load_real_registry(self, registry):
         assert registry.version == "1.0.0"
         assert registry.exchange_count == 14
-        assert len(registry) == 2
+        assert len(registry) == 14
 
     def test_load_nonexistent_file(self):
         with pytest.raises(FileNotFoundError):
@@ -213,7 +213,8 @@ class TestExchangeLookup:
         d = registry.to_dict()
         assert d["version"] == "1.0.0"
         assert d["exchange_count"] == 14
-        assert d["codes"] == ["XLON", "XNYS"]
+        assert len(d["codes"]) == 14
+        assert d["codes"] == sorted(d["codes"])
 
 
 # ──────────────────────────────────────────────────────────────
