@@ -251,4 +251,4 @@ class TestHolidayOverlap:
         for entry in xlon["holidays"]["explicit"]:
             if "Bank Holiday" in entry["name"] or "Boxing" in entry["name"] or "Easter Monday" in entry["name"]:
                 assert entry["name"] not in xnys_names, \
-                    f"UK-only holiday name '{entry['name']}' should not be in XNYS"
+                    f"UK-only holiday name '{entry['name']}' should not be in XNYS" 
