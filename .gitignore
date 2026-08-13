@@ -22,6 +22,17 @@ build/
 # Calendar build artifact
 calendar.json
 
+# Rust build artifacts
+wrappers/rust/target/
+
+# JavaScript
+node_modules/
+
+# Go
+*.exe
+*.test
+*.out
+
 # IDE
 .vscode/
 .idea/
@@ -30,4 +41,4 @@ calendar.json
 
 # OS
 .DS_Store
-Thumbs.dbwrappers/rust/target/
+Thumbs.db
