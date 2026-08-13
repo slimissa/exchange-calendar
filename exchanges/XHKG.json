@@ -1,0 +1,499 @@
+{
+  "code": "XHKG",
+  "name": "Hong Kong Exchange",
+  "mic": "XHKG",
+  "timezone": "Asia/Hong_Kong",
+  "regular_hours": {
+    "open": "09:30",
+    "close": "16:00"
+  },
+  "sessions": [
+    {
+      "type": "auction",
+      "at": "09:20"
+    },
+    {
+      "type": "lunch_break",
+      "open": "12:00",
+      "close": "13:00"
+    },
+    {
+      "type": "auction",
+      "at": "16:10"
+    }
+  ],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-01-29",
+        "name": "Lunar New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-01-30",
+        "name": "Second Day of Lunar New Year",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-01-31",
+        "name": "Third Day of Lunar New Year",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-04-04",
+        "name": "Ching Ming Festival",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-04-21",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-05-05",
+        "name": "Buddha's Birthday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-07-01",
+        "name": "HKSAR Establishment Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-10-01",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-10-07",
+        "name": "Day after Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-10-29",
+        "name": "Chung Yeung Festival",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-12-24",
+        "name": "Christmas Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "12:00",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-12-26",
+        "name": "Boxing Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2025-12-31",
+        "name": "New Year's Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "12:00",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-02-17",
+        "name": "Lunar New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-02-18",
+        "name": "Second Day of Lunar New Year",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-02-19",
+        "name": "Third Day of Lunar New Year",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-04-06",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-05-25",
+        "name": "Buddha's Birthday (observed)",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-06-19",
+        "name": "Tuen Ng Festival (Dragon Boat)",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-07-01",
+        "name": "HKSAR Establishment Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-09-25",
+        "name": "Day after Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-10-01",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-12-24",
+        "name": "Christmas Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "12:00",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "New Year's Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "12:00",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-02-08",
+        "name": "Second Day of Lunar New Year",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-02-09",
+        "name": "Third Day of Lunar New Year",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-03-29",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-04-05",
+        "name": "Ching Ming Festival",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-05-13",
+        "name": "Buddha's Birthday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-06-09",
+        "name": "Tuen Ng Festival (Dragon Boat)",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-07-01",
+        "name": "HKSAR Establishment Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-09-15",
+        "name": "Day after Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-10-01",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-10-08",
+        "name": "Chung Yeung Festival",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-12-24",
+        "name": "Christmas Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "12:00",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Boxing Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "New Year's Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "12:00",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-01-26",
+        "name": "Lunar New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-01-27",
+        "name": "Second Day of Lunar New Year",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-01-28",
+        "name": "Third Day of Lunar New Year",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-04-17",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-05-02",
+        "name": "Buddha's Birthday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-10-02",
+        "name": "National Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-10-03",
+        "name": "Day after Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-10-26",
+        "name": "Chung Yeung Festival",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2028-12-26",
+        "name": "Boxing Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-02-13",
+        "name": "Lunar New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Second Day of Lunar New Year",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-02-15",
+        "name": "Third Day of Lunar New Year",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-04-02",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-04-05",
+        "name": "Ching Ming Festival",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-05-21",
+        "name": "Buddha's Birthday (observed)",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-07-02",
+        "name": "HKSAR Establishment Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-09-24",
+        "name": "Day after Mid-Autumn Festival (observed)",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-10-01",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-10-15",
+        "name": "Chung Yeung Festival",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-12-24",
+        "name": "Christmas Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "12:00",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-12-26",
+        "name": "Boxing Day",
+        "status": "closed",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "New Year's Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "12:00",
+        "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
