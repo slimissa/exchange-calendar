@@ -1,0 +1,455 @@
+{
+  "code": "XNSE",
+  "name": "National Stock Exchange of India",
+  "mic": "XNSE",
+  "timezone": "Asia/Kolkata",
+  "regular_hours": {
+    "open": "09:15",
+    "close": "15:30"
+  },
+  "extended_hours": {
+    "pre_market": {
+      "open": "09:00",
+      "close": "09:15"
+    },
+    "after_hours": {
+      "open": "15:30",
+      "close": "16:00"
+    }
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-02-26",
+        "name": "Mahashivratri",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-03-14",
+        "name": "Holi",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Id-Ul-Fitr (Ramzan Id)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-04-10",
+        "name": "Mahavir Jayanti",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-04-14",
+        "name": "Dr. Ambedkar Jayanti",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Maharashtra Day",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-08-15",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-08-27",
+        "name": "Ganesh Chaturthi",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-10-02",
+        "name": "Gandhi Jayanti",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-10-21",
+        "name": "Diwali (Laxmi Pujan)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-10-22",
+        "name": "Diwali Balipratipada",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-11-05",
+        "name": "Guru Nanak Jayanti",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-01-26",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-03-04",
+        "name": "Holi",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-03-20",
+        "name": "Id-Ul-Fitr (Ramzan Id)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-04-14",
+        "name": "Dr. Ambedkar Jayanti",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Maharashtra Day",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Bakri Id (Eid-ul-Adha)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-06-26",
+        "name": "Muharram",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-09-15",
+        "name": "Ganesh Chaturthi",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-10-02",
+        "name": "Gandhi Jayanti",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-10-20",
+        "name": "Dussehra (Vijayadashami)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-11-09",
+        "name": "Diwali Balipratipada",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-11-24",
+        "name": "Guru Nanak Jayanti",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2027-01-26",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2027-03-10",
+        "name": "Id-Ul-Fitr (Ramzan Id)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2027-03-23",
+        "name": "Holi",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2027-04-14",
+        "name": "Dr. Ambedkar Jayanti",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Bakri Id (Eid-ul-Adha)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2027-06-16",
+        "name": "Muharram",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2027-10-29",
+        "name": "Diwali (Laxmi Pujan)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-01-26",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-02-24",
+        "name": "Mahashivratri",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday / Dr. Ambedkar Jayanti",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Maharashtra Day",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-05-05",
+        "name": "Bakri Id (Eid-ul-Adha)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-08-15",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-08-23",
+        "name": "Ganesh Chaturthi",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-09-28",
+        "name": "Dussehra (Vijayadashami)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-10-02",
+        "name": "Gandhi Jayanti",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-10-17",
+        "name": "Diwali (Laxmi Pujan)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-10-18",
+        "name": "Diwali Balipratipada",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-01-26",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-02-12",
+        "name": "Mahashivratri",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-02-15",
+        "name": "Id-Ul-Fitr (Ramzan Id)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-03-01",
+        "name": "Holi",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-04-24",
+        "name": "Bakri Id (Eid-ul-Adha)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Maharashtra Day",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-05-24",
+        "name": "Muharram",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-08-15",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-09-12",
+        "name": "Ganesh Chaturthi",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-10-02",
+        "name": "Gandhi Jayanti",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-10-17",
+        "name": "Dussehra (Vijayadashami)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-11-05",
+        "name": "Diwali (Laxmi Pujan)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-11-06",
+        "name": "Diwali Balipratipada",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_date",
+        "month": 1,
+        "day": 26,
+        "name": "Republic Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 5,
+        "day": 1,
+        "name": "Maharashtra Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 8,
+        "day": 15,
+        "name": "Independence Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 10,
+        "day": 2,
+        "name": "Gandhi Jayanti",
+        "status": "closed"
+      },
+      {
+        "rule": "easter_offset",
+        "offset_days": -2,
+        "name": "Good Friday",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 12,
+        "day": 25,
+        "name": "Christmas",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 4,
+        "day": 14,
+        "name": "Dr. Ambedkar Jayanti",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": ["2025-01-01", "2029-12-31"]
+}
