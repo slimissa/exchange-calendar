@@ -1,0 +1,266 @@
+{
+  "code": "XIST",
+  "name": "Borsa Istanbul",
+  "mic": "XIST",
+  "timezone": "Europe/Istanbul",
+  "regular_hours": {
+    "open": "10:00",
+    "close": "18:00"
+  },
+  "extended_hours": {
+    "pre_market": {
+      "open": "09:40",
+      "close": "10:00"
+    },
+    "after_hours": {
+      "open": "18:00",
+      "close": "18:10"
+    }
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2025-04-23",
+        "name": "National Sovereignty and Children's Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2025-05-19",
+        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2025-07-15",
+        "name": "Democracy and National Unity Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2025-10-28",
+        "name": "Republic Day Eve",
+        "status": "early_close",
+        "early_close_time": "13:00",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2025-10-29",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2026-04-23",
+        "name": "National Sovereignty and Children's Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2026-05-19",
+        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2026-07-15",
+        "name": "Democracy and National Unity Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2026-10-28",
+        "name": "Republic Day Eve",
+        "status": "early_close",
+        "early_close_time": "13:00",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2026-10-29",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2027-04-23",
+        "name": "National Sovereignty and Children's Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2027-05-19",
+        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2027-07-15",
+        "name": "Democracy and National Unity Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2027-10-28",
+        "name": "Republic Day Eve",
+        "status": "early_close",
+        "early_close_time": "13:00",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2027-10-29",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2028-05-19",
+        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2028-08-30",
+        "name": "Victory Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2028-10-27",
+        "name": "Republic Day Eve",
+        "status": "early_close",
+        "early_close_time": "13:00",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2029-04-23",
+        "name": "National Sovereignty and Children's Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2029-08-30",
+        "name": "Victory Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2029-10-26",
+        "name": "Republic Day Eve",
+        "status": "early_close",
+        "early_close_time": "13:00",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      },
+      {
+        "date": "2029-10-29",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_date",
+        "month": 1,
+        "day": 1,
+        "name": "New Year's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 4,
+        "day": 23,
+        "name": "National Sovereignty and Children's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 5,
+        "day": 1,
+        "name": "Labour Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 5,
+        "day": 19,
+        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 7,
+        "day": 15,
+        "name": "Democracy and National Unity Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 8,
+        "day": 30,
+        "name": "Victory Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 10,
+        "day": 29,
+        "name": "Republic Day",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
