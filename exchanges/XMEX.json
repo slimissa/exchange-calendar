@@ -1,0 +1,361 @@
+{
+  "code": "XMEX",
+  "name": "Mexican Stock Exchange",
+  "mic": "XMEX",
+  "timezone": "America/Mexico_City",
+  "regular_hours": {
+    "open": "08:30",
+    "close": "15:00"
+  },
+  "extended_hours": {
+    "pre_market": {
+      "open": "07:30",
+      "close": "08:30"
+    },
+    "after_hours": {
+      "open": "15:00",
+      "close": "15:30"
+    }
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2025-02-03",
+        "name": "Constitution Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2025-03-17",
+        "name": "Benito Ju\u00e1rez Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2025-04-17",
+        "name": "Holy Thursday",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2025-09-16",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2025-11-17",
+        "name": "Revolution Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2025-12-12",
+        "name": "Bank Worker's Day (D\u00eda del Empleado Bancario)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2026-02-02",
+        "name": "Constitution Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2026-03-16",
+        "name": "Benito Ju\u00e1rez Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2026-04-02",
+        "name": "Holy Thursday",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2026-09-16",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2026-11-16",
+        "name": "Revolution Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2027-02-01",
+        "name": "Constitution Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2027-03-15",
+        "name": "Benito Ju\u00e1rez Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2027-03-25",
+        "name": "Holy Thursday",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2027-09-16",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2027-11-15",
+        "name": "Revolution Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2028-02-07",
+        "name": "Constitution Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2028-03-20",
+        "name": "Benito Ju\u00e1rez Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2028-04-13",
+        "name": "Holy Thursday",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2028-11-20",
+        "name": "Revolution Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2028-12-12",
+        "name": "Bank Worker's Day (D\u00eda del Empleado Bancario)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2029-02-05",
+        "name": "Constitution Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2029-03-19",
+        "name": "Benito Ju\u00e1rez Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2029-03-29",
+        "name": "Holy Thursday",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2029-11-19",
+        "name": "Revolution Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2029-12-12",
+        "name": "Bank Worker's Day (D\u00eda del Empleado Bancario)",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_date",
+        "month": 1,
+        "day": 1,
+        "name": "New Year's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "nth_weekday",
+        "month": 2,
+        "weekday": "monday",
+        "n": 1,
+        "name": "Constitution Day",
+        "status": "closed"
+      },
+      {
+        "rule": "nth_weekday",
+        "month": 3,
+        "weekday": "monday",
+        "n": 3,
+        "name": "Benito Ju\u00e1rez Day",
+        "status": "closed"
+      },
+      {
+        "rule": "easter_offset",
+        "offset_days": -3,
+        "name": "Holy Thursday",
+        "status": "closed"
+      },
+      {
+        "rule": "easter_offset",
+        "offset_days": -2,
+        "name": "Good Friday",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 5,
+        "day": 1,
+        "name": "Labour Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 9,
+        "day": 16,
+        "name": "Independence Day",
+        "status": "closed"
+      },
+      {
+        "rule": "nth_weekday",
+        "month": 11,
+        "weekday": "monday",
+        "n": 3,
+        "name": "Revolution Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 12,
+        "day": 12,
+        "name": "Day of the Virgin of Guadalupe",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 12,
+        "day": 25,
+        "name": "Christmas Day",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
