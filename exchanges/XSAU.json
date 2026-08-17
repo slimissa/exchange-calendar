@@ -1,0 +1,106 @@
+{
+  "code": "XSAU",
+  "name": "Saudi Stock Exchange (Tadawul)",
+  "mic": "XSAU",
+  "timezone": "Asia/Riyadh",
+  "regular_hours": {
+    "open": "10:00",
+    "close": "15:00"
+  },
+  "extended_hours": {
+    "pre_market": {
+      "open": "09:30",
+      "close": "10:00"
+    },
+    "after_hours": {
+      "open": "15:00",
+      "close": "15:20"
+    }
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-02-23",
+        "name": "Saudi Founding Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar"
+      },
+      {
+        "date": "2025-09-23",
+        "name": "Saudi National Day",
+        "status": "closed",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar"
+      },
+      {
+        "date": "2026-02-22",
+        "name": "Saudi Founding Day",
+        "status": "closed",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar"
+      },
+      {
+        "date": "2026-09-23",
+        "name": "Saudi National Day",
+        "status": "closed",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar"
+      },
+      {
+        "date": "2027-02-22",
+        "name": "Saudi Founding Day",
+        "status": "closed",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar"
+      },
+      {
+        "date": "2027-09-23",
+        "name": "Saudi National Day",
+        "status": "closed",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar"
+      },
+      {
+        "date": "2028-02-22",
+        "name": "Saudi Founding Day",
+        "status": "closed",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar"
+      },
+      {
+        "date": "2028-09-24",
+        "name": "Saudi National Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar"
+      },
+      {
+        "date": "2029-02-22",
+        "name": "Saudi Founding Day",
+        "status": "closed",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar"
+      },
+      {
+        "date": "2029-09-23",
+        "name": "Saudi National Day",
+        "status": "closed",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_date",
+        "month": 2,
+        "day": 22,
+        "name": "Saudi Founding Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 9,
+        "day": 23,
+        "name": "Saudi National Day",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
