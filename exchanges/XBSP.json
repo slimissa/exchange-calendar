@@ -1,0 +1,546 @@
+{
+  "code": "XBSP",
+  "name": "B3 (S\u00e3o Paulo Stock Exchange)",
+  "mic": "XBSP",
+  "timezone": "America/Sao_Paulo",
+  "regular_hours": {
+    "open": "10:00",
+    "close": "17:00"
+  },
+  "extended_hours": {
+    "pre_market": {
+      "open": "09:45",
+      "close": "10:00"
+    },
+    "after_hours": {
+      "open": "17:00",
+      "close": "17:30"
+    }
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2025-03-03",
+        "name": "Carnival Monday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2025-03-04",
+        "name": "Carnival Tuesday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2025-03-05",
+        "name": "Ash Wednesday",
+        "status": "delayed_open",
+        "delayed_open_time": "13:00",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2025-04-21",
+        "name": "Tiradentes",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2025-06-19",
+        "name": "Corpus Christi",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2025-11-20",
+        "name": "Black Consciousness Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2025-12-24",
+        "name": "Christmas Eve",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2025-12-31",
+        "name": "New Year's Eve",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-02-16",
+        "name": "Carnival Monday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-02-17",
+        "name": "Carnival Tuesday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-02-18",
+        "name": "Ash Wednesday",
+        "status": "delayed_open",
+        "delayed_open_time": "13:00",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-04-21",
+        "name": "Tiradentes",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-06-04",
+        "name": "Corpus Christi",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-09-07",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-10-12",
+        "name": "Nossa Senhora Aparecida",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-11-02",
+        "name": "All Souls' Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-11-20",
+        "name": "Black Consciousness Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-12-24",
+        "name": "Christmas Eve",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "New Year's Eve",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-02-08",
+        "name": "Carnival Monday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-02-09",
+        "name": "Carnival Tuesday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-02-10",
+        "name": "Ash Wednesday",
+        "status": "delayed_open",
+        "delayed_open_time": "13:00",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-04-21",
+        "name": "Tiradentes",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-05-27",
+        "name": "Corpus Christi",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-09-07",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-10-12",
+        "name": "Nossa Senhora Aparecida",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-11-02",
+        "name": "All Souls' Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-11-15",
+        "name": "Republic Proclamation Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-12-24",
+        "name": "Christmas Eve",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "New Year's Eve",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-02-28",
+        "name": "Carnival Monday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-02-29",
+        "name": "Carnival Tuesday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-03-01",
+        "name": "Ash Wednesday",
+        "status": "delayed_open",
+        "delayed_open_time": "13:00",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-04-21",
+        "name": "Tiradentes",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-06-15",
+        "name": "Corpus Christi",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-09-07",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-10-12",
+        "name": "Nossa Senhora Aparecida",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-11-02",
+        "name": "All Souls' Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-11-15",
+        "name": "Republic Proclamation Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-11-20",
+        "name": "Black Consciousness Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-02-12",
+        "name": "Carnival Monday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-02-13",
+        "name": "Carnival Tuesday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Ash Wednesday",
+        "status": "delayed_open",
+        "delayed_open_time": "13:00",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-05-31",
+        "name": "Corpus Christi",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-09-07",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-10-12",
+        "name": "Nossa Senhora Aparecida",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-11-02",
+        "name": "All Souls' Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-11-15",
+        "name": "Republic Proclamation Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-11-20",
+        "name": "Black Consciousness Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-12-24",
+        "name": "Christmas Eve",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "New Year's Eve",
+        "status": "closed",
+        "source_url": "https://www.b3.com.br/en_us/market-data/trading-calendar/"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_date",
+        "month": 1,
+        "day": 1,
+        "name": "New Year's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 4,
+        "day": 21,
+        "name": "Tiradentes",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 5,
+        "day": 1,
+        "name": "Labour Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 9,
+        "day": 7,
+        "name": "Independence Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 10,
+        "day": 12,
+        "name": "Nossa Senhora Aparecida",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 11,
+        "day": 2,
+        "name": "All Souls' Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 11,
+        "day": 15,
+        "name": "Republic Proclamation Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 11,
+        "day": 20,
+        "name": "Black Consciousness Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 12,
+        "day": 24,
+        "name": "Christmas Eve",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 12,
+        "day": 25,
+        "name": "Christmas Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 12,
+        "day": 31,
+        "name": "New Year's Eve",
+        "status": "closed"
+      },
+      {
+        "rule": "easter_offset",
+        "offset_days": -2,
+        "name": "Good Friday",
+        "status": "closed"
+      },
+      {
+        "rule": "easter_offset",
+        "offset_days": -48,
+        "name": "Carnival Monday",
+        "status": "closed"
+      },
+      {
+        "rule": "easter_offset",
+        "offset_days": -47,
+        "name": "Carnival Tuesday",
+        "status": "closed"
+      },
+      {
+        "rule": "easter_offset",
+        "offset_days": 60,
+        "name": "Corpus Christi",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
