@@ -1,0 +1,291 @@
+name: Update Exchange Calendar Data
+
+on:
+  # Run weekly on Sunday at 00:00 UTC
+  schedule:
+    - cron: '0 0 * * 0'
+  
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      exchange:
+        description: 'Specific exchange MIC to update (leave empty for all)'
+        required: false
+        default: ''
+      force:
+        description: 'Force update (bypass cache)'
+        required: false
+        type: boolean
+        default: false
+  
+  # Run on push to main if exchange data or updater changes
+  push:
+    branches:
+      - main
+    paths:
+      - 'exchanges/**'
+      - 'tools/update_from_exchange.py'
+      - 'tools/requirements.txt'
+
+env:
+  PYTHON_VERSION: '3.12'
+  PIP_CACHE_DIR: ~/.cache/pip
+
+jobs:
+  validate:
+    name: Validate Registry
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r tools/requirements.txt
+      
+      - name: Validate registry
+        run: |
+          python tools/validate.py
+      
+      - name: Run existing tests
+        run: |
+          python -m pytest tests/ -v --tb=short
+      
+      - name: Upload validation results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-results
+          path: |
+            test-results/
+            validation-report.json
+          retention-days: 14
+
+  update:
+    name: Update Exchange Data
+    runs-on: ubuntu-latest
+    needs: validate
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r tools/requirements.txt
+      
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      
+      - name: Update exchanges (dry run)
+        id: dry-run
+        run: |
+          if [ -n "${{ github.event.inputs.exchange }}" ]; then
+            python tools/update_from_exchange.py \
+              --exchange ${{ github.event.inputs.exchange }} \
+              --dry-run \
+              --verbose
+          else
+            python tools/update_from_exchange.py \
+              --all \
+              --dry-run \
+              --verbose
+          fi
+      
+      - name: Check for changes
+        id: check-changes
+        run: |
+          if git diff --quiet exchanges/; then
+            echo "changes_detected=false" >> $GITHUB_OUTPUT
+            echo "No changes detected in exchange data"
+          else
+            echo "changes_detected=true" >> $GITHUB_OUTPUT
+            echo "Changes detected:"
+            git diff --stat exchanges/
+          fi
+      
+      - name: Apply updates
+        if: steps.check-changes.outputs.changes_detected == 'true'
+        id: apply-updates
+        run: |
+          FORCE_FLAG=""
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            FORCE_FLAG="--force"
+          fi
+          
+          if [ -n "${{ github.event.inputs.exchange }}" ]; then
+            python tools/update_from_exchange.py \
+              --exchange ${{ github.event.inputs.exchange }} \
+              $FORCE_FLAG \
+              --verbose
+          else
+            python tools/update_from_exchange.py \
+              --all \
+              $FORCE_FLAG \
+              --verbose
+          fi
+      
+      - name: Run validation after update
+        if: steps.check-changes.outputs.changes_detected == 'true'
+        run: |
+          python tools/validate.py
+          python -m pytest tests/ -v --tb=short
+      
+      - name: Create Pull Request
+        if: steps.check-changes.outputs.changes_detected == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update exchange calendar data [automated]"
+          committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          branch: automated/update-exchange-data
+          delete-branch: true
+          title: "Automated exchange calendar update"
+          body: |
+            ## Automated Exchange Calendar Update
+            
+            This PR was automatically generated by the update workflow.
+            
+            ### Changes
+            - Updated exchange holiday data
+            - Source: Official exchange websites
+            - Timestamp: ${{ github.event.schedule || github.event.workflow_dispatch || github.event.head_commit.timestamp }}
+            
+            ### Validation
+            - ✅ Schema validation passed
+            - ✅ Business logic validation passed
+            - ✅ Cross-exchange validation passed
+            - ✅ All tests passed
+            
+            ### Review Checklist
+            - [ ] Verify holiday dates are correct
+            - [ ] Check source URLs are valid
+            - [ ] Confirm no unexpected changes
+            - [ ] Review any new holidays added
+            
+            ### Auto-generated
+            This PR was created automatically. Please review before merging.
+          labels: |
+            automated
+            data-update
+            needs-review
+          reviewers: |
+            slimissa
+          draft: false
+      
+      - name: Create Issue on Failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { repo, owner } = context.repo;
+            const runId = context.runId;
+            const runUrl = `https://github.com/${owner}/${repo}/actions/runs/${runId}`;
+            
+            await github.rest.issues.create({
+              owner,
+              repo,
+              title: '❌ Automated exchange update failed',
+              body: `## Automated Update Failed
+            
+            The automated exchange calendar update workflow has failed.
+            
+            ### Details
+            - **Run ID**: ${runId}
+            - **Run URL**: ${runUrl}
+            - **Timestamp**: ${new Date().toISOString()}
+            
+            ### Action Required
+            Please check the workflow logs and fix any issues.
+            
+            ### Possible Causes
+            - Exchange website structure changed
+            - Network connectivity issues
+            - Rate limiting from exchange servers
+            - Validation errors in updated data
+            
+            ### Related
+            - [View workflow run](${runUrl})
+            `,
+              labels: ['bug', 'automated', 'needs-attention'],
+              assignees: ['slimissa']
+            });
+      
+      - name: Send Slack Notification
+        if: always()
+        uses: slackapi/slack-github-action@v1.26.0
+        with:
+          payload: |
+            {
+              "text": "Exchange Calendar Update: ${{ job.status }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Exchange Calendar Update*\n*Status*: ${{ job.status }}\n*Repository*: ${{ github.repository }}\n*Run ID*: ${{ github.run_id }}"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+  notify:
+    name: Notify
+    runs-on: ubuntu-latest
+    needs: [validate, update]
+    if: always()
+    
+    steps:
+      - name: Check workflow status
+        run: |
+          if [ "${{ needs.validate.result }}" = "success" ] && [ "${{ needs.update.result }}" = "success" ]; then
+            echo "✅ All jobs passed"
+          elif [ "${{ needs.validate.result }}" = "success" ] && [ "${{ needs.update.result }}" = "skipped" ]; then
+            echo "✅ Validation passed, update skipped (not scheduled)"
+          else
+            echo "❌ Workflow failed"
+            exit 1
+          fi
+      
+      - name: Send success notification
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { repo, owner } = context.repo;
+            const runUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
+            
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: 1,  // Update with your issue number or use a dedicated tracking issue
+              body: `✅ Exchange calendar update completed successfully\n\n[View run](${runUrl})`
+            });
