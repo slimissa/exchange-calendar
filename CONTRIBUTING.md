@@ -1,3 +1,6 @@
+The CONTRIBUTING.md needs updating for v2.0.0. Here are the key changes needed:
+
+```markdown
 # Contributing to exchange-calendar
 
 Thank you for contributing to the QuantOS exchange calendar registry.
@@ -73,29 +76,19 @@ python3 -m pytest tests/test_nyse_holidays.py -v
 ```
 exchange-calendar/
 ├── schema.json              # JSON Schema — the contract
-├── exchanges/               # Source of truth — one file per exchange
+├── exchanges/               # Source of truth — 74 exchange files
 ├── tools/                   # Validation, build, generation
 ├── wrappers/                # Language bindings
 │   ├── python/
 │   ├── javascript/
 │   ├── go/
 │   └── rust/
-├── tests/                   # Test suites
+├── tests/                   # Test suites (5,300+ tests)
 │   ├── fixtures/            # Test data
 │   ├── ground_truth/        # Manually verified references
-│   └── test_*.py            # Test files
+│   └── test_*.py            # Test files (one per exchange)
 └── docs/                    # Documentation
 ```
-
-### Key Files
-
-| File | Purpose |
-|------|---------|
-| `schema.json` | Defines the structure every exchange file must follow |
-| `exchanges/XXXX.json` | Exchange data — one file per MIC code |
-| `tools/validate.py` | Validates schema + business logic + cross-exchange |
-| `tools/build.py` | Produces `calendar.json` distribution artifact |
-| `tools/generate_dates.py` | Expands recurrence rules into dates |
 
 ### ⚠️ Stale Data Warning
 
@@ -105,10 +98,8 @@ exchange-calendar/
 python3 tools/build.py
 ```
 
-The Go and Rust wrappers read from `calendar.json` at test time. The Python
-and JavaScript wrappers load it at runtime. If you forget this step, local
-tests may pass against a stale file while CI fails. **CI runs `tools/build.py`
-automatically — do it locally to save a failed PR.**
+The Go and Rust wrappers read from `calendar.json` at test time. CI runs
+`tools/build.py` automatically — do it locally to save a failed PR.
 
 ---
 
@@ -116,28 +107,14 @@ automatically — do it locally to save a failed PR.**
 
 ### Step 1: Verify the Exchange Details
 
-Before writing any JSON, gather:
-
 - **MIC code** — 4-character ISO 10383 code (e.g., `XNYS` for NYSE)
 - **Official exchange name** — as used by the exchange itself
-- **IANA timezone** — e.g., `America/New_York`, `Europe/London`, `Asia/Tokyo`
+- **IANA timezone** — e.g., `America/New_York`, `Asia/Tokyo`
 - **Regular trading hours** — opening and closing times
-- **Extended hours** — pre-market and after-hours (if applicable)
-- **Lunch break** — if the exchange has one (e.g., Tokyo 11:30-12:30)
-- **Holiday calendar** — the next 5 years of official closures
-- **Early close days** — half-days with specific close times
-- **Source URL** — the official exchange page listing the holiday calendar
-
-### Source Priority
-
-Use sources in this order when verifying exchange data:
-
-1. **Exchange official calendar page** — the definitive source
-2. **Exchange press release or regulatory filing** — for recent changes
-3. **Official national regulator** — SEC (US), FCA (UK), FSA (Japan), MAS (Singapore)
-4. **Exchange trader update / market notice** — for ad-hoc closures
-
-Never use Wikipedia, memory, or third-party aggregators as primary sources.
+- **Lunch break** — if applicable (Tokyo 11:30-12:30, Shanghai 11:30-13:00)
+- **Weekend system** — Western (Sat-Sun) or Islamic (Fri-Sat)
+- **Holiday calendar** — next 5 years of official closures
+- **Source URL** — official exchange calendar page
 
 ### Step 2: Create the File
 
@@ -228,46 +205,32 @@ git push
 
 ---
 
-## Correcting Exchange Data
-
-### When You Find an Error
-
-1. **Verify against the official exchange source** — not Wikipedia, not memory
-2. **Check the test file** — is there a test that should catch this?
-3. **Fix the data** — update `exchanges/XXXX.json`
-4. **Fix or add the test** — so the error can't recur
-5. **Run the full test suite** — ensure nothing else broke
-6. **Rebuild `calendar.json`** — `python3 tools/build.py`
-7. **Document the fix** in the commit message
-
-### Source Citation
-
-Every explicit holiday entry must include a `source_url` pointing to the
-official exchange calendar page. If the exchange publishes a PDF or a page
-that changes frequently, use the most stable URL available.
-
----
-
 ## Common Data Errors
-
-These are the errors that most frequently appear in PRs and get rejected.
-Please review before submitting.
 
 ### 1. Weekend Dates in Explicit Arrays
 
-The market is closed on Saturdays and Sundays. Including a weekend date in
-`explicit` is redundant data. **Only weekdays should appear.**
+**Only weekdays should appear in explicit arrays.**
 
-### 2. Wrong Weekend Observation Model
+For Western weekend exchanges (65 exchanges):
+- No Saturday or Sunday dates
 
-| Model | Exchange | Rule |
-|-------|----------|------|
-| US weekend adjustment | NYSE, NASDAQ, TSX | Saturday→Friday, Sunday→Monday |
-| UK substitute days | LSE | Bank Holidays shift to Monday |
-| No substitutes | Germany, Switzerland, Australia (Saturday) | Holidays on weekends are NOT shifted |
-| Open on civil holidays | Euronext, BME | Exchange trades on legal holidays |
-| Lunisolar explicit-only | China, Japan, Korea, HK, Singapore | No recurrence rules possible |
-| Half-day sessions | ASX, SGX, HKEX, TSX | Early close on eves |
+For Islamic weekend exchanges (9 exchanges: XSAU, XDFM, XTAD, XQSE, XBAH, XKUW, XMUS, XCAI, XDHA):
+- No Friday or Saturday dates
+- Sunday is a working day
+
+### 2. Wrong Weekend Observation Model (Expanded)
+
+| Model | Exchanges |
+|-------|-----------|
+| US weekend adjustment | XNYS, XNAS, XTSE |
+| UK substitute days | XLON, XDUB |
+| No substitutes | XETR, XSWX, XWBO, Nordic, Baltic, Poland, Czech |
+| Open on civil holidays | Euronext (XPAR, XAMS, XBRU, XLIS), XMAD |
+| Islamic weekend (Fri-Sat) | XSAU, XDFM, XTAD, XQSE, XBAH, XKUW, XMUS, XCAI, XDHA |
+| Orthodox Easter | XATH, XBUL, XMOS |
+| Buddhist holidays | XBKK, XCOL |
+| Chinese lunar | XSHG, XSHE, XHKG, XTAI |
+| Multi-day festivals | Chinese New Year, Eid, Songkran, Tet |
 
 ### 3. Civil Holidays as Market Closures
 
@@ -311,112 +274,38 @@ have lunch breaks. Singapore and Korea do **NOT** (continuous trading).
 
 ---
 
-## Writing Tests
+## Testing Statistics
 
-### Python Test Conventions
-
-```python
-class TestExchangeProperties:
-    def test_code(self, fixture):
-        assert fixture["code"] == "XXXX"
-
-class TestExchange2025:
-    def test_holiday_name(self, explicit_dates):
-        assert "2025-01-01" in explicit_dates
-        assert explicit_dates["2025-01-01"]["status"] == "closed"
-
-class TestExchangeStructure:
-    def test_no_weekend_dates(self, explicit_dates):
-        for date_str in explicit_dates:
-            d = date.fromisoformat(date_str)
-            assert d.weekday() < 5
-```
-
-### Go Test Conventions
-
-Use `testing` package with table-driven tests where appropriate.
-
-### Rust Test Conventions
-
-Use `#[cfg(test)]` modules with `#[test]` functions.
-
-### JavaScript Test Conventions
-
-Use `node:test` and `node:assert/strict`.
-
----
-
-## Code Style
-
-### Python
-
-- PEP 8
-- Line length: 100 characters
-- Docstrings for all public functions
-- Type hints where practical
-
-### JavaScript
-
-- ESLint recommended
-- camelCase methods
-- `'use strict';` at top of files
-
-### Go
-
-- `gofmt` formatting
-- Exported names have doc comments
-- Errors as values, no panics in public API
-
-### Rust
-
-- `rustfmt` formatting
-- `clippy` clean
-- Doc comments for public items
-
----
-
-## Commit Messages
-
-Format: `<type>: <description>`
-
-Types:
-- `Add` — new exchange, new feature
-- `Fix` — bug fix, data correction
-- `Update` — improvement, refactor
-- `Docs` — documentation
-- `Test` — test changes
-- `Build` — build system, CI
-
-Examples:
-```
-Add Tokyo Stock Exchange (XTKS): lunch break, 15:30 close, Japanese holidays
-Fix XNYS July 3, 2025 early close date
-Update validate.py: add IANA timezone check for Etc/GMT+X
-Docs: update README with 14 exchanges
-```
+Current test counts:
+- **74 exchange test files** (`tests/test_*_holidays.py`)
+- **5,300+ total tests** across 4 languages
+- Each exchange has 35-70 tests covering:
+  - Properties (code, MIC, timezone, hours)
+  - Fixed holidays (verified against official sources)
+  - Movable holidays (Easter, Islamic, Chinese lunar)
+  - Weekend pattern checks
+  - Substitution logic
+  - Structural integrity (no duplicates, no weekend dates)
 
 ---
 
 ## Pull Request Process
 
-1. **Create a feature branch** — `git checkout -b add-XXXX`
-2. **Make changes** — follow the guidelines above
-3. **Run tests** — all 1,127+ tests must pass
+1. **Create a feature branch**
+2. **Make changes**
+3. **Run tests** — `python3 -m pytest tests/ -v` (all 5,300+ must pass)
 4. **Rebuild `calendar.json`** — `python3 tools/build.py`
 5. **Update CHANGELOG.md** — under `[Unreleased]`
-6. **Push** — `git push origin add-XXXX`
-7. **Open PR** — describe what you added and why
-8. **CI must pass** — GitHub Actions will run validation and tests
-9. **Review** — at least one maintainer approval
+6. **Push and open PR**
 
 ### PR Checklist
 
 - [ ] Exchange data validated with `python3 tools/validate.py`
-- [ ] Test file created with minimum coverage
-- [ ] All tests pass (`python3 -m pytest tests/ -v`)
-- [ ] `calendar.json` rebuilt after data changes
+- [ ] Test file created with minimum coverage (35+ tests)
+- [ ] All 5,300+ tests pass
+- [ ] `calendar.json` rebuilt
 - [ ] Source URL provided for every holiday entry
-- [ ] No weekend dates in explicit array
+- [ ] No weekend dates (correct for exchange's weekend system)
 - [ ] No duplicate dates
 - [ ] CHANGELOG.md updated
 - [ ] Commit messages follow format
@@ -425,54 +314,41 @@ Docs: update README with 14 exchanges
 
 ## Review Priorities
 
-When reviewing PRs, maintainers will check:
-
-1. **Data accuracy** — Is every holiday date backed by an official exchange source?
-2. **Schema compliance** — Does the file validate against `schema.json`?
-3. **Test coverage** — Do all 1,127+ tests pass? Are new tests added?
-4. **Weekend observation** — Is the correct model applied (shift vs. no-shift)?
-5. **Early close times** — Are half-day times correct for the specific exchange?
-6. **Lunch breaks** — Is the exchange continuous or does it have a break?
-7. **Documentation** — Is CHANGELOG.md updated? Is the commit message clear?
-8. **Stale calendar.json** — Has the build artifact been regenerated?
+1. **Data accuracy** — backed by official exchange source?
+2. **Schema compliance** — validates against `schema.json`?
+3. **Test coverage** — all 5,300+ tests pass?
+4. **Weekend system** — Western or Islamic applied correctly?
+5. **Calendar system** — Gregorian, Orthodox, Islamic, Buddhist, Chinese, Hindu?
+6. **Early close times** — correct for the specific exchange?
+7. **Lunch breaks** — continuous or break?
+8. **Substitution rules** — shifts or no-shifts?
+9. **Documentation** — CHANGELOG.md updated?
 
 ---
 
 ## Release Process
 
-1. **Update CHANGELOG.md** — move `[Unreleased]` items to new version section
-2. **Bump version** — Semantic Versioning:
-   - Major: breaking schema changes
-   - Minor: new exchanges, new features
-   - Patch: data corrections
-3. **Update wrappers** — sync version across Python (`__init__.py`), JavaScript (`package.json`), Go (no version), Rust (`Cargo.toml`)
-4. **Rebuild calendar.json** — `python3 tools/build.py`
-5. **Run full test suite** — all tests must pass
-6. **Tag the release** — `git tag -a v1.1.0 -m "Release v1.1.0"`
-7. **Push tag** — `git push origin v1.1.0`
-8. **Publish wrappers** — PyPI, npm, crates.io (if applicable)
+1. **Update CHANGELOG.md**
+2. **Bump version** — Semantic Versioning
+3. **Update wrappers** — sync versions
+4. **Rebuild calendar.json**
+5. **Run full test suite**
+6. **Tag release** — `git tag -a v2.1.0 -m "Release v2.1.0"`
+7. **Push tag**
+8. **Publish wrappers**
 
 ---
 
 ## Getting Help
 
-- **Questions?** Open an issue with the `question` label
-- **Not sure if something is correct?** Open an issue with the `discussion` label
-- **Found a bug but can't fix it?** Open an issue with the `bug` label and as much detail as possible
-- **Data correction?** Use the `holiday_update` issue template
+- Open an issue with appropriate label
+- Use issue templates for data corrections
 
 ---
 
 ## Thank You
 
-Every contribution improves the registry for everyone. Precise data,
-rigorous tests, and clear documentation are what make this project valuable.
+Every contribution improves the registry for everyone. With 74 exchanges
+and 5,300+ tests, precise data and rigorous testing are essential.
 
 ---
-
-## License
-
-By contributing, you agree that your contributions will be licensed under
-the Apache 2.0 License, the same as this project. Exchange calendar data
-is factual information sourced from official exchange publications. The
-compilation, schema, tooling, and wrappers are licensed works.
