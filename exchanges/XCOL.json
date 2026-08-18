@@ -1,0 +1,291 @@
+{
+  "code": "XCOL",
+  "name": "Colombo Stock Exchange",
+  "mic": "XCOL",
+  "timezone": "Asia/Colombo",
+  "regular_hours": {
+    "open": "09:30",
+    "close": "14:30"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-14",
+        "name": "Duruthu Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-02-12",
+        "name": "Navam Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-03-13",
+        "name": "Medin Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-04-11",
+        "name": "Bak Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-04-14",
+        "name": "Sinhala and Tamil New Year",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-04-15",
+        "name": "Sinhala and Tamil New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "May Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-05-12",
+        "name": "Vesak Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-05-13",
+        "name": "Vesak Full Moon Poya Day Holiday",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-06-10",
+        "name": "Poson Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-07-10",
+        "name": "Esala Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-08-08",
+        "name": "Nikini Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-10-06",
+        "name": "Vap Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-10-20",
+        "name": "Deepavali",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-11-05",
+        "name": "Il Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-12-04",
+        "name": "Unduvap Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-01-14",
+        "name": "Duruthu Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-02-12",
+        "name": "Navam Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-03-13",
+        "name": "Medin Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-04-14",
+        "name": "Sinhala and Tamil New Year",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-04-15",
+        "name": "Sinhala and Tamil New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "May Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-05-12",
+        "name": "Vesak Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-05-13",
+        "name": "Vesak Full Moon Poya Day Holiday",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-06-10",
+        "name": "Poson Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-07-10",
+        "name": "Esala Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-09-07",
+        "name": "Binara Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-10-06",
+        "name": "Vap Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-11-05",
+        "name": "Il Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-12-04",
+        "name": "Unduvap Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-01-14",
+        "name": "Duruthu Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-02-12",
+        "name": "Navam Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-04-14",
+        "name": "Sinhala and Tamil New Year",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-04-15",
+        "name": "Sinhala and Tamil New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-05-03",
+        "name": "May Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-05-12",
+        "name": "Vesak Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-05-13",
+        "name": "Vesak Full Moon Poya Day Holiday",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-06-10",
+        "name": "Poson Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-09-07",
+        "name": "Binara Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-10-06",
+        "name": "Vap Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-10-28",
+        "name": "Deepavali",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-11-05",
+        "name": "Il Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Christmas Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
