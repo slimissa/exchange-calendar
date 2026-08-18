@@ -1,0 +1,307 @@
+{
+  "code": "XMUS",
+  "name": "Muscat Stock Exchange",
+  "mic": "XMUS",
+  "timezone": "Asia/Muscat",
+  "regular_hours": {
+    "open": "10:00",
+    "close": "13:00"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2025-03-30",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2025-04-01",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2025-04-02",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2025-06-08",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2025-06-09",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2025-06-26",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2025-07-23",
+        "name": "Renaissance Day",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2025-09-04",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2025-11-18",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2026-03-22",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2026-06-16",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2026-07-23",
+        "name": "Renaissance Day",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2026-08-25",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2026-11-18",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2027-03-09",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2027-03-10",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2027-03-11",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2027-05-16",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2027-06-06",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2027-07-25",
+        "name": "Renaissance Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2027-08-15",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2027-11-18",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2028-01-02",
+        "name": "New Year's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2028-02-27",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2028-05-04",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2028-05-25",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2028-07-23",
+        "name": "Renaissance Day",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2028-11-19",
+        "name": "National Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2029-02-15",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2029-04-24",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2029-04-25",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2029-05-14",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2029-07-23",
+        "name": "Renaissance Day",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2029-07-24",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      },
+      {
+        "date": "2029-11-18",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.msx.om/trading-calendar"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 1,
+        "day": 1,
+        "name": "New Year's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 7,
+        "day": 23,
+        "name": "Renaissance Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 11,
+        "day": 18,
+        "name": "National Day",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
