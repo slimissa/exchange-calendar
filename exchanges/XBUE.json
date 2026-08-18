@@ -1,0 +1,497 @@
+{
+  "code": "XBUE",
+  "name": "Buenos Aires Stock Exchange",
+  "mic": "XBUE",
+  "timezone": "America/Argentina/Buenos_Aires",
+  "regular_hours": {
+    "open": "11:00",
+    "close": "17:00"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-03-03",
+        "name": "Carnival Monday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-03-04",
+        "name": "Carnival Tuesday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-03-24",
+        "name": "Day of Remembrance for Truth and Justice",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-04-02",
+        "name": "Malvinas Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-06-20",
+        "name": "National Flag Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-07-09",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-11-20",
+        "name": "National Sovereignty Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.byma.com.ar/calendario",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2025-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.byma.com.ar/calendario",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-02-16",
+        "name": "Carnival Monday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-02-17",
+        "name": "Carnival Tuesday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-03-24",
+        "name": "Day of Remembrance for Truth and Justice",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-04-02",
+        "name": "Malvinas Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-05-25",
+        "name": "May Revolution Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-07-09",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-08-17",
+        "name": "Anniversary of San Martín's Death (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-10-12",
+        "name": "Day of Respect for Cultural Diversity (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-11-20",
+        "name": "National Sovereignty Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.byma.com.ar/calendario",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.byma.com.ar/calendario",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-02-08",
+        "name": "Carnival Monday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-02-09",
+        "name": "Carnival Tuesday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-03-24",
+        "name": "Day of Remembrance for Truth and Justice",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-04-02",
+        "name": "Malvinas Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-05-03",
+        "name": "Labour Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-05-25",
+        "name": "May Revolution Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-06-21",
+        "name": "National Flag Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-07-09",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-08-16",
+        "name": "Anniversary of San Martín's Death (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-10-11",
+        "name": "Day of Respect for Cultural Diversity (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-11-22",
+        "name": "National Sovereignty Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.byma.com.ar/calendario",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Christmas Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.byma.com.ar/calendario",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2028-01-03",
+        "name": "New Year's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-02-28",
+        "name": "Carnival Monday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-02-29",
+        "name": "Carnival Tuesday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-03-24",
+        "name": "Day of Remembrance for Truth and Justice",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-04-03",
+        "name": "Malvinas Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-05-25",
+        "name": "May Revolution Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-06-20",
+        "name": "National Flag Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-07-10",
+        "name": "Independence Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-08-21",
+        "name": "Anniversary of San Martín's Death (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-10-16",
+        "name": "Day of Respect for Cultural Diversity (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-11-20",
+        "name": "National Sovereignty Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-02-12",
+        "name": "Carnival Monday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-02-13",
+        "name": "Carnival Tuesday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-03-26",
+        "name": "Day of Remembrance for Truth and Justice (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-04-02",
+        "name": "Malvinas Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-05-25",
+        "name": "May Revolution Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-06-20",
+        "name": "National Flag Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-07-09",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-08-20",
+        "name": "Anniversary of San Martín's Death (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-10-15",
+        "name": "Day of Respect for Cultural Diversity (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-11-19",
+        "name": "National Sovereignty Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.byma.com.ar/calendario",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.byma.com.ar/calendario"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.byma.com.ar/calendario",
+        "early_close_time": "13:00"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
