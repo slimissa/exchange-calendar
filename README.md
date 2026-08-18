@@ -1,6 +1,3 @@
-Here's the **perfected README** reflecting the current state of 74 exchanges:
-
-```markdown
 # Exchange Calendar Registry
 
 **The world's most comprehensive open-source registry of global exchange trading calendars — 74 exchanges across 6 continents.**
