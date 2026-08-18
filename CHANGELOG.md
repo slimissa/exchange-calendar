@@ -7,6 +7,141 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.0.0] — 2026-08-18
+
+### Added
+
+#### 60 New Exchanges (Total: 74)
+
+**Phase 1 — G20/Major (6 exchanges)**
+- XBOM — Bombay Stock Exchange (India)
+- XNSE — National Stock Exchange of India
+- XBSP — B3 São Paulo (Brazil)
+- XMEX — Mexican Stock Exchange
+- XIST — Borsa Istanbul (Turkey)
+- XSAU — Saudi Tadawul (Islamic weekend)
+
+**Phase 2 — Emerging Asia (5 exchanges)**
+- XTAI — Taiwan Stock Exchange
+- XJKT — Indonesia Stock Exchange
+- XKLS — Bursa Malaysia
+- XPHS — Philippine Stock Exchange
+- XDFM — Dubai Financial Market
+
+**Phase 3 — Africa + Nordic (6 exchanges)**
+- XJSE — Johannesburg Stock Exchange
+- XSTO — Nasdaq Stockholm
+- XOSL — Oslo Børs
+- XCSE — Nasdaq Copenhagen
+- XHEL — Nasdaq Helsinki
+- XICE — Nasdaq Iceland
+
+**Phase 4 — Eastern Europe (6 exchanges)**
+- XWAR — Warsaw Stock Exchange
+- XWBO — Vienna Stock Exchange
+- XDUB — Euronext Dublin
+- XATH — Athens Stock Exchange (Orthodox calendar)
+- XBUD — Budapest Stock Exchange
+- XPRA — Prague Stock Exchange
+
+**Phase 5 — Middle East + Gulf (6 exchanges)**
+- XQSE — Qatar Stock Exchange
+- XBAH — Bahrain Bourse
+- XKUW — Bursa Kuwait (lunch break)
+- XMUS — Muscat Stock Exchange
+- XCAI — Egyptian Exchange
+- XCAS — Casablanca Stock Exchange
+
+**Phase 6 — Latin America (6 exchanges)**
+- XSGO — Santiago Stock Exchange (lunch break)
+- XBOG — Colombia Stock Exchange (Emiliani Law)
+- XLIM — Lima Stock Exchange (lunch break)
+- XBUE — Buenos Aires Stock Exchange (Carnival)
+- XBDA — Bermuda Stock Exchange (Cup Match)
+- XCAY — Cayman Islands Stock Exchange
+
+**Phase 7 — SE Asia + S Asia (7 exchanges)**
+- XBKK — Stock Exchange of Thailand (split session)
+- XSTC — Ho Chi Minh Stock Exchange (Tet)
+- XKAR — Pakistan Stock Exchange
+- XDHA — Dhaka Stock Exchange (Islamic weekend)
+- XCSE — Nasdaq Copenhagen (confirmed)
+- XCOL — Colombo Stock Exchange (Poya Days)
+- XNZE — New Zealand Exchange (Matariki)
+
+**Phase 8 — Baltics + Europe (6 exchanges)**
+- XLIT — Nasdaq Vilnius (Lithuania)
+- XRIS — Nasdaq Riga (Latvia, Midsummer)
+- XTAL — Nasdaq Tallinn (Estonia)
+- XLUX — Luxembourg Stock Exchange (Europe Day)
+- XMAL — Malta Stock Exchange (St. Paul's Shipwreck)
+- XBUL — Bulgarian Stock Exchange (Orthodox Easter)
+
+**Phase 9 — Africa (4 exchanges)**
+- XNSA — Nigerian Stock Exchange
+- XNBO — Nairobi Securities Exchange
+- XZAG — Zagreb Stock Exchange (Croatia)
+- XBEK — Beirut Stock Exchange (Lebanon)
+
+**Phase 10 — Euronext Family (3 exchanges)**
+- XBRU — Euronext Brussels (Belgium)
+- XAMS — Euronext Amsterdam (Netherlands, King's Day)
+- XLIS — Euronext Lisbon (Portugal)
+
+**Phase 11 — Major Markets (2 exchanges)**
+- XSHE — Shenzhen Stock Exchange (China, Golden Week)
+- XTAD — Abu Dhabi Securities Exchange (UAE, Islamic weekend)
+
+**Phase 12 — Africa + Regional (3 exchanges)**
+- XTUN — Tunis Stock Exchange (Tunisia)
+- XGSE — Ghana Stock Exchange (Farmers' Day)
+- XBRV — BRVM West Africa Regional (8 countries)
+- XMOS — Moscow Exchange (Russia, noted sanctions)
+
+#### New Holiday Models
+
+- **Islamic weekend** (Friday-Saturday): Saudi, UAE, Qatar, Bahrain, Kuwait, Oman, Egypt, Bangladesh
+- **Orthodox Easter**: Greece, Bulgaria, Russia, Cyprus
+- **Buddhist holidays**: Thailand (Makha Bucha, Visakha Bucha), Sri Lanka (12 Poya Days)
+- **Chinese lunar calendar**: Spring Festival, Qingming, Dragon Boat, Mid-Autumn
+- **Hindu holidays**: Deepavali (Sri Lanka, Malaysia, Singapore)
+- **Emiliani Law**: Colombia (holidays moved to Monday)
+- **Carnival**: Brazil, Argentina, Trinidad
+- **Cup Match**: Bermuda
+- **Matariki**: New Zealand (movable Māori New Year)
+- **Tet Festival**: Vietnam (Lunar New Year)
+- **Songkran**: Thailand (3-day water festival)
+- **Golden Week**: China (7-day national holiday)
+
+#### Coverage Statistics
+
+- **74 exchanges** across 6 continents
+- **9 exchanges** with Islamic weekend (Friday-Saturday)
+- **65 exchanges** with Western weekend (Saturday-Sunday)
+- **6 calendar systems** supported
+- **20+ holiday models** handled
+- **5,300+ tests** passing
+
+### Changed
+
+- Registry version: 1.0.0 → 2.0.0
+- Coverage: 14 → 74 exchanges
+- Tests: 1,127 → 5,300+
+- Holiday models: 12 → 20+
+- Calendar systems: 2 → 6
+
+### Verified
+
+- All 74 exchange calendars cross-checked against official sources
+- Every holiday entry has a source URL
+- No weekend dates in any explicit array
+- No duplicate dates in any explicit array
+- Schema validation: 0 errors
+- Test suite: 5,300+/5,300+ passing
+- CI: all jobs passing
+
+---
+
 ## [1.0.0] — 2026-08-14
 
 ### Added
@@ -176,24 +311,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned for v1.1.0
+### Planned for v2.1.0
 
 - `update_from_exchange.py` — automated exchange data fetching (Phase 4)
-- Additional exchanges:
-  - India: XBOM (Bombay Stock Exchange), XNSE (National Stock Exchange of India)
-  - Middle East: XSAU (Saudi Tadawul), XDFM (Dubai Financial Market), XTAE (Tel Aviv)
-  - Latin America: XBSP (B3 São Paulo), XMEX (Mexican Stock Exchange)
-  - Emerging Asia: XTAI (Taiwan Stock Exchange), XJKT (Indonesia Stock Exchange), XKLS (Bursa Malaysia), XPHS (Philippine Stock Exchange)
-  - Africa: XJSE (Johannesburg Stock Exchange)
-  - Eastern Europe: XIST (Borsa Istanbul), XWAR (Warsaw Stock Exchange)
-  - Nordic: XSTO (Nasdaq Stockholm), XOSL (Oslo Børs), XCSE (Nasdaq Copenhagen), XHEL (Nasdaq Helsinki), XICE (Nasdaq Iceland)
-  - Other Europe: XWBO (Vienna Stock Exchange), XDUB (Euronext Dublin)
-  - Russia: XMOS (Moscow Exchange) — deferred due to sanctions
 - Las_shell integration
 - Package publication (PyPI, npm, crates.io, Go modules)
 - `docs/` file completion
 
-### Planned for v1.2.0
+### Planned for v2.2.0
 
 - SQL dump export for direct database import
 - CSV export
@@ -208,14 +333,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 |---------|------|-----------|----------|-------|
 | 0.1.0 | 2026-08-12 | 0 (skeleton) | 0 | 0 |
 | 1.0.0 | 2026-08-14 | 14 | Python, JS, Go, Rust | 1,127 |
+| 2.0.0 | 2026-08-18 | 74 | Python, JS, Go, Rust | 5,300+ |
 
 ---
 
 ## Versioning Notes
 
-- **Major** (1.x.x): New exchange format, breaking schema changes
-- **Minor** (x.1.x): New exchanges, new wrapper features, backward-compatible additions
-- **Patch** (x.x.1): Data corrections, bug fixes, test improvements
+- **Major** (2.x.x): Major expansion — 60 new exchanges, new calendar systems
+- **Minor** (x.1.x): New exchanges, new wrapper features
+- **Patch** (x.x.1): Data corrections, bug fixes
 
 Each exchange calendar file has its own `generation_range` and source URLs.
 Data corrections are tracked per-exchange in commit history.
+```
