@@ -1,0 +1,599 @@
+{
+  "code": "XBOG",
+  "name": "Colombia Stock Exchange",
+  "mic": "XBOG",
+  "timezone": "America/Bogota",
+  "regular_hours": {
+    "open": "09:30",
+    "close": "15:00"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-01-06",
+        "name": "Epiphany (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-03-24",
+        "name": "Saint Joseph's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-04-17",
+        "name": "Maundy Thursday",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-06-02",
+        "name": "Ascension Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-06-23",
+        "name": "Corpus Christi (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-06-30",
+        "name": "Sacred Heart (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-07-01",
+        "name": "Saint Peter and Saint Paul (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-08-07",
+        "name": "Battle of Boyacá",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-08-18",
+        "name": "Assumption Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-10-13",
+        "name": "Columbus Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-11-03",
+        "name": "All Saints' Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-11-17",
+        "name": "Independence of Cartagena (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "early_close_time": "11:30",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2025-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "early_close_time": "11:30",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-01-12",
+        "name": "Epiphany (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Saint Joseph's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-04-02",
+        "name": "Maundy Thursday",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-05-18",
+        "name": "Ascension Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-06-08",
+        "name": "Corpus Christi (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-06-15",
+        "name": "Sacred Heart (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-06-29",
+        "name": "Saint Peter and Saint Paul (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-07-20",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-08-07",
+        "name": "Battle of Boyacá",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-08-17",
+        "name": "Assumption Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-10-12",
+        "name": "Columbus Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-11-02",
+        "name": "All Saints' Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-11-16",
+        "name": "Independence of Cartagena (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "early_close_time": "11:30",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "early_close_time": "11:30",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-01-11",
+        "name": "Epiphany (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-03-22",
+        "name": "Saint Joseph's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-03-25",
+        "name": "Maundy Thursday",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-05-03",
+        "name": "Labour Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-05-10",
+        "name": "Ascension Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-05-31",
+        "name": "Corpus Christi (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-06-07",
+        "name": "Sacred Heart (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-06-28",
+        "name": "Saint Peter and Saint Paul (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-07-20",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-08-16",
+        "name": "Assumption Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-10-18",
+        "name": "Columbus Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-11-01",
+        "name": "All Saints' Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-11-15",
+        "name": "Independence of Cartagena (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "early_close_time": "11:30",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Christmas Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "early_close_time": "11:30",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-01-03",
+        "name": "New Year's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-01-10",
+        "name": "Epiphany (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-03-20",
+        "name": "Saint Joseph's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-04-13",
+        "name": "Maundy Thursday",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-05-22",
+        "name": "Ascension Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-06-12",
+        "name": "Corpus Christi (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-06-19",
+        "name": "Sacred Heart (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-07-03",
+        "name": "Saint Peter and Saint Paul (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-07-20",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-08-07",
+        "name": "Battle of Boyacá",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-08-21",
+        "name": "Assumption Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-10-16",
+        "name": "Columbus Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-11-06",
+        "name": "All Saints' Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-11-13",
+        "name": "Independence of Cartagena (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-01-08",
+        "name": "Epiphany (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-03-19",
+        "name": "Saint Joseph's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-03-29",
+        "name": "Maundy Thursday",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-05-14",
+        "name": "Ascension Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-06-04",
+        "name": "Corpus Christi (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-06-11",
+        "name": "Sacred Heart (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-07-02",
+        "name": "Saint Peter and Saint Paul (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-07-20",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-08-07",
+        "name": "Battle of Boyacá",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-08-20",
+        "name": "Assumption Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-10-15",
+        "name": "Columbus Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-11-05",
+        "name": "All Saints' Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-11-12",
+        "name": "Independence of Cartagena (observed)",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "early_close_time": "11:30",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bvc.com.co/calendario"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "early_close_time": "11:30",
+        "source_url": "https://www.bvc.com.co/calendario"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
