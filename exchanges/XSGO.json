@@ -1,0 +1,535 @@
+{
+  "code": "XSGO",
+  "name": "Santiago Stock Exchange",
+  "mic": "XSGO",
+  "timezone": "America/Santiago",
+  "regular_hours": {
+    "open": "09:30",
+    "close": "16:00"
+  },
+  "sessions": [
+    {
+      "type": "lunch_break",
+      "open": "12:00",
+      "close": "12:30"
+    }
+  ],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-05-21",
+        "name": "Navy Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-06-20",
+        "name": "National Indigenous Peoples Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-06-30",
+        "name": "Saint Peter and Saint Paul (observed)",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-07-16",
+        "name": "Our Lady of Mount Carmel",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-08-15",
+        "name": "Assumption Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-09-18",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-09-19",
+        "name": "Army Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-10-13",
+        "name": "Columbus Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-10-31",
+        "name": "Reformation Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.bolsadesantiago.com/horarios",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2025-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.bolsadesantiago.com/horarios",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2026-05-21",
+        "name": "Navy Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2026-06-29",
+        "name": "Saint Peter and Saint Paul",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2026-07-16",
+        "name": "Our Lady of Mount Carmel",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2026-09-18",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2026-10-12",
+        "name": "Columbus Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2026-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2026-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.bolsadesantiago.com/horarios",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.bolsadesantiago.com/horarios",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2027-05-21",
+        "name": "Navy Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2027-06-21",
+        "name": "National Indigenous Peoples Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2027-06-28",
+        "name": "Saint Peter and Saint Paul (observed)",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2027-07-16",
+        "name": "Our Lady of Mount Carmel",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2027-10-12",
+        "name": "Columbus Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2027-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2027-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.bolsadesantiago.com/horarios",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Christmas Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.bolsadesantiago.com/horarios",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2028-01-03",
+        "name": "New Year's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-05-22",
+        "name": "Navy Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-06-20",
+        "name": "National Indigenous Peoples Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-06-29",
+        "name": "Saint Peter and Saint Paul",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-08-15",
+        "name": "Assumption Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-09-18",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-09-19",
+        "name": "Army Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-10-12",
+        "name": "Columbus Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-10-31",
+        "name": "Reformation Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-05-21",
+        "name": "Navy Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-06-20",
+        "name": "National Indigenous Peoples Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-06-29",
+        "name": "Saint Peter and Saint Paul",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-07-16",
+        "name": "Our Lady of Mount Carmel",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-08-15",
+        "name": "Assumption Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-09-18",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-09-19",
+        "name": "Army Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-10-12",
+        "name": "Columbus Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-10-31",
+        "name": "Reformation Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.bolsadesantiago.com/horarios",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bolsadesantiago.com/horarios"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.bolsadesantiago.com/horarios",
+        "early_close_time": "13:00"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 1,
+        "day": 1,
+        "name": "New Year's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "easter_offset",
+        "offset_days": -2,
+        "name": "Good Friday",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 5,
+        "day": 1,
+        "name": "Labour Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 5,
+        "day": 21,
+        "name": "Navy Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 6,
+        "day": 20,
+        "name": "National Indigenous Peoples Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 6,
+        "day": 29,
+        "name": "Saint Peter and Saint Paul",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 7,
+        "day": 16,
+        "name": "Our Lady of Mount Carmel",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 8,
+        "day": 15,
+        "name": "Assumption Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 9,
+        "day": 18,
+        "name": "Independence Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 9,
+        "day": 19,
+        "name": "Army Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 10,
+        "day": 12,
+        "name": "Columbus Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 10,
+        "day": 31,
+        "name": "Reformation Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 12,
+        "day": 8,
+        "name": "Immaculate Conception",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 12,
+        "day": 25,
+        "name": "Christmas Day",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
