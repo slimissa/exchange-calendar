@@ -102,8 +102,8 @@ def temp_registry(tmp_path_factory):
 class TestRegistryLoading:
     def test_load_real_registry(self, registry):
         assert registry.version == "1.0.0"
-        assert registry.exchange_count == 14
-        assert len(registry) == 14
+        assert registry.exchange_count == 74
+        assert len(registry) == 74
 
     def test_load_nonexistent_file(self):
         with pytest.raises(FileNotFoundError):
@@ -145,7 +145,7 @@ class TestRegistryLoading:
         s = str(registry)
         assert "Exchange Calendar Registry" in s
         assert "1.0.0" in s
-        assert "14" in s
+        assert "74" in s
 
     def test_registry_repr(self, registry):
         r = repr(registry)
@@ -187,33 +187,33 @@ class TestExchangeLookup:
 
     def test_codes_sorted(self, registry):
         codes = registry.codes()
-        assert len(codes) == 14
-        assert codes[0] == "XASX"
-        assert codes[-1] == "XTSE"
+        assert len(codes) == 74
+        assert codes[0] == "XAMS"
+        assert codes[-1] == "XZAG"
 
     def test_names_sorted(self, registry):
         names = registry.names()
-        assert len(names) == 14
+        assert len(names) == 74
         assert "London Stock Exchange" in names
         assert "New York Stock Exchange" in names
 
     def test_list_exchanges_sorted(self, registry):
         exchanges = registry.list_exchanges()
         codes = [e.code for e in exchanges]
-        assert len(codes) == 14
+        assert len(codes) == 74
         assert codes == sorted(codes)
 
     def test_iteration(self, registry):
         codes = [e.code for e in registry]
-        assert len(codes) == 14
-        assert codes[0] == "XASX"
-        assert codes[-1] == "XTSE"
+        assert len(codes) == 74
+        assert codes[0] == "XAMS"
+        assert codes[-1] == "XZAG"
 
     def test_to_dict(self, registry):
         d = registry.to_dict()
         assert d["version"] == "1.0.0"
-        assert d["exchange_count"] == 14
-        assert len(d["codes"]) == 14
+        assert d["exchange_count"] == 74
+        assert len(d["codes"]) == 74
         assert d["codes"] == sorted(d["codes"])
 
 
