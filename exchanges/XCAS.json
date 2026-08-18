@@ -1,0 +1,439 @@
+{
+  "code": "XCAS",
+  "name": "Casablanca Stock Exchange",
+  "mic": "XCAS",
+  "timezone": "Africa/Casablanca",
+  "regular_hours": {
+    "open": "09:30",
+    "close": "15:30"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-06-06",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-06-09",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-06-26",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-07-30",
+        "name": "Throne Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-08-14",
+        "name": "Oued Ed-Dahab Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-08-20",
+        "name": "Revolution Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-08-21",
+        "name": "Youth Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-09-04",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-11-06",
+        "name": "Green March Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-11-18",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-03-20",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-06-16",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-07-30",
+        "name": "Throne Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-08-14",
+        "name": "Oued Ed-Dahab Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-08-20",
+        "name": "Revolution Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-08-21",
+        "name": "Youth Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-08-25",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-11-06",
+        "name": "Green March Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-11-18",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-01-11",
+        "name": "Independence Manifesto Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-03-09",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-03-10",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-07-30",
+        "name": "Throne Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-08-20",
+        "name": "Revolution Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-11-18",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-01-11",
+        "name": "Independence Manifesto Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-02-28",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-05-04",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-05-05",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-05-25",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-08-14",
+        "name": "Oued Ed-Dahab Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-08-21",
+        "name": "Youth Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-08-04",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-11-06",
+        "name": "Green March Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-01-11",
+        "name": "Independence Manifesto Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-02-15",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-04-24",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-04-25",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-05-14",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-07-30",
+        "name": "Throne Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-08-14",
+        "name": "Oued Ed-Dahab Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-08-20",
+        "name": "Revolution Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-08-21",
+        "name": "Youth Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-07-24",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-11-06",
+        "name": "Green March Day",
+        "status": "closed",
+        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_date",
+        "month": 1,
+        "day": 1,
+        "name": "New Year's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 1,
+        "day": 11,
+        "name": "Independence Manifesto Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 5,
+        "day": 1,
+        "name": "Labour Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 7,
+        "day": 30,
+        "name": "Throne Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 8,
+        "day": 14,
+        "name": "Oued Ed-Dahab Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 8,
+        "day": 20,
+        "name": "Revolution Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 8,
+        "day": 21,
+        "name": "Youth Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 11,
+        "day": 6,
+        "name": "Green March Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 11,
+        "day": 18,
+        "name": "Independence Day",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
