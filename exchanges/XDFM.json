@@ -88,12 +88,6 @@
         "source_url": "https://www.dfm.ae/en/trading/trading-hours"
       },
       {
-        "date": "2027-12-02",
-        "name": "UAE National Day",
-        "status": "closed",
-        "source_url": "https://www.dfm.ae/en/trading/trading-hours"
-      },
-      {
         "date": "2027-12-03",
         "name": "UAE National Day Holiday",
         "status": "closed",

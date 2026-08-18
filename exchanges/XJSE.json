@@ -1,0 +1,414 @@
+{
+  "code": "XJSE",
+  "name": "Johannesburg Stock Exchange",
+  "mic": "XJSE",
+  "timezone": "Africa/Johannesburg",
+  "regular_hours": {
+    "open": "09:00",
+    "close": "17:00"
+  },
+  "extended_hours": {
+    "pre_market": {
+      "open": "08:30",
+      "close": "09:00"
+    },
+    "after_hours": {
+      "open": "17:00",
+      "close": "17:15"
+    }
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2025-03-21",
+        "name": "Human Rights Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2025-04-21",
+        "name": "Family Day (Easter Monday)",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2025-04-28",
+        "name": "Freedom Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Workers' Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2025-06-16",
+        "name": "Youth Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2025-08-11",
+        "name": "National Women's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2025-09-24",
+        "name": "Heritage Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2025-12-16",
+        "name": "Day of Reconciliation",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2025-12-26",
+        "name": "Day of Goodwill",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2026-04-06",
+        "name": "Family Day (Easter Monday)",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2026-04-27",
+        "name": "Freedom Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Workers' Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2026-06-16",
+        "name": "Youth Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2026-09-24",
+        "name": "Heritage Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2026-12-16",
+        "name": "Day of Reconciliation",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2027-03-22",
+        "name": "Human Rights Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2027-03-29",
+        "name": "Family Day (Easter Monday)",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2027-04-27",
+        "name": "Freedom Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2027-06-16",
+        "name": "Youth Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2027-08-09",
+        "name": "National Women's Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2027-09-24",
+        "name": "Heritage Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2027-12-16",
+        "name": "Day of Reconciliation",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Day of Goodwill (observed)",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2028-03-21",
+        "name": "Human Rights Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2028-04-17",
+        "name": "Family Day (Easter Monday)",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2028-04-27",
+        "name": "Freedom Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Workers' Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2028-06-16",
+        "name": "Youth Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2028-08-09",
+        "name": "National Women's Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2028-12-26",
+        "name": "Day of Goodwill",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2029-03-21",
+        "name": "Human Rights Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2029-04-02",
+        "name": "Family Day (Easter Monday)",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2029-04-27",
+        "name": "Freedom Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Workers' Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2029-08-09",
+        "name": "National Women's Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2029-09-24",
+        "name": "Heritage Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      },
+      {
+        "date": "2029-12-26",
+        "name": "Day of Goodwill",
+        "status": "closed",
+        "source_url": "https://www.jse.co.za/market-data/trading-hours"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_date",
+        "month": 1,
+        "day": 1,
+        "name": "New Year's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 3,
+        "day": 21,
+        "name": "Human Rights Day",
+        "status": "closed"
+      },
+      {
+        "rule": "easter_offset",
+        "offset_days": -2,
+        "name": "Good Friday",
+        "status": "closed"
+      },
+      {
+        "rule": "easter_offset",
+        "offset_days": 1,
+        "name": "Family Day (Easter Monday)",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 4,
+        "day": 27,
+        "name": "Freedom Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 5,
+        "day": 1,
+        "name": "Workers' Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 6,
+        "day": 16,
+        "name": "Youth Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 8,
+        "day": 9,
+        "name": "National Women's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 9,
+        "day": 24,
+        "name": "Heritage Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 12,
+        "day": 16,
+        "name": "Day of Reconciliation",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 12,
+        "day": 25,
+        "name": "Christmas Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 12,
+        "day": 26,
+        "name": "Day of Goodwill",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
