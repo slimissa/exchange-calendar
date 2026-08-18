@@ -1,0 +1,393 @@
+{
+  "code": "XMAL",
+  "name": "Malta Stock Exchange",
+  "mic": "XMAL",
+  "timezone": "Europe/Malta",
+  "regular_hours": {
+    "open": "09:00",
+    "close": "15:30"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2025-02-10",
+        "name": "St. Paul's Shipwreck",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2025-03-19",
+        "name": "St. Joseph's Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Freedom Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2025-04-21",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2025-08-15",
+        "name": "Assumption Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2025-09-08",
+        "name": "Victory Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2025-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-02-10",
+        "name": "St. Paul's Shipwreck",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-03-19",
+        "name": "St. Joseph's Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-03-31",
+        "name": "Freedom Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-04-06",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-06-29",
+        "name": "St. Peter and St. Paul",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-09-08",
+        "name": "Victory Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-09-21",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-02-10",
+        "name": "St. Paul's Shipwreck",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-03-19",
+        "name": "St. Joseph's Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-03-31",
+        "name": "Freedom Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-03-29",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-05-03",
+        "name": "Labour Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-06-07",
+        "name": "Sette Giugno",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-06-29",
+        "name": "St. Peter and St. Paul",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-09-08",
+        "name": "Victory Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-09-21",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-12-13",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Christmas Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-01-03",
+        "name": "New Year's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-02-10",
+        "name": "St. Paul's Shipwreck",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-03-31",
+        "name": "Freedom Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-04-17",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-06-07",
+        "name": "Sette Giugno",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-06-29",
+        "name": "St. Peter and St. Paul",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-08-15",
+        "name": "Assumption Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-09-08",
+        "name": "Victory Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-09-21",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-12-13",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2029-03-19",
+        "name": "St. Joseph's Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2029-04-02",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2029-06-07",
+        "name": "Sette Giugno",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2029-06-29",
+        "name": "St. Peter and St. Paul",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2029-08-15",
+        "name": "Assumption Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2029-09-21",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2029-12-13",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.borzamalta.com.mt/trading-calendar"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ]
+}
