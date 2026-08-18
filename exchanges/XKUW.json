@@ -12,11 +12,6 @@
       "type": "lunch_break",
       "open": "12:30",
       "close": "13:00"
-    },
-    {
-      "type": "afternoon",
-      "open": "13:00",
-      "close": "14:30"
     }
   ],
   "holidays": {
@@ -198,12 +193,6 @@
       {
         "date": "2028-02-27",
         "name": "Liberation Day (observed)",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
-      },
-      {
-        "date": "2028-02-27",
-        "name": "Eid al-Fitr (predicted)",
         "status": "closed",
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
       },

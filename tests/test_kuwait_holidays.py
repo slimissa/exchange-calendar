@@ -78,11 +78,11 @@ class TestXKUWProperties:
         assert lunch[0]["open"] == "12:30"
         assert lunch[0]["close"] == "13:00"
 
-    def test_afternoon_session(self, xkuw):
+    def test_no_afternoon_session_type(self, xkuw):
+        """Schema only allows lunch_break and auction session types.
+        Afternoon session is not a valid schema type."""
         afternoon = [s for s in xkuw.get("sessions", []) if s.get("type") == "afternoon"]
-        assert len(afternoon) == 1
-        assert afternoon[0]["open"] == "13:00"
-        assert afternoon[0]["close"] == "14:30"
+        assert afternoon == []
 
     def test_no_extended_hours(self, xkuw):
         assert "extended_hours" not in xkuw or xkuw.get("extended_hours") is None
