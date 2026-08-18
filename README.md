@@ -350,4 +350,3 @@ Copyright 2026 **Le P'tit**
 - [CHANGELOG.md](CHANGELOG.md)
 - [CONTRIBUTING.md](CONTRIBUTING.md)
 ```
----
