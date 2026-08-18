@@ -277,19 +277,19 @@ class TransactionManager:
     
     def create_backup(self, mic: str) -> Optional[Path]:
         """Create backup of current exchange data"""
-        source = self.registry_dir / "exchanges" / f"{mic.lower()}.json"
+        source = self.registry_dir / "exchanges" / f"{mic.upper()}.json"
         if not source.exists():
             return None
         
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        backup = self.backup_dir / f"{mic.lower()}_{timestamp}.json"
+        backup = self.backup_dir / f"{mic.upper()}_{timestamp}.json"
         shutil.copy2(source, backup)
         return backup
     
     def rollback(self, mic: str, backup_file: str):
         """Rollback to a backup"""
         source = self.backup_dir / backup_file
-        target = self.registry_dir / "exchanges" / f"{mic.lower()}.json"
+        target = self.registry_dir / "exchanges" / f"{mic.upper()}.json"
         if source.exists():
             shutil.copy2(source, target)
             logger.info(f"Rolled back {mic} to {backup_file}")
@@ -298,7 +298,7 @@ class TransactionManager:
     
     def list_backups(self, mic: str) -> List[str]:
         """List available backups for an exchange"""
-        pattern = f"{mic.lower()}_*.json"
+        pattern = f"{mic.upper()}_*.json"
         backups = list(self.backup_dir.glob(pattern))
         return sorted([b.name for b in backups])
 
@@ -586,7 +586,7 @@ class RegistryUpdater:
     
     def load_current_exchange(self, mic: str) -> Optional[Dict[str, Any]]:
         """Load current exchange data from registry"""
-        exchange_file = self.exchanges_dir / f"{mic.lower()}.json"
+        exchange_file = self.exchanges_dir / f"{mic.upper()}.json"
         if not exchange_file.exists():
             return None
         
@@ -720,7 +720,7 @@ class RegistryUpdater:
                 
                 # Write new data
                 exchange_json = self.generate_exchange_json(fetched_data)
-                output_file = self.exchanges_dir / f"{mic.lower()}.json"
+                output_file = self.exchanges_dir / f"{mic.upper()}.json"
                 
                 try:
                     with open(output_file, 'w') as f:
@@ -731,7 +731,7 @@ class RegistryUpdater:
                     logger.error(f"Failed to write {output_file}: {e}")
                     return FetchStatus.FAILED, str(e)
             else:
-                logger.info(f"[DRY RUN] Would write {mic.lower()}.json")
+                logger.info(f"[DRY RUN] Would write {mic.upper()}.json")
         
         logger.info(f"{mic}: {status.value} - {message}")
         return status, message
