@@ -334,7 +334,7 @@ class TestRealExchanges:
 
         registry = builder.build_registry(exchanges_dir)
 
-        assert registry["meta"]["exchange_count"] == 14
+        assert registry["meta"]["exchange_count"] == 74
         codes = [e["code"] for e in registry["exchanges"]]
         assert "XLON" in codes
         assert "XNYS" in codes
