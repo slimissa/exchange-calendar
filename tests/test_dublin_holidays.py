@@ -226,35 +226,35 @@ class TestXDUBEarlyCloses:
         entry = explicit_dates.get("2025-12-24")
         assert entry is not None
         assert entry["status"] == "early_close"
-        assert entry["close_time"] == "12:30"
+        assert entry["early_close_time"] == "12:30"
 
     def test_christmas_eve_2026(self, explicit_dates):
         """Dec 24, 2026 is Thursday — early close at 12:30."""
         entry = explicit_dates.get("2026-12-24")
         assert entry is not None
         assert entry["status"] == "early_close"
-        assert entry["close_time"] == "12:30"
+        assert entry["early_close_time"] == "12:30"
 
     def test_new_years_eve_2025(self, explicit_dates):
         """Dec 31, 2025 is Wednesday — early close at 12:30."""
         entry = explicit_dates.get("2025-12-31")
         assert entry is not None
         assert entry["status"] == "early_close"
-        assert entry["close_time"] == "12:30"
+        assert entry["early_close_time"] == "12:30"
 
     def test_new_years_eve_2026(self, explicit_dates):
         """Dec 31, 2026 is Thursday — early close at 12:30."""
         entry = explicit_dates.get("2026-12-31")
         assert entry is not None
         assert entry["status"] == "early_close"
-        assert entry["close_time"] == "12:30"
+        assert entry["early_close_time"] == "12:30"
 
     def test_new_years_eve_2027(self, explicit_dates):
         """Dec 31, 2027 is Friday — early close at 12:30."""
         entry = explicit_dates.get("2027-12-31")
         assert entry is not None
         assert entry["status"] == "early_close"
-        assert entry["close_time"] == "12:30"
+        assert entry["early_close_time"] == "12:30"
 
     def test_no_other_early_closes(self, explicit_dates):
         """Only Christmas Eve and New Year's Eve are early closes."""
@@ -353,10 +353,10 @@ class TestXDUBRecurrence:
         for name, rule in recurrence_rules.items():
             assert rule.get("status") != "early_close", f"{name} should not be in recurrence as early_close"
 
-    def test_closed_rules_have_no_close_time(self, recurrence_rules):
+    def test_closed_rules_have_no_early_close_time(self, recurrence_rules):
         for name, rule in recurrence_rules.items():
             if rule.get("status") == "closed":
-                assert "close_time" not in rule, f"{name} should not have close_time"
+                assert "early_close_time" not in rule, f"{name} should not have early_close_time"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -388,15 +388,15 @@ class TestXDUBStructure:
             assert "status" in entry, f"Missing status: {date_str}"
             assert entry["status"] in ["closed", "early_close"], f"Invalid status: {date_str}"
 
-    def test_early_close_entries_have_close_time(self, explicit_dates):
+    def test_early_close_entries_have_early_close_time(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             if entry.get("status") == "early_close":
-                assert "close_time" in entry, f"Missing close_time: {date_str}"
+                assert "early_close_time" in entry, f"Missing early_close_time: {date_str}"
 
-    def test_closed_entries_no_close_time(self, explicit_dates):
+    def test_closed_entries_no_early_close_time(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             if entry.get("status") == "closed":
-                assert "close_time" not in entry, f"Unexpected close_time: {date_str}"
+                assert "early_close_time" not in entry, f"Unexpected early_close_time: {date_str}"
 
     def test_dates_within_generation_range(self, xdub, explicit_dates):
         start = date.fromisoformat(xdub["generation_range"][0])

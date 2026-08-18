@@ -68,8 +68,8 @@
         "date": "2025-12-24",
         "name": "Christmas Eve",
         "status": "early_close",
-        "close_time": "12:00",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "early_close_time": "12:00"
       },
       {
         "date": "2025-12-25",
@@ -87,8 +87,8 @@
         "date": "2025-12-31",
         "name": "New Year's Eve",
         "status": "early_close",
-        "close_time": "12:00",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "early_close_time": "12:00"
       },
       {
         "date": "2026-01-01",
@@ -148,8 +148,8 @@
         "date": "2026-12-24",
         "name": "Christmas Eve",
         "status": "early_close",
-        "close_time": "12:00",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "early_close_time": "12:00"
       },
       {
         "date": "2026-12-25",
@@ -161,8 +161,8 @@
         "date": "2026-12-31",
         "name": "New Year's Eve",
         "status": "early_close",
-        "close_time": "12:00",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "early_close_time": "12:00"
       },
       {
         "date": "2027-01-01",
@@ -223,14 +223,14 @@
         "name": "Christmas Eve",
         "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "close_time": "12:00"
+        "early_close_time": "12:00"
       },
       {
         "date": "2027-12-31",
         "name": "New Year's Eve",
         "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "close_time": "12:00"
+        "early_close_time": "12:00"
       },
       {
         "date": "2028-01-06",
@@ -363,7 +363,7 @@
         "name": "Christmas Eve",
         "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "close_time": "12:00"
+        "early_close_time": "12:00"
       },
       {
         "date": "2029-12-25",
@@ -382,7 +382,7 @@
         "name": "New Year's Eve",
         "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "close_time": "12:00"
+        "early_close_time": "12:00"
       }
     ],
     "recurrence_rules": [
@@ -465,7 +465,7 @@
         "day": 24,
         "name": "Christmas Eve",
         "status": "early_close",
-        "close_time": "12:00"
+        "early_close_time": "12:00"
       },
       {
         "rule": "fixed_date",
@@ -487,7 +487,7 @@
         "day": 31,
         "name": "New Year's Eve",
         "status": "early_close",
-        "close_time": "12:00"
+        "early_close_time": "12:00"
       }
     ]
   },
