@@ -169,9 +169,8 @@ class TestXTUNEidAlFitr:
 
 class TestXTUNEidAlAdha:
     def test_eid_al_adha_2025(self, explicit_dates):
-        """Eid al-Adha 2025 — predicted June 7."""
-        assert "2025-06-07" in explicit_dates
-        assert "Eid al-Adha" in explicit_dates["2025-06-07"]["name"]
+        """Eid al-Adha 2025 — June 7 (Saturday, weekend) — not in explicit."""
+        assert "2025-06-07" not in explicit_dates
 
     def test_eid_al_adha_2026(self, explicit_dates):
         """Eid al-Adha 2026 — predicted May 27."""
