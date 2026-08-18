@@ -614,21 +614,37 @@ class RegistryUpdater:
         fetched_holidays = set(h.date for h in fetched.holidays)
         
         added = fetched_holidays - current_holidays
-        removed = current_holidays - fetched_holidays
         
         changes = []
         if added:
             changes.append(f"Added {len(added)} holidays: {', '.join(sorted(added))}")
-        if removed:
-            changes.append(f"Removed {len(removed)} holidays: {', '.join(sorted(removed))}")
         
         return bool(changes), changes
     
-    def generate_exchange_json(self, data: ExchangeData) -> Dict[str, Any]:
-        """Generate exchange JSON in registry format"""
-        holidays_explicit = [h.to_dict() for h in data.holidays]
+    def generate_exchange_json(self, data: ExchangeData, current: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """Generate exchange JSON in registry format, merging with existing data if available"""
+        # Start with existing holidays if available
+        merged_holidays = {}
+        if current and 'holidays' in current and 'explicit' in current['holidays']:
+            for holiday in current['holidays']['explicit']:
+                merged_holidays[holiday['date']] = holiday
         
-        exchange_json = {
+        # Add new holidays from fetched data
+        for h in data.holidays:
+            holiday_dict = h.to_dict()
+            if holiday_dict['date'] not in merged_holidays:
+                merged_holidays[holiday_dict['date']] = holiday_dict
+        
+        # Sort holidays by date
+        holidays_explicit = [merged_holidays[date] for date in sorted(merged_holidays.keys())]
+        
+        # Preserve existing fields if available
+        exchange_json = {}
+        if current:
+            exchange_json = current.copy()
+        
+        # Update with fetched data
+        exchange_json.update({
             "code": data.code,
             "name": data.name,
             "mic": data.mic,
@@ -637,18 +653,38 @@ class RegistryUpdater:
                 "open": data.regular_open,
                 "close": data.regular_close
             },
-            "extended_hours": {},
-            "sessions": [],
             "holidays": {
                 "explicit": holidays_explicit,
-                "recurrence_rules": []
-            },
-            "ad_hoc_closures": [],
-            "generation_range": [
+                "recurrence_rules": current.get('holidays', {}).get('recurrence_rules', []) if current else []
+            }
+        })
+        
+        # Preserve extended hours if they exist
+        if current and 'extended_hours' in current:
+            exchange_json['extended_hours'] = current['extended_hours']
+        else:
+            exchange_json['extended_hours'] = {}
+        
+        # Preserve sessions if they exist
+        if current and 'sessions' in current:
+            exchange_json['sessions'] = current['sessions']
+        else:
+            exchange_json['sessions'] = []
+        
+        # Preserve ad_hoc_closures if they exist
+        if current and 'ad_hoc_closures' in current:
+            exchange_json['ad_hoc_closures'] = current['ad_hoc_closures']
+        else:
+            exchange_json['ad_hoc_closures'] = []
+        
+        # Update generation range
+        if current and 'generation_range' in current:
+            exchange_json['generation_range'] = current['generation_range']
+        else:
+            exchange_json['generation_range'] = [
                 datetime.now().strftime("%Y-01-01"),
                 (datetime.now() + timedelta(days=365*5)).strftime("%Y-12-31")
             ]
-        }
         
         return exchange_json
     
@@ -718,8 +754,8 @@ class RegistryUpdater:
                     if backup:
                         logger.debug(f"Created backup: {backup.name}")
                 
-                # Write new data
-                exchange_json = self.generate_exchange_json(fetched_data)
+                # Write new data (merge with existing)
+                exchange_json = self.generate_exchange_json(fetched_data, current_data)
                 output_file = self.exchanges_dir / f"{mic.upper()}.json"
                 
                 try:
