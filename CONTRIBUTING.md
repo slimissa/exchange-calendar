@@ -1,4 +1,4 @@
-The CONTRIBUTING.md needs updating for v2.0.0. Here are the key changes needed:
+The CONTRIBUTING.md needs updating for v2.1.0. Here are the key changes needed:
 
 ```markdown
 # Contributing to exchange-calendar
@@ -83,7 +83,7 @@ exchange-calendar/
 │   ├── javascript/
 │   ├── go/
 │   └── rust/
-├── tests/                   # Test suites (5,300+ tests)
+├── tests/                   # Test suites (4,070+ tests)
 │   ├── fixtures/            # Test data
 │   ├── ground_truth/        # Manually verified references
 │   └── test_*.py            # Test files (one per exchange)
@@ -278,7 +278,7 @@ have lunch breaks. Singapore and Korea do **NOT** (continuous trading).
 
 Current test counts:
 - **74 exchange test files** (`tests/test_*_holidays.py`)
-- **5,300+ total tests** across 4 languages
+- **4,070+ total tests** across 4 languages
 - Each exchange has 35-70 tests covering:
   - Properties (code, MIC, timezone, hours)
   - Fixed holidays (verified against official sources)
@@ -293,7 +293,7 @@ Current test counts:
 
 1. **Create a feature branch**
 2. **Make changes**
-3. **Run tests** — `python3 -m pytest tests/ -v` (all 5,300+ must pass)
+3. **Run tests** — `python3 -m pytest tests/ -v` (all 4,070+ must pass)
 4. **Rebuild `calendar.json`** — `python3 tools/build.py`
 5. **Update CHANGELOG.md** — under `[Unreleased]`
 6. **Push and open PR**
@@ -302,7 +302,7 @@ Current test counts:
 
 - [ ] Exchange data validated with `python3 tools/validate.py`
 - [ ] Test file created with minimum coverage (35+ tests)
-- [ ] All 5,300+ tests pass
+- [ ] All 4,070+ tests pass
 - [ ] `calendar.json` rebuilt
 - [ ] Source URL provided for every holiday entry
 - [ ] No weekend dates (correct for exchange's weekend system)
@@ -316,7 +316,7 @@ Current test counts:
 
 1. **Data accuracy** — backed by official exchange source?
 2. **Schema compliance** — validates against `schema.json`?
-3. **Test coverage** — all 5,300+ tests pass?
+3. **Test coverage** — all 4,070+ tests pass?
 4. **Weekend system** — Western or Islamic applied correctly?
 5. **Calendar system** — Gregorian, Orthodox, Islamic, Buddhist, Chinese, Hindu?
 6. **Early close times** — correct for the specific exchange?
@@ -349,6 +349,6 @@ Current test counts:
 ## Thank You
 
 Every contribution improves the registry for everyone. With 74 exchanges
-and 5,300+ tests, precise data and rigorous testing are essential.
+and 4,070+ tests, precise data and rigorous testing are essential.
 
 ---
