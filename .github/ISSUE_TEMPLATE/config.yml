@@ -1,1 +1,227 @@
-# ... paste the config ...
+# =============================================================================
+# ISSUE TEMPLATE CONFIGURATION
+# =============================================================================
+# This file controls the behavior of GitHub Issues for this repository.
+# It determines which templates are available and provides helpful links.
+# =============================================================================
+
+blank_issues_enabled: false
+
+contact_links:
+  # Documentation
+  - name: Documentation
+    url: https://github.com/slimissa/exchange-calendar/wiki
+    about: |
+      Check the documentation before creating an issue.
+      The wiki contains guides, API references, and FAQs.
+  
+  # Discussions
+  - name: Community Discussions
+    url: https://github.com/slimissa/exchange-calendar/discussions
+    about: |
+      Ask questions, share ideas, and discuss with the community.
+      Use discussions for questions, ideas, and general conversation.
+  
+  # Security
+  - name: Security Vulnerability
+    url: https://github.com/slimissa/exchange-calendar/security/advisories/new
+    about: |
+      Report security vulnerabilities privately.
+      Do not create a public issue for security issues.
+  
+  # Data Update
+  - name: Data Update Request
+    url: https://github.com/slimissa/exchange-calendar/issues/new?template=data-update.md
+    about: |
+      Report incorrect or missing exchange calendar data.
+      Use this for holiday dates, trading hours, and other data issues.
+  
+  # Bug Report
+  - name: Bug Report
+    url: https://github.com/slimissa/exchange-calendar/issues/new?template=bug-report.md
+    about: |
+      Report bugs in the code, tools, wrappers, or build system.
+      Include steps to reproduce and error messages.
+  
+  # Feature Request
+  - name: Feature Request
+    url: https://github.com/slimissa/exchange-calendar/issues/new?template=feature-request.md
+    about: |
+      Suggest new features or enhancements.
+      Describe the problem and your proposed solution.
+
+# =============================================================================
+# TEMPLATE CONFIGURATION
+# =============================================================================
+
+templates:
+  # Data Update Template
+  - name: "Exchange Calendar Data Update"
+    about: "Report incorrect or missing exchange calendar data"
+    title: "[DATA UPDATE]: "
+    labels: ["data-update", "needs-review", "priority-review"]
+    assignees: ["slimissa"]
+    
+  # Bug Report Template
+  - name: "Bug Report"
+    about: "Report a bug in the code, tools, wrappers, or build system"
+    title: "[Bug]: "
+    labels: ["bug", "needs-review"]
+    assignees: [""]
+    
+  # Feature Request Template
+  - name: "Feature Request"
+    about: "Suggest a new feature or enhancement"
+    title: "[Feature]: "
+    labels: ["enhancement", "needs-review"]
+    assignees: [""]
+
+# =============================================================================
+# DEFAULT LABELS
+# =============================================================================
+# These labels are automatically available for issues and PRs
+
+labels:
+  # Priority Labels
+  - name: "priority-critical"
+    color: "FF0000"
+    description: "Critical issue that must be fixed immediately"
+  
+  - name: "priority-high"
+    color: "FF6B6B"
+    description: "High priority issue"
+  
+  - name: "priority-medium"
+    color: "FFA500"
+    description: "Medium priority issue"
+  
+  - name: "priority-low"
+    color: "FFD700"
+    description: "Low priority issue"
+  
+  # Type Labels
+  - name: "bug"
+    color: "D73A4A"
+    description: "Something isn't working"
+  
+  - name: "enhancement"
+    color: "A2EEEF"
+    description: "New feature or request"
+  
+  - name: "data-update"
+    color: "0075CA"
+    description: "Exchange calendar data update"
+  
+  - name: "documentation"
+    color: "0075CA"
+    description: "Documentation improvements"
+  
+  # Status Labels
+  - name: "good-first-issue"
+    color: "7057FF"
+    description: "Good for newcomers"
+  
+  - name: "help-wanted"
+    color: "008672"
+    description: "Extra attention is needed"
+  
+  - name: "needs-review"
+    color: "FFD700"
+    description: "Needs review by maintainers"
+  
+  - name: "in-progress"
+    color: "1D76DB"
+    description: "Currently being worked on"
+  
+  - name: "blocked"
+    color: "B60205"
+    description: "Blocked by another issue or PR"
+  
+  - name: "duplicate"
+    color: "CFD3D7"
+    description: "This issue or PR already exists"
+  
+  - name: "wontfix"
+    color: "FFFFFF"
+    description: "This will not be worked on"
+
+# =============================================================================
+# AUTOMATION RULES
+# =============================================================================
+
+automation:
+  # Auto-close stale issues
+  stale:
+    days_until_stale: 60
+    days_until_close: 7
+    stale_label: "stale"
+    exempt_labels:
+      - "priority-critical"
+      - "priority-high"
+      - "in-progress"
+      - "blocked"
+    stale_message: |
+      This issue has been automatically marked as stale due to inactivity.
+      It will be closed in 7 days if no further activity occurs.
+    close_message: |
+      This issue has been automatically closed due to inactivity.
+      If it's still relevant, please reopen it.
+
+# =============================================================================
+# PULL REQUEST TEMPLATE
+# =============================================================================
+
+pull_requests:
+  enabled: true
+  template: |
+    ## Description
+    
+    [Describe the changes in this PR]
+    
+    ## Type of Change
+    
+    - [ ] Bug fix (non-breaking change)
+    - [ ] New feature (non-breaking change)
+    - [ ] Breaking change
+    - [ ] Documentation update
+    - [ ] Data update
+    
+    ## Affected Components
+    
+    - [ ] `schema.json`
+    - [ ] `tools/validate.py`
+    - [ ] `tools/build.py`
+    - [ ] Python wrapper
+    - [ ] JavaScript wrapper
+    - [ ] Go wrapper
+    - [ ] Rust wrapper
+    - [ ] Tests
+    - [ ] CI/CD
+    - [ ] Documentation
+    
+    ## Testing
+    
+    - [ ] All tests pass
+    - [ ] New tests added
+    - [ ] Manual testing performed
+    
+    ## Checklist
+    
+    - [ ] I have updated the documentation
+    - [ ] I have added tests
+    - [ ] I have updated the CHANGELOG
+    - [ ] I have verified the data against official sources
+
+
+# Commit everything
+git add .github/
+git commit -m "Add comprehensive issue templates and GitHub configuration
+
+- Add data update template with source verification
+- Add bug report template with reproduction steps
+- Add feature request template with design docs
+- Add config.yml with automation rules
+- Add PR template with checklist
+- Configure labels and automation"
+
+git push origin main
