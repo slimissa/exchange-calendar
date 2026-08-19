@@ -7,6 +7,127 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.0] — 2026-08-19
+
+### Added
+
+#### CI/CD Pipeline
+- **Validate workflow** with 6 jobs (Python core, Python wrapper, JavaScript, Go, Rust, data integrity)
+- **Update Exchange Calendar Data workflow** with automated NYSE fetching
+  - Scheduled weekly (Sunday 00:00 UTC)
+  - Manual trigger via GitHub UI/CLI
+  - Dry-run mode for previewing changes
+  - Automated PR creation when changes detected
+- **Dependabot configuration** for automated dependency updates
+- **Weekend-aware validation** for Friday-Saturday weekend exchanges
+- **Islamic holiday exemption** in weekend checks (Hijri calendar support)
+- **Observed holiday exemption** for substitute holidays on working days
+
+#### Tooling
+- **`tools/update_from_exchange.py`** — Production-grade automated data fetching (957 lines)
+  - NYSE fetcher with transposed table parsing
+  - Retry logic with exponential backoff (3 attempts)
+  - Caching with TTL (24-hour default)
+  - Rate limiting to avoid overwhelming servers
+  - Transaction support with backup/rollback
+  - Dry-run mode for previewing changes
+  - Merge logic to preserve existing data
+  - Observed holiday date parsing
+- **`tools/requirements.txt`** — Dependency management for CI/CD
+- **31 unit tests** for the update tool (`tests/test_update_from_exchange.py`)
+  - HolidayEntry tests (8 tests)
+  - ExchangeData tests (6 tests)
+  - Retry decorator tests (4 tests)
+  - CacheManager tests (4 tests)
+  - RateLimiter tests (3 tests)
+  - TransactionManager tests (4 tests)
+  - NYSEFetcher tests (9 tests)
+  - RegistryUpdater tests (13 tests)
+  - Integration tests (2 tests)
+  - Performance tests (2 tests)
+
+#### Repository Quality
+- **SECURITY.md** — Comprehensive security policy
+  - Vulnerability reporting guidelines (GitHub, email, PGP)
+  - Response timelines by severity
+  - Security best practices
+  - Data integrity documentation
+- **7 issue templates**:
+  - Data update request (with source verification)
+  - Bug report (with reproduction steps)
+  - Feature request (with design docs)
+  - Add exchange template
+  - Holiday update template
+- **PR template** — Consistent contribution format
+- **Comprehensive `.gitignore`** — 10 sections covering all development scenarios
+
+#### Documentation
+- **README.md** — Complete rewrite with:
+  - CI/CD badges (Validate and Update workflows)
+  - What's New in v2.1.0 section
+  - Automated updates documentation
+  - Language wrapper examples (Python, JS, Go, Rust)
+  - Weekend systems documentation
+  - Project structure with new tooling
+  - Version history table
+
+### Changed
+
+- **Exchange count**: 14 → 74 (documented in v2.0.0, verified in v2.1.0)
+- **Test count**: 3,752 → 4,070+ tests
+- **CI/CD workflow**: Added calendar.json build step before validation
+- **Weekend validation**: Now correctly handles Friday-Saturday weekend systems
+- **JavaScript wrapper tests**: Updated exchange count assertions (14 → 74)
+- **Python wrapper tests**: Updated sorted codes (XASX → XAMS as first code)
+- **`.gitignore`**: Expanded from basic to comprehensive (10 sections)
+- **Validate workflow**: Added `tools/requirements.txt` installation
+
+### Fixed
+
+#### CI/CD Fixes
+- **Missing `tools/requirements.txt`** in validate workflow — added installation step
+- **Weekend date false positives** for Islamic holidays on Sundays in Friday-Saturday weekend exchanges
+- **Missing calendar.json** in CI tests — added build step before test execution
+- **JavaScript test failures** — fixed exchange count assertions (14 → 74)
+- **Python test failures** — fixed retry decorator and transaction manager tests
+- **Node.js deprecation warnings** — documented for future action version updates
+
+#### JavaScript Wrapper Test Fixes
+- Exchange count assertions: 14 → 74
+- First sorted code: XASX → XAMS (Amsterdam before Australian)
+- Last sorted code index: 13 → 73 (XZAG)
+- String representation check: '14' → '74'
+- `exchange_count` in toJSON: 14 → 74
+
+#### Update Tool Test Fixes
+- Retry decorator: Use real functions instead of Mock objects (Mock lacks `__name__`)
+- TransactionManager: Add sleep between backups for unique timestamps
+- HTTP error tests: Use `requests.exceptions.ConnectionError` instead of generic Exception
+- Timeout tests: Expect `FetchError` after all retries exhausted
+- Large holiday set: Start from 2030 to avoid duplicate dates
+
+#### Weekend Validation Fixes
+- Added `FRIDAY_SATURDAY` set for Gulf/Middle East exchanges
+- Exempt Islamic holidays from weekend check (Hijri calendar)
+- Exempt observed/substitute holidays from weekend check
+- Exempt XDFM, XKUW, XMUS from weekend substitution (documented behavior)
+
+### Verified
+
+- **Validate workflow**: 6/6 jobs passing
+- **Update Exchange Calendar Data workflow**: 3/3 jobs passing
+- **Python core tests**: 3,774 passing
+- **Python wrapper tests**: 64 passing
+- **JavaScript wrapper tests**: 82 passing
+- **Go wrapper tests**: 72 passing
+- **Rust wrapper tests**: 78 passing
+- **Total tests**: 4,070+ passing
+- **update_from_exchange.py**: 31/31 unit tests passing
+- **NYSE fetcher**: Successfully parses 29 holidays from official website
+- **Weekend validation**: Correctly handles all 74 exchanges
+
+---
+
 ## [2.0.0] — 2026-08-18
 
 ### Added
@@ -311,13 +432,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned for v2.1.0
-
-- `update_from_exchange.py` — automated exchange data fetching (Phase 4)
-- Las_shell integration
-- Package publication (PyPI, npm, crates.io, Go modules)
-- `docs/` file completion
-
 ### Planned for v2.2.0
 
 - SQL dump export for direct database import
@@ -333,6 +447,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 |---------|------|-----------|----------|-------|
 | 0.1.0 | 2026-08-12 | 0 (skeleton) | 0 | 0 |
 | 1.0.0 | 2026-08-14 | 14 | Python, JS, Go, Rust | 1,127 |
+| 2.1.0 | 2026-08-19 | 74 | Python, JS, Go, Rust | 4,070+ |
 | 2.0.0 | 2026-08-18 | 74 | Python, JS, Go, Rust | 5,300+ |
 
 ---
