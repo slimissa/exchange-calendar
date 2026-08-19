@@ -35,35 +35,13 @@ Which part of the project is affected?
 - **Node.js version:** [e.g., 20.11.0] (if applicable)
 - **Go version:** [e.g., 1.21.5] (if applicable)
 - **Rust version:** [e.g., 1.97.1] (if applicable)
-- **Project version/commit:** [e.g., v1.0.0, commit hash]
+- **Project version/commit:** [e.g., v2.0.0, commit hash]
 
 ## Steps to Reproduce
 
 1. [First step]
 2. [Second step]
 3. [Third step]
-
-Provide a minimal code example if possible:
-
-```bash
-# Command or code that triggers the bug
-```
-
-```python
-# Minimal Python example
-```
-
-```javascript
-// Minimal JavaScript example
-```
-
-```go
-// Minimal Go example
-```
-
-```rust
-// Minimal Rust example
-```
 
 ## Expected Behavior
 
@@ -73,44 +51,12 @@ Provide a minimal code example if possible:
 
 [What actually happens — include error messages, stack traces, or screenshots.]
 
-## Error Output
-
-```
-Paste the full error message, stack trace, or test failure here.
-```
-
-## Test That Should Catch This
-
-If this is a data bug, provide the test that should be added to prevent regression:
-
-```python
-def test_should_catch_bug(self):
-    # Test that would fail on current code
-    pass
-```
-
-## Reproduction Repository
-
-[If possible, link to a minimal repo or gist that demonstrates the bug.]
-
-## Additional Context
-
-- [ ] Bug occurs consistently
-- [ ] Bug occurs intermittently
-- [ ] Bug was introduced in a specific commit: [hash or version]
-- [ ] Bug affects only one exchange
-- [ ] Bug affects multiple exchanges
-
 ## Severity
 
 - [ ] **Critical** — data corruption, wrong holiday dates, wrong market status
 - [ ] **High** — validator fails, build fails, tests fail
 - [ ] **Medium** — wrapper API inconsistency, error handling issue
 - [ ] **Low** — documentation error, cosmetic issue
-
-## Possible Fix
-
-[If you know what's causing it, suggest a fix.]
 
 ## Checklist
 
