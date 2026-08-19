@@ -1,5 +1,3 @@
-The CONTRIBUTING.md needs updating for v2.1.0. Here are the key changes needed:
-
 ```markdown
 # Contributing to exchange-calendar
 
