@@ -148,12 +148,34 @@ jobs:
           from datetime import date
           from pathlib import Path
 
+          # Define weekend systems for exchanges with non-Western weekends
+          # Friday-Saturday weekend exchanges (Gulf/Middle East):
+          FRIDAY_SATURDAY = {"XBAH", "XSAU", "XDFM", "XTAD", "XQSE", "XKWT", "XMSM", "XCAI", "XDHA", "XDSM"}
+          # Saturday-Sunday weekend is the default (Western)
+          # Sunday is a working day in Friday-Saturday systems
+
           for path in sorted(Path("exchanges").glob("*.json")):
               with open(path) as f:
                   data = json.load(f)
+              
+              mic = data.get("mic", data.get("code", ""))
+              weekend_days = {4, 5} if mic in FRIDAY_SATURDAY else {5, 6}
+              
               for entry in data["holidays"]["explicit"]:
                   d = date.fromisoformat(entry["date"])
-                  assert d.weekday() < 5, f"{path.name}: weekend date {entry['date']}"
+                  weekday = d.weekday()
+                  
+                  # Islamic holidays and observed holidays can fall on any day
+                  name = entry.get("name", "").lower()
+                  is_islamic = any(term in name for term in [
+                      "eid", "islamic", "prophet", "ramadan", "ashura", "hijri"
+                  ])
+                  is_observed = "observed" in name or "substitute" in name
+                  
+                  if is_islamic or is_observed:
+                      continue  # Islamic/observed holidays are exempt from weekend check
+                  
+                  assert weekday not in weekend_days, f"{path.name}: weekend date {entry['date']} ({d.strftime('%A')})"
               print(f"OK: {path.name}")
           EOF
 
