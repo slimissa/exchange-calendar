@@ -159,6 +159,9 @@ jobs:
           # Saturday-Sunday weekend is the default (Western)
           # Sunday is a working day in Friday-Saturday systems
 
+          # Define exchanges that explicitly list holidays on weekends (no substitution)
+          NO_WEEKEND_SUBSTITUTION = {"XDFM", "XKUW", "XMUS"}  # Dubai, Kuwait, Muscat
+          
           for path in sorted(Path("exchanges").glob("*.json")):
               with open(path) as f:
                   data = json.load(f)
@@ -179,6 +182,10 @@ jobs:
                   
                   if is_islamic or is_observed:
                       continue  # Islamic/observed holidays are exempt from weekend check
+                  
+                  # Some exchanges explicitly list holidays on weekends without substitution
+                  if mic in NO_WEEKEND_SUBSTITUTION:
+                      continue  # These exchanges don't substitute weekend holidays
                   
                   assert weekday not in weekend_days, f"{path.name}: weekend date {entry['date']} ({d.strftime('%A')})"
               print(f"OK: {path.name}")
