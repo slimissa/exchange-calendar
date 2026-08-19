@@ -23,6 +23,7 @@ on:
       - 'exchanges/**'
       - 'tools/update_from_exchange.py'
       - 'tools/requirements.txt'
+      - 'tools/build.py'
 
 env:
   PYTHON_VERSION: '3.12'
@@ -44,29 +45,28 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f tools/requirements.txt ]; then
-            pip install -r tools/requirements.txt
-          else
-            echo "tools/requirements.txt not found, installing minimal dependencies"
-            pip install requests beautifulsoup4 tqdm pytest
-          fi
+          pip install -r tools/requirements.txt
+      
+      - name: Build calendar.json
+        run: |
+          python tools/build.py
       
       - name: Validate registry
         run: |
           python tools/validate.py
       
-      - name: Run existing tests
+      - name: Run tests
         run: |
-          python -m pytest tests/ -v --tb=short || echo "No tests found or tests failed"
+          python -m pytest tests/ -v --tb=short
       
-      - name: Upload validation results
+      - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: validation-results
+          name: test-results
           path: |
             test-results/
-            validation-report.json
+            htmlcov/
           if-no-files-found: ignore
           retention-days: 14
 
@@ -94,18 +94,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f tools/requirements.txt ]; then
-            pip install -r tools/requirements.txt
-          else
-            pip install requests beautifulsoup4 tqdm
-          fi
+          pip install -r tools/requirements.txt
       
       - name: Configure Git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
       
-      - name: Update exchanges (dry run)
+      - name: Run updater (dry run)
         run: |
           if [ -n "${{ github.event.inputs.exchange }}" ]; then
             python tools/update_from_exchange.py \
@@ -152,7 +148,6 @@ jobs:
             ### Review Checklist
             - [ ] Verify holiday dates are correct
             - [ ] Check source URLs are valid
-            - [ ] Confirm no unexpected changes
           labels: |
             automated
             data-update
@@ -167,11 +162,16 @@ jobs:
     steps:
       - name: Check workflow status
         run: |
-          if [ "${{ needs.validate.result }}" = "success" ] && [ "${{ needs.update.result }}" = "success" ]; then
-            echo "✅ All jobs passed"
-          elif [ "${{ needs.validate.result }}" = "success" ] && [ "${{ needs.update.result }}" = "skipped" ]; then
-            echo "✅ Validation passed, update skipped (not scheduled)"
+          if [ "${{ needs.validate.result }}" = "success" ]; then
+            echo "✅ Validation passed"
           else
-            echo "❌ Workflow failed"
+            echo "❌ Validation failed"
+            exit 1
+          fi
+          
+          if [ "${{ needs.update.result }}" = "success" ] || [ "${{ needs.update.result }}" = "skipped" ]; then
+            echo "✅ Update job completed"
+          else
+            echo "❌ Update failed"
             exit 1
           fi
