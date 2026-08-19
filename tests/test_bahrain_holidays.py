@@ -305,7 +305,7 @@ class TestXBAHRecurrence:
 
 class TestXBAHStructure:
     def test_no_weekend_dates(self, explicit_dates):
-        """Bahrain weekend is Friday-Saturday."""
+        """Bahrain weekend is Friday-Saturday. Sundays are working days."""
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
             assert d.weekday() not in [4, 5], f"Weekend date: {date_str} ({d.strftime('%A')})"
