@@ -459,7 +459,7 @@ mod tests {
 
     #[test]
     fn test_load_invalid_json() {
-        let result = Registry::from_str("{invalid json");
+        let result = Registry::from_json_str("{invalid json");
         assert!(matches!(result, Err(RegistryError::InvalidJson(_))));
     }
 
