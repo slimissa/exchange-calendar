@@ -1,5 +1,5 @@
 # Core dependencies for update_from_exchange.py
-requests>=2.28.0
+requests>=2.34.2
 beautifulsoup4>=4.11.0
 tqdm>=4.65.0
 
