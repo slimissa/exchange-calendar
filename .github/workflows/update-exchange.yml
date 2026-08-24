@@ -46,6 +46,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r tools/requirements.txt
+          pip install jsonschema
       
       - name: Build calendar.json
         run: |
@@ -95,6 +96,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r tools/requirements.txt
+          pip install jsonschema
       
       - name: Configure Git
         run: |
