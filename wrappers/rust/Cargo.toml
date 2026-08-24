@@ -25,7 +25,6 @@ authors = ["Le P'tit"]
 repository = "https://github.com/slimissa/exchange-calendar"
 homepage = "https://github.com/slimissa/exchange-calendar"
 documentation = "https://docs.rs/exchange-calendar"
-bugs = "https://github.com/slimissa/exchange-calendar/issues"
 exclude = [
     "tests/",
     "examples/",

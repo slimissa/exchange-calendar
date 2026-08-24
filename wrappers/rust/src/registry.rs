@@ -145,7 +145,7 @@ impl Registry {
     /// # Ok(())
     /// # }
     /// ```
-    pub fn from_str(json: &str) -> Result<Self, RegistryError> {
+    pub fn from_json_str(json: &str) -> Result<Self, RegistryError> {
         let data: RegistryData = serde_json::from_str(json)?;
         Self::from_data(data)
     }
