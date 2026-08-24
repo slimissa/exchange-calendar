@@ -228,3 +228,43 @@ Both tested for a Friday/Saturday weekend that XTAD does not have. Instance 2 on
 ### What This Pass Could Not Verify
 
 Go and Rust toolchains remain unavailable in this environment (`go`, `cargo`, `rustc` all absent). The Go (72) and Rust (69 unit + 13 doc) test counts in the first cycle's report are **unconfirmed by this pass** — carried forward from the first report's own claims, not independently re-run. The Rust gap was already disclosed as unresolved in §5/§7 above; that remains true and is not newly closed by this pass.
+
+---
+
+## Post-Zip Updates (v2.1.2)
+
+**Date**: 2026-08-24
+**Source**: Changes reported by LASS as having occurred outside this conversation, verified against a fresh zip of the resulting state where verification was possible.
+
+### What Was Independently Confirmed From the v2.1.2 Zip
+
+These were checked directly against the delivered files/output in this pass — not accepted on report alone:
+
+| Claim | Verification method | Result |
+|---|---|---|
+| `tools/verify_predicted_dates.py` exists and works | Ran it directly | Confirmed — outputs exactly: 362 total, 125 past-due, 237 future, exit 0 (non-blocking) |
+| 362 predicted entries (not 88) | Independently scanned all 74 exchange files for `predicted: true` | Confirmed — 362, matching the tool's own count |
+| `docs/predicted_dates_pending.md` exists | Read the file | Confirmed — documents the reconciliation process and per-country source list |
+| `.github/workflows/rust-verify.yml` exists | Read the file | Confirmed — checks rustc ≥1.78, builds `calendar.json`, runs `cargo build/test/clippy`, then a real-registry-load test |
+| `validate.yml`'s Rust job builds `calendar.json` first | Read the file | Confirmed |
+| `validate.yml` honors `weekend_exception` | Read the file | Confirmed |
+| `update-exchange.yml` installs `jsonschema` | Read the file | Confirmed, both jobs |
+| `from_str` → `from_json_str` rename | Grepped Rust source | Confirmed — 6 call sites use the new name; the unrelated `FromStr` trait impl in `session.rs` (a different type, for session-status parsing) is untouched, as it should be |
+| `Cargo.toml`'s `bugs` field removed | Read the file | Confirmed absent |
+| `publish.yml` disabled | Directory listing | Confirmed — present as `publish.yml.disabled` |
+| `validate.py`, `build.py`, Python suite, JS suite still pass | Ran all four fresh against the new zip | Confirmed: 74/74, build OK, **3,843/3,843 Python** (unchanged from the pre-zip count), **84/84 JS** |
+
+### What Was NOT Independently Verified — Stated Plainly, Not Carried Forward as Fact
+
+- **Dependabot PR merges** (7 merged, 1 closed): no way to check this from a zip. Not verified.
+- **CI job status ("all green")**: this pass has no access to GitHub Actions run history. Not verified — this is LASS's report, not a re-run confirmation.
+- **Go test count (72) and Rust test count (82)**: this sandbox still has no `go` or `cargo`/`rustc` binary. These numbers are reported by LASS as CI-confirmed; they were not re-executed here and should not be read as independently confirmed by this document.
+- **git tags and commit `abc05b2`**: the delivered zip contains no `.git` directory. There is no way to confirm tag placement, commit history, or that v2.1.1/v2.1.2 point where claimed. If this matters for the release, it needs to be checked against the actual repository, not this zip.
+
+### Correction to This Document's Own Prior M7 Entries
+
+The M7 entries earlier in this document (29/86, later corrected to 29/88) are both superseded. The true denominator was never 88 — it was 362. The 86/88 figures came from a keyword-based scan (`Eid`, `Islamic New Year`, `Mawlid`, etc. in the holiday name) that missed entries where the name didn't contain one of those keywords but the entry was still `predicted`. `verify_predicted_dates.py` scans the `predicted` field directly instead of the name string, which is why it found the other ~274 entries the earlier passes missed. This is not a new bug introduced since the last pass — it's a correction to how big the original M7 gap actually was.
+
+### CHANGELOG Note
+
+`CHANGELOG.md`'s `[Unreleased]` section (containing the v2.1.1-cycle fixes) was retitled to `[2.1.1] — 2026-08-24` and a new `[2.1.2] — 2026-08-24` section added above it, since LASS reported both versions as already tagged — leaving tagged work under `[Unreleased]` would have been its own documentation gap. The 2.1.1 date is a **[Guess]**: no `.git` log was available to confirm the actual tag date, since it was carried over from when the fixes were made in this conversation.

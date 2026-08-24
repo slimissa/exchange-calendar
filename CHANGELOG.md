@@ -9,6 +9,70 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+---
+
+## [2.1.2] — 2026-08-24
+
+### Added
+
+- `tools/verify_predicted_dates.py` — scans all predicted Islamic
+  holiday dates, classifies each as past-due (verifiable now) or
+  future (not yet announced), and reports totals. Non-blocking CI
+  job added to `validate.yml` that runs this on a schedule.
+- `docs/predicted_dates_pending.md` — reconciliation process and
+  source list (Umm al-Qura, UAE Federal Authority, Dar al-Ifta,
+  Oman MERA, Bangladesh government gazette) for confirming predicted
+  dates against official announcements.
+- `.github/workflows/rust-verify.yml` — dedicated Rust verification
+  workflow: confirms rustc ≥1.78 (Cargo.lock v4 requirement), then
+  runs `cargo build --release`, `cargo test --release`,
+  `cargo clippy -- -D warnings`, and a real-`calendar.json`-load test.
+
+### Changed
+
+- **M7 scope correction**: the true count of predicted Islamic
+  entries is 362, not 88 or 86 as stated in earlier documents. The
+  88/86 figures only counted a subset of holiday-name keywords the
+  original per-file scan matched on; `verify_predicted_dates.py`
+  scans the `predicted` field directly and found the rest. Of the
+  362: 125 are past-due (2025 and earlier) and reconcilable now
+  against official sources; 237 are future (2026–2029) and correctly
+  remain predicted until announced.
+- All 362 predicted entries now carry an explicit `"predicted": true`
+  field (previously some had only the `"(predicted)"` name suffix
+  with no field to match). `verify_predicted_dates.py`'s consistency
+  check confirms 0 entries have the suffix without the field or the
+  field without the suffix.
+- `validate.yml`: data-integrity check now honors `weekend_exception`
+  on an entry alongside the existing Islamic/observed-holiday
+  exemptions.
+- `validate.yml`: the Rust job now runs `python3 tools/build.py`
+  before `cargo test`, so the wrapper's real-registry-loading test
+  has an actual `calendar.json` to load instead of relying on a
+  fixture.
+- `validate.yml`: the predicted-dates CI check runs non-blocking
+  (informational only; does not fail the build).
+- `update-exchange.yml`: added `pip install jsonschema` to both jobs
+  that need it.
+- Rust wrapper: renamed `Registry::from_str` to
+  `Registry::from_json_str` to resolve clippy's
+  `should_implement_trait` warning (`from_str` is reserved for the
+  `FromStr` trait, which this constructor didn't implement). Updated
+  all 6 internal call sites. `FromStr` itself remains correctly
+  implemented elsewhere in the crate (`session.rs`, for parsing
+  session-status strings) and was not touched.
+- Removed unused `package.bugs` field from `wrappers/rust/Cargo.toml`.
+
+### Removed
+
+- `.github/workflows/publish.yml` disabled (renamed to
+  `publish.yml.disabled`), pending a decision on PyPI publishing
+  credentials.
+
+---
+
+## [2.1.1] — 2026-08-24
+
 ### Fixed
 
 - **Weekend classification correction**: XDFM and XTAD moved from
@@ -30,6 +94,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `.github/dependabot.yml`. Previously only `pip` (tools) was watched.
 - **M7 reconciliation count**: Corrected 29/86 → 29/88 (59 pending,
   not 57). Fixed in both occurrences in `docs/AUDIT_FIX_REPORT.md`.
+  (Superseded in 2.1.2 — see above: the true denominator was 362,
+  not 88.)
 
 ---
 
