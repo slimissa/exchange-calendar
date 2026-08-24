@@ -1,0 +1,217 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python-core:
+    name: Python Core Tools & Data Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+          if [ -f tools/requirements.txt ]; then
+            pip install -r tools/requirements.txt
+          fi
+
+      - name: Validate exchange data
+        run: |
+          python3 tools/validate.py
+
+      - name: Build calendar.json
+        run: |
+          python3 tools/build.py
+
+      - name: Run Python tests
+        run: |
+          python3 -m pytest tests/ -v --tb=short
+
+  python-wrapper:
+    name: Python Wrapper Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build calendar.json
+        run: |
+          python3 tools/build.py
+
+      - name: Install wrapper and test dependencies
+        run: |
+          pip install -e wrappers/python/
+          pip install pytest
+
+      - name: Run wrapper tests
+        run: |
+          python3 -m pytest tests/test_wrappers.py -v --tb=short
+
+  javascript:
+    name: JavaScript Wrapper Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build calendar.json
+        run: |
+          python3 tools/build.py
+
+      - name: Run JavaScript tests
+        run: |
+          node --test tests/test_wrappers.js
+
+  go:
+    name: Go Wrapper Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
+
+      - name: Run Go tests
+        working-directory: wrappers/go
+        run: |
+          go test ./tests/ -v
+
+  rust:
+    name: Rust Wrapper Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            wrappers/rust/target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('wrappers/rust/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: Run Rust tests
+        working-directory: wrappers/rust
+        run: |
+          cargo test
+
+  data-integrity:
+    name: Data Integrity Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install jsonschema
+
+      - name: Verify no weekend dates in explicit arrays
+        run: |
+          python3 - << 'EOF'
+          import json
+          from datetime import date
+          from pathlib import Path
+
+          # Define weekend systems for exchanges with non-Western weekends
+          # Friday-Saturday weekend exchanges (Gulf/Middle East):
+          FRIDAY_SATURDAY = {"XBAH", "XSAU", "XDFM", "XTAD", "XQSE", "XKWT", "XMSM", "XCAI", "XDHA", "XDSM"}
+          # Saturday-Sunday weekend is the default (Western)
+          # Sunday is a working day in Friday-Saturday systems
+
+          # Define exchanges that explicitly list holidays on weekends (no substitution)
+          NO_WEEKEND_SUBSTITUTION = {"XDFM", "XKUW", "XMUS"}  # Dubai, Kuwait, Muscat
+          
+          for path in sorted(Path("exchanges").glob("*.json")):
+              with open(path) as f:
+                  data = json.load(f)
+              
+              mic = data.get("mic", data.get("code", ""))
+              weekend_days = {4, 5} if mic in FRIDAY_SATURDAY else {5, 6}
+              
+              for entry in data["holidays"]["explicit"]:
+                  d = date.fromisoformat(entry["date"])
+                  weekday = d.weekday()
+                  
+                  # Islamic holidays and observed holidays can fall on any day
+                  name = entry.get("name", "").lower()
+                  is_islamic = any(term in name for term in [
+                      "eid", "islamic", "prophet", "ramadan", "ashura", "hijri"
+                  ])
+                  is_observed = "observed" in name or "substitute" in name
+                  
+                  if is_islamic or is_observed:
+                      continue  # Islamic/observed holidays are exempt from weekend check
+                  
+                  # Some exchanges explicitly list holidays on weekends without substitution
+                  if mic in NO_WEEKEND_SUBSTITUTION:
+                      continue  # These exchanges don't substitute weekend holidays
+                  
+                  assert weekday not in weekend_days, f"{path.name}: weekend date {entry['date']} ({d.strftime('%A')})"
+              print(f"OK: {path.name}")
+          EOF
+
+      - name: Verify no duplicate dates
+        run: |
+          python3 - << 'EOF'
+          import json
+          from pathlib import Path
+
+          for path in sorted(Path("exchanges").glob("*.json")):
+              with open(path) as f:
+                  data = json.load(f)
+              dates = [e["date"] for e in data["holidays"]["explicit"]]
+              assert len(dates) == len(set(dates)), f"{path.name}: duplicate dates"
+              print(f"OK: {path.name}")
+          EOF
+
+      - name: Verify all entries have source URLs
+        run: |
+          python3 - << 'EOF'
+          import json
+          from pathlib import Path
+
+          for path in sorted(Path("exchanges").glob("*.json")):
+              with open(path) as f:
+                  data = json.load(f)
+              for entry in data["holidays"]["explicit"]:
+                  assert "source_url" in entry, f"{path.name}: missing source_url for {entry['date']}"
+              print(f"OK: {path.name}")
+          EOF

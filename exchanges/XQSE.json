@@ -1,0 +1,352 @@
+{
+  "code": "XQSE",
+  "name": "Qatar Stock Exchange",
+  "mic": "XQSE",
+  "timezone": "Asia/Qatar",
+  "regular_hours": {
+    "open": "09:30",
+    "close": "13:15"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-02-11",
+        "name": "National Sports Day",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2025-03-30",
+        "name": "Eid al-Fitr",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar",
+        "predicted": false
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Eid al-Fitr Holiday",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar",
+        "predicted": false
+      },
+      {
+        "date": "2025-04-01",
+        "name": "Eid al-Fitr Holiday",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar",
+        "predicted": false
+      },
+      {
+        "date": "2025-04-02",
+        "name": "Eid al-Fitr Holiday",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar",
+        "predicted": false
+      },
+      {
+        "date": "2025-04-03",
+        "name": "Eid al-Fitr Holiday",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar",
+        "predicted": false
+      },
+      {
+        "date": "2025-06-08",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2025-06-09",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2025-06-10",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2025-06-26",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.ummulqura.org.sa/"
+      },
+      {
+        "date": "2025-09-04",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.ummulqura.org.sa/"
+      },
+      {
+        "date": "2025-12-18",
+        "name": "Qatar National Day",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2026-02-10",
+        "name": "National Sports Day",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2026-03-22",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2026-03-24",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2026-05-31",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2026-06-16",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.ummulqura.org.sa/"
+      },
+      {
+        "date": "2026-08-25",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.ummulqura.org.sa/"
+      },
+      {
+        "date": "2027-02-09",
+        "name": "National Sports Day",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2027-03-09",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2027-03-10",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2027-03-11",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2027-05-16",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2027-05-18",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2027-05-19",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2027-05-20",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2027-06-06",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.ummulqura.org.sa/"
+      },
+      {
+        "date": "2027-08-15",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.ummulqura.org.sa/"
+      },
+      {
+        "date": "2028-02-08",
+        "name": "National Sports Day",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2028-02-27",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2028-02-28",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2028-02-29",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2028-03-01",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2028-05-04",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2028-05-07",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2028-05-08",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2028-12-18",
+        "name": "Qatar National Day",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2029-02-13",
+        "name": "National Sports Day",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2029-02-15",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2029-02-18",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2029-04-24",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2029-04-25",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2029-04-26",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      },
+      {
+        "date": "2029-05-14",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.ummulqura.org.sa/"
+      },
+      {
+        "date": "2029-07-24",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.ummulqura.org.sa/"
+      },
+      {
+        "date": "2029-12-18",
+        "name": "Qatar National Day",
+        "status": "closed",
+        "source_url": "https://www.qe.com.qa/trading-calendar"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "nth_weekday",
+        "month": 2,
+        "weekday": "tuesday",
+        "n": 2,
+        "name": "National Sports Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 12,
+        "day": 18,
+        "name": "Qatar National Day",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
+  "weekend_days": [
+    4,
+    5
+  ]
+}

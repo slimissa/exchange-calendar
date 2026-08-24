@@ -1,0 +1,331 @@
+{
+  "code": "XKAR",
+  "name": "Pakistan Stock Exchange",
+  "mic": "XKAR",
+  "timezone": "Asia/Karachi",
+  "regular_hours": {
+    "open": "09:30",
+    "close": "15:30"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day (bank holiday)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2025-02-05",
+        "name": "Kashmir Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2025-04-01",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2025-04-02",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2025-06-09",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2025-08-14",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2025-09-05",
+        "name": "Eid Milad-un-Nabi (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Quaid-e-Azam Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2026-02-05",
+        "name": "Kashmir Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Pakistan Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2026-03-20",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2026-06-26",
+        "name": "Ashura (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2026-08-14",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2026-08-25",
+        "name": "Eid Milad-un-Nabi (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2026-11-09",
+        "name": "Iqbal Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Quaid-e-Azam Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2027-02-05",
+        "name": "Kashmir Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2027-03-23",
+        "name": "Pakistan Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2027-03-09",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2027-03-10",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2027-05-03",
+        "name": "Labour Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2027-06-15",
+        "name": "Ashura (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2027-11-09",
+        "name": "Iqbal Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Quaid-e-Azam Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2028-03-23",
+        "name": "Pakistan Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2028-02-28",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2028-05-04",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2028-05-05",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2028-08-14",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2028-08-04",
+        "name": "Eid Milad-un-Nabi (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2028-11-09",
+        "name": "Iqbal Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Quaid-e-Azam Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-02-05",
+        "name": "Kashmir Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-03-23",
+        "name": "Pakistan Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-02-15",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-04-24",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-04-25",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-05-24",
+        "name": "Ashura (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-08-14",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-07-24",
+        "name": "Eid Milad-un-Nabi (predicted)",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-11-09",
+        "name": "Iqbal Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Quaid-e-Azam Day",
+        "status": "closed",
+        "source_url": "https://www.psx.com.pk/trading-calendar"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
+  ]
+}

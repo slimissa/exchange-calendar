@@ -1,0 +1,55 @@
+[package]
+name = "exchange-calendar"
+version = "1.0.0"
+edition = "2021"
+rust-version = "1.78"
+description = "Canonical, versioned, machine-readable registry of global exchange trading calendars"
+license = "Apache-2.0"
+readme = "README.md"
+keywords = [
+    "exchange",
+    "calendar",
+    "trading",
+    "holidays",
+    "finance",
+    "market-data",
+    "quant",
+    "quantos",
+]
+categories = [
+    "finance",
+    "data-structures",
+    "date-and-time",
+]
+authors = ["Le P'tit"]
+repository = "https://github.com/slimissa/exchange-calendar"
+homepage = "https://github.com/slimissa/exchange-calendar"
+documentation = "https://docs.rs/exchange-calendar"
+bugs = "https://github.com/slimissa/exchange-calendar/issues"
+exclude = [
+    "tests/",
+    "examples/",
+    "benches/",
+]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["std"], default-features = true }
+
+[dev-dependencies]
+tempfile = "3.8"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[badges]
+maintenance = { status = "actively-developed" }

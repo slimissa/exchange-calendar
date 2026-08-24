@@ -1,0 +1,400 @@
+{
+  "code": "XJKT",
+  "name": "Indonesia Stock Exchange",
+  "mic": "XJKT",
+  "timezone": "Asia/Jakarta",
+  "regular_hours": {
+    "open": "09:00",
+    "close": "16:00"
+  },
+  "extended_hours": {
+    "pre_market": {
+      "open": "08:45",
+      "close": "09:00"
+    },
+    "after_hours": {
+      "open": "16:00",
+      "close": "16:15"
+    }
+  },
+  "sessions": [
+    {
+      "type": "lunch_break",
+      "open": "12:00",
+      "close": "13:30"
+    }
+  ],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-01-28",
+        "name": "Isra Mi'raj",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-01-29",
+        "name": "Chinese New Year (Imlek)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-03-28",
+        "name": "Nyepi (Balinese New Year)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Idul Fitri (Eid al-Fitr)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-04-01",
+        "name": "Idul Fitri Holiday",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-04-02",
+        "name": "Idul Fitri Holiday",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-04-03",
+        "name": "Idul Fitri Holiday",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday (Wafat Isa Almasih)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-05-12",
+        "name": "Waisak Day (Buddha's Birthday)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-05-29",
+        "name": "Ascension Day of Jesus Christ",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-06-06",
+        "name": "Idul Adha (Eid al-Adha)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-06-27",
+        "name": "Islamic New Year (1 Muharram)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-09-05",
+        "name": "Maulid Nabi (Prophet Muhammad's Birthday)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-12-26",
+        "name": "Christmas Collective Leave (Cuti Bersama)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2025-12-31",
+        "name": "Year-End Holiday",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-02-17",
+        "name": "Chinese New Year (Imlek)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday (Wafat Isa Almasih)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-05-14",
+        "name": "Ascension Day of Jesus Christ",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Idul Adha (Eid al-Adha)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-06-01",
+        "name": "Pancasila Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-06-16",
+        "name": "Islamic New Year (1 Muharram)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-08-17",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-08-25",
+        "name": "Maulid Nabi (Prophet Muhammad's Birthday)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "Year-End Holiday",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2027-02-08",
+        "name": "Chinese New Year (Imlek)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2027-03-10",
+        "name": "Idul Fitri (Eid al-Fitr)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday (Wafat Isa Almasih)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2027-05-06",
+        "name": "Ascension Day of Jesus Christ",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Idul Adha (Eid al-Adha)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2027-06-01",
+        "name": "Pancasila Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2027-08-17",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "Year-End Holiday",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2028-01-26",
+        "name": "Chinese New Year (Imlek)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday (Wafat Isa Almasih)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2028-06-01",
+        "name": "Pancasila Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2028-08-17",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2028-12-26",
+        "name": "Christmas Collective Leave (Cuti Bersama)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2029-02-13",
+        "name": "Chinese New Year (Imlek)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday (Wafat Isa Almasih)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2029-06-01",
+        "name": "Pancasila Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2029-08-17",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2029-12-26",
+        "name": "Christmas Collective Leave (Cuti Bersama)",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "Year-End Holiday",
+        "status": "closed",
+        "source_url": "https://www.idx.co.id/en/idx-trading-holidays"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_date",
+        "month": 1,
+        "day": 1,
+        "name": "New Year's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 5,
+        "day": 1,
+        "name": "Labour Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 8,
+        "day": 17,
+        "name": "Independence Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 12,
+        "day": 25,
+        "name": "Christmas Day",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
+  ]
+}

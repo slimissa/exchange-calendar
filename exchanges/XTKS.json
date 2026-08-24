@@ -1,0 +1,553 @@
+{
+  "code": "XTKS",
+  "name": "Tokyo Stock Exchange",
+  "mic": "XTKS",
+  "timezone": "Asia/Tokyo",
+  "regular_hours": {
+    "open": "09:00",
+    "close": "15:30"
+  },
+  "sessions": [
+    {
+      "type": "lunch_break",
+      "open": "11:30",
+      "close": "12:30"
+    }
+  ],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-01-02",
+        "name": "New Year's Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-01-03",
+        "name": "New Year's Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-01-13",
+        "name": "Coming of Age Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-02-11",
+        "name": "National Foundation Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-02-24",
+        "name": "Emperor's Birthday (observed)",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-03-20",
+        "name": "Vernal Equinox Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-04-29",
+        "name": "Showa Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-05-05",
+        "name": "Children's Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-05-06",
+        "name": "Constitution Memorial Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-07-21",
+        "name": "Marine Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-08-11",
+        "name": "Mountain Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-09-15",
+        "name": "Respect for the Aged Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-09-23",
+        "name": "Autumnal Equinox Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-10-13",
+        "name": "Sports Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-11-03",
+        "name": "Culture Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-11-24",
+        "name": "Labor Thanksgiving Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2025-12-31",
+        "name": "New Year's Eve",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-01-02",
+        "name": "New Year's Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-01-12",
+        "name": "Coming of Age Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-02-11",
+        "name": "National Foundation Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-02-23",
+        "name": "Emperor's Birthday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-03-20",
+        "name": "Vernal Equinox Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-04-29",
+        "name": "Showa Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-05-04",
+        "name": "Greenery Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-05-05",
+        "name": "Children's Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-05-06",
+        "name": "Constitution Memorial Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-07-20",
+        "name": "Marine Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-08-11",
+        "name": "Mountain Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-09-21",
+        "name": "Respect for the Aged Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-09-22",
+        "name": "Citizens' Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-09-23",
+        "name": "Autumnal Equinox Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-10-12",
+        "name": "Sports Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-11-03",
+        "name": "Culture Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-11-23",
+        "name": "Labor Thanksgiving Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "New Year's Eve",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-01-04",
+        "name": "New Year's Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-01-11",
+        "name": "Coming of Age Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-02-11",
+        "name": "National Foundation Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-02-23",
+        "name": "Emperor's Birthday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-03-22",
+        "name": "Vernal Equinox Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-04-29",
+        "name": "Showa Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-05-03",
+        "name": "Constitution Memorial Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-05-04",
+        "name": "Greenery Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-05-05",
+        "name": "Children's Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-07-20",
+        "name": "Marine Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-08-11",
+        "name": "Mountain Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-09-20",
+        "name": "Respect for the Aged Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-09-21",
+        "name": "Autumnal Equinox Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-10-11",
+        "name": "Sports Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-11-03",
+        "name": "Culture Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-11-23",
+        "name": "Labor Thanksgiving Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "New Year's Eve",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-01-03",
+        "name": "New Year's Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-01-10",
+        "name": "Coming of Age Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-02-11",
+        "name": "National Foundation Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-02-23",
+        "name": "Emperor's Birthday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-03-20",
+        "name": "Vernal Equinox Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-05-03",
+        "name": "Constitution Memorial Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-05-04",
+        "name": "Greenery Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-05-05",
+        "name": "Children's Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-07-17",
+        "name": "Marine Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-08-11",
+        "name": "Mountain Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-09-18",
+        "name": "Respect for the Aged Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-09-22",
+        "name": "Autumnal Equinox Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-10-09",
+        "name": "Sports Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-11-03",
+        "name": "Culture Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-11-23",
+        "name": "Labor Thanksgiving Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2028-12-29",
+        "name": "New Year's Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-01-02",
+        "name": "New Year's Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-01-03",
+        "name": "New Year's Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-01-08",
+        "name": "Coming of Age Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-02-12",
+        "name": "National Foundation Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-02-23",
+        "name": "Emperor's Birthday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-03-20",
+        "name": "Vernal Equinox Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-04-30",
+        "name": "Showa Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-05-03",
+        "name": "Constitution Memorial Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-05-04",
+        "name": "Greenery Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-05-07",
+        "name": "Children's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-07-16",
+        "name": "Marine Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-09-17",
+        "name": "Respect for the Aged Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-10-08",
+        "name": "Sports Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-11-23",
+        "name": "Labor Thanksgiving Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "New Year's Eve",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
+  ]
+}
