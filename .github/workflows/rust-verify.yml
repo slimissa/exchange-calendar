@@ -1,0 +1,67 @@
+name: Rust Verification
+
+on:
+  workflow_dispatch:  # Manual trigger
+  push:
+    paths:
+      - 'wrappers/rust/**'
+      - 'schema.json'
+      - 'exchanges/**'
+      - 'tools/build.py'
+
+jobs:
+  rust-tests:
+    name: Rust Wrapper Tests (rustc ≥1.78)
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Rust (stable)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      
+      - name: Verify rustc version
+        run: |
+          rustc --version
+          RUST_VERSION=$(rustc --version | awk '{print $2}')
+          echo "Detected rustc: $RUST_VERSION"
+          # Check version >= 1.78 (required for Cargo.lock v4)
+          MAJOR=$(echo $RUST_VERSION | cut -d. -f1)
+          MINOR=$(echo $RUST_VERSION | cut -d. -f2)
+          if [ "$MAJOR" -lt 1 ] || ([ "$MAJOR" -eq 1 ] && [ "$MINOR" -lt 78 ]); then
+            echo "❌ rustc $RUST_VERSION is too old (need >= 1.78)"
+            exit 1
+          fi
+          echo "✅ rustc version OK (>= 1.78)"
+      
+      - name: Build calendar.json
+        run: |
+          python3 tools/build.py
+      
+      - name: Run Rust tests
+        working-directory: wrappers/rust
+        run: |
+          cargo build --release
+          cargo test --release
+      
+      - name: Run clippy (linting)
+        working-directory: wrappers/rust
+        run: |
+          cargo clippy -- -D warnings
+      
+      - name: Verify real calendar.json loads
+        working-directory: wrappers/rust
+        run: |
+          cargo test test_load_real_calendar_registry -- --nocapture
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rust-test-results
+          path: |
+            wrappers/rust/target/release/
+          if-no-files-found: ignore
+          retention-days: 14

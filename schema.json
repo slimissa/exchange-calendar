@@ -1,0 +1,360 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/slimissa/exchange-calendar/blob/main/schema.json",
+  "title": "Exchange Calendar Entry",
+  "description": "Schema for a single exchange calendar file in the QuantOS exchange-calendar registry.",
+  "type": "object",
+  "required": [
+    "code",
+    "name",
+    "mic",
+    "timezone",
+    "weekend_days",
+    "regular_hours",
+    "holidays",
+    "generation_range"
+  ],
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Exchange identifier. Must equal the ISO 10383 MIC.",
+      "pattern": "^[A-Z0-9]{4}$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full exchange name.",
+      "minLength": 3
+    },
+    "mic": {
+      "type": "string",
+      "description": "ISO 10383 Market Identifier Code. Must equal code.",
+      "pattern": "^[A-Z0-9]{4}$"
+    },
+    "timezone": {
+        "type": "string",
+        "description": "IANA timezone identifier.",
+        "pattern": "^[A-Za-z0-9_+\\-]+/[A-Za-z0-9_+\\-]+(?:/[A-Za-z0-9_+\\-]+)?$"
+    },
+    "weekend_days": {
+        "type": "array",
+        "description": "The two weekday numbers (0=Monday..6=Sunday) that are non-trading weekend days for this exchange.",
+        "items": {"type": "integer", "minimum": 0, "maximum": 6},
+        "minItems": 2,
+        "maxItems": 2
+    },
+    "regular_hours": {
+      "type": "object",
+      "required": ["open", "close"],
+      "properties": {
+        "open": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+        },
+        "close": {
+          "type": "string",
+          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "extended_hours": {
+      "type": "object",
+      "properties": {
+        "pre_market": {
+          "type": "object",
+          "required": ["open", "close"],
+          "properties": {
+            "open": {"type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"},
+            "close": {"type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"}
+          },
+          "additionalProperties": false
+        },
+        "after_hours": {
+          "type": "object",
+          "required": ["open", "close"],
+          "properties": {
+            "open": {"type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"},
+            "close": {"type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "sessions": {
+        "type": "array",
+        "description": "Additional non-trading periods within a regular day (e.g., lunch breaks, auctions).",
+        "items": {
+            "type": "object",
+            "required": ["type"],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": ["lunch_break", "auction"]
+                },
+                "open": {
+                    "type": "string",
+                    "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+                    "description": "Session start time. Required for lunch_break sessions."
+                },
+                "close": {
+                    "type": "string",
+                    "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+                    "description": "Session end time. Required for lunch_break sessions."
+                },
+                "at": {
+                    "type": "string",
+                    "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+                    "description": "Point-in-time session moment. Required for auction sessions."
+                }
+            },
+            "additionalProperties": false,
+            "allOf": [
+            {
+                "if": {
+                    "properties": {"type": {"const": "lunch_break"}},
+                    "required": ["type"]
+                },
+                "then": {
+                    "required": ["open", "close"]
+                }
+            },
+            {
+                "if": {
+                    "properties": {"type": {"const": "auction"}},
+                    "required": ["type"]
+                },
+                "then": {
+                "required": ["at"]
+                }
+            }
+        ]
+        }
+    },
+    "holidays": {
+      "type": "object",
+      "required": ["explicit"],
+      "properties": {
+        "explicit": {
+          "type": "array",
+          "description": "Explicitly dated holidays and special sessions. This is the primary data source.",
+          "items": {
+            "type": "object",
+            "required": ["date", "name", "status"],
+            "properties": {
+              "date": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 3
+              },
+              "status": {
+                "type": "string",
+                "enum": ["closed", "early_close", "delayed_open", "special_session"]
+              },
+              "weekend_exception": {
+                "type": "boolean",
+                "description": "Set true only when this date legitimately falls on the exchange's own weekend_days AND is still independently sourced as a distinct, exchange-gazetted event (e.g. a specific Muhurat trading session on Diwali). This is a deliberate, narrow override of the weekend-date validation check, not a general escape hatch -- do not set it just to silence a validation failure."
+              },
+              "predicted": {
+                "type": "boolean",
+                "default": false,
+                "description": "True when this date is a calculated/estimated moon-sighting-dependent date (e.g. Islamic-calendar holidays) that has not yet been confirmed by an official announcement, and may still shift by a day. For backward compatibility, many existing entries instead encode this as a '(predicted)' suffix on `name` rather than this field -- both forms are currently accepted, but new entries should prefer this structured field since it's queryable without string-parsing `name`."
+              },
+              "early_close_time": {
+                "type": "string",
+                "description": "Required when status is early_close.",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              },
+              "delayed_open_time": {
+                "type": "string",
+                "description": "Required when status is delayed_open.",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              },
+              "source_url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {"status": {"const": "early_close"}},
+                  "required": ["status"]
+                },
+                "then": {
+                  "required": ["early_close_time"]
+                }
+              },
+              {
+                "if": {
+                  "properties": {"status": {"const": "delayed_open"}},
+                  "required": ["status"]
+                },
+                "then": {
+                  "required": ["delayed_open_time"]
+                }
+              }
+            ]
+          }
+        },
+        "recurrence_rules": {
+          "type": "array",
+          "description": "Mechanically generatable holidays. Explicit dates take precedence.",
+          "items": {
+            "type": "object",
+            "required": ["rule", "name", "status"],
+            "properties": {
+              "rule": {
+                "type": "string",
+                "enum": [
+                  "fixed_date",
+                  "fixed_with_weekend_adjustment",
+                  "nth_weekday",
+                  "last_weekday",
+                  "easter_offset"
+                ]
+              },
+              "name": {"type": "string", "minLength": 3},
+              "status": {
+                "type": "string",
+                "enum": ["closed", "early_close"]
+              },
+              "early_close_time": {
+                "type": "string",
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"
+              },
+              "month": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 12
+              },
+              "day": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 31
+              },
+              "weekday": {
+                "type": "string",
+                "enum": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+              },
+              "n": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5,
+                "description": "For nth_weekday rule: 1=first, 2=second, ..., 5=last"
+              },
+              "offset_days": {
+                "type": "integer",
+                "description": "For easter_offset rule: days relative to Easter Sunday (negative = before)"
+              },
+              "source_url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {"rule": {"const": "nth_weekday"}},
+                  "required": ["rule"]
+                },
+                "then": {
+                  "required": ["month", "weekday", "n"]
+                }
+              },
+              {
+                "if": {
+                  "properties": {"rule": {"const": "last_weekday"}},
+                  "required": ["rule"]
+                },
+                "then": {
+                  "required": ["month", "weekday"]
+                }
+              },
+              {
+                "if": {
+                  "properties": {"rule": {"const": "easter_offset"}},
+                  "required": ["rule"]
+                },
+                "then": {
+                  "required": ["offset_days"]
+                }
+              },
+              {
+                "if": {
+                  "properties": {"rule": {"const": "fixed_date"}},
+                  "required": ["rule"]
+                },
+                "then": {
+                  "required": ["month", "day"]
+                }
+              },
+              {
+                "if": {
+                  "properties": {"rule": {"const": "fixed_with_weekend_adjustment"}},
+                  "required": ["rule"]
+                },
+                "then": {
+                  "required": ["month", "day"]
+                }
+              },
+              {
+                "if": {
+                  "properties": {"status": {"const": "early_close"}},
+                  "required": ["status"]
+                },
+                "then": {
+                  "required": ["early_close_time"]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ad_hoc_closures": {
+      "type": "array",
+      "description": "Unplanned closures that cannot be generated by recurrence rules.",
+      "items": {
+        "type": "object",
+        "required": ["date", "name", "status", "source_url"],
+        "properties": {
+          "date": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+          "name": {"type": "string", "minLength": 3},
+          "status": {"type": "string", "enum": ["closed", "early_close"]},
+          "early_close_time": {"type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$"},
+          "source_url": {"type": "string", "format": "uri"}
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {"status": {"const": "early_close"}},
+              "required": ["status"]
+            },
+            "then": {
+              "required": ["early_close_time"]
+            }
+          }
+        ]
+      }
+    },
+    "generation_range": {
+      "type": "array",
+      "description": "Inclusive date range [start, end] within which explicit dates are verified.",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+      }
+    }
+  },
+  "additionalProperties": false
+}

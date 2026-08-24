@@ -1,0 +1,470 @@
+{
+  "code": "XKRX",
+  "name": "Korea Exchange",
+  "mic": "XKRX",
+  "timezone": "Asia/Seoul",
+  "regular_hours": {
+    "open": "09:00",
+    "close": "15:30"
+  },
+  "extended_hours": {
+    "pre_market": {
+      "open": "08:30",
+      "close": "09:00"
+    },
+    "after_hours": {
+      "open": "15:30",
+      "close": "16:00"
+    }
+  },
+  "sessions": [
+    {
+      "type": "auction",
+      "at": "09:00"
+    },
+    {
+      "type": "auction",
+      "at": "15:30"
+    }
+  ],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-01-28",
+        "name": "Seollal (Lunar New Year) Eve",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-01-29",
+        "name": "Seollal (Lunar New Year)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-01-30",
+        "name": "Seollal (Lunar New Year)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-03-03",
+        "name": "Independence Movement Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-05-05",
+        "name": "Children's Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-05-06",
+        "name": "Buddha's Birthday (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-06-06",
+        "name": "Memorial Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-08-15",
+        "name": "Liberation Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-10-06",
+        "name": "Chuseok (Korean Thanksgiving) Eve",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-10-07",
+        "name": "Chuseok (Korean Thanksgiving)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-10-08",
+        "name": "Chuseok Holiday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-10-09",
+        "name": "Hangul Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2025-12-31",
+        "name": "Year-End Holiday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-02-16",
+        "name": "Seollal (Lunar New Year) Eve",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-02-17",
+        "name": "Seollal (Lunar New Year)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-02-18",
+        "name": "Seollal Holiday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-03-02",
+        "name": "Independence Movement Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-05-05",
+        "name": "Children's Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-05-25",
+        "name": "Buddha's Birthday (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-06-08",
+        "name": "Memorial Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-08-17",
+        "name": "Liberation Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-09-24",
+        "name": "Chuseok (Korean Thanksgiving) Eve",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-09-25",
+        "name": "Chuseok (Korean Thanksgiving)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-10-05",
+        "name": "National Foundation Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-10-09",
+        "name": "Hangul Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "Year-End Holiday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-02-05",
+        "name": "Seollal (Lunar New Year) Eve",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-02-08",
+        "name": "Seollal (Lunar New Year)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-02-09",
+        "name": "Seollal Holiday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-03-01",
+        "name": "Independence Movement Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-05-05",
+        "name": "Children's Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-05-13",
+        "name": "Buddha's Birthday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-06-07",
+        "name": "Memorial Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-08-16",
+        "name": "Liberation Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-09-14",
+        "name": "Chuseok (Korean Thanksgiving) Eve",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-09-15",
+        "name": "Chuseok (Korean Thanksgiving)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-10-04",
+        "name": "National Foundation Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-10-11",
+        "name": "Hangul Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Christmas Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "Year-End Holiday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-01-03",
+        "name": "New Year's Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-01-26",
+        "name": "Seollal (Lunar New Year) Eve",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-01-27",
+        "name": "Seollal (Lunar New Year)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-02-28",
+        "name": "Independence Movement Day (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-05-02",
+        "name": "Buddha's Birthday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-05-05",
+        "name": "Children's Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-06-06",
+        "name": "Memorial Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-08-15",
+        "name": "Liberation Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-10-03",
+        "name": "Chuseok (Korean Thanksgiving)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-10-04",
+        "name": "Chuseok Holiday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-10-09",
+        "name": "Hangul Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2028-12-29",
+        "name": "Year-End Holiday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-02-12",
+        "name": "Seollal (Lunar New Year) Eve",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-02-13",
+        "name": "Seollal (Lunar New Year)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Seollal Holiday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-03-01",
+        "name": "Independence Movement Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-05-21",
+        "name": "Buddha's Birthday (observed)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-06-06",
+        "name": "Memorial Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-08-15",
+        "name": "Liberation Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-09-24",
+        "name": "Chuseok (Korean Thanksgiving)",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-10-09",
+        "name": "Hangul Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "Year-End Holiday",
+        "status": "closed",
+        "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "code": "XCAI",
+  "name": "Egyptian Exchange",
+  "mic": "XCAI",
+  "timezone": "Africa/Cairo",
+  "regular_hours": {
+    "open": "10:00",
+    "close": "14:30"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-07",
+        "name": "Coptic Christmas",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Eid al-Fitr",
+        "status": "closed",
+        "source_url": "https://www.dar-alifta.org/",
+        "predicted": false
+      },
+      {
+        "date": "2025-04-01",
+        "name": "Eid al-Fitr Holiday",
+        "status": "closed",
+        "source_url": "https://www.dar-alifta.org/",
+        "predicted": false
+      },
+      {
+        "date": "2025-04-02",
+        "name": "Eid al-Fitr Holiday",
+        "status": "closed",
+        "source_url": "https://www.dar-alifta.org/",
+        "predicted": false
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2025-06-08",
+        "name": "Eid al-Adha Holiday",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": false
+      },
+      {
+        "date": "2025-06-09",
+        "name": "Eid al-Adha Holiday",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": false
+      },
+      {
+        "date": "2025-06-26",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2025-07-23",
+        "name": "Revolution Day (Jul 23)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2025-09-04",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2025-10-06",
+        "name": "Armed Forces Day",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2026-01-07",
+        "name": "Coptic Christmas",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2026-01-25",
+        "name": "Revolution Day (Jan 25)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2026-03-22",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2026-06-16",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2026-07-23",
+        "name": "Revolution Day (Jul 23)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2026-08-25",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2026-10-06",
+        "name": "Armed Forces Day",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2027-01-07",
+        "name": "Coptic Christmas",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2027-01-25",
+        "name": "Revolution Day (Jan 25)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2027-03-09",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2027-03-10",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2027-03-11",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2027-04-25",
+        "name": "Sinai Liberation Day",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2027-05-16",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2027-06-06",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2027-08-15",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2027-10-06",
+        "name": "Armed Forces Day",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2028-01-25",
+        "name": "Revolution Day (Jan 25)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2028-02-27",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2028-04-25",
+        "name": "Sinai Liberation Day",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2028-05-04",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2028-05-25",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2028-07-23",
+        "name": "Revolution Day (Jul 23)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2028-10-08",
+        "name": "Armed Forces Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2029-01-07",
+        "name": "Coptic Christmas",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2029-01-25",
+        "name": "Revolution Day (Jan 25)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2029-02-15",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2029-04-24",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2029-04-25",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2029-05-14",
+        "name": "Islamic New Year (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      },
+      {
+        "date": "2029-07-23",
+        "name": "Revolution Day (Jul 23)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/"
+      },
+      {
+        "date": "2029-07-24",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "predicted": true
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 1,
+        "day": 7,
+        "name": "Coptic Christmas",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 1,
+        "day": 25,
+        "name": "Revolution Day (Jan 25)",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 4,
+        "day": 25,
+        "name": "Sinai Liberation Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 5,
+        "day": 1,
+        "name": "Labour Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 7,
+        "day": 23,
+        "name": "Revolution Day (Jul 23)",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 10,
+        "day": 6,
+        "name": "Armed Forces Day",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-07-24"
+  ],
+  "weekend_days": [
+    4,
+    5
+  ]
+}

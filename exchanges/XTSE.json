@@ -1,0 +1,433 @@
+{
+  "code": "XTSE",
+  "name": "Toronto Stock Exchange",
+  "mic": "XTSE",
+  "timezone": "America/Toronto",
+  "regular_hours": {
+    "open": "09:30",
+    "close": "16:00"
+  },
+  "extended_hours": {
+    "pre_market": {
+      "open": "07:00",
+      "close": "09:30"
+    },
+    "after_hours": {
+      "open": "16:00",
+      "close": "17:00"
+    }
+  },
+  "sessions": [
+    {
+      "type": "auction",
+      "at": "09:30"
+    },
+    {
+      "type": "auction",
+      "at": "16:00"
+    }
+  ],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2025-02-17",
+        "name": "Family Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2025-05-19",
+        "name": "Victoria Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2025-07-01",
+        "name": "Canada Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2025-08-04",
+        "name": "Civic Holiday",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2025-09-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2025-10-13",
+        "name": "Thanksgiving Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2025-12-24",
+        "name": "Christmas Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "13:00",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2025-12-26",
+        "name": "Boxing Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2026-02-16",
+        "name": "Family Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2026-05-18",
+        "name": "Victoria Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2026-07-01",
+        "name": "Canada Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2026-08-03",
+        "name": "Civic Holiday",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2026-09-07",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2026-10-12",
+        "name": "Thanksgiving Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2026-12-24",
+        "name": "Christmas Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "13:00",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2026-12-28",
+        "name": "Boxing Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2027-02-15",
+        "name": "Family Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2027-05-24",
+        "name": "Victoria Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2027-07-01",
+        "name": "Canada Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2027-08-02",
+        "name": "Civic Holiday",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2027-09-06",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2027-10-11",
+        "name": "Thanksgiving Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2027-12-24",
+        "name": "Christmas Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "13:00",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Christmas Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2027-12-28",
+        "name": "Boxing Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2028-02-21",
+        "name": "Family Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2028-05-22",
+        "name": "Victoria Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2028-07-03",
+        "name": "Canada Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2028-08-07",
+        "name": "Civic Holiday",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2028-09-04",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2028-10-09",
+        "name": "Thanksgiving Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2028-12-26",
+        "name": "Boxing Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2029-02-19",
+        "name": "Family Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2029-05-21",
+        "name": "Victoria Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2029-07-02",
+        "name": "Canada Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2029-08-06",
+        "name": "Civic Holiday",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2029-09-03",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2029-10-08",
+        "name": "Thanksgiving Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2029-12-24",
+        "name": "Christmas Eve (half-day)",
+        "status": "early_close",
+        "early_close_time": "13:00",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      },
+      {
+        "date": "2029-12-26",
+        "name": "Boxing Day",
+        "status": "closed",
+        "source_url": "https://www.tsx.com/trading/market-hours"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 1,
+        "day": 1,
+        "name": "New Year's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "nth_weekday",
+        "month": 2,
+        "weekday": "monday",
+        "n": 3,
+        "name": "Family Day",
+        "status": "closed"
+      },
+      {
+        "rule": "easter_offset",
+        "offset_days": -2,
+        "name": "Good Friday",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 7,
+        "day": 1,
+        "name": "Canada Day",
+        "status": "closed"
+      },
+      {
+        "rule": "nth_weekday",
+        "month": 8,
+        "weekday": "monday",
+        "n": 1,
+        "name": "Civic Holiday",
+        "status": "closed"
+      },
+      {
+        "rule": "nth_weekday",
+        "month": 9,
+        "weekday": "monday",
+        "n": 1,
+        "name": "Labour Day",
+        "status": "closed"
+      },
+      {
+        "rule": "nth_weekday",
+        "month": 10,
+        "weekday": "monday",
+        "n": 2,
+        "name": "Thanksgiving Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 12,
+        "day": 25,
+        "name": "Christmas Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_with_weekend_adjustment",
+        "month": 12,
+        "day": 26,
+        "name": "Boxing Day",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
+  ]
+}

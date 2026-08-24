@@ -1,0 +1,346 @@
+{
+  "code": "XDHA",
+  "name": "Dhaka Stock Exchange",
+  "mic": "XDHA",
+  "timezone": "Asia/Dhaka",
+  "regular_hours": {
+    "open": "10:00",
+    "close": "14:30"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-03-26",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2025-04-01",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2025-04-02",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2025-04-14",
+        "name": "Bengali New Year",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2025-06-09",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2025-07-06",
+        "name": "Ashura (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/ashura/",
+        "predicted": true
+      },
+      {
+        "date": "2025-10-02",
+        "name": "Durga Puja (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2025-12-16",
+        "name": "Victory Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2026-03-26",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2026-04-14",
+        "name": "Bengali New Year",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2026-08-25",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/eid-e-milad-un-nabi/",
+        "predicted": true
+      },
+      {
+        "date": "2026-10-20",
+        "name": "Durga Puja (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2026-12-16",
+        "name": "Victory Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2027-02-21",
+        "name": "Language Movement Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2027-03-09",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2027-03-10",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2027-04-14",
+        "name": "Bengali New Year",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2027-05-03",
+        "name": "Labour Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2027-05-16",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2027-06-15",
+        "name": "Ashura (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/ashura/",
+        "predicted": true
+      },
+      {
+        "date": "2027-08-15",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/eid-e-milad-un-nabi/",
+        "predicted": true
+      },
+      {
+        "date": "2027-12-16",
+        "name": "Victory Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Christmas Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2028-02-21",
+        "name": "Language Movement Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2028-02-28",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2028-03-26",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2028-05-04",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2028-09-28",
+        "name": "Durga Puja (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Eid al-Fitr (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2029-02-15",
+        "name": "Eid al-Fitr Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2029-02-21",
+        "name": "Language Movement Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2029-03-26",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2029-04-24",
+        "name": "Eid al-Adha (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2029-04-25",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2029-05-24",
+        "name": "Ashura (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/ashura/",
+        "predicted": true
+      },
+      {
+        "date": "2029-07-24",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/eid-e-milad-un-nabi/",
+        "predicted": true
+      },
+      {
+        "date": "2029-10-17",
+        "name": "Durga Puja (predicted)",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "predicted": true
+      },
+      {
+        "date": "2029-12-16",
+        "name": "Victory Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
+  "weekend_days": [
+    4,
+    5
+  ]
+}
