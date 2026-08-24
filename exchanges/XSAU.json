@@ -51,19 +51,22 @@
         "date": "2025-06-08",
         "name": "Eid al-Adha Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2025-06-26",
         "name": "Islamic New Year (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2025-09-04",
         "name": "Prophet's Birthday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2025-09-23",
@@ -81,31 +84,36 @@
         "date": "2026-03-22",
         "name": "Eid al-Fitr Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2026-05-27",
         "name": "Eid al-Adha (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2026-05-28",
         "name": "Eid al-Adha Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2026-06-16",
         "name": "Islamic New Year (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2026-08-25",
         "name": "Prophet's Birthday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2026-09-23",
@@ -123,49 +131,57 @@
         "date": "2027-03-09",
         "name": "Eid al-Fitr (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2027-03-10",
         "name": "Eid al-Fitr Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2027-03-11",
         "name": "Eid al-Fitr Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2027-05-16",
         "name": "Eid al-Adha (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2027-05-17",
         "name": "Eid al-Adha Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2027-05-18",
         "name": "Eid al-Adha Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2027-06-06",
         "name": "Islamic New Year (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2027-08-15",
         "name": "Prophet's Birthday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2027-09-23",
@@ -183,19 +199,22 @@
         "date": "2028-02-27",
         "name": "Eid al-Fitr Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2028-02-28",
         "name": "Eid al-Fitr Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2028-05-04",
         "name": "Eid al-Adha (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2028-09-24",
@@ -207,13 +226,15 @@
         "date": "2029-02-14",
         "name": "Eid al-Fitr (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2029-02-15",
         "name": "Eid al-Fitr Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2029-02-22",
@@ -225,31 +246,36 @@
         "date": "2029-04-24",
         "name": "Eid al-Adha (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2029-04-25",
         "name": "Eid al-Adha Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2029-04-26",
         "name": "Eid al-Adha Holiday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2029-05-14",
         "name": "Islamic New Year (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2029-07-24",
         "name": "Prophet's Birthday (predicted)",
         "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/"
+        "source_url": "https://www.ummulqura.org.sa/",
+        "predicted": true
       },
       {
         "date": "2029-09-23",
