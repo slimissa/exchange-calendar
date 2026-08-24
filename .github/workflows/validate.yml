@@ -123,6 +123,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cargo-
 
+      - name: Build calendar.json
+        run: |
+          python3 tools/build.py
+
       - name: Run Rust tests
         working-directory: wrappers/rust
         run: |
