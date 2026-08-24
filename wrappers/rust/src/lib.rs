@@ -122,7 +122,7 @@ mod integration_tests {
             }]
         }"#;
 
-        let registry = Registry::from_str(json).unwrap();
+        let registry = Registry::from_json_str(json).unwrap();
         assert_eq!(registry.version, "1.0.0");
 
         let exchange = registry.get("TEST").unwrap();

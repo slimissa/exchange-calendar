@@ -118,7 +118,7 @@ impl Registry {
         let content = fs::read_to_string(path.as_ref())
             .map_err(|_| RegistryError::FileNotFound(path_str.clone()))?;
 
-        Self::from_str(&content)
+        Self::from_json_str(&content)
     }
 
     /// Load the registry from a JSON string.
@@ -141,7 +141,7 @@ impl Registry {
     ///     }]
     /// }"#;
     ///
-    /// let registry = Registry::from_str(json)?;
+    /// let registry = Registry::from_json_str(json)?;
     /// # Ok(())
     /// # }
     /// ```
@@ -477,7 +477,7 @@ mod tests {
             }]
         }"#;
 
-        let registry = Registry::from_str(json).unwrap();
+        let registry = Registry::from_json_str(json).unwrap();
         assert_eq!(registry.version, "1.0.0");
         assert_eq!(registry.len(), 1);
     }
