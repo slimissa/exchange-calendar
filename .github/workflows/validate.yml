@@ -176,7 +176,7 @@ jobs:
                       "eid", "islamic", "prophet", "ramadan", "ashura", "hijri"
                   ])
                   is_observed = "observed" in name or "substitute" in name
-        is_weekend_exception = entry.get("weekend_exception", False)
+                  is_weekend_exception = entry.get("weekend_exception", False)
                   
                   if is_islamic or is_observed or is_weekend_exception:
                       continue  # Islamic/observed holidays are exempt from weekend check
