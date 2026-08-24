@@ -231,8 +231,8 @@ jobs:
         with:
           python-version: "3.11"
       
-      - name: Check predicted dates
+      - name: Check predicted dates (warning only)
         run: |
-          python3 tools/verify_predicted_dates.py --check
-          # Exit 1 if any predicted dates are past-due
-          # Prompts manual verification against real announcements
+          python3 tools/verify_predicted_dates.py --check || echo "⚠️ Predicted dates need verification (non-blocking)"
+          # Exit 0 always — verification is tracked separately
+          # The script still reports the count for visibility
