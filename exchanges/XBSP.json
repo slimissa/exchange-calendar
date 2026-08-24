@@ -1,6 +1,6 @@
 {
   "code": "XBSP",
-  "name": "B3 (S\u00e3o Paulo Stock Exchange)",
+  "name": "B3 (São Paulo Stock Exchange)",
   "mic": "XBSP",
   "timezone": "America/Sao_Paulo",
   "regular_hours": {
@@ -542,5 +542,9 @@
   "generation_range": [
     "2025-01-01",
     "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
   ]
 }

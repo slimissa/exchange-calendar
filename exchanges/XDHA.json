@@ -53,6 +53,12 @@
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
       {
+        "date": "2025-07-06",
+        "name": "Ashura (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/ashura/"
+      },
+      {
         "date": "2025-10-02",
         "name": "Durga Puja (predicted)",
         "status": "closed",
@@ -71,14 +77,14 @@
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
       {
-        "date": "2026-03-26",
-        "name": "Independence Day",
+        "date": "2026-03-23",
+        "name": "Eid al-Fitr Holiday (predicted)",
         "status": "closed",
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
       {
-        "date": "2026-03-23",
-        "name": "Eid al-Fitr Holiday (predicted)",
+        "date": "2026-03-26",
+        "name": "Independence Day",
         "status": "closed",
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
@@ -99,6 +105,12 @@
         "name": "Eid al-Adha Holiday (predicted)",
         "status": "closed",
         "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2026-08-25",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/eid-e-milad-un-nabi/"
       },
       {
         "date": "2026-10-20",
@@ -155,6 +167,18 @@
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
       {
+        "date": "2027-06-15",
+        "name": "Ashura (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/ashura/"
+      },
+      {
+        "date": "2027-08-15",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/eid-e-milad-un-nabi/"
+      },
+      {
         "date": "2027-12-16",
         "name": "Victory Day",
         "status": "closed",
@@ -173,14 +197,14 @@
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
       {
-        "date": "2028-03-26",
-        "name": "Independence Day",
+        "date": "2028-02-28",
+        "name": "Eid al-Fitr Holiday (predicted)",
         "status": "closed",
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
       {
-        "date": "2028-02-28",
-        "name": "Eid al-Fitr Holiday (predicted)",
+        "date": "2028-03-26",
+        "name": "Independence Day",
         "status": "closed",
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
@@ -209,18 +233,6 @@
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
       {
-        "date": "2029-02-21",
-        "name": "Language Movement Day",
-        "status": "closed",
-        "source_url": "https://www.dsebd.org/trading-calendar"
-      },
-      {
-        "date": "2029-03-26",
-        "name": "Independence Day",
-        "status": "closed",
-        "source_url": "https://www.dsebd.org/trading-calendar"
-      },
-      {
         "date": "2029-02-14",
         "name": "Eid al-Fitr (predicted)",
         "status": "closed",
@@ -233,8 +245,14 @@
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
       {
-        "date": "2029-05-01",
-        "name": "Labour Day",
+        "date": "2029-02-21",
+        "name": "Language Movement Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2029-03-26",
+        "name": "Independence Day",
         "status": "closed",
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
@@ -249,6 +267,24 @@
         "name": "Eid al-Adha Holiday (predicted)",
         "status": "closed",
         "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.dsebd.org/trading-calendar"
+      },
+      {
+        "date": "2029-05-24",
+        "name": "Ashura (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/ashura/"
+      },
+      {
+        "date": "2029-07-24",
+        "name": "Prophet's Birthday (predicted)",
+        "status": "closed",
+        "source_url": "https://publicholidays.com.bd/eid-e-milad-un-nabi/"
       },
       {
         "date": "2029-10-17",
@@ -275,5 +311,9 @@
   "generation_range": [
     "2025-01-01",
     "2029-12-31"
+  ],
+  "weekend_days": [
+    4,
+    5
   ]
 }

@@ -89,7 +89,11 @@ class TestXKUWProperties:
 
     def test_generation_range(self, xkuw):
         assert "generation_range" in xkuw
-        assert xkuw["generation_range"] == ["2025-01-01", "2029-12-31"]
+        # Shortened from 2029-12-31 per H1-fix: XKUW's Islamic-holiday
+        # dates drift earlier each year, leaving no explicit data past
+        # 2029-07-24 (Prophet's Birthday), a >90-day gap the enhanced
+        # validator now catches (check 3).
+        assert xkuw["generation_range"] == ["2025-01-01", "2029-07-24"]
 
     def test_ad_hoc_closures_empty(self, xkuw):
         assert xkuw.get("ad_hoc_closures", []) == []
@@ -170,9 +174,14 @@ class TestXKUWEidAlFitr:
         assert "2029-02-15" in explicit_dates
 
     def test_eid_al_fitr_names_contain_predicted(self, explicit_dates):
-        for entry in explicit_dates.values():
-            if "Eid al-Fitr" in entry["name"]:
-                assert "predicted" in entry["name"].lower()
+        """Eid al-Fitr holidays for years still ahead of an official
+        announcement should be marked predicted. 2025 is reconciled
+        (M7): its date is now confirmed by an actual moon-sighting
+        announcement, so those entries no longer carry the suffix."""
+        for date_str, entry in explicit_dates.items():
+            if "Eid al-Fitr" in entry["name"] and not date_str.startswith("2025"):
+                assert "predicted" in entry["name"].lower(), \
+                    f"{date_str} ({entry['name']}) should still be predicted"
 
 
 # ──────────────────────────────────────────────────────────────

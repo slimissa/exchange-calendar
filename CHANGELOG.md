@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Fixed
+
+- **Weekend classification correction**: XDFM and XTAD moved from
+  Islamic (Fri-Sat) to Western (Sat-Sun) weekend classification,
+  reflecting UAE's January 2022 workweek change. Islamic weekend
+  exchange count corrected: 9 → 7. Western count: 65 → 67.
+- **Second XTAD weekend-model bug**: `test_abu_dhabi_holidays.py`
+  had a second instance of the Friday/Saturday weekend assumption
+  in `TestXTADStructure.test_no_weekend_dates` that the first
+  audit-fix cycle missed. It only passed because XTAD happens to
+  have no Friday/Saturday-dated entries. Fixed docstring and
+  day-list to correct `[5, 6]`.
+- **Incomplete M1 fix**: `validate.yml` still used archived
+  `actions-rs/toolchain@v1`. Replaced with
+  `dtolnay/rust-toolchain@stable`, matching the pattern already
+  applied to `publish.yml`.
+- **Dependabot coverage**: Added `npm` (wrappers/javascript),
+  `cargo` (wrappers/rust), and `gomod` (wrappers/go) to
+  `.github/dependabot.yml`. Previously only `pip` (tools) was watched.
+- **M7 reconciliation count**: Corrected 29/86 → 29/88 (59 pending,
+  not 57). Fixed in both occurrences in `docs/AUDIT_FIX_REPORT.md`.
+
+---
+
 ## [2.1.0] — 2026-08-19
 
 ### Added

@@ -141,9 +141,18 @@ class TestXMUSFixedHolidays:
 
 class TestXMUSEidAlFitr:
     def test_eid_al_fitr_2025(self, explicit_dates):
-        """Eid al-Fitr 2025 — predicted March 30."""
-        assert "2025-03-30" in explicit_dates
-        assert "Eid al-Fitr" in explicit_dates["2025-03-30"]["name"]
+        """Eid al-Fitr 2025 — Oman's MERA confirmed March 31, one day
+        after Saudi's Umm al-Qura date of March 30 (C6: Oman uses its
+        own moon-sighting committee and can legitimately diverge from
+        Saudi by ±1 day). Oman's holiday policy extends the break to
+        4 days when Eid starts on a Monday, so this runs March 31 -
+        April 3."""
+        assert "2025-03-31" in explicit_dates
+        assert "Eid al-Fitr" in explicit_dates["2025-03-31"]["name"]
+        assert "2025-03-30" not in explicit_dates, \
+            "2025-03-30 was the incorrect Saudi-derived date; C6 corrected this to 2025-03-31"
+        assert "2025-04-03" in explicit_dates, \
+            "Oman's 4-day Eid al-Fitr policy for a Monday start should include April 3"
 
     def test_eid_al_fitr_2026(self, explicit_dates):
         """Eid al-Fitr 2026 — March 20 (Friday, weekend) — not in explicit.
@@ -166,9 +175,13 @@ class TestXMUSEidAlFitr:
         assert "2029-02-14" in explicit_dates
 
     def test_eid_al_fitr_names_contain_predicted(self, explicit_dates):
-        for entry in explicit_dates.values():
-            if "Eid al-Fitr" in entry["name"]:
-                assert "predicted" in entry["name"].lower()
+        """2025 is reconciled (M7, confirmed via Dar al-Ifta/MERA/
+        Ahram Online/Gulf News) and no longer carries the suffix;
+        other years remain predicted."""
+        for date_str, entry in explicit_dates.items():
+            if "Eid al-Fitr" in entry["name"] and not date_str.startswith("2025"):
+                assert "predicted" in entry["name"].lower(), \
+                    f"{date_str} ({entry['name']}) should still be predicted"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -199,9 +212,13 @@ class TestXMUSEidAlAdha:
         assert "2029-04-24" in explicit_dates
 
     def test_eid_al_adha_names_contain_predicted(self, explicit_dates):
-        for entry in explicit_dates.values():
-            if "Eid al-Adha" in entry["name"]:
-                assert "predicted" in entry["name"].lower()
+        """2025 is reconciled (M7, confirmed via Dar al-Ifta/MERA/
+        Ahram Online/Gulf News) and no longer carries the suffix;
+        other years remain predicted."""
+        for date_str, entry in explicit_dates.items():
+            if "Eid al-Adha" in entry["name"] and not date_str.startswith("2025"):
+                assert "predicted" in entry["name"].lower(), \
+                    f"{date_str} ({entry['name']}) should still be predicted"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -332,8 +349,15 @@ class TestXMUSStructure:
         assert 40 <= len(explicit_dates) <= 60, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
-            assert "msx.om" in entry["source_url"]
+        """MSX's own trading-calendar page is the source for fixed
+        national holidays. Islamic holidays are sourced from Oman's
+        MERA directly (C6) since MSX's page doesn't itemize
+        moon-sighting-dependent dates."""
+        for date_str, entry in explicit_dates.items():
+            if "mera.gov.om" in entry["source_url"]:
+                continue
+            assert "msx.om" in entry["source_url"], \
+                f"{date_str}: unexpected source_url {entry['source_url']}"
 
 
 # ──────────────────────────────────────────────────────────────

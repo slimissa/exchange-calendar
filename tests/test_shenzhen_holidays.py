@@ -78,7 +78,9 @@ class TestXSHEProperties:
 
     def test_generation_range(self, xshe):
         assert "generation_range" in xshe
-        assert xshe["generation_range"] == ["2025-01-01", "2029-12-31"]
+        # Shortened from 2029-12-31 per C4: XSHE's data only covers
+        # through 2027 (Spring Festival etc. aren't rule-generatable).
+        assert xshe["generation_range"] == ["2025-01-01", "2027-12-31"]
 
     def test_ad_hoc_closures_empty(self, xshe):
         assert xshe.get("ad_hoc_closures", []) == []

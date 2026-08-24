@@ -84,6 +84,17 @@ class TestXNSEKeyHolidays:
         assert "2025-10-21" in explicit_dates
         assert "2025-10-22" in explicit_dates
 
+    def test_diwali_laxmi_pujan_2026(self, explicit_dates):
+        """H3: Nov 8, 2026 (Sunday) is officially gazetted by NSE as
+        the Laxmi Pujan trading holiday, with Muhurat trading held on
+        it -- a distinct, sourced event, not just an ordinary closed
+        Sunday. Flagged weekend_exception so the H1 weekend-date
+        validator doesn't treat it as a data error."""
+        assert "2026-11-08" in explicit_dates
+        assert explicit_dates["2026-11-08"]["name"] == "Diwali (Laxmi Pujan)"
+        assert explicit_dates["2026-11-08"].get("weekend_exception") is True
+        assert "2026-11-09" in explicit_dates  # Balipratipada, unaffected
+
     def test_holi_2025(self, explicit_dates):
         assert "2025-03-14" in explicit_dates
 
@@ -96,7 +107,13 @@ class TestXNSEKeyHolidays:
 
 class TestXNSEStructure:
     def test_no_weekend_dates(self, explicit_dates):
-        for date_str in explicit_dates:
+        """No explicit date should fall on the weekend, EXCEPT entries
+        explicitly flagged weekend_exception (H3: NSE/BSE's Diwali
+        Laxmi Pujan 2026 is a real, sourced, gazetted exception to
+        this rule -- see schema.json's weekend_exception field)."""
+        for date_str, entry in explicit_dates.items():
+            if entry.get("weekend_exception"):
+                continue
             d = date.fromisoformat(date_str)
             assert d.weekday() < 5
 

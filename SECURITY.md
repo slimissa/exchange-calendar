@@ -77,14 +77,6 @@ Include in your email:
 - Suggested fix (if available)
 - Your preferred method of contact
 
-#### Option 3: PGP Encrypted Email
-
-```
------BEGIN PGP PUBLIC KEY BLOCK-----
-[PGP key for encrypted communication]
------END PGP PUBLIC KEY BLOCK-----
-```
-
 ### 📋 What to Include in Your Report
 
 A complete report should include:
@@ -206,10 +198,13 @@ python -c "import exchange_calendar; print(exchange_calendar.__version__)"
 # Verify checksums
 sha256sum calendar.json
 sha256sum exchanges/*.json
-
-# Compare against published checksums
-python tools/verify_checksums.py
 ```
+
+Note: there is currently no `tools/verify_checksums.py` or published
+checksum manifest to compare against -- if you need this, use
+`sha256sum` output alongside `git log`/`git blame` on the specific
+file to confirm provenance, or open an issue requesting a checksum
+manifest be published as part of the release process.
 
 #### 3. Use in Secure Environments
 
@@ -239,7 +234,9 @@ gh api repos/slimissa/exchange-calendar/security-alerts
 #### 2. Development Security
 
 ```bash
-# Run security checks before committing
+# Security checks -- these tools are NOT bundled in
+# tools/requirements.txt; install them first if you want to run them:
+#   pip install pip-audit bandit safety
 pip-audit
 bandit -r tools/ wrappers/
 safety check
@@ -274,7 +271,7 @@ The registry implements multiple layers of data integrity:
   "properties": {
     "code": {
       "type": "string",
-      "pattern": "^[A-Z]{4}$"
+      "pattern": "^[A-Z0-9]{4}$"
     }
   }
 }
@@ -282,13 +279,11 @@ The registry implements multiple layers of data integrity:
 
 #### 2. Checksum Verification
 
-```bash
-# Generate checksums for all exchange files
-python tools/generate_checksums.py
-
-# Verify data integrity
-python tools/verify_checksums.py
-```
+There is currently no `tools/generate_checksums.py` or
+`tools/verify_checksums.py` in this repository. Until a checksum
+manifest is published as part of the release process, use `sha256sum`
+directly against the files you want to verify (see "Verify Data
+Integrity" above) and cross-reference against `git log` for provenance.
 
 #### 3. Source Verification
 
@@ -382,7 +377,11 @@ However, users should ensure compliance with:
 | pytest | >=7.0 | Testing | [CVE Database](https://cve.mitre.org/) |
 | pytest-mock | >=3.10 | Mocking | [CVE Database](https://cve.mitre.org/) |
 | pytest-cov | >=4.0 | Coverage | [CVE Database](https://cve.mitre.org/) |
-| bandit | >=1.7 | Security linting | [CVE Database](https://cve.mitre.org/) |
+
+Note: `bandit`, `pip-audit`, and `safety` (referenced above under
+"Security Best Practices") are recommended tools for contributors to
+run locally, but are not currently in `tools/requirements.txt` and so
+are not listed as project dependencies here.
 
 ### Dependency Management
 
@@ -424,8 +423,10 @@ graph TD
 ### Checksums
 
 ```bash
-# Generate checksums for release
-python tools/generate_checksums.py
+# There is no tools/generate_checksums.py in this repository. Until a
+# checksum manifest is published as part of the release process,
+# compute checksums directly:
+sha256sum exchanges/*.json calendar.json
 
 # Output format
 # SHA256  filename
@@ -463,16 +464,6 @@ Every change to the registry includes:
 | Sunday | Emergency only |
 | Holidays | Emergency only |
 
-### PGP Keys
-
-```bash
-# Import maintainer PGP key
-gpg --keyserver keys.openpgp.org --recv-keys 0x1234567890ABCDEF
-
-# Verify signed releases
-gpg --verify release.sig release.tar.gz
-```
-
 ### Security Advisories
 
 - [GitHub Security Advisories](https://github.com/slimissa/exchange-calendar/security/advisories)
@@ -485,9 +476,7 @@ gpg --verify release.sig release.tar.gz
 
 We thank the following individuals and organizations for their contributions to the security of this project:
 
-| Contributor | Contribution | Date |
-|-------------|--------------|------|
-| [Name] | [Description] | [Date] |
+*No externally-reported security contributions have been recorded yet. This table will be populated as disclosures are received and resolved.*
 
 ---
 

@@ -301,11 +301,13 @@ describe('Exchange properties', () => {
 describe('Holiday detection', () => {
     let xnys;
     let xlon;
+    let xsau;
 
     beforeEach(() => {
         const registry = new CalendarRegistry(getRegistryPath());
         xnys = registry.get('XNYS');
         xlon = registry.get('XLON');
+        xsau = registry.get('XSAU');
     });
 
     test('New Year\'s Day is holiday', () => {
@@ -319,6 +321,19 @@ describe('Holiday detection', () => {
 
     test('weekday is not holiday', () => {
         assert.equal(xnys.isHoliday('2025-03-14'), false); // Friday
+    });
+
+    // Regression test for C1: the wrapper previously hardcoded
+    // Saturday/Sunday as the weekend for every exchange, regardless of
+    // its actual weekend system. XSAU (Saudi) observes a
+    // Friday/Saturday weekend instead.
+    test('XSAU Friday and Saturday are holidays (Islamic weekend)', () => {
+        assert.equal(xsau.isHoliday('2025-08-22'), true); // Friday
+        assert.equal(xsau.isHoliday('2025-08-23'), true); // Saturday
+    });
+
+    test('XSAU Sunday is a trading day, not a holiday', () => {
+        assert.equal(xsau.isHoliday('2025-08-24'), false); // Sunday
     });
 
     test('early close is not full holiday', () => {

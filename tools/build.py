@@ -96,6 +96,7 @@ def build_registry(exchanges_dir: Path) -> dict:
             "name": exchange.get("name"),
             "mic": exchange.get("mic"),
             "timezone": exchange.get("timezone"),
+            "weekend_days": exchange.get("weekend_days", [5, 6]),
             "regular_hours": exchange.get("regular_hours", {}),
             "extended_hours": exchange.get("extended_hours", {}),
             "sessions": exchange.get("sessions", []),

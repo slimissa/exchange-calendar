@@ -286,8 +286,18 @@ class TestXDHAStructure:
         assert 40 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
-            assert "dsebd.org" in entry["source_url"]
+        """DSE's own trading-calendar page is the source for fixed
+        national holidays. Ashura and Mawlid are independently sourced
+        for Bangladesh specifically (H2: Bangladesh gazettes Ashura,
+        not Islamic New Year, and uses its own moon-sighting rather
+        than assuming Saudi's dates), citing Bangladesh government
+        news coverage and a Bangladesh-specific holiday reference."""
+        allowed_extra = ("publicholidays.com.bd", "tbsnews.net")
+        for date_str, entry in explicit_dates.items():
+            if any(domain in entry["source_url"] for domain in allowed_extra):
+                continue
+            assert "dsebd.org" in entry["source_url"], \
+                f"{date_str}: Unexpected source: {entry['source_url']}"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -322,3 +332,60 @@ class TestXDHASubstitution:
     def test_observed_names(self, explicit_dates):
         observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
         assert observed_count >= 2, f"Expected some observed holidays, got {observed_count}"
+
+
+# ──────────────────────────────────────────────────────────────
+# Ashura and Mawlid (H2)
+# ──────────────────────────────────────────────────────────────
+
+class TestXDHAAshuraAndMawlid:
+    """Regression coverage for H2: XDHA previously had Eid al-Fitr and
+    Eid al-Adha but was missing Ashura and Mawlid entirely. Note the
+    audit correction baked into this ticket: Bangladesh gazettes
+    Ashura (10 Muharram), NOT Islamic New Year (1 Muharram) -- the
+    original H2 framing named the wrong holiday. Dates are
+    independently sourced for Bangladesh (not assumed to match Saudi),
+    since Bangladesh uses its own local moon-sighting."""
+
+    ASHURA = {
+        2025: "2025-07-06", 2027: "2027-06-15", 2029: "2029-05-24",
+        # 2026-06-26 (Friday) and 2028-06-03 (Saturday) fall on the
+        # weekend -- no entry expected for those years.
+    }
+    MAWLID = {
+        2026: "2026-08-25", 2027: "2027-08-15", 2029: "2029-07-24",
+        # 2025's Mawlid was officially rescheduled by the Bangladesh
+        # government from Friday Sept 5 to Saturday Sept 6 -- both
+        # of which are XDHA's own weekend days, so no entry is
+        # expected for 2025 regardless of the reschedule.
+        # 2028-08-04 (Friday, general estimate) also falls on the
+        # weekend -- no entry expected.
+    }
+
+    def test_ashura_present_when_not_weekend(self, explicit_dates):
+        for year, d in self.ASHURA.items():
+            assert d in explicit_dates, f"Missing Ashura for {year}: {d}"
+            assert explicit_dates[d]["name"] == "Ashura (predicted)"
+
+    def test_ashura_weekend_years_correctly_absent(self, explicit_dates):
+        assert "2026-06-26" not in explicit_dates  # Friday
+        assert "2028-06-03" not in explicit_dates  # Saturday
+
+    def test_islamic_new_year_not_used_for_bangladesh(self, explicit_dates):
+        """H2's key correction: Bangladesh gazettes Ashura, not
+        Islamic New Year -- this registry should not have an
+        'Islamic New Year' entry for XDHA."""
+        names = [e["name"] for e in explicit_dates.values()]
+        assert not any("Islamic New Year" in n for n in names)
+
+    def test_mawlid_present_when_not_weekend(self, explicit_dates):
+        for year, d in self.MAWLID.items():
+            assert d in explicit_dates, f"Missing Prophet's Birthday for {year}: {d}"
+            assert explicit_dates[d]["name"] == "Prophet's Birthday (predicted)"
+
+    def test_mawlid_2025_reschedule_correctly_absent(self, explicit_dates):
+        """The government rescheduled 2025 Mawlid from Fri Sept 5 to
+        Sat Sept 6 -- both are XDHA's weekend days, so neither
+        appears."""
+        assert "2025-09-05" not in explicit_dates
+        assert "2025-09-06" not in explicit_dates

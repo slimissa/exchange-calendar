@@ -76,7 +76,9 @@ class TestXCOLProperties:
 
     def test_generation_range(self, xcol):
         assert "generation_range" in xcol
-        assert xcol["generation_range"] == ["2025-01-01", "2029-12-31"]
+        # Shortened from 2029-12-31 per C4: XCOL's data only covers
+        # through 2027 (Poya days/Deepavali aren't rule-generatable).
+        assert xcol["generation_range"] == ["2025-01-01", "2027-12-31"]
 
     def test_ad_hoc_closures_empty(self, xcol):
         assert xcol.get("ad_hoc_closures", []) == []
@@ -211,8 +213,27 @@ class TestXCOLDeepavali:
         assert "Deepavali" in explicit_dates["2025-10-20"]["name"]
 
     def test_deepavali_2026(self, explicit_dates):
-        """Deepavali 2026 — Nov 8 (Sunday, weekend) — not in explicit."""
+        """Deepavali 2026 — actual date is Sunday Nov 8 (weekend, not
+        in explicit); the observed trading holiday shifts to Monday
+        Nov 9. Regression test for C5: this previously asserted only
+        the weekend-date absence and never checked the observed date
+        was actually present, which is exactly how the entry went
+        missing without a failing test."""
         assert "2026-11-08" not in explicit_dates
+        assert "2026-11-09" in explicit_dates
+        assert explicit_dates["2026-11-09"]["name"] == "Deepavali (observed)"
+        assert explicit_dates["2026-11-09"]["status"] == "closed"
+
+    def test_deepavali_2026_matches_xkls_xses(self, explicit_dates):
+        """XKLS and XSES both observe Deepavali on 2026-11-09; XCOL
+        should match rather than being the one inconsistent exchange."""
+        for code in ("XKLS", "XSES"):
+            with open(f"exchanges/{code}.json") as f:
+                import json
+                other = json.load(f)
+            other_dates = {h["date"] for h in other["holidays"]["explicit"]}
+            assert "2026-11-09" in other_dates
+        assert "2026-11-09" in explicit_dates
 
     def test_deepavali_2027(self, explicit_dates):
         """Deepavali 2027 — Oct 28."""

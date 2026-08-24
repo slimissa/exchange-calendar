@@ -57,6 +57,7 @@ class Exchange:
         self.name = data["name"]
         self.mic = data["mic"]
         self.timezone = data["timezone"]
+        self.weekend_days = data.get("weekend_days", [5, 6])
         self.regular_hours = data["regular_hours"]
         self.extended_hours = data.get("extended_hours", {})
         self.sessions = data.get("sessions", [])
@@ -136,10 +137,15 @@ class Exchange:
     # ──────────────────────────────────────────────────────────
 
     def _is_weekend(self, date_str: str) -> bool:
-        """Return True if the date is Saturday or Sunday."""
+        """Return True if the date falls on one of this exchange's weekend days.
+
+        Uses this exchange's `weekend_days` (Monday=0..Sunday=6), not a
+        hardcoded Saturday/Sunday assumption — some exchanges (e.g. Gulf
+        markets) observe a Friday/Saturday weekend instead.
+        """
         self._validate_date_format(date_str)
         d = date.fromisoformat(date_str)
-        return d.weekday() >= 5  # 5=Saturday, 6=Sunday
+        return d.weekday() in self.weekend_days
 
     def _is_holiday(self, date_str: str) -> bool:
         """Return True if the date is a full market closure."""
@@ -210,7 +216,14 @@ class Exchange:
 
         Args:
             date_str: ISO date (YYYY-MM-DD)
-            time_str: 24-hour time (HH:MM)
+            time_str: 24-hour time (HH:MM), interpreted as this
+                exchange's LOCAL time (per its `timezone` field), NOT
+                UTC and not the caller's local time. This wrapper does
+                no timezone conversion -- `timezone` is exposed for
+                informational purposes only and is not read by any
+                status/date logic here. If you have a UTC or
+                other-zone timestamp, convert it to this exchange's
+                local time yourself before calling status_at().
 
         Returns:
             SessionStatus: The status at the given moment.

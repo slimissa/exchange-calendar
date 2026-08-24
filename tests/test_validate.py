@@ -45,6 +45,7 @@ def make_valid_exchange(code="TEST", mic="TEST"):
         "name": f"Test Exchange {code}",
         "mic": mic,
         "timezone": "Europe/London",
+        "weekend_days": [5, 6],
         "regular_hours": {"open": "09:00", "close": "17:00"},
         "holidays": {
             "explicit": [
@@ -333,6 +334,210 @@ class TestCrossExchange:
 
 # ──────────────────────────────────────────────────────────────
 # Integration with real fixture files
+# ──────────────────────────────────────────────────────────────
+
+class TestWeekendDateCheck:
+    """H1 check 1: no explicit holiday should fall on the exchange's
+    own weekend days."""
+
+    def test_clean_exchange_passes(self):
+        exchange = make_valid_exchange()  # 2025-01-01 is a Wednesday
+        errors = validator.check_weekend_dates(exchange, "TEST.json")
+        assert errors == []
+
+    def test_saturday_holiday_flagged_for_western_weekend(self):
+        exchange = make_valid_exchange()
+        exchange["holidays"]["explicit"].append({
+            "date": "2025-01-04",  # Saturday
+            "name": "Bad Entry",
+            "status": "closed",
+        })
+        errors = validator.check_weekend_dates(exchange, "TEST.json")
+        assert any("2025-01-04" in e and "weekend" in e for e in errors)
+
+    def test_friday_ok_for_islamic_weekend_but_not_western(self):
+        exchange = make_valid_exchange()
+        exchange["holidays"]["explicit"].append({
+            "date": "2025-01-03",  # Friday
+            "name": "Friday Entry",
+            "status": "closed",
+        })
+        # Western weekend (default [5, 6]): Friday is fine.
+        errors = validator.check_weekend_dates(exchange, "TEST.json")
+        assert errors == []
+
+        # Islamic weekend ([4, 5]): the same Friday date is now a
+        # weekend violation.
+        exchange["weekend_days"] = [4, 5]
+        errors = validator.check_weekend_dates(exchange, "TEST.json")
+        assert any("2025-01-03" in e for e in errors)
+
+    def test_missing_weekend_days_defaults_to_western(self):
+        exchange = make_valid_exchange()
+        del exchange["weekend_days"]
+        exchange["holidays"]["explicit"].append({
+            "date": "2025-01-04",  # Saturday
+            "name": "Bad Entry",
+            "status": "closed",
+        })
+        errors = validator.check_weekend_dates(exchange, "TEST.json")
+        assert any("2025-01-04" in e for e in errors)
+
+    def test_weekend_exception_flag_suppresses_the_check(self):
+        """H3: a real, sourced, exchange-gazetted holiday that
+        legitimately falls on the exchange's own weekend (e.g. NSE's
+        Diwali Laxmi Pujan 2026, a Sunday) should not be flagged, if
+        and only if explicitly marked weekend_exception."""
+        exchange = make_valid_exchange()
+        exchange["holidays"]["explicit"].append({
+            "date": "2025-01-04",  # Saturday
+            "name": "Gazetted Exception",
+            "status": "closed",
+            "weekend_exception": True,
+        })
+        errors = validator.check_weekend_dates(exchange, "TEST.json")
+        assert errors == []
+
+    def test_weekend_exception_false_still_flagged(self):
+        exchange = make_valid_exchange()
+        exchange["holidays"]["explicit"].append({
+            "date": "2025-01-04",  # Saturday
+            "name": "Not Actually Excepted",
+            "status": "closed",
+            "weekend_exception": False,
+        })
+        errors = validator.check_weekend_dates(exchange, "TEST.json")
+        assert any("2025-01-04" in e for e in errors)
+
+
+class TestIslamicHolidayCompletenessCheck:
+    """H1 check 2: Islamic-weekend (Friday/Saturday) exchanges should
+    have both Eid al-Fitr and Eid al-Adha present. Regression coverage
+    for C2/C3, which this check would have caught automatically."""
+
+    def _islamic_exchange(self, explicit_extra=None):
+        exchange = make_valid_exchange()
+        exchange["weekend_days"] = [4, 5]
+        if explicit_extra:
+            exchange["holidays"]["explicit"].extend(explicit_extra)
+        return exchange
+
+    def test_western_weekend_exchange_not_checked(self):
+        """A Western-weekend exchange has no Eid entries and should
+        not be flagged -- the check only applies to [4, 5]."""
+        exchange = make_valid_exchange()
+        errors = validator.check_islamic_holidays(exchange, "TEST.json")
+        assert errors == []
+
+    def test_islamic_exchange_missing_both_eids(self):
+        exchange = self._islamic_exchange()
+        errors = validator.check_islamic_holidays(exchange, "TEST.json")
+        assert any("Eid al-Fitr" in e for e in errors)
+        assert any("Eid al-Adha" in e for e in errors)
+
+    def test_islamic_exchange_missing_eid_al_adha_only(self):
+        exchange = self._islamic_exchange([
+            {"date": "2025-03-30", "name": "Eid al-Fitr (predicted)", "status": "closed"},
+        ])
+        errors = validator.check_islamic_holidays(exchange, "TEST.json")
+        assert not any("Eid al-Fitr" in e for e in errors)
+        assert any("Eid al-Adha" in e for e in errors)
+
+    def test_islamic_exchange_with_both_eids_passes(self):
+        exchange = self._islamic_exchange([
+            {"date": "2025-03-30", "name": "Eid al-Fitr (predicted)", "status": "closed"},
+            {"date": "2025-06-08", "name": "Eid al-Adha Holiday (predicted)", "status": "closed"},
+        ])
+        errors = validator.check_islamic_holidays(exchange, "TEST.json")
+        assert errors == []
+
+    def test_reversed_weekend_days_order_still_detected(self):
+        """[5, 4] means the same weekend as [4, 5] and should not
+        silently skip this check due to list-order sensitivity."""
+        exchange = make_valid_exchange()
+        exchange["weekend_days"] = [5, 4]
+        errors = validator.check_islamic_holidays(exchange, "TEST.json")
+        assert any("Eid al-Fitr" in e for e in errors)
+
+
+class TestGenerationRangeCoverageCheck:
+    """H1 check 3: explicit data should actually extend close to the
+    end of the claimed generation_range. Regression coverage for C4,
+    which this check would have caught automatically."""
+
+    def test_data_covering_full_range_passes(self):
+        exchange = make_valid_exchange()
+        exchange["generation_range"] = ["2025-01-01", "2025-01-01"]
+        errors = validator.check_generation_range(exchange, "TEST.json")
+        assert errors == []
+
+    def test_small_gap_under_90_days_tolerated(self):
+        exchange = make_valid_exchange()
+        exchange["generation_range"] = ["2025-01-01", "2025-03-01"]
+        errors = validator.check_generation_range(exchange, "TEST.json")
+        assert errors == []
+
+    def test_large_gap_over_90_days_flagged(self):
+        exchange = make_valid_exchange()
+        exchange["generation_range"] = ["2025-01-01", "2029-12-31"]
+        errors = validator.check_generation_range(exchange, "TEST.json")
+        assert any("gap" in e and "2029-12-31" in e for e in errors)
+
+    def test_no_explicit_dates_skipped(self):
+        exchange = make_valid_exchange()
+        exchange["holidays"]["explicit"] = []
+        exchange["generation_range"] = ["2025-01-01", "2029-12-31"]
+        errors = validator.check_generation_range(exchange, "TEST.json")
+        assert errors == []
+
+
+class TestPredictedConsistencyCheck:
+    """M6: the structured `predicted` field and legacy '(predicted)'
+    name suffix should not contradict each other."""
+
+    def test_no_predicted_field_skipped(self):
+        """Absence of the field is not an error -- most existing
+        entries don't have it yet (backward compatibility)."""
+        exchange = make_valid_exchange()
+        exchange["holidays"]["explicit"].append({
+            "date": "2025-06-01", "name": "Eid al-Fitr (predicted)", "status": "closed",
+        })
+        errors = validator.check_predicted_consistency(exchange, "TEST.json")
+        assert errors == []
+
+    def test_predicted_true_with_suffix_passes(self):
+        exchange = make_valid_exchange()
+        exchange["holidays"]["explicit"].append({
+            "date": "2025-06-01", "name": "Eid al-Fitr (predicted)", "status": "closed", "predicted": True,
+        })
+        errors = validator.check_predicted_consistency(exchange, "TEST.json")
+        assert errors == []
+
+    def test_predicted_false_without_suffix_passes(self):
+        exchange = make_valid_exchange()
+        exchange["holidays"]["explicit"].append({
+            "date": "2025-06-01", "name": "Eid al-Fitr", "status": "closed", "predicted": False,
+        })
+        errors = validator.check_predicted_consistency(exchange, "TEST.json")
+        assert errors == []
+
+    def test_predicted_true_without_suffix_flagged(self):
+        exchange = make_valid_exchange()
+        exchange["holidays"]["explicit"].append({
+            "date": "2025-06-01", "name": "Eid al-Fitr", "status": "closed", "predicted": True,
+        })
+        errors = validator.check_predicted_consistency(exchange, "TEST.json")
+        assert any("2025-06-01" in e for e in errors)
+
+    def test_predicted_false_with_suffix_flagged(self):
+        exchange = make_valid_exchange()
+        exchange["holidays"]["explicit"].append({
+            "date": "2025-06-01", "name": "Eid al-Fitr (predicted)", "status": "closed", "predicted": False,
+        })
+        errors = validator.check_predicted_consistency(exchange, "TEST.json")
+        assert any("2025-06-01" in e for e in errors)
+
+
 # ──────────────────────────────────────────────────────────────
 
 class TestFixtures:

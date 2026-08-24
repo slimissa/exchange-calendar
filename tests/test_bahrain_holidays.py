@@ -175,10 +175,14 @@ class TestXBAHEidAlFitr:
         assert "2029-02-14" in explicit_dates
 
     def test_eid_al_fitr_names_contain_predicted(self, explicit_dates):
-        """All Eid al-Fitr holidays should be marked as predicted."""
-        for entry in explicit_dates.values():
-            if "Eid al-Fitr" in entry["name"]:
-                assert "predicted" in entry["name"].lower()
+        """Eid al-Fitr holidays for years still ahead of an official
+        announcement should be marked predicted. 2025 is reconciled
+        (M7): its date is now confirmed by an actual moon-sighting
+        announcement, so those entries no longer carry the suffix."""
+        for date_str, entry in explicit_dates.items():
+            if "Eid al-Fitr" in entry["name"] and not date_str.startswith("2025"):
+                assert "predicted" in entry["name"].lower(), \
+                    f"{date_str} ({entry['name']}) should still be predicted"
 
 
 # ──────────────────────────────────────────────────────────────

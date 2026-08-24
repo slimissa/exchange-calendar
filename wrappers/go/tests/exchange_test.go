@@ -65,6 +65,26 @@ func createRealXNYS() *exchangecalendar.Exchange {
 	return exchangecalendar.MustNewExchange(data)
 }
 
+func createRealXSAU() *exchangecalendar.Exchange {
+	data := exchangecalendar.ExchangeData{
+		Code:        "XSAU",
+		Name:        "Saudi Stock Exchange (Tadawul)",
+		MIC:         "XSAU",
+		Timezone:    "Asia/Riyadh",
+		WeekendDays: []int{4, 5}, // Friday, Saturday (Monday=0)
+		RegularHours: exchangecalendar.RegularHours{
+			Open:  "10:00",
+			Close: "15:00",
+		},
+		Holidays: exchangecalendar.HolidaysData{
+			Explicit:  []exchangecalendar.HolidayEntry{},
+			Generated: []exchangecalendar.HolidayEntry{},
+		},
+	}
+
+	return exchangecalendar.MustNewExchange(data)
+}
+
 // ──────────────────────────────────────────────────────────────
 // Constructor validation
 // ──────────────────────────────────────────────────────────────
@@ -560,5 +580,23 @@ func TestRealXNYS(t *testing.T) {
 	}
 	if !e.IsOpen("2025-07-07", "10:00") {
 		t.Error("expected open on July 7 (Monday)")
+	}
+}
+
+// TestRealXSAUIslamicWeekend is a regression test for the wrapper
+// hardcoding Saturday/Sunday as the weekend for every exchange,
+// regardless of its actual weekend system. XSAU (Saudi) observes a
+// Friday/Saturday weekend.
+func TestRealXSAUIslamicWeekend(t *testing.T) {
+	e := createRealXSAU()
+
+	if !e.IsHoliday("2025-08-22") {
+		t.Error("expected Friday 2025-08-22 to be a holiday (weekend)")
+	}
+	if !e.IsHoliday("2025-08-23") {
+		t.Error("expected Saturday 2025-08-23 to be a holiday (weekend)")
+	}
+	if e.IsHoliday("2025-08-24") {
+		t.Error("expected Sunday 2025-08-24 to be a trading day, not a holiday")
 	}
 }

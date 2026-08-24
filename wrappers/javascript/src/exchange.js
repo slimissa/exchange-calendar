@@ -50,6 +50,7 @@ class Exchange {
         this.name = data.name;
         this.mic = data.mic;
         this.timezone = data.timezone;
+        this.weekendDays = data.weekend_days || [5, 6];
         this.regularHours = data.regular_hours;
         this.extendedHours = data.extended_hours || {};
         this.sessions = data.sessions || [];
@@ -154,8 +155,12 @@ class Exchange {
     _isWeekend(dateStr) {
         Exchange._validateDateFormat(dateStr);
         const d = new Date(`${dateStr}T00:00:00Z`);
-        const day = d.getUTCDay();
-        return day === 0 || day === 6; // 0=Sunday, 6=Saturday
+        // getUTCDay() is 0=Sunday..6=Saturday. weekend_days is stored using
+        // 0=Monday..6=Sunday (matching the Python wrapper / stored data),
+        // so convert before comparing — do not compare raw getUTCDay()
+        // output against weekend_days directly.
+        const isoDay = (d.getUTCDay() + 6) % 7; // 0=Monday..6=Sunday
+        return this.weekendDays.includes(isoDay);
     }
 
     _isHoliday(dateStr) {
@@ -223,7 +228,14 @@ class Exchange {
      *   7. Otherwise → OPEN (or EARLY_CLOSE on early close day)
      *
      * @param {string} dateStr — ISO date (YYYY-MM-DD).
-     * @param {string} timeStr — 24-hour time (HH:MM).
+     * @param {string} timeStr — 24-hour time (HH:MM), interpreted as
+     *   this exchange's LOCAL time (per its `timezone` field), NOT
+     *   UTC and not the caller's local time. This wrapper does no
+     *   timezone conversion -- `timezone` is exposed for
+     *   informational purposes only and is not read by any
+     *   status/date logic here. If you have a UTC or other-zone
+     *   timestamp, convert it to this exchange's local time yourself
+     *   before calling statusAt().
      * @returns {string} SessionStatus value.
      */
     statusAt(dateStr, timeStr) {

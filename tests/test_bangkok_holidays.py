@@ -75,7 +75,9 @@ class TestXBKKProperties:
 
     def test_generation_range(self, xbkk):
         assert "generation_range" in xbkk
-        assert xbkk["generation_range"] == ["2025-01-01", "2029-12-31"]
+        # Shortened from 2029-12-31 per C4: XBKK's data only covers
+        # through 2027 (Buddhist/lunar holidays aren't rule-generatable).
+        assert xbkk["generation_range"] == ["2025-01-01", "2027-12-31"]
 
     def test_ad_hoc_closures_empty(self, xbkk):
         assert xbkk.get("ad_hoc_closures", []) == []

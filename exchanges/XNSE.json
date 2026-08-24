@@ -171,6 +171,13 @@
         "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
       },
       {
+        "date": "2026-11-08",
+        "name": "Diwali (Laxmi Pujan)",
+        "status": "closed",
+        "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays",
+        "weekend_exception": true
+      },
+      {
         "date": "2026-11-09",
         "name": "Diwali Balipratipada",
         "status": "closed",
@@ -451,5 +458,12 @@
     ]
   },
   "ad_hoc_closures": [],
-  "generation_range": ["2025-01-01", "2029-12-31"]
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
+  ]
 }

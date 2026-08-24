@@ -44,6 +44,7 @@ type ExchangeData struct {
 	Name          string         `json:"name"`
 	MIC           string         `json:"mic"`
 	Timezone      string         `json:"timezone"`
+	WeekendDays   []int          `json:"weekend_days,omitempty"`
 	RegularHours  RegularHours   `json:"regular_hours"`
 	ExtendedHours ExtendedHours  `json:"extended_hours,omitempty"`
 	Sessions      []Session      `json:"sessions,omitempty"`
@@ -67,6 +68,7 @@ type Exchange struct {
 	Name         string
 	MIC          string
 	Timezone     string
+	WeekendDays  []int
 	RegularHours RegularHours
 	ExtendedHours ExtendedHours
 	Sessions     []Session
@@ -90,6 +92,7 @@ func NewExchange(data ExchangeData) (*Exchange, error) {
 		Name:          data.Name,
 		MIC:           data.MIC,
 		Timezone:      data.Timezone,
+		WeekendDays:   weekendDaysOrDefault(data.WeekendDays),
 		RegularHours:  data.RegularHours,
 		ExtendedHours: data.ExtendedHours,
 		Sessions:      data.Sessions,
@@ -197,13 +200,36 @@ func (e *Exchange) indexEntry(entry HolidayEntry) {
 // Internal helpers
 // ──────────────────────────────────────────────────────────────
 
+// weekendDaysOrDefault falls back to Saturday/Sunday (in Monday=0..Sunday=6
+// form) if the registry data omits weekend_days, for backward compatibility
+// with older data files.
+func weekendDaysOrDefault(wd []int) []int {
+	if len(wd) == 0 {
+		return []int{5, 6}
+	}
+	return wd
+}
+
+// isoWeekday converts Go's time.Weekday (Sunday=0..Saturday=6) into the
+// Monday=0..Sunday=6 convention used by weekend_days in the registry data.
+// Do not compare time.Weekday() directly against WeekendDays — the two
+// use different day-numbering conventions.
+func isoWeekday(d time.Time) int {
+	return (int(d.Weekday()) + 6) % 7
+}
+
 func (e *Exchange) isWeekend(dateStr string) bool {
 	d, err := time.Parse("2006-01-02", dateStr)
 	if err != nil {
 		return false // validateDateFormat should catch this before
 	}
-	day := d.Weekday()
-	return day == time.Saturday || day == time.Sunday
+	day := isoWeekday(d)
+	for _, wd := range e.WeekendDays {
+		if day == wd {
+			return true
+		}
+	}
+	return false
 }
 
 // ──────────────────────────────────────────────────────────────
@@ -246,6 +272,13 @@ func (e *Exchange) EarlyCloseTime(dateStr string) string {
 //  5. Before regular open → pre_market
 //  6. After regular close → after_hours
 //  7. Otherwise → open (or early_close on early close day)
+//
+// timeStr (HH:MM) is interpreted as this exchange's LOCAL time (per
+// its Timezone field), NOT UTC and not the caller's local time. This
+// wrapper does no timezone conversion -- Timezone is exposed for
+// informational purposes only and is not read by any status/date
+// logic here. If you have a UTC or other-zone timestamp, convert it
+// to this exchange's local time yourself before calling StatusAt.
 func (e *Exchange) StatusAt(dateStr, timeStr string) (SessionStatus, error) {
 	if err := validateDateFormat(dateStr); err != nil {
 		return "", err

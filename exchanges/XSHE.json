@@ -356,5 +356,12 @@
     "recurrence_rules": []
   },
   "ad_hoc_closures": [],
-  "generation_range": ["2025-01-01", "2029-12-31"]
+  "generation_range": [
+    "2025-01-01",
+    "2027-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "code": "XOSL",
-  "name": "Oslo B\u00f8rs",
+  "name": "Oslo Børs",
   "mic": "XOSL",
   "timezone": "Europe/Oslo",
   "regular_hours": {
@@ -401,5 +401,9 @@
   "generation_range": [
     "2025-01-01",
     "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
   ]
 }

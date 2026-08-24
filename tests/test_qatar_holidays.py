@@ -177,10 +177,14 @@ class TestXQSEEidAlFitr:
         assert "2029-02-14" in explicit_dates
 
     def test_eid_al_fitr_names_contain_predicted(self, explicit_dates):
-        """All Eid al-Fitr holidays should be marked as predicted."""
-        for entry in explicit_dates.values():
-            if "Eid al-Fitr" in entry["name"]:
-                assert "predicted" in entry["name"].lower(), f"Missing 'predicted': {entry['name']}"
+        """Eid al-Fitr holidays for years still ahead of an official
+        announcement should be marked predicted. 2025 is reconciled
+        (M7): its date is now confirmed by an actual moon-sighting
+        announcement, so those entries no longer carry the suffix."""
+        for date_str, entry in explicit_dates.items():
+            if "Eid al-Fitr" in entry["name"] and not date_str.startswith("2025"):
+                assert "predicted" in entry["name"].lower(), \
+                    f"{date_str} ({entry['name']}) should still be predicted"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -306,9 +310,17 @@ class TestXQSEStructure:
         assert 40 <= len(explicit_dates) <= 55, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
-        """All source URLs should be from qe.com.qa."""
-        for entry in explicit_dates.values():
-            assert "qe.com.qa" in entry["source_url"], f"Unexpected source: {entry['source_url']}"
+        """QE's own trading-calendar page is the source for fixed
+        national holidays. Islamic New Year and Mawlid are sourced
+        from Saudi's Umm al-Qura calendar directly (H2), since these
+        were added on the basis of Qatar generally following Saudi's
+        Islamic dates -- not independently verified against QE's own
+        calendar -- so citing Umm al-Qura is the honest source."""
+        for date_str, entry in explicit_dates.items():
+            if "ummulqura.org.sa" in entry["source_url"]:
+                continue
+            assert "qe.com.qa" in entry["source_url"], \
+                f"{date_str}: Unexpected source: {entry['source_url']}"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -394,3 +406,43 @@ class TestXQSENationalDay:
         """2026 (Friday) and 2027 (Saturday) — National Day not in explicit."""
         assert "2026-12-18" not in explicit_dates  # Friday
         assert "2027-12-18" not in explicit_dates  # Saturday
+
+
+# ──────────────────────────────────────────────────────────────
+# Islamic New Year and Mawlid (H2)
+# ──────────────────────────────────────────────────────────────
+
+class TestXQSEIslamicNewYearAndMawlid:
+    """Regression coverage for H2: XQSE previously had Eid al-Fitr and
+    Eid al-Adha but was missing Islamic New Year and Mawlid entirely,
+    despite being a Friday/Saturday-weekend, Islamic-calendar
+    exchange. Dates sourced from Saudi's Umm al-Qura calendar (Qatar
+    generally follows Saudi for these), not independently verified
+    against Qatar's own announcements."""
+
+    ISLAMIC_NEW_YEAR = {
+        2025: "2025-06-26", 2026: "2026-06-16", 2027: "2027-06-06",
+        2029: "2029-05-14",
+        # 2028-05-26 is a Friday -- no entry expected for that year.
+    }
+    MAWLID = {
+        2025: "2025-09-04", 2026: "2026-08-25", 2027: "2027-08-15",
+        2029: "2029-07-24",
+        # 2028-08-04 is a Friday -- no entry expected for that year.
+    }
+
+    def test_islamic_new_year_present_when_not_weekend(self, explicit_dates):
+        for year, d in self.ISLAMIC_NEW_YEAR.items():
+            assert d in explicit_dates, f"Missing Islamic New Year for {year}: {d}"
+            assert explicit_dates[d]["name"] == "Islamic New Year (predicted)"
+
+    def test_islamic_new_year_2028_correctly_absent(self, explicit_dates):
+        assert "2028-05-26" not in explicit_dates
+
+    def test_mawlid_present_when_not_weekend(self, explicit_dates):
+        for year, d in self.MAWLID.items():
+            assert d in explicit_dates, f"Missing Prophet's Birthday for {year}: {d}"
+            assert explicit_dates[d]["name"] == "Prophet's Birthday (predicted)"
+
+    def test_mawlid_2028_correctly_absent(self, explicit_dates):
+        assert "2028-08-04" not in explicit_dates

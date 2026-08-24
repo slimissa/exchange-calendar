@@ -9,6 +9,7 @@
     "name",
     "mic",
     "timezone",
+    "weekend_days",
     "regular_hours",
     "holidays",
     "generation_range"
@@ -33,6 +34,13 @@
         "type": "string",
         "description": "IANA timezone identifier.",
         "pattern": "^[A-Za-z0-9_+\\-]+/[A-Za-z0-9_+\\-]+(?:/[A-Za-z0-9_+\\-]+)?$"
+    },
+    "weekend_days": {
+        "type": "array",
+        "description": "The two weekday numbers (0=Monday..6=Sunday) that are non-trading weekend days for this exchange.",
+        "items": {"type": "integer", "minimum": 0, "maximum": 6},
+        "minItems": 2,
+        "maxItems": 2
     },
     "regular_hours": {
       "type": "object",
@@ -145,6 +153,15 @@
               "status": {
                 "type": "string",
                 "enum": ["closed", "early_close", "delayed_open", "special_session"]
+              },
+              "weekend_exception": {
+                "type": "boolean",
+                "description": "Set true only when this date legitimately falls on the exchange's own weekend_days AND is still independently sourced as a distinct, exchange-gazetted event (e.g. a specific Muhurat trading session on Diwali). This is a deliberate, narrow override of the weekend-date validation check, not a general escape hatch -- do not set it just to silence a validation failure."
+              },
+              "predicted": {
+                "type": "boolean",
+                "default": false,
+                "description": "True when this date is a calculated/estimated moon-sighting-dependent date (e.g. Islamic-calendar holidays) that has not yet been confirmed by an official announcement, and may still shift by a day. For backward compatibility, many existing entries instead encode this as a '(predicted)' suffix on `name` rather than this field -- both forms are currently accepted, but new entries should prefer this structured field since it's queryable without string-parsing `name`."
               },
               "early_close_time": {
                 "type": "string",

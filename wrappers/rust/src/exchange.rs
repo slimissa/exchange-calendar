@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use chrono::{Datelike, Duration, NaiveDate, NaiveTime, Weekday};
+use chrono::{Datelike, Duration, NaiveDate, NaiveTime};
 
 use serde::{Deserialize, Serialize};
 use crate::session::SessionStatus;
@@ -45,6 +45,7 @@ pub struct ExtendedHours {
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Session {
     /// Session type: "lunch_break", "auction", or "other".
+    #[serde(rename = "type")]
     pub session_type: String,
 
     /// Start time for interval sessions (lunch break).
@@ -93,6 +94,10 @@ pub struct ExchangeData {
 
     /// IANA timezone (e.g., "America/New_York").
     pub timezone: String,
+
+    /// The two weekday numbers (Monday=0..Sunday=6) that are this
+    /// exchange's non-trading weekend days.
+    pub weekend_days: Option<Vec<u8>>,
 
     /// Regular trading hours.
     pub regular_hours: RegularHours,
@@ -202,6 +207,10 @@ pub struct Exchange {
     /// IANA timezone.
     pub timezone: String,
 
+    /// The two weekday numbers (Monday=0..Sunday=6) that are this
+    /// exchange's non-trading weekend days.
+    pub weekend_days: Vec<u8>,
+
     /// Regular trading hours.
     pub regular_hours: RegularHours,
 
@@ -229,6 +238,7 @@ impl Exchange {
             name: data.name.clone(),
             mic: data.mic.clone(),
             timezone: data.timezone.clone(),
+            weekend_days: data.weekend_days.clone().unwrap_or_else(|| vec![5, 6]),
             regular_hours: data.regular_hours.clone(),
             extended_hours: data.extended_hours.clone().unwrap_or_default(),
             sessions: data.sessions.clone().unwrap_or_default(),
@@ -318,9 +328,13 @@ impl Exchange {
         }
     }
 
-    /// Return true if the date is Saturday or Sunday.
-    fn is_weekend(date: &NaiveDate) -> bool {
-        matches!(date.weekday(), Weekday::Sat | Weekday::Sun)
+    /// Return true if the date falls on one of this exchange's weekend
+    /// days. Uses `weekend_days` (Monday=0..Sunday=6) rather than a
+    /// hardcoded Saturday/Sunday assumption — some exchanges (e.g. Gulf
+    /// markets) observe a Friday/Saturday weekend instead.
+    fn is_weekend(&self, date: &NaiveDate) -> bool {
+        let iso_day = date.weekday().num_days_from_monday() as u8; // 0=Monday..6=Sunday
+        self.weekend_days.contains(&iso_day)
     }
 
     // ──────────────────────────────────────────────────────────
@@ -331,7 +345,7 @@ impl Exchange {
     /// Includes weekends and explicit/generated holidays.
     pub fn is_holiday(&self, date_str: &str) -> bool {
         if let Ok(date) = Self::validate_date_format(date_str) {
-            if Self::is_weekend(&date) {
+            if self.is_weekend(&date) {
                 return true;
             }
         }
@@ -355,13 +369,21 @@ impl Exchange {
     /// Return the full session status at a specific date and time.
     ///
     /// Returns an error if date or time format is invalid.
+    ///
+    /// `time_str` (HH:MM) is interpreted as this exchange's LOCAL time
+    /// (per its `timezone` field), NOT UTC and not the caller's local
+    /// time. This wrapper does no timezone conversion -- `timezone` is
+    /// exposed for informational purposes only and is not read by any
+    /// status/date logic here. If you have a UTC or other-zone
+    /// timestamp, convert it to this exchange's local time yourself
+    /// before calling `status_at`.
     pub fn status_at(&self, date_str: &str, time_str: &str) -> Result<SessionStatus, QueryError> {
         let date = Self::validate_date_format(date_str)?;
         let time = NaiveTime::parse_from_str(time_str, "%H:%M")
             .map_err(|_| QueryError::InvalidTime(time_str.to_string()))?;
 
         // Weekend
-        if Self::is_weekend(&date) {
+        if self.is_weekend(&date) {
             return Ok(SessionStatus::Closed);
         }
 
@@ -514,6 +536,7 @@ mod tests {
             name: "Test Exchange".to_string(),
             mic: "TEST".to_string(),
             timezone: "Europe/London".to_string(),
+            weekend_days: Some(vec![5, 6]),
             regular_hours: RegularHours {
                 open: "09:00".to_string(),
                 close: "17:00".to_string(),
@@ -566,6 +589,7 @@ mod tests {
             name: "Test".to_string(),
             mic: "TEST".to_string(),
             timezone: "Europe/London".to_string(),
+            weekend_days: Some(vec![5, 6]),
             regular_hours: RegularHours { open: "09:00".to_string(), close: "17:00".to_string() },
             extended_hours: None,
             sessions: None,
@@ -583,6 +607,7 @@ mod tests {
             name: "Test".to_string(),
             mic: "OTHER".to_string(),
             timezone: "Europe/London".to_string(),
+            weekend_days: Some(vec![5, 6]),
             regular_hours: RegularHours { open: "09:00".to_string(), close: "17:00".to_string() },
             extended_hours: None,
             sessions: None,
@@ -600,6 +625,7 @@ mod tests {
             name: "Test".to_string(),
             mic: "TEST".to_string(),
             timezone: "Europe/London".to_string(),
+            weekend_days: Some(vec![5, 6]),
             regular_hours: RegularHours { open: "9am".to_string(), close: "17:00".to_string() },
             extended_hours: None,
             sessions: None,
@@ -617,6 +643,7 @@ mod tests {
             name: "Test".to_string(),
             mic: "TEST".to_string(),
             timezone: "Europe/London".to_string(),
+            weekend_days: Some(vec![5, 6]),
             regular_hours: RegularHours { open: "17:00".to_string(), close: "09:00".to_string() },
             extended_hours: None,
             sessions: None,
@@ -761,5 +788,51 @@ mod tests {
     fn test_display() {
         let e = create_test_exchange();
         assert_eq!(format!("{}", e), "Test Exchange (TEST)");
+    }
+
+    fn create_islamic_weekend_test_exchange() -> Exchange {
+        // Models a Friday/Saturday-weekend exchange (e.g. XSAU) to guard
+        // against reintroducing the hardcoded Saturday/Sunday weekend bug.
+        let data = ExchangeData {
+            code: "TEST".to_string(),
+            name: "Test Islamic Weekend Exchange".to_string(),
+            mic: "TEST".to_string(),
+            timezone: "Asia/Riyadh".to_string(),
+            weekend_days: Some(vec![4, 5]), // Friday, Saturday (Monday=0)
+            regular_hours: RegularHours {
+                open: "10:00".to_string(),
+                close: "15:00".to_string(),
+            },
+            extended_hours: None,
+            sessions: None,
+            holidays: HolidaysData {
+                explicit: vec![],
+                generated: vec![],
+            },
+            ad_hoc_closures: None,
+            generation_range: None,
+        };
+        Exchange::new(data).unwrap()
+    }
+
+    #[test]
+    fn test_islamic_weekend_friday_is_holiday() {
+        let e = create_islamic_weekend_test_exchange();
+        // 2025-08-22 is a Friday
+        assert!(e.is_holiday("2025-08-22"));
+    }
+
+    #[test]
+    fn test_islamic_weekend_saturday_is_holiday() {
+        let e = create_islamic_weekend_test_exchange();
+        // 2025-08-23 is a Saturday
+        assert!(e.is_holiday("2025-08-23"));
+    }
+
+    #[test]
+    fn test_islamic_weekend_sunday_is_trading_day() {
+        let e = create_islamic_weekend_test_exchange();
+        // 2025-08-24 is a Sunday — a trading day under a Friday/Saturday weekend
+        assert!(!e.is_holiday("2025-08-24"));
     }
 }

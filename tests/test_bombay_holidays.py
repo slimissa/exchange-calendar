@@ -174,8 +174,15 @@ class TestXBOM2026:
         assert "Dussehra" in explicit_dates["2026-10-20"]["name"]
 
     def test_diwali(self, explicit_dates):
-        """Nov 8 is Sunday — no explicit. Nov 9 (Monday) IS explicit."""
-        assert "2026-11-08" not in explicit_dates
+        """H3 correction: Nov 8, 2026 (Sunday) is officially gazetted by
+        NSE/BSE as the Laxmi Pujan trading holiday, with Muhurat trading
+        held on it -- a distinct, sourced event, not just an ordinary
+        closed Sunday. It IS explicit, flagged weekend_exception so the
+        H1 weekend-date validator doesn't treat it as a data error.
+        Nov 9 (Monday, Balipratipada) is unaffected and unrelated."""
+        assert "2026-11-08" in explicit_dates
+        assert explicit_dates["2026-11-08"]["name"] == "Diwali (Laxmi Pujan)"
+        assert explicit_dates["2026-11-08"].get("weekend_exception") is True
         assert "2026-11-09" in explicit_dates
 
 
@@ -310,7 +317,13 @@ class TestXBOMRecurrence:
 
 class TestXBOMStructure:
     def test_no_weekend_dates(self, explicit_dates):
-        for date_str in explicit_dates:
+        """No explicit date should fall on the weekend, EXCEPT entries
+        explicitly flagged weekend_exception (H3: NSE/BSE's Diwali
+        Laxmi Pujan 2026 is a real, sourced, gazetted exception to
+        this rule -- see schema.json's weekend_exception field)."""
+        for date_str, entry in explicit_dates.items():
+            if entry.get("weekend_exception"):
+                continue
             d = date.fromisoformat(date_str)
             assert d.weekday() < 5, f"Weekend date: {date_str}"
 

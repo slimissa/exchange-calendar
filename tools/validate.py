@@ -23,6 +23,7 @@ Exit codes:
 
 import json
 import sys
+from datetime import date
 from pathlib import Path
 
 try:
@@ -232,6 +233,104 @@ def validate_business_logic(exchange: dict, filename: str) -> list:
     return errors
 
 
+def check_weekend_dates(exchange: dict, filename: str) -> list:
+    """H1 check 1: no explicit holiday date should fall on this
+    exchange's own weekend days. Uses weekend_days (added in C1)
+    instead of assuming Saturday/Sunday for every exchange."""
+    errors = []
+    weekend = exchange.get("weekend_days", [5, 6])
+    for holiday in exchange.get("holidays", {}).get("explicit", []):
+        try:
+            d = date.fromisoformat(holiday["date"])
+        except (KeyError, ValueError):
+            continue  # malformed date is caught by schema validation
+        if holiday.get("weekend_exception"):
+            continue  # deliberate, sourced exception -- see schema.json
+        if d.weekday() in weekend:
+            errors.append(
+                f"{filename}: holiday on weekend day: {holiday['date']} ({holiday.get('name', '?')})"
+            )
+    return errors
+
+
+def check_islamic_holidays(exchange: dict, filename: str) -> list:
+    """H1 check 2: Friday/Saturday-weekend (Islamic-calendar) exchanges
+    should have both Eid al-Fitr and Eid al-Adha somewhere in their
+    explicit holidays. Would have caught C2/C3 (XSAU/XDFM shipping
+    with zero Islamic holidays) automatically.
+
+    Uses sorted(weekend_days) == [4, 5] rather than an exact-order
+    list comparison, since weekend_days is a set of two days and
+    should be compared as such -- [5, 4] means the same thing as
+    [4, 5] and shouldn't silently skip this check.
+    """
+    errors = []
+    weekend = exchange.get("weekend_days", [])
+    if sorted(weekend) == [4, 5]:
+        names = [h.get("name", "").lower() for h in exchange.get("holidays", {}).get("explicit", [])]
+        if not any("eid al-fitr" in n for n in names):
+            errors.append(f"{filename}: Islamic-weekend exchange missing Eid al-Fitr")
+        if not any("eid al-adha" in n for n in names):
+            errors.append(f"{filename}: Islamic-weekend exchange missing Eid al-Adha")
+    return errors
+
+
+def check_generation_range(exchange: dict, filename: str) -> list:
+    """H1 check 3: explicit holiday data should actually extend close
+    to the end of the claimed generation_range, not just start within
+    it. Would have caught C4 (XBKK/XCOL/XMOS/XSHE/XSTC claiming
+    coverage through 2029 while data stopped years earlier)
+    automatically. A gap under 90 days is tolerated since the last
+    holiday of a range doesn't necessarily fall on the range's final
+    day."""
+    errors = []
+    dates = [h["date"] for h in exchange.get("holidays", {}).get("explicit", []) if "date" in h]
+    gen_range = exchange.get("generation_range", [])
+    if not dates or len(gen_range) != 2:
+        return errors
+    latest = max(dates)
+    range_end = gen_range[1]
+    try:
+        if latest < range_end:
+            gap_days = (date.fromisoformat(range_end) - date.fromisoformat(latest)).days
+            if gap_days > 90:
+                errors.append(
+                    f"{filename}: generation_range claims coverage through {range_end} "
+                    f"but explicit data ends {latest} ({gap_days}d gap)"
+                )
+    except ValueError:
+        pass  # malformed date is caught by schema validation
+    return errors
+
+
+def check_predicted_consistency(exchange: dict, filename: str) -> list:
+    """M6: the structured `predicted` field and the legacy '(predicted)'
+    name suffix should not contradict each other. Both forms are
+    currently accepted (backward compatibility), but if an entry
+    explicitly sets `predicted` one way while its name suggests the
+    other, that's a real data inconsistency worth catching -- not
+    every entry needs the field, so this only checks entries where
+    `predicted` is explicitly present."""
+    errors = []
+    for holiday in exchange.get("holidays", {}).get("explicit", []):
+        if "predicted" not in holiday:
+            continue  # field is optional; absence is not an error
+        name = holiday.get("name", "")
+        name_says_predicted = "(predicted)" in name
+        field_says_predicted = bool(holiday["predicted"])
+        if field_says_predicted and not name_says_predicted:
+            errors.append(
+                f"{filename}: {holiday.get('date', '?')}: predicted=true but "
+                f"name has no '(predicted)' suffix: {name!r}"
+            )
+        elif not field_says_predicted and name_says_predicted:
+            errors.append(
+                f"{filename}: {holiday.get('date', '?')}: predicted=false but "
+                f"name still has '(predicted)' suffix: {name!r}"
+            )
+    return errors
+
+
 def validate_cross_exchange(all_exchanges: dict, filenames: list) -> list:
     """Validate consistency across all exchange files. Returns list of error strings."""
     errors = []
@@ -297,6 +396,10 @@ def main():
 
         errors = validate_schema(exchange, schema, exchange_file.name)
         errors.extend(validate_business_logic(exchange, exchange_file.name))
+        errors.extend(check_weekend_dates(exchange, exchange_file.name))
+        errors.extend(check_islamic_holidays(exchange, exchange_file.name))
+        errors.extend(check_generation_range(exchange, exchange_file.name))
+        errors.extend(check_predicted_consistency(exchange, exchange_file.name))
         all_errors.extend(errors)
 
     # Cross-exchange validation

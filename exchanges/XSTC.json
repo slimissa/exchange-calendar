@@ -298,6 +298,10 @@
   "ad_hoc_closures": [],
   "generation_range": [
     "2025-01-01",
-    "2029-12-31"
+    "2029-09-30"
+  ],
+  "weekend_days": [
+    5,
+    6
   ]
 }

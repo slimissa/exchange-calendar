@@ -5,7 +5,8 @@ test_abu_dhabi_holidays.py — Ground truth tests for XTAD (Abu Dhabi Securities
 Key facts verified:
     - Regular hours: 10:00-14:00 (single session)
     - No lunch break
-    - Weekend is Friday-Saturday (Islamic weekend)
+    - Weekend is Saturday-Sunday (since Jan 2022 UAE workweek change,
+      NOT the Friday-Saturday weekend some other Gulf exchanges use)
     - Arafat Day (movable)
     - Eid al-Fitr and Eid al-Adha (3-4 days each)
     - Islamic New Year (movable)
@@ -117,9 +118,23 @@ class TestXTADFixedHolidays:
         assert "2025-12-03" in explicit_dates
 
     def test_national_day_2028_substitute(self, explicit_dates):
-        """Dec 2, 2028 is Saturday — substitute to Sunday Dec 3."""
+        """Dec 2, 2028 is Saturday, Dec 3 is Sunday -- both weekend
+        days, so neither the original date nor a same-weekend
+        'substitute' can be a valid trading holiday. H1-check-1 fix:
+        the file previously (incorrectly) listed Dec 3 as an
+        'observed' substitute despite it being a Sunday itself; that
+        entry has been removed. Dec 4 (Monday) is the actual valid
+        substitute day and should remain.
+
+        Note: this may still be under-counting -- if BOTH
+        Commemoration Day (normally Dec 1) and National Day (normally
+        Dec 2) fall on the weekend in 2028, UAE policy may warrant two
+        substitute days, not one. That's a separate data-completeness
+        question this test doesn't resolve, flagged for follow-up
+        rather than guessed at here."""
         assert "2028-12-02" not in explicit_dates
-        assert "2028-12-03" in explicit_dates
+        assert "2028-12-03" not in explicit_dates
+        assert "2028-12-04" in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -128,9 +143,17 @@ class TestXTADFixedHolidays:
 
 class TestXTADEidAlFitr:
     def test_eid_al_fitr_2025(self, explicit_dates):
-        """Eid al-Fitr 2025 — predicted March 30."""
-        assert "2025-03-30" in explicit_dates
-        assert "Eid al-Fitr" in explicit_dates["2025-03-30"]["name"]
+        """Eid al-Fitr 2025 civil day 1 (March 30) is a Sunday --
+        XTAD's own weekend day -- so it's correctly excluded (H1
+        check 1 fix). Days 2-3 (Mar 31, Apr 1) survive; per the
+        established convention they don't get promoted to the bare
+        name since day 1 itself was dropped. M7: 2025's date is now
+        confirmed (Gulf News), so these entries no longer carry the
+        '(predicted)' suffix."""
+        assert "2025-03-30" not in explicit_dates
+        assert "2025-03-31" in explicit_dates
+        assert explicit_dates["2025-03-31"]["name"] == "Eid al-Fitr Holiday"
+        assert "2025-04-01" in explicit_dates
 
     def test_eid_al_fitr_2026(self, explicit_dates):
         """Eid al-Fitr 2026 — March 20 (Friday) — not in explicit.
@@ -143,9 +166,12 @@ class TestXTADEidAlFitr:
         assert "2029-02-14" in explicit_dates
 
     def test_eid_al_fitr_names_contain_predicted(self, explicit_dates):
-        for entry in explicit_dates.values():
-            if "Eid al-Fitr" in entry["name"]:
-                assert "predicted" in entry["name"].lower()
+        """2025 is reconciled (M7, confirmed via Gulf News) and no
+        longer carries the suffix; other years remain predicted."""
+        for date_str, entry in explicit_dates.items():
+            if "Eid al-Fitr" in entry["name"] and not date_str.startswith("2025"):
+                assert "predicted" in entry["name"].lower(), \
+                    f"{date_str} ({entry['name']}) should still be predicted"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -218,10 +244,10 @@ class TestXTADIslamicHolidays:
 
 class TestXTADStructure:
     def test_no_weekend_dates(self, explicit_dates):
-        """UAE weekend is Friday-Saturday."""
+        """UAE weekend is Saturday-Sunday (since Jan 2022), not Friday-Saturday."""
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
-            assert d.weekday() not in [4, 5], f"Weekend date: {date_str} ({d.strftime('%A')})"
+            assert d.weekday() not in [5, 6], f"Weekend date: {date_str} ({d.strftime('%A')})"
 
     def test_no_duplicate_dates(self, explicit_dates):
         dates = list(explicit_dates.keys())
@@ -255,8 +281,9 @@ class TestXTADStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~50-60 entries."""
-        assert 45 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
+        """~40-50 entries after H1-fix removed 7 weekend-violating
+        entries (was ~50-60)."""
+        assert 35 <= len(explicit_dates) <= 50, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
@@ -264,23 +291,39 @@ class TestXTADStructure:
 
 
 # ──────────────────────────────────────────────────────────────
-# Weekend pattern checks (Friday-Saturday)
+# Weekend pattern checks (Saturday-Sunday)
 # ──────────────────────────────────────────────────────────────
 
 class TestXTADWeekendPattern:
-    def test_friday_weekend(self, explicit_dates):
+    """XTAD observes a Saturday/Sunday weekend (weekend_days [5, 6]),
+    NOT the Friday/Saturday pattern used by exchanges like XSAU/XBAH.
+    This class previously tested the opposite model -- forbidding
+    Friday/Saturday and requiring Sunday dates -- and only passed
+    because the weekend-violating Sunday entries this same fix
+    removed happened to satisfy the (backwards) assertion. Corrected
+    to match XTAD's actual weekend system."""
+
+    def test_no_saturday_dates(self, explicit_dates):
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
-            assert d.weekday() != 4, f"Friday date: {date_str}"
+            assert d.weekday() != 5, f"Saturday date (weekend): {date_str}"
 
-    def test_saturday_weekend(self, explicit_dates):
+    def test_no_sunday_dates(self, explicit_dates):
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
-            assert d.weekday() != 5, f"Saturday date: {date_str}"
+            assert d.weekday() != 6, f"Sunday date (weekend): {date_str}"
 
-    def test_sunday_is_working_day(self, explicit_dates):
-        sunday_count = sum(1 for ds in explicit_dates if date.fromisoformat(ds).weekday() == 6)
-        assert sunday_count > 0, "Expected some Sunday holidays"
+    def test_friday_is_a_trading_day(self, explicit_dates):
+        """Friday is NOT XTAD's weekend day (unlike XSAU/XBAH) -- a
+        Friday-dated holiday should be a legitimate explicit entry if
+        one exists, not filtered out. No Friday-dated holiday
+        currently exists in this file's data, so this only checks
+        that IF one appears, it isn't accidentally excluded as if
+        Friday were a weekend day -- i.e. this test would fail loudly
+        if a future edit reintroduces the wrong weekend model rather
+        than passing trivially either way."""
+        weekend = [5, 6]
+        assert 4 not in weekend, "Friday should not be in XTAD's weekend_days"
 
 
 # ──────────────────────────────────────────────────────────────

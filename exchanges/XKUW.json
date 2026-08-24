@@ -36,27 +36,31 @@
       },
       {
         "date": "2025-03-30",
-        "name": "Eid al-Fitr (predicted)",
+        "name": "Eid al-Fitr",
         "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "predicted": false
       },
       {
         "date": "2025-03-31",
-        "name": "Eid al-Fitr Holiday (predicted)",
+        "name": "Eid al-Fitr Holiday",
         "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "predicted": false
       },
       {
         "date": "2025-04-01",
-        "name": "Eid al-Fitr Holiday (predicted)",
+        "name": "Eid al-Fitr Holiday",
         "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "predicted": false
       },
       {
         "date": "2025-04-02",
-        "name": "Eid al-Fitr Holiday (predicted)",
+        "name": "Eid al-Fitr Holiday",
         "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "predicted": false
       },
       {
         "date": "2025-06-08",
@@ -284,6 +288,10 @@
   "ad_hoc_closures": [],
   "generation_range": [
     "2025-01-01",
-    "2029-12-31"
+    "2029-07-24"
+  ],
+  "weekend_days": [
+    4,
+    5
   ]
 }

@@ -81,7 +81,11 @@ class TestXMOSProperties:
 
     def test_generation_range(self, xmos):
         assert "generation_range" in xmos
-        assert xmos["generation_range"] == ["2025-01-01", "2029-12-31"]
+        # Shortened from 2029-12-31 per C4: XMOS's data only covers
+        # through 2026. Note: unlike the other 4 exchanges in C4, XMOS's
+        # holidays are all fixed-date (no lunar/lunisolar dependency) —
+        # this is a plain data-entry gap, not a rule-engine limitation.
+        assert xmos["generation_range"] == ["2025-01-01", "2026-12-31"]
 
     def test_ad_hoc_closures_empty(self, xmos):
         assert xmos.get("ad_hoc_closures", []) == []

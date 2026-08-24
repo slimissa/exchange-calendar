@@ -155,6 +155,27 @@ Follow the schema in `schema.json`. Every entry must include:
 }
 ```
 
+> **Lunar/lunisolar-calendar exchanges have shorter generation ranges.**
+> Thailand (XBKK), Sri Lanka (XCOL), Vietnam (XSTC), and China (XSHG,
+> XSHE) observe holidays whose dates depend on a lunar or lunisolar
+> calendar (Buddhist Poya days, Deepavali, Tet, Spring Festival, etc.).
+> The recurrence-rule engine (`generate_dates.py`) only supports
+> `fixed_date`, `fixed_with_weekend_adjustment`, `nth_weekday`,
+> `last_weekday`, and `easter_offset` — none of which can compute a
+> lunar/lunisolar date, so these holidays must be manually researched
+> and entered year by year rather than rule-generated. `generation_range`
+> for these exchanges should honestly reflect only the years that have
+> actually been researched, even if that's short of the registry's
+> typical 5-year horizon — do not set a longer range on the assumption
+> that recurrence rules will fill the gap, since for these exchanges
+> they can't.
+>
+> This is a tooling gap specific to lunar/lunisolar calendars, not a
+> general excuse to leave a short range — if an exchange's holidays are
+> all fixed-date or Easter-based (as with Moscow/XMOS, which has no
+> lunar dependency at all) and its range is still short, that's a plain
+> data-entry gap to fix, not something covered by this note.
+
 ### Step 4: Validate
 
 ```bash
@@ -209,10 +230,10 @@ git push
 
 **Only weekdays should appear in explicit arrays.**
 
-For Western weekend exchanges (65 exchanges):
+For Western weekend exchanges (67 exchanges, including XDFM and XTAD — UAE moved to a Sat-Sun workweek in Jan 2022):
 - No Saturday or Sunday dates
 
-For Islamic weekend exchanges (9 exchanges: XSAU, XDFM, XTAD, XQSE, XBAH, XKUW, XMUS, XCAI, XDHA):
+For Islamic weekend exchanges (7 exchanges: XSAU, XQSE, XBAH, XKUW, XMUS, XCAI, XDHA):
 - No Friday or Saturday dates
 - Sunday is a working day
 
@@ -224,7 +245,8 @@ For Islamic weekend exchanges (9 exchanges: XSAU, XDFM, XTAD, XQSE, XBAH, XKUW, 
 | UK substitute days | XLON, XDUB |
 | No substitutes | XETR, XSWX, XWBO, Nordic, Baltic, Poland, Czech |
 | Open on civil holidays | Euronext (XPAR, XAMS, XBRU, XLIS), XMAD |
-| Islamic weekend (Fri-Sat) | XSAU, XDFM, XTAD, XQSE, XBAH, XKUW, XMUS, XCAI, XDHA |
+| Islamic weekend (Fri-Sat) | XSAU, XQSE, XBAH, XKUW, XMUS, XCAI, XDHA |
+| Western weekend despite Gulf region (Sat-Sun) | XDFM, XTAD (UAE moved to Sat-Sun in Jan 2022) |
 | Orthodox Easter | XATH, XBUL, XMOS |
 | Buddhist holidays | XBKK, XCOL |
 | Chinese lunar | XSHG, XSHE, XHKG, XTAI |

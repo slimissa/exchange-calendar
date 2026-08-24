@@ -78,8 +78,8 @@ The registry is language-agnostic by design. The JSON is the contract.
 
 | Weekend | Exchanges |
 |---------|-----------|
-| Saturday-Sunday (Western) | 65 exchanges |
-| Friday-Saturday (Islamic) | 9 exchanges (Saudi, UAE, Qatar, Bahrain, Kuwait, Oman, Egypt, Bangladesh) |
+| Saturday-Sunday (Western) | 67 exchanges (includes UAE: XDFM, XTAD — moved to Sat-Sun in Jan 2022) |
+| Friday-Saturday (Islamic) | 7 exchanges (Saudi, Qatar, Bahrain, Kuwait, Oman, Egypt, Bangladesh) |
 
 ### Calendar Systems Supported
 

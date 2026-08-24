@@ -40,7 +40,7 @@
       },
       {
         "date": "2025-05-19",
-        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
+        "name": "Commemoration of Atatürk, Youth and Sports Day",
         "status": "closed",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
       },
@@ -83,7 +83,7 @@
       },
       {
         "date": "2026-05-19",
-        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
+        "name": "Commemoration of Atatürk, Youth and Sports Day",
         "status": "closed",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
       },
@@ -120,7 +120,7 @@
       },
       {
         "date": "2027-05-19",
-        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
+        "name": "Commemoration of Atatürk, Youth and Sports Day",
         "status": "closed",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
       },
@@ -151,7 +151,7 @@
       },
       {
         "date": "2028-05-19",
-        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
+        "name": "Commemoration of Atatürk, Youth and Sports Day",
         "status": "closed",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar"
       },
@@ -232,7 +232,7 @@
         "rule": "fixed_date",
         "month": 5,
         "day": 19,
-        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
+        "name": "Commemoration of Atatürk, Youth and Sports Day",
         "status": "closed"
       },
       {
@@ -262,5 +262,9 @@
   "generation_range": [
     "2025-01-01",
     "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
   ]
 }

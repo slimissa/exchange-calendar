@@ -171,6 +171,13 @@
         "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.html"
       },
       {
+        "date": "2026-11-08",
+        "name": "Diwali (Laxmi Pujan)",
+        "status": "closed",
+        "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.html",
+        "weekend_exception": true
+      },
+      {
         "date": "2026-11-09",
         "name": "Diwali Balipratipada",
         "status": "closed",
@@ -454,5 +461,9 @@
   "generation_range": [
     "2025-01-01",
     "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
   ]
 }

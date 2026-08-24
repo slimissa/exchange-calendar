@@ -45,6 +45,12 @@ def xnys(registry):
 
 
 @pytest.fixture(scope="module")
+def xsau(registry):
+    """Return the XSAU exchange (Friday/Saturday weekend)."""
+    return registry.get("XSAU")
+
+
+@pytest.fixture(scope="module")
 def xlon(registry):
     """Return the XLON exchange."""
     return registry.get("XLON")
@@ -262,6 +268,16 @@ class TestHolidayDetection:
     def test_xnys_weekend_is_holiday(self, xnys):
         assert xnys.is_holiday("2025-03-15") is True  # Saturday
         assert xnys.is_holiday("2025-03-16") is True  # Sunday
+
+    def test_xsau_islamic_weekend(self, xsau):
+        """XSAU (Saudi) observes a Friday/Saturday weekend, not Sat/Sun.
+
+        Regression test for the wrapper hardcoding Sat/Sun for every
+        exchange regardless of its actual weekend system.
+        """
+        assert xsau.is_holiday("2025-08-22") is True   # Friday — weekend
+        assert xsau.is_holiday("2025-08-23") is True   # Saturday — weekend
+        assert xsau.is_holiday("2025-08-24") is False  # Sunday — trading day
 
     def test_xnys_weekday_not_holiday(self, xnys):
         assert xnys.is_holiday("2025-03-14") is False  # Friday

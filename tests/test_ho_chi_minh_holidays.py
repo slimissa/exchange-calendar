@@ -77,7 +77,9 @@ class TestXSTCProperties:
 
     def test_generation_range(self, xstc):
         assert "generation_range" in xstc
-        assert xstc["generation_range"] == ["2025-01-01", "2029-12-31"]
+        # Shortened from 2029-12-31 per C4: XSTC's data only covers
+        # through 2029-09-30 (Tet is lunar, not rule-generatable).
+        assert xstc["generation_range"] == ["2025-01-01", "2029-09-30"]
 
     def test_ad_hoc_closures_empty(self, xstc):
         assert xstc.get("ad_hoc_closures", []) == []

@@ -138,7 +138,13 @@ class TestStructure:
             assert len(gen_range) == 2, f"{exchange['code']}: generation_range must have 2 dates"
 
     def test_generation_ranges_are_similar(self, exchange_list):
-        """All exchanges have similar generation ranges (within 10 years)."""
+        """Most exchanges share a similar generation range, but a small
+        number of lunar/lunisolar-calendar exchanges (XBKK, XCOL, XMOS,
+        XSHE, XSTC) intentionally have shorter ranges reflecting actual
+        researched data coverage, since the recurrence-rule engine
+        doesn't support lunar/lunisolar holidays (see C4). Allow up to
+        a 4-year spread rather than 2 to accommodate that gap without
+        masking a genuinely wrong far-outlier."""
         if len(exchange_list) < 2:
             pytest.skip("Need at least 2 exchanges to compare ranges")
 
@@ -146,7 +152,7 @@ class TestStructure:
         end_years = [int(e["generation_range"][1][:4]) for e in exchange_list]
 
         assert max(start_years) - min(start_years) <= 2, "Start years differ by more than 2"
-        assert max(end_years) - min(end_years) <= 2, "End years differ by more than 2"
+        assert max(end_years) - min(end_years) <= 4, "End years differ by more than 4"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -252,3 +258,106 @@ class TestHolidayOverlap:
             if "Bank Holiday" in entry["name"] or "Boxing" in entry["name"] or "Easter Monday" in entry["name"]:
                 assert entry["name"] not in xnys_names, \
                     f"UK-only holiday name '{entry['name']}' should not be in XNYS" 
+
+# ──────────────────────────────────────────────────────────────
+# Islamic holiday date divergence (C6)
+# ──────────────────────────────────────────────────────────────
+
+class TestIslamicDateDivergence:
+    """Regression coverage for C6: all 6 Islamic-weekend exchanges with
+    Islamic holidays previously had byte-for-byte identical dates,
+    which is what let the wrapper's uniform-Saudi-date generation go
+    undetected. Egypt (XCAI) and Oman (XMUS) use their own
+    moon-sighting committees and can legitimately diverge from Saudi
+    (and from each other) by +/-1 day. This does NOT mean they must
+    always diverge -- Eid al-Adha 2025 actually matched Saudi's date
+    for both countries, confirmed independently -- so these tests
+    check for the specific, sourced divergence that exists, not for
+    divergence in general."""
+
+    ISLAMIC_EXCHANGES = ("XBAH", "XCAI", "XDFM", "XKUW", "XMUS", "XQSE", "XSAU", "XTAD")
+
+    def _islamic_dates(self, all_exchanges, code):
+        """Identify Islamic-calendar holiday entries by name keyword,
+        NOT by the '(predicted)' suffix -- that conflates "is this an
+        Islamic holiday" with "is this still unconfirmed", and breaks
+        the moment an entry gets reconciled (M7) and loses the
+        suffix. Use the structured `predicted` field or the legacy
+        suffix separately if you specifically need confirmed-vs-
+        pending status."""
+        data = all_exchanges[f"{code}.json"]
+        keywords = ("Eid al-Fitr", "Eid al-Adha", "Islamic New Year", "Prophet's Birthday", "Ashura")
+        return {
+            h["date"] for h in data["holidays"]["explicit"]
+            if any(k in h["name"] for k in keywords)
+        }
+
+    def test_islamic_dates_not_assumed_uniform(self, all_exchanges):
+        """The 6+ Islamic-holiday-bearing exchanges should not all be
+        byte-for-byte identical -- that was the C6 bug. At least one
+        pair should differ, since XCAI/XMUS's 2025 Eid al-Fitr dates
+        are now confirmed to differ from XSAU/XBAH/XKUW/XQSE/XTAD."""
+        present = [c for c in self.ISLAMIC_EXCHANGES if f"{c}.json" in all_exchanges]
+        date_sets = {c: self._islamic_dates(all_exchanges, c) for c in present}
+
+        distinct_sets = {frozenset(s) for s in date_sets.values() if s}
+        assert len(distinct_sets) > 1, (
+            "All Islamic-holiday exchanges have identical date sets -- "
+            "this is the exact uniform-Saudi-date bug C6 fixed"
+        )
+
+    def test_xcai_xmus_eid_al_fitr_2025_diverges_from_saudi(self, all_exchanges):
+        """Confirmed via Dar al-Ifta / MERA: Egypt and Oman's Eid
+        al-Fitr 2025 fell on 2025-03-31, one day after Saudi's
+        2025-03-30 (Umm al-Qura). M7: both dates are now reconciled
+        (predicted=false, no '(predicted)' suffix)."""
+        if "XSAU.json" not in all_exchanges:
+            pytest.skip("XSAU required")
+        xsau_dates = self._islamic_dates(all_exchanges, "XSAU")
+        assert "2025-03-30" in xsau_dates
+
+        for code in ("XCAI", "XMUS"):
+            if f"{code}.json" not in all_exchanges:
+                continue
+            dates = self._islamic_dates(all_exchanges, code)
+            assert "2025-03-31" in dates, f"{code} should have Eid al-Fitr on 2025-03-31"
+            assert "2025-03-30" not in dates, f"{code} should NOT have the Saudi-only 2025-03-30 date"
+
+    def test_xcai_xmus_eid_al_adha_2025_matches_saudi(self, all_exchanges):
+        """Confirmed via Ahram Online / Gulf News: unlike Eid al-Fitr,
+        Egypt and Oman's Eid al-Adha 2025 DID match Saudi's date
+        (civil day 1 = 2025-06-06, a Friday). Divergence is not
+        automatic or uniform -- this guards against 'fixing' C6 by
+        blindly shifting every Islamic date by a day, which would have
+        broken this case.
+
+        XCAI, XMUS, and XSAU all observe a Friday/Saturday weekend, so
+        2025-06-06 (Friday) itself is correctly absent from `explicit`
+        (weekend already covers it, per the C2 convention) -- what
+        should match across all three is the first surviving day,
+        2025-06-08 (Sunday), carrying the 'Holiday' suffix rather than
+        the bare name since civil day 1 was dropped for the weekend."""
+        for code in ("XCAI", "XMUS", "XSAU"):
+            if f"{code}.json" not in all_exchanges:
+                continue
+            dates = self._islamic_dates(all_exchanges, code)
+            assert "2025-06-06" not in dates, f"{code}: Friday should be excluded (weekend)"
+            assert "2025-06-08" in dates, f"{code} should have Eid al-Adha on 2025-06-08 (first non-weekend day)"
+
+    def test_xbah_xqse_xkuw_follow_saudi_2025(self, all_exchanges):
+        """Confirmed via Gulf News: Bahrain, Qatar, and Kuwait all
+        announced Eid al-Fitr 2025 for 2025-03-30, matching Saudi --
+        unlike Egypt and Oman. These 3 should NOT be changed.
+
+        XTAD is deliberately excluded here (unlike the original
+        version of this test): 2025-03-30 is a Sunday, XTAD's own
+        weekend day, so it's correctly absent from XTAD's explicit
+        data regardless of whether UAE's civil announcement matched
+        Saudi -- the weekend exclusion and the moon-sighting
+        divergence question are two independent things, and this
+        test previously conflated them for XTAD specifically."""
+        for code in ("XBAH", "XQSE", "XKUW"):
+            if f"{code}.json" not in all_exchanges:
+                continue
+            dates = self._islamic_dates(all_exchanges, code)
+            assert "2025-03-30" in dates, f"{code} should have Eid al-Fitr on 2025-03-30 (matches Saudi)"

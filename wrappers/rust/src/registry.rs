@@ -283,6 +283,7 @@ mod tests {
             name: format!("{} Exchange", code),
             mic: code.to_string(),
             timezone: "Europe/London".to_string(),
+            weekend_days: Some(vec![5, 6]),
             regular_hours: RegularHours {
                 open: "09:00".to_string(),
                 close: "17:00".to_string(),
@@ -479,5 +480,37 @@ mod tests {
         let registry = Registry::from_str(json).unwrap();
         assert_eq!(registry.version, "1.0.0");
         assert_eq!(registry.len(), 1);
+    }
+
+    /// Regression test for C7: `Session` previously had no `#[serde(rename
+    /// = "type")]`, so `Registry::load` failed on any exchange with a
+    /// non-empty `sessions` array. This loads the real, shipped
+    /// calendar.json (not a hand-built fixture) and checks an exchange
+    /// that actually has sessions.
+    ///
+    /// Note: XNYS has an empty `sessions` array and would not have
+    /// caught this bug — XASX (auction sessions) and XTKS (lunch break)
+    /// do.
+    #[test]
+    fn test_load_real_calendar_registry() {
+        let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../../calendar.json");
+        let registry = Registry::load(path.to_str().unwrap())
+            .expect("Failed to load real calendar.json");
+
+        let xasx = registry.get("XASX").expect("XASX not found");
+        assert_eq!(xasx.code, "XASX");
+        assert!(
+            !xasx.sessions.is_empty(),
+            "Expected XASX to have auction sessions"
+        );
+        assert_eq!(xasx.sessions[0].session_type, "auction");
+
+        let xtks = registry.get("XTKS").expect("XTKS not found");
+        assert!(
+            !xtks.sessions.is_empty(),
+            "Expected XTKS to have a lunch_break session"
+        );
+        assert_eq!(xtks.sessions[0].session_type, "lunch_break");
     }
 }

@@ -17,22 +17,18 @@
         "source_url": "https://www.adx.ae/trading-calendar"
       },
       {
-        "date": "2025-03-30",
-        "name": "Eid al-Fitr (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar"
-      },
-      {
         "date": "2025-03-31",
-        "name": "Eid al-Fitr Holiday (predicted)",
+        "name": "Eid al-Fitr Holiday",
         "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar"
+        "source_url": "https://www.adx.ae/trading-calendar",
+        "predicted": false
       },
       {
         "date": "2025-04-01",
-        "name": "Eid al-Fitr Holiday (predicted)",
+        "name": "Eid al-Fitr Holiday",
         "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar"
+        "source_url": "https://www.adx.ae/trading-calendar",
+        "predicted": false
       },
       {
         "date": "2025-06-05",
@@ -161,26 +157,8 @@
         "source_url": "https://www.adx.ae/trading-calendar"
       },
       {
-        "date": "2027-05-16",
-        "name": "Eid al-Adha (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar"
-      },
-      {
         "date": "2027-05-17",
         "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar"
-      },
-      {
-        "date": "2027-06-06",
-        "name": "Islamic New Year (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar"
-      },
-      {
-        "date": "2027-08-15",
-        "name": "Prophet's Birthday (predicted)",
         "status": "closed",
         "source_url": "https://www.adx.ae/trading-calendar"
       },
@@ -215,20 +193,8 @@
         "source_url": "https://www.adx.ae/trading-calendar"
       },
       {
-        "date": "2028-05-07",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar"
-      },
-      {
         "date": "2028-05-25",
         "name": "Islamic New Year (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar"
-      },
-      {
-        "date": "2028-12-03",
-        "name": "National Day (observed)",
         "status": "closed",
         "source_url": "https://www.adx.ae/trading-calendar"
       },
@@ -287,12 +253,6 @@
         "source_url": "https://www.adx.ae/trading-calendar"
       },
       {
-        "date": "2029-12-02",
-        "name": "National Day",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar"
-      },
-      {
         "date": "2029-12-03",
         "name": "National Day Holiday",
         "status": "closed",
@@ -305,5 +265,9 @@
   "generation_range": [
     "2025-01-01",
     "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
   ]
 }

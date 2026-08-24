@@ -191,6 +191,12 @@
         "source_url": "https://www.cse.lk/trading-calendar"
       },
       {
+        "date": "2026-11-09",
+        "name": "Deepavali (observed)",
+        "status": "closed",
+        "source_url": "https://www.cse.lk/trading-calendar"
+      },
+      {
         "date": "2026-12-04",
         "name": "Unduvap Full Moon Poya Day",
         "status": "closed",
@@ -286,6 +292,10 @@
   "ad_hoc_closures": [],
   "generation_range": [
     "2025-01-01",
-    "2029-12-31"
+    "2027-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
   ]
 }
