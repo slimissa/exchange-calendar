@@ -79,10 +79,11 @@
     "tools/build.py": "dff63d3f29d097529d3b941d2c1f583d3efdc2b7a700c9632e99a536e59881ab",
     "tools/generate_checksums.py": "9e3cb0d1e47e44bb497104fe2410ff69988cc57d94a8d38613ddf7c987b9a645",
     "tools/generate_dates.py": "884e0fbb7791c1a8d668ed6dfa2e7b2ec2e449e51242a10ba774462676d97bef",
-    "tools/update_from_exchange.py": "09e65e91aa759d8c24500d29864dd47f2f47aa8a082f6a14b798b5632566c81f",
-    "tools/validate.py": "6d5463c7e592fbeb83918ebae905f0bc73eab1c58e69e9ad7902530ab4306a97",
+    "tools/live_fetcher_check.py": "bf971240bb03e38a1a7a86aca09f9647dccb7cff81b1a77c4cb13b35f1eefe8a",
+    "tools/update_from_exchange.py": "5f301b8a0683dad7056601c405ae1c43cedc770d45cce5be9b4285ddc932f562",
+    "tools/validate.py": "591c2952fe9f49f902cb19ad8df06d8d8e1c008b5c6b109dbf60aaf90fcc8e81",
     "tools/verify_checksums.py": "ce94243ab814f1f44cb9c35a3aee998a14ced75aaaaf08d8c037d87440beb78d",
     "tools/verify_predicted_dates.py": "a3f0f12f5f6d05ba89cd7b8c8aee7ab96dad867ad5e4bb69d778df214b4d709a"
   },
-  "generated": "2026-08-26T11:33:52+00:00"
+  "generated": "2026-09-07T21:04:25+00:00"
 }
