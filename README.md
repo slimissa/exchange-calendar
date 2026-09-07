@@ -657,8 +657,6 @@ exchange-calendar/
 
 Please report security vulnerabilities to:
 - **GitHub**: [Private vulnerability reporting](https://github.com/slimissa/exchange-calendar/security/advisories/new)
-- **Email**: security@exchange-calendar.dev
-
 See [SECURITY.md](SECURITY.md) for the complete security policy.
 
 ---

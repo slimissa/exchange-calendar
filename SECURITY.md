@@ -48,12 +48,12 @@ Older versions may still work but are not guaranteed to receive fixes.
 
 ## Reporting a Vulnerability
 
-### 📢 Responsible Disclosure
+### Responsible Disclosure
 
 We take security seriously and appreciate your help in disclosing
 vulnerabilities responsibly.
 
-### 🚨 Critical Vulnerabilities (Private Reporting)
+### ritical Vulnerabilities (Private Reporting)
 
 If you discover a security vulnerability, **DO NOT** open a public issue.
 Instead, report it privately:
@@ -77,7 +77,7 @@ Include in your email:
 - Suggested fix (if available)
 - Your preferred method of contact
 
-### 📋 What to Include in Your Report
+### What to Include in Your Report
 
 A complete report should include:
 
@@ -123,7 +123,7 @@ A complete report should include:
 - [Related issue](https://github.com/...)
 ```
 
-### ⏱️ Response Timeline
+### Response Timeline
 
 | Severity | Acknowledgment | Initial Assessment | Fix Released |
 |----------|----------------|-------------------|--------------|
