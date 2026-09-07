@@ -1,0 +1,363 @@
+{
+  "code": "XATH",
+  "name": "Athens Stock Exchange",
+  "mic": "XATH",
+  "timezone": "Europe/Athens",
+  "regular_hours": {
+    "open": "10:30",
+    "close": "17:00"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-01-06",
+        "name": "Epiphany",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-03-03",
+        "name": "Clean Monday",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-03-25",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday (Orthodox)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-04-21",
+        "name": "Easter Monday (Orthodox)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-06-09",
+        "name": "Holy Spirit Monday",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-08-15",
+        "name": "Dormition of Mary",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-10-28",
+        "name": "Ochi Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.athexgroup.gr/trading-calendar",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-12-26",
+        "name": "Boxing Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2025-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.athexgroup.gr/trading-calendar",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2026-01-06",
+        "name": "Epiphany",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2026-02-23",
+        "name": "Clean Monday",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2026-03-25",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2026-04-10",
+        "name": "Good Friday (Orthodox)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2026-04-13",
+        "name": "Easter Monday (Orthodox)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2026-06-01",
+        "name": "Holy Spirit Monday",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2026-10-28",
+        "name": "Ochi Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2026-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.athexgroup.gr/trading-calendar",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.athexgroup.gr/trading-calendar",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2027-01-06",
+        "name": "Epiphany",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2027-03-15",
+        "name": "Clean Monday",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2027-03-25",
+        "name": "Independence Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2027-04-30",
+        "name": "Good Friday (Orthodox)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2027-05-03",
+        "name": "Easter Monday (Orthodox)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2027-06-21",
+        "name": "Holy Spirit Monday",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2027-10-28",
+        "name": "Ochi Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2027-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.athexgroup.gr/trading-calendar",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Christmas Day (substitute)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.athexgroup.gr/trading-calendar",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2028-01-03",
+        "name": "New Year's Day (substitute)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2028-03-06",
+        "name": "Clean Monday",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday (Orthodox)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2028-04-17",
+        "name": "Easter Monday (Orthodox)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2028-06-05",
+        "name": "Holy Spirit Monday",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2028-12-26",
+        "name": "Boxing Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2029-02-26",
+        "name": "Clean Monday",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2029-04-06",
+        "name": "Good Friday (Orthodox)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2029-04-09",
+        "name": "Easter Monday (Orthodox)",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2029-05-28",
+        "name": "Holy Spirit Monday",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2029-12-24",
+        "name": "Christmas Eve",
+        "status": "early_close",
+        "source_url": "https://www.athexgroup.gr/trading-calendar",
+        "early_close_time": "13:00"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2029-12-26",
+        "name": "Boxing Day",
+        "status": "closed",
+        "source_url": "https://www.athexgroup.gr/trading-calendar"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "New Year's Eve",
+        "status": "early_close",
+        "source_url": "https://www.athexgroup.gr/trading-calendar",
+        "early_close_time": "13:00"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
+  ]
+}

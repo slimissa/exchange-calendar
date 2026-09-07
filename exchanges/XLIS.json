@@ -1,0 +1,349 @@
+{
+  "code": "XLIS",
+  "name": "Euronext Lisbon",
+  "mic": "XLIS",
+  "timezone": "Europe/Lisbon",
+  "regular_hours": {
+    "open": "09:00",
+    "close": "17:30"
+  },
+  "sessions": [],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-04-21",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-04-25",
+        "name": "Freedom Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-06-10",
+        "name": "Portugal Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-06-19",
+        "name": "Corpus Christi",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-08-15",
+        "name": "Assumption Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-12-01",
+        "name": "Restoration of Independence",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-04-06",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-06-10",
+        "name": "Portugal Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-06-04",
+        "name": "Corpus Christi",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-10-05",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-12-01",
+        "name": "Restoration of Independence",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-03-29",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-05-03",
+        "name": "Labour Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-06-10",
+        "name": "Portugal Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-05-27",
+        "name": "Corpus Christi",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-10-05",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-11-01",
+        "name": "All Saints' Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-12-01",
+        "name": "Restoration of Independence",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2027-12-27",
+        "name": "Christmas Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-01-03",
+        "name": "New Year's Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-04-17",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-04-25",
+        "name": "Freedom Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-06-15",
+        "name": "Corpus Christi",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-08-15",
+        "name": "Assumption Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-10-05",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-11-01",
+        "name": "All Saints' Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-12-01",
+        "name": "Restoration of Independence",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-12-08",
+        "name": "Immaculate Conception",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-04-02",
+        "name": "Easter Monday",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-04-25",
+        "name": "Freedom Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-05-31",
+        "name": "Corpus Christi",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-08-15",
+        "name": "Assumption Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-10-05",
+        "name": "Republic Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-11-01",
+        "name": "All Saints' Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.euronext.com/en/trading-calendar"
+      }
+    ],
+    "recurrence_rules": []
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
+  ]
+}

@@ -1,0 +1,533 @@
+{
+  "code": "XKLS",
+  "name": "Bursa Malaysia",
+  "mic": "XKLS",
+  "timezone": "Asia/Kuala_Lumpur",
+  "regular_hours": {
+    "open": "09:00",
+    "close": "17:00"
+  },
+  "extended_hours": {
+    "pre_market": {
+      "open": "08:30",
+      "close": "09:00"
+    },
+    "after_hours": {
+      "open": "17:00",
+      "close": "17:15"
+    }
+  },
+  "sessions": [
+    {
+      "type": "lunch_break",
+      "open": "12:30",
+      "close": "14:30"
+    }
+  ],
+  "holidays": {
+    "explicit": [
+      {
+        "date": "2025-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-01-29",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-01-30",
+        "name": "Chinese New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-02-11",
+        "name": "Thaipusam",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-03-31",
+        "name": "Hari Raya Puasa",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-04-01",
+        "name": "Hari Raya Puasa Day 2",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-05-12",
+        "name": "Wesak Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-06-02",
+        "name": "Agong's Birthday",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-06-27",
+        "name": "Awal Muharram",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-09-01",
+        "name": "National Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-09-05",
+        "name": "Maulidur Rasul",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-09-16",
+        "name": "Malaysia Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-10-20",
+        "name": "Deepavali",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-02-02",
+        "name": "Thaipusam / Federal Territory Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-02-17",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-02-18",
+        "name": "Chinese New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-03-20",
+        "name": "Hari Raya Puasa",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Hari Raya Puasa Day 2 (observed)",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Hari Raya Haji",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-06-01",
+        "name": "Agong's Birthday",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-06-02",
+        "name": "Wesak Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-06-17",
+        "name": "Awal Muharram",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-08-25",
+        "name": "Maulidur Rasul",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-08-31",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-09-16",
+        "name": "Malaysia Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-11-09",
+        "name": "Deepavali (observed)",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2026-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-01-22",
+        "name": "Thaipusam",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-02-01",
+        "name": "Thaipusam / Federal Territory Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-02-08",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-02-09",
+        "name": "Chinese New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-03-10",
+        "name": "Hari Raya Puasa",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-03-11",
+        "name": "Hari Raya Puasa Day 2",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Hari Raya Haji",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-05-20",
+        "name": "Wesak Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-06-07",
+        "name": "Agong's Birthday / Awal Muharram",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-08-16",
+        "name": "Maulidur Rasul",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-08-31",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-09-16",
+        "name": "Malaysia Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2027-10-28",
+        "name": "Deepavali",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-01-26",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-01-27",
+        "name": "Chinese New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-02-01",
+        "name": "Thaipusam / Federal Territory Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-02-09",
+        "name": "Thaipusam",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-02-28",
+        "name": "Hari Raya Puasa",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-02-29",
+        "name": "Hari Raya Puasa Day 2",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-05-05",
+        "name": "Hari Raya Haji",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-05-09",
+        "name": "Wesak Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-05-25",
+        "name": "Awal Muharram",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-06-05",
+        "name": "Agong's Birthday",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-08-04",
+        "name": "Maulidur Rasul",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-08-31",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-10-17",
+        "name": "Deepavali",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2028-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-01-01",
+        "name": "New Year's Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-01-30",
+        "name": "Thaipusam",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-02-01",
+        "name": "Thaipusam / Federal Territory Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-02-13",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Chinese New Year Holiday",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-02-15",
+        "name": "Hari Raya Puasa",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-02-16",
+        "name": "Hari Raya Puasa Day 2",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-04-24",
+        "name": "Hari Raya Haji",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-05-01",
+        "name": "Labour Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-05-14",
+        "name": "Awal Muharram",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-05-28",
+        "name": "Wesak Day (observed)",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-06-04",
+        "name": "Agong's Birthday",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-07-24",
+        "name": "Maulidur Rasul",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-08-31",
+        "name": "National Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-11-05",
+        "name": "Deepavali",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      },
+      {
+        "date": "2029-12-25",
+        "name": "Christmas Day",
+        "status": "closed",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+      }
+    ],
+    "recurrence_rules": [
+      {
+        "rule": "fixed_date",
+        "month": 1,
+        "day": 1,
+        "name": "New Year's Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 5,
+        "day": 1,
+        "name": "Labour Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 8,
+        "day": 31,
+        "name": "National Day (Merdeka Day)",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 9,
+        "day": 16,
+        "name": "Malaysia Day",
+        "status": "closed"
+      },
+      {
+        "rule": "fixed_date",
+        "month": 12,
+        "day": 25,
+        "name": "Christmas Day",
+        "status": "closed"
+      }
+    ]
+  },
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
+  "weekend_days": [
+    5,
+    6
+  ]
+}
