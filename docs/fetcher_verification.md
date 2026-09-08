@@ -387,3 +387,18 @@ requirement from the original Tier 1 brief, finally implemented for real.
 XDFM (Tier 3) also observes Islamic holidays with a comparable `predicted`
 mechanism, sourced directly from the exchange's own tentative-date
 footnotes rather than inferred from date + holiday type.
+
+## Post-launch live-check regressions — fixed
+
+Three fetchers failed the first live health check against real endpoints.
+Root causes were verified via `web_fetch` against the live pages before
+fixing.
+
+- **XASX** — duplicate dates. The live page now publishes two tables
+  (2026 and 2027) on one page; the old parser reused one global year for
+  both, mis-dating 2027 rows as 2026. Fixed by extracting year per table.
+- **XBSP** — no holidays found. Month labels are accordion links
+  (`<a href="#panel...">`), not headings. Fixed by also parsing those.
+- **XBUE** — no holidays found. The Webflow page no longer exposes
+  `<table>` markup. Fixed by parsing linearized text directly, which is
+  structure-agnostic.

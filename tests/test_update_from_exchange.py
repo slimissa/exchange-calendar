@@ -1977,17 +1977,17 @@ BYMA_SAMPLE_HTML = """
 B3_SAMPLE_HTML = """
 <html><body>
 <h2>Market Calendar 2026</h2>
-<h3>January</h3>
+<a href="#panel10a">January</a>
 <table>
 <tr><td>01</td><td>New Year's Day</td><td>icon</td><td>BM&FBOVESPA Segment: There will be no trading on the equity, private fixed income markets.</td></tr>
 <tr><td>19</td><td>Birthday of Martin Luther King, Jr.</td><td>icon</td><td>B3 Clearinghouse will register, clear and settle all trades, except for agricultural commodity derivatives.</td></tr>
 </table>
-<h3>February</h3>
+<a href="#panel20a">February</a>
 <table>
 <tr><td>16</td><td>Carnival</td><td>icon</td><td>BM&FBOVESPA Segment: There will be no trading on the equity, private fixed income markets.</td></tr>
 <tr><td>18</td><td>Ash Wednesday - Special trading hours</td><td>icon</td><td>Trading and registration will open at 1:00 p.m.</td></tr>
 </table>
-<h3>December</h3>
+<a href="#panel120a">December</a>
 <table>
 <tr><td>25</td><td>Christmas day</td><td>icon</td><td>BM&FBOVESPA Segment: There will be no trading on the equity, private fixed income markets.</td></tr>
 <tr><td>28</td><td>B3 Foreign Exchange Clearinghouse</td><td>icon</td><td>T+2: The Foreign Exchange Clearinghouse will not accept trades for settlement</td></tr>
@@ -2079,6 +2079,23 @@ class TestBymaArgentinaFetcher:
         assert data.mic == "XBUE"
         assert data.currency == "ARS"
 
+    def test_parse_html_works_without_table_tags(self):
+        """Regression: BYMA page is Webflow divs, not tables."""
+        fetcher = BymaArgentinaFetcher()
+        div_based_html = """
+        <html><body>
+        <div>Fecha</div><div>Dia</div><div>Motivo</div>
+        <div><div>16 de Febrero</div><div>Lunes</div><div>Carnaval (1)</div></div>
+        <div><div>10 de Julio</div><div>Viernes</div><div>Día no Laborable con Fines Turísticos (3)</div></div>
+        <div><div>31 de Diciembre de 2026</div><div>Jueves</div><div>Jornada sin Negociación ni Liquidación (4)</div></div>
+        <div>Referencias</div>
+        </body></html>
+        """
+        holidays = fetcher.parse_html(div_based_html)
+        dates = {h.date for h in holidays}
+        assert "2026-02-16" in dates
+        assert "2026-07-10" not in dates
+        assert "2026-12-31" in dates
 
 class TestB3BrazilFetcher:
     """Tests for B3BrazilFetcher (XBSP) -- the most complex fetcher in this registry"""
@@ -2131,6 +2148,19 @@ class TestB3BrazilFetcher:
         assert data is not None
         assert data.mic == "XBSP"
         assert data.currency == "BRL"
+    def test_parse_html_month_via_accordion_link_not_heading(self):
+        """Regression: B3 month labels are accordion links, not headings."""
+        fetcher = B3BrazilFetcher()
+        heading_only_html = """
+        <html><body>
+        <h2>Market Calendar 2026</h2>
+        <h3>January</h3>
+        <table>
+        <tr><td>01</td><td>New Year's Day</td><td>icon</td><td>There will be no trading on the equity markets.</td></tr>
+        </table>
+        </body></html>
+        """
+        assert fetcher.parse_html(heading_only_html) == []
 
 
 HOSE_VIETNAM_SAMPLE_TEXT = """The Hochiminh Stock Exchange (HOSE) announces the trading holiday schedule for 2026 as 

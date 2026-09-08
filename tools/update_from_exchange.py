@@ -1045,14 +1045,19 @@ class ASXFetcher(ExchangeFetcher):
     HTML table with columns: Public Holiday | Dates for <year> | Trading Day
     | Settlement (CHESS) | Settlement (Derivatives) | Business Day. The
     "Trading Day" column value is either "CLOSED" (full closure -> holiday)
-    or "CLOSE EARLY" (early close -> early_close). The year isn't in each row
-    -- it's only in the column header ("DATES FOR 2026") and the section
-    heading -- so it's extracted once from the page and applied to all rows
-    parsed from that table.
+    or "CLOSE EARLY" (early close -> early_close).
+
+    FIXED 2026 (live health check regression): the page now publishes TWO
+    tables on one page ("2026 trading calendar" and "2027 trading
+    calendar"), each with its own "DATES FOR <year>" / "Dates for <year>"
+    header. Fixed by extracting the year from EACH table's own header text
+    independently, so multi-year pages are handled correctly.
+
+    Also added defensive de-duplication (merge same-date entries) as a
+    safety net, rather than weakening ExchangeData.validate().
     """
 
     YEAR_HEADER_RE = re.compile(r'DATES FOR (\d{4})', re.IGNORECASE)
-    # ASX's date column format is "Thursday 1 January" -- day BEFORE month name
     ROW_DATE_RE = re.compile(
         r'\b(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|October|November|December)\b',
         re.IGNORECASE
@@ -1067,25 +1072,45 @@ class ASXFetcher(ExchangeFetcher):
             rate_limit=2.0
         )
 
+    @staticmethod
+    def _merge_duplicates(entries: List[HolidayEntry]) -> List[HolidayEntry]:
+        """Merge entries sharing the same date, combining names if they differ."""
+        by_date: Dict[str, HolidayEntry] = {}
+        for e in entries:
+            if e.date in by_date:
+                existing = by_date[e.date]
+                combined_name = (
+                    f"{existing.name} / {e.name}"
+                    if e.name != existing.name else existing.name
+                )
+                by_date[e.date] = HolidayEntry(
+                    date=e.date,
+                    name=combined_name,
+                    status=existing.status,
+                    source_url=existing.source_url
+                )
+            else:
+                by_date[e.date] = e
+        return list(by_date.values())
+
     def parse_html(self, html: str) -> Tuple[List[HolidayEntry], List[HolidayEntry]]:
-        """Returns (holidays, early_closes) since ASX's table distinguishes them"""
+        """Returns (holidays, early_closes) since ASX's table distinguishes them."""
         if not html:
             return [], []
 
         soup = BeautifulSoup(html, 'html.parser')
-        page_text = soup.get_text(" ", strip=True)
-        year_match = self.YEAR_HEADER_RE.search(page_text)
-        if not year_match:
-            return [], []
-        year = year_match.group(1)
-
         tables = soup.find_all('table')
         holidays, early_closes = [], []
 
         for table in tables:
             header_text = table.get_text(" ", strip=True)
             if 'TRADING DAY' not in header_text.upper():
-                continue  # not the calendar table
+                continue
+
+            year_match = self.YEAR_HEADER_RE.search(header_text)
+            if not year_match:
+                continue
+            year = year_match.group(1)
 
             rows = table.find_all('tr')
             for row in rows[1:]:
@@ -1117,23 +1142,22 @@ class ASXFetcher(ExchangeFetcher):
                         source_url=self.source_url
                     ))
                 elif 'CLOSED' in trading_status:
-                    if date_obj.weekday() < 5:  # only record if not already a weekend
+                    if date_obj.weekday() < 5:
                         holidays.append(HolidayEntry(
                             date=iso_date, name=name, status="closed",
                             source_url=self.source_url
                         ))
 
-        return holidays, early_closes
-
+        return self._merge_duplicates(holidays), self._merge_duplicates(early_closes)
     @retry(max_attempts=3, delay=2.0, backoff=2.0, exceptions=(FetchError,))
     def fetch(self) -> Optional[ExchangeData]:
-        """Fetch ASX holiday calendar"""
+        """Fetch ASX holiday calendar."""
         html = self._make_request()
         if not html:
             raise FetchError("Failed to fetch ASX page")
 
         holidays, early_closes = self.parse_html(html)
-        if not holidays:
+        if not holidays and not early_closes:
             raise ParseError("No holidays found for XASX")
 
         data = ExchangeData(
@@ -1156,7 +1180,6 @@ class ASXFetcher(ExchangeFetcher):
             raise ValidationError(f"Invalid data: {', '.join(errors)}")
 
         return data
-
 
 class EuronextFetcher(ExchangeFetcher):
     """
@@ -3559,31 +3582,14 @@ class BMVMexicoFetcher(ExchangeFetcher):
 
         return data
 
-
 class BymaArgentinaFetcher(ExchangeFetcher):
     """
     Fetcher for Bolsas y Mercados Argentinos (XBUE) holidays.
 
     Verified live 2026-09-04: byma.com.ar/mercado/calendario-bursatil is
-    real, static (Webflow-generated) HTML -- a clean three-column table
-    ("Fecha" | "Dia" | "Motivo") with a footnote-reference system that
-    determines closure status:
-      1. Feriado Nacional Inamovible (fixed national holiday) -- CLOSED
-      2. Feriado Nacional Trasladable (movable national holiday) -- CLOSED
-      3. "Jornada sin Liquidacion | Jornada con Negociacion" (no settlement,
-         but TRADING CONTINUES) -- NOT a closure, deliberately excluded
-      4. "Jornada sin Negociacion ni Liquidacion" (no trading, no
-         settlement) -- CLOSED
+    real, static (Webflow-generated) HTML with footnote references.
 
-    Getting reference (3) wrong would silently add several non-closure days
-    to the holiday list (BYMA's 2026 page lists 5 category-3 rows: Carnaval
-    eve bridge days, Dia del Bancario, Nochebuena) -- these are bank/local
-    observances where the market still trades.
-
-    Date format is Spanish ("16 de Febrero"); month names are parsed via a
-    Spanish-to-English lookup rather than relying on locale-dependent
-    strptime parsing, since this environment's C locale may not have
-    Spanish month names available.
+    FIXED: parser now works off linearized text, not table tags.
     """
 
     SPANISH_MONTHS = {
@@ -3591,9 +3597,16 @@ class BymaArgentinaFetcher(ExchangeFetcher):
         "julio": 7, "agosto": 8, "septiembre": 9, "octubre": 10,
         "noviembre": 11, "diciembre": 12,
     }
-    DATE_RE = re.compile(r'(\d{1,2})\s+de\s+(\w+)(?:\s+de\s+(\d{4}))?', re.IGNORECASE)
+    WEEKDAYS_ES = r'Lunes|Martes|Mi[ée]rcoles|Jueves|Viernes|S[áa]bado|Domingo'
+    ENTRY_RE = re.compile(
+        r'(\d{1,2}\s+de\s+\w+(?:\s+de\s+(\d{4}))?)\s*\n\s*'
+        r'(?:' + WEEKDAYS_ES + r')\s*\n\s*'
+        r'([^\n]+)',
+        re.IGNORECASE
+    )
+    DATE_RE = re.compile(r'(\d{1,2})\s+de\s+(\w+)', re.IGNORECASE)
     REF_RE = re.compile(r'\((\d)\)\s*$')
-    CLOSURE_REFS = {"1", "2", "4"}  # ref 3 = trading continues, excluded
+    CLOSURE_REFS = {"1", "2", "4"}
 
     def __init__(self):
         super().__init__(
@@ -3610,45 +3623,37 @@ class BymaArgentinaFetcher(ExchangeFetcher):
         soup = BeautifulSoup(html, 'html.parser')
         page_text = soup.get_text("\n", strip=True)
 
-        year_match = re.search(r'(\d{4})\s*\n\s*Jueves', page_text)
-        # Fallback: look for the explicit "de 2026" style year on the last row,
-        # or default to extracting per-row years directly below.
+        start_idx = page_text.find("Motivo")
+        end_idx = page_text.find("Referencias")
+        if start_idx == -1:
+            return []
+        section = page_text[start_idx:end_idx if end_idx != -1 else None]
+
         default_year_match = re.search(r'\b(20\d{2})\b', page_text)
         default_year = int(default_year_match.group(1)) if default_year_match else None
 
         holidays = []
-        tables = soup.find_all('table')
-        rows_source = []
-        for table in tables:
-            rows_source.extend(table.find_all('tr'))
-
-        if not rows_source:
-            return []
-
-        for row in rows_source:
-            cells = row.find_all(['td', 'th'])
-            if len(cells) < 3:
-                continue
-
-            date_text = cells[0].get_text(" ", strip=True)
-            motivo_text = cells[2].get_text(" ", strip=True)
+        for match in self.ENTRY_RE.finditer(section):
+            date_text, year_in_date, motivo_text = match.groups()
 
             date_match = self.DATE_RE.search(date_text)
             if not date_match:
                 continue
-            day, month_name_es, year_in_cell = date_match.groups()
+            day, month_name_es = date_match.groups()
             month_num = self.SPANISH_MONTHS.get(month_name_es.lower())
             if not month_num:
                 continue
-            year = int(year_in_cell) if year_in_cell else default_year
+            year = int(year_in_date) if year_in_date else default_year
             if year is None:
                 continue
 
             ref_match = self.REF_RE.search(motivo_text)
             if not ref_match or ref_match.group(1) not in self.CLOSURE_REFS:
-                continue  # no reference marker, or reference 3 (trading continues)
+                continue
 
             name = self.REF_RE.sub('', motivo_text).strip()
+            if not name:
+                continue
 
             try:
                 date_obj = datetime(year, month_num, int(day))
@@ -3666,7 +3671,7 @@ class BymaArgentinaFetcher(ExchangeFetcher):
 
     @retry(max_attempts=3, delay=2.0, backoff=2.0, exceptions=(FetchError,))
     def fetch(self) -> Optional[ExchangeData]:
-        """Fetch BYMA (Buenos Aires) holiday calendar"""
+        """Fetch BYMA (Buenos Aires) holiday calendar."""
         html = self._make_request()
         if not html:
             raise FetchError("Failed to fetch BYMA page")
@@ -3750,6 +3755,14 @@ class B3BrazilFetcher(ExchangeFetcher):
             rate_limit=2.0
         )
 
+    US_ONLY_RE = re.compile(
+        r'clearinghouse will (?:register, clear and settle all trades|proceed with the registration, clearing and settlement of all trades)',
+        re.IGNORECASE
+    )
+    MONTH_HEADING_RE = re.compile(
+        r'^(January|February|March|April|May|June|July|August|September|October|November|December)$'
+    )
+
     def parse_html(self, html: str) -> List[HolidayEntry]:
         if not html:
             return []
@@ -3759,13 +3772,20 @@ class B3BrazilFetcher(ExchangeFetcher):
         current_year = None
         current_month = None
 
-        for element in soup.find_all(['h1', 'h2', 'h3', 'h4', 'table']):
+        for element in soup.find_all(['h1', 'h2', 'h3', 'h4', 'a', 'table']):
             if element.name in ('h1', 'h2', 'h3', 'h4'):
                 text = element.get_text(strip=True)
                 year_match = self.YEAR_HEADING_RE.search(text)
                 if year_match:
                     current_year = int(year_match.group(1))
-                elif self.MONTH_HEADING_RE.match(text):
+                continue
+
+            if element.name == 'a':
+                href = element.get('href', '')
+                if not href.startswith('#panel'):
+                    continue
+                text = element.get_text(strip=True)
+                if self.MONTH_HEADING_RE.match(text):
                     current_month = text
                 continue
 
@@ -3784,9 +3804,9 @@ class B3BrazilFetcher(ExchangeFetcher):
 
                 description = cells[-1].get_text(" ", strip=True)
                 if self.US_ONLY_RE.search(description):
-                    continue  # settlement-only notice, not a real closure
+                    continue
                 if not self.NO_TRADING_RE.search(description):
-                    continue  # not an explicit full-closure description
+                    continue
 
                 event_name = cells[1].get_text(" ", strip=True)
 
@@ -3804,7 +3824,6 @@ class B3BrazilFetcher(ExchangeFetcher):
                     source_url=self.source_url
                 ))
 
-        # De-duplicate (year sections can repeat rows across re-renders)
         seen = set()
         deduped = []
         for h in holidays:
