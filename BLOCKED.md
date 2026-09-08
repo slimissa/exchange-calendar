@@ -483,3 +483,18 @@ rather than deep-diving every exchange from scratch.
   illustration that a well-documented, mature exchange doesn't necessarily
   mean an accessible one.
 - **Verdict:** BLOCKED.
+
+## XSAU — Saudi Exchange / Tadawul
+
+- **Checked:** saudiexchange.sa holiday-calendar page
+- **Finding:** returns 403 Forbidden even with browser-like headers.
+  The exchange has added bot protection. No reliable first-party
+  alternative currently available.
+- **Verdict:** BLOCKED
+
+## XSHE — Shenzhen Stock Exchange
+
+- **Checked:** szse.cn English trading calendar page
+- **Finding:** connection reset / no readable content. Likely
+  geo-blocking or TLS fingerprinting.
+- **Verdict:** BLOCKED

@@ -339,6 +339,7 @@ class ExchangeFetcher(ABC):
         self.rate_limit = rate_limit
         self.parser_type = parser_type
         self.rate_limiter = RateLimiter(rate_limit)
+        self.referer = None
     
     @abstractmethod
     def parse_html(self, html: str) -> List[HolidayEntry]:
@@ -393,12 +394,16 @@ class ExchangeFetcher(ABC):
         self.rate_limiter.wait_if_needed(self.mic)
         
         try:
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'
+            }
+            if self.referer:
+                headers['Referer'] = self.referer
+
             response = requests.get(
                 self.source_url,
                 timeout=30,
-                headers={
-                    'User-Agent': 'Mozilla/5.0 (compatible; ExchangeCalendarRegistry/1.0)'
-                }
+                headers=headers
             )
             response.raise_for_status()
             self.rate_limiter.mark_request(self.mic)
@@ -435,12 +440,16 @@ class ExchangeFetcher(ABC):
         self.rate_limiter.wait_if_needed(self.mic)
 
         try:
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'
+            }
+            if self.referer:
+                headers['Referer'] = self.referer
+
             response = requests.get(
                 self.source_url,
                 timeout=30,
-                headers={
-                    'User-Agent': 'Mozilla/5.0 (compatible; ExchangeCalendarRegistry/1.0)'
-                }
+                headers=headers
             )
             response.raise_for_status()
             self.rate_limiter.mark_request(self.mic)
@@ -1973,7 +1982,7 @@ class WarsawFetcher(ExchangeFetcher):
                     note="Source page gives no holiday name -- generic label used"
                 ))
 
-        return holidays
+        return self._merge_duplicates(holidays)
 
     @retry(max_attempts=3, delay=2.0, backoff=2.0, exceptions=(FetchError,))
     def fetch(self) -> Optional[ExchangeData]:
@@ -2005,7 +2014,21 @@ class WarsawFetcher(ExchangeFetcher):
             raise ValidationError(f"Invalid data: {', '.join(errors)}")
 
         return data
-
+    def _merge_duplicates(self, entries):
+        by_date = {}
+        for e in entries:
+            if e.date in by_date:
+                existing = by_date[e.date]
+                by_date[e.date] = HolidayEntry(
+                    date=e.date,
+                    name=existing.name,
+                    status=existing.status,
+                    source_url=existing.source_url,
+                    note=existing.note
+                )
+            else:
+                by_date[e.date] = e
+        return list(by_date.values())
 
 class PragueFetcher(ExchangeFetcher):
     """
@@ -4249,7 +4272,8 @@ class ColomboFetcher(PDFFetcher):
             source_url="https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
             rate_limit=2.0
         )
-
+        self.referer = "https://www.cse.lk/"
+    
     def parse_html(self, text: str) -> List[HolidayEntry]:
         """Parses PDF-extracted text (see PDFFetcher)."""
         if not text:
@@ -5107,7 +5131,7 @@ class ExchangeFetcherRegistry:
         self.register(EuronextAmsterdamFetcher())
         self.register(TokyoFetcher())
         self.register(SSEFetcher())
-        self.register(SZSEFetcher())
+        # self.register(SZSEFetcher())  # Blocked: connection reset
         self.register(HKEXFetcher())
         # All 10 originally-scoped Tier 1 exchanges now have automated
         # fetchers as of 2026-08-27. See docs/fetcher_verification.md.
@@ -5117,7 +5141,6 @@ class ExchangeFetcherRegistry:
         # (XSES, XSWX, XKRX, XBOM, XNSE, XJKT blocked; XTAI unresolved).
         self.register(TSXFetcher())
         self.register(BMEMadridFetcher())
-        self.register(SaudiExchangeFetcher())
 
         # Tier 3 (Gulf/EMEA) -- 3 of 10 verified buildable so far
         # (XDFM, XKUW, XMOS); see docs/fetcher_verification.md and
