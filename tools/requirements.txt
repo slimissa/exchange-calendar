@@ -19,7 +19,7 @@ jsonschema>=4.0.0
 # e.g. XDFMFetcher). Only needed for PDF sources -- pdfplumber does real
 # text extraction (not just raw byte scraping), which is what makes
 # XDFM/XIST's circulars parseable at all.
-pdfplumber>=0.10.0
+pdfplumber>=0.11.10
 
 # Optional (for async fetching)
 aiohttp>=3.14.3
