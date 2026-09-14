@@ -1,7 +1,7 @@
 # Core dependencies for update_from_exchange.py
 requests>=2.34.2
 beautifulsoup4>=4.15.0
-tqdm>=4.70.0
+tqdm>=4.70.1
 
 # Required for tools/validate.py schema validation. This was previously
 # missing from this file despite validate.py depending on it -- validate.py
