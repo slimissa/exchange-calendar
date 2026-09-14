@@ -13,7 +13,7 @@ tqdm>=4.70.0
 # would get validation that looks like it passed but wasn't actually
 # checking most of what schema.json defines. Making it a hard requirement
 # here instead of leaving it optional.
-jsonschema>=4.0.0
+jsonschema>=4.26.0
 
 # Required for PDF-based exchange fetchers (PDFFetcher and its subclasses,
 # e.g. XDFMFetcher). Only needed for PDF sources -- pdfplumber does real
