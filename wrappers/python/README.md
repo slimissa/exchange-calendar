@@ -1,4 +1,4 @@
-# exchange-calendar (Python)
+# exchange-calendar-registry (Python)
 
 This wrapper is versioned independently of the registry data. Wrapper 1.0.0 is tested against registry 2.1.10; check registry.version at runtime for the data version.
 
@@ -26,7 +26,7 @@ and session status.
 ### From PyPI (recommended)
 
 ```bash
-pip install exchange-calendar
+pip install exchange-calendar-registry
 ```
 
 ### From source

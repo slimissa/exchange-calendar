@@ -34,7 +34,7 @@ Or from GitHub:
 
 ```toml
 [dependencies]
-exchange-calendar-registry = { git = "https://github.com/slimissa/exchange-calendar-registry", subdir = "wrappers/rust" }
+exchange-calendar-registry = { git = "https://github.com/slimissa/exchange-calendar", subdir = "wrappers/rust" }
 ```
 
 ## Quick Start
@@ -275,8 +275,8 @@ Apache 2.0 — see [LICENSE](../../LICENSE).
 
 ## Links
 
-- [Registry repository](https://github.com/slimissa/exchange-calendar-registry)
-- [Bug reports](https://github.com/slimissa/exchange-calendar-registry/issues)
+- [Registry repository](https://github.com/slimissa/exchange-calendar)
+- [Bug reports](https://github.com/slimissa/exchange-calendar/issues)
 - [Python wrapper](../python/)
 - [JavaScript wrapper](../javascript/)
 - [Go wrapper](../go/)
