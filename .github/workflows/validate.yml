@@ -148,50 +148,7 @@ jobs:
           pip install jsonschema
 
       - name: Verify no weekend dates in explicit arrays
-        run: |
-          python3 - << 'EOF'
-          import json
-          from datetime import date
-          from pathlib import Path
-
-          # Define weekend systems for exchanges with non-Western weekends
-          # Friday-Saturday weekend exchanges (Gulf/Middle East):
-          FRIDAY_SATURDAY = {"XBAH", "XSAU", "XDFM", "XTAD", "XQSE", "XKWT", "XMSM", "XCAI", "XDHA", "XDSM"}
-          # Saturday-Sunday weekend is the default (Western)
-          # Sunday is a working day in Friday-Saturday systems
-
-          # Define exchanges that explicitly list holidays on weekends (no substitution)
-          NO_WEEKEND_SUBSTITUTION = {"XDFM", "XKUW", "XMUS"}  # Dubai, Kuwait, Muscat
-          
-          for path in sorted(Path("exchanges").glob("*.json")):
-              with open(path) as f:
-                  data = json.load(f)
-              
-              mic = data.get("mic", data.get("code", ""))
-              weekend_days = {4, 5} if mic in FRIDAY_SATURDAY else {5, 6}
-              
-              for entry in data["holidays"]["explicit"]:
-                  d = date.fromisoformat(entry["date"])
-                  weekday = d.weekday()
-                  
-                  # Islamic holidays and observed holidays can fall on any day
-                  name = entry.get("name", "").lower()
-                  is_islamic = any(term in name for term in [
-                      "eid", "islamic", "prophet", "ramadan", "ashura", "hijri"
-                  ])
-                  is_observed = "observed" in name or "substitute" in name
-                  is_weekend_exception = entry.get("weekend_exception", False)
-                  
-                  if is_islamic or is_observed or is_weekend_exception:
-                      continue  # Islamic/observed holidays are exempt from weekend check
-                  
-                  # Some exchanges explicitly list holidays on weekends without substitution
-                  if mic in NO_WEEKEND_SUBSTITUTION:
-                      continue  # These exchanges don't substitute weekend holidays
-                  
-                  assert weekday not in weekend_days, f"{path.name}: weekend date {entry['date']} ({d.strftime('%A')})"
-              print(f"OK: {path.name}")
-          EOF
+        run: python3 tools/validate.py
 
       - name: Verify no duplicate dates
         run: |
