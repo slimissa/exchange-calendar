@@ -1,5 +1,7 @@
 # exchange-calendar (Python)
 
+This wrapper is versioned independently of the registry data. Wrapper 1.0.0 is tested against registry 2.1.10; check registry.version at runtime for the data version.
+
 Python wrapper for the QuantOS exchange calendar registry.
 
 A canonical, versioned, machine-readable registry of global exchange trading

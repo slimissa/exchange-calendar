@@ -23,10 +23,9 @@ Older versions may still work but are not guaranteed to receive fixes.
 
 | Version | Release Date | Supported          | Security Updates Until |
 |---------|--------------|--------------------|------------------------|
-| **2.0.x** | 2026-08-19  | :white_check_mark: | Actively maintained    |
-| **2.0.0** | 2026-08-19  | :white_check_mark: | Next minor release     |
-| **1.2.x** | 2026-08-13  | :white_check_mark: | 2027-02-13             |
-| **1.1.x** | 2026-08-01  | :warning:          | 2026-12-01             |
+| **2.1.x** | 2026-09-16  | :white_check_mark: | Actively maintained    |
+| **2.0.x** | 2026-08-19  | :white_check_mark: | Maintenance mode       |
+| **2.0.0** | 2026-08-19  | :warning:          | Next minor release     |
 | **1.0.x** | 2026-07-15  | :warning:          | 2026-10-15             |
 | **0.x.x** | 2026-06-01  | :x:                | No longer supported    |
 
@@ -64,18 +63,6 @@ Instead, report it privately:
 2. Click "New draft security advisory"
 3. Fill in the vulnerability details
 4. Submit for review
-
-#### Option 2: Email
-
-Send details to: **security@exchange-calendar.dev**
-
-Include in your email:
-- Subject line: `[SECURITY] Brief description of vulnerability`
-- Detailed description of the vulnerability
-- Steps to reproduce
-- Potential impact
-- Suggested fix (if available)
-- Your preferred method of contact
 
 ### What to Include in Your Report
 
@@ -453,9 +440,9 @@ Every change to the registry includes:
 
 | Role | Contact |
 |------|---------|
-| **Security Lead** | security@exchange-calendar.dev |
 | **Maintainer** | @slimissa |
-| **Emergency** | emergency@exchange-calendar.dev |
+
+Use GitHub Security Advisories for private disclosure.
 
 ### Response Hours
 

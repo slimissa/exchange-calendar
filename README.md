@@ -691,11 +691,4 @@ Apache 2.0 — use it anywhere, no attribution required. The exchange calendar d
 
 ## Version History
 
-| Version | Date | Highlights |
-|---------|------|------------|
-| **2.1.0** | 2026-08-19 | CI/CD green, update tool, security policy, 74 exchanges |
-| **2.0.0** | 2026-08-19 | 74 exchanges, 6 calendar systems, 4 wrappers |
-| **1.2.0** | 2026-08-13 | Added Euronext, major Asian exchanges |
-| **1.0.0** | 2026-07-15 | Initial release with 14 exchanges |
-
 See [CHANGELOG.md](CHANGELOG.md) for the complete version history.

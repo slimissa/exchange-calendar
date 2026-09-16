@@ -62,7 +62,7 @@ Every exchange file is a JSON object with this shape:
 | `regular_hours` | object | `{open, close}` — regular trading hours |
 | `holidays` | object | `{explicit, recurrence_rules}` — holiday data |
 | `generation_range` | array | `[start_date, end_date]` — verified date range |
-
+| `weekend_days` | array[int], length 2 | Two weekday numbers (0=Monday..6=Sunday) that are non-trading days |
 ---
 
 ## Optional Fields
@@ -318,6 +318,9 @@ Array of dated holiday entries.
 | `early_close_time` | string | Conditional | `HH:MM` — required when status is `early_close` |
 | `delayed_open_time` | string | Conditional | `HH:MM` — required when status is `delayed_open` |
 | `source_url` | string | Recommended | Official exchange source |
+| `weekend_exception` | boolean | Optional. Set true when a real, sourced holiday legitimately falls on this
+exchange's weekend_days |
+| `predicted` | boolean | Optional. True when a moon-sighting-dependent date is calculated, not confirmed |
 
 #### `recurrence_rules` (Optional)
 
