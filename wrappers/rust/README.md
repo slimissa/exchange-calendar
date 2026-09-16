@@ -267,7 +267,6 @@ for handle in handles {
 | `Clone` | All types | Cloning |
 | `PartialEq`, `Eq` | All types | Comparison |
 | `Hash` | `SessionStatus` | HashMap keys |
-| `PartialOrd`, `Ord` | `SessionStatus` | Sorting |
 | `Display` | `SessionStatus`, `Exchange`, `Registry`, errors | String output |
 | `FromStr` | `SessionStatus` | `"open".parse()` |
 | `From<SessionStatus> for String` | `SessionStatus` | `String::from(status)` |

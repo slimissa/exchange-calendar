@@ -18,7 +18,7 @@ use std::str::FromStr;
 /// let parsed = "EARLY_CLOSE".parse::<SessionStatus>().unwrap();
 /// assert_eq!(parsed, SessionStatus::EarlyClose);
 /// ```
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, PartialOrd, Ord)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum SessionStatus {
     /// Market is closed (weekend, holiday, or outside all hours).
     Closed,
