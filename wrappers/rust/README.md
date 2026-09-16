@@ -19,7 +19,7 @@ session status.
 - **Serde support** — all data types derive `Serialize` and `Deserialize`
 - **Rich error types** — `ExchangeError`, `QueryError`, `RegistryError`
 - **Zero runtime deps** — only `serde`, `serde_json`, and `chrono`
-- **Ground truth verified** — 78 tests (65 unit + 13 doc)
+- **Ground truth verified** — 86 tests (73 unit + 13 doc)
 
 ## Installation
 
@@ -130,9 +130,6 @@ impl Exchange {
 
     pub fn status_at(&self, date: &str, time: &str) -> Result<SessionStatus, QueryError>;
     pub fn is_open(&self, date: &str, time: Option<&str>) -> bool;
-
-**Malformed date handling.** `is_holiday`, `is_early_close`, and `is_open` return `false` for malformed dates (bad format, non-existent calendar date, bad time string). This preserves the boolean-only API shape. For strict validation, use the `try_*` variants — `try_is_holiday`, `try_is_early_close`, `try_is_open` — which return `Result<bool, QueryError>` and surface the specific error.
-
     pub fn next_trading_day(&self, date: &str) -> Result<String, QueryError>;
     pub fn previous_trading_day(&self, date: &str) -> Result<String, QueryError>;
 
@@ -140,6 +137,8 @@ impl Exchange {
     pub fn list_holidays(&self, year: Option<i32>) -> Vec<&HolidayEntry>;
 }
 ```
+
+**Malformed date handling.** `is_holiday`, `is_early_close`, and `is_open` return `false` for malformed dates (bad format, non-existent calendar date, bad time string). This preserves the boolean-only API shape. For strict validation, use the `try_*` variants — `try_is_holiday`, `try_is_early_close`, `try_is_open` — which return `Result<bool, QueryError>` and surface the specific error.
 
 ### SessionStatus
 
@@ -175,6 +174,7 @@ impl SessionStatus {
 | `EarlyClose` | `"early_close"` | Early close day, before close time |
 | `AfterHours` | `"after_hours"` | After regular hours |
 | `LunchBreak` | `"lunch_break"` | Intraday break (e.g., Tokyo lunch) |
+
 **Extended hours.** `PRE_MARKET` and `AFTER_HOURS` are only returned for
 exchanges that declare those sessions in `extended_hours`. For exchanges
 without one, times before regular open or after regular close return
@@ -199,8 +199,8 @@ The registry is a single JSON file (`calendar.json`):
 ```json
 {
   "meta": {
-    "version": "1.0.0",
-    "exchange_count": 2
+    "version": "2.1.10",
+    "exchange_count": 74
   },
   "exchanges": [
     {
@@ -228,6 +228,11 @@ from it.
 |------|----------|----------|
 | `XNYS` | New York Stock Exchange | `America/New_York` |
 | `XLON` | London Stock Exchange | `Europe/London` |
+| `XTKS` | Tokyo Stock Exchange | `Asia/Tokyo` |
+
+*74 exchanges total — see
+[`exchanges/`](https://github.com/slimissa/exchange-calendar/tree/main/exchanges)
+for the full list.*
 
 ## Thread Safety
 
