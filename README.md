@@ -212,8 +212,7 @@ python3 tools/update_from_exchange.py --all --force
 
 ### Currently Supported Fetchers
 
-**PROJECT COMPLETE: 45 of 74 registry exchanges now have automated
-fetchers.** Every one of the 74 exchanges in this registry has now been
+**45 of 74 registry exchanges have automated fetchers as of v2.1.10.** Every one of the 74 exchanges in this registry has now been
 explicitly checked across 8 tiers of work — 45 built, 29 confirmed blocked
 (via robots.txt, bot-detection, JS-rendering, unreadable PDFs, or confirmed
 server instability). None remain in an ambiguous "not verified" state; the

@@ -369,7 +369,7 @@ leaving them open indefinitely.
 **Result: 7 more exchanges built this round** (XGSE, XBDA, XCAY, XLUX,
 XMAL, XZAG, plus the parenthetical count already includes XGSE once),
 bringing the registry total to **45 automated fetchers out of 74
-exchanges — the final tally for this multi-tier project.** 29 remain on
+exchanges as of v2.1.10.** 29 remain on
 the manual-update path, all now confirmed BLOCKED (via robots.txt, bot-wall,
 JS-rendering, unreadable PDFs, or confirmed server instability) rather than
 left as ambiguous "not verified" entries — this is the first point in the
