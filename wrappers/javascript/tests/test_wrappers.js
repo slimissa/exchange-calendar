@@ -77,7 +77,7 @@ function createTempRegistry() {
 }
 
 function getRegistryPath() {
-    return path.join(__dirname, '..', '..', 'calendar.json');
+    return path.join(__dirname, '..', '..', '..', 'calendar.json');
 }
 
 // ──────────────────────────────────────────────────────────────
