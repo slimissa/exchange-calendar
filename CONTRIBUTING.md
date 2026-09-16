@@ -43,7 +43,7 @@ the data, not the person who submitted it.
 | Python | ≥ 3.8 | Core tools, validation, tests |
 | Node.js | ≥ 14 | JavaScript wrapper |
 | Go | ≥ 1.21 | Go wrapper |
-| Rust | ≥ 1.74 | Rust wrapper |
+| Rust | ≥ 1.78 | Rust wrapper |
 | jsonschema | ≥ 4.0 | Python validation dependency |
 
 ### Setup

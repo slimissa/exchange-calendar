@@ -267,7 +267,7 @@ for handle in handles {
 
 ## MSRV (Minimum Supported Rust Version)
 
-Rust 1.74 or later (edition 2021).
+Rust 1.78 or later (edition 2021).
 
 ## License
 
