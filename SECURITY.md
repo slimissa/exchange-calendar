@@ -444,6 +444,12 @@ Every change to the registry includes:
 
 Use GitHub Security Advisories for private disclosure.
 
+#### Other Option: GitHub Discussions (Non-Sensitive)
+
+For non-sensitive security questions, use
+[GitHub Discussions](https://github.com/slimissa/exchange-calendar/discussions).
+For actual vulnerabilities, use the advisory workflow above.
+
 ### Response Hours
 
 | Day | Hours (UTC) |
