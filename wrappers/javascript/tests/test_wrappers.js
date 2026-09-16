@@ -540,8 +540,12 @@ describe('Status at specific date/time', () => {
 
     test('XLON hours', () => {
         assert.equal(xlon.statusAt('2025-07-07', '08:30'), SessionStatus.OPEN);
-        assert.equal(xlon.statusAt('2025-07-07', '07:00'), SessionStatus.PRE_MARKET);
-        assert.equal(xlon.statusAt('2025-07-07', '17:00'), SessionStatus.AFTER_HOURS);
+        // XLON declares pre_market 07:50-08:00, after_hours 16:30-16:35.
+        // Phase 2.1: only PRE_MARKET/AFTER_HOURS inside the declared windows.
+        assert.equal(xlon.statusAt('2025-07-07', '07:00'), SessionStatus.CLOSED);
+        assert.equal(xlon.statusAt('2025-07-07', '07:55'), SessionStatus.PRE_MARKET);
+        assert.equal(xlon.statusAt('2025-07-07', '16:32'), SessionStatus.AFTER_HOURS);
+        assert.equal(xlon.statusAt('2025-07-07', '17:00'), SessionStatus.CLOSED);
     });
 });
 
@@ -753,5 +757,27 @@ describe('Minimal custom registry', () => {
         assert.equal(test.earlyCloseTime('2025-07-03'), '13:00');
         assert.equal(test.statusAt('2025-07-03', '10:00'), SessionStatus.EARLY_CLOSE);
         assert.equal(test.statusAt('2025-07-03', '13:30'), SessionStatus.CLOSED);
+    });
+});
+
+describe('Status at extended hours', () => {
+    test('XHKG closed before open (no extended_hours)', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        assert.equal(r.get('XHKG').statusAt('2025-07-07', '07:00'), SessionStatus.CLOSED);
+    });
+
+    test('XHKG closed after close (no extended_hours)', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        assert.equal(r.get('XHKG').statusAt('2025-07-07', '18:00'), SessionStatus.CLOSED);
+    });
+
+    test('XNYS pre-market still reported', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        assert.equal(r.get('XNYS').statusAt('2025-07-07', '08:00'), SessionStatus.PRE_MARKET);
+    });
+
+    test('XNYS after-hours still reported', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        assert.equal(r.get('XNYS').statusAt('2025-07-07', '17:00'), SessionStatus.AFTER_HOURS);
     });
 });

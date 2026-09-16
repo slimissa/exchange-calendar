@@ -275,20 +275,20 @@ class Exchange {
 
         // 5. Before regular open — only PRE_MARKET if declared.
         if (timeStr < this.regularHours.open) {
-        const pre = this.extendedHours && this.extendedHours.pre_market;
-        if (pre && pre.open && pre.close && pre.open <= timeStr && timeStr < pre.close) {
-            return SessionStatus.PRE_MARKET;
-        }
-        return SessionStatus.CLOSED;
+            const pre = this.extendedHours && this.extendedHours.pre_market;
+            if (pre && pre.open && pre.close && pre.open <= timeStr && timeStr < pre.close) {
+                return SessionStatus.PRE_MARKET;
+            }
+            return SessionStatus.CLOSED;
         }
 
         // 6. After regular close — only AFTER_HOURS if declared.
         if (timeStr >= this.regularHours.close) {
-        const after = this.extendedHours && this.extendedHours.after_hours;
-        if (after && after.open && after.close && after.open <= timeStr && timeStr < after.close) {
-            return SessionStatus.AFTER_HOURS;
-        }
-        return SessionStatus.CLOSED;
+            const after = this.extendedHours && this.extendedHours.after_hours;
+            if (after && after.open && after.close && after.open <= timeStr && timeStr < after.close) {
+                return SessionStatus.AFTER_HOURS;
+            }
+            return SessionStatus.CLOSED;
         }
 
         // 7. Within regular hours
