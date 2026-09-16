@@ -20,6 +20,10 @@ func createTestExchange() *exchangecalendar.Exchange {
 			Open:  "09:00",
 			Close: "17:00",
 		},
+		ExtendedHours: exchangecalendar.ExtendedHours{
+			PreMarket:  &exchangecalendar.RegularHours{Open: "04:00", Close: "09:00"},
+			AfterHours: &exchangecalendar.RegularHours{Open: "17:00", Close: "20:00"},
+		},
 		Holidays: exchangecalendar.HolidaysData{
 			Explicit: []exchangecalendar.HolidayEntry{
 				{
@@ -735,5 +739,47 @@ func TestIsVariantsLenientOnMalformedDates(t *testing.T) {
 	}
 	if e.IsOpen("2025/01/01") {
 		t.Error("IsOpen: expected false for malformed date")
+	}
+}
+
+func TestStatusAtExtendedHours(t *testing.T) {
+	// XHKG has no extended_hours: outside regular hours -> Closed.
+	xhkData := exchangecalendar.ExchangeData{
+		Code:          "XHKG",
+		Name:          "Hong Kong",
+		MIC:           "XHKG",
+		Timezone:      "Asia/Hong_Kong",
+		RegularHours:  exchangecalendar.RegularHours{Open: "09:30", Close: "16:00"},
+		Holidays:      exchangecalendar.HolidaysData{},
+	}
+	xhk := exchangecalendar.MustNewExchange(xhkData)
+
+	if st, err := xhk.StatusAt("2025-07-07", "07:00"); err != nil || st != exchangecalendar.StatusClosed {
+		t.Errorf("XHKG 07:00: expected Closed, got %v, err %v", st, err)
+	}
+	if st, err := xhk.StatusAt("2025-07-07", "18:00"); err != nil || st != exchangecalendar.StatusClosed {
+		t.Errorf("XHKG 18:00: expected Closed, got %v, err %v", st, err)
+	}
+
+	// XNYS declares both sessions: inside the windows -> PreMarket/AfterHours.
+	nyData := exchangecalendar.ExchangeData{
+		Code:         "XNYS",
+		Name:         "NYSE",
+		MIC:          "XNYS",
+		Timezone:     "America/New_York",
+		RegularHours: exchangecalendar.RegularHours{Open: "09:30", Close: "16:00"},
+		ExtendedHours: exchangecalendar.ExtendedHours{
+			PreMarket:  &exchangecalendar.RegularHours{Open: "04:00", Close: "09:30"},
+			AfterHours: &exchangecalendar.RegularHours{Open: "16:00", Close: "20:00"},
+		},
+		Holidays: exchangecalendar.HolidaysData{},
+	}
+	xnys := exchangecalendar.MustNewExchange(nyData)
+
+	if st, err := xnys.StatusAt("2025-07-07", "08:00"); err != nil || st != exchangecalendar.StatusPreMarket {
+		t.Errorf("XNYS 08:00: expected PreMarket, got %v, err %v", st, err)
+	}
+	if st, err := xnys.StatusAt("2025-07-07", "17:00"); err != nil || st != exchangecalendar.StatusAfterHours {
+		t.Errorf("XNYS 17:00: expected AfterHours, got %v, err %v", st, err)
 	}
 }
