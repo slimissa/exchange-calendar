@@ -27,6 +27,9 @@ sys.path.insert(0, str(WRAPPER_DIR))
 from exchange_calendar import CalendarRegistry, Exchange, SessionStatus
 
 
+VERSION = Path(__file__).parent.parent.joinpath("VERSION").read_text().strip()
+
+
 # ──────────────────────────────────────────────────────────────
 # Fixtures
 # ──────────────────────────────────────────────────────────────
@@ -107,8 +110,7 @@ def temp_registry(tmp_path_factory):
 
 class TestRegistryLoading:
     def test_load_real_registry(self, registry):
-        version = Path(__file__).parent.parent.joinpath("VERSION").read_text().strip()
-        assert registry.version == version
+        assert registry.version == VERSION
         assert registry.exchange_count == 74
         assert len(registry) == 74
 
@@ -151,13 +153,13 @@ class TestRegistryLoading:
     def test_registry_string_representation(self, registry):
         s = str(registry)
         assert "Exchange Calendar Registry" in s
-        assert version in s
+        assert VERSION in s
         assert "74" in s
 
     def test_registry_repr(self, registry):
         r = repr(registry)
         assert "CalendarRegistry" in r
-        assert "1.0.0" in r
+        assert VERSION in r
 
 
 # ──────────────────────────────────────────────────────────────
@@ -218,7 +220,7 @@ class TestExchangeLookup:
 
     def test_to_dict(self, registry):
         d = registry.to_dict()
-        assert d["version"] == "1.0.0"
+        assert d["version"] == VERSION
         assert d["exchange_count"] == 74
         assert len(d["codes"]) == 74
         assert d["codes"] == sorted(d["codes"])

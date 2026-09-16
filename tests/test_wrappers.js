@@ -27,6 +27,10 @@ const os = require('node:os');
 
 const { CalendarRegistry, Exchange, SessionStatus } = require('../wrappers/javascript/src/index');
 
+const EXPECTED_VERSION = fs.readFileSync(
+    path.join(__dirname, '..', 'VERSION'), 'utf8'
+).trim();
+
 // ──────────────────────────────────────────────────────────────
 // Fixtures
 // ──────────────────────────────────────────────────────────────
@@ -83,12 +87,7 @@ function getRegistryPath() {
 describe('Registry loading', () => {
     test('loads real registry', () => {
         const registry = new CalendarRegistry(getRegistryPath());
-        const fs = require('node:fs');
-        const path = require('node:path');
-        const expectedVersion = fs.readFileSync(
-            path.join(__dirname, '..', 'VERSION'), 'utf8'
-        ).trim();
-        assert.equal(registry.version, expectedVersion);
+        assert.equal(registry.version, EXPECTED_VERSION);
         assert.equal(registry.exchangeCount, 74);
         assert.equal(registry.size, 74);
         assert.equal(registry.length, 74);
@@ -155,7 +154,7 @@ describe('Registry loading', () => {
         const registry = new CalendarRegistry(getRegistryPath());
         const s = registry.toString();
         assert.ok(s.includes('Exchange Calendar Registry'));
-        assert.ok(s.includes(expectedVersion));
+        assert.ok(s.includes(EXPECTED_VERSION));
         assert.ok(s.includes('74'));
     });
 });
@@ -234,7 +233,7 @@ describe('Exchange lookup', () => {
 
     test('toJSON summary', () => {
         const d = registry.toJSON();
-        assert.equal(d.version, '1.0.0');
+        assert.equal(d.version, EXPECTED_VERSION);
         assert.equal(d.exchange_count, 74);
         assert.equal(d.codes.length, 74);
     });
