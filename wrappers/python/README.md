@@ -121,6 +121,11 @@ print(registry.codes())                      # ['XLON', 'XNYS']
 | `EARLY_CLOSE` | Early close day, before close time |
 | `AFTER_HOURS` | After regular hours (extended session) |
 | `LUNCH_BREAK` | Intraday break (e.g., Tokyo lunch) |
+**Extended hours.** `PRE_MARKET` and `AFTER_HOURS` are only returned for
+exchanges that declare those sessions in `extended_hours`. For exchanges
+without one, times before regular open or after regular close return
+`CLOSED`.
+
 
 ## Data Format
 

@@ -175,6 +175,11 @@ impl SessionStatus {
 | `EarlyClose` | `"early_close"` | Early close day, before close time |
 | `AfterHours` | `"after_hours"` | After regular hours |
 | `LunchBreak` | `"lunch_break"` | Intraday break (e.g., Tokyo lunch) |
+**Extended hours.** `PRE_MARKET` and `AFTER_HOURS` are only returned for
+exchanges that declare those sessions in `extended_hours`. For exchanges
+without one, times before regular open or after regular close return
+`CLOSED`.
+
 
 ### Error Types
 

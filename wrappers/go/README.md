@@ -138,6 +138,11 @@ func main() {
 | `StatusEarlyClose` | `"early_close"` |
 | `StatusAfterHours` | `"after_hours"` |
 | `StatusLunchBreak` | `"lunch_break"` |
+**Extended hours.** `PRE_MARKET` and `AFTER_HOURS` are only returned for
+exchanges that declare those sessions in `extended_hours`. For exchanges
+without one, times before regular open or after regular close return
+`CLOSED`.
+
 
 ### SessionStatus Methods
 

@@ -138,6 +138,11 @@ console.log(xlon.isOpen('2025-12-24', '12:45'));    // false (after early close)
 | `EARLY_CLOSE` | `'early_close'` — early close, before close time |
 | `AFTER_HOURS` | `'after_hours'` — after regular hours |
 | `LUNCH_BREAK` | `'lunch_break'` — intraday break |
+**Extended hours.** `PRE_MARKET` and `AFTER_HOURS` are only returned for
+exchanges that declare those sessions in `extended_hours`. For exchanges
+without one, times before regular open or after regular close return
+`CLOSED`.
+
 
 ### SessionStatus Methods
 
