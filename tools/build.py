@@ -30,9 +30,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from generate_dates import expand_exchange
 
-
-REGISTRY_VERSION = "1.0.0"
-
+REGISTRY_VERSION = (
+    Path(__file__).resolve().parent.parent.joinpath("VERSION").read_text().strip()
+)
 
 def load_exchange(path: Path) -> dict:
     """Load and parse an exchange JSON file. Returns None on failure."""
