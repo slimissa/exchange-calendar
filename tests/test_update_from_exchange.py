@@ -3013,7 +3013,10 @@ class TestRegistryUpdater:
             data = json.load(f)
         
         holiday_dates = [h["date"] for h in data["holidays"]["explicit"]]
-        assert "2025-01-01" in holiday_dates
+        # Phase 1.1 mirror semantics: fetched data replaces current, so
+        # the 2025-01-01 entry that existed in the fixture is gone after
+        # the write. Only the fetched dates remain.
+        assert "2025-01-01" not in holiday_dates
         assert "2026-01-01" in holiday_dates
     
     def test_update_exchange_no_fetcher(self, registry_updater):
@@ -3106,6 +3109,21 @@ class TestPerformance:
         
         errors = data.validate()
         assert errors == []
+
+class _EmptyFetcher(ExchangeFetcher):
+    """Fetcher that returns valid-but-empty ExchangeData — used to test
+    the empty-fetch guard in RegistryUpdater.update_exchange."""
+    def __init__(self):
+        super().__init__(mic="TEST", name="Empty Test", source_url="https://example.invalid/")
+    def parse_html(self, html):
+        return []
+    def fetch(self):
+        return ExchangeData(
+            code="TEST", mic="TEST", name="Empty Test", timezone="UTC",
+            regular_open="09:00", regular_close="17:00",
+            holidays=[],
+        )
+
 
 class TestMergeSemantics:
     """Phase 1.1 — mirror semantics for holidays.explicit."""
