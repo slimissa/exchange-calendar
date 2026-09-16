@@ -150,6 +150,21 @@ class TestRegistryLoading:
         with pytest.raises(ValueError, match="Duplicate"):
             CalendarRegistry(bad_file)
 
+    def test_rejects_mismatched_exchange_count(self, tmp_path):
+        """Phase 1.6: meta.exchange_count must match len(exchanges)."""
+        bad_file = tmp_path / "bad_count.json"
+        bad_file.write_text(json.dumps({
+            "meta": {"version": "1.0.0", "exchange_count": 99},
+            "exchanges": [{
+                "code": "TEST", "name": "Test Exchange", "mic": "TEST",
+                "timezone": "Europe/London",
+                "regular_hours": {"open": "09:00", "close": "17:00"},
+                "holidays": {"explicit": [], "generated": []},
+            }],
+        }))
+        with pytest.raises(ValueError, match="exchange_count"):
+            CalendarRegistry(bad_file)
+
     def test_registry_string_representation(self, registry):
         s = str(registry)
         assert "Exchange Calendar Registry" in s

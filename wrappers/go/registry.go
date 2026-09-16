@@ -93,6 +93,18 @@ func NewRegistry(data registryData) (*Registry, error) {
 		return nil, fmt.Errorf("registry: no exchanges found")
 	}
 
+	// Phase 1.6: meta.exchange_count must match the actual list.
+	// ExchangeCount is a plain int, so a zero value with a non-empty
+	// slice fails here -- that is intentional: either the caller forgot
+	// to set it or the data is wrong, and failing loudly beats silently
+	// reporting a wrong count.
+	if data.Meta.ExchangeCount != len(data.Exchanges) {
+		return nil, fmt.Errorf(
+			"registry: meta.exchange_count (%d) does not match len(exchanges) (%d)",
+			data.Meta.ExchangeCount, len(data.Exchanges),
+		)
+	}
+
 	registry := &Registry{
 		Version:       data.Meta.Version,
 		ExchangeCount: data.Meta.ExchangeCount,

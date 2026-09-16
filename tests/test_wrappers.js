@@ -150,6 +150,24 @@ describe('Registry loading', () => {
         );
     });
 
+    test('throws on mismatched exchange_count', () => {
+        const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'exchange-calendar-count-'));
+        const badFile = path.join(tmpDir, 'bad.json');
+        fs.writeFileSync(badFile, JSON.stringify({
+            meta: { version: '1.0.0', exchange_count: 99 },
+            exchanges: [{
+                code: 'TEST', name: 'Test Exchange', mic: 'TEST',
+                timezone: 'Europe/London',
+                regular_hours: { open: '09:00', close: '17:00' },
+                holidays: { explicit: [], generated: [] },
+            }],
+        }));
+        assert.throws(
+            () => new CalendarRegistry(badFile),
+            /exchange_count/
+        );
+    });
+
     test('string representation', () => {
         const registry = new CalendarRegistry(getRegistryPath());
         const s = registry.toString();

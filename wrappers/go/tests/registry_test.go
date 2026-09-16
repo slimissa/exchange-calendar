@@ -146,6 +146,25 @@ func TestLoadRegistryDuplicateCodes(t *testing.T) {
 	}
 }
 
+func TestLoadRegistryMismatchedExchangeCount(t *testing.T) {
+	tmpDir := t.TempDir()
+	path := filepath.Join(tmpDir, "bad_count.json")
+	os.WriteFile(path, []byte(`{
+		"meta": {"version": "1.0.0", "exchange_count": 99},
+		"exchanges": [{
+			"code": "TEST", "name": "Test Exchange", "mic": "TEST",
+			"timezone": "Europe/London",
+			"regular_hours": {"open": "09:00", "close": "17:00"},
+			"holidays": {"explicit": [], "generated": []}
+		}]
+	}`), 0644)
+
+	_, err := exchangecalendar.LoadRegistry(path)
+	if err == nil {
+		t.Fatal("expected error for mismatched exchange_count")
+	}
+}
+
 func TestLoadRegistryNoExchanges(t *testing.T) {
 	tmpDir := t.TempDir()
 	path := filepath.Join(tmpDir, "empty.json")

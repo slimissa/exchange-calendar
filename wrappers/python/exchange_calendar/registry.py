@@ -70,6 +70,14 @@ class CalendarRegistry:
         self.version = meta.get("version", "unknown")
         self.exchange_count = meta.get("exchange_count", 0)
 
+        # Phase 1.6: meta.exchange_count must match the actual list.
+        actual = len(data.get("exchanges", []))
+        if self.exchange_count != actual:
+            raise ValueError(
+                f"meta.exchange_count ({self.exchange_count}) does not match "
+                f"the number of exchanges ({actual})"
+            )
+
         self.exchanges = {}
         for exchange_data in data.get("exchanges", []):
             exchange = Exchange(exchange_data)

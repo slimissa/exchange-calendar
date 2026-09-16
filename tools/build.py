@@ -121,10 +121,22 @@ def build_registry(exchanges_dir: Path) -> dict:
     # Sort exchanges by code for determinism
     exchanges.sort(key=lambda x: x["code"])
 
+    # Invariant: meta.exchange_count must match the actual list length.
+    # build.py constructs exchange_count from len(exchanges), so this is
+    # true by construction today -- kept as a documented assertion so a
+    # future refactor that sources exchange_count from elsewhere (a
+    # manifest, a config) has the guard already in place.
+    declared = len(exchanges)
+    actual = len(exchanges)
+    if declared != actual:
+        raise ValueError(
+            f"meta.exchange_count ({declared}) != len(exchanges) ({actual})"
+        )
+
     return {
         "meta": {
             "version": REGISTRY_VERSION,
-            "exchange_count": len(exchanges),
+            "exchange_count": declared,
         },
         "exchanges": exchanges,
     }

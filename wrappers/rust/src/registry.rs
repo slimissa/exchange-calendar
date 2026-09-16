@@ -158,6 +158,17 @@ impl Registry {
             ));
         }
 
+        // Phase 1.6: meta.exchange_count must match the actual list.
+        // exchange_count is usize, so a default 0 with a non-empty list
+        // fails here -- intentional, same reasoning as the Go wrapper.
+        if data.meta.exchange_count != data.exchanges.len() {
+            return Err(RegistryError::InvalidStructure(format!(
+                "meta.exchange_count ({}) does not match len(exchanges) ({})",
+                data.meta.exchange_count,
+                data.exchanges.len(),
+            )));
+        }
+
         if data.exchanges.is_empty() {
             return Err(RegistryError::InvalidStructure(
                 "no exchanges found".to_string(),
@@ -345,6 +356,16 @@ mod tests {
         assert!(matches!(
             Registry::from_data(data),
             Err(RegistryError::DuplicateCode(_))
+        ));
+    }
+
+    #[test]
+    fn test_from_data_mismatched_exchange_count() {
+        let mut data = create_test_registry_data();
+        data.meta.exchange_count = 99;
+        assert!(matches!(
+            Registry::from_data(data),
+            Err(RegistryError::InvalidStructure(_))
         ));
     }
 

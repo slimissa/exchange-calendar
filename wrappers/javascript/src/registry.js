@@ -132,6 +132,16 @@ class CalendarRegistry {
                 `CalendarRegistry: duplicate exchange codes: ${Array.from(duplicates).join(', ')}`
             );
         }
+
+        // Phase 1.6: meta.exchange_count must match the actual list.
+        const declared = data.meta.exchange_count;
+        const actual = data.exchanges.length;
+        if (declared !== actual) {
+            throw new Error(
+                `CalendarRegistry: meta.exchange_count (${declared}) does not match ` +
+                `the number of exchanges (${actual})`
+            );
+        }
     }
 
     // ──────────────────────────────────────────────────────────
