@@ -75,7 +75,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "exchange-calendar"
+name = "exchange-calendar-registry"
 version = "1.0.0"
 dependencies = [
  "chrono",
