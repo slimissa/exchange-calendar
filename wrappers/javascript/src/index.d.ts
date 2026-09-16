@@ -11,7 +11,6 @@
  * const xnys: Exchange | null = registry.exchange('XNYS');
  */
 
-declare module 'exchange-calendar-registry' {
     /**
      * Session status values.
      * Matches the string values used in the registry JSON.
@@ -322,4 +321,3 @@ declare module 'exchange-calendar-registry' {
      * Package version.
      */
     export const VERSION: string;
-}
