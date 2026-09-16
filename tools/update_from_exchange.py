@@ -18,6 +18,7 @@ Features:
 import asyncio
 import argparse
 import csv
+from email.policy import default
 import hashlib
 import json
 import logging
@@ -5602,93 +5603,109 @@ class RegistryUpdater:
     def compare_holidays(
         self,
         current: Optional[Dict[str, Any]],
-        fetched: ExchangeData
-    ) -> Tuple[bool, List[str]]:
-        """Compare current and fetched holidays"""
+        fetched: ExchangeData,
+        ) -> Tuple[bool, List[str]]:
+        """
+        Compare current and fetched holidays.
+
+        Returns (has_changes, human_readable_change_list). Detects
+        additions, removals, and field-level corrections (name, status,
+        early_close_time) — the three cases the mirror semantics in
+        generate_exchange_json can propagate.
+        """
         if current is None:
-            return True, ["New exchange"]
-        
-        current_holidays = set()
-        if 'holidays' in current and 'explicit' in current['holidays']:
-            for holiday in current['holidays']['explicit']:
-                current_holidays.add(holiday['date'])
-        
-        fetched_holidays = set(h.date for h in fetched.holidays)
-        
-        added = fetched_holidays - current_holidays
-        
-        changes = []
+            return True, [f"New exchange: {len(fetched.holidays)} holidays"]
+
+        current_by_date = {
+            h["date"]: h
+            for h in (current.get("holidays", {}).get("explicit") or [])
+        }
+        fetched_by_date = {h.date: h.to_dict() for h in fetched.holidays}
+
+        added = sorted(set(fetched_by_date) - set(current_by_date))
+        removed = sorted(set(current_by_date) - set(fetched_by_date))
+
+        modified = []
+        for date in sorted(set(current_by_date) & set(fetched_by_date)):
+            cur = current_by_date[date]
+            new = fetched_by_date[date]
+            for field in ("name", "status", "early_close_time"):
+                if cur.get(field) != new.get(field):
+                    modified.append(
+                        f"{date} {field}: {cur.get(field)!r} -> {new.get(field)!r}"
+                    )
+
+        changes: List[str] = []
         if added:
-            changes.append(f"Added {len(added)} holidays: {', '.join(sorted(added))}")
-        
+            preview = ", ".join(added[:5]) + ("..." if len(added) > 5 else "")
+            changes.append(f"Added {len(added)} date(s): {preview}")
+        if removed:
+            preview = ", ".join(removed[:5]) + ("..." if len(removed) > 5 else "")
+            changes.append(f"Removed {len(removed)} date(s): {preview}")
+        if modified:
+            preview = "; ".join(modified[:3]) + ("..." if len(modified) > 3 else "")
+            changes.append(f"Modified {len(modified)} field(s): {preview}")
+
         return bool(changes), changes
     
-    def generate_exchange_json(self, data: ExchangeData, current: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-        """Generate exchange JSON in registry format, merging with existing data if available"""
-        # Start with existing holidays if available
-        merged_holidays = {}
-        if current and 'holidays' in current and 'explicit' in current['holidays']:
-            for holiday in current['holidays']['explicit']:
-                merged_holidays[holiday['date']] = holiday
-        
-        # Add new holidays from fetched data
-        for h in data.holidays:
-            holiday_dict = h.to_dict()
-            if holiday_dict['date'] not in merged_holidays:
-                merged_holidays[holiday_dict['date']] = holiday_dict
-        
-        # Sort holidays by date
-        holidays_explicit = [merged_holidays[date] for date in sorted(merged_holidays.keys())]
-        
-        # Preserve existing fields if available
-        exchange_json = {}
-        if current:
-            exchange_json = current.copy()
-        
-        # Update with fetched data
-        exchange_json.update({
+    def generate_exchange_json(
+        self,
+        data: ExchangeData,
+        current: Optional[Dict[str, Any]] = None,
+        ) -> Dict[str, Any]:
+        """
+        Produce the on-disk exchange JSON for a successful fetch.
+
+        Semantics (Phase 1.1): the fetcher is the source of truth for
+        ``holidays.explicit``. The existing list is replaced, not merged —
+        deletions propagate, field corrections propagate.
+
+        Fields the fetcher does not produce (``extended_hours``,
+        ``sessions``, ``ad_hoc_closures``, ``recurrence_rules``,
+        ``generation_range``) are preserved from ``current`` when present,
+        otherwise defaulted.
+        """
+        # Fetched holidays are authoritative. Sort for determinism.
+        explicit = sorted(
+            (h.to_dict() for h in data.holidays),
+            key=lambda e: e["date"],
+        )
+
+        # Preserve recurrence_rules from current if present — fetchers do
+        # not produce them.
+        current_holidays = (current or {}).get("holidays", {})
+        recurrence_rules = current_holidays.get("recurrence_rules", [])
+
+        def _preserved(key: str, default):
+            if current and key in current:
+                return current[key]
+            return default
+
+        return {
             "code": data.code,
             "name": data.name,
             "mic": data.mic,
             "timezone": data.timezone,
+            "weekend_days": _preserved("weekend_days", [5, 6]),
             "regular_hours": {
                 "open": data.regular_open,
-                "close": data.regular_close
+                "close": data.regular_close,
             },
+            "extended_hours": _preserved("extended_hours", {}),
+            "sessions": _preserved("sessions", []),
             "holidays": {
-                "explicit": holidays_explicit,
-                "recurrence_rules": current.get('holidays', {}).get('recurrence_rules', []) if current else []
-            }
-        })
-        
-        # Preserve extended hours if they exist
-        if current and 'extended_hours' in current:
-            exchange_json['extended_hours'] = current['extended_hours']
-        else:
-            exchange_json['extended_hours'] = {}
-        
-        # Preserve sessions if they exist
-        if current and 'sessions' in current:
-            exchange_json['sessions'] = current['sessions']
-        else:
-            exchange_json['sessions'] = []
-        
-        # Preserve ad_hoc_closures if they exist
-        if current and 'ad_hoc_closures' in current:
-            exchange_json['ad_hoc_closures'] = current['ad_hoc_closures']
-        else:
-            exchange_json['ad_hoc_closures'] = []
-        
-        # Update generation range
-        if current and 'generation_range' in current:
-            exchange_json['generation_range'] = current['generation_range']
-        else:
-            exchange_json['generation_range'] = [
-                datetime.now().strftime("%Y-01-01"),
-                (datetime.now() + timedelta(days=365*5)).strftime("%Y-12-31")
-            ]
-        
-        return exchange_json
+                "explicit": explicit,
+                "recurrence_rules": recurrence_rules,
+            },
+            "ad_hoc_closures": _preserved("ad_hoc_closures", []),
+            "generation_range": _preserved(
+                "generation_range",
+                [
+                    datetime.now().strftime("%Y-01-01"),
+                    (datetime.now() + timedelta(days=365 * 5)).strftime("%Y-12-31"),
+                ],
+            ),
+        }
     
     def update_exchange(
         self,
@@ -5732,11 +5749,23 @@ class RegistryUpdater:
         if errors:
             logger.error(f"Validation errors for {mic}: {', '.join(errors)}")
             return FetchStatus.VALIDATION_ERROR, "; ".join(errors)
-        
+
+        # Guard: an empty fetched holiday list under mirror semantics would
+        # wipe the file. Treat as a fetch failure.
+        if not fetched_data.holidays:
+            logger.error(
+                f"{mic}: fetcher returned no holidays; aborting to avoid "
+                f"clobbering the existing file"
+                )
+            return FetchStatus.FAILED, "fetcher returned empty holiday list"
+
         # Compare with current
         current_data = self.load_current_exchange(mic)
         has_changes, change_details = self.compare_holidays(current_data, fetched_data)
-        
+
+        if not self.holidays:
+            errors.append("No holidays found")
+
         if current_data is None:
             status = FetchStatus.NEW_EXCHANGE
             message = f"New exchange: {fetcher.name}"

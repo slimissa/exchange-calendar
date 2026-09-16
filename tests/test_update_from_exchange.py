@@ -3112,6 +3112,111 @@ class TestPerformance:
         errors = data.validate()
         assert errors == []
 
+class TestMergeSemantics:
+    """Phase 1.1 — mirror semantics for holidays.explicit."""
+
+    def _fetch(self, holidays):
+        return ExchangeData(
+            code="TEST", mic="TEST", name="Test", timezone="UTC",
+            regular_open="09:00", regular_close="17:00",
+            holidays=holidays,
+        )
+
+    def _current(self, explicit, **extra):
+        base = {
+            "code": "TEST", "name": "Test", "mic": "TEST", "timezone": "UTC",
+            "weekend_days": [5, 6],
+            "regular_hours": {"open": "09:00", "close": "17:00"},
+            "extended_hours": {},
+            "sessions": [],
+            "holidays": {"explicit": explicit, "recurrence_rules": []},
+            "ad_hoc_closures": [],
+            "generation_range": ["2025-01-01", "2029-12-31"],
+        }
+        base.update(extra)
+        return base
+
+    def test_replaces_stale_name(self):
+        cur = self._current([
+            {"date": "2025-01-01", "name": "New Year", "status": "closed"},
+        ])
+        fetched = self._fetch([
+            HolidayEntry(date="2025-01-01", name="New Year's Day",
+                         status="closed", source_url="x"),
+        ])
+        out = RegistryUpdater.__new__(RegistryUpdater).generate_exchange_json(fetched, cur)
+        assert out["holidays"]["explicit"][0]["name"] == "New Year's Day"
+
+    def test_replaces_stale_status(self):
+        cur = self._current([
+            {"date": "2025-07-03", "name": "Eve", "status": "closed"},
+        ])
+        fetched = self._fetch([
+            HolidayEntry(date="2025-07-03", name="Eve",
+                         status="early_close", early_close_time="13:00",
+                         source_url="x"),
+        ])
+        out = RegistryUpdater.__new__(RegistryUpdater).generate_exchange_json(fetched, cur)
+        assert out["holidays"]["explicit"][0]["status"] == "early_close"
+        assert out["holidays"]["explicit"][0]["early_close_time"] == "13:00"
+
+    def test_propagates_deletion(self):
+        cur = self._current([
+            {"date": "2025-01-01", "name": "New Year", "status": "closed"},
+            {"date": "2025-07-04", "name": "Independence", "status": "closed"},
+        ])
+        fetched = self._fetch([
+            HolidayEntry(date="2025-01-01", name="New Year",
+                         status="closed", source_url="x"),
+        ])
+        out = RegistryUpdater.__new__(RegistryUpdater).generate_exchange_json(fetched, cur)
+        dates = {e["date"] for e in out["holidays"]["explicit"]}
+        assert dates == {"2025-01-01"}
+
+    def test_sorts_by_date(self):
+        fetched = self._fetch([
+            HolidayEntry(date="2025-07-04", name="B", status="closed", source_url="x"),
+            HolidayEntry(date="2025-01-01", name="A", status="closed", source_url="x"),
+        ])
+        out = RegistryUpdater.__new__(RegistryUpdater).generate_exchange_json(fetched, None)
+        assert [e["date"] for e in out["holidays"]["explicit"]] == ["2025-01-01", "2025-07-04"]
+
+    def test_preserves_recurrence_rules(self):
+        cur = self._current([], )
+        cur["holidays"]["recurrence_rules"] = [
+            {"rule": "fixed_date", "month": 1, "day": 1, "name": "NY", "status": "closed"}
+        ]
+        fetched = self._fetch([
+            HolidayEntry(date="2025-01-01", name="NY", status="closed", source_url="x"),
+        ])
+        out = RegistryUpdater.__new__(RegistryUpdater).generate_exchange_json(fetched, cur)
+        assert out["holidays"]["recurrence_rules"] == cur["holidays"]["recurrence_rules"]
+
+    def test_preserves_extended_hours_and_sessions(self):
+        cur = self._current([], extended_hours={"pre_market": {"open": "04:00", "close": "09:00"}},
+                            sessions=[{"type": "auction", "at": "09:00"}])
+        fetched = self._fetch([
+            HolidayEntry(date="2025-01-01", name="NY", status="closed", source_url="x"),
+        ])
+        out = RegistryUpdater.__new__(RegistryUpdater).generate_exchange_json(fetched, cur)
+        assert out["extended_hours"] == cur["extended_hours"]
+        assert out["sessions"] == cur["sessions"]
+
+    def test_preserves_weekend_days(self):
+        cur = self._current([], weekend_days=[4, 5])
+        fetched = self._fetch([
+            HolidayEntry(date="2025-01-01", name="NY", status="closed", source_url="x"),
+        ])
+        out = RegistryUpdater.__new__(RegistryUpdater).generate_exchange_json(fetched, cur)
+        assert out["weekend_days"] == [4, 5]
+
+    def test_update_exchange_aborts_on_empty_fetch(self):
+        """Fetcher returning zero holidays must not overwrite the file."""
+        updater = RegistryUpdater(tmp_registry_dir)  # your existing fixture
+        updater.fetchers.register(_EmptyFetcher())   # subclass of ExchangeFetcher
+        status, msg = updater.update_exchange("TEST", dry_run=True)
+        assert status == FetchStatus.FAILED
+        assert "empty" in msg.lower()
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "--tb=short"])
