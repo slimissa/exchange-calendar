@@ -13,7 +13,7 @@ The canonical configuration is in pyproject.toml.
 from setuptools import setup, find_packages
 
 setup(
-    name="exchange-calendar",
+    name="exchange-calendar-registry",
     version="1.0.0",
     description="Canonical, versioned, machine-readable registry of global exchange trading calendars",
     long_description=open("README.md", encoding="utf-8").read(),
