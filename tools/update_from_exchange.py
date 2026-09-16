@@ -178,7 +178,10 @@ class ExchangeData:
             errors.append(f"Invalid open time: {self.regular_open}")
         if not time_pattern.match(self.regular_close):
             errors.append(f"Invalid close time: {self.regular_close}")
-        
+
+        if not self.holidays:
+            errors.append("No holidays found")
+
         # Validate holiday dates
         date_pattern = re.compile(r'^\d{4}-\d{2}-\d{2}$')
         seen_dates = set()
@@ -507,12 +510,12 @@ class PDFFetcher(ExchangeFetcher):
         newlines. Returns '' (not None) on empty/unreadable content so
         callers can treat it the same way as an empty HTML/CSV string.
         """
+        if not pdf_bytes:
+            return ""
         if not HAS_PDFPLUMBER:
             raise ParseError(
                 "pdfplumber not available -- required for PDF-based fetchers"
             )
-        if not pdf_bytes:
-            return ""
 
         import io
         text_parts = []
@@ -5762,9 +5765,6 @@ class RegistryUpdater:
         # Compare with current
         current_data = self.load_current_exchange(mic)
         has_changes, change_details = self.compare_holidays(current_data, fetched_data)
-
-        if not self.holidays:
-            errors.append("No holidays found")
 
         if current_data is None:
             status = FetchStatus.NEW_EXCHANGE

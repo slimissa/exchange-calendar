@@ -18,6 +18,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent.parent / 'tools'))
 
 from update_from_exchange import (
+    HAS_PDFPLUMBER,
     FetchError,
     ParseError,
     ValidationError,
@@ -1881,6 +1882,7 @@ class TestPDFFetcherBase:
         fetcher = XDFMFetcher()  # any PDFFetcher subclass will do
         assert fetcher._extract_pdf_text(b"") == ""
 
+    @pytest.mark.skipif(not HAS_PDFPLUMBER, reason="pdfplumber not installed")
     def test_extract_pdf_text_malformed_pdf_does_not_raise(self):
         fetcher = XDFMFetcher()
         # Not valid PDF bytes at all -- should log and return "", not crash
@@ -2901,14 +2903,14 @@ class TestRegistryUpdater:
         has_changes, changes = registry_updater.compare_holidays(None, sample_exchange_data)
         
         assert has_changes
-        assert "New exchange" in changes
+        assert any("New exchange" in c for c in changes)
     
     def test_compare_holidays_no_changes(self, registry_updater):
         current = {
             "holidays": {
                 "explicit": [
-                    {"date": "2026-01-01", "name": "New Year's Day"},
-                    {"date": "2026-01-19", "name": "MLK Day"}
+                    {"date": "2026-01-01", "name": "New Year's Day", "status": "closed"},
+                    {"date": "2026-01-19", "name": "MLK Day", "status": "closed"}
                 ]
             }
         }
@@ -2959,33 +2961,26 @@ class TestRegistryUpdater:
         assert result["timezone"] == "America/New_York"
         assert len(result["holidays"]["explicit"]) == len(sample_exchange_data.holidays)
     
-    def test_generate_exchange_json_merge(self, registry_updater, sample_exchange_data):
+    def test_generate_exchange_json_replaces_not_merges(self, registry_updater, sample_exchange_data):
+        """Phase 1.1: fetched holidays replace current; current-only dates are dropped."""
         current = {
-            "code": "XNYS",
-            "name": "New York Stock Exchange",
-            "mic": "XNYS",
+            "code": "XNYS", "name": "New York Stock Exchange", "mic": "XNYS",
             "timezone": "America/New_York",
             "regular_hours": {"open": "09:30", "close": "16:00"},
-            "extended_hours": {
-                "pre_market": {"open": "04:00", "close": "09:30"}
-            },
+            "extended_hours": {"pre_market": {"open": "04:00", "close": "09:30"}},
             "sessions": [{"name": "opening_auction"}],
             "holidays": {
-                "explicit": [
-                    {"date": "2025-01-01", "name": "New Year's Day 2025"}
-                ],
-                "recurrence_rules": [{"type": "fixed_date"}]
+                "explicit": [{"date": "2025-01-01", "name": "New Year\'s Day 2025", "status": "closed"}],
+                "recurrence_rules": [{"type": "fixed_date"}],
             },
             "ad_hoc_closures": [{"date": "2025-09-11"}],
-            "generation_range": ["2025-01-01", "2029-12-31"]
+            "generation_range": ["2025-01-01", "2029-12-31"],
         }
-        
         result = registry_updater.generate_exchange_json(sample_exchange_data, current)
-        
         holiday_dates = [h["date"] for h in result["holidays"]["explicit"]]
-        assert "2025-01-01" in holiday_dates
+
+        assert "2025-01-01" not in holiday_dates
         assert "2026-01-01" in holiday_dates
-        
         assert result["extended_hours"]["pre_market"]["open"] == "04:00"
         assert len(result["sessions"]) == 1
         assert len(result["holidays"]["recurrence_rules"]) == 1
@@ -3210,13 +3205,30 @@ class TestMergeSemantics:
         out = RegistryUpdater.__new__(RegistryUpdater).generate_exchange_json(fetched, cur)
         assert out["weekend_days"] == [4, 5]
 
-    def test_update_exchange_aborts_on_empty_fetch(self):
+    def test_update_exchange_aborts_on_empty_fetch(self, tmp_path):
         """Fetcher returning zero holidays must not overwrite the file."""
-        updater = RegistryUpdater(tmp_registry_dir)  # your existing fixture
-        updater.fetchers.register(_EmptyFetcher())   # subclass of ExchangeFetcher
+        registry_dir = tmp_path / "registry"
+        (registry_dir / "exchanges").mkdir(parents=True)
+        (registry_dir / "exchanges" / "TEST.json").write_text(json.dumps({
+            "code": "TEST", "name": "Empty Test", "mic": "TEST", "timezone": "UTC",
+            "weekend_days": [5, 6],
+            "regular_hours": {"open": "09:00", "close": "17:00"},
+            "holidays": {"explicit": [
+                {"date": "2025-01-01", "name": "New Year", "status": "closed"}
+            ], "recurrence_rules": []},
+            "ad_hoc_closures": [],
+            "generation_range": ["2025-01-01", "2029-12-31"],
+        }))
+
+        updater = RegistryUpdater(registry_dir, use_cache=False)
+        updater.fetchers.register(_EmptyFetcher())
         status, msg = updater.update_exchange("TEST", dry_run=True)
+
         assert status == FetchStatus.FAILED
-        assert "empty" in msg.lower()
+        assert "empty" in (msg or "").lower()
+
+        after = json.loads((registry_dir / "exchanges" / "TEST.json").read_text())
+        assert len(after["holidays"]["explicit"]) == 1
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "--tb=short"])
