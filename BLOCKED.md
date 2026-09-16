@@ -41,15 +41,15 @@ them by robots.txt (XCAS, XDHA — respected by design, not worked around),
 1 by an unreadable PDF (XKAR), 1 by a JS-rendered page (XTUN). 2 remain
 genuinely unverified (XNBO, XGSE) rather than forced to a verdict.
 
-**Tier 8 (small/island markets) update 2026-09-06 — FINAL TIER:** 6 of 8
-buildable (XBDA, XCAY, XLUX, XMAL, XZAG, plus XGSE resolving the Tier 7
-carryover). 4 confirmed blocked (XBUL, XBEK, XNZE, and XNBO — the second
-Tier 7 carryover, resolved decisively this round via a consistent JS-SPA
-signature across 6 different pages rather than a single miss). Notably,
-the brief's own predictions for this tier were mixed: New Zealand was
-expected to be simple and turned out JS-blocked; Beirut was flagged as
-uncertain due to instability and that concern was directly confirmed (2
-independent server timeouts).
+**Tier 8 (small/island markets) update 2026-09-06 — FINAL TIER:** 5 of
+the 8 Tier 8 exchanges were buildable (XBDA, XCAY, XLUX, XMAL, XZAG); 3
+were confirmed blocked (XBUL, XBEK, XNZE). Two Tier 7 carryovers were also
+resolved in this round: XGSE (built) and XNBO (confirmed blocked).
+Combined count for the round: 6 built, 4 blocked. Notably, the brief's
+own predictions for this tier were mixed: New Zealand was expected to be
+simple and turned out JS-blocked; Beirut was flagged as uncertain due to
+instability and that concern was directly confirmed (2 independent server
+timeouts).
 
 This file documents what was checked and why each verdict holds, since "we
 found a different URL" or "it's blocked" is easy to state and easy to get
@@ -446,6 +446,12 @@ rather than deep-diving every exchange from scratch.
 - **Verdict: BUILD.** Built as `GhanaExchangeFetcher`.
 
 ## Tier 8 (small/island markets) — 2026-09-06 — FINAL TIER
+
+**Tier 8 (small/island markets) update 2026-09-06 — FINAL TIER:** 5 of the
+8 Tier 8 exchanges were buildable (XBDA, XCAY, XLUX, XMAL, XZAG); 3 were
+confirmed blocked (XBUL, XBEK, XNZE). Two Tier 7 carryovers were also
+resolved in this round: XGSE (built) and XNBO (confirmed blocked).
+Combined count for the round: 6 built, 4 blocked.
 
 ### XBUL — Bulgarian Stock Exchange
 
