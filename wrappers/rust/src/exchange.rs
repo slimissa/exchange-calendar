@@ -586,7 +586,16 @@ mod tests {
                 open: "09:00".to_string(),
                 close: "17:00".to_string(),
             },
-            extended_hours: None,
+            extended_hours: Some(ExtendedHours {
+                pre_market: Some(RegularHours {
+                    open: "04:00".to_string(),
+                    close: "09:00".to_string(),
+                }),
+                after_hours: Some(RegularHours {
+                    open: "17:00".to_string(),
+                    close: "20:00".to_string(),
+                }),
+            }),
             sessions: None,
             holidays: HolidaysData {
                 explicit: vec![
@@ -904,5 +913,71 @@ mod tests {
         assert!(!e.is_holiday("2025/01/01"));
         assert!(!e.is_early_close("2025/01/01"));
         assert!(!e.is_open("2025/01/01", None));
+    }
+
+    #[test]
+    fn test_status_at_extended_hours() {
+        // XHKG has no extended_hours: outside regular hours -> Closed.
+        let xhk_data = ExchangeData {
+            code: "XHKG".to_string(),
+            name: "Hong Kong".to_string(),
+            mic: "XHKG".to_string(),
+            timezone: "Asia/Hong_Kong".to_string(),
+            weekend_days: Some(vec![5, 6]),
+            regular_hours: RegularHours {
+                open: "09:30".to_string(),
+                close: "16:00".to_string(),
+            },
+            extended_hours: None,
+            sessions: None,
+            holidays: HolidaysData { explicit: vec![], generated: vec![] },
+            ad_hoc_closures: None,
+            generation_range: None,
+        };
+        let xhk = Exchange::new(xhk_data).unwrap();
+        assert_eq!(
+            xhk.status_at("2025-07-07", "07:00").unwrap(),
+            SessionStatus::Closed
+        );
+        assert_eq!(
+            xhk.status_at("2025-07-07", "18:00").unwrap(),
+            SessionStatus::Closed
+        );
+
+        // XNYS declares both sessions: inside the windows -> PreMarket / AfterHours.
+        let ny_data = ExchangeData {
+            code: "XNYS".to_string(),
+            name: "NYSE".to_string(),
+            mic: "XNYS".to_string(),
+            timezone: "America/New_York".to_string(),
+            weekend_days: Some(vec![5, 6]),
+            regular_hours: RegularHours {
+                open: "09:30".to_string(),
+                close: "16:00".to_string(),
+            },
+            extended_hours: Some(ExtendedHours {
+                pre_market: Some(RegularHours {
+                    open: "04:00".to_string(),
+                    close: "09:30".to_string(),
+                }),
+                after_hours: Some(RegularHours {
+                    open: "16:00".to_string(),
+                    close: "20:00".to_string(),
+                }),
+            }),
+            sessions: None,
+            holidays: HolidaysData { explicit: vec![], generated: vec![] },
+            ad_hoc_closures: None,
+            generation_range: None,
+        };
+        let xnys = Exchange::new(ny_data).unwrap();
+        assert_eq!(
+            xnys.status_at("2025-07-07", "08:00").unwrap(),
+            SessionStatus::PreMarket
+        );
+        assert_eq!(
+            xnys.status_at("2025-07-07", "17:00").unwrap(),
+            SessionStatus::AfterHours
+        );
     }
 }
