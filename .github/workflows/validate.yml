@@ -236,3 +236,62 @@ jobs:
           python3 tools/verify_predicted_dates.py --check || echo "⚠️ Predicted dates need verification (non-blocking)"
           # Exit 0 always — verification is tracked separately
           # The script still reports the count for visibility
+  version-consistency:
+    name: Version Consistency
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check VERSION matches CHANGELOG top entry
+        run: |
+          python3 - << 'EOF'
+          import re
+          from pathlib import Path
+
+          version = Path("VERSION").read_text().strip()
+
+          changelog = Path("CHANGELOG.md").read_text()
+          # First dated [X.Y.Z] heading, not [Unreleased]
+          match = re.search(r'^## \[(\d+\.\d+\.\d+)\]', changelog, re.MULTILINE)
+          assert match, "No dated version heading found in CHANGELOG.md"
+          assert match.group(1) == version, (
+              f"VERSION is {version}, CHANGELOG top entry is {match.group(1)}"
+          )
+          print(f"OK: VERSION={version} matches CHANGELOG")
+          EOF
+
+      - name: Check README badge matches VERSION
+        run: |
+          python3 - << 'EOF'
+          import re
+          from pathlib import Path
+
+          version = Path("VERSION").read_text().strip()
+          readme = Path("README.md").read_text()
+          match = re.search(r'badge/registry-(\d+\.\d+\.\d+)-', readme)
+          assert match, "No registry badge found in README.md"
+          assert match.group(1) == version, (
+              f"VERSION is {version}, README badge is {match.group(1)}"
+          )
+          print(f"OK: VERSION={version} matches README badge")
+          EOF
+
+      - name: Check build.py output matches VERSION
+        run: |
+          python3 tools/build.py
+          python3 - << 'EOF'
+          import json
+          from pathlib import Path
+
+          version = Path("VERSION").read_text().strip()
+          built = json.load(open("calendar.json"))["meta"]["version"]
+          assert built == version, (
+              f"VERSION is {version}, calendar.json says {built}"
+          )
+          print(f"OK: VERSION={version} matches calendar.json")
+          EOF
