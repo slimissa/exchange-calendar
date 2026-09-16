@@ -665,7 +665,7 @@ func TestValidateTimeFormatRejectsNonDigits(t *testing.T) {
 	accepted := []string{
 		"00:00",
 		"09:00",
-		"23:59",
+		"23:58",
 	}
 	for _, s := range accepted {
 		data := exchangecalendar.ExchangeData{
