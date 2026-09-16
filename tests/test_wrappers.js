@@ -83,7 +83,12 @@ function getRegistryPath() {
 describe('Registry loading', () => {
     test('loads real registry', () => {
         const registry = new CalendarRegistry(getRegistryPath());
-        assert.equal(registry.version, '1.0.0');
+        const fs = require('node:fs');
+        const path = require('node:path');
+        const expectedVersion = fs.readFileSync(
+            path.join(__dirname, '..', 'VERSION'), 'utf8'
+        ).trim();
+        assert.equal(registry.version, expectedVersion);
         assert.equal(registry.exchangeCount, 74);
         assert.equal(registry.size, 74);
         assert.equal(registry.length, 74);
@@ -150,7 +155,7 @@ describe('Registry loading', () => {
         const registry = new CalendarRegistry(getRegistryPath());
         const s = registry.toString();
         assert.ok(s.includes('Exchange Calendar Registry'));
-        assert.ok(s.includes('1.0.0'));
+        assert.ok(s.includes(expectedVersion));
         assert.ok(s.includes('74'));
     });
 });

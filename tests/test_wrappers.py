@@ -107,7 +107,8 @@ def temp_registry(tmp_path_factory):
 
 class TestRegistryLoading:
     def test_load_real_registry(self, registry):
-        assert registry.version == "1.0.0"
+        version = Path(__file__).parent.parent.joinpath("VERSION").read_text().strip()
+        assert registry.version == version
         assert registry.exchange_count == 74
         assert len(registry) == 74
 
@@ -150,7 +151,7 @@ class TestRegistryLoading:
     def test_registry_string_representation(self, registry):
         s = str(registry)
         assert "Exchange Calendar Registry" in s
-        assert "1.0.0" in s
+        assert version in s
         assert "74" in s
 
     def test_registry_repr(self, registry):

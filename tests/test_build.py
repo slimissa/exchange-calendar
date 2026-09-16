@@ -19,6 +19,8 @@ import sys
 import pytest
 from pathlib import Path
 
+from wrappers.python.exchange_calendar import registry
+
 # Add tools/ to path
 TOOLS_DIR = Path(__file__).parent.parent / "tools"
 sys.path.insert(0, str(TOOLS_DIR))
@@ -75,7 +77,8 @@ class TestBuildRegistry:
 
         registry = builder.build_registry(tmp_path)
 
-        assert registry["meta"]["version"] == "1.0.0"
+        version = Path(__file__).parent.parent.joinpath("VERSION").read_text().strip()
+        assert registry["meta"]["version"] == version
         assert registry["meta"]["exchange_count"] == 1
         assert len(registry["exchanges"]) == 1
         assert registry["exchanges"][0]["code"] == "TEST"
