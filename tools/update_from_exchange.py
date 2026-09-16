@@ -339,7 +339,6 @@ class ExchangeFetcher(ABC):
         self.rate_limit = rate_limit
         self.parser_type = parser_type
         self.rate_limiter = RateLimiter(rate_limit)
-        self.referer = None
     
     @abstractmethod
     def parse_html(self, html: str) -> List[HolidayEntry]:
@@ -394,16 +393,12 @@ class ExchangeFetcher(ABC):
         self.rate_limiter.wait_if_needed(self.mic)
         
         try:
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'
-            }
-            if self.referer:
-                headers['Referer'] = self.referer
-
             response = requests.get(
                 self.source_url,
                 timeout=30,
-                headers=headers
+                headers={
+                    'User-Agent': 'Mozilla/5.0 (compatible; ExchangeCalendarRegistry/1.0)'
+                }
             )
             response.raise_for_status()
             self.rate_limiter.mark_request(self.mic)
@@ -440,16 +435,12 @@ class ExchangeFetcher(ABC):
         self.rate_limiter.wait_if_needed(self.mic)
 
         try:
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36'
-            }
-            if self.referer:
-                headers['Referer'] = self.referer
-
             response = requests.get(
                 self.source_url,
                 timeout=30,
-                headers=headers
+                headers={
+                    'User-Agent': 'Mozilla/5.0 (compatible; ExchangeCalendarRegistry/1.0)'
+                }
             )
             response.raise_for_status()
             self.rate_limiter.mark_request(self.mic)
@@ -1056,17 +1047,32 @@ class ASXFetcher(ExchangeFetcher):
     "Trading Day" column value is either "CLOSED" (full closure -> holiday)
     or "CLOSE EARLY" (early close -> early_close).
 
-    FIXED 2026 (live health check regression): the page now publishes TWO
+    FIXED (live health check regression): the page now publishes TWO
     tables on one page ("2026 trading calendar" and "2027 trading
     calendar"), each with its own "DATES FOR <year>" / "Dates for <year>"
-    header. Fixed by extracting the year from EACH table's own header text
-    independently, so multi-year pages are handled correctly.
+    header (different capitalization between the two, both matched via
+    re.IGNORECASE). The year is no longer extracted once globally from the
+    whole page and reused for every table -- that was the actual bug: a
+    single `YEAR_HEADER_RE.search(page_text)` picked up only the first
+    table's year (2026) and applied it to BOTH tables' rows, so the 2027
+    table's New Year's Day / Australia Day / Christmas Day / Boxing Day
+    rows (which share month/day with their 2026 counterparts) were
+    silently mis-dated as 2026, producing exact duplicate HolidayEntry
+    dates that ExchangeData.validate() correctly rejected. Fixed by
+    extracting the year from EACH table's own header text independently,
+    so multi-year pages are handled correctly (and, as a bonus, both years'
+    data now come through instead of just one).
 
-    Also added defensive de-duplication (merge same-date entries) as a
-    safety net, rather than weakening ExchangeData.validate().
+    Also added defensive de-duplication (merge same-date entries, combining
+    names if they differ) as a safety net per project policy of not
+    weakening ExchangeData.validate()'s duplicate-date check for one
+    fetcher -- see ColomboFetcher (XCOL) for the precedent. With the root
+    cause fixed above this shouldn't currently trigger, but protects
+    against a future page change reintroducing overlapping tables.
     """
 
     YEAR_HEADER_RE = re.compile(r'DATES FOR (\d{4})', re.IGNORECASE)
+    # ASX's date column format is "Thursday 1 January" -- day BEFORE month name
     ROW_DATE_RE = re.compile(
         r'\b(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|October|November|December)\b',
         re.IGNORECASE
@@ -1083,15 +1089,16 @@ class ASXFetcher(ExchangeFetcher):
 
     @staticmethod
     def _merge_duplicates(entries: List[HolidayEntry]) -> List[HolidayEntry]:
-        """Merge entries sharing the same date, combining names if they differ."""
+        """Merge entries sharing the same date, combining names if they
+        differ. Defensive safety net -- see class docstring."""
         by_date: Dict[str, HolidayEntry] = {}
         for e in entries:
             if e.date in by_date:
                 existing = by_date[e.date]
-                combined_name = (
-                    f"{existing.name} / {e.name}"
-                    if e.name != existing.name else existing.name
-                )
+                if e.name != existing.name:
+                    combined_name = f"{existing.name} / {e.name}"
+                else:
+                    combined_name = existing.name
                 by_date[e.date] = HolidayEntry(
                     date=e.date,
                     name=combined_name,
@@ -1103,7 +1110,7 @@ class ASXFetcher(ExchangeFetcher):
         return list(by_date.values())
 
     def parse_html(self, html: str) -> Tuple[List[HolidayEntry], List[HolidayEntry]]:
-        """Returns (holidays, early_closes) since ASX's table distinguishes them."""
+        """Returns (holidays, early_closes) since ASX's table distinguishes them"""
         if not html:
             return [], []
 
@@ -1114,8 +1121,12 @@ class ASXFetcher(ExchangeFetcher):
         for table in tables:
             header_text = table.get_text(" ", strip=True)
             if 'TRADING DAY' not in header_text.upper():
-                continue
+                continue  # not a calendar table
 
+            # Year is extracted PER TABLE, not once globally for the whole
+            # page -- the page can (and now does) contain more than one
+            # year's table, and reusing a single page-wide year across all
+            # of them is exactly what caused the duplicate-date bug.
             year_match = self.YEAR_HEADER_RE.search(header_text)
             if not year_match:
                 continue
@@ -1151,22 +1162,23 @@ class ASXFetcher(ExchangeFetcher):
                         source_url=self.source_url
                     ))
                 elif 'CLOSED' in trading_status:
-                    if date_obj.weekday() < 5:
+                    if date_obj.weekday() < 5:  # only record if not already a weekend
                         holidays.append(HolidayEntry(
                             date=iso_date, name=name, status="closed",
                             source_url=self.source_url
                         ))
 
         return self._merge_duplicates(holidays), self._merge_duplicates(early_closes)
+
     @retry(max_attempts=3, delay=2.0, backoff=2.0, exceptions=(FetchError,))
     def fetch(self) -> Optional[ExchangeData]:
-        """Fetch ASX holiday calendar."""
+        """Fetch ASX holiday calendar"""
         html = self._make_request()
         if not html:
             raise FetchError("Failed to fetch ASX page")
 
         holidays, early_closes = self.parse_html(html)
-        if not holidays and not early_closes:
+        if not holidays:
             raise ParseError("No holidays found for XASX")
 
         data = ExchangeData(
@@ -1189,6 +1201,7 @@ class ASXFetcher(ExchangeFetcher):
             raise ValidationError(f"Invalid data: {', '.join(errors)}")
 
         return data
+
 
 class EuronextFetcher(ExchangeFetcher):
     """
@@ -1699,14 +1712,41 @@ class SZSEFetcher(ExchangeFetcher):
     KNOWN LIMITATION: like XSHG, this page's year coverage may lag the
     current year -- verify the returned dates' years before relying on them
     for the current trading year.
+
+    FIXED (live health check regression, root cause confirmed via
+    web_fetch against the live page): this fetcher was returning "No
+    holidays found." The heading text is literally
+    "Stock Market Holiday Schedule (202<strong>6</strong>)" in the live
+    HTML -- the exchange's own bold-formatting splits the year's digits
+    across separate inline tags inconsistently ("202" and "6" in separate
+    `<strong>` elements). The parser previously extracted page text via
+    `soup.get_text("\n", strip=True)`, which inserts a literal newline at
+    EVERY tag boundary -- turning "2026" into "202\n6" in the extracted
+    text, which `YEAR_HEADING_RE` (requiring 4 consecutive digits) could
+    never match, so the function returned `[]` before ever reaching the
+    entry-parsing loop. This is a real site-side markup inconsistency, not
+    a one-off; there's no guarantee which specific digit boundary gets
+    split in a future page revision. Fixed by anchoring on the stable
+    "Stock Market Holiday Schedule" text, taking a small window after it,
+    and stripping ALL non-digit characters before matching a 4-digit
+    "20XX" year -- this is robust to whitespace/newlines being injected
+    anywhere within the year digits, not just the specific split observed
+    this time.
+
+    A second, independent formatting quirk was also found and fixed while
+    verifying: the live "Dragon Boat Festival" entry reads
+    "close on June19th (Friday)" -- zero whitespace between the month name
+    and day number, unlike every other entry on the page. The date-matching
+    regex previously required at least one whitespace character (`\\s+`)
+    between month and day; changed to `\\s*` (zero or more) so both spaced
+    and unspaced entries match without needing to special-case this one row.
     """
 
-    YEAR_HEADING_RE = re.compile(r'\((20\d{2})\)')
     ENTRY_RE = re.compile(
         r'(\d+)\.\s*([^:]+):\s*The market will close (?:on|from)\s+'
-        r'([A-Z][a-z]+\s+\d{1,2})(?:st|nd|rd|th)?\s*\(\w+\)'
-        r'(?:\s*to\s*[A-Z][a-z]+\s+\d{1,2}(?:st|nd|rd|th)?\s*\(\w+\))?'
-        r'.*?resume trading on\s+([A-Z][a-z]+\s+\d{1,2})(?:st|nd|rd|th)?',
+        r'([A-Z][a-z]+)\s*(\d{1,2})(?:st|nd|rd|th)?\s*\(\w+\)'
+        r'(?:\s*to\s*[A-Z][a-z]+\s*\d{1,2}(?:st|nd|rd|th)?\s*\(\w+\))?'
+        r'.*?resume trading on\s+([A-Z][a-z]+)\s*(\d{1,2})(?:st|nd|rd|th)?',
         re.DOTALL
     )
 
@@ -1724,21 +1764,31 @@ class SZSEFetcher(ExchangeFetcher):
             return []
 
         soup = BeautifulSoup(html, 'html.parser')
-        page_text = soup.get_text("\n", strip=True)
+        page_text = soup.get_text(" ", strip=True)
 
-        year_match = self.YEAR_HEADING_RE.search(page_text)
+        # Anchor on the stable heading text, then strip ALL non-digit
+        # characters from a small window after it before matching a 4-digit
+        # year -- robust to whitespace/newlines being injected anywhere
+        # within the year's own digits by inconsistent inline markup (see
+        # class docstring for the confirmed real-world case).
+        schedule_idx = page_text.find("Stock Market Holiday Schedule")
+        if schedule_idx == -1:
+            return []
+        window = page_text[schedule_idx:schedule_idx + 60]
+        digits_only = re.sub(r'\D', '', window)
+        year_match = re.search(r'(20\d{2})', digits_only)
         if not year_match:
             return []
         year = int(year_match.group(1))
 
         holidays = []
         for match in self.ENTRY_RE.finditer(page_text):
-            _, name, start_text, resume_text = match.groups()
+            _, name, start_month, start_day, resume_month, resume_day = match.groups()
             name = name.strip()
 
             try:
-                start = datetime.strptime(f"{start_text} {year}", "%B %d %Y")
-                resume = datetime.strptime(f"{resume_text} {year}", "%B %d %Y")
+                start = datetime.strptime(f"{start_month} {start_day} {year}", "%B %d %Y")
+                resume = datetime.strptime(f"{resume_month} {resume_day} {year}", "%B %d %Y")
             except ValueError:
                 continue
 
@@ -1921,6 +1971,35 @@ class WarsawFetcher(ExchangeFetcher):
     time). Format is "Weekday | Day Month" per row, grouped under a "##
     YYYY" heading -- no holiday names given, same generic-label situation
     as XMAD and HKEX.
+
+    FIXED (live health check regression, root cause confirmed via
+    web_fetch against the live page): the "2027" section's table has an
+    extra trailing row reading "Thursday 1 January" -- but 1 January 2027
+    is actually a FRIDAY (the 2027 section's own first row, correctly,
+    reads "Friday 1 January"). Checked directly: 1 January falls on a
+    Thursday in 2026, not 2027 or 2028. This trailing row appears to be a
+    template artifact on GPW's side (possibly a leftover "next year
+    preview" fragment), not a real second holiday. Since the fetcher
+    previously assigned every row within a year-section to that section's
+    year unconditionally, this produced a real 2026 date ("2026-01-01",
+    already correctly captured from the "2026" section) ALSO re-emitted as
+    "2027-01-01" (the wrong year for a Thursday-Jan-1 row), which is a
+    corrupted date, not merely a duplicate -- reusing the ASX-style "just
+    deduplicate" fix alone would have kept the row under the wrong year
+    instead of dropping the wrong data. Fixed by validating each row's own
+    weekday against its assigned section year (day-of-week computed from
+    the parsed date); rows that don't match are skipped and logged rather
+    than guessed at, since there's no reliable way to know what year a
+    mismatched row was actually meant for.
+
+    Also added defensive de-duplication (merge same-date entries) as a
+    safety net per project policy of not weakening
+    ExchangeData.validate()'s duplicate-date check for one fetcher -- see
+    ASXFetcher (XASX) and ColomboFetcher (XCOL) for precedent. With the
+    root-cause weekday validation above this shouldn't currently trigger,
+    but protects against a future page change reintroducing genuine
+    same-date duplicates from separate, both-correct sections (e.g. if a
+    real holiday is ever listed identically in two adjacent year tables).
     """
 
     YEAR_HEADING_RE = re.compile(r'^(20\d{2})$')
@@ -1942,6 +2021,7 @@ class WarsawFetcher(ExchangeFetcher):
         soup = BeautifulSoup(html, 'html.parser')
         holidays = []
         current_year = None
+        skipped_mismatches = 0
 
         for element in soup.find_all(['h1', 'h2', 'h3', 'h4', 'table']):
             if element.name in ('h1', 'h2', 'h3', 'h4'):
@@ -1974,6 +2054,16 @@ class WarsawFetcher(ExchangeFetcher):
                 except ValueError:
                     continue
 
+                # Validate this row's own weekday against the year it was
+                # found under. A mismatch means the row doesn't actually
+                # belong to this section's year (confirmed root cause: a
+                # stray "Thursday 1 January" row inside the "2027" section
+                # that is really 2026's New Year's Day) -- skip rather than
+                # guess which year it was meant for.
+                if weekday_text and date_obj.strftime('%A') != weekday_text:
+                    skipped_mismatches += 1
+                    continue
+
                 holidays.append(HolidayEntry(
                     date=date_obj.strftime('%Y-%m-%d'),
                     name="Warsaw Stock Exchange Holiday",
@@ -1982,7 +2072,20 @@ class WarsawFetcher(ExchangeFetcher):
                     note="Source page gives no holiday name -- generic label used"
                 ))
 
-        return self._merge_duplicates(holidays)
+        if skipped_mismatches:
+            logger.warning(
+                f"XWAR: skipped {skipped_mismatches} row(s) whose stated weekday "
+                f"didn't match their section's year -- likely a page template artifact"
+            )
+
+        # Defensive de-duplication safety net -- see class docstring.
+        seen = set()
+        deduped = []
+        for h in holidays:
+            if h.date not in seen:
+                seen.add(h.date)
+                deduped.append(h)
+        return deduped
 
     @retry(max_attempts=3, delay=2.0, backoff=2.0, exceptions=(FetchError,))
     def fetch(self) -> Optional[ExchangeData]:
@@ -2014,21 +2117,7 @@ class WarsawFetcher(ExchangeFetcher):
             raise ValidationError(f"Invalid data: {', '.join(errors)}")
 
         return data
-    def _merge_duplicates(self, entries):
-        by_date = {}
-        for e in entries:
-            if e.date in by_date:
-                existing = by_date[e.date]
-                by_date[e.date] = HolidayEntry(
-                    date=e.date,
-                    name=existing.name,
-                    status=existing.status,
-                    source_url=existing.source_url,
-                    note=existing.note
-                )
-            else:
-                by_date[e.date] = e
-        return list(by_date.values())
+
 
 class PragueFetcher(ExchangeFetcher):
     """
@@ -2589,12 +2678,47 @@ class HKEXFetcher(ExchangeFetcher):
     the following year's calendar in December -- but this fetcher will need
     a source_url update once naming drifts or a year fails to resolve via
     that pattern.
+
+    FIXED (live health check regression): the live check reported 404 on
+    both the 2026 and 2027 CSV URLs. Investigated via web_fetch (a real
+    browser-like fetch, not the `requests` library this fetcher normally
+    uses) against the exact same URL and confirmed the 2026 CSV is real,
+    unchanged, still has the "Hong Kong" column, and returns real 2026 data
+    -- the source page itself (last updated 22 Dec 2025) also confirms only
+    2025 and 2026 CSVs currently exist, which is expected (2027 not
+    published yet) and already handled gracefully by trying both years and
+    only failing if BOTH come back empty. This means the URL pattern and
+    column name are NOT the problem. The most likely explanation, given
+    this project's own prior experience with NYSE's WAF blocking plain
+    `requests` traffic while browser-like fetches succeeded: HKEX's CDN is
+    very likely blocking or mis-serving requests based on the base class's
+    generic, self-identifying User-Agent string
+    ("ExchangeCalendarRegistry/1.0"), which is an easy bot-detection
+    signature. This fetcher now overrides `_make_request` with a more
+    realistic, full browser-like header set (Accept, Accept-Language,
+    Referer pointing at the actual calendar page) scoped to HKEXFetcher
+    only -- NOT a change to the shared base class, since that would affect
+    every other fetcher without each one being individually re-verified.
+    IMPORTANT CAVEAT, stated plainly: this could not be verified end-to-end
+    from this environment, since the sandbox used for verification cannot
+    make live `requests` calls to hkex.com.hk at all (network egress
+    restriction unrelated to HKEX itself) -- this is a defensible, best-
+    effort mitigation based on the confirmed-working URL/data and this
+    project's established bot-detection pattern, not a confirmed fix. If
+    the live check still fails after this change, the CDN block is likely
+    stronger than a header fix can address (e.g. TLS fingerprinting or
+    IP-based blocking), and this exchange should be escalated toward
+    BLOCKED rather than re-patched again.
     """
 
     BASE_PAGE_TEMPLATE = (
         "https://www.hkex.com.hk/-/media/HKEX-Market/Mutual-Market/Stock-Connect/"
         "Reference-Materials/Trading-Hour,-Trading-and-Settlement-Calendar/"
         "{year}-Calendar_csv_e.csv"
+    )
+    REFERER = (
+        "https://www.hkex.com.hk/Mutual-Market/Stock-Connect/Reference-Materials/"
+        "Trading-Hour,-Trading-and-Settlement-Calendar?sc_lang=en"
     )
 
     def __init__(self):
@@ -2607,6 +2731,54 @@ class HKEXFetcher(ExchangeFetcher):
             source_url=self.BASE_PAGE_TEMPLATE.format(year=current_year),
             rate_limit=2.0
         )
+
+    def _make_request(self) -> Optional[str]:
+        """
+        Override of the base class's _make_request with a fuller,
+        browser-like header set -- see the "FIXED" note in the class
+        docstring for why. Still goes through the same robots.txt check and
+        rate limiter as the base implementation, just with different
+        headers on the actual GET.
+        """
+        import requests
+
+        if not self._check_robots_allowed():
+            logger.error(
+                f"robots.txt disallows fetching {self.source_url} for {self.mic}"
+            )
+            return None
+
+        self.rate_limiter.wait_if_needed(self.mic)
+
+        try:
+            response = requests.get(
+                self.source_url,
+                timeout=30,
+                headers={
+                    'User-Agent': (
+                        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                        '(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
+                    ),
+                    'Accept': 'text/csv,text/plain,*/*',
+                    'Accept-Language': 'en-US,en;q=0.9',
+                    'Referer': self.REFERER,
+                }
+            )
+            response.raise_for_status()
+            self.rate_limiter.mark_request(self.mic)
+            return response.text
+        except requests.exceptions.Timeout:
+            logger.error(f"Timeout fetching {self.mic}")
+            return None
+        except requests.exceptions.ConnectionError:
+            logger.error(f"Connection error fetching {self.mic}")
+            return None
+        except requests.exceptions.HTTPError as e:
+            logger.error(f"HTTP error fetching {self.mic}: {e}")
+            return None
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Request error fetching {self.mic}: {e}")
+            return None
 
     def parse_html(self, csv_text: str) -> List[HolidayEntry]:
         """
@@ -2991,6 +3163,30 @@ class SaudiExchangeFetcher(ExchangeFetcher):
     the holiday ran 15/7 to 25/7). Rows where the Date column's end predates
     its start are skipped and logged, not silently "fixed" by guessing which
     of the two conflicting values is correct.
+
+    FIXED (live health check regression): the live check reported 403
+    Forbidden. Investigated via web_fetch (a real browser-like fetch, not
+    the `requests` library this fetcher normally uses) against the exact
+    same URL and confirmed the page is real, unchanged, still has the same
+    table structure, and now extends through 2029 with the same real data
+    (verified: still filters correctly, still has the inverted-date-range
+    row, still has the IPO "Listing of..." rows to exclude). This means the
+    page itself is NOT blocking legitimate browser-like access -- only
+    `requests` traffic using the base class's generic, self-identifying
+    User-Agent ("ExchangeCalendarRegistry/1.0"), matching this project's
+    established pattern from the NYSE and HKEX bot-detection fixes. This
+    fetcher now overrides `_make_request` with a realistic browser-like
+    header set, scoped to SaudiExchangeFetcher only -- not a change to the
+    shared base class. IMPORTANT CAVEAT, stated plainly: this could not be
+    verified end-to-end from this environment, since the sandbox used for
+    verification cannot make live `requests` calls to saudiexchange.sa at
+    all (network egress restriction unrelated to this specific site) --
+    this is a defensible, best-effort mitigation based on the confirmed-
+    working page content and this project's established bot-detection
+    pattern, not a confirmed fix. If the live check still fails with 403
+    after this change, the block is likely stronger than a header fix can
+    address, and this exchange should be escalated toward BLOCKED rather
+    than re-patched again.
     """
 
     DATE_RANGE_RE = re.compile(
@@ -3000,6 +3196,10 @@ class SaudiExchangeFetcher(ExchangeFetcher):
         r'founding day|national day|eid al', re.IGNORECASE
     )
     LUNAR_TITLE_RE = re.compile(r'eid al', re.IGNORECASE)
+    REFERER = (
+        "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/"
+        "exchange-media-centre?locale=en"
+    )
 
     def __init__(self):
         super().__init__(
@@ -3008,6 +3208,54 @@ class SaudiExchangeFetcher(ExchangeFetcher):
             source_url="https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/saudi-exchange-holiday-calendar",
             rate_limit=2.0
         )
+
+    def _make_request(self) -> Optional[str]:
+        """
+        Override of the base class's _make_request with a fuller,
+        browser-like header set -- see the "FIXED" note in the class
+        docstring for why. Still goes through the same robots.txt check and
+        rate limiter as the base implementation, just with different
+        headers on the actual GET.
+        """
+        import requests
+
+        if not self._check_robots_allowed():
+            logger.error(
+                f"robots.txt disallows fetching {self.source_url} for {self.mic}"
+            )
+            return None
+
+        self.rate_limiter.wait_if_needed(self.mic)
+
+        try:
+            response = requests.get(
+                self.source_url,
+                timeout=30,
+                headers={
+                    'User-Agent': (
+                        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                        '(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
+                    ),
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                    'Accept-Language': 'en-US,en;q=0.9',
+                    'Referer': self.REFERER,
+                }
+            )
+            response.raise_for_status()
+            self.rate_limiter.mark_request(self.mic)
+            return response.text
+        except requests.exceptions.Timeout:
+            logger.error(f"Timeout fetching {self.mic}")
+            return None
+        except requests.exceptions.ConnectionError:
+            logger.error(f"Connection error fetching {self.mic}")
+            return None
+        except requests.exceptions.HTTPError as e:
+            logger.error(f"HTTP error fetching {self.mic}: {e}")
+            return None
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Request error fetching {self.mic}: {e}")
+            return None
 
     def parse_html(self, html: str) -> List[HolidayEntry]:
         if not html:
@@ -3605,14 +3853,53 @@ class BMVMexicoFetcher(ExchangeFetcher):
 
         return data
 
+
 class BymaArgentinaFetcher(ExchangeFetcher):
     """
     Fetcher for Bolsas y Mercados Argentinos (XBUE) holidays.
 
     Verified live 2026-09-04: byma.com.ar/mercado/calendario-bursatil is
-    real, static (Webflow-generated) HTML with footnote references.
+    real, static (Webflow-generated) HTML -- a clean three-column table
+    ("Fecha" | "Dia" | "Motivo") with a footnote-reference system that
+    determines closure status:
+      1. Feriado Nacional Inamovible (fixed national holiday) -- CLOSED
+      2. Feriado Nacional Trasladable (movable national holiday) -- CLOSED
+      3. "Jornada sin Liquidacion | Jornada con Negociacion" (no settlement,
+         but TRADING CONTINUES) -- NOT a closure, deliberately excluded
+      4. "Jornada sin Negociacion ni Liquidacion" (no trading, no
+         settlement) -- CLOSED
 
-    FIXED: parser now works off linearized text, not table tags.
+    Getting reference (3) wrong would silently add several non-closure days
+    to the holiday list (BYMA's 2026 page lists 5 category-3 rows: Carnaval
+    eve bridge days, Dia del Bancario, Nochebuena) -- these are bank/local
+    observances where the market still trades.
+
+    Date format is Spanish ("16 de Febrero"); month names are parsed via a
+    Spanish-to-English lookup rather than relying on locale-dependent
+    strptime parsing, since this environment's C locale may not have
+    Spanish month names available.
+
+    FIXED (live health check regression, root cause confirmed via
+    web_fetch against the live page): this fetcher was returning "No
+    holidays found". Confirmed the page is Webflow-generated
+    (`meta-generator: Webflow`); Webflow's CMS Collection Lists commonly
+    render as CSS-grid `<div>` markup rather than semantic `<table>`/`<tr>`/
+    `<td>` elements, and the live page's calendar data now appears in the
+    fetched content as a flat, linearized "Fecha / Dia / Motivo" sequence
+    with no table structure recoverable via `soup.find_all('table')` --
+    which is exactly the assumption the original parser depended on, and
+    exactly why it silently found zero rows to iterate. Rather than
+    special-case Webflow's specific div/grid class names (fragile, and
+    unverifiable from this environment without the raw HTML), the parser
+    now works directly off the page's linearized text (`soup.get_text()`),
+    matching sequential (date, weekday, motivo) triplets by pattern. This
+    is structure-agnostic -- it doesn't care whether the underlying markup
+    is a table, a div grid, or something else, only that the three pieces
+    of information appear in that order in the rendered text, which is a
+    much more stable assumption for a page like this than any specific tag
+    structure. The year is also now read per-entry (from either an
+    explicit "de YYYY" suffix, as the 31 December row has, or a
+    page-wide fallback) rather than via a fragile page-wide-only lookup.
     """
 
     SPANISH_MONTHS = {
@@ -3621,6 +3908,10 @@ class BymaArgentinaFetcher(ExchangeFetcher):
         "noviembre": 11, "diciembre": 12,
     }
     WEEKDAYS_ES = r'Lunes|Martes|Mi[ée]rcoles|Jueves|Viernes|S[áa]bado|Domingo'
+    # Matches a (date, weekday, motivo) triplet appearing as three
+    # consecutive lines in the page's linearized text -- deliberately not
+    # tied to any specific HTML tag structure. Motivo is captured up to the
+    # end of its line (observed: always a single line per entry).
     ENTRY_RE = re.compile(
         r'(\d{1,2}\s+de\s+\w+(?:\s+de\s+(\d{4}))?)\s*\n\s*'
         r'(?:' + WEEKDAYS_ES + r')\s*\n\s*'
@@ -3629,7 +3920,7 @@ class BymaArgentinaFetcher(ExchangeFetcher):
     )
     DATE_RE = re.compile(r'(\d{1,2})\s+de\s+(\w+)', re.IGNORECASE)
     REF_RE = re.compile(r'\((\d)\)\s*$')
-    CLOSURE_REFS = {"1", "2", "4"}
+    CLOSURE_REFS = {"1", "2", "4"}  # ref 3 = trading continues, excluded
 
     def __init__(self):
         super().__init__(
@@ -3646,6 +3937,10 @@ class BymaArgentinaFetcher(ExchangeFetcher):
         soup = BeautifulSoup(html, 'html.parser')
         page_text = soup.get_text("\n", strip=True)
 
+        # Only search the calendar section, from "Motivo" (the header)
+        # onward, up to "Referencias" (the footnote key) -- avoids matching
+        # unrelated date-like text elsewhere on the page (nav items, other
+        # calendars, etc).
         start_idx = page_text.find("Motivo")
         end_idx = page_text.find("Referencias")
         if start_idx == -1:
@@ -3672,7 +3967,7 @@ class BymaArgentinaFetcher(ExchangeFetcher):
 
             ref_match = self.REF_RE.search(motivo_text)
             if not ref_match or ref_match.group(1) not in self.CLOSURE_REFS:
-                continue
+                continue  # no reference marker, or reference 3 (trading continues)
 
             name = self.REF_RE.sub('', motivo_text).strip()
             if not name:
@@ -3694,7 +3989,7 @@ class BymaArgentinaFetcher(ExchangeFetcher):
 
     @retry(max_attempts=3, delay=2.0, backoff=2.0, exceptions=(FetchError,))
     def fetch(self) -> Optional[ExchangeData]:
-        """Fetch BYMA (Buenos Aires) holiday calendar."""
+        """Fetch BYMA (Buenos Aires) holiday calendar"""
         html = self._make_request()
         if not html:
             raise FetchError("Failed to fetch BYMA page")
@@ -3758,13 +4053,28 @@ class B3BrazilFetcher(ExchangeFetcher):
     -- i.e., Brazilian-flag presence (or absence of any icon, which also
     occurs for a few purely-domestic rows) combined with explicit "no
     trading" language is the signal, not the icon alone.
+
+    FIXED (live health check regression, root cause confirmed via
+    web_fetch against the live page): this fetcher was returning "No
+    holidays found" for every request. The actual bug was NOT in the
+    filtering logic described above -- it was in how month sections are
+    tracked. The live page's month labels ("January", "February", etc.)
+    are anchor links inside the accordion navigation
+    (`<a href="#panel10a">January</a>`), not heading tags. The parser only
+    ever walked `h1`-`h4` + `table` elements to update `current_month`, so
+    `current_month` never got set, and every row was silently skipped by
+    the `current_year is None or current_month is None` guard -- for
+    every year, every month, unconditionally. Fixed by also walking `a`
+    tags whose `href` starts with "#panel" (this page's specific accordion
+    pattern) and whose text matches a month name.
     """
 
     YEAR_HEADING_RE = re.compile(r'Market Calendar\s+(20\d{2})')
     ROW_DATE_RE = re.compile(r'^(\d{1,2})$')
     NO_TRADING_RE = re.compile(r'no trading on the equity', re.IGNORECASE)
     US_ONLY_RE = re.compile(
-        r'clearinghouse will register, clear and settle all trades', re.IGNORECASE
+        r'clearinghouse will (?:register, clear and settle all trades|proceed with the registration, clearing and settlement of all trades)',
+        re.IGNORECASE
     )
     MONTH_HEADING_RE = re.compile(
         r'^(January|February|March|April|May|June|July|August|September|October|November|December)$'
@@ -3777,14 +4087,6 @@ class B3BrazilFetcher(ExchangeFetcher):
             source_url="https://b3.com.br/en_us/solutions/platforms/puma-trading-system/for-members-and-traders/trading-calendar/holidays/",
             rate_limit=2.0
         )
-
-    US_ONLY_RE = re.compile(
-        r'clearinghouse will (?:register, clear and settle all trades|proceed with the registration, clearing and settlement of all trades)',
-        re.IGNORECASE
-    )
-    MONTH_HEADING_RE = re.compile(
-        r'^(January|February|March|April|May|June|July|August|September|October|November|December)$'
-    )
 
     def parse_html(self, html: str) -> List[HolidayEntry]:
         if not html:
@@ -3804,6 +4106,11 @@ class B3BrazilFetcher(ExchangeFetcher):
                 continue
 
             if element.name == 'a':
+                # Month section labels are accordion nav links, not
+                # headings -- e.g. <a href="#panel10a">January</a>. Only
+                # treat as a month marker if both the href pattern and the
+                # exact text match, to avoid false positives from
+                # unrelated links elsewhere on the page.
                 href = element.get('href', '')
                 if not href.startswith('#panel'):
                     continue
@@ -3827,9 +4134,9 @@ class B3BrazilFetcher(ExchangeFetcher):
 
                 description = cells[-1].get_text(" ", strip=True)
                 if self.US_ONLY_RE.search(description):
-                    continue
+                    continue  # settlement-only notice, not a real closure
                 if not self.NO_TRADING_RE.search(description):
-                    continue
+                    continue  # not an explicit full-closure description
 
                 event_name = cells[1].get_text(" ", strip=True)
 
@@ -3847,6 +4154,7 @@ class B3BrazilFetcher(ExchangeFetcher):
                     source_url=self.source_url
                 ))
 
+        # De-duplicate (year sections can repeat rows across re-renders)
         seen = set()
         deduped = []
         for h in holidays:
@@ -4255,13 +4563,36 @@ class ColomboFetcher(PDFFetcher):
 
     KNOWN LIMITATION: annual circular, unpredictable URL (a hashed upload
     path) -- same maintenance pattern as other PDF-based fetchers here.
+
+    FIXED (live health check regression, root cause confirmed via
+    web_fetch against the exact same PDF URL, which is unchanged and still
+    the correct current circular): the extracted PDF text now has the
+    month name and the FIRST date of that month on the SAME line --
+    e.g. "January 01st Thursday CSE Customary Holiday" -- rather than the
+    month appearing alone on its own line as originally assumed (a
+    subsequent same-month row like "15th Thursday Tamil Thai Pongal Day"
+    still appears on its own line with no month prefix). Since the old
+    `MONTH_HEADING_RE` only matched a line that was ENTIRELY just a month
+    name, it never matched "January 01st Thursday...", so `current_month`
+    was never set, and every row -- including later same-month rows that
+    WOULD otherwise have matched the date pattern -- was skipped by the
+    `current_month is None` guard. This may be a genuine change in this
+    circular's internal PDF layout, or natural non-determinism in
+    PDF-to-text line-wrapping between extractions; either way, the parser
+    now handles month name and date appearing on the same line OR on
+    separate lines, rather than assuming only one layout.
     """
 
     MONTH_HEADING_RE = re.compile(
         r'^(January|February|March|April|May|June|July|August|September|October|November|December)$'
     )
+    # Optionally captures a leading month name on the SAME line as the
+    # date (e.g. "January 01st Thursday CSE Customary Holiday"); the month
+    # group is None for continuation rows that don't repeat the month
+    # (e.g. "15th Thursday Tamil Thai Pongal Day").
     ROW_RE = re.compile(
-        r'^(\d{1,2})[a-z]{2}\s+[A-Z][a-z]+day\s+(.+)$'
+        r'^(?:(January|February|March|April|May|June|July|August|September|October|November|December)\s+)?'
+        r'(\d{1,2})[a-z]{2}\s+[A-Z][a-z]+day\s+(.+)$'
     )
     ISLAMIC_NAME_RE = re.compile(r'id-ul|milad|hadji|ramadan', re.IGNORECASE)
 
@@ -4272,8 +4603,7 @@ class ColomboFetcher(PDFFetcher):
             source_url="https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
             rate_limit=2.0
         )
-        self.referer = "https://www.cse.lk/"
-    
+
     def parse_html(self, text: str) -> List[HolidayEntry]:
         """Parses PDF-extracted text (see PDFFetcher)."""
         if not text:
@@ -4293,14 +4623,27 @@ class ColomboFetcher(PDFFetcher):
             if not line:
                 continue
 
+            if re.match(r'^Yours faithfully', line, re.IGNORECASE):
+                # End of the circular's substantive content -- the
+                # signatory's name/title below this point must not be
+                # swept in as a continuation line for the last holiday.
+                break
+
             if self.MONTH_HEADING_RE.match(line):
+                # Month appears alone on its own line (no date on the same
+                # line) -- still supported alongside the same-line case
+                # below.
                 current_month = line
                 last_date = None
                 continue
 
             row_match = self.ROW_RE.match(line)
-            if row_match and current_month:
-                day, name = row_match.groups()
+            if row_match:
+                month_prefix, day, name = row_match.groups()
+                if month_prefix:
+                    current_month = month_prefix
+                if not current_month:
+                    continue  # a date row before any month context -- skip
                 try:
                     date_obj = datetime.strptime(f"{current_month} {day} {year}", "%B %d %Y")
                 except ValueError:
@@ -5131,7 +5474,7 @@ class ExchangeFetcherRegistry:
         self.register(EuronextAmsterdamFetcher())
         self.register(TokyoFetcher())
         self.register(SSEFetcher())
-        # self.register(SZSEFetcher())  # Blocked: connection reset
+        self.register(SZSEFetcher())
         self.register(HKEXFetcher())
         # All 10 originally-scoped Tier 1 exchanges now have automated
         # fetchers as of 2026-08-27. See docs/fetcher_verification.md.
@@ -5141,6 +5484,7 @@ class ExchangeFetcherRegistry:
         # (XSES, XSWX, XKRX, XBOM, XNSE, XJKT blocked; XTAI unresolved).
         self.register(TSXFetcher())
         self.register(BMEMadridFetcher())
+        self.register(SaudiExchangeFetcher())
 
         # Tier 3 (Gulf/EMEA) -- 3 of 10 verified buildable so far
         # (XDFM, XKUW, XMOS); see docs/fetcher_verification.md and

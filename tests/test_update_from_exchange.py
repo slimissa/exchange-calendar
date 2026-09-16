@@ -1396,6 +1396,45 @@ class TestSSEFetcher:
 class TestSZSEFetcher:
     """Tests for SZSEFetcher (Shenzhen) -- prose 'close on X, resume on Y' parsing"""
 
+    def test_parse_html_year_split_across_inline_tags(self):
+        """
+        Regression test for the live-check failure: the real live page
+        renders the year heading as
+        "Stock Market Holiday Schedule (202<strong>6</strong>)" -- the
+        digits of the year are split across separate <strong> tags. The
+        old get_text("\\n", ...) approach turned this into "202\\n6" in
+        the extracted text, which the year regex could never match,
+        causing every entry on the page to be silently skipped.
+        """
+        fetcher = SZSEFetcher()
+        split_year_html = """
+        <html><body>
+        <h2><strong>Stock Market Holiday Schedule (202</strong><strong>6</strong><strong>)</strong></h2>
+        <p><strong>1.New Year:</strong> The market will close from January 1st (Thursday) to January 2nd (Friday) and resume trading on January 5th (Monday).</p>
+        </body></html>
+        """
+        holidays = fetcher.parse_html(split_year_html)
+        assert len(holidays) == 2
+        assert all(h.date.startswith("2026") for h in holidays)
+
+    def test_parse_html_date_without_space_between_month_and_day(self):
+        """
+        Regression test: the live 'Dragon Boat Festival' entry reads
+        "close on June19th (Friday)" with zero whitespace between month
+        and day, unlike every other entry. Must still parse correctly.
+        """
+        fetcher = SZSEFetcher()
+        html = """
+        <html><body>
+        <h2>Stock Market Holiday Schedule (2026)</h2>
+        <p>5.Dragon Boat Festival: The market will close on June19th (Friday) and resume trading on June 22nd (Monday).</p>
+        </body></html>
+        """
+        holidays = fetcher.parse_html(html)
+        assert len(holidays) == 1
+        assert holidays[0].date == "2026-06-19"
+        assert holidays[0].name == "Dragon Boat Festival"
+
     def test_parse_html_computes_end_as_resume_minus_one(self):
         fetcher = SZSEFetcher()
         holidays = fetcher.parse_html(SZSE_SAMPLE_HTML)
@@ -1459,6 +1498,32 @@ class TestHKEXFetcher:
     (still unreachable), this fetcher uses HKEX's own published Stock
     Connect trading calendar CSV, reading only the 'Hong Kong' column.
     """
+
+    def test_make_request_uses_browser_like_headers(self):
+        """
+        Regression test for the live-check 404 failure. Confirmed via
+        web_fetch that the CSV URL/column are unchanged and real; the most
+        likely cause was HKEX's CDN reacting to the base class's generic,
+        self-identifying User-Agent ("ExchangeCalendarRegistry/1.0"). This
+        fetcher must send a realistic browser User-Agent, Accept, and
+        Referer header instead of the base class defaults.
+        """
+        fetcher = HKEXFetcher()
+        with patch('requests.get') as mock_get:
+            mock_response = Mock()
+            mock_response.text = HKEX_SAMPLE_CSV
+            mock_response.raise_for_status = Mock()
+            mock_get.return_value = mock_response
+
+            fetcher._make_request()
+
+            assert mock_get.called
+            _, kwargs = mock_get.call_args
+            headers = kwargs.get('headers', {})
+            assert 'Chrome' in headers.get('User-Agent', '')
+            assert 'ExchangeCalendarRegistry' not in headers.get('User-Agent', '')
+            assert 'Referer' in headers
+            assert 'hkex.com.hk' in headers['Referer']
 
     def test_parse_html_reads_hong_kong_column_only(self):
         """Rows where only Shanghai & Shenzhen is a holiday must be excluded"""
@@ -1672,6 +1737,33 @@ class TestBMEMadridFetcher:
 
 class TestSaudiExchangeFetcher:
     """Tests for SaudiExchangeFetcher"""
+
+    def test_make_request_uses_browser_like_headers(self):
+        """
+        Regression test for the live-check 403 failure. Confirmed via
+        web_fetch that the page content/structure are unchanged and real;
+        the most likely cause was saudiexchange.sa reacting to the base
+        class's generic, self-identifying User-Agent
+        ("ExchangeCalendarRegistry/1.0"). This fetcher must send a
+        realistic browser User-Agent and Referer header instead of the
+        base class defaults.
+        """
+        fetcher = SaudiExchangeFetcher()
+        with patch('requests.get') as mock_get:
+            mock_response = Mock()
+            mock_response.text = "<html></html>"
+            mock_response.raise_for_status = Mock()
+            mock_get.return_value = mock_response
+
+            fetcher._make_request()
+
+            assert mock_get.called
+            _, kwargs = mock_get.call_args
+            headers = kwargs.get('headers', {})
+            assert 'Chrome' in headers.get('User-Agent', '')
+            assert 'ExchangeCalendarRegistry' not in headers.get('User-Agent', '')
+            assert 'Referer' in headers
+            assert 'saudiexchange.sa' in headers['Referer']
 
     def test_parse_html_filters_out_non_holiday_rows(self):
         """The 'Listing of ALBILAD...' IPO row must not become a holiday"""
@@ -2038,6 +2130,31 @@ class TestBMVMexicoFetcher:
 class TestBymaArgentinaFetcher:
     """Tests for BymaArgentinaFetcher (XBUE) -- footnote-reference filtering"""
 
+    def test_parse_html_works_without_table_tags(self):
+        """
+        Regression test for the live-check failure: the live page is
+        Webflow-generated and its calendar data no longer resolves to
+        <table>/<tr>/<td> elements the old parser depended on. The parser
+        must work directly off linearized text instead, so a fixture using
+        <div> markup (simulating a Webflow CMS Collection List) must still
+        parse correctly.
+        """
+        fetcher = BymaArgentinaFetcher()
+        div_based_html = """
+        <html><body>
+        <div>Fecha</div><div>Dia</div><div>Motivo</div>
+        <div><div>16 de Febrero</div><div>Lunes</div><div>Carnaval (1)</div></div>
+        <div><div>10 de Julio</div><div>Viernes</div><div>D\u00eda no Laborable con Fines Tur\u00edsticos (3)</div></div>
+        <div><div>31 de Diciembre de 2026</div><div>Jueves</div><div>Jornada sin Negociaci\u00f3n ni Liquidaci\u00f3n (4)</div></div>
+        <div>Referencias</div>
+        </body></html>
+        """
+        holidays = fetcher.parse_html(div_based_html)
+        dates = {h.date for h in holidays}
+        assert "2026-02-16" in dates
+        assert "2026-07-10" not in dates  # ref (3), trading continues
+        assert "2026-12-31" in dates
+
     def test_parse_html_includes_true_closures(self):
         fetcher = BymaArgentinaFetcher()
         holidays = fetcher.parse_html(BYMA_SAMPLE_HTML)
@@ -2079,26 +2196,30 @@ class TestBymaArgentinaFetcher:
         assert data.mic == "XBUE"
         assert data.currency == "ARS"
 
-    def test_parse_html_works_without_table_tags(self):
-        """Regression: BYMA page is Webflow divs, not tables."""
-        fetcher = BymaArgentinaFetcher()
-        div_based_html = """
-        <html><body>
-        <div>Fecha</div><div>Dia</div><div>Motivo</div>
-        <div><div>16 de Febrero</div><div>Lunes</div><div>Carnaval (1)</div></div>
-        <div><div>10 de Julio</div><div>Viernes</div><div>Día no Laborable con Fines Turísticos (3)</div></div>
-        <div><div>31 de Diciembre de 2026</div><div>Jueves</div><div>Jornada sin Negociación ni Liquidación (4)</div></div>
-        <div>Referencias</div>
-        </body></html>
-        """
-        holidays = fetcher.parse_html(div_based_html)
-        dates = {h.date for h in holidays}
-        assert "2026-02-16" in dates
-        assert "2026-07-10" not in dates
-        assert "2026-12-31" in dates
 
 class TestB3BrazilFetcher:
     """Tests for B3BrazilFetcher (XBSP) -- the most complex fetcher in this registry"""
+
+    def test_parse_html_month_via_accordion_link_not_heading(self):
+        """
+        Regression test for the live-check failure: month labels on the
+        real page are anchor links (<a href="#panel10a">January</a>), not
+        heading tags. A fixture using only <h3>January</h3> (the old,
+        wrong assumption) must NOT produce holidays -- confirms the parser
+        is actually keying off the link, not accidentally still matching
+        heading text some other way.
+        """
+        fetcher = B3BrazilFetcher()
+        heading_only_html = """
+        <html><body>
+        <h2>Market Calendar 2026</h2>
+        <h3>January</h3>
+        <table>
+        <tr><td>01</td><td>New Year's Day</td><td>icon</td><td>There will be no trading on the equity markets.</td></tr>
+        </table>
+        </body></html>
+        """
+        assert fetcher.parse_html(heading_only_html) == []
 
     def test_parse_html_includes_real_brazilian_closures(self):
         fetcher = B3BrazilFetcher()
@@ -2148,19 +2269,6 @@ class TestB3BrazilFetcher:
         assert data is not None
         assert data.mic == "XBSP"
         assert data.currency == "BRL"
-    def test_parse_html_month_via_accordion_link_not_heading(self):
-        """Regression: B3 month labels are accordion links, not headings."""
-        fetcher = B3BrazilFetcher()
-        heading_only_html = """
-        <html><body>
-        <h2>Market Calendar 2026</h2>
-        <h3>January</h3>
-        <table>
-        <tr><td>01</td><td>New Year's Day</td><td>icon</td><td>There will be no trading on the equity markets.</td></tr>
-        </table>
-        </body></html>
-        """
-        assert fetcher.parse_html(heading_only_html) == []
 
 
 HOSE_VIETNAM_SAMPLE_TEXT = """The Hochiminh Stock Exchange (HOSE) announces the trading holiday schedule for 2026 as 
@@ -2374,6 +2482,43 @@ class TestBRVMFetcher:
 
 class TestColomboFetcher:
     """Tests for ColomboFetcher (XCOL) -- Poya days + Islamic holidays"""
+
+    def test_parse_html_month_and_date_on_same_line(self):
+        """
+        Regression test for the live-check failure: the real PDF's
+        extracted text has the month name and its first date on the SAME
+        line ("January 01st Thursday CSE Customary Holiday"), not the
+        month alone on its own line as originally assumed. Subsequent
+        same-month rows still omit the month prefix.
+        """
+        fetcher = ColomboFetcher()
+        text = """CSE HOLIDAYS FOR 2026
+January 01st Thursday CSE Customary Holiday
+15th Thursday Tamil Thai Pongal Day
+February 4th Wednesday Independence Day
+"""
+        holidays = fetcher.parse_html(text)
+        dates = {h.date for h in holidays}
+        assert "2026-01-01" in dates
+        assert "2026-01-15" in dates
+        assert "2026-02-04" in dates
+
+    def test_parse_html_stops_at_signoff(self):
+        """
+        Regression test: the circular's sign-off ("Yours faithfully," plus
+        the signatory's name/title) must not be swept in as continuation
+        lines for the last holiday before it.
+        """
+        fetcher = ColomboFetcher()
+        text = """CSE HOLIDAYS FOR 2026
+December 25th Friday Christmas Day
+Yours faithfully,
+Chandrakanth Jayasinghe
+Chief Market Operations Officer
+"""
+        holidays = fetcher.parse_html(text)
+        assert len(holidays) == 1
+        assert holidays[0].name == "Christmas Day"
 
     def test_parse_html_extracts_holidays(self):
         fetcher = ColomboFetcher()

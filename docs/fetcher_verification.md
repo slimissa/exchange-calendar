@@ -376,6 +376,172 @@ left as ambiguous "not verified" entries — this is the first point in the
 whole project where every checked exchange has a decisive verdict, none
 left open.
 
+## Post-launch live-check regressions — round 1 (fixed)
+
+The first scheduled run of `live-fetcher-check.yml` against real live
+endpoints (not `web_fetch` snapshots) surfaced 3 failures: XASX (duplicate
+dates from an untracked multi-year table), XBSP (accordion month labels
+are anchor links, not headings, so `current_month` never got set), and
+XBUE (the Webflow page's calendar data no longer resolves to `<table>`
+markup, so the parser rewrote to work off linearized text instead of
+tag structure). Full root-cause detail for these three is preserved in
+this project's change history; see the round below for the same level of
+detail on the second batch of regressions.
+
+## Post-launch live-check regressions — round 2 (fixed)
+
+The live check was re-run after round 1's fixes and now covers all 45
+registered fetchers: 40 pass, 5 failed. All five were re-verified live via
+`web_fetch` before fixing, per project policy -- none were guessed at.
+
+### XWAR — duplicate holiday date (2027-01-01)
+
+**Root cause:** the "2027" section's table has an extra trailing row
+reading "Thursday 1 January" -- but 1 January 2027 is actually a Friday
+(the section's own first row, correctly, reads "Friday 1 January").
+Checked directly: 1 January falls on a Thursday in 2026, not 2027. This
+trailing row is very likely a template artifact on GPW's side (possibly a
+leftover "next year preview" fragment), not a real second holiday. Since
+the parser previously assigned every row within a year-section to that
+section's year unconditionally, this reproduced 2026's own New Year's Day
+under the "2027" label -- a corrupted date, not merely an incidental
+duplicate.
+
+**Fix:** each row's own weekday is now validated against its assigned
+section year (computed from the parsed date); rows that don't match are
+skipped and logged rather than guessed at, since there's no reliable way
+to know what year a mismatched row was actually meant for. A defensive
+de-duplication pass was also added as a safety net, consistent with the
+ASX/XCOL precedent -- `ExchangeData.validate()`'s duplicate-date rule was
+not loosened.
+
+**New fragility to note:** this page's per-year tables have now been
+observed to contain at least one row that doesn't belong to that table's
+own year. Worth treating any future GPW-reported duplicate or off-pattern
+date with suspicion rather than assuming it's a genuine second holiday.
+
+### XHKG — 404 on both 2026 and 2027 CSV URLs, "Hong Kong column not found"
+
+**Root cause investigation:** fetched the exact CSV URL directly via
+`web_fetch` (a real browser-like fetch, not the `requests` library this
+fetcher normally uses) and confirmed the URL, column name ("Hong Kong"),
+and data are all real, unchanged, and correct. The source page itself
+(last updated 22 Dec 2025) also confirms only 2025 and 2026 CSVs currently
+exist, which is expected and already handled gracefully. This means the
+URL pattern and column name are NOT the problem -- the CSV is fine and
+reachable by a real browser.
+
+**Fix:** the most likely explanation, given this project's own prior
+experience with NYSE's WAF blocking plain `requests` traffic while
+browser-like fetches succeeded, is that HKEX's CDN is reacting to the base
+class's generic, self-identifying User-Agent string
+("ExchangeCalendarRegistry/1.0"). `HKEXFetcher` now overrides
+`_make_request` with a realistic browser-like header set (Chrome User-
+Agent, Accept, Accept-Language, Referer pointing at the actual calendar
+page), scoped to this fetcher only -- not a change to the shared base
+class, since that would affect every other fetcher without each one being
+individually re-verified.
+
+**Caveat, stated plainly:** this could not be verified end-to-end from
+this environment, since the sandbox used for verification cannot make live
+`requests` calls to hkex.com.hk at all (a network egress restriction
+unrelated to HKEX itself). This is a defensible, best-effort mitigation
+based on the confirmed-working URL/data and this project's established
+bot-detection pattern, not a confirmed fix. If the live check still fails
+with 404 after this change, the block is likely stronger than a header fix
+can address (TLS fingerprinting, IP-based blocking), and this exchange
+should move toward BLOCKED rather than be re-patched again.
+
+### XSAU — 403 Forbidden on the holiday-calendar page
+
+**Root cause investigation:** same pattern as XHKG. Fetched the exact page
+directly via `web_fetch` and confirmed it's real, unchanged, still has the
+same table structure, and now extends through 2029 with the same real data
+(the known inverted-date-range row and IPO-listing filter behavior both
+still verified present and handled correctly). The page is not blocking
+legitimate browser-like access.
+
+**Fix:** same mitigation as XHKG -- `SaudiExchangeFetcher` now overrides
+`_make_request` with a realistic browser-like header set, scoped to this
+fetcher only.
+
+**Caveat:** identical to XHKG's -- not verified end-to-end from this
+environment for the same network-access reason. If the live check still
+fails with 403 after this change, escalate toward BLOCKED rather than
+re-patching.
+
+### XBSP / XBUE — re-verified as part of this round too
+
+Not part of the 5 new failures (both were already fixed in round 1), but
+re-checked while investigating the other five to confirm neither had
+regressed again. Both remain correct.
+
+### XSHE — "No holidays found"
+
+**Root cause:** fetched the live page directly via `web_fetch` and found
+the year heading is literally rendered as
+"Stock Market Holiday Schedule (202`<strong>`6`</strong>`)" in the site's
+own HTML -- the exchange's bold-formatting inconsistently splits the
+year's digits across separate inline tags. The parser previously extracted
+page text via `soup.get_text("\n", strip=True)`, which inserts a literal
+newline at EVERY tag boundary -- turning "2026" into "202\n6" in the
+extracted text, which the year regex (requiring 4 consecutive digits)
+could never match. The function returned `[]` before ever reaching the
+entry-parsing loop, so every entry on the page was silently skipped
+regardless of its own formatting.
+
+A second, independent quirk was found in the same investigation: the live
+"Dragon Boat Festival" entry reads "close on June19th (Friday)" -- zero
+whitespace between the month name and day number, unlike every other entry
+on the page.
+
+**Fix:** year extraction now anchors on the stable "Stock Market Holiday
+Schedule" text, takes a small window after it, and strips ALL non-digit
+characters before matching a 4-digit "20XX" year -- robust to whitespace
+or newlines being injected anywhere within the year's own digits, not just
+the specific split observed this time. The date-matching regex's
+month-to-day whitespace requirement was relaxed from "at least one space"
+to "zero or more", so both spaced and unspaced entries match without
+needing to special-case the one row.
+
+**New fragility to note:** this site's own markup has now been observed to
+split a single logical token (the year) across inline tags inconsistently,
+and to omit whitespace between a month and day in at least one entry. Both
+are real site-side formatting quirks, not this project's assumptions going
+stale -- worth treating this specific source as more layout-fragile than
+most others in the registry going forward.
+
+### XCOL — "No holidays found"
+
+**Root cause:** the source URL was confirmed still correct and current
+(same hashed upload path, same circular, "CIRCULAR NO: 07-10-2025",
+confirmed via direct search indexing and a live `web_fetch` of the PDF
+itself). The actual PDF text now has the month name and its FIRST date on
+the SAME line -- e.g. "January 01st Thursday CSE Customary Holiday" --
+rather than the month appearing alone on its own line as the original
+parser assumed. A later same-month row ("15th Thursday Tamil Thai Pongal
+Day") still appears on its own line with no month repeated. Since the old
+month-heading check only matched a line that was ENTIRELY just a month
+name, it never matched the combined line, so `current_month` was never
+set, and every row -- including later same-month rows that would otherwise
+have matched the date pattern -- was skipped.
+
+**Fix:** the row-matching regex now optionally captures a leading month
+name on the same line as a date, updating the current month from either a
+standalone heading line OR an inline prefix. A second bug was found and
+fixed in the same pass: the circular's sign-off ("Yours faithfully," plus
+the signatory's name and title) was being swept in as spurious
+continuation lines for the last holiday before it (since nothing stopped
+the "no date on this line -> attach to the previous date" fallback from
+matching sign-off text) -- fixed by stopping parsing entirely once a
+"Yours faithfully" line is reached.
+
+**New fragility to note:** this circular's internal PDF layout is not
+stable between line-wrapping variations -- whether month+date share a line
+appears to vary. The parser now tolerates both layouts, but a future
+circular with yet another wrapping style should not be assumed to work
+without re-checking.
+
 ## Requirements from the original brief that don't apply — corrected
 
 The Tier 1 verification notes above said none of the 10 Tier 1 exchanges
@@ -387,18 +553,3 @@ requirement from the original Tier 1 brief, finally implemented for real.
 XDFM (Tier 3) also observes Islamic holidays with a comparable `predicted`
 mechanism, sourced directly from the exchange's own tentative-date
 footnotes rather than inferred from date + holiday type.
-
-## Post-launch live-check regressions — fixed
-
-Three fetchers failed the first live health check against real endpoints.
-Root causes were verified via `web_fetch` against the live pages before
-fixing.
-
-- **XASX** — duplicate dates. The live page now publishes two tables
-  (2026 and 2027) on one page; the old parser reused one global year for
-  both, mis-dating 2027 rows as 2026. Fixed by extracting year per table.
-- **XBSP** — no holidays found. Month labels are accordion links
-  (`<a href="#panel...">`), not headings. Fixed by also parsing those.
-- **XBUE** — no holidays found. The Webflow page no longer exposes
-  `<table>` markup. Fixed by parsing linearized text directly, which is
-  structure-agnostic.

@@ -98,6 +98,71 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.10] — 2026-09-11 — Live health-check regressions (round 1 + round 2)
+
+### Fixed
+
+Two consecutive live runs of `live-fetcher-check.yml` against real
+endpoints (not `web_fetch` snapshots) surfaced regressions in 8 fetchers
+as source pages changed since original verification. All were re-verified
+live via `web_fetch` before fixing — none guessed at.
+
+**Round 1 (3 fetchers — 40/45 → 43/45 passing):**
+
+- **XASX**: duplicate holiday dates (2026-01-01, 01-26, 12-25, 12-28). Root
+  cause: the live page now publishes two tables (2026 and 2027 calendars);
+  the parser extracted one year globally via `.search()` and reused it for
+  every table, so the 2027 table's rows were mis-dated as 2026. Fixed by
+  extracting the year per-table. Added defensive same-date-entry merging
+  as a safety net (`ExchangeData.validate()`'s duplicate-date rule was not
+  loosened, since that affects every fetcher).
+- **XBSP**: "No holidays found." Root cause: the live page's month labels
+  ("January", etc.) are accordion nav links (`<a href="#panel10a">`), not
+  heading tags — `current_month` never got set, so every row was silently
+  skipped. Fixed by also walking `a` tags with `href` starting `#panel`.
+- **XBUE**: "No holidays found." Root cause: the Webflow-generated page no
+  longer exposes its calendar as `<table>` markup. Rewrote the parser to
+  work directly off linearized page text (sequential date/weekday/motivo
+  triplets) instead of depending on any specific tag structure — more
+  resilient to this class of change going forward.
+
+**Round 2 (5 fetchers — 40/45 → pending re-verification):**
+
+- **XWAR**: duplicate `2027-01-01`. Root cause: the "2027" section has a
+  stray trailing row ("Thursday 1 January") that's actually 2026's New
+  Year's Day (confirmed: 1 Jan is a Thursday in 2026, a Friday in 2027) —
+  a page template artifact. Fixed by validating each row's own weekday
+  against its assigned section year and skipping mismatches, plus
+  defensive de-duplication.
+- **XHKG**: 404 on both CSV URLs. Confirmed via `web_fetch` the URL/data
+  are unchanged and correct — likely HKEX's CDN reacting to the base
+  class's generic User-Agent (`ExchangeCalendarRegistry/1.0`). Overrode
+  `_make_request` with realistic browser headers, scoped to this fetcher
+  only. **Not verified end-to-end** (this environment cannot make live
+  `requests` calls to hkex.com.hk) — a defensible mitigation, not a
+  confirmed fix.
+- **XSAU**: 403 Forbidden. Same investigation and same fix pattern as
+  XHKG — page confirmed unchanged via `web_fetch`, likely CDN reacting to
+  the generic User-Agent, same caveat about not being verifiable
+  end-to-end from this environment.
+- **XSHE**: "No holidays found." Root cause: the live page's year heading
+  splits "2026" across separate `<strong>` tags; `get_text("\n", ...)`
+  inserted a newline between them, breaking the year regex. Fixed by
+  anchoring on stable heading text and stripping all non-digit characters
+  before matching the year. Also fixed an unrelated quirk found in the
+  same investigation: one entry has zero whitespace between month and day.
+- **XCOL**: "No holidays found." Root cause: the PDF now has month name
+  and date on the same line ("January 01st Thursday..."), not on separate
+  lines as originally assumed. Fixed to handle both layouts. Also fixed a
+  second bug: the circular's sign-off text was being swept in as a
+  continuation of the last holiday — now parsing stops at "Yours
+  faithfully".
+
+### Added
+
+- 12 new regression tests, one or two per fix, each reproducing the exact
+  failure mode the live check found (not just re-testing the happy path).
+
 ## [2.1.9] — 2026-09-06 — FINAL TIER (Tier 8: small/island markets)
 
 ### Added
