@@ -60,9 +60,9 @@ def xlon(registry):
 
 
 @pytest.fixture(scope="module")
-def xetr(registry):
-    """Return the XETR exchange (no extended_hours declared)."""
-    return registry.get("XETR")
+def xhk(registry):
+    """Return the XHKG exchange (no extended_hours declared)."""
+    return registry.get("XHKG")
 
 
 @pytest.fixture(scope="module")
@@ -585,13 +585,13 @@ class TestStatusAtExtendedHours:
     """Phase 2.1: status_at must only report PRE_MARKET / AFTER_HOURS
     when the exchange declares those sessions in extended_hours."""
 
-    def test_no_extended_hours_is_closed_before_open(self, xetr):
+    def test_no_extended_hours_is_closed_before_open(self, xhk):
         # XETR declares no pre_market; 07:00 must be CLOSED, not PRE_MARKET
-        assert xetr.status_at("2025-07-07", "07:00") == SessionStatus.CLOSED
+        assert xhk.status_at("2025-07-07", "07:00") == SessionStatus.CLOSED
 
-    def test_no_extended_hours_is_closed_after_close(self, xetr):
+    def test_no_extended_hours_is_closed_after_close(self, xhk):
         # XETR declares no after_hours; 18:00 must be CLOSED
-        assert xetr.status_at("2025-07-07", "18:00") == SessionStatus.CLOSED
+        assert xhk.status_at("2025-07-07", "18:00") == SessionStatus.CLOSED
 
     def test_with_extended_hours_still_reports_pre_market(self, xnys):
         # XNYS declares pre_market 04:00-09:30
