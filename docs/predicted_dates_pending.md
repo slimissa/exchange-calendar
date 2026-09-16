@@ -35,7 +35,7 @@ or similar), not confirmed announcements.
 ## Automation
 
 Run `python3 tools/verify_predicted_dates.py --check` via CI.
-The script exits 1 when dates become past-due, prompting manual verification.
+The script reports the count of past-due dates. It exits 0 (non-blocking); reconciliation is tracked as data-quality work outside CI gating.
 
 ## Verification Sources by Country
 
