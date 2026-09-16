@@ -187,7 +187,10 @@ Use this template:
 
 #### Explicit Dates
 
-- Only **weekdays** (Monday-Friday). Weekend dates are redundant.
+- Weekend dates are excluded by default. A weekday date on the exchange's
+  own weekend triggers validation failure unless the entry carries
+  `"weekend_exception": true` — reserved for real, sourced, exchange-gazetted
+  weekend closures (e.g. a Muhurat trading session on Diwali).
 - Sort chronologically by `date`.
 - Use ISO 8601 date format: `YYYY-MM-DD`.
 - Include `source_url` for every entry.
