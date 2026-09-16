@@ -600,3 +600,36 @@ func TestRealXSAUIslamicWeekend(t *testing.T) {
 		t.Error("expected Sunday 2025-08-24 to be a trading day, not a holiday")
 	}
 }
+
+func TestAdHocClosuresAreIndexed(t *testing.T) {
+	data := exchangecalendar.ExchangeData{
+		Code:     "TEST",
+		Name:     "Test Exchange",
+		MIC:      "TEST",
+		Timezone: "Europe/London",
+		RegularHours: exchangecalendar.RegularHours{
+			Open:  "09:00",
+			Close: "17:00",
+		},
+		Holidays: exchangecalendar.HolidaysData{
+			Explicit:  []exchangecalendar.HolidayEntry{},
+			Generated: []exchangecalendar.HolidayEntry{},
+		},
+		AdHocClosures: []exchangecalendar.HolidayEntry{
+			{
+				Date:      "2025-01-09",
+				Name:      "National Day of Mourning",
+				Status:    "closed",
+				SourceURL: "https://example.com/notice",
+			},
+		},
+	}
+
+	e := exchangecalendar.MustNewExchange(data)
+	if !e.IsHoliday("2025-01-09") {
+		t.Error("expected ad_hoc_closures date 2025-01-09 to be a holiday")
+	}
+	if e.IsHoliday("2025-01-10") {
+		t.Error("expected 2025-01-10 to not be a holiday")
+	}
+}
