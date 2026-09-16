@@ -18,7 +18,7 @@ session status.
 - **Complete status model** — 6 session states via `SessionStatus` type
 - **Date navigation** — next/previous trading day, skipping weekends and holidays
 - **Thread-safe** — immutable structs can be shared across goroutines
-- **Ground truth verified** — all data backed by 72 Go tests
+- **Ground truth verified** — 75 Go tests
 
 ## Installation
 
@@ -85,9 +85,11 @@ func main() {
 	}
 
 	// Registry metadata
-	fmt.Println(registry.Version)       // "1.0.0"
-	fmt.Println(registry.ExchangeCount) // 2
-	fmt.Println(registry.Codes())       // ["XLON", "XNYS"]
+	fmt.Println(registry.Version)       // "2.1.10"
+	fmt.Println(registry.ExchangeCount) // 74
+	codes := registry.Codes()
+fmt.Println(codes[:3])              // [XAMS XASX XATH]
+fmt.Println(codes[len(codes)-3:])   // [XWAR XWBO XZAG]
 }
 ```
 
@@ -99,7 +101,6 @@ func main() {
 |--------|-------------|
 | `LoadRegistry(path string) (*Registry, error)` | Load from JSON file |
 | `MustLoadRegistry(path string) *Registry` | Load or panic |
-| `NewRegistry(data registryData) (*Registry, error)` | From parsed JSON |
 | `.Exchange(code string) *Exchange` | Return exchange or `nil` (case-insensitive) |
 | `.Get(code string) (*Exchange, error)` | Return exchange or error |
 | `.Has(code string) bool` | `true` if code exists |
@@ -120,13 +121,13 @@ func main() {
 | `.EarlyCloseTime(dateStr string) string` | Time or empty string |
 | `.StatusAt(dateStr, timeStr string) (SessionStatus, error)` | Full status |
 | `.IsOpen(dateStr string, timeStrs ...string) bool` | `true` if trading |
-
-**Malformed date handling.** `IsHoliday`, `IsEarlyClose`, and `IsOpen` return `false` for malformed dates (bad format, non-existent calendar date, bad time string). This preserves the boolean-only API shape. For strict validation, use the `Try*` variants — `TryIsHoliday`, `TryIsEarlyClose`, `TryIsOpen` — which return `(bool, error)` and surface a `QueryError` for malformed input.
 | `.NextTradingDay(dateStr string) (string, error)` | Next trading day |
 | `.PreviousTradingDay(dateStr string) (string, error)` | Previous trading day |
 | `.HolidayCount(year ...int) int` | Count, optional year filter |
 | `.ListHolidays(year ...int) []HolidayEntry` | Sorted entries |
 | `.String() string` | Human-readable |
+
+**Malformed date handling.** `IsHoliday`, `IsEarlyClose`, and `IsOpen` return `false` for malformed dates (bad format, non-existent calendar date, bad time string). This preserves the boolean-only API shape. For strict validation, use the `Try*` variants — `TryIsHoliday`, `TryIsEarlyClose`, `TryIsOpen` — which return `(bool, error)` and surface a `QueryError` for malformed input.
 
 ### SessionStatus
 
@@ -138,6 +139,7 @@ func main() {
 | `StatusEarlyClose` | `"early_close"` |
 | `StatusAfterHours` | `"after_hours"` |
 | `StatusLunchBreak` | `"lunch_break"` |
+
 **Extended hours.** `PRE_MARKET` and `AFTER_HOURS` are only returned for
 exchanges that declare those sessions in `extended_hours`. For exchanges
 without one, times before regular open or after regular close return
@@ -169,8 +171,8 @@ The registry is a single JSON file (`calendar.json`):
 ```json
 {
   "meta": {
-    "version": "1.0.0",
-    "exchange_count": 2
+    "version": "2.1.10",
+    "exchange_count": 74
   },
   "exchanges": [
     {
@@ -194,6 +196,11 @@ The registry is a single JSON file (`calendar.json`):
 |------|----------|----------|
 | `XNYS` | New York Stock Exchange | `America/New_York` |
 | `XLON` | London Stock Exchange | `Europe/London` |
+| `XTKS` | Tokyo Stock Exchange | `Asia/Tokyo` |
+
+*74 exchanges total — see
+[`exchanges/`](https://github.com/slimissa/exchange-calendar/tree/main/exchanges)
+for the full list.*
 
 ## Thread Safety
 
