@@ -353,6 +353,10 @@ mod tests {
     fn test_from_data_duplicate_codes() {
         let mut data = create_test_registry_data();
         data.exchanges.push(create_test_exchange_data("TEST"));
+        // Phase 1.6: keep meta.exchange_count consistent with the list,
+        // or the exchange_count check fires before the duplicate-code
+        // check that this test is actually exercising.
+        data.meta.exchange_count = data.exchanges.len();
         assert!(matches!(
             Registry::from_data(data),
             Err(RegistryError::DuplicateCode(_))
