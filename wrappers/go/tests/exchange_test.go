@@ -633,3 +633,54 @@ func TestAdHocClosuresAreIndexed(t *testing.T) {
 		t.Error("expected 2025-01-10 to not be a holiday")
 	}
 }
+
+func TestValidateTimeFormatRejectsNonDigits(t *testing.T) {
+	// Phase 1.3: byte arithmetic on the time string accepted non-digit
+	// characters. These four inputs all reached the hours/minutes range
+	// check with values inside the valid range and were accepted.
+	rejected := []string{
+		"0A:00",
+		"00:A0",
+		"ab:cd",
+		"0 :00",
+		"09:3:",
+	}
+	for _, s := range rejected {
+		data := exchangecalendar.ExchangeData{
+			Code:     "TEST",
+			Name:     "Test",
+			MIC:      "TEST",
+			Timezone: "Europe/London",
+			RegularHours: exchangecalendar.RegularHours{
+				Open:  s,
+				Close: "17:00",
+			},
+			Holidays: exchangecalendar.HolidaysData{},
+		}
+		if _, err := exchangecalendar.NewExchange(data); err == nil {
+			t.Errorf("expected error for open=%q, got nil", s)
+		}
+	}
+
+	accepted := []string{
+		"00:00",
+		"09:00",
+		"23:59",
+	}
+	for _, s := range accepted {
+		data := exchangecalendar.ExchangeData{
+			Code:     "TEST",
+			Name:     "Test",
+			MIC:      "TEST",
+			Timezone: "Europe/London",
+			RegularHours: exchangecalendar.RegularHours{
+				Open:  s,
+				Close: "23:59",
+			},
+			Holidays: exchangecalendar.HolidaysData{},
+		}
+		if _, err := exchangecalendar.NewExchange(data); err != nil {
+			t.Errorf("expected no error for open=%q, got %v", s, err)
+		}
+	}
+}

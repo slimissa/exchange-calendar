@@ -171,6 +171,15 @@ func validateTimeFormat(timeStr string) error {
 	if timeStr[2] != ':' {
 		return fmt.Errorf("invalid time format %q: expected HH:MM", timeStr)
 	}
+	// Reject non-digit characters in all four digit positions before doing
+	// any arithmetic. Without this, byte subtraction silently accepts
+	// inputs like "0A:00" ("A" - "0" == 17, still <= 23) and produces a
+	// struct with a garbage regular_hours value.
+	for _, i := range []int{0, 1, 3, 4} {
+		if timeStr[i] < '0' || timeStr[i] > '9' {
+			return fmt.Errorf("invalid time format %q: expected HH:MM with digits", timeStr)
+		}
+	}
 	hours := (timeStr[0]-'0')*10 + (timeStr[1] - '0')
 	minutes := (timeStr[3]-'0')*10 + (timeStr[4] - '0')
 	if hours > 23 || minutes > 59 {
