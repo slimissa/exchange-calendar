@@ -131,6 +131,8 @@ impl Exchange {
     pub fn status_at(&self, date: &str, time: &str) -> Result<SessionStatus, QueryError>;
     pub fn is_open(&self, date: &str, time: Option<&str>) -> bool;
 
+**Malformed date handling.** `is_holiday`, `is_early_close`, and `is_open` return `false` for malformed dates (bad format, non-existent calendar date, bad time string). This preserves the boolean-only API shape. For strict validation, use the `try_*` variants — `try_is_holiday`, `try_is_early_close`, `try_is_open` — which return `Result<bool, QueryError>` and surface the specific error.
+
     pub fn next_trading_day(&self, date: &str) -> Result<String, QueryError>;
     pub fn previous_trading_day(&self, date: &str) -> Result<String, QueryError>;
 
