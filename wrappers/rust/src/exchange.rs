@@ -452,6 +452,31 @@ impl Exchange {
             .unwrap_or(false)
     }
 
+    /// Error-returning variant of [`Self::is_holiday`]. Returns a
+    /// `QueryError` for malformed date strings instead of silently
+    /// returning false.
+    pub fn try_is_holiday(&self, date_str: &str) -> Result<bool, QueryError> {
+        Self::validate_date_format(date_str)?;
+        Ok(self.is_holiday(date_str))
+    }
+
+    /// Error-returning variant of [`Self::is_early_close`].
+    pub fn try_is_early_close(&self, date_str: &str) -> Result<bool, QueryError> {
+        Self::validate_date_format(date_str)?;
+        Ok(self.is_early_close(date_str))
+    }
+
+    /// Error-returning variant of [`Self::is_open`]. Validates both date
+    /// and time; if `time_str` is `None`, defaults to `"10:00"`.
+    pub fn try_is_open(
+        &self,
+        date_str: &str,
+        time_str: Option<&str>,
+    ) -> Result<bool, QueryError> {
+        let time = time_str.unwrap_or("10:00");
+        self.status_at(date_str, time).map(|s| s.is_trading())
+    }
+
     // ──────────────────────────────────────────────────────────
     // Public API — date navigation
     // ──────────────────────────────────────────────────────────
@@ -834,5 +859,30 @@ mod tests {
         let e = create_islamic_weekend_test_exchange();
         // 2025-08-24 is a Sunday — a trading day under a Friday/Saturday weekend
         assert!(!e.is_holiday("2025-08-24"));
+    }
+
+    #[test]
+    fn test_try_variants() {
+        // Phase 1.4: try_* variants must return an error for malformed
+        // dates, unlike is_* which silently returns false.
+        let e = create_test_exchange();
+
+        assert!(e.try_is_holiday("2025/01/01").is_err());
+        assert!(e.try_is_early_close("2025/01/01").is_err());
+        assert!(e.try_is_open("2025/01/01", None).is_err());
+        assert!(e.try_is_open("2025-07-07", Some("10am")).is_err());
+
+        assert_eq!(e.try_is_holiday("2025-01-01").unwrap(), true);
+        assert_eq!(e.try_is_open("2025-03-14", Some("10:00")).unwrap(), true);
+    }
+
+    #[test]
+    fn test_is_variants_lenient_on_malformed_dates() {
+        // Lock in the documented behavior: the non-try variants return
+        // false for malformed dates rather than erroring.
+        let e = create_test_exchange();
+        assert!(!e.is_holiday("2025/01/01"));
+        assert!(!e.is_early_close("2025/01/01"));
+        assert!(!e.is_open("2025/01/01", None));
     }
 }
