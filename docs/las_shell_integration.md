@@ -2,7 +2,7 @@
 
 **Version:** 1.0.0  
 **Target Las_shell:** v0.6.0 Milestone 3  
-**Source registry:** exchange-calendar v1.0.0
+**Source registry:** exchange-calendar v2.1.10
 
 ---
 

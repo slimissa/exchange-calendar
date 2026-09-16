@@ -4,7 +4,7 @@ This document describes the JSON Schema used by the exchange-calendar registry.
 Every exchange file in `exchanges/` must conform to this schema.
 
 **Schema file:** [`schema.json`](../schema.json)  
-**Version:** 1.0.0  
+**Version:** 2.0.0  
 **Format:** JSON Schema Draft 7
 
 ---

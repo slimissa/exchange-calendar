@@ -53,7 +53,7 @@ Older versions may still work but are not guaranteed to receive fixes.
 We take security seriously and appreciate your help in disclosing
 vulnerabilities responsibly.
 
-### ritical Vulnerabilities (Private Reporting)
+### Critical Vulnerabilities (Private Reporting)
 
 If you discover a security vulnerability, **DO NOT** open a public issue.
 Instead, report it privately:
@@ -427,9 +427,7 @@ graph TD
 ### Checksums
 
 ```bash
-# There is no tools/generate_checksums.py in this repository. Until a
-# checksum manifest is published as part of the release process,
-# compute checksums directly:
+# Compute checksums directly:
 sha256sum exchanges/*.json calendar.json
 
 # Output format

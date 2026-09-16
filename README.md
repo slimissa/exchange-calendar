@@ -3,13 +3,13 @@
 **The world's most comprehensive open-source registry of global exchange trading calendars — 74 exchanges across 6 continents.**
 
 One JSON file per exchange. Zero runtime dependencies. Four language wrappers.
-Seventy-four exchanges. 4,070+ tests. 100% global coverage. All CI/CD green.
+Seventy-four exchanges. 45 automated via registered fetchers; 29 hand-curated with documented sources. All CI/CD green.
 
 [![Validate](https://github.com/slimissa/exchange-calendar/actions/workflows/validate.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/validate.yml)
 [![Update](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Schema Version](https://img.shields.io/badge/schema-1.0.0-green.svg)](./schema.json)
-[![Registry Version](https://img.shields.io/badge/registry-2.1.0-orange.svg)](./CHANGELOG.md)
+[![Registry Version](https://img.shields.io/badge/registry-2.1.10-orange.svg)](./CHANGELOG.md)
 [![Tests](https://img.shields.io/badge/tests-4070+-green.svg)](./tests/)
 [![Exchanges](https://img.shields.io/badge/exchanges-74-blue.svg)](./exchanges/)
 [![Coverage](https://img.shields.io/badge/coverage-6_continents-purple.svg)](./exchanges/)
@@ -35,7 +35,7 @@ The registry is language-agnostic by design. The JSON is the contract.
 
 ---
 
-## What's New in v2.1.0
+## What's New in v2.1.10
 
 ### CI/CD Fully Green
 - ✅ **Validate workflow**: 6 jobs passing (Python core, Python wrapper, JS, Go, Rust, data integrity)
@@ -679,7 +679,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on:
 
 ## License
 
-Apache 2.0 — use it anywhere, no attribution required. The currency data in this registry is factual information. The compilation, schema, tooling, and wrappers are licensed works.
+Apache 2.0 — use it anywhere, no attribution required. The exchange calendar data in this registry is factual information. The compilation, schema, tooling, and wrappers are licensed works.
 
 ---
 
