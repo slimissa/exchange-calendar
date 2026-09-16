@@ -129,7 +129,7 @@ Each wrapper is idiomatic to its language while maintaining identical behavior:
 | Python | `pip install exchange-calendar-registry` | `from exchange_calendar import CalendarRegistry` |
 | JavaScript | `npm install exchange-calendar-registry` | `const { CalendarRegistry } = require('exchange-calendar-registry')` |
 | Go | `go get github.com/slimissa/exchange-calendar/wrappers/go` | `import exchangecalendar "github.com/slimissa/exchange-calendar/wrappers/go"` |
-| Rust | `cargo add exchange-calendar` | `use exchange_calendar::Registry;` |
+| Rust | `cargo add exchange-calendar-registry` | `use exchange_calendar::Registry;` |
 
 ### Python Example
 

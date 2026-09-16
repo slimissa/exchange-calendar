@@ -1,5 +1,5 @@
 [package]
-name = "exchange-calendar"
+name = "exchange-calendar-registry"
 version = "1.0.0"
 edition = "2021"
 rust-version = "1.78"
@@ -30,6 +30,10 @@ exclude = [
     "examples/",
     "benches/",
 ]
+
+[lib]
+name = "exchange_calendar"
+path = "src/lib.rs"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }

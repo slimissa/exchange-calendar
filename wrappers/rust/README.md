@@ -1,4 +1,4 @@
-# exchange-calendar (Rust)
+# exchange-calendar-registry (Rust)
 
 This wrapper is versioned independently of the registry data. Wrapper 1.0.0 is tested against registry 2.1.10; check registry.version at runtime for the data version.
 
@@ -27,14 +27,14 @@ Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-exchange-calendar = "1.0.0"
+exchange-calendar-registry = "1.0.0"
 ```
 
 Or from GitHub:
 
 ```toml
 [dependencies]
-exchange-calendar = { git = "https://github.com/slimissa/exchange-calendar", subdir = "wrappers/rust" }
+exchange-calendar-registry = { git = "https://github.com/slimissa/exchange-calendar-registry", subdir = "wrappers/rust" }
 ```
 
 ## Quick Start
@@ -275,8 +275,8 @@ Apache 2.0 — see [LICENSE](../../LICENSE).
 
 ## Links
 
-- [Registry repository](https://github.com/slimissa/exchange-calendar)
-- [Bug reports](https://github.com/slimissa/exchange-calendar/issues)
+- [Registry repository](https://github.com/slimissa/exchange-calendar-registry)
+- [Bug reports](https://github.com/slimissa/exchange-calendar-registry/issues)
 - [Python wrapper](../python/)
 - [JavaScript wrapper](../javascript/)
 - [Go wrapper](../go/)
