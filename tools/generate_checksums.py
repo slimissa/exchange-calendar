@@ -52,7 +52,6 @@ def collect_files() -> list[Path]:
 def main() -> int:
     files = collect_files()
     manifest = {
-        "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "algorithm": "sha256",
         "files": {},
     }

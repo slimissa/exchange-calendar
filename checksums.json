@@ -75,15 +75,14 @@
     "exchanges/XWAR.json": "0cf38a89a72127bf6db6672177fa0418c9a5342f8559a753e625c9af2f1bd990",
     "exchanges/XWBO.json": "7905efe4dee81349c0af9eea46c30a8d9fdc83149db1e380f92fd3104ac0c79f",
     "exchanges/XZAG.json": "a6059d2f5994c032d8d03444a451ebd2539c4567b0c462a8b232642293bcf555",
-    "schema.json": "7360485a510cb8c0ed3bdda06e5db452d4f97e053fabf37add84bd42e0445888",
-    "tools/build.py": "dff63d3f29d097529d3b941d2c1f583d3efdc2b7a700c9632e99a536e59881ab",
-    "tools/generate_checksums.py": "9e3cb0d1e47e44bb497104fe2410ff69988cc57d94a8d38613ddf7c987b9a645",
+    "schema.json": "0b9924d69f118ad8b74c535cf084fa5f6e542b4ec94e3e3abb3bbd8c2e1f0251",
+    "tools/build.py": "205e9927716d85aad14b5876f7da725ac38d1ba269b37a5ae621326e457a93d2",
+    "tools/generate_checksums.py": "99e53706305fabf92ce4e6960d2f1a32c1c06d5a5939ffeb2cc8facb5a631565",
     "tools/generate_dates.py": "884e0fbb7791c1a8d668ed6dfa2e7b2ec2e449e51242a10ba774462676d97bef",
     "tools/live_fetcher_check.py": "bf971240bb03e38a1a7a86aca09f9647dccb7cff81b1a77c4cb13b35f1eefe8a",
-    "tools/update_from_exchange.py": "5f301b8a0683dad7056601c405ae1c43cedc770d45cce5be9b4285ddc932f562",
+    "tools/update_from_exchange.py": "313ae69a748c3f9025f983485d98450a9c9005acf600e520fbce190863dfee95",
     "tools/validate.py": "591c2952fe9f49f902cb19ad8df06d8d8e1c008b5c6b109dbf60aaf90fcc8e81",
     "tools/verify_checksums.py": "ce94243ab814f1f44cb9c35a3aee998a14ced75aaaaf08d8c037d87440beb78d",
     "tools/verify_predicted_dates.py": "a3f0f12f5f6d05ba89cd7b8c8aee7ab96dad867ad5e4bb69d778df214b4d709a"
-  },
-  "generated": "2026-09-07T21:04:25+00:00"
+  }
 }
