@@ -331,14 +331,24 @@ func (e *Exchange) StatusAt(dateStr, timeStr string) (SessionStatus, error) {
 		}
 	}
 
-	// 5. Before regular open
+	// 5. Before regular open — only PRE_MARKET if declared.
 	if timeStr < e.RegularHours.Open {
-		return StatusPreMarket, nil
+		if pre := e.ExtendedHours.PreMarket; pre != nil {
+			if pre.Open <= timeStr && timeStr < pre.Close {
+				return StatusPreMarket, nil
+			}
+		}
+		return StatusClosed, nil
 	}
 
-	// 6. After regular close
+	// 6. After regular close — only AFTER_HOURS if declared.
 	if timeStr >= e.RegularHours.Close {
-		return StatusAfterHours, nil
+		if after := e.ExtendedHours.AfterHours; after != nil {
+			if after.Open <= timeStr && timeStr < after.Close {
+				return StatusAfterHours, nil
+			}
+		}
+		return StatusClosed, nil
 	}
 
 	// 7. Within regular hours
