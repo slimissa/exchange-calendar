@@ -28,7 +28,7 @@ const os = require('node:os');
 const { CalendarRegistry, Exchange, SessionStatus } = require('../src/index');
 
 const EXPECTED_VERSION = fs.readFileSync(
-    path.join(__dirname, '..', 'VERSION'), 'utf8'
+    path.join(__dirname, '..', '..', '..', 'VERSION'), 'utf8'
 ).trim();
 
 // ──────────────────────────────────────────────────────────────
