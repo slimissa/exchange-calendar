@@ -346,8 +346,24 @@ class ExchangeFetcher(ABC):
     
     @abstractmethod
     def parse_html(self, html: str) -> List[HolidayEntry]:
-        """Parse HTML content into holiday entries"""
+        """Parse HTML content into a flat list of holiday entries.
+
+        Fetchers that also produce early-close entries should override
+        ``parse_calendar()`` instead, which returns both lists. This
+        method remains abstract so every fetcher supplies its own parse
+        logic; subclasses that override ``parse_calendar()`` must still
+        provide a ``parse_html()`` that returns only the holidays.
+        """
         pass
+
+    def parse_calendar(self, html: str) -> Tuple[List[HolidayEntry], List[HolidayEntry]]:
+        """Parse HTML into ``(holidays, early_closes)``.
+
+        Default implementation wraps ``parse_html()`` and returns an
+        empty early-close list. Fetchers that distinguish early closes
+        override this method directly.
+        """
+        return self.parse_html(html), []
     
     @abstractmethod
     def fetch(self) -> Optional[ExchangeData]:
@@ -1113,7 +1129,11 @@ class ASXFetcher(ExchangeFetcher):
                 by_date[e.date] = e
         return list(by_date.values())
 
-    def parse_html(self, html: str) -> Tuple[List[HolidayEntry], List[HolidayEntry]]:
+    def parse_html(self, html: str) -> List[HolidayEntry]:
+        """Return only the holidays; the tuple-returning variant is ``parse_calendar()``."""
+        return self.parse_calendar(html)[0]
+
+    def parse_calendar(self, html: str) -> Tuple[List[HolidayEntry], List[HolidayEntry]]:
         """Returns (holidays, early_closes) since ASX's table distinguishes them"""
         if not html:
             return [], []
@@ -1181,7 +1201,7 @@ class ASXFetcher(ExchangeFetcher):
         if not html:
             raise FetchError("Failed to fetch ASX page")
 
-        holidays, early_closes = self.parse_html(html)
+        holidays, early_closes = self.parse_calendar(html)
         if not holidays:
             raise ParseError("No holidays found for XASX")
 
@@ -1302,7 +1322,11 @@ class EuronextFetcher(ExchangeFetcher):
             rate_limit=2.0
         )
 
-    def parse_html(self, html: str) -> Tuple[List[HolidayEntry], List[HolidayEntry]]:
+    def parse_html(self, html: str) -> List[HolidayEntry]:
+        """Return only the holidays; the tuple-returning variant is ``parse_calendar()``."""
+        return self.parse_calendar(html)[0]
+
+    def parse_calendar(self, html: str) -> Tuple[List[HolidayEntry], List[HolidayEntry]]:
         """Returns (holidays, early_closes) -- see bug-fix note in class docstring"""
         if not html:
             return [], []
@@ -1379,7 +1403,7 @@ class EuronextFetcher(ExchangeFetcher):
         if not html:
             raise FetchError(f"Failed to fetch Euronext page for {self.mic}")
 
-        holidays, early_closes = self.parse_html(html)
+        holidays, early_closes = self.parse_calendar(html)
         if not holidays:
             raise ParseError(f"No holidays found for {self.mic}")
 
@@ -2379,7 +2403,11 @@ class NasdaqNordicFetcher(ExchangeFetcher):
             rate_limit=2.0
         )
 
-    def parse_html(self, html: str) -> Tuple[List[HolidayEntry], List[HolidayEntry]]:
+    def parse_html(self, html: str) -> List[HolidayEntry]:
+        """Return only the holidays; the tuple-returning variant is ``parse_calendar()``."""
+        return self.parse_calendar(html)[0]
+
+    def parse_calendar(self, html: str) -> Tuple[List[HolidayEntry], List[HolidayEntry]]:
         """Returns (holidays, early_closes)"""
         if not html:
             return [], []
@@ -2465,7 +2493,7 @@ class NasdaqNordicFetcher(ExchangeFetcher):
         if not html:
             raise FetchError(f"Failed to fetch Nasdaq Nordic page for {self.mic}")
 
-        holidays, early_closes = self.parse_html(html)
+        holidays, early_closes = self.parse_calendar(html)
         if not holidays:
             raise ParseError(f"No holidays found for {self.mic}")
 

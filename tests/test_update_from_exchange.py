@@ -741,9 +741,18 @@ class TestXETRFetcher:
 class TestASXFetcher:
     """Tests for ASXFetcher"""
 
+    def test_parse_html_returns_flat_list(self):
+        """Phase 1.8: parse_html returns a flat list, not a tuple."""
+        fetcher = ASXFetcher()
+        result = fetcher.parse_html(ASX_SAMPLE_HTML)
+        assert isinstance(result, list)
+        assert all(isinstance(h, HolidayEntry) for h in result)
+        holidays, _ = fetcher.parse_calendar(ASX_SAMPLE_HTML)
+        assert result == holidays
+
     def test_parse_html_separates_holidays_and_early_closes(self):
         fetcher = ASXFetcher()
-        holidays, early_closes = fetcher.parse_html(ASX_SAMPLE_HTML)
+        holidays, early_closes = fetcher.parse_calendar(ASX_SAMPLE_HTML)
 
         assert len(holidays) == 3  # New Year's, Australia Day, Christmas
         assert len(early_closes) == 1  # the CLOSE EARLY row
@@ -751,18 +760,18 @@ class TestASXFetcher:
 
     def test_parse_html_empty(self):
         fetcher = ASXFetcher()
-        holidays, early_closes = fetcher.parse_html("<html><body>nothing here</body></html>")
+        holidays, early_closes = fetcher.parse_calendar("<html><body>nothing here</body></html>")
         assert holidays == []
         assert early_closes == []
 
     def test_year_extracted_from_header(self):
         fetcher = ASXFetcher()
-        holidays, _ = fetcher.parse_html(ASX_SAMPLE_HTML)
+        holidays, _ = fetcher.parse_calendar(ASX_SAMPLE_HTML)
         assert all(h.date.startswith("2026-") for h in holidays)
 
     def test_date_format_iso(self):
         fetcher = ASXFetcher()
-        holidays, _ = fetcher.parse_html(ASX_SAMPLE_HTML)
+        holidays, _ = fetcher.parse_calendar(ASX_SAMPLE_HTML)
         assert "2026-01-01" in {h.date for h in holidays}
         assert "2026-01-26" in {h.date for h in holidays}
 
@@ -798,9 +807,18 @@ EURONEXT_HALF_DAY_SAMPLE_HTML = """
 class TestEuronextFetcher:
     """Tests for the shared EuronextFetcher (XPAR/XAMS/XDUB/XBRU/XLIS/XOSL)"""
 
+    def test_parse_html_returns_flat_list(self):
+        """Phase 1.8: parse_html returns a flat list, not a tuple."""
+        fetcher = EuronextParisFetcher()
+        result = fetcher.parse_html(EURONEXT_SAMPLE_HTML)
+        assert isinstance(result, list)
+        assert all(isinstance(h, HolidayEntry) for h in result)
+        holidays, _ = fetcher.parse_calendar(EURONEXT_SAMPLE_HTML)
+        assert result == holidays
+
     def test_parse_html_paris_column(self):
         fetcher = EuronextParisFetcher()
-        holidays, early_closes = fetcher.parse_html(EURONEXT_SAMPLE_HTML)
+        holidays, early_closes = fetcher.parse_calendar(EURONEXT_SAMPLE_HTML)
 
         # 3 "Closed" rows for Paris; the substitute day and the multi-day
         # range row are "Full Trading Day" / unparseable respectively
@@ -809,18 +827,18 @@ class TestEuronextFetcher:
 
     def test_parse_html_amsterdam_column_same_closures(self):
         """In the sample, Amsterdam and Paris close on the same days"""
-        paris_holidays, _ = EuronextParisFetcher().parse_html(EURONEXT_SAMPLE_HTML)
-        ams_holidays, _ = EuronextAmsterdamFetcher().parse_html(EURONEXT_SAMPLE_HTML)
+        paris_holidays, _ = EuronextParisFetcher().parse_calendar(EURONEXT_SAMPLE_HTML)
+        ams_holidays, _ = EuronextAmsterdamFetcher().parse_calendar(EURONEXT_SAMPLE_HTML)
         assert {h.date for h in paris_holidays} == {h.date for h in ams_holidays}
 
     def test_parse_html_empty(self):
         fetcher = EuronextParisFetcher()
-        assert fetcher.parse_html("<html><body>no tables</body></html>") == ([], [])
+        assert fetcher.parse_calendar("<html><body>no tables</body></html>") == ([], [])
 
     def test_multi_day_range_row_skipped_not_guessed(self):
         """The 'Monday 5 and Tuesday 6 January 2026' row must not produce a holiday"""
         fetcher = EuronextParisFetcher()
-        holidays, _ = fetcher.parse_html(EURONEXT_SAMPLE_HTML)
+        holidays, _ = fetcher.parse_calendar(EURONEXT_SAMPLE_HTML)
         assert "2026-01-05" not in {h.date for h in holidays}
         assert "2026-01-06" not in {h.date for h in holidays}
 
@@ -835,7 +853,7 @@ class TestEuronextFetcher:
         affects XPAR/XAMS, built in Tier 1, not just the new markets.
         """
         fetcher = EuronextParisFetcher()
-        holidays, early_closes = fetcher.parse_html(EURONEXT_HALF_DAY_SAMPLE_HTML)
+        holidays, early_closes = fetcher.parse_calendar(EURONEXT_HALF_DAY_SAMPLE_HTML)
 
         assert len(early_closes) == 1
         assert early_closes[0].date == "2026-12-24"
@@ -846,10 +864,10 @@ class TestEuronextFetcher:
     def test_dublin_irish_bank_holiday_is_dublin_specific_closure(self):
         """Dublin closes on the Irish May Bank Holiday; other markets don't"""
         fetcher = EuronextDublinFetcher()
-        holidays, _ = fetcher.parse_html(EURONEXT_HALF_DAY_SAMPLE_HTML)
+        holidays, _ = fetcher.parse_calendar(EURONEXT_HALF_DAY_SAMPLE_HTML)
         assert "2026-05-04" in {h.date for h in holidays}
 
-        paris_holidays, _ = EuronextParisFetcher().parse_html(EURONEXT_HALF_DAY_SAMPLE_HTML)
+        paris_holidays, _ = EuronextParisFetcher().parse_calendar(EURONEXT_HALF_DAY_SAMPLE_HTML)
         assert "2026-05-04" not in {h.date for h in paris_holidays}
 
     def test_oslo_ascension_day_closure_and_currency(self):
@@ -859,7 +877,7 @@ class TestEuronextFetcher:
         five Euronext markets' pattern.
         """
         fetcher = EuronextOsloFetcher()
-        holidays, _ = fetcher.parse_html(EURONEXT_HALF_DAY_SAMPLE_HTML)
+        holidays, _ = fetcher.parse_calendar(EURONEXT_HALF_DAY_SAMPLE_HTML)
         assert "2026-05-14" in {h.date for h in holidays}
         assert fetcher.CURRENCY["XOSL"] == "NOK"
 
@@ -871,7 +889,7 @@ class TestEuronextFetcher:
             fetcher = fetcher_cls()
             assert fetcher.mic == mic
             assert fetcher.MARKET_COLUMN[mic] == column
-            holidays, _ = fetcher.parse_html(EURONEXT_HALF_DAY_SAMPLE_HTML)
+            holidays, _ = fetcher.parse_calendar(EURONEXT_HALF_DAY_SAMPLE_HTML)
             assert "2026-01-01" in {h.date for h in holidays}
 
     @patch('requests.get')
@@ -1180,30 +1198,39 @@ BALTIC_SAMPLE_HTML = """
 class TestNasdaqNordicFetcher:
     """Tests for the shared NasdaqNordicFetcher (XSTO/XHEL/XCSE/XICE)"""
 
+    def test_parse_html_returns_flat_list(self):
+        """Phase 1.8: parse_html returns a flat list, not a tuple."""
+        fetcher = StockholmFetcher()
+        result = fetcher.parse_html(NORDIC_SAMPLE_HTML)
+        assert isinstance(result, list)
+        assert all(isinstance(h, HolidayEntry) for h in result)
+        holidays, _ = fetcher.parse_calendar(NORDIC_SAMPLE_HTML)
+        assert result == holidays
+
     def test_parse_html_stockholm_closed_and_half_days(self):
         fetcher = StockholmFetcher()
-        holidays, early_closes = fetcher.parse_html(NORDIC_SAMPLE_HTML)
+        holidays, early_closes = fetcher.parse_calendar(NORDIC_SAMPLE_HTML)
         assert len(holidays) == 10
         assert len(early_closes) == 5
 
     def test_parse_html_copenhagen_no_half_days(self):
         fetcher = CopenhagenFetcher()
-        holidays, early_closes = fetcher.parse_html(NORDIC_SAMPLE_HTML)
+        holidays, early_closes = fetcher.parse_calendar(NORDIC_SAMPLE_HTML)
         assert len(holidays) == 11
         assert len(early_closes) == 0
 
     def test_parse_html_iceland_distinct_holidays(self):
         """Iceland has extra holidays (Apr 23, Aug 3) not shared by other markets"""
         fetcher = IcelandFetcher()
-        holidays, _ = fetcher.parse_html(NORDIC_SAMPLE_HTML)
+        holidays, _ = fetcher.parse_calendar(NORDIC_SAMPLE_HTML)
         dates = {h.date for h in holidays}
         assert "2026-04-23" in dates
         assert "2026-08-03" in dates
 
     def test_parse_html_empty(self):
         fetcher = StockholmFetcher()
-        assert fetcher.parse_html("") == ([], [])
-        assert fetcher.parse_html("<html><body>no year heading</body></html>") == ([], [])
+        assert fetcher.parse_calendar("") == ([], [])
+        assert fetcher.parse_calendar("<html><body>no year heading</body></html>") == ([], [])
 
     def test_invalid_mic_raises(self):
         with pytest.raises(ValueError):
@@ -1213,7 +1240,7 @@ class TestNasdaqNordicFetcher:
         fetcher = HelsinkiFetcher()
         assert fetcher.mic == "XHEL"
         assert fetcher.CURRENCY["XHEL"] == "EUR"
-        holidays, _ = fetcher.parse_html(NORDIC_SAMPLE_HTML)
+        holidays, _ = fetcher.parse_calendar(NORDIC_SAMPLE_HTML)
         assert len(holidays) == 10
 
     @patch('requests.get')
