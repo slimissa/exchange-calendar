@@ -19,7 +19,7 @@ and session status.
   AFTER_HOURS, LUNCH_BREAK
 - **Date navigation** — next/previous trading day, skipping weekends and
   holidays
-- **Ground truth verified** — all data backed by 289 tests
+- **Ground truth verified** — 86 wrapper tests; registry data verified by 4057 tests
 
 ## Installation
 
@@ -62,8 +62,8 @@ print(xnys.early_close_time("2025-07-03"))   # "13:00"
 
 # Get full session status
 status = xnys.status_at("2025-07-03", "10:00")
-print(status)                                # SessionStatus.OPEN
-print(status == SessionStatus.OPEN)          # True
+print(status)                                # early_close
+print(status == SessionStatus.EARLY_CLOSE)   # True
 
 # Date navigation
 print(xnys.next_trading_day("2025-07-03"))   # "2025-07-07" (Monday)
@@ -74,9 +74,10 @@ for exchange in registry.list_exchanges():
     print(f"{exchange.code}: {exchange.name}")
 
 # Registry metadata
-print(registry.exchange_count)               # 2
-print(registry.version)                      # "1.0.0"
-print(registry.codes())                      # ['XLON', 'XNYS']
+print(registry.exchange_count)               # 74
+print(registry.version)                      # "2.1.10"
+print(registry.codes()[:3])                   # ['XAMS', 'XASX', 'XATH']
+print(registry.codes()[-3:])                  # ['XWAR', 'XWBO', 'XZAG']
 ```
 
 ## API Reference
@@ -121,6 +122,7 @@ print(registry.codes())                      # ['XLON', 'XNYS']
 | `EARLY_CLOSE` | Early close day, before close time |
 | `AFTER_HOURS` | After regular hours (extended session) |
 | `LUNCH_BREAK` | Intraday break (e.g., Tokyo lunch) |
+
 **Extended hours.** `PRE_MARKET` and `AFTER_HOURS` are only returned for
 exchanges that declare those sessions in `extended_hours`. For exchanges
 without one, times before regular open or after regular close return
@@ -134,8 +136,8 @@ The registry is a single JSON file (`calendar.json`) with this structure:
 ```json
 {
   "meta": {
-    "version": "1.0.0",
-    "exchange_count": 2
+    "version": "2.1.10",
+    "exchange_count": 74
   },
   "exchanges": [
     {
@@ -160,14 +162,15 @@ The registry is a single JSON file (`calendar.json`) with this structure:
 
 ## Supported Exchanges
 
-| Code | Exchange | Timezone | Holiday Count (2025-2029) |
-|------|----------|----------|---------------------------|
-| `XNYS` | New York Stock Exchange | `America/New_York` | 62 |
-| `XLON` | London Stock Exchange | `Europe/London` | 50 |
+| Code | Exchange | Timezone |
+|------|----------|----------|
+| `XNYS` | New York Stock Exchange | `America/New_York` |
+| `XLON` | London Stock Exchange | `Europe/London` |
+| `XTKS` | Tokyo Stock Exchange | `Asia/Tokyo` |
 
-More exchanges are added continuously. See the
-[registry repository](https://github.com/slimissa/exchange-calendar) for the
-latest list.
+*74 exchanges total — see
+[`exchanges/`](https://github.com/slimissa/exchange-calendar/tree/main/exchanges)
+for the full list.*
 
 ## Thread Safety
 
