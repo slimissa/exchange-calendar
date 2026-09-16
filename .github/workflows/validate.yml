@@ -84,8 +84,9 @@ jobs:
           python3 tools/build.py
 
       - name: Run JavaScript tests
+        working-directory: wrappers/javascript
         run: |
-          node --test tests/test_wrappers.js
+          npm test
 
   go:
     name: Go Wrapper Tests

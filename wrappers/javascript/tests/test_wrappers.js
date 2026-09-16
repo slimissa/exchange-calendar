@@ -25,7 +25,7 @@ const path = require('node:path');
 const fs = require('node:fs');
 const os = require('node:os');
 
-const { CalendarRegistry, Exchange, SessionStatus } = require('../wrappers/javascript/src/index');
+const { CalendarRegistry, Exchange, SessionStatus } = require('../src/index');
 
 const EXPECTED_VERSION = fs.readFileSync(
     path.join(__dirname, '..', 'VERSION'), 'utf8'
@@ -77,7 +77,7 @@ function createTempRegistry() {
 }
 
 function getRegistryPath() {
-    return path.join(__dirname, '..', 'calendar.json');
+    return path.join(__dirname, '..', '..', 'calendar.json');
 }
 
 // ──────────────────────────────────────────────────────────────

@@ -10,7 +10,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "node --test",
+    "test": "node --test tests/",
     "lint": "eslint src/",
     "format": "prettier --write src/",
     "prepublishOnly": "npm test"
@@ -43,10 +43,6 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "files": [
-    "src/**/*.js",
-    "README.md"
-  ],
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
