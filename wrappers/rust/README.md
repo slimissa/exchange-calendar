@@ -102,7 +102,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 ```rust
 impl Registry {
     pub fn load<P: AsRef<Path>>(path: P) -> Result<Self, RegistryError>;
-    pub fn from_str(json: &str) -> Result<Self, RegistryError>;
+    pub fn from_json_str(json: &str) -> Result<Self, RegistryError>;
     pub fn from_data(data: RegistryData) -> Result<Self, RegistryError>;
 
     pub fn exchange(&self, code: &str) -> Option<&Exchange>;
