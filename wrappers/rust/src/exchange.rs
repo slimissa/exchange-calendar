@@ -420,17 +420,37 @@ impl Exchange {
             }
         }
 
-        // Before regular open
+        // Before regular open — only PRE_MARKET if declared.
         if let Some(open_time) = self.regular_hours.open_time() {
             if time < open_time {
-                return Ok(SessionStatus::PreMarket);
+                if let Some(pre) = self.extended_hours.pre_market.as_ref() {
+                    if let (Ok(pre_open), Ok(pre_close)) = (
+                        NaiveTime::parse_from_str(&pre.open, "%H:%M"),
+                        NaiveTime::parse_from_str(&pre.close, "%H:%M"),
+                    ) {
+                    if pre_open <= time && time < pre_close {
+                        return Ok(SessionStatus::PreMarket);
+                    }
+                }
+            }
+            return Ok(SessionStatus::Closed);
             }
         }
 
-        // After regular close
+        // After regular close — only AFTER_HOURS if declared.
         if let Some(close_time) = self.regular_hours.close_time() {
             if time >= close_time {
-                return Ok(SessionStatus::AfterHours);
+                if let Some(after) = self.extended_hours.after_hours.as_ref() {
+                    if let (Ok(after_open), Ok(after_close)) = (
+                        NaiveTime::parse_from_str(&after.open, "%H:%M"),
+                        NaiveTime::parse_from_str(&after.close, "%H:%M"),
+                    ) {
+                    if after_open <= time && time < after_close {
+                        return Ok(SessionStatus::AfterHours);
+                    }
+                }
+            }
+            return Ok(SessionStatus::Closed);
             }
         }
 
