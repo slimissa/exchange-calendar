@@ -58,13 +58,14 @@ class Exchange {
         const holidays = data.holidays || {};
         const explicit = holidays.explicit || [];
         const generated = holidays.generated || [];
+        const adHoc = data.ad_hoc_closures || [];
 
         // Build lookup maps for O(1) date queries
         this._holidayByDate = new Map();
         this._statusByDate = new Map();
         this._earlyCloseTimeByDate = new Map();
 
-        for (const entry of [...explicit, ...generated]) {
+        for (const entry of [...explicit, ...generated, ...adHoc]) {
             this._indexEntry(entry);
         }
     }

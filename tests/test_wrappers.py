@@ -303,6 +303,29 @@ class TestHolidayDetection:
     def test_xnys_early_close_not_full_holiday(self, xnys):
         assert xnys.is_holiday("2025-07-03") is False  # Early close, not full close
 
+    def test_ad_hoc_closures_are_indexed(self, tmp_path):
+        """Phase 1.7: ad_hoc_closures must be queryable via is_holiday."""
+        ad_hoc_file = tmp_path / "ad_hoc.json"
+        ad_hoc_file.write_text(json.dumps({
+            "meta": {"version": "1.0.0", "exchange_count": 1},
+            "exchanges": [{
+                "code": "TEST", "name": "Test Exchange", "mic": "TEST",
+                "timezone": "Europe/London",
+                "regular_hours": {"open": "09:00", "close": "17:00"},
+                "holidays": {"explicit": [], "generated": []},
+                "ad_hoc_closures": [{
+                    "date": "2025-01-09",
+                    "name": "National Day of Mourning",
+                    "status": "closed",
+                    "source_url": "https://example.com/notice",
+                }],
+            }],
+        }))
+        reg = CalendarRegistry(ad_hoc_file)
+        test = reg.get("TEST")
+        assert test.is_holiday("2025-01-09") is True
+        assert test.is_holiday("2025-01-10") is False
+
     def test_xlon_boxing_day_is_holiday(self, xlon):
         assert xlon.is_holiday("2025-12-26") is True
 

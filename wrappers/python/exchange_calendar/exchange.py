@@ -65,6 +65,7 @@ class Exchange:
         holidays = data.get("holidays", {})
         self._explicit = holidays.get("explicit", [])
         self._generated = holidays.get("generated", [])
+        self._ad_hoc = data.get("ad_hoc_closures", [])
 
         # Build lookup dicts for O(1) date queries
         self._holiday_by_date = {}
@@ -75,6 +76,9 @@ class Exchange:
             self._index_entry(entry)
 
         for entry in self._generated:
+            self._index_entry(entry)
+
+        for entry in self._ad_hoc:
             self._index_entry(entry)
 
     # ──────────────────────────────────────────────────────────

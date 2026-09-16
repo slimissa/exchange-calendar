@@ -107,6 +107,13 @@ func NewExchange(data ExchangeData) (*Exchange, error) {
 		e.indexEntry(entry)
 	}
 
+	// Phase 1.7: index ad_hoc_closures too. These are real closures
+	// (validated by tools/validate.py to require a source_url) that the
+	// query API was previously blind to.
+	for _, entry := range data.AdHocClosures {
+		e.indexEntry(entry)
+	}
+
 	return e, nil
 }
 

@@ -362,6 +362,30 @@ describe('Holiday detection', () => {
         assert.equal(xnys.isHoliday('2025-07-03'), false);
     });
 
+    test('ad_hoc_closures are indexed', () => {
+        const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'exchange-calendar-adhoc-'));
+        const adHocFile = path.join(tmpDir, 'ad_hoc.json');
+        fs.writeFileSync(adHocFile, JSON.stringify({
+            meta: { version: '1.0.0', exchange_count: 1 },
+            exchanges: [{
+                code: 'TEST', name: 'Test Exchange', mic: 'TEST',
+                timezone: 'Europe/London',
+                regular_hours: { open: '09:00', close: '17:00' },
+                holidays: { explicit: [], generated: [] },
+                ad_hoc_closures: [{
+                    date: '2025-01-09',
+                    name: 'National Day of Mourning',
+                    status: 'closed',
+                    source_url: 'https://example.com/notice',
+                }],
+            }],
+        }));
+        const reg = new CalendarRegistry(adHocFile);
+        const test = reg.get('TEST');
+        assert.equal(test.isHoliday('2025-01-09'), true);
+        assert.equal(test.isHoliday('2025-01-10'), false);
+    });
+
     test('Boxing Day is holiday for XLON', () => {
         assert.equal(xlon.isHoliday('2025-12-26'), true);
     });
