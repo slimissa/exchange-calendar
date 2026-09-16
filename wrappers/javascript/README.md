@@ -19,7 +19,7 @@ and session status.
 - **Date navigation** — next/previous trading day, skipping weekends and
   holidays
 - **Iterable registry** — `for...of` support
-- **Ground truth verified** — all data backed by 368 tests
+- **Ground truth verified** — 86 wrapper tests; registry data verified by 4057 tests
 - **Both CommonJS and ESM** — `require()` and `import` supported
 
 ## Installation
@@ -63,8 +63,8 @@ console.log(xnys.earlyCloseTime('2025-07-03'));    // "13:00"
 
 // Get full session status
 const status = xnys.statusAt('2025-07-03', '10:00');
-console.log(status);                                // "open"
-console.log(status === SessionStatus.OPEN);         // true
+console.log(status);                                // "early_close"
+console.log(status === SessionStatus.EARLY_CLOSE);  // true
 
 // Date navigation
 console.log(xnys.nextTradingDay('2025-07-03'));     // "2025-07-07" (Monday)
@@ -76,9 +76,10 @@ for (const exchange of registry) {
 }
 
 // Registry metadata
-console.log(registry.exchangeCount);                // 2
-console.log(registry.version);                      // "1.0.0"
-console.log(registry.codes());                      // ['XLON', 'XNYS']
+console.log(registry.exchangeCount);                // 74
+console.log(registry.version);                      // "2.1.10"
+console.log(registry.codes().slice(0, 3));          // ['XAMS', 'XASX', 'XATH']
+console.log(registry.codes().slice(-3));             // ['XWAR', 'XWBO', 'XZAG']
 ```
 
 ### ES Modules
@@ -138,6 +139,7 @@ console.log(xlon.isOpen('2025-12-24', '12:45'));    // false (after early close)
 | `EARLY_CLOSE` | `'early_close'` — early close, before close time |
 | `AFTER_HOURS` | `'after_hours'` — after regular hours |
 | `LUNCH_BREAK` | `'lunch_break'` — intraday break |
+
 **Extended hours.** `PRE_MARKET` and `AFTER_HOURS` are only returned for
 exchanges that declare those sessions in `extended_hours`. For exchanges
 without one, times before regular open or after regular close return
@@ -161,8 +163,8 @@ The registry is a single JSON file (`calendar.json`):
 ```json
 {
   "meta": {
-    "version": "1.0.0",
-    "exchange_count": 2
+    "version": "2.1.10",
+    "exchange_count": 74
   },
   "exchanges": [
     {
@@ -191,9 +193,11 @@ The registry is a single JSON file (`calendar.json`):
 |------|----------|----------|
 | `XNYS` | New York Stock Exchange | `America/New_York` |
 | `XLON` | London Stock Exchange | `Europe/London` |
+| `XTKS` | Tokyo Stock Exchange | `Asia/Tokyo` |
 
-More exchanges are added continuously. See the
-[registry repository](https://github.com/slimissa/exchange-calendar).
+*74 exchanges total — see
+[`exchanges/`](https://github.com/slimissa/exchange-calendar/tree/main/exchanges)
+for the full list.*
 
 ## Immutability
 
