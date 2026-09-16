@@ -318,8 +318,7 @@ Array of dated holiday entries.
 | `early_close_time` | string | Conditional | `HH:MM` — required when status is `early_close` |
 | `delayed_open_time` | string | Conditional | `HH:MM` — required when status is `delayed_open` |
 | `source_url` | string | Recommended | Official exchange source |
-| `weekend_exception` | boolean | Optional. Set true when a real, sourced holiday legitimately falls on this
-exchange's weekend_days |
+| `weekend_exception` | boolean | Optional. Set true when a real, sourced holiday legitimately falls on this exchange's `weekend_days` |
 | `predicted` | boolean | Optional. True when a moon-sighting-dependent date is calculated, not confirmed |
 
 #### `recurrence_rules` (Optional)
@@ -427,7 +426,7 @@ The schema uses `if`/`then` logic to require additional fields:
   "mic": "XNYS",
   "regular_hours": {"open": "09:30", "close": "16:00"},
   "holidays": {"explicit": [], "recurrence_rules": []}
-  // Missing "timezone" and "generation_range"
+  // Missing "timezone", "weekend_days", and "generation_range"
 }
 ```
 

@@ -352,22 +352,9 @@ However, users should ensure compliance with:
 
 ## Dependencies
 
-### Runtime Dependencies
+### Runtime and Development Dependencies
 
-| Package | Version | Purpose | Security Audit |
-|---------|---------|---------|----------------|
-| Python | >=3.8 | Runtime | [Python Security](https://www.python.org/security/) |
-| requests | >=2.28 | HTTP client | [CVE Database](https://cve.mitre.org/) |
-| beautifulsoup4 | >=4.11 | HTML parsing | [CVE Database](https://cve.mitre.org/) |
-| tqdm | >=4.65 | Progress bars | [CVE Database](https://cve.mitre.org/) |
-
-### Development Dependencies
-
-| Package | Version | Purpose | Security Audit |
-|---------|---------|---------|----------------|
-| pytest | >=7.0 | Testing | [CVE Database](https://cve.mitre.org/) |
-| pytest-mock | >=3.10 | Mocking | [CVE Database](https://cve.mitre.org/) |
-| pytest-cov | >=4.0 | Coverage | [CVE Database](https://cve.mitre.org/) |
+Current minimum versions are pinned in [`tools/requirements.txt`](tools/requirements.txt). Runtime dependencies are `requests`, `beautifulsoup4`, `tqdm`, `jsonschema`, and `pdfplumber`; development dependencies are `pytest`, `pytest-mock`, and `pytest-cov`.
 
 Note: `bandit`, `pip-audit`, and `safety` (referenced above under
 "Security Best Practices") are recommended tools for contributors to
@@ -452,12 +439,7 @@ For actual vulnerabilities, use the advisory workflow above.
 
 ### Response Hours
 
-| Day | Hours (UTC) |
-|-----|-------------|
-| Monday-Friday | 09:00-18:00 |
-| Saturday | 10:00-14:00 |
-| Sunday | Emergency only |
-| Holidays | Emergency only |
+Best-effort responses on weekdays; security advisories are triaged as they arrive.
 
 ### Security Advisories
 
@@ -479,6 +461,7 @@ We thank the following individuals and organizations for their contributions to 
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 2.1.0 | 2026-09-16 | Added 2.1.x support row, GitHub Discussions fallback, dependency pointer |
 | 2.0.0 | 2026-08-19 | Initial security policy |
 | 1.0.0 | 2026-07-15 | Basic security guidelines |
 
@@ -492,7 +475,7 @@ The Exchange Calendar Registry is licensed under [Apache License 2.0](LICENSE).
 
 ---
 
-**Last Updated**: 2026-08-19  
-**Version**: 2.0.0  
+**Last Updated**: 2026-09-16  
+**Version**: 2.1.0  
 **Maintainer**: @slimissa
 ```
