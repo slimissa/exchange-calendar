@@ -5751,6 +5751,11 @@ class RegistryUpdater:
         errors = fetched_data.validate()
         if errors:
             logger.error(f"Validation errors for {mic}: {', '.join(errors)}")
+            # Empty holiday list is a fetch failure, not a schema
+            # violation. Under mirror semantics (Phase 1.1), writing an
+            # empty explicit list would wipe the exchange's calendar.
+            if not fetched_data.holidays:
+                return FetchStatus.FAILED, "fetcher returned empty holiday list"
             return FetchStatus.VALIDATION_ERROR, "; ".join(errors)
 
         # Guard: an empty fetched holiday list under mirror semantics would
