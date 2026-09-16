@@ -120,6 +120,8 @@ func main() {
 | `.EarlyCloseTime(dateStr string) string` | Time or empty string |
 | `.StatusAt(dateStr, timeStr string) (SessionStatus, error)` | Full status |
 | `.IsOpen(dateStr string, timeStrs ...string) bool` | `true` if trading |
+
+**Malformed date handling.** `IsHoliday`, `IsEarlyClose`, and `IsOpen` return `false` for malformed dates (bad format, non-existent calendar date, bad time string). This preserves the boolean-only API shape. For strict validation, use the `Try*` variants — `TryIsHoliday`, `TryIsEarlyClose`, `TryIsOpen` — which return `(bool, error)` and surface a `QueryError` for malformed input.
 | `.NextTradingDay(dateStr string) (string, error)` | Next trading day |
 | `.PreviousTradingDay(dateStr string) (string, error)` | Previous trading day |
 | `.HolidayCount(year ...int) int` | Count, optional year filter |

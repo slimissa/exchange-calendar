@@ -362,6 +362,39 @@ func (e *Exchange) IsOpen(dateStr string, timeStrs ...string) bool {
 	return status.IsTradingStatus()
 }
 
+// TryIsHoliday is the error-returning variant of IsHoliday. It returns
+// a QueryError for malformed date strings instead of silently returning
+// false. Use it when you want to distinguish "not a holiday" from
+// "you passed a bad date".
+func (e *Exchange) TryIsHoliday(dateStr string) (bool, error) {
+	if err := validateDateFormat(dateStr); err != nil {
+		return false, err
+	}
+	return e.IsHoliday(dateStr), nil
+}
+
+// TryIsEarlyClose is the error-returning variant of IsEarlyClose.
+func (e *Exchange) TryIsEarlyClose(dateStr string) (bool, error) {
+	if err := validateDateFormat(dateStr); err != nil {
+		return false, err
+	}
+	return e.IsEarlyClose(dateStr), nil
+}
+
+// TryIsOpen is the error-returning variant of IsOpen. If timeStrs is
+// empty, "10:00" is used, matching IsOpen.
+func (e *Exchange) TryIsOpen(dateStr string, timeStrs ...string) (bool, error) {
+	timeStr := "10:00"
+	if len(timeStrs) > 0 {
+		timeStr = timeStrs[0]
+	}
+	status, err := e.StatusAt(dateStr, timeStr)
+	if err != nil {
+		return false, err
+	}
+	return status.IsTradingStatus(), nil
+}
+
 // ──────────────────────────────────────────────────────────────
 // Public API — date navigation
 // ──────────────────────────────────────────────────────────────

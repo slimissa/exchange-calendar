@@ -684,3 +684,56 @@ func TestValidateTimeFormatRejectsNonDigits(t *testing.T) {
 		}
 	}
 }
+
+func TestTryVariants(t *testing.T) {
+	// Phase 1.4: Try* variants must return an error for malformed
+	// dates, unlike Is* which silently returns false.
+	e := createTestExchange()
+
+	// Malformed date returns error
+	if _, err := e.TryIsHoliday("2025/01/01"); err == nil {
+		t.Error("TryIsHoliday: expected error for malformed date")
+	}
+	if _, err := e.TryIsEarlyClose("2025/01/01"); err == nil {
+		t.Error("TryIsEarlyClose: expected error for malformed date")
+	}
+	if _, err := e.TryIsOpen("2025/01/01"); err == nil {
+		t.Error("TryIsOpen: expected error for malformed date")
+	}
+	if _, err := e.TryIsOpen("2025-07-07", "10am"); err == nil {
+		t.Error("TryIsOpen: expected error for malformed time")
+	}
+
+	// Valid date returns (value, nil)
+	isHoliday, err := e.TryIsHoliday("2025-01-01")
+	if err != nil {
+		t.Fatalf("TryIsHoliday: unexpected error %v", err)
+	}
+	if !isHoliday {
+		t.Error("TryIsHoliday: expected 2025-01-01 to be a holiday")
+	}
+
+	isOpen, err := e.TryIsOpen("2025-07-07", "10:00")
+	if err != nil {
+		t.Fatalf("TryIsOpen: unexpected error %v", err)
+	}
+	if !isOpen {
+		t.Error("TryIsOpen: expected 2025-07-07 10:00 to be open")
+	}
+}
+
+func TestIsVariantsLenientOnMalformedDates(t *testing.T) {
+	// Lock in the documented behavior: the non-Try variants return false
+	// for malformed dates rather than erroring. This is intentional and
+	// matches the boolean-only API shape; Try* is the strict path.
+	e := createTestExchange()
+	if e.IsHoliday("2025/01/01") {
+		t.Error("IsHoliday: expected false for malformed date")
+	}
+	if e.IsEarlyClose("2025/01/01") {
+		t.Error("IsEarlyClose: expected false for malformed date")
+	}
+	if e.IsOpen("2025/01/01") {
+		t.Error("IsOpen: expected false for malformed date")
+	}
+}
