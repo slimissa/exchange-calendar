@@ -28,7 +28,7 @@ This document specifies how Las_shell v0.6.0 consumes the exchange-calendar
 registry to replace the hardcoded `market_daemon.sh` with a proper calendar
 engine.
 
-**The goal:** Las_shell knows exactly when any of 14 exchanges is open,
+**The goal:** Las_shell knows exactly when any of 74 exchanges is open,
 closed, in lunch break, or closing early — including holidays, observed
 days, and timezone differences.
 
@@ -482,7 +482,7 @@ continues to work, though without holiday awareness.
 1. Implement `@next_open` operator
 2. Implement `@before_close` operator
 3. Add to `operators.c`
-4. Test with all 14 exchanges
+4. Test with all 74 exchanges
 
 ### Phase 4: Order gate (Week 3)
 
@@ -515,7 +515,7 @@ continues to work, though without holiday awareness.
 | Holiday detection | None | Full, from registry |
 | Early close detection | None | Full, from registry |
 | Lunch break detection | None | Full, from registry |
-| Multi-exchange | NYSE only | 14 exchanges |
+| Multi-exchange | NYSE only | 74 exchanges |
 | `@time` operator | Wall-clock only | Unchanged (backward compat) |
 | `@next_open` | Doesn't exist | Calendar-aware scheduling |
 | `@before_close` | Doesn't exist | Calendar-aware scheduling |
