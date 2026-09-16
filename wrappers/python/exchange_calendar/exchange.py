@@ -259,13 +259,23 @@ class Exchange:
                 if break_open and break_close and break_open <= time_str < break_close:
                     return SessionStatus.LUNCH_BREAK
 
-        # 5. Before regular open
+        # 5. Before regular open. Only report PRE_MARKET when the
+        # exchange declares a pre_market session; otherwise the market is
+        # simply closed.
         if time_str < self.regular_hours["open"]:
-            return SessionStatus.PRE_MARKET
+            pre = self.extended_hours.get("pre_market") if self.extended_hours else None
+            if pre and pre.get("open") and pre.get("close"):
+                if pre["open"] <= time_str < pre["close"]:
+                    return SessionStatus.PRE_MARKET
+            return SessionStatus.CLOSED
 
-        # 6. After regular close
+        # 6. After regular close. Same rule for after_hours.
         if time_str >= self.regular_hours["close"]:
-            return SessionStatus.AFTER_HOURS
+            after = self.extended_hours.get("after_hours") if self.extended_hours else None
+            if after and after.get("open") and after.get("close"):
+                if after["open"] <= time_str < after["close"]:
+                    return SessionStatus.AFTER_HOURS
+            return SessionStatus.CLOSED
 
         # 7. Within regular hours
         if self._is_early_close_day(date_str):
