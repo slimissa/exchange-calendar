@@ -30,8 +30,8 @@ calendar to the registry. It assumes you have already read
 ls exchanges/
 ```
 
-Current exchanges: XNYS, XNAS, XTSE, XLON, XPAR, XETR, XSWX, XMAD,
-XTKS, XHKG, XSHG, XKRX, XASX, XSES.
+Current exchanges (auto-generated from `exchanges/`, 74 total):
+XAMS, XASX, XATH, XBAH, XBDA, XBEK, XBKK, XBOG, XBOM, XBRU, XBRV, XBSP, XBUD, XBUE, XBUL, XCAI, XCAS, XCAY, XCOL, XCSE, XDFM, XDHA, XDUB, XETR, XGSE, XHEL, XHKG, XICE, XIST, XJKT, XJSE, XKAR, XKLS, XKRX, XKUW, XLIM, XLIS, XLIT, XLON, XLUX, XMAD, XMAL, XMEX, XMOS, XMUS, XNAS, XNBO, XNSA, XNSE, XNYS, XNZE, XOSL, XPAR, XPHS, XPRA, XQSE, XRIS, XSAU, XSES, XSGO, XSHE, XSHG, XSTC, XSTO, XSWX, XTAD, XTAI, XTAL, XTKS, XTSE, XTUN, XWAR, XWBO, XZAG
 
 **Check if it's on the deferred list:**
 
