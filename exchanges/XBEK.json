@@ -17,31 +17,10 @@
         "source_url": "https://www.bse.com.lb/trading-calendar"
       },
       {
-        "date": "2025-03-31",
-        "name": "Eid al-Fitr (predicted)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2025-04-01",
-        "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
-      },
-      {
         "date": "2025-05-01",
         "name": "Labour Day",
         "status": "closed",
         "source_url": "https://www.bse.com.lb/trading-calendar"
-      },
-      {
-        "date": "2025-06-09",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
       },
       {
         "date": "2025-06-26",
@@ -49,13 +28,6 @@
         "status": "closed",
         "source_url": "https://www.bse.com.lb/trading-calendar",
         "predicted": false
-      },
-      {
-        "date": "2025-09-04",
-        "name": "Prophet's Birthday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
       },
       {
         "date": "2025-12-25",
@@ -76,59 +48,10 @@
         "source_url": "https://www.bse.com.lb/trading-calendar"
       },
       {
-        "date": "2026-03-20",
-        "name": "Eid al-Fitr (predicted)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-03-23",
-        "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
-      },
-      {
         "date": "2026-05-01",
         "name": "Labour Day",
         "status": "closed",
         "source_url": "https://www.bse.com.lb/trading-calendar"
-      },
-      {
-        "date": "2026-05-27",
-        "name": "Eid al-Adha (predicted)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-28",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-06-16",
-        "name": "Islamic New Year (predicted)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-06-26",
-        "name": "Ashura (predicted)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-08-25",
-        "name": "Prophet's Birthday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
       },
       {
         "date": "2026-12-25",
