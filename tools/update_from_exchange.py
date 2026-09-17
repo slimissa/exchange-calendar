@@ -39,7 +39,7 @@ from typing import (Any, Callable, Dict, List, Optional, Tuple)
 from urllib.parse import urlparse
 import urllib.robotparser as robotparser
 
-from bs4 import soup
+from bs4 import BeautifulSoup
 
 # Try imports with fallbacks
 try:
