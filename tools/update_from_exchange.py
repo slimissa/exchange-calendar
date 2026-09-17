@@ -23,6 +23,7 @@ import hashlib
 import json
 import logging
 import pickle
+from pydoc import html, text
 import re
 import shutil
 import sys
@@ -37,6 +38,8 @@ from pathlib import Path
 from typing import (Any, Callable, Dict, List, Optional, Tuple)
 from urllib.parse import urlparse
 import urllib.robotparser as robotparser
+
+from bs4 import soup
 
 # Try imports with fallbacks
 try:
@@ -1792,53 +1795,76 @@ class SZSEFetcher(ExchangeFetcher):
             return []
 
         soup = BeautifulSoup(html, 'html.parser')
-        page_text = soup.get_text(" ", strip=True)
+        text = soup.get_text(' ', strip=True)
+        text = text.replace('\xa0', ' ')
+        text = re.sub(r'\s+', ' ', text)
 
-        # Anchor on the stable heading text, then strip ALL non-digit
-        # characters from a small window after it before matching a 4-digit
-        # year -- robust to whitespace/newlines being injected anywhere
-        # within the year's own digits by inconsistent inline markup (see
-        # class docstring for the confirmed real-world case).
-        schedule_idx = page_text.find("Stock Market Holiday Schedule")
-        if schedule_idx == -1:
-            return []
-        window = page_text[schedule_idx:schedule_idx + 60]
-        digits_only = re.sub(r'\D', '', window)
-        year_match = re.search(r'(20\d{2})', digits_only)
+        # Year comes from the heading "Stock Market Holiday Schedule (2026)"
+        # which spans multiple tags: "(202", "6", ")". Extract from joined text.
+        year_match = re.search(r'Stock Market Holiday Schedule\s*\(\s*(\d{4})\s*\)', text)
         if not year_match:
-            return []
+            raise ParseError("SZSE: could not locate year heading")
         year = int(year_match.group(1))
 
-        holidays = []
-        for match in self.ENTRY_RE.finditer(page_text):
-            _, name, start_month, start_day, resume_month, resume_day = match.groups()
-            name = name.strip()
+        MONTHS = {
+            'January': 1, 'February': 2, 'March': 3, 'April': 4,
+            'May': 5, 'June': 6, 'July': 7, 'August': 8,
+            'September': 9, 'October': 10, 'November': 11, 'December': 12,
+        }
 
+        # One numbered item per holiday, terminated by the next "N." or end-of-text.
+        ITEM_RE = re.compile(
+            r'(\d+)\.\s*([A-Z][^:]{1,80}?)\s*:\s*'
+            r'The market will close\s+'
+            r'(.+?)'
+            r'(?=\s*\d+\.|$)',
+            re.DOTALL,
+        )
+
+        # "from Month Dth (Weekday) [to Month Dth (Weekday)]" or "on Month Dth (Weekday)"
+        DATE_RE = re.compile(
+            r'(?:from\s+|on\s+)?'
+            r'([A-Z][a-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?'
+            r'(?:\s*\(\s*[A-Za-z]+\s*\))?'
+            r'(?:\s+to\s+'
+            r'([A-Z][a-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?'
+            r'(?:\s*\(\s*[A-Za-z]+\s*\))?'
+            r')?'
+        )
+
+        holidays: List[HolidayEntry] = []
+        seen: set = set()
+
+        for m in ITEM_RE.finditer(text):
+            name = m.group(2).strip().rstrip('.')
+            dates_blob = m.group(3)
+            dm = DATE_RE.search(dates_blob)
+            if not dm:
+                continue
+            sm, sd, em, ed = dm.groups()
+            if sm not in MONTHS:
+                continue
             try:
-                start = datetime.strptime(f"{start_month} {start_day} {year}", "%B %d %Y")
-                resume = datetime.strptime(f"{resume_month} {resume_day} {year}", "%B %d %Y")
-            except ValueError:
+                start = datetime(year, MONTHS[sm], int(sd))
+                end = datetime(year, MONTHS[em], int(ed)) if (em and ed) else start
+            except (ValueError, KeyError):
                 continue
-
-            end = resume - timedelta(days=1)
             if end < start:
-                logger.warning(
-                    f"XSHE: skipping '{name}' -- computed end date precedes "
-                    f"start date, likely a year-boundary case this parser doesn't handle"
-                )
                 continue
 
-            day = start
-            while day <= end:
-                if day.weekday() < 5:
-                    holidays.append(HolidayEntry(
-                        date=day.strftime('%Y-%m-%d'),
-                        name=name,
-                        status="closed",
-                        source_url=self.source_url,
-                        note="Parsed from prose ('close on X, resume on Y'), not a per-day table -- verify against source for edge cases"
-                    ))
-                day += timedelta(days=1)
+            cur = start
+            while cur <= end:
+                if cur.weekday() < 5:  # skip weekends; page says "* The market will close on weekends"
+                    iso = cur.strftime('%Y-%m-%d')
+                    if iso not in seen:
+                        seen.add(iso)
+                        holidays.append(HolidayEntry(
+                            date=iso,
+                            name=name,
+                            status="closed",
+                            source_url=self.source_url,
+                        ))
+                cur += timedelta(days=1)
 
         return holidays
 
