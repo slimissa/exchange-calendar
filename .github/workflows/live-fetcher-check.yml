@@ -74,41 +74,43 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r tools/requirements.txt
+            python -m pip install --upgrade pip
+            pip install -r tools/requirements.txt
 
-      - name: Verify Tier 1 coverage matches the registry
+      - name: Verify tier coverage matches the registry
         run: |
-          python3 -c "
-          import sys
-          sys.path.insert(0, 'tools')
-          from update_from_exchange import ExchangeFetcherRegistry
+            python3 -c "
+            import re, sys
+            sys.path.insert(0, 'tools')
+            from update_from_exchange import ExchangeFetcherRegistry
 
-          tier1_expected = set('${{ env.TIER1_MICS }}'.split(','))
-          tier2_known = set('${{ env.TIER2_MICS_BUILT }}'.split(','))
-          tier3_known = set('${{ env.TIER3_MICS_BUILT }}'.split(','))
-          tier4_known = set('${{ env.TIER4_MICS_BUILT }}'.split(','))
-          tier5_known = set('${{ env.TIER5_MICS_BUILT }}'.split(','))
-          tier6_known = set('${{ env.TIER6_MICS_BUILT }}'.split(','))
-          tier7_known = set('${{ env.TIER7_MICS_BUILT }}'.split(','))
-          tier8_known = set('${{ env.TIER8_MICS_BUILT }}'.split(','))
-          registered = set(ExchangeFetcherRegistry().list_available())
+            tier_env = [
+              '${{ env.TIER1_MICS }}', '${{ env.TIER2_MICS_BUILT }}',
+              '${{ env.TIER3_MICS_BUILT }}', '${{ env.TIER4_MICS_BUILT }}',
+              '${{ env.TIER5_MICS_BUILT }}', '${{ env.TIER6_MICS_BUILT }}',
+              '${{ env.TIER7_MICS_BUILT }}', '${{ env.TIER8_MICS_BUILT }}',
+            ]
+            documented = {m for chunk in tier_env for m in chunk.split(',') if m}
 
-          missing_tier1 = tier1_expected - registered
-          all_known = tier1_expected | tier2_known | tier3_known | tier4_known | tier5_known | tier6_known | tier7_known | tier8_known
-          unexpected = registered - all_known
-          if missing_tier1:
-              print(f'::error::Documented Tier 1 MICs not registered (regression): {sorted(missing_tier1)}')
-          if unexpected:
-              print(f'::notice::Registry has fetchers beyond all documented tier lists (Tier 1-8 was the full planned scope -- verify this is intentional): {sorted(unexpected)}')
-          if registered != all_known:
-              missing_from_registry = all_known - registered
-              if missing_from_registry:
-                  print(f'::error::Documented fetchers across Tier 1-8 not found in registry (regression): {sorted(missing_from_registry)}')
-          if missing_tier1:
-              sys.exit(1)
-          print(f'OK: all {len(tier1_expected)} documented Tier 1 fetchers are registered ({len(registered)} total registered, {len(all_known)} documented across Tiers 1-8 -- the complete planned scope).')
-          "
+            with open('BLOCKED.md') as f:
+                blocked = set(re.findall(r'^##\s+(X[A-Z]{3})\b', f.read(), re.M))
+
+            registered = set(ExchangeFetcherRegistry().list_available())
+
+            accounted = registered | blocked
+            missing = documented - accounted
+            unexpected = registered - documented
+
+            if missing:
+                print(f'::error::Documented in a tier but neither registered nor in BLOCKED.md: {sorted(missing)}')
+            if unexpected:
+                print(f'::warning::Registered but not listed in any tier env var (verify intentional): {sorted(unexpected)}')
+
+            print(f'registered={len(registered)} blocked={len(blocked)} documented={len(documented)}')
+
+            if missing:
+                sys.exit(1)
+            "
 
       - name: Run live fetcher check (single MIC)
         if: github.event.inputs.mic != ''
