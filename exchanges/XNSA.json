@@ -79,18 +79,6 @@
         "source_url": "https://ngxgroup.com/trading-calendar"
       },
       {
-        "date": "2026-03-20",
-        "name": "Eidul-Fitr",
-        "status": "closed",
-        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
-      },
-      {
-        "date": "2026-03-23",
-        "name": "Eidul-Fitr",
-        "status": "closed",
-        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
-      },
-      {
         "date": "2026-04-03",
         "name": "Good Friday",
         "status": "closed",
@@ -107,18 +95,6 @@
         "name": "Labour Day",
         "status": "closed",
         "source_url": "https://ngxgroup.com/trading-calendar"
-      },
-      {
-        "date": "2026-05-27",
-        "name": "Eid el-Kabir",
-        "status": "closed",
-        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
-      },
-      {
-        "date": "2026-05-28",
-        "name": "Eid el-Kabir",
-        "status": "closed",
-        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
       },
       {
         "date": "2026-06-12",

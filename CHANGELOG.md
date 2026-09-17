@@ -73,14 +73,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Past-due predicted holidays reconciled to zero.** 106 entries
   across 15 exchanges. XDFM: 5 entries confirmed against the exchange's
   2026 circular PDF, 4 removed (3 outside the circular's coverage,
-  1 not a DFM holiday). XNSA: 4 entries re-emitted from the live
-  fetcher, which itself marks them `predicted=True` per NGX's own
-  tentative-date footnote — flagged below as unverified. The remaining
-  13 exchanges: 97 entries removed as unresolvable (robots.txt,
-  403 from all IPs, JS-rendered, client-side empty, or timeout).
-  The `KNOWN_PAST_DUE` allow-list in `tools/validate.py` is now empty
-  and has been deleted; `check_past_due_predictions` fires on every
-  exchange.
+  1 not a DFM holiday). XNSA: 4 entries removed — the only available source 
+  (NGX's own page) footnotes the dates as tentative, and no first-party 
+  Nigerian government source confirms them. The remaining 13 exchanges: 
+  97 entries removed as unresolvable (robots.txt, 403 from all IPs, JS-rendered,
+  client-side empty, or timeout). The `KNOWN_PAST_DUE` allow-list in 
+  `tools/validate.py` is now empty and has been deleted; `check_past_due_predictions`
+  fires on every exchange.
 
 - **21 predicted entries reconciled** against confirmed sourcing:
   Islamic New Year 2025-06-26 (11 exchanges, Saudi SPA/Supreme Court
@@ -109,14 +108,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   without checking whether the date has already passed. This is the
   underlying cause of the reconciliation work above; a fix is planned
   but not yet implemented. See `tools/update_from_exchange.py`.
-- XNSA's four 2026 Islamic entries (`2026-03-20`, `2026-03-23`,
-  `2026-05-27`, `2026-05-28`) were reconciled by re-emitting the live
-  fetcher's output, which marks them `predicted=True` (NGX footnotes
-  them as tentative). They were stored without `predicted` in the
-  reconcile script, so the registry now asserts confirmation the
-  source does not. Either verify against a secondary source and add
-  a `note`, or restore `predicted=True` and accept the past-due flag.
-  
+
 ---
 ## [2.1.11] — 2026-09-17
 
