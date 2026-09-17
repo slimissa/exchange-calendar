@@ -504,3 +504,24 @@ Combined count for the round: 6 built, 4 blocked.
 - **Finding:** HTTP 403 Forbidden from both GitHub Actions runners and
   residential IPs, with a browser User-Agent. Same pattern as XKUW.
 - **Verdict:** BLOCKED (permanent, as of 2026-09-17).
+
+## XSHG — Shanghai Stock Exchange (CI-unreachable)
+
+- **Checked:** english.sse.com.cn/start/trading/schedule/
+- **Finding:** HTTP 403 from GitHub Actions runners; HTTP 200 from
+  residential IP with browser User-Agent. Same CDN IP-block pattern as
+  XHKG. The source itself works.
+- **Verdict:** CI-UNREACHABLE (not permanently blocked). No manual
+  updates needed; works when run locally.
+
+## XNSA — Nigerian Exchange Group (CI-unreachable)
+
+- **Checked:** ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/
+- **Finding:** fetches cleanly from residential IP (12 holidays, verified
+  2026-09-17). Fails from GitHub Actions with `ParseError: No holidays
+  found` — the page is behind Sucuri (`x-sucuri-id: 19017`), which serves
+  a challenge body instead of the calendar to datacenter IP ranges.
+- **Verdict:** CI-UNREACHABLE (not a parser bug, not permanently
+  blocked). Works when run locally; only the scheduled CI check cannot
+  reach it. A future maintainer seeing `ParseError` in a log should look
+  here before touching `NigeriaExchangeFetcher`.

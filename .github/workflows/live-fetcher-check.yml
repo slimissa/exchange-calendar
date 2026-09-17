@@ -90,7 +90,7 @@ jobs:
           pip install -r tools/requirements.txt
       - name: Run live fetcher check (stable set)
         run: |
-          python tools/live_fetcher_check.py --exclude XHKG,XKUW,XSAU
+          python tools/live_fetcher_check.py --exclude XHKG,XSHG,XNSA,XKUW,XSAU
 
   live-check-ci-unreachable:
     name: Live check — CI-unreachable (informational)
@@ -105,8 +105,8 @@ jobs:
       - run: |
           python -m pip install --upgrade pip
           pip install -r tools/requirements.txt
-      - name: Run live fetcher check (XHKG)
-        run: python tools/live_fetcher_check.py --only XHKG
+      - name: Run live fetcher check (XHKG, XSHG, XNSA)
+        run: python tools/live_fetcher_check.py --only XHKG,XSHG,XNSA
 
   live-check-blocked:
     name: Live check — permanently blocked (informational)
