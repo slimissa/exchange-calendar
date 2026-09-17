@@ -538,4 +538,30 @@ mod tests {
         );
         assert_eq!(xtks.sessions[0].session_type, "lunch_break");
     }
+
+    #[test]
+    fn test_real_registry_data() {
+        // Phase 4.7: load the shipped calendar.json and verify known-good
+        // values through the query API (distinct from
+        // test_load_real_calendar_registry, which only checks deserialization).
+        use crate::session::SessionStatus;
+
+        let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../../calendar.json");
+        let r = Registry::load(path.to_str().unwrap()).expect("load calendar.json");
+
+        let xnys = r.get("XNYS").unwrap();
+        assert!(xnys.is_holiday("2025-07-04"), "XNYS 2025-07-04 should be a holiday");
+        assert!(xnys.is_early_close("2025-07-03"), "XNYS 2025-07-03 should be early close");
+        assert_eq!(xnys.early_close_time("2025-07-03"), Some("13:00"));
+
+        let xsau = r.get("XSAU").unwrap();
+        assert!(xsau.is_holiday("2025-08-22"), "XSAU Friday should be a weekend");
+
+        let xtks = r.get("XTKS").unwrap();
+        assert_eq!(
+            xtks.status_at("2025-07-07", "12:00").unwrap(),
+            SessionStatus::LunchBreak
+        );
+    }
 }

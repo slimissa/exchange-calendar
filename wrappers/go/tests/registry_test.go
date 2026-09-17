@@ -378,3 +378,44 @@ func TestMultipleExchangesSorted(t *testing.T) {
 		t.Errorf("expected ZED second, got %q", codes[1])
 	}
 }
+func TestRealRegistryData(t *testing.T) {
+	// Phase 4.7: load the shipped calendar.json and verify known-good values.
+	r, err := exchangecalendar.LoadRegistry("../../../calendar.json")
+	if err != nil {
+		t.Fatalf("load calendar.json: %v", err)
+	}
+
+	xnys, err := r.Get("XNYS")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !xnys.IsHoliday("2025-07-04") {
+		t.Error("XNYS 2025-07-04 should be a holiday")
+	}
+	if !xnys.IsEarlyClose("2025-07-03") {
+		t.Error("XNYS 2025-07-03 should be an early close")
+	}
+	if got := xnys.EarlyCloseTime("2025-07-03"); got != "13:00" {
+		t.Errorf("XNYS early close time: want 13:00, got %q", got)
+	}
+
+	xsau, err := r.Get("XSAU")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !xsau.IsHoliday("2025-08-22") {
+		t.Error("XSAU 2025-08-22 (Friday) should be a weekend day")
+	}
+
+	xtks, err := r.Get("XTKS")
+	if err != nil {
+		t.Fatal(err)
+	}
+	st, err := xtks.StatusAt("2025-07-07", "12:00")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if st != exchangecalendar.StatusLunchBreak {
+		t.Errorf("XTKS 12:00: want lunch_break, got %v", st)
+	}
+}
