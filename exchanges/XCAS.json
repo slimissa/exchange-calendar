@@ -30,20 +30,6 @@
         "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
       },
       {
-        "date": "2025-06-06",
-        "name": "Eid al-Adha (predicted)",
-        "status": "closed",
-        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2025-06-09",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-        "predicted": true
-      },
-      {
         "date": "2025-06-26",
         "name": "Islamic New Year",
         "status": "closed",
@@ -100,45 +86,10 @@
         "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
       },
       {
-        "date": "2026-03-20",
-        "name": "Eid al-Fitr (predicted)",
-        "status": "closed",
-        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-03-23",
-        "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-        "predicted": true
-      },
-      {
         "date": "2026-05-01",
         "name": "Labour Day",
         "status": "closed",
         "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
-      },
-      {
-        "date": "2026-05-27",
-        "name": "Eid al-Adha (predicted)",
-        "status": "closed",
-        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-28",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-06-16",
-        "name": "Islamic New Year (predicted)",
-        "status": "closed",
-        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-        "predicted": true
       },
       {
         "date": "2026-07-30",
@@ -163,13 +114,6 @@
         "name": "Youth Day",
         "status": "closed",
         "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
-      },
-      {
-        "date": "2026-08-25",
-        "name": "Prophet's Birthday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-        "predicted": true
       },
       {
         "date": "2026-11-06",

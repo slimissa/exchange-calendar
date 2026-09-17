@@ -50,27 +50,6 @@
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
       {
-        "date": "2025-06-09",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.dsebd.org/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2025-07-06",
-        "name": "Ashura (predicted)",
-        "status": "closed",
-        "source_url": "https://publicholidays.com.bd/ashura/",
-        "predicted": true
-      },
-      {
-        "date": "2025-10-02",
-        "name": "Durga Puja (predicted)",
-        "status": "closed",
-        "source_url": "https://www.dsebd.org/trading-calendar",
-        "predicted": true
-      },
-      {
         "date": "2025-12-16",
         "name": "Victory Day",
         "status": "closed",
@@ -83,13 +62,6 @@
         "source_url": "https://www.dsebd.org/trading-calendar"
       },
       {
-        "date": "2026-03-23",
-        "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.dsebd.org/trading-calendar",
-        "predicted": true
-      },
-      {
         "date": "2026-03-26",
         "name": "Independence Day",
         "status": "closed",
@@ -100,27 +72,6 @@
         "name": "Bengali New Year",
         "status": "closed",
         "source_url": "https://www.dsebd.org/trading-calendar"
-      },
-      {
-        "date": "2026-05-27",
-        "name": "Eid al-Adha (predicted)",
-        "status": "closed",
-        "source_url": "https://www.dsebd.org/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-28",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.dsebd.org/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-08-25",
-        "name": "Prophet's Birthday (predicted)",
-        "status": "closed",
-        "source_url": "https://publicholidays.com.bd/eid-e-milad-un-nabi/",
-        "predicted": true
       },
       {
         "date": "2026-10-20",
