@@ -364,8 +364,7 @@ def check_past_due_predictions(exchange: dict, filename: str) -> list:
     KNOWN_PAST_DUE = {
         "XCAI",
         "XNBO",
-        "XNSA",
-    }
+        }
     mic = exchange.get("mic", filename)
     if mic in KNOWN_PAST_DUE:
         return []

@@ -55,13 +55,6 @@
         "source_url": "https://ngxgroup.com/trading-calendar"
       },
       {
-        "date": "2025-09-05",
-        "name": "Eid al-Maulud (predicted)",
-        "status": "closed",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "predicted": true
-      },
-      {
         "date": "2025-10-01",
         "name": "Independence Day",
         "status": "closed",
@@ -86,6 +79,18 @@
         "source_url": "https://ngxgroup.com/trading-calendar"
       },
       {
+        "date": "2026-03-20",
+        "name": "Eidul-Fitr",
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Eidul-Fitr",
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
+      },
+      {
         "date": "2026-04-03",
         "name": "Good Friday",
         "status": "closed",
@@ -105,30 +110,21 @@
       },
       {
         "date": "2026-05-27",
-        "name": "Eid al-Adha (predicted)",
+        "name": "Eid el-Kabir",
         "status": "closed",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "predicted": true
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
       },
       {
         "date": "2026-05-28",
-        "name": "Eid al-Adha Holiday (predicted)",
+        "name": "Eid el-Kabir",
         "status": "closed",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "predicted": true
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
       },
       {
         "date": "2026-06-12",
         "name": "Democracy Day",
         "status": "closed",
         "source_url": "https://ngxgroup.com/trading-calendar"
-      },
-      {
-        "date": "2026-08-25",
-        "name": "Eid al-Maulud (predicted)",
-        "status": "closed",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "predicted": true
       },
       {
         "date": "2026-10-01",
