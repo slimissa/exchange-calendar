@@ -3,18 +3,19 @@
 **The world's most comprehensive open-source registry of global exchange trading calendars — 74 exchanges across 6 continents.**
 
 One JSON file per exchange. Zero runtime dependencies. Four language wrappers.
-Seventy-four exchanges. 45 automated via registered fetchers; 29 hand-curated with documented sources. All CI/CD green.
+Seventy-four exchanges. 45 have registered fetchers — 40 verified against live sources from CI on every run, 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or permanently blocked (XKUW, XSAU). The remaining 29 are documented as blocked sources, with reasoning recorded in [BLOCKED.md](./BLOCKED.md).
 
 [![Validate](https://github.com/slimissa/exchange-calendar/actions/workflows/validate.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/validate.yml)
 [![Update](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Schema Version](https://img.shields.io/badge/schema-2.0.0-green.svg)](./schema.json)
-[![Registry Version](https://img.shields.io/badge/registry-2.1.10-orange.svg)](./CHANGELOG.md)
+[![Registry Version](https://img.shields.io/badge/registry-2.1.11-orange.svg)](./CHANGELOG.md)
 [![Tests](https://img.shields.io/badge/tests-4070+-green.svg)](./tests/)
 [![Exchanges](https://img.shields.io/badge/exchanges-74-blue.svg)](./exchanges/)
+[![Fetchers](https://img.shields.io/badge/fetchers-40_CI--verified-green.svg)](./.github/workflows/live-fetcher-check.yml)
+[![Blocked](https://img.shields.io/badge/blocked-34-lightgrey.svg)](./BLOCKED.md)
 [![Coverage](https://img.shields.io/badge/coverage-6_continents-purple.svg)](./exchanges/)
 [![Calendar Systems](https://img.shields.io/badge/calendar_systems-6-red.svg)](./docs/)
-[![CI/CD](https://img.shields.io/badge/CI_CD-green-success.svg)](./.github/workflows/)
 
 ---
 
@@ -212,14 +213,9 @@ python3 tools/update_from_exchange.py --all --force
 
 ### Currently Supported Fetchers
 
-**45 of 74 registry exchanges have automated fetchers as of v2.1.10.** Every one of the 74 exchanges in this registry has now been
-explicitly checked across 8 tiers of work — 45 built, 29 confirmed blocked
-(via robots.txt, bot-detection, JS-rendering, unreadable PDFs, or confirmed
-server instability). None remain in an ambiguous "not verified" state; the
-last two (XNBO, XGSE) were resolved to decisive verdicts in this final
-round.
+**45 of 74 registry exchanges have automated fetchers as of v2.1.11** — 40 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or permanently blocked (XKUW, XSAU). The remaining 29 are documented as blocked sources in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange.
 
-#### Tier 1 (10 of 10)
+#### Tier 1 (11 of 11)
 
 | Exchange | MIC | Status | Source |
 |----------|-----|--------|--------|
@@ -231,9 +227,10 @@ round.
 | Euronext Paris | XPAR | ✅ Implemented | euronext.com (shared Euronext fetcher) |
 | Euronext Amsterdam | XAMS | ✅ Implemented | euronext.com (shared Euronext fetcher) |
 | Tokyo Stock Exchange | XTKS | ✅ Implemented | jpx.co.jp (English-language table) |
-| Shanghai Stock Exchange | XSHG | ✅ Implemented | english.sse.com.cn — see note below |
-| Shenzhen Stock Exchange | XSHE | ✅ Implemented | szse.cn — see note below |
-| Hong Kong Exchange | XHKG | ✅ Implemented | hkex.com.hk Stock Connect CSV — see note below |
+| Shanghai Stock Exchange | XSHG | ⚠️ CI-unreachable | english.sse.com.cn — 403 from GitHub runners, works from
+residential IP |
+| Shenzhen Stock Exchange | XSHE | ✅ Implemented | szse.cn — parser rewritten 2026-09-17 for prose format (was table-based) |
+| Hong Kong Exchange | XHKG | ⚠️ CI-unreachable | hkex.com.hk Stock Connect CSV — CDN returns 404 to GitHub IPs |
 
 #### Tier 2 (3 of 10 — regional hubs proved much harder to automate)
 
@@ -241,7 +238,7 @@ round.
 |----------|-----|--------|--------|
 | Toronto Stock Exchange | XTSE | ✅ Implemented | tsx.com — see note below |
 | BME (Bolsa de Madrid) | XMAD | ✅ Implemented | bolsasymercados.es — see note below |
-| Saudi Exchange (Tadawul) | XSAU | ✅ Implemented | saudiexchange.sa — see note below |
+| Saudi Exchange (Tadawul) | XSAU | ⛔ Blocked (403 from all IPs) | saudiexchange.sa — see `BLOCKED.md` |
 | Singapore Exchange | XSES | ⛔ Blocked | JS shell + derivatives-only PDF — see `BLOCKED.md` |
 | SIX Swiss Exchange | XSWX | ⛔ Blocked | PDF visual grid, no per-day text labels — see `BLOCKED.md` |
 | Korea Exchange | XKRX | ⛔ Blocked | JS/AJAX grid, no API found — see `BLOCKED.md` |
@@ -255,7 +252,7 @@ round.
 | Exchange | MIC | Status | Source |
 |----------|-----|--------|--------|
 | Dubai Financial Market | XDFM | ✅ Implemented | dfm.ae annual PDF circular — see note below |
-| Boursa Kuwait | XKUW | ✅ Implemented | boursakuwait.com.kw — see note below |
+| Boursa Kuwait | XKUW | ⛔ Blocked (403 from all IPs) | boursakuwait.com.kw — see `BLOCKED.md` |
 | Moscow Exchange | XMOS | ✅ Implemented | moex.com — see note below (fragile source) |
 | Abu Dhabi Securities Exchange | XTAD | ⛔ Blocked | Next.js JS SPA — see `BLOCKED.md` |
 | Bahrain Bourse | XBAH | ⛔ Blocked | Official Holidays page content area is empty (client-side webpart) — see `BLOCKED.md` |
@@ -265,7 +262,7 @@ round.
 | Borsa Istanbul | XIST | ⛔ Blocked (deferred) | Real, fetchable PDF, but this sandbox structurally cannot download PDF bytes for this domain — confirmed 3 rounds running, deferred permanently — see `BLOCKED.md` |
 | Muscat Securities Market | XMUS | ⛔ Blocked | Found the real page; content area is empty (client-side) — see `BLOCKED.md` |
 
-#### Tier 4 (8 of 10 — European smaller markets; best hit rate after Tier 1)
+#### Tier 4 (9 of 10 — European smaller markets; best hit rate after Tier 1)
 
 | Exchange | MIC | Status | Source |
 |----------|-----|--------|--------|
@@ -291,7 +288,7 @@ round.
 | Nasdaq Riga | XRIS | ✅ Implemented | nasdaqbaltic.com — see note below |
 | Nasdaq Vilnius | XLIT | ✅ Implemented | nasdaqbaltic.com — see note below |
 
-#### Tier 6 (3 of 10 — emerging markets; thorough on Latin America, resolved the rest)
+#### Tier 6 (4 of 10 implemented — emerging markets; thorough on Latin America, resolved the rest)
 
 | Exchange | MIC | Status | Source |
 |----------|-----|--------|--------|

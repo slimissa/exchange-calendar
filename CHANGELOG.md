@@ -97,7 +97,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   are issued months, not years, ahead).
 
 ---
+## [2.1.11] — 2026-09-17
 
+### Fixed
+
+- **SZSE parser rewritten for prose format.** The live page no longer
+  publishes a table; holiday data is now natural-language prose
+  ("The market will close from January 1st to January 2nd..."). The
+  old table-based parser returned zero holidays. Rewritten to extract
+  date ranges from prose and expand them to individual weekdays.
+  Also fixed the source URL path (`/www/English/...`).
+- **Date regex ordinal-suffix whitespace bug.** 11 fetchers used
+  `(\d{1,2})(?:st|nd|rd|th)?`, which fails when the ordinal suffix is
+  separated by whitespace (`16 th`). Changed to
+  `(\d{1,2})\s*(?:st|nd|rd|th)?` across SZSE, Ghana, Cayman, and eight
+  other fetchers.
+- **Workflow: `continue-on-error` moved from job to step level.** The
+  previous design correctly prevented informational failures from
+  gating the workflow, but displayed them as red ✗ in the UI. Now
+  shown as `::warning::` annotations on green jobs.
+
+### Added
+
+- `live_fetcher_check.py` gained `--only` and `--exclude` flags for
+  comma-separated MIC filtering.
+- `BLOCKED.md` now distinguishes three categories: **permanently
+  blocked** (XKUW, XSAU — 403 from all IPs), **CI-unreachable** (XHKG,
+  XSHG, XNSA — works from residential IP, blocked from GitHub runners),
+  and **blocked** (the existing 29 blocked sources).
+
+### Changed
+
+- Live-fetcher workflow split into five jobs: `verify-coverage`,
+  `live-check-stable` (blocking), `live-check-ci-unreachable`
+  (informational), `live-check-blocked` (informational), `summarize`.
+- README coverage claim rewritten: 45 registered, 40 CI-verified, 5
+  CI-unreachable or permanently blocked, 29 blocked sources.
+  
 ## [2.1.10] — 2026-09-11 — Live health-check regressions (round 1 + round 2)
 
 ### Fixed
