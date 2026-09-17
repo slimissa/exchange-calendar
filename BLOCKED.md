@@ -540,3 +540,24 @@ Combined count for the round: 6 built, 4 blocked.
   confirmed because the circular covers 2026 only — removed.
 - **Verdict:** RECONCILED for 2026. The 9 previously-predicted past-due
   entries are resolved. Fetcher remains active.
+
+## Past-due reconciliation — 2026-09-17
+
+Seven exchanges had their past-due predicted entries removed on
+2026-09-17 because the source URLs cited in `exchanges/*.json` are
+unreachable from any available IP (tests run from residential, browser
+UA):
+
+- **XCAS**: robots.txt disallows automated access
+- **XDHA**: robots.txt disallows automated access
+- **XKAR**: PDF has no extractable text (scanned image)
+- **XKUW**: 403 from all IPs (permanent, documented above)
+- **XBAH**: content area is a client-side SharePoint webpart
+- **XTUN**: page is JS-rendered
+- **XMUS**: content area is client-side rendered
+
+Entries were removed rather than left marked `predicted`. A `predicted`
+entry with a past date is a silent-correctness bug — a caller reading
+`is_holiday()` gets a confident answer for a date that was never
+confirmed. Removing the entry makes the missing data explicit instead
+of wrong.
