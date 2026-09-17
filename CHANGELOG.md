@@ -8,24 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 ## [Unreleased]
 
-### Changed
-
-- **Past-due predicted holidays reconciled to zero.** 106 entries across
-  15 exchanges were either confirmed against first-party sources (XDFM,
-  XNSA) or removed as unresolvable (13 exchanges). The
-  `KNOWN_PAST_DUE` allow-list in `tools/validate.py` is now empty and
-  has been deleted; `check_past_due_predictions` fires on every exchange.
-
-### Known Issue
-
-- Islamic-calendar fetchers mark past-dated entries as `predicted=True`
-  because the predicted flag is derived from the source's own footnote
-  without checking whether the date has already passed. This is the
-  underlying cause of the reconciliation work above; a fix is planned
-  but not yet implemented. See `tools/update_from_exchange.py`.
-  
-## [Unreleased]
-
 ### Added
 
 - Tier 1 exchange fetcher work (10/10 exchanges, NYSE bot-detection fix,
@@ -90,6 +72,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Past-due predicted holidays reconciled to zero.** 106 entries across
+  15 exchanges were either confirmed against first-party sources (XDFM,
+  XNSA) or removed as unresolvable (13 exchanges). The
+  `KNOWN_PAST_DUE` allow-list in `tools/validate.py` is now empty and
+  has been deleted; `check_past_due_predictions` fires on every exchange.
+
 - **21 predicted entries reconciled** against confirmed sourcing:
   Islamic New Year 2025-06-26 (11 exchanges, Saudi SPA/Supreme Court
   announcement) and matching Eid al-Fitr 2025 entries for Pakistan,
@@ -112,6 +100,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - XTAD 2028 National Day substitute-day count remains unresolved; no
   government circular exists yet for that year (expected — circulars
   are issued months, not years, ahead).
+- Islamic-calendar fetchers mark past-dated entries as `predicted=True`
+  because the predicted flag is derived from the source's own footnote
+  without checking whether the date has already passed. This is the
+  underlying cause of the reconciliation work above; a fix is planned
+  but not yet implemented. See `tools/update_from_exchange.py`.
 
 ---
 ## [2.1.11] — 2026-09-17
