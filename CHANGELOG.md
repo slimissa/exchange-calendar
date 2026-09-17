@@ -6,7 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [Unreleased]
 
+### Changed
+
+- **Past-due predicted holidays reconciled to zero.** 106 entries across
+  15 exchanges were either confirmed against first-party sources (XDFM,
+  XNSA) or removed as unresolvable (13 exchanges). The
+  `KNOWN_PAST_DUE` allow-list in `tools/validate.py` is now empty and
+  has been deleted; `check_past_due_predictions` fires on every exchange.
+
+### Known Issue
+
+- Islamic-calendar fetchers mark past-dated entries as `predicted=True`
+  because the predicted flag is derived from the source's own footnote
+  without checking whether the date has already passed. This is the
+  underlying cause of the reconciliation work above; a fix is planned
+  but not yet implemented. See `tools/update_from_exchange.py`.
+  
 ## [Unreleased]
 
 ### Added
