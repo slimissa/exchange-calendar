@@ -223,8 +223,7 @@ python3 tools/update_from_exchange.py --all --force
 | Euronext Paris | XPAR | ✅ Implemented | euronext.com (shared Euronext fetcher) |
 | Euronext Amsterdam | XAMS | ✅ Implemented | euronext.com (shared Euronext fetcher) |
 | Tokyo Stock Exchange | XTKS | ✅ Implemented | jpx.co.jp (English-language table) |
-| Shanghai Stock Exchange | XSHG | ⚠️ CI-unreachable | english.sse.com.cn — 403 from GitHub runners, works from
-residential IP |
+| Shanghai Stock Exchange | XSHG | ⚠️ CI-unreachable | english.sse.com.cn — 403 from GitHub runners, works from residential IP |
 | Shenzhen Stock Exchange | XSHE | ✅ Implemented | szse.cn — parser rewritten 2026-09-17 for prose format (was table-based) |
 | Hong Kong Exchange | XHKG | ⚠️ CI-unreachable | hkex.com.hk Stock Connect CSV — CDN returns 404 to GitHub IPs |
 
