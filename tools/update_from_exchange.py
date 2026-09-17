@@ -1775,9 +1775,9 @@ class SZSEFetcher(ExchangeFetcher):
 
     ENTRY_RE = re.compile(
         r'(\d+)\.\s*([^:]+):\s*The market will close (?:on|from)\s+'
-        r'([A-Z][a-z]+)\s*(\d{1,2})(?:st|nd|rd|th)?\s*\(\w+\)'
+        r'([A-Z][a-z]+)\s*(\d{1,2})\s*(?:st|nd|rd|th)?\s*\(\w+\)'
         r'(?:\s*to\s*[A-Z][a-z]+\s*\d{1,2}(?:st|nd|rd|th)?\s*\(\w+\))?'
-        r'.*?resume trading on\s+([A-Z][a-z]+)\s*(\d{1,2})(?:st|nd|rd|th)?',
+        r'.*?resume trading on\s+([A-Z][a-z]+)\s*(\d{1,2})\s*(?:st|nd|rd|th)?',
         re.DOTALL
     )
 
@@ -1801,10 +1801,13 @@ class SZSEFetcher(ExchangeFetcher):
 
         # Year comes from the heading "Stock Market Holiday Schedule (2026)"
         # which spans multiple tags: "(202", "6", ")". Extract from joined text.
-        year_match = re.search(r'Stock Market Holiday Schedule\s*\(\s*(\d{4})\s*\)', text)
+        year_match = re.search(
+            r'Stock Market Holiday Schedule\s*\(\s*(\d)\s*(\d)\s*(\d)\s*(\d)\s*\)',
+            text,
+        )
         if not year_match:
             raise ParseError("SZSE: could not locate year heading")
-        year = int(year_match.group(1))
+        year = int(''.join(year_match.groups()))
 
         MONTHS = {
             'January': 1, 'February': 2, 'March': 3, 'April': 4,
@@ -1824,10 +1827,10 @@ class SZSEFetcher(ExchangeFetcher):
         # "from Month Dth (Weekday) [to Month Dth (Weekday)]" or "on Month Dth (Weekday)"
         DATE_RE = re.compile(
             r'(?:from\s+|on\s+)?'
-            r'([A-Z][a-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?'
+            r'([A-Z][a-z]+)\s+(\d{1,2})\s*(?:st|nd|rd|th)?'
             r'(?:\s*\(\s*[A-Za-z]+\s*\))?'
             r'(?:\s+to\s+'
-            r'([A-Z][a-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?'
+            r'([A-Z][a-z]+)\s+(\d{1,2})\s*(?:st|nd|rd|th)?'
             r'(?:\s*\(\s*[A-Za-z]+\s*\))?'
             r')?'
         )
@@ -4810,7 +4813,7 @@ class GhanaExchangeFetcher(ExchangeFetcher):
 
     YEAR_RE = re.compile(r'Public Holidays for the year\s+(\d{4})')
     ROW_RE = re.compile(
-        r'^([A-Za-z]+)\s*\|\s*([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?(?:/(\d{1,2})(?:st|nd|rd|th)?)?\s*\|\s*(.+)$'
+        r'^([A-Za-z]+)\s*\|\s*([A-Za-z]+)\s+(\d{1,2})\s*(?:st|nd|rd|th)?(?:/(\d{1,2})\s*(?:st|nd|rd|th)?)?\s*\|\s*(.+)$'
     )
     LUNAR_NAME_RE = re.compile(r'eid', re.IGNORECASE)
     MONTHS = ["January", "February", "March", "April", "May", "June",
@@ -4855,7 +4858,7 @@ class GhanaExchangeFetcher(ExchangeFetcher):
 
                 # Parse "Month Day" or "Month Day1st/Day2nd" (alternate dates)
                 date_match = re.match(
-                    r'([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?(?:/(\d{1,2})(?:st|nd|rd|th)?)?',
+                    r'([A-Za-z]+)\s+(\d{1,2})\s*(?:st|nd|rd|th)?(?:/(\d{1,2})\s*(?:st|nd|rd|th)?)?',
                     date_text
                 )
                 if not date_match:
@@ -5057,7 +5060,7 @@ class CaymanExchangeFetcher(ExchangeFetcher):
     """
 
     ROW_RE = re.compile(
-        r'^([A-Za-z]+)\s*\|\s*(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+)\s*\|\s*(.+)$'
+        r'^([A-Za-z]+)\s*\|\s*(\d{1,2})\s*(?:st|nd|rd|th)?\s+([A-Za-z]+)\s*\|\s*(.+)$'
     )
     MONTHS = ["January", "February", "March", "April", "May", "June",
               "July", "August", "September", "October", "November", "December"]
@@ -5101,7 +5104,7 @@ class CaymanExchangeFetcher(ExchangeFetcher):
                 continue
             first_weekday = first_row_cells[0].get_text(strip=True)
             first_date_text = first_row_cells[1].get_text(strip=True)
-            day_match = re.match(r'(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+)', first_date_text)
+            day_match = re.match(r'(\d{1,2})\s*(?:st|nd|rd|th)?\s+([A-Za-z]+)', first_date_text)
             if not day_match:
                 continue
             day, month_name = day_match.groups()
@@ -5126,7 +5129,7 @@ class CaymanExchangeFetcher(ExchangeFetcher):
                 date_text = cells[1].get_text(strip=True)
                 name = cells[2].get_text(strip=True)
 
-                day_match = re.match(r'(\d{1,2})(?:st|nd|rd|th)?\s+([A-Za-z]+)', date_text)
+                day_match = re.match(r'(\d{1,2})\s*(?:st|nd|rd|th)?\s+([A-Za-z]+)', date_text)
                 if not day_match or not name:
                     continue
                 day, month_name = day_match.groups()
