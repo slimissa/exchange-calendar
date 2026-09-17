@@ -27,12 +27,13 @@ on:
 
 env:
   PYTHON_VERSION: '3.12'
-  # Documentation of what's currently registered, for visibility when
-  # reading this file -- NOT the actual source of truth for what gets
-  # checked (that's ExchangeFetcherRegistry, read live by
-  # live_fetcher_check.py). The "Verify Tier 1 coverage" step below fails
-  # the job if this list and the registry ever disagree, so this can't
-  # silently go stale the way a hardcoded check-list would.
+  # Documentation of tier membership, for visibility when reading this
+  # file. NOT the source of truth for what gets checked (that's
+  # ExchangeFetcherRegistry, read live by live_fetcher_check.py). The
+  # "Verify tier coverage" step reconciles these lists against
+  # BLOCKED.md: an exchange listed here must be either registered or
+  # documented as blocked. Adding a new exchange means adding it here
+  # AND in the registry (or in BLOCKED.md).
   TIER1_MICS: 'XNYS,XNAS,XLON,XETR,XASX,XPAR,XAMS,XTKS,XSHG,XSHE,XHKG'
   # Tier 2 fetchers built so far (2026-08-27): XTSE, XMAD, XSAU. Kept
   # separate from TIER1_MICS rather than merged, so the guard step below can
@@ -106,7 +107,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r tools/requirements.txt
       - name: Run live fetcher check (XHKG, XSHG, XNSA)
-        run: python tools/live_fetcher_check.py --only XHKG,XSHG,XNSA
+        continue-on-error: true
+        run: |
+          set +e
+          python tools/live_fetcher_check.py --only XHKG,XSHG,XNSA
+          rc=$?
+          if [ $rc -ne 0 ]; then
+            echo "::warning::CI-unreachable fetchers failed (expected from GitHub runners): XHKG, XSHG, XNSA"
+          fi
+          exit 0
 
   live-check-blocked:
     name: Live check — permanently blocked (informational)
@@ -122,7 +131,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r tools/requirements.txt
       - name: Run live fetcher check (XKUW, XSAU)
-        run: python tools/live_fetcher_check.py --only XKUW,XSAU
+        continue-on-error: true
+        run: |
+          set +e
+          python tools/live_fetcher_check.py --only XKUW,XSAU
+          rc=$?
+          if [ $rc -ne 0 ]; then
+            echo "::warning::Permanently blocked fetchers failed (expected): XKUW, XSAU"
+          fi
+          exit 0
 
   summarize:
     name: Summarize
