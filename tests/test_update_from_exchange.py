@@ -1926,12 +1926,20 @@ class TestXDFMFetcher:
         holidays = fetcher.parse_html(XDFM_SAMPLE_PDF_TEXT)
         assert len(holidays) == 9
 
-    def test_parse_html_marks_islamic_holidays_predicted(self):
+    @patch('update_from_exchange.ExchangeFetcher._is_future', return_value=True)
+    def test_parse_html_marks_islamic_holidays_predicted(self, mock_future):
         fetcher = XDFMFetcher()
         holidays = fetcher.parse_html(XDFM_SAMPLE_PDF_TEXT)
         eid = [h for h in holidays if "Eid Al Fitr" in h.name]
         assert len(eid) == 3
         assert all(h.predicted is True for h in eid)
+
+    @patch('update_from_exchange.ExchangeFetcher._is_future', return_value=False)
+    def test_parse_html_past_islamic_holidays_not_predicted(self, mock_future):
+        fetcher = XDFMFetcher()
+        holidays = fetcher.parse_html(XDFM_SAMPLE_PDF_TEXT)
+        eid = [h for h in holidays if "Eid Al Fitr" in h.name]
+        assert all(h.predicted is False for h in eid)
 
     def test_parse_html_fixed_holidays_not_predicted(self):
         fetcher = XDFMFetcher()
@@ -2477,13 +2485,21 @@ class TestBRVMFetcher:
         holidays = fetcher.parse_html(BRVM_SAMPLE_HTML)
         assert len(holidays) == 6
 
-    def test_parse_html_marks_islamic_holidays_predicted(self):
+    @patch('update_from_exchange.ExchangeFetcher._is_future', return_value=True)
+    def test_parse_html_marks_islamic_holidays_predicted(self, mock_future):
         fetcher = BRVMFetcher()
         holidays = fetcher.parse_html(BRVM_SAMPLE_HTML)
         ramadan = [h for h in holidays if "Ramadan" in h.name]
         tabaski = [h for h in holidays if "Tabaski" in h.name]
         assert ramadan[0].predicted is True
         assert tabaski[0].predicted is True
+
+    @patch('update_from_exchange.ExchangeFetcher._is_future', return_value=False)
+    def test_parse_html_past_islamic_holidays_not_predicted(self, mock_future):
+        fetcher = BRVMFetcher()
+        holidays = fetcher.parse_html(BRVM_SAMPLE_HTML)
+        islamic = [h for h in holidays if "Ramadan" in h.name or "Tabaski" in h.name]
+        assert all(h.predicted is None for h in islamic)
 
     def test_parse_html_fixed_holidays_not_predicted(self):
         fetcher = BRVMFetcher()
@@ -2567,12 +2583,20 @@ Chief Market Operations Officer
         assert "May Day" in may1[0].name
         assert "Vesak Full Moon Poya Day" in may1[0].name
 
-    def test_parse_html_islamic_holidays_predicted(self):
+    @patch('update_from_exchange.ExchangeFetcher._is_future', return_value=True)
+    def test_parse_html_islamic_holidays_predicted(self, mock_future):
         fetcher = ColomboFetcher()
         holidays = fetcher.parse_html(COLOMBO_SAMPLE_TEXT)
         islamic = [h for h in holidays if "Id-Ul-Allah" in h.name or "Milad" in h.name]
         assert len(islamic) == 2
         assert all(h.predicted is True for h in islamic)
+
+    @patch('update_from_exchange.ExchangeFetcher._is_future', return_value=False)
+    def test_parse_html_past_islamic_holidays_not_predicted(self, mock_future):
+        fetcher = ColomboFetcher()
+        holidays = fetcher.parse_html(COLOMBO_SAMPLE_TEXT)
+        islamic = [h for h in holidays if "Id-Ul-Allah" in h.name or "Milad" in h.name]
+        assert all(h.predicted is None for h in islamic)
 
     def test_parse_html_poya_days_not_predicted(self):
         """Poya (full moon) days are computable, not moon-sighting dependent -- not marked predicted"""
