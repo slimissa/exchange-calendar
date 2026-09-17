@@ -28,27 +28,6 @@
         "source_url": "https://www.dfm.ae/en/trading/trading-hours"
       },
       {
-        "date": "2025-03-31",
-        "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/",
-        "predicted": true
-      },
-      {
-        "date": "2025-04-01",
-        "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/",
-        "predicted": true
-      },
-      {
-        "date": "2025-06-06",
-        "name": "Eid al-Adha (predicted)",
-        "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/",
-        "predicted": true
-      },
-      {
         "date": "2025-06-26",
         "name": "Islamic New Year",
         "status": "closed",
@@ -85,48 +64,6 @@
         "name": "New Year's Day",
         "status": "closed",
         "source_url": "https://www.dfm.ae/en/trading/trading-hours"
-      },
-      {
-        "date": "2026-03-20",
-        "name": "Eid al-Fitr (predicted)",
-        "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-27",
-        "name": "Eid al-Adha (predicted)",
-        "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-28",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-29",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/",
-        "predicted": true
-      },
-      {
-        "date": "2026-06-16",
-        "name": "Islamic New Year (predicted)",
-        "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/",
-        "predicted": true
-      },
-      {
-        "date": "2026-08-25",
-        "name": "Prophet's Birthday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.ummulqura.org.sa/",
-        "predicted": true
       },
       {
         "date": "2026-12-01",

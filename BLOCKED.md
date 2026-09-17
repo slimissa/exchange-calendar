@@ -189,11 +189,13 @@ wrong without the reasoning behind it.
 
 ## XQSE — Qatar Exchange
 
-- **Checked:** qe.com.qa/qse-calendar
-- **Finding:** confirmed JS/AJAX-driven Liferay portal widget ("Events for
-  [Month]"), empty table in raw HTML. This is a general corporate-events
-  calendar, not specifically a holiday calendar, and is dynamic regardless.
-- **Verdict:** BLOCKED.
+- **Checked:** qe.com.qa/trading-calendar (original verdict 2026-08-27)
+- **Finding (2026-09-17):** DNS no longer resolves for qe.com.qa —
+  `Resolving timed out`. The 2026-08-27 verdict ("JS/AJAX-driven Liferay
+  portal widget") assumed the domain was reachable; the domain appears
+  to have moved or gone offline. Source URL cited by XQSE entries in
+  the registry (`https://www.qe.com.qa/trading-calendar`) is dead.
+- **Verdict:** BLOCKED (domain unreachable, 2026-09-17)
 
 ## XCAI — Egyptian Exchange (EGX)
 
@@ -525,3 +527,15 @@ Combined count for the round: 6 built, 4 blocked.
   blocked). Works when run locally; only the scheduled CI check cannot
   reach it. A future maintainer seeing `ParseError` in a log should look
   here before touching `NigeriaExchangeFetcher`.
+
+## XDFM — Dubai Financial Market (reconciliation blocked)
+
+- **Checked:** dfm.ae annual holiday circular (original verdict 2026-08-29)
+- **Finding (2026-09-17):** dfm.ae homepage returns 200, but the
+  year-specific circular PDF URL from `XDFMFetcher.source_url` returns
+  [404/timeout]. The 9 past-due predicted entries in `exchanges/XDFM.json`
+  cite `ummulqura.org.sa` (dead domain, 404) rather than the fetcher's
+  own source, suggesting they predate the fetcher and were never
+  independently verified.
+- **Verdict:** BLOCKED for reconciliation. Entries removed; fetcher
+  remains active for future dates.

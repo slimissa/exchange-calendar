@@ -365,7 +365,6 @@ def check_past_due_predictions(exchange: dict, filename: str) -> list:
         "XBAH",
         "XCAI",
         "XCAS",
-        "XDFM",
         "XDHA",
         "XKAR",
         "XKUW",
