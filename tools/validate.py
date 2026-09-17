@@ -362,7 +362,7 @@ def check_past_due_predictions(exchange: dict, filename: str) -> list:
     """
     # TODO: reconcile and remove entries. See docs/predicted_dates_pending.md.
     KNOWN_PAST_DUE = {
-        "XQSE", "XBEK", "XTAD", "XDFM", "XCAS", "XKUW", "XKAR",
+        "XTAD", "XDFM", "XCAS", "XKUW", "XKAR",
         "XDHA", "XBAH", "XTUN", "XMUS", "XCAI", "XNSA", "XNBO",
     }
     mic = exchange.get("mic", filename)
