@@ -332,6 +332,17 @@ class ExchangeFetcher(ABC):
     # for every fetcher (including NYSE) rather than repeating the omission.
     _robots_cache: Dict[str, "robotparser.RobotFileParser"] = {}
 
+    @staticmethod
+    def _is_future(date_str: str) -> bool:
+        """True if date_str (YYYY-MM-DD) is strictly after today.
+
+        Used to gate `predicted`: an Islamic date that has already passed
+        should not be marked tentative. Marking past dates `predicted`
+        creates silent-correctness bugs (see commits 3fd7480..ee896e9).
+        """
+        from datetime import date as _date
+        return date_str > _date.today().isoformat()
+
     def __init__(
         self,
         mic: str,
@@ -3517,7 +3528,7 @@ class XDFMFetcher(PDFFetcher):
                 name=name,
                 status="closed",
                 source_url=self.source_url,
-                predicted=bool(star)
+                predicted=bool(star) and self._is_future(date_obj.strftime('%Y-%m-%d'))
             ))
 
         return holidays
@@ -4465,7 +4476,7 @@ class NigeriaExchangeFetcher(ExchangeFetcher):
                     name=name,
                     status="closed",
                     source_url=self.source_url,
-                    predicted=is_lunar if is_lunar else None
+                    predicted=True if (is_lunar and self._is_future(date_obj.strftime('%Y-%m-%d'))) else None
                 ))
 
         return holidays
@@ -4566,7 +4577,7 @@ class BRVMFetcher(ExchangeFetcher):
                     name=name_text,
                     status="closed",
                     source_url=self.source_url,
-                    predicted=bool(star)
+                    predicted=bool(star) and self._is_future(date_obj.strftime('%Y-%m-%d'))
                 ))
 
         return holidays
@@ -4729,7 +4740,7 @@ class ColomboFetcher(PDFFetcher):
                 name=name,
                 status="closed",
                 source_url=self.source_url,
-                predicted=is_islamic if is_islamic else None
+                predicted=True if (is_islamic and self._is_future(date_obj.strftime('%Y-%m-%d'))) else None
             ))
 
         # Merge entries that land on the same date (confirmed in the real
@@ -4886,7 +4897,7 @@ class GhanaExchangeFetcher(ExchangeFetcher):
                     name=name,
                     status="closed",
                     source_url=self.source_url,
-                    predicted=is_lunar if is_lunar else None
+                    predicted=True if (is_lunar and self._is_future(chosen_date.strftime('%Y-%m-%d'))) else None
                 ))
 
         return holidays

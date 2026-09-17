@@ -12,6 +12,7 @@ from pathlib import Path
 from datetime import datetime, timedelta
 from unittest.mock import Mock, patch, MagicMock, mock_open
 from typing import Dict, Any, Optional, List
+from unittest.mock import patch
 
 # Import the module under test
 import sys
@@ -2434,7 +2435,8 @@ class TestNigeriaExchangeFetcher:
         holidays = fetcher.parse_html(NGX_SAMPLE_HTML)
         assert len(holidays) == 5
 
-    def test_parse_html_marks_islamic_holidays_predicted(self):
+    @patch('update_from_exchange.ExchangeFetcher._is_future', return_value=True)
+    def test_parse_html_marks_islamic_holidays_predicted(self, mock_future):
         fetcher = NigeriaExchangeFetcher()
         holidays = fetcher.parse_html(NGX_SAMPLE_HTML)
         eid = [h for h in holidays if "Eid" in h.name]
