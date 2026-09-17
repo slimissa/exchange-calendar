@@ -528,14 +528,15 @@ Combined count for the round: 6 built, 4 blocked.
   reach it. A future maintainer seeing `ParseError` in a log should look
   here before touching `NigeriaExchangeFetcher`.
 
-## XDFM — Dubai Financial Market (reconciliation blocked)
+## XDFM — Dubai Financial Market (reconciled 2026-09-17)
 
 - **Checked:** dfm.ae annual holiday circular (original verdict 2026-08-29)
-- **Finding (2026-09-17):** dfm.ae homepage returns 200, but the
-  year-specific circular PDF URL from `XDFMFetcher.source_url` returns
-  [404/timeout]. The 9 past-due predicted entries in `exchanges/XDFM.json`
-  cite `ummulqura.org.sa` (dead domain, 404) rather than the fetcher's
-  own source, suggesting they predate the fetcher and were never
-  independently verified.
-- **Verdict:** BLOCKED for reconciliation. Entries removed; fetcher
-  remains active for future dates.
+- **Finding (2026-09-17):** the year-specific circular PDF
+  (`assets.dfm.ae/docs/.../circular-12-2025-trading-and-settlementholidays-...pdf`)
+  returns 200 and parses cleanly with `pdfplumber`. Five past-due 2026
+  entries (Eid al-Fitr, Eid al-Adha ×3, Prophet's Birthday) were
+  confirmed and unmarked. One entry (Islamic New Year 2026-06-16) is
+  not a DFM closure — removed. Three 2025 entries could not be
+  confirmed because the circular covers 2026 only — removed.
+- **Verdict:** RECONCILED for 2026. The 9 previously-predicted past-due
+  entries are resolved. Fetcher remains active.

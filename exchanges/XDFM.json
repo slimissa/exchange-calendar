@@ -66,6 +66,36 @@
         "source_url": "https://www.dfm.ae/en/trading/trading-hours"
       },
       {
+        "date": "2026-03-20",
+        "name": "Eid al-Fitr",
+        "status": "closed",
+        "source_url": "https://assets.dfm.ae/docs/default-source/circulars/circular-12-2025-trading-and-settlementholidays-for-the-calendar-year-2026-for-securities-market-excluding-derivatives-contracts-english.pdf?sfvrsn=cffc8981_0"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Eid al-Adha",
+        "status": "closed",
+        "source_url": "https://assets.dfm.ae/docs/default-source/circulars/circular-12-2025-trading-and-settlementholidays-for-the-calendar-year-2026-for-securities-market-excluding-derivatives-contracts-english.pdf?sfvrsn=cffc8981_0"
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Eid al-Adha Holiday",
+        "status": "closed",
+        "source_url": "https://assets.dfm.ae/docs/default-source/circulars/circular-12-2025-trading-and-settlementholidays-for-the-calendar-year-2026-for-securities-market-excluding-derivatives-contracts-english.pdf?sfvrsn=cffc8981_0"
+      },
+      {
+        "date": "2026-05-29",
+        "name": "Eid al-Adha Holiday",
+        "status": "closed",
+        "source_url": "https://assets.dfm.ae/docs/default-source/circulars/circular-12-2025-trading-and-settlementholidays-for-the-calendar-year-2026-for-securities-market-excluding-derivatives-contracts-english.pdf?sfvrsn=cffc8981_0"
+      },
+      {
+        "date": "2026-08-25",
+        "name": "Prophet's Birthday",
+        "status": "closed",
+        "source_url": "https://assets.dfm.ae/docs/default-source/circulars/circular-12-2025-trading-and-settlementholidays-for-the-calendar-year-2026-for-securities-market-excluding-derivatives-contracts-english.pdf?sfvrsn=cffc8981_0"
+      },
+      {
         "date": "2026-12-01",
         "name": "Commemoration Day",
         "status": "closed",
