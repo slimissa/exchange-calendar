@@ -354,18 +354,7 @@ def check_past_due_predictions(exchange: dict, filename: str) -> list:
     Only checks the structured `predicted` field; the legacy
     '(predicted)' name suffix is handled by check_predicted_consistency.
 
-    KNOWN_PAST_DUE is a temporary allow-list, populated with the 15
-    exchanges that still carry past-due predictions as of 2026-09-17.
-    Remove a MIC from this set as its entries are reconciled. When the
-    set is empty, delete the set and the guard below -- the rule should
-    then fire on every exchange.
-    """
-    # TODO: reconcile and remove entries. See docs/predicted_dates_pending.md.
-    KNOWN_PAST_DUE = set()
-    mic = exchange.get("mic", filename)
-    if mic in KNOWN_PAST_DUE:
-        return []
-
+"""
     errors = []
     today = date.today().isoformat()
     for holiday in exchange.get("holidays", {}).get("explicit", []):
