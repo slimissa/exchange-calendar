@@ -102,20 +102,6 @@
         "source_url": "https://www.nse.co.ke/trading-calendar"
       },
       {
-        "date": "2026-03-20",
-        "name": "Eid al-Fitr (predicted)",
-        "status": "closed",
-        "source_url": "https://www.nse.co.ke/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-27",
-        "name": "Eid al-Adha (predicted)",
-        "status": "closed",
-        "source_url": "https://www.nse.co.ke/trading-calendar",
-        "predicted": true
-      },
-      {
         "date": "2026-10-20",
         "name": "Mashujaa Day",
         "status": "closed",

@@ -96,52 +96,10 @@
         "source_url": "https://www.egx.com.eg/en/trading-calendar/"
       },
       {
-        "date": "2026-03-22",
-        "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-        "predicted": true
-      },
-      {
-        "date": "2026-03-23",
-        "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-27",
-        "name": "Eid al-Adha (predicted)",
-        "status": "closed",
-        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-28",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-        "predicted": true
-      },
-      {
-        "date": "2026-06-16",
-        "name": "Islamic New Year (predicted)",
-        "status": "closed",
-        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-        "predicted": true
-      },
-      {
         "date": "2026-07-23",
         "name": "Revolution Day (Jul 23)",
         "status": "closed",
         "source_url": "https://www.egx.com.eg/en/trading-calendar/"
-      },
-      {
-        "date": "2026-08-25",
-        "name": "Prophet's Birthday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-        "predicted": true
       },
       {
         "date": "2026-10-06",
