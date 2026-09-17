@@ -31,20 +31,6 @@
         "predicted": false
       },
       {
-        "date": "2025-06-05",
-        "name": "Arafat Day (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2025-06-09",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar",
-        "predicted": true
-      },
-      {
         "date": "2025-06-26",
         "name": "Islamic New Year",
         "status": "closed",
@@ -81,55 +67,6 @@
         "name": "New Year's Day",
         "status": "closed",
         "source_url": "https://www.adx.ae/trading-calendar"
-      },
-      {
-        "date": "2026-03-23",
-        "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-03-24",
-        "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-26",
-        "name": "Arafat Day (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-27",
-        "name": "Eid al-Adha (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-05-28",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-06-16",
-        "name": "Islamic New Year (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar",
-        "predicted": true
-      },
-      {
-        "date": "2026-08-25",
-        "name": "Prophet's Birthday (predicted)",
-        "status": "closed",
-        "source_url": "https://www.adx.ae/trading-calendar",
-        "predicted": true
       },
       {
         "date": "2026-12-01",
