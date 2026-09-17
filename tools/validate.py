@@ -344,6 +344,44 @@ def check_predicted_consistency(exchange: dict, filename: str) -> list:
             )
     return errors
 
+def check_past_due_predictions(exchange: dict, filename: str) -> list:
+    """M7 follow-up: any entry marked `predicted` whose date is in the
+    past is a silent-correctness bug -- callers get a confident answer
+    for a date that was never confirmed. Either reconcile the date
+    against an official source (and clear `predicted`) or remove the
+    entry entirely.
+
+    Only checks the structured `predicted` field; the legacy
+    '(predicted)' name suffix is handled by check_predicted_consistency.
+
+    KNOWN_PAST_DUE is a temporary allow-list, populated with the 15
+    exchanges that still carry past-due predictions as of 2026-09-17.
+    Remove a MIC from this set as its entries are reconciled. When the
+    set is empty, delete the set and the guard below -- the rule should
+    then fire on every exchange.
+    """
+    # TODO: reconcile and remove entries. See docs/predicted_dates_pending.md.
+    KNOWN_PAST_DUE = {
+        "XQSE", "XBEK", "XTAD", "XDFM", "XCAS", "XKUW", "XKAR",
+        "XDHA", "XBAH", "XTUN", "XSAU", "XMUS", "XCAI", "XNSA", "XNBO",
+    }
+    mic = exchange.get("mic", filename)
+    if mic in KNOWN_PAST_DUE:
+        return []
+
+    errors = []
+    today = date.today().isoformat()
+    for holiday in exchange.get("holidays", {}).get("explicit", []):
+        if not holiday.get("predicted"):
+            continue
+        date_str = holiday.get("date", "")
+        if date_str and date_str < today:
+            errors.append(
+                f"{filename}: {mic} predicted holiday {date_str} "
+                f"({holiday.get('name', '?')}) is past-due. Either confirm "
+                f"the date (remove predicted) or remove the entry."
+            )
+    return errors
 
 def validate_cross_exchange(all_exchanges: dict, filenames: list) -> list:
     """Validate consistency across all exchange files. Returns list of error strings."""
@@ -414,6 +452,7 @@ def main():
         errors.extend(check_islamic_holidays(exchange, exchange_file.name))
         errors.extend(check_generation_range(exchange, exchange_file.name))
         errors.extend(check_predicted_consistency(exchange, exchange_file.name))
+        errors.extend(check_past_due_predictions(exchange, exchange_file.name)) 
         all_errors.extend(errors)
 
     # Cross-exchange validation
