@@ -541,136 +541,54 @@ class TestPredictedConsistencyCheck:
 # ──────────────────────────────────────────────────────────────
 
 class TestFixtures:
-    def test_valid_exchange_fixture(self):
-        fixture_path = Path(__file__).parent / "fixtures" / "valid_exchange.json"
-        with open(fixture_path) as f:
-            exchange = json.load(f)
+    """Phase 4.2: each fixture is copied to TEST.json in a temp dir so
+    the code==filename rule doesn't fire before the intended check,
+    then the specific error the fixture is named for is asserted."""
 
+    def _load_schema(self):
         schema_path = Path(__file__).parent.parent / "schema.json"
-        with open(schema_path) as f:
-            schema = json.load(f)
+        return json.loads(schema_path.read_text())
 
-        errors = validator.validate_schema(exchange, schema, fixture_path.name)
-        assert errors == []
+    def test_valid_exchange_fixture(self, fixture_as_test):
+        path = fixture_as_test("valid_exchange.json")
+        data = json.loads(path.read_text())
+        errors = validator.validate_schema(data, self._load_schema(), path.name)
+        errors.extend(validator.validate_business_logic(data, path.name))
+        errors.extend(validator.check_generation_range(data, path.name))
+        assert errors == [], errors
 
-    def test_invalid_bad_timezone_fixture(self):
-        fixture_path = Path(__file__).parent / "fixtures" / "invalid_bad_timezone.json"
-        with open(fixture_path) as f:
-            exchange = json.load(f)
+    def test_invalid_bad_timezone_fixture(self, fixture_as_test):
+        path = fixture_as_test("invalid_bad_timezone.json")
+        data = json.loads(path.read_text())
+        errors = validator.validate_schema(data, self._load_schema(), path.name)
+        errors.extend(validator.validate_business_logic(data, path.name))
+        assert any("timezone" in e.lower() for e in errors), errors
 
-        schema_path = Path(__file__).parent.parent / "schema.json"
-        with open(schema_path) as f:
-            schema = json.load(f)
+    def test_invalid_duplicate_dates_fixture(self, fixture_as_test):
+        path = fixture_as_test("invalid_duplicate_dates.json")
+        data = json.loads(path.read_text())
+        errors = validator.validate_business_logic(data, path.name)
+        assert any("Duplicate" in e for e in errors), errors
 
-        errors = validator.validate_schema(exchange, schema, fixture_path.name)
-        assert len(errors) > 0
-
-    def test_invalid_duplicate_dates_fixture(self):
-        fixture_path = Path(__file__).parent / "fixtures" / "invalid_duplicate_dates.json"
-        with open(fixture_path) as f:
-            exchange = json.load(f)
-
-        schema_path = Path(__file__).parent.parent / "schema.json"
-        with open(schema_path) as f:
-            schema = json.load(f)
-
-        errors = validator.validate_schema(exchange, schema, fixture_path.name)
-        errors.extend(validator.validate_business_logic(exchange, fixture_path.name))
-        assert len(errors) > 0
-
-    def test_invalid_missing_hours_fixture(self):
-        fixture_path = Path(__file__).parent / "fixtures" / "invalid_missing_hours.json"
-        with open(fixture_path) as f:
-            exchange = json.load(f)
-
-        schema_path = Path(__file__).parent.parent / "schema.json"
-        with open(schema_path) as f:
-            schema = json.load(f)
-
-        errors = validator.validate_schema(exchange, schema, fixture_path.name)
-        assert len(errors) > 0
-
-
-# ──────────────────────────────────────────────────────────────
-# Real exchange files
-# ──────────────────────────────────────────────────────────────
+    def test_invalid_missing_hours_fixture(self, fixture_as_test):
+        path = fixture_as_test("invalid_missing_hours.json")
+        data = json.loads(path.read_text())
+        errors = validator.validate_schema(data, self._load_schema(), path.name)
+        assert errors, "expected schema violation for missing hours"
 
 class TestRealExchanges:
-    def test_xnys_valid(self):
-        """XNYS.json passes validation with zero errors."""
-        exchange_path = Path(__file__).parent.parent / "exchanges" / "XNYS.json"
-        with open(exchange_path) as f:
-            exchange = json.load(f)
-
-        schema_path = Path(__file__).parent.parent / "schema.json"
-        with open(schema_path) as f:
-            schema = json.load(f)
-
-        errors = validator.validate_schema(exchange, schema, "XNYS.json")
-        errors.extend(validator.validate_business_logic(exchange, "XNYS.json"))
-        assert errors == []
-
-    def test_xlon_valid(self):
-        """XLON.json passes validation with zero errors."""
-        exchange_path = Path(__file__).parent.parent / "exchanges" / "XLON.json"
-        with open(exchange_path) as f:
-            exchange = json.load(f)
-
-        schema_path = Path(__file__).parent.parent / "schema.json"
-        with open(schema_path) as f:
-            schema = json.load(f)
-
-        errors = validator.validate_schema(exchange, schema, "XLON.json")
-        errors.extend(validator.validate_business_logic(exchange, "XLON.json"))
-        assert errors == []
-
-
-# ──────────────────────────────────────────────────────────────
-# Fixture file creation (run once to generate fixtures if missing)
-# ──────────────────────────────────────────────────────────────
-
-def create_fixtures_if_missing():
-    """Create fixture files if they don't exist. Run manually, not as a test."""
-    fixtures_dir = Path(__file__).parent / "fixtures"
-    fixtures_dir.mkdir(exist_ok=True)
-
-    fixtures = {
-        "valid_exchange.json": make_valid_exchange("TEST", "TEST"),
-        "invalid_bad_timezone.json": {
-            **make_valid_exchange("TEST", "TEST"),
-            "timezone": "invalid_timezone_no_slash",
-        },
-        "invalid_duplicate_dates.json": {
-            **make_valid_exchange("TEST", "TEST"),
-            "holidays": {
-                "explicit": [
-                    {
-                        "date": "2025-01-01",
-                        "name": "New Year's Day",
-                        "status": "closed",
-                    },
-                    {
-                        "date": "2025-01-01",
-                        "name": "Duplicate",
-                        "status": "closed",
-                    },
-                ],
-                "recurrence_rules": [],
-            },
-        },
-        "invalid_missing_hours.json": {
-            **make_valid_exchange("TEST", "TEST"),
-            "regular_hours": {},
-        },
-    }
-
-    for filename, data in fixtures.items():
-        path = fixtures_dir / filename
-        if not path.exists():
-            with open(path, "w") as f:
-                json.dump(data, f, indent=2)
-
-
-if __name__ == "__main__":
-    create_fixtures_if_missing()
-    print("Fixtures ensured.")
+    def test_full_validator_passes_on_real_registry(self):
+        """Phase 4.4: run validate.py end-to-end against exchanges/ and
+        assert exit 0. Exercises every check, not a hand-picked subset."""
+        import subprocess
+        result = subprocess.run(
+            ["python3", "tools/validate.py"],
+            cwd=Path(__file__).parent.parent,
+            capture_output=True, text=True,
+        )
+        assert result.returncode == 0, (
+            "validate.py failed (exit " + str(result.returncode) + ")"
+            + chr(10) + "stdout: " + result.stdout
+            + chr(10) + "stderr: " + result.stderr
+        )
+        assert "OK: 74 exchange file(s) validated successfully" in result.stdout

@@ -3,7 +3,10 @@
   "name": "Test Exchange TEST",
   "mic": "TEST",
   "timezone": "Europe/London",
-  "weekend_days": [5, 6],
+  "weekend_days": [
+    5,
+    6
+  ],
   "regular_hours": {
     "open": "09:00",
     "close": "17:00"
@@ -13,6 +16,11 @@
       {
         "date": "2025-01-01",
         "name": "New Year's Day",
+        "status": "closed"
+      },
+      {
+        "date": "2025-12-25",
+        "name": "Christmas Day",
         "status": "closed"
       }
     ],
