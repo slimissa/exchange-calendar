@@ -1817,7 +1817,7 @@ class SZSEFetcher(ExchangeFetcher):
             text,
         )
         if not year_match:
-            raise ParseError("SZSE: could not locate year heading")
+            return []  # not the calendar page; caller's empty-fetch guard handles it
         year = int(''.join(year_match.groups()))
 
         MONTHS = {
@@ -1836,12 +1836,16 @@ class SZSEFetcher(ExchangeFetcher):
         )
 
         # "from Month Dth (Weekday) [to Month Dth (Weekday)]" or "on Month Dth (Weekday)"
+        # NOTE: \s* (not \s+) between month name and day -- the live page
+        # has at least one entry ("June19th") with zero whitespace between
+        # month and day, which \s+ cannot match and silently falls through
+        # to the resume date instead.
         DATE_RE = re.compile(
             r'(?:from\s+|on\s+)?'
-            r'([A-Z][a-z]+)\s+(\d{1,2})\s*(?:st|nd|rd|th)?'
+            r'([A-Z][a-z]+)\s*(\d{1,2})\s*(?:st|nd|rd|th)?'
             r'(?:\s*\(\s*[A-Za-z]+\s*\))?'
             r'(?:\s+to\s+'
-            r'([A-Z][a-z]+)\s+(\d{1,2})\s*(?:st|nd|rd|th)?'
+            r'([A-Z][a-z]+)\s*(\d{1,2})\s*(?:st|nd|rd|th)?'
             r'(?:\s*\(\s*[A-Za-z]+\s*\))?'
             r')?'
         )
