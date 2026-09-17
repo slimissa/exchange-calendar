@@ -343,6 +343,9 @@ class TestHolidayDetection:
         assert count == 62
 
     def test_holiday_count_xnys_2025(self, xnys):
+        # XNYS.json 2025: 11 full closures + 3 early closes = 14 total
+        # explicit entries. holiday_count() counts every entry in
+        # holidays.explicit regardless of status.
         count = xnys.holiday_count(year=2025)
         assert count == 14
 
@@ -600,3 +603,27 @@ class TestStatusAtExtendedHours:
     def test_with_extended_hours_still_reports_after_hours(self, xnys):
         # XNYS declares after_hours 16:00-20:00
         assert xnys.status_at("2025-07-07", "17:00") == SessionStatus.AFTER_HOURS
+
+
+class TestRealRegistryData:
+    """Phase 4.7: verify the shipped calendar.json through the wrapper API.
+
+    These tests load the real calendar.json (not a fixture) and assert
+    against known-good ground-truth data. If any exchange JSON is
+    corrupted or regressed, these tests fail.
+    """
+
+    def test_xnys_independence_day_is_holiday(self, xnys):
+        assert xnys.is_holiday("2025-07-04") is True
+
+    def test_xnys_july_3_is_early_close(self, xnys):
+        assert xnys.is_early_close("2025-07-03") is True
+        assert xnys.early_close_time("2025-07-03") == "13:00"
+
+    def test_xsau_friday_is_weekend(self, xsau):
+        # XSAU observes a Friday/Saturday weekend
+        assert xsau.is_holiday("2025-08-22") is True
+
+    def test_xtks_noon_is_lunch_break(self, registry):
+        xtks = registry.get("XTKS")
+        assert xtks.status_at("2025-07-07", "12:00") == SessionStatus.LUNCH_BREAK

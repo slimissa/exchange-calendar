@@ -399,6 +399,9 @@ describe('Holiday detection', () => {
     });
 
     test('holiday count XNYS 2025', () => {
+        // XNYS.json 2025: 11 full closures + 3 early closes = 14 total
+        // explicit entries. holidayCount() counts every entry in
+        // holidays.explicit regardless of status.
         assert.equal(xnys.holidayCount(2025), 14);
     });
 
@@ -779,5 +782,29 @@ describe('Status at extended hours', () => {
     test('XNYS after-hours still reported', () => {
         const r = new CalendarRegistry(getRegistryPath());
         assert.equal(r.get('XNYS').statusAt('2025-07-07', '17:00'), SessionStatus.AFTER_HOURS);
+    });
+});
+
+describe('Real registry data', () => {
+    test('XNYS Independence Day is a holiday', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        assert.equal(r.get('XNYS').isHoliday('2025-07-04'), true);
+    });
+
+    test('XNYS July 3 is early close at 13:00', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        const xnys = r.get('XNYS');
+        assert.equal(xnys.isEarlyClose('2025-07-03'), true);
+        assert.equal(xnys.earlyCloseTime('2025-07-03'), '13:00');
+    });
+
+    test('XSAU Friday is a weekend', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        assert.equal(r.get('XSAU').isHoliday('2025-08-22'), true);
+    });
+
+    test('XTKS at noon is lunch break', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        assert.equal(r.get('XTKS').statusAt('2025-07-07', '12:00'), SessionStatus.LUNCH_BREAK);
     });
 });
