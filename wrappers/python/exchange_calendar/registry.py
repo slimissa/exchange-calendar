@@ -43,20 +43,26 @@ class CalendarRegistry:
         exchanges (dict): Mapping of MIC code -> Exchange
     """
 
-    def __init__(self, registry_path: str = "calendar.json"):
+    def __init__(self, registry_path: Optional[str] = None):
         """
         Load and parse the registry from a JSON file.
 
         Args:
-            registry_path: Path to the calendar.json file.
-                           Can be a string or pathlib.Path.
+            registry_path: Path to the calendar.json file. If None (the
+                           default), the bundled copy shipped inside the
+                           installed package is used. Falls back to
+                           ./calendar.json in the current directory if the
+                           bundled copy is missing.
 
         Raises:
             FileNotFoundError: If the file does not exist.
             json.JSONDecodeError: If the file is not valid JSON.
             ValueError: If the JSON structure is invalid.
         """
-        path = Path(registry_path)
+        if registry_path is None:
+            path = self._find_bundled_registry()
+        else:
+            path = Path(registry_path)
 
         if not path.exists():
             raise FileNotFoundError(f"Registry file not found: {path}")
@@ -83,6 +89,21 @@ class CalendarRegistry:
             exchange = Exchange(exchange_data)
             self.exchanges[exchange.code] = exchange
 
+    @staticmethod
+    def _find_bundled_registry() -> Path:
+        """
+        Locate the calendar.json that ships inside this package.
+
+        Works both from an installed wheel and from a source checkout,
+        because the JSON is copied into the package directory before build.
+        Falls back to ./calendar.json in the current directory if the
+        bundled copy isn't found.
+        """
+        bundled = Path(__file__).parent / "calendar.json"
+        if bundled.exists():
+            return bundled
+        return Path("calendar.json")
+    
     # ──────────────────────────────────────────────────────────
     # Data validation
     # ──────────────────────────────────────────────────────────

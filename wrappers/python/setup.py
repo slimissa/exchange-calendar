@@ -24,6 +24,7 @@ setup(
     license="Apache-2.0",
     packages=find_packages(where="."),
     package_dir={"": "."},
+    package_data={"exchange_calendar": ["calendar.json"]},
     include_package_data=True,
     python_requires=">=3.8",
     classifiers=[
