@@ -133,7 +133,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (informational), `live-check-blocked` (informational), `summarize`.
 - README coverage claim rewritten: 45 registered, 40 CI-verified, 5
   CI-unreachable or permanently blocked, 29 blocked sources.
-  
+
 ## [2.1.10] — 2026-09-11 — Live health-check regressions (round 1 + round 2)
 
 ### Fixed
@@ -1122,10 +1122,13 @@ live via `web_fetch` before fixing — none guessed at.
 
 | Version | Date | Exchanges | Wrappers | Tests |
 |---------|------|-----------|----------|-------|
-| 0.1.0 | 2026-08-12 | 0 (skeleton) | 0 | 0 |
+| 0.1.0 | 2026-08-12 | 0 (skeleton) | — | 0 |
 | 1.0.0 | 2026-08-14 | 14 | Python, JS, Go, Rust | 1,127 |
-| 2.1.0 | 2026-08-19 | 74 | Python, JS, Go, Rust | 4,070+ |
 | 2.0.0 | 2026-08-18 | 74 | Python, JS, Go, Rust | 5,300+ |
+| 2.1.0 | 2026-08-19 | 74 | Python, JS, Go, Rust | 4,070+ |
+| 2.1.11 | 2026-09-17 | 74 | Python, JS, Go, Rust | 4,070+ |
+
+Patch releases 2.1.1 through 2.1.10 are documented in the sections above; the table tracks milestones, not every release.
 
 ---
 

@@ -13,7 +13,7 @@ Seventy-four exchanges. 45 have registered fetchers — 40 verified against live
 [![Tests](https://img.shields.io/badge/tests-4070+-green.svg)](./tests/)
 [![Exchanges](https://img.shields.io/badge/exchanges-74-blue.svg)](./exchanges/)
 [![Fetchers](https://img.shields.io/badge/fetchers-40_CI--verified-green.svg)](./.github/workflows/live-fetcher-check.yml)
-[![Blocked](https://img.shields.io/badge/blocked-34-lightgrey.svg)](./BLOCKED.md)
+[![Blocked](https://img.shields.io/badge/blocked-35-lightgrey.svg)](./BLOCKED.md)
 [![Coverage](https://img.shields.io/badge/coverage-6_continents-purple.svg)](./exchanges/)
 [![Calendar Systems](https://img.shields.io/badge/calendar_systems-6-red.svg)](./docs/)
 
@@ -36,26 +36,22 @@ The registry is language-agnostic by design. The JSON is the contract.
 
 ---
 
-## What's New in v2.1.10
+## What's New in v2.1.11
 
-### CI/CD Fully Green
-- ✅ **Validate workflow**: 6 jobs passing (Python core, Python wrapper, JS, Go, Rust, data integrity)
-- ✅ **Update workflow**: Automated NYSE data fetching with dry-run support
-- ✅ **Weekend-aware validation**: Correctly handles Friday-Saturday weekend systems
-- ✅ **Islamic holiday exemption**: Eid, Islamic New Year, Prophet's Birthday follow Hijri calendar
+### Honest coverage accounting
+- ✅ **40 fetchers CI-verified** on every run against live sources
+- ⚠️ **3 CI-unreachable** (XHKG, XSHG, XNSA) — work from residential IP, blocked from GitHub runners
+- ⛔ **2 permanently blocked** (XKUW, XSAU) — 403 from all IPs
+- ⛔ **29 blocked sources** — reasoning per exchange in [BLOCKED.md](./BLOCKED.md)
 
-### New Tooling
-- ✅ **`update_from_exchange.py`**: Automated exchange data fetching (957 lines)
-- ✅ **31 unit tests** for the updater
-- ✅ **`tools/requirements.txt`**: Dependency management
-- ✅ **Comprehensive `.gitignore`**: 10 sections covering all development scenarios
+### Fixed
+- ✅ **SZSE parser rewritten** for prose format (was table-based, returned zero holidays on the live page)
+- ✅ **Date regex ordinal-suffix bug** fixed across 11 fetchers (`16 th` was not matching `(\d{1,2})(?:st|nd|rd|th)?`)
+- ✅ **Live-check workflow split** into stable (blocking) / CI-unreachable (informational) / blocked (informational) jobs
 
-### Repository Quality
-- ✅ **SECURITY.md**: Vulnerability reporting guidelines with PGP support
-- ✅ **7 issue templates**: Data updates, bug reports, feature requests, and more
-- ✅ **PR template**: Consistent contribution format
-- ✅ **Dependabot**: Automated dependency updates
-- ✅ **GitHub Actions**: 3 workflows (validate, update, publish)
+### Added
+- ✅ `--only` / `--exclude` flags on `live_fetcher_check.py`
+- ✅ `BLOCKED.md` now distinguishes permanently blocked from CI-unreachable
 
 ---
 
