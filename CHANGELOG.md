@@ -63,8 +63,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   written) — corrected to check consistency between the `predicted`
   field and the `(predicted)` name suffix instead.
 
-### Added
-
 - `tools/generate_checksums.py` / `tools/verify_checksums.py` — SHA-256
   manifest (`checksums.json`) covering `exchanges/*.json`,
   `schema.json`, and `tools/*.py`. `SECURITY.md` updated to reference
