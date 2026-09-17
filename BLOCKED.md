@@ -489,3 +489,18 @@ Combined count for the round: 6 built, 4 blocked.
   illustration that a well-documented, mature exchange doesn't necessarily
   mean an accessible one.
 - **Verdict:** BLOCKED.
+
+## XKUW — Boursa Kuwait
+
+- **Checked:** boursakuwait.com.kw/en/securities/trading/market-holidays/
+- **Finding:** HTTP 403 Forbidden from both GitHub Actions runners and
+  residential IPs, with a browser User-Agent. The site's bot detection
+  cannot be bypassed with header spoofing alone.
+- **Verdict:** BLOCKED (permanent, as of 2026-09-17).
+
+## XSAU — Saudi Exchange (Tadawul)
+
+- **Checked:** saudiexchange.sa/.../saudi-exchange-holiday-calendar
+- **Finding:** HTTP 403 Forbidden from both GitHub Actions runners and
+  residential IPs, with a browser User-Agent. Same pattern as XKUW.
+- **Verdict:** BLOCKED (permanent, as of 2026-09-17).

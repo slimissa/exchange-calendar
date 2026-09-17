@@ -54,10 +54,22 @@ def check_fetcher(mic: str, fetcher) -> dict:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--mic", action="append", help="Only check this MIC (repeatable)")
+    parser.add_argument("--only", default="", help="Comma-separated MICs to include")
+    parser.add_argument("--exclude", default="", help="Comma-separated MICs to skip")
     args = parser.parse_args()
 
     registry = ExchangeFetcherRegistry()
     mics = args.mic or sorted(registry.list_available())
+
+    if args.only:
+        wanted = {m.strip() for m in args.only.split(",") if m.strip()}
+        mics = [m for m in mics if m in wanted]
+    if args.exclude:
+        unwanted = {m.strip() for m in args.exclude.split(",") if m.strip()}
+        mics = [m for m in mics if m not in unwanted]
+    if not mics:
+        print("No MICs selected after --only/--exclude filtering.")
+        sys.exit(2)
 
     print(f"Checking {len(mics)} fetcher(s) against LIVE sources...\n")
     results = []
