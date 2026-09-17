@@ -2499,7 +2499,9 @@ class TestBRVMFetcher:
         fetcher = BRVMFetcher()
         holidays = fetcher.parse_html(BRVM_SAMPLE_HTML)
         islamic = [h for h in holidays if "Ramadan" in h.name or "Tabaski" in h.name]
-        assert all(h.predicted is None for h in islamic)
+        # BRVMFetcher uses the bool(star) pattern, so past dates yield
+        # False, not None. See the table below for the per-fetcher mapping.
+        assert all(h.predicted is False for h in islamic)
 
     def test_parse_html_fixed_holidays_not_predicted(self):
         fetcher = BRVMFetcher()
