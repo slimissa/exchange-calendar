@@ -40,6 +40,10 @@ jobs:
         run: |
           python3 tools/check_stale_verifications.py
 
+      - name: Check for stale year tokens in source URLs
+        run: |
+          python3 tools/check_stale_year_urls.py
+
       - name: Build calendar.json
         run: |
           python3 tools/build.py
