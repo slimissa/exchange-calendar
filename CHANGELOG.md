@@ -6,6 +6,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [2.1.13] — 2026-09-18
+
+### Fixed
+
+- **Test suite: 71 stale assertions removed.** Each asserted a specific
+  past-due predicted Islamic holiday that was removed during the
+  2026-09-17 reconciliation. Replaced by a global invariant test
+  (`tests/test_no_stale_predictions.py`) that enforces the property
+  those methods collectively verified: no past-due `predicted` entry
+  may survive in any exchange JSON. Suite: 71 failed / 3993 passed →
+  0 failed / 3994 passed.
+- **Cross-exchange Eid al-Adha test reframed from 2025 to 2027.** The
+  2025 comparison was no longer testable against all three of XCAI,
+  XMUS, and XSAU because the 2025-06-08 entry was removed from XSAU
+  during reconciliation. Same policy intent, valid data.
+
+### Added
+
+- `docs/verifications/` directory with the XBOG audit artifacts.
+
+### Known Issue
+
+- `v2.1.12` was tagged and pushed on a suite with 71 failing tests.
+  Fixed as of this release. The tag remains as a historical snapshot.
+  
 ## [2.1.12] — 2026-09-17
 
 ### Added
