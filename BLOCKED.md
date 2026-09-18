@@ -1,5 +1,16 @@
 # Blocked / Not Automated
 
+**Last-verified dates.** Each section below carries a **Last verified**
+line recording the date its verdict was last actually checked (fetched,
+re-tested, or re-derived against a live source) — not merely the date
+the section's prose was last edited for wording. It's added by whoever
+does that verification work, drawn from the check itself (a live fetch,
+a re-run of `live_fetcher_check.py`, a documented re-derivation) rather
+than guessed. It should be updated any time a verdict is re-checked,
+whether the verdict changes or not — a re-check that confirms the
+existing verdict still bumps the date; a section that is only reworded
+without re-testing the underlying source should not.
+
 **Tier 1 update 2026-08-27: XHKG is no longer blocked.** See "Resolved"
 section below.
 
@@ -57,6 +68,8 @@ wrong without the reasoning behind it.
 
 ## XSES — Singapore Exchange (SGX)
 
+**Last verified:** 2026-08-27
+
 - **Checked:** sgx.com/trading and related pages
 - **Finding:** JS-rendered shell. No first-party equities holiday HTML or
   CSV/JSON found — only a derivatives-specific trading circular PDF (a
@@ -65,6 +78,8 @@ wrong without the reasoning behind it.
 - **Verdict:** BLOCKED.
 
 ## XSWX — SIX Swiss Exchange
+
+**Last verified:** 2026-08-27
 
 - **Checked:** six-group.com/en/market-data/news-tools/trading-currency-holiday-calendar.html
 - **Finding:** the page itself is real and static, but its only calendar
@@ -77,6 +92,8 @@ wrong without the reasoning behind it.
 
 ## XKRX — Korea Exchange (KRX)
 
+**Last verified:** 2026-08-27
+
 - **Checked:** global.krx.co.kr's "Market Closing(Holiday)" page
 - **Finding:** confirmed JS/AJAX-driven data grid — a year dropdown
   (2016-2026) and a "Search"/"Download" button, but zero holiday rows in
@@ -85,6 +102,8 @@ wrong without the reasoning behind it.
 - **Verdict:** BLOCKED.
 
 ## XBOM — BSE India (Bombay Stock Exchange)
+
+**Last verified:** 2026-08-27
 
 - **Checked:** bseindia.com/static/markets/marketinfo/listholi.aspx (the
   page referenced by other open-source market-calendar projects, e.g.
@@ -101,6 +120,8 @@ wrong without the reasoning behind it.
 
 ## XNSE — National Stock Exchange of India (NSE)
 
+**Last verified:** 2026-08-27
+
 - **Checked:** nseindia.com/resources/exchange-communication-holidays
 - **Finding:** the page itself loads (not bot-blocked), but the actual
   holiday table is populated via JS/AJAX behind "Select Product" and
@@ -114,6 +135,8 @@ wrong without the reasoning behind it.
 
 ## XJKT — Indonesia Stock Exchange (IDX)
 
+**Last verified:** 2026-08-27
+
 - **Checked:** idx.co.id's official static PDF announcement
   ("Peng-00171 Libur Bursa 2026")
 - **Finding:** a real, first-party, government-adjacent PDF exists and is
@@ -123,6 +146,8 @@ wrong without the reasoning behind it.
 - **Verdict:** BLOCKED.
 
 ## XTAI — Taiwan Stock Exchange (TWSE)
+
+**Last verified:** 2026-08-27
 
 - **Checked:** twse.com.tw/en/trading/holiday.html (JS-rendered, confirmed
   no data in raw HTML) AND `openapi.twse.com.tw/v1` — TWSE's real, public,
@@ -137,6 +162,8 @@ wrong without the reasoning behind it.
   confirmed blocker, not a resolved build.
 
 ## Resolved: XHKG — Hong Kong Exchanges and Clearing (HKEX)
+
+**Last verified:** 2026-08-27
 
 - **Originally blocked on:** `https://www.hkex.com.hk/News/HKEX-Calendar?sc_lang=en`
   — confirmed JS-rendered widget, no holiday data in raw HTML, no first-party
@@ -171,12 +198,16 @@ wrong without the reasoning behind it.
 
 ## XTAD — Abu Dhabi Securities Exchange (ADX)
 
+**Last verified:** 2026-08-29
+
 - **Checked:** adx.ae/about-adx/media/adx-events-calendar
 - **Finding:** confirmed Next.js JS-rendered SPA — the raw HTML contains
   only "Loading component..." placeholders, no static holiday data.
 - **Verdict:** BLOCKED.
 
 ## XBAH — Bahrain Bourse
+
+**Last verified:** 2026-08-29
 
 - **Checked:** bahrainbourse.com's "Official Holidays" page (real SharePoint
   site, not JS-rendered overall)
@@ -189,6 +220,8 @@ wrong without the reasoning behind it.
 
 ## XQSE — Qatar Exchange
 
+**Last verified:** 2026-09-17
+
 - **Checked:** qe.com.qa/trading-calendar (original verdict 2026-08-27)
 - **Finding (2026-09-17):** DNS no longer resolves for qe.com.qa —
   `Resolving timed out`. The 2026-08-27 verdict ("JS/AJAX-driven Liferay
@@ -198,6 +231,8 @@ wrong without the reasoning behind it.
 - **Verdict:** BLOCKED (domain unreachable, 2026-09-17)
 
 ## XCAI — Egyptian Exchange (EGX)
+
+**Last verified:** 2026-08-29
 
 - **Checked:** egx.com.eg/en/Trading_Calendar.aspx
 - **Finding:** real, static, first-party HTML — but the page only serves
@@ -210,6 +245,8 @@ wrong without the reasoning behind it.
 
 ## XJSE — Johannesburg Stock Exchange (JSE)
 
+**Last verified:** 2026-08-29
+
 - **Checked:** jse.co.za and clientportal.jse.co.za Market Notice PDFs
 - **Finding:** expected to be one of the simpler Tier 3 sources (well
   documented, stable South African public holidays); instead, JSE only
@@ -221,6 +258,8 @@ wrong without the reasoning behind it.
   independent problems — fixing one doesn't guarantee fixing the other.
 
 ## XIST — Borsa Istanbul
+
+**Last verified:** 2026-09-04
 
 - **Checked:** the real 2026 holiday-schedule PDF, linked from
   borsaistanbul.com's official-holidays page — fetched successfully (not
@@ -266,6 +305,8 @@ wrong without the reasoning behind it.
 
 ## XMUS — Muscat Securities Market (MSX, formerly MSM)
 
+**Last verified:** 2026-09-04
+
 - **Checked:** searched for msx.om (the current domain, rebranded from
   msm.gov.om) holiday/trading-calendar pages
 - **Finding:** no first-party holiday page was found within the search
@@ -297,6 +338,8 @@ wrong without the reasoning behind it.
 
 ## XSGO — Santiago Stock Exchange (Bolsa de Santiago)
 
+**Last verified:** 2026-09-04
+
 - **Checked:** bolsadesantiago.com/mercado_horarios_feriados directly
 - **Finding:** confirmed pure JS SPA shell (rebranded "SANTIAGOX") -- raw
   HTML contains only meta tags and a Google Tag Manager script, zero
@@ -305,12 +348,16 @@ wrong without the reasoning behind it.
 
 ## XKLS — Bursa Malaysia
 
+**Last verified:** 2026-09-04
+
 - **Checked:** bursamalaysia.com/about_bursa/about_us/calendar directly
 - **Finding:** confirmed bot-walled -- "Site blocked the request (bot
   detection)" on direct fetch.
 - **Verdict:** BLOCKED.
 
 ## XBOG — Bolsa de Valores de Colombia (BVC)
+
+**Last verified:** 2026-09-18
 
 - **Checked:** two independent search attempts for a first-party bvc.com.co
   holiday/calendar page
@@ -369,6 +416,8 @@ wrong without the reasoning behind it.
 
 ## XLIM — Bolsa de Valores de Lima (BVL)
 
+**Last verified:** 2026-09-04
+
 - **Checked:** found the real page (bvl.com.pe/mercado/resumen-mercado/
   feriados-y-horarios-de-negociacion) and fetched it directly
 - **Finding:** confirmed pure JS SPA shell -- raw HTML contains only meta
@@ -376,6 +425,8 @@ wrong without the reasoning behind it.
 - **Verdict:** BLOCKED.
 
 ## XPHS — Philippine Stock Exchange (PSE)
+
+**Last verified:** 2026-09-04
 
 - **Checked:** found the real "Trading Hours & Holidays" section on
   pse.com.ph/investing-at-pse/ (an anchor-linked section, not a separate
@@ -392,6 +443,8 @@ wrong without the reasoning behind it.
 
 ## XBKK — Stock Exchange of Thailand (SET)
 
+**Last verified:** 2026-09-04
+
 - **Checked:** SET's official holiday landing page (real, static, but
   itself contains no data, only links), its downloadable PDF calendar, and
   its "E-Calendar" HTML version
@@ -405,6 +458,8 @@ wrong without the reasoning behind it.
 
 ## XSTC — Ho Chi Minh Stock Exchange (Vietnam)
 
+**Last verified:** 2026-09-06
+
 - **Originally checked:** nothing in Tier 6. This exchange was in scope for
   Tier 6's resolution pass but was not reached before that round's time
   budget ran out.
@@ -417,10 +472,14 @@ wrong without the reasoning behind it.
 
 ## Tier 7 (Africa/South Asia) — 2026-09-06
 
+**Last verified:** 2026-09-06
+
 Applied the accumulated 6-tier infrastructure model as a predictive filter
 rather than deep-diving every exchange from scratch.
 
 ### XTUN — Bourse de Tunis (Tunisia)
+
+**Last verified:** 2026-09-06
 
 - **Checked:** bvmt.com.tn/fr/content/jours-feries-de-2026 directly
 - **Finding:** confirmed JS-rendered -- the fetch tool itself reported "no
@@ -428,6 +487,8 @@ rather than deep-diving every exchange from scratch.
 - **Verdict:** BLOCKED.
 
 ### XCAS — Bourse de Casablanca (Morocco)
+
+**Last verified:** 2026-09-06
 
 - **Checked:** casablanca-bourse.com/market-data/jours-feries directly
 - **Finding:** the page is real and appears to have real structured content
@@ -441,6 +502,8 @@ rather than deep-diving every exchange from scratch.
 
 ### XKAR — Pakistan Stock Exchange
 
+**Last verified:** 2026-09-06
+
 - **Checked:** psx.com.pk's official "HOLIDAY CALENDAR - 2026" PDF directly
 - **Finding:** the PDF returned no extractable text at all -- almost
   certainly a scanned-image or otherwise non-text-based PDF, the same
@@ -450,6 +513,8 @@ rather than deep-diving every exchange from scratch.
 
 ### XDHA — Dhaka Stock Exchange
 
+**Last verified:** 2026-09-06
+
 - **Checked:** dsebd.org/hts.php ("Holidays and Trading Sessions") directly
   -- a real page confirmed to exist and to list "DSE will observe following
   Holidays during the Calendar Year 2026" in search results
@@ -458,6 +523,8 @@ rather than deep-diving every exchange from scratch.
 - **Verdict:** BLOCKED (by design, not by inability).
 
 ### XNBO — Nairobi Securities Exchange
+
+**Last verified:** 2026-09-06
 
 - **Checked:** nse.co.ke's investor-calendar mechanism, which turned out to
   be a directory of individual LISTED COMPANIES' corporate-events PDFs
@@ -477,6 +544,8 @@ rather than deep-diving every exchange from scratch.
 
 ### XGSE — Ghana Stock Exchange
 
+**Last verified:** 2026-09-06
+
 - **Checked:** gse.com.gh and gsewebportal.com; confirmed an "Events &
   Holidays" nav item exists but no direct URL with actual holiday data was
   located within this round's budget.
@@ -491,6 +560,8 @@ rather than deep-diving every exchange from scratch.
 
 ## Tier 8 (small/island markets) — 2026-09-06 — FINAL TIER
 
+**Last verified:** 2026-09-17
+
 **Tier 8 (small/island markets) update 2026-09-06 — FINAL TIER:** 5 of the
 8 Tier 8 exchanges were buildable (XBDA, XCAY, XLUX, XMAL, XZAG); 3 were
 confirmed blocked (XBUL, XBEK, XNZE). Two Tier 7 carryovers were also
@@ -498,6 +569,8 @@ resolved in this round: XGSE (built) and XNBO (confirmed blocked).
 Combined count for the round: 6 built, 4 blocked.
 
 ### XBUL — Bulgarian Stock Exchange
+
+**Last verified:** 2026-09-06
 
 - **Checked:** bse-sofia.bg's trading-calendar page directly (found via a
   targeted search after an initial generic search failed on an unrelated
@@ -512,6 +585,8 @@ Combined count for the round: 6 built, 4 blocked.
 
 ### XBEK — Beirut Stock Exchange (Bourse de Beyrouth)
 
+**Last verified:** 2026-09-06
+
 - **Checked:** bse.com.lb's official holidays page directly, twice
   (independent attempts)
 - **Finding:** both attempts timed out (`Read timeout while fetching the
@@ -521,6 +596,8 @@ Combined count for the round: 6 built, 4 blocked.
 - **Verdict:** BLOCKED.
 
 ### XNZE — New Zealand Exchange (NZX)
+
+**Last verified:** 2026-09-06
 
 - **Checked:** the official NZX Market Holidays announcement page
   (nzx.com/announcements/443000), the PDF it references, and the
@@ -536,6 +613,8 @@ Combined count for the round: 6 built, 4 blocked.
 
 ## XKUW — Boursa Kuwait
 
+**Last verified:** 2026-09-17
+
 - **Checked:** boursakuwait.com.kw/en/securities/trading/market-holidays/
 - **Finding:** HTTP 403 Forbidden from both GitHub Actions runners and
   residential IPs, with a browser User-Agent. The site's bot detection
@@ -544,12 +623,16 @@ Combined count for the round: 6 built, 4 blocked.
 
 ## XSAU — Saudi Exchange (Tadawul)
 
+**Last verified:** 2026-09-17
+
 - **Checked:** saudiexchange.sa/.../saudi-exchange-holiday-calendar
 - **Finding:** HTTP 403 Forbidden from both GitHub Actions runners and
   residential IPs, with a browser User-Agent. Same pattern as XKUW.
 - **Verdict:** BLOCKED (permanent, as of 2026-09-17).
 
 ## XSHG — Shanghai Stock Exchange (CI-unreachable)
+
+**Last verified:** 2026-09-17
 
 - **Checked:** english.sse.com.cn/start/trading/schedule/
 - **Finding:** HTTP 403 from GitHub Actions runners; HTTP 200 from
@@ -559,6 +642,8 @@ Combined count for the round: 6 built, 4 blocked.
   updates needed; works when run locally.
 
 ## XNSA — Nigerian Exchange Group (CI-unreachable)
+
+**Last verified:** 2026-09-17
 
 - **Checked:** ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/
 - **Finding:** fetches cleanly from residential IP (12 holidays, verified
@@ -572,6 +657,8 @@ Combined count for the round: 6 built, 4 blocked.
 
 ## XDFM — Dubai Financial Market (reconciled 2026-09-17)
 
+**Last verified:** 2026-09-17
+
 - **Checked:** dfm.ae annual holiday circular (original verdict 2026-08-29)
 - **Finding (2026-09-17):** the year-specific circular PDF
   (`assets.dfm.ae/docs/.../circular-12-2025-trading-and-settlementholidays-...pdf`)
@@ -584,6 +671,8 @@ Combined count for the round: 6 built, 4 blocked.
   entries are resolved. Fetcher remains active.
 
 ## Past-due reconciliation — 2026-09-17
+
+**Last verified:** 2026-09-17
 
 Seven exchanges had their past-due predicted entries removed on
 2026-09-17 because the source URLs cited in `exchanges/*.json` are
