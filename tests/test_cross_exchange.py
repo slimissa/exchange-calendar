@@ -323,26 +323,28 @@ class TestIslamicDateDivergence:
             assert "2025-03-31" in dates, f"{code} should have Eid al-Fitr on 2025-03-31"
             assert "2025-03-30" not in dates, f"{code} should NOT have the Saudi-only 2025-03-30 date"
 
-    def test_xcai_xmus_eid_al_adha_2025_matches_saudi(self, all_exchanges):
-        """Confirmed via Ahram Online / Gulf News: unlike Eid al-Fitr,
-        Egypt and Oman's Eid al-Adha 2025 DID match Saudi's date
-        (civil day 1 = 2025-06-06, a Friday). Divergence is not
-        automatic or uniform -- this guards against 'fixing' C6 by
-        blindly shifting every Islamic date by a day, which would have
-        broken this case.
+    def test_xcai_xmus_xsau_eid_al_adha_2027_shares_saudi_civil_day_one(self, all_exchanges):
+        """XCAI, XMUS, and XSAU all observe Eid al-Adha 2027 with the same
+        civil day 1 (2027-05-16, Sunday). Saudi extends the Exchange
+        closure by one extra day (2027-05-18); the shared civil day must
+        still match across markets. This guards against 'fixing' Islamic-
+        calendar drift by blindly shifting every date by a day, which
+        would break this agreement.
 
-        XCAI, XMUS, and XSAU all observe a Friday/Saturday weekend, so
-        2025-06-06 (Friday) itself is correctly absent from `explicit`
-        (weekend already covers it, per the C2 convention) -- what
-        should match across all three is the first surviving day,
-        2025-06-08 (Sunday), carrying the 'Holiday' suffix rather than
-        the bare name since civil day 1 was dropped for the weekend."""
+        Historical note: this test originally used Eid al-Adha 2025
+        (2025-06-08). That comparison is no longer testable against
+        all three exchanges because 2025-06-08 was a past-due predicted
+        entry removed from XSAU during the 2026-09-17 reconciliation.
+        """
+        expected_day_one = "2027-05-16"
         for code in ("XCAI", "XMUS", "XSAU"):
             if f"{code}.json" not in all_exchanges:
                 continue
             dates = self._islamic_dates(all_exchanges, code)
-            assert "2025-06-06" not in dates, f"{code}: Friday should be excluded (weekend)"
-            assert "2025-06-08" in dates, f"{code} should have Eid al-Adha on 2025-06-08 (first non-weekend day)"
+            assert expected_day_one in dates, (
+                f"{code} should observe Eid al-Adha 2027 civil day 1 "
+                f"({expected_day_one}), got {sorted(dates)}"
+            )
 
     def test_xbah_xqse_xkuw_follow_saudi_2025(self, all_exchanges):
         """Confirmed via Gulf News: Bahrain, Qatar, and Kuwait all
