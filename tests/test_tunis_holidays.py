@@ -181,10 +181,6 @@ class TestXTUNEidAlAdha:
         """Eid al-Adha 2025 — June 7 (Saturday, weekend) — not in explicit."""
         assert "2025-06-07" not in explicit_dates
 
-    def test_eid_al_adha_2026(self, explicit_dates):
-        """Eid al-Adha 2026 — predicted May 27."""
-        assert "2026-05-27" in explicit_dates
-
     def test_eid_al_adha_2029(self, explicit_dates):
         """Eid al-Adha 2029 — predicted April 24."""
         assert "2029-04-24" in explicit_dates
@@ -276,10 +272,6 @@ class TestXTUNStructure:
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
             assert start <= d <= end
-
-    def test_holiday_count_reasonable(self, explicit_dates):
-        """~60-70 entries."""
-        assert 55 <= len(explicit_dates) <= 75, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():

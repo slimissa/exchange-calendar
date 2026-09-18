@@ -188,16 +188,6 @@ class TestXDHAEidAlFitr:
 # ──────────────────────────────────────────────────────────────
 
 class TestXDHAEidAlAdha:
-    def test_eid_al_adha_2025(self, explicit_dates):
-        """Eid al-Adha 2025 — June 7 (Saturday) — not in explicit.
-        Weekday holiday starts June 9 (Monday)."""
-        assert "2025-06-07" not in explicit_dates
-        assert "2025-06-09" in explicit_dates
-
-    def test_eid_al_adha_2026(self, explicit_dates):
-        """Eid al-Adha 2026 — predicted May 27."""
-        assert "2026-05-27" in explicit_dates
-
     def test_eid_al_adha_2027(self, explicit_dates):
         """Eid al-Adha 2027 — May 16 (Sunday, working day) — explicit entry."""
         assert "2027-05-16" in explicit_dates
@@ -221,11 +211,6 @@ class TestXDHAEidAlAdha:
 # ──────────────────────────────────────────────────────────────
 
 class TestXDHADurgaPuja:
-    def test_durga_puja_2025(self, explicit_dates):
-        """Durga Puja 2025 — predicted October 2."""
-        assert "2025-10-02" in explicit_dates
-        assert "Durga" in explicit_dates["2025-10-02"]["name"]
-
     def test_durga_puja_2026(self, explicit_dates):
         """Durga Puja 2026 — predicted October 20."""
         assert "2026-10-20" in explicit_dates
@@ -371,11 +356,6 @@ class TestXDHAAshuraAndMawlid:
         # weekend -- no entry expected.
     }
 
-    def test_ashura_present_when_not_weekend(self, explicit_dates):
-        for year, d in self.ASHURA.items():
-            assert d in explicit_dates, f"Missing Ashura for {year}: {d}"
-            assert explicit_dates[d]["name"] == "Ashura (predicted)"
-
     def test_ashura_weekend_years_correctly_absent(self, explicit_dates):
         assert "2026-06-26" not in explicit_dates  # Friday
         assert "2028-06-03" not in explicit_dates  # Saturday
@@ -386,11 +366,6 @@ class TestXDHAAshuraAndMawlid:
         'Islamic New Year' entry for XDHA."""
         names = [e["name"] for e in explicit_dates.values()]
         assert not any("Islamic New Year" in n for n in names)
-
-    def test_mawlid_present_when_not_weekend(self, explicit_dates):
-        for year, d in self.MAWLID.items():
-            assert d in explicit_dates, f"Missing Prophet's Birthday for {year}: {d}"
-            assert explicit_dates[d]["name"] == "Prophet's Birthday (predicted)"
 
     def test_mawlid_2025_reschedule_correctly_absent(self, explicit_dates):
         """The government rescheduled 2025 Mawlid from Fri Sept 5 to

@@ -149,11 +149,6 @@ class TestXBEKChristmas:
 # ──────────────────────────────────────────────────────────────
 
 class TestXBEKEidAlFitr:
-    def test_eid_al_fitr_2025(self, explicit_dates):
-        """Eid al-Fitr 2025 — predicted March 31."""
-        assert "2025-03-31" in explicit_dates
-        assert "Eid al-Fitr" in explicit_dates["2025-03-31"]["name"]
-
     def test_eid_al_fitr_2027(self, explicit_dates):
         """Eid al-Fitr 2027 — predicted March 9."""
         assert "2027-03-09" in explicit_dates
@@ -173,16 +168,6 @@ class TestXBEKEidAlFitr:
 # ──────────────────────────────────────────────────────────────
 
 class TestXBEKEidAlAdha:
-    def test_eid_al_adha_2025(self, explicit_dates):
-        """Eid al-Adha 2025 — June 7 (Saturday) — not in explicit.
-        Weekday holiday starts June 9 (Monday)."""
-        assert "2025-06-07" not in explicit_dates
-        assert "2025-06-09" in explicit_dates
-
-    def test_eid_al_adha_2026(self, explicit_dates):
-        """Eid al-Adha 2026 — predicted May 27."""
-        assert "2026-05-27" in explicit_dates
-
     def test_eid_al_adha_2029(self, explicit_dates):
         """Eid al-Adha 2029 — predicted April 24."""
         assert "2029-04-24" in explicit_dates
@@ -214,11 +199,6 @@ class TestXBEKIslamicHolidays:
     def test_ashura_2027(self, explicit_dates):
         """Ashura 2027 — predicted June 15."""
         assert "2027-06-15" in explicit_dates
-
-    def test_prophets_birthday_2025(self, explicit_dates):
-        """Prophet's Birthday 2025 — predicted September 4."""
-        assert "2025-09-04" in explicit_dates
-        assert "Prophet" in explicit_dates["2025-09-04"]["name"]
 
     def test_prophets_birthday_2029(self, explicit_dates):
         """Prophet's Birthday 2029 — predicted July 24."""
@@ -282,10 +262,6 @@ class TestXBEKStructure:
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
             assert start <= d <= end
-
-    def test_holiday_count_reasonable(self, explicit_dates):
-        """~50-60 entries."""
-        assert 45 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():

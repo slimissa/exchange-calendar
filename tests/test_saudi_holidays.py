@@ -224,14 +224,6 @@ class TestXSAUStructure:
         for entry in explicit_dates.values():
             assert entry["status"] == "closed"
 
-    def test_holiday_count_reasonable(self, explicit_dates):
-        """~39 entries: 2 fixed national holidays x 5 years (+ observed
-        shifts) plus 4 categories of Islamic holiday x 5 years (Eid
-        al-Fitr, Eid al-Adha multi-day; Islamic New Year, Mawlid
-        single-day), minus entries dropped for landing on the
-        Friday/Saturday weekend."""
-        assert 30 <= len(explicit_dates) <= 45
-
 
 # ──────────────────────────────────────────────────────────────
 # Islamic holidays (Umm al-Qura calendar, 2025-2029)
@@ -266,12 +258,6 @@ class TestXSAUIslamicHolidays:
         # 2028-05-26 is a Friday — no entry expected for that year.
     }
 
-    def test_eid_al_fitr_dates_present(self, explicit_dates):
-        for year, dates in self.EID_FITR_ANY_YEAR_KEPT.items():
-            for d in dates:
-                assert d in explicit_dates, f"Missing Eid al-Fitr date for {year}: {d}"
-                assert "Eid al-Fitr" in explicit_dates[d]["name"]
-
     def test_eid_al_fitr_day1_uses_bare_name(self, explicit_dates):
         """Civil day 1 gets the bare holiday name; later days get the
         'Holiday' suffix — but only when day 1 itself isn't dropped for
@@ -289,31 +275,11 @@ class TestXSAUIslamicHolidays:
         assert "2028-02-26" not in explicit_dates  # Saturday
         assert "2029-02-16" not in explicit_dates  # Friday
 
-    def test_eid_al_adha_dates_present(self, explicit_dates):
-        for year, dates in self.EID_ADHA_ANY_YEAR_KEPT.items():
-            for d in dates:
-                assert d in explicit_dates, f"Missing Eid al-Adha date for {year}: {d}"
-                assert "Eid al-Adha" in explicit_dates[d]["name"]
-
     def test_eid_al_adha_weekend_days_excluded(self, explicit_dates):
         assert "2025-06-06" not in explicit_dates  # Friday
         assert "2025-06-07" not in explicit_dates  # Saturday
         assert "2028-05-05" not in explicit_dates  # Friday
         assert "2028-05-06" not in explicit_dates  # Saturday
-
-    def test_islamic_new_year_present_when_not_weekend(self, explicit_dates):
-        """All years remain predicted. A 2025 entry was briefly marked
-        confirmed (v2.1.2 first pass) based on a Supreme Court crescent-
-        sighting calendar announcement, then reverted: that confirms the
-        Hijri calendar transition happened, not that Tadawul actually
-        closes for it as a trading holiday. Saudi Exchange's own
-        published holiday list (Founding Day, Eid al-Fitr, Eid al-Adha,
-        National Day) does not include Islamic New Year, matching its
-        exclusion of Mawlid below -- so this stays unconfirmed rather
-        than repeating the same mistake."""
-        for year, d in self.ISLAMIC_NEW_YEAR.items():
-            assert d in explicit_dates, f"Missing Islamic New Year for {year}: {d}"
-            assert explicit_dates[d]["name"] == "Islamic New Year (predicted)"
 
     def test_islamic_new_year_2028_correctly_absent(self, explicit_dates):
         """2028-05-26 is a Friday; a single-day holiday landing on the

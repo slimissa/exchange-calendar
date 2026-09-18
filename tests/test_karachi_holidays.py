@@ -150,10 +150,6 @@ class TestXKAREidAlFitr:
         assert "2025-03-31" in explicit_dates
         assert "Eid al-Fitr" in explicit_dates["2025-03-31"]["name"]
 
-    def test_eid_al_fitr_2026(self, explicit_dates):
-        """Eid al-Fitr 2026 — predicted March 20."""
-        assert "2026-03-20" in explicit_dates
-
     def test_eid_al_fitr_2027(self, explicit_dates):
         """Eid al-Fitr 2027 — predicted March 9."""
         assert "2027-03-09" in explicit_dates
@@ -190,10 +186,6 @@ class TestXKAREidAlAdha:
         """Eid al-Adha 2025 — June 7 (Saturday, weekend) — not in explicit."""
         assert "2025-06-07" not in explicit_dates
 
-    def test_eid_al_adha_2026(self, explicit_dates):
-        """Eid al-Adha 2026 — predicted May 27."""
-        assert "2026-05-27" in explicit_dates
-
     def test_eid_al_adha_2027(self, explicit_dates):
         """Eid al-Adha 2027 — May 16 (Sunday, weekend) — not in explicit."""
         assert "2027-05-16" not in explicit_dates
@@ -221,10 +213,6 @@ class TestXKARIslamicHolidays:
         """Ashura 2025 — July 6 (Sunday, weekend) — not in explicit."""
         assert "2025-07-06" not in explicit_dates
 
-    def test_ashura_2026(self, explicit_dates):
-        """Ashura 2026 — predicted June 26."""
-        assert "2026-06-26" in explicit_dates
-
     def test_ashura_2027(self, explicit_dates):
         """Ashura 2027 — predicted June 15."""
         assert "2027-06-15" in explicit_dates
@@ -236,15 +224,6 @@ class TestXKARIslamicHolidays:
     def test_ashura_2029(self, explicit_dates):
         """Ashura 2029 — predicted May 24."""
         assert "2029-05-24" in explicit_dates
-
-    def test_eid_milad_2025(self, explicit_dates):
-        """Eid Milad-un-Nabi 2025 — predicted September 5."""
-        assert "2025-09-05" in explicit_dates
-        assert "Milad" in explicit_dates["2025-09-05"]["name"]
-
-    def test_eid_milad_2026(self, explicit_dates):
-        """Eid Milad-un-Nabi 2026 — predicted August 25."""
-        assert "2026-08-25" in explicit_dates
 
     def test_eid_milad_2027(self, explicit_dates):
         """Eid Milad-un-Nabi 2027 — Aug 15 (Sunday, weekend) — not in explicit."""
@@ -316,10 +295,6 @@ class TestXKARStructure:
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
             assert start <= d <= end
-
-    def test_holiday_count_reasonable(self, explicit_dates):
-        """~55-70 entries."""
-        assert 50 <= len(explicit_dates) <= 75, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():

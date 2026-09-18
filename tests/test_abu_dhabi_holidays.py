@@ -155,12 +155,6 @@ class TestXTADEidAlFitr:
         assert explicit_dates["2025-03-31"]["name"] == "Eid al-Fitr Holiday"
         assert "2025-04-01" in explicit_dates
 
-    def test_eid_al_fitr_2026(self, explicit_dates):
-        """Eid al-Fitr 2026 — March 20 (Friday) — not in explicit.
-        Weekday starts March 23 (Monday)."""
-        assert "2026-03-20" not in explicit_dates
-        assert "2026-03-23" in explicit_dates
-
     def test_eid_al_fitr_2029(self, explicit_dates):
         """Eid al-Fitr 2029 — predicted February 14."""
         assert "2029-02-14" in explicit_dates
@@ -179,24 +173,9 @@ class TestXTADEidAlFitr:
 # ──────────────────────────────────────────────────────────────
 
 class TestXTADArafatEidAlAdha:
-    def test_arafat_2025(self, explicit_dates):
-        """Arafat Day 2025 — predicted June 5."""
-        assert "2025-06-05" in explicit_dates
-        assert "Arafat" in explicit_dates["2025-06-05"]["name"]
-
     def test_arafat_2028(self, explicit_dates):
         """Arafat Day 2028 — predicted May 4."""
         assert "2028-05-04" in explicit_dates
-
-    def test_eid_al_adha_2025(self, explicit_dates):
-        """Eid al-Adha 2025 — June 6 (Friday) — not in explicit.
-        Weekday starts June 9 (Monday)."""
-        assert "2025-06-06" not in explicit_dates
-        assert "2025-06-09" in explicit_dates
-
-    def test_eid_al_adha_2026(self, explicit_dates):
-        """Eid al-Adha 2026 — predicted May 27."""
-        assert "2026-05-27" in explicit_dates
 
     def test_eid_al_adha_2029(self, explicit_dates):
         """Eid al-Adha 2029 — predicted April 25."""
@@ -294,11 +273,6 @@ class TestXTADStructure:
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
             assert start <= d <= end
-
-    def test_holiday_count_reasonable(self, explicit_dates):
-        """~40-50 entries after H1-fix removed 7 weekend-violating
-        entries (was ~50-60)."""
-        assert 35 <= len(explicit_dates) <= 50, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():

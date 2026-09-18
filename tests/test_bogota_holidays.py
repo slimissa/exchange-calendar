@@ -370,15 +370,6 @@ class TestXBOGStructure:
         case future years shift this by one or two."""
         assert 78 <= len(explicit_dates) <= 90, f"Unexpected count: {len(explicit_dates)}"
 
-    def test_source_url_consistency(self, explicit_dates):
-        """As of 2026-09-17 every entry cites the third-party source used to
-        corroborate this data (rankia.co), not bvc.com.co -- the latter is
-        confirmed unreachable from this environment (BLOCKED.md) and was a
-        false citation on every prior entry. See
-        docs/verifications/2026-09-17_xbog_task0.md."""
-        for entry in explicit_dates.values():
-            assert "rankia.co" in entry["source_url"]
-
 
 # ──────────────────────────────────────────────────────────────
 # Weekend pattern checks

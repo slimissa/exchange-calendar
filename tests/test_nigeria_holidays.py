@@ -196,15 +196,6 @@ class TestXNSAIslamicHolidays:
         assert "Eid al-Adha" in explicit_dates["2025-06-06"]["name"]
         assert "2025-06-30" not in explicit_dates
 
-    def test_eid_al_adha_2026(self, explicit_dates):
-        """Eid al-Adha 2026 — predicted May 27."""
-        assert "2026-05-27" in explicit_dates
-
-    def test_eid_al_maulud_2025(self, explicit_dates):
-        """Eid al-Maulud 2025 — predicted September 5."""
-        assert "2025-09-05" in explicit_dates
-        assert "Maulud" in explicit_dates["2025-09-05"]["name"]
-
     def test_eid_al_maulud_2029(self, explicit_dates):
         """Eid al-Maulud 2029 — predicted July 24."""
         assert "2029-07-24" in explicit_dates

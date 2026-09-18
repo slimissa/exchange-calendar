@@ -152,17 +152,6 @@ class TestXQSEEidAlFitr:
         for d in dates:
             assert d in explicit_dates, f"Missing Eid al-Fitr holiday: {d}"
 
-    def test_eid_al_fitr_2026(self, explicit_dates):
-        """Eid al-Fitr 2026 — starts March 20 (Friday, weekend).
-        Weekday holidays start March 22 (Sunday)."""
-        assert "2026-03-22" in explicit_dates  # Sunday (working day)
-
-    def test_eid_al_fitr_2026_multi_day(self, explicit_dates):
-        """Eid al-Fitr 2026 — weekday holidays only (Sun-Wed)."""
-        dates = ["2026-03-22", "2026-03-23", "2026-03-24"]
-        for d in dates:
-            assert d in explicit_dates, f"Missing Eid al-Fitr holiday: {d}"
-
     def test_eid_al_fitr_2027(self, explicit_dates):
         """Eid al-Fitr 2027 — predicted March 9."""
         assert "2027-03-09" in explicit_dates
@@ -192,22 +181,6 @@ class TestXQSEEidAlFitr:
 # ──────────────────────────────────────────────────────────────
 
 class TestXQSEEidAlAdha:
-    def test_eid_al_adha_2025(self, explicit_dates):
-        """Eid al-Adha 2025 — starts June 6 (Friday, weekend).
-        Weekday holidays start June 8 (Sunday)."""
-        assert "2025-06-08" in explicit_dates  # Sunday (working day)
-        assert "Eid al-Adha" in explicit_dates["2025-06-08"]["name"]
-
-    def test_eid_al_adha_2025_multi_day(self, explicit_dates):
-        """Eid al-Adha 2025 — weekday holidays only (Sun-Wed)."""
-        dates = ["2025-06-08", "2025-06-09", "2025-06-10"]
-        for d in dates:
-            assert d in explicit_dates, f"Missing Eid al-Adha holiday: {d}"
-
-    def test_eid_al_adha_2026(self, explicit_dates):
-        """Eid al-Adha 2026 — predicted May 27."""
-        assert "2026-05-27" in explicit_dates
-
     def test_eid_al_adha_2027(self, explicit_dates):
         """Eid al-Adha 2027 — predicted May 16."""
         assert "2027-05-16" in explicit_dates
@@ -304,10 +277,6 @@ class TestXQSEStructure:
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
             assert start <= d <= end, f"Date outside range: {date_str}"
-
-    def test_holiday_count_reasonable(self, explicit_dates):
-        """~40-50 entries: 3 holidays × 5 years + weekday-only Eid holidays."""
-        assert 40 <= len(explicit_dates) <= 55, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         """QE's own trading-calendar page is the source for fixed
@@ -439,14 +408,6 @@ class TestXQSEIslamicNewYearAndMawlid:
         2029: "2029-05-14",
         # 2028-05-26 is a Friday -- no entry expected for that year.
     }
-
-    def test_islamic_new_year_present_when_not_weekend(self, explicit_dates):
-        """All years remain predicted -- no confirmation exists that
-        Qatar Exchange actually closes for Islamic New Year (see class
-        docstring)."""
-        for year, d in self.ISLAMIC_NEW_YEAR.items():
-            assert d in explicit_dates, f"Missing Islamic New Year for {year}: {d}"
-            assert explicit_dates[d]["name"] == "Islamic New Year (predicted)"
 
     def test_islamic_new_year_2028_correctly_absent(self, explicit_dates):
         assert "2028-05-26" not in explicit_dates

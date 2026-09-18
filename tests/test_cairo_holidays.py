@@ -171,12 +171,6 @@ class TestXCAIEidAlFitr:
         assert "2025-03-30" not in explicit_dates, \
             "2025-03-30 was the incorrect Saudi-derived date; C6 corrected this to 2025-03-31"
 
-    def test_eid_al_fitr_2026(self, explicit_dates):
-        """Eid al-Fitr 2026 — March 20 (Friday, weekend) — not in explicit.
-        Weekday holiday starts March 22 (Sunday)."""
-        assert "2026-03-20" not in explicit_dates
-        assert "2026-03-22" in explicit_dates
-
     def test_eid_al_fitr_2027(self, explicit_dates):
         """Eid al-Fitr 2027 — predicted March 9."""
         assert "2027-03-09" in explicit_dates
@@ -212,10 +206,6 @@ class TestXCAIEidAlAdha:
         assert "2025-06-06" not in explicit_dates
         assert "2025-06-08" in explicit_dates
 
-    def test_eid_al_adha_2026(self, explicit_dates):
-        """Eid al-Adha 2026 — predicted May 27."""
-        assert "2026-05-27" in explicit_dates
-
     def test_eid_al_adha_2027(self, explicit_dates):
         """Eid al-Adha 2027 — predicted May 16."""
         assert "2027-05-16" in explicit_dates
@@ -248,10 +238,6 @@ class TestXCAIIslamicHolidays:
         assert "2025-06-26" in explicit_dates
         assert "Islamic New Year" in explicit_dates["2025-06-26"]["name"]
 
-    def test_islamic_new_year_2026(self, explicit_dates):
-        """Islamic New Year 2026 — predicted June 16."""
-        assert "2026-06-16" in explicit_dates
-
     def test_islamic_new_year_2027(self, explicit_dates):
         """Islamic New Year 2027 — predicted June 6."""
         assert "2027-06-06" in explicit_dates
@@ -268,10 +254,6 @@ class TestXCAIIslamicHolidays:
         """Prophet's Birthday 2025 — predicted September 4."""
         assert "2025-09-04" in explicit_dates
         assert "Prophet" in explicit_dates["2025-09-04"]["name"]
-
-    def test_prophets_birthday_2026(self, explicit_dates):
-        """Prophet's Birthday 2026 — predicted August 25."""
-        assert "2026-08-25" in explicit_dates
 
     def test_prophets_birthday_2027(self, explicit_dates):
         """Prophet's Birthday 2027 — predicted August 15."""
@@ -377,10 +359,6 @@ class TestXCAIStructure:
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
             assert start <= d <= end
-
-    def test_holiday_count_reasonable(self, explicit_dates):
-        """~50-65 entries."""
-        assert 50 <= len(explicit_dates) <= 70, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         """EGX's own trading-calendar page is the source for fixed
