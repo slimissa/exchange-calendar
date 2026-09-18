@@ -72,7 +72,7 @@
       },
       {
         "date": "2025-08-07",
-        "name": "Battle of Boyacá",
+        "name": "Battle of Boyac\u00e1",
         "status": "closed",
         "source_url": "https://www.bvc.com.co/calendario"
       },
@@ -107,23 +107,9 @@
         "source_url": "https://www.bvc.com.co/calendario"
       },
       {
-        "date": "2025-12-24",
-        "name": "Christmas Eve",
-        "status": "early_close",
-        "early_close_time": "11:30",
-        "source_url": "https://www.bvc.com.co/calendario"
-      },
-      {
         "date": "2025-12-25",
         "name": "Christmas Day",
         "status": "closed",
-        "source_url": "https://www.bvc.com.co/calendario"
-      },
-      {
-        "date": "2025-12-31",
-        "name": "New Year's Eve",
-        "status": "early_close",
-        "early_close_time": "11:30",
         "source_url": "https://www.bvc.com.co/calendario"
       },
       {
@@ -194,7 +180,7 @@
       },
       {
         "date": "2026-08-07",
-        "name": "Battle of Boyacá",
+        "name": "Battle of Boyac\u00e1",
         "status": "closed",
         "source_url": "https://www.bvc.com.co/calendario"
       },
@@ -229,23 +215,9 @@
         "source_url": "https://www.bvc.com.co/calendario"
       },
       {
-        "date": "2026-12-24",
-        "name": "Christmas Eve",
-        "status": "early_close",
-        "early_close_time": "11:30",
-        "source_url": "https://www.bvc.com.co/calendario"
-      },
-      {
         "date": "2026-12-25",
         "name": "Christmas Day",
         "status": "closed",
-        "source_url": "https://www.bvc.com.co/calendario"
-      },
-      {
-        "date": "2026-12-31",
-        "name": "New Year's Eve",
-        "status": "early_close",
-        "early_close_time": "11:30",
         "source_url": "https://www.bvc.com.co/calendario"
       },
       {
@@ -279,12 +251,6 @@
         "source_url": "https://www.bvc.com.co/calendario"
       },
       {
-        "date": "2027-05-03",
-        "name": "Labour Day (observed)",
-        "status": "closed",
-        "source_url": "https://www.bvc.com.co/calendario"
-      },
-      {
         "date": "2027-05-10",
         "name": "Ascension Day (observed)",
         "status": "closed",
@@ -303,7 +269,7 @@
         "source_url": "https://www.bvc.com.co/calendario"
       },
       {
-        "date": "2027-06-28",
+        "date": "2027-07-05",
         "name": "Saint Peter and Saint Paul (observed)",
         "status": "closed",
         "source_url": "https://www.bvc.com.co/calendario"
@@ -345,32 +311,6 @@
         "source_url": "https://www.bvc.com.co/calendario"
       },
       {
-        "date": "2027-12-24",
-        "name": "Christmas Eve",
-        "status": "early_close",
-        "early_close_time": "11:30",
-        "source_url": "https://www.bvc.com.co/calendario"
-      },
-      {
-        "date": "2027-12-27",
-        "name": "Christmas Day (observed)",
-        "status": "closed",
-        "source_url": "https://www.bvc.com.co/calendario"
-      },
-      {
-        "date": "2027-12-31",
-        "name": "New Year's Eve",
-        "status": "early_close",
-        "early_close_time": "11:30",
-        "source_url": "https://www.bvc.com.co/calendario"
-      },
-      {
-        "date": "2028-01-03",
-        "name": "New Year's Day (observed)",
-        "status": "closed",
-        "source_url": "https://www.bvc.com.co/calendario"
-      },
-      {
         "date": "2028-01-10",
         "name": "Epiphany (observed)",
         "status": "closed",
@@ -401,19 +341,19 @@
         "source_url": "https://www.bvc.com.co/calendario"
       },
       {
-        "date": "2028-05-22",
+        "date": "2028-05-29",
         "name": "Ascension Day (observed)",
         "status": "closed",
         "source_url": "https://www.bvc.com.co/calendario"
       },
       {
-        "date": "2028-06-12",
+        "date": "2028-06-19",
         "name": "Corpus Christi (observed)",
         "status": "closed",
         "source_url": "https://www.bvc.com.co/calendario"
       },
       {
-        "date": "2028-06-19",
+        "date": "2028-06-26",
         "name": "Sacred Heart (observed)",
         "status": "closed",
         "source_url": "https://www.bvc.com.co/calendario"
@@ -432,7 +372,7 @@
       },
       {
         "date": "2028-08-07",
-        "name": "Battle of Boyacá",
+        "name": "Battle of Boyac\u00e1",
         "status": "closed",
         "source_url": "https://www.bvc.com.co/calendario"
       },
@@ -540,7 +480,7 @@
       },
       {
         "date": "2029-08-07",
-        "name": "Battle of Boyacá",
+        "name": "Battle of Boyac\u00e1",
         "status": "closed",
         "source_url": "https://www.bvc.com.co/calendario"
       },
@@ -569,23 +509,9 @@
         "source_url": "https://www.bvc.com.co/calendario"
       },
       {
-        "date": "2029-12-24",
-        "name": "Christmas Eve",
-        "status": "early_close",
-        "early_close_time": "11:30",
-        "source_url": "https://www.bvc.com.co/calendario"
-      },
-      {
         "date": "2029-12-25",
         "name": "Christmas Day",
         "status": "closed",
-        "source_url": "https://www.bvc.com.co/calendario"
-      },
-      {
-        "date": "2029-12-31",
-        "name": "New Year's Eve",
-        "status": "early_close",
-        "early_close_time": "11:30",
         "source_url": "https://www.bvc.com.co/calendario"
       }
     ],

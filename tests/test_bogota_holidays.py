@@ -6,15 +6,35 @@ Key facts verified:
     - Regular hours: 09:30-15:00 (single session)
     - No lunch break
     - Weekend is Saturday-Sunday (Western weekend)
-    - Colombia uses "next Monday" rule (Emiliani Law) for most holidays
-    - 16 national holidays (one of the most in the world)
-    - Christmas Eve (Dec 24) — early close at 11:30
-    - New Year's Eve (Dec 31) — early close at 11:30
+    - Colombia uses "next Monday" rule (Ley 51 de 1983, "Ley Emiliani") for the
+      MOVABLE holidays only -- Epiphany, Saint Joseph, Ascension, Corpus
+      Christi, Sacred Heart, Saint Peter & Paul, Assumption, Columbus Day,
+      All Saints, Independence of Cartagena.
+    - Six holidays are FIXED and are never moved, even when they land on a
+      weekend: New Year (Jan 1), Labour Day (May 1), Independence Day (Jul
+      20), Battle of Boyacá (Aug 7), Immaculate Conception (Dec 8), Christmas
+      (Dec 25). When a fixed holiday falls on a weekend it gets no explicit
+      entry at all (already covered by weekend_days) -- it is NOT shifted to
+      the following Monday. (2025-08-18 and earlier data mislabeled three of
+      these -- 2027 Labour Day, 2027 Christmas, 2028 New Year -- as if they
+      were Emiliani-movable; corrected 2026-09-17, see
+      docs/verifications/2026-09-17_xbog_task0.md.)
+    - When a movable holiday's observed Monday would collide with another
+      movable holiday's observed Monday, the later-based one shifts one more
+      day forward (2025: Sacred Heart and Saint Peter & Paul both compute to
+      Jun 30, so Saint Peter & Paul moves to Jul 1).
+    - 18 national holidays/year, one of the most in the world.
+    - Dec 24 / Dec 31 early closes were removed 2026-09-17: no reachable
+      source could confirm the previously-claimed 11:30 time, and the one
+      piece of real evidence found (a 2020 BVC announcement) suggests a
+      different time. See docs/verifications/2026-09-17_xbog_task0.md.
     - No recurrence rules — all dates explicit
 
 If any test fails, either:
     1. The registry data is wrong (fix exchanges/XBOG.json)
-    2. Colombian holiday announcements changed (verify against bvc.com.co)
+    2. Colombian holiday announcements changed (verify against bvc.com.co,
+       which is currently unreachable from this environment -- see
+       BLOCKED.md and docs/verifications/2026-09-17_xbog*.md)
 
 Run:
     python3 -m pytest tests/test_bogota_holidays.py -v
@@ -95,10 +115,12 @@ class TestXBOGFixedHolidays:
         assert "2025-01-01" in explicit_dates
         assert explicit_dates["2025-01-01"]["name"] == "New Year's Day"
 
-    def test_new_year_2028_substitute(self, explicit_dates):
-        """Jan 1, 2028 is Saturday — substitute to Monday Jan 3."""
+    def test_new_year_2028_no_substitute(self, explicit_dates):
+        """Jan 1, 2028 is Saturday. New Year's Day is fixed, not Emiliani-
+        movable, so it gets no explicit entry (weekend already covers it) and
+        must NOT be shifted to Monday Jan 3."""
         assert "2028-01-01" not in explicit_dates
-        assert "2028-01-03" in explicit_dates
+        assert "2028-01-03" not in explicit_dates
 
     def test_epiphany_2025(self, explicit_dates):
         """Jan 6, 2025 is Monday — observed."""
@@ -119,10 +141,11 @@ class TestXBOGFixedHolidays:
         assert "2025-05-01" in explicit_dates
         assert explicit_dates["2025-05-01"]["name"] == "Labour Day"
 
-    def test_labour_day_2027_substitute(self, explicit_dates):
-        """May 1, 2027 is Saturday — substitute to Monday May 3."""
+    def test_labour_day_2027_no_substitute(self, explicit_dates):
+        """May 1, 2027 is Saturday. Labour Day is fixed, not Emiliani-movable,
+        so it gets no explicit entry and must NOT be shifted to Monday May 3."""
         assert "2027-05-01" not in explicit_dates
-        assert "2027-05-03" in explicit_dates
+        assert "2027-05-03" not in explicit_dates
 
     def test_independence_2025(self, explicit_dates):
         """Jul 20, 2025 is Sunday (weekend) — no explicit entry."""
@@ -188,6 +211,36 @@ class TestXBOGEmilianiLaw:
         assert "2025-11-17" in explicit_dates
         assert "Cartagena" in explicit_dates["2025-11-17"]["name"]
 
+    def test_saint_peter_paul_2027(self, explicit_dates):
+        """Jun 29, 2027 is a Tuesday -- observed the NEXT Monday, Jul 5, not
+        the preceding one (Jun 28, the pre-2026-09-17 data's error)."""
+        assert "2027-06-28" not in explicit_dates
+        assert "2027-07-05" in explicit_dates
+        assert "Peter" in explicit_dates["2027-07-05"]["name"]
+
+    def test_ascension_corpus_sacred_heart_2028(self, explicit_dates):
+        """2028's three Easter-offset Monday feasts, corrected 2026-09-17
+        (previously: Ascension and Corpus Christi were each a week early, and
+        Corpus Christi's correct date was mislabeled 'Sacred Heart' while the
+        true Sacred Heart date was missing outright)."""
+        assert "2028-05-22" not in explicit_dates
+        assert "2028-06-12" not in explicit_dates
+        assert "2028-05-29" in explicit_dates
+        assert "Ascension" in explicit_dates["2028-05-29"]["name"]
+        assert "2028-06-19" in explicit_dates
+        assert "Corpus" in explicit_dates["2028-06-19"]["name"]
+        assert "2028-06-26" in explicit_dates
+        assert "Sacred Heart" in explicit_dates["2028-06-26"]["name"]
+
+    def test_sacred_heart_peter_paul_collision_2025(self, explicit_dates):
+        """Sacred Heart's and Saint Peter & Paul's literal-to-Monday dates
+        both land on Jun 30, 2025 -- a genuine collision. Saint Peter & Paul,
+        as the later-based feast, shifts one further day to Jul 1."""
+        assert "2025-06-30" in explicit_dates
+        assert "Sacred Heart" in explicit_dates["2025-06-30"]["name"]
+        assert "2025-07-01" in explicit_dates
+        assert "Peter" in explicit_dates["2025-07-01"]["name"]
+
 
 # ──────────────────────────────────────────────────────────────
 # Easter holidays
@@ -222,42 +275,31 @@ class TestXBOGHolyWeek:
 # ──────────────────────────────────────────────────────────────
 
 class TestXBOGChristmas:
-    def test_christmas_eve_2025(self, explicit_dates):
-        """Dec 24, 2025 is Wednesday — early close at 11:30."""
-        entry = explicit_dates.get("2025-12-24")
-        assert entry is not None
-        assert entry["status"] == "early_close"
-        assert entry["early_close_time"] == "11:30"
-
-    def test_christmas_eve_2026(self, explicit_dates):
-        """Dec 24, 2026 is Thursday — early close at 11:30."""
-        entry = explicit_dates.get("2026-12-24")
-        assert entry is not None
-        assert entry["status"] == "early_close"
-        assert entry["early_close_time"] == "11:30"
+    def test_christmas_eve_not_claimed(self, explicit_dates):
+        """Dec 24 early closes were removed 2026-09-17 -- no reachable source
+        confirmed the previously-claimed 11:30 time (one real piece of
+        evidence found even points to a different time). No entry at all is
+        more honest than a guessed one. See
+        docs/verifications/2026-09-17_xbog_task0.md."""
+        for year in range(2025, 2030):
+            assert f"{year}-12-24" not in explicit_dates
 
     def test_christmas_day_2025(self, explicit_dates):
         """Dec 25, 2025 is Thursday."""
         assert "2025-12-25" in explicit_dates
         assert explicit_dates["2025-12-25"]["name"] == "Christmas Day"
 
-    def test_christmas_day_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27."""
+    def test_christmas_day_2027_no_substitute(self, explicit_dates):
+        """Dec 25, 2027 is Saturday. Christmas is fixed, not Emiliani-movable,
+        so it gets no explicit entry and must NOT be shifted to Monday Dec 27."""
         assert "2027-12-25" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
+        assert "2027-12-27" not in explicit_dates
 
-    def test_new_years_eve_2025(self, explicit_dates):
-        """Dec 31, 2025 is Wednesday — early close at 11:30."""
-        entry = explicit_dates.get("2025-12-31")
-        assert entry is not None
-        assert entry["status"] == "early_close"
-        assert entry["early_close_time"] == "11:30"
-
-    def test_new_years_eve_2029(self, explicit_dates):
-        """Dec 31, 2029 is Monday — early close at 11:30."""
-        entry = explicit_dates.get("2029-12-31")
-        assert entry is not None
-        assert entry["status"] == "early_close"
+    def test_new_years_eve_not_claimed(self, explicit_dates):
+        """Dec 31 early closes were removed 2026-09-17 for the same reason as
+        Dec 24 -- see docs/verifications/2026-09-17_xbog_task0.md."""
+        for year in range(2025, 2030):
+            assert f"{year}-12-31" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -265,17 +307,17 @@ class TestXBOGChristmas:
 # ──────────────────────────────────────────────────────────────
 
 class TestXBOGEarlyCloses:
-    def test_no_other_early_closes(self, explicit_dates):
-        """Only Christmas Eve and New Year's Eve are early closes."""
+    def test_no_early_closes(self, explicit_dates):
+        """No early closes are currently claimed -- see
+        docs/verifications/2026-09-17_xbog_task0.md for why the previous
+        Dec 24 / Dec 31 11:30 claim was removed rather than kept unverified."""
         early_closes = [e for e in explicit_dates.values() if e.get("status") == "early_close"]
-        early_close_names = {e["name"] for e in early_closes}
-        assert early_close_names == {"Christmas Eve", "New Year's Eve"}
+        assert early_closes == []
 
     def test_all_early_closes_have_early_close_time(self, explicit_dates):
         for entry in explicit_dates.values():
             if entry.get("status") == "early_close":
                 assert "early_close_time" in entry
-                assert entry["early_close_time"] == "11:30"
 
     def test_closed_entries_no_early_close_time(self, explicit_dates):
         for entry in explicit_dates.values():
@@ -321,12 +363,21 @@ class TestXBOGStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~90-105 entries: 18 holidays × 5 years."""
-        assert 85 <= len(explicit_dates) <= 110, f"Unexpected count: {len(explicit_dates)}"
+        """18 holidays/year x 5 years, minus fixed holidays that land on a
+        weekend in a given year (already covered by weekend_days, so no
+        explicit entry), minus the removed, unverifiable early closes.
+        84 is the corrected true count for 2025-2029; kept as a range in
+        case future years shift this by one or two."""
+        assert 78 <= len(explicit_dates) <= 90, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
+        """As of 2026-09-17 every entry cites the third-party source used to
+        corroborate this data (rankia.co), not bvc.com.co -- the latter is
+        confirmed unreachable from this environment (BLOCKED.md) and was a
+        false citation on every prior entry. See
+        docs/verifications/2026-09-17_xbog_task0.md."""
         for entry in explicit_dates.values():
-            assert "bvc.com.co" in entry["source_url"]
+            assert "rankia.co" in entry["source_url"]
 
 
 # ──────────────────────────────────────────────────────────────

@@ -324,6 +324,48 @@ wrong without the reasoning behind it.
   XMUS were treated before its page was eventually found by browsing site
   navigation directly -- that approach wasn't attempted here due to time
   spent on the Caracas/Colombia naming collision).
+- **Re-checked 2026-09-17 (direct navigation, not search):** fetched
+  `bvc.com.co`'s homepage directly. Unlike XMUS, there was no nav menu to
+  follow -- the homepage itself is a Next.js client-side-rendered SPA shell,
+  raw response containing only meta tags and a Google Tag Manager reference,
+  zero server-rendered links or content. Same failure signature as XSGO and
+  XLIM. Full evidence and a disclosed tooling limitation (this environment's
+  sandbox cannot `curl` the domain directly; a different fetch tool with a
+  broader network allowlist was used instead) in
+  `docs/verifications/2026-09-17_xbog.md`.
+- **Task 0, 2026-09-17: `exchanges/XBOG.json` audited and corrected.** The
+  open issue above was investigated. Finding: the ~90 entries were
+  hand-authored in a single 2026-08-18 commit, with no fetcher and no
+  reachable page behind the `source_url` they all cited (confirmed above).
+  Worse, independent of that citation problem, the data itself had real
+  errors: three fixed, non-transferable holidays (Labour Day 2027, Christmas
+  2027, New Year 2028) were wrongly Monday-shifted as if they were
+  Emiliani-movable; three Emiliani-movable feast dates were shifted a week
+  in the wrong direction (Saint Peter & Paul 2027, Ascension 2028, Corpus
+  Christi 2028); and 2028's Corpus Christi / Sacred Heart were mislabeled
+  and one was missing outright. Corrected all of these against an
+  independently-implemented, Easter-date-validated reconstruction of
+  Colombia's statutory holiday law (Ley 51 de 1983, "Ley Emiliani"),
+  cross-checked against a reachable third-party source
+  (rankia.co, matching all 18 of 2026's holidays exactly) and convergent
+  Colombian press coverage of the 2025 official calendar. The 8
+  Christmas-Eve/New-Year's-Eve early-close entries (claimed 11:30, never
+  sourced) were removed rather than kept unverified -- one genuine piece of
+  contrary evidence (a 2020 BVC announcement citing a different time) was
+  found and no supporting evidence was. 95 entries -> 84. Full methodology,
+  every diff, and the one real mistake I made and caught before committing
+  (a first-pass fix that broke a genuine Colombian holiday-collision rule
+  the original file had actually gotten right) are in
+  `docs/verifications/2026-09-17_xbog_task0.md`.
+- **Verdict: still BLOCKED for automated-fetcher purposes** — `bvc.com.co`
+  is still unreachable, so there is still no `XBOGColombiaFetcher` and none
+  is possible right now. But the manually-curated data in
+  `exchanges/XBOG.json` is, as of 2026-09-17, verified as far as it's
+  currently possible to verify it without a working first-party page --
+  not merely "populated." Anyone re-blocking or re-populating this file
+  in the future should read the Task 0 doc first; several of its findings
+  (the fixed-vs-movable distinction, the 2025 collision rule) are easy to
+  get wrong again from scratch.
 
 ## XLIM — Bolsa de Valores de Lima (BVL)
 
