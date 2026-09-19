@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.2.2] — 2026-09-19
+
+### Changed
+
+- **BLOCKED.md: replaced the "JS-rendered" label on 13 exchanges with
+  the specific blocker observed by a Playwright sweep.** Eight are
+  blocked by non-rendering causes (Akamai 403, Cloudflare, hCaptcha,
+  dead URLs). Five remain undecided — pages loaded without visible
+  calendar text, which neither confirms nor disproves client-side
+  rendering.
+
+### Added
+
+- `docs/verifications/2026-09-19_js_sweep.md` — per-exchange sweep
+  results with HTTP status, bytes, visible-text matches, and anti-bot
+  services.
+
+### Known Issue
+
+- XKRX, XTUN, XLIM, XTAD, XPHS are not yet classified. Re-test with
+  `wait_for_selector` on a table element and XHR/fetch logging to see
+  whether the calendar loads from an API endpoint.
+- XQSE's `exchanges/XQSE.json` cites `ummulqura.org.sa` on 2 of 36
+  entries — not a QSE source. Fix pending.
+
 ## [2.2.1] — 2026-09-19
 
 ### Fixed
