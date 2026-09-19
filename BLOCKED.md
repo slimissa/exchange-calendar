@@ -49,7 +49,8 @@ infrastructure model (static/shared = buildable, JS/bot-wall/visual-PDF =
 blocked) as a fast predictive filter. 4 of 9 buildable (XNSA, XBRV, XCOL,
 plus XSTC resolved as a carryover from Tier 6). 4 confirmed blocked, 2 of
 them by robots.txt (XCAS, XDHA — respected by design, not worked around),
-1 by an unreadable PDF (XKAR), 1 by a JS-rendered page (XTUN). 2 remain
+1 by an unreadable PDF (XKAR), 1 by an empty page response (XTUN;
+originally recorded as JS-rendered, see its section). 2 remain
 genuinely unverified (XNBO, XGSE) rather than forced to a verdict.
 
 **Tier 8 (small/island markets) update 2026-09-06 — FINAL TIER:** 5 of
@@ -68,14 +69,18 @@ wrong without the reasoning behind it.
 
 ## XSES — Singapore Exchange (SGX)
 
-**Last verified:** 2026-08-27
+**Last verified:** 2026-09-19
 
 - **Checked:** sgx.com/trading and related pages
 - **Finding:** JS-rendered shell. No first-party equities holiday HTML or
   CSV/JSON found — only a derivatives-specific trading circular PDF (a
   different market segment than the equities calendar this registry needs)
   and third-party aggregators, which are not authoritative.
-- **Verdict:** BLOCKED.
+- **Finding (2026-09-19):** Playwright Chromium receives HTTP 403 from both
+  www.sgx.com/trading/trading-hours (308 bytes) and sgx.com/trading (294
+  bytes); Akamai present in the network log. The block is at HTTP level,
+  before any rendering; a headless browser does not bypass it.
+- **Verdict:** BLOCKED (other: Akamai, HTTP 403).
 
 ## XSWX — SIX Swiss Exchange
 
@@ -92,18 +97,22 @@ wrong without the reasoning behind it.
 
 ## XKRX — Korea Exchange (KRX)
 
-**Last verified:** 2026-08-27
+**Last verified:** 2026-09-19
 
 - **Checked:** global.krx.co.kr's "Market Closing(Holiday)" page
 - **Finding:** confirmed JS/AJAX-driven data grid — a year dropdown
   (2016-2026) and a "Search"/"Download" button, but zero holiday rows in
   the raw HTML. No underlying public API endpoint was found within the time
   spent looking.
-- **Verdict:** BLOCKED.
+- **Finding (2026-09-19):** Both global.krx.co.kr candidates (the
+  GLB0501110000.jsp page and the site root) timed out at 30 s in Playwright
+  Chromium, with no HTTP status and no anti-bot service identified. The
+  JS/AJAX data-grid finding above was not re-tested, so it stands.
+- **Verdict:** BLOCKED (timeout in 2026-09-19 Playwright sweep; JS/AJAX data grid per 2026-08-27 not re-tested).
 
 ## XBOM — BSE India (Bombay Stock Exchange)
 
-**Last verified:** 2026-08-27
+**Last verified:** 2026-09-19
 
 - **Checked:** bseindia.com/static/markets/marketinfo/listholi.aspx (the
   page referenced by other open-source market-calendar projects, e.g.
@@ -116,11 +125,15 @@ wrong without the reasoning behind it.
   they aren't officially documented, could change or be revoked without
   notice, and reverse-engineering internal endpoints crosses into a
   different risk category than parsing a published page.
-- **Verdict:** BLOCKED.
+- **Finding (2026-09-19):** Playwright Chromium receives HTTP 403 from both
+  bseindia.com URLs (331 and 327 bytes); Akamai present in the network log.
+  The "holiday" match in the 403 body is the requested URL echoed back, not
+  calendar content. Headless browser does not bypass.
+- **Verdict:** BLOCKED (other: Akamai, HTTP 403).
 
 ## XNSE — National Stock Exchange of India (NSE)
 
-**Last verified:** 2026-08-27
+**Last verified:** 2026-09-19
 
 - **Checked:** nseindia.com/resources/exchange-communication-holidays
 - **Finding:** the page itself loads (not bot-blocked), but the actual
@@ -131,11 +144,16 @@ wrong without the reasoning behind it.
   session-cookie handshake before its internal APIs will respond to plain
   HTTP requests, which this framework's `requests`-based approach doesn't
   perform.
-- **Verdict:** BLOCKED.
+- **Finding (2026-09-19):** Playwright Chromium receives HTTP 403 from both
+  www.nseindia.com and nseindia.com (335 and 331 bytes); Akamai present in the
+  network log. This differs from the 2026-08-27 note that the page loaded; the
+  "holiday" matches are the requested URL echoed in the 403 body. Headless
+  browser does not bypass.
+- **Verdict:** BLOCKED (other: Akamai, HTTP 403).
 
 ## XJKT — Indonesia Stock Exchange (IDX)
 
-**Last verified:** 2026-08-27
+**Last verified:** 2026-09-19
 
 - **Checked:** idx.co.id's official static PDF announcement
   ("Peng-00171 Libur Bursa 2026")
@@ -143,11 +161,15 @@ wrong without the reasoning behind it.
   linked from IDX's own site — but the direct fetch request itself was
   bot-blocked, and even if it weren't, PDF parsing is out of scope for this
   `BeautifulSoup`-based HTML framework (same reasoning as XSWX).
-- **Verdict:** BLOCKED.
+- **Finding (2026-09-19):** Playwright Chromium receives HTTP 503 (1,240
+  bytes) from www.idx.co.id/en/idx-trading-holidays and HTTP 403 (4,839 bytes)
+  from idx.co.id; Cloudflare present in the network log. Headless browser does
+  not bypass.
+- **Verdict:** BLOCKED (Cloudflare, HTTP 503/403).
 
 ## XTAI — Taiwan Stock Exchange (TWSE)
 
-**Last verified:** 2026-08-27
+**Last verified:** 2026-09-19
 
 - **Checked:** twse.com.tw/en/trading/holiday.html (JS-rendered, confirmed
   no data in raw HTML) AND `openapi.twse.com.tw/v1` — TWSE's real, public,
@@ -158,8 +180,14 @@ wrong without the reasoning behind it.
   public API.** Third-party MCP-server projects claiming "market calendar"
   support most likely scrape the same JS-rendered page rather than using a
   documented API endpoint, since none exists.
-- **Verdict:** BLOCKED — this one moved from "needs more verification" to a
-  confirmed blocker, not a resolved build.
+- **Finding (2026-09-19):** www.twse.com.tw/en/page/trading/exchange.html
+  returns HTTP 200 but redirects to /page-not-found.html (698 bytes, no
+  calendar terms), so that registry URL is dead. The Checked page was only
+  tried at the apex twse.com.tw, which fails DNS (ERR_NAME_NOT_RESOLVED); the
+  www variant was not tested. The no-API finding above is unaffected.
+- **Verdict:** BLOCKED (dead URL: registry source_url redirects to page-not-found) —
+  earlier note: this one moved from "needs more verification" to a confirmed
+  blocker, not a resolved build.
 
 ## Resolved: XHKG — Hong Kong Exchanges and Clearing (HKEX)
 
@@ -198,12 +226,19 @@ wrong without the reasoning behind it.
 
 ## XTAD — Abu Dhabi Securities Exchange (ADX)
 
-**Last verified:** 2026-08-29
+**Last verified:** 2026-09-19
 
 - **Checked:** adx.ae/about-adx/media/adx-events-calendar
 - **Finding:** confirmed Next.js JS-rendered SPA — the raw HTML contains
   only "Loading component..." placeholders, no static holiday data.
-- **Verdict:** BLOCKED.
+- **Finding (2026-09-19):** adx.ae/about-adx/media/adx-events-calendar returns
+  HTTP 200 (241,246 bytes in the sweep, 240,197 in the probe, 101,032 bytes
+  visible text) with no calendar terms in visible text; the sweep's raw
+  "holiday" match is not in visible text. www.adx.ae/trading-calendar timed
+  out at 30 s. Cloudflare and reCAPTCHA appear in the network log, but the
+  same URL returned HTTP 403 in an earlier spike run, so Cloudflare behaviour
+  is inconsistent. This is consistent with the placeholder finding above.
+- **Verdict:** BLOCKED (no calendar content in rendered DOM; Cloudflare state inconsistent).
 
 ## XBAH — Bahrain Bourse
 
@@ -220,7 +255,7 @@ wrong without the reasoning behind it.
 
 ## XQSE — Qatar Exchange
 
-**Last verified:** 2026-09-17
+**Last verified:** 2026-09-19
 
 - **Checked:** qe.com.qa/trading-calendar (original verdict 2026-08-27)
 - **Finding (2026-09-17):** DNS no longer resolves for qe.com.qa —
@@ -228,7 +263,16 @@ wrong without the reasoning behind it.
   portal widget") assumed the domain was reachable; the domain appears
   to have moved or gone offline. Source URL cited by XQSE entries in
   the registry (`https://www.qe.com.qa/trading-calendar`) is dead.
-- **Verdict:** BLOCKED (domain unreachable, 2026-09-17)
+- **Finding (2026-09-19):** www.qe.com.qa/trading-calendar returned HTTP 404
+  (224,975 bytes, 108,797 bytes visible text, no calendar terms) in the
+  2026-09-19 probe and timed out at 30 s (Cloudflare in the network log) in
+  the sweep; apex qe.com.qa fails with ERR_CERT_COMMON_NAME_INVALID. The site
+  answers, so the 2026-09-17 "DNS no longer resolves" finding does not hold
+  from this network; the path is dead, not the domain. Also: 2 of the 36
+  source_url citations in exchanges/XQSE.json point at www.ummulqura.org.sa,
+  which is not a QSE source (the other 34 cite the dead qe.com.qa path).
+  Fixing them is a separate task.
+- **Verdict:** BLOCKED (dead URL: HTTP 404; site reachable).
 
 ## XCAI — Egyptian Exchange (EGX)
 
@@ -338,13 +382,18 @@ wrong without the reasoning behind it.
 
 ## XSGO — Santiago Stock Exchange (Bolsa de Santiago)
 
-**Last verified:** 2026-09-04
+**Last verified:** 2026-09-19
 
 - **Checked:** bolsadesantiago.com/mercado_horarios_feriados directly
 - **Finding:** confirmed pure JS SPA shell (rebranded "SANTIAGOX") -- raw
   HTML contains only meta tags and a Google Tag Manager script, zero
   content.
-- **Verdict:** BLOCKED.
+- **Finding (2026-09-19):** www.bolsadesantiago.com/horarios returns HTTP 200
+  with an 859-byte body; Cloudflare, hCaptcha and Perfdrive appear in the
+  network log. The apex bolsadesantiago.com/mercado_horarios_feriados fails
+  with ERR_CERT_COMMON_NAME_INVALID. Headless browser does not bypass; no
+  CAPTCHA solving attempted.
+- **Verdict:** BLOCKED (hCaptcha).
 
 ## XKLS — Bursa Malaysia
 
@@ -416,17 +465,22 @@ wrong without the reasoning behind it.
 
 ## XLIM — Bolsa de Valores de Lima (BVL)
 
-**Last verified:** 2026-09-04
+**Last verified:** 2026-09-19
 
 - **Checked:** found the real page (bvl.com.pe/mercado/resumen-mercado/
   feriados-y-horarios-de-negociacion) and fetched it directly
 - **Finding:** confirmed pure JS SPA shell -- raw HTML contains only meta
   tags and a Google Tag Manager script, same pattern as XSGO.
-- **Verdict:** BLOCKED.
+- **Finding (2026-09-19):** www.bvl.com.pe/calendario returns HTTP 200
+  (149,967 bytes) with no calendar terms; Cloudflare and reCAPTCHA appear in
+  the network log, and no challenge page was observed. The Checked page above
+  was not successfully tested (apex bvl.com.pe fails DNS). reCAPTCHA presence
+  alone does not show it gates the calendar.
+- **Verdict:** BLOCKED (no calendar content; reCAPTCHA present).
 
 ## XPHS — Philippine Stock Exchange (PSE)
 
-**Last verified:** 2026-09-04
+**Last verified:** 2026-09-19
 
 - **Checked:** found the real "Trading Hours & Holidays" section on
   pse.com.ph/investing-at-pse/ (an anchor-linked section, not a separate
@@ -439,7 +493,14 @@ wrong without the reasoning behind it.
   "hf:categories" in the header row -- confirming the table is populated
   by JavaScript/AJAX from a custom data source, not present in the static
   response.
-- **Verdict:** BLOCKED.
+- **Finding (2026-09-19):** The sweep's pse.com.ph/trading-holidays/ returns
+  HTTP 404 (156,901 bytes; Cloudflare and reCAPTCHA in the network log). The
+  Checked page pse.com.ph/investing-at-pse/ loaded in an earlier Playwright
+  run (HTTP 200, 528,057 bytes) with no Holiday/Eid/Ramadan/Arafat in visible
+  text (the one raw hit was inside a <style> block); a retest timed out. The
+  2026-09-04 finding above reported a "Holiday" column header in raw HTML,
+  which this run did not reproduce.
+- **Verdict:** BLOCKED (no calendar content in visible DOM; URL unreliable).
 
 ## XBKK — Stock Exchange of Thailand (SET)
 
@@ -479,12 +540,16 @@ rather than deep-diving every exchange from scratch.
 
 ### XTUN — Bourse de Tunis (Tunisia)
 
-**Last verified:** 2026-09-06
+**Last verified:** 2026-09-19
 
 - **Checked:** bvmt.com.tn/fr/content/jours-feries-de-2026 directly
 - **Finding:** confirmed JS-rendered -- the fetch tool itself reported "no
   readable text... rendered with JavaScript."
-- **Verdict:** BLOCKED.
+- **Finding (2026-09-19):** Both bvmt.com.tn candidates return HTTP 200 with a
+  39-byte body after Playwright Chromium's 8 s wait; no anti-bot service in
+  the network log and no calendar terms. The earlier "JS-rendered" observation
+  is neither confirmed nor refuted by an empty response.
+- **Verdict:** BLOCKED (empty response: HTTP 200, 39-byte body).
 
 ### XCAS — Bourse de Casablanca (Morocco)
 
@@ -524,7 +589,7 @@ rather than deep-diving every exchange from scratch.
 
 ### XNBO — Nairobi Securities Exchange
 
-**Last verified:** 2026-09-06
+**Last verified:** 2026-09-19
 
 - **Checked:** nse.co.ke's investor-calendar mechanism, which turned out to
   be a directory of individual LISTED COMPANIES' corporate-events PDFs
@@ -540,7 +605,14 @@ rather than deep-diving every exchange from scratch.
   consistent pattern across 6 independent URLs is a decisive signal (not a
   single wrong-page miss) that nse.co.ke is a JS-rendered SPA where only
   the cookie banner renders server-side.
-- **Verdict: BLOCKED** (confirmed, not left as "not verified").
+- **Finding (2026-09-19):** www.nse.co.ke/trading-calendar and
+  www.nse.co.ke/investor-relations/ both return HTTP 404 (174,568 and 174,596
+  bytes; 96,178 bytes visible text on the second, no calendar terms).
+  Cloudflare and reCAPTCHA appear in the network log but full pages are
+  served, with no challenge page observed. The homepage returns 200 (334,434
+  bytes) with a "holiday" match that was not inspected. The tested URLs are
+  dead; the real calendar page, if any, was not located.
+- **Verdict:** BLOCKED (dead URL: HTTP 404; calendar page not located).
 
 ### XGSE — Ghana Stock Exchange
 
@@ -684,7 +756,7 @@ UA):
 - **XKAR**: PDF has no extractable text (scanned image)
 - **XKUW**: 403 from all IPs (permanent, documented above)
 - **XBAH**: content area is a client-side SharePoint webpart
-- **XTUN**: page is JS-rendered
+- **XTUN**: empty response (HTTP 200, 39-byte body; originally recorded as JS-rendered)
 - **XMUS**: content area is client-side rendered
 
 Entries were removed rather than left marked `predicted`. A `predicted`
