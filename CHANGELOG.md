@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+
+## [2.2.1] — 2026-09-19
+
+### Fixed
+
+- **README badge** now matches VERSION (was stuck at 2.1.11).
+- **`VERSION`** file bumped to match CHANGELOG top entry.
+- **`wrappers/python/exchange_calendar/calendar.json`** re-synced;
+  had a trailing newline that `tools/build.py` does not emit.
+- **Root `calendar.json`** rebuilt against current `exchanges/*.json`
+  (was stale since the 2026-09-17 reconciliation).
+
+### Added
+
+- `Makefile` `release` target: bumps VERSION and prints the CHANGELOG
+  steps.
+
 ## [2.2.0] — 2026-09-19
 
 ### Added
