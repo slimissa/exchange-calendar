@@ -145,7 +145,7 @@ def build_registry(exchanges_dir: Path) -> dict:
 def write_registry(registry: dict, output_path: Path) -> None:
     """Write the registry to the output file with deterministic formatting."""
     with open(output_path, "w") as f:
-        json.dump(registry, f, indent=2, ensure_ascii=False)
+        json.dump(registry, f, indent=2, ensure_ascii=False, sort_keys=True)
         f.write("\n")
 
 
