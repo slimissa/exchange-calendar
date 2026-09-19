@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "2.1.10",
+    "version": "2.2.0",
     "exchange_count": 74
   },
   "exchanges": [
@@ -1056,20 +1056,6 @@
             "source_url": "https://www.bahrainbourse.com/trading-calendar"
           },
           {
-            "date": "2025-06-08",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bahrainbourse.com/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2025-06-09",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bahrainbourse.com/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2025-06-26",
             "name": "Islamic New Year",
             "status": "closed",
@@ -1100,41 +1086,6 @@
             "name": "New Year's Day",
             "status": "closed",
             "source_url": "https://www.bahrainbourse.com/trading-calendar"
-          },
-          {
-            "date": "2026-03-22",
-            "name": "Eid al-Fitr Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bahrainbourse.com/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-27",
-            "name": "Eid al-Adha (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bahrainbourse.com/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-28",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bahrainbourse.com/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-06-16",
-            "name": "Islamic New Year (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bahrainbourse.com/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-08-25",
-            "name": "Prophet's Birthday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bahrainbourse.com/trading-calendar",
-            "predicted": true
           },
           {
             "date": "2026-12-16",
@@ -2495,23 +2446,9 @@
             "source_url": "https://www.bvc.com.co/calendario"
           },
           {
-            "date": "2025-12-24",
-            "name": "Christmas Eve",
-            "status": "early_close",
-            "early_close_time": "11:30",
-            "source_url": "https://www.bvc.com.co/calendario"
-          },
-          {
             "date": "2025-12-25",
             "name": "Christmas Day",
             "status": "closed",
-            "source_url": "https://www.bvc.com.co/calendario"
-          },
-          {
-            "date": "2025-12-31",
-            "name": "New Year's Eve",
-            "status": "early_close",
-            "early_close_time": "11:30",
             "source_url": "https://www.bvc.com.co/calendario"
           },
           {
@@ -2617,23 +2554,9 @@
             "source_url": "https://www.bvc.com.co/calendario"
           },
           {
-            "date": "2026-12-24",
-            "name": "Christmas Eve",
-            "status": "early_close",
-            "early_close_time": "11:30",
-            "source_url": "https://www.bvc.com.co/calendario"
-          },
-          {
             "date": "2026-12-25",
             "name": "Christmas Day",
             "status": "closed",
-            "source_url": "https://www.bvc.com.co/calendario"
-          },
-          {
-            "date": "2026-12-31",
-            "name": "New Year's Eve",
-            "status": "early_close",
-            "early_close_time": "11:30",
             "source_url": "https://www.bvc.com.co/calendario"
           },
           {
@@ -2667,12 +2590,6 @@
             "source_url": "https://www.bvc.com.co/calendario"
           },
           {
-            "date": "2027-05-03",
-            "name": "Labour Day (observed)",
-            "status": "closed",
-            "source_url": "https://www.bvc.com.co/calendario"
-          },
-          {
             "date": "2027-05-10",
             "name": "Ascension Day (observed)",
             "status": "closed",
@@ -2691,7 +2608,7 @@
             "source_url": "https://www.bvc.com.co/calendario"
           },
           {
-            "date": "2027-06-28",
+            "date": "2027-07-05",
             "name": "Saint Peter and Saint Paul (observed)",
             "status": "closed",
             "source_url": "https://www.bvc.com.co/calendario"
@@ -2733,32 +2650,6 @@
             "source_url": "https://www.bvc.com.co/calendario"
           },
           {
-            "date": "2027-12-24",
-            "name": "Christmas Eve",
-            "status": "early_close",
-            "early_close_time": "11:30",
-            "source_url": "https://www.bvc.com.co/calendario"
-          },
-          {
-            "date": "2027-12-27",
-            "name": "Christmas Day (observed)",
-            "status": "closed",
-            "source_url": "https://www.bvc.com.co/calendario"
-          },
-          {
-            "date": "2027-12-31",
-            "name": "New Year's Eve",
-            "status": "early_close",
-            "early_close_time": "11:30",
-            "source_url": "https://www.bvc.com.co/calendario"
-          },
-          {
-            "date": "2028-01-03",
-            "name": "New Year's Day (observed)",
-            "status": "closed",
-            "source_url": "https://www.bvc.com.co/calendario"
-          },
-          {
             "date": "2028-01-10",
             "name": "Epiphany (observed)",
             "status": "closed",
@@ -2789,19 +2680,19 @@
             "source_url": "https://www.bvc.com.co/calendario"
           },
           {
-            "date": "2028-05-22",
+            "date": "2028-05-29",
             "name": "Ascension Day (observed)",
             "status": "closed",
             "source_url": "https://www.bvc.com.co/calendario"
           },
           {
-            "date": "2028-06-12",
+            "date": "2028-06-19",
             "name": "Corpus Christi (observed)",
             "status": "closed",
             "source_url": "https://www.bvc.com.co/calendario"
           },
           {
-            "date": "2028-06-19",
+            "date": "2028-06-26",
             "name": "Sacred Heart (observed)",
             "status": "closed",
             "source_url": "https://www.bvc.com.co/calendario"
@@ -2957,23 +2848,9 @@
             "source_url": "https://www.bvc.com.co/calendario"
           },
           {
-            "date": "2029-12-24",
-            "name": "Christmas Eve",
-            "status": "early_close",
-            "early_close_time": "11:30",
-            "source_url": "https://www.bvc.com.co/calendario"
-          },
-          {
             "date": "2029-12-25",
             "name": "Christmas Day",
             "status": "closed",
-            "source_url": "https://www.bvc.com.co/calendario"
-          },
-          {
-            "date": "2029-12-31",
-            "name": "New Year's Eve",
-            "status": "early_close",
-            "early_close_time": "11:30",
             "source_url": "https://www.bvc.com.co/calendario"
           }
         ],
@@ -5846,52 +5723,10 @@
             "source_url": "https://www.egx.com.eg/en/trading-calendar/"
           },
           {
-            "date": "2026-03-22",
-            "name": "Eid al-Fitr Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "predicted": true
-          },
-          {
-            "date": "2026-03-23",
-            "name": "Eid al-Fitr Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-27",
-            "name": "Eid al-Adha (predicted)",
-            "status": "closed",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-28",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "predicted": true
-          },
-          {
-            "date": "2026-06-16",
-            "name": "Islamic New Year (predicted)",
-            "status": "closed",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "predicted": true
-          },
-          {
             "date": "2026-07-23",
             "name": "Revolution Day (Jul 23)",
             "status": "closed",
             "source_url": "https://www.egx.com.eg/en/trading-calendar/"
-          },
-          {
-            "date": "2026-08-25",
-            "name": "Prophet's Birthday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "predicted": true
           },
           {
             "date": "2026-10-06",
@@ -6201,20 +6036,6 @@
             "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
           },
           {
-            "date": "2025-06-06",
-            "name": "Eid al-Adha (predicted)",
-            "status": "closed",
-            "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2025-06-09",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2025-06-26",
             "name": "Islamic New Year",
             "status": "closed",
@@ -6271,45 +6092,10 @@
             "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
           },
           {
-            "date": "2026-03-20",
-            "name": "Eid al-Fitr (predicted)",
-            "status": "closed",
-            "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-03-23",
-            "name": "Eid al-Fitr Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2026-05-01",
             "name": "Labour Day",
             "status": "closed",
             "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
-          },
-          {
-            "date": "2026-05-27",
-            "name": "Eid al-Adha (predicted)",
-            "status": "closed",
-            "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-28",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-06-16",
-            "name": "Islamic New Year (predicted)",
-            "status": "closed",
-            "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-            "predicted": true
           },
           {
             "date": "2026-07-30",
@@ -6334,13 +6120,6 @@
             "name": "Youth Day",
             "status": "closed",
             "source_url": "https://www.casablanca-bourse.com/en/trading-calendar"
-          },
-          {
-            "date": "2026-08-25",
-            "name": "Prophet's Birthday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.casablanca-bourse.com/en/trading-calendar",
-            "predicted": true
           },
           {
             "date": "2026-11-06",
@@ -8098,27 +7877,6 @@
             "source_url": "https://www.dsebd.org/trading-calendar"
           },
           {
-            "date": "2025-06-09",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.dsebd.org/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2025-07-06",
-            "name": "Ashura (predicted)",
-            "status": "closed",
-            "source_url": "https://publicholidays.com.bd/ashura/",
-            "predicted": true
-          },
-          {
-            "date": "2025-10-02",
-            "name": "Durga Puja (predicted)",
-            "status": "closed",
-            "source_url": "https://www.dsebd.org/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2025-12-16",
             "name": "Victory Day",
             "status": "closed",
@@ -8131,13 +7889,6 @@
             "source_url": "https://www.dsebd.org/trading-calendar"
           },
           {
-            "date": "2026-03-23",
-            "name": "Eid al-Fitr Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.dsebd.org/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2026-03-26",
             "name": "Independence Day",
             "status": "closed",
@@ -8148,27 +7899,6 @@
             "name": "Bengali New Year",
             "status": "closed",
             "source_url": "https://www.dsebd.org/trading-calendar"
-          },
-          {
-            "date": "2026-05-27",
-            "name": "Eid al-Adha (predicted)",
-            "status": "closed",
-            "source_url": "https://www.dsebd.org/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-28",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.dsebd.org/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-08-25",
-            "name": "Prophet's Birthday (predicted)",
-            "status": "closed",
-            "source_url": "https://publicholidays.com.bd/eid-e-milad-un-nabi/",
-            "predicted": true
           },
           {
             "date": "2026-10-20",
@@ -11767,24 +11497,10 @@
             "source_url": "https://www.psx.com.pk/trading-calendar"
           },
           {
-            "date": "2025-06-09",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.psx.com.pk/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2025-08-14",
             "name": "Independence Day",
             "status": "closed",
             "source_url": "https://www.psx.com.pk/trading-calendar"
-          },
-          {
-            "date": "2025-09-05",
-            "name": "Eid Milad-un-Nabi (predicted)",
-            "status": "closed",
-            "source_url": "https://www.psx.com.pk/trading-calendar",
-            "predicted": true
           },
           {
             "date": "2025-12-25",
@@ -11805,51 +11521,16 @@
             "source_url": "https://www.psx.com.pk/trading-calendar"
           },
           {
-            "date": "2026-03-20",
-            "name": "Eid al-Fitr (predicted)",
-            "status": "closed",
-            "source_url": "https://www.psx.com.pk/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2026-05-01",
             "name": "Labour Day",
             "status": "closed",
             "source_url": "https://www.psx.com.pk/trading-calendar"
           },
           {
-            "date": "2026-05-27",
-            "name": "Eid al-Adha (predicted)",
-            "status": "closed",
-            "source_url": "https://www.psx.com.pk/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-28",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.psx.com.pk/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-06-26",
-            "name": "Ashura (predicted)",
-            "status": "closed",
-            "source_url": "https://www.psx.com.pk/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2026-08-14",
             "name": "Independence Day",
             "status": "closed",
             "source_url": "https://www.psx.com.pk/trading-calendar"
-          },
-          {
-            "date": "2026-08-25",
-            "name": "Eid Milad-un-Nabi (predicted)",
-            "status": "closed",
-            "source_url": "https://www.psx.com.pk/trading-calendar",
-            "predicted": true
           },
           {
             "date": "2026-11-09",
@@ -13134,13 +12815,6 @@
             "predicted": false
           },
           {
-            "date": "2025-06-08",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2025-06-26",
             "name": "Islamic New Year",
             "status": "closed",
@@ -13171,48 +12845,6 @@
             "name": "Liberation Day",
             "status": "closed",
             "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
-          },
-          {
-            "date": "2026-03-22",
-            "name": "Eid al-Fitr Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-03-23",
-            "name": "Eid al-Fitr Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-27",
-            "name": "Eid al-Adha (predicted)",
-            "status": "closed",
-            "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-28",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-06-16",
-            "name": "Islamic New Year (predicted)",
-            "status": "closed",
-            "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-08-25",
-            "name": "Prophet's Birthday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-            "predicted": true
           },
           {
             "date": "2027-02-25",
@@ -16553,52 +16185,10 @@
             "source_url": "https://www.msx.om/trading-calendar"
           },
           {
-            "date": "2026-03-22",
-            "name": "Eid al-Fitr Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.msx.om/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-03-23",
-            "name": "Eid al-Fitr Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.msx.om/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-27",
-            "name": "Eid al-Adha (predicted)",
-            "status": "closed",
-            "source_url": "https://www.msx.om/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-28",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.msx.om/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-06-16",
-            "name": "Islamic New Year (predicted)",
-            "status": "closed",
-            "source_url": "https://www.msx.om/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2026-07-23",
             "name": "Renaissance Day",
             "status": "closed",
             "source_url": "https://www.msx.om/trading-calendar"
-          },
-          {
-            "date": "2026-08-25",
-            "name": "Prophet's Birthday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.msx.om/trading-calendar",
-            "predicted": true
           },
           {
             "date": "2026-11-18",
@@ -17334,20 +16924,6 @@
             "source_url": "https://www.nse.co.ke/trading-calendar"
           },
           {
-            "date": "2026-03-20",
-            "name": "Eid al-Fitr (predicted)",
-            "status": "closed",
-            "source_url": "https://www.nse.co.ke/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-27",
-            "name": "Eid al-Adha (predicted)",
-            "status": "closed",
-            "source_url": "https://www.nse.co.ke/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2026-10-20",
             "name": "Mashujaa Day",
             "status": "closed",
@@ -17614,13 +17190,6 @@
             "source_url": "https://ngxgroup.com/trading-calendar"
           },
           {
-            "date": "2025-09-05",
-            "name": "Eid al-Maulud (predicted)",
-            "status": "closed",
-            "source_url": "https://ngxgroup.com/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2025-10-01",
             "name": "Independence Day",
             "status": "closed",
@@ -17663,31 +17232,10 @@
             "source_url": "https://ngxgroup.com/trading-calendar"
           },
           {
-            "date": "2026-05-27",
-            "name": "Eid al-Adha (predicted)",
-            "status": "closed",
-            "source_url": "https://ngxgroup.com/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-28",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://ngxgroup.com/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2026-06-12",
             "name": "Democracy Day",
             "status": "closed",
             "source_url": "https://ngxgroup.com/trading-calendar"
-          },
-          {
-            "date": "2026-08-25",
-            "name": "Eid al-Maulud (predicted)",
-            "status": "closed",
-            "source_url": "https://ngxgroup.com/trading-calendar",
-            "predicted": true
           },
           {
             "date": "2026-10-01",
@@ -26482,13 +26030,6 @@
             "source_url": "https://www.bvmt.com.tn/trading-calendar"
           },
           {
-            "date": "2025-06-09",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bvmt.com.tn/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2025-06-26",
             "name": "Islamic New Year",
             "status": "closed",
@@ -26539,13 +26080,6 @@
             "source_url": "https://www.bvmt.com.tn/trading-calendar"
           },
           {
-            "date": "2026-03-23",
-            "name": "Eid al-Fitr Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bvmt.com.tn/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2026-04-09",
             "name": "Martyrs' Day",
             "status": "closed",
@@ -26558,38 +26092,10 @@
             "source_url": "https://www.bvmt.com.tn/trading-calendar"
           },
           {
-            "date": "2026-05-27",
-            "name": "Eid al-Adha (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bvmt.com.tn/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-05-28",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bvmt.com.tn/trading-calendar",
-            "predicted": true
-          },
-          {
-            "date": "2026-06-16",
-            "name": "Islamic New Year (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bvmt.com.tn/trading-calendar",
-            "predicted": true
-          },
-          {
             "date": "2026-08-13",
             "name": "Women's Day",
             "status": "closed",
             "source_url": "https://www.bvmt.com.tn/trading-calendar"
-          },
-          {
-            "date": "2026-08-25",
-            "name": "Prophet's Birthday (predicted)",
-            "status": "closed",
-            "source_url": "https://www.bvmt.com.tn/trading-calendar",
-            "predicted": true
           },
           {
             "date": "2026-10-15",
