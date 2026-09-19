@@ -348,14 +348,24 @@ Current test counts:
 
 ## Release Process
 
-1. **Update CHANGELOG.md**
-2. **Bump version** — Semantic Versioning
-3. **Update wrappers** — sync versions
-4. **Rebuild calendar.json**
-5. **Run full test suite**
-6. **Tag release** — `git tag -a v2.1.0 -m "Release v2.1.0"`
-7. **Push tag**
-8. **Publish wrappers**
+Never tag a commit that hasn't passed CI on `origin`. A tag is a claim
+that the tagged state works; a tag on a red commit forces a
+delete-and-retag cycle that breaks anyone who already fetched it.
+
+1. **Update CHANGELOG.md** — bump `[Unreleased]` to the new version
+2. **Bump VERSION** — must match the CHANGELOG top entry
+3. **Update README badge** — must match VERSION
+4. **Rebuild artifacts** — `make package` (runs `tools/build.py` and syncs the wrapper copy)
+5. **Run the full test suite** — `python3 -m pytest tests/ -v`
+6. **Commit the release** — `git commit -m "Release vX.Y.Z"`
+7. **Push the release commit** — `git push`
+8. **Wait for CI to be green on that commit** — `gh run list --limit 3`. Every workflow must show a green check. Do not proceed if any is red.
+9. **Tag** — `git tag -a vX.Y.Z -m "Release vX.Y.Z"`
+10. **Push the tag** — `git push --tags`
+
+The version-consistency checks in `validate.yml` fail if VERSION, the
+README badge, or the CHANGELOG top entry disagree. That's the first
+thing to check when CI goes red on a release commit.
 
 ---
 
