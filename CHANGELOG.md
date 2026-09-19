@@ -6,6 +6,53 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [2.2.0] — 2026-09-19
+
+### Added
+
+- **`Last verified` dates on every `BLOCKED.md` entry.** All 39 `##`/`###`
+  exchange sections now carry a `**Last verified:** YYYY-MM-DD` line,
+  derived from git history, the round dates already documented in
+  `CHANGELOG.md`, and prose dates in the sections themselves (dates
+  range 2026-08-27 to 2026-09-18). A new top-matter paragraph documents
+  the convention: what the date means, who adds it, and when to update
+  it.
+- **`tools/check_stale_verifications.py`** — CI check that fails when
+  any `BLOCKED.md` `Last verified` date is more than 18 months (549
+  days) old, or missing/malformed. Wired into `.github/workflows/
+  validate.yml`. Tests in `tests/test_check_stale_verifications.py`.
+- **`tools/check_stale_year_urls.py`** — CI check that scans
+  `tools/update_from_exchange.py`'s fetcher `source_url` literals and
+  every `exchanges/*.json` holiday's `source_url` for hardcoded 4-digit
+  year tokens (2010-2099), and fails when the maximum year found in a
+  static URL is older than the current year. Templated/dynamic URLs
+  (`{year}`, `%Y`, `%d`, or values built from a variable the checker
+  can't resolve) are skipped rather than guessed at. Wired into
+  `.github/workflows/validate.yml`. Tests in
+  `tests/test_check_stale_year_urls.py`.
+- **`make package`** — one command that rebuilds `calendar.json` from
+  `exchanges/` and syncs the copy bundled inside the Python wrapper at
+  `wrappers/python/exchange_calendar/calendar.json`, so `pip install`
+  users no longer risk getting a stale registry. A `make build-wheel`
+  target chains this with `python3 -m build`. The build is
+  deterministic, so the sync is idempotent.
+- **`tools/check_wrapper_snapshot.py`** — CI check that rebuilds
+  `calendar.json` in memory from `exchanges/` and compares it
+  byte-for-byte against the wrapper's bundled copy, failing (with a
+  size/line-count diff summary) if the copy is stale or missing. Wired
+  into `.github/workflows/validate.yml`. Tests in
+  `tests/test_check_wrapper_snapshot.py`.
+- `wrappers/python/exchange_calendar/calendar.json` is now tracked in
+  git (previously gitignored) and synced via `make package`, so the
+  wrapper package's bundled registry is no longer silently absent or
+  stale between releases.
+
+### Changed
+
+- Test suite: 3994 → 4026 passed (0 failed), from the four new test
+  files above.
+
+---
 ## [2.1.13] — 2026-09-18
 
 ### Fixed
