@@ -21,3 +21,9 @@ package:
 # Requires the `build` package (pip install build).
 build-wheel: package
 	cd wrappers/python && python3 -m build
+release:
+	@test -n "$(VERSION)" || (echo "usage: make release VERSION=x.y.z"; exit 1)
+	echo "$(VERSION)" > VERSION
+	@echo "Edit CHANGELOG.md to add [$(VERSION)] section, then:"
+	@echo "  git add VERSION CHANGELOG.md"
+	@echo "  git commit -m 'Release v$(VERSION)'"
