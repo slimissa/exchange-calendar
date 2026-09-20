@@ -108,7 +108,13 @@ wrong without the reasoning behind it.
   GLB0501110000.jsp page and the site root) timed out at 30 s in Playwright
   Chromium, with no HTTP status and no anti-bot service identified. The
   JS/AJAX data-grid finding above was not re-tested, so it stands.
-- **Verdict:** BLOCKED (timeout in 2026-09-19 Playwright sweep; JS/AJAX data grid per 2026-08-27 not re-tested).
+- **Finding (2026-09-19, retest):** Retest with a 30 s wait and XHR logging
+  found a JSON endpoint: POST
+  https://global.krx.co.kr/contents/GLB/99/GLB99000001.jspx returns JSON whose
+  block1[] rows carry calnd_dd and holdy_eng_nm for 2026, and plain requests
+  (no browser) reaches it. This confirms the JS/AJAX data-grid finding above
+  and supersedes the sweep timeout.
+- **Verdict:** RESOLVED — JSON endpoint available; fetcher pending (POST https://global.krx.co.kr/contents/GLB/99/GLB99000001.jspx).
 
 ## XBOM — BSE India (Bombay Stock Exchange)
 
@@ -238,7 +244,11 @@ wrong without the reasoning behind it.
   out at 30 s. Cloudflare and reCAPTCHA appear in the network log, but the
   same URL returned HTTP 403 in an earlier spike run, so Cloudflare behaviour
   is inconsistent. This is consistent with the placeholder finding above.
-- **Verdict:** BLOCKED (no calendar content in rendered DOM; Cloudflare state inconsistent).
+- **Finding (2026-09-19, retest):** The _next/data JSON files contain
+  no holiday keys, so no holiday endpoint was found. The tool's
+  recaptcha-challenge marker on the second URL matches ordinary reCAPTCHA form
+  widgets and is not treated as a block.
+- **Verdict:** BLOCKED (no holiday endpoint: _next/data files have no holiday keys).
 
 ## XBAH — Bahrain Bourse
 
@@ -476,7 +486,11 @@ wrong without the reasoning behind it.
   the network log, and no challenge page was observed. The Checked page above
   was not successfully tested (apex bvl.com.pe fails DNS). reCAPTCHA presence
   alone does not show it gates the calendar.
-- **Verdict:** BLOCKED (no calendar content; reCAPTCHA present).
+- **Finding (2026-09-19, retest):** The only JSON endpoint flagged,
+  stock-quote/home, is equities data, not holidays (a false positive of the
+  tool's date+name key heuristic). The calendar page is an SPA and no holiday
+  source is reachable in its network log.
+- **Verdict:** BLOCKED (no holiday endpoint: SPA calendar page; the only JSON seen is equities data).
 
 ## XPHS — Philippine Stock Exchange (PSE)
 
@@ -500,7 +514,13 @@ wrong without the reasoning behind it.
   text (the one raw hit was inside a <style> block); a retest timed out. The
   2026-09-04 finding above reported a "Holiday" column header in raw HTML,
   which this run did not reproduce.
-- **Verdict:** BLOCKED (no calendar content in visible DOM; URL unreliable).
+- **Finding (2026-09-19, retest):** Retest found a JSON endpoint: POST
+  https://www.pse.com.ph/wp-admin/admin-ajax.php returns JSON whose data[]
+  entries carry cf:holiday_title, content (dates) and categories (years), and
+  plain requests (no browser) reaches it. This is consistent with the
+  2026-09-04 note of a table populated by AJAX, and supersedes the sweep's
+  no-visible-content result.
+- **Verdict:** RESOLVED — JSON endpoint available; fetcher pending (POST https://www.pse.com.ph/wp-admin/admin-ajax.php).
 
 ## XBKK — Stock Exchange of Thailand (SET)
 
@@ -549,7 +569,9 @@ rather than deep-diving every exchange from scratch.
   39-byte body after Playwright Chromium's 8 s wait; no anti-bot service in
   the network log and no calendar terms. The earlier "JS-rendered" observation
   is neither confirmed nor refuted by an empty response.
-- **Verdict:** BLOCKED (empty response: HTTP 200, 39-byte body).
+- **Finding (2026-09-19, retest):** With a 30 s wait and XHR logging,
+  every URL tried returns a 39-byte body and no JSON endpoint appeared.
+- **Verdict:** BLOCKED (empty response: 39-byte body on every URL tried).
 
 ### XCAS — Bourse de Casablanca (Morocco)
 
