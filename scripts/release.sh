@@ -90,9 +90,15 @@ run python3 tools/build.py
 run make package
 
 if [[ "$DRY_RUN" != "1" ]]; then
-    META="$(python3 -c "import json; print(json.load(open('calendar.json'))['meta']['version'])")"
-    [[ "$META" == "$VERSION" ]] || die "calendar.json meta.version is $META, expected $VERSION"
-    ok "calendar.json meta.version = $VERSION"
+    # Verify both the root artifact and the wrapper's bundled copy. The
+    # wrapper copy is a plain file copy, not a generator output — if
+    # `make package` fails silently, the two can disagree and the wheel
+    # ships stale data.
+    for f in calendar.json wrappers/python/exchange_calendar/calendar.json; do
+        V="$(python3 -c "import json; print(json.load(open('$f'))['meta']['version'])")"
+        [[ "$V" == "$VERSION" ]] || die "$f meta.version is $V, expected $VERSION"
+        ok "$f meta.version = $VERSION"
+    done
 fi
 
 # ── local gate ─────────────────────────────────────────────────────
