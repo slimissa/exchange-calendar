@@ -41,6 +41,9 @@ def write_temp_exchange(tmp_path, filename, data):
 def make_valid_exchange(code="TEST", mic="TEST"):
     """Return a minimal valid exchange dict."""
     return {
+        "country": "United States of America",
+        "country_code": "US",
+
         "code": code,
         "name": f"Test Exchange {code}",
         "mic": mic,
