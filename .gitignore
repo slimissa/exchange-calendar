@@ -168,7 +168,9 @@ dmypy.json
 [Ll]ib
 [Ll]ib64
 [Ll]ocal
-[Ss]cripts
+[Ss]cripts/__pycache__/
+[Ss]cripts/*.pyc
+[Ss]cripts/*.pyo
 pyvenv.cfg
 .venv
 pip-selfcheck.json
@@ -462,3 +464,4 @@ secrets.yml
 # =============================================================================
 # END OF GITIGNORE
 # =============================================================================
+!scripts/release.sh
