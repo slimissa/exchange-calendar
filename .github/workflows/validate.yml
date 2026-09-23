@@ -51,7 +51,10 @@ jobs:
       - name: Build calendar.json
         run: |
           python3 tools/build.py
-
+      
+      - name: Check country codes against ISO 3166
+        run: python3 tools/check_country_codes.py --quiet
+        
       - name: Run Python tests
         run: |
           python3 -m pytest tests/ -v --tb=short
