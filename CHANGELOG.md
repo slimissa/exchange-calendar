@@ -7,6 +7,57 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.0] — 2026-09-23
+
+### Added
+
+- **`country_code` on all 74 exchanges.** Every `exchanges/*.json` now
+  carries `country` (ISO 3166 `countries.active[].name`, verbatim) and
+  `country_code` (ISO 3166 alpha-2, `^[A-Z]{2}$`). Both are required by
+  `schema.json`. Joins to the ISO 3166 registry on `alpha_2` without
+  normalization.
+- **`tools/country_mapping.json`** — the MIC → alpha-2 derivation used
+  to populate the two fields. Data, not code; regenerable from
+  `exchanges/*.json` and ISO 3166.
+- **`tools/check_country_codes.py`** — cross-registry check that loads
+  `tools/iso3166_snapshot.json` and verifies every exchange's
+  `country_code` resolves to an active ISO 3166 entry and its `country`
+  string matches byte-for-byte. Exit codes 0/1/2.
+- **`tools/iso3166_snapshot.json`** — verbatim snapshot of the ISO 3166
+  registry at v1.5.2. Refresh with
+  `python3 tools/check_country_codes.py --refresh-from <path>/iso3166.json`.
+- **`scripts/release.sh`** — deterministic release pipeline. Refuses on
+  dirty tree, wrong branch, missing CHANGELOG section, or CI failure.
+  Polls `Validate` and `Rust Verification`; tags only on green.
+  `DRY_RUN=1 scripts/release.sh <version>` for preflight.
+- **18 tests** for `tools/check_country_codes.py`.
+
+### Changed
+
+- **`schema.json`** now requires `country` and `country_code`.
+- **`tools/validate.py`** checks the `country_code` pattern
+  (`^[A-Z]{2}$`) and requires the `country` field.
+- **`CONTRIBUTING.md`** — Release Process section rewritten. The
+  no-tag-before-CI-green rule is now enforced by `scripts/release.sh`,
+  not by convention.
+- **CI** (`validate.yml`) runs the cross-registry country-code check
+  after the main validation step.
+
+### Fixed
+
+- **XQSE** — removed 2 Islamic New Year entries citing
+  `ummulqura.org.sa`, which is the Saudi calendar authority, not a
+  Qatar Exchange source. `qe.com.qa` returns 404 and the apex domain
+  has a certificate error; no reachable QSE source exists for those
+  dates.
+
+### Known Issue
+
+- **XKRX and XPHS** have identified JSON endpoints (`GLB99000001.jspx`
+  and `wp-admin/admin-ajax.php`) but no fetchers yet. Both require
+  rotating anti-replay tokens (`code=` and `_ajax_nonce=`); a fetcher
+  will need a two-step handshake. Tracked for a follow-up release.
+
 ## [2.2.2] — 2026-09-19
 
 ### Changed
