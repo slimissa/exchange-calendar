@@ -1,274 +1,276 @@
 {
+  "ad_hoc_closures": [],
   "code": "XBEK",
-  "name": "Beirut Stock Exchange",
-  "mic": "XBEK",
-  "timezone": "Asia/Beirut",
-  "regular_hours": {
-    "open": "09:30",
-    "close": "12:30"
-  },
-  "sessions": [],
+  "country": "Lebanon",
+  "country_code": "LB",
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
   "holidays": {
     "explicit": [
       {
         "date": "2025-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2025-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2025-06-26",
         "name": "Islamic New Year",
-        "status": "closed",
+        "predicted": false,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": false
+        "status": "closed"
       },
       {
         "date": "2025-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2026-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2026-02-09",
         "name": "St. Maroun Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2026-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2026-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2027-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2027-02-09",
         "name": "St. Maroun Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2027-03-09",
         "name": "Eid al-Fitr (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2027-03-10",
         "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2027-05-03",
         "name": "Labour Day (observed)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2027-05-17",
         "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2027-06-15",
         "name": "Ashura (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2027-11-22",
         "name": "Independence Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2027-12-27",
         "name": "Christmas Day (observed)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2028-01-03",
         "name": "New Year's Day (observed)",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2028-02-09",
         "name": "St. Maroun Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2028-02-28",
         "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2028-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2028-05-04",
         "name": "Eid al-Adha (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2028-05-05",
         "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2028-05-25",
         "name": "Islamic New Year (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2028-08-04",
         "name": "Prophet's Birthday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2028-11-22",
         "name": "Independence Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2028-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-02-09",
         "name": "St. Maroun Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-02-14",
         "name": "Eid al-Fitr (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-02-15",
         "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-04-24",
         "name": "Eid al-Adha (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-04-25",
         "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-05-14",
         "name": "Islamic New Year (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-05-24",
         "name": "Ashura (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-07-24",
         "name": "Prophet's Birthday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.bse.com.lb/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-11-22",
         "name": "Independence Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.bse.com.lb/trading-calendar"
+        "source_url": "https://www.bse.com.lb/trading-calendar",
+        "status": "closed"
       }
     ],
     "recurrence_rules": []
   },
-  "ad_hoc_closures": [],
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
-  ],
+  "mic": "XBEK",
+  "name": "Beirut Stock Exchange",
+  "regular_hours": {
+    "close": "12:30",
+    "open": "09:30"
+  },
+  "sessions": [],
+  "timezone": "Asia/Beirut",
   "weekend_days": [
     5,
     6

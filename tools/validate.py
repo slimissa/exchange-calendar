@@ -22,6 +22,7 @@ Exit codes:
 """
 
 import json
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -37,6 +38,7 @@ WEEKDAYS = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", 
 VALID_STATUSES = {"closed", "early_close", "delayed_open", "special_session"}
 VALID_RULES = {"fixed_date", "fixed_with_weekend_adjustment", "nth_weekday", "last_weekday", "easter_offset"}
 VALID_TIMEZONE_PREFIXES = {"Africa", "America", "Antarctica", "Arctic", "Asia", "Atlantic", "Australia", "Europe", "Indian", "Pacific", "Etc", "UTC", "GMT"}
+
 
 def load_json(path: Path) -> dict:
     """Load and parse a JSON file. Returns None on failure."""
@@ -92,6 +94,17 @@ def validate_business_logic(exchange: dict, filename: str) -> list:
     code = exchange.get("code", "")
     mic = exchange.get("mic", "")
     timezone = exchange.get("timezone", "")
+
+    # country_code must be present and well-formed
+    country_code = exchange.get("country_code", "")
+    if not country_code:
+        errors.append(f"{filename}: missing country_code")
+    elif not re.fullmatch(r"[A-Z]{2}", country_code):
+        errors.append(f"{filename}: country_code must be 2 uppercase letters, got {country_code!r}")
+
+    country = exchange.get("country", "")
+    if not country:
+        errors.append(f"{filename}: missing country")
 
     # code must match filename
     expected_code = filename.replace(".json", "")
@@ -344,6 +357,7 @@ def check_predicted_consistency(exchange: dict, filename: str) -> list:
             )
     return errors
 
+
 def check_past_due_predictions(exchange: dict, filename: str) -> list:
     """M7 follow-up: any entry marked `predicted` whose date is in the
     past is a silent-correctness bug -- callers get a confident answer
@@ -353,9 +367,9 @@ def check_past_due_predictions(exchange: dict, filename: str) -> list:
 
     Only checks the structured `predicted` field; the legacy
     '(predicted)' name suffix is handled by check_predicted_consistency.
-
-"""
+    """
     errors = []
+    mic = exchange.get("mic", filename)
     today = date.today().isoformat()
     for holiday in exchange.get("holidays", {}).get("explicit", []):
         if not holiday.get("predicted"):
@@ -368,6 +382,7 @@ def check_past_due_predictions(exchange: dict, filename: str) -> list:
                 f"the date (remove predicted) or remove the entry."
             )
     return errors
+
 
 def validate_cross_exchange(all_exchanges: dict, filenames: list) -> list:
     """Validate consistency across all exchange files. Returns list of error strings."""
@@ -415,14 +430,12 @@ def main():
     all_exchanges = {}
     valid_filenames = []
 
-    # Collect all exchange files
     exchange_files = sorted(exchanges_dir.glob("*.json"))
 
     if not exchange_files:
         print("ERROR: No exchange files found")
         sys.exit(1)
 
-    # Validate each file
     for exchange_file in exchange_files:
         exchange = load_json(exchange_file)
         if exchange is None:
@@ -438,13 +451,11 @@ def main():
         errors.extend(check_islamic_holidays(exchange, exchange_file.name))
         errors.extend(check_generation_range(exchange, exchange_file.name))
         errors.extend(check_predicted_consistency(exchange, exchange_file.name))
-        errors.extend(check_past_due_predictions(exchange, exchange_file.name)) 
+        errors.extend(check_past_due_predictions(exchange, exchange_file.name))
         all_errors.extend(errors)
 
-    # Cross-exchange validation
     all_errors.extend(validate_cross_exchange(all_exchanges, valid_filenames))
 
-    # Report
     if all_errors:
         print(f"Validation failed with {len(all_errors)} error(s):")
         for error in all_errors:

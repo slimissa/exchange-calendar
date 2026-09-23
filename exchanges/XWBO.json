@@ -1,501 +1,503 @@
 {
+  "ad_hoc_closures": [],
   "code": "XWBO",
-  "name": "Vienna Stock Exchange",
-  "mic": "XWBO",
-  "timezone": "Europe/Vienna",
-  "regular_hours": {
-    "open": "09:00",
-    "close": "17:30"
-  },
-  "sessions": [],
+  "country": "Austria",
+  "country_code": "AT",
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
+  ],
   "holidays": {
     "explicit": [
       {
         "date": "2025-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2025-01-06",
         "name": "Epiphany",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2025-04-21",
         "name": "Easter Monday",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2025-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2025-05-29",
         "name": "Ascension Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2025-06-09",
         "name": "Whit Monday",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2025-06-19",
         "name": "Corpus Christi",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2025-08-15",
         "name": "Assumption Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2025-12-08",
         "name": "Immaculate Conception",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2025-12-24",
+        "early_close_time": "12:00",
         "name": "Christmas Eve",
-        "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "early_close_time": "12:00"
+        "status": "early_close"
       },
       {
         "date": "2025-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2025-12-26",
         "name": "St. Stephen's Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2025-12-31",
+        "early_close_time": "12:00",
         "name": "New Year's Eve",
-        "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "early_close_time": "12:00"
+        "status": "early_close"
       },
       {
         "date": "2026-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2026-01-06",
         "name": "Epiphany",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2026-04-06",
         "name": "Easter Monday",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2026-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2026-05-14",
         "name": "Ascension Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2026-05-25",
         "name": "Whit Monday",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2026-06-04",
         "name": "Corpus Christi",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2026-10-26",
         "name": "National Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2026-12-08",
         "name": "Immaculate Conception",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2026-12-24",
+        "early_close_time": "12:00",
         "name": "Christmas Eve",
-        "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "early_close_time": "12:00"
+        "status": "early_close"
       },
       {
         "date": "2026-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2026-12-31",
+        "early_close_time": "12:00",
         "name": "New Year's Eve",
-        "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "early_close_time": "12:00"
+        "status": "early_close"
       },
       {
         "date": "2027-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2027-01-06",
         "name": "Epiphany",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2027-03-29",
         "name": "Easter Monday",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2027-05-06",
         "name": "Ascension Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2027-05-17",
         "name": "Whit Monday",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2027-05-27",
         "name": "Corpus Christi",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2027-10-26",
         "name": "National Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2027-11-01",
         "name": "All Saints' Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2027-12-08",
         "name": "Immaculate Conception",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2027-12-24",
+        "early_close_time": "12:00",
         "name": "Christmas Eve",
-        "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "early_close_time": "12:00"
+        "status": "early_close"
       },
       {
         "date": "2027-12-31",
+        "early_close_time": "12:00",
         "name": "New Year's Eve",
-        "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "early_close_time": "12:00"
+        "status": "early_close"
       },
       {
         "date": "2028-01-06",
         "name": "Epiphany",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2028-04-17",
         "name": "Easter Monday",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2028-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2028-05-25",
         "name": "Ascension Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2028-06-05",
         "name": "Whit Monday",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2028-06-15",
         "name": "Corpus Christi",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2028-08-15",
         "name": "Assumption Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2028-10-26",
         "name": "National Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2028-11-01",
         "name": "All Saints' Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2028-12-08",
         "name": "Immaculate Conception",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2028-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2028-12-26",
         "name": "St. Stephen's Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-04-02",
         "name": "Easter Monday",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-05-10",
         "name": "Ascension Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-05-21",
         "name": "Whit Monday",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-05-31",
         "name": "Corpus Christi",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-08-15",
         "name": "Assumption Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-10-26",
         "name": "National Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-11-01",
         "name": "All Saints' Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-12-24",
+        "early_close_time": "12:00",
         "name": "Christmas Eve",
-        "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "early_close_time": "12:00"
+        "status": "early_close"
       },
       {
         "date": "2029-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-12-26",
         "name": "St. Stephen's Day",
-        "status": "closed",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/"
+        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
+        "status": "closed"
       },
       {
         "date": "2029-12-31",
+        "early_close_time": "12:00",
         "name": "New Year's Eve",
-        "status": "early_close",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "early_close_time": "12:00"
+        "status": "early_close"
       }
     ],
     "recurrence_rules": [
       {
-        "rule": "easter_offset",
-        "offset_days": 1,
         "name": "Easter Monday",
+        "offset_days": 1,
+        "rule": "easter_offset",
         "status": "closed"
       },
       {
-        "rule": "easter_offset",
-        "offset_days": 39,
         "name": "Ascension Day",
+        "offset_days": 39,
+        "rule": "easter_offset",
         "status": "closed"
       },
       {
-        "rule": "easter_offset",
-        "offset_days": 50,
         "name": "Whit Monday",
-        "status": "closed"
-      },
-      {
+        "offset_days": 50,
         "rule": "easter_offset",
-        "offset_days": 60,
+        "status": "closed"
+      },
+      {
         "name": "Corpus Christi",
+        "offset_days": 60,
+        "rule": "easter_offset",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
-        "month": 1,
         "day": 1,
+        "month": 1,
         "name": "New Year's Day",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
-        "month": 1,
         "day": 6,
+        "month": 1,
         "name": "Epiphany",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
+        "day": 1,
         "month": 5,
-        "day": 1,
         "name": "Labour Day",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
-        "month": 8,
         "day": 15,
+        "month": 8,
         "name": "Assumption Day",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
+        "day": 26,
         "month": 10,
-        "day": 26,
         "name": "National Day",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
-        "month": 11,
         "day": 1,
+        "month": 11,
         "name": "All Saints' Day",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
-        "month": 12,
         "day": 8,
+        "month": 12,
         "name": "Immaculate Conception",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
-        "month": 12,
         "day": 24,
+        "early_close_time": "12:00",
+        "month": 12,
         "name": "Christmas Eve",
-        "status": "early_close",
-        "early_close_time": "12:00"
+        "rule": "fixed_date",
+        "status": "early_close"
       },
       {
-        "rule": "fixed_date",
-        "month": 12,
         "day": 25,
+        "month": 12,
         "name": "Christmas Day",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
-        "month": 12,
         "day": 26,
+        "month": 12,
         "name": "St. Stephen's Day",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
-        "month": 12,
         "day": 31,
+        "early_close_time": "12:00",
+        "month": 12,
         "name": "New Year's Eve",
-        "status": "early_close",
-        "early_close_time": "12:00"
+        "rule": "fixed_date",
+        "status": "early_close"
       }
     ]
   },
-  "ad_hoc_closures": [],
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
-  ],
+  "mic": "XWBO",
+  "name": "Vienna Stock Exchange",
+  "regular_hours": {
+    "close": "17:30",
+    "open": "09:00"
+  },
+  "sessions": [],
+  "timezone": "Europe/Vienna",
   "weekend_days": [
     5,
     6

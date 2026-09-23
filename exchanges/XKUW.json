@@ -1,269 +1,271 @@
 {
+  "ad_hoc_closures": [],
   "code": "XKUW",
-  "name": "Bursa Kuwait",
-  "mic": "XKUW",
-  "timezone": "Asia/Kuwait",
-  "regular_hours": {
-    "open": "09:00",
-    "close": "12:30"
-  },
-  "sessions": [
-    {
-      "type": "lunch_break",
-      "open": "12:30",
-      "close": "13:00"
-    }
+  "country": "Kuwait",
+  "country_code": "KW",
+  "generation_range": [
+    "2025-01-01",
+    "2029-07-24"
   ],
   "holidays": {
     "explicit": [
       {
         "date": "2025-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2025-02-25",
         "name": "National Day",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2025-02-26",
         "name": "Liberation Day",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2025-03-30",
         "name": "Eid al-Fitr",
-        "status": "closed",
+        "predicted": false,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": false
+        "status": "closed"
       },
       {
         "date": "2025-03-31",
         "name": "Eid al-Fitr Holiday",
-        "status": "closed",
+        "predicted": false,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": false
+        "status": "closed"
       },
       {
         "date": "2025-04-01",
         "name": "Eid al-Fitr Holiday",
-        "status": "closed",
+        "predicted": false,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": false
+        "status": "closed"
       },
       {
         "date": "2025-04-02",
         "name": "Eid al-Fitr Holiday",
-        "status": "closed",
+        "predicted": false,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": false
+        "status": "closed"
       },
       {
         "date": "2025-06-26",
         "name": "Islamic New Year",
-        "status": "closed",
+        "predicted": false,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": false
+        "status": "closed"
       },
       {
         "date": "2025-09-04",
         "name": "Prophet's Birthday",
-        "status": "closed",
+        "predicted": false,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": false
+        "status": "closed"
       },
       {
         "date": "2026-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2026-02-25",
         "name": "National Day",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2026-02-26",
         "name": "Liberation Day",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2027-02-25",
         "name": "National Day",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2027-02-28",
         "name": "Liberation Day (observed)",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2027-03-09",
         "name": "Eid al-Fitr (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2027-03-10",
         "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2027-03-11",
         "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2027-05-16",
         "name": "Eid al-Adha (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2027-05-17",
         "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2027-06-06",
         "name": "Islamic New Year (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2027-08-15",
         "name": "Prophet's Birthday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2028-01-02",
         "name": "New Year's Day (observed)",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2028-02-27",
         "name": "Liberation Day (observed)",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2028-02-28",
         "name": "Eid al-Fitr Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2028-05-07",
         "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-02-25",
         "name": "National Day",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-02-26",
         "name": "Liberation Day",
-        "status": "closed",
-        "source_url": "https://www.boursakuwait.com.kw/trading-calendar"
+        "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-02-15",
         "name": "Eid al-Fitr (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-04-24",
         "name": "Eid al-Adha (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-04-25",
         "name": "Eid al-Adha Holiday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-05-14",
         "name": "Islamic New Year (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       },
       {
         "date": "2029-07-24",
         "name": "Prophet's Birthday (predicted)",
-        "status": "closed",
+        "predicted": true,
         "source_url": "https://www.boursakuwait.com.kw/trading-calendar",
-        "predicted": true
+        "status": "closed"
       }
     ],
     "recurrence_rules": [
       {
-        "rule": "fixed_with_weekend_adjustment",
-        "month": 1,
         "day": 1,
+        "month": 1,
         "name": "New Year's Day",
+        "rule": "fixed_with_weekend_adjustment",
         "status": "closed"
       },
       {
-        "rule": "fixed_with_weekend_adjustment",
-        "month": 2,
         "day": 25,
+        "month": 2,
         "name": "National Day",
+        "rule": "fixed_with_weekend_adjustment",
         "status": "closed"
       },
       {
-        "rule": "fixed_with_weekend_adjustment",
-        "month": 2,
         "day": 26,
+        "month": 2,
         "name": "Liberation Day",
+        "rule": "fixed_with_weekend_adjustment",
         "status": "closed"
       }
     ]
   },
-  "ad_hoc_closures": [],
-  "generation_range": [
-    "2025-01-01",
-    "2029-07-24"
+  "mic": "XKUW",
+  "name": "Bursa Kuwait",
+  "regular_hours": {
+    "close": "12:30",
+    "open": "09:00"
+  },
+  "sessions": [
+    {
+      "close": "13:00",
+      "open": "12:30",
+      "type": "lunch_break"
+    }
   ],
+  "timezone": "Asia/Kuwait",
   "weekend_days": [
     4,
     5

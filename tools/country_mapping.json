@@ -1,0 +1,298 @@
+{
+  "XAMS": {
+    "country": "Netherlands (Kingdom of the)",
+    "country_code": "NL"
+  },
+  "XASX": {
+    "country": "Australia",
+    "country_code": "AU"
+  },
+  "XATH": {
+    "country": "Greece",
+    "country_code": "GR"
+  },
+  "XBAH": {
+    "country": "Bahrain",
+    "country_code": "BH"
+  },
+  "XBDA": {
+    "country": "Bermuda",
+    "country_code": "BM"
+  },
+  "XBEK": {
+    "country": "Lebanon",
+    "country_code": "LB"
+  },
+  "XBKK": {
+    "country": "Thailand",
+    "country_code": "TH"
+  },
+  "XBOG": {
+    "country": "Colombia",
+    "country_code": "CO"
+  },
+  "XBOM": {
+    "country": "India",
+    "country_code": "IN"
+  },
+  "XBRU": {
+    "country": "Belgium",
+    "country_code": "BE"
+  },
+  "XBRV": {
+    "country": "C\u00f4te d\u2019Ivoire",
+    "country_code": "CI"
+  },
+  "XBSP": {
+    "country": "Brazil",
+    "country_code": "BR"
+  },
+  "XBUD": {
+    "country": "Hungary",
+    "country_code": "HU"
+  },
+  "XBUE": {
+    "country": "Argentina",
+    "country_code": "AR"
+  },
+  "XBUL": {
+    "country": "Bulgaria",
+    "country_code": "BG"
+  },
+  "XCAI": {
+    "country": "Egypt",
+    "country_code": "EG"
+  },
+  "XCAS": {
+    "country": "Morocco",
+    "country_code": "MA"
+  },
+  "XCAY": {
+    "country": "Cayman Islands",
+    "country_code": "KY"
+  },
+  "XCOL": {
+    "country": "Sri Lanka",
+    "country_code": "LK"
+  },
+  "XCSE": {
+    "country": "Denmark",
+    "country_code": "DK"
+  },
+  "XDFM": {
+    "country": "United Arab Emirates",
+    "country_code": "AE"
+  },
+  "XDHA": {
+    "country": "Bangladesh",
+    "country_code": "BD"
+  },
+  "XDUB": {
+    "country": "Ireland",
+    "country_code": "IE"
+  },
+  "XETR": {
+    "country": "Germany",
+    "country_code": "DE"
+  },
+  "XGSE": {
+    "country": "Ghana",
+    "country_code": "GH"
+  },
+  "XHEL": {
+    "country": "Finland",
+    "country_code": "FI"
+  },
+  "XHKG": {
+    "country": "China, Hong Kong Special Administrative Region",
+    "country_code": "HK"
+  },
+  "XICE": {
+    "country": "Iceland",
+    "country_code": "IS"
+  },
+  "XIST": {
+    "country": "T\u00fcrkiye",
+    "country_code": "TR"
+  },
+  "XJKT": {
+    "country": "Indonesia",
+    "country_code": "ID"
+  },
+  "XJSE": {
+    "country": "South Africa",
+    "country_code": "ZA"
+  },
+  "XKAR": {
+    "country": "Pakistan",
+    "country_code": "PK"
+  },
+  "XKLS": {
+    "country": "Malaysia",
+    "country_code": "MY"
+  },
+  "XKRX": {
+    "country": "Republic of Korea",
+    "country_code": "KR"
+  },
+  "XKUW": {
+    "country": "Kuwait",
+    "country_code": "KW"
+  },
+  "XLIM": {
+    "country": "Peru",
+    "country_code": "PE"
+  },
+  "XLIS": {
+    "country": "Portugal",
+    "country_code": "PT"
+  },
+  "XLIT": {
+    "country": "Lithuania",
+    "country_code": "LT"
+  },
+  "XLON": {
+    "country": "United Kingdom of Great Britain and Northern Ireland",
+    "country_code": "GB"
+  },
+  "XLUX": {
+    "country": "Luxembourg",
+    "country_code": "LU"
+  },
+  "XMAD": {
+    "country": "Spain",
+    "country_code": "ES"
+  },
+  "XMAL": {
+    "country": "Malta",
+    "country_code": "MT"
+  },
+  "XMEX": {
+    "country": "Mexico",
+    "country_code": "MX"
+  },
+  "XMOS": {
+    "country": "Russian Federation",
+    "country_code": "RU"
+  },
+  "XMUS": {
+    "country": "Oman",
+    "country_code": "OM"
+  },
+  "XNAS": {
+    "country": "United States of America",
+    "country_code": "US"
+  },
+  "XNBO": {
+    "country": "Kenya",
+    "country_code": "KE"
+  },
+  "XNSA": {
+    "country": "Nigeria",
+    "country_code": "NG"
+  },
+  "XNSE": {
+    "country": "India",
+    "country_code": "IN"
+  },
+  "XNYS": {
+    "country": "United States of America",
+    "country_code": "US"
+  },
+  "XNZE": {
+    "country": "New Zealand",
+    "country_code": "NZ"
+  },
+  "XOSL": {
+    "country": "Norway",
+    "country_code": "NO"
+  },
+  "XPAR": {
+    "country": "France",
+    "country_code": "FR"
+  },
+  "XPHS": {
+    "country": "Philippines",
+    "country_code": "PH"
+  },
+  "XPRA": {
+    "country": "Czechia",
+    "country_code": "CZ"
+  },
+  "XQSE": {
+    "country": "Qatar",
+    "country_code": "QA"
+  },
+  "XRIS": {
+    "country": "Latvia",
+    "country_code": "LV"
+  },
+  "XSAU": {
+    "country": "Saudi Arabia",
+    "country_code": "SA"
+  },
+  "XSES": {
+    "country": "Singapore",
+    "country_code": "SG"
+  },
+  "XSGO": {
+    "country": "Chile",
+    "country_code": "CL"
+  },
+  "XSHE": {
+    "country": "China",
+    "country_code": "CN"
+  },
+  "XSHG": {
+    "country": "China",
+    "country_code": "CN"
+  },
+  "XSTC": {
+    "country": "Viet Nam",
+    "country_code": "VN"
+  },
+  "XSTO": {
+    "country": "Sweden",
+    "country_code": "SE"
+  },
+  "XSWX": {
+    "country": "Switzerland",
+    "country_code": "CH"
+  },
+  "XTAD": {
+    "country": "United Arab Emirates",
+    "country_code": "AE"
+  },
+  "XTAI": {
+    "country": "Taiwan, Province of China",
+    "country_code": "TW"
+  },
+  "XTAL": {
+    "country": "Estonia",
+    "country_code": "EE"
+  },
+  "XTKS": {
+    "country": "Japan",
+    "country_code": "JP"
+  },
+  "XTSE": {
+    "country": "Canada",
+    "country_code": "CA"
+  },
+  "XTUN": {
+    "country": "Tunisia",
+    "country_code": "TN"
+  },
+  "XWAR": {
+    "country": "Poland",
+    "country_code": "PL"
+  },
+  "XWBO": {
+    "country": "Austria",
+    "country_code": "AT"
+  },
+  "XZAG": {
+    "country": "Croatia",
+    "country_code": "HR"
+  }
+}

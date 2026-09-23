@@ -1,253 +1,255 @@
 {
+  "ad_hoc_closures": [],
   "code": "XMAD",
-  "name": "Bolsa de Madrid",
-  "mic": "XMAD",
-  "timezone": "Europe/Madrid",
-  "regular_hours": {
-    "open": "09:00",
-    "close": "17:30"
-  },
+  "country": "Spain",
+  "country_code": "ES",
   "extended_hours": {
-    "pre_market": {
-      "open": "08:30",
-      "close": "09:00"
-    },
     "after_hours": {
-      "open": "17:30",
-      "close": "17:35"
+      "close": "17:35",
+      "open": "17:30"
+    },
+    "pre_market": {
+      "close": "09:00",
+      "open": "08:30"
     }
   },
-  "sessions": [
-    {
-      "type": "auction",
-      "at": "09:00"
-    },
-    {
-      "type": "auction",
-      "at": "17:30"
-    }
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
   ],
   "holidays": {
     "explicit": [
       {
         "date": "2025-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2025-04-18",
         "name": "Good Friday",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2025-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2025-12-24",
+        "early_close_time": "14:00",
         "name": "Christmas Eve",
-        "status": "early_close",
         "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "early_close_time": "14:00"
+        "status": "early_close"
       },
       {
         "date": "2025-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2025-12-26",
         "name": "Boxing Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2025-12-31",
+        "early_close_time": "14:00",
         "name": "New Year's Eve",
-        "status": "early_close",
         "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "early_close_time": "14:00"
+        "status": "early_close"
       },
       {
         "date": "2026-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2026-04-03",
         "name": "Good Friday",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2026-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2026-12-24",
+        "early_close_time": "14:00",
         "name": "Christmas Eve",
-        "status": "early_close",
         "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "early_close_time": "14:00"
+        "status": "early_close"
       },
       {
         "date": "2026-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2026-12-31",
+        "early_close_time": "14:00",
         "name": "New Year's Eve",
-        "status": "early_close",
         "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "early_close_time": "14:00"
+        "status": "early_close"
       },
       {
         "date": "2027-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2027-03-26",
         "name": "Good Friday",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2027-12-24",
+        "early_close_time": "14:00",
         "name": "Christmas Eve",
-        "status": "early_close",
         "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "early_close_time": "14:00"
+        "status": "early_close"
       },
       {
         "date": "2027-12-31",
-        "name": "New Year's Eve",
-        "status": "early_close",
         "early_close_time": "14:00",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "name": "New Year's Eve",
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "early_close"
       },
       {
         "date": "2028-04-14",
         "name": "Good Friday",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2028-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2028-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2028-12-26",
         "name": "Boxing Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-01-01",
         "name": "New Year's Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-03-30",
         "name": "Good Friday",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-05-01",
         "name": "Labour Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-12-24",
+        "early_close_time": "14:00",
         "name": "Christmas Eve",
-        "status": "early_close",
         "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "early_close_time": "14:00"
+        "status": "early_close"
       },
       {
         "date": "2029-12-25",
         "name": "Christmas Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-12-26",
         "name": "Boxing Day",
-        "status": "closed",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar"
+        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2029-12-31",
+        "early_close_time": "14:00",
         "name": "New Year's Eve",
-        "status": "early_close",
         "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "early_close_time": "14:00"
+        "status": "early_close"
       }
     ],
     "recurrence_rules": [
       {
-        "rule": "fixed_date",
+        "day": 1,
         "month": 1,
-        "day": 1,
         "name": "New Year's Day",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "easter_offset",
-        "offset_days": -2,
         "name": "Good Friday",
+        "offset_days": -2,
+        "rule": "easter_offset",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
-        "month": 5,
         "day": 1,
+        "month": 5,
         "name": "Labour Day",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
-        "month": 12,
         "day": 25,
+        "month": 12,
         "name": "Christmas Day",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
-        "rule": "fixed_date",
-        "month": 12,
         "day": 26,
+        "month": 12,
         "name": "Boxing Day",
+        "rule": "fixed_date",
         "status": "closed"
       }
     ]
   },
-  "ad_hoc_closures": [],
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
+  "mic": "XMAD",
+  "name": "Bolsa de Madrid",
+  "regular_hours": {
+    "close": "17:30",
+    "open": "09:00"
+  },
+  "sessions": [
+    {
+      "at": "09:00",
+      "type": "auction"
+    },
+    {
+      "at": "17:30",
+      "type": "auction"
+    }
   ],
+  "timezone": "Europe/Madrid",
   "weekend_days": [
     5,
     6
