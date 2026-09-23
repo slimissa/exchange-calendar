@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Fixed
+
+- **`scripts/release.sh` CI polling** — `gh run list` with no matching
+  runs returns `.status = null`, which was stringified rather than
+  treated as "pending". The poll loop died before tagging. Fixed to
+  normalize null to pending.
+- **`scripts/` was gitignored** — `scripts/release.sh` existed only on
+  one machine. Removed from `.gitignore`; the script is now tracked.
+
 ## [2.3.0] — 2026-09-23
 
 ### Added
@@ -43,14 +54,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **CI** (`validate.yml`) runs the cross-registry country-code check
   after the main validation step.
 
-### Fixed
-
-- **`scripts/release.sh` CI polling** — `gh run list` with no matching
-  runs returns `.status = null`, which was stringified rather than
-  treated as "pending". The poll loop died before tagging. Fixed to
-  normalize null to pending.
-- **`scripts/` was gitignored** — `scripts/release.sh` existed only on
-  one machine. Removed from `.gitignore`; the script is now tracked.
 - **XQSE** — removed 2 Islamic New Year entries citing
   `ummulqura.org.sa`, which is the Saudi calendar authority, not a
   Qatar Exchange source. `qe.com.qa` returns 404 and the apex domain
