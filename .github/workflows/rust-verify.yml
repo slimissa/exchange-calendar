@@ -8,6 +8,10 @@ on:
       - 'schema.json'
       - 'exchanges/**'
       - 'tools/build.py'
+      # Release commits always bump VERSION, and the Rust wrapper test
+      # loads the shipped calendar.json. Firing on VERSION means the
+      # release poll sees this workflow and gates on it.
+      - 'VERSION'
 
 jobs:
   rust-tests:

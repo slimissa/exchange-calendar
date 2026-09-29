@@ -2,7 +2,8 @@
 #
 # release.sh — cut a release for the exchange-calendar registry.
 #
-# Runs through: static preflight (orphan variables, workflow coverage) →
+# Runs through: static preflight (orphan variables, workflow coverage,
+# manifest precondition) →
 # preconditions → version bump → rebuild → local gate (incl. release
 # claims) → commit → push → poll CI → tag → push tag.
 #
@@ -203,6 +204,23 @@ cd "$(git rev-parse --show-toplevel)"
 ROOT="$(pwd)"
 say "Releasing exchange-calendar v$VERSION (dry_run=$DRY_RUN)"
 
+# Fail early if the target version has no entry in the claims manifest.
+# Ported from ISO 3166 v1.6.6. Catches a missing manifest entry at
+# preflight, before the version bump and rebuild mutate the tree.
+check_manifest_has_version() {
+    local manifest="$ROOT/tools/release_claims.json"
+    [[ -f "$manifest" ]] || die "claims manifest not found: $manifest"
+    if ! python3 - "$manifest" "$VERSION" <<'PYINNER'
+import json, sys
+path, version = sys.argv[1], sys.argv[2]
+sys.exit(0 if version in json.load(open(path)) else 1)
+PYINNER
+    then
+        die "version $VERSION missing from tools/release_claims.json"
+    fi
+    ok "claims manifest has entry for $VERSION"
+}
+
 # ── static preflight ───────────────────────────────────────────────
 # File-only checks; they need no git state and run before anything mutates
 # the tree.
@@ -212,6 +230,7 @@ check_no_orphan_variables
 ok "no orphan variables in release.sh"
 
 check_workflows_covered
+check_manifest_has_version
 
 # ── preconditions ──────────────────────────────────────────────────
 say "Checking preconditions"

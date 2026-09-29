@@ -12,7 +12,7 @@ signatures (em-dash, check mark, box-drawing round-trips) and one
 regex range covering every accented Latin-1 character.
 
   Literal signatures (three chars):
-    \\xe2\\x80\\x9a    from — (em-dash)
+    \\xe2\\x80\\x9a    ‚ (U+201A single low-9 quotation mark)
     \\xc3\\xa2\\xc2\\x88    from ✅ (check mark)
     \\xc3\\xa2\\xc2\\x80    from ├ ─ │ └ ┐ ┘ (box drawing)
 
@@ -93,6 +93,14 @@ MOJIBAKE_PATTERNS: tuple[bytes, ...] = (
     rb"\xc3\xa2\xc2\x88",
     rb"\xc3\xa2\xc2\x80",
     rb"\xc3[\x83-\x89]\xc2[\x80-\xbf]",
+    # cp1252 form: â€ (em-dash, right single quote, left double quote,
+    # right double quote, ellipsis, and the en-dash all share the
+    # prefix c3 a2 e2 82 ac). Produced when a UTF-8 file is decoded as
+    # Windows-1252 rather than Latin-1.
+    rb"\xc3\xa2\xe2\x82\xac",
+    # U+FFFD replacement character: planted by any tool that silently
+    # substitutes an undecodable byte. Legitimate in zero files here.
+    rb"\xef\xbf\xbd",
 )
 
 SKIP_MARKER = b"# mojibake-scan: skip"
