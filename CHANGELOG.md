@@ -7,17 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
-
-### Fixed
-
-- **`scripts/release.sh` CI polling** — `gh run list` with no matching
-  runs returns `.status = null`, which was stringified rather than
-  treated as "pending". The poll loop died before tagging. Fixed to
-  normalize null to pending.
-- **`scripts/` was gitignored** — `scripts/release.sh` existed only on
-  one machine. Removed from `.gitignore`; the script is now tracked.
-
 ## [2.4.0] — 2026-09-29
 
 ### Added
@@ -45,6 +34,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`rust-verify.yml`** — added `VERSION` to the push paths filter.
   It now fires on release commits, so the release poll gates on it
   instead of timing out after push and before tag.
+
+- **`scripts/release.sh` CI polling** — `gh run list` with no matching
+  runs returns `.status = null`, which was stringified rather than
+  treated as "pending". The poll loop died before tagging.
+- **`scripts/` was gitignored** — `scripts/release.sh` existed only on
+  one machine. Removed from `.gitignore`; the script is now tracked.
 
 ### Changed
 
