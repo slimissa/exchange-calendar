@@ -54,7 +54,10 @@ jobs:
       
       - name: Check country codes against ISO 3166
         run: python3 tools/check_country_codes.py --quiet
-        
+
+      - name: Check for mojibake
+        run: python3 tools/check_mojibake.py
+
       - name: Run Python tests
         run: |
           python3 -m pytest tests/ -v --tb=short
