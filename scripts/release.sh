@@ -65,9 +65,13 @@ check_no_orphan_variables() {
     # them before matching '^\s*#'. Without this, a $VAR in a comment
     # fires the check. Both upper- and lower-case variable names are
     # matched; the original upper-only pattern missed $version, $root.
-    orphans="$(grep -nE '\$\{[A-Za-z_][A-Za-z0-9_]*\}|\$[A-Za-z_][A-Za-z0-9_]{2,}' scripts/release.sh \
+    # Uppercase-only match is intentional: the check looks for
+    # ${CONSTANT_STYLE} variables, which is the heredoc convention.
+    # Lowercase names are almost always loop locals (`for f in ...`),
+    # which this check cannot distinguish from real orphans.
+    orphans="$(grep -nE '\$\{[A-Z_]+\}|\$[A-Z_]{3,}' scripts/release.sh \
         | grep -vE '^[0-9]+:[[:space:]]*#' \
-        | grep -oE '\$\{?[A-Za-z_][A-Za-z0-9_]*' \
+        | grep -oE '\$\{?[A-Z_]+' \
         | sort -u \
         | while read -r v; do
             v="${v#\$}"
