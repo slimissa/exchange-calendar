@@ -61,15 +61,19 @@ run() {
 # heredocs.
 check_no_orphan_variables() {
     local orphans
-    orphans="$(grep -nE '\$\{[A-Z_]+\}|\$[A-Z_]{3,}' scripts/release.sh \
-        | grep -vE '^\s*#' \
-        | grep -oE '\$\{?[A-Z_]+' \
+    # grep -n prefixes line numbers, so the comment filter must strip
+    # them before matching '^\s*#'. Without this, a $VAR in a comment
+    # fires the check. Both upper- and lower-case variable names are
+    # matched; the original upper-only pattern missed $version, $root.
+    orphans="$(grep -nE '\$\{[A-Za-z_][A-Za-z0-9_]*\}|\$[A-Za-z_][A-Za-z0-9_]{2,}' scripts/release.sh \
+        | grep -vE '^[0-9]+:[[:space:]]*#' \
+        | grep -oE '\$\{?[A-Za-z_][A-Za-z0-9_]*' \
         | sort -u \
         | while read -r v; do
             v="${v#\$}"
             v="${v#\{}"
             # A variable is defined if it appears as assignment anywhere.
-            if ! grep -qE "(^|\s)${v}=" scripts/release.sh; then
+            if ! grep -qE "(^|[[:space:]])${v}=" scripts/release.sh; then
                 echo "$v"
             fi
         done || true)"

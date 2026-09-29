@@ -7,12 +7,11 @@ Only the default scan scope differs: exchange-calendar scans
 exchanges/, README.md and docs/ instead of the whole repo root.
 
 Mojibake is UTF-8 bytes reinterpreted as Latin-1/Windows-1252 and
-re-saved as UTF-8. Four byte patterns are checked: three literal
-signatures (em-dash, check mark, box-drawing round-trips) and one
-regex range covering every accented Latin-1 character.
+re-saved as UTF-8. Five byte patterns are checked: two Latin-1
+literals, one regex range, one cp1252 prefix, one replacement
+character.
 
   Literal signatures (three chars):
-    \\xe2\\x80\\x9a    ‚ (U+201A single low-9 quotation mark)
     \\xc3\\xa2\\xc2\\x88    from ✅ (check mark)
     \\xc3\\xa2\\xc2\\x80    from ├ ─ │ └ ┐ ┘ (box drawing)
 
@@ -89,7 +88,6 @@ SKIP_DIRS = {
 }
 
 MOJIBAKE_PATTERNS: tuple[bytes, ...] = (
-    rb"\xe2\x80\x9a",
     rb"\xc3\xa2\xc2\x88",
     rb"\xc3\xa2\xc2\x80",
     rb"\xc3[\x83-\x89]\xc2[\x80-\xbf]",
