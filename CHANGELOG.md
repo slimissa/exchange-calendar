@@ -18,6 +18,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`scripts/` was gitignored** — `scripts/release.sh` existed only on
   one machine. Removed from `.gitignore`; the script is now tracked.
 
+## [2.4.0] — 2026-09-29
+
+### Added
+
+- **`tools/check_mojibake.py`** — UTF-8/Latin-1 round-trip detector,
+  ported from ISO 3166 v1.6.7, extended with cp1252 and U+FFFD
+  signatures the upstream version misses.
+- **`tools/check_release_claims.py`** + `tools/release_claims.json`
+  — release-claims gate, ported from ISO 3166 v1.6.7.
+- **`tools/check_snapshot_freshness.py`** +
+  `tools/iso3166_snapshot.meta.json` — freshness metadata for the
+  vendored ISO 3166 snapshot.
+- **`RELEASE_PATTERN.md`** — three-registry convention document at
+  repo root.
+- **Orphan preflight** in `scripts/release.sh` — fails if a heredoc
+  references an undefined variable.
+- **Manifest precondition** in `scripts/release.sh` — fails at
+  preflight if the target version is missing from
+  `release_claims.json`.
+- **Workflow-coverage check** in `scripts/release.sh` — the poll list
+  is verified against `.github/workflows/` at release time.
+
+### Fixed
+
+- **`rust-verify.yml`** — added `VERSION` to the push paths filter.
+  It now fires on release commits, so the release poll gates on it
+  instead of timing out after push and before tag.
+
+### Changed
+
+- **`validate.yml`** — two new steps: mojibake check (after the
+  cross-registry check) and snapshot freshness (after mojibake).
+
 ## [2.3.0] — 2026-09-23
 
 ### Added
