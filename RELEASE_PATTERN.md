@@ -511,7 +511,7 @@ Reviewed by:
 - ISO 4217 (`slimissa/iso4217`) — 2026-09-27
 - ISO 3166 (`slimissa/iso3166`) — 2026-09-27
 - Exchange Calendar (`slimissa/exchange-calendar`) — 2026-09-29, reviewed at v2.3.0;
-  adoption is on `main` but not yet in a tagged release
+  adopted in v2.4.0
 
 ## Review history format
 
