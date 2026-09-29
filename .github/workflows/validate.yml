@@ -58,6 +58,9 @@ jobs:
       - name: Check for mojibake
         run: python3 tools/check_mojibake.py
 
+      - name: Check ISO 3166 snapshot freshness
+        run: python3 tools/check_snapshot_freshness.py
+
       - name: Run Python tests
         run: |
           python3 -m pytest tests/ -v --tb=short
