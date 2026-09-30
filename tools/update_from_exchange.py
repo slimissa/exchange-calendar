@@ -31,7 +31,7 @@ import time
 from abc import ABC, abstractmethod
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from enum import Enum
 from functools import wraps
 from pathlib import Path
@@ -53,6 +53,12 @@ try:
     HAS_PDFPLUMBER = True
 except ImportError:
     HAS_PDFPLUMBER = False
+
+# Path to the per-fetcher provenance manifest. Written by
+# ExchangeFetcher._record_manifest on every fetch.
+_FETCHER_MANIFEST_PATH = (
+    Path(__file__).resolve().parent.parent / "fetcher_manifest.json"
+)
 
 try:
     import aiohttp
@@ -343,6 +349,45 @@ class ExchangeFetcher(ABC):
         from datetime import date as _date
         return date_str > _date.today().isoformat()
 
+    # Freshness window for this fetcher's source, in days. Overridden
+    # per subclass based on the source's real publication cadence.
+    MAX_AGE_DAYS: int = 90
+
+    def _record_manifest(self, content, status: str = "ok") -> None:
+        """Record this fetch in fetcher_manifest.json.
+
+        No-op when the manifest does not exist, when content is not
+        bytes, or when FETCHER_MANIFEST_DISABLE is set (the autouse
+        test fixture sets it).
+        """
+        import os
+        if os.environ.get("FETCHER_MANIFEST_DISABLE"):
+            return
+        if not isinstance(content, (bytes, bytearray)):
+            return
+
+        manifest_path = _FETCHER_MANIFEST_PATH
+        if not manifest_path.exists():
+            return
+        try:
+            manifest = json.loads(manifest_path.read_text())
+        except (json.JSONDecodeError, OSError):
+            return
+
+        b = bytes(content) if content else b""
+        entry = {
+            "fetched_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "source_url": self.source_url,
+            "sha256": hashlib.sha256(b).hexdigest() if b else None,
+            "bytes": len(b),
+            "max_age_days": self.MAX_AGE_DAYS,
+            "status": status,
+        }
+        manifest.setdefault("fetches", {})[self.mic] = entry
+        tmp = manifest_path.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+        tmp.replace(manifest_path)
+
     def __init__(
         self,
         mic: str,
@@ -436,6 +481,7 @@ class ExchangeFetcher(ABC):
             )
             response.raise_for_status()
             self.rate_limiter.mark_request(self.mic)
+            self._record_manifest(response.content, status='ok')
             return response.text
         except requests.exceptions.Timeout:
             logger.error(f"Timeout fetching {self.mic}")
@@ -478,6 +524,7 @@ class ExchangeFetcher(ABC):
             )
             response.raise_for_status()
             self.rate_limiter.mark_request(self.mic)
+            self._record_manifest(response.content, status='ok')
             return response.content
         except requests.exceptions.Timeout:
             logger.error(f"Timeout fetching {self.mic}")
@@ -565,6 +612,9 @@ class PDFFetcher(ExchangeFetcher):
 
 
 class NYSEFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for NYSE holidays.
 
@@ -772,6 +822,9 @@ class NYSEFetcher(ExchangeFetcher):
 
 
 class NASDAQFetcher(NYSEFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for NASDAQ (XNAS) holidays.
 
@@ -856,6 +909,9 @@ class NASDAQFetcher(NYSEFetcher):
 
 
 class LSEFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for London Stock Exchange (XLON) holidays.
 
@@ -951,6 +1007,9 @@ class LSEFetcher(ExchangeFetcher):
 
 
 class XETRFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Deutsche Boerse Xetra (XETR) holidays.
 
@@ -1072,6 +1131,9 @@ class XETRFetcher(ExchangeFetcher):
 
 
 class ASXFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Australian Securities Exchange (XASX) holidays.
 
@@ -1242,6 +1304,9 @@ class ASXFetcher(ExchangeFetcher):
 
 
 class EuronextFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Shared fetcher for Euronext markets (XPAR Paris, XAMS Amsterdam, etc).
 
@@ -1474,6 +1539,9 @@ class EuronextOsloFetcher(EuronextFetcher):
 
 
 class TokyoFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Tokyo Stock Exchange / JPX (XTKS) holidays.
 
@@ -1589,6 +1657,9 @@ class TokyoFetcher(ExchangeFetcher):
 
 
 class SSEFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Shanghai Stock Exchange (XSHG) holidays.
 
@@ -1737,6 +1808,9 @@ class SSEFetcher(ExchangeFetcher):
 
 
 class SZSEFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Shenzhen Stock Exchange (XSHE) holidays.
 
@@ -1919,6 +1993,9 @@ class SZSEFetcher(ExchangeFetcher):
 
 
 class ViennaFetcher(PDFFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Vienna Stock Exchange (XWBO) holidays.
 
@@ -2035,6 +2112,9 @@ class ViennaFetcher(PDFFetcher):
 
 
 class WarsawFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Warsaw Stock Exchange (XWAR) holidays.
 
@@ -2192,6 +2272,9 @@ class WarsawFetcher(ExchangeFetcher):
 
 
 class PragueFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Prague Stock Exchange (XPRA) holidays.
 
@@ -2289,6 +2372,9 @@ class PragueFetcher(ExchangeFetcher):
 
 
 class BudapestFetcher(PDFFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Budapest Stock Exchange (XBUD) holidays.
 
@@ -2391,6 +2477,9 @@ class BudapestFetcher(PDFFetcher):
 
 
 class NasdaqNordicFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Shared fetcher for Nasdaq Nordic markets (XSTO Stockholm, XHEL Helsinki,
     XCSE Copenhagen, XICE Iceland).
@@ -2584,6 +2673,9 @@ class IcelandFetcher(NasdaqNordicFetcher):
 
 
 class NasdaqBalticFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Shared fetcher for Nasdaq Baltic markets (XTAL Tallinn, XRIS Riga,
     XLIT Vilnius).
@@ -2722,6 +2814,9 @@ class VilniusFetcher(NasdaqBalticFetcher):
 
 
 class HKEXFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Hong Kong Exchanges and Clearing (XHKG) holidays.
 
@@ -2842,6 +2937,7 @@ class HKEXFetcher(ExchangeFetcher):
             )
             response.raise_for_status()
             self.rate_limiter.mark_request(self.mic)
+            self._record_manifest(response.content, status='ok')
             return response.text
         except requests.exceptions.Timeout:
             logger.error(f"Timeout fetching {self.mic}")
@@ -2959,6 +3055,9 @@ class HKEXFetcher(ExchangeFetcher):
 
 
 class TSXFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Toronto Stock Exchange (XTSE) holidays.
 
@@ -3079,6 +3178,9 @@ class TSXFetcher(ExchangeFetcher):
 
 
 class BMEMadridFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for BME/Bolsa de Madrid (XMAD) holidays.
 
@@ -3194,6 +3296,9 @@ class BMEMadridFetcher(ExchangeFetcher):
 
 
 class SaudiExchangeFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Saudi Exchange / Tadawul (XSAU) holidays.
 
@@ -3319,6 +3424,7 @@ class SaudiExchangeFetcher(ExchangeFetcher):
             )
             response.raise_for_status()
             self.rate_limiter.mark_request(self.mic)
+            self._record_manifest(response.content, status='ok')
             return response.text
         except requests.exceptions.Timeout:
             logger.error(f"Timeout fetching {self.mic}")
@@ -3454,6 +3560,9 @@ class SaudiExchangeFetcher(ExchangeFetcher):
 
 
 class XDFMFetcher(PDFFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Dubai Financial Market (XDFM) holidays.
 
@@ -3571,6 +3680,9 @@ class XDFMFetcher(PDFFetcher):
 
 
 class BoursaKuwaitFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Boursa Kuwait (XKUW) holidays.
 
@@ -3691,6 +3803,9 @@ class BoursaKuwaitFetcher(ExchangeFetcher):
 
 
 class MOEXFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Moscow Exchange (XMOS) holidays.
 
@@ -3818,6 +3933,9 @@ class MOEXFetcher(ExchangeFetcher):
 
 
 class BMVMexicoFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Bolsa Mexicana de Valores (XMEX) holidays.
 
@@ -3931,6 +4049,9 @@ class BMVMexicoFetcher(ExchangeFetcher):
 
 
 class BymaArgentinaFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Bolsas y Mercados Argentinos (XBUE) holidays.
 
@@ -4096,6 +4217,9 @@ class BymaArgentinaFetcher(ExchangeFetcher):
 
 
 class B3BrazilFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for B3 - Brasil Bolsa Balcao (XBSP) holidays.
 
@@ -4273,6 +4397,9 @@ class B3BrazilFetcher(ExchangeFetcher):
 
 
 class HOSEVietnamFetcher(PDFFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Ho Chi Minh Stock Exchange (XSTC) holidays.
 
@@ -4413,6 +4540,9 @@ class HOSEVietnamFetcher(PDFFetcher):
 
 
 class NigeriaExchangeFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Nigerian Exchange Group (XNSA) holidays.
 
@@ -4518,6 +4648,9 @@ class NigeriaExchangeFetcher(ExchangeFetcher):
 
 
 class BRVMFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for BRVM (Bourse Régionale des Valeurs Mobilières) holidays,
     registered under MIC XBRV.
@@ -4619,6 +4752,9 @@ class BRVMFetcher(ExchangeFetcher):
 
 
 class ColomboFetcher(PDFFetcher):
+    # Source publishes approximately every 120 days.
+    MAX_AGE_DAYS = 120
+
     """
     Fetcher for Colombo Stock Exchange (XCOL) holidays.
 
@@ -4806,6 +4942,9 @@ class ColomboFetcher(PDFFetcher):
 
 
 class GhanaExchangeFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Ghana Stock Exchange (XGSE) holidays.
 
@@ -4939,6 +5078,9 @@ class GhanaExchangeFetcher(ExchangeFetcher):
 
 
 class BermudaExchangeFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Bermuda Stock Exchange (XBDA) holidays.
 
@@ -5064,6 +5206,9 @@ class BermudaExchangeFetcher(ExchangeFetcher):
 
 
 class CaymanExchangeFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Cayman Islands Stock Exchange (XCAY) holidays.
 
@@ -5205,6 +5350,9 @@ class CaymanExchangeFetcher(ExchangeFetcher):
 
 
 class LuxembourgExchangeFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Luxembourg Stock Exchange (XLUX) holidays.
 
@@ -5314,6 +5462,9 @@ class LuxembourgExchangeFetcher(ExchangeFetcher):
 
 
 class MaltaExchangeFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Malta Stock Exchange (XMAL) holidays.
 
@@ -5433,6 +5584,9 @@ class MaltaExchangeFetcher(ExchangeFetcher):
 
 
 class ZagrebExchangeFetcher(ExchangeFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
     """
     Fetcher for Zagreb Stock Exchange (XZAG) holidays.
 

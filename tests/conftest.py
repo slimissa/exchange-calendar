@@ -21,3 +21,14 @@ def fixture_as_test(tmp_path):
         shutil.copy(src, dst)
         return dst
     return _copy
+
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def _disable_fetcher_manifest(monkeypatch):
+    """Prevent ExchangeFetcher._record_manifest from writing to the
+    tracked fetcher_manifest.json during tests. Tests that exercise
+    the manifest write path pass a tmp manifest and unset this."""
+    monkeypatch.setenv("FETCHER_MANIFEST_DISABLE", "1")
+
