@@ -11,7 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- **`scripts/release.sh` polls every run, not the first.** The poll
+- **`scripts/release.sh` polls every run, not the first.** Landed
+  after v2.4.1 — the v2.4.1 tag shipped without it due to a no-op
+  commit. The fix is on `main` as of the commit following v2.4.1. The poll
   used `gh run list --limit 1`, which returns one run per workflow.
   A rerun or a simultaneous push and workflow_dispatch produces two
   runs on the same SHA; if the first is green and the second is red,
