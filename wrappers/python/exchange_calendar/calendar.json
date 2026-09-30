@@ -1685,7 +1685,7 @@
     },
     {
       "ad_hoc_closures": [],
-      "code": "XBEK",
+      "code": "XBEY",
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -1947,7 +1947,7 @@
         ],
         "generated": []
       },
-      "mic": "XBEK",
+      "mic": "XBEY",
       "name": "Beirut Stock Exchange",
       "regular_hours": {
         "close": "12:30",
