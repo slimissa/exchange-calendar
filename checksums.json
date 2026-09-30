@@ -88,7 +88,7 @@
     "tools/generate_checksums.py": "99e53706305fabf92ce4e6960d2f1a32c1c06d5a5939ffeb2cc8facb5a631565",
     "tools/generate_dates.py": "884e0fbb7791c1a8d668ed6dfa2e7b2ec2e449e51242a10ba774462676d97bef",
     "tools/live_fetcher_check.py": "fcb3e878b7980c6ebd5ab83fdacd6826f7e051979d76b30f07766d0c7d70aa80",
-    "tools/update_from_exchange.py": "d7cd89f5489b0dcf3607f36cead29f491862938b2efa253c6bb79a6bc3293541",
+    "tools/update_from_exchange.py": "51d701c2f5f23c3c4b0dc696449d1fdfeda0076c495a5710e9ed8fee12f11cf6",
     "tools/validate.py": "9e7250a5e21628a4855ef8dbdefd35441bc2e9f7b139ce09e8042573b498b827",
     "tools/verify_checksums.py": "ce94243ab814f1f44cb9c35a3aee998a14ced75aaaaf08d8c037d87440beb78d",
     "tools/verify_predicted_dates.py": "a3f0f12f5f6d05ba89cd7b8c8aee7ab96dad867ad5e4bb69d778df214b4d709a"
