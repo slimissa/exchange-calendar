@@ -233,7 +233,7 @@ git push
 For Western weekend exchanges (67 exchanges, including XDFM and XTAD — UAE moved to a Sat-Sun workweek in Jan 2022):
 - No Saturday or Sunday dates
 
-For Islamic weekend exchanges (7 exchanges: XSAU, XQSE, XBAH, XKUW, XMUS, XCAI, XDHA):
+For Islamic weekend exchanges (7 exchanges: XSAU, DSMD, XBAH, XKUW, XMUS, XCAI, XDHA):
 - No Friday or Saturday dates
 - Sunday is a working day
 
@@ -245,7 +245,7 @@ For Islamic weekend exchanges (7 exchanges: XSAU, XQSE, XBAH, XKUW, XMUS, XCAI, 
 | UK substitute days | XLON, XDUB |
 | No substitutes | XETR, XSWX, XWBO, Nordic, Baltic, Poland, Czech |
 | Open on civil holidays | Euronext (XPAR, XAMS, XBRU, XLIS), XMAD |
-| Islamic weekend (Fri-Sat) | XSAU, XQSE, XBAH, XKUW, XMUS, XCAI, XDHA |
+| Islamic weekend (Fri-Sat) | XSAU, DSMD, XBAH, XKUW, XMUS, XCAI, XDHA |
 | Western weekend despite Gulf region (Sat-Sun) | XDFM, XTAD (UAE moved to Sat-Sun in Jan 2022) |
 | Orthodox Easter | XATH, XBUL, XMOS |
 | Buddhist holidays | XBKK, XCOL |

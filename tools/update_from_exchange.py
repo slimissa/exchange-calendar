@@ -5564,7 +5564,7 @@ class ExchangeFetcherRegistry:
 
         # Tier 3 (Gulf/EMEA) -- 3 of 10 verified buildable so far
         # (XDFM, XKUW, XMOS); see docs/fetcher_verification.md and
-        # BLOCKED.md for the other 7 (XTAD, XBAH, XQSE, XCAI, XJSE, XIST
+        # BLOCKED.md for the other 7 (XTAD, XBAH, DSMD, XCAI, XJSE, XIST
         # blocked; XMUS not yet verified).
         self.register(XDFMFetcher())
         self.register(BoursaKuwaitFetcher())
@@ -5605,7 +5605,7 @@ class ExchangeFetcherRegistry:
         # Tier 7 (Africa/South Asia) -- 4 of 9 verified buildable
         # (XNSA, XBRV, XCOL), plus XSTC resolving the one Tier 6 carryover
         # (XSTC/hsx.vn). 5 blocked (XTUN, XCAS, XKAR, XDHA) or unverified
-        # (XNBO, XGSE). See docs/fetcher_verification.md and BLOCKED.md.
+        # (XNAI, XGSE). See docs/fetcher_verification.md and BLOCKED.md.
         self.register(HOSEVietnamFetcher())
         self.register(NigeriaExchangeFetcher())
         self.register(BRVMFetcher())
@@ -5613,7 +5613,7 @@ class ExchangeFetcherRegistry:
 
         # Tier 8 (small/island markets), 2026-09-06 -- 6 of 8 verified
         # buildable (XBDA, XCAY, XLUX, XMAL, XZAG), plus XGSE resolving the
-        # one Tier 7 carryover. 4 blocked (XBUL, XBEK, XNZE, XNBO). This is
+        # one Tier 7 carryover. 4 blocked (XBUL, XBEY, XNZE, XNAI). This is
         # the final tier -- see docs/fetcher_verification.md and BLOCKED.md.
         self.register(GhanaExchangeFetcher())
         self.register(BermudaExchangeFetcher())
