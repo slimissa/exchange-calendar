@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.6.0] — 2026-9-30
+
+### Added
+
+- **`fetcher_manifest.json`** — per-fetcher provenance record.
+  Populated on fetch with `{fetched_at, source_url, sha256, bytes,
+  max_age_days, status}`. Answers "did October's refresh run?" with
+  one file read, and "did we parse the same bytes we fetched?" with
+  a sha256 comparison.
+- **`tools/check_fetcher_freshness.py`** — reads the manifest, fails
+  on any entry whose `fetched_at + max_age_days` is in the past, or
+  whose `status` is `failed`. Exit 0 fresh, 1 stale, 2 fatal.
+- **`tests/test_check_fetcher_freshness.py`** — ~15 tests.
+
+### Changed
+
+- **`ExchangeFetcher.MAX_AGE_DAYS`** — per-class freshness window.
+  Default 90 days; overridden per source with a one-line comment
+  naming the cadence.
+- **`ExchangeFetcher.fetch()`** — computes SHA-256 of the raw
+  response bytes and records a manifest entry, on both success and
+  failure paths.
+- **CI** (`validate.yml`) runs the fetcher freshness check after the
+  MIC check.
+
 ## [2.5.1] — 2026-09-30
 
 ### Fixed
