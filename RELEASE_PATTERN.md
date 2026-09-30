@@ -489,6 +489,11 @@ The first escape — prose description — is a documentation
 discipline, not a mechanical rule. It applies to any pattern-based
 check, not just mojibake.
 
+The signature set originated at ISO 3166 v1.5.3 and was extended by
+Exchange Calendar at v2.4.0: the U+201A pattern was removed as a
+false positive on legitimate content, and cp1252 (`c3 a2 e2 82 ac`)
+and U+FFFD were added. ISO 3166 merged the same change at v1.6.8;
+ISO 4217 and ISO 10383 apply it on next touch.
 ---
 
 ## What this document does not cover
