@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.5.1] — 2026-09-30
+
+### Fixed
+
+- **`scripts/release.sh` poll reads every run, not the first.**
+  `gh run list --limit 1` returned one run per workflow. A rerun or a
+  simultaneous push and workflow_dispatch produces multiple runs on
+  the same SHA; the poll could return green on one while a sibling
+  was pending or failed. Now reads all runs and requires every
+  conclusion to be `success`.
+- **`scripts/release.sh` tolerates transient failure reports.** During
+  the v2.5.0 release, GitHub's API reported a non-success conclusion
+  on the release commit's run, which then settled to success seconds
+  later. The poll died and required a manual tag. A one-shot 20-second
+  re-check now absorbs this race before the poll gives up.
+
+### Added
+
+- **`tests/test_check_mic_codes.py`** — 19 tests for
+  `tools/check_mic_codes.py`. The suite was written in the v2.5.0
+  cycle but skipped by a `git add` path mismatch; this release lands
+  it.
+
 ## [2.5.0] — 2026-9-30
 
 ### Added
