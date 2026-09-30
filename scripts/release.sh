@@ -342,34 +342,31 @@ say "Polling CI on $SHA (timeout ${POLL_TIMEOUT}s)"
 poll_workflow() {
     local workflow="$1"
     local deadline=$(( $(date +%s) + POLL_TIMEOUT ))
-    local status="" conclusion=""
     while :; do
-        # Query. An empty result set produces "null" for both fields; treat
-        # that the same as "no run visible yet" and keep waiting.
-        local line
-        line="$(gh run list --workflow="$workflow" --commit="$SHA" --limit 1 \
-                    --json status,conclusion \
-                    --jq '.[0] | "\(.status // "pending") \(.conclusion // "")"' \
-                    2>/dev/null || echo "pending ")"
-        read -r status conclusion <<< "$line"
+        local json
+        json="$(gh run list --workflow="$workflow" --commit="$SHA" \
+                    --limit 100 --json status,conclusion,databaseId \
+                    2>/dev/null || echo '[]')"
 
-        case "$status" in
-            completed)
-                if [[ "$conclusion" == "success" ]]; then
-                    ok "$workflow: $conclusion"
-                    return 0
-                fi
-                die "$workflow finished with conclusion=$conclusion on $SHA"
-                ;;
-            pending|queued|in_progress|requested|waiting|"")
-                : # keep waiting
-                ;;
-            *)
-                die "$workflow: unexpected status=$status on $SHA"
-                ;;
-        esac
+        local total pending failed first_fail
+        total="$(jq 'length'                          <<< "$json")"
+        pending="$(jq '[.[] | select(.status != "completed")] | length' <<< "$json")"
+        failed="$(jq  '[.[] | select(.conclusion != null and .conclusion != "success")] | length' <<< "$json")"
+        first_fail="$(jq -r '[.[] | select(.conclusion != null and .conclusion != "success")][0].databaseId // ""' <<< "$json")"
+
+        if (( total == 0 )); then
+            printf '\033[1;33m  …\033[0m %s: no run visible yet\n' "$workflow"
+        elif (( failed > 0 )); then
+            die "$workflow: run $first_fail conclusion != success on $SHA"
+        elif (( pending > 0 )); then
+            printf '\033[1;33m  …\033[0m %s: %d run(s), %d pending\n' "$workflow" "$total" "$pending"
+        else
+            ok "$workflow: $total run(s), all success"
+            return 0
+        fi
+
         if (( $(date +%s) > deadline )); then
-            die "$workflow: timed out after ${POLL_TIMEOUT}s on $SHA (last status=$status)"
+            die "$workflow: timed out after ${POLL_TIMEOUT}s on $SHA"
         fi
         sleep "$POLL_INTERVAL"
     done
