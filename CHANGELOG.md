@@ -7,7 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [2.4.1] — YYYY-MM-DD
+## [2.4.2] — 2026-9-30
+
+### Fixed
+
+- **Three MICs corrected to their registered codes.**
+  - `XBEK` → `XBEY` (Beirut Stock Exchange)
+  - `XNBO` → `XNAI` (Nairobi Stock Exchange)
+  - `XQSE` → `DSMD` (Qatar Stock Exchange)
+
+  SWIFT's 2026-09-23 ISO 10383 file registers these venues under the
+  codes above; EC's files carried codes that did not resolve. Files
+  renamed, `code` and `mic` fields updated, tests updated.
+
+### Added
+
+- **`tools/check_mic_codes.py`** — cross-registry check against the
+  vendored ISO 10383 snapshot (`tools/iso10383_snapshot.json`,
+  2,883 MICs, all active/expired, operating/segment).
+- **`tools/mic_allowlist.json`** — allowlist for MICs not in the
+  registry. Empty after this correction.
+
+Resolves the three MIC gaps documented in ISO 10383's ADR 0007.
+
+## [2.4.1] — 2026-9-30
+
 
 ### Fixed
 
