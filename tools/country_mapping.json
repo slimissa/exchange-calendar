@@ -1,4 +1,8 @@
 {
+  "DSMD": {
+    "country": "Qatar",
+    "country_code": "QA"
+  },
   "XAMS": {
     "country": "Netherlands (Kingdom of the)",
     "country_code": "NL"
@@ -19,7 +23,7 @@
     "country": "Bermuda",
     "country_code": "BM"
   },
-  "XBEK": {
+  "XBEY": {
     "country": "Lebanon",
     "country_code": "LB"
   },
@@ -179,13 +183,13 @@
     "country": "Oman",
     "country_code": "OM"
   },
+  "XNAI": {
+    "country": "Kenya",
+    "country_code": "KE"
+  },
   "XNAS": {
     "country": "United States of America",
     "country_code": "US"
-  },
-  "XNBO": {
-    "country": "Kenya",
-    "country_code": "KE"
   },
   "XNSA": {
     "country": "Nigeria",
@@ -218,10 +222,6 @@
   "XPRA": {
     "country": "Czechia",
     "country_code": "CZ"
-  },
-  "XQSE": {
-    "country": "Qatar",
-    "country_code": "QA"
   },
   "XRIS": {
     "country": "Latvia",
