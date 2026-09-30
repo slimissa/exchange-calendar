@@ -58,6 +58,9 @@ jobs:
       - name: Check MICs against ISO 10383
         run: python3 tools/check_mic_codes.py --quiet
 
+      - name: Check fetcher freshness
+        run: python3 tools/check_fetcher_freshness.py --quiet
+
       - name: Check for mojibake
         run: python3 tools/check_mojibake.py
 
