@@ -2,5 +2,6 @@
   "_comment": "Machine-checkable claims per CHANGELOG version. Each entry is {file} or {file, contains}. scripts/release.sh runs tools/check_release_claims.py against the version being released; any failing claim stops the release. A version with no entry here is a hard error, so add an entry (an empty list is allowed) before releasing.",
   "2.4.0": [],
   "2.4.1": [],
-  "2.4.2": []
+  "2.4.2": [],
+  "2.5.0": []
 }
