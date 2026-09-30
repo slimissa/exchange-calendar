@@ -356,24 +356,43 @@ say "Polling CI on $SHA (timeout ${POLL_TIMEOUT}s)"
 poll_workflow() {
     local workflow="$1"
     local deadline=$(( $(date +%s) + POLL_TIMEOUT ))
+
     while :; do
-        local json
+        # Read every run for the SHA, not just the first. A rerun or a
+        # simultaneous push+dispatch produces multiple runs per workflow;
+        # the older "--limit 1" form returned green on whichever was
+        # newest while a sibling run could still be pending or failed.
+        local json total pending failed first_fail
         json="$(gh run list --workflow="$workflow" --commit="$SHA" \
                     --limit 100 --json status,conclusion,databaseId \
                     2>/dev/null || echo '[]')"
 
-        local total pending failed first_fail
-        total="$(jq 'length'                          <<< "$json")"
-        pending="$(jq '[.[] | select(.status != "completed")] | length' <<< "$json")"
-        failed="$(jq  '[.[] | select(.conclusion != null and .conclusion != "success")] | length' <<< "$json")"
-        first_fail="$(jq -r '[.[] | select(.conclusion != null and .conclusion != "success")][0].databaseId // ""' <<< "$json")"
+        total="$(jq 'length'                                                          <<< "$json" 2>/dev/null || echo 0)"
+        pending="$(jq '[.[] | select(.status != "completed")] | length'                <<< "$json" 2>/dev/null || echo 0)"
+        failed="$(jq  '[.[] | select(.conclusion != null and .conclusion != "success")] | length' <<< "$json" 2>/dev/null || echo 0)"
+        first_fail="$(jq -r '[.[] | select(.conclusion != null and .conclusion != "success")][0].databaseId // ""' <<< "$json" 2>/dev/null || echo "")"
 
         if (( total == 0 )); then
             printf '\033[1;33m  …\033[0m %s: no run visible yet\n' "$workflow"
+
         elif (( failed > 0 )); then
-            die "$workflow: run $first_fail conclusion != success on $SHA"
+            # GitHub's API occasionally reports a non-success conclusion
+            # transiently on a run that then settles to success. Confirm
+            # with one re-check 20s later before dying.
+            sleep 20
+            local recheck failed2
+            recheck="$(gh run list --workflow="$workflow" --commit="$SHA" \
+                          --limit 100 --json status,conclusion,databaseId \
+                          2>/dev/null || echo '[]')"
+            failed2="$(jq '[.[] | select(.conclusion != null and .conclusion != "success")] | length' <<< "$recheck" 2>/dev/null || echo 0)"
+            if (( failed2 > 0 )); then
+                die "$workflow: run $first_fail conclusion != success on $SHA (confirmed after recheck)"
+            fi
+            # transient — fall through and keep polling
+
         elif (( pending > 0 )); then
             printf '\033[1;33m  …\033[0m %s: %d run(s), %d pending\n' "$workflow" "$total" "$pending"
+
         else
             ok "$workflow: $total run(s), all success"
             return 0
