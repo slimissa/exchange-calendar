@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.4.1] — YYYY-MM-DD
+
+### Fixed
+
+- **`scripts/release.sh` polls every run, not the first.** The poll
+  used `gh run list --limit 1`, which returns one run per workflow.
+  A rerun or a simultaneous push and workflow_dispatch produces two
+  runs on the same SHA; if the first is green and the second is red,
+  the poll returned success. Now reads all runs, requires each to be
+  `completed`, and dies with the failing run's id on any
+  non-`success` conclusion. Zero runs is treated as pending.
+
+### Changed
+
+- **`RELEASE_PATTERN.md`** names Exchange Calendar as the source of
+  the `check_mojibake.py` signature extension (U+201A removed;
+  cp1252 and U+FFFD added). ISO 3166 merged at v1.6.8.
+
 ## [2.4.0] — 2026-09-29
 
 ### Added
