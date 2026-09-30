@@ -26,6 +26,20 @@ DRY_RUN="${DRY_RUN:-0}"
 POLL_TIMEOUT="${POLL_TIMEOUT:-900}"   # 15 min
 POLL_INTERVAL=15
 
+# On any non-zero exit after the version sites have been bumped, restore
+# the four mutable files to their committed state. Prevents a failed gate
+# from leaving the tree dirty and blocking a retry.
+cleanup_on_failure() {
+    local rc=$?
+    if (( rc != 0 )) && [[ "${DRY_RUN:-0}" != "1" ]]; then
+        git checkout -- VERSION README.md calendar.json \
+            wrappers/python/exchange_calendar/calendar.json 2>/dev/null || true
+        printf '\033[1;33m==>\033[0m Restored version sites and artifacts on failure\n' >&2
+    fi
+    exit $rc
+}
+trap cleanup_on_failure EXIT
+
 # Workflows the release waits on. Single source of truth: the poll loop
 # below iterates this array, and check_workflows_covered() fails if a
 # per-push workflow exists that is not listed here.
