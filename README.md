@@ -34,6 +34,26 @@ Every trading system, quant library, and fintech app maintains its own exchange 
 
 The registry is language-agnostic by design. The JSON is the contract.
 
+## Cross-registry edges
+
+Every exchange entry joins to two sibling registries. Both edges are
+validated in CI.
+
+- **ISO 3166 (country codes).** `country_code` resolves to an active
+  entry in [`tools/iso3166_snapshot.json`](./tools/iso3166_snapshot.json),
+  and `country` matches the ISO 3166 `name` field byte-for-byte.
+  Checked by [`tools/check_country_codes.py`](./tools/check_country_codes.py).
+- **ISO 10383 (MICs).** `mic` resolves to an entry in
+  [`tools/iso10383_snapshot.json`](./tools/iso10383_snapshot.json)
+  (active or expired, operating or segment). Checked by
+  [`tools/check_mic_codes.py`](./tools/check_mic_codes.py). See
+  [iso10383 `docs/JOINS.md`](https://github.com/slimissa/iso10383/blob/main/docs/JOINS.md)
+  for the shared MIC contract.
+
+Both snapshots carry a `review_by` date.
+[`tools/check_snapshot_freshness.py`](./tools/check_snapshot_freshness.py)
+warns when either falls past due.
+
 ---
 
 ## What's New in v2.1.11
