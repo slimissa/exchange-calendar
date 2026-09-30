@@ -1,6 +1,6 @@
 {
   "ad_hoc_closures": [],
-  "code": "XNBO",
+  "code": "XNAI",
   "country": "Kenya",
   "country_code": "KE",
   "generation_range": [
@@ -299,7 +299,7 @@
     ],
     "recurrence_rules": []
   },
-  "mic": "XNBO",
+  "mic": "XNAI",
   "name": "Nairobi Securities Exchange",
   "regular_hours": {
     "close": "15:00",

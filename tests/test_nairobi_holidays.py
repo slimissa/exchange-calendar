@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-test_nairobi_holidays.py — Ground truth tests for XNBO (Nairobi Securities Exchange).
+test_nairobi_holidays.py — Ground truth tests for XNAI (Nairobi Securities Exchange).
 
 Key facts verified:
     - Regular hours: 09:30-15:00 (single session)
@@ -14,7 +14,7 @@ Key facts verified:
     - No recurrence rules — all dates explicit
 
 If any test fails, either:
-    1. The registry data is wrong (fix exchanges/XNBO.json)
+    1. The registry data is wrong (fix exchanges/XNAI.json)
     2. Kenyan holiday announcements changed (verify against nse.co.ke)
 
 Run:
@@ -33,8 +33,8 @@ from pathlib import Path
 
 @pytest.fixture(scope="module")
 def xnbo():
-    """Load XNBO.json once for all tests."""
-    path = Path(__file__).parent.parent / "exchanges" / "XNBO.json"
+    """Load XNAI.json once for all tests."""
+    path = Path(__file__).parent.parent / "exchanges" / "XNAI.json"
     with open(path) as f:
         return json.load(f)
 
@@ -49,12 +49,12 @@ def explicit_dates(xnbo):
 # Properties
 # ──────────────────────────────────────────────────────────────
 
-class TestXNBOProperties:
+class TestXNAIProperties:
     def test_code(self, xnbo):
-        assert xnbo["code"] == "XNBO"
+        assert xnbo["code"] == "XNAI"
 
     def test_mic(self, xnbo):
-        assert xnbo["mic"] == "XNBO"
+        assert xnbo["mic"] == "XNAI"
 
     def test_name(self, xnbo):
         assert xnbo["name"] == "Nairobi Securities Exchange"
@@ -90,7 +90,7 @@ class TestXNBOProperties:
 # Fixed national holidays
 # ──────────────────────────────────────────────────────────────
 
-class TestXNBOFixedHolidays:
+class TestXNAIFixedHolidays:
     def test_new_year_2025(self, explicit_dates):
         """Jan 1, 2025 is Wednesday."""
         assert "2025-01-01" in explicit_dates
@@ -136,7 +136,7 @@ class TestXNBOFixedHolidays:
 # Christmas holidays
 # ──────────────────────────────────────────────────────────────
 
-class TestXNBOChristmas:
+class TestXNAIChristmas:
     def test_christmas_2025(self, explicit_dates):
         """Dec 25, 2025 is Thursday."""
         assert "2025-12-25" in explicit_dates
@@ -162,7 +162,7 @@ class TestXNBOChristmas:
 # Easter holidays (movable)
 # ──────────────────────────────────────────────────────────────
 
-class TestXNBOEaster:
+class TestXNAIEaster:
     def test_good_friday_2025(self, explicit_dates):
         """Easter - 2 days — April 18, 2025."""
         assert "2025-04-18" in explicit_dates
@@ -186,7 +186,7 @@ class TestXNBOEaster:
 # Islamic holidays (movable)
 # ──────────────────────────────────────────────────────────────
 
-class TestXNBOIslamicHolidays:
+class TestXNAIIslamicHolidays:
     def test_eid_al_fitr_2025(self, explicit_dates):
         """Eid al-Fitr 2025 — predicted March 31."""
         assert "2025-03-31" in explicit_dates
@@ -225,7 +225,7 @@ class TestXNBOIslamicHolidays:
 # Structural checks
 # ──────────────────────────────────────────────────────────────
 
-class TestXNBOStructure:
+class TestXNAIStructure:
     def test_no_weekend_dates(self, explicit_dates):
         """Kenya weekend is Saturday-Sunday."""
         for date_str in explicit_dates:
@@ -276,7 +276,7 @@ class TestXNBOStructure:
 # Weekend pattern checks
 # ──────────────────────────────────────────────────────────────
 
-class TestXNBOWeekendPattern:
+class TestXNAIWeekendPattern:
     def test_saturday_weekend(self, explicit_dates):
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
@@ -292,7 +292,7 @@ class TestXNBOWeekendPattern:
 # Substitution logic checks
 # ──────────────────────────────────────────────────────────────
 
-class TestXNBOSubstitution:
+class TestXNAISubstitution:
     def test_weekend_holidays_absent(self, explicit_dates):
         assert "2028-01-01" not in explicit_dates  # Saturday
         assert "2027-05-01" not in explicit_dates  # Saturday

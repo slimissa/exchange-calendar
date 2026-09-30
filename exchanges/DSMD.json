@@ -1,6 +1,6 @@
 {
   "ad_hoc_closures": [],
-  "code": "XQSE",
+  "code": "DSMD",
   "country": "Qatar",
   "country_code": "QA",
   "generation_range": [
@@ -258,7 +258,7 @@
       }
     ]
   },
-  "mic": "XQSE",
+  "mic": "DSMD",
   "name": "Qatar Stock Exchange",
   "regular_hours": {
     "close": "13:15",

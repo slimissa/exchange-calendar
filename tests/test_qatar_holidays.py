@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-test_qatar_holidays.py — Ground truth tests for XQSE (Qatar Stock Exchange).
+test_qatar_holidays.py — Ground truth tests for DSMD (Qatar Stock Exchange).
 
 Key facts verified:
     - Regular hours: 09:30-13:15
@@ -14,7 +14,7 @@ Key facts verified:
     - All holidays are full closures
 
 If any test fails, either:
-    1. The registry data is wrong (fix exchanges/XQSE.json)
+    1. The registry data is wrong (fix exchanges/DSMD.json)
     2. Qatari holiday announcements changed (verify against qe.com.qa)
 
 Run:
@@ -33,8 +33,8 @@ from pathlib import Path
 
 @pytest.fixture(scope="module")
 def xqse():
-    """Load XQSE.json once for all tests."""
-    path = Path(__file__).parent.parent / "exchanges" / "XQSE.json"
+    """Load DSMD.json once for all tests."""
+    path = Path(__file__).parent.parent / "exchanges" / "DSMD.json"
     with open(path) as f:
         return json.load(f)
 
@@ -56,12 +56,12 @@ def recurrence_rules(xqse):
 # Properties
 # ──────────────────────────────────────────────────────────────
 
-class TestXQSEProperties:
+class TestDSMDProperties:
     def test_code(self, xqse):
-        assert xqse["code"] == "XQSE"
+        assert xqse["code"] == "DSMD"
 
     def test_mic(self, xqse):
-        assert xqse["mic"] == "XQSE"
+        assert xqse["mic"] == "DSMD"
 
     def test_name(self, xqse):
         assert xqse["name"] == "Qatar Stock Exchange"
@@ -92,7 +92,7 @@ class TestXQSEProperties:
 # Fixed holidays
 # ──────────────────────────────────────────────────────────────
 
-class TestXQSEFixedHolidays:
+class TestDSMDFixedHolidays:
     def test_national_sports_day_2025(self, explicit_dates):
         """Second Tuesday in February — Feb 11, 2025."""
         assert "2025-02-11" in explicit_dates
@@ -140,7 +140,7 @@ class TestXQSEFixedHolidays:
 # Islamic holidays (Eid al-Fitr)
 # ──────────────────────────────────────────────────────────────
 
-class TestXQSEEidAlFitr:
+class TestDSMDEidAlFitr:
     def test_eid_al_fitr_2025(self, explicit_dates):
         """Eid al-Fitr 2025 — predicted March 30."""
         assert "2025-03-30" in explicit_dates
@@ -180,7 +180,7 @@ class TestXQSEEidAlFitr:
 # Islamic holidays (Eid al-Adha)
 # ──────────────────────────────────────────────────────────────
 
-class TestXQSEEidAlAdha:
+class TestDSMDEidAlAdha:
     def test_eid_al_adha_2027(self, explicit_dates):
         """Eid al-Adha 2027 — predicted May 16."""
         assert "2027-05-16" in explicit_dates
@@ -204,7 +204,7 @@ class TestXQSEEidAlAdha:
 # Recurrence rules
 # ──────────────────────────────────────────────────────────────
 
-class TestXQSERecurrence:
+class TestDSMDRecurrence:
     def test_fixed_rules_exist(self, recurrence_rules):
         names = set(recurrence_rules.keys())
         expected = {"National Sports Day", "Qatar National Day"}
@@ -240,7 +240,7 @@ class TestXQSERecurrence:
 # Structural checks
 # ──────────────────────────────────────────────────────────────
 
-class TestXQSEStructure:
+class TestDSMDStructure:
     def test_no_weekend_dates(self, explicit_dates):
         """Qatar weekend is Friday-Saturday."""
         for date_str in explicit_dates:
@@ -296,7 +296,7 @@ class TestXQSEStructure:
 # Weekend pattern checks
 # ──────────────────────────────────────────────────────────────
 
-class TestXQSEWeekendPattern:
+class TestDSMDWeekendPattern:
     def test_friday_weekend(self, explicit_dates):
         """No Friday dates in explicit array (Friday is weekend in Qatar)."""
         for date_str in explicit_dates:
@@ -324,7 +324,7 @@ class TestXQSEWeekendPattern:
 # National Sports Day cross-checks
 # ──────────────────────────────────────────────────────────────
 
-class TestXQSENationalSportsDay:
+class TestDSMDNationalSportsDay:
     def test_always_tuesday(self, explicit_dates):
         """National Sports Day must always be Tuesday."""
         for entry in explicit_dates.values():
@@ -355,7 +355,7 @@ class TestXQSENationalSportsDay:
 # Qatar National Day cross-checks
 # ──────────────────────────────────────────────────────────────
 
-class TestXQSENationalDay:
+class TestDSMDNationalDay:
     def test_always_december_18(self, explicit_dates):
         """Qatar National Day is always December 18."""
         for entry in explicit_dates.values():
@@ -381,8 +381,8 @@ class TestXQSENationalDay:
 # Islamic New Year and Mawlid (H2)
 # ──────────────────────────────────────────────────────────────
 
-class TestXQSEIslamicNewYearAndMawlid:
-    """Regression coverage for H2: XQSE previously had Eid al-Fitr and
+class TestDSMDIslamicNewYearAndMawlid:
+    """Regression coverage for H2: DSMD previously had Eid al-Fitr and
     Eid al-Adha but was missing Islamic New Year and Mawlid entirely,
     despite being a Friday/Saturday-weekend, Islamic-calendar
     exchange. Dates sourced from Saudi's Umm al-Qura calendar (Qatar

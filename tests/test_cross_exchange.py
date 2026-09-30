@@ -275,7 +275,7 @@ class TestIslamicDateDivergence:
     check for the specific, sourced divergence that exists, not for
     divergence in general."""
 
-    EXCHANGES_WITH_ISLAMIC_HOLIDAYS = ("XBAH", "XCAI", "XDFM", "XKUW", "XMUS", "XQSE", "XSAU", "XTAD")
+    EXCHANGES_WITH_ISLAMIC_HOLIDAYS = ("XBAH", "XCAI", "XDFM", "XKUW", "XMUS", "DSMD", "XSAU", "XTAD")
 
     def _islamic_dates(self, all_exchanges, code):
         """Identify Islamic-calendar holiday entries by name keyword,
@@ -296,7 +296,7 @@ class TestIslamicDateDivergence:
         """The 6+ Islamic-holiday-bearing exchanges should not all be
         byte-for-byte identical -- that was the C6 bug. At least one
         pair should differ, since XCAI/XMUS's 2025 Eid al-Fitr dates
-        are now confirmed to differ from XSAU/XBAH/XKUW/XQSE/XTAD."""
+        are now confirmed to differ from XSAU/XBAH/XKUW/DSMD/XTAD."""
         present = [c for c in self.EXCHANGES_WITH_ISLAMIC_HOLIDAYS if f"{c}.json" in all_exchanges]
         date_sets = {c: self._islamic_dates(all_exchanges, c) for c in present}
 
@@ -358,7 +358,7 @@ class TestIslamicDateDivergence:
         Saudi -- the weekend exclusion and the moon-sighting
         divergence question are two independent things, and this
         test previously conflated them for XTAD specifically."""
-        for code in ("XBAH", "XQSE", "XKUW"):
+        for code in ("XBAH", "DSMD", "XKUW"):
             if f"{code}.json" not in all_exchanges:
                 continue
             dates = self._islamic_dates(all_exchanges, code)

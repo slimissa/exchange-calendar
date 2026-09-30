@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-test_beirut_holidays.py — Ground truth tests for XBEK (Beirut Stock Exchange).
+test_beirut_holidays.py — Ground truth tests for XBEY (Beirut Stock Exchange).
 
 Key facts verified:
     - Regular hours: 09:30-12:30 (morning session only)
@@ -13,7 +13,7 @@ Key facts verified:
     - No recurrence rules — all dates explicit
 
 If any test fails, either:
-    1. The registry data is wrong (fix exchanges/XBEK.json)
+    1. The registry data is wrong (fix exchanges/XBEY.json)
     2. Lebanese holiday announcements changed (verify against bse.com.lb)
 
 Run:
@@ -32,8 +32,8 @@ from pathlib import Path
 
 @pytest.fixture(scope="module")
 def xbek():
-    """Load XBEK.json once for all tests."""
-    path = Path(__file__).parent.parent / "exchanges" / "XBEK.json"
+    """Load XBEY.json once for all tests."""
+    path = Path(__file__).parent.parent / "exchanges" / "XBEY.json"
     with open(path) as f:
         return json.load(f)
 
@@ -48,12 +48,12 @@ def explicit_dates(xbek):
 # Properties
 # ──────────────────────────────────────────────────────────────
 
-class TestXBEKProperties:
+class TestXBEYProperties:
     def test_code(self, xbek):
-        assert xbek["code"] == "XBEK"
+        assert xbek["code"] == "XBEY"
 
     def test_mic(self, xbek):
-        assert xbek["mic"] == "XBEK"
+        assert xbek["mic"] == "XBEY"
 
     def test_name(self, xbek):
         assert xbek["name"] == "Beirut Stock Exchange"
@@ -89,7 +89,7 @@ class TestXBEKProperties:
 # Fixed national holidays
 # ──────────────────────────────────────────────────────────────
 
-class TestXBEKFixedHolidays:
+class TestXBEYFixedHolidays:
     def test_new_year_2025(self, explicit_dates):
         """Jan 1, 2025 is Wednesday."""
         assert "2025-01-01" in explicit_dates
@@ -132,7 +132,7 @@ class TestXBEKFixedHolidays:
 # Christmas holidays
 # ──────────────────────────────────────────────────────────────
 
-class TestXBEKChristmas:
+class TestXBEYChristmas:
     def test_christmas_2025(self, explicit_dates):
         """Dec 25, 2025 is Thursday."""
         assert "2025-12-25" in explicit_dates
@@ -148,7 +148,7 @@ class TestXBEKChristmas:
 # Islamic holidays (Eid al-Fitr)
 # ──────────────────────────────────────────────────────────────
 
-class TestXBEKEidAlFitr:
+class TestXBEYEidAlFitr:
     def test_eid_al_fitr_2027(self, explicit_dates):
         """Eid al-Fitr 2027 — predicted March 9."""
         assert "2027-03-09" in explicit_dates
@@ -167,7 +167,7 @@ class TestXBEKEidAlFitr:
 # Islamic holidays (Eid al-Adha)
 # ──────────────────────────────────────────────────────────────
 
-class TestXBEKEidAlAdha:
+class TestXBEYEidAlAdha:
     def test_eid_al_adha_2029(self, explicit_dates):
         """Eid al-Adha 2029 — predicted April 24."""
         assert "2029-04-24" in explicit_dates
@@ -182,7 +182,7 @@ class TestXBEKEidAlAdha:
 # Islamic holidays (New Year, Ashura, Prophet's Birthday)
 # ──────────────────────────────────────────────────────────────
 
-class TestXBEKIslamicHolidays:
+class TestXBEYIslamicHolidays:
     def test_islamic_new_year_2025(self, explicit_dates):
         """Islamic New Year 2025 — predicted June 26."""
         assert "2025-06-26" in explicit_dates
@@ -225,7 +225,7 @@ class TestXBEKIslamicHolidays:
 # Structural checks
 # ──────────────────────────────────────────────────────────────
 
-class TestXBEKStructure:
+class TestXBEYStructure:
     def test_no_weekend_dates(self, explicit_dates):
         """Lebanon weekend is Saturday-Sunday."""
         for date_str in explicit_dates:
@@ -272,7 +272,7 @@ class TestXBEKStructure:
 # Weekend pattern checks
 # ──────────────────────────────────────────────────────────────
 
-class TestXBEKWeekendPattern:
+class TestXBEYWeekendPattern:
     def test_saturday_weekend(self, explicit_dates):
         for date_str in explicit_dates:
             d = date.fromisoformat(date_str)
@@ -288,7 +288,7 @@ class TestXBEKWeekendPattern:
 # Substitution logic checks
 # ──────────────────────────────────────────────────────────────
 
-class TestXBEKSubstitution:
+class TestXBEYSubstitution:
     def test_weekend_holidays_absent(self, explicit_dates):
         assert "2028-01-01" not in explicit_dates  # Saturday
         assert "2025-11-22" not in explicit_dates  # Saturday

@@ -1,0 +1,4 @@
+{
+  "_comment": "MICs used by exchanges/*.json that are not in the vendored ISO 10383 snapshot. Each entry needs a documented reason. See https://github.com/slimissa/iso10383/blob/main/docs/decisions/0007-cross-registry-allowlist.md for the policy this mirrors. After the XBEY/XNAI/DSMD corrections, this file is expected to be empty.",
+  "allowed": {}
+}
