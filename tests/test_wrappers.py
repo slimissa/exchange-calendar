@@ -218,7 +218,7 @@ class TestExchangeLookup:
     def test_codes_sorted(self, registry):
         codes = registry.codes()
         assert len(codes) == 74
-        assert codes[0] == "XAMS"
+        assert codes[0] == "DSMD"
         assert codes[-1] == "XZAG"
 
     def test_names_sorted(self, registry):
@@ -236,7 +236,7 @@ class TestExchangeLookup:
     def test_iteration(self, registry):
         codes = [e.code for e in registry]
         assert len(codes) == 74
-        assert codes[0] == "XAMS"
+        assert codes[0] == "DSMD"
         assert codes[-1] == "XZAG"
 
     def test_to_dict(self, registry):
