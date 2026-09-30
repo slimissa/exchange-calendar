@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.5.0] — 2026-9-30
+
+### Added
+
+- **`tools/check_mic_codes.py`** — cross-registry check against the
+  vendored ISO 10383 snapshot. Verifies every `mic` in
+  `exchanges/*.json` is present, matches the filename stem, equals the
+  `code` field, and resolves against the registry. `--allowlist`
+  support for documented exceptions (empty after v2.4.2's corrections).
+- **`tools/iso10383_snapshot.json`** — flat list of 2,883 MIC codes
+  vendored from ISO 10383 v1.0.4 (active, expired, operating, segment).
+- **`tools/iso10383_snapshot.meta.json`** — sibling metadata for the
+  freshness check, matching the ISO 3166 snapshot shape.
+- **`tools/mic_allowlist.json`** — allowlist for MICs not in the
+  registry. Empty.
+- **`tests/test_check_mic_codes.py`** — test suite mirroring the
+  country-code check.
+
+### Changed
+
+- **CI** (`validate.yml`) runs the MIC check after the country-code
+  check.
+- **README** gains a cross-registry edges section linking to ISO
+  10383's `docs/JOINS.md`.
+
+### Fixed
+
+- References to `XBEK`, `XNBO`, and `XQSE` in `BLOCKED.md`,
+  `README.md`, `CONTRIBUTING.md`, `docs/contributing_exchange.md`,
+  and `tools/update_from_exchange.py` updated to their corrected
+  codes `XBEY`, `XNAI`, and `DSMD`. CHANGELOG and `docs/verifications/`
+  keep the old codes as historical record.
+
 ## [2.4.2] — 2026-9-30
 
 ### Fixed
