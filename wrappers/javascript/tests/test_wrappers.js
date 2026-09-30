@@ -224,7 +224,7 @@ describe('Exchange lookup', () => {
 
     test('codes sorted', () => {
         assert.equal(registry.codes().length, 74)
-        assert.equal(registry.codes()[0], 'XAMS')
+        assert.equal(registry.codes()[0], 'DSMD')
         assert.equal(registry.codes()[73], 'XZAG');
     });
 
