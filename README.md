@@ -251,7 +251,7 @@ python3 tools/update_from_exchange.py --all --force
 | Moscow Exchange | XMOS | ✅ Implemented | moex.com — see note below (fragile source) |
 | Abu Dhabi Securities Exchange | XTAD | ⛔ Blocked | Next.js JS SPA — see `BLOCKED.md` |
 | Bahrain Bourse | XBAH | ⛔ Blocked | Official Holidays page content area is empty (client-side webpart) — see `BLOCKED.md` |
-| Qatar Exchange | XQSE | ⛔ Blocked | JS/AJAX Liferay portal widget — see `BLOCKED.md` |
+| Qatar Exchange | DSMD | ⛔ Blocked | JS/AJAX Liferay portal widget — see `BLOCKED.md` |
 | Egyptian Exchange | XCAI | ⛔ Blocked | Static HTML but stuck serving 2019 data — see `BLOCKED.md` |
 | Johannesburg Stock Exchange | XJSE | ⛔ Blocked | PDF exists but is itself bot-walled — see `BLOCKED.md` |
 | Borsa Istanbul | XIST | ⛔ Blocked (deferred) | Real, fetchable PDF, but this sandbox structurally cannot download PDF bytes for this domain — confirmed 3 rounds running, deferred permanently — see `BLOCKED.md` |
@@ -309,7 +309,7 @@ python3 tools/update_from_exchange.py --all --force
 | Bourse de Casablanca | XCAS | ⛔ Blocked | robots.txt disallows automated access — see `BLOCKED.md` |
 | Pakistan Stock Exchange | XKAR | ⛔ Blocked | Official PDF returns no extractable text — see `BLOCKED.md` |
 | Dhaka Stock Exchange | XDHA | ⛔ Blocked | robots.txt disallows automated access — see `BLOCKED.md` |
-| Nairobi Securities Exchange | XNBO | ⛔ Blocked | Resolved in Tier 8: 6 pages, identical JS-SPA signature — see `BLOCKED.md` |
+| Nairobi Securities Exchange | XNAI | ⛔ Blocked | Resolved in Tier 8: 6 pages, identical JS-SPA signature — see `BLOCKED.md` |
 | Ghana Stock Exchange | XGSE | ✅ Implemented | Resolved in Tier 8: gse.com.gh/events/ — see note below |
 
 #### Tier 8 (6 of 8 — small/island markets; FINAL TIER)
@@ -322,7 +322,7 @@ python3 tools/update_from_exchange.py --all --force
 | Malta Stock Exchange | XMAL | ✅ Implemented | borzamalta.com.mt — see note below |
 | Bulgarian Stock Exchange | XBUL | ⛔ Blocked | Calendar widget appears dynamically loaded — see `BLOCKED.md` |
 | Zagreb Stock Exchange | XZAG | ✅ Implemented | zse.hr — see note below |
-| Beirut Stock Exchange | XBEK | ⛔ Blocked | 2 independent timeouts — confirms the brief's own instability concern — see `BLOCKED.md` |
+| Beirut Stock Exchange | XBEY | ⛔ Blocked | 2 independent timeouts — confirms the brief's own instability concern — see `BLOCKED.md` |
 | New Zealand Exchange | XNZE | ⛔ Blocked | JS-loaded content + 2 dead-end PDF/page links — contradicts "likely simple" — see `BLOCKED.md` |
 
 | *(29 exchanges)* | — | ⛔ Blocked | All confirmed blocked across Tiers 2-8 — see `BLOCKED.md` for full detail per exchange |

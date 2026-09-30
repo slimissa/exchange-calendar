@@ -19,7 +19,7 @@ checked are blocked (XSES, XSWX, XKRX, XBOM, XNSE, XJKT, XTAI). Only XTSE,
 XMAD, and XSAU were buildable.
 
 **Tier 3 (Gulf/EMEA) update 2026-08-29:** 6 of 10 confirmed blocked (XTAD,
-XBAH, XQSE, XCAI, XJSE, XIST), 1 unverified (XMUS), 3 buildable (XDFM,
+XBAH, DSMD, XCAI, XJSE, XIST), 1 unverified (XMUS), 3 buildable (XDFM,
 XKUW, XMOS).
 
 **Tier 4 (European smaller markets) update 2026-08-31:** 8 of 10 buildable
@@ -51,12 +51,12 @@ plus XSTC resolved as a carryover from Tier 6). 4 confirmed blocked, 2 of
 them by robots.txt (XCAS, XDHA — respected by design, not worked around),
 1 by an unreadable PDF (XKAR), 1 by an empty page response (XTUN;
 originally recorded as JS-rendered, see its section). 2 remain
-genuinely unverified (XNBO, XGSE) rather than forced to a verdict.
+genuinely unverified (XNAI, XGSE) rather than forced to a verdict.
 
 **Tier 8 (small/island markets) update 2026-09-06 — FINAL TIER:** 5 of
 the 8 Tier 8 exchanges were buildable (XBDA, XCAY, XLUX, XMAL, XZAG); 3
-were confirmed blocked (XBUL, XBEK, XNZE). Two Tier 7 carryovers were also
-resolved in this round: XGSE (built) and XNBO (confirmed blocked).
+were confirmed blocked (XBUL, XBEY, XNZE). Two Tier 7 carryovers were also
+resolved in this round: XGSE (built) and XNAI (confirmed blocked).
 Combined count for the round: 6 built, 4 blocked. Notably, the brief's
 own predictions for this tier were mixed: New Zealand was expected to be
 simple and turned out JS-blocked; Beirut was flagged as uncertain due to
@@ -263,7 +263,7 @@ wrong without the reasoning behind it.
   calendar.
 - **Verdict:** BLOCKED.
 
-## XQSE — Qatar Exchange
+## DSMD — Qatar Exchange
 
 **Last verified:** 2026-09-19
 
@@ -279,7 +279,7 @@ wrong without the reasoning behind it.
   the sweep; apex qe.com.qa fails with ERR_CERT_COMMON_NAME_INVALID. The site
   answers, so the 2026-09-17 "DNS no longer resolves" finding does not hold
   from this network; the path is dead, not the domain. Also: 2 of the 36
-  source_url citations in exchanges/XQSE.json point at www.ummulqura.org.sa,
+  source_url citations in exchanges/DSMD.json point at www.ummulqura.org.sa,
   which is not a QSE source (the other 34 cite the dead qe.com.qa path).
   Fixing them is a separate task.
 - **Verdict:** BLOCKED (dead URL: HTTP 404; site reachable).
@@ -609,7 +609,7 @@ rather than deep-diving every exchange from scratch.
   as XCAS.
 - **Verdict:** BLOCKED (by design, not by inability).
 
-### XNBO — Nairobi Securities Exchange
+### XNAI — Nairobi Securities Exchange
 
 **Last verified:** 2026-09-19
 
@@ -643,7 +643,7 @@ rather than deep-diving every exchange from scratch.
 - **Checked:** gse.com.gh and gsewebportal.com; confirmed an "Events &
   Holidays" nav item exists but no direct URL with actual holiday data was
   located within this round's budget.
-- **Verdict:** NOT VERIFIED -- same caveat as XNBO.
+- **Verdict:** NOT VERIFIED -- same caveat as XNAI.
 - **Resolved 2026-09-06 (Tier 8):** fetched gse.com.gh's homepage directly
   (not via search) and found the exact nav link ("Events & Holidays" ->
   `gse.com.gh/events/`) in the real, static WordPress site's menu. That
@@ -658,8 +658,8 @@ rather than deep-diving every exchange from scratch.
 
 **Tier 8 (small/island markets) update 2026-09-06 — FINAL TIER:** 5 of the
 8 Tier 8 exchanges were buildable (XBDA, XCAY, XLUX, XMAL, XZAG); 3 were
-confirmed blocked (XBUL, XBEK, XNZE). Two Tier 7 carryovers were also
-resolved in this round: XGSE (built) and XNBO (confirmed blocked).
+confirmed blocked (XBUL, XBEY, XNZE). Two Tier 7 carryovers were also
+resolved in this round: XGSE (built) and XNAI (confirmed blocked).
 Combined count for the round: 6 built, 4 blocked.
 
 ### XBUL — Bulgarian Stock Exchange
@@ -677,7 +677,7 @@ Combined count for the round: 6 built, 4 blocked.
   dynamically within an otherwise mostly-static page.
 - **Verdict:** BLOCKED.
 
-### XBEK — Beirut Stock Exchange (Bourse de Beyrouth)
+### XBEY — Beirut Stock Exchange (Bourse de Beyrouth)
 
 **Last verified:** 2026-09-06
 
