@@ -114,6 +114,7 @@ class FetchStatus(Enum):
     FAILED = "failed"
     SKIPPED = "skipped"
     UNCHANGED = "unchanged"
+    BLOCKED_BY_REMOVAL = "blocked_by_removal"
     UPDATED = "updated"
     NEW_EXCHANGE = "new_exchange"
     VALIDATION_ERROR = "validation_error"
@@ -6006,7 +6007,23 @@ class RegistryUpdater:
         else:
             status = FetchStatus.UNCHANGED
             message = "No changes detected"
-        
+
+        # v2.7.0: removal guard (ADR 0008). Applies only to UPDATED.
+        # Runs against the merged output so preserved holidays are
+        # correctly compared.
+        if status == FetchStatus.UPDATED:
+            from check_removed_entries import (
+                diff_removals, has_removals, format_removals,
+            )
+            merged = self.generate_exchange_json(fetched_data, current_data)
+            removals = diff_removals({mic: current_data}, {mic: merged})
+            if has_removals(removals):
+                report = format_removals(removals)
+                logger.error(f"{mic}: BLOCKED — update would remove entries:")
+                for line in report.splitlines():
+                    logger.error(f"  {line}")
+                return FetchStatus.BLOCKED_BY_REMOVAL, report
+
         # Write if needed
         if status in [FetchStatus.NEW_EXCHANGE, FetchStatus.UPDATED]:
             if not dry_run:
@@ -6230,6 +6247,8 @@ Examples:
         status, message = updater.update_exchange(mic, args.dry_run, args.force)
         if status in [FetchStatus.FAILED, FetchStatus.VALIDATION_ERROR]:
             sys.exit(1)
+        if status == FetchStatus.BLOCKED_BY_REMOVAL:
+            sys.exit(3)
     elif args.all:
         results = updater.update_all(
             args.dry_run,
@@ -6246,6 +6265,16 @@ Examples:
         if failures > 0:
             logger.warning(f"{failures} exchanges failed to update")
             sys.exit(1)
+        
+        # v2.7.0: exit 3 if any exchange was blocked by the removal guard
+        blocked = [m for m, (st, _) in results.items()
+                   if st == FetchStatus.BLOCKED_BY_REMOVAL]
+        if blocked:
+            logger.error(
+                f"{len(blocked)} exchange(s) blocked by removal guard: "
+                f"{', '.join(sorted(blocked))}"
+            )
+            sys.exit(3)
     else:
         parser.print_help()
         sys.exit(1)
