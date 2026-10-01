@@ -464,3 +464,4 @@ secrets.yml
 # END OF GITIGNORE
 # =============================================================================
 !scripts/release.sh
+logs/
