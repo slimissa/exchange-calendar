@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.1] — 2026-10-01
+
+### Fixed
+
+- `generate_exchange_json` scopes the fetcher's authority to the
+  years the fetched data covers. Holidays outside that window are
+  preserved from the existing file. Single-year fetchers previously
+  failed to write because the removal guard saw 2027-2029 entries
+  as removed.
+- `compare_holidays` uses the same window. Without it, every
+  successive update reported spurious removals of out-of-window
+  entries, so `UNCHANGED` never fired.
+- `XISTFetcher.parse_html` filters to the PDF's own year. The
+  settlement notes mention adjacent years and the parser treated
+  those as closures.
+
+### Semantics
+
+Phase 1.1's "the fetcher is the source of truth for
+`holidays.explicit`" is refined: the fetcher is the source of truth
+**for its own year window**. Within those years, silence is a
+deletion and field corrections propagate. Outside, silence is
+silence.
+
+### Notes
+
+XIST, XMAD, XKUW now write cleanly. Three remain blocked with
+legitimate in-window removals — XBUD, XWBO, XDFM carry 2026
+entries the fetchers do not reproduce. That is the removal guard
+working as designed (ADR 0008); resolution requires either
+updating the current files or correcting the parsers, not
+weakening the guard.
+
 ## [2.9.0] — 2026-10-01
 
 ### Added
