@@ -218,7 +218,141 @@ def temp_registry_dir(tmp_path):
     
     return registry_dir
 
+def test_merge_preserves_out_of_window_holidays(tmp_path):
+    """A single-year fetcher must not delete holidays from other years.
 
+    Background: XIST/XMAD/XKUW/XBUD/XWBO/XDFM fetchers return only the
+    current year's holidays. The existing exchange files carry
+    multi-year data. Before v2.9.1, generate_exchange_json replaced
+    holidays.explicit wholesale, so the removal guard saw future-year
+    entries as removed and blocked every update.
+
+    The fix scopes the fetcher's authority to the years it actually
+    covers: within those years, its silence is a deletion; outside,
+    its silence is silence.
+    """
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+    from update_from_exchange import (  # type: ignore
+        RegistryUpdater, ExchangeData, HolidayEntry,
+    )
+
+    current = {
+        "code": "XIST",
+        "mic": "XIST",
+        "name": "Borsa Istanbul",
+        "timezone": "Europe/Istanbul",
+        "regular_hours": {"open": "09:30", "close": "18:00"},
+        "holidays": {
+            "explicit": [
+                {"date": "2026-01-01", "name": "New Year"},
+                {"date": "2027-01-01", "name": "New Year"},
+                {"date": "2028-01-01", "name": "New Year"},
+                {"date": "2029-01-01", "name": "New Year"},
+            ],
+            "recurrence_rules": [],
+        },
+        "generation_range": ["2026-01-01", "2029-12-31"],
+    }
+
+    # Fetcher returns one 2026 holiday. Its silence about 2026-01-01
+    # is a deletion that must propagate. Its silence about 2027-2029
+    # is not a deletion — those years are outside its window.
+    fetched = ExchangeData(
+        code="XIST",
+        mic="XIST",
+        name="Borsa Istanbul",
+        timezone="Europe/Istanbul",
+        regular_open="09:30",
+        regular_close="18:00",
+        holidays=[
+            HolidayEntry(
+                date="2026-03-20",
+                name="Ramadan Feast",
+                status="closed",
+                source_url="https://example.com/xist.pdf",
+            ),
+        ],
+        source_urls=["https://example.com/xist.pdf"],
+        currency="TRY",
+        country="Turkey",
+        city="Istanbul",
+    )
+
+    updater = RegistryUpdater(tmp_path, use_cache=False)
+    result = updater.generate_exchange_json(fetched, current)
+
+    dates = [h["date"] for h in result["holidays"]["explicit"]]
+
+    # Preserved: the fetcher does not cover these years.
+    assert "2027-01-01" in dates, "2027 holiday must survive the merge"
+    assert "2028-01-01" in dates, "2028 holiday must survive the merge"
+    assert "2029-01-01" in dates, "2029 holiday must survive the merge"
+
+    # Deleted: 2026-01-01 was in current, not in the fetch, and 2026
+    # is inside the fetched window. Silence is a deletion here.
+    assert "2026-01-01" not in dates, (
+        "in-window deletion must propagate"
+    )
+
+    # Added: came from the fetch.
+    assert "2026-03-20" in dates
+
+    # Deterministic ordering.
+    assert dates == sorted(dates), "output must be sorted"
+
+
+def test_merge_deletes_in_window_holiday_when_source_drops_it(tmp_path):
+    """A two-year fetcher must be able to remove a holiday from either
+    year it covers. This is the counter-test to the preserve rule:
+    preservation applies only outside the fetched window."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+    from update_from_exchange import (  # type: ignore
+        RegistryUpdater, ExchangeData, HolidayEntry,
+    )
+
+    current = {
+        "code": "TEST", "mic": "TEST", "name": "Test Exchange",
+        "timezone": "UTC",
+        "regular_hours": {"open": "09:00", "close": "17:00"},
+        "holidays": {
+            "explicit": [
+                {"date": "2026-01-01", "name": "NY"},
+                {"date": "2027-01-01", "name": "NY"},
+                {"date": "2028-01-01", "name": "NY"},
+            ],
+            "recurrence_rules": [],
+        },
+        "generation_range": ["2026-01-01", "2028-12-31"],
+    }
+
+    # Fetcher covers 2026 and 2027 but dropped 2027-01-01.
+    fetched = ExchangeData(
+        code="TEST", mic="TEST", name="Test Exchange", timezone="UTC",
+        regular_open="09:00", regular_close="17:00",
+        holidays=[
+            HolidayEntry(date="2026-01-01", name="NY",
+                         status="closed", source_url="u"),
+            HolidayEntry(date="2027-04-01", name="X",
+                         status="closed", source_url="u"),
+        ],
+        source_urls=["u"], currency="USD", country="US", city="NYC",
+    )
+
+    updater = RegistryUpdater(tmp_path, use_cache=False)
+    result = updater.generate_exchange_json(fetched, current)
+    dates = [h["date"] for h in result["holidays"]["explicit"]]
+
+    # 2027 is inside the fetched window: 2027-01-01 removed.
+    assert "2027-01-01" not in dates
+    # 2028 is outside: preserved.
+    assert "2028-01-01" in dates
+    assert "2027-04-01" in dates
+    assert dates == sorted(dates)
+    
 @pytest.fixture
 def registry_updater(temp_registry_dir):
     return RegistryUpdater(temp_registry_dir, use_cache=False)
@@ -3016,8 +3150,9 @@ class TestRegistryUpdater:
         assert result["timezone"] == "America/New_York"
         assert len(result["holidays"]["explicit"]) == len(sample_exchange_data.holidays)
     
-    def test_generate_exchange_json_replaces_not_merges(self, registry_updater, sample_exchange_data):
-        """Phase 1.1: fetched holidays replace current; current-only dates are dropped."""
+    def test_generate_exchange_json_replaces_within_fetched_years(self, registry_updater, sample_exchange_data):
+        """Phase 1.1 (v2.9.1): fetched holidays replace current within
+        the fetched year window; out-of-window dates are preserved."""
         current = {
             "code": "XNYS", "name": "New York Stock Exchange", "mic": "XNYS",
             "timezone": "America/New_York",
@@ -3034,8 +3169,11 @@ class TestRegistryUpdater:
         result = registry_updater.generate_exchange_json(sample_exchange_data, current)
         holiday_dates = [h["date"] for h in result["holidays"]["explicit"]]
 
-        assert "2025-01-01" not in holiday_dates
-        assert "2026-01-01" in holiday_dates
+        # v2.9.1: replacement applies within the fetched year window.
+        # sample_exchange_data covers 2026; the current file's 2025
+        # entry is outside that window and is preserved, not dropped.
+        assert "2025-01-01" in holiday_dates, "out-of-window preserved"
+        assert "2026-01-01" in holiday_dates, "in-window fetched present"
         assert result["extended_hours"]["pre_market"]["open"] == "04:00"
         assert len(result["sessions"]) == 1
         assert len(result["holidays"]["recurrence_rules"]) == 1
@@ -3070,8 +3208,9 @@ class TestRegistryUpdater:
         # v2.7.0: the fixture's current file has holidays SAMPLE_HTML
         # does not return, so the removal guard blocks the write and
         # the file is preserved unchanged.
-        assert status == FetchStatus.BLOCKED_BY_REMOVAL
+        assert status in [FetchStatus.UPDATED, FetchStatus.UNCHANGED]
         holiday_dates = [h["date"] for h in data["holidays"]["explicit"]]
+        assert "2026-01-01" in holiday_dates
         assert "2025-01-01" in holiday_dates
     
     def test_update_exchange_no_fetcher(self, registry_updater):
@@ -3099,7 +3238,6 @@ class TestIntegration:
             FetchStatus.UPDATED,
             FetchStatus.UNCHANGED,
             FetchStatus.NEW_EXCHANGE,
-            FetchStatus.BLOCKED_BY_REMOVAL,  # v2.7.0
         ]
         
         data = updater.load_current_exchange("XNYS")
@@ -3125,11 +3263,7 @@ class TestIntegration:
         holidays2 = data2["holidays"]["explicit"]
         
         assert len(holidays1) == len(holidays2)
-        # v2.7.0: the fixture's fetch removes holidays, so both calls
-        # are blocked. Second call still blocked because the first
-        # never wrote.
-        assert status1 == FetchStatus.BLOCKED_BY_REMOVAL
-        assert status2 == FetchStatus.BLOCKED_BY_REMOVAL
+        assert status2 == FetchStatus.UNCHANGED
 
 
 class TestPerformance:

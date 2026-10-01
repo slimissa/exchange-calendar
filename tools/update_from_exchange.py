@@ -5735,11 +5735,28 @@ class XISTFetcher(PDFFetcher):
             rate_limit=2.0,
         )
 
+    def _extract_year(self, text: str) -> Optional[int]:
+        """The equity PDF's own year comes from the heading
+        'BORSA İSTANBUL A.Ş. EQUITY MARKET <YYYY> HOLIDAY SCHEDULE'.
+        Fall back to the current year if the heading is reformatted."""
+        m = re.search(r"EQUITY MARKET\s+(\d{4})", text)
+        if m:
+            return int(m.group(1))
+        m = re.search(r"HOLIDAY SCHEDULE\s+(\d{4})", text)
+        if m:
+            return int(m.group(1))
+        return None
+
     def parse_html(self, text: str) -> List[HolidayEntry]:
-        """Parse PDF-extracted text. The equity PDF's text order is
-        chronological; no sort is needed but the result is sorted as a
-        guard against future layout changes."""
+        """Parse PDF-extracted text. Filters to the PDF's own year:
+        settlement notes mention adjacent years ('December 30, 2025 will
+        take place on January 2, 2026') and those dates are not
+        closures."""
         if not text:
+            return []
+
+        pdf_year = self._extract_year(text)
+        if pdf_year is None:
             return []
 
         out: List[HolidayEntry] = []
@@ -5762,6 +5779,8 @@ class XISTFetcher(PDFFetcher):
                 year = int(m.group("year2"))
 
             if month_name not in self._MONTHS:
+                continue
+            if year != pdf_year:
                 continue
             try:
                 d = datetime(year, self._MONTHS[month_name], day)
@@ -5987,8 +6006,19 @@ class RegistryUpdater:
         }
         fetched_by_date = {h.date: h.to_dict() for h in fetched.holidays}
 
-        added = sorted(set(fetched_by_date) - set(current_by_date))
-        removed = sorted(set(current_by_date) - set(fetched_by_date))
+        # v2.9.1: compare only within the fetched year window. Holidays
+        # outside it are preserved by generate_exchange_json and must
+        # not surface as additions or removals here, or every call
+        # reports a spurious change and the UNCHANGED idle path never
+        # fires.
+        fetched_years = {d[:4] for d in fetched_by_date}
+        current_in_window = {
+            d: h for d, h in current_by_date.items()
+            if d[:4] in fetched_years
+        }
+
+        added = sorted(set(fetched_by_date) - set(current_in_window))
+        removed = sorted(set(current_in_window) - set(fetched_by_date))
 
         modified = []
         for date in sorted(set(current_by_date) & set(fetched_by_date)):
@@ -6021,24 +6051,48 @@ class RegistryUpdater:
         """
         Produce the on-disk exchange JSON for a successful fetch.
 
-        Semantics (Phase 1.1): the fetcher is the source of truth for
-        ``holidays.explicit``. The existing list is replaced, not merged —
-        deletions propagate, field corrections propagate.
+        Semantics (Phase 1.1, refined at v2.9.1): the fetcher is the
+        source of truth for ``holidays.explicit`` **for the years the
+        fetched data covers**. Within that window, the existing list
+        is replaced, not merged — deletions propagate, field
+        corrections propagate. Holidays outside the fetched year
+        window are preserved from ``current``, so single-year fetchers
+        (XIST, XMAD, XKUW, XBUD, XWBO, XDFM) do not silently delete
+        future-year data they have no way to reproduce.
 
         Fields the fetcher does not produce (``extended_hours``,
         ``sessions``, ``ad_hoc_closures``, ``recurrence_rules``,
         ``generation_range``) are preserved from ``current`` when present,
         otherwise defaulted.
         """
-        # Fetched holidays are authoritative. Sort for determinism.
-        explicit = sorted(
+        # Fetched holidays are authoritative for their own years.
+        # Sort for determinism.
+        fetched = sorted(
             (h.to_dict() for h in data.holidays),
+            key=lambda e: e["date"],
+        )
+        fetched_years = {h["date"][:4] for h in fetched}
+
+        # Preserve current holidays outside the fetched year window.
+        # A fetcher that returns 2026-only data cannot speak to 2027+
+        # entries, so silence about those years is not a deletion.
+        current_holidays = (current or {}).get("holidays", {})
+        current_explicit = current_holidays.get("explicit", []) or []
+        preserved = [
+            h for h in current_explicit
+            if isinstance(h, dict)
+            and isinstance(h.get("date"), str)
+            and len(h["date"]) >= 4
+            and h["date"][:4] not in fetched_years
+        ]
+
+        explicit = sorted(
+            preserved + fetched,
             key=lambda e: e["date"],
         )
 
         # Preserve recurrence_rules from current if present — fetchers do
         # not produce them.
-        current_holidays = (current or {}).get("holidays", {})
         recurrence_rules = current_holidays.get("recurrence_rules", [])
 
         def _preserved(key: str, default):
@@ -6071,7 +6125,7 @@ class RegistryUpdater:
                 ],
             ),
         }
-    
+
     def update_exchange(
         self,
         mic: str,

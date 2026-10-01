@@ -1,4 +1,3 @@
-```markdown
 # Contributing to exchange-calendar
 
 Thank you for contributing to the QuantOS exchange calendar registry.
