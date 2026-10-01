@@ -30,5 +30,15 @@
       "file": "BLOCKED.md",
       "contains": "XKRX \u2014 Korea Exchange (KRX)"
     }
+  ],
+  "2.9.0": [
+    {
+      "file": "tools/update_from_exchange.py",
+      "contains": "XISTFetcher"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "XJSE"
+    }
   ]
 }

@@ -1,5 +1,14 @@
 {
-  "fetches": {},
+  "fetches": {
+    "XIST": {
+      "bytes": 162092,
+      "fetched_at": "2026-10-01T19:00:26Z",
+      "max_age_days": 400,
+      "sha256": "3a1b39913abc188788da533c5e25000b6bb0a9f94057d21a61f068ef17efe85d",
+      "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf",
+      "status": "ok"
+    }
+  },
   "meta": {
     "schema_version": "1.0.0"
   }

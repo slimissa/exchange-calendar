@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.0] — 2026-10-01
+
+### Added
+
+- XISTFetcher — Borsa Istanbul equity-market PDF.
+- `docs/verifications/2026-10-01_pdf_bucket.md` — probe results.
+
+### Changed
+
+- `BLOCKED.md` — XIST resolved. XBKK, XATH, XJSE confirmed for the
+  Playwright bucket (or their respective blockers).
+
+### Notes
+
+The 2026-09-04 BLOCKED.md note described borsaistanbul.com as
+publishing "four market-segment tables in one PDF" with a
+US-holiday template error in the debt-securities table. In fact the
+site publishes four separate PDFs, one per market, and the equity
+PDF contains only Turkish closures. The US-holiday filter from the
+earlier draft was unnecessary.
+
 ## [2.8.0] — 2026-10-01
 
 ### Added

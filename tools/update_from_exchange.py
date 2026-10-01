@@ -5686,6 +5686,137 @@ class ZagrebExchangeFetcher(ExchangeFetcher):
 
         return data
 
+class XISTFetcher(PDFFetcher):
+    # Source publishes approximately every 400 days.
+    MAX_AGE_DAYS = 400
+
+    """
+    Fetcher for Borsa Istanbul (XIST) holidays.
+
+    Verified live 2026-10-01: borsaistanbul.com publishes one PDF per
+    market segment (equity, debt-securities, precious-metals, derivatives).
+    Only the equity PDF is used here. This corrects the 2026-09-04
+    BLOCKED.md note, which described "four market-segment tables in one
+    PDF" and a debt-securities table carrying US holidays (MLK,
+    Thanksgiving). In fact the equity PDF is a separate file and
+    contains only Turkish market closures.
+
+    Extraction uses pdfplumber.extract_text(), not extract_tables():
+    the equity PDF is a plain two-column list, and its text order is
+    correct. The 2026-09-04 entry's "dates out of chronological order"
+    observation was about the combined-document hypothesis, not the
+    actual equity file.
+
+    KNOWN LIMITATION: single-year PDF, URL is year-specific, same
+    annual-update pattern as XDFM/XWBO/XBUD.
+    """
+
+    # Matches "1 January 2026 Wednesday" and "January 1, 2026" shapes.
+    _LINE_RE = re.compile(
+        r"(?P<day>\d{1,2})\s+(?P<month>[A-Z][a-z]+)\s+(?P<year>\d{4})"
+        r"|"
+        r"(?P<month2>[A-Z][a-z]+)\s+(?P<day2>\d{1,2}),?\s+(?P<year2>\d{4})",
+    )
+
+    _MONTHS = {
+        "January": 1, "February": 2, "March": 3, "April": 4,
+        "May": 5, "June": 6, "July": 7, "August": 8,
+        "September": 9, "October": 10, "November": 11, "December": 12,
+    }
+
+    def __init__(self):
+        super().__init__(
+            mic="XIST",
+            name="Borsa Istanbul",
+            source_url=(
+                "https://www.borsaistanbul.com/files/"
+                "equity-market-2026-holiday-schedule.pdf"
+            ),
+            rate_limit=2.0,
+        )
+
+    def parse_html(self, text: str) -> List[HolidayEntry]:
+        """Parse PDF-extracted text. The equity PDF's text order is
+        chronological; no sort is needed but the result is sorted as a
+        guard against future layout changes."""
+        if not text:
+            return []
+
+        out: List[HolidayEntry] = []
+        seen: set = set()
+        for line in text.splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            m = self._LINE_RE.search(line)
+            if not m:
+                continue
+
+            if m.group("month"):
+                month_name = m.group("month")
+                day = int(m.group("day"))
+                year = int(m.group("year"))
+            else:
+                month_name = m.group("month2")
+                day = int(m.group("day2"))
+                year = int(m.group("year2"))
+
+            if month_name not in self._MONTHS:
+                continue
+            try:
+                d = datetime(year, self._MONTHS[month_name], day)
+            except ValueError:
+                continue
+            iso = d.strftime("%Y-%m-%d")
+            if iso in seen:
+                continue
+            seen.add(iso)
+
+            # Name is the rest of the line after the date tokens.
+            name = line
+            for token in (month_name, str(day), str(year)):
+                name = name.replace(token, " ", 1)
+            name = re.sub(r"\s+", " ", name).strip(" ,-.")
+            out.append(HolidayEntry(
+                date=iso,
+                name=name or "BIST Holiday",
+                status="closed",
+                source_url=self.source_url,
+            ))
+
+        out.sort(key=lambda h: h.date)
+        return out
+
+    @retry(max_attempts=3, delay=2.0, backoff=2.0, exceptions=(FetchError,))
+    def fetch(self) -> Optional[ExchangeData]:
+        pdf_bytes = self._make_binary_request()
+        if not pdf_bytes:
+            raise FetchError("Failed to fetch Borsa Istanbul equity PDF")
+
+        text = self._extract_pdf_text(pdf_bytes)
+        holidays = self.parse_html(text)
+        if not holidays:
+            raise ParseError("No holidays found for XIST")
+
+        data = ExchangeData(
+            code="XIST",
+            mic="XIST",
+            name=self.name,
+            timezone="Europe/Istanbul",
+            regular_open="09:30",
+            regular_close="18:00",
+            holidays=holidays,
+            source_urls=[self.source_url],
+            currency="TRY",
+            country="Turkey",
+            city="Istanbul",
+        )
+
+        errors = data.validate()
+        if errors:
+            raise ValidationError(f"Invalid data: {', '.join(errors)}")
+
+        return data
 
 class ExchangeFetcherRegistry:
     """Registry of available exchange fetchers"""
@@ -5776,6 +5907,10 @@ class ExchangeFetcherRegistry:
         self.register(LuxembourgExchangeFetcher())
         self.register(MaltaExchangeFetcher())
         self.register(ZagrebExchangeFetcher())
+
+        # Tier 9 (PDF bucket), 2026-10-01 — XIST resolved via
+        # pdfplumber.extract_tables(). See BLOCKED.md.
+        self.register(XISTFetcher())
     
     def register(self, fetcher: ExchangeFetcher):
         """Register a fetcher"""
