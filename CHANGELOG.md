@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.8.0] — 2026-10-01
+
+### Added
+
+- `RELEASE_PATTERN.md` section "Sources unreachable from CI".
+
+### Changed
+
+- `BLOCKED.md` — XKRX recorded as regressed (was RESOLVED on
+  2026-09-19; the endpoint returns a 403 HTML body as of 2026-10-01).
+
+### Notes
+
+Documentation release. The XKRXFetcher was attempted and reverted:
+the endpoint that BLOCKED.md's 2026-09-19 retest described as
+reachable with plain requests now returns a WAF-blocked page. The
+regression is recorded with a dated finding rather than silently
+dropped, and the CI-unreachable section documents the shape so the
+next registry that hits either variant does not have to invent the
+pattern from scratch.
+
 ## [2.7.0] — 2026-10-01
 
 ### Added

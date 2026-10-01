@@ -20,5 +20,15 @@
     {
       "file": "docs/decisions/0008-removal-guard-semantics.md"
     }
+  ],
+  "2.8.0": [
+    {
+      "file": "RELEASE_PATTERN.md",
+      "contains": "Sources unreachable from CI"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "XKRX \u2014 Korea Exchange (KRX)"
+    }
   ]
 }
