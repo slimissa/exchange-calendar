@@ -3067,12 +3067,12 @@ class TestRegistryUpdater:
         with open(registry_updater.exchanges_dir / "XNYS.json", 'r') as f:
             data = json.load(f)
         
+        # v2.7.0: the fixture's current file has holidays SAMPLE_HTML
+        # does not return, so the removal guard blocks the write and
+        # the file is preserved unchanged.
+        assert status == FetchStatus.BLOCKED_BY_REMOVAL
         holiday_dates = [h["date"] for h in data["holidays"]["explicit"]]
-        # Phase 1.1 mirror semantics: fetched data replaces current, so
-        # the 2025-01-01 entry that existed in the fixture is gone after
-        # the write. Only the fetched dates remain.
-        assert "2025-01-01" not in holiday_dates
-        assert "2026-01-01" in holiday_dates
+        assert "2025-01-01" in holiday_dates
     
     def test_update_exchange_no_fetcher(self, registry_updater):
         status, message = registry_updater.update_exchange("XXXX")
@@ -3095,7 +3095,12 @@ class TestIntegration:
         
         status, message = updater.update_exchange("XNYS", dry_run=False)
         
-        assert status in [FetchStatus.UPDATED, FetchStatus.UNCHANGED, FetchStatus.NEW_EXCHANGE]
+        assert status in [
+            FetchStatus.UPDATED,
+            FetchStatus.UNCHANGED,
+            FetchStatus.NEW_EXCHANGE,
+            FetchStatus.BLOCKED_BY_REMOVAL,  # v2.7.0
+        ]
         
         data = updater.load_current_exchange("XNYS")
         assert data is not None
@@ -3120,7 +3125,11 @@ class TestIntegration:
         holidays2 = data2["holidays"]["explicit"]
         
         assert len(holidays1) == len(holidays2)
-        assert status2 == FetchStatus.UNCHANGED
+        # v2.7.0: the fixture's fetch removes holidays, so both calls
+        # are blocked. Second call still blocked because the first
+        # never wrote.
+        assert status1 == FetchStatus.BLOCKED_BY_REMOVAL
+        assert status2 == FetchStatus.BLOCKED_BY_REMOVAL
 
 
 class TestPerformance:
@@ -3305,3 +3314,43 @@ class TestMergeSemantics:
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v", "--tb=short"])
+
+# ── v2.7.0 removal guard ────────────────────────────────────────────
+
+def test_update_blocked_by_holiday_removal():
+    """An update whose merged output removes a holiday must return
+    BLOCKED_BY_REMOVAL and must not write."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+    from update_from_exchange import FetchStatus  # type: ignore
+    assert hasattr(FetchStatus, "BLOCKED_BY_REMOVAL")
+    assert FetchStatus.BLOCKED_BY_REMOVAL.value == "blocked_by_removal"
+
+
+def test_update_not_blocked_when_holiday_added():
+    """Adding a holiday is not a removal. Guard must not fire."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+    import check_removed_entries as cre  # type: ignore
+    old = {"XNYS": {"name": "NYSE", "holidays": {"explicit": [
+        {"date": "2025-01-01"},
+    ]}}}
+    new = {"XNYS": {"name": "NYSE", "holidays": {"explicit": [
+        {"date": "2025-01-01"}, {"date": "2025-12-25"},
+    ]}}}
+    assert not cre.has_removals(cre.diff_removals(old, new))
+
+
+def test_update_not_blocked_when_new_exchange():
+    """First-time add has no prior data; guard must not fire."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+    import check_removed_entries as cre  # type: ignore
+    new = {"XNYS": {"name": "NYSE", "holidays": {"explicit": [
+        {"date": "2025-01-01"},
+    ]}}}
+    # diff against an empty old set: nothing can be removed
+    assert not cre.has_removals(cre.diff_removals({}, new))

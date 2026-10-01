@@ -137,22 +137,16 @@ jobs:
         run: |
           LATEST=$(ls -t logs/update_*.json 2>/dev/null | head -1 || true)
           if [ -z "$LATEST" ]; then
-            echo "blocked_summary=(log file not found)" >> "$GITHUB_OUTPUT"
-            exit 0
+            SUMMARY="(no update log found)"
+          else
+            SUMMARY=$(python3 tools/summarize_blocked.py "$LATEST")
           fi
-          SUMMARY=$(python3 -c "
-import json, sys
-d = json.load(open('$LATEST'))
-blocked = sorted(mic for mic, v in d.items()
-                 if v['status'] == 'blocked_by_removal')
-print(f'{len(blocked)} exchange(s) blocked by removal guard: ' + ', '.join(blocked))
-")
           {
             echo "blocked_summary<<EOF"
             echo "$SUMMARY"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
-      
+
       - name: Create Pull Request
         if: steps.check-changes.outputs.changes_detected == 'true'
         uses: peter-evans/create-pull-request@v6
