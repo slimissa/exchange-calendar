@@ -19,7 +19,7 @@ def _write_dir(tmp_path: Path, entries: dict) -> Path:
     Returns the directory path.
     """
     d = tmp_path / "exchanges"
-    d.mkdir(exist_ok=True)
+    d.mkdir(parents=True, exist_ok=True)
     for mic, info in entries.items():
         payload = {
             "code": mic,
