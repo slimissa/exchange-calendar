@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.7.0] — 2026-10-01
+
+### Added
+
+- `tools/check_removed_entries.py` — classifies removals between two
+  exchange datasets (holiday, exchange, MIC rename). Exit 0/1/2.
+- `tools/summarize_blocked.py` — one-line summary of a run's
+  `blocked_by_removal` entries.
+- `docs/decisions/0008-removal-guard-semantics.md`.
+- `FetchStatus.BLOCKED_BY_REMOVAL`.
+
+### Changed
+
+- `RegistryUpdater.update_exchange()` — refuses to write an update
+  that removes a holiday. Applies only to `UPDATED`.
+- `tools/update_from_exchange.py` — exit 3 when one or more exchanges
+  are blocked.
+- `.github/workflows/update-exchange.yml` — runs the updater for real
+  (previously `--dry-run`, so `git diff` was always empty and the PR
+  was never opened); blocked removals reach the PR body.
+
+### Fixed
+
+- `tests/test_check_removed_entries.py` — `_write_dir` creates parent
+  directories.
+- 3 `test_update_from_exchange.py` fixtures aligned with the guard.
+
+### Rationale
+
+A removal is the change class most likely to break a downstream
+consumer. Making it deliberate, not silent, is the point of the
+guard. Pattern adopted from ISO 10383's `refresh_diff.py` and ADR
+0003, adapted to EC's three-class data model.
+
 ## [2.6.0] — 2026-9-30
 
 ### Added
