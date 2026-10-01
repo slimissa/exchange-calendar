@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.2] — 2026-10-02
+
+### Fixed
+
+- XWBO: removed <N> 2026 entries the exchange stays open for. The
+  current file carried Austrian public holidays the exchange trades
+  through; the Vienna PDF's left column (real closures) is the
+  correct source and the fetcher was already using it.
+- XBUD: parser now recognises the observed Monday when a Hungarian
+  national holiday falls on a weekend.
+- XDFM: <if applicable — either a fix or a documented divergence>.
+
+### Notes
+
+The three in-window removal blocks from v2.9.1 are resolved. Each
+was a different class: a stale file entry, a parser gap, and a
+source disagreement. The XIST correction from v2.9.1 is the same
+pattern — the fetcher and the file disagree, and re-reading the
+source is what resolves which side is right.
+
 ## [2.9.1] — 2026-10-01
 
 ### Fixed

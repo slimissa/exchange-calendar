@@ -54,5 +54,6 @@
       "file": "tests/test_update_from_exchange.py",
       "contains": "test_merge_preserves_out_of_window_holidays"
     }
-  ]
+  ],
+  "2.9.2": []
 }

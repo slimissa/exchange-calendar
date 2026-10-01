@@ -798,3 +798,9 @@ entry with a past date is a silent-correctness bug — a caller reading
 `is_holiday()` gets a confident answer for a date that was never
 confirmed. Removing the entry makes the missing data explicit instead
 of wrong.
+
+- **Finding (2026-10-02):** the DFM PDF omits <date>. The current
+  file has it as <name>. The two sources disagree; the file is
+  preserved. Resolution requires a third source — DFM's own circular
+  from the prior year, or a UAE regulatory notice.
+- **Status:** fetcher present but not authoritative for this date.

@@ -1,11 +1,35 @@
 {
   "fetches": {
+    "XBUD": {
+      "bytes": 152441,
+      "fetched_at": "2026-10-01T23:04:07Z",
+      "max_age_days": 400,
+      "sha256": "da70f62ae88ae6f4c20187fa7e7ebe772eb6a8fbc46ff94b417452f7b017ab78",
+      "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
+      "status": "ok"
+    },
+    "XDFM": {
+      "bytes": 106796,
+      "fetched_at": "2026-10-01T23:03:38Z",
+      "max_age_days": 400,
+      "sha256": "e07a572a7b16447628a0a29cb88a58694823fae3a2cd39a53366b9ea97e1445f",
+      "source_url": "https://assets.dfm.ae/docs/default-source/circulars/circular-12-2025-trading-and-settlementholidays-for-the-calendar-year-2026-for-securities-market-excluding-derivatives-contracts-english.pdf?sfvrsn=cffc8981_0",
+      "status": "ok"
+    },
     "XIST": {
       "bytes": 162092,
       "fetched_at": "2026-10-01T19:00:26Z",
       "max_age_days": 400,
       "sha256": "3a1b39913abc188788da533c5e25000b6bb0a9f94057d21a61f068ef17efe85d",
       "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf",
+      "status": "ok"
+    },
+    "XWBO": {
+      "bytes": 98460,
+      "fetched_at": "2026-10-01T23:03:35Z",
+      "max_age_days": 400,
+      "sha256": "f5a8164932fcbfcae2e58947010bd92457e1c7753ca32877b943a6f077233901",
+      "source_url": "https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2026-en.pdf",
       "status": "ok"
     }
   },
