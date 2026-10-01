@@ -126,20 +126,8 @@
         "status": "closed"
       },
       {
-        "date": "2026-06-04",
-        "name": "Corpus Christi",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "status": "closed"
-      },
-      {
         "date": "2026-10-26",
         "name": "National Day",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "status": "closed"
-      },
-      {
-        "date": "2026-12-08",
-        "name": "Immaculate Conception",
         "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
         "status": "closed"
       },
