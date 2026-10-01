@@ -114,7 +114,19 @@ wrong without the reasoning behind it.
   block1[] rows carry calnd_dd and holdy_eng_nm for 2026, and plain requests
   (no browser) reaches it. This confirms the JS/AJAX data-grid finding above
   and supersedes the sweep timeout.
-- **Verdict:** RESOLVED — JSON endpoint available; fetcher pending (POST https://global.krx.co.kr/contents/GLB/99/GLB99000001.jspx).
+- **Finding (2026-10-01, regression):** the JSON endpoint now returns
+  an HTML body whose title is "403 Page" (622 bytes, HTTP status 200).
+  No `name="code"` token appears in the response. Attempted with both
+  the registry's default UA and a full Chrome UA header set; both
+  receive the same 403 body. The 2026-09-19 retest that reported
+  "plain requests reach it" no longer holds from this environment.
+- **Verdict:** BLOCKED (regressed). The endpoint exists and serves the
+  same JSON shape when reached from a browser session, but a
+  client-side WAF blocks non-browser requests from this vantage point.
+  No fetcher can be written until either (a) the WAF rule is
+  identified and the correct header set is faked, or (b) the source
+  publishes an alternate endpoint. Re-test if the WAF configuration
+  changes.
 
 ## XBOM — BSE India (Bombay Stock Exchange)
 

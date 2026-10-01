@@ -518,6 +518,45 @@ Reviewed by:
 - Exchange Calendar (`slimissa/exchange-calendar`) — 2026-09-29, reviewed at v2.3.0;
   adopted in v2.4.0
 
+## Sources unreachable from CI
+
+Some first-party sources are reachable from a residential IP or an
+interactive browser session but not from GitHub Actions runners or
+plain HTTP clients. Two independent causes have been observed:
+
+- **Network-vantage blocking.** CDN geo-rules, WAF bot detection
+  keyed on datacenter IP ranges, or endpoints that 403 every cloud
+  provider. The source is stable; the client's origin is the blocker.
+- **Client-fingerprint blocking.** The endpoint returns HTTP 200 with
+  an HTML "403 Page" body when the request lacks a browser-equivalent
+  header set, session cookie, or JavaScript-generated token. The IP
+  is not the blocker; the request shape is.
+
+Two statuses are available per exchange:
+
+- **CI-unreachable.** A fetcher exists and works from a residential
+  IP or an authenticated browser session. The manifest records the
+  fetch; the freshness window is extended; the entry's confidence is
+  capped at the lower tier — a source that cannot be re-verified
+  from CI cannot be trusted at the same level as one that can.
+- **Permanently blocked.** The source refuses all client shapes, or
+  serves content that cannot be parsed with extractable text. No
+  fetcher exists; the entry is hand-maintained; BLOCKED.md names the
+  reasoning per exchange.
+
+The distinction lives per exchange in BLOCKED.md, not in this doc.
+This section records that the shape exists so a future registry that
+hits either variant does not have to invent the pattern from scratch.
+
+**Regression is expected.** An exchange that was CI-verified can
+become blocked without a code change on this side — the source adds
+a WAF, or a header requirement. When that happens, the entry moves
+back to BLOCKED.md with a dated finding, not silently. XKRX is the
+reference case (2026-10-01): resolved 2026-09-19, regressed
+2026-10-01.
+
+See `exchange-calendar/BLOCKED.md` for the reference implementation.
+
 ## Review history format
 
 Every entry in a document's review history names the source repo,
