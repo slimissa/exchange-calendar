@@ -557,6 +557,15 @@ reference case (2026-10-01): resolved 2026-09-19, regressed
 
 See `exchange-calendar/BLOCKED.md` for the reference implementation.
 
+A refinement: an unreachable source sometimes has an *extractable*
+body once the request arrives — a WAF that blocks by fingerprint
+returns HTML 200 with a "403 Page" body, and a render-only page
+returns HTML with no data until JavaScript runs. Both are the same
+"the plain HTTP client cannot reach it" shape, but a browser fixes
+them differently (fetch mode vs. render mode). Decision recorded
+in `exchange-calendar/docs/decisions/0009-playwright-fetcher-category.md`.
+
+
 ## Review history format
 
 Every entry in a document's review history names the source repo,

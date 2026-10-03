@@ -128,6 +128,8 @@ wrong without the reasoning behind it.
   publishes an alternate endpoint. Re-test if the WAF configuration
   changes.
 
+- **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
+
 ## XBOM — BSE India (Bombay Stock Exchange)
 
 **Last verified:** 2026-09-19
@@ -322,6 +324,8 @@ wrong without the reasoning behind it.
   extraction doesn't help if the file can't be fetched at all.
 - **Verdict:** BLOCKED. Confirms that "PDF-only" and "bot-walled" are
   independent problems — fixing one doesn't guarantee fixing the other.
+
+- **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
 
 ## XIST — Borsa Istanbul
 
@@ -534,6 +538,8 @@ wrong without the reasoning behind it.
   no-visible-content result.
 - **Verdict:** RESOLVED — JSON endpoint available; fetcher pending (POST https://www.pse.com.ph/wp-admin/admin-ajax.php).
 
+- **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
+
 ## XBKK — Stock Exchange of Thailand (SET)
 
 **Last verified:** 2026-09-04
@@ -548,6 +554,8 @@ wrong without the reasoning behind it.
   render-as-image pattern that makes XSWX and XATH's PDFs unusable: no
   per-day text data extractable from a page-flip viewer.
 - **Verdict:** BLOCKED.
+
+- **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
 
 ## XSTC — Ho Chi Minh Stock Exchange (Vietnam)
 
