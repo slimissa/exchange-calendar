@@ -1268,10 +1268,14 @@ class TestBudapestFetcher:
     def test_parse_html_extracts_holidays_with_names(self):
         fetcher = BudapestFetcher()
         holidays = fetcher.parse_html(BUDAPEST_SAMPLE_PDF_TEXT)
-        assert len(holidays) == 5
+        # v2.9.3: 5 declared holidays + 2 weekend substitutes for 2026.
+        assert len(holidays) == 7
         names = {h.name for h in holidays}
         assert "New Year" in names
         assert "Good Friday" in names
+        # Substitutes are present
+        assert "National Day (observed)" in names
+        assert "Boxing Day (substitute)" in names
 
     def test_parse_html_ignores_saturday_footnote(self):
         """The 'following Saturdays...' sentence must not produce holiday entries"""
