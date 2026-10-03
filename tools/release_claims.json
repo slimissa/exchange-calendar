@@ -70,5 +70,23 @@
       "file": "BLOCKED.md",
       "contains": "XBUD"
     }
+  ],
+  "2.9.3": [
+    {
+      "file": "tools/update_from_exchange.py",
+      "contains": "_observed_substitutes"
+    },
+    {
+      "file": "tests/test_budapest_holidays.py",
+      "contains": "test_observed_substitutes_2026"
+    },
+    {
+      "file": "tests/test_update_from_exchange.py",
+      "contains": "National Day (observed)"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "IMPLEMENTED"
+    }
   ]
 }

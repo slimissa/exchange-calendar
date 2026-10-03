@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.3] — 2026-10-03
+
+### Fixed
+
+- XBUD: parser computes Monday substitutes for weekend state
+  holidays. March 15, 2026 is a Sunday and December 26 a Saturday;
+  Hungarian labour law grants the next working day as a rest day.
+  BSE observes both but its resolution lists only the
+  exchange-declared closures. `BudapestFetcher._observed_substitutes`
+  handles 3-15 and 12-26. Other fixed-date Hungarian holidays are
+  not generalized — no source confirms BSE treats them the same way.
+
+### Changed
+
+- `BLOCKED.md` — XBUD entry marked IMPLEMENTED at v2.9.3.
+
 ## [2.9.2] — 2026-10-02
 
 ### Fixed

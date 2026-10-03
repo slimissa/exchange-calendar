@@ -548,7 +548,7 @@ class TestNYSEFetcher:
         fetcher = NYSEFetcher()
         holidays = fetcher.parse_html(ir_theice_html)
 
-        assert len(holidays) >= 12  # 12 declared + 2 observed substitutes (v2.9.3)
+        assert len(holidays) == 12
         dates = {h.date for h in holidays}
         assert "2025-01-01" in dates
         assert "2026-07-03" in dates  # Independence Day observed, 2026
@@ -1518,7 +1518,7 @@ class TestSSEFetcher:
         fetcher = SSEFetcher()
         holidays = fetcher.parse_html(SSE_SAMPLE_HTML)
 
-        assert len(holidays) >= 12  # 12 declared + 2 observed substitutes (v2.9.3)  # see manual expansion in fetcher docstring test above
+        assert len(holidays) == 12  # see manual expansion in fetcher docstring test above
         dates = {h.date for h in holidays}
         # Chinese New Year range Jan 28 - Feb 4 2025: weekend Feb 1-2 excluded
         assert "2025-01-28" in dates
@@ -2177,7 +2177,7 @@ class TestMOEXFetcher:
         assert "2026-01-01" in dates
         assert "2026-01-04" in dates
         assert "2026-12-31" in dates
-        assert len(holidays) >= 12  # 12 declared + 2 observed substitutes (v2.9.3)
+        assert len(holidays) == 12
 
     def test_parse_html_excludes_open_makeup_session_date(self):
         """The 'will be open for trading' sentence must not produce a holiday"""
