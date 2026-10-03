@@ -98,5 +98,23 @@
       "file": "tests/test_check_fetcher_freshness.py",
       "contains": "test_record_manifest_skips_write_when_content_unchanged"
     }
+  ],
+  "2.9.5": [
+    {
+      "file": "docs/decisions/0009-playwright-fetcher-category.md",
+      "contains": "Playwright as a fetcher category"
+    },
+    {
+      "file": "docs/decisions/0009-playwright-fetcher-category.md",
+      "contains": "fetch mode first"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "0009-playwright"
+    },
+    {
+      "file": "RELEASE_PATTERN.md",
+      "contains": "0009-playwright"
+    }
   ]
 }

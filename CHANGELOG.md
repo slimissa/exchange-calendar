@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.5] — 2026-10-04
+
+### Added
+
+- `docs/decisions/0009-playwright-fetcher-category.md` — the
+  Playwright decision. Adopts Playwright in fetch mode only;
+  defers render+OCR to ADR 0010; declares EC-local, not shared.
+
+### Changed
+
+- `BLOCKED.md` — XKRX, XJSE, XATH, XBKK, XPHS cross-reference
+  the ADR.
+- `RELEASE_PATTERN.md` § Sources unreachable from CI — note
+  added distinguishing fetch-mode from render-mode blocking.
+
+### Notes
+
+Documentation release. No fetcher code changes. v2.10.0 will
+implement fetch-mode Playwright for XKRX and XJSE.
+
 ## [2.9.4] — 2026-10-04
 
 ### Fixed
