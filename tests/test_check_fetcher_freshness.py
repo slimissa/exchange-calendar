@@ -236,3 +236,46 @@ def test_real_manifest_passes():
     if not manifest.exists():
         pytest.skip("fetcher_manifest.json not present")
     assert cff.main(["--manifest", str(manifest)]) == 0
+
+
+# ── v2.9.4: manifest write is skipped when content is unchanged ─────
+
+def test_record_manifest_skips_write_when_content_unchanged(tmp_path):
+    """Re-fetching identical bytes leaves `fetched_at` untouched. The
+    field records when the source last changed, not when we last
+    looked; a write that only moves the timestamp dirties the tree
+    for no reason."""
+    import json
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+    import update_from_exchange as ufe
+
+    # Point the module at a scratch manifest and enable the write path.
+    manifest = tmp_path / "fetcher_manifest.json"
+    manifest.write_text('{"fetches": {}, "meta": {"schema_version": "1.0.0"}}\n')
+    monkey_manifest_path = manifest
+    saved = ufe._FETCHER_MANIFEST_PATH
+    saved_env = __import__("os").environ.pop("FETCHER_MANIFEST_DISABLE", None)
+    ufe._FETCHER_MANIFEST_PATH = monkey_manifest_path
+    try:
+        f = ufe.NYSEFetcher()
+        content = b"%PDF-1.7 fake bytes"
+        f._record_manifest(content, status="ok")
+        first = json.loads(manifest.read_text())
+        assert "XNYS" in first["fetches"]
+        ts1 = first["fetches"]["XNYS"]["fetched_at"]
+
+        # Same bytes again: no write, timestamp stays.
+        f._record_manifest(content, status="ok")
+        second = json.loads(manifest.read_text())
+        assert second["fetches"]["XNYS"]["fetched_at"] == ts1
+
+        # Different bytes: entry updates.
+        f._record_manifest(b"%PDF-1.7 other bytes", status="ok")
+        third = json.loads(manifest.read_text())
+        assert third["fetches"]["XNYS"]["sha256"] != first["fetches"]["XNYS"]["sha256"]
+    finally:
+        ufe._FETCHER_MANIFEST_PATH = saved
+        if saved_env is not None:
+            __import__("os").environ["FETCHER_MANIFEST_DISABLE"] = saved_env

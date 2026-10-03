@@ -384,6 +384,20 @@ class ExchangeFetcher(ABC):
             "max_age_days": self.MAX_AGE_DAYS,
             "status": status,
         }
+        # v2.9.4: skip the write if the only change would be
+        # `fetched_at`. The field records when the source's content
+        # last changed, not when we last looked. Without this guard,
+        # every dry-run dirties the tree and every release needs a
+        # manual `git checkout -- fetcher_manifest.json` first.
+        existing = manifest.get("fetches", {}).get(self.mic)
+        if existing is not None:
+            immutable_existing = {k: v for k, v in existing.items()
+                                  if k != "fetched_at"}
+            immutable_new = {k: v for k, v in entry.items()
+                             if k != "fetched_at"}
+            if immutable_existing == immutable_new:
+                return
+
         manifest.setdefault("fetches", {})[self.mic] = entry
         tmp = manifest_path.with_suffix(".json.tmp")
         tmp.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
