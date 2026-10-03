@@ -813,3 +813,20 @@ of wrong.
   preserved. Resolution requires a third source — DFM's own circular
   from the prior year, or a UAE regulatory notice.
 - **Status:** fetcher present but not authoritative for this date.
+
+
+## XBUD — Budapest Stock Exchange
+
+**Last verified:** 2026-10-03
+
+- **Finding (2026-10-03):** the BSE PDF resolution lists 12 trading
+  holidays for 2026 but omits 2026-03-16 (National Day observed) and
+  2026-12-28 (Boxing Day substitute). The current file carries both
+  with `name` fields that say "(observed)" and "(substitute)". They
+  are real closures under Hungarian labour law — March 15 and
+  December 26, 2026 fall on a weekend and Hungarian law grants the
+  Monday. The BSE resolution doesn't list them because the substitute
+  is automatic.
+- **Status:** fetcher present but incomplete. Resolution requires
+  adding Hungarian observed-day logic to the parser. Deferred to
+  v2.9.3.
