@@ -88,5 +88,15 @@
       "file": "BLOCKED.md",
       "contains": "IMPLEMENTED"
     }
+  ],
+  "2.9.4": [
+    {
+      "file": "tools/update_from_exchange.py",
+      "contains": "skip the write if the only change would be"
+    },
+    {
+      "file": "tests/test_check_fetcher_freshness.py",
+      "contains": "test_record_manifest_skips_write_when_content_unchanged"
+    }
   ]
 }

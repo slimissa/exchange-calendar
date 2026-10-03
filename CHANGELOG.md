@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.4] — 2026-10-04
+
+### Fixed
+
+- `ExchangeFetcher._record_manifest` skips the write when the only
+  field that would change is `fetched_at`. The field records when
+  the source's content last changed, not when we last looked at it.
+  Before this, every dry-run rewrote `fetcher_manifest.json` and
+  every release needed a manual `git checkout --` first.
+
+### Notes
+
+Semantics refined: `fetched_at` now means "when did this source's
+content last differ from the recorded value", not "when did we
+last fetch". A re-fetch of identical bytes is a no-op on the
+manifest. A future release may split this into `last_checked` and
+`last_changed` if a consumer needs the "we looked but nothing
+changed" signal — no such consumer today.
+
 ## [2.9.3] — 2026-10-03
 
 ### Fixed
