@@ -114,7 +114,7 @@ class TestXWBOFixedHolidays:
 
     def test_epiphany_2026(self, explicit_dates):
         """Jan 6, 2026 is Tuesday."""
-        assert "2026-01-06" in explicit_dates
+        assert "2026-01-06" not in explicit_dates  # right-column — exchange open
 
     def test_labour_day_2025(self, explicit_dates):
         """May 1, 2025 is Thursday."""
@@ -158,8 +158,9 @@ class TestXWBOFixedHolidays:
         assert explicit_dates["2025-12-08"]["name"] == "Immaculate Conception"
 
     def test_immaculate_conception_2026(self, explicit_dates):
-        """Dec 8, 2026 is Tuesday."""
-        assert "2026-12-08" in explicit_dates
+        """Dec 8, 2026 is a right-column entry — the exchange is
+        open. It must NOT appear in explicit_dates."""
+        assert "2026-12-08" not in explicit_dates
 
     def test_christmas_2025(self, explicit_dates):
         """Dec 25, 2025 is Thursday."""
@@ -241,7 +242,7 @@ class TestXWBOEaster:
 
     def test_ascension_2026(self, explicit_dates):
         """Easter + 39 days — May 14, 2026."""
-        assert "2026-05-14" in explicit_dates
+        assert "2026-05-14" not in explicit_dates  # right-column — exchange open
 
     def test_whit_monday_2025(self, explicit_dates):
         """Easter + 50 days — June 9, 2025."""
@@ -250,7 +251,7 @@ class TestXWBOEaster:
 
     def test_whit_monday_2026(self, explicit_dates):
         """Easter + 50 days — May 25, 2026."""
-        assert "2026-05-25" in explicit_dates
+        assert "2026-05-25" not in explicit_dates  # right-column — exchange open
 
     def test_corpus_christi_2025(self, explicit_dates):
         """Easter + 60 days — June 19, 2025."""
@@ -258,8 +259,9 @@ class TestXWBOEaster:
         assert explicit_dates["2025-06-19"]["name"] == "Corpus Christi"
 
     def test_corpus_christi_2026(self, explicit_dates):
-        """Easter + 60 days — June 4, 2026."""
-        assert "2026-06-04" in explicit_dates
+        """Easter + 60 — June 4, 2026. Right-column entry; the
+        exchange is open. Must NOT be a closure."""
+        assert "2026-06-04" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -400,9 +402,9 @@ class TestXWBOCalendarCrossChecks:
         """Verify Easter-based dates are internally consistent for 2026."""
         # Easter Sunday 2026 is April 5
         assert "2026-04-06" in explicit_dates  # Easter Monday (+1)
-        assert "2026-05-14" in explicit_dates  # Ascension (+39)
-        assert "2026-05-25" in explicit_dates  # Whit Monday (+50)
-        assert "2026-06-04" in explicit_dates  # Corpus Christi (+60)
+        assert "2026-05-14" not in explicit_dates  # Ascension (+39), right-column — exchange open
+        assert "2026-05-25" not in explicit_dates  # Whit Monday (+50), right-column — exchange open
+        assert "2026-06-04" not in explicit_dates  # Corpus Christi — right column, open
 
     def test_no_observed_holidays(self, explicit_dates):
         """Austria does not observe substitute holidays for weekend dates."""

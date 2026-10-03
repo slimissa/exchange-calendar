@@ -776,6 +776,15 @@ Combined count for the round: 6 built, 4 blocked.
 - **Verdict:** RECONCILED for 2026. The 9 previously-predicted past-due
   entries are resolved. Fetcher remains active.
 
+- **Finding (2026-10-03):** the DFM PDF omits 2026-12-01
+  (Commemoration Day); the current file has it as a closure. The
+  two sources disagree. The file is preserved; resolution needs a
+  third source (prior-year DFM circular, or a UAE regulatory
+  notice).
+- **Status:** fetcher present, not authoritative for this date.
+  The removal guard blocks refresh until the divergence is
+  resolved.
+
 ## Past-due reconciliation — 2026-09-17
 
 **Last verified:** 2026-09-17

@@ -55,5 +55,20 @@
       "contains": "test_merge_preserves_out_of_window_holidays"
     }
   ],
-  "2.9.2": []
+  "2.9.2": [
+    {
+      "file": "exchanges/XWBO.json"
+    },
+    {
+      "file": "tests/test_vienna_holidays.py"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "XDFM"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "XBUD"
+    }
+  ]
 }
