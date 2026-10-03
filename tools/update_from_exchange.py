@@ -2442,7 +2442,53 @@ class BudapestFetcher(PDFFetcher):
                 source_url=self.source_url
             ))
 
+        # v2.9.3: append Monday substitutes for weekend state holidays.
+        # The BSE resolution doesn't list them; Hungarian labour law
+        # requires them. Rendered as ordinary closures so downstream
+        # consumers see the exchange's actual closed days.
+        holidays.extend(self._observed_substitutes(year))
+
         return holidays
+
+
+    # Hungarian state holidays whose weekend occurrences are granted
+    # a Monday substitute by labour law. BSE's resolution lists only
+    # the exchange-declared closures and omits the automatic
+    # substitutes, so the parser computes them.
+    #
+    # Only 3-15 and 12-26 are handled. If another Hungarian holiday
+    # (5-1, 8-20, 10-23, 11-1) ever appears as a weekend substitute
+    # in a future file, add it here — do not generalize the rule
+    # without a source that says BSE treats them the same way.
+    _WEEKEND_SUBSTITUTES = [
+        (3, 15, "National Day (observed)"),
+        (12, 26, "Boxing Day (substitute)"),
+    ]
+
+    def _observed_substitutes(self, year: int) -> List[HolidayEntry]:
+        """Monday substitutes for state holidays that fall on a
+        weekend. Hungarian law grants the next working day as a
+        rest day; BSE follows it, but the resolution does not
+        enumerate the substitutes."""
+        out: List[HolidayEntry] = []
+        for month, day, name in self._WEEKEND_SUBSTITUTES:
+            try:
+                d = datetime(year, month, day)
+            except ValueError:
+                continue
+            if d.weekday() < 5:
+                continue
+            offset = 2 if d.weekday() == 5 else 1  # Sat->Mon, Sun->Mon
+            monday = d + timedelta(days=offset)
+            out.append(HolidayEntry(
+                date=monday.strftime("%Y-%m-%d"),
+                name=name,
+                status="closed",
+                source_url=self.source_url,
+                note="Hungarian labour law substitute for a weekend "
+                     "state holiday; BSE resolution omits it.",
+            ))
+        return out
 
     @retry(max_attempts=3, delay=2.0, backoff=2.0, exceptions=(FetchError,))
     def fetch(self) -> Optional[ExchangeData]:

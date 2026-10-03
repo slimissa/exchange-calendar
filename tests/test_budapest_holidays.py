@@ -481,3 +481,33 @@ class TestXBUDSubstitution:
         # 2028-08-20 (Sunday) → 2028-08-21 (Monday)
         assert "2028-08-20" not in explicit_dates
         assert "2028-08-21" in explicit_dates
+
+# ── v2.9.3: weekend substitutes ─────────────────────────────────────
+
+def test_observed_substitutes_2026():
+    """March 15, 2026 is a Sunday and December 26 a Saturday.
+    Hungarian labour law grants the Monday substitute; BSE observes
+    both. The BSE resolution omits them; the parser computes them."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+    from update_from_exchange import BudapestFetcher
+
+    f = BudapestFetcher()
+    subs = {h.date: h.name for h in f._observed_substitutes(2026)}
+    assert "2026-03-16" in subs
+    assert "2026-12-28" in subs
+    assert "observed" in subs["2026-03-16"].lower()
+    assert "substitute" in subs["2026-12-28"].lower()
+
+
+def test_observed_substitutes_2024_no_occurrence():
+    """March 15, 2024 is Friday; December 26 is Thursday. No
+    substitutes fire on weekdays."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+    from update_from_exchange import BudapestFetcher
+
+    f = BudapestFetcher()
+    assert f._observed_substitutes(2024) == []

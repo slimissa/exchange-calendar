@@ -799,8 +799,6 @@ UA):
 - **XKAR**: PDF has no extractable text (scanned image)
 - **XKUW**: 403 from all IPs (permanent, documented above)
 - **XBAH**: content area is a client-side SharePoint webpart
-- **XTUN**: empty response (HTTP 200, 39-byte body; originally recorded as JS-rendered)
-- **XMUS**: content area is client-side rendered
 
 Entries were removed rather than left marked `predicted`. A `predicted`
 entry with a past date is a silent-correctness bug — a caller reading
@@ -828,5 +826,5 @@ of wrong.
   Monday. The BSE resolution doesn't list them because the substitute
   is automatic.
 - **Status:** fetcher present but incomplete. Resolution requires
-  adding Hungarian observed-day logic to the parser. Deferred to
-  v2.9.3.
+  adding Hungarian observed-day logic to the parser. IMPLEMENTED
+  at v2.9.3 (`BudapestFetcher._observed_substitutes`).
