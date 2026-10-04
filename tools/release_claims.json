@@ -370,5 +370,23 @@
       "file": "BLOCKED.md",
       "contains": "0010-render-mode"
     }
+  ],
+  "2.12.3": [
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "**Decision:** permanent-block"
+    },
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "Amendment \u2014 2026-10-04 (v2.12.3)"
+    },
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "visual calendar grids"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "first confirmed member"
+    }
   ]
 }

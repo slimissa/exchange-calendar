@@ -67,17 +67,20 @@ browser variant will bypass. Marked permanent.
 
 ### D2 — XATH
 
-**Decision:** defer
-**Technique:** alternate-source (likely a Euronext shared source)
-**Rationale:** The recorded block was never "visual-grid PDF." The
-URL in BLOCKED.md pointed at a page that no longer exists.
-athexgroup.gr redirects to athens.euronext.com, which 404s the
-paths BLOCKED.md names. The codebase already has a shared
-EuronextFetcher for six sibling exchanges; Athens is now a Euronext
-venue and its holiday data is likely on the same page. The next
-session probes athens.euronext.com for the shared source and, if
-found, adds an EuronextAthensFetcher subclass. This is not
-render-mode work.
+**Decision:** permanent-block
+**Technique:** none
+**Rationale:** The old block was a stale URL, not a visual-grid PDF.
+athexgroup.gr 302s to athens.euronext.com, which 404s the paths
+recorded in BLOCKED.md. Athens publishes its own calendar as a
+downloadable PDF from
+`athens.euronext.com/en/trade/trading-model/calendar`. Both the 2026
+(Greek) and 2025 (English) PDFs extract as visual calendar grids —
+day numbers with no holiday names, no "Closed" markers. Holidays are
+indicated by cell fill color, which `pdfplumber.extract_text()`
+cannot detect. This is the first confirmed instance of the class
+ADR 0009 named as "visual-grid PDF." Parsing would require color or
+fill detection outside the framework's current scope.
+
 
 ### D3 — XBKK
 
@@ -134,6 +137,14 @@ the reason that class name was written to describe.
 - XPHS (robots.txt).
 - A specific OCR implementation. No exchange has been confirmed to
   need OCR.
+
+
+## Amendment — 2026-10-04 (v2.12.3)
+
+XATH reconnaissance complete. Athens Exchange publishes its calendar
+as a visual-grid PDF with no extractable text layer. D2 updated from
+`defer` to `permanent-block`. This is the first confirmed member of
+the class ADR 0009 named; the class in BLOCKED.md is no longer empty.
 
 ## Related
 

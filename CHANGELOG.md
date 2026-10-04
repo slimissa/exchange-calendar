@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.12.3] — 2026-10-04
+
+### Changed
+
+- `docs/decisions/0010-render-mode.md` — D2 (XATH) amended from
+  `defer` to `permanent-block`. Athens publishes a visual-grid PDF
+  with no extractable text layer.
+- `BLOCKED.md` — XATH recorded with the specific finding: a
+  visual calendar grid, day numbers only, holidays marked by cell
+  fill color.
+
+### Notes
+
+This is the first confirmed instance of the "visual-grid PDF" class
+ADR 0009 named. Until this release the class was empty in BLOCKED.md
+— the last entry that belonged to it (XATH's 2026-08-31 entry) was
+a stale-URL problem in disguise. It is now a real class with a real
+member.
+
+The `EuronextFetcher` parent gained an optional `source_url`
+parameter. It has no current user but is a small generalization
+worth keeping: a future Euronext venue on a different URL will not
+require modifying the parent again.
+
+No fetcher was added. No test was added. The reconnaissance produced
+a decision, not code.
+
 ## [2.12.2] — 2026-10-04
 
 ### Changed

@@ -160,28 +160,28 @@ wrong without the reasoning behind it.
 
 ## XATH — Athens Exchange
 
-**Last verified:** 2026-08-31
-
-- **Checked:** athexgroup.gr's trading-hours page and market-data
-  section. No PDF URL was surfaced from the static HTML; the
-  2026-10-01 PDF bucket probe could not be run against a URL.
-- **Finding (2026-08-31, Tier 4):** the Athens Exchange publishes
-  its holiday calendar as a visual-grid PDF — a table drawn as
-  vector graphics with no per-day text labels. Same shape as
-  XSWX. `PDFFetcher`'s text extraction returns no holiday rows.
-- **Verdict:** BLOCKED (visual-grid PDF). Goes to the ADR 0010
-  bucket for the render-and-OCR decision.
-- **See:** docs/decisions/0009-playwright-fetcher-category.md for
-  the decision that governs this class of block.
-
-- **See:** docs/decisions/0010-render-mode.md for the render-mode decision that governs this block.
-
-- **Finding (2026-10-04, ADR 0010 reconnaissance):** athexgroup.gr now
+- **Finding (2026-10-04, v2.12.3 reconnaissance):** athexgroup.gr
   redirects its trading-hours and calendar pages to
   `athens.euronext.com`, which returns 404 for the paths previously
-  recorded here. The Athens Exchange is now Euronext Athens. The
-  block was never visual-grid PDF — the URL was stale. Next step:
-  probe `athens.euronext.com` for the shared Euronext source.
+  recorded here. Athens is a Euronext member (since 2023) but is NOT
+  a column on the shared holidays page at
+  `euronext.com/en/trading/trading-hours-holidays` — that table covers
+  Amsterdam, Brussels, Dublin, Lisbon, Milan, Oslo, Paris only.
+- **Finding (2026-10-04):** Athens publishes its calendar as a
+  downloadable PDF from
+  `athens.euronext.com/en/trade/trading-model/calendar`. The 2026
+  PDF (Greek, `Euronext_Athens_Ημερολόγιο_Συναλλαγών_2026_v01.pdf`)
+  and the 2025 PDF (English, `Trading_Calendar_2025_EN.pdf`) both
+  extract as **visual calendar grids** — month names, weekday
+  abbreviations, day numbers. Holidays are highlighted by cell fill
+  color, not text. `pdfplumber.extract_text()` returns 2751 and
+  1557 characters respectively, none of them holiday names or
+  "Closed" markers. Extraction yields day numbers only.
+- **Verdict:** BLOCKED (visual-grid PDF). This is the first
+  confirmed member of the class ADR 0009 named. Parsing would
+  require color/fill detection on the PDF cells, which is outside
+  the current fetcher framework's scope. Permanent block.
+
 
 ## XBOM — BSE India (Bombay Stock Exchange)
 

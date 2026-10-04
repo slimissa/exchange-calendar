@@ -1447,6 +1447,8 @@ class EuronextFetcher(ExchangeFetcher):
         "XBRU": "Brussels",
         "XLIS": "Lisbon",
         "XOSL": "Oslo",
+        "XATH": "Athens",
+
     }
     TIMEZONE = {
         "XPAR": "Europe/Paris",
@@ -1455,18 +1457,22 @@ class EuronextFetcher(ExchangeFetcher):
         "XBRU": "Europe/Brussels",
         "XLIS": "Europe/Lisbon",
         "XOSL": "Europe/Oslo",
+        "XATH": "Europe/Athens",
     }
     CURRENCY = {
         "XPAR": "EUR", "XAMS": "EUR", "XDUB": "EUR", "XBRU": "EUR",
         "XLIS": "EUR", "XOSL": "NOK",  # Oslo: NOK, not EUR -- verified separately
+        "XATH": "EUR",
     }
     COUNTRY = {
         "XPAR": "France", "XAMS": "Netherlands", "XDUB": "Ireland",
         "XBRU": "Belgium", "XLIS": "Portugal", "XOSL": "Norway",
+        "XATH": "Greece", 
     }
     CITY = {
         "XPAR": "Paris", "XAMS": "Amsterdam", "XDUB": "Dublin",
         "XBRU": "Brussels", "XLIS": "Lisbon", "XOSL": "Oslo",
+        "XATH": "Athens",
     }
     # Oslo's regular hours differ from the other Euronext markets (confirmed
     # via a separate check, not assumed): continuous trading ends 16:20 CET,
@@ -1475,14 +1481,14 @@ class EuronextFetcher(ExchangeFetcher):
     REGULAR_CLOSE = {mic: "17:30" for mic in MARKET_COLUMN}
     REGULAR_CLOSE["XOSL"] = "16:30"
 
-    def __init__(self, mic: str, name: str):
+    def __init__(self, mic: str, name: str, source_url: Optional[str] = None):
         if mic not in self.MARKET_COLUMN:
             raise ValueError(f"EuronextFetcher does not support MIC {mic}")
         ExchangeFetcher.__init__(
             self,
             mic=mic,
             name=name,
-            source_url="https://www.euronext.com/en/trading/trading-hours-holidays",
+            source_url=source_url or "https://www.euronext.com/en/trading/trading-hours-holidays",
             rate_limit=2.0
         )
 
@@ -1972,9 +1978,9 @@ class SZSEFetcher(ExchangeFetcher):
         # Year comes from the heading "Stock Market Holiday Schedule (2026)"
         # which spans multiple tags: "(202", "6", ")". Extract from joined text.
         year_match = re.search(
-            r'Stock Market Holiday Schedule\s*\(\s*(\d)\s*(\d)\s*(\d)\s*(\d)\s*\)',
-            text,
-        )
+                r'Stock Market Holiday Schedule\s*\(\s*(\d)\s*(\d)\s*(\d)\s*(\d)\s*\)',
+                text,
+            )
         if not year_match:
             return []  # not the calendar page; caller's empty-fetch guard handles it
         year = int(''.join(year_match.groups()))
@@ -2605,6 +2611,7 @@ class BudapestFetcher(PDFFetcher):
             raise ValidationError(f"Invalid data: {', '.join(errors)}")
 
         return data
+
 
 
 class NasdaqNordicFetcher(ExchangeFetcher):
