@@ -19,7 +19,7 @@ Run:
 import json
 import pytest
 from datetime import date
-from pathlib import Path, types
+from pathlib import Path
 
 
 # ──────────────────────────────────────────────────────────────
