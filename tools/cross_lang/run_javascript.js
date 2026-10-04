@@ -1,9 +1,9 @@
 const fs = require("fs");
 const path = require("path");
-const { Registry } = require(path.resolve("wrappers/javascript/src"));
+const { CalendarRegistry } = require(path.resolve("wrappers/javascript/src"));
 
 const fixture = JSON.parse(fs.readFileSync("tests/cross_language_queries.json", "utf8"));
-const r = new Registry();
+const r = new CalendarRegistry();
 const out = {};
 for (const q of fixture.queries) {
   const [a, b, c] = q.args;
