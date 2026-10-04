@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.12.5] — 2026-10-04
+
+### Changed
+
+- `BLOCKED.md` — XJSE marked permanent-block. The entire site is
+  behind a Cloudflare bot-wall for plain HTTP clients; a reopen
+  condition names the one technique not yet tried.
+- `docs/decisions/0010-render-mode.md` — Amendment records the XJSE
+  finding. Non-goals section updated.
+
+### Notes
+
+Documentation-only release. No fetcher, no schema change, no data
+change.
+
+The XJSE reconnaissance re-probed the four recorded paths and
+fourteen additional candidates. Every one returned 403 with the same
+5017-byte Cloudflare challenge page — including the homepage,
+robots.txt, and sitemap.xml. A full Chrome UA did not change the
+result. The prior Playwright probe reached the homepage but its
+one-level PDF scan found no holiday calendar URL.
+
+XJSE is now permanent-block with a specific reopen condition: a
+Playwright navigation walk through the site's own menu into the
+market notices section. That is the one discovery technique not yet
+attempted.
+
+This closes the fetcher track. Every blocked exchange in the
+ecosystem has a final state and a dated reason. The next release is
+v2.13.0 (MIC-to-LEI connector).
+
 ## [2.12.4] — 2026-10-04
 
 ### Changed

@@ -164,6 +164,21 @@ was attempted and removed; parsing requires word-position-aware
 reconstruction outside the framework's current scope. D3 updated from
 `defer` to `permanent-block`.
 
+
+## Amendment — 2026-10-04 (v2.12.5)
+
+XJSE URL discovery complete. The entire jse.co.za site returns 403
+with the same Cloudflare challenge page to every plain HTTP client:
+homepage, robots.txt, sitemap.xml, and fourteen candidate paths.
+`clientportal.jse.co.za` also returns 403 with a full Chrome UA.
+The prior Playwright probe reached the homepage (200, 402 KB) but a
+one-level PDF scan found no holiday calendar URL. XJSE is
+`permanent-block`, with a specific reopen condition: a Playwright
+**navigation walk** through the site's own menu into the market
+notices or regulation section, which is the one technique not yet
+tried. This ADR's D1–D3 are unchanged; XJSE is a separate block
+tracked in BLOCKED.md.
+
 ## Related
 
 - ADR 0009 — Playwright fetch mode.

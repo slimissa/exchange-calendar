@@ -406,5 +406,19 @@
       "file": "BLOCKED.md",
       "contains": "visual calendar grid"
     }
+  ],
+  "2.12.5": [
+    {
+      "file": "BLOCKED.md",
+      "contains": "Cloudflare bot-wall"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "Reopen condition"
+    },
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "Amendment \u2014 2026-10-04 (v2.12.5)"
+    }
   ]
 }

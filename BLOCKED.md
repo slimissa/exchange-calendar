@@ -370,40 +370,39 @@ wrong without the reasoning behind it.
 
 ## XJSE — Johannesburg Stock Exchange (JSE)
 
-**Last verified:** 2026-08-29
+**Last verified:** 2026-10-04
 
 - **Checked:** jse.co.za and clientportal.jse.co.za Market Notice PDFs
-- **Finding:** expected to be one of the simpler Tier 3 sources (well
-  documented, stable South African public holidays); instead, JSE only
-  publishes its holiday calendar as PDF Market Notices, and even after
-  adding `PDFFetcher` support to the framework, the PDF itself returned
-  "Site blocked the request (bot detection)" on direct fetch. PDF-text
-  extraction doesn't help if the file can't be fetched at all.
-- **Finding (2026-10-04, Playwright probe):** ADR 0009's fetch mode
-  was probed against the JSE homepage. `page.goto` through headless
-  Chromium returns HTTP 200 with the site's own HTML (402 KB,
-  "JSE | Leading Stock Market and Exchange in Africa"), confirming
-  Cloudflare's challenge is satisfied by a browser session.
-  However, the holiday calendar's PDF URL was not discovered from
-  the homepage: its internal links lead to 137 sub-pages and only
-  one PDF (a contact list) surfaced from a one-level walk.
-- **Verdict:** BLOCKED (URL discovery). Fetch mode works; the source
-  URL for the holiday calendar has not been located. Same class as
-  XCAS and XDHA in that a specific sub-page must be found before a
-  fetcher is writable.
+- **Finding (2026-08-29):** expected to be one of the simpler Tier 3
+  sources; instead, the PDF itself returned "Site blocked the request
+  (bot detection)" on direct fetch.
+- **Finding (2026-10-04, Playwright probe):** `page.goto` through
+  headless Chromium returns HTTP 200 with the site's own HTML (402 KB),
+  confirming Cloudflare's challenge is satisfied by a browser session.
+  A one-level PDF scan from the homepage returned 137 links and one
+  contact-list PDF. No holiday calendar URL surfaced.
+- **Finding (2026-10-04, plain-HTTP re-probe, v2.12.5):** every URL
+  returns 403 with the same 5017-byte Cloudflare challenge page:
+  the homepage, `/robots.txt`, `/sitemap.xml`, `/sitemap_index.xml`,
+  the four previously recorded paths, and fourteen additional
+  candidates. `clientportal.jse.co.za` also returns 403 with a
+  full Chrome UA and browser-like `Accept` headers. Nothing on the
+  site is reachable from a plain HTTP client.
+- **Verdict:** BLOCKED (permanent). The site is entirely behind
+  Cloudflare for non-browser clients. The holiday calendar is
+  published as a Market Notice PDF; no URL for it was enumerated by
+  two discovery sessions (plain HTTP: fails at Cloudflare; one-level
+  Playwright PDF scan: homepage loads, no PDF found).
+- **Reopen condition:** a Playwright-driven **navigation walk** —
+  following the site's own menu into the market notices or regulation
+  section rather than scanning the homepage for direct PDF links.
+  That is the one technique not yet tried. If it also fails, the
+  source is documented as not publicly enumerable and the block is
+  truly permanent.
 
-- **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
-
-- **Searched (2026-10-04):** a Playwright walk from the JSE homepage
-  reached 200 with the site's own HTML (Cloudflare challenge
-  satisfied). Paths tried and their results:
-  `/trade/trading-calendar` 403, `/market-data/trading-calendar` 403,
-  `/services/market-data/trading-calendar` 403,
-  `/about/regulation/market-notices` 403, `clientportal.jse.co.za` 403.
-  A one-level walk of the homepage returned 137 internal links and one
-  PDF (a contact list). No holiday calendar URL surfaced.
-  Next attempt should start from the site's sitemap or news archive,
-  not from navigation traversal.
+- **See:** docs/decisions/0009-playwright-fetcher-category.md and
+  docs/decisions/0010-render-mode.md for the decisions that govern
+  this class of block.
 
 ## XIST — Borsa Istanbul
 
