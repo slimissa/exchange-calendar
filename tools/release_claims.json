@@ -261,11 +261,11 @@
     },
     {
       "file": "docs/MARKET_CONTEXT_SPEC.md",
-      "contains": "R1 \u2014 MIC resolution"
+      "contains": "R1 - MIC resolution"
     },
     {
       "file": "docs/MARKET_CONTEXT_SPEC.md",
-      "contains": "R5 \u2014 Offset anchor in a session"
+      "contains": "R5 - Offset anchor in a session"
     },
     {
       "file": "README.md",
