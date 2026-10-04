@@ -285,5 +285,25 @@
       "file": "scripts/release.sh",
       "contains": "exit 0"
     }
+  ],
+  "2.11.4": [
+    {
+      "file": "tools/check_cross_language.sh"
+    },
+    {
+      "file": "tests/cross_language_queries.json"
+    },
+    {
+      "file": "docs/CONSUMERS.md",
+      "contains": "Consumers of the Exchange Calendar Registry"
+    },
+    {
+      "file": "docs/CONSUMERS.md",
+      "contains": "Update protocol"
+    },
+    {
+      "file": "docs/CONSUMERS.md",
+      "contains": "Cross-registry edges"
+    }
   ]
 }

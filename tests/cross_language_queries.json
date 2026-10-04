@@ -1,0 +1,12 @@
+{
+  "_comment": "Queries each wrapper must answer identically. The check script runs these in Python, JavaScript, Rust, and Go, and diffs the outputs.",
+  "queries": [
+    {"op": "sessions",   "args": ["XNYS"],                             "label": "sessions_xnys"},
+    {"op": "sessions",   "args": ["XTKS"],                             "label": "sessions_xtks"},
+    {"op": "confidence", "args": ["XBUD", 2026],                       "label": "confidence_xbud_2026"},
+    {"op": "confidence", "args": ["XNYS", 2026],                       "label": "confidence_xnys_2026"},
+    {"op": "is_open",    "args": ["XNYS", "2026-01-02", "10:00"],      "label": "is_open_xnys_yes"},
+    {"op": "is_open",    "args": ["XNYS", "2026-01-01", "10:00"],      "label": "is_open_xnys_holiday"},
+    {"op": "as_of",      "args": ["XBUD", "2026-01-01"],               "label": "as_of_xbud_before_fetch"}
+  ]
+}

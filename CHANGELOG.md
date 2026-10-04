@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.11.4] — 2026-10-04
+
+### Added
+
+- `tools/check_cross_language.sh` — verifies that all four wrappers
+  (Python, JavaScript, Rust, Go) answer a shared fixture of queries
+  identically. Fixture at `tests/cross_language_queries.json`.
+  Rust and Go runners are skipped cleanly if not yet implemented.
+- `docs/CONSUMERS.md` — names every consumer of this registry, the
+  version they vendor, the fields they read, and their update trigger.
+  Documents the cross-registry snapshot pattern and the update
+  protocol for patch, minor, and major releases.
+
+### Fixed
+
+- `wrappers/python/exchange_calendar/registry.py` — `is_open()` no
+  longer calls `.get()` on an `Exchange` object. The earlier port
+  left four dict-style accessors that raised `AttributeError` at
+  runtime; all replaced with `getattr` on the Exchange's actual
+  attributes.
+
+### Notes
+
+Documentation, tooling, and one wrapper bug. No schema change,
+no data change.
+
+This is the first release exercising the `RELEASE_COMPLETE` fix from
+v2.11.3. If the trap fires after `Done.`, that's the fix failing --
+paste the release output.
+
 ## [2.11.3] — 2026-10-04
 
 ### Fixed

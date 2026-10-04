@@ -298,16 +298,43 @@ class CalendarRegistry:
         ex = self.exchange(mic)
         d = _date.fromisoformat(date)
 
+        # Weekend
         weekend = getattr(ex, "weekend_days", None) or [5, 6]
         if d.weekday() in weekend:
             return False
 
-        if hasattr(ex, "is_holiday") and ex.is_holiday(date):
-            return False
+        # Holiday — try the exchange's own method first, then a holidays
+        # attribute in either dict or object form.
+        if hasattr(ex, "is_holiday"):
+            try:
+                if ex.is_holiday(date):
+                    return False
+            except Exception:
+                pass
+        holidays = getattr(ex, "holidays", None)
+        explicit = None
+        if isinstance(holidays, dict):
+            explicit = holidays.get("explicit")
+        elif holidays is not None:
+            explicit = getattr(holidays, "explicit", None)
+        for h in (explicit or []):
+            hd = h.get("date") if isinstance(h, dict) else getattr(h, "date", None)
+            if hd == date:
+                return False
 
+        # Ad-hoc closures (attribute is _ad_hoc on the Exchange class).
+        ad_hoc = getattr(ex, "_ad_hoc", None)
+        if ad_hoc is None:
+            ad_hoc = getattr(ex, "ad_hoc_closures", None) or []
+        for c in ad_hoc:
+            cd = c.get("date") if isinstance(c, dict) else getattr(c, "date", None)
+            if cd == date:
+                return False
+
+        # Any interval session containing the time.
         for s in (getattr(ex, "sessions", None) or []):
-            o = getattr(s, "open", None)
-            cl = getattr(s, "close", None)
+            o = s.get("open") if isinstance(s, dict) else getattr(s, "open", None)
+            cl = s.get("close") if isinstance(s, dict) else getattr(s, "close", None)
             if o and cl and o <= time < cl:
                 return True
         return False
