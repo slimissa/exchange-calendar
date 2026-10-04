@@ -141,16 +141,8 @@
       "contains": "_make_request_playwright"
     },
     {
-      "file": "tools/update_from_exchange.py",
-      "contains": "XJSEFetcher"
-    },
-    {
       "file": "docs/decisions/0009-playwright-fetcher-category.md",
       "contains": "Amendment \u2014 2026-10-04"
-    },
-    {
-      "file": "BLOCKED.md",
-      "contains": "IMPLEMENTED at v2.10.0"
     }
   ]
 }

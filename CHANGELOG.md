@@ -14,30 +14,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ExchangeFetcher.use_playwright` — routes the fetch through a
   headless Chromium session. Default False; existing fetchers
   unaffected. ADR 0009 fetch mode only.
-- `_make_request_playwright` — the browser transport.
-- `XJSEFetcher` — Johannesburg Stock Exchange. Resolved via fetch
-  mode; Cloudflare's challenge is satisfied by a browser session.
+- `_make_request_playwright` — the browser transport. Same
+  robots/rate-limit/manifest contract as the requests path.
 
 ### Changed
 
 - `.github/workflows/validate.yml` and `update-exchange.yml` — install
   Playwright and Chromium; cache `~/.cache/ms-playwright`.
-- `BLOCKED.md` — XJSE verdict updated from BLOCKED to IMPLEMENTED.
 - `docs/decisions/0009-playwright-fetcher-category.md` — amendment
-  records that XKRX is not solvable via fetch mode. `page.goto` to
-  the KRX endpoint redirects to a `403.html` page even from
-  headless Chromium; the WAF blocks headless clients server-side,
-  not client fingerprints. XKRX moves to the render bucket for
-  ADR 0010.
+  records two probe results from 2026-10-04:
+  - **XJSE fetch mode works.** `page.goto` to the JSE homepage
+    through headless Chromium returns the site's own HTML
+    (Cloudflare challenge satisfied). The holiday calendar's PDF
+    URL was not located; a URL-discovery session is required
+    before a fetcher is writable.
+  - **XKRX fetch mode does not work.** `page.goto` to the KRX
+    endpoint redirects to a `403.html` page even from headless
+    Chromium. The WAF blocks headless clients server-side; not a
+    client-fingerprint block a browser session can spoof past.
+- `BLOCKED.md` — XJSE verdict reclassified from a WAF block to
+  URL-discovery; XKRX verdict reclassified from client-fingerprint
+  to headless-client block.
 
 ### Notes
 
-The Playwright probe produced one success and one negative result.
-XJSE ships; XKRX does not. The negative result is the more useful
-one — it separates "WAF blocks plain clients" from "WAF blocks
-headless clients", which had been grouped together in ADR 0009's
-original Context section. ADR 0010 now has a narrower scope:
-XKRX, XATH, XBKK, XPHS-robots, not a fifth exchange.
+Framework-only release. ADR 0009's Context section grouped two
+different WAF classes together; the probes separated them:
+
+- Client-fingerprint block (XJSE): bypassed by a browser session.
+- Headless-client block (XKRX): not bypassed by headless Chromium.
+
+XJSE remains BLOCKED pending URL discovery. XKRX moves to the render
+bucket; ADR 0010's scope is now headless bypass, not fingerprint
+bypass. Neither fetcher ships at v2.10.0.
+
 
 ## [2.9.6] — 2026-10-04
 

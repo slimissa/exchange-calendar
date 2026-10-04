@@ -357,12 +357,18 @@ wrong without the reasoning behind it.
   adding `PDFFetcher` support to the framework, the PDF itself returned
   "Site blocked the request (bot detection)" on direct fetch. PDF-text
   extraction doesn't help if the file can't be fetched at all.
-- **Finding (2026-10-04):** resolved via ADR 0009 fetch-mode
-  Playwright. A headless Chromium session satisfies the Cloudflare
-  challenge that blocks plain requests; the PDF is then retrievable
-  and parsed by `PDFFetcher`'s standard extractor.
-- **Verdict:** IMPLEMENTED at v2.10.0 (`XJSEFetcher`, Playwright
-  fetch mode).
+- **Finding (2026-10-04, Playwright probe):** ADR 0009's fetch mode
+  was probed against the JSE homepage. `page.goto` through headless
+  Chromium returns HTTP 200 with the site's own HTML (402 KB,
+  "JSE | Leading Stock Market and Exchange in Africa"), confirming
+  Cloudflare's challenge is satisfied by a browser session.
+  However, the holiday calendar's PDF URL was not discovered from
+  the homepage: its internal links lead to 137 sub-pages and only
+  one PDF (a contact list) surfaced from a one-level walk.
+- **Verdict:** BLOCKED (URL discovery). Fetch mode works; the source
+  URL for the holiday calendar has not been located. Same class as
+  XCAS and XDHA in that a specific sub-page must be found before a
+  fetcher is writable.
 
 - **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
 

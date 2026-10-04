@@ -5968,60 +5968,7 @@ class XISTFetcher(PDFFetcher):
 
         return data
 
-class XJSEFetcher(PDFFetcher):
-    """
-    Fetcher for Johannesburg Stock Exchange (XJSE) holidays.
 
-    BLOCKED.md (2026-08-29): the Market Notice PDF is bot-walled at
-    the CDN level. A 2026-10-04 probe through headless Chromium
-    showed the JSE homepage loads under a browser session
-    (Cloudflare challenge satisfied) but plain requests gets HTTP
-    403. ADR 0009 fetch mode retrieves the PDF through that session.
-
-    The PDF URL is discovered at <fill in from Stage 5>.
-    """
-
-    MAX_AGE_DAYS = 400
-
-    def __init__(self):
-        super().__init__(
-            mic="XJSE",
-            name="Johannesburg Stock Exchange",
-            source_url="<URL-FROM-STAGE-5>",
-            rate_limit=2.0,
-        )
-        self.use_playwright = True
-
-    def parse_html(self, text: str) -> List[HolidayEntry]:
-        """Parse PDF-extracted text. Filled in after Stage 6's
-        extraction dump — do not guess the layout."""
-        ...
-
-    @retry(max_attempts=3, delay=2.0, backoff=2.0, exceptions=(FetchError,))
-    def fetch(self) -> Optional[ExchangeData]:
-        pdf_bytes = self._make_binary_request()
-        if not pdf_bytes:
-            raise FetchError("Failed to fetch JSE PDF")
-
-        text = self._extract_pdf_text(pdf_bytes)
-        holidays = self.parse_html(text)
-        if not holidays:
-            raise ParseError("No holidays found for XJSE")
-
-        data = ExchangeData(
-            code="XJSE", mic="XJSE", name=self.name,
-            timezone="Africa/Johannesburg",
-            regular_open="09:00", regular_close="17:00",
-            holidays=holidays,
-            source_urls=[self.source_url],
-            currency="ZAR", country="South Africa",
-            city="Johannesburg",
-        )
-        errors = data.validate()
-        if errors:
-            raise ValidationError(f"Invalid data: {', '.join(errors)}")
-        return data
-    
 class ExchangeFetcherRegistry:
     """Registry of available exchange fetchers"""
     
