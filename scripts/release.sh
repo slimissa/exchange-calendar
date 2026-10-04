@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+
+# Set to 1 once the release has been tagged and pushed.
+# The failure trap reads this: a non-zero exit after this point is a
+# post-success informational hiccup and must NOT trigger a revert.
+RELEASE_COMPLETE=0
 #
 # release.sh — cut a release for the exchange-calendar registry.
 #
@@ -30,6 +35,13 @@ POLL_INTERVAL=15
 # the four mutable files to their committed state. Prevents a failed gate
 # from leaving the tree dirty and blocking a retry.
 cleanup_on_failure() {
+    local rc=$?
+    if (( rc == 0 )); then exit 0; fi
+    if [[ "${RELEASE_COMPLETE:-0}" == "1" ]]; then
+        printf '\033[1;33m==>\033[0m non-zero exit after release completion; no recovery needed\n' >&2
+        exit $rc
+    fi
+
     # v2.10.1: distinguish pre-commit from post-commit failure.
     # Before this, `git checkout HEAD -- <files>` was a no-op when
     # HEAD was the release commit itself, leaving the tree half-bumped
@@ -426,7 +438,7 @@ poll_workflow() {
         # the older "--limit 1" form returned green on whichever was
         # newest while a sibling run could still be pending or failed.
         local json total pending failed first_fail
-        json="$(gh run list --workflow="$workflow" --commit="$SHA" \
+        json="$(gh run list --workflow="$workflow" --commit="$SHA" \ || true
                     --limit 100 --json status,conclusion,databaseId \
                     2>/dev/null || echo '[]')"
 
@@ -446,7 +458,7 @@ poll_workflow() {
             # with one re-check 20s later before dying.
             sleep 20
             local recheck failed2
-            recheck="$(gh run list --workflow="$workflow" --commit="$SHA" \
+            recheck="$(gh run list --workflow="$workflow" --commit="$SHA" \ || true
                           --limit 100 --json status,conclusion,databaseId \
                           2>/dev/null || echo '[]')"
             failed2="$(jq '[.[] | select(.conclusion == "failure" or .conclusion == "cancelled" or .conclusion == "timed_out" or .conclusion == "startup_failure" or .conclusion == "action_required")] | length' <<< "$recheck" 2>/dev/null || echo 0)"
@@ -486,4 +498,6 @@ say "Done."
 echo "  Version: v$VERSION"
 echo "  Commit:  $SHA"
 echo "  Origin:  $(git config --get remote.origin.url)"
-echo "  Runs:    gh run list --commit $SHA"
+echo "  Runs:    gh run list --commit $SHA" || true
+
+exit 0

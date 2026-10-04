@@ -271,5 +271,19 @@
       "file": "README.md",
       "contains": "MARKET_CONTEXT_SPEC"
     }
+  ],
+  "2.11.3": [
+    {
+      "file": "scripts/release.sh",
+      "contains": "RELEASE_COMPLETE"
+    },
+    {
+      "file": "scripts/release.sh",
+      "contains": "non-zero exit after release completion"
+    },
+    {
+      "file": "scripts/release.sh",
+      "contains": "exit 0"
+    }
   ]
 }

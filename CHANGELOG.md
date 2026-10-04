@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.11.3] — 2026-10-04
+
+### Fixed
+
+- `scripts/release.sh` — the failure trap no longer fires on a
+  non-zero exit *after* the release has been tagged and pushed.
+  Before this, three consecutive releases (v2.11.0, v2.11.1,
+  v2.11.2) printed `Done.`, tagged correctly, then reverted `main`
+  because a trailing informational `gh run list` returned non-zero
+  on a transient GitHub API hiccup.
+
+  The trap now reads a `RELEASE_COMPLETE` flag, set immediately
+  after the `Done.` message. When set, a non-zero exit is treated
+  as an informational hiccup: the trap prints a one-line note and
+  exits with the same code, without reverting `main`.
+
+  The script also carries an explicit `exit 0` as its last
+  statement, so the exit status of informational commands no
+  longer determines the script's outcome.
+
+### Notes
+
+No schema change, no wrapper change, no data change. The failure
+trap's pre-commit and post-push recovery paths are unchanged for
+failures that occur before `Done.`.
+
 ## [2.11.2] — 2026-10-04
 
 ### Added
