@@ -180,6 +180,51 @@ solution is honest: it is what a human would do.
   `MAX_AGE_DAYS` pattern suggests the right place is a
   `FETCH_TIMEOUT_SECONDS` class attribute — a v2.10.0 decision.
 
+
+## Amendment — 2026-10-04
+
+Fetch mode was implemented and probed against both candidate
+exchanges. The result was asymmetric.
+
+**XJSE — fetch mode works.** `page.goto("https://www.jse.co.za/")`
+through headless Chromium returns HTTP 200 with the site's own
+HTML (402 KB, title "JSE | Leading Stock Market and Exchange in
+Africa"). Cloudflare's challenge is satisfied by a real browser
+session. The PDF URLs are reachable from that session; the fetcher
+is writable.
+
+**XKRX — fetch mode does not work.** `page.goto` to the JSON
+endpoint redirects to `https://global.krx.co.kr/contents/COM/403.html`,
+title "403 Page", 584 bytes. The response is unchanged after an
+8-second JavaScript wait. The WAF blocks headless Chromium at the
+server side — the redirect happens before the browser renders
+anything. This is not a client-fingerprint problem that a browser
+can spoof its way past; it is a server-side rule against headless
+clients.
+
+The two failure modes were previously grouped as "WAF blocks". They
+are not the same class:
+
+- **Client-fingerprint block.** Blocks plain HTTP clients. A real
+  browser session bypasses it. XJSE.
+- **Headless-client block.** Blocks headless browsers specifically.
+  A headful browser may or may not bypass it; a real user's Chrome
+  from a residential IP probably would. XKRX.
+
+Fetch mode (Decision 1) addresses the first class. It does not
+address the second. XKRX moves to the render bucket pending
+ADR 0010, which will decide between:
+
+1. Headful Chromium with a virtual display (Xvfb).
+2. Real Chrome with a persistent user profile.
+3. An alternate data source (KRX's own open-data portal, if one
+   exists).
+4. Permanent BLOCKED status, documented.
+
+Decision 1 stands for XJSE. Decision 2 (defer render+OCR) is
+unchanged. XKRX is no longer a fetch-mode candidate.
+
+
 ## Related
 
 - ADR 0003 (monthly refresh) — the diff-based refresh model that
