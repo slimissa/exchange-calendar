@@ -354,6 +354,12 @@ mod tests {
     use super::*;
     use crate::exchange::{HolidaysData, RegularHours};
 
+    fn load_real_registry() -> Registry {
+        let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../../calendar.json");
+        Registry::load(path.to_str().unwrap()).expect("load real registry")
+    }
+
     fn create_test_exchange_data(code: &str) -> ExchangeData {
         ExchangeData {
             code: code.to_string(),

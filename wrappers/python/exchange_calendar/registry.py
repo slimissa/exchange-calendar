@@ -318,7 +318,7 @@ class CalendarRegistry:
         regular-hours-only."""
         ex = self.exchange(mic)
         d = _date.fromisoformat(date)
-        if d.weekday() in (ex.get("weekend_days") or [5, 6]):
+        if d.weekday() in (getattr(ex, "weekend_days", None) or [5, 6]):
             return False
         for h in (ex.get("holidays", {}).get("explicit") or []):
             if h.get("date") == date:
