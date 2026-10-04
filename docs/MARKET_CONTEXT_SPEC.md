@@ -1,4 +1,4 @@
-# Market Context Specification — v1.0.0
+# Market Context Specification - v1.0.0
 
 **Status:** Draft for implementation
 **Registry schema required:** `>= 2.1.1`
@@ -82,16 +82,16 @@ text
 
 ### 3.2 Field semantics
 
-- `mic` / `mics` — the bound MICs.
-- `window` — the years the annotated function is compiled against.
-- `min_confidence` — the minimum acceptable level for every bound
+- `mic` / `mics` - the bound MICs.
+- `window` - the years the annotated function is compiled against.
+- `min_confidence` - the minimum acceptable level for every bound
   MIC in every year of the window.
 
 ---
 
 ## 4. The five checks
 
-### R1 — MIC resolution
+### R1 - MIC resolution
 
 **Statement.** Every bound MIC appears in the vendored ISO 10383
 snapshot.
@@ -103,7 +103,7 @@ snapshot.
 **Example.** `mic: XZZZ` where `XZZZ` is not a MIC fails; `mic: XNYS`
 passes.
 
-### R2 — Calendar coverage
+### R2 - Calendar coverage
 
 **Statement.** Every bound MIC has an entry in the registry's
 exchange set.
@@ -116,7 +116,7 @@ exchange set.
 registry covers 74. A MIC may be valid per R1 and still lack a
 calendar per R2.
 
-### R3 — Confidence threshold
+### R3 - Confidence threshold
 
 **Statement.** For every bound MIC `m` and every year `y` in the
 window, `confidence(m, y).level >= min_confidence`.
@@ -130,7 +130,7 @@ actual level, and the required level.
 **Example.** `min_confidence: high` fails for XNYS in 2022 if
 `confidence("XNYS", 2022).level == "medium"`.
 
-### R4 — Evaluation instant in a session
+### R4 - Evaluation instant in a session
 
 **Statement.** Every signal produced by the annotated function is
 evaluated at a wall-clock instant that lies inside an interval
@@ -144,10 +144,10 @@ for an exchange. Only interval types count.
 and the bound MICs it fails to satisfy.
 
 **Example.** A `Signal<f64, @t-1>` in a function bound to XNYS
-cannot be evaluated at 03:00 on 2026-01-02 — no session of XNYS
+cannot be evaluated at 03:00 on 2026-01-02 - no session of XNYS
 contains that instant.
 
-### R5 — Offset anchor in a session
+### R5 - Offset anchor in a session
 
 **Statement.** A signal tagged `@t+N` or `@t-N` requires that the
 anchor `t` resolve to an interval session of at least one bound MIC.
@@ -210,20 +210,20 @@ fn momentum(prices: TimeSeries<Price<USD>, Daily>)
 
 A conforming compiler performs, in order:
 
-    R1 — XNYS in tools/iso10383_snapshot.json. Pass.
+    R1 - XNYS in tools/iso10383_snapshot.json. Pass.
 
-    R2 — XNYS has an entry in calendar.json. Pass.
+    R2 - XNYS has an entry in calendar.json. Pass.
 
-    R3 — For y ∈ {2024, 2025, 2026}, confidence("XNYS", y).level >= high.
+    R3 - For y ∈ {2024, 2025, 2026}, confidence("XNYS", y).level >= high.
 
         If confidence("XNYS", 2024) = manual/medium, fail with MC003.
 
-    R4 — Every signal in the body is evaluated at an instant inside
+    R4 - Every signal in the body is evaluated at an instant inside
     an interval session of XNYS. The compiler cannot verify this for
     arbitrary bodies; it requires that the function's return type
     Signal<f64, @t-1> and the annotation's MIC set are compatible.
 
-    R5 — @t-1 from an anchor t requires t-1 to resolve to a
+    R5 - @t-1 from an anchor t requires t-1 to resolve to a
     session. The compiler verifies the anchor exists during type
     inference.
 
@@ -235,12 +235,12 @@ first.
 The spec carries its own version (1.0.0 in the title) independent
 from the registry version.
 
-    Patch — clarifications that do not change what passes or fails.
+    Patch - clarifications that do not change what passes or fails.
 
-    Minor — new checks, new optional annotation fields, new
+    Minor - new checks, new optional annotation fields, new
     session types that participate.
 
-    Major — removal of a check, renaming of a field, change to the
+    Major - removal of a check, renaming of a field, change to the
     confidence ordering or a rule that turns a passing program into a
     failing one.
 
@@ -280,4 +280,4 @@ All four wrappers expose the same methods with identical semantics:
 Python (CalendarRegistry), JavaScript (Registry), Rust
 (Registry), Go (Registry).
 
-Spec version: 1.0.0 · Registry schema: 2.1.1 · 2026-10-04
+Spec version: 1.0.0 | Registry schema: 2.1.1 | 2026-10-04
