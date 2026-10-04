@@ -183,6 +183,8 @@ wrong without the reasoning behind it.
   the current fetcher framework's scope. Permanent block.
 
 
+- **Verdict:** This is the first confirmed member of the visual-grid PDF class named in ADR 0009. Permanent block.
+
 ## XBOM — BSE India (Bombay Stock Exchange)
 
 **Last verified:** 2026-09-19

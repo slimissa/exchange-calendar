@@ -159,23 +159,6 @@ class TestXATHFixedHolidays:
         """Oct 28, 2027 is Thursday."""
         assert "2027-10-28" in explicit_dates
 
-    def test_athens_holidays_from_fixture():
-        import sys
-        from pathlib import Path
-        sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
-        from update_from_exchange import EuronextAthensFetcher
-
-        f = EuronextAthensFetcher()
-        pdf_bytes = Path("tests/fixtures/xath_2026.pdf").read_bytes()
-        text = f._extract_pdf_text(pdf_bytes)
-        holidays = f.parse_html(text)
-        assert len(holidays) >= 5, f"expected >=5, got {len(holidays)}"
-        assert all(h.date.startswith("2026-") for h in holidays)
-
-# ──────────────────────────────────────────────────────────────
-# Orthodox Easter holidays
-# ──────────────────────────────────────────────────────────────
-
 class TestXATHOrthodoxEaster:
     def test_clean_monday_2025(self, explicit_dates):
         """Orthodox Easter 2025 is April 20 — Clean Monday = -48 days = March 3."""
