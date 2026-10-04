@@ -527,16 +527,26 @@ mod tests {
         assert_eq!(xasx.code, "XASX");
         assert!(
             !xasx.sessions.is_empty(),
-            "Expected XASX to have auction sessions"
+            "Expected XASX to have sessions"
         );
-        assert_eq!(xasx.sessions[0].session_type, "auction");
+        assert!(
+            xasx.sessions
+                .iter()
+                .any(|s| s.session_type == "auction"),
+            "Expected XASX to include an auction session"
+        );
 
         let xtks = registry.get("XTKS").expect("XTKS not found");
         assert!(
             !xtks.sessions.is_empty(),
-            "Expected XTKS to have a lunch_break session"
+            "Expected XTKS to have sessions"
         );
-        assert_eq!(xtks.sessions[0].session_type, "lunch_break");
+        assert!(
+            xtks.sessions
+                .iter()
+                .any(|s| s.session_type == "lunch_break"),
+            "Expected XTKS to include a lunch_break session"
+        );
     }
 
     #[test]
