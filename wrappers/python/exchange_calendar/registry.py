@@ -289,66 +289,6 @@ class CalendarRegistry:
             for s in raw
         ]
 
-    def is_open(self, mic: str, date: str, time: str) -> bool:
-        """True if the exchange is in any interval session at the given
-        local time on the given date.
-
-        Includes pre_market and post_market windows. Callers wanting
-        regular-hours-only should filter sessions() themselves.
-        """
-        from datetime import date as _date
-
-        ex = self.exchange(mic)
-        d = _date.fromisoformat(date)
-
-        # Weekend: 0=Mon .. 6=Sun.
-        weekend = getattr(ex, "weekend_days", None) or [5, 6]
-        if d.weekday() in weekend:
-            return False
-
-        # Holiday — the Exchange class exposes is_holiday(date_str).
-        try:
-            if ex.is_holiday(date):
-                return False
-        except AttributeError:
-            pass
-
-        # Ad-hoc closures (private attribute _ad_hoc).
-        for c in (getattr(ex, "_ad_hoc", None) or []):
-            cd = c.get("date") if isinstance(c, dict) else getattr(c, "date", None)
-            if cd == date:
-                return False
-
-        # Any interval session contains the time? Point-type sessions
-        # (auction, halt) have no open/close and are skipped naturally.
-        for s in (getattr(ex, "sessions", None) or []):
-            o = s.get("open") if isinstance(s, dict) else getattr(s, "open", None)
-            cl = s.get("close") if isinstance(s, dict) else getattr(s, "close", None)
-            if o and cl and o <= time < cl:
-                return True
-
-        return False
-
-    def is_open(self, mic: str, date: str, time: str) -> bool:
-        """True if the exchange is in any interval session at the given
-        local time. Includes pre/post-market; filter sessions() for
-        regular-hours-only."""
-        ex = self.exchange(mic)
-        d = _date.fromisoformat(date)
-        if d.weekday() in (getattr(ex, "weekend_days", None) or [5, 6]):
-            return False
-        for h in (ex.get("holidays", {}).get("explicit") or []):
-            if h.get("date") == date:
-                return False
-        for c in (ex.get("ad_hoc_closures") or []):
-            if c.get("date") == date:
-                return False
-        for s in (ex.get("sessions") or []):
-            o, cl = s.get("open"), s.get("close")
-            if o and cl and o <= time < cl:
-                return True
-        return False
-
     def confidence(self, mic: str, year: int) -> dict | None:
         """Return the confidence entry for (mic, year), or None."""
         ex = self.exchange(mic)
@@ -356,6 +296,39 @@ class CalendarRegistry:
         if not isinstance(conf, dict):
             return None
         return conf.get(str(year))
+
+    def is_open(self, mic: str, date: str, time: str) -> bool:
+        """True if the exchange is in any interval session at the given
+        local time on the given date. Includes pre_market and post_market
+        windows; callers wanting regular-hours-only should filter
+        sessions() themselves."""
+        from datetime import date as _date
+
+        ex = self.exchange(mic)
+        d = _date.fromisoformat(date)
+
+        weekend = getattr(ex, "weekend_days", None) or [5, 6]
+        if d.weekday() in weekend:
+            return False
+
+        try:
+            if ex.is_holiday(date):
+                return False
+        except AttributeError:
+            pass
+
+        for c in (getattr(ex, "_ad_hoc", None) or []):
+            cd = c.get("date") if isinstance(c, dict) else getattr(c, "date", None)
+            if cd == date:
+                return False
+
+        for s in (getattr(ex, "sessions", None) or []):
+            o = s.get("open") if isinstance(s, dict) else getattr(s, "open", None)
+            cl = s.get("close") if isinstance(s, dict) else getattr(s, "close", None)
+            if o and cl and o <= time < cl:
+                return True
+
+        return False
 
     def as_of(self, mic: str, date: str) -> dict:
         """Return the exchange record as it appeared on `date`.
