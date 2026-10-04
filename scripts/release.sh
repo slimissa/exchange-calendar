@@ -495,6 +495,7 @@ ok "tagged v$VERSION and pushed"
 
 # ── summary ────────────────────────────────────────────────────────
 say "Done."
+RELEASE_COMPLETE=1
 echo "  Version: v$VERSION"
 echo "  Commit:  $SHA"
 echo "  Origin:  $(git config --get remote.origin.url)"
