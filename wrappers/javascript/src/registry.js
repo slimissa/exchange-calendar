@@ -312,25 +312,7 @@ class CalendarRegistry {
 
     isOpen(mic, date, time) {
         const ex = this.get(mic);
-        const d = new Date(Date.UTC(
-            parseInt(date.slice(0, 4), 10),
-            parseInt(date.slice(5, 7), 10) - 1,
-            parseInt(date.slice(8, 10), 10)
-        ));
-        const weekend = ex.weekend_days || [5, 6];
-        if (weekend.includes(d.getUTCDay())) return false;
-            for (const h of (ex.holidays?.explicit || [])) {
-                if (h.date === date) return false;
-            }
-            for (const c of (ex.ad_hoc_closures || [])) {
-                if (c.date === date) return false;
-            }
-            for (const s of (ex.sessions || [])) {
-                if (s.open && s.close && s.open <= time && time < s.close) {
-                    return true;
-                }
-            }
-        return false;
+        return ex.isOpen(date, time);
     }
     confidence(mic, year) {
         const ex = this.get(mic);
@@ -340,8 +322,18 @@ class CalendarRegistry {
 
     asOf(mic, date) {
         const ex = this.get(mic);
-        const rec = JSON.parse(JSON.stringify(ex));
-        const conf = rec.confidence || {};
+        const rec = {
+            code: ex.code,
+            name: ex.name,
+            mic: ex.mic,
+            timezone: ex.timezone,
+            weekend_days: ex.weekendDays,
+            regular_hours: ex.regularHours,
+            extended_hours: ex.extendedHours,
+            sessions: ex.sessions,
+        };
+
+        const conf = ex.confidence || {};
         const filtered = {};
         for (const [year, entry] of Object.entries(conf)) {
             const lv = entry.last_verified;

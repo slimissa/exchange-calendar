@@ -15,4 +15,13 @@ for (const q of fixture.queries) {
   else throw new Error(`unknown op ${q.op}`);
   out[q.label] = v;
 }
-console.log(JSON.stringify(out, Object.keys(out).sort(), 2));
+function sortKeys(obj) {
+  if (Array.isArray(obj)) return obj.map(sortKeys);
+  if (obj && typeof obj === 'object') {
+    const sorted = {};
+    for (const k of Object.keys(obj).sort()) sorted[k] = sortKeys(obj[k]);
+    return sorted;
+  }
+  return obj;
+}
+console.log(JSON.stringify(sortKeys(out), null, 2));

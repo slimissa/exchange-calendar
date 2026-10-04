@@ -54,6 +54,7 @@ class Exchange {
         this.regularHours = data.regular_hours;
         this.extendedHours = data.extended_hours || {};
         this.sessions = data.sessions || [];
+        this.confidence = data.confidence || {};
 
         const holidays = data.holidays || {};
         const explicit = holidays.explicit || [];
