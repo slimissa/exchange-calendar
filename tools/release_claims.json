@@ -144,5 +144,19 @@
       "file": "docs/decisions/0009-playwright-fetcher-category.md",
       "contains": "Amendment \u2014 2026-10-04"
     }
+  ],
+  "2.10.1": [
+    {
+      "file": "scripts/release.sh",
+      "contains": "is_release_commit"
+    },
+    {
+      "file": "scripts/release.sh",
+      "contains": "restore_on_failure"
+    },
+    {
+      "file": "tests/test_scripts.py",
+      "contains": "test_trap_reverts_post_push_failure"
+    }
   ]
 }

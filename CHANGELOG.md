@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.10.1] — 2026-10-04
+
+### Fixed
+
+- `scripts/release.sh` — the failure trap now distinguishes
+  pre-commit from post-commit failure. Before this, a release
+  that failed *after* the release commit was pushed left the
+  tree half-bumped, because `git checkout HEAD -- VERSION ...`
+  is a no-op when HEAD is the release commit. The trap now
+  reverts the pushed release commit (`git revert HEAD && git
+  push`) in that case, and resets it (`git reset --hard HEAD~1`)
+  if the commit was local-only.
+
+### Notes
+
+The predicate is `git log -1 --format=%s | grep -q '^Release v'`.
+It assumes the release script's commit message format is stable.
+If the commit message format ever changes, update the predicate
+in the same commit.
+
+Both recovery paths are covered by `tests/test_scripts.py`.
+The tests exercise the primitives (`is_release_commit`,
+`git checkout HEAD --`, `git revert`) rather than the full
+release script, which would require mocking remotes and CI.
+
 ## [2.10.0] — 2026-10-04
 
 ### Added
