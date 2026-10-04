@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.11.0] — 2026-10-04
+
+### Added
+
+- `sessions` array on every exchange. Types: `regular`, `pre_market`,
+  `post_market`, `lunch_break`, `auction`, `halt`. Interval types
+  carry `open`/`close`; point types carry `at`.
+- `tools/migrate_sessions.py` — idempotent migration with `--check`.
+- `sessions(mic)` and `is_open(mic, date, hh_mm)` on all four wrappers.
+
+### Changed
+
+- Schema version → 2.1.0. `regular_hours` and `extended_hours` are
+  now derived fields, regenerated from `sessions`. Same values;
+  `sessions` is the source of truth.
+
+### Notes
+
+Additive: no field removed. 21 exchanges with pre-existing auction
+or lunch_break sessions kept those sessions and gained interval
+types derived from the scalar fields.
+
+`is_open` returns true for pre_market and post_market windows.
+Consumers wanting regular-hours-only filter `sessions(mic)`.
+
 ## [2.10.2] — 2026-10-04
 
 ### Changed
