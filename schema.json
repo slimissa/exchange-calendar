@@ -441,15 +441,54 @@
       "type": "object"
     },
     "sessions": {
-      "description": "Additional non-trading periods within a regular day (e.g., lunch breaks, auctions).",
+      "description": "Typed trading sessions. Interval types carry open/close; point types carry at.",
+      "type": "array",
+      "minItems": 1,
       "items": {
+        "type": "object",
         "additionalProperties": false,
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "regular",
+              "pre_market",
+              "post_market",
+              "lunch_break",
+              "auction",
+              "halt"
+            ],
+            "type": "string"
+          },
+          "open": {
+            "description": "Start time. Required for interval types.",
+            "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+            "type": "string"
+          },
+          "close": {
+            "description": "End time. Required for interval types.",
+            "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+            "type": "string"
+          },
+          "at": {
+            "description": "Point-in-time moment. Required for point types.",
+            "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+            "type": "string"
+          }
+        },
         "allOf": [
           {
             "if": {
               "properties": {
                 "type": {
-                  "const": "lunch_break"
+                  "enum": [
+                    "regular",
+                    "pre_market",
+                    "post_market",
+                    "lunch_break"
+                  ]
                 }
               },
               "required": [
@@ -467,7 +506,10 @@
             "if": {
               "properties": {
                 "type": {
-                  "const": "auction"
+                  "enum": [
+                    "auction",
+                    "halt"
+                  ]
                 }
               },
               "required": [
@@ -480,37 +522,8 @@
               ]
             }
           }
-        ],
-        "properties": {
-          "at": {
-            "description": "Point-in-time session moment. Required for auction sessions.",
-            "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
-            "type": "string"
-          },
-          "close": {
-            "description": "Session end time. Required for lunch_break sessions.",
-            "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
-            "type": "string"
-          },
-          "open": {
-            "description": "Session start time. Required for lunch_break sessions.",
-            "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
-            "type": "string"
-          },
-          "type": {
-            "enum": [
-              "lunch_break",
-              "auction"
-            ],
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ],
-        "type": "object"
-      },
-      "type": "array"
+        ]
+      }
     },
     "timezone": {
       "description": "IANA timezone identifier.",
@@ -539,7 +552,8 @@
     "holidays",
     "generation_range",
     "country",
-    "country_code"
+    "country_code",
+    "sessions"
   ],
   "title": "Exchange Calendar Entry",
   "type": "object",
