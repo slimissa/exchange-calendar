@@ -5746,6 +5746,7 @@ class ZagrebExchangeFetcher(ExchangeFetcher):
 
         return data
 
+
 class XISTFetcher(PDFFetcher):
     # Source publishes approximately every 400 days.
     MAX_AGE_DAYS = 400
@@ -5988,9 +5989,10 @@ class ExchangeFetcherRegistry:
         self.register(ZagrebExchangeFetcher())
 
         # Tier 9 (PDF bucket), 2026-10-01 — XIST resolved via
+        # (JSON endpoints) — XPHS resolved via PSE admin-ajax.
         # pdfplumber.extract_tables(). See BLOCKED.md.
         self.register(XISTFetcher())
-    
+
     def register(self, fetcher: ExchangeFetcher):
         """Register a fetcher"""
         self.fetchers[fetcher.mic] = fetcher

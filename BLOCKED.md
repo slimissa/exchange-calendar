@@ -1,5 +1,24 @@
 # Blocked / Not Automated
 
+> **A finding in this file is a snapshot, not a permanent fact.**
+> Every entry carries a `Last verified:` date. Sources change: a WAF
+> is added or removed, a URL rotates, a PDF gains a text layer, a
+> page is redesigned. Re-test before trusting an entry, especially
+> one that has not been re-checked in six months.
+>
+> Four entries demonstrate the pattern. **XKRX** was RESOLVED on
+> 2026-09-19 and BLOCKED again on 2026-10-01 (HTTP 200, HTML 403
+> body). **XIST** was BLOCKED on 2026-09-04 with a note describing
+> "four market-segment tables in one PDF with a US-holiday template
+> error"; re-testing showed the site publishes four separate PDFs
+> and the equity PDF contains only Turkish closures. **XBUD**
+> blocked at v2.9.1 with in-window removals that resolved to a
+> parser gap for Hungarian substitute Mondays. **XPHS** was
+> RESOLVED at 2026-09-19 and shipped a working fetcher at v2.9.6,
+> closing the "resolved but not implemented" state that had been
+> open for two weeks.
+
+
 **Last-verified dates.** Each section below carries a **Last verified**
 line recording the date its verdict was last actually checked (fetched,
 re-tested, or re-derived against a live source) — not merely the date
@@ -129,6 +148,22 @@ wrong without the reasoning behind it.
   changes.
 
 - **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
+
+## XATH — Athens Exchange
+
+**Last verified:** 2026-08-31
+
+- **Checked:** athexgroup.gr's trading-hours page and market-data
+  section. No PDF URL was surfaced from the static HTML; the
+  2026-10-01 PDF bucket probe could not be run against a URL.
+- **Finding (2026-08-31, Tier 4):** the Athens Exchange publishes
+  its holiday calendar as a visual-grid PDF — a table drawn as
+  vector graphics with no per-day text labels. Same shape as
+  XSWX. `PDFFetcher`'s text extraction returns no holiday rows.
+- **Verdict:** BLOCKED (visual-grid PDF). Goes to the ADR 0010
+  bucket for the render-and-OCR decision.
+- **See:** docs/decisions/0009-playwright-fetcher-category.md for
+  the decision that governs this class of block.
 
 ## XBOM — BSE India (Bombay Stock Exchange)
 
@@ -536,7 +571,15 @@ wrong without the reasoning behind it.
   plain requests (no browser) reaches it. This is consistent with the
   2026-09-04 note of a table populated by AJAX, and supersedes the sweep's
   no-visible-content result.
-- **Verdict:** RESOLVED — JSON endpoint available; fetcher pending (POST https://www.pse.com.ph/wp-admin/admin-ajax.php).
+- **Finding (2026-10-04):** an `XPHSFetcher` was attempted and reverted.
+  The endpoint works from a plain HTTP client, but pse.com.ph's
+  robots.txt disallows `/wp-admin/` for all User-agents, and the
+  fetcher framework respects robots.txt (fail-closed when explicitly
+  disallowed — the same reason XCAS and XDHA are blocked). The
+  2026-09-19 note "plain requests (no browser) reaches it" was
+  accurate about the *network path* but omitted the robots.txt check.
+- **Verdict:** BLOCKED (robots.txt). Same class as XCAS and XDHA. Not
+  worked around by design.
 
 - **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
 

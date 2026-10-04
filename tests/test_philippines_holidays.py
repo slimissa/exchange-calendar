@@ -23,9 +23,12 @@ Run:
 """
 
 import json
+import sys
 import pytest
 from datetime import date
 from pathlib import Path
+
+from tools.update_from_exchange import XPHSFetcher
 
 
 # ──────────────────────────────────────────────────────────────
@@ -76,11 +79,7 @@ class TestXPHSProperties:
         assert xphs["extended_hours"]["after_hours"]["open"] == "15:00"
         assert xphs["extended_hours"]["after_hours"]["close"] == "15:10"
 
-
-# ──────────────────────────────────────────────────────────────
-# Fixed national holidays
-# ──────────────────────────────────────────────────────────────
-
+    
 class TestXPHSFixedHolidays:
     def test_new_year_2025(self, explicit_dates):
         assert "2025-01-01" in explicit_dates
