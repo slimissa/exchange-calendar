@@ -1,12 +1,18 @@
 {
-  "ad_hoc_closures": [],
   "code": "XBRV",
-  "country": "Côte d’Ivoire",
-  "country_code": "CI",
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
+  "name": "Bourse Regionale des Valeurs Mobilieres (BRVM)",
+  "mic": "XBRV",
+  "timezone": "Africa/Abidjan",
+  "weekend_days": [
+    5,
+    6
   ],
+  "regular_hours": {
+    "open": "09:00",
+    "close": "15:15"
+  },
+  "extended_hours": {},
+  "sessions": [],
   "holidays": {
     "explicit": [
       {
@@ -53,39 +59,80 @@
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.brvm.org/trading-calendar",
-        "status": "closed"
+        "name": "F\u00eate du Jour de l'an",
+        "status": "closed",
+        "source_url": "https://www.brvm.org/fr/jours-feries",
+        "predicted": false
+      },
+      {
+        "date": "2026-03-17",
+        "name": "Lendemain de la nuit du destin",
+        "status": "closed",
+        "source_url": "https://www.brvm.org/fr/jours-feries",
+        "predicted": false
+      },
+      {
+        "date": "2026-03-20",
+        "name": "F\u00eate du Ramadan",
+        "status": "closed",
+        "source_url": "https://www.brvm.org/fr/jours-feries",
+        "predicted": false
       },
       {
         "date": "2026-04-06",
-        "name": "Easter Monday",
-        "source_url": "https://www.brvm.org/trading-calendar",
-        "status": "closed"
+        "name": "Lundi de P\u00e2ques",
+        "status": "closed",
+        "source_url": "https://www.brvm.org/fr/jours-feries",
+        "predicted": false
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.brvm.org/trading-calendar",
-        "status": "closed"
+        "name": "F\u00eate du Travail",
+        "status": "closed",
+        "source_url": "https://www.brvm.org/fr/jours-feries",
+        "predicted": false
       },
       {
         "date": "2026-05-14",
-        "name": "Ascension Day",
-        "source_url": "https://www.brvm.org/trading-calendar",
-        "status": "closed"
+        "name": "Jour de l'Ascension",
+        "status": "closed",
+        "source_url": "https://www.brvm.org/fr/jours-feries",
+        "predicted": false
       },
       {
         "date": "2026-05-25",
-        "name": "Whit Monday",
-        "source_url": "https://www.brvm.org/trading-calendar",
-        "status": "closed"
+        "name": "Lundi de Pentec\u00f4te",
+        "status": "closed",
+        "source_url": "https://www.brvm.org/fr/jours-feries",
+        "predicted": false
+      },
+      {
+        "date": "2026-05-27",
+        "name": "F\u00eate de Tabaski",
+        "status": "closed",
+        "source_url": "https://www.brvm.org/fr/jours-feries",
+        "predicted": false
+      },
+      {
+        "date": "2026-08-07",
+        "name": "F\u00eate de l\u2019Ind\u00e9pendance de C\u00f4te d'Ivoire",
+        "status": "closed",
+        "source_url": "https://www.brvm.org/fr/jours-feries",
+        "predicted": false
+      },
+      {
+        "date": "2026-08-26",
+        "name": "F\u00eate de Maouloud",
+        "status": "closed",
+        "source_url": "https://www.brvm.org/fr/jours-feries",
+        "predicted": false
       },
       {
         "date": "2026-12-25",
-        "name": "Christmas Day",
-        "source_url": "https://www.brvm.org/trading-calendar",
-        "status": "closed"
+        "name": "Lendemain de la No\u00ebl",
+        "status": "closed",
+        "source_url": "https://www.brvm.org/fr/jours-feries",
+        "predicted": false
       },
       {
         "date": "2027-01-01",
@@ -228,16 +275,9 @@
     ],
     "recurrence_rules": []
   },
-  "mic": "XBRV",
-  "name": "BRVM (West Africa Regional Stock Exchange)",
-  "regular_hours": {
-    "close": "14:00",
-    "open": "09:00"
-  },
-  "sessions": [],
-  "timezone": "Africa/Abidjan",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
   ]
 }

@@ -1,12 +1,18 @@
 {
-  "ad_hoc_closures": [],
   "code": "XBUD",
-  "country": "Hungary",
-  "country_code": "HU",
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
+  "name": "Budapest Stock Exchange",
+  "mic": "XBUD",
+  "timezone": "Europe/Budapest",
+  "weekend_days": [
+    5,
+    6
   ],
+  "regular_hours": {
+    "open": "09:00",
+    "close": "17:00"
+  },
+  "extended_hours": {},
+  "sessions": [],
   "holidays": {
     "explicit": [
       {
@@ -83,75 +89,89 @@
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "name": "New Year",
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
+      },
+      {
+        "date": "2026-01-02",
+        "name": "Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
       },
       {
         "date": "2026-03-16",
         "name": "National Day (observed)",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
+        "note": "Hungarian labour law substitute for a weekend state holiday; BSE resolution omits it."
       },
       {
         "date": "2026-04-03",
         "name": "Good Friday",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
       },
       {
         "date": "2026-04-06",
         "name": "Easter Monday",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "name": "Labor Day",
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
       },
       {
         "date": "2026-05-25",
         "name": "Whit Monday",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
       },
       {
         "date": "2026-08-20",
-        "name": "St. Stephen's Day",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "name": "National Holiday",
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
+      },
+      {
+        "date": "2026-08-21",
+        "name": "Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
       },
       {
         "date": "2026-10-23",
-        "name": "Republic Day",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "name": "National Holiday",
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
       },
       {
         "date": "2026-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "name": "Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
       },
       {
         "date": "2026-12-25",
-        "name": "Christmas Day",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "name": "Christmas",
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
       },
       {
         "date": "2026-12-28",
         "name": "Boxing Day (substitute)",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
+        "note": "Hungarian labour law substitute for a weekend state holiday; BSE resolution omits it."
       },
       {
         "date": "2026-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://www.bse.hu/trading-hours",
-        "status": "closed"
+        "name": "New Year\u2019s Eve",
+        "status": "closed",
+        "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026"
       },
       {
         "date": "2027-01-01",
@@ -442,16 +462,9 @@
       }
     ]
   },
-  "mic": "XBUD",
-  "name": "Budapest Stock Exchange",
-  "regular_hours": {
-    "close": "17:00",
-    "open": "09:00"
-  },
-  "sessions": [],
-  "timezone": "Europe/Budapest",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
   ]
 }

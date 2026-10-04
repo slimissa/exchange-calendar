@@ -1,8 +1,16 @@
 {
-  "ad_hoc_closures": [],
   "code": "XIST",
-  "country": "Türkiye",
-  "country_code": "TR",
+  "name": "Borsa Istanbul",
+  "mic": "XIST",
+  "timezone": "Europe/Istanbul",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "09:30",
+    "close": "18:00"
+  },
   "extended_hours": {
     "after_hours": {
       "close": "18:10",
@@ -13,10 +21,7 @@
       "open": "09:40"
     }
   },
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
-  ],
+  "sessions": [],
   "holidays": {
     "explicit": [
       {
@@ -39,7 +44,7 @@
       },
       {
         "date": "2025-05-19",
-        "name": "Commemoration of Atatürk, Youth and Sports Day",
+        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
         "status": "closed"
       },
@@ -64,46 +69,243 @@
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
-        "status": "closed"
+        "name": "New Year\u2019s Day , Thursday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-01-02",
+        "name": "will take place on Friday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-01-05",
+        "name": "202 will take place on Monday, 5",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-03-19",
+        "name": "On , Thursday There will be no settlement of trades on Thursday, March 19, 2026",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-03-20",
+        "name": "Ramadan Feast , Friday Markets will be closed on",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-03-21",
+        "name": "Saturday March 20, 2026 Friday Settlement of trades to be executed on Wednesday, March 18, 2026",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-03-22",
+        "name": "Sunday March 21, 2026 Saturday and and Thursday, March 19, 2026 will take place on Tuesday, March 24",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "of Ramadan Feast-Half day) take place on Monday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-04-21",
+        "name": "Settlement of trades to be executed on Tuesday, , will",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-04-22",
+        "name": "23, Thursday. Settlement of trades to be executed on Wednesday, , 2026",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
       },
       {
         "date": "2026-04-23",
-        "name": "National Sovereignty and Children's Day",
-        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
-        "status": "closed"
+        "name": "Thursday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-04-24",
+        "name": "take place on Friday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-04-27",
+        "name": "will take place on Monday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-04-29",
+        "name": "Settlement of trades to be executed on Wednesday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-04-30",
+        "name": "1, Friday. Settlement of trades to be executed on Thursday, , 2026 will",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
-        "status": "closed"
+        "name": "Labor and Solidarity Day , Friday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-04",
+        "name": "will take place on Monday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-05",
+        "name": "take place on Tuesday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-15",
+        "name": "Settlement of trades to be executed on Friday, , will take",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-18",
+        "name": "Settlement of trades to be executed on Monday, , will",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
       },
       {
         "date": "2026-05-19",
-        "name": "Commemoration of Atatürk, Youth and Sports Day",
-        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
-        "status": "closed"
+        "name": "Tuesday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-20",
+        "name": "place on Wednesday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-21",
+        "name": "take place on Thursday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-22",
+        "name": "Settlement of trades to be executed on Friday, , will take",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-26",
+        "name": "On , Tuesday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Wednesday place on Monday, June 1, 2026",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Thursday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-29",
+        "name": "Friday Settlement of trades to be executed on Monday, May 25, 2026 and",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-05-30",
+        "name": "Saturday Tuesday, May 26, 2026 will take place on Tuesday, June 2, 2026",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-07-13",
+        "name": "Settlement of trades to be executed on Monday, , will",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-07-14",
+        "name": "Settlement of trades to be executed on Tuesday, , will",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
       },
       {
         "date": "2026-07-15",
-        "name": "Democracy and National Unity Day",
-        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
-        "status": "closed"
+        "name": "Wednesday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-07-16",
+        "name": "take place on Thursday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-07-17",
+        "name": "take place on Friday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-08-30",
+        "name": "Victory Day , Sunday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-10-26",
+        "name": "Settlement of trades to be executed on Monday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
       },
       {
         "date": "2026-10-28",
-        "early_close_time": "13:00",
-        "name": "Republic Day Eve",
-        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
-        "status": "early_close"
+        "name": "On , There will be no settlement of trades on Wednesday, October 28",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
       },
       {
         "date": "2026-10-29",
-        "name": "Republic Day",
-        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
-        "status": "closed"
+        "name": "Thursday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-10-30",
+        "name": "Republic Day will take place on Friday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
+      },
+      {
+        "date": "2026-11-02",
+        "name": "BIST Holiday",
+        "status": "closed",
+        "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf"
       },
       {
         "date": "2027-01-01",
@@ -119,7 +321,7 @@
       },
       {
         "date": "2027-05-19",
-        "name": "Commemoration of Atatürk, Youth and Sports Day",
+        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
         "status": "closed"
       },
@@ -150,7 +352,7 @@
       },
       {
         "date": "2028-05-19",
-        "name": "Commemoration of Atatürk, Youth and Sports Day",
+        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
         "status": "closed"
       },
@@ -230,7 +432,7 @@
       {
         "day": 19,
         "month": 5,
-        "name": "Commemoration of Atatürk, Youth and Sports Day",
+        "name": "Commemoration of Atat\u00fcrk, Youth and Sports Day",
         "rule": "fixed_date",
         "status": "closed"
       },
@@ -257,16 +459,9 @@
       }
     ]
   },
-  "mic": "XIST",
-  "name": "Borsa Istanbul",
-  "regular_hours": {
-    "close": "18:00",
-    "open": "10:00"
-  },
-  "sessions": [],
-  "timezone": "Europe/Istanbul",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
   ]
 }

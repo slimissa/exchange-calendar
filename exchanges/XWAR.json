@@ -1,8 +1,16 @@
 {
-  "ad_hoc_closures": [],
   "code": "XWAR",
-  "country": "Poland",
-  "country_code": "PL",
+  "name": "Warsaw Stock Exchange",
+  "mic": "XWAR",
+  "timezone": "Europe/Warsaw",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "09:00",
+    "close": "17:00"
+  },
   "extended_hours": {
     "after_hours": {
       "close": "17:10",
@@ -13,197 +21,232 @@
       "open": "08:30"
     }
   },
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
-  ],
+  "sessions": [],
   "holidays": {
     "explicit": [
       {
         "date": "2025-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-01-06",
-        "name": "Epiphany",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-04-18",
-        "name": "Good Friday",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-04-21",
-        "name": "Easter Monday",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-06-19",
-        "name": "Corpus Christi",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-08-15",
-        "name": "Assumption Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-11-11",
-        "name": "Independence Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-12-25",
-        "name": "Christmas Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-12-26",
-        "name": "Boxing Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-01-06",
-        "name": "Epiphany",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-04-03",
-        "name": "Good Friday",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-04-06",
-        "name": "Easter Monday",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-06-04",
-        "name": "Corpus Christi",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-11-11",
-        "name": "Independence Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-12-25",
-        "name": "Christmas Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-01-06",
-        "name": "Epiphany",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-03-26",
-        "name": "Good Friday",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-03-29",
-        "name": "Easter Monday",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-05-03",
-        "name": "Constitution Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-05-27",
-        "name": "Corpus Christi",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-11-01",
-        "name": "All Saints' Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-11-11",
-        "name": "Independence Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2028-01-06",
@@ -436,16 +479,9 @@
       }
     ]
   },
-  "mic": "XWAR",
-  "name": "Warsaw Stock Exchange",
-  "regular_hours": {
-    "close": "17:00",
-    "open": "09:00"
-  },
-  "sessions": [],
-  "timezone": "Europe/Warsaw",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
   ]
 }

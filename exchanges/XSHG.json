@@ -1,8 +1,16 @@
 {
-  "ad_hoc_closures": [],
   "code": "XSHG",
-  "country": "China",
-  "country_code": "CN",
+  "name": "Shanghai Stock Exchange",
+  "mic": "XSHG",
+  "timezone": "Asia/Shanghai",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "09:30",
+    "close": "15:00"
+  },
   "extended_hours": {
     "after_hours": {
       "close": "15:30",
@@ -13,119 +21,277 @@
       "open": "09:15"
     }
   },
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
+  "sessions": [
+    {
+      "at": "09:25",
+      "type": "auction"
+    },
+    {
+      "close": "13:00",
+      "open": "11:30",
+      "type": "lunch_break"
+    }
   ],
   "holidays": {
     "explicit": [
       {
+        "date": "2024-02-09",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-02-12",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-02-13",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-02-14",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-02-15",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-02-16",
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-04-04",
+        "name": "Qingming Festival (also known as Tomb-Sweeping Day)",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-04-05",
+        "name": "Qingming Festival (also known as Tomb-Sweeping Day)",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-05-01",
+        "name": "Chinese Labor Day",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-05-02",
+        "name": "Chinese Labor Day",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-05-03",
+        "name": "Chinese Labor Day",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-06-10",
+        "name": "Dragon Boat Festival",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-09-16",
+        "name": "Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-09-17",
+        "name": "Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-10-01",
+        "name": "China National Day",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-10-02",
+        "name": "China National Day",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-10-03",
+        "name": "China National Day",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-10-04",
+        "name": "China National Day",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
+        "date": "2024-10-07",
+        "name": "China National Day",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
+      },
+      {
         "date": "2025-01-01",
         "name": "New Year's Day",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-01-28",
-        "name": "Spring Festival Eve",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-01-29",
-        "name": "Spring Festival",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-01-30",
-        "name": "Spring Festival",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-01-31",
-        "name": "Spring Festival",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-02-03",
-        "name": "Spring Festival (observed)",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-02-04",
-        "name": "Spring Festival (observed)",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "Chinese New Year",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-04-04",
-        "name": "Qingming Festival",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "Qingming Festival (also known as Tomb-Sweeping Day)",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "Chinese Labor Day",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-05-02",
-        "name": "Labour Day Holiday",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "Chinese Labor Day",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-05-05",
-        "name": "Labour Day Holiday",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "Chinese Labor Day",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-06-02",
         "name": "Dragon Boat Festival",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-10-01",
-        "name": "National Day",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "China's National Day and Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-10-02",
-        "name": "National Day Holiday",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "China's National Day and Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-10-03",
-        "name": "National Day Holiday",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "China's National Day and Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-10-06",
-        "name": "National Day Holiday",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "China's National Day and Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-10-07",
-        "name": "National Day Holiday",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "China's National Day and Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2025-10-08",
-        "name": "National Day Holiday",
-        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
-        "status": "closed"
+        "name": "China's National Day and Mid-Autumn Festival",
+        "status": "closed",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "note": "Parsed from a natural-language date range, not a per-day table -- verify against source for edge cases"
       },
       {
         "date": "2026-01-01",
@@ -496,26 +662,9 @@
     ],
     "recurrence_rules": []
   },
-  "mic": "XSHG",
-  "name": "Shanghai Stock Exchange",
-  "regular_hours": {
-    "close": "15:00",
-    "open": "09:30"
-  },
-  "sessions": [
-    {
-      "at": "09:25",
-      "type": "auction"
-    },
-    {
-      "close": "13:00",
-      "open": "11:30",
-      "type": "lunch_break"
-    }
-  ],
-  "timezone": "Asia/Shanghai",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
   ]
 }

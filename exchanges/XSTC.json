@@ -1,11 +1,23 @@
 {
-  "ad_hoc_closures": [],
   "code": "XSTC",
-  "country": "Viet Nam",
-  "country_code": "VN",
-  "generation_range": [
-    "2025-01-01",
-    "2029-09-30"
+  "name": "Ho Chi Minh Stock Exchange",
+  "mic": "XSTC",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "09:00",
+    "close": "15:00"
+  },
+  "extended_hours": {},
+  "sessions": [
+    {
+      "close": "13:00",
+      "open": "11:30",
+      "type": "lunch_break"
+    }
   ],
   "holidays": {
     "explicit": [
@@ -71,63 +83,81 @@
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.hsx.vn/trading-calendar",
-        "status": "closed"
+        "name": "From",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
+      },
+      {
+        "date": "2026-01-02",
+        "name": "From",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
       },
       {
         "date": "2026-02-16",
-        "name": "Tet Holiday",
-        "source_url": "https://www.hsx.vn/trading-calendar",
-        "status": "closed"
+        "name": "From",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
       },
       {
         "date": "2026-02-17",
-        "name": "Tet Holiday",
-        "source_url": "https://www.hsx.vn/trading-calendar",
-        "status": "closed"
+        "name": "From",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
       },
       {
         "date": "2026-02-18",
-        "name": "Tet Holiday",
-        "source_url": "https://www.hsx.vn/trading-calendar",
-        "status": "closed"
+        "name": "From",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
       },
       {
         "date": "2026-02-19",
-        "name": "Tet Holiday",
-        "source_url": "https://www.hsx.vn/trading-calendar",
-        "status": "closed"
+        "name": "From",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
       },
       {
         "date": "2026-02-20",
-        "name": "Tet Holiday",
-        "source_url": "https://www.hsx.vn/trading-calendar",
-        "status": "closed"
+        "name": "From",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
       },
       {
         "date": "2026-04-27",
-        "name": "Hung Kings Commemoration Day",
-        "source_url": "https://www.hsx.vn/trading-calendar",
-        "status": "closed"
+        "name": "Day",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
       },
       {
         "date": "2026-04-30",
-        "name": "Reunification Day",
-        "source_url": "https://www.hsx.vn/trading-calendar",
-        "status": "closed"
+        "name": "Liberation Day and Labor Day",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.hsx.vn/trading-calendar",
-        "status": "closed"
+        "name": "Liberation Day and Labor Day",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
+      },
+      {
+        "date": "2026-08-31",
+        "name": "From",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
+      },
+      {
+        "date": "2026-09-01",
+        "name": "From",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
       },
       {
         "date": "2026-09-02",
-        "name": "National Day",
-        "source_url": "https://www.hsx.vn/trading-calendar",
-        "status": "closed"
+        "name": "From",
+        "status": "closed",
+        "source_url": "https://staticfile.hsx.vn/Uploads/UploadDocuments/2428610/20251209%20-%20HOSE%20-%20Notice%20of%20trading%20holiday%20schedule%20for%202026%20-%20PV.pdf"
       },
       {
         "date": "2027-01-01",
@@ -288,22 +318,9 @@
     ],
     "recurrence_rules": []
   },
-  "mic": "XSTC",
-  "name": "Ho Chi Minh Stock Exchange",
-  "regular_hours": {
-    "close": "11:30",
-    "open": "09:00"
-  },
-  "sessions": [
-    {
-      "close": "13:00",
-      "open": "11:30",
-      "type": "lunch_break"
-    }
-  ],
-  "timezone": "Asia/Ho_Chi_Minh",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-09-30"
   ]
 }

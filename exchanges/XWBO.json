@@ -1,12 +1,18 @@
 {
-  "ad_hoc_closures": [],
   "code": "XWBO",
-  "country": "Austria",
-  "country_code": "AT",
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
+  "name": "Vienna Stock Exchange",
+  "mic": "XWBO",
+  "timezone": "Europe/Vienna",
+  "weekend_days": [
+    5,
+    6
   ],
+  "regular_hours": {
+    "open": "09:00",
+    "close": "17:30"
+  },
+  "extended_hours": {},
+  "sessions": [],
   "holidays": {
     "explicit": [
       {
@@ -91,47 +97,59 @@
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "status": "closed"
+        "name": "New Year",
+        "status": "closed",
+        "source_url": "https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2026-en.pdf",
+        "note": "Parsed from a 2-column PDF -- only the 'Stock exchange holidays' (real closure) column is used; the 'Additional holiday trading days' column (exchange stays OPEN) is deliberately discarded"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "status": "closed",
+        "source_url": "https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2026-en.pdf",
+        "note": "Parsed from a 2-column PDF -- only the 'Stock exchange holidays' (real closure) column is used; the 'Additional holiday trading days' column (exchange stays OPEN) is deliberately discarded"
       },
       {
         "date": "2026-04-06",
         "name": "Easter Monday",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2026-en.pdf",
+        "note": "Parsed from a 2-column PDF -- only the 'Stock exchange holidays' (real closure) column is used; the 'Additional holiday trading days' column (exchange stays OPEN) is deliberately discarded"
       },
       {
         "date": "2026-05-01",
         "name": "Labour Day",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2026-en.pdf",
+        "note": "Parsed from a 2-column PDF -- only the 'Stock exchange holidays' (real closure) column is used; the 'Additional holiday trading days' column (exchange stays OPEN) is deliberately discarded"
       },
       {
         "date": "2026-10-26",
-        "name": "National Day",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "status": "closed"
+        "name": "National Holiday",
+        "status": "closed",
+        "source_url": "https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2026-en.pdf",
+        "note": "Parsed from a 2-column PDF -- only the 'Stock exchange holidays' (real closure) column is used; the 'Additional holiday trading days' column (exchange stays OPEN) is deliberately discarded"
       },
       {
         "date": "2026-12-24",
-        "early_close_time": "12:00",
         "name": "Christmas Eve",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "status": "early_close"
+        "status": "closed",
+        "source_url": "https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2026-en.pdf",
+        "note": "Parsed from a 2-column PDF -- only the 'Stock exchange holidays' (real closure) column is used; the 'Additional holiday trading days' column (exchange stays OPEN) is deliberately discarded"
       },
       {
         "date": "2026-12-25",
         "name": "Christmas Day",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2026-en.pdf",
+        "note": "Parsed from a 2-column PDF -- only the 'Stock exchange holidays' (real closure) column is used; the 'Additional holiday trading days' column (exchange stays OPEN) is deliberately discarded"
       },
       {
         "date": "2026-12-31",
-        "early_close_time": "12:00",
-        "name": "New Year's Eve",
-        "source_url": "https://www.wienerborse.at/en/trading/trading-calendar/",
-        "status": "early_close"
+        "name": "New Years\u2018s Eve",
+        "status": "closed",
+        "source_url": "https://www.wienerborse.at/uploads/u/cms/files/trading/stock-exchange-holidays-2026-en.pdf",
+        "note": "Parsed from a 2-column PDF -- only the 'Stock exchange holidays' (real closure) column is used; the 'Additional holiday trading days' column (exchange stays OPEN) is deliberately discarded"
       },
       {
         "date": "2027-01-01",
@@ -460,16 +478,9 @@
       }
     ]
   },
-  "mic": "XWBO",
-  "name": "Vienna Stock Exchange",
-  "regular_hours": {
-    "close": "17:30",
-    "open": "09:00"
-  },
-  "sessions": [],
-  "timezone": "Europe/Vienna",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
   ]
 }

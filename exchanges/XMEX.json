@@ -1,8 +1,16 @@
 {
-  "ad_hoc_closures": [],
   "code": "XMEX",
-  "country": "Mexico",
-  "country_code": "MX",
+  "name": "Bolsa Mexicana de Valores",
+  "mic": "XMEX",
+  "timezone": "America/Mexico_City",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "08:30",
+    "close": "15:00"
+  },
   "extended_hours": {
     "after_hours": {
       "close": "15:30",
@@ -13,10 +21,7 @@
       "open": "07:30"
     }
   },
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
-  ],
+  "sessions": [],
   "holidays": {
     "explicit": [
       {
@@ -33,7 +38,7 @@
       },
       {
         "date": "2025-03-17",
-        "name": "Benito Juárez Day (observed)",
+        "name": "Benito Ju\u00e1rez Day (observed)",
         "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
         "status": "closed"
       },
@@ -69,7 +74,7 @@
       },
       {
         "date": "2025-12-12",
-        "name": "Bank Worker's Day (Día del Empleado Bancario)",
+        "name": "Bank Worker's Day (D\u00eda del Empleado Bancario)",
         "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
         "status": "closed"
       },
@@ -81,57 +86,69 @@
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
-        "status": "closed"
+        "name": "New Year\u2019s Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/bmv-group/holiday-schedule"
       },
       {
         "date": "2026-02-02",
-        "name": "Constitution Day (observed)",
-        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
-        "status": "closed"
+        "name": "Commemoration of February 5",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/bmv-group/holiday-schedule"
       },
       {
         "date": "2026-03-16",
-        "name": "Benito Juárez Day (observed)",
-        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
-        "status": "closed"
+        "name": "Commemoration of March 21",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/bmv-group/holiday-schedule"
       },
       {
         "date": "2026-04-02",
         "name": "Holy Thursday",
-        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/bmv-group/holiday-schedule"
       },
       {
         "date": "2026-04-03",
         "name": "Good Friday",
-        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/bmv-group/holiday-schedule"
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
-        "status": "closed"
+        "name": "Labor Day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/bmv-group/holiday-schedule"
       },
       {
         "date": "2026-09-16",
         "name": "Independence Day",
-        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/bmv-group/holiday-schedule"
+      },
+      {
+        "date": "2026-11-02",
+        "name": "Day of the dead",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/bmv-group/holiday-schedule"
       },
       {
         "date": "2026-11-16",
-        "name": "Revolution Day (observed)",
-        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
-        "status": "closed"
+        "name": "Commemoration of November 20",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/bmv-group/holiday-schedule"
+      },
+      {
+        "date": "2026-12-12",
+        "name": "Bank Employees's day",
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/bmv-group/holiday-schedule"
       },
       {
         "date": "2026-12-25",
         "name": "Christmas Day",
-        "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.bmv.com.mx/en/bmv-group/holiday-schedule"
       },
       {
         "date": "2027-01-01",
@@ -147,7 +164,7 @@
       },
       {
         "date": "2027-03-15",
-        "name": "Benito Juárez Day (observed)",
+        "name": "Benito Ju\u00e1rez Day (observed)",
         "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
         "status": "closed"
       },
@@ -183,7 +200,7 @@
       },
       {
         "date": "2028-03-20",
-        "name": "Benito Juárez Day (observed)",
+        "name": "Benito Ju\u00e1rez Day (observed)",
         "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
         "status": "closed"
       },
@@ -213,7 +230,7 @@
       },
       {
         "date": "2028-12-12",
-        "name": "Bank Worker's Day (Día del Empleado Bancario)",
+        "name": "Bank Worker's Day (D\u00eda del Empleado Bancario)",
         "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
         "status": "closed"
       },
@@ -237,7 +254,7 @@
       },
       {
         "date": "2029-03-19",
-        "name": "Benito Juárez Day (observed)",
+        "name": "Benito Ju\u00e1rez Day (observed)",
         "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
         "status": "closed"
       },
@@ -267,7 +284,7 @@
       },
       {
         "date": "2029-12-12",
-        "name": "Bank Worker's Day (Día del Empleado Bancario)",
+        "name": "Bank Worker's Day (D\u00eda del Empleado Bancario)",
         "source_url": "https://www.bmv.com.mx/en/market-data/trading-calendar",
         "status": "closed"
       },
@@ -297,7 +314,7 @@
       {
         "month": 3,
         "n": 3,
-        "name": "Benito Juárez Day",
+        "name": "Benito Ju\u00e1rez Day",
         "rule": "nth_weekday",
         "status": "closed",
         "weekday": "monday"
@@ -352,16 +369,9 @@
       }
     ]
   },
-  "mic": "XMEX",
-  "name": "Mexican Stock Exchange",
-  "regular_hours": {
-    "close": "15:00",
-    "open": "08:30"
-  },
-  "sessions": [],
-  "timezone": "America/Mexico_City",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
   ]
 }
