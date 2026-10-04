@@ -369,6 +369,10 @@ ok "check_wrapper_snapshot.py"
 run python3 tools/migrate_sessions.py --check --quiet
 ok "migrate_sessions.py --check"
 
+run python3 tools/derive_confidence.py --check --quiet
+ok "derive_confidence.py --check"
+
+
 
 run python3 tools/check_fetcher_freshness.py
 ok "check_fetcher_freshness.py"

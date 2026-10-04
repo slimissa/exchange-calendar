@@ -60,3 +60,46 @@ def test_sessions_sorted_and_no_duplicates():
                 problems.append((path.name, "duplicate", key))
             seen.add(key)
     assert not problems, f"sessions structural problems: {problems[:3]}"
+
+def test_every_exchange_has_confidence():
+    """Every exchange has a confidence map keyed by year."""
+    missing = []
+    for path in _all_exchanges():
+        d = json.loads(path.read_text())
+        if not isinstance(d.get("confidence"), dict) or not d["confidence"]:
+            missing.append(path.name)
+    assert not missing, f"no confidence in: {missing}"
+
+
+def test_confidence_keys_match_holiday_years():
+    """Every year with an explicit holiday has a confidence entry,
+    and every confidence entry maps to a year that exists."""
+    problems = []
+    for path in _all_exchanges():
+        d = json.loads(path.read_text())
+        years = {h["date"][:4] for h in d["holidays"]["explicit"]}
+        conf_years = set((d.get("confidence") or {}).keys())
+        if years != conf_years:
+            problems.append((path.name, sorted(years - conf_years),
+                             sorted(conf_years - years)))
+    assert not problems, f"year mismatch: {problems[:3]}"
+
+
+def test_fetcher_confidence_is_high_for_current_year():
+    """If the manifest records a fresh fetch for MIC in year Y, then
+    confidence[Y].level should be high."""
+    import json as _json
+    manifest = _json.loads(
+        (Path(__file__).resolve().parent.parent / "fetcher_manifest.json").read_text()
+    ).get("fetches", {})
+    problems = []
+    for path in _all_exchanges():
+        mic = path.stem
+        m = manifest.get(mic)
+        if not m:
+            continue
+        d = json.loads(path.read_text())
+        cy = (d.get("confidence") or {}).get(m["fetched_at"][:4])
+        if cy is None or cy.get("level") != "high":
+            problems.append((mic, cy))
+    assert not problems, f"fetcher-backed year not high: {problems[:3]}"

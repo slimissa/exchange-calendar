@@ -540,6 +540,47 @@
       "maxItems": 2,
       "minItems": 2,
       "type": "array"
+    },
+    "confidence": {
+      "description": "Per-year confidence in the exchange's calendar data. Derived, not authored.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "source",
+          "level"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "enum": [
+              "fetcher",
+              "manual",
+              "predicted"
+            ]
+          },
+          "last_verified": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          },
+          "level": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "propertyNames": {
+          "pattern": "^\\d{4}$"
+        }
+      }
     }
   },
   "required": [

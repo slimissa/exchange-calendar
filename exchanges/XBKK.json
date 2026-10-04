@@ -1,6 +1,24 @@
 {
   "ad_hoc_closures": [],
   "code": "XBKK",
+  "confidence": {
+    "2025": {
+      "last_verified": null,
+      "level": "medium",
+      "source": "manual"
+    },
+    "2026": {
+      "last_verified": null,
+      "level": "medium",
+      "source": "manual"
+    },
+    "2027": {
+      "last_verified": null,
+      "level": "medium",
+      "note": "predicted",
+      "source": "manual"
+    }
+  },
   "country": "Thailand",
   "country_code": "TH",
   "generation_range": [

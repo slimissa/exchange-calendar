@@ -8,7 +8,7 @@ Seventy-four exchanges. 45 have registered fetchers — 40 verified against live
 [![Validate](https://github.com/slimissa/exchange-calendar/actions/workflows/validate.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/validate.yml)
 [![Update](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Schema Version](https://img.shields.io/badge/schema-2.1.0-green.svg)](./schema.json)
+[![Schema Version](https://img.shields.io/badge/schema-2.1.1-green.svg)](./schema.json)
 [![Registry Version](https://img.shields.io/badge/registry-2.11.0-orange.svg)](./CHANGELOG.md)
 [![Tests](https://img.shields.io/badge/tests-4070+-green.svg)](./tests/)
 [![Exchanges](https://img.shields.io/badge/exchanges-74-blue.svg)](./exchanges/)

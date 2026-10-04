@@ -1,6 +1,18 @@
 {
   "ad_hoc_closures": [],
   "code": "XMOS",
+  "confidence": {
+    "2025": {
+      "last_verified": null,
+      "level": "medium",
+      "source": "manual"
+    },
+    "2026": {
+      "last_verified": null,
+      "level": "medium",
+      "source": "manual"
+    }
+  },
   "country": "Russian Federation",
   "country_code": "RU",
   "generation_range": [

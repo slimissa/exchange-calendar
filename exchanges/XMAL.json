@@ -1,6 +1,36 @@
 {
   "ad_hoc_closures": [],
   "code": "XMAL",
+  "confidence": {
+    "2025": {
+      "last_verified": null,
+      "level": "medium",
+      "source": "manual"
+    },
+    "2026": {
+      "last_verified": null,
+      "level": "medium",
+      "source": "manual"
+    },
+    "2027": {
+      "last_verified": null,
+      "level": "medium",
+      "note": "predicted",
+      "source": "manual"
+    },
+    "2028": {
+      "last_verified": null,
+      "level": "medium",
+      "note": "predicted",
+      "source": "manual"
+    },
+    "2029": {
+      "last_verified": null,
+      "level": "medium",
+      "note": "predicted",
+      "source": "manual"
+    }
+  },
   "country": "Malta",
   "country_code": "MT",
   "generation_range": [

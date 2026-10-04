@@ -1,6 +1,36 @@
 {
   "ad_hoc_closures": [],
   "code": "XBOM",
+  "confidence": {
+    "2025": {
+      "last_verified": null,
+      "level": "medium",
+      "source": "manual"
+    },
+    "2026": {
+      "last_verified": null,
+      "level": "medium",
+      "source": "manual"
+    },
+    "2027": {
+      "last_verified": null,
+      "level": "medium",
+      "note": "predicted",
+      "source": "manual"
+    },
+    "2028": {
+      "last_verified": null,
+      "level": "medium",
+      "note": "predicted",
+      "source": "manual"
+    },
+    "2029": {
+      "last_verified": null,
+      "level": "medium",
+      "note": "predicted",
+      "source": "manual"
+    }
+  },
   "country": "India",
   "country_code": "IN",
   "extended_hours": {
