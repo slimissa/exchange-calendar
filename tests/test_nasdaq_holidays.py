@@ -19,7 +19,7 @@ Run:
 import json
 import pytest
 from datetime import date
-from pathlib import Path
+from pathlib import Path, types
 
 
 # ──────────────────────────────────────────────────────────────
@@ -75,8 +75,13 @@ class TestXNASProperties:
         assert xnas["extended_hours"]["after_hours"]["open"] == "16:00"
         assert xnas["extended_hours"]["after_hours"]["close"] == "20:00"
 
-    def test_no_sessions(self, xnas):
-        assert xnas["sessions"] == []
+    def test_has_expected_sessions(self, xnas):
+        """v2.11.0: XNAS carries pre_market, regular, and post_market
+        sessions. The pre-v2.11 assertion that sessions was empty no
+        longer holds."""
+        sessions = xnas.get("sessions") or []
+        types = [s["type"] for s in sessions]
+        assert types == ["pre_market", "regular", "post_market"]
 
     def test_generation_range(self, xnas):
         assert xnas["generation_range"] == ["2025-01-01", "2029-12-31"]

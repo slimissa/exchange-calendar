@@ -61,6 +61,9 @@ def make_valid_exchange(code="TEST", mic="TEST"):
             "recurrence_rules": [],
         },
         "ad_hoc_closures": [],
+        "sessions": [
+            {"type": "regular", "open": "09:00", "close": "17:00"},
+        ],
         "generation_range": ["2025-01-01", "2025-12-31"],
     }
 
