@@ -341,5 +341,34 @@
       "file": "RELEASE_PATTERN.md",
       "contains": "## Gate parity"
     }
+  ],
+  "2.12.2": [
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "**Status:** Accepted"
+    },
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "**Decision:** permanent-block"
+    },
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "**Decision:** defer"
+    },
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "athens.euronext.com"
+    },
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "x-calendar"
+    },
+    {
+      "file": "tests/test_decision_adrs.py"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "0010-render-mode"
+    }
   ]
 }

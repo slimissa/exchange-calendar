@@ -151,6 +151,13 @@ wrong without the reasoning behind it.
 
 - **See:** docs/decisions/0010-render-mode.md for the render-mode decision that governs this block.
 
+- **Finding (2026-10-04, ADR 0010):** marked permanent-block. Three
+  browser mechanisms tested across v2.10.0 and v2.12.x — headless
+  Chromium, headful via Xvfb — both fail with a server-side redirect
+  to `COM/403.html`. Real Chrome untested but the delta is smaller
+  than the headless-to-headful delta, which also failed. See
+  `docs/decisions/0010-render-mode.md`.
+
 ## XATH — Athens Exchange
 
 **Last verified:** 2026-08-31
@@ -168,6 +175,13 @@ wrong without the reasoning behind it.
   the decision that governs this class of block.
 
 - **See:** docs/decisions/0010-render-mode.md for the render-mode decision that governs this block.
+
+- **Finding (2026-10-04, ADR 0010 reconnaissance):** athexgroup.gr now
+  redirects its trading-hours and calendar pages to
+  `athens.euronext.com`, which returns 404 for the paths previously
+  recorded here. The Athens Exchange is now Euronext Athens. The
+  block was never visual-grid PDF — the URL was stale. Next step:
+  probe `athens.euronext.com` for the shared Euronext source.
 
 ## XBOM — BSE India (Bombay Stock Exchange)
 
@@ -626,6 +640,13 @@ wrong without the reasoning behind it.
 - **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
 
 - **See:** docs/decisions/0010-render-mode.md for the render-mode decision that governs this block.
+
+- **Finding (2026-10-04, ADR 0010 reconnaissance):** the SET calendar
+  page at `/en/market/trading/calendar` links to
+  `/en/market/stock-calendar/x-calendar` and
+  `/en/about/event-calendar/holiday`. Neither was probed. The AnyFlip
+  source was not reached. Next step: probe those two URLs before
+  deciding the technique.
 
 ## XSTC — Ho Chi Minh Stock Exchange (Vietnam)
 

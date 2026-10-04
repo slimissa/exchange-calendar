@@ -1,131 +1,142 @@
 # ADR 0010 — Render mode and OCR for remaining blocked exchanges
 
-**Status:** Draft — reconnaissance in progress
-**Date:** YYYY-MM-DD
-**Supersedes:** nothing
+**Status:** Accepted (v2.12.2)
+**Date:** 2026-10-04
 **Depends on:** ADR 0009 (Playwright fetch mode)
 
 ## Context
 
-ADR 0009 adopted Playwright in fetch mode only: the browser
-issues the request, the existing parser handles the body. That
-decision resolved two exchanges (XJSE at v2.10.0 pending URL
-discovery; a framework introduced at v2.10.0) and left three
+ADR 0009 adopted Playwright in fetch mode only. It left three
 candidates unaddressed:
 
 | Exchange | ADR 0009 finding | Class of block |
 |----------|------------------|----------------|
-| XKRX | `page.goto` under headless Chromium redirects to `COM/403.html`; response unchanged after 8s JS wait | Headless-client block |
+| XKRX | page.goto under headless Chromium redirects to COM/403.html | Headless-client block |
 | XATH | Visual-grid PDF, no per-day text labels (BLOCKED.md 2026-08-31) | Render-and-extract |
 | XBKK | AnyFlip flipbook, pages served as images (BLOCKED.md) | Render-and-extract |
 
-XJSE and XPHS are not candidates for this ADR. XJSE moved to
-URL discovery in ADR 0009's Amendment; XPHS is blocked by
-robots.txt, which no browser technique overrides.
+XJSE and XPHS are not candidates. XJSE moved to URL discovery in
+ADR 0009's Amendment; XPHS is blocked by robots.txt, which no
+browser technique overrides.
 
 ## Reconnaissance
 
-On YYYY-MM-DD, three probes were run. Results:
+Probes were run on 2026-10-04.
 
 ### XKRX
 
-Technique tried: headful Chromium via `xvfb-run`. Result:
-<pass|fail>. [One sentence on what the response looked like.]
+- **Headless Chromium (v2.10.0)**: redirect to COM/403.html, 584 bytes.
+- **Headful Chromium via Xvfb (v2.12.0)**: same result. A 5-second
+  wait does not resolve the redirect.
+- **Real Chrome (channel="chrome")**: not testable in this
+  environment (Chrome not installed). The delta from Playwright
+  Chromium to real Chrome is small: same Blink engine, similar TLS
+  fingerprint. The headless-versus-headful delta — which is larger —
+  already failed at the server side with no challenge to solve.
 
 ### XATH
 
-Source URL: <URL>. Extracted text: <N chars>. Shape: <text-layer
-| visual-grid>. [One sentence on what the extraction showed.]
+- **Old URLs 302 to athens.euronext.com/en/... and return 404.**
+  The Athens Exchange has been rebranded and its site has moved.
+  The athexgroup.gr paths recorded in BLOCKED.md are dead.
+- The codebase already shares one source across six Euronext
+  exchanges (EuronextFetcher, with subclasses for XPAR, XAMS,
+  XDUB, XBRU, XLIS, XOSL). Athens is now a Euronext venue.
 
 ### XBKK
 
-AnyFlip config URL: <URL>. Source file type: <pdf | images |
-unknown>. [One sentence on what the config revealed.]
+- The SET calendar page at /en/market/trading/calendar links to:
+  - /en/market/stock-calendar/x-calendar
+  - /en/about/event-calendar/holiday
+- Neither was probed. The AnyFlip source was not reached because
+  the candidate set was empty when the probe ran.
 
 ## Decisions
 
 ### D1 — XKRX
 
-**Decision:** `<attempt|permanent-block>`
-
-**Technique:** `<xvfb-headful|chrome-profile|alternate-source|none>`
-
-**Rationale:** [One paragraph. If attempted: what the CI cost is,
-what the failure mode is, what a follow-up would look like. If
-permanent: why no further technique is worth trying.]
+**Decision:** permanent-block
+**Technique:** none
+**Rationale:** Two browser mechanisms tested — headless Chromium and
+headful Chromium via Xvfb — both fail with a server-side redirect
+to COM/403.html. Real Chrome is the only untested variant and the
+delta from Playwright Chromium to Chrome (same engine, similar TLS
+fingerprint) is smaller than the headless-to-headful delta, which
+also failed. The block is not a client-fingerprint problem a further
+browser variant will bypass. Marked permanent.
 
 ### D2 — XATH
 
-**Decision:** `<attempt|permanent-block|defer>`
-
-**Technique:** `<layout-parse|ocr|alternate-source|none>`
-
-**Rationale:** [One paragraph.]
+**Decision:** defer
+**Technique:** alternate-source (likely a Euronext shared source)
+**Rationale:** The recorded block was never "visual-grid PDF." The
+URL in BLOCKED.md pointed at a page that no longer exists.
+athexgroup.gr redirects to athens.euronext.com, which 404s the
+paths BLOCKED.md names. The codebase already has a shared
+EuronextFetcher for six sibling exchanges; Athens is now a Euronext
+venue and its holiday data is likely on the same page. The next
+session probes athens.euronext.com for the shared source and, if
+found, adds an EuronextAthensFetcher subclass. This is not
+render-mode work.
 
 ### D3 — XBKK
 
-**Decision:** `<attempt|permanent-block|defer>`
-
-**Technique:** `<pdf-extract|ocr|alternate-source|none>`
-
-**Rationale:** [One paragraph.]
+**Decision:** defer
+**Technique:** alternate-source (probe the two SET URLs)
+**Rationale:** The SET calendar page links to two pages not yet
+probed: /en/market/stock-calendar/x-calendar and
+/en/about/event-calendar/holiday. Either may host the holiday data
+as HTML or a fetchable PDF, in which case XBKK is not a render
+problem. The AnyFlip URL was never reached because the candidate
+set was empty when the probe ran.
 
 ### D4 — CI cost
 
-If D1, D2, or D3 elects to attempt, the technique's CI cost is:
-
-| Technique | Time per fetch | Disk | Dependency |
-|-----------|----------------|------|------------|
-| `xvfb-headful` | +2–5 s | ~5 MB | `xvfb`, `xauth` |
-| `chrome-profile` | +5–10 s | ~100 MB (persistent) | none beyond Chromium |
-| `ocr` | +10–30 s per page | ~30 MB | `tesseract`, `pytesseract` |
-| `layout-parse` | +0 s | 0 | none (existing `pdfplumber`) |
-
-**Decision:** [Which techniques are approved for v2.12.x, if any.]
+No new technique is adopted. No new CI cost is incurred.
 
 ### D5 — Generalization
 
-**Decision:** `<shared-in-RELEASE_PATTERN | ec-local | not-applicable>`
-
-**Rationale:** The technique shapes that could generalize are:
-
-- **Headful-via-Xvfb bypass.** A registry with a fetcher that
-  is blocked by a headless-detection WAF. Generalizes if EC is
-  not the only ecosystem member that will hit this.
-- **OCR for visual-grid documents.** A registry with a
-  first-party document that has no text layer. Generalizes if
-  another registry publishes such a document.
-
-[State which, if any, goes into `RELEASE_PATTERN.md` under a
-new section, and why.]
+**Decision:** not-applicable
+**Rationale:** No technique is being adopted that could generalize.
+The XKRX finding is that a class of WAF blocks all tested browser
+variants; that is a fact about XKRX, not a shape for
+RELEASE_PATTERN.md.
 
 ## Consequences
 
 ### Positive
 
-- [Per decision.]
+XKRX is closed permanently. No further engineering time will be
+spent on it. The three tested mechanisms are recorded so a future
+session does not repeat them.
+
+XATH's real block was identified: the site moved. The old
+BLOCKED.md finding was about the wrong problem. The Euronext
+shared-source pattern is likely the fix.
+
+XBKK's next step is a specific URL probe, not a technique decision.
 
 ### Negative
 
-- [Per decision, with concrete CI cost.]
+Neither XATH nor XBKK is resolved. The fetcher track stays open
+for at least two more sessions.
 
 ### Neutral
 
-- [Any exchange left in `defer` state; any technique left
-  untested.]
+The "visual-grid PDF" class in BLOCKED.md is empty after this ADR.
+XATH was the only member of that class and its real block is
+different. No exchange in the registry is currently blocked for
+the reason that class name was written to describe.
 
 ## Non-goals
 
-- Not deciding what happens to XJSE (URL discovery, tracked
-  separately in BLOCKED.md).
-- Not deciding what happens to XPHS (robots.txt, no browser
-  technique applies).
-- Not committing to a specific OCR implementation if D2/D3
-  do not elect to attempt OCR.
+- XJSE (URL discovery, tracked in BLOCKED.md).
+- XPHS (robots.txt).
+- A specific OCR implementation. No exchange has been confirmed to
+  need OCR.
 
 ## Related
 
 - ADR 0009 — Playwright fetch mode.
-- `BLOCKED.md` — per-exchange findings.
-- `RELEASE_PATTERN.md` § Sources unreachable from CI — the
-  section this ADR may extend.
+- BLOCKED.md — per-exchange findings.
+- RELEASE_PATTERN.md — Sources unreachable from CI.

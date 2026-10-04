@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.12.2] — 2026-10-04
+
+### Changed
+
+- `docs/decisions/0010-render-mode.md` — status was incorrectly
+  "Accepted" on a template with placeholders. Every decision is now
+  written from the reconnaissance: XKRX permanent-block, XATH defer
+  (site moved to athens.euronext.com), XBKK defer (probe two SET URLs).
+- `BLOCKED.md` — XKRX, XATH, XBKK reflect the ADR's findings.
+
+### Added
+
+- `tests/test_decision_adrs.py` — fails if an Accepted ADR under
+  `docs/decisions/` contains `<...>` placeholders. The check that
+  would have caught ADR 0010 shipping as a template.
+
+### Fixed
+
+- `tools/release_claims.json` — v2.12.0's ADR claims matched section
+  headings and passed on a skeleton. v2.12.2's claims match decision
+  strings and specific findings that only exist in a written ADR.
+
+### Notes
+
+Documentation and tests only. No schema change, no wrapper change,
+no data change.
+
+Key finding: the Athens Exchange is now Euronext Athens. The XATH
+block was a stale URL, not a visual-grid PDF. The "visual-grid PDF"
+class in BLOCKED.md is empty after this ADR.
+
+Fetcher track: XKRX closed permanently. XATH and XBKK deferred with
+specific named follow-ups. Two sessions remain before v3.0.0.
+
 ## [2.12.1] — 2026-10-04
 
 ### Fixed
