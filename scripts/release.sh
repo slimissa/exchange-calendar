@@ -39,8 +39,18 @@ cleanup_on_failure() {
     if git log -1 --format=%s 2>/dev/null | grep -q '^Release v'; then
         if git branch -r --contains HEAD 2>/dev/null | grep -q 'origin/main'; then
             printf '\033[1;33m==>\033[0m release commit was pushed; reverting it\n' >&2
-            git revert HEAD --no-edit
-            git push origin main
+            # Discard working-tree changes before reverting; `git revert`
+            # refuses on a dirty tree, and the release script may have
+            # left a VERSION write behind after the release commit.
+            git reset --hard HEAD 2>/dev/null || true
+            git revert HEAD --no-edit || {
+                printf '\033[1;31m==>\033[0m revert failed; manual recovery needed\n' >&2
+                exit $rc
+            }
+            git push origin main || {
+                printf '\033[1;31m==>\033[0m push failed; manual recovery needed\n' >&2
+                exit $rc
+            }
         else
             printf '\033[1;33m==>\033[0m release commit was local-only; resetting\n' >&2
             git reset --hard HEAD~1
