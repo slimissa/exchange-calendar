@@ -543,7 +543,23 @@
     "close": "17:00",
     "open": "10:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "10:00",
+      "open": "09:45",
+      "type": "pre_market"
+    },
+    {
+      "close": "17:00",
+      "open": "10:00",
+      "type": "regular"
+    },
+    {
+      "close": "17:30",
+      "open": "17:00",
+      "type": "post_market"
+    }
+  ],
   "timezone": "America/Sao_Paulo",
   "weekend_days": [
     5,

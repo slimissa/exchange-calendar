@@ -372,7 +372,23 @@
     "close": "18:30",
     "open": "09:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "09:00",
+      "open": "08:00",
+      "type": "pre_market"
+    },
+    {
+      "close": "18:30",
+      "open": "09:00",
+      "type": "regular"
+    },
+    {
+      "close": "18:45",
+      "open": "18:30",
+      "type": "post_market"
+    }
+  ],
   "timezone": "Europe/Helsinki",
   "weekend_days": [
     5,

@@ -260,7 +260,13 @@
         "close": "13:15",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "13:15",
+          "open": "09:30",
+          "type": "regular"
+        }
+      ],
       "timezone": "Asia/Qatar",
       "weekend_days": [
         4,
@@ -526,7 +532,13 @@
         "close": "17:30",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "17:30",
+          "open": "09:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Amsterdam",
       "weekend_days": [
         5,
@@ -883,8 +895,23 @@
       },
       "sessions": [
         {
+          "close": "10:00",
+          "open": "07:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "16:00",
+          "open": "10:00",
+          "type": "regular"
+        },
+        {
           "at": "10:00",
           "type": "auction"
+        },
+        {
+          "close": "16:12",
+          "open": "16:00",
+          "type": "post_market"
         },
         {
           "at": "16:00",
@@ -1254,7 +1281,13 @@
         "close": "17:00",
         "open": "10:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "17:00",
+          "open": "10:30",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Athens",
       "weekend_days": [
         5,
@@ -1561,7 +1594,13 @@
         "close": "13:00",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "13:00",
+          "open": "09:30",
+          "type": "regular"
+        }
+      ],
       "timezone": "Asia/Bahrain",
       "weekend_days": [
         4,
@@ -1943,7 +1982,13 @@
         "close": "16:00",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "16:00",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Atlantic/Bermuda",
       "weekend_days": [
         5,
@@ -2220,7 +2265,13 @@
         "close": "12:30",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "12:30",
+          "open": "09:30",
+          "type": "regular"
+        }
+      ],
       "timezone": "Asia/Beirut",
       "weekend_days": [
         5,
@@ -2583,6 +2634,11 @@
         "open": "10:00"
       },
       "sessions": [
+        {
+          "close": "16:30",
+          "open": "10:00",
+          "type": "regular"
+        },
         {
           "close": "14:00",
           "open": "12:30",
@@ -3118,7 +3174,13 @@
         "close": "15:00",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "15:00",
+          "open": "09:30",
+          "type": "regular"
+        }
+      ],
       "timezone": "America/Bogota",
       "weekend_days": [
         5,
@@ -3574,7 +3636,23 @@
         "close": "15:30",
         "open": "09:15"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:15",
+          "open": "09:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "15:30",
+          "open": "09:15",
+          "type": "regular"
+        },
+        {
+          "close": "16:00",
+          "open": "15:30",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Asia/Kolkata",
       "weekend_days": [
         5,
@@ -3894,7 +3972,13 @@
         "close": "17:30",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "17:30",
+          "open": "09:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Brussels",
       "weekend_days": [
         5,
@@ -4136,7 +4220,13 @@
         "close": "14:00",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "14:00",
+          "open": "09:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Africa/Abidjan",
       "weekend_days": [
         5,
@@ -4645,7 +4735,23 @@
         "close": "17:00",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "10:00",
+          "open": "09:45",
+          "type": "pre_market"
+        },
+        {
+          "close": "17:00",
+          "open": "10:00",
+          "type": "regular"
+        },
+        {
+          "close": "17:30",
+          "open": "17:00",
+          "type": "post_market"
+        }
+      ],
       "timezone": "America/Sao_Paulo",
       "weekend_days": [
         5,
@@ -5030,7 +5136,13 @@
         "close": "17:00",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "17:00",
+          "open": "09:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Budapest",
       "weekend_days": [
         5,
@@ -5532,7 +5644,13 @@
         "close": "17:00",
         "open": "11:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "17:00",
+          "open": "11:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "America/Argentina/Buenos_Aires",
       "weekend_days": [
         5,
@@ -5876,7 +5994,13 @@
         "close": "14:00",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "14:00",
+          "open": "09:30",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Sofia",
       "weekend_days": [
         5,
@@ -6255,7 +6379,13 @@
         "close": "14:30",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "14:30",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Africa/Cairo",
       "weekend_days": [
         4,
@@ -6660,7 +6790,13 @@
         "close": "15:30",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "15:30",
+          "open": "09:30",
+          "type": "regular"
+        }
+      ],
       "timezone": "Africa/Casablanca",
       "weekend_days": [
         5,
@@ -7072,7 +7208,13 @@
         "close": "16:00",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "16:00",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "America/Cayman",
       "weekend_days": [
         5,
@@ -7374,7 +7516,13 @@
         "close": "14:30",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "14:30",
+          "open": "09:30",
+          "type": "regular"
+        }
+      ],
       "timezone": "Asia/Colombo",
       "weekend_days": [
         5,
@@ -7755,7 +7903,23 @@
         "close": "17:00",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:00",
+          "open": "08:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "17:00",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
+          "close": "17:20",
+          "open": "17:00",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Europe/Copenhagen",
       "weekend_days": [
         5,
@@ -8073,6 +8237,16 @@
       },
       "sessions": [
         {
+          "close": "10:00",
+          "open": "09:30",
+          "type": "pre_market"
+        },
+        {
+          "close": "15:00",
+          "open": "10:00",
+          "type": "regular"
+        },
+        {
           "at": "14:50",
           "type": "auction"
         }
@@ -8374,7 +8548,13 @@
         "close": "14:30",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "14:30",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Asia/Dhaka",
       "weekend_days": [
         4,
@@ -8778,7 +8958,13 @@
         "close": "16:30",
         "open": "08:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "16:30",
+          "open": "08:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Dublin",
       "weekend_days": [
         5,
@@ -9049,8 +9235,23 @@
       },
       "sessions": [
         {
+          "close": "09:00",
+          "open": "08:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "17:30",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
           "at": "09:00",
           "type": "auction"
+        },
+        {
+          "close": "20:00",
+          "open": "17:30",
+          "type": "post_market"
         },
         {
           "at": "17:30",
@@ -9400,7 +9601,13 @@
         "close": "15:00",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "15:00",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Africa/Accra",
       "weekend_days": [
         5,
@@ -9757,7 +9964,23 @@
         "close": "18:30",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:00",
+          "open": "08:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "18:30",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
+          "close": "18:45",
+          "open": "18:30",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Europe/Helsinki",
       "weekend_days": [
         5,
@@ -10253,6 +10476,11 @@
           "type": "auction"
         },
         {
+          "close": "16:00",
+          "open": "09:30",
+          "type": "regular"
+        },
+        {
           "close": "13:00",
           "open": "12:00",
           "type": "lunch_break"
@@ -10647,7 +10875,23 @@
         "close": "15:30",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:30",
+          "open": "09:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "15:30",
+          "open": "09:30",
+          "type": "regular"
+        },
+        {
+          "close": "15:45",
+          "open": "15:30",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Atlantic/Reykjavik",
       "weekend_days": [
         5,
@@ -10918,7 +11162,23 @@
         "close": "18:00",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "10:00",
+          "open": "09:40",
+          "type": "pre_market"
+        },
+        {
+          "close": "18:00",
+          "open": "10:00",
+          "type": "regular"
+        },
+        {
+          "close": "18:10",
+          "open": "18:00",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Europe/Istanbul",
       "weekend_days": [
         5,
@@ -11306,9 +11566,24 @@
       },
       "sessions": [
         {
+          "close": "09:00",
+          "open": "08:45",
+          "type": "pre_market"
+        },
+        {
+          "close": "16:00",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
           "close": "13:30",
           "open": "12:00",
           "type": "lunch_break"
+        },
+        {
+          "close": "16:15",
+          "open": "16:00",
+          "type": "post_market"
         }
       ],
       "timezone": "Asia/Jakarta",
@@ -11696,7 +11971,23 @@
         "close": "17:00",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:00",
+          "open": "08:30",
+          "type": "pre_market"
+        },
+        {
+          "close": "17:00",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
+          "close": "17:15",
+          "open": "17:00",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Africa/Johannesburg",
       "weekend_days": [
         5,
@@ -12003,7 +12294,13 @@
         "close": "15:30",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "15:30",
+          "open": "09:30",
+          "type": "regular"
+        }
+      ],
       "timezone": "Asia/Karachi",
       "weekend_days": [
         5,
@@ -12527,9 +12824,24 @@
       },
       "sessions": [
         {
+          "close": "09:00",
+          "open": "08:30",
+          "type": "pre_market"
+        },
+        {
+          "close": "17:00",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
           "close": "14:30",
           "open": "12:30",
           "type": "lunch_break"
+        },
+        {
+          "close": "17:15",
+          "open": "17:00",
+          "type": "post_market"
         }
       ],
       "timezone": "Asia/Kuala_Lumpur",
@@ -12994,8 +13306,23 @@
       },
       "sessions": [
         {
+          "close": "09:00",
+          "open": "08:30",
+          "type": "pre_market"
+        },
+        {
+          "close": "15:30",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
           "at": "09:00",
           "type": "auction"
+        },
+        {
+          "close": "16:00",
+          "open": "15:30",
+          "type": "post_market"
         },
         {
           "at": "15:30",
@@ -13267,6 +13594,11 @@
         "open": "09:00"
       },
       "sessions": [
+        {
+          "close": "12:30",
+          "open": "09:00",
+          "type": "regular"
+        },
         {
           "close": "13:00",
           "open": "12:30",
@@ -13758,6 +14090,11 @@
       },
       "sessions": [
         {
+          "close": "13:30",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
           "close": "14:30",
           "open": "13:30",
           "type": "lunch_break"
@@ -14112,7 +14449,13 @@
         "close": "17:30",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "17:30",
+          "open": "09:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Lisbon",
       "weekend_days": [
         5,
@@ -14456,7 +14799,13 @@
         "close": "16:00",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "16:00",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Vilnius",
       "weekend_days": [
         5,
@@ -14789,8 +15138,23 @@
       },
       "sessions": [
         {
+          "close": "08:00",
+          "open": "07:50",
+          "type": "pre_market"
+        },
+        {
+          "close": "16:30",
+          "open": "08:00",
+          "type": "regular"
+        },
+        {
           "at": "08:00",
           "type": "auction"
+        },
+        {
+          "close": "16:35",
+          "open": "16:30",
+          "type": "post_market"
         },
         {
           "at": "16:35",
@@ -15170,7 +15534,13 @@
         "close": "17:30",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "17:30",
+          "open": "09:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Luxembourg",
       "weekend_days": [
         5,
@@ -15409,8 +15779,23 @@
       },
       "sessions": [
         {
+          "close": "09:00",
+          "open": "08:30",
+          "type": "pre_market"
+        },
+        {
+          "close": "17:30",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
           "at": "09:00",
           "type": "auction"
+        },
+        {
+          "close": "17:35",
+          "open": "17:30",
+          "type": "post_market"
         },
         {
           "at": "17:30",
@@ -15814,7 +16199,13 @@
         "close": "15:30",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "15:30",
+          "open": "09:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Malta",
       "weekend_days": [
         5,
@@ -16143,7 +16534,23 @@
         "close": "15:00",
         "open": "08:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "08:30",
+          "open": "07:30",
+          "type": "pre_market"
+        },
+        {
+          "close": "15:00",
+          "open": "08:30",
+          "type": "regular"
+        },
+        {
+          "close": "15:30",
+          "open": "15:00",
+          "type": "post_market"
+        }
+      ],
       "timezone": "America/Mexico_City",
       "weekend_days": [
         5,
@@ -16343,7 +16750,13 @@
         "close": "18:45",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "18:45",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Moscow",
       "weekend_days": [
         5,
@@ -16652,7 +17065,13 @@
         "close": "13:00",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "13:00",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Asia/Muscat",
       "weekend_days": [
         4,
@@ -16965,7 +17384,13 @@
         "close": "15:00",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "15:00",
+          "open": "09:30",
+          "type": "regular"
+        }
+      ],
       "timezone": "Africa/Nairobi",
       "weekend_days": [
         5,
@@ -17384,7 +17809,23 @@
         "close": "16:00",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:30",
+          "open": "04:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "16:00",
+          "open": "09:30",
+          "type": "regular"
+        },
+        {
+          "close": "20:00",
+          "open": "16:00",
+          "type": "post_market"
+        }
+      ],
       "timezone": "America/New_York",
       "weekend_days": [
         5,
@@ -17713,7 +18154,13 @@
         "close": "14:30",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "14:30",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Africa/Lagos",
       "weekend_days": [
         5,
@@ -18169,7 +18616,23 @@
         "close": "15:30",
         "open": "09:15"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:15",
+          "open": "09:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "15:30",
+          "open": "09:15",
+          "type": "regular"
+        },
+        {
+          "close": "16:00",
+          "open": "15:30",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Asia/Kolkata",
       "weekend_days": [
         5,
@@ -18588,7 +19051,23 @@
         "close": "16:00",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:30",
+          "open": "04:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "16:00",
+          "open": "09:30",
+          "type": "regular"
+        },
+        {
+          "close": "20:00",
+          "open": "16:00",
+          "type": "post_market"
+        }
+      ],
       "timezone": "America/New_York",
       "weekend_days": [
         5,
@@ -18944,7 +19423,13 @@
         "close": "16:45",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "16:45",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Pacific/Auckland",
       "weekend_days": [
         5,
@@ -19324,7 +19809,23 @@
         "close": "16:30",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:00",
+          "open": "08:15",
+          "type": "pre_market"
+        },
+        {
+          "close": "16:30",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
+          "close": "16:45",
+          "open": "16:30",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Europe/Oslo",
       "weekend_days": [
         5,
@@ -19591,8 +20092,23 @@
       },
       "sessions": [
         {
+          "close": "09:00",
+          "open": "07:15",
+          "type": "pre_market"
+        },
+        {
+          "close": "17:30",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
           "at": "09:00",
           "type": "auction"
+        },
+        {
+          "close": "17:35",
+          "open": "17:30",
+          "type": "post_market"
         },
         {
           "at": "17:30",
@@ -20064,7 +20580,23 @@
         "close": "15:00",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:30",
+          "open": "09:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "15:00",
+          "open": "09:30",
+          "type": "regular"
+        },
+        {
+          "close": "15:10",
+          "open": "15:00",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Asia/Manila",
       "weekend_days": [
         5,
@@ -20487,7 +21019,13 @@
         "close": "16:30",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "16:30",
+          "open": "09:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Prague",
       "weekend_days": [
         5,
@@ -20825,7 +21363,13 @@
         "close": "16:00",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "16:00",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Riga",
       "weekend_days": [
         5,
@@ -21064,7 +21608,23 @@
         "close": "15:00",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "10:00",
+          "open": "09:30",
+          "type": "pre_market"
+        },
+        {
+          "close": "15:00",
+          "open": "10:00",
+          "type": "regular"
+        },
+        {
+          "close": "15:20",
+          "open": "15:00",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Asia/Riyadh",
       "weekend_days": [
         4,
@@ -21486,8 +22046,23 @@
       },
       "sessions": [
         {
+          "close": "09:00",
+          "open": "08:30",
+          "type": "pre_market"
+        },
+        {
+          "close": "17:00",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
           "at": "09:00",
           "type": "auction"
+        },
+        {
+          "close": "17:06",
+          "open": "17:00",
+          "type": "post_market"
         },
         {
           "at": "17:00",
@@ -21987,6 +22562,11 @@
       },
       "sessions": [
         {
+          "close": "16:00",
+          "open": "09:30",
+          "type": "regular"
+        },
+        {
           "close": "12:30",
           "open": "12:00",
           "type": "lunch_break"
@@ -22354,6 +22934,11 @@
         "open": "09:30"
       },
       "sessions": [
+        {
+          "close": "11:30",
+          "open": "09:30",
+          "type": "regular"
+        },
         {
           "close": "13:00",
           "open": "11:30",
@@ -22870,13 +23455,28 @@
       },
       "sessions": [
         {
+          "close": "09:30",
+          "open": "09:15",
+          "type": "pre_market"
+        },
+        {
           "at": "09:25",
           "type": "auction"
+        },
+        {
+          "close": "15:00",
+          "open": "09:30",
+          "type": "regular"
         },
         {
           "close": "13:00",
           "open": "11:30",
           "type": "lunch_break"
+        },
+        {
+          "close": "15:30",
+          "open": "15:00",
+          "type": "post_market"
         }
       ],
       "timezone": "Asia/Shanghai",
@@ -23181,6 +23781,11 @@
         "open": "09:00"
       },
       "sessions": [
+        {
+          "close": "11:30",
+          "open": "09:00",
+          "type": "regular"
+        },
         {
           "close": "13:00",
           "open": "11:30",
@@ -23578,7 +24183,23 @@
         "close": "17:30",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:00",
+          "open": "08:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "17:30",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
+          "close": "17:45",
+          "open": "17:30",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Europe/Stockholm",
       "weekend_days": [
         5,
@@ -23965,8 +24586,23 @@
       },
       "sessions": [
         {
+          "close": "09:00",
+          "open": "07:30",
+          "type": "pre_market"
+        },
+        {
+          "close": "17:30",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
           "at": "09:00",
           "type": "auction"
+        },
+        {
+          "close": "17:40",
+          "open": "17:30",
+          "type": "post_market"
         },
         {
           "at": "17:30",
@@ -24208,7 +24844,13 @@
         "close": "14:00",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "14:00",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Asia/Dubai",
       "weekend_days": [
         5,
@@ -24680,7 +25322,23 @@
         "close": "13:30",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:00",
+          "open": "08:30",
+          "type": "pre_market"
+        },
+        {
+          "close": "13:30",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
+          "close": "14:30",
+          "open": "13:30",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Asia/Taipei",
       "weekend_days": [
         5,
@@ -25018,7 +25676,13 @@
         "close": "16:00",
         "open": "10:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "16:00",
+          "open": "10:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Tallinn",
       "weekend_days": [
         5,
@@ -25568,6 +26232,11 @@
       },
       "sessions": [
         {
+          "close": "15:30",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
           "close": "12:30",
           "open": "11:30",
           "type": "lunch_break"
@@ -25942,8 +26611,23 @@
       },
       "sessions": [
         {
+          "close": "09:30",
+          "open": "07:00",
+          "type": "pre_market"
+        },
+        {
+          "close": "16:00",
+          "open": "09:30",
+          "type": "regular"
+        },
+        {
           "at": "09:30",
           "type": "auction"
+        },
+        {
+          "close": "17:00",
+          "open": "16:00",
+          "type": "post_market"
         },
         {
           "at": "16:00",
@@ -26299,7 +26983,13 @@
         "close": "14:00",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "14:00",
+          "open": "09:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Africa/Tunis",
       "weekend_days": [
         5,
@@ -26738,7 +27428,23 @@
         "close": "17:00",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "09:00",
+          "open": "08:30",
+          "type": "pre_market"
+        },
+        {
+          "close": "17:00",
+          "open": "09:00",
+          "type": "regular"
+        },
+        {
+          "close": "17:10",
+          "open": "17:00",
+          "type": "post_market"
+        }
+      ],
       "timezone": "Europe/Warsaw",
       "weekend_days": [
         5,
@@ -27206,7 +27912,13 @@
         "close": "17:30",
         "open": "09:00"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "17:30",
+          "open": "09:00",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Vienna",
       "weekend_days": [
         5,
@@ -27562,7 +28274,13 @@
         "close": "16:00",
         "open": "09:30"
       },
-      "sessions": [],
+      "sessions": [
+        {
+          "close": "16:00",
+          "open": "09:30",
+          "type": "regular"
+        }
+      ],
       "timezone": "Europe/Zagreb",
       "weekend_days": [
         5,

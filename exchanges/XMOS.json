@@ -192,7 +192,13 @@
     "close": "18:45",
     "open": "10:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "18:45",
+      "open": "10:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "Europe/Moscow",
   "weekend_days": [
     5,

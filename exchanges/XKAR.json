@@ -299,7 +299,13 @@
     "close": "15:30",
     "open": "09:30"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "15:30",
+      "open": "09:30",
+      "type": "regular"
+    }
+  ],
   "timezone": "Asia/Karachi",
   "weekend_days": [
     5,

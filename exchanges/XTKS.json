@@ -542,6 +542,11 @@
   },
   "sessions": [
     {
+      "close": "15:30",
+      "open": "09:00",
+      "type": "regular"
+    },
+    {
       "close": "12:30",
       "open": "11:30",
       "type": "lunch_break"

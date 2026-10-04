@@ -448,7 +448,13 @@
     "close": "17:00",
     "open": "09:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "17:00",
+      "open": "09:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "Europe/Budapest",
   "weekend_days": [
     5,

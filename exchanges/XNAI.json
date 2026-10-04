@@ -305,7 +305,13 @@
     "close": "15:00",
     "open": "09:30"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "15:00",
+      "open": "09:30",
+      "type": "regular"
+    }
+  ],
   "timezone": "Africa/Nairobi",
   "weekend_days": [
     5,

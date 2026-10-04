@@ -402,7 +402,23 @@
     "close": "16:30",
     "open": "09:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "09:00",
+      "open": "08:15",
+      "type": "pre_market"
+    },
+    {
+      "close": "16:30",
+      "open": "09:00",
+      "type": "regular"
+    },
+    {
+      "close": "16:45",
+      "open": "16:30",
+      "type": "post_market"
+    }
+  ],
   "timezone": "Europe/Oslo",
   "weekend_days": [
     5,

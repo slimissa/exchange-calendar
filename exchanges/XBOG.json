@@ -522,7 +522,13 @@
     "close": "15:00",
     "open": "09:30"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "15:00",
+      "open": "09:30",
+      "type": "regular"
+    }
+  ],
   "timezone": "America/Bogota",
   "weekend_days": [
     5,

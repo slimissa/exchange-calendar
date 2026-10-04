@@ -348,7 +348,13 @@
     "close": "16:45",
     "open": "10:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "16:45",
+      "open": "10:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "Pacific/Auckland",
   "weekend_days": [
     5,

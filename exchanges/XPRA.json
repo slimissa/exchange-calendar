@@ -474,7 +474,13 @@
     "close": "16:30",
     "open": "09:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "16:30",
+      "open": "09:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "Europe/Prague",
   "weekend_days": [
     5,

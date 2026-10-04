@@ -234,7 +234,13 @@
     "close": "14:00",
     "open": "09:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "14:00",
+      "open": "09:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "Africa/Abidjan",
   "weekend_days": [
     5,

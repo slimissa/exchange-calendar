@@ -460,7 +460,23 @@
     "close": "13:30",
     "open": "09:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "09:00",
+      "open": "08:30",
+      "type": "pre_market"
+    },
+    {
+      "close": "13:30",
+      "open": "09:00",
+      "type": "regular"
+    },
+    {
+      "close": "14:30",
+      "open": "13:30",
+      "type": "post_market"
+    }
+  ],
   "timezone": "Asia/Taipei",
   "weekend_days": [
     5,

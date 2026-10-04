@@ -504,13 +504,28 @@
   },
   "sessions": [
     {
+      "close": "09:30",
+      "open": "09:15",
+      "type": "pre_market"
+    },
+    {
       "at": "09:25",
       "type": "auction"
+    },
+    {
+      "close": "15:00",
+      "open": "09:30",
+      "type": "regular"
     },
     {
       "close": "13:00",
       "open": "11:30",
       "type": "lunch_break"
+    },
+    {
+      "close": "15:30",
+      "open": "15:00",
+      "type": "post_market"
     }
   ],
   "timezone": "Asia/Shanghai",

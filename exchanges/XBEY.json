@@ -269,7 +269,13 @@
     "close": "12:30",
     "open": "09:30"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "12:30",
+      "open": "09:30",
+      "type": "regular"
+    }
+  ],
   "timezone": "Asia/Beirut",
   "weekend_days": [
     5,

@@ -236,7 +236,23 @@
     "close": "15:00",
     "open": "10:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "10:00",
+      "open": "09:30",
+      "type": "pre_market"
+    },
+    {
+      "close": "15:00",
+      "open": "10:00",
+      "type": "regular"
+    },
+    {
+      "close": "15:20",
+      "open": "15:00",
+      "type": "post_market"
+    }
+  ],
   "timezone": "Asia/Riyadh",
   "weekend_days": [
     4,

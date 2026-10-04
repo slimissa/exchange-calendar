@@ -336,7 +336,13 @@
     "close": "16:00",
     "open": "10:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "16:00",
+      "open": "10:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "Europe/Vilnius",
   "weekend_days": [
     5,

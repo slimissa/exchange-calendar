@@ -494,7 +494,13 @@
     "close": "17:00",
     "open": "11:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "17:00",
+      "open": "11:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "America/Argentina/Buenos_Aires",
   "weekend_days": [
     5,

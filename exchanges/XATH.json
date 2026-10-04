@@ -356,7 +356,13 @@
     "close": "17:00",
     "open": "10:30"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "17:00",
+      "open": "10:30",
+      "type": "regular"
+    }
+  ],
   "timezone": "Europe/Athens",
   "weekend_days": [
     5,

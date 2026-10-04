@@ -453,7 +453,13 @@
     "close": "16:30",
     "open": "08:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "16:30",
+      "open": "08:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "Europe/Dublin",
   "weekend_days": [
     5,

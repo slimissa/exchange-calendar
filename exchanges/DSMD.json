@@ -264,7 +264,13 @@
     "close": "13:15",
     "open": "09:30"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "13:15",
+      "open": "09:30",
+      "type": "regular"
+    }
+  ],
   "timezone": "Asia/Qatar",
   "weekend_days": [
     4,

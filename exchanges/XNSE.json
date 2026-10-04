@@ -462,7 +462,23 @@
     "close": "15:30",
     "open": "09:15"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "09:15",
+      "open": "09:00",
+      "type": "pre_market"
+    },
+    {
+      "close": "15:30",
+      "open": "09:15",
+      "type": "regular"
+    },
+    {
+      "close": "16:00",
+      "open": "15:30",
+      "type": "post_market"
+    }
+  ],
   "timezone": "Asia/Kolkata",
   "weekend_days": [
     5,

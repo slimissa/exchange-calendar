@@ -487,7 +487,23 @@
     "close": "15:00",
     "open": "09:30"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "09:30",
+      "open": "09:00",
+      "type": "pre_market"
+    },
+    {
+      "close": "15:00",
+      "open": "09:30",
+      "type": "regular"
+    },
+    {
+      "close": "15:10",
+      "open": "15:00",
+      "type": "post_market"
+    }
+  ],
   "timezone": "Asia/Manila",
   "weekend_days": [
     5,

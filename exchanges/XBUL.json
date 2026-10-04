@@ -336,7 +336,13 @@
     "close": "14:00",
     "open": "09:30"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "14:00",
+      "open": "09:30",
+      "type": "regular"
+    }
+  ],
   "timezone": "Europe/Sofia",
   "weekend_days": [
     5,

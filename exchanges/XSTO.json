@@ -409,7 +409,23 @@
     "close": "17:30",
     "open": "09:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "09:00",
+      "open": "08:00",
+      "type": "pre_market"
+    },
+    {
+      "close": "17:30",
+      "open": "09:00",
+      "type": "regular"
+    },
+    {
+      "close": "17:45",
+      "open": "17:30",
+      "type": "post_market"
+    }
+  ],
   "timezone": "Europe/Stockholm",
   "weekend_days": [
     5,

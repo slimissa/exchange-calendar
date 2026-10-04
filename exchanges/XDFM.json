@@ -309,6 +309,16 @@
   },
   "sessions": [
     {
+      "close": "10:00",
+      "open": "09:30",
+      "type": "pre_market"
+    },
+    {
+      "close": "15:00",
+      "open": "10:00",
+      "type": "regular"
+    },
+    {
       "at": "14:50",
       "type": "auction"
     }

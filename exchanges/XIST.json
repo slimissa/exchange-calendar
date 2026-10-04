@@ -263,7 +263,23 @@
     "close": "18:00",
     "open": "10:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "10:00",
+      "open": "09:40",
+      "type": "pre_market"
+    },
+    {
+      "close": "18:00",
+      "open": "10:00",
+      "type": "regular"
+    },
+    {
+      "close": "18:10",
+      "open": "18:00",
+      "type": "post_market"
+    }
+  ],
   "timezone": "Europe/Istanbul",
   "weekend_days": [
     5,

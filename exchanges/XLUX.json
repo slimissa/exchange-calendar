@@ -366,7 +366,13 @@
     "close": "17:30",
     "open": "09:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "17:30",
+      "open": "09:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "Europe/Luxembourg",
   "weekend_days": [
     5,

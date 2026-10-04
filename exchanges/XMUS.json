@@ -292,7 +292,13 @@
     "close": "13:00",
     "open": "10:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "13:00",
+      "open": "10:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "Asia/Muscat",
   "weekend_days": [
     4,

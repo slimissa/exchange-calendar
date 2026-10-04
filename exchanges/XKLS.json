@@ -522,9 +522,24 @@
   },
   "sessions": [
     {
+      "close": "09:00",
+      "open": "08:30",
+      "type": "pre_market"
+    },
+    {
+      "close": "17:00",
+      "open": "09:00",
+      "type": "regular"
+    },
+    {
       "close": "14:30",
       "open": "12:30",
       "type": "lunch_break"
+    },
+    {
+      "close": "17:15",
+      "open": "17:00",
+      "type": "post_market"
     }
   ],
   "timezone": "Asia/Kuala_Lumpur",

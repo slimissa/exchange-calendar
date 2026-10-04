@@ -294,7 +294,13 @@
     "close": "14:30",
     "open": "09:30"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "14:30",
+      "open": "09:30",
+      "type": "regular"
+    }
+  ],
   "timezone": "Asia/Colombo",
   "weekend_days": [
     5,

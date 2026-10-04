@@ -496,7 +496,23 @@
     "close": "16:00",
     "open": "09:30"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "09:30",
+      "open": "04:00",
+      "type": "pre_market"
+    },
+    {
+      "close": "16:00",
+      "open": "09:30",
+      "type": "regular"
+    },
+    {
+      "close": "20:00",
+      "open": "16:00",
+      "type": "post_market"
+    }
+  ],
   "timezone": "America/New_York",
   "weekend_days": [
     5,

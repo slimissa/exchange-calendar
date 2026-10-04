@@ -408,7 +408,23 @@
     "close": "15:30",
     "open": "09:30"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "09:30",
+      "open": "09:00",
+      "type": "pre_market"
+    },
+    {
+      "close": "15:30",
+      "open": "09:30",
+      "type": "regular"
+    },
+    {
+      "close": "15:45",
+      "open": "15:30",
+      "type": "post_market"
+    }
+  ],
   "timezone": "Atlantic/Reykjavik",
   "weekend_days": [
     5,

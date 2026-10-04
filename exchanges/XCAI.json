@@ -348,7 +348,13 @@
     "close": "14:30",
     "open": "10:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "14:30",
+      "open": "10:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "Africa/Cairo",
   "weekend_days": [
     4,

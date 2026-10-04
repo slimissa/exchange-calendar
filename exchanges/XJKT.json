@@ -389,9 +389,24 @@
   },
   "sessions": [
     {
+      "close": "09:00",
+      "open": "08:45",
+      "type": "pre_market"
+    },
+    {
+      "close": "16:00",
+      "open": "09:00",
+      "type": "regular"
+    },
+    {
       "close": "13:30",
       "open": "12:00",
       "type": "lunch_break"
+    },
+    {
+      "close": "16:15",
+      "open": "16:00",
+      "type": "post_market"
     }
   ],
   "timezone": "Asia/Jakarta",

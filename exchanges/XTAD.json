@@ -228,7 +228,13 @@
     "close": "14:00",
     "open": "10:00"
   },
-  "sessions": [],
+  "sessions": [
+    {
+      "close": "14:00",
+      "open": "10:00",
+      "type": "regular"
+    }
+  ],
   "timezone": "Asia/Dubai",
   "weekend_days": [
     5,
