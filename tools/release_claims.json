@@ -130,5 +130,27 @@
       "file": "BLOCKED.md",
       "contains": "## XATH "
     }
+  ],
+  "2.10.0": [
+    {
+      "file": "tools/update_from_exchange.py",
+      "contains": "use_playwright"
+    },
+    {
+      "file": "tools/update_from_exchange.py",
+      "contains": "_make_request_playwright"
+    },
+    {
+      "file": "tools/update_from_exchange.py",
+      "contains": "XJSEFetcher"
+    },
+    {
+      "file": "docs/decisions/0009-playwright-fetcher-category.md",
+      "contains": "Amendment \u2014 2026-10-04"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "IMPLEMENTED at v2.10.0"
+    }
   ]
 }

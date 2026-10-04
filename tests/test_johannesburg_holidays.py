@@ -20,6 +20,7 @@ Run:
 """
 
 import json
+import sys
 import pytest
 from datetime import date
 from pathlib import Path
@@ -162,6 +163,13 @@ class TestXJSE2026:
     def test_day_of_reconciliation(self, explicit_dates):
         assert "2026-12-16" in explicit_dates
 
+    def test_xjse_fixture_parses():
+        import json, sys
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+        fx = json.loads(Path("tests/fixtures/xjse_2026.json").read_text())
+        assert fx["code"] == "XJSE"
+        assert len(fx["holidays"]) >= 5
 
 # ──────────────────────────────────────────────────────────────
 # 2027 holidays

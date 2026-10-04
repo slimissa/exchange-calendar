@@ -357,8 +357,12 @@ wrong without the reasoning behind it.
   adding `PDFFetcher` support to the framework, the PDF itself returned
   "Site blocked the request (bot detection)" on direct fetch. PDF-text
   extraction doesn't help if the file can't be fetched at all.
-- **Verdict:** BLOCKED. Confirms that "PDF-only" and "bot-walled" are
-  independent problems — fixing one doesn't guarantee fixing the other.
+- **Finding (2026-10-04):** resolved via ADR 0009 fetch-mode
+  Playwright. A headless Chromium session satisfies the Cloudflare
+  challenge that blocks plain requests; the PDF is then retrievable
+  and parsed by `PDFFetcher`'s standard extractor.
+- **Verdict:** IMPLEMENTED at v2.10.0 (`XJSEFetcher`, Playwright
+  fetch mode).
 
 - **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
 
