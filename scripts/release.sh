@@ -348,6 +348,27 @@ ok "check_country_codes.py"
 run python3 tools/check_release_claims.py "$VERSION"
 ok "check_release_claims.py"
 
+run python3 tools/check_mojibake.py
+ok "check_mojibake.py"
+
+run python3 tools/check_mic_codes.py
+ok "check_mic_codes.py"
+
+run python3 tools/check_snapshot_freshness.py
+ok "check_snapshot_freshness.py"
+
+run python3 tools/check_stale_verifications.py
+ok "check_stale_verifications.py"
+
+run python3 tools/check_stale_year_urls.py
+ok "check_stale_year_urls.py"
+
+run python3 tools/check_wrapper_snapshot.py
+ok "check_wrapper_snapshot.py"
+
+run python3 tools/check_fetcher_freshness.py
+ok "check_fetcher_freshness.py"
+
 run python3 -m pytest tests/ -q
 ok "pytest"
 
