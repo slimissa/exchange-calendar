@@ -31,7 +31,6 @@ import pytest
 from datetime import date
 from pathlib import Path
 
-from tools.update_from_exchange import EuronextAthensFetcher
 
 
 # ──────────────────────────────────────────────────────────────

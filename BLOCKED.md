@@ -160,6 +160,8 @@ wrong without the reasoning behind it.
 
 ## XATH — Athens Exchange
 
+**Last verified:** 2026-10-04
+
 - **Finding (2026-10-04, v2.12.3 reconnaissance):** athexgroup.gr
   redirects its trading-hours and calendar pages to
   `athens.euronext.com`, which returns 404 for the paths previously
