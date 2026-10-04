@@ -291,52 +291,42 @@ class CalendarRegistry:
 
     def is_open(self, mic: str, date: str, time: str) -> bool:
         """True if the exchange is in any interval session at the given
-        local time on the given date. Includes pre_market and post_market
-        windows; callers wanting regular-hours-only should filter
-        sessions() themselves."""
+        local time on the given date.
+
+        Includes pre_market and post_market windows. Callers wanting
+        regular-hours-only should filter sessions() themselves.
+        """
         from datetime import date as _date
+
         ex = self.exchange(mic)
         d = _date.fromisoformat(date)
 
-        # Weekend
+        # Weekend: 0=Mon .. 6=Sun.
         weekend = getattr(ex, "weekend_days", None) or [5, 6]
         if d.weekday() in weekend:
             return False
 
-        # Holiday — try the exchange's own method first, then a holidays
-        # attribute in either dict or object form.
-        if hasattr(ex, "is_holiday"):
-            try:
-                if ex.is_holiday(date):
-                    return False
-            except Exception:
-                pass
-        holidays = getattr(ex, "holidays", None)
-        explicit = None
-        if isinstance(holidays, dict):
-            explicit = holidays.get("explicit")
-        elif holidays is not None:
-            explicit = getattr(holidays, "explicit", None)
-        for h in (explicit or []):
-            hd = h.get("date") if isinstance(h, dict) else getattr(h, "date", None)
-            if hd == date:
+        # Holiday — the Exchange class exposes is_holiday(date_str).
+        try:
+            if ex.is_holiday(date):
                 return False
+        except AttributeError:
+            pass
 
-        # Ad-hoc closures (attribute is _ad_hoc on the Exchange class).
-        ad_hoc = getattr(ex, "_ad_hoc", None)
-        if ad_hoc is None:
-            ad_hoc = getattr(ex, "ad_hoc_closures", None) or []
-        for c in ad_hoc:
+        # Ad-hoc closures (private attribute _ad_hoc).
+        for c in (getattr(ex, "_ad_hoc", None) or []):
             cd = c.get("date") if isinstance(c, dict) else getattr(c, "date", None)
             if cd == date:
                 return False
 
-        # Any interval session containing the time.
+        # Any interval session contains the time? Point-type sessions
+        # (auction, halt) have no open/close and are skipped naturally.
         for s in (getattr(ex, "sessions", None) or []):
             o = s.get("open") if isinstance(s, dict) else getattr(s, "open", None)
             cl = s.get("close") if isinstance(s, dict) else getattr(s, "close", None)
             if o and cl and o <= time < cl:
                 return True
+
         return False
 
     def is_open(self, mic: str, date: str, time: str) -> bool:

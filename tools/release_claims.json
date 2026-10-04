@@ -323,5 +323,23 @@
       "file": "BLOCKED.md",
       "contains": "0010-render-mode"
     }
+  ],
+  "2.12.1": [
+    {
+      "file": "wrappers/python/exchange_calendar/registry.py",
+      "contains": "def is_open"
+    },
+    {
+      "file": "wrappers/python/exchange_calendar/registry.py",
+      "contains": "ex.is_holiday(date)"
+    },
+    {
+      "file": "scripts/release.sh",
+      "contains": "check_cross_language.sh"
+    },
+    {
+      "file": "RELEASE_PATTERN.md",
+      "contains": "## Gate parity"
+    }
   ]
 }

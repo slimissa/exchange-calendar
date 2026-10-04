@@ -583,6 +583,24 @@ The convention was requested by the ISO 10383 builder, adopted by
 ISO 4217 and ISO 3166, and applies to any document produced by more
 than one registry.
 
+## Gate parity
+
+Every CI check has a corresponding invocation in `scripts/release.sh`'s
+local gate. A check that exists but isn't in the gate is a check that
+will fail on the release commit and not before.
+
+This rule was paid for. `tools/check_cross_language.sh` was written in
+v2.11.4 and was not added to the gate. It failed on three releases
+without blocking any of them, and the underlying Python `is_open` bug
+survived from v2.11.0 to v2.12.1 as a result.
+
+**The rule:** when adding a check to CI, add it to the gate in the
+same commit. When the gate cannot run a check because a toolchain is
+missing (Rust, Go), the gate must still invoke it and the check must
+exit 0 with a clear `SKIP:` message, not be omitted from the gate.
+
+The gate is a superset of CI, or it isn't a gate.
+
 ## Review history
 
 - 2026-09-27 — initial draft reviewed by ISO 4217 and ISO 3166.

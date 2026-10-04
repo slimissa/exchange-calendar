@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.12.1] — 2026-10-04
+
+### Fixed
+
+- `wrappers/python/exchange_calendar/registry.py` — `is_open()` no
+  longer calls `.get()` on an `Exchange` object. The bug was
+  introduced at v2.11.0 and survived three releases because the check
+  that exercises it (`tools/check_cross_language.sh`) was not in the
+  release gate.
+- `scripts/release.sh` — `tools/check_cross_language.sh` is now
+  invoked by the local gate. A regression of this class fails
+  locally, before the release commit exists.
+
+### Added
+
+- `RELEASE_PATTERN.md` section "Gate parity" — names the rule that
+  every CI check has a corresponding gate invocation, with the
+  failure that paid for it.
+
+### Notes
+
+No schema change, no wrapper API change, no data change.
+
+This release closes a gate-coverage gap, not a code gap. The
+underlying bug was a two-line error; the reason it shipped three
+times is that nothing ran the check that catches it.
+
 ## [2.12.0] — 2026-10-04
 
 ### Added
