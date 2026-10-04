@@ -32,6 +32,19 @@ jobs:
             pip install -r tools/requirements.txt
           fi
 
+      - name: Cache Playwright Chromium
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('tools/requirements.txt') }}
+          restore-keys: |
+            playwright-chromium-${{ runner.os }}-
+
+      - name: Install Playwright Chromium
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+
       - name: Validate exchange data
         run: |
           python3 tools/validate.py

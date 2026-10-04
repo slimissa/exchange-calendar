@@ -417,6 +417,10 @@ class ExchangeFetcher(ABC):
         self.rate_limit = rate_limit
         self.parser_type = parser_type
         self.rate_limiter = RateLimiter(rate_limit)
+        # v2.10.0: fetchers that set this to True route through a
+        # headless Chromium instead of requests. ADR 0009 scope:
+        # fetch mode only. See _make_request_playwright.
+        self.use_playwright: bool = False
     
     @abstractmethod
     def parse_html(self, html: str) -> List[HolidayEntry]:
@@ -475,7 +479,19 @@ class ExchangeFetcher(ABC):
         return rp.can_fetch("ExchangeCalendarRegistry/1.0", self.source_url)
 
     def _make_request(self) -> Optional[str]:
-        """Make HTTP request with rate limiting, honoring robots.txt"""
+        """Make HTTP request with rate limiting, honoring robots.txt.
+
+        v2.10.0: if `self.use_playwright` is True, dispatch to the
+        browser path. The robots/rate-limit/manifest contract is
+        identical in both paths; only the transport differs.
+        """
+        if self.use_playwright:
+            return self._make_request_playwright(binary=False)
+        return self._make_request_http(binary=False)
+
+    def _make_request_http(self, binary: bool = False):
+        """The pre-v2.10.0 HTTP path, renamed. Callers should use
+        _make_request, which dispatches on self.use_playwright."""
         import requests
 
         if not self._check_robots_allowed():
@@ -512,16 +528,63 @@ class ExchangeFetcher(ABC):
             return None
 
     def _make_binary_request(self) -> Optional[bytes]:
-        """
-        Like _make_request, but returns raw response bytes instead of
-        response.text -- needed for binary sources like PDFs, where
-        `.text`'s implicit charset decoding would corrupt the content.
-        Shares the same robots.txt check and rate limiter as
-        _make_request so binary fetchers get identical politeness behavior.
-        """
-        import requests
+        """Binary-response variant. Dispatches on self.use_playwright."""
+        if self.use_playwright:
+            return self._make_request_playwright(binary=True)
+        return self._make_request_http(binary=True)
+
+    def _make_request_playwright(self, binary: bool):
+        """Headless-Chromium fetch. Used only by fetchers with
+        self.use_playwright = True. Same robots/rate-limit/manifest
+        contract as _make_request_http; the transport is a real
+        browser session (ADR 0009 — fetch mode only)."""
+        try:
+            from playwright.sync_api import sync_playwright
+        except ImportError as e:
+            logger.error(
+                f"{self.mic}: use_playwright=True but Playwright not "
+                f"installed: {e}"
+            )
+            return None
 
         if not self._check_robots_allowed():
+            logger.error(
+                f"robots.txt disallows fetching {self.source_url} for {self.mic}"
+            )
+            return None
+
+        self.rate_limiter.wait_if_needed(self.mic)
+
+        ua = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
+
+        try:
+            with sync_playwright() as p:
+                browser = p.chromium.launch(headless=True)
+                ctx = browser.new_context(user_agent=ua)
+                try:
+                    response = ctx.request.get(
+                        self.source_url, timeout=30000,
+                    )
+                    if response.status >= 400:
+                        logger.error(
+                            f"{self.mic}: Playwright got HTTP "
+                            f"{response.status}"
+                        )
+                        return None
+                    body = response.body()
+                finally:
+                    browser.close()
+        except Exception as e:
+            logger.error(f"{self.mic}: Playwright fetch failed: {e}")
+            return None
+
+        self.rate_limiter.mark_request(self.mic)
+        self._record_manifest(body, status="ok")
+
+        if binary:
+            return body
+        return body.decode("utf-8", errors="replace")
             logger.error(
                 f"robots.txt disallows fetching {self.source_url} for {self.mic}"
             )
