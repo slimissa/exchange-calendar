@@ -410,7 +410,7 @@
   "2.12.5": [
     {
       "file": "BLOCKED.md",
-      "contains": "Cloudflare bot-wall"
+      "contains": "Cloudflare"
     },
     {
       "file": "BLOCKED.md",

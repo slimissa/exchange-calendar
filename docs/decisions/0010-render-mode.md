@@ -139,7 +139,7 @@ the reason that class name was written to describe.
 
 ## Non-goals
 
-- XJSE (URL discovery, tracked in BLOCKED.md).
+- XJSE (URL discovery). Resolved at v2.12.5: the entire jse.co.za site returns 403 to plain HTTP clients — a Cloudflare bot-wall, not a rendering problem. See BLOCKED.md for the reopen condition.
 - XPHS (robots.txt).
 - A specific OCR implementation. No exchange has been confirmed to
   need OCR.
