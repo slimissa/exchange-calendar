@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.12.4] — 2026-10-04
+
+### Changed
+
+- `docs/decisions/0010-render-mode.md` — D3 (XBKK) amended from
+  `defer` to `permanent-block`.
+- `BLOCKED.md` — XBKK recorded with the specific finding: the PDF
+  has a text layer but its holiday data is a visual calendar grid.
+
+### Notes
+
+The prior XBKK note described an AnyFlip flipbook. That was true of
+the URL it checked; the site redesigned. SET's current holiday page
+links to plain PDFs. The PDFs are not scanned — text is extractable —
+but the text is a grid layout with day numbers and holiday names as
+separate blocks, and nothing links them by date. `PDFFetcher`'s
+text-based parsing cannot reconstruct the mapping without word
+coordinates.
+
+The "visual-grid PDF" class in BLOCKED.md now has two confirmed
+members: XATH and XBKK. Both were previously filed under different
+reasons (XATH as a stale URL, XBKK as a flipbook). The class
+definition is now precise: a PDF whose holiday data is encoded in
+cell position rather than in a text list.
+
+The fetcher track closes with this release. XKRX, XATH, and XBKK are
+permanent-block. v2.13.0 (MIC-to-LEI connector) is the next release.
+
 ## [2.12.3] — 2026-10-04
 
 ### Changed

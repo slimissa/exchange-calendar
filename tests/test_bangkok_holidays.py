@@ -20,9 +20,12 @@ Run:
 """
 
 import json
+import sys
 import pytest
 from datetime import date
 from pathlib import Path
+
+from tools.update_from_exchange import SETFetcher
 
 
 # ──────────────────────────────────────────────────────────────
@@ -247,10 +250,6 @@ class TestXBKKRoyal:
         assert "2026-12-05" not in explicit_dates
         assert "2026-12-07" in explicit_dates
 
-
-# ──────────────────────────────────────────────────────────────
-# Other national holidays
-# ──────────────────────────────────────────────────────────────
 
 class TestXBKKNational:
     def test_labour_day_2025(self, explicit_dates):

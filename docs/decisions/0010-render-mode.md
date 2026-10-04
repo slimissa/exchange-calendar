@@ -84,14 +84,20 @@ fill detection outside the framework's current scope.
 
 ### D3 — XBKK
 
-**Decision:** defer
-**Technique:** alternate-source (probe the two SET URLs)
-**Rationale:** The SET calendar page links to two pages not yet
-probed: /en/market/stock-calendar/x-calendar and
-/en/about/event-calendar/holiday. Either may host the holiday data
-as HTML or a fetchable PDF, in which case XBKK is not a render
-problem. The AnyFlip URL was never reached because the candidate
-set was empty when the probe ran.
+**Decision:** permanent-block
+**Technique:** none
+**Rationale:** The prior note described an AnyFlip flipbook. That was
+true of the URL it checked; the site redesigned. SET's current holiday
+page links to two plain PDFs on media.set.or.th. The 2026 PDF has a
+text layer — 39725 extractable characters across 26 pages — but the
+holiday data is a visual calendar grid: month names in headers, day
+numbers in rows under a SUNDAY-SATURDAY column header, holiday names
+as separate text below each row. Nothing in the extracted text links
+a name to a date. Reconstructing the mapping requires word coordinates
+and column reconstruction, which PDFFetcher does not expose. This is
+the second confirmed member of the visual-grid PDF class ADR 0009
+named.
+
 
 ### D4 — CI cost
 
@@ -145,6 +151,18 @@ XATH reconnaissance complete. Athens Exchange publishes its calendar
 as a visual-grid PDF with no extractable text layer. D2 updated from
 `defer` to `permanent-block`. This is the first confirmed member of
 the class ADR 0009 named; the class in BLOCKED.md is no longer empty.
+
+
+## Amendment — 2026-10-04 (v2.12.4)
+
+XBKK reconnaissance complete. `/en/market/stock-calendar/x-calendar`
+has no calendar data (no tables, no PDF links, no flipbook links).
+`/en/about/event-calendar/holiday` links to two plain PDFs on
+`media.set.or.th`. Both have text layers, but the text is a visual
+calendar grid, not a structured holiday list. `SETFetcher(PDFFetcher)`
+was attempted and removed; parsing requires word-position-aware
+reconstruction outside the framework's current scope. D3 updated from
+`defer` to `permanent-block`.
 
 ## Related
 

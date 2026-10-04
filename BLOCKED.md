@@ -630,27 +630,26 @@ wrong without the reasoning behind it.
 
 **Last verified:** 2026-09-04
 
-- **Checked:** SET's official holiday landing page (real, static, but
-  itself contains no data, only links), its downloadable PDF calendar, and
-  its "E-Calendar" HTML version
-- **Finding:** both the PDF and the "E-Calendar" are AnyFlip flipbook
-  publications (a page-flip magazine/catalog renderer) -- the E-Calendar's
-  raw HTML confirmed this is paginated into per-page files
-  (`files/basic-html/page1.html` through `page26.html`), the same
-  render-as-image pattern that makes XSWX and XATH's PDFs unusable: no
-  per-day text data extractable from a page-flip viewer.
-- **Verdict:** BLOCKED.
-
-- **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
-
-- **See:** docs/decisions/0010-render-mode.md for the render-mode decision that governs this block.
-
-- **Finding (2026-10-04, ADR 0010 reconnaissance):** the SET calendar
-  page at `/en/market/trading/calendar` links to
-  `/en/market/stock-calendar/x-calendar` and
-  `/en/about/event-calendar/holiday`. Neither was probed. The AnyFlip
-  source was not reached. Next step: probe those two URLs before
-  deciding the technique.
+- **Finding (2026-10-04, v2.12.4 reconnaissance):** SET's current
+  holiday page at `/en/about/event-calendar/holiday` links to two
+  plain PDFs on `media.set.or.th` — not the AnyFlip flipbook the
+  2026-09-04 note described. The site redesigned between the two
+  observations.
+- **Finding (2026-10-04):** the 2026 PDF (26 pages, 39725
+  extractable characters) has a text layer, but the text is a
+  **calendar grid**: month names in headers, day numbers in rows
+  under a `SUNDAY MONDAY TUESDAY ...` column header, holiday names
+  as separate text below each row. Nothing in the extracted text
+  links a name to a date. `pdfplumber.extract_text()` returns the
+  numerals and the labels as separate blocks; recovering the
+  mapping requires word coordinates and column reconstruction,
+  which `PDFFetcher` does not expose.
+- **Verdict:** BLOCKED (visual-grid PDF). Second confirmed member
+  of the class ADR 0009 named, alongside XATH. The source is not
+  scanned, but its structure lives in cell position, not text.
+  Reopening requires a grid-aware PDF parser that reads word
+  coordinates — outside the framework's current scope. Permanent
+  block.
 
 ## XSTC — Ho Chi Minh Stock Exchange (Vietnam)
 

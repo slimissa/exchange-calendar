@@ -2613,7 +2613,6 @@ class BudapestFetcher(PDFFetcher):
         return data
 
 
-
 class NasdaqNordicFetcher(ExchangeFetcher):
     # Source publishes approximately every 400 days.
     MAX_AGE_DAYS = 400

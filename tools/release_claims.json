@@ -388,5 +388,23 @@
       "file": "BLOCKED.md",
       "contains": "permanent block"
     }
+  ],
+  "2.12.4": [
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "**Decision:** permanent-block"
+    },
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "Amendment \u2014 2026-10-04 (v2.12.4)"
+    },
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "media.set.or.th"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "visual calendar grid"
+    }
   ]
 }
