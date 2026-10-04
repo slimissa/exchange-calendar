@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.9.6] — 2026-10-04
+
+### Added
+
+- XPHSFetcher — Philippine Stock Exchange, POST to the WordPress
+  admin-ajax endpoint. The BLOCKED.md entry had the endpoint URL
+  since 2026-09-19 with no fetcher; this closes it.
+
+### Changed
+
+- `BLOCKED.md` — snapshot header paragraph added. The section
+  pattern (a finding is a dated snapshot, not a permanent fact)
+  is named explicitly with four examples (XKRX, XIST, XBUD,
+  XPHS).
+- `BLOCKED.md` — XPHS verdict updated to IMPLEMENTED at v2.9.6.
+- `BLOCKED.md` — XATH section now cross-references ADR 0009,
+  closing the 4-of-5 gap from v2.9.5.
+
+### Notes
+
+One "resolved but not implemented" hole closed. The XPHS entry
+had named its endpoint for two weeks while the fetcher was
+pending; XPHSFetcher is the last commit that moves a source out
+of that state.
+
 ## [2.9.5] — 2026-10-04
 
 ### Added

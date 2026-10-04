@@ -116,5 +116,23 @@
       "file": "RELEASE_PATTERN.md",
       "contains": "0009-playwright"
     }
+  ],
+  "2.9.6": [
+    {
+      "file": "tools/update_from_exchange.py",
+      "contains": "XPHSFetcher"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "IMPLEMENTED at v2.9.6"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "snapshot, not a permanent fact"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "0009-playwright"
+    }
   ]
 }
