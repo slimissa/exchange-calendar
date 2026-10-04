@@ -148,11 +148,11 @@
   "2.10.1": [
     {
       "file": "scripts/release.sh",
-      "contains": "is_release_commit"
+      "contains": "release commit was pushed"
     },
     {
       "file": "scripts/release.sh",
-      "contains": "restore_on_failure"
+      "contains": "release commit was local-only"
     },
     {
       "file": "tests/test_scripts.py",

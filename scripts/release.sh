@@ -30,13 +30,28 @@ POLL_INTERVAL=15
 # the four mutable files to their committed state. Prevents a failed gate
 # from leaving the tree dirty and blocking a retry.
 cleanup_on_failure() {
-    local rc=$?
-    if (( rc != 0 )) && [[ "${DRY_RUN:-0}" != "1" ]]; then
-        git checkout -- VERSION README.md calendar.json \
-            wrappers/python/exchange_calendar/calendar.json 2>/dev/null || true
-        printf '\033[1;33m==>\033[0m Restored version sites and artifacts on failure\n' >&2
+    # v2.10.1: distinguish pre-commit from post-commit failure.
+    # Before this, `git checkout HEAD -- <files>` was a no-op when
+    # HEAD was the release commit itself, leaving the tree half-bumped
+    # and the next release.sh refusing on `VERSION is already X`.
+    local files="VERSION README.md CHANGELOG.md calendar.json wrappers/python/exchange_calendar/calendar.json"
+
+    if git log -1 --format=%s 2>/dev/null | grep -q '^Release v'; then
+        if git branch -r --contains HEAD 2>/dev/null | grep -q 'origin/main'; then
+            printf '\033[1;33m==>\033[0m release commit was pushed; reverting it\n' >&2
+            git revert HEAD --no-edit
+            git push origin main
+        else
+            printf '\033[1;33m==>\033[0m release commit was local-only; resetting\n' >&2
+            git reset --hard HEAD~1
+        fi
+    else
+        for f in $files; do
+            git checkout HEAD -- "$f" 2>/dev/null || true
+        done
     fi
-    exit $rc
+    printf '\033[1;33m==>\033[0m Restored version sites and artifacts on failure\n' >&2
+
 }
 trap cleanup_on_failure EXIT
 
