@@ -32,5 +32,12 @@
   "weekend_days": [
     5,
     6
+  ],
+  "sessions": [
+    {
+      "type": "regular",
+      "open": "09:00",
+      "close": "17:00"
+    }
   ]
 }

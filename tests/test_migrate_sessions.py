@@ -80,7 +80,6 @@ def test_preexisting_auction_preserved(tmp_path):
 def test_check_exits_zero_on_canonical(tmp_path):
     p = _write(tmp_path, "X.json", {
         "regular_hours": {"open": "09:30", "close": "16:00"},
-        "extended_hours": {},
         "sessions": [{"type": "regular", "open": "09:30", "close": "16:00"}],
     })
     rc = ms.main(["--check", "--quiet", str(p)])
