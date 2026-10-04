@@ -7,6 +7,8 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"time"
+
 )
 
 // Registry represents a loaded exchange calendar registry.
@@ -31,6 +33,22 @@ type registryData struct {
 type metaData struct {
 	Version       string `json:"version"`
 	ExchangeCount int    `json:"exchange_count"`
+}
+
+func (r *Registry) Sessions(mic string) []Session {
+	ex, err := r.Get(mic)
+	if err != nil {
+		return nil
+	}
+	return ex.Sessions
+}
+
+func (r *Registry) IsOpen(mic, date, timeStr string) bool {
+	ex, err := r.Get(mic)
+	if err != nil {
+		return false
+	}
+	return ex.IsOpen(date, timeStr)
 }
 
 // LoadRegistry loads and parses the registry from a JSON file.

@@ -299,6 +299,39 @@ class CalendarRegistry {
     get length() {
         return this.exchanges.size;
     }
+
+    sessions(mic) {
+        const ex = this.get(mic);
+        return (ex.sessions || []).map(s => ({
+            type: s.type,
+            open: s.open,
+            close: s.close,
+            at: s.at,
+        }));
+    }
+
+    isOpen(mic, date, time) {
+        const ex = this.get(mic);
+        const d = new Date(Date.UTC(
+            parseInt(date.slice(0, 4), 10),
+            parseInt(date.slice(5, 7), 10) - 1,
+            parseInt(date.slice(8, 10), 10)
+        ));
+        const weekend = ex.weekend_days || [5, 6];
+        if (weekend.includes(d.getUTCDay())) return false;
+            for (const h of (ex.holidays?.explicit || [])) {
+                if (h.date === date) return false;
+            }
+            for (const c of (ex.ad_hoc_closures || [])) {
+                if (c.date === date) return false;
+            }
+            for (const s of (ex.sessions || [])) {
+                if (s.open && s.close && s.open <= time && time < s.close) {
+                    return true;
+                }
+            }
+        return false;
+    }
 }
 
 module.exports = { CalendarRegistry };

@@ -175,5 +175,38 @@
     {
       "file": "wrappers/javascript/package.json"
     }
+  ],
+  "2.11.0": [
+    {
+      "file": "schema.json",
+      "contains": "lunch_break"
+    },
+    {
+      "file": "tools/migrate_sessions.py"
+    },
+    {
+      "file": "wrappers/python/exchange_calendar/registry.py",
+      "contains": "def sessions"
+    },
+    {
+      "file": "wrappers/python/exchange_calendar/registry.py",
+      "contains": "def is_open"
+    },
+    {
+      "file": "wrappers/javascript/src/registry.js",
+      "contains": "sessions("
+    },
+    {
+      "file": "wrappers/rust/src/registry.rs",
+      "contains": "fn sessions"
+    },
+    {
+      "file": "wrappers/rust/src/registry.rs",
+      "contains": "fn is_open"
+    },
+    {
+      "file": "wrappers/go/registry.go",
+      "contains": "func (r *Registry) Sessions"
+    }
   ]
 }

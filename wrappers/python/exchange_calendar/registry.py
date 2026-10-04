@@ -26,7 +26,16 @@ from pathlib import Path
 from typing import List, Optional
 
 from .exchange import Exchange
+from dataclasses import dataclass
+from datetime import date as _date
 
+
+@dataclass(frozen=True)
+class Session:
+    type: str
+    open: str | None = None
+    close: str | None = None
+    at: str | None = None
 
 class CalendarRegistry:
     """
@@ -265,3 +274,60 @@ class CalendarRegistry:
     def __str__(self) -> str:
         """Return a human-readable representation."""
         return f"Exchange Calendar Registry v{self.version} ({len(self.exchanges)} exchanges)"
+
+    def sessions(self, mic: str) -> list[Session]:
+        """Return the typed sessions for an exchange, in stored order."""
+        ex = self.exchange(mic)
+        raw = getattr(ex, "sessions", None) or []
+        return [
+            Session(
+                type=s["type"] if isinstance(s, dict) else s.type,
+                open=(s.get("open") if isinstance(s, dict) else getattr(s, "open", None)),
+                close=(s.get("close") if isinstance(s, dict) else getattr(s, "close", None)),
+                at=(s.get("at") if isinstance(s, dict) else getattr(s, "at", None)),
+            )
+            for s in raw
+        ]
+
+    def is_open(self, mic: str, date: str, time: str) -> bool:
+        """True if the exchange is in any interval session at the given
+        local time on the given date. Includes pre_market and post_market
+        windows; callers wanting regular-hours-only should filter
+        sessions() themselves."""
+        from datetime import date as _date
+        ex = self.exchange(mic)
+        d = _date.fromisoformat(date)
+
+        weekend = getattr(ex, "weekend_days", None) or [5, 6]
+        if d.weekday() in weekend:
+            return False
+
+        if hasattr(ex, "is_holiday") and ex.is_holiday(date):
+            return False
+
+        for s in (getattr(ex, "sessions", None) or []):
+            o = getattr(s, "open", None)
+            cl = getattr(s, "close", None)
+            if o and cl and o <= time < cl:
+                return True
+        return False
+
+    def is_open(self, mic: str, date: str, time: str) -> bool:
+        """True if the exchange is in any interval session at the given
+        local time. Includes pre/post-market; filter sessions() for
+        regular-hours-only."""
+        ex = self.exchange(mic)
+        d = _date.fromisoformat(date)
+        if d.weekday() in (ex.get("weekend_days") or [5, 6]):
+            return False
+        for h in (ex.get("holidays", {}).get("explicit") or []):
+            if h.get("date") == date:
+                return False
+        for c in (ex.get("ad_hoc_closures") or []):
+            if c.get("date") == date:
+                return False
+        for s in (ex.get("sessions") or []):
+            o, cl = s.get("open"), s.get("close")
+            if o and cl and o <= time < cl:
+                return True
+        return False

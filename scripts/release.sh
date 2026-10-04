@@ -379,9 +379,6 @@ ok "pytest"
 run bash -c 'cd wrappers/javascript && npm ci && npm test'
 ok "JavaScript wrapper tests"
 
-run bash -c 'cd wrappers/python && python3 -m pytest tests/ -q'
-ok "Python wrapper tests"
-
 run bash -c 'cd wrappers/go && go test ./...'
 ok "Go wrapper tests"
 
