@@ -246,11 +246,11 @@
       "contains": "pub fn as_of"
     },
     {
-      "file": "wrappers/go/registry.go",
+      "file": "wrappers/go/exchange.go",
       "contains": "func (r *Registry) Confidence"
     },
     {
-      "file": "wrappers/go/registry.go",
+      "file": "wrappers/go/exchange.go",
       "contains": "func (r *Registry) AsOf"
     }
   ]
