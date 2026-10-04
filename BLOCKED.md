@@ -14,9 +14,9 @@
 > and the equity PDF contains only Turkish closures. **XBUD**
 > blocked at v2.9.1 with in-window removals that resolved to a
 > parser gap for Hungarian substitute Mondays. **XPHS** was
-> RESOLVED at 2026-09-19 and shipped a working fetcher at v2.9.6,
-> closing the "resolved but not implemented" state that had been
-> open for two weeks.
+> RESOLVED at 2026-09-19 marked RESOLVED on a network-path probe; re-testing on 2026-10-04
+> found robots.txt disallows the same path, and the verdict was
+> corrected to BLOCKED (robots.txt).
 
 
 **Last-verified dates.** Each section below carries a **Last verified**
