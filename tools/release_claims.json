@@ -253,5 +253,23 @@
       "file": "wrappers/go/exchange.go",
       "contains": "func (r *Registry) AsOf"
     }
+  ],
+  "2.11.2": [
+    {
+      "file": "docs/MARKET_CONTEXT_SPEC.md",
+      "contains": "Market Context Specification"
+    },
+    {
+      "file": "docs/MARKET_CONTEXT_SPEC.md",
+      "contains": "R1 \u2014 MIC resolution"
+    },
+    {
+      "file": "docs/MARKET_CONTEXT_SPEC.md",
+      "contains": "R5 \u2014 Offset anchor in a session"
+    },
+    {
+      "file": "README.md",
+      "contains": "MARKET_CONTEXT_SPEC"
+    }
   ]
 }

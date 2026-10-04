@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.11.2] — 2026-10-04
+
+### Added
+
+- `docs/MARKET_CONTEXT_SPEC.md` — specification of the
+  `@market_context` interface between this registry and a compiler
+  that type-checks market-context annotations. Defines the annotation
+  grammar, the five checks (MIC resolution, calendar coverage,
+  confidence threshold, session validity, offset anchor), and the
+  diagnostic format for each. Spec version 1.0.0.
+
+### Changed
+
+- `README.md` — new Specifications section linking the market
+  context spec.
+
+### Notes
+
+Documentation-only release. No schema change, no wrapper change,
+no data change.
+
+The five checks are the compiler-side manifestation of the schema
+work shipped in v2.11.0 (sessions) and v2.11.1 (confidence). The
+specification names them once, at a stable URL, so Tempus and any
+future consumer compile against the same contract.
+
+The spec is versioned independently from the registry. A registry
+schema bump to 2.2 or higher requires reviewing this spec.
+
 ## [2.11.1] — 2026-10-04
 
 ### Added

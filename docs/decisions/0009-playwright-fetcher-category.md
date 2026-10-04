@@ -231,6 +231,9 @@ source, or permanent BLOCKED.
 
 ## Related
 
+- `docs/MARKET_CONTEXT_SPEC.md` — the interface this registry offers to a compiler that resolves `@market_context`.
+
+
 - ADR 0003 (monthly refresh) — the diff-based refresh model that
   Playwright fetchers plug into.
 - ADR 0008 (removal guard) — the guard that fires when a

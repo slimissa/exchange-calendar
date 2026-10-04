@@ -688,6 +688,14 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on:
 
 ---
 
+
+## Specifications
+
+- [`docs/MARKET_CONTEXT_SPEC.md`](./docs/MARKET_CONTEXT_SPEC.md) — the
+  `@market_context` interface. Defines the five checks a compiler
+  performs against this registry for market-context annotations, and
+  the diagnostic format for each.
+
 ## License
 
 Apache 2.0 — use it anywhere, no attribution required. The exchange calendar data in this registry is factual information. The compilation, schema, tooling, and wrappers are licensed works.
