@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.12.0] — 2026-10-04
+
+### Added
+
+- `docs/decisions/0010-render-mode.md` — the render-mode and OCR
+  decision for XKRX, XATH, and XBKK. Determines which techniques
+  (if any) are approved for v2.12.x, at what CI cost, and whether
+  the shape generalizes to `RELEASE_PATTERN.md`.
+
+### Changed
+
+- `BLOCKED.md` — XKRX, XATH, and XBKK cross-reference the ADR.
+- `README.md` — Specifications section links the new ADR.
+
+### Notes
+
+Documentation-only release. No schema change, no wrapper change,
+no data change.
+
+The decision gate for v2.12.x depends on this ADR's outcome:
+- If any exchange's decision is `attempt`, v2.12.x opens with one
+  fetcher per session.
+- If all three are `permanent-block`, the fetcher track closes and
+  v2.13.0 (MIC→LEI connector) follows immediately.
+
 ## [2.11.4] — 2026-10-04
 
 ### Added

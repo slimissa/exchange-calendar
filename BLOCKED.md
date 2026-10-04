@@ -149,6 +149,8 @@ wrong without the reasoning behind it.
 
 - **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
 
+- **See:** docs/decisions/0010-render-mode.md for the render-mode decision that governs this block.
+
 ## XATH — Athens Exchange
 
 **Last verified:** 2026-08-31
@@ -164,6 +166,8 @@ wrong without the reasoning behind it.
   bucket for the render-and-OCR decision.
 - **See:** docs/decisions/0009-playwright-fetcher-category.md for
   the decision that governs this class of block.
+
+- **See:** docs/decisions/0010-render-mode.md for the render-mode decision that governs this block.
 
 ## XBOM — BSE India (Bombay Stock Exchange)
 
@@ -620,6 +624,8 @@ wrong without the reasoning behind it.
 - **Verdict:** BLOCKED.
 
 - **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
+
+- **See:** docs/decisions/0010-render-mode.md for the render-mode decision that governs this block.
 
 ## XSTC — Ho Chi Minh Stock Exchange (Vietnam)
 

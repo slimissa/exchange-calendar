@@ -690,6 +690,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on:
 
 
 ## Specifications
+- [`docs/decisions/0010-render-mode.md`](./docs/decisions/0010-render-mode.md) — the render-mode and OCR decision for the remaining blocked exchanges.
+
 
 - [`docs/MARKET_CONTEXT_SPEC.md`](./docs/MARKET_CONTEXT_SPEC.md) — the
   `@market_context` interface. Defines the five checks a compiler

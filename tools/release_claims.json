@@ -305,5 +305,23 @@
       "file": "docs/CONSUMERS.md",
       "contains": "Cross-registry edges"
     }
+  ],
+  "2.12.0": [
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "Render mode and OCR"
+    },
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "Reconnaissance"
+    },
+    {
+      "file": "docs/decisions/0010-render-mode.md",
+      "contains": "Generalization"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "0010-render-mode"
+    }
   ]
 }
