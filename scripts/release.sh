@@ -438,7 +438,7 @@ poll_workflow() {
         # the older "--limit 1" form returned green on whichever was
         # newest while a sibling run could still be pending or failed.
         local json total pending failed first_fail
-        json="$(gh run list --workflow="$workflow" --commit="$SHA" \ || true
+        json="$(gh run list --workflow="$workflow" --commit="$SHA" \
                     --limit 100 --json status,conclusion,databaseId \
                     2>/dev/null || echo '[]')"
 
@@ -458,7 +458,7 @@ poll_workflow() {
             # with one re-check 20s later before dying.
             sleep 20
             local recheck failed2
-            recheck="$(gh run list --workflow="$workflow" --commit="$SHA" \ || true
+            recheck="$(gh run list --workflow="$workflow" --commit="$SHA" \
                           --limit 100 --json status,conclusion,databaseId \
                           2>/dev/null || echo '[]')"
             failed2="$(jq '[.[] | select(.conclusion == "failure" or .conclusion == "cancelled" or .conclusion == "timed_out" or .conclusion == "startup_failure" or .conclusion == "action_required")] | length' <<< "$recheck" 2>/dev/null || echo 0)"
@@ -498,6 +498,6 @@ say "Done."
 echo "  Version: v$VERSION"
 echo "  Commit:  $SHA"
 echo "  Origin:  $(git config --get remote.origin.url)"
-echo "  Runs:    gh run list --commit $SHA" || true
+echo "  Runs:    gh run list --commit $SHA"
 
 exit 0
