@@ -428,8 +428,10 @@ poll_workflow() {
 
         total="$(jq 'length'                                                          <<< "$json" 2>/dev/null || echo 0)"
         pending="$(jq '[.[] | select(.status != "completed")] | length'                <<< "$json" 2>/dev/null || echo 0)"
-        failed="$(jq  '[.[] | select(.conclusion != null and .conclusion != "success")] | length' <<< "$json" 2>/dev/null || echo 0)"
-        first_fail="$(jq -r '[.[] | select(.conclusion != null and .conclusion != "success")][0].databaseId // ""' <<< "$json" 2>/dev/null || echo "")"
+        # Only terminal failure conclusions count. A queued/in-progress
+        # run may report conclusion as null OR "" — neither is a failure.
+        failed="$(jq '[.[] | select(.conclusion == "failure" or .conclusion == "cancelled" or .conclusion == "timed_out" or .conclusion == "startup_failure" or .conclusion == "action_required")] | length' <<< "$json" 2>/dev/null || echo 0)"
+        first_fail="$(jq -r '[.[] | select(.conclusion == "failure" or .conclusion == "cancelled" or .conclusion == "timed_out" or .conclusion == "startup_failure" or .conclusion == "action_required")][0].databaseId // ""' <<< "$json" 2>/dev/null || echo "")"
 
         if (( total == 0 )); then
             printf '\033[1;33m  …\033[0m %s: no run visible yet\n' "$workflow"
@@ -443,7 +445,7 @@ poll_workflow() {
             recheck="$(gh run list --workflow="$workflow" --commit="$SHA" \
                           --limit 100 --json status,conclusion,databaseId \
                           2>/dev/null || echo '[]')"
-            failed2="$(jq '[.[] | select(.conclusion != null and .conclusion != "success")] | length' <<< "$recheck" 2>/dev/null || echo 0)"
+            failed2="$(jq '[.[] | select(.conclusion == "failure" or .conclusion == "cancelled" or .conclusion == "timed_out" or .conclusion == "startup_failure" or .conclusion == "action_required")] | length' <<< "$recheck" 2>/dev/null || echo 0)"
             if (( failed2 > 0 )); then
                 die "$workflow: run $first_fail conclusion != success on $SHA (confirmed after recheck)"
             fi
