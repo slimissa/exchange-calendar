@@ -372,6 +372,17 @@ wrong without the reasoning behind it.
 
 - **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
 
+- **Searched (2026-10-04):** a Playwright walk from the JSE homepage
+  reached 200 with the site's own HTML (Cloudflare challenge
+  satisfied). Paths tried and their results:
+  `/trade/trading-calendar` 403, `/market-data/trading-calendar` 403,
+  `/services/market-data/trading-calendar` 403,
+  `/about/regulation/market-notices` 403, `clientportal.jse.co.za` 403.
+  A one-level walk of the homepage returned 137 internal links and one
+  PDF (a contact list). No holiday calendar URL surfaced.
+  Next attempt should start from the site's sitemap or news archive,
+  not from navigation traversal.
+
 ## XIST — Borsa Istanbul
 
 **Last verified:** 2026-09-04

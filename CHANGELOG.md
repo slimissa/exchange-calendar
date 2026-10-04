@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.10.2] — 2026-10-04
+
+### Changed
+
+- `CONTRIBUTING.md` — documents the `fetcher_manifest.json` rule:
+  it is provenance data, committed with the work that produces it;
+  a dry-run that dirties it should be reverted manually.
+- `scripts/release.sh` — when the working tree is dirty because of
+  `fetcher_manifest.json` alone, the preflight names the fix.
+- `BLOCKED.md` — XJSE section records the 2026-10-04 search: what
+  paths were tried, what was returned, and where the next attempt
+  should start.
+- `docs/decisions/0009-playwright-fetcher-category.md` — XKRX
+  action line: moves to ADR 0010's bucket.
+
+### Removed
+
+- `wrappers/javascript/package.json` — the dead `lint` script and
+  its `eslint` devDependency. ESLint 8 had no config and no CI
+  usage; the script was non-functional. A deliberate JS lint setup
+  (flat config, current version, CI job) can be a future feature.
+  PR #14 (eslint 8 → 10.11.0) was closed: version 10.11.0 does not
+  exist on npm, and the 8→9+ path requires a config migration this
+  wrapper doesn't have.
+
+### Notes
+
+Documentation-and-cleanup release. No fetchers, no schema changes.
+
 ## [2.10.1] — 2026-10-04
 
 ### Fixed

@@ -221,8 +221,12 @@ ADR 0010, which will decide between:
    exists).
 4. Permanent BLOCKED status, documented.
 
-Decision 1 stands for XJSE. Decision 2 (defer render+OCR) is
-unchanged. XKRX is no longer a fetch-mode candidate.
+Decision 1 stands for XJSE (fetch mode works; the fetcher is
+pending URL discovery — see BLOCKED.md). Decision 2 (defer
+render+OCR) is unchanged. XKRX moves to ADR 0010's bucket; the
+render ADR will decide between headful Xvfb, a real Chrome
+profile with a persistent user-data dir, an alternate KRX
+source, or permanent BLOCKED.
 
 
 ## Related

@@ -158,5 +158,22 @@
       "file": "tests/test_scripts.py",
       "contains": "test_trap_reverts_post_push_failure"
     }
+  ],
+  "2.10.2": [
+    {
+      "file": "CONTRIBUTING.md",
+      "contains": "The manifest is provenance data"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "Searched (2026-10-04)"
+    },
+    {
+      "file": "docs/decisions/0009-playwright-fetcher-category.md",
+      "contains": "moves to ADR 0010"
+    },
+    {
+      "file": "wrappers/javascript/package.json"
+    }
   ]
 }

@@ -1,5 +1,24 @@
 # Contributing to exchange-calendar
 
+## fetcher_manifest.json
+
+A fetch that runs against a source not already in the manifest adds an
+entry to `fetcher_manifest.json`. v2.9.4 skips the write when the
+fetched content matches an existing entry, but a first fetch of a new
+MIC has nothing to compare against, so it always writes.
+
+**The manifest is provenance data.** Commit it with the work that
+produced it — the same commit as the fetcher or the source change.
+
+If you ran `update_from_exchange.py --dry-run` for inspection and do
+not want the manifest change, revert it before releasing:
+
+    git checkout -- fetcher_manifest.json
+
+`scripts/release.sh` refuses on a dirty tree. The refusal is
+intentional: the release commit must contain exactly what you have
+reviewed.
+
 Thank you for contributing to the QuantOS exchange calendar registry.
 
 This document provides guidelines for adding new exchanges, correcting data,
