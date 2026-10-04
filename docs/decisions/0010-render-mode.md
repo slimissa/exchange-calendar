@@ -1,6 +1,6 @@
 # ADR 0010 — Render mode and OCR for remaining blocked exchanges
 
-**Status:** Accepted (v2.12.0)
+**Status:** Draft — reconnaissance in progress
 **Date:** YYYY-MM-DD
 **Supersedes:** nothing
 **Depends on:** ADR 0009 (Playwright fetch mode)
