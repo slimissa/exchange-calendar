@@ -544,6 +544,10 @@
     "confidence": {
       "description": "Per-year confidence in the exchange's calendar data. Derived, not authored.",
       "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^\\d{4}$"
+      },
       "additionalProperties": {
         "type": "object",
         "required": [
@@ -576,9 +580,6 @@
           "note": {
             "type": "string"
           }
-        },
-        "propertyNames": {
-          "pattern": "^\\d{4}$"
         }
       }
     }
