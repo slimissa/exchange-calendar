@@ -100,6 +100,7 @@ def build_registry(exchanges_dir: Path) -> dict:
             "regular_hours": exchange.get("regular_hours", {}),
             "extended_hours": exchange.get("extended_hours", {}),
             "sessions": exchange.get("sessions", []),
+            "confidence": exchange.get("confidence", {}),
             "holidays": merged_holidays,
             "ad_hoc_closures": exchange.get("ad_hoc_closures", []),
             "generation_range": exchange.get("generation_range", []),

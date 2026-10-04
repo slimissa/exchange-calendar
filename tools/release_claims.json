@@ -208,5 +208,50 @@
       "file": "wrappers/go/registry.go",
       "contains": "func (r *Registry) Sessions"
     }
+  ],
+  "2.11.1": [
+    {
+      "file": "schema.json",
+      "contains": "\"confidence\""
+    },
+    {
+      "file": "tools/derive_confidence.py"
+    },
+    {
+      "file": "tools/build.py",
+      "contains": "\"confidence\""
+    },
+    {
+      "file": "wrappers/python/exchange_calendar/registry.py",
+      "contains": "def confidence"
+    },
+    {
+      "file": "wrappers/python/exchange_calendar/registry.py",
+      "contains": "def as_of"
+    },
+    {
+      "file": "wrappers/javascript/src/registry.js",
+      "contains": "confidence("
+    },
+    {
+      "file": "wrappers/javascript/src/registry.js",
+      "contains": "asOf("
+    },
+    {
+      "file": "wrappers/rust/src/registry.rs",
+      "contains": "pub fn confidence"
+    },
+    {
+      "file": "wrappers/rust/src/registry.rs",
+      "contains": "pub fn as_of"
+    },
+    {
+      "file": "wrappers/go/registry.go",
+      "contains": "func (r *Registry) Confidence"
+    },
+    {
+      "file": "wrappers/go/registry.go",
+      "contains": "func (r *Registry) AsOf"
+    }
   ]
 }

@@ -5,6 +5,8 @@ import (
 	"sort"
 	"strings"
 	"time"
+	"strconv"
+
 )
 
 // RegularHours represents the regular trading hours of an exchange.
@@ -51,6 +53,7 @@ type ExchangeData struct {
 	Holidays      HolidaysData   `json:"holidays"`
 	AdHocClosures []HolidayEntry `json:"ad_hoc_closures,omitempty"`
 	GenerationRange []string     `json:"generation_range,omitempty"`
+	Confidence map[string]ConfidenceEntry `json:"confidence"`
 }
 
 // HolidaysData holds explicit and generated holiday entries.
@@ -72,11 +75,19 @@ type Exchange struct {
 	RegularHours RegularHours
 	ExtendedHours ExtendedHours
 	Sessions     []Session
+	Confidence map[string]ConfidenceEntry
 
 	// Unexported lookup maps for O(1) queries
 	holidayByDate       map[string]HolidayEntry
 	statusByDate        map[string]string
 	earlyCloseTimeByDate map[string]string
+}
+
+type ConfidenceEntry struct {
+	Source       string `json:"source"`
+	LastVerified string `json:"last_verified,omitempty"`
+	Level        string `json:"level"`
+	Note         string `json:"note,omitempty"`
 }
 
 // NewExchange creates an Exchange from raw registry data.
@@ -100,6 +111,7 @@ func NewExchange(data ExchangeData) (*Exchange, error) {
 		holidayByDate:        make(map[string]HolidayEntry),
 		statusByDate:         make(map[string]string),
 		earlyCloseTimeByDate: make(map[string]string),
+		Confidence:    confidenceOrEmpty(data.Confidence),
 	}
 
 	// Index all holidays
@@ -492,6 +504,42 @@ func (e *Exchange) ListHolidays(year ...int) []HolidayEntry {
 	return entries
 }
 
+func (r *Registry) Confidence(mic string, year int) (ConfidenceEntry, bool) {
+	ex, err := r.Get(mic)
+	if err != nil {
+		return ConfidenceEntry{}, false
+	}
+	c, ok := ex.Confidence[strconv.Itoa(year)]
+	return c, ok
+}
+
+// AsOf returns the exchange record as it appeared on `date`.
+//
+// v1 limitation: only `confidence` is filtered. Other fields reflect
+// the current record. Real history is planned for v4.x.
+func (r *Registry) AsOf(mic, date string) (map[string]any, bool) {
+	ex, err := r.Get(mic)
+	if err != nil {
+		return nil, false
+	}
+	filtered := map[string]ConfidenceEntry{}
+	for year, entry := range ex.Confidence {
+		if entry.LastVerified == "" || entry.LastVerified <= date {
+			filtered[year] = entry
+		}
+	}
+	return map[string]any{
+		"code":         ex.Code,
+		"name":         ex.Name,
+		"mic":          ex.MIC,
+		"timezone":     ex.Timezone,
+		"weekend_days": ex.WeekendDays,
+		"sessions":     ex.Sessions,
+		"confidence":   filtered,
+		"_as_of":       date,
+	}, true
+}
+
 // ──────────────────────────────────────────────────────────────
 // String representation
 // ──────────────────────────────────────────────────────────────
@@ -500,4 +548,11 @@ func (e *Exchange) ListHolidays(year ...int) []HolidayEntry {
 // Implements the fmt.Stringer interface.
 func (e *Exchange) String() string {
 	return fmt.Sprintf("%s (%s)", e.Name, e.Code)
+}
+
+func confidenceOrEmpty(m map[string]ConfidenceEntry) map[string]ConfidenceEntry {
+	if m == nil {
+		return map[string]ConfidenceEntry{}
+	}
+	return m
 }

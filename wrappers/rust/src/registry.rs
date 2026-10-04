@@ -300,6 +300,49 @@ impl Registry {
         }
         false
     }
+
+    pub fn confidence(&self, code: &str, year: i32) -> Option<&crate::exchange::ConfidenceEntry> {
+        self.exchange(code)
+            .and_then(|ex| ex.confidence.get(&year.to_string()))
+    }
+
+    /// Return the exchange record as it appeared on `date`.
+    ///
+    /// v1 limitation: only `confidence` is filtered. All other fields
+    /// reflect the current record. Real history is planned for v4.x.
+    pub fn as_of(&self, code: &str, date: &str) -> Option<serde_json::Value> {
+        use serde_json::{json, Map, Value};
+
+        let ex = self.exchange(code)?;
+
+        let mut conf = Map::new();
+        for (year, entry) in &ex.confidence {
+            let keep = match &entry.last_verified {
+                None => true,
+                Some(v) => v.as_str() <= date,
+            };
+            if keep {
+                if let Ok(v) = serde_json::to_value(entry) {
+                    conf.insert(year.clone(), v);
+                }
+            }
+        }
+
+        Some(json!({
+            "code": ex.code,
+            "name": ex.name,
+            "mic": ex.mic,
+            "timezone": ex.timezone,
+            "weekend_days": ex.weekend_days,
+            "regular_hours": {
+                "open": ex.regular_hours.open,
+                "close": ex.regular_hours.close,
+            },
+            "sessions": ex.sessions,
+            "confidence": Value::Object(conf),
+            "_as_of": date,
+        }))
+    }
 }
 
 /// Weekday for an ISO date (YYYY-MM-DD), Python convention:
@@ -379,6 +422,7 @@ mod tests {
             },
             ad_hoc_closures: None,
             generation_range: None,
+            confidence: Default::default(),
         }
     }
 
@@ -671,5 +715,26 @@ mod tests {
         assert!(!registry.is_open("XNYS", "2026-01-01", "10:00"));
         // 2026-01-03 is Saturday
         assert!(!registry.is_open("XNYS", "2026-01-03", "10:00"));
+    }
+
+    #[test]
+    fn test_confidence() {
+        let r = load_real_registry();
+        let c = r.confidence("XBUD", 2026).expect("XBUD 2026");
+        assert_eq!(c.source, "fetcher");
+        assert_eq!(c.level, "high");
+        assert!(r.confidence("XNYS", 1999).is_none());
+    }
+
+    #[test]
+    fn test_as_of() {
+        let r = load_real_registry();
+        let a = r.as_of("XBUD", "2026-01-01").expect("as_of");
+        let conf = a.get("confidence").unwrap().as_object().unwrap();
+        assert!(!conf.contains_key("2026"));
+        let b = r.as_of("XBUD", "2026-10-03").unwrap();
+        let conf_b = b.get("confidence").unwrap().as_object().unwrap();
+        assert!(conf_b.contains_key("2026"));
+        assert_eq!(a.get("_as_of").unwrap().as_str().unwrap(), "2026-01-01");
     }
 }

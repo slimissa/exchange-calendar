@@ -419,3 +419,37 @@ func TestRealRegistryData(t *testing.T) {
 		t.Errorf("XTKS 12:00: want lunch_break, got %v", st)
 	}
 }
+
+func TestConfidence(t *testing.T) {
+	reg, err := exchangecalendar.LoadRegistry("../../../calendar.json")
+	if err != nil {
+		t.Fatalf("load: %v", err)
+	}
+	c, ok := reg.Confidence("XBUD", 2026)
+	if !ok {
+		t.Fatal("XBUD 2026 not found")
+	}
+	if c.Source != "fetcher" || c.Level != "high" {
+		t.Errorf("unexpected: %+v", c)
+	}
+	if _, ok := reg.Confidence("XNYS", 1999); ok {
+		t.Error("1999 should not exist")
+	}
+}
+
+func TestAsOf(t *testing.T) {
+	reg, err := exchangecalendar.LoadRegistry("../../../calendar.json")
+	if err != nil {
+		t.Fatalf("load: %v", err)
+	}
+	a, _ := reg.AsOf("XBUD", "2026-01-01")
+	conf := a["confidence"].(map[string]exchangecalendar.ConfidenceEntry)
+	if _, ok := conf["2026"]; ok {
+		t.Error("2026 should be filtered out before fetch date")
+	}
+	b, _ := reg.AsOf("XBUD", "2026-10-03")
+	conf2 := b["confidence"].(map[string]exchangecalendar.ConfidenceEntry)
+	if _, ok := conf2["2026"]; !ok {
+		t.Error("2026 should be present on/after fetch date")
+	}
+}

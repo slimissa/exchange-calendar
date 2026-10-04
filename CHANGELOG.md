@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.11.1] — 2026-10-04
+
+### Added
+
+- `confidence` map on every exchange, keyed by year. Values:
+  `{source, last_verified, level, note?}`. Derived from
+  `fetcher_manifest.json` and the year span of `holidays.explicit`.
+- `tools/derive_confidence.py` — idempotent; `--check` in the
+  release gate.
+- `confidence(mic, year)` and `as_of(mic, date)` on all four wrappers.
+- `tools/build.py` — carries `confidence` into the aggregate
+  `calendar.json`.
+
+### Changed
+
+- Schema version -> 2.1.1.
+
+### Notes
+
+Additive. Every year with an explicit holiday gets a confidence
+entry: `high` when the current fetch covers it and is fresh, `low`
+when the fetch is stale, `medium` for years derived from non-fetcher
+sources.
+
+`as_of(mic, date)` is a projection of the current record, not a
+historical snapshot. Only `confidence` is filtered -- entries whose
+`last_verified` is after `date` are dropped. Sessions, holidays, and
+hours are returned as they are today. Real history is planned for
+v4.x.
+
 ## [2.11.0] — 2026-10-04
 
 ### Added

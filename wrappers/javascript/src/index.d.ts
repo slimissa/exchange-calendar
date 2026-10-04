@@ -89,6 +89,13 @@
         at?: string;     // Required for auction
     }
 
+    export interface ConfidenceEntry {
+        source: 'fetcher' | 'manual' | 'predicted';
+        last_verified: string | null;
+        level: 'high' | 'medium' | 'low';
+        note?: string;
+    }
+
     /**
      * A holiday or special session entry.
      */
@@ -300,7 +307,10 @@
          * Return a human-readable string representation.
          */
         toString(): string;
-
+        
+        confidence(mic: string, year: number): ConfidenceEntry | null;
+        asOf(mic: string, date: string): Record<string, unknown>;
+        
         /**
          * Number of exchanges.
          */

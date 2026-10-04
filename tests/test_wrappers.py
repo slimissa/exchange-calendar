@@ -280,6 +280,42 @@ class TestExchangeProperties:
         # XLON has auction sessions
         assert len(xlon.sessions) >= 2
 
+    def test_confidence_xnys(self):
+        from exchange_calendar import CalendarRegistry
+        r = CalendarRegistry()
+        c = r.confidence("XNYS", 2026)
+        assert c is not None
+        assert c["source"] == "manual"
+        assert c["level"] == "medium"
+
+    def test_confidence_xbud_fetcher(self):
+        from exchange_calendar import CalendarRegistry
+        r = CalendarRegistry()
+        c = r.confidence("XBUD", 2026)
+        assert c is not None
+        assert c["source"] == "fetcher"
+        assert c["level"] == "high"
+
+    def test_confidence_unknown_year(self):
+        from exchange_calendar import CalendarRegistry
+        r = CalendarRegistry()
+        assert r.confidence("XNYS", 1999) is None
+
+    def test_as_of_filters_confidence(self):
+        from exchange_calendar import CalendarRegistry
+        r = CalendarRegistry()
+        # Before XBUD's fetch: 2026 entry must be dropped.
+        a = r.as_of("XBUD", "2026-01-01")
+        assert "2026" not in a["confidence"]
+        # On/after XBUD's fetch: 2026 entry retained.
+        b = r.as_of("XBUD", "2026-10-03")
+        assert "2026" in b["confidence"]
+        assert b["confidence"]["2026"]["source"] == "fetcher"
+
+    def test_as_of_carries_marker(self):
+        from exchange_calendar import CalendarRegistry
+        r = CalendarRegistry()
+        assert r.as_of("XNYS", "2026-06-01")["_as_of"] == "2026-06-01"
 
 # ──────────────────────────────────────────────────────────────
 # Holiday detection

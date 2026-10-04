@@ -3,6 +3,36 @@
     {
       "ad_hoc_closures": [],
       "code": "DSMD",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -276,6 +306,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XAMS",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -548,6 +608,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XASX",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "16:12",
@@ -927,6 +1017,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XATH",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -1297,6 +1417,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XBAH",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -1610,6 +1760,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XBDA",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -1998,6 +2178,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XBEY",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -2281,6 +2491,24 @@
     {
       "ad_hoc_closures": [],
       "code": "XBKK",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -2654,6 +2882,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XBOG",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -3190,6 +3448,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XBOM",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "16:00",
@@ -3662,6 +3950,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XBRU",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -3988,6 +4306,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XBRV",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -4236,6 +4584,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XBSP",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "17:30",
@@ -4761,6 +5139,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XBUD",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": "2026-10-03",
+          "level": "high",
+          "source": "fetcher"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -5152,6 +5560,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XBUE",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -5660,6 +6098,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XBUL",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -6010,6 +6478,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XCAI",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -6395,6 +6893,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XCAS",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -6806,6 +7334,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XCAY",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -7224,6 +7782,24 @@
     {
       "ad_hoc_closures": [],
       "code": "XCOL",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -7532,6 +8108,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XCSE",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "17:20",
@@ -7929,6 +8535,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XDFM",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": "2026-10-03",
+          "level": "high",
+          "source": "fetcher"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "pre_market": {
           "close": "10:00",
@@ -8260,6 +8896,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XDHA",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -8564,6 +9230,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XDUB",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -8974,6 +9670,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XETR",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "20:00",
@@ -9267,6 +9993,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XGSE",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -9617,6 +10373,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XHEL",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "18:45",
@@ -9990,6 +10776,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XHKG",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -10499,6 +11315,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XICE",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "15:45",
@@ -10901,6 +11747,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XIST",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": "2026-10-01",
+          "level": "high",
+          "source": "fetcher"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "18:10",
@@ -11188,6 +12064,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XJKT",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "16:15",
@@ -11595,6 +12501,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XJSE",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "17:15",
@@ -11997,6 +12933,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XKAR",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -12310,6 +13276,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XKLS",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "17:15",
@@ -12853,6 +13849,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XKRX",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "16:00",
@@ -13338,6 +14364,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XKUW",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -13614,6 +14670,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XLIM",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -14109,6 +15195,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XLIS",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -14465,6 +15581,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XLIT",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -14815,6 +15961,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XLON",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "16:35",
@@ -15170,6 +16346,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XLUX",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -15550,6 +16756,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XMAD",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "17:35",
@@ -15811,6 +17047,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XMAL",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -16215,6 +17481,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XMEX",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "15:30",
@@ -16560,6 +17856,18 @@
     {
       "ad_hoc_closures": [],
       "code": "XMOS",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -16766,6 +18074,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XMUS",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -17081,6 +18419,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XNAI",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -17400,6 +18768,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XNAS",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "20:00",
@@ -17835,6 +19233,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XNSA",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -18170,6 +19598,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XNSE",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "16:00",
@@ -18642,6 +20100,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XNYS",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "20:00",
@@ -19077,6 +20565,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XNZE",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -19439,6 +20957,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XOSL",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "16:45",
@@ -19835,6 +21383,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XPAR",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "17:35",
@@ -20124,6 +21702,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XPHS",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "15:10",
@@ -20606,6 +22214,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XPRA",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -21035,6 +22673,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XRIS",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -21379,6 +23047,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XSAU",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "15:20",
@@ -21634,6 +23332,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XSES",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "17:06",
@@ -22078,6 +23806,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XSGO",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -22581,6 +24339,24 @@
     {
       "ad_hoc_closures": [],
       "code": "XSHE",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -22954,6 +24730,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XSHG",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "15:30",
@@ -23488,6 +25294,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XSTC",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -23801,6 +25637,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XSTO",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "17:45",
@@ -24209,6 +26075,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XSWX",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "17:40",
@@ -24618,6 +26514,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XTAD",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -24860,6 +26786,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XTAI",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "14:30",
@@ -25348,6 +27304,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XTAL",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -25692,6 +27678,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XTKS",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -26251,6 +28267,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XTSE",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "17:00",
@@ -26643,6 +28689,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XTUN",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -26999,6 +29075,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XWAR",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {
         "after_hours": {
           "close": "17:10",
@@ -27454,6 +29560,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XWBO",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": "2026-10-03",
+          "level": "high",
+          "source": "fetcher"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",
@@ -27928,6 +30064,36 @@
     {
       "ad_hoc_closures": [],
       "code": "XZAG",
+      "confidence": {
+        "2025": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2026": {
+          "last_verified": null,
+          "level": "medium",
+          "source": "manual"
+        },
+        "2027": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2028": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        },
+        "2029": {
+          "last_verified": null,
+          "level": "medium",
+          "note": "predicted",
+          "source": "manual"
+        }
+      },
       "extended_hours": {},
       "generation_range": [
         "2025-01-01",

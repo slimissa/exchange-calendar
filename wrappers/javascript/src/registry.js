@@ -332,6 +332,27 @@ class CalendarRegistry {
             }
         return false;
     }
+    confidence(mic, year) {
+        const ex = this.get(mic);
+        const conf = (ex && ex.confidence) || {};
+        return conf[String(year)] || null;
+    }
+
+    asOf(mic, date) {
+        const ex = this.get(mic);
+        const rec = JSON.parse(JSON.stringify(ex));
+        const conf = rec.confidence || {};
+        const filtered = {};
+        for (const [year, entry] of Object.entries(conf)) {
+            const lv = entry.last_verified;
+            if (lv == null || lv <= date) {
+                filtered[year] = entry;
+            }
+        }
+        rec.confidence = filtered;
+        rec._as_of = date;
+        return rec;
+    }
 }
 
 module.exports = { CalendarRegistry };

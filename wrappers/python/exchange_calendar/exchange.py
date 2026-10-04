@@ -61,6 +61,7 @@ class Exchange:
         self.regular_hours = data["regular_hours"]
         self.extended_hours = data.get("extended_hours", {})
         self.sessions = data.get("sessions", [])
+        self.confidence = data.get("confidence", {}) or {}
 
         holidays = data.get("holidays", {})
         self._explicit = holidays.get("explicit", [])

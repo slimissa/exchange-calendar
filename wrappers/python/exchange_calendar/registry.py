@@ -331,3 +331,42 @@ class CalendarRegistry:
             if o and cl and o <= time < cl:
                 return True
         return False
+
+    def confidence(self, mic: str, year: int) -> dict | None:
+        """Return the confidence entry for (mic, year), or None."""
+        ex = self.exchange(mic)
+        conf = getattr(ex, "confidence", None)
+        if not isinstance(conf, dict):
+            return None
+        return conf.get(str(year))
+
+    def as_of(self, mic: str, date: str) -> dict:
+        """Return the exchange record as it appeared on `date`.
+
+        v1 limitation: this is a projection of the *current* record.
+        Only `confidence` is filtered — entries whose `last_verified`
+        is after `date` are dropped. Sessions, holidays, and hours
+        are returned as they are today. Real historical snapshots
+        are planned for v4.x.
+        """
+        import copy
+        ex = self.exchange(mic)
+        # Materialize as a dict.
+        if hasattr(ex, "to_dict"):
+            rec = ex.to_dict()
+        else:
+            rec = {
+                k: v for k, v in vars(ex).items()
+                if not k.startswith("_")
+            }
+        rec = copy.deepcopy(rec)
+
+        conf = rec.get("confidence") or {}
+        filtered = {}
+        for y, c in conf.items():
+            lv = c.get("last_verified") if isinstance(c, dict) else None
+            if lv is None or lv <= date:
+                filtered[y] = c
+        rec["confidence"] = filtered
+        rec["_as_of"] = date
+        return rec

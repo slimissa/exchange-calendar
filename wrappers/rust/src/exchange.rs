@@ -116,6 +116,9 @@ pub struct ExchangeData {
 
     /// Generation range as [start_date, end_date].
     pub generation_range: Option<Vec<String>>,
+
+    #[serde(default)]
+    pub confidence: std::collections::HashMap<String, ConfidenceEntry>,
 }
 
 /// Holiday data container.
@@ -142,6 +145,15 @@ pub enum ExchangeError {
 
     /// Open time is not before close time.
     OpenAfterClose { open: String, close: String },
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
+pub struct ConfidenceEntry {
+    pub source: String,
+    pub last_verified: Option<String>,
+    pub level: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub note: Option<String>,
 }
 
 impl std::fmt::Display for ExchangeError {
@@ -220,6 +232,9 @@ pub struct Exchange {
     /// Sessions (auctions, lunch breaks).
     pub sessions: Vec<Session>,
 
+
+    pub confidence: std::collections::HashMap<String, ConfidenceEntry>,
+
     // Private lookup maps
     holiday_by_date: HashMap<String, HolidayEntry>,
     status_by_date: HashMap<String, String>,
@@ -245,6 +260,7 @@ impl Exchange {
             holiday_by_date: HashMap::new(),
             status_by_date: HashMap::new(),
             early_close_time_by_date: HashMap::new(),
+            confidence: data.confidence.clone(),
         };
 
         // Index all holidays
@@ -620,6 +636,7 @@ mod tests {
             },
             ad_hoc_closures: None,
             generation_range: None,
+            confidence: Default::default(),
         };
 
         Exchange::new(data).unwrap()
@@ -650,6 +667,7 @@ mod tests {
             holidays: HolidaysData::default(),
             ad_hoc_closures: None,
             generation_range: None,
+            confidence: Default::default(),
         };
         assert!(matches!(Exchange::new(data), Err(ExchangeError::MissingField("code"))));
     }
@@ -668,6 +686,7 @@ mod tests {
             holidays: HolidaysData::default(),
             ad_hoc_closures: None,
             generation_range: None,
+            confidence: Default::default(),
         };
         assert!(matches!(Exchange::new(data), Err(ExchangeError::CodeMismatch { .. })));
     }
@@ -686,6 +705,7 @@ mod tests {
             holidays: HolidaysData::default(),
             ad_hoc_closures: None,
             generation_range: None,
+            confidence: Default::default(),
         };
         assert!(matches!(Exchange::new(data), Err(ExchangeError::InvalidTimeFormat(_))));
     }
@@ -704,6 +724,7 @@ mod tests {
             holidays: HolidaysData::default(),
             ad_hoc_closures: None,
             generation_range: None,
+            confidence: Default::default(),
         };
         assert!(matches!(Exchange::new(data), Err(ExchangeError::OpenAfterClose { .. })));
     }
@@ -865,6 +886,7 @@ mod tests {
             },
             ad_hoc_closures: None,
             generation_range: None,
+            confidence: Default::default(),
         };
         Exchange::new(data).unwrap()
     }
@@ -933,6 +955,7 @@ mod tests {
             holidays: HolidaysData { explicit: vec![], generated: vec![] },
             ad_hoc_closures: None,
             generation_range: None,
+            confidence: Default::default(),
         };
         let xhk = Exchange::new(xhk_data).unwrap();
         assert_eq!(
@@ -969,6 +992,7 @@ mod tests {
             holidays: HolidaysData { explicit: vec![], generated: vec![] },
             ad_hoc_closures: None,
             generation_range: None,
+            confidence: Default::default(),
         };
         let xnys = Exchange::new(ny_data).unwrap();
         assert_eq!(
