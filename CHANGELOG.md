@@ -9,28 +9,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.9.6] — 2026-10-04
 
-### Added
-
-- XPHSFetcher — Philippine Stock Exchange, POST to the WordPress
-  admin-ajax endpoint. The BLOCKED.md entry had the endpoint URL
-  since 2026-09-19 with no fetcher; this closes it.
-
 ### Changed
 
-- `BLOCKED.md` — snapshot header paragraph added. The section
-  pattern (a finding is a dated snapshot, not a permanent fact)
-  is named explicitly with four examples (XKRX, XIST, XBUD,
-  XPHS).
-- `BLOCKED.md` — XPHS verdict updated to IMPLEMENTED at v2.9.6.
-- `BLOCKED.md` — XATH section now cross-references ADR 0009,
-  closing the 4-of-5 gap from v2.9.5.
+- `BLOCKED.md` — snapshot header paragraph added. Names the pattern
+  (a finding is a dated snapshot, not a permanent fact) with four
+  examples from the last cycle.
+- `BLOCKED.md` — XATH now has its own section (`## XATH — Athens
+  Exchange`), completing the 5-of-5 cross-references to ADR 0009.
+- `BLOCKED.md` — XPHS verdict corrected from "RESOLVED" to
+  "BLOCKED (robots.txt)". The 2026-09-19 finding described the
+  endpoint as reachable, which was true about the network path but
+  omitted that pse.com.ph's robots.txt disallows `/wp-admin/`. Same
+  class as XCAS and XDHA, which the project already respects.
 
 ### Notes
 
-One "resolved but not implemented" hole closed. The XPHS entry
-had named its endpoint for two weeks while the fetcher was
-pending; XPHSFetcher is the last commit that moves a source out
-of that state.
+Documentation-only release. An `XPHSFetcher` was attempted and
+reverted: the framework refuses to fetch sources whose robots.txt
+explicitly disallows the path, and PSE's does. The "resolved but
+not shipped" state was itself the bug — a note describing the
+endpoint as available without checking robots.txt is not a
+resolution. Recorded in BLOCKED.md so the next reader checks the
+full access path, not just the network path.
+
 
 ## [2.9.5] — 2026-10-04
 

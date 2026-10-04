@@ -119,12 +119,8 @@
   ],
   "2.9.6": [
     {
-      "file": "tools/update_from_exchange.py",
-      "contains": "XPHSFetcher"
-    },
-    {
       "file": "BLOCKED.md",
-      "contains": "IMPLEMENTED at v2.9.6"
+      "contains": "BLOCKED (robots.txt)"
     },
     {
       "file": "BLOCKED.md",
@@ -132,7 +128,7 @@
     },
     {
       "file": "BLOCKED.md",
-      "contains": "0009-playwright"
+      "contains": "## XATH "
     }
   ]
 }
