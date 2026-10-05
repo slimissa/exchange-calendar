@@ -7,6 +7,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.13.0] — 2026-10-05
+
+### Added
+
+- `docs/decisions/0011-mic-lei-connector.md` — records the
+  decision to decline the MIC→LEI connector as a separate artifact.
+
+### Notes
+
+Documentation-only release. No schema change, no data change, no
+new artifact.
+
+The MIC→LEI connector was proposed at v2.12.5 as a companion file
+vendored from ISO 10383. Two reconnaissance findings changed the
+shape:
+
+1. ISO 10383's Phase 0 found that GLEIF's MIC-to-LEI file is a
+   strict subset of the `lei` field already on `iso10383.json`.
+   Every pair agrees; the field carries 120 pairs GLEIF does not.
+   The sibling declined its own companion for that reason.
+
+2. EC's vendored snapshot at `tools/iso10383_snapshot.json` is a
+   minimal validation artifact — 2,883 MIC code strings, no per-
+   entry metadata, no generator in this repo. There is nowhere to
+   put the field without changing the snapshot's shape or adding
+   a second file for the same source.
+
+No consumer has asked for an exchange operator's LEI. The data
+exists on ISO 10383's registry. The reopen condition is a consumer
+request; the correct shape at that time is a projection of
+`iso10383.json`'s `lei` field into a dedicated EC snapshot.
+
+The v3.0.0 exports are unaffected: there was no MIC→LEI field to
+project.
+
 ## [2.12.5] — 2026-10-04
 
 ### Changed

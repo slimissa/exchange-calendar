@@ -420,5 +420,19 @@
       "file": "docs/decisions/0010-render-mode.md",
       "contains": "Amendment \u2014 2026-10-04 (v2.12.5)"
     }
+  ],
+  "2.13.0": [
+    {
+      "file": "docs/decisions/0011-mic-lei-connector.md",
+      "contains": "MIC\u2192LEI connector"
+    },
+    {
+      "file": "docs/decisions/0011-mic-lei-connector.md",
+      "contains": "strict subset"
+    },
+    {
+      "file": "docs/decisions/0011-mic-lei-connector.md",
+      "contains": "Reopen condition"
+    }
   ]
 }
