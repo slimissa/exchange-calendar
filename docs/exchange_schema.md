@@ -63,6 +63,10 @@ Every exchange file is a JSON object with this shape:
 | `holidays` | object | `{explicit, recurrence_rules}` — holiday data |
 | `generation_range` | array | `[start_date, end_date]` — verified date range |
 | `weekend_days` | array[int], length 2 | Two weekday numbers (0=Monday..6=Sunday) that are non-trading days |
+| `country` | string | Country name (ISO 3166). Source files only: `calendar.json` does not carry it yet |
+| `country_code` | string | ISO 3166-1 alpha-2, 2 uppercase letters. Source files only: `calendar.json` does not carry it yet |
+| `sessions` | array | Typed trading sessions, at least one; see [`sessions`](#sessions-required) |
+
 ---
 
 ## Optional Fields
@@ -70,7 +74,7 @@ Every exchange file is a JSON object with this shape:
 | Field | Type | Description |
 |-------|------|-------------|
 | `extended_hours` | object | Pre-market and after-hours sessions |
-| `sessions` | array | Lunch breaks and auction moments |
+| `confidence` | object | Per-year confidence, derived; see [`confidence`](#confidence-optional-in-source-files-always-present-in-calendarjson) |
 | `ad_hoc_closures` | array | Unplanned closures with source URLs |
 
 ---
@@ -224,30 +228,37 @@ Both sub-objects follow the same `{open, close}` format as `regular_hours`.
 
 ---
 
-### `sessions` (Optional)
+### `sessions` (Required)
 
-Array of non-trading periods within a regular day.
+Typed trading sessions, at least one per exchange. Every exchange has
+exactly one `regular` session equal to `regular_hours`; `pre_market`
+and `post_market` mirror `extended_hours.pre_market` and
+`extended_hours.after_hours`. Types that may repeat (`auction`) appear
+in stored order.
 
 ```json
 "sessions": [
-  {
-    "type": "lunch_break",
-    "open": "11:30",
-    "close": "12:30"
-  },
-  {
-    "type": "auction",
-    "at": "09:25"
-  }
+  {"type": "regular", "open": "09:00", "close": "15:30"},
+  {"type": "lunch_break", "open": "11:30", "close": "12:30"},
+  {"type": "auction", "at": "09:25"}
 ]
 ```
 
 #### Session Types
 
-| Type | Fields | Description |
-|------|--------|-------------|
-| `lunch_break` | `open`, `close` | Midday trading pause |
-| `auction` | `at` | Point-in-time auction moment |
+The enum is closed: these six values and no others.
+
+| Type | Fields | Status | Description |
+|------|--------|--------|-------------|
+| `regular` | `open`, `close` | populated (74) | Continuous trading hours |
+| `pre_market` | `open`, `close` | populated (30) | Session before the regular open |
+| `post_market` | `open`, `close` | populated (29) | Session after the regular close |
+| `lunch_break` | `open`, `close` | populated (11) | Midday trading pause |
+| `auction` | `at` | populated (22) | Point-in-time auction moment |
+| `halt` | `at` | reserved, unused | Reserved for scheduled halts |
+
+Counts are from calendar.json v2.13.0 and are re-measured by
+`tools/schema_audit.py`.
 
 #### Lunch Break Sessions
 
@@ -339,6 +350,29 @@ See [recurrence_rules.md](recurrence_rules.md) for full documentation.
 
 ---
 
+### `confidence` (Optional in source files, always present in calendar.json)
+
+Per-year confidence in the exchange's calendar data. Derived, not
+authored (`tools/derive_confidence.py`).
+
+```json
+"confidence": {
+  "2026": {"source": "fetcher", "last_verified": "2026-10-03", "level": "high"},
+  "2027": {"source": "manual", "last_verified": null, "level": "medium", "note": "predicted"}
+}
+```
+
+- Keys are four-digit year strings.
+- Values are objects with `source`, `level`, `last_verified` and an
+  optional `note`. No other keys.
+- `source`: `fetcher`, `manual` or `predicted` (`predicted` is
+  reserved, unused).
+- `level`: `high`, `medium` or `low` (`low` is reserved, unused).
+- `last_verified` is `YYYY-MM-DD` or `null`. The schema does not
+  require the key; the built file always writes it.
+
+---
+
 ### `ad_hoc_closures` (Optional)
 
 ```json
@@ -369,6 +403,9 @@ The validator rejects duplicates.
 - Both in `YYYY-MM-DD` format
 - `start` must be before `end`
 - Defines the date range within which explicit dates are verified
+- Does not clip generated holidays: recurrence rules expand by calendar
+  year, so a generated date can fall after `end` when `end` is mid-year
+  (XCAI: `end` is 2029-07-24, Armed Forces Day generates 2029-10-05)
 
 ---
 

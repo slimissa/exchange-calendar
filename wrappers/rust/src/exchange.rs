@@ -44,7 +44,8 @@ pub struct ExtendedHours {
 /// A session within a trading day (auction or lunch break).
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Session {
-    /// Session type: "lunch_break", "auction", or "other".
+    /// Session type: "regular", "pre_market", "post_market", "lunch_break",
+    /// "auction" or "halt" (closed enum, see schema.json).
     #[serde(rename = "type")]
     pub session_type: String,
 

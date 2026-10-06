@@ -24,10 +24,10 @@ type ExtendedHours struct {
 // Session represents a non-trading period within a regular trading day
 // (e.g., lunch break or auction).
 type Session struct {
-	Type  string `json:"type"`            // "lunch_break", "auction", "other"
-	Open  string `json:"open,omitempty"`  // Required for lunch_break
-	Close string `json:"close,omitempty"` // Required for lunch_break
-	At    string `json:"at,omitempty"`    // Required for auction
+	Type  string `json:"type"`            // regular, pre_market, post_market, lunch_break, auction, halt
+	Open  string `json:"open,omitempty"`  // Required for interval types
+	Close string `json:"close,omitempty"` // Required for interval types
+	At    string `json:"at,omitempty"`    // Required for point types (auction, halt)
 }
 
 // HolidayEntry represents a single holiday or special session.
