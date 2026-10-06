@@ -6,7 +6,9 @@ Expands recurrence rules from an exchange calendar file into explicit dated holi
 
 Rules supported:
     fixed_date                     — Same date every year, no weekend adjustment
-    fixed_with_weekend_adjustment  — Fixed date; Saturday -> Friday, Sunday -> Monday
+    fixed_with_weekend_adjustment  — Fixed date; on a Sat/Sun-weekend exchange Saturday -> Friday,
+                                     Sunday -> Monday; on any other weekend (Fri/Sat) a date on a
+                                     weekend day moves forward to the next trading day
     nth_weekday                    — Nth weekday of a month (1=first, 5=last)
     last_weekday                   — Last weekday of a month
     easter_offset                  — Easter Sunday + offset_days (negative = before)
@@ -71,25 +73,35 @@ def easter_sunday(year: int) -> date:
     return date(year, month, day)
 
 
-def adjust_weekend(d: date, rule: str) -> date:
+def adjust_weekend(d: date, rule: str, weekend_days=(5, 6)) -> date:
     """
-    Apply weekend adjustment to a fixed date.
+    Apply weekend adjustment to a fixed date, using the exchange's own
+    weekend_days (0=Monday..6=Sunday).
 
-    For fixed_with_weekend_adjustment:
-        Saturday -> preceding Friday
-        Sunday   -> following Monday
+    For fixed_date: no adjustment.
 
-    For fixed_date:
-        No adjustment.
+    For fixed_with_weekend_adjustment, a date that is not a weekend day is
+    returned unchanged. A date on a weekend day moves as follows:
 
-    For fixed_with_weekend_adjustment, this follows NYSE Rule 7.2 and equivalent
-    exchange conventions where applicable.
+        Sat/Sun weekend (5, 6):  Saturday -> preceding Friday,
+                                 Sunday   -> following Monday
+                                 (NYSE Rule 7.2 and equivalents)
+        any other weekend:       forward to the next non-weekend day
+
+    The second case is the convention the Fri/Sat-weekend exchanges' own
+    explicit data follow (XBAH, XKUW, XMUS, XCAI): a holiday falling on
+    Friday or Saturday is observed on the following Sunday, and a holiday
+    on Sunday stays on Sunday, because Sunday is a trading day there.
     """
-    if rule == "fixed_with_weekend_adjustment":
-        if d.weekday() == 5:  # Saturday
-            return d - timedelta(days=1)
-        if d.weekday() == 6:  # Sunday
-            return d + timedelta(days=1)
+    if rule != "fixed_with_weekend_adjustment":
+        return d
+    weekend = tuple(sorted(weekend_days))
+    if d.weekday() not in weekend:
+        return d
+    if weekend == (5, 6):
+        return d - timedelta(days=1) if d.weekday() == 5 else d + timedelta(days=1)
+    while d.weekday() in weekend:
+        d += timedelta(days=1)
     return d
 
 
@@ -158,7 +170,7 @@ def last_weekday(year: int, month: int, weekday_name: str) -> date:
     return last - timedelta(days=offset)
 
 
-def generate_dates_for_rule(rule: dict, year: int) -> date:
+def generate_dates_for_rule(rule: dict, year: int, weekend_days=(5, 6)) -> date:
     """
     Generate the date for a single recurrence rule in a given year.
 
@@ -181,7 +193,7 @@ def generate_dates_for_rule(rule: dict, year: int) -> date:
         if month is None or day is None:
             raise ValueError(f"fixed_with_weekend_adjustment rule missing month or day: {rule}")
         d = date(year, month, day)
-        return adjust_weekend(d, rule_type)
+        return adjust_weekend(d, rule_type, weekend_days)
 
     elif rule_type == "nth_weekday":
         month = rule.get("month")
@@ -216,7 +228,14 @@ def expand_exchange(exchange: dict, start_year: int = None, end_year: int = None
     with dates generated for each year in [start_year, end_year].
 
     Explicit dates already present in the exchange file are not duplicated.
+
+    A generated date that falls on one of the exchange's own weekend_days is
+    dropped: the exchange is closed that day anyway, so the entry would be a
+    no-op, and the validator rejects the same thing in explicit data unless
+    it carries weekend_exception. fixed_with_weekend_adjustment is applied
+    first, so it never produces such a date.
     """
+    weekend_days = tuple(exchange.get("weekend_days", (5, 6)))
     holidays = exchange.get("holidays", {})
     recurrence_rules = holidays.get("recurrence_rules", [])
     explicit_dates = holidays.get("explicit", [])
@@ -250,7 +269,7 @@ def expand_exchange(exchange: dict, start_year: int = None, end_year: int = None
 
         for year in range(start_year, end_year + 1):
             try:
-                d = generate_dates_for_rule(rule, year)
+                d = generate_dates_for_rule(rule, year, weekend_days)
             except ValueError as e:
                 # Skip rules that don't apply in this year (e.g., nth_weekday where n=5 doesn't exist)
                 print(f"WARN: {rule_name} ({rule['rule']}) failed for {year}: {e}", file=sys.stderr)
@@ -259,6 +278,9 @@ def expand_exchange(exchange: dict, start_year: int = None, end_year: int = None
             date_str = d.isoformat()
 
             if clip is not None and not (clip[0] <= date_str <= clip[1]):
+                continue
+
+            if d.weekday() in weekend_days:
                 continue
 
             if date_str in existing:

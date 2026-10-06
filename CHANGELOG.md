@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.14.2] — 2026-10-06
+
+### Fixed
+
+- Generated holidays no longer land on the exchange's own weekend.
+  Generated entries drop from 267 to 59; 215 of the 267 were no-ops on
+  closed days. 208 came from `fixed_date` rules, which never shift, on
+  Sat/Sun-weekend exchanges. The rest came from
+  `fixed_with_weekend_adjustment` on Fri/Sat-weekend exchanges (XBAH,
+  XCAI, XKUW, XMUS), where the Sat/Sun shift produced a Friday.
+- On those four exchanges a holiday on Friday or Saturday now moves to
+  the following Sunday, and one on Sunday stays on Sunday, matching
+  their explicit data. This removes six false closures on trading
+  days (a Sunday holiday had been pushed to Monday) and adds 13
+  Sunday observances.
+
+### Changed
+
+- `tools/generate_dates.py`: `adjust_weekend` and
+  `generate_dates_for_rule` take `weekend_days` (default Sat/Sun, so
+  existing callers are unchanged). `expand_exchange` drops any
+  generated date on a weekend day.
+- `tools/schema_audit.py` fails on a generated date on a weekend day.
+- `tests/test_generated_weekends.py` and `TestWeekendDays` in
+  `tests/test_recurrence.py`.
+
+### Notes
+
+No source file changed. The convention lives in the generator, applied
+uniformly, rather than in 74 source files. Lookups on a weekend date no
+longer report a generated holiday name there; the exchange is closed
+that day regardless.
+
 ## [2.14.1] — 2026-10-06
 
 ### Fixed

@@ -444,6 +444,16 @@
       "file": "tests/test_calendar_required_fields.py"
     }
   ],
+  "2.14.2": [
+    {
+      "file": "tools/generate_dates.py",
+      "contains": "weekend_days"
+    },
+    {
+      "file": "tests/test_generated_weekends.py",
+      "contains": "test_no_generated_holiday_on_own_weekend"
+    }
+  ],
   "2.14.1": [
     {
       "file": "tools/generate_dates.py",

@@ -210,16 +210,25 @@ Days relative to Easter Sunday.
 
 ## Weekend Adjustment
 
-The `fixed_with_weekend_adjustment` rule applies this logic:
+The engine reads the exchange's own `weekend_days`. A date that is not a
+weekend day is never moved. A date on a weekend day moves as follows.
 
-```
-If date is Saturday:
-    return date - 1 day (Friday)
-If date is Sunday:
-    return date + 1 day (Monday)
-Otherwise:
-    return date unchanged
-```
+| Exchange weekend | Date falls on | Moves to |
+|------------------|---------------|----------|
+| Sat/Sun (5, 6) | Saturday | preceding Friday |
+| Sat/Sun (5, 6) | Sunday | following Monday |
+| any other pair, e.g. Fri/Sat (4, 5) | a weekend day | next non-weekend day |
+
+The second row group follows the explicit data of the Fri/Sat exchanges
+(XBAH, XKUW, XMUS, XCAI): a holiday on Friday or Saturday is observed on
+the following Sunday, and one on Sunday stays on Sunday, since Sunday is
+a trading day there.
+
+**`fixed_date` and weekends.** `fixed_date` never shifts. If its date
+lands on one of the exchange's `weekend_days`, nothing is generated: the
+exchange is closed anyway, and the validator rejects a weekend holiday in
+explicit data unless it carries `weekend_exception`. Any generated date
+on a weekend day is dropped for every rule type.
 
 **Edge case:** What if the adjusted date falls in a different month or year?
 

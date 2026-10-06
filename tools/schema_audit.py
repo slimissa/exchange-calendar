@@ -12,7 +12,8 @@ Reports:
   4. Nested-array shape violations (sessions, holidays.explicit,
      holidays.generated, ad_hoc_closures, confidence).
   5. Session type coverage (populated vs reserved).
-  6. Generated holiday dates outside generation_range.
+  6. Generated holiday dates outside generation_range, or on the
+     exchange's own weekend_days.
   7. checksums.json covers exactly the files tools/generate_checksums.py
      collects, and every recorded hash matches the file on disk.
 
@@ -279,6 +280,12 @@ for e in BUILT:
     for h in e["holidays"]["generated"]:
         if not lo <= h["date"] <= hi:
             gap(f"{e['code']}: generated {h['date']} ({h['name']}) outside generation_range [{lo}, {hi}]")
+
+for e in BUILT:
+    wd = set(e["weekend_days"])
+    for h in e["holidays"]["generated"]:
+        if date.fromisoformat(h["date"]).weekday() in wd and not h.get("weekend_exception"):
+            gap(f"{e['code']}: generated {h['date']} ({h['name']}) falls on the exchange's own weekend")
 
 # --- 7. checksums.json ------------------------------------------------------
 print("\n== checksums.json ==")

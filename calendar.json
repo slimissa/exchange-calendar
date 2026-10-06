@@ -273,18 +273,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2026-12-18",
-            "name": "Qatar National Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-18",
-            "name": "Qatar National Day",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "DSMD",
       "name": "Qatar Stock Exchange",
@@ -1717,33 +1706,23 @@
         ],
         "generated": [
           {
-            "date": "2026-05-01",
+            "date": "2026-05-03",
             "name": "Labour Day",
             "status": "closed"
           },
           {
-            "date": "2027-01-01",
+            "date": "2027-01-03",
             "name": "New Year's Day",
             "status": "closed"
           },
           {
-            "date": "2027-04-30",
+            "date": "2027-05-02",
             "name": "Labour Day",
             "status": "closed"
           },
           {
-            "date": "2027-12-17",
+            "date": "2027-12-19",
             "name": "Accession Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-31",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-15",
-            "name": "National Day",
             "status": "closed"
           }
         ]
@@ -3900,43 +3879,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2025-01-26",
-            "name": "Republic Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-08-15",
-            "name": "Independence Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Maharashtra Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-08-15",
-            "name": "Independence Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-10-02",
-            "name": "Gandhi Jayanti",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas",
-            "status": "closed"
-          },
-          {
-            "date": "2029-04-14",
-            "name": "Dr. Ambedkar Jayanti",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XBOM",
       "name": "Bombay Stock Exchange",
@@ -5070,68 +5013,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2025-09-07",
-            "name": "Independence Day",
-            "status": "closed"
-          },
-          {
-            "date": "2025-10-12",
-            "name": "Nossa Senhora Aparecida",
-            "status": "closed"
-          },
-          {
-            "date": "2025-11-02",
-            "name": "All Souls' Day",
-            "status": "closed"
-          },
-          {
-            "date": "2025-11-15",
-            "name": "Republic Proclamation Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-11-15",
-            "name": "Republic Proclamation Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-11-20",
-            "name": "Black Consciousness Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-24",
-            "name": "Christmas Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-31",
-            "name": "New Year's Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2029-04-21",
-            "name": "Tiradentes",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XBSP",
       "name": "B3 (São Paulo Stock Exchange)",
@@ -6839,62 +6721,37 @@
         ],
         "generated": [
           {
-            "date": "2025-01-24",
+            "date": "2025-01-26",
             "name": "Revolution Day (Jan 25)",
             "status": "closed"
           },
           {
-            "date": "2025-04-25",
+            "date": "2025-04-27",
             "name": "Sinai Liberation Day",
             "status": "closed"
           },
           {
-            "date": "2026-01-26",
-            "name": "Revolution Day (Jan 25)",
-            "status": "closed"
-          },
-          {
-            "date": "2026-04-24",
+            "date": "2026-04-26",
             "name": "Sinai Liberation Day",
             "status": "closed"
           },
           {
-            "date": "2026-05-01",
+            "date": "2026-05-03",
             "name": "Labour Day",
             "status": "closed"
           },
           {
-            "date": "2027-04-26",
-            "name": "Sinai Liberation Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-04-30",
+            "date": "2027-05-02",
             "name": "Labour Day",
             "status": "closed"
           },
           {
-            "date": "2027-07-23",
+            "date": "2027-07-25",
             "name": "Revolution Day (Jul 23)",
             "status": "closed"
           },
           {
-            "date": "2028-01-07",
-            "name": "Coptic Christmas",
-            "status": "closed"
-          },
-          {
-            "date": "2028-07-24",
-            "name": "Revolution Day (Jul 23)",
-            "status": "closed"
-          },
-          {
-            "date": "2028-10-06",
-            "name": "Armed Forces Day",
-            "status": "closed"
-          },
-          {
-            "date": "2029-01-08",
+            "date": "2028-01-09",
             "name": "Coptic Christmas",
             "status": "closed"
           }
@@ -7285,63 +7142,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2025-01-11",
-            "name": "Independence Manifesto Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-01-11",
-            "name": "Independence Manifesto Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-08-14",
-            "name": "Oued Ed-Dahab Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-08-21",
-            "name": "Youth Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-11-06",
-            "name": "Green March Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-07-30",
-            "name": "Throne Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-08-20",
-            "name": "Revolution Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-11-18",
-            "name": "Independence Day",
-            "status": "closed"
-          },
-          {
-            "date": "2029-11-18",
-            "name": "Independence Day",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XCAS",
       "name": "Casablanca Stock Exchange",
@@ -8494,47 +8295,7 @@
         ],
         "generated": [
           {
-            "date": "2026-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-06-05",
-            "name": "Constitution Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
             "date": "2027-12-31",
-            "name": "New Year's Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-24",
-            "name": "Christmas Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-31",
             "name": "New Year's Eve",
             "status": "closed"
           }
@@ -8873,33 +8634,8 @@
         ],
         "generated": [
           {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
             "date": "2028-12-01",
             "name": "Commemoration Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-02",
-            "name": "UAE National Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-03",
-            "name": "UAE National Day Holiday",
-            "status": "closed"
-          },
-          {
-            "date": "2029-12-01",
-            "name": "Commemoration Day",
-            "status": "closed"
-          },
-          {
-            "date": "2029-12-02",
-            "name": "UAE National Day",
             "status": "closed"
           }
         ]
@@ -9960,43 +9696,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2026-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-24",
-            "name": "Christmas Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-31",
-            "name": "New Year's Eve",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XETR",
       "name": "Deutsche Börse",
@@ -10747,48 +10447,8 @@
         ],
         "generated": [
           {
-            "date": "2026-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "May Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
             "date": "2027-12-31",
             "name": "New Year's Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-24",
-            "name": "Christmas Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-31",
-            "name": "New Year's Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2029-01-06",
-            "name": "Epiphany",
             "status": "closed"
           }
         ]
@@ -11717,53 +11377,8 @@
         ],
         "generated": [
           {
-            "date": "2026-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
             "date": "2027-12-31",
             "name": "New Year's Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-06-17",
-            "name": "Icelandic National Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-24",
-            "name": "Christmas Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-31",
-            "name": "New Year's Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2029-06-17",
-            "name": "Icelandic National Day",
             "status": "closed"
           }
         ]
@@ -12036,53 +11651,8 @@
         ],
         "generated": [
           {
-            "date": "2025-08-30",
-            "name": "Victory Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-08-30",
-            "name": "Victory Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
             "date": "2027-08-30",
             "name": "Victory Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-04-23",
-            "name": "National Sovereignty and Children's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-07-15",
-            "name": "Democracy and National Unity Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-10-29",
-            "name": "Republic Day",
-            "status": "closed"
-          },
-          {
-            "date": "2029-05-19",
-            "name": "Commemoration of Atatürk, Youth and Sports Day",
-            "status": "closed"
-          },
-          {
-            "date": "2029-07-15",
-            "name": "Democracy and National Unity Day",
             "status": "closed"
           }
         ]
@@ -12498,28 +12068,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2025-08-17",
-            "name": "Independence Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XJKT",
       "name": "Indonesia Stock Exchange",
@@ -12921,21 +12470,6 @@
           {
             "date": "2026-08-10",
             "name": "National Women's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Workers' Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
             "status": "closed"
           },
           {
@@ -13842,38 +13376,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2025-08-31",
-            "name": "National Day (Merdeka Day)",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-09-16",
-            "name": "Malaysia Day",
-            "status": "closed"
-          },
-          {
-            "date": "2029-09-16",
-            "name": "Malaysia Day",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XKLS",
       "name": "Bursa Malaysia",
@@ -14689,23 +14192,8 @@
         ],
         "generated": [
           {
-            "date": "2027-01-01",
+            "date": "2027-01-03",
             "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-02-26",
-            "name": "Liberation Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-31",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-02-25",
-            "name": "National Day",
             "status": "closed"
           }
         ]
@@ -17058,33 +16546,7 @@
             "status": "early_close"
           }
         ],
-        "generated": [
-          {
-            "date": "2026-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XMAD",
       "name": "Bolsa de Madrid",
@@ -17869,43 +17331,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2026-12-12",
-            "name": "Day of the Virgin of Guadalupe",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-12",
-            "name": "Day of the Virgin of Guadalupe",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-09-16",
-            "name": "Independence Day",
-            "status": "closed"
-          },
-          {
-            "date": "2029-09-16",
-            "name": "Independence Day",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XMEX",
       "name": "Mexican Stock Exchange",
@@ -18453,33 +17879,8 @@
         ],
         "generated": [
           {
-            "date": "2027-01-01",
+            "date": "2027-01-03",
             "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-07-23",
-            "name": "Renaissance Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-31",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-07-24",
-            "name": "Renaissance Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-11-17",
-            "name": "National Day",
-            "status": "closed"
-          },
-          {
-            "date": "2029-11-19",
-            "name": "National Day",
             "status": "closed"
           }
         ]
@@ -20125,43 +19526,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2025-01-26",
-            "name": "Republic Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-08-15",
-            "name": "Independence Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Maharashtra Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-08-15",
-            "name": "Independence Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-10-02",
-            "name": "Gandhi Jayanti",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas",
-            "status": "closed"
-          },
-          {
-            "date": "2029-04-14",
-            "name": "Dr. Ambedkar Jayanti",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XNSE",
       "name": "National Stock Exchange of India",
@@ -21401,52 +20766,7 @@
         ],
         "generated": [
           {
-            "date": "2025-05-17",
-            "name": "Constitution Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-05-17",
-            "name": "Constitution Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
             "date": "2027-12-31",
-            "name": "New Year's Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-24",
-            "name": "Christmas Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-31",
             "name": "New Year's Eve",
             "status": "closed"
           }
@@ -21728,31 +21048,6 @@
           }
         ],
         "generated": [
-          {
-            "date": "2026-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
           {
             "date": "2028-12-26",
             "name": "Boxing Day",
@@ -22244,48 +21539,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2025-11-30",
-            "name": "Bonifacio Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-06-12",
-            "name": "Independence Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-04-09",
-            "name": "Araw ng Kagitingan (Day of Valor)",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-30",
-            "name": "Rizal Day",
-            "status": "closed"
-          },
-          {
-            "date": "2029-12-30",
-            "name": "Rizal Day",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XPHS",
       "name": "Philippine Stock Exchange",
@@ -23398,18 +22652,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2025-02-22",
-            "name": "Saudi Founding Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-09-23",
-            "name": "Saudi National Day",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XSAU",
       "name": "Saudi Stock Exchange (Tadawul)",
@@ -26113,58 +25356,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2026-06-06",
-            "name": "Swedish National Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "May Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-06-06",
-            "name": "Swedish National Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-24",
-            "name": "Christmas Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-31",
-            "name": "New Year's Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2029-01-06",
-            "name": "Epiphany",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XSTO",
       "name": "Nasdaq Stockholm",
@@ -26541,63 +25733,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2026-08-01",
-            "name": "Swiss National Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-12-26",
-            "name": "St. Stephen's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-01-02",
-            "name": "Berchtoldstag",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-08-01",
-            "name": "Swiss National Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-26",
-            "name": "St. Stephen's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-02",
-            "name": "Berchtoldstag",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-24",
-            "name": "Christmas Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-31",
-            "name": "New Year's Eve",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XSWX",
       "name": "SIX Swiss Exchange",
@@ -27358,48 +26494,7 @@
             "status": "closed"
           }
         ],
-        "generated": [
-          {
-            "date": "2026-02-28",
-            "name": "Peace Memorial Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-04-04",
-            "name": "Tomb Sweeping Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-10-10",
-            "name": "National Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-02-28",
-            "name": "Peace Memorial Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-04-04",
-            "name": "Tomb Sweeping Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-10-10",
-            "name": "National Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "Republic Day (New Year's Day)",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XTAI",
       "name": "Taiwan Stock Exchange",
@@ -29581,88 +28676,8 @@
         ],
         "generated": [
           {
-            "date": "2025-05-03",
-            "name": "Constitution Day",
-            "status": "closed"
-          },
-          {
-            "date": "2025-11-01",
-            "name": "All Saints' Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-05-03",
-            "name": "Constitution Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-08-15",
-            "name": "Assumption Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-11-01",
-            "name": "All Saints' Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-08-15",
-            "name": "Assumption Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-26",
-            "name": "Boxing Day",
-            "status": "closed"
-          },
-          {
             "date": "2027-12-31",
             "name": "New Year's Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-11-11",
-            "name": "Independence Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-24",
-            "name": "Christmas Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-31",
-            "name": "New Year's Eve",
-            "status": "closed"
-          },
-          {
-            "date": "2029-01-06",
-            "name": "Epiphany",
-            "status": "closed"
-          },
-          {
-            "date": "2029-11-11",
-            "name": "Independence Day",
             "status": "closed"
           }
         ]
@@ -30085,16 +29100,6 @@
         ],
         "generated": [
           {
-            "date": "2025-10-26",
-            "name": "National Day",
-            "status": "closed"
-          },
-          {
-            "date": "2025-11-01",
-            "name": "All Saints' Day",
-            "status": "closed"
-          },
-          {
             "date": "2026-01-06",
             "name": "Epiphany",
             "status": "closed"
@@ -30115,69 +29120,7 @@
             "status": "closed"
           },
           {
-            "date": "2026-08-15",
-            "name": "Assumption Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-11-01",
-            "name": "All Saints' Day",
-            "status": "closed"
-          },
-          {
             "date": "2026-12-08",
-            "name": "Immaculate Conception",
-            "status": "closed"
-          },
-          {
-            "date": "2026-12-26",
-            "name": "St. Stephen's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-01",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-08-15",
-            "name": "Assumption Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-25",
-            "name": "Christmas Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-26",
-            "name": "St. Stephen's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-01",
-            "name": "New Year's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2028-12-24",
-            "early_close_time": "12:00",
-            "name": "Christmas Eve",
-            "status": "early_close"
-          },
-          {
-            "date": "2028-12-31",
-            "early_close_time": "12:00",
-            "name": "New Year's Eve",
-            "status": "early_close"
-          },
-          {
-            "date": "2029-01-06",
-            "name": "Epiphany",
-            "status": "closed"
-          },
-          {
-            "date": "2029-12-08",
             "name": "Immaculate Conception",
             "status": "closed"
           }
@@ -30599,6 +29542,6 @@
   ],
   "meta": {
     "exchange_count": 74,
-    "version": "2.14.1"
+    "version": "2.14.2"
   }
 }

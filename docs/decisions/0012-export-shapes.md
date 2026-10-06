@@ -19,7 +19,7 @@ Measured on `calendar.json` v2.13.0 (74 exchanges):
 | exchanges | 74 |
 | sessions | 166 |
 | holidays, explicit | 3,901 |
-| holidays, generated | 267 |
+| holidays, generated | 59 |
 | confidence (exchange, year) | 361 |
 | ad_hoc_closures | 0 |
 
@@ -30,7 +30,7 @@ Facts the decisions rest on, each checked against the data:
 
 - All three wrappers (Python, Rust, Go) answer `is_holiday` from
   `explicit` plus `generated` together. Generated entries never
-  overlap explicit ones (0 of 267) and carry no `source_url`.
+  overlap explicit ones (0 of 59) and carry no `source_url`.
 - `extended_hours` and `regular_hours` are fully redundant with
   `sessions`: 0 mismatches across 74 exchanges.
 - Ten exchanges carry two `auction` sessions, so `(exchange, type)`
@@ -155,8 +155,13 @@ flag. The two agree on all 217 `true` entries today.
 The exports carry both. `holidays` holds explicit and generated rows
 together, distinguished by `origin` (`explicit` or `generated`).
 `source_url` is NULL for generated rows and non-NULL for explicit
-ones. Dropping generated rows would make every export answer
-"is this date a holiday?" differently from every wrapper for the 35
+ones. A generated date never falls on the exchange's own `weekend_days`
+(v2.14.2): the generator drops weekend occurrences of `fixed_date`
+rules and applies `fixed_with_weekend_adjustment` against the
+exchange's real weekend, so every `origin = generated` row is a real
+trading-day closure. Before v2.14.2, 215 of 267 generated rows were
+no-ops on closed days. Dropping generated rows would make every export answer
+"is this date a holiday?" differently from every wrapper for the 20
 exchanges that have them. Carrying them without `origin` would hide
 which dates are verified.
 

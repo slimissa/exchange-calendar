@@ -435,7 +435,7 @@ class TestGenerationRangeBoundary:
             "holidays": {
                 "explicit": [],
                 "recurrence_rules": [
-                    {"rule": "fixed_date", "month": 10, "day": 6,
+                    {"rule": "fixed_date", "month": 10, "day": 5,
                      "name": "Armed Forces Day", "status": "closed"},
                     {"rule": "fixed_date", "month": 5, "day": 1,
                      "name": "Labour Day", "status": "closed"},
@@ -448,9 +448,57 @@ class TestGenerationRangeBoundary:
         assert dates == ["2029-05-01"]
 
     def test_date_on_range_end_is_generated(self):
-        dates = [h["date"] for h in expand_exchange(self._ex("2029-10-06"))]
-        assert dates == ["2029-05-01", "2029-10-06"]
+        dates = [h["date"] for h in expand_exchange(self._ex("2029-10-05"))]
+        assert dates == ["2029-05-01", "2029-10-05"]
 
     def test_explicit_years_keep_whole_year_behaviour(self):
         dates = [h["date"] for h in expand_exchange(self._ex("2029-07-24"), 2029, 2029)]
-        assert dates == ["2029-05-01", "2029-10-06"]
+        assert dates == ["2029-05-01", "2029-10-05"]
+
+
+class TestWeekendDays:
+    """Adjustment and skipping use the exchange's own weekend_days (v2.14.2)."""
+
+    FRI_SAT = (4, 5)
+
+    def test_fri_sat_exchange_friday_moves_to_sunday(self):
+        assert adjust_weekend(date(2027, 1, 1), "fixed_with_weekend_adjustment", self.FRI_SAT) == date(2027, 1, 3)
+
+    def test_fri_sat_exchange_saturday_moves_to_sunday(self):
+        assert adjust_weekend(date(2028, 1, 1), "fixed_with_weekend_adjustment", self.FRI_SAT) == date(2028, 1, 2)
+
+    def test_fri_sat_exchange_sunday_stays_sunday(self):
+        d = date(2028, 12, 17)
+        assert d.weekday() == 6
+        assert adjust_weekend(d, "fixed_with_weekend_adjustment", self.FRI_SAT) == d
+
+    def test_fri_sat_exchange_midweek_unchanged(self):
+        d = date(2026, 1, 1)
+        assert adjust_weekend(d, "fixed_with_weekend_adjustment", self.FRI_SAT) == d
+
+    def test_default_weekend_keeps_nyse_behaviour(self):
+        assert adjust_weekend(date(2028, 1, 1), "fixed_with_weekend_adjustment") == date(2027, 12, 31)
+        assert adjust_weekend(date(2028, 12, 31), "fixed_with_weekend_adjustment") == date(2029, 1, 1)
+
+    def _ex(self, weekend, rule):
+        return {
+            "code": "TEST",
+            "weekend_days": list(weekend),
+            "generation_range": ["2028-01-01", "2028-12-31"],
+            "holidays": {"explicit": [], "recurrence_rules": [rule]},
+        }
+
+    def test_fixed_date_on_own_weekend_is_skipped(self):
+        # 2028-12-25 is a Monday; 2028-12-23 is a Saturday.
+        rule = {"rule": "fixed_date", "month": 12, "day": 23, "name": "X", "status": "closed"}
+        assert expand_exchange(self._ex((5, 6), rule)) == []
+
+    def test_fixed_date_on_sunday_kept_when_sunday_trades(self):
+        rule = {"rule": "fixed_date", "month": 12, "day": 24, "name": "X", "status": "closed"}
+        assert date(2028, 12, 24).weekday() == 6
+        assert [h["date"] for h in expand_exchange(self._ex((4, 5), rule))] == ["2028-12-24"]
+        assert expand_exchange(self._ex((5, 6), rule)) == []
+
+    def test_adjusted_rule_on_fri_sat_exchange_lands_on_sunday(self):
+        rule = {"rule": "fixed_with_weekend_adjustment", "month": 1, "day": 1, "name": "NY", "status": "closed"}
+        assert [h["date"] for h in expand_exchange(self._ex((4, 5), rule))] == ["2028-01-02"]
