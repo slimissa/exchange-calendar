@@ -41,6 +41,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Notes
 
+**Release scope.** v2.14.2 is a cumulative release. It ships everything
+under the 2.14.0 and 2.14.1 headings below as well; those two versions
+were never tagged on their own, because their commits were not
+individually verified in CI. The sections stay as the record of what
+each step changed. Tag `v2.14.2` only. See `RELEASE_PATTERN.md`,
+operator-hygiene rule 8.
+
 No source file changed. The convention lives in the generator, applied
 uniformly, rather than in 74 source files. Lookups on a weekend date no
 longer report a generated holiday name there; the exchange is closed

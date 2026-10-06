@@ -480,6 +480,30 @@ rule applies to any file that defines or imports names: fetchers,
 helpers, test fixtures, class definitions in wrappers. The command is
 `grep -rn '\bName\b' .` from the repo root, and an empty result
 outside the removal itself is the evidence.
+
+### 8. A multi-task change set ships as one release; content commits do not bump
+
+- Content commits add the `## [X.Y.Z]` CHANGELOG section and the
+  `release_claims.json` entry. They do not touch `VERSION`, the README
+  badge or `meta.version`. `scripts/release.sh` owns those three and
+  refuses when `VERSION` already equals the target. The pair
+  `33509a5` (content) and `28cc414` (`Release v2.13.0`) is the pattern.
+- One release per push batch. Size it by the highest-impact item in the
+  batch: an additive field or API is a minor bump, a data correction
+  is a patch, a removal, rename or change of meaning is a major bump.
+  Docs, CI, tests, tooling and `BLOCKED.md` changes never bump on their
+  own; they ride in the release that ships them.
+- Split into separate releases only when a downstream consumer must be
+  able to pin or revert one change without the other.
+- Never tag a commit that has not passed CI. Intermediate commits of a
+  batch are not tagged retroactively.
+- If the CHANGELOG already holds several unreleased sections, the
+  release note names which sections the release ships.
+
+Why: one audit produced three hand bumps in content commits
+(2.14.0, 2.14.1, 2.14.2), none tagged. `release.sh` could no longer cut
+2.14.2, and the CHANGELOG described versions no one could install. The
+fix was a cumulative release, tagged by hand per `CONTRIBUTING.md`.
 ---
 
 ## The mojibake self-trigger rule
@@ -651,3 +675,4 @@ The gate is a superset of CI, or it isn't a gate.
   and confirmed against ISO 4217's per-check capture shape.
 - 2026-09-29 — reviewed by Exchange Calendar. Reviewer entry added; step 6 names Exchange Calendar's `scripts/release.sh` as the reference for the multi-workflow poll shape. Sourced from `slimissa/exchange-calendar` `scripts/release.sh`.
 - 2026-10-05 — post-review addition: operator-hygiene rule 7 ("Grep for the name after every symbol removal"), sourced from Exchange Calendar v2.12.3 and v2.12.4.
+- 2026-10-06 — post-review addition: operator-hygiene rule 8 ("A multi-task change set ships as one release; content commits do not bump"), sourced from the v2.14.0 to v2.14.2 audit.
