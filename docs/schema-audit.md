@@ -8,8 +8,9 @@ exports (ADR 0012) project `calendar.json` into SQL, CSV and Parquet.
 
 ## Result
 
-No unexplained gaps. Three known-open items, none blocking the exports
-once the first is done. Four documentation gaps were found and fixed.
+No unexplained gaps. The three items first recorded as known-open are
+all resolved (v2.14.0 and v2.14.1, see Findings), as is the stale
+`checksums.json`. Five documentation gaps were found and fixed.
 
 ## Checklist
 
@@ -18,10 +19,10 @@ once the first is done. Four documentation gaps were found and fixed.
 | All 74 source files validate against `schema.json` | Pass, 0 errors |
 | Every field populated on every exchange, or optional | Pass. Optional and partial: `extended_hours` 30/74, `confidence.note` 213/361, `early_close_time` 150/3901 |
 | Enum values closed and documented | Pass. No data value outside any enum |
-| Times `HH:MM`, dates `YYYY-MM-DD` and real dates | Pass, 4,317 records checked |
+| Times `HH:MM`, dates `YYYY-MM-DD` and real dates | Pass, 4,316 records checked |
 | Nested arrays have one shape the wrappers agree on | Pass for data. See wrapper note below |
 | `confidence`: year-string keys, `source`/`level`/`last_verified`, optional `note` | Pass, 361 entries |
-| Sessions coverage | See below: not three plus three |
+| Sessions coverage | Five of six types populated, one reserved (`halt`). See below |
 
 ## Findings
 
@@ -48,7 +49,7 @@ once the first is done. Four documentation gaps were found and fixed.
 2. **XCAI generated 2029-10-05 past its `generation_range` end of
    2029-07-24.** Resolved in v2.14.1: the generator now clips to the
    range exactly.
-3. **Rust and Go `HolidayEntry` have no `predicted` or
+3. **Resolved in v2.14.1: Rust and Go `HolidayEntry` had no `predicted` or
    `weekend_exception` field.** They deserialise leniently and drop
    them. The Python wrapper keeps entries as raw dicts, so the keys
    survive there; the JavaScript typings (`index.d.ts`) omit both
@@ -58,19 +59,27 @@ once the first is done. Four documentation gaps were found and fixed.
    entries carry the flag). Not fixed here: adding fields changes public
    struct literals in both wrappers.
 
-### Divergence from the checklist's premise
+### Session type coverage
 
-The checklist says "three populated session types plus three
-reserved". The data has **five** populated types (`regular` 74,
-`pre_market` 30, `post_market` 29, `auction` 22, `lunch_break` 11) and
-**one** reserved (`halt`). Other enum values with no data: holiday
-status `special_session`, confidence source `predicted`, confidence
-level `low`. All are in the schema and documented as reserved.
+The schema enum has six types. Five are populated: `regular` 74,
+`pre_market` 30, `post_market` 29, `auction` 22, `lunch_break` 11 (166
+sessions). One is reserved and unused: `halt`.
+
+An earlier version of this checklist expected "three populated types
+plus three reserved". That count was wrong, not the data. No document
+in the repository asserts it: `schema.json` and
+`docs/exchange_schema.md` have always listed six types. The checklist
+now states the measured count, and `tools/schema_audit.py` reprints it
+on every run.
+
+Other enum values with no data, all in the schema and documented as
+reserved: holiday status `special_session`, confidence source
+`predicted`, confidence level `low`.
 
 ### Outside the checklist
 
-`checksums.json` does not match the repository at HEAD: 14 of its 91
-entries verify, 77 do not. Its last regeneration was commit 4715843,
+Resolved in v2.14.1. `checksums.json` did not match the repository at
+the time of the audit: 14 of its 91 entries verified, 77 did not. Its last regeneration was commit 4715843,
 and neither CI nor `scripts/release.sh` runs
 `tools/verify_checksums.py`. I did not regenerate it, since that
 would rewrite 97 hashes inside an audit commit. It needs its own fix.
