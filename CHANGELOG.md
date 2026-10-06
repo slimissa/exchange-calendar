@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   days (a Sunday holiday had been pushed to Monday) and adds 13
   Sunday observances.
 
+- `BLOCKED.md`: XKUW and XSAU were marked "BLOCKED (permanent)" while
+  their fetchers stayed registered and ran in CI. Both now read
+  "BLOCKED (HTTP 403 on 2026-09-17)" with what would unblock them. The
+  informational CI job no longer calls them "permanently blocked". Both
+  fetchers remain registered.
+
 ### Changed
 
 - `tools/generate_dates.py`: `adjust_weekend` and

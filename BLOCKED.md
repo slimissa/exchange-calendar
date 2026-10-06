@@ -920,7 +920,13 @@ Combined count for the round: 6 built, 4 blocked.
 - **Finding:** HTTP 403 Forbidden from both GitHub Actions runners and
   residential IPs, with a browser User-Agent. The site's bot detection
   cannot be bypassed with header spoofing alone.
-- **Verdict:** BLOCKED (permanent, as of 2026-09-17).
+- **Verdict:** BLOCKED (HTTP 403 on 2026-09-17). One probe on one day;
+  not shown to be permanent. `XKUW`'s fetcher stays registered and the
+  informational job in `live-fetcher-check.yml` still exercises it.
+  **Would unblock:** a 200 from `python tools/live_fetcher_check.py --only
+  XKUW`. Only header changes are recorded as tried; a browser-grade
+  render path (ADR 0009/0010) and a different egress have not been
+  tried against this site. Until then the calendar is maintained by hand.
 
 ## XSAU — Saudi Exchange (Tadawul)
 
@@ -929,7 +935,14 @@ Combined count for the round: 6 built, 4 blocked.
 - **Checked:** saudiexchange.sa/.../saudi-exchange-holiday-calendar
 - **Finding:** HTTP 403 Forbidden from both GitHub Actions runners and
   residential IPs, with a browser User-Agent. Same pattern as XKUW.
-- **Verdict:** BLOCKED (permanent, as of 2026-09-17).
+- **Verdict:** BLOCKED (HTTP 403 on 2026-09-17). One probe on one day;
+  not shown to be permanent. `SaudiExchangeFetcher` stays registered and
+  the informational job in `live-fetcher-check.yml` still exercises it.
+  **Would unblock:** a 200 from `python tools/live_fetcher_check.py --only
+  XSAU`. Only header changes are recorded as tried (the fetcher already
+  sends browser-like headers); a browser-grade render path (ADR 0009/0010)
+  and a different egress have not been tried against this site. Until
+  then the calendar is maintained by hand.
 
 ## XSHG — Shanghai Stock Exchange (CI-unreachable)
 
@@ -992,7 +1005,7 @@ UA):
 - **XCAS**: robots.txt disallows automated access
 - **XDHA**: robots.txt disallows automated access
 - **XKAR**: PDF has no extractable text (scanned image)
-- **XKUW**: 403 from all IPs (permanent, documented above)
+- **XKUW**: 403 from all IPs probed (see the XKUW section)
 - **XBAH**: content area is a client-side SharePoint webpart
 
 Entries were removed rather than left marked `predicted`. A `predicted`

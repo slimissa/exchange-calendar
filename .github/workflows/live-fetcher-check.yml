@@ -118,7 +118,7 @@ jobs:
           exit 0
 
   live-check-blocked:
-    name: Live check — permanently blocked (informational)
+    name: Live check — blocked (informational)
     needs: verify-coverage
     continue-on-error: true
     runs-on: ubuntu-latest
@@ -137,7 +137,7 @@ jobs:
           python tools/live_fetcher_check.py --only XKUW,XSAU
           rc=$?
           if [ $rc -ne 0 ]; then
-            echo "::warning::Permanently blocked fetchers failed (expected): XKUW, XSAU"
+            echo "::warning::Blocked fetchers failed (expected for now): XKUW, XSAU. A pass means they can be reopened; see BLOCKED.md."
           fi
           exit 0
 
