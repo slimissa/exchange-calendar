@@ -12,6 +12,7 @@ for (const q of fixture.queries) {
   else if (q.op === "confidence") v = r.confidence(a, b);
   else if (q.op === "is_open") v = r.isOpen(a, b, c);
   else if (q.op === "as_of") { const rec = r.asOf(a, b); v = { confidence: rec.confidence, _as_of: rec._as_of }; }
+  else if (q.op === "holiday_entry") v = r.get(a).listHolidays().find(h => h.date === b) ?? null;
   else throw new Error(`unknown op ${q.op}`);
   out[q.label] = v;
 }

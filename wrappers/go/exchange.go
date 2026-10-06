@@ -38,6 +38,12 @@ type HolidayEntry struct {
 	EarlyCloseTime string `json:"early_close_time,omitempty"` // HH:MM when status is early_close
 	DelayedOpenTime string `json:"delayed_open_time,omitempty"` // HH:MM when status is delayed_open
 	SourceURL      string `json:"source_url,omitempty"`       // Source citation
+	// Predicted is true for a calculated, unconfirmed date. A pointer keeps
+	// an explicit false distinguishable from an absent field.
+	Predicted *bool `json:"predicted,omitempty"`
+	// WeekendException is true when a sourced holiday falls on the
+	// exchange's own weekend days.
+	WeekendException *bool `json:"weekend_exception,omitempty"`
 }
 
 // ExchangeData represents the raw JSON structure for one exchange in calendar.json.

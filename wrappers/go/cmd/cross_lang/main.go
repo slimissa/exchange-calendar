@@ -118,6 +118,33 @@ func main() {
 				asOf = rec["_as_of"]
 			}
 			v = map[string]any{"confidence": conf, "_as_of": asOf}
+		case "holiday_entry":
+			ex, err := r.Get(str(q.Args[0]))
+			if err != nil {
+				die("exchange: %v", err)
+			}
+			for _, h := range ex.ListHolidays() {
+				if h.Date != str(q.Args[1]) {
+					continue
+				}
+				m := map[string]any{"date": h.Date, "name": h.Name, "status": h.Status}
+				if h.EarlyCloseTime != "" {
+					m["early_close_time"] = h.EarlyCloseTime
+				}
+				if h.DelayedOpenTime != "" {
+					m["delayed_open_time"] = h.DelayedOpenTime
+				}
+				if h.SourceURL != "" {
+					m["source_url"] = h.SourceURL
+				}
+				if h.Predicted != nil {
+					m["predicted"] = *h.Predicted
+				}
+				if h.WeekendException != nil {
+					m["weekend_exception"] = *h.WeekendException
+				}
+				v = m
+			}
 		default:
 			die("unknown op %s", q.Op)
 		}

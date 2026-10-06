@@ -79,6 +79,17 @@ pub struct HolidayEntry {
 
     /// Source citation URL.
     pub source_url: Option<String>,
+
+    /// True when the date is calculated (moon-sighting dependent) and not
+    /// yet confirmed. `Some(false)` and `None` both mean "not predicted";
+    /// the value is kept as stored so the two stay distinguishable.
+    #[serde(default)]
+    pub predicted: Option<bool>,
+
+    /// True when a sourced holiday legitimately falls on the exchange's
+    /// own weekend days.
+    #[serde(default)]
+    pub weekend_exception: Option<bool>,
 }
 
 /// Raw exchange data as deserialized from calendar.json.
@@ -623,6 +634,8 @@ mod tests {
                         early_close_time: None,
                         delayed_open_time: None,
                         source_url: None,
+                        predicted: None,
+                        weekend_exception: None,
                     },
                     HolidayEntry {
                         date: "2025-07-03".to_string(),
@@ -631,6 +644,8 @@ mod tests {
                         early_close_time: Some("13:00".to_string()),
                         delayed_open_time: None,
                         source_url: None,
+                        predicted: None,
+                        weekend_exception: None,
                     },
                 ],
                 generated: vec![],

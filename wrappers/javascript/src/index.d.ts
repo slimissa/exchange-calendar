@@ -106,6 +106,10 @@
         early_close_time?: string; // HH:MM, required when status is early_close
         delayed_open_time?: string; // HH:MM, required when status is delayed_open
         source_url?: string;
+        /** true or false as stored; absent means not predicted. */
+        predicted?: boolean;
+        /** true when a sourced holiday falls on the exchange's own weekend. */
+        weekend_exception?: boolean;
     }
 
     /**

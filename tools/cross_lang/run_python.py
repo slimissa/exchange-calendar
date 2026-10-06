@@ -17,6 +17,8 @@ for q in fixture["queries"]:
     elif op == "as_of":
         rec = r.as_of(args[0], args[1])
         v = {"confidence": rec.get("confidence", {}), "_as_of": rec.get("_as_of")}
+    elif op == "holiday_entry":
+        v = next((h for h in r.get(args[0]).list_holidays() if h["date"] == args[1]), None)
     else:
         raise SystemExit(f"unknown op {op}")
     out[q["label"]] = v

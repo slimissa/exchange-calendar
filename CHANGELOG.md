@@ -15,6 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `generation_range` ends 2029-07-24, and generated holidays are now
   clipped to the range exactly, not by calendar year.
 
+- Rust and Go `HolidayEntry` now carry `predicted` and
+  `weekend_exception`, as the Python and JavaScript wrappers already
+  did. Both previously dropped the two fields on deserialization. The
+  JavaScript typings (`index.d.ts`) now declare them.
+- `tests/cross_language_queries.json` gained `holiday_entry` queries
+  covering `predicted: false`, `predicted: true`, `weekend_exception`
+  and an absent date, so a wrapper that drops a field fails the diff.
+
 ### Changed
 
 - `tools/generate_dates.py` clips generated dates to the exchange
