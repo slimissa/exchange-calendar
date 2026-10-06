@@ -39,8 +39,8 @@ once the first is done. Four documentation gaps were found and fixed.
 
 ### Known open
 
-1. **`country` and `country_code` are required by `schema.json` but
-   absent from `calendar.json`** (0/74). `tools/build.py` does not copy
+1. **`country` and `country_code` were required by `schema.json` but
+   absent from `calendar.json`** (0/74). Resolved in v2.14.0. `tools/build.py` does not copy
    them. ADR 0012 needs `country_code` in the exports, so this must land
    before the first exporter, as its own release. The wrappers ignore
    unknown fields; this was tested by adding the field to a copy of

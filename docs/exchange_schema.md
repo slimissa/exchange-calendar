@@ -63,8 +63,8 @@ Every exchange file is a JSON object with this shape:
 | `holidays` | object | `{explicit, recurrence_rules}` — holiday data |
 | `generation_range` | array | `[start_date, end_date]` — verified date range |
 | `weekend_days` | array[int], length 2 | Two weekday numbers (0=Monday..6=Sunday) that are non-trading days |
-| `country` | string | Country name (ISO 3166). Source files only: `calendar.json` does not carry it yet |
-| `country_code` | string | ISO 3166-1 alpha-2, 2 uppercase letters. Source files only: `calendar.json` does not carry it yet |
+| `country` | string | Country name (ISO 3166). |
+| `country_code` | string | ISO 3166-1 alpha-2, 2 uppercase letters. |
 | `sessions` | array | Typed trading sessions, at least one; see [`sessions`](#sessions-required) |
 
 ---

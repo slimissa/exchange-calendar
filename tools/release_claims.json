@@ -434,5 +434,14 @@
       "file": "docs/decisions/0011-mic-lei-connector.md",
       "contains": "Reopen condition"
     }
+  ],
+  "2.14.0": [
+    {
+      "file": "tools/build.py",
+      "contains": "\"country_code\": exchange.get(\"country_code\")"
+    },
+    {
+      "file": "tests/test_calendar_required_fields.py"
+    }
   ]
 }

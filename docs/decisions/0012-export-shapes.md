@@ -162,14 +162,12 @@ which dates are verified.
 
 ## Prerequisite: `country_code`
 
-The `exchanges` table needs `country_code`, and `calendar.json` does
-not carry it. Before the first exporter lands, `tools/build.py` must
-copy `country_code` from each exchange file into its output record.
-This is an additive field; the wrappers deserialise leniently and
-ignore unknown keys. It is a `calendar.json` change and ships as its
-own release with regenerated checksums, not inside an exporter
-session. `country` (the name) is not exported; it is derivable from
-ISO 3166.
+The `exchanges` table needs `country_code`, which `calendar.json` did
+not carry through v2.13.0: `tools/build.py` dropped `country` and
+`country_code`, both required by the schema. Resolved in v2.14.0, which
+copies both into every exchange record. The change is additive and the
+wrappers ignore the new keys. `country` (the name) is not exported; it
+is derivable from ISO 3166.
 
 ## Consequences
 

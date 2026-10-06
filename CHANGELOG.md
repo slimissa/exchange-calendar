@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.14.0] — 2026-10-06
+
+### Added
+
+- `calendar.json` exchange records now carry `country` and
+  `country_code`.
+- `tests/test_calendar_required_fields.py` — fails if a field
+  `schema.json` requires is absent from any exchange in
+  `calendar.json`.
+
+### Changed
+
+- `tools/build.py` copies `country` and `country_code` from each
+  exchange file. It previously dropped both.
+
+### Notes
+
+Additive field, no removal and no change to existing values. The
+wrappers deserialise leniently and ignore the new keys; the four-wrapper
+check passes unchanged. `schema.json` always required both fields in
+source files; only the built artifact lacked them. This is the
+prerequisite named in ADR 0012: the SQL, CSV and Parquet exports need
+`country_code`.
+
 ## [2.13.0] — 2026-10-05
 
 ### Added

@@ -42,8 +42,6 @@ DATE_FIELDS = {"date", "last_verified"}
 # Deviations that are understood, documented and deliberately not fixed in the
 # audit commit. Keyed by a substring of the gap message.
 KNOWN_OPEN = {
-    "built.country": "ADR 0012 prerequisite: tools/build.py must carry country_code "
-                     "into calendar.json; ships as its own release with new checksums.",
     "outside generation_range": "docs/exchange_schema.md, generation_range: generation "
                                 "is year-granular, so generated dates may pass the end date.",
 }
@@ -149,9 +147,12 @@ built_required = {"code", "name", "mic", "timezone", "weekend_days", "regular_ho
                   "ad_hoc_closures", "extended_hours"}
 population("built.exchange", BUILT, built_required)
 for k in ("country", "country_code"):
+    n_k = sum(1 for e in BUILT if e.get(k))
+    print(f"built.exchange.{k}: populated {n_k}/{len(BUILT)}")
+for k in ("country", "country_code"):
     if k in SCHEMA["required"] and not any(k in e for e in BUILT):
         gap(f"built.{k}: required by schema.json, populated 0/{len(BUILT)} in calendar.json "
-            f"(tools/build.py drops it; ADR 0012 prerequisite)")
+            f"(tools/build.py must carry it)")
 population(
     "built.holidays.generated",
     [h for e in BUILT for h in e["holidays"]["generated"]],
