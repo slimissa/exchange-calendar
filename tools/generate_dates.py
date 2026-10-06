@@ -222,12 +222,17 @@ def expand_exchange(exchange: dict, start_year: int = None, end_year: int = None
     explicit_dates = holidays.get("explicit", [])
 
     # Determine year range
+    # When the range comes from the exchange file, it bounds generated dates
+    # exactly, not only by year. Explicit start_year/end_year arguments keep
+    # whole-year behaviour for callers that ask for years.
+    clip = None
     if start_year is None or end_year is None:
         gen_range = exchange.get("generation_range", [])
         if len(gen_range) != 2:
             raise ValueError("generation_range must be [start_date, end_date]")
         start_year = int(gen_range[0][:4])
         end_year = int(gen_range[1][:4])
+        clip = (gen_range[0], gen_range[1])
 
     if start_year > end_year:
         raise ValueError(f"start_year ({start_year}) > end_year ({end_year})")
@@ -252,6 +257,9 @@ def expand_exchange(exchange: dict, start_year: int = None, end_year: int = None
                 continue
 
             date_str = d.isoformat()
+
+            if clip is not None and not (clip[0] <= date_str <= clip[1]):
+                continue
 
             if date_str in existing:
                 continue

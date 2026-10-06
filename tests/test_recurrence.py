@@ -423,3 +423,34 @@ class TestEdgeCases:
         # First Monday of March 2025 is March 3 (not Feb 24)
         result = nth_weekday(2025, 3, "monday", 1)
         assert result == date(2025, 3, 3)
+
+
+class TestGenerationRangeBoundary:
+    """generation_range bounds generated dates exactly (XCAI, v2.14.1)."""
+
+    def _ex(self, end):
+        return {
+            "code": "TEST",
+            "generation_range": ["2029-01-01", end],
+            "holidays": {
+                "explicit": [],
+                "recurrence_rules": [
+                    {"rule": "fixed_date", "month": 10, "day": 6,
+                     "name": "Armed Forces Day", "status": "closed"},
+                    {"rule": "fixed_date", "month": 5, "day": 1,
+                     "name": "Labour Day", "status": "closed"},
+                ],
+            },
+        }
+
+    def test_date_after_range_end_is_not_generated(self):
+        dates = [h["date"] for h in expand_exchange(self._ex("2029-07-24"))]
+        assert dates == ["2029-05-01"]
+
+    def test_date_on_range_end_is_generated(self):
+        dates = [h["date"] for h in expand_exchange(self._ex("2029-10-06"))]
+        assert dates == ["2029-05-01", "2029-10-06"]
+
+    def test_explicit_years_keep_whole_year_behaviour(self):
+        dates = [h["date"] for h in expand_exchange(self._ex("2029-07-24"), 2029, 2029)]
+        assert dates == ["2029-05-01", "2029-10-06"]

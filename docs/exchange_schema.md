@@ -403,9 +403,10 @@ The validator rejects duplicates.
 - Both in `YYYY-MM-DD` format
 - `start` must be before `end`
 - Defines the date range within which explicit dates are verified
-- Does not clip generated holidays: recurrence rules expand by calendar
-  year, so a generated date can fall after `end` when `end` is mid-year
-  (XCAI: `end` is 2029-07-24, Armed Forces Day generates 2029-10-05)
+- Bounds generated holidays exactly: `tools/generate_dates.py` drops
+  any recurrence date outside `[start, end]`, so no generated date can
+  fall after `end` (XCAI: `end` is 2029-07-24, so Armed Forces Day 2029
+  is not generated)
 
 ---
 

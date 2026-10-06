@@ -42,8 +42,6 @@ DATE_FIELDS = {"date", "last_verified"}
 # Deviations that are understood, documented and deliberately not fixed in the
 # audit commit. Keyed by a substring of the gap message.
 KNOWN_OPEN = {
-    "outside generation_range": "docs/exchange_schema.md, generation_range: generation "
-                                "is year-granular, so generated dates may pass the end date.",
 }
 
 gaps: list[str] = []

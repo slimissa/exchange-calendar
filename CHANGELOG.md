@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.14.1] — 2026-10-06
+
+### Fixed
+
+- XCAI no longer generates 2029-10-05 (Armed Forces Day). Its
+  `generation_range` ends 2029-07-24, and generated holidays are now
+  clipped to the range exactly, not by calendar year.
+
+### Changed
+
+- `tools/generate_dates.py` clips generated dates to the exchange
+  file's `generation_range`. Explicit `start_year`/`end_year`
+  arguments keep whole-year behaviour.
+
+### Notes
+
+The audit found one exchange in 74 where the year-granular expansion
+passed the range end. The rule is legitimate; the date was outside the
+span the file declares. Extending the range to year end would have
+claimed verification the file does not have, so the generator now
+honours the range as written. Behaviour is unchanged for lookups: 2029-10-05
+is a Friday, already a weekend day on XCAI (`weekend_days` 4, 5).
+Removed one generated entry; 267 remain.
+
 ## [2.14.0] — 2026-10-06
 
 ### Added

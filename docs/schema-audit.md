@@ -45,10 +45,9 @@ once the first is done. Four documentation gaps were found and fixed.
    before the first exporter, as its own release. The wrappers ignore
    unknown fields; this was tested by adding the field to a copy of
    `calendar.json` and re-running the four-wrapper check.
-2. **XCAI generates 2029-10-05 past its `generation_range` end of
-   2029-07-24.** Recurrence rules expand by year. This is now documented.
-   Clipping would remove a correct holiday date, so it needs an owner
-   decision, not an audit edit.
+2. **XCAI generated 2029-10-05 past its `generation_range` end of
+   2029-07-24.** Resolved in v2.14.1: the generator now clips to the
+   range exactly.
 3. **Rust and Go `HolidayEntry` have no `predicted` or
    `weekend_exception` field.** They deserialise leniently and drop
    them. The Python wrapper keeps entries as raw dicts, so the keys

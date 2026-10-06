@@ -443,5 +443,15 @@
     {
       "file": "tests/test_calendar_required_fields.py"
     }
+  ],
+  "2.14.1": [
+    {
+      "file": "tools/generate_dates.py",
+      "contains": "clip = (gen_range[0], gen_range[1])"
+    },
+    {
+      "file": "tests/test_recurrence.py",
+      "contains": "TestGenerationRangeBoundary"
+    }
   ]
 }
