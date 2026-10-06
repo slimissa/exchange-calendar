@@ -80,6 +80,9 @@ jobs:
       - name: Check ISO 3166 snapshot freshness
         run: python3 tools/check_snapshot_freshness.py
 
+      - name: Verify checksums.json has not drifted
+        run: python3 tools/verify_checksums.py
+
       - name: Run Python tests
         run: |
           python3 -m pytest tests/ -v --tb=short

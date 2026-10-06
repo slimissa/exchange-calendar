@@ -92,7 +92,7 @@
     "tools/generate_dates.py": "6570f2f6dee38e60924e2c1c0fa5b7dce8d68ebec34f2e0490d1c90f3c0e1811",
     "tools/live_fetcher_check.py": "fcb3e878b7980c6ebd5ab83fdacd6826f7e051979d76b30f07766d0c7d70aa80",
     "tools/migrate_sessions.py": "d50b992ee3223affed9d78d0480f3179cb5f4756c957866263ce4910f297dd6e",
-    "tools/schema_audit.py": "d8aaefe73491a8715ba4e5e213d1792e8b32c62dffdf16778aba89461138cfe7",
+    "tools/schema_audit.py": "768b0f7a40dd7e077c75351fa38d9a72068d91f836658656cd3105cbf4953175",
     "tools/summarize_blocked.py": "f254a99299359c380398b5debe714f77747d967a3543cc39dd6eca0d8a4f6c26",
     "tools/update_from_exchange.py": "0e4570c73aaf0874ce3969bf3686245e005824522ba8a0e643ebcc15f068a9aa",
     "tools/validate.py": "9e7250a5e21628a4855ef8dbdefd35441bc2e9f7b139ce09e8042573b498b827",

@@ -13,6 +13,8 @@ Reports:
      holidays.generated, ad_hoc_closures, confidence).
   5. Session type coverage (populated vs reserved).
   6. Generated holiday dates outside generation_range.
+  7. checksums.json covers exactly the files tools/generate_checksums.py
+     collects, and every recorded hash matches the file on disk.
 
 Exit code 0 when every gap is either absent or listed in KNOWN_OPEN, 1
 otherwise. KNOWN_OPEN items print as OPEN with a reference; INFO lines
@@ -28,6 +30,8 @@ from datetime import date
 from pathlib import Path
 
 import jsonschema
+
+from generate_checksums import collect_files, sha256_of  # same directory
 
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = json.loads((ROOT / "schema.json").read_text())
@@ -275,6 +279,19 @@ for e in BUILT:
     for h in e["holidays"]["generated"]:
         if not lo <= h["date"] <= hi:
             gap(f"{e['code']}: generated {h['date']} ({h['name']}) outside generation_range [{lo}, {hi}]")
+
+# --- 7. checksums.json ------------------------------------------------------
+print("\n== checksums.json ==")
+manifest = json.loads((ROOT / "checksums.json").read_text())["files"]
+expected = {str(p.relative_to(ROOT)): p for p in collect_files()}
+for rel in sorted(expected.keys() - manifest.keys()):
+    gap(f"checksums.json: no entry for {rel}")
+for rel in sorted(manifest.keys() - expected.keys()):
+    gap(f"checksums.json: entry for {rel} which is not a covered file")
+drift = [rel for rel, p in expected.items() if rel in manifest and sha256_of(p) != manifest[rel]]
+for rel in drift:
+    gap(f"checksums.json: hash mismatch for {rel}")
+print(f"entries: {len(manifest)}, covered files: {len(expected)}, drifted: {len(drift)}")
 
 print(f"\n{len(gaps)} gap(s), {len(known)} known-open")
 sys.exit(1 if gaps else 0)

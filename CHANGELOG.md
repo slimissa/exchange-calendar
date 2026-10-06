@@ -27,6 +27,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   table (`XISTFetcher` has been registered since v2.9.0); superseded
   early verdicts on XIST, XMUS, XNAI and XGSE are labelled as such.
 
+- `checksums.json` regenerated (it had drifted: 14 of 91 entries
+  verified) and is now gated: `validate.yml` runs
+  `tools/verify_checksums.py` after the freshness checks, and
+  `tools/schema_audit.py` fails on missing, extra or mismatched entries.
+
 ### Changed
 
 - `tools/generate_dates.py` clips generated dates to the exchange
