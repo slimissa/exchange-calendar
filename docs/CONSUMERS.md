@@ -28,7 +28,7 @@ CI on every push.**
 |----------|------|------------------|-------------|----------------|
 | **Tempus** | sibling compiler | `calendar.json`, bundled at build | `sessions`, `confidence`, `as_of`, MICs | schema minor bump |
 | **LAS_Shell** | sibling runtime | `calendar.json`, bundled at build | `sessions`, `is_open`, `holidays.explicit`, MICs | schema minor bump |
-| **ISO 10383** | sibling registry | none — references EC in its `docs/JOINS.md` | MIC cross-check (EC → 10383) | schema major bump or MIC coverage change |
+| **ISO 10383** | sibling registry | none — references EC in its `docs/JOINS.md`; MIC→LEI connector declined (ADR 0011) | MIC cross-check (EC → 10383) | schema major bump or MIC coverage change |
 | **ISO 3166** | sibling registry | none — EC vendors *its* snapshot | country cross-check (EC → 3166) | upstream registry release |
 | **ISO 4217** | sibling registry | none — no direct edge today | — | — |
 

@@ -457,6 +457,29 @@ contract with nothing to enforce.
 
 The `--audit` mode in `check_release_claims.py` runs every claim
 against the current tree. Verify new claims before committing them.
+
+### 7. Grep for the name after every symbol removal
+
+When a commit deletes a class, function, constant or module-level
+name, `grep -rn` for that name across the whole tree before the
+commit, and again after it. Delete every import and reference the
+grep finds, in the same commit. Passing tests on the file you edited
+do not show that nothing else imports the name.
+
+Two instances, both in the fetcher track:
+
+- v2.12.3 — `tests/test_athens_holidays.py` still imported
+  `EuronextAthensFetcher` after the fetcher was removed. Dropped in
+  `a59aee4`.
+- v2.12.4 — `tests/test_bangkok_holidays.py` still imported
+  `SETFetcher` after the same kind of removal. Dropped in `cdc14ae`.
+
+Each was caught after the release commit, not before it. The fetcher
+track is closed, so that specific failure will not recur, but the
+rule applies to any file that defines or imports names: fetchers,
+helpers, test fixtures, class definitions in wrappers. The command is
+`grep -rn '\bName\b' .` from the repo root, and an empty result
+outside the removal itself is the evidence.
 ---
 
 ## The mojibake self-trigger rule
@@ -627,3 +650,4 @@ The gate is a superset of CI, or it isn't a gate.
   valid; the brace group as invalid. Sourced from ISO 3166 v1.6.6
   and confirmed against ISO 4217's per-check capture shape.
 - 2026-09-29 — reviewed by Exchange Calendar. Reviewer entry added; step 6 names Exchange Calendar's `scripts/release.sh` as the reference for the multi-workflow poll shape. Sourced from `slimissa/exchange-calendar` `scripts/release.sh`.
+- 2026-10-05 — post-review addition: operator-hygiene rule 7 ("Grep for the name after every symbol removal"), sourced from Exchange Calendar v2.12.3 and v2.12.4.

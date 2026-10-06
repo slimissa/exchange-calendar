@@ -14,10 +14,101 @@
 > and the equity PDF contains only Turkish closures. **XBUD**
 > blocked at v2.9.1 with in-window removals that resolved to a
 > parser gap for Hungarian substitute Mondays. **XPHS** was
-> RESOLVED at 2026-09-19 marked RESOLVED on a network-path probe; re-testing on 2026-10-04
-> found robots.txt disallows the same path, and the verdict was
-> corrected to BLOCKED (robots.txt).
+> marked RESOLVED on 2026-09-19 on the strength of a network-path probe;
+> re-testing on 2026-10-04 found that robots.txt disallows the same
+> path, and the verdict was corrected to BLOCKED (robots.txt).
 
+
+**Summary of all 74 registry exchanges.** One row per exchange in
+`exchanges/`; the sections below give the evidence for every row not
+marked `built`.
+
+- **built** — a calendar exists and no unresolved block is recorded.
+  Four of these (XBUD, XDFM, XGSE, XSTC) have a section below because a
+  fetcher exists and its health or one date needs tracking.
+- **blocked** — the source cannot be fetched automatically (bot wall,
+  dead URL, robots.txt, visual-grid PDF, no endpoint). The calendar
+  itself is maintained by hand.
+- **CI-unreachable** — reachable from a residential IP but not from CI;
+  not a permanent block.
+- **resolved** — was blocked, no longer is.
+
+| Code | Exchange | State |
+|------|----------|-------|
+| DSMD | Qatar Stock Exchange | blocked |
+| XAMS | Euronext Amsterdam | built |
+| XASX | Australian Securities Exchange | built |
+| XATH | Athens Stock Exchange | blocked |
+| XBAH | Bahrain Bourse | blocked |
+| XBDA | Bermuda Stock Exchange | built |
+| XBEY | Beirut Stock Exchange | blocked |
+| XBKK | Stock Exchange of Thailand | blocked |
+| XBOG | Colombia Stock Exchange | blocked |
+| XBOM | Bombay Stock Exchange | blocked |
+| XBRU | Euronext Brussels | built |
+| XBRV | BRVM (West Africa Regional Stock Exchange) | built |
+| XBSP | B3 (São Paulo Stock Exchange) | built |
+| XBUD | Budapest Stock Exchange | built |
+| XBUE | Buenos Aires Stock Exchange | built |
+| XBUL | Bulgarian Stock Exchange | blocked |
+| XCAI | Egyptian Exchange | blocked |
+| XCAS | Casablanca Stock Exchange | blocked |
+| XCAY | Cayman Islands Stock Exchange | built |
+| XCOL | Colombo Stock Exchange | built |
+| XCSE | Nasdaq Copenhagen | built |
+| XDFM | Dubai Financial Market | built |
+| XDHA | Dhaka Stock Exchange | blocked |
+| XDUB | Euronext Dublin | built |
+| XETR | Deutsche Börse | built |
+| XGSE | Ghana Stock Exchange | built |
+| XHEL | Nasdaq Helsinki | built |
+| XHKG | Hong Kong Exchange | resolved |
+| XICE | Nasdaq Iceland | built |
+| XIST | Borsa Istanbul | blocked |
+| XJKT | Indonesia Stock Exchange | blocked |
+| XJSE | Johannesburg Stock Exchange | blocked |
+| XKAR | Pakistan Stock Exchange | blocked |
+| XKLS | Bursa Malaysia | blocked |
+| XKRX | Korea Exchange | blocked |
+| XKUW | Bursa Kuwait | blocked |
+| XLIM | Lima Stock Exchange | blocked |
+| XLIS | Euronext Lisbon | built |
+| XLIT | Nasdaq Vilnius | built |
+| XLON | London Stock Exchange | built |
+| XLUX | Luxembourg Stock Exchange | built |
+| XMAD | Bolsa de Madrid | built |
+| XMAL | Malta Stock Exchange | built |
+| XMEX | Mexican Stock Exchange | built |
+| XMOS | Moscow Exchange | built |
+| XMUS | Muscat Stock Exchange | blocked |
+| XNAI | Nairobi Securities Exchange | blocked |
+| XNAS | NASDAQ | built |
+| XNSA | Nigerian Stock Exchange | CI-unreachable |
+| XNSE | National Stock Exchange of India | blocked |
+| XNYS | New York Stock Exchange | built |
+| XNZE | New Zealand Exchange | blocked |
+| XOSL | Oslo Børs | built |
+| XPAR | Euronext Paris | built |
+| XPHS | Philippine Stock Exchange | blocked |
+| XPRA | Prague Stock Exchange | built |
+| XRIS | Nasdaq Riga | built |
+| XSAU | Saudi Stock Exchange (Tadawul) | blocked |
+| XSES | Singapore Exchange | blocked |
+| XSGO | Santiago Stock Exchange | blocked |
+| XSHE | Shenzhen Stock Exchange | built |
+| XSHG | Shanghai Stock Exchange | CI-unreachable |
+| XSTC | Ho Chi Minh Stock Exchange | built |
+| XSTO | Nasdaq Stockholm | built |
+| XSWX | SIX Swiss Exchange | blocked |
+| XTAD | Abu Dhabi Securities Exchange | blocked |
+| XTAI | Taiwan Stock Exchange | blocked |
+| XTAL | Nasdaq Tallinn | built |
+| XTKS | Tokyo Stock Exchange | built |
+| XTSE | Toronto Stock Exchange | built |
+| XTUN | Tunis Stock Exchange | blocked |
+| XWAR | Warsaw Stock Exchange | built |
+| XWBO | Vienna Stock Exchange | built |
+| XZAG | Zagreb Stock Exchange | built |
 
 **Last-verified dates.** Each section below carries a **Last verified**
 line recording the date its verdict was last actually checked (fetched,
@@ -29,9 +120,6 @@ than guessed. It should be updated any time a verdict is re-checked,
 whether the verdict changes or not — a re-check that confirms the
 existing verdict still bumps the date; a section that is only reworded
 without re-testing the underlying source should not.
-
-**Tier 1 update 2026-08-27: XHKG is no longer blocked.** See "Resolved"
-section below.
 
 **Tier 2 (regional hubs) update 2026-08-27:** 7 of 10 Tier 2 exchanges
 checked are blocked (XSES, XSWX, XKRX, XBOM, XNSE, XJKT, XTAI). Only XTSE,
@@ -183,9 +271,6 @@ wrong without the reasoning behind it.
   confirmed member of the class ADR 0009 named. Parsing would
   require color/fill detection on the PDF cells, which is outside
   the current fetcher framework's scope. Permanent block.
-
-
-- **Verdict:** This is the first confirmed member of the visual-grid PDF class named in ADR 0009. Permanent block.
 
 ## XBOM — BSE India (Bombay Stock Exchange)
 
