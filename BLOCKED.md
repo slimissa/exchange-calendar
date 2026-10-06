@@ -64,7 +64,7 @@ marked `built`.
 | XHEL | Nasdaq Helsinki | built |
 | XHKG | Hong Kong Exchange | resolved |
 | XICE | Nasdaq Iceland | built |
-| XIST | Borsa Istanbul | blocked |
+| XIST | Borsa Istanbul | resolved |
 | XJKT | Indonesia Stock Exchange | blocked |
 | XJSE | Johannesburg Stock Exchange | blocked |
 | XKAR | Pakistan Stock Exchange | blocked |
@@ -491,7 +491,7 @@ wrong without the reasoning behind it.
 
 ## XIST — Borsa Istanbul
 
-**Last verified:** 2026-09-04
+**Last verified:** 2026-10-01
 
 - **Checked:** the real 2026 holiday-schedule PDF, linked from
   borsaistanbul.com's official-holidays page — fetched successfully (not
@@ -508,7 +508,7 @@ wrong without the reasoning behind it.
   "May 29 Friday, May 30 Saturday, May 28 Thursday") -- a strong signal that
   pdfplumber's plain text extraction is interleaving this PDF's multi-column
   layout incorrectly.
-- **Verdict:** NOT BUILT. This is a genuine "verified accessible with real
+- **Verdict (superseded 2026-10-01, see Resolution):** NOT BUILT. This is a genuine "verified accessible with real
   data" case that was deliberately left unbuilt rather than risk shipping a
   parser against text I could already see was corrupted. `pdfplumber`'s
   structured `extract_table()` method (rather than plain `extract_text()`)
@@ -534,6 +534,15 @@ wrong without the reasoning behind it.
   environment's network access changes) rather than re-checked again every
   round -- repeating an unchanged structural block each round wastes effort
   without producing new information.
+- **Resolution 2026-10-01 (v2.9.0):** re-read the source with network
+  access. The site publishes one PDF per market segment, not four tables
+  in one file; the equity PDF is separate and lists only Turkish
+  closures, so the US-holiday template error and the out-of-order dates
+  described above did not apply to it. `XISTFetcher` was built on
+  `pdfplumber.extract_text()` and registered, and `fetcher_manifest.json`
+  carries its fetch. The 2026 confidence entry is `source: fetcher`,
+  `level: high`, `last_verified: 2026-10-01`. The notes above are kept
+  as history; the permanent deferral in the last bullet no longer holds.
 
 ## XMUS — Muscat Securities Market (MSX, formerly MSM)
 
@@ -545,7 +554,7 @@ wrong without the reasoning behind it.
   budget spent. This is NOT the same as "confirmed blocked" — it means the
   right page (if one exists) wasn't located, not that a located page failed
   verification.
-- **Verdict:** NOT VERIFIED. Worth another, more targeted search pass in a
+- **Verdict (superseded 2026-09-04, see Resolved below):** NOT VERIFIED. Worth another, more targeted search pass in a
   future round rather than being carried forward indefinitely as "blocked."
 - **Re-checked 2026-08-31 (Tier 5 "quick win" attempt):** searched again
   with a second, differently-worded query. Same result: only third-party
@@ -815,7 +824,7 @@ rather than deep-diving every exchange from scratch.
   be a directory of individual LISTED COMPANIES' corporate-events PDFs
   (dividends, AGMs), not the exchange's own trading-holiday calendar. The
   correct page was not located within this round's time budget.
-- **Verdict:** NOT VERIFIED -- genuinely open, not guessed at. A more
+- **Verdict (superseded 2026-09-06, see Resolved below):** NOT VERIFIED -- genuinely open, not guessed at. A more
   targeted search (or direct site-navigation, the approach that worked for
   XMUS in Tier 6) is the likely next step.
 - **Resolved 2026-09-06 (Tier 8):** checked 6 different nse.co.ke pages
@@ -841,7 +850,7 @@ rather than deep-diving every exchange from scratch.
 - **Checked:** gse.com.gh and gsewebportal.com; confirmed an "Events &
   Holidays" nav item exists but no direct URL with actual holiday data was
   located within this round's budget.
-- **Verdict:** NOT VERIFIED -- same caveat as XNAI.
+- **Verdict (superseded 2026-09-06, see Resolved below):** NOT VERIFIED -- same caveat as XNAI.
 - **Resolved 2026-09-06 (Tier 8):** fetched gse.com.gh's homepage directly
   (not via search) and found the exact nav link ("Events & Holidays" ->
   `gse.com.gh/events/`) in the real, static WordPress site's menu. That

@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   covering `predicted: false`, `predicted: true`, `weekend_exception`
   and an absent date, so a wrapper that drops a field fails the diff.
 
+- `BLOCKED.md`: XIST moves from `blocked` to `resolved` in the summary
+  table (`XISTFetcher` has been registered since v2.9.0); superseded
+  early verdicts on XIST, XMUS, XNAI and XGSE are labelled as such.
+
 ### Changed
 
 - `tools/generate_dates.py` clips generated dates to the exchange
