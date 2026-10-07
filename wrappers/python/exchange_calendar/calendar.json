@@ -6486,9 +6486,9 @@
             "status": "closed"
           },
           {
-            "date": "2025-07-23",
+            "date": "2025-07-24",
             "name": "Revolution Day (Jul 23)",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+            "source_url": "https://m.mondovisione.com/news/23rd-of-july-revolution-holiday-at-egx-2025722",
             "status": "closed"
           },
           {
@@ -6499,9 +6499,9 @@
             "status": "closed"
           },
           {
-            "date": "2025-10-06",
+            "date": "2025-10-09",
             "name": "Armed Forces Day",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+            "source_url": "https://en.amwalalghad.com/?p=219901",
             "status": "closed"
           },
           {
@@ -6511,9 +6511,9 @@
             "status": "closed"
           },
           {
-            "date": "2026-01-25",
+            "date": "2026-01-29",
             "name": "Revolution Day (Jan 25)",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+            "source_url": "https://www.cairo.gov.eg/en/news/news-eng/2026/bd6a361fe04f4d268157c39e3103c96d",
             "status": "closed"
           },
           {
@@ -6523,20 +6523,14 @@
             "status": "closed"
           },
           {
-            "date": "2026-10-06",
+            "date": "2026-10-08",
             "name": "Armed Forces Day",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+            "source_url": "https://arabfinance.com/en/news/newdetails/madbouly-declares-october-8-public-holiday-for-armed-forces-day",
             "status": "closed"
           },
           {
             "date": "2027-01-07",
             "name": "Coptic Christmas",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "status": "closed"
-          },
-          {
-            "date": "2027-01-25",
-            "name": "Revolution Day (Jan 25)",
             "source_url": "https://www.egx.com.eg/en/trading-calendar/",
             "status": "closed"
           },
@@ -6558,12 +6552,6 @@
             "date": "2027-03-11",
             "name": "Eid al-Fitr Holiday (predicted)",
             "predicted": true,
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "status": "closed"
-          },
-          {
-            "date": "2027-04-25",
-            "name": "Sinai Liberation Day",
             "source_url": "https://www.egx.com.eg/en/trading-calendar/",
             "status": "closed"
           },
@@ -6596,27 +6584,9 @@
             "status": "closed"
           },
           {
-            "date": "2027-10-06",
-            "name": "Armed Forces Day",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "status": "closed"
-          },
-          {
-            "date": "2028-01-25",
-            "name": "Revolution Day (Jan 25)",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "status": "closed"
-          },
-          {
             "date": "2028-02-27",
             "name": "Eid al-Fitr Holiday (predicted)",
             "predicted": true,
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "status": "closed"
-          },
-          {
-            "date": "2028-04-25",
-            "name": "Sinai Liberation Day",
             "source_url": "https://www.egx.com.eg/en/trading-calendar/",
             "status": "closed"
           },
@@ -6637,18 +6607,6 @@
             "date": "2028-05-25",
             "name": "Islamic New Year (predicted)",
             "predicted": true,
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "status": "closed"
-          },
-          {
-            "date": "2028-07-23",
-            "name": "Revolution Day (Jul 23)",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "status": "closed"
-          },
-          {
-            "date": "2028-10-08",
-            "name": "Armed Forces Day (observed)",
             "source_url": "https://www.egx.com.eg/en/trading-calendar/",
             "status": "closed"
           },
@@ -6706,12 +6664,6 @@
             "status": "closed"
           },
           {
-            "date": "2029-07-23",
-            "name": "Revolution Day (Jul 23)",
-            "source_url": "https://www.egx.com.eg/en/trading-calendar/",
-            "status": "closed"
-          },
-          {
             "date": "2029-07-24",
             "name": "Prophet's Birthday (predicted)",
             "predicted": true,
@@ -6721,38 +6673,58 @@
         ],
         "generated": [
           {
-            "date": "2025-01-26",
+            "date": "2025-04-24",
+            "name": "Sinai Liberation Day",
+            "status": "closed"
+          },
+          {
+            "date": "2027-01-28",
             "name": "Revolution Day (Jan 25)",
             "status": "closed"
           },
           {
-            "date": "2025-04-27",
+            "date": "2027-04-29",
             "name": "Sinai Liberation Day",
             "status": "closed"
           },
           {
-            "date": "2026-04-26",
-            "name": "Sinai Liberation Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-05-03",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-02",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-07-25",
+            "date": "2027-07-22",
             "name": "Revolution Day (Jul 23)",
+            "status": "closed"
+          },
+          {
+            "date": "2027-10-07",
+            "name": "Armed Forces Day",
             "status": "closed"
           },
           {
             "date": "2028-01-09",
             "name": "Coptic Christmas",
+            "status": "closed"
+          },
+          {
+            "date": "2028-01-27",
+            "name": "Revolution Day (Jan 25)",
+            "status": "closed"
+          },
+          {
+            "date": "2028-04-27",
+            "name": "Sinai Liberation Day",
+            "status": "closed"
+          },
+          {
+            "date": "2028-07-27",
+            "name": "Revolution Day (Jul 23)",
+            "status": "closed"
+          },
+          {
+            "date": "2028-10-05",
+            "name": "Armed Forces Day",
+            "status": "closed"
+          },
+          {
+            "date": "2029-04-26",
+            "name": "Sinai Liberation Day",
             "status": "closed"
           }
         ]

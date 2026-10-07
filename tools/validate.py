@@ -36,7 +36,7 @@ except ImportError:
 
 WEEKDAYS = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}
 VALID_STATUSES = {"closed", "early_close", "delayed_open", "special_session"}
-VALID_RULES = {"fixed_date", "fixed_with_weekend_adjustment", "nth_weekday", "last_weekday", "easter_offset"}
+VALID_RULES = {"fixed_date", "fixed_with_weekend_adjustment", "fixed_with_thursday_observance", "nth_weekday", "last_weekday", "easter_offset"}
 VALID_TIMEZONE_PREFIXES = {"Africa", "America", "Antarctica", "Arctic", "Asia", "Atlantic", "Australia", "Europe", "Indian", "Pacific", "Etc", "UTC", "GMT"}
 
 

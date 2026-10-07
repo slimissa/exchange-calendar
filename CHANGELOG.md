@@ -29,6 +29,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   informational CI job no longer calls them "permanently blocked". Both
   fetchers remain registered.
 
+- XCAI: Egypt moves mid-week national holidays to Thursday, so the
+  forward-to-Sunday dates generated for XCAI were wrong. New rule
+  `fixed_with_thursday_observance` (Friday goes back to Thursday,
+  Sunday to Wednesday go forward to Thursday, Saturday stays) now covers
+  Revolution Day (Jan 25, Jul 23), Sinai Liberation Day and Armed Forces
+  Day; Labour Day is `fixed_date` (exempt). Four explicit dates were
+  corrected to what EGX and the government observed: 2025-07-23 to
+  2025-07-24, 2025-10-06 to 2025-10-09, 2026-01-25 to 2026-01-29,
+  2026-10-06 to 2026-10-08. Seven unsourced future entries at the nominal
+  date (2027-2029) and one Sunday substitute (2028-10-08) were removed
+  so the rule generates them. The four suspect dates from the weekend
+  fix (2025-01-26, 2025-04-27, 2026-04-26, 2026-05-03) are gone;
+  2025-04-24 is generated, matching the EGX notice.
+- `schema.json` and `tools/validate.py` accept
+  `fixed_with_thursday_observance` (additive).
+
 ### Changed
 
 - `tools/generate_dates.py`: `adjust_weekend` and

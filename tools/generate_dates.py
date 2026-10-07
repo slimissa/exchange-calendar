@@ -6,6 +6,7 @@ Expands recurrence rules from an exchange calendar file into explicit dated holi
 
 Rules supported:
     fixed_date                     — Same date every year, no weekend adjustment
+    fixed_with_thursday_observance — Fixed date observed on a Thursday (Egypt, see observe_thursday)
     fixed_with_weekend_adjustment  — Fixed date; on a Sat/Sun-weekend exchange Saturday -> Friday,
                                      Sunday -> Monday; on any other weekend (Fri/Sat) a date on a
                                      weekend day moves forward to the next trading day
@@ -105,6 +106,37 @@ def adjust_weekend(d: date, rule: str, weekend_days=(5, 6)) -> date:
     return d
 
 
+def observe_thursday(d: date) -> date:
+    """
+    Egypt's Thursday observance for fixed-date national holidays.
+
+    Since 2020 the Egyptian government has moved national holidays that fall
+    mid-week to Thursday (Eid al-Fitr, Eid al-Adha, Coptic Christmas and Labour
+    Day are excluded and use other rules). EGX follows each decree.
+
+        Thursday          stays
+        Friday            -> preceding Thursday  (Sinai Liberation Day 2025-04-25
+                             observed 2025-04-24)
+        Saturday          stays; it is a weekend day, so nothing is generated
+                             (Revolution Day 2025-01-25, Sinai Liberation Day
+                             2026-04-25: observed on the Saturday itself)
+        Sunday-Wednesday  -> following Thursday (Revolution Day 2025-07-23
+                             observed 2025-07-24; Armed Forces Day 2025-10-06
+                             observed 2025-10-09; Revolution Day 2026-01-25
+                             observed 2026-01-29)
+
+    Sources: EGX trading-holiday notices and the Prime Minister's decrees; see
+    BLOCKED.md, XCAI. The rule applies from 2025: in 2024 a Sunday holiday
+    stayed on the Sunday.
+    """
+    wd = d.weekday()
+    if wd == 4:
+        return d - timedelta(days=1)
+    if wd in (0, 1, 2, 6):
+        return d + timedelta(days=(3 - wd) % 7)
+    return d
+
+
 def nth_weekday(year: int, month: int, weekday_name: str, n: int) -> date:
     """
     Return the date of the nth occurrence of a weekday in a month.
@@ -194,6 +226,13 @@ def generate_dates_for_rule(rule: dict, year: int, weekend_days=(5, 6)) -> date:
             raise ValueError(f"fixed_with_weekend_adjustment rule missing month or day: {rule}")
         d = date(year, month, day)
         return adjust_weekend(d, rule_type, weekend_days)
+
+    elif rule_type == "fixed_with_thursday_observance":
+        month = rule.get("month")
+        day = rule.get("day")
+        if month is None or day is None:
+            raise ValueError(f"fixed_with_thursday_observance rule missing month or day: {rule}")
+        return observe_thursday(date(year, month, day))
 
     elif rule_type == "nth_weekday":
         month = rule.get("month")

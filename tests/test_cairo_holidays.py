@@ -95,6 +95,15 @@ class TestXCAIProperties:
         assert xcai.get("ad_hoc_closures", []) == []
 
 
+# Thursday-observance dates whose source is the notice or decree that moved them.
+OBSERVANCE_NOTICES = {
+    "2025-07-24": "https://m.mondovisione.com/news/23rd-of-july-revolution-holiday-at-egx-2025722",
+    "2025-10-09": "https://en.amwalalghad.com/?p=219901",
+    "2026-01-29": "https://www.cairo.gov.eg/en/news/news-eng/2026/bd6a361fe04f4d268157c39e3103c96d",
+    "2026-10-08": "https://arabfinance.com/en/news/newdetails/madbouly-declares-october-8-public-holiday-for-armed-forces-day",
+}
+
+
 # ──────────────────────────────────────────────────────────────
 # Fixed holidays
 # ──────────────────────────────────────────────────────────────
@@ -114,8 +123,9 @@ class TestXCAIFixedHolidays:
         assert "2025-01-25" not in explicit_dates
 
     def test_revolution_day_jan_2026(self, explicit_dates):
-        """Jan 25, 2026 is Sunday — no substitution."""
-        assert "2026-01-25" in explicit_dates
+        """Jan 25, 2026 is Sunday — observed Thursday Jan 29 by decree."""
+        assert "2026-01-25" not in explicit_dates
+        assert explicit_dates["2026-01-29"]["name"] == "Revolution Day (Jan 25)"
 
     def test_sinai_liberation_2025_weekend(self, explicit_dates):
         """Apr 25, 2025 is Friday (weekend) — no explicit entry."""
@@ -135,24 +145,25 @@ class TestXCAIFixedHolidays:
         assert "2027-05-01" not in explicit_dates
 
     def test_revolution_day_jul_2025(self, explicit_dates):
-        """Jul 23, 2025 is Wednesday — no substitution."""
-        assert "2025-07-23" in explicit_dates
-        assert explicit_dates["2025-07-23"]["name"] == "Revolution Day (Jul 23)"
+        """Jul 23, 2025 is Wednesday — EGX observed Thursday Jul 24."""
+        assert "2025-07-23" not in explicit_dates
+        assert explicit_dates["2025-07-24"]["name"] == "Revolution Day (Jul 23)"
 
     def test_revolution_day_jul_2028(self, explicit_dates):
-        """Jul 23, 2028 is Sunday — no substitution."""
-        assert "2028-07-23" in explicit_dates
+        """Jul 23, 2028 is Sunday — no explicit entry; the rule generates
+        Thursday Jul 27 (see TestXCAIThursdayObservance)."""
+        assert "2028-07-23" not in explicit_dates
 
     def test_armed_forces_day_2025(self, explicit_dates):
-        """Oct 6, 2025 is Monday — no substitution."""
-        assert "2025-10-06" in explicit_dates
-        assert explicit_dates["2025-10-06"]["name"] == "Armed Forces Day"
+        """Oct 6, 2025 is Monday — EGX observed Thursday Oct 9."""
+        assert "2025-10-06" not in explicit_dates
+        assert explicit_dates["2025-10-09"]["name"] == "Armed Forces Day"
 
-    def test_armed_forces_day_2028_substitute(self, explicit_dates):
-        """Oct 6, 2028 is Friday (weekend) — substitute to Sunday Oct 8."""
+    def test_armed_forces_day_2028_not_sunday(self, explicit_dates):
+        """Oct 6, 2028 is Friday — observed the preceding Thursday (Oct 5,
+        generated), never the following Sunday."""
         assert "2028-10-06" not in explicit_dates
-        assert "2028-10-08" in explicit_dates
-        assert "Armed Forces Day" in explicit_dates["2028-10-08"]["name"]
+        assert "2028-10-08" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -308,10 +319,19 @@ class TestXCAIRecurrence:
             assert "Islamic" not in name
             assert "Prophet" not in name
 
-    def test_weekend_adjustment_rules(self, recurrence_rules):
-        for name in recurrence_rules.keys():
-            rule = recurrence_rules[name]
-            assert rule["rule"] == "fixed_with_weekend_adjustment"
+    def test_rule_types_follow_egypt_observance(self, recurrence_rules):
+        """National days move to Thursday; Coptic Christmas (Saturday ->
+        Sunday precedent) and Labour Day are exempt from the Thursday rule."""
+        thursday = {"Revolution Day (Jan 25)", "Sinai Liberation Day",
+                    "Revolution Day (Jul 23)", "Armed Forces Day"}
+        for name, rule in recurrence_rules.items():
+            if name in thursday:
+                assert rule["rule"] == "fixed_with_thursday_observance", name
+            elif name == "Labour Day":
+                assert rule["rule"] == "fixed_date"
+            else:
+                assert name == "Coptic Christmas"
+                assert rule["rule"] == "fixed_with_weekend_adjustment"
 
     def test_all_rules_closed_status(self, recurrence_rules):
         for name, rule in recurrence_rules.items():
@@ -368,6 +388,9 @@ class TestXCAIStructure:
         for date_str, entry in explicit_dates.items():
             if "dar-alifta.org" in entry["source_url"]:
                 continue
+            if date_str in OBSERVANCE_NOTICES:
+                assert entry["source_url"] == OBSERVANCE_NOTICES[date_str]
+                continue
             assert "egx.com.eg" in entry["source_url"], \
                 f"{date_str}: unexpected source_url {entry['source_url']}"
 
@@ -406,3 +429,42 @@ class TestXCAISubstitution:
             name = entry["name"].lower()
             if "observed" in name or "substitute" in name:
                 assert "observed" in name or "substitute" in name
+
+
+# ──────────────────────────────────────────────────────────────
+# Thursday observance (Egypt, since 2020; applied from 2025)
+# ──────────────────────────────────────────────────────────────
+
+class TestXCAIThursdayObservance:
+    """Pins the direction: Friday goes BACK to Thursday, Sun-Wed go FORWARD
+    to Thursday, Saturday stays. Never forward to Sunday."""
+
+    @pytest.fixture(scope="class")
+    def built_dates(self):
+        root = Path(__file__).resolve().parent.parent
+        built = json.loads((root / "calendar.json").read_text())["exchanges"]
+        e = next(x for x in built if x["code"] == "XCAI")
+        return {h["date"]: h["name"]
+                for k in ("explicit", "generated") for h in e["holidays"][k]}
+
+    def test_friday_sinai_2025_moves_back_to_thursday(self, built_dates):
+        """EGX notice: Thursday Apr 24 instead of Friday Apr 25, 2025."""
+        assert built_dates["2025-04-24"] == "Sinai Liberation Day"
+        assert "2025-04-27" not in built_dates
+
+    def test_saturday_holidays_are_not_moved_to_sunday(self, built_dates):
+        for d in ("2025-01-26", "2026-04-26"):
+            assert d not in built_dates, d
+
+    def test_labour_day_2026_friday_is_not_moved(self, built_dates):
+        """Labour Day is exempt from the Thursday move."""
+        assert "2026-05-03" not in built_dates
+        assert "2026-04-30" not in built_dates
+
+    def test_midweek_moves_forward_to_thursday(self, built_dates):
+        assert built_dates["2027-01-28"] == "Revolution Day (Jan 25)"  # Monday
+        assert built_dates["2028-07-27"] == "Revolution Day (Jul 23)"  # Sunday
+        assert built_dates["2027-10-07"] == "Armed Forces Day"         # Wednesday
+
+    def test_friday_2028_armed_forces_day_moves_back(self, built_dates):
+        assert built_dates["2028-10-05"] == "Armed Forces Day"

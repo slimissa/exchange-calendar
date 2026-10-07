@@ -442,7 +442,7 @@ wrong without the reasoning behind it.
 
 ## XCAI — Egyptian Exchange (EGX)
 
-**Last verified:** 2026-08-29
+**Last verified:** 2026-10-07
 
 - **Checked:** egx.com.eg/en/Trading_Calendar.aspx
 - **Finding:** real, static, first-party HTML — but the page only serves
@@ -452,6 +452,23 @@ wrong without the reasoning behind it.
   reverse-engineering the postback/viewstate mechanism. Building against
   stale data would be actively worse than no fetcher at all.
 - **Verdict:** BLOCKED (data staleness, not inaccessibility).
+- **Observance (2026-10-07):** the calendar is hand-maintained from EGX
+  and government notices. National holidays use
+  `fixed_with_thursday_observance` (see `docs/recurrence_rules.md`);
+  Labour Day is not moved; Coptic Christmas moves a weekend date to the
+  following Sunday (EGX, Saturday 2023-01-07 observed Sunday 2023-01-08).
+  Sources: EGX notices via mondovisione.com (2025-07-24, 2025-07-03) and
+  Amwal Al Ghad (2025-04-24, 2025-10-09); government decrees via
+  cairo.gov.eg and arabfinance.com (2026-01-29, 2026-10-08). The EGX site
+  itself could not be read from this environment, so each source is a
+  mirror or press report of the notice, not the notice on egx.com.eg.
+- **Unverified:** Coptic Christmas on a Friday (2028-01-07, generated
+  2028-01-09 Sunday) has no precedent found. Labour Day on a Friday
+  (2026-05-01) was taken as unmoved from the government's stated
+  exemption (arabfinance, 2026-09-30); no EGX notice was found for it.
+- **Not yet in the registry:** June 30 Revolution Day. EGX closed Thu
+  2025-07-03 for it (notice via mondovisione.com); no recurrence rule
+  exists for it.
 
 ## XJSE — Johannesburg Stock Exchange (JSE)
 

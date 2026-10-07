@@ -42,6 +42,7 @@ range. They are **generation convenience** — never the primary source of truth
 |------|-------------|---------|
 | `fixed_date` | Same date every year, no shift | Dec 25 (Germany) |
 | `fixed_with_weekend_adjustment` | Same date, shifts from weekends | Jan 1 (US) |
+| `fixed_with_thursday_observance` | Same date, moved to a Thursday (Egypt) | Revolution Day (Jan 25) |
 | `nth_weekday` | Nth weekday of a month | 3rd Monday Jan (MLK) |
 | `last_weekday` | Last weekday of a month | Last Monday May (Memorial) |
 | `easter_offset` | Days relative to Easter Sunday | Good Friday (-2) |
@@ -109,6 +110,41 @@ Same date every year. Saturday→Friday, Sunday→Monday.
 | 2026 | Saturday | Friday July 3 |
 | 2027 | Sunday | Monday July 5 |
 | 2028 | Tuesday | Tuesday July 4 |
+
+---
+
+### `fixed_with_thursday_observance`
+
+Egypt. Since 2020 the government has moved national holidays that fall
+mid-week to Thursday, by decree each time, and EGX follows. Religious
+holidays (Eid al-Fitr, Eid al-Adha, Coptic Christmas) and Labour Day are
+excluded, so they use `fixed_with_weekend_adjustment` or `fixed_date`.
+
+| Date falls on | Observed |
+|---------------|----------|
+| Thursday | the date itself |
+| Friday | preceding Thursday |
+| Saturday | not moved; a weekend day, so nothing is generated |
+| Sunday to Wednesday | following Thursday |
+
+```json
+{
+  "rule": "fixed_with_thursday_observance",
+  "month": 4,
+  "day": 25,
+  "name": "Sinai Liberation Day",
+  "status": "closed"
+}
+```
+
+Verified against EGX and government notices: Sinai Liberation Day Fri
+2025-04-25 observed Thu 2025-04-24; Revolution Day Wed 2025-07-23 observed
+Thu 2025-07-24; Armed Forces Day Mon 2025-10-06 observed Thu 2025-10-09;
+Revolution Day Sun 2026-01-25 observed Thu 2026-01-29; Armed Forces Day
+Tue 2026-10-06 observed Thu 2026-10-08. Saturday dates (2025-01-25,
+2026-04-25) were observed on the Saturday. Applies from 2025: in 2024 a
+Sunday holiday stayed on the Sunday. The rule predicts the usual decree;
+a decree that departs from it is entered as an explicit date.
 
 ---
 

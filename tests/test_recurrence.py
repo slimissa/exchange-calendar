@@ -26,6 +26,7 @@ TOOLS_DIR = Path(__file__).parent.parent / "tools"
 sys.path.insert(0, str(TOOLS_DIR))
 
 from generate_dates import (
+    observe_thursday,
     easter_sunday,
     adjust_weekend,
     nth_weekday,
@@ -502,3 +503,37 @@ class TestWeekendDays:
     def test_adjusted_rule_on_fri_sat_exchange_lands_on_sunday(self):
         rule = {"rule": "fixed_with_weekend_adjustment", "month": 1, "day": 1, "name": "NY", "status": "closed"}
         assert [h["date"] for h in expand_exchange(self._ex((4, 5), rule))] == ["2028-01-02"]
+
+
+class TestObserveThursday:
+    """Egypt's Thursday observance: pinned against EGX notices."""
+
+    def test_thursday_stays(self):
+        assert observe_thursday(date(2026, 7, 23)) == date(2026, 7, 23)
+
+    def test_friday_moves_back(self):
+        # Sinai Liberation Day 2025: Friday Apr 25 observed Thursday Apr 24.
+        assert observe_thursday(date(2025, 4, 25)) == date(2025, 4, 24)
+
+    def test_saturday_stays(self):
+        assert observe_thursday(date(2026, 4, 25)) == date(2026, 4, 25)
+
+    def test_sunday_moves_forward(self):
+        # Revolution Day 2026: Sunday Jan 25 observed Thursday Jan 29.
+        assert observe_thursday(date(2026, 1, 25)) == date(2026, 1, 29)
+
+    def test_monday_moves_forward(self):
+        # Armed Forces Day 2025: Monday Oct 6 observed Thursday Oct 9.
+        assert observe_thursday(date(2025, 10, 6)) == date(2025, 10, 9)
+
+    def test_wednesday_moves_forward(self):
+        # Revolution Day 2025: Wednesday Jul 23 observed Thursday Jul 24.
+        assert observe_thursday(date(2025, 7, 23)) == date(2025, 7, 24)
+
+    def test_rule_type_generates_thursday_and_skips_saturday(self):
+        rule = {"rule": "fixed_with_thursday_observance", "month": 4, "day": 25,
+                "name": "S", "status": "closed"}
+        ex = {"code": "T", "weekend_days": [4, 5],
+              "generation_range": ["2025-01-01", "2026-12-31"],
+              "holidays": {"explicit": [], "recurrence_rules": [rule]}}
+        assert [h["date"] for h in expand_exchange(ex)] == ["2025-04-24"]

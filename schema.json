@@ -367,6 +367,7 @@
                 "enum": [
                   "fixed_date",
                   "fixed_with_weekend_adjustment",
+            "fixed_with_thursday_observance",
                   "nth_weekday",
                   "last_weekday",
                   "easter_offset"
