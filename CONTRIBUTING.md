@@ -264,6 +264,7 @@ For Islamic weekend exchanges (7 exchanges: XSAU, DSMD, XBAH, XKUW, XMUS, XCAI, 
 | No substitutes | XETR, XSWX, XWBO, Nordic, Baltic, Poland, Czech |
 | Open on civil holidays | Euronext (XPAR, XAMS, XBRU, XLIS), XMAD |
 | Islamic weekend (Fri-Sat) | XSAU, DSMD, XBAH, XKUW, XMUS, XCAI, XDHA |
+| Thursday observance (Egypt) | XCAI (see `docs/recurrence_rules.md`) |
 | Western weekend despite Gulf region (Sat-Sun) | XDFM, XTAD (UAE moved to Sat-Sun in Jan 2022) |
 | Orthodox Easter | XATH, XBUL, XMOS |
 | Buddhist holidays | XBKK, XCOL |
@@ -312,6 +313,52 @@ have lunch breaks. Singapore and Korea do **NOT** (continuous trading).
 
 ---
 
+## Citing Sources for Holiday Dates
+
+Every holiday entry carries a `source_url`. This section says what may stand
+there. Before it existed the rule was one line ("official exchange source"),
+which did not cover an exchange site that cannot be read.
+
+### The hierarchy
+
+| Tier | Source | Use |
+|------|--------|-----|
+| 1. Primary | A notice issued by the exchange itself (its site, disclosure or circular), or the instrument that sets the holiday (gazette, cabinet or prime-minister decree on a government site) | Cite as verified |
+| 2. Mirrored primary | A republication of the exchange's notice by a wire or news-mirror site that names the exchange as issuer and gives the notice date, the closure date and the resume date | Cite as verified **only when tier 1 is unreachable**, and only with the evidence below |
+| 3. Secondary | A press report that paraphrases a notice, a central-bank or government announcement about other bodies (a bank closure does not by itself prove an exchange closure), a holiday-aggregator site, a holiday library | Never alone for a closure. Use it to find a candidate, then confirm with tier 1 or 2 |
+| 4. Prediction | A date derived from a rule or from a precedent, with no notice yet | Enter with `predicted: true` and the `(predicted)` name suffix; cite the precedent |
+
+A decree is tier 1 for the holiday and tier 3 for the exchange's closure
+unless the exchange announces it too. Where the two differ, the exchange wins.
+
+### What a mirror must carry
+
+A mirror counts as tier 2 only if all of these are visible on the page:
+
+- the exchange named as the issuer of the notice;
+- the date the notice was published;
+- the date the exchange closes and the date it resumes;
+- the notice reproduced, not summarised. A paraphrase is tier 3 even if it
+  says "the exchange announced".
+
+`source_url` points at the mirror. Do not cite a search result or an
+aggregator index page.
+
+### When the primary source cannot be reached
+
+- Cite the best tier you actually read. Do not write a URL you did not open.
+- Record the gap in `BLOCKED.md` under the exchange: what was read, which
+  tier it is, which source is still needed, and the query to find it.
+- Keep `Last verified` at the date you read the source, not the date of the
+  event.
+- Leave an unsourced name out. A guess is not a closure; an open item with a
+  named source is.
+
+Worked example: XCAI, whose site was unreachable. Its `BLOCKED.md` section
+lists each citation with its tier and the notices still needed.
+
+---
+
 ## Testing Statistics
 
 Current test counts:
@@ -343,6 +390,7 @@ Current test counts:
 - [ ] All 4,070+ tests pass
 - [ ] `calendar.json` rebuilt
 - [ ] Source URL provided for every holiday entry
+- [ ] Any non-primary citation has its tier and the missing primary source recorded in `BLOCKED.md`
 - [ ] No weekend dates (correct for exchange's weekend system)
 - [ ] No duplicate dates
 - [ ] CHANGELOG.md updated

@@ -464,6 +464,14 @@ wrong without the reasoning behind it.
   (2026-01-29, 2026-10-08, 2026-05-07). The EGX site itself could not be
   read from this environment, so each source is a mirror or press report
   of the notice, not the notice on egx.com.eg.
+- **Citation tiers (`CONTRIBUTING.md`, "Citing Sources for Holiday Dates"):**
+  2025-07-24 and 2025-07-03 are tier 2 (EGX notice reproduced on
+  mondovisione.com). 2025-04-24, 2025-10-09, 2022-01-06 and 2023-05-04
+  come from press reports quoting EGX (Amwal Al Ghad, Arab Finance): tier 3
+  until the EGX disclosure is read. 2026-01-29, 2026-10-08 and 2026-05-07
+  are tier 1 for the holiday (cabinet decree) and tier 3 for EGX's own
+  closure. **Source needed for all of these:** the EGX disclosures on
+  egx.com.eg, under its news and trading-calendar pages.
 - **Coptic Christmas on a Friday (resolved 2026-10-07):** EGX and banks
   closed Thu 2022-01-06 for Fri 2022-01-07 and resumed Sun 2022-01-09
   (Amwal Al Ghad). The Saturday case went the other way: Sat 2023-01-07
