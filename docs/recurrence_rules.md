@@ -117,8 +117,11 @@ Same date every year. Saturday→Friday, Sunday→Monday.
 
 Egypt. Since 2020 the government has moved national holidays that fall
 mid-week to Thursday, by decree each time, and EGX follows. Religious
-holidays (Eid al-Fitr, Eid al-Adha, Coptic Christmas) and Labour Day are
-excluded, so they use `fixed_with_weekend_adjustment` or `fixed_date`.
+holidays (Eid al-Fitr, Eid al-Adha, Coptic Christmas) are excluded. Labour
+Day is also moved by decree, but not to a predictable Thursday (Friday
+2026-05-01 went to Thursday 2026-05-07), so Labour Day and Coptic Christmas
+use `fixed_date` and their Friday or Saturday cases are entered as explicit
+dates from the notice.
 
 | Date falls on | Observed |
 |---------------|----------|

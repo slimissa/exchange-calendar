@@ -125,6 +125,12 @@
         "status": "closed"
       },
       {
+        "date": "2026-05-07",
+        "name": "Labour Day",
+        "source_url": "https://www.cairo.gov.eg/en/news/news-eng/2026/fda45a85d7f446c1b4cd55e0f8259f4e",
+        "status": "closed"
+      },
+      {
         "date": "2026-07-23",
         "name": "Revolution Day (Jul 23)",
         "source_url": "https://www.egx.com.eg/en/trading-calendar/",
@@ -189,6 +195,13 @@
         "name": "Prophet's Birthday (predicted)",
         "predicted": true,
         "source_url": "https://www.egx.com.eg/en/trading-calendar/",
+        "status": "closed"
+      },
+      {
+        "date": "2028-01-06",
+        "name": "Coptic Christmas (predicted)",
+        "predicted": true,
+        "source_url": "https://en.amwalalghad.com/?p=121383",
         "status": "closed"
       },
       {
@@ -284,7 +297,7 @@
         "day": 7,
         "month": 1,
         "name": "Coptic Christmas",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {

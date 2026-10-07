@@ -24,7 +24,7 @@ built.exchange.country: populated 74/74
 built.exchange.country_code: populated 74/74
 populated (5): regular 74, pre_market 30, auction 22, post_market 29, lunch_break 11
 reserved (1): ['halt']
-records checked: 4108
+records checked: 4109
 entries: 97, covered files: 97, drifted: 0
 0 gap(s), 0 known-open
 ```
@@ -34,14 +34,14 @@ entries: 97, covered files: 97, drifted: 0
 | Check | Result |
 |-------|--------|
 | All 74 source files validate against `schema.json` | Pass, 0 errors |
-| Every field populated on every exchange, or optional | Pass. Optional and partial: `extended_hours` 30/74, `confidence.note` 213/361, `early_close_time` 150/3,893, `delayed_open_time` 5/3,893, `predicted` 275/3,893, `weekend_exception` 2/3,893 |
+| Every field populated on every exchange, or optional | Pass. Optional and partial: `extended_hours` 30/74, `confidence.note` 213/361, `early_close_time` 150/3,895, `delayed_open_time` 5/3,895, `predicted` 276/3,895, `weekend_exception` 2/3,895 |
 | Enum values closed and documented | Pass. No data value outside any enum |
-| Times `HH:MM`, dates `YYYY-MM-DD` and real dates | Pass, 4,108 records checked |
+| Times `HH:MM`, dates `YYYY-MM-DD` and real dates | Pass, 4,109 records checked |
 | Nested arrays have one shape the wrappers agree on | Pass for data and for all four wrappers (see finding 3 below) |
 | `confidence`: year-string keys, `source`/`level`/`last_verified`, optional `note` | Pass, 361 entries |
 | Sessions coverage | Five of six types populated, one reserved (`halt`). See below |
 | `country` and `country_code` present in `calendar.json` | Pass, 74/74 (was 0/74 at audit time) |
-| No generated holiday on the exchange's own weekend | Pass, 0 of 67 (was 215 of 267) |
+| No generated holiday on the exchange's own weekend | Pass, 0 of 66 (was 215 of 267) |
 | `checksums.json` covers exactly the collected files, no drift | Pass, 97 entries, 97 covered, 0 drifted |
 
 ## Findings
@@ -70,7 +70,7 @@ entries: 97, covered files: 97, drifted: 0
    2029-07-24.** Resolved in v2.15.0: the generator clips to the range
    exactly.
 3. **Rust and Go `HolidayEntry` had no `predicted` or `weekend_exception`
-   field**, so both dropped them on deserialization (275 entries carry
+   field**, so both dropped them on deserialization (276 entries carry
    `predicted`, 2 carry `weekend_exception`). Resolved in v2.15.0: both
    structs carry the fields. The Python wrapper keeps entries as raw
    dicts and the JavaScript wrapper returns them as stored, so both
@@ -81,7 +81,7 @@ entries: 97, covered files: 97, drifted: 0
    `fixed_date` rules, which never shift, and the rest from
    `fixed_with_weekend_adjustment` on Friday/Saturday-weekend exchanges.
    Resolved in v2.15.0: the generator uses each exchange's
-   `weekend_days` and drops any generated weekend date, leaving 67
+   `weekend_days` and drops any generated weekend date, leaving 66
    generated entries. The same pass found XCAI's forward-to-Sunday
    observance wrong and replaced it with
    `fixed_with_thursday_observance`.

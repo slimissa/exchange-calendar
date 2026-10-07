@@ -27,11 +27,18 @@ release because it adds a schema field, a rule type and a rule.
 ### Changed
 
 - Generated holidays no longer fall on an exchange's own weekend
-  (267 to 63 before the June 30 rule, 67 after). `is_holiday` is
+  (267 to 66). `is_holiday` is
   unchanged; `list_holidays` and `holiday_count` no longer list those
   entries. See `docs/CONSUMERS.md`.
 - XCAI observed dates follow EGX and government notices; four explicit
   dates were corrected.
+
+- XCAI Coptic Christmas and Labour Day are `fixed_date` with explicit
+  entries for the cases a notice decided: Labour Day Thursday 2026-05-07
+  (Friday 2026-05-01 was replaced by decree) and a predicted Coptic
+  Christmas Thursday 2028-01-06 (EGX closed Thursday 2022-01-06 for a
+  Friday). Earlier text called Labour Day exempt from the Thursday move;
+  that was wrong.
 
 ### Notes
 

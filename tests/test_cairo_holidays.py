@@ -101,6 +101,8 @@ OBSERVANCE_NOTICES = {
     "2025-10-09": "https://en.amwalalghad.com/?p=219901",
     "2026-01-29": "https://www.cairo.gov.eg/en/news/news-eng/2026/bd6a361fe04f4d268157c39e3103c96d",
     "2026-10-08": "https://arabfinance.com/en/news/newdetails/madbouly-declares-october-8-public-holiday-for-armed-forces-day",
+    "2026-05-07": "https://www.cairo.gov.eg/en/news/news-eng/2026/fda45a85d7f446c1b4cd55e0f8259f4e",
+    "2028-01-06": "https://en.amwalalghad.com/?p=121383",
 }
 
 
@@ -321,19 +323,19 @@ class TestXCAIRecurrence:
             assert "Prophet" not in name
 
     def test_rule_types_follow_egypt_observance(self, recurrence_rules):
-        """National days move to Thursday; Coptic Christmas (Saturday ->
-        Sunday precedent) and Labour Day are exempt from the Thursday rule."""
+        """National days move to Thursday. Coptic Christmas and Labour Day
+        are fixed_date: they stay on their date midweek, a Friday or
+        Saturday date generates nothing, and the weekend cases are entered
+        as explicit dates from the notice (see TestXCAIWeekendCases)."""
         thursday = {"Revolution Day (Jan 25)", "Sinai Liberation Day",
                     "Revolution Day (Jun 30)", "Revolution Day (Jul 23)",
                     "Armed Forces Day"}
         for name, rule in recurrence_rules.items():
             if name in thursday:
                 assert rule["rule"] == "fixed_with_thursday_observance", name
-            elif name == "Labour Day":
-                assert rule["rule"] == "fixed_date"
             else:
-                assert name == "Coptic Christmas"
-                assert rule["rule"] == "fixed_with_weekend_adjustment"
+                assert name in {"Labour Day", "Coptic Christmas"}, name
+                assert rule["rule"] == "fixed_date", name
 
     def test_all_rules_closed_status(self, recurrence_rules):
         for name, rule in recurrence_rules.items():
@@ -515,3 +517,22 @@ class TestXCAIJune30:
         from generate_dates import generate_dates_for_rule
         rule = recurrence_rules["Revolution Day (Jun 30)"]
         assert generate_dates_for_rule(rule, 2020, (4, 5)) == date(2020, 7, 2)
+
+
+class TestXCAIWeekendCases:
+    """Friday and Saturday dates of the fixed_date holidays, resolved from
+    notices. Pinned so a rule change cannot silently move them."""
+
+    def test_labour_day_2026_friday_observed_thursday_may_7(self, built_dates):
+        """PM decree and CBE notice: Thursday 2026-05-07 replaced Friday
+        2026-05-01. Neither the Friday nor a Sunday substitute is a closure."""
+        assert built_dates["2026-05-07"] == "Labour Day"
+        for d in ("2026-05-01", "2026-05-03", "2026-04-30"):
+            assert d not in built_dates, d
+
+    def test_coptic_christmas_2028_friday_observed_thursday(self, built_dates):
+        """EGX closed Thursday 2022-01-06 for a Friday Coptic Christmas, and
+        trading resumed Sunday. The 2028 entry is a prediction from that."""
+        assert built_dates["2028-01-06"] == "Coptic Christmas (predicted)"
+        assert "2028-01-09" not in built_dates
+        assert "2028-01-07" not in built_dates

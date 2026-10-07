@@ -453,19 +453,33 @@ wrong without the reasoning behind it.
   stale data would be actively worse than no fetcher at all.
 - **Verdict:** BLOCKED (data staleness, not inaccessibility).
 - **Observance (2026-10-07):** the calendar is hand-maintained from EGX
-  and government notices. National holidays use
-  `fixed_with_thursday_observance` (see `docs/recurrence_rules.md`);
-  Labour Day is not moved; Coptic Christmas moves a weekend date to the
-  following Sunday (EGX, Saturday 2023-01-07 observed Sunday 2023-01-08).
-  Sources: EGX notices via mondovisione.com (2025-07-24, 2025-07-03) and
-  Amwal Al Ghad (2025-04-24, 2025-10-09); government decrees via
-  cairo.gov.eg and arabfinance.com (2026-01-29, 2026-10-08). The EGX site
-  itself could not be read from this environment, so each source is a
-  mirror or press report of the notice, not the notice on egx.com.eg.
-- **Unverified:** Coptic Christmas on a Friday (2028-01-07, generated
-  2028-01-09 Sunday) has no precedent found. Labour Day on a Friday
-  (2026-05-01) was taken as unmoved from the government's stated
-  exemption (arabfinance, 2026-09-30); no EGX notice was found for it.
+  and government notices. National days use
+  `fixed_with_thursday_observance` (see `docs/recurrence_rules.md`).
+  Labour Day and Coptic Christmas use `fixed_date` plus explicit dates:
+  both stay on their date midweek, and a Friday or Saturday date
+  generates nothing because the real observance is set by notice.
+  Sources: EGX notices via mondovisione.com (2025-07-24, 2025-07-03),
+  Amwal Al Ghad (2025-04-24, 2025-10-09, 2022-01-06) and Arab Finance
+  (2023-05-04); government decrees via cairo.gov.eg and arabfinance.com
+  (2026-01-29, 2026-10-08, 2026-05-07). The EGX site itself could not be
+  read from this environment, so each source is a mirror or press report
+  of the notice, not the notice on egx.com.eg.
+- **Coptic Christmas on a Friday (resolved 2026-10-07):** EGX and banks
+  closed Thu 2022-01-06 for Fri 2022-01-07 and resumed Sun 2022-01-09
+  (Amwal Al Ghad). The Saturday case went the other way: Sat 2023-01-07
+  was observed Sun 2023-01-08 (Enterprise, quoting the EGX statement).
+  The only Friday in range is 2028-01-07, entered as the predicted
+  explicit date 2028-01-06. **Still open:** a decree can differ; the
+  prediction is replaced when the cabinet decision is published.
+- **Labour Day (resolved 2026-10-07):** it is moved by decree, not
+  exempt. Mon 2023-05-01 was observed Thu 2023-05-04 (EGX disclosure via
+  Arab Finance); Sat 2021-05-01 stayed on the Saturday; Fri 2026-05-01 was
+  replaced by Thu 2026-05-07 (PM decree, CBE notice). The 2026-05-07 entry
+  is sourced to the decree. **Source needed:** the EGX disclosure for
+  2026-05-07 was not found; query "EGX disclosure Labour Day 7 May 2026"
+  on egx.com.eg. **Still open:** 2028-05-01 (Mon) and 2029-05-01 (Tue)
+  stay at the nominal date; the 2023 precedent suggests a Thursday move,
+  but no decree exists yet, so they are left as entered.
 - **June 30 Revolution Day (added 2026-10-07):** `fixed_with_thursday_observance`.
   EGX notice via mondovisione.com: Thu 2025-07-03 instead of Mon
   2025-06-30. Arab Finance (2026-06-25): EGX halted Thu 2026-07-02 instead
