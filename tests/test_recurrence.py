@@ -427,7 +427,7 @@ class TestEdgeCases:
 
 
 class TestGenerationRangeBoundary:
-    """generation_range bounds generated dates exactly (XCAI, v2.14.1)."""
+    """generation_range bounds generated dates exactly (XCAI, v2.15.0)."""
 
     def _ex(self, end):
         return {
@@ -458,7 +458,7 @@ class TestGenerationRangeBoundary:
 
 
 class TestWeekendDays:
-    """Adjustment and skipping use the exchange's own weekend_days (v2.14.2)."""
+    """Adjustment and skipping use the exchange's own weekend_days (v2.15.0)."""
 
     FRI_SAT = (4, 5)
 

@@ -3,7 +3,7 @@
 Explicit holidays on a weekend day are rejected by tools/validate.py unless
 they carry weekend_exception. Generated holidays are held to the same rule:
 a generated date on a closed day is a no-op that inflates the count of real
-closures (v2.14.2: 215 of 267 generated dates were such no-ops).
+closures (v2.15.0: 215 of 267 generated dates were such no-ops).
 """
 from __future__ import annotations
 

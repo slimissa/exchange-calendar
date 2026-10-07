@@ -7,6 +7,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.15.0] — 2026-10-07
+
+Cumulative release. It ships everything recorded under 2.14.0, 2.14.1
+and 2.14.2 below, which were never tagged on their own. Sized as a minor
+release because it adds a schema field, a rule type and a rule.
+
+### Added
+
+- `calendar.json` exchange records carry `country` and `country_code`
+  (additive field; the wrappers ignore it).
+- Rule type `fixed_with_thursday_observance` (schema, validator,
+  generator): Egypt's Thursday observance for national holidays.
+- XCAI: a June 30 Revolution Day rule, which was missing.
+- Rust and Go `HolidayEntry` carry `predicted` and `weekend_exception`.
+- `tools/verify_checksums.py` is gated in CI; `tools/schema_audit.py`
+  covers the checksum manifest.
+
+### Changed
+
+- Generated holidays no longer fall on an exchange's own weekend
+  (267 to 63 before the June 30 rule, 67 after). `is_holiday` is
+  unchanged; `list_holidays` and `holiday_count` no longer list those
+  entries. See `docs/CONSUMERS.md`.
+- XCAI observed dates follow EGX and government notices; four explicit
+  dates were corrected.
+
+### Notes
+
+See the 2.14.0, 2.14.1 and 2.14.2 sections for the detail of each
+change. Open items are listed in `BLOCKED.md` (XCAI) and were not
+changed in this release.
+
 ## [2.14.2] — 2026-10-06
 
 ### Fixed
@@ -65,12 +97,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Notes
 
-**Release scope.** v2.14.2 is a cumulative release. It ships everything
-under the 2.14.0 and 2.14.1 headings below as well; those two versions
-were never tagged on their own, because their commits were not
-individually verified in CI. The sections stay as the record of what
-each step changed. Tag `v2.14.2` only. See `RELEASE_PATTERN.md`,
-operator-hygiene rule 8.
+**Release scope.** Superseded: 2.14.0, 2.14.1 and 2.14.2 were never
+tagged. Everything under those three headings ships as v2.15.0, above.
+The sections stay as the record of what each step changed.
 
 No source file changed. The convention lives in the generator, applied
 uniformly, rather than in 74 source files. Lookups on a weekend date no

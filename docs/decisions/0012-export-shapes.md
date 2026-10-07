@@ -156,11 +156,11 @@ The exports carry both. `holidays` holds explicit and generated rows
 together, distinguished by `origin` (`explicit` or `generated`).
 `source_url` is NULL for generated rows and non-NULL for explicit
 ones. A generated date never falls on the exchange's own `weekend_days`
-(v2.14.2): the generator drops weekend occurrences of `fixed_date`
+(v2.15.0): the generator drops weekend occurrences of `fixed_date`
 rules and applies `fixed_with_weekend_adjustment` against the
 exchange's real weekend, so every `origin = generated` row is a real
 trading-day closure. Wrapper `is_holiday` is unaffected: it returns true
-for any weekend date before reading holiday data. Before v2.14.2, 215 of 267 generated rows were
+for any weekend date before reading holiday data. Before v2.15.0, 215 of 267 generated rows were
 no-ops on closed days. Dropping generated rows would make every export answer
 "is this date a holiday?" differently from every wrapper for the 20
 exchanges that have them. Carrying them without `origin` would hide
@@ -170,7 +170,7 @@ which dates are verified.
 
 The `exchanges` table needs `country_code`, which `calendar.json` did
 not carry through v2.13.0: `tools/build.py` dropped `country` and
-`country_code`, both required by the schema. Resolved in v2.14.0, which
+`country_code`, both required by the schema. Resolved in v2.15.0, which
 copies both into every exchange record. The change is additive and the
 wrappers ignore the new keys. `country` (the name) is not exported; it
 is derivable from ISO 3166.

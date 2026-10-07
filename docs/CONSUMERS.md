@@ -112,7 +112,7 @@ That has not changed. `weekend_days` is per exchange (Saturday/Sunday for
 most, Friday/Saturday for the Gulf exchanges and EGX), so XCAI's Sunday is
 a trading day and XETR's Saturday is not.
 
-What changed in v2.14.2 is the holiday *entries*. A holiday that the
+What changed in v2.15.0 is the holiday *entries*. A holiday that the
 generator derives from a recurrence rule is never emitted on a weekend day
 of that exchange, because the exchange is closed anyway:
 

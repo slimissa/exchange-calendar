@@ -503,7 +503,10 @@ outside the removal itself is the evidence.
 Why: one audit produced three hand bumps in content commits
 (2.14.0, 2.14.1, 2.14.2), none tagged. `release.sh` could no longer cut
 2.14.2, and the CHANGELOG described versions no one could install. The
-fix was a cumulative release, tagged by hand per `CONTRIBUTING.md`.
+batch added a schema field, a rule type and a rule, so by the sizing
+above it was a minor release. It shipped as one cumulative v2.15.0,
+tagged by hand per `CONTRIBUTING.md`; the three 2.14.x sections remain
+in the CHANGELOG as history.
 ---
 
 ## The mojibake self-trigger rule

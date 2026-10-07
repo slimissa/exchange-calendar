@@ -2,7 +2,7 @@
 calendar.json.
 
 schema.json describes a source file; build.py projects it into
-calendar.json. Until v2.14.0 build.py silently dropped `country` and
+calendar.json. Until v2.15.0 build.py silently dropped `country` and
 `country_code`, which the schema requires, and nothing failed. This test
 closes that gap: a required field absent from the built file fails here,
 not in a consumer.
