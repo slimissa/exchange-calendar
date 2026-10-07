@@ -6678,6 +6678,16 @@
             "status": "closed"
           },
           {
+            "date": "2025-07-03",
+            "name": "Revolution Day (Jun 30)",
+            "status": "closed"
+          },
+          {
+            "date": "2026-07-02",
+            "name": "Revolution Day (Jun 30)",
+            "status": "closed"
+          },
+          {
             "date": "2027-01-28",
             "name": "Revolution Day (Jan 25)",
             "status": "closed"
@@ -6685,6 +6695,11 @@
           {
             "date": "2027-04-29",
             "name": "Sinai Liberation Day",
+            "status": "closed"
+          },
+          {
+            "date": "2027-07-01",
+            "name": "Revolution Day (Jun 30)",
             "status": "closed"
           },
           {
@@ -6710,6 +6725,11 @@
           {
             "date": "2028-04-27",
             "name": "Sinai Liberation Day",
+            "status": "closed"
+          },
+          {
+            "date": "2028-06-29",
+            "name": "Revolution Day (Jun 30)",
             "status": "closed"
           },
           {

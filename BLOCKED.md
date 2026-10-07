@@ -466,9 +466,12 @@ wrong without the reasoning behind it.
   2028-01-09 Sunday) has no precedent found. Labour Day on a Friday
   (2026-05-01) was taken as unmoved from the government's stated
   exemption (arabfinance, 2026-09-30); no EGX notice was found for it.
-- **Not yet in the registry:** June 30 Revolution Day. EGX closed Thu
-  2025-07-03 for it (notice via mondovisione.com); no recurrence rule
-  exists for it.
+- **June 30 Revolution Day (added 2026-10-07):** `fixed_with_thursday_observance`.
+  EGX notice via mondovisione.com: Thu 2025-07-03 instead of Mon
+  2025-06-30. Arab Finance (2026-06-25): EGX halted Thu 2026-07-02 instead
+  of Tue 2026-06-30. Mubasher: the same move in 2020 (Tue 2020-06-30 to
+  Thu 2020-07-02). In 2024 EGX closed on the Sunday itself, before the
+  2025 policy, which is why the rule starts at 2025.
 
 ## XJSE — Johannesburg Stock Exchange (JSE)
 

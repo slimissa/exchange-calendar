@@ -46,6 +46,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `is_holiday` is unchanged in all four wrappers (true on any weekend
   date); `list_holidays` and `holiday_count` no longer list generated
   weekend entries. Five fixture queries pin it across the wrappers.
+- XCAI gains a June 30 Revolution Day rule
+  (`fixed_with_thursday_observance`). It was missing, so closures such as
+  Thu 2025-07-03 and Thu 2026-07-02 were absent from the registry. Four
+  generated dates are added; generated entries total 67.
 - `schema.json` and `tools/validate.py` accept
   `fixed_with_thursday_observance` (additive).
 

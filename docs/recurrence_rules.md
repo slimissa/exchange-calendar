@@ -140,7 +140,8 @@ excluded, so they use `fixed_with_weekend_adjustment` or `fixed_date`.
 Verified against EGX and government notices: Sinai Liberation Day Fri
 2025-04-25 observed Thu 2025-04-24; Revolution Day Wed 2025-07-23 observed
 Thu 2025-07-24; Armed Forces Day Mon 2025-10-06 observed Thu 2025-10-09;
-Revolution Day Sun 2026-01-25 observed Thu 2026-01-29; Armed Forces Day
+Revolution Day (Jun 30) Mon 2025-06-30 observed Thu 2025-07-03 and Tue
+2026-06-30 observed Thu 2026-07-02; Revolution Day Sun 2026-01-25 observed Thu 2026-01-29; Armed Forces Day
 Tue 2026-10-06 observed Thu 2026-10-08. Saturday dates (2025-01-25,
 2026-04-25) were observed on the Saturday. Applies from 2025: in 2024 a
 Sunday holiday stayed on the Sunday. The rule predicts the usual decree;

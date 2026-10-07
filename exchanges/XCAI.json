@@ -309,6 +309,13 @@
         "status": "closed"
       },
       {
+        "day": 30,
+        "month": 6,
+        "name": "Revolution Day (Jun 30)",
+        "rule": "fixed_with_thursday_observance",
+        "status": "closed"
+      },
+      {
         "day": 23,
         "month": 7,
         "name": "Revolution Day (Jul 23)",

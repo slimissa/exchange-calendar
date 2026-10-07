@@ -307,6 +307,7 @@ class TestXCAIRecurrence:
             "Revolution Day (Jan 25)",
             "Sinai Liberation Day",
             "Labour Day",
+            "Revolution Day (Jun 30)",
             "Revolution Day (Jul 23)",
             "Armed Forces Day",
         }
@@ -323,7 +324,8 @@ class TestXCAIRecurrence:
         """National days move to Thursday; Coptic Christmas (Saturday ->
         Sunday precedent) and Labour Day are exempt from the Thursday rule."""
         thursday = {"Revolution Day (Jan 25)", "Sinai Liberation Day",
-                    "Revolution Day (Jul 23)", "Armed Forces Day"}
+                    "Revolution Day (Jun 30)", "Revolution Day (Jul 23)",
+                    "Armed Forces Day"}
         for name, rule in recurrence_rules.items():
             if name in thursday:
                 assert rule["rule"] == "fixed_with_thursday_observance", name
@@ -468,3 +470,48 @@ class TestXCAIThursdayObservance:
 
     def test_friday_2028_armed_forces_day_moves_back(self, built_dates):
         assert built_dates["2028-10-05"] == "Armed Forces Day"
+
+
+@pytest.fixture(scope="module")
+def built_dates():
+    root = Path(__file__).resolve().parent.parent
+    built = json.loads((root / "calendar.json").read_text())["exchanges"]
+    e = next(x for x in built if x["code"] == "XCAI")
+    return {h["date"]: h["name"]
+            for k in ("explicit", "generated") for h in e["holidays"][k]}
+
+
+class TestXCAIJune30:
+    """Revolution Day (Jun 30) follows the Thursday observance, like the
+    other national days. EGX notices: Mon 2025-06-30 observed Thu 2025-07-03;
+    Tue 2026-06-30 observed Thu 2026-07-02; Tue 2020-06-30 observed Thu
+    2020-07-02 (the first year of the policy)."""
+
+    def test_rule_is_thursday_observance(self, recurrence_rules):
+        rule = recurrence_rules["Revolution Day (Jun 30)"]
+        assert rule["rule"] == "fixed_with_thursday_observance"
+        assert (rule["month"], rule["day"]) == (6, 30)
+
+    def test_2025_observed_thursday_july_3(self, built_dates):
+        assert built_dates["2025-07-03"] == "Revolution Day (Jun 30)"
+        assert "2025-06-30" not in built_dates
+
+    def test_2026_observed_thursday_july_2(self, built_dates):
+        assert built_dates["2026-07-02"] == "Revolution Day (Jun 30)"
+        assert "2026-06-30" not in built_dates
+
+    def test_2028_friday_moves_back_to_thursday(self, built_dates):
+        assert built_dates["2028-06-29"] == "Revolution Day (Jun 30)"
+
+    def test_2029_saturday_not_generated(self, built_dates):
+        """2029-06-30 is a Saturday: not moved, a weekend day, so absent."""
+        assert not [d for d, n in built_dates.items()
+                    if n == "Revolution Day (Jun 30)" and d.startswith("2029")]
+
+    def test_2020_tuesday_observed_thursday(self, recurrence_rules):
+        """Earlier year, outside the generation range: the rule alone."""
+        import sys
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
+        from generate_dates import generate_dates_for_rule
+        rule = recurrence_rules["Revolution Day (Jun 30)"]
+        assert generate_dates_for_rule(rule, 2020, (4, 5)) == date(2020, 7, 2)
