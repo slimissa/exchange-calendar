@@ -118,6 +118,12 @@ func main() {
 				asOf = rec["_as_of"]
 			}
 			v = map[string]any{"confidence": conf, "_as_of": asOf}
+		case "is_holiday":
+			ex, err := r.Get(str(q.Args[0]))
+			if err != nil {
+				die("exchange: %v", err)
+			}
+			v = ex.IsHoliday(str(q.Args[1]))
 		case "holiday_entry":
 			ex, err := r.Get(str(q.Args[0]))
 			if err != nil {

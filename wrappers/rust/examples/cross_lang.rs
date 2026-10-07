@@ -55,6 +55,7 @@ fn main() {
                     "_as_of": rec.get("_as_of").cloned().unwrap_or(Value::Null),
                 })
             }
+            "is_holiday" => json!(registry.get(s(0)).expect("exchange").is_holiday(s(1))),
             "holiday_entry" => {
                 let ex = registry.get(s(0)).expect("exchange");
                 match ex.list_holidays(None).into_iter().find(|h| h.date == s(1)) {

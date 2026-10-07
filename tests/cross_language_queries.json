@@ -11,6 +11,11 @@
     {"op": "holiday_entry", "args": ["DSMD", "2025-03-31"],             "label": "holiday_dsmd_predicted_false"},
     {"op": "holiday_entry", "args": ["XCAI", "2027-03-09"],             "label": "holiday_xcai_predicted_true"},
     {"op": "holiday_entry", "args": ["XBOM", "2026-11-08"],             "label": "holiday_xbom_weekend_exception"},
-    {"op": "holiday_entry", "args": ["XNYS", "2026-01-02"],             "label": "holiday_xnys_none"}
+    {"op": "holiday_entry", "args": ["XNYS", "2026-01-02"],             "label": "holiday_xnys_none"},
+    {"op": "is_holiday", "args": ["XETR", "2027-12-25"],                "label": "is_holiday_weekend_no_entry"},
+    {"op": "holiday_entry", "args": ["XETR", "2027-12-25"],             "label": "holiday_entry_weekend_none"},
+    {"op": "is_holiday", "args": ["XBOM", "2026-11-08"],                "label": "is_holiday_weekend_exception"},
+    {"op": "is_holiday", "args": ["XCAI", "2025-04-27"],                "label": "is_holiday_xcai_sunday_trades"},
+    {"op": "is_holiday", "args": ["XCAI", "2025-04-24"],                "label": "is_holiday_xcai_thursday_observed"}
   ]
 }

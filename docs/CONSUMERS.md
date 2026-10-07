@@ -12,6 +12,7 @@ section per kind of dependency.
 - [Cross-registry edges](#cross-registry-edges)
 - [External adopters](#external-adopters)
 - [Distribution shape](#distribution-shape)
+- [Weekend dates and holiday lookups](#weekend-dates-and-holiday-lookups)
 - [Update protocol](#update-protocol)
 - [How to add yourself](#how-to-add-yourself)
 
@@ -99,6 +100,39 @@ not on PyPI, npm, crates.io, or the Go module proxy. The trigger for
 publication is a consumer who needs a package-registry install rather
 than a repo clone. Until then, cloning the repository is the
 supported path.
+
+---
+
+## Weekend dates and holiday lookups
+
+All four wrappers answer `is_holiday` (`isHoliday`, `IsHoliday`) the same
+way: a date that falls on one of the exchange's own `weekend_days` returns
+`true` before any holiday data is read, and `is_open` is `false` there.
+That has not changed. `weekend_days` is per exchange (Saturday/Sunday for
+most, Friday/Saturday for the Gulf exchanges and EGX), so XCAI's Sunday is
+a trading day and XETR's Saturday is not.
+
+What changed in v2.14.2 is the holiday *entries*. A holiday that the
+generator derives from a recurrence rule is never emitted on a weekend day
+of that exchange, because the exchange is closed anyway:
+
+- `list_holidays` and `holiday_count` no longer include a generated entry
+  for a weekend date (XETR's Christmas Day on Saturday 2027-12-25 is
+  absent). Earlier versions listed 215 such entries.
+- A weekend date can still appear as a holiday entry only if it is
+  explicit and carries `weekend_exception: true` (XBOM, 2026-11-08).
+- Where a rule shifts a holiday, the entry sits on the observed day, not
+  the nominal one: on Fri/Sat-weekend exchanges a Friday or Saturday date
+  moves to the following Sunday, and XCAI's national days move to Thursday
+  (`docs/recurrence_rules.md`).
+
+If you read holiday names from `list_holidays` to label weekend dates,
+look the name up from the nominal date yourself; the registry no longer
+lists it. If you only ask whether the exchange is open, nothing changes.
+The rule is pinned by the cross-language fixture queries
+`is_holiday_weekend_no_entry`, `holiday_entry_weekend_none`,
+`is_holiday_weekend_exception`, `is_holiday_xcai_sunday_trades` and
+`is_holiday_xcai_thursday_observed`.
 
 ---
 

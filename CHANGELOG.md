@@ -42,6 +42,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   so the rule generates them. The four suspect dates from the weekend
   fix (2025-01-26, 2025-04-27, 2026-04-26, 2026-05-03) are gone;
   2025-04-24 is generated, matching the EGX notice.
+- `docs/CONSUMERS.md`: new section "Weekend dates and holiday lookups".
+  `is_holiday` is unchanged in all four wrappers (true on any weekend
+  date); `list_holidays` and `holiday_count` no longer list generated
+  weekend entries. Five fixture queries pin it across the wrappers.
 - `schema.json` and `tools/validate.py` accept
   `fixed_with_thursday_observance` (additive).
 

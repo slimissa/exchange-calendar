@@ -159,7 +159,8 @@ ones. A generated date never falls on the exchange's own `weekend_days`
 (v2.14.2): the generator drops weekend occurrences of `fixed_date`
 rules and applies `fixed_with_weekend_adjustment` against the
 exchange's real weekend, so every `origin = generated` row is a real
-trading-day closure. Before v2.14.2, 215 of 267 generated rows were
+trading-day closure. Wrapper `is_holiday` is unaffected: it returns true
+for any weekend date before reading holiday data. Before v2.14.2, 215 of 267 generated rows were
 no-ops on closed days. Dropping generated rows would make every export answer
 "is this date a holiday?" differently from every wrapper for the 20
 exchanges that have them. Carrying them without `origin` would hide
