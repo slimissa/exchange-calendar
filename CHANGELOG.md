@@ -43,6 +43,10 @@ release because it adds a schema field, a rule type and a rule.
 - XCAI Labour Day 2028 and 2029 are marked predicted (nominal date kept,
   no shift rule) because the precedents conflict; the 2026-05-07 entry and
   the source checks are recorded in `BLOCKED.md`.
+- XCOL: 2026 replaced with the dates on CSE's own Circular 07-10-2025.
+  Fourteen closures were missing and thirteen entries were wrong (2025's
+  Poya dates repeated, plus an unsourced Deepavali substitute). 2025, 2027
+  and the Vesak-week half holiday remain open (`BLOCKED.md`).
 - XICE: First Day of Summer and Commerce Day added for 2025 to 2029
   (ten explicit entries) and a Commerce Day `nth_weekday` rule. Four
   closures were missing, confirmed by two settlement calendars (Nasdaq CSD

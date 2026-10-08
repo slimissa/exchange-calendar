@@ -1056,6 +1056,37 @@ Combined count for the round: 6 built, 4 blocked.
   reach it. A future maintainer seeing `ParseError` in a log should look
   here before touching `NigeriaExchangeFetcher`.
 
+## XCOL — Colombo Stock Exchange (built; 2026 corrected 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **2026 is now the exchange's own list.** CSE Circular No. 07-10-2025,
+  "Colombo Stock Exchange Holidays for 2026" (22 October 2025), fetched from
+  `cdn.cse.lk`: **tier 1**. All 17 closures on it are in the file, each with
+  that URL as its source.
+- **What was wrong.** Thirteen of the file's sixteen 2026 entries were not on
+  the circular. Twelve were 2025's Poya dates repeated for 2026 (same month
+  and day; Poya days move about eleven days a year) and one was an
+  unsourced "Deepavali (observed)" on 2026-11-09. Fourteen closures on the
+  circular were missing. All were fixed in one pass.
+- **Open: Vesak week.** The circular lists an additional half holiday on
+  Thu 2026-04-30 (in lieu of the day after Vesak Poya, which falls on a
+  Saturday) and May Day on Fri 2026-05-01. CSE then issued Circular No.
+  03-04-2026, "Holidays for 2026 - Amended" (20 April 2026), after the
+  government moved the day after Vesak from 2 May to 31 May. Its text was
+  not retrieved. **Source needed:** that circular, from the CSE circulars
+  list on cse.lk. The half holiday has no entry until the hours are known.
+- **Open: 2025.** The 2025 entries have not been checked against CSE's 2025
+  circular. The detector flagged Duruthu Poya (file 2025-01-14, public
+  holiday list 2025-01-13), Independence Day 2025-02-04, Maha Sivarathri
+  2025-02-26, Eid al-Fitr 2025-03-31, Good Friday 2025-04-18 and Prophet's
+  Birthday 2025-09-05. **Source needed:** the CSE circular of late 2024.
+- **Open: 2027.** The 2027 Poya entries repeat 2025's dates in the same way
+  and are almost certainly wrong. **Source needed:** the CSE circular for
+  2027, normally issued in October. They stay until it exists.
+- A calendar-aggregator page (calendarlabs.com) lists the same 2026 dates as
+  the circular; it was not used as a source.
+
 ## XDFM — Dubai Financial Market (reconciled 2026-09-17)
 
 **Last verified:** 2026-09-17

@@ -24,7 +24,7 @@ built.exchange.country: populated 74/74
 built.exchange.country_code: populated 74/74
 populated (5): regular 74, pre_market 30, auction 22, post_market 29, lunch_break 11
 reserved (1): ['halt']
-records checked: 4119
+records checked: 4120
 entries: 97, covered files: 97, drifted: 0
 0 gap(s), 0 known-open
 ```
@@ -34,9 +34,9 @@ entries: 97, covered files: 97, drifted: 0
 | Check | Result |
 |-------|--------|
 | All 74 source files validate against `schema.json` | Pass, 0 errors |
-| Every field populated on every exchange, or optional | Pass. Optional and partial: `extended_hours` 30/74, `confidence.note` 213/361, `early_close_time` 150/3,905, `delayed_open_time` 5/3,905, `predicted` 278/3,905, `weekend_exception` 2/3,905 |
+| Every field populated on every exchange, or optional | Pass. Optional and partial: `extended_hours` 30/74, `confidence.note` 213/361, `early_close_time` 150/3,906, `delayed_open_time` 5/3,906, `predicted` 278/3,906, `weekend_exception` 2/3,906 |
 | Enum values closed and documented | Pass. No data value outside any enum |
-| Times `HH:MM`, dates `YYYY-MM-DD` and real dates | Pass, 4,119 records checked |
+| Times `HH:MM`, dates `YYYY-MM-DD` and real dates | Pass, 4,120 records checked |
 | Nested arrays have one shape the wrappers agree on | Pass for data and for all four wrappers (see finding 3 below) |
 | `confidence`: year-string keys, `source`/`level`/`last_verified`, optional `note` | Pass, 361 entries |
 | Sessions coverage | Five of six types populated, one reserved (`halt`). See below |

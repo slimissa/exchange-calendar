@@ -212,28 +212,14 @@ class TestXCOLDeepavali:
         assert "2025-10-20" in explicit_dates
         assert "Deepavali" in explicit_dates["2025-10-20"]["name"]
 
-    def test_deepavali_2026(self, explicit_dates):
-        """Deepavali 2026 — actual date is Sunday Nov 8 (weekend, not
-        in explicit); the observed trading holiday shifts to Monday
-        Nov 9. Regression test for C5: this previously asserted only
-        the weekend-date absence and never checked the observed date
-        was actually present, which is exactly how the entry went
-        missing without a failing test."""
+    def test_deepavali_2026_not_a_cse_holiday(self, explicit_dates):
+        """Deepavali 2026 is Sunday Nov 8, a weekend day for CSE. CSE Circular
+        07-10-2025 lists no substitute day, so Monday Nov 9 is a trading day.
+        An earlier version of this file pinned "2026-11-09 Deepavali (observed)"
+        to match XKLS and XSES; it had no CSE source and the circular
+        contradicts it."""
         assert "2026-11-08" not in explicit_dates
-        assert "2026-11-09" in explicit_dates
-        assert explicit_dates["2026-11-09"]["name"] == "Deepavali (observed)"
-        assert explicit_dates["2026-11-09"]["status"] == "closed"
-
-    def test_deepavali_2026_matches_xkls_xses(self, explicit_dates):
-        """XKLS and XSES both observe Deepavali on 2026-11-09; XCOL
-        should match rather than being the one inconsistent exchange."""
-        for code in ("XKLS", "XSES"):
-            with open(f"exchanges/{code}.json") as f:
-                import json
-                other = json.load(f)
-            other_dates = {h["date"] for h in other["holidays"]["explicit"]}
-            assert "2026-11-09" in other_dates
-        assert "2026-11-09" in explicit_dates
+        assert "2026-11-09" not in explicit_dates
 
     def test_deepavali_2027(self, explicit_dates):
         """Deepavali 2027 — Oct 28."""
@@ -319,3 +305,65 @@ class TestXCOLSubstitution:
     def test_observed_names(self, explicit_dates):
         observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
         assert observed_count >= 2, f"Expected some observed holidays, got {observed_count}"
+
+
+# ──────────────────────────────────────────────────────────────
+# 2026: CSE Circular No. 07-10-2025 (22 October 2025), tier 1
+# ──────────────────────────────────────────────────────────────
+
+CSE_2026_CIRCULAR = {
+    "2026-01-01": "CSE Customary Holiday",
+    "2026-01-15": "Tamil Thai Pongal Day",
+    "2026-02-04": "Independence Day",
+    "2026-03-02": "Medin Full Moon Poya Day",
+    "2026-04-01": "Bak Full Moon Poya Day",
+    "2026-04-03": "Good Friday",
+    "2026-04-13": "Day Prior to Sinhala and Tamil New Year Day",
+    "2026-04-14": "Sinhala and Tamil New Year",
+    "2026-05-01": "May Day",
+    "2026-05-28": "Id-Ul-Allah (Hadji Festival Day)",
+    "2026-06-29": "Poson Full Moon Poya Day",
+    "2026-07-29": "Esala Full Moon Poya Day",
+    "2026-08-26": "Milad-Un-Nabi (Holy Prophet's Birthday)",
+    "2026-08-27": "Nikini Full Moon Poya Day",
+    "2026-11-24": "Il Full Moon Poya Day",
+    "2026-12-23": "Unduwap Full Moon Poya Day",
+    "2026-12-25": "Christmas Day",
+}
+
+# 2025's Poya dates had been repeated for 2026 (same month and day); the
+# circular does not list any of these.
+REMOVED_2026 = ["2026-01-14", "2026-02-12", "2026-03-13", "2026-04-15",
+                "2026-05-12", "2026-05-13", "2026-06-10", "2026-07-10",
+                "2026-09-07", "2026-10-06", "2026-11-05", "2026-11-09",
+                "2026-12-04"]
+
+
+class TestXCOL2026Circular:
+    """Every 2026 entry is on CSE's own circular, and the circular's closures
+    are all present. The Vesak-week half holiday (2026-04-30) and the amended
+    Circular 03-04-2026 are an open item (BLOCKED.md, XCOL)."""
+
+    def test_2026_entries_match_the_circular_exactly(self, explicit_dates):
+        have = {d: h["name"] for d, h in explicit_dates.items() if d.startswith("2026")}
+        assert have == CSE_2026_CIRCULAR
+
+    def test_2026_entries_cite_the_circular(self, explicit_dates):
+        for d, h in explicit_dates.items():
+            if d.startswith("2026"):
+                assert h["source_url"].startswith("https://cdn.cse.lk/"), d
+
+    @pytest.mark.parametrize("d", REMOVED_2026)
+    def test_repeated_2025_dates_are_gone(self, explicit_dates, d):
+        assert d not in explicit_dates
+
+    def test_the_fourteen_previously_missing_closures(self, explicit_dates):
+        missing = [d for d in CSE_2026_CIRCULAR
+                   if d not in ("2026-04-14", "2026-05-01", "2026-12-25")]
+        assert len(missing) == 14
+        assert all(d in explicit_dates for d in missing)
+
+    def test_no_2026_entry_on_a_weekend(self, explicit_dates):
+        for d in explicit_dates:
+            if d.startswith("2026"):
+                assert date.fromisoformat(d).weekday() < 5, d

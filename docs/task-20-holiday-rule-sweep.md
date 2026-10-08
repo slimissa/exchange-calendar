@@ -11,7 +11,7 @@ only in a session transcript. This is the durable copy.
 | Cluster | Candidates | State |
 |---------|-----------|-------|
 | XICE | 4 | **resolved 2026-10-07** (tier 3, corroborated; see `BLOCKED.md`) |
-| XCOL | 19 | untouched |
+| XCOL | 19 | **2026 resolved 2026-10-07** (13 candidates, tier 1 circular); 2025 (6 candidates), 2027 and Vesak week open, see `BLOCKED.md` |
 | XGSE | 11 | untouched |
 | XBUE | 12 | untouched |
 | XBUD | 4 | untouched |
@@ -50,14 +50,14 @@ The sweep stops and reports when a batch finds more than a handful of missing re
 closures, because each one needs its own citable source (`CONTRIBUTING.md`, "Citing
 Sources for Holiday Dates"), and adding many unsourced rules at once is how the XCAI
 dates went wrong. The first pass hit it on XICE alone (4 closures). It still applies:
-83 likely closures remain (79 after XICE). A candidate with no citable source does not become a rule;
+83 likely closures remained after XICE and 70 after XCOL 2026. A candidate with no citable source does not become a rule;
 it stays open here with the source named.
 
 ## Candidate table (122 candidates, 20 exchanges)
 
 | Exchange | Country | Count | Class | Status | Candidates (date, name) |
 |----------|---------|-------|-------|--------|-------------------------|
-| XCOL | LK | 19 | Likely closure | untouched | 2025-01-13 Duruthu Full Moon Poya Day; 2025-02-04 Independence Day; 2025-02-26 Maha Sivarathri Day; 2025-03-31 Eid al-Fitr; 2025-04-18 Good Friday; 2025-09-05 Prophet's Birthday; 2026-01-15 Tamil Thai Pongal Day; 2026-02-04 Independence Day; 2026-03-02 Medin Full Moon Poya Day; 2026-04-01 Bak Full Moon Poya Day; 2026-04-03 Good Friday; 2026-04-13 Day Before Sinhala and Tamil New Year; 2026-05-28 Eid al-Adha; 2026-06-29 Poson Full Moon Poya Day; 2026-07-29 Esala Full Moon Poya Day; 2026-08-26 Prophet's Birthday; 2026-08-27 Nikini Full Moon Poya Day; 2026-11-24 Il Full Moon Poya Day; 2026-12-23 Unduvap Full Moon Poya Day |
+| XCOL | LK | 19 | Likely closure | 2026 resolved; 2025 open | 2025-01-13 Duruthu Full Moon Poya Day; 2025-02-04 Independence Day; 2025-02-26 Maha Sivarathri Day; 2025-03-31 Eid al-Fitr; 2025-04-18 Good Friday; 2025-09-05 Prophet's Birthday; 2026-01-15 Tamil Thai Pongal Day; 2026-02-04 Independence Day; 2026-03-02 Medin Full Moon Poya Day; 2026-04-01 Bak Full Moon Poya Day; 2026-04-03 Good Friday; 2026-04-13 Day Before Sinhala and Tamil New Year; 2026-05-28 Eid al-Adha; 2026-06-29 Poson Full Moon Poya Day; 2026-07-29 Esala Full Moon Poya Day; 2026-08-26 Prophet's Birthday; 2026-08-27 Nikini Full Moon Poya Day; 2026-11-24 Il Full Moon Poya Day; 2026-12-23 Unduvap Full Moon Poya Day |
 | XBUE | AR | 12 | Likely closure | untouched | 2025-04-17 Maundy Thursday; 2025-05-02 Bridge Public Holiday; 2025-06-16 Pass to the Immortality of General Don Martín Miguel de Güemes; 2025-08-15 Bridge Public Holiday; 2025-11-21 Bridge Public Holiday; 2025-11-24 National Sovereignty Day; 2026-03-23 Bridge Public Holiday; 2026-06-15 Pass to the Immortality of General Don Martín Miguel de Güemes; 2026-07-10 Bridge Public Holiday; 2026-11-09 Visit of His Holiness Pope Leo XIV; 2026-11-23 National Sovereignty Day; 2026-12-07 Bridge Public Holiday |
 | XGSE | GH | 11 | Likely closure | untouched | 2025-03-31 Public Holiday; 2025-04-01 Public Holiday; 2025-06-06 Eid-ul-Adha; 2025-07-01 Republic Day; 2025-07-04 Public Holiday; 2025-09-22 Public Holiday; 2026-01-09 Public Holiday; 2026-03-20 Eid-ul-Fitr; 2026-05-27 Eid-ul-Adha; 2026-07-01 Republic Day; 2026-07-03 Public Holiday |
 | XPAR | FR | 11 | Likely non-closure | untouched | 2025-05-08 Victory Day; 2025-05-29 Ascension Day; 2025-06-09 Pentecost Monday; 2025-07-14 National Day; 2025-08-15 Assumption Day; 2025-11-11 Armistice Day; 2026-05-08 Victory Day; 2026-05-14 Ascension Day; 2026-05-25 Pentecost Monday; 2026-07-14 National Day; 2026-11-11 Armistice Day |
@@ -85,4 +85,13 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
 - 2026-10-07: table recorded. No cluster resolved.
 - 2026-10-07: XICE resolved. 4 closures confirmed and added (First Day of Summer
   and Commerce Day, 2025 to 2029 as explicit entries; Commerce Day also a rule).
-  Open items for XICE: 0. Remaining likely closures: 79.
+  Open items for XICE: 0. Remaining likely closures: 83 (XICE was in the confirmed class).
+- 2026-10-07: XCOL 2026 resolved from CSE Circular 07-10-2025 (tier 1). Fourteen
+  missing closures added and thirteen wrong entries removed; the 13 candidates dated
+  2026 are resolved. XCOL still has 6 open candidates (all 2025), the 2027 entries
+  (repeat 2025's Poya dates; wrong) and the Vesak-week half holiday. The stop
+  condition fired here: XCOL alone exceeded six confirmed closures, so XGSE was not
+  started. Remaining likely closures: 70 (83 minus XCOL's 13), plus XCOL's open items.
+- Method note from XCOL: a candidate list from a public-holiday package is a worse
+  tool than the exchange's own circular when one exists. The circular also found
+  errors the detector could not (thirteen wrong entries, not just missing ones).
