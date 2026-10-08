@@ -558,14 +558,15 @@ wrong without the reasoning behind it.
 - **Added:** First Day of Summer (first Thursday after 18 April) and Commerce
   Day (first Monday in August), 2025 to 2029. The detector in
   `docs/task-20-holiday-rule-sweep.md` had flagged four missing dates.
-- **Citation tier: 3, corroborated.** Nasdaq CSD Iceland's settlement calendar
-  (states both rules and the closure) and LuxCSD's non-business-day lists for
-  2025 and 2026 (name the four dates). Both are settlement calendars, not the
-  exchange's own notice, so each is tier 3 under `CONTRIBUTING.md`. The
-  exception in the tier 3 row applies: the two sources agree, and the Nasdaq CSD
-  list matches every other date already in `exchanges/XICE.json`
-  (Maundy Thursday, Good Friday, Easter Monday, Labour Day, Ascension, Whit
-  Monday, 17 June, 24 to 26 December, 31 December).
+- **Citation tier: 3, corroborated** (`CONTRIBUTING.md`, "Corroborated tier 3").
+  The four conditions: (1) two independent sources, Nasdaq CSD Iceland's settlement
+  calendar (states both rules and the closure) and LuxCSD's non-business-day lists
+  for 2025 and 2026 (name the four dates), each from a different issuer. (2) Nasdaq
+  CSD Iceland is the same-infrastructure calendar: the depository that settles Nasdaq
+  Iceland trades. (3) Validated: its list matches every other closure already in
+  `exchanges/XICE.json` for 2025 and 2026 (Maundy Thursday, Good Friday, Easter
+  Monday, Labour Day, Ascension, Whit Monday, 17 June, 24 to 26 December, 31
+  December), with none extra. (4) This note. The entries are not marked predicted.
 - **Source needed:** the Nasdaq Nordic holiday schedule for Iceland (the
   existing `source_url` of the other entries is
   `nasdaqomxnordic.com/trading-hours`). Its holiday table did not render as

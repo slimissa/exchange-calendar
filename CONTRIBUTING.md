@@ -325,11 +325,38 @@ which did not cover an exchange site that cannot be read.
 |------|--------|-----|
 | 1. Primary | A notice issued by the exchange itself (its site, disclosure or circular), or the instrument that sets the holiday (gazette, cabinet or prime-minister decree on a government site) | Cite as verified |
 | 2. Mirrored primary | A republication of the exchange's notice by a wire or news-mirror site that names the exchange as issuer and gives the notice date, the closure date and the resume date | Cite as verified **only when tier 1 is unreachable**, and only with the evidence below |
-| 3. Secondary | A press report that paraphrases a notice, a central-bank or government announcement about other bodies (a bank closure does not by itself prove an exchange closure), a holiday-aggregator site, a holiday library | Never alone for a closure. Use it to find a candidate, then confirm with tier 1 or 2. **Exception:** two independent tier 3 sources that agree on the date, where one is a calendar for the same market infrastructure and it already matches every date in the file, are enough to add the entry. Record the tier and the missing primary in `BLOCKED.md` (XICE is the worked example) |
+| 3. Secondary | A press report that paraphrases a notice, a central-bank or government announcement about other bodies (a bank closure does not by itself prove an exchange closure), a holiday-aggregator site, a holiday library, a settlement calendar | Never alone for a closure. Use it to find a candidate, then confirm with tier 1 or 2, or with the corroboration rule below |
 | 4. Prediction | A date derived from a rule or from a precedent, with no notice yet | Enter with `predicted: true` and the `(predicted)` name suffix; cite the precedent |
 
 A decree is tier 1 for the holiday and tier 3 for the exchange's closure
 unless the exchange announces it too. Where the two differ, the exchange wins.
+
+### Corroborated tier 3
+
+When the exchange's own notice cannot be read, tier 3 sources may justify an
+entry, but only when **all four** conditions hold:
+
+1. **Two independent sources agree** on the date and on the closure. Independent
+   means different issuers, and neither one quotes or links the other.
+2. **One of them is a same-infrastructure calendar**: a calendar published by a
+   body whose operation the exchange depends on to trade or settle, such as the
+   central securities depository, the clearing house, or the central bank's
+   payment system, and which closes on the days the exchange closes. A press
+   report and an aggregator are not same-infrastructure calendars.
+3. **That calendar is validated against the exchange.** It must match every date
+   already in the file that comes from a tier 1 or tier 2 source, for the same
+   year, with no extra and no missing closures. A calendar that disagrees on any
+   known date is not used.
+4. **The gap is recorded.** `BLOCKED.md` names the exchange, the two sources, the
+   check in condition 3, the missing primary source and the query to find it.
+
+Two things the rule does not allow: using it where the exchange is known to
+trade on the day (an exchange that trades on public holidays does not close just
+because a CSD does), and using it for a date that only one source supports. The
+entry is not marked `predicted`: the date is certain, and the open question is
+recorded in `BLOCKED.md`, not in the data. Worked example: XICE, 2025 to 2029
+(Nasdaq CSD Iceland and LuxCSD; the Nasdaq CSD list matches every existing XICE
+closure).
 
 ### What a mirror must carry
 
