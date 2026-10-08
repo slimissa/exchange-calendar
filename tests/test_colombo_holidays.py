@@ -269,8 +269,10 @@ class TestXCOLStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~50-60 entries."""
-        assert 45 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
+        """~40-65 entries. The floor was 45 until the eight 2027 Poya entries
+        were removed (they were wrong); it returns to ~50 when CSE publishes
+        the 2027 circular."""
+        assert 35 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
@@ -367,3 +369,20 @@ class TestXCOL2026Circular:
         for d in explicit_dates:
             if d.startswith("2026"):
                 assert date.fromisoformat(d).weekday() < 5, d
+
+
+class TestXCOL2027Poya:
+    """2027 Poya days were 2025's dates repeated (same month and day). The 2026
+    circular proved that pattern wrong (13 of 16 entries), and Poya days move
+    about eleven days a year, so none of the eight can be right. They are
+    removed until CSE issues the 2027 circular (normally October); see
+    BLOCKED.md, XCOL."""
+
+    def test_no_2027_poya_entries(self, explicit_dates):
+        assert [d for d, h in explicit_dates.items()
+                if d.startswith("2027") and "Poya" in h["name"]] == []
+
+    def test_other_2027_entries_are_kept_but_open(self, explicit_dates):
+        """Not shown wrong; unverified. Listed as open in BLOCKED.md."""
+        for d in ("2027-04-14", "2027-04-15", "2027-05-03", "2027-10-28", "2027-12-27"):
+            assert d in explicit_dates, d

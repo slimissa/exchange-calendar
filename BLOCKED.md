@@ -1082,9 +1082,21 @@ Combined count for the round: 6 built, 4 blocked.
   holiday list 2025-01-13), Independence Day 2025-02-04, Maha Sivarathri
   2025-02-26, Eid al-Fitr 2025-03-31, Good Friday 2025-04-18 and Prophet's
   Birthday 2025-09-05. **Source needed:** the CSE circular of late 2024.
-- **Open: 2027.** The 2027 Poya entries repeat 2025's dates in the same way
-  and are almost certainly wrong. **Source needed:** the CSE circular for
-  2027, normally issued in October. They stay until it exists.
+- **2027 Poya days removed (2026-10-07).** The eight 2027 Poya entries
+  (Duruthu, Navam, Vesak and its holiday, Poson, Binara, Vap, Il) repeated
+  2025's month and day. Poya days move about eleven days a year and the 2026
+  circular showed the same copying had produced 13 wrong 2026 entries, so none
+  of the eight can be right. Removed rather than marked predicted: a predicted
+  entry is a calculated date, and these were copied. A computed full-moon date
+  was not used either; it cannot be sourced to tier 1 or 2, and the exchange's
+  observance can differ from the astronomical date by a day (2026-03-02 is
+  the Poya, the full moon is 03-03). The registry has no Poya closures for 2027
+  until CSE issues its 2027 circular (normally October).
+  **Source needed:** CSE's "Colombo Stock Exchange Holidays for 2027" circular.
+  **Still open, unverified, not shown wrong:** 2027-04-15 (the 2026 circular
+  had Apr 13 and 14 only), 2027-05-03 "May Day (observed)", 2027-10-28
+  Deepavali and 2027-12-27 "Christmas Day (observed)". Whether CSE observes
+  weekend holidays on the Monday is not stated in the 2026 circular.
 - A calendar-aggregator page (calendarlabs.com) lists the same 2026 dates as
   the circular; it was not used as a source.
 

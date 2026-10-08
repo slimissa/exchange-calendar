@@ -47,6 +47,8 @@ release because it adds a schema field, a rule type and a rule.
   Fourteen closures were missing and thirteen entries were wrong (2025's
   Poya dates repeated, plus an unsourced Deepavali substitute). 2025, 2027
   and the Vesak-week half holiday remain open (`BLOCKED.md`).
+- XCOL: the eight 2027 Poya entries are removed (2025's dates repeated).
+  They return with CSE's 2027 circular.
 - XICE: First Day of Summer and Commerce Day added for 2025 to 2029
   (ten explicit entries) and a Commerce Day `nth_weekday` rule. Four
   closures were missing, confirmed by two settlement calendars (Nasdaq CSD

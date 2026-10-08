@@ -95,3 +95,6 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
 - Method note from XCOL: a candidate list from a public-holiday package is a worse
   tool than the exchange's own circular when one exists. The circular also found
   errors the detector could not (thirteen wrong entries, not just missing ones).
+- 2026-10-07: XCOL 2027 Poya entries removed (8, copied from 2025 and wrong).
+  Decision: remove, not "predicted" (they were copied, not calculated) and not
+  computed (not citable to tier 1 or 2). Open until the 2027 circular exists.
