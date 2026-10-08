@@ -1070,13 +1070,31 @@ Combined count for the round: 6 built, 4 blocked.
   and day; Poya days move about eleven days a year) and one was an
   unsourced "Deepavali (observed)" on 2026-11-09. Fourteen closures on the
   circular were missing. All were fixed in one pass.
+- **Source check 2026-10-07.** Three attempts:
+  - `https://www.cse.lk/rules-circulars/circulars-directives/cse-circulars`:
+    HTTP 200, but the page is a JavaScript application and the fetch returned
+    only its `<title>` ("CSE CIRCULARS - CSE 2026") and a tag-manager stub, no
+    circular list. Circular 03-04-2026 was therefore not retrieved.
+  - `https://www.cds.lk/about-us/holiday-list/`: retrieved. This is the Central
+    Depository Systems page (CDS is CSE's depository, `cdsinfo@cse.lk`), titled
+    "Holiday List 2026". It lists the **same 17 closures** as Circular 07-10-2025,
+    with May Day and Vesak Poya shared on 2026-05-01, and no 2026-04-30 entry. It
+    corroborates the 17 dates (tier 3 under `CONTRIBUTING.md`, a second
+    independent issuer from the circular). It does not settle the half holiday:
+    it lists full-day closures only.
+  - The 2025 circular: two searches ("COLOMBO STOCK EXCHANGE HOLIDAYS FOR 2025
+    circular ...") returned no CSE document, only Indian-exchange pages and an
+    unrelated biography. No URL was found, so nothing was fetched.
 - **Open: Vesak week.** The circular lists an additional half holiday on
   Thu 2026-04-30 (in lieu of the day after Vesak Poya, which falls on a
   Saturday) and May Day on Fri 2026-05-01. CSE then issued Circular No.
   03-04-2026, "Holidays for 2026 - Amended" (20 April 2026), after the
   government moved the day after Vesak from 2 May to 31 May. Its text was
   not retrieved. **Source needed:** that circular, from the CSE circulars
-  list on cse.lk. The half holiday has no entry until the hours are known.
+  list on cse.lk, or its direct `cdn.cse.lk` PDF link (the list page does not
+  render without a browser). The half holiday has no entry because the
+  circular gives no hours; an `early_close` entry needs an `early_close_time`.
+  CalendarLabs (aggregator, not used) shows "Evening Off".
 - **Open: 2025.** The 2025 entries have not been checked against CSE's 2025
   circular. The detector flagged Duruthu Poya (file 2025-01-14, public
   holiday list 2025-01-13), Independence Day 2025-02-04, Maha Sivarathri

@@ -98,3 +98,9 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
 - 2026-10-07: XCOL 2027 Poya entries removed (8, copied from 2025 and wrong).
   Decision: remove, not "predicted" (they were copied, not calculated) and not
   computed (not citable to tier 1 or 2). Open until the 2027 circular exists.
+- 2026-10-07: XCOL source retrieval. cse.lk circulars page returned an empty
+  JavaScript shell (circular 03-04-2026 not retrieved); the CDS "Holiday List 2026"
+  page was retrieved and matches the 17 dates already in the file; the 2025 circular
+  was not found by two searches. XCOL open items unchanged: 2025 (6 candidates),
+  Vesak-week half holiday, four unverified 2027 entries. Next attempt needs a
+  direct `cdn.cse.lk` PDF link for each circular.
