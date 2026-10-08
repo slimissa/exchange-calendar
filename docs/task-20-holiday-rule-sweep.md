@@ -10,7 +10,7 @@ only in a session transcript. This is the durable copy.
 
 | Cluster | Candidates | State |
 |---------|-----------|-------|
-| XICE | 4 | untouched |
+| XICE | 4 | **resolved 2026-10-07** (tier 3, corroborated; see `BLOCKED.md`) |
 | XCOL | 19 | untouched |
 | XGSE | 11 | untouched |
 | XBUE | 12 | untouched |
@@ -50,7 +50,7 @@ The sweep stops and reports when a batch finds more than a handful of missing re
 closures, because each one needs its own citable source (`CONTRIBUTING.md`, "Citing
 Sources for Holiday Dates"), and adding many unsourced rules at once is how the XCAI
 dates went wrong. The first pass hit it on XICE alone (4 closures). It still applies:
-83 likely closures remain. A candidate with no citable source does not become a rule;
+83 likely closures remain (79 after XICE). A candidate with no citable source does not become a rule;
 it stays open here with the source named.
 
 ## Candidate table (122 candidates, 20 exchanges)
@@ -69,7 +69,7 @@ it stays open here with the source named.
 | XRIS | LV | 5 | Likely closure | untouched | 2025-05-02 Day off (substituted from 05/10/2025); 2025-05-05 Restoration of Independence Day (observed); 2025-11-17 Day off (substituted from 11/08/2025); 2026-01-02 Day off (substituted from 01/17/2026); 2026-06-22 Day off (substituted from 06/27/2026) |
 | XSTC | VN | 5 | Likely closure | untouched | 2025-05-02 Day off (substituted from 04/26/2025); 2025-09-01 National Day; 2026-08-31 Day off (substituted from 08/22/2026); 2026-09-01 National Day; 2026-11-24 Vietnam Cultural Day |
 | XBUD | HU | 4 | Likely closure | untouched | 2025-05-02 Day off (substituted from 05/17/2025); 2025-10-24 Day off (substituted from 10/18/2025); 2026-01-02 Day off (substituted from 01/10/2026); 2026-08-21 Day off (substituted from 08/08/2026) |
-| XICE | IS | 4 | Confirmed | untouched | 2025-04-24 First Day of Summer; 2025-08-04 Commerce Day; 2026-04-23 First Day of Summer; 2026-08-03 Commerce Day |
+| XICE | IS | 4 | Confirmed | resolved | 2025-04-24 First Day of Summer; 2025-08-04 Commerce Day; 2026-04-23 First Day of Summer; 2026-08-03 Commerce Day |
 | XNAS | US | 4 | Likely non-closure | untouched | 2025-10-13 Columbus Day; 2025-11-11 Veterans Day; 2026-10-12 Columbus Day; 2026-11-11 Veterans Day |
 | XNYS | US | 4 | Likely non-closure | untouched | 2025-10-13 Columbus Day; 2025-11-11 Veterans Day; 2026-10-12 Columbus Day; 2026-11-11 Veterans Day |
 | XDUB | IE | 2 | Unclear | untouched | 2025-02-03 Saint Brigid's Day; 2026-02-02 Saint Brigid's Day |
@@ -83,3 +83,6 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
 ## Log
 
 - 2026-10-07: table recorded. No cluster resolved.
+- 2026-10-07: XICE resolved. 4 closures confirmed and added (First Day of Summer
+  and Commerce Day, 2025 to 2029 as explicit entries; Commerce Day also a rule).
+  Open items for XICE: 0. Remaining likely closures: 79.

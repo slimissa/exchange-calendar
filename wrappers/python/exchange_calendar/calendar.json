@@ -11099,6 +11099,12 @@
             "status": "closed"
           },
           {
+            "date": "2025-04-24",
+            "name": "First Day of Summer",
+            "source_url": "https://luxcsd.com/luxcsd-en/products-and-services/settlement/l24059-4234274",
+            "status": "closed"
+          },
+          {
             "date": "2025-05-01",
             "name": "Labour Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
@@ -11120,6 +11126,12 @@
             "date": "2025-06-17",
             "name": "Icelandic National Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
+            "status": "closed"
+          },
+          {
+            "date": "2025-08-04",
+            "name": "Commerce Day",
+            "source_url": "https://luxcsd.com/luxcsd-en/products-and-services/settlement/l24059-4234274",
             "status": "closed"
           },
           {
@@ -11171,6 +11183,12 @@
             "status": "closed"
           },
           {
+            "date": "2026-04-23",
+            "name": "First Day of Summer",
+            "source_url": "https://www.luxcsd.com/luxcsd-en/products-and-services/settlement/l25036-4863894",
+            "status": "closed"
+          },
+          {
             "date": "2026-05-01",
             "name": "Labour Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
@@ -11192,6 +11210,12 @@
             "date": "2026-06-17",
             "name": "Icelandic National Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
+            "status": "closed"
+          },
+          {
+            "date": "2026-08-03",
+            "name": "Commerce Day",
+            "source_url": "https://www.luxcsd.com/luxcsd-en/products-and-services/settlement/l25036-4863894",
             "status": "closed"
           },
           {
@@ -11237,6 +11261,12 @@
             "status": "closed"
           },
           {
+            "date": "2027-04-22",
+            "name": "First Day of Summer",
+            "source_url": "https://nasdaqcsd.com/iceland/en/news/changes-in-nasdaq-csds-settlement-calender-in-iceland/",
+            "status": "closed"
+          },
+          {
             "date": "2027-05-06",
             "name": "Ascension Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
@@ -11252,6 +11282,12 @@
             "date": "2027-06-17",
             "name": "Icelandic National Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
+            "status": "closed"
+          },
+          {
+            "date": "2027-08-02",
+            "name": "Commerce Day",
+            "source_url": "https://nasdaqcsd.com/iceland/en/news/changes-in-nasdaq-csds-settlement-calender-in-iceland/",
             "status": "closed"
           },
           {
@@ -11279,6 +11315,12 @@
             "status": "closed"
           },
           {
+            "date": "2028-04-20",
+            "name": "First Day of Summer",
+            "source_url": "https://nasdaqcsd.com/iceland/en/news/changes-in-nasdaq-csds-settlement-calender-in-iceland/",
+            "status": "closed"
+          },
+          {
             "date": "2028-05-01",
             "name": "Labour Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
@@ -11294,6 +11336,12 @@
             "date": "2028-06-05",
             "name": "Whit Monday",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
+            "status": "closed"
+          },
+          {
+            "date": "2028-08-07",
+            "name": "Commerce Day",
+            "source_url": "https://nasdaqcsd.com/iceland/en/news/changes-in-nasdaq-csds-settlement-calender-in-iceland/",
             "status": "closed"
           },
           {
@@ -11333,6 +11381,12 @@
             "status": "closed"
           },
           {
+            "date": "2029-04-19",
+            "name": "First Day of Summer",
+            "source_url": "https://nasdaqcsd.com/iceland/en/news/changes-in-nasdaq-csds-settlement-calender-in-iceland/",
+            "status": "closed"
+          },
+          {
             "date": "2029-05-01",
             "name": "Labour Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
@@ -11348,6 +11402,12 @@
             "date": "2029-05-21",
             "name": "Whit Monday",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
+            "status": "closed"
+          },
+          {
+            "date": "2029-08-06",
+            "name": "Commerce Day",
+            "source_url": "https://nasdaqcsd.com/iceland/en/news/changes-in-nasdaq-csds-settlement-calender-in-iceland/",
             "status": "closed"
           },
           {

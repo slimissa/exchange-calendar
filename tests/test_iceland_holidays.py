@@ -190,3 +190,64 @@ class TestXICEStructure:
     def test_holiday_count_reasonable(self, explicit_dates):
         """~45-55 entries: 12 holidays × 5 years."""
         assert 40 <= len(explicit_dates) <= 60
+
+
+# ──────────────────────────────────────────────────────────────
+# First Day of Summer and Commerce Day (added v2.15.0)
+# ──────────────────────────────────────────────────────────────
+
+class TestXICESummerAndCommerceDay:
+    """Both are Icelandic public holidays on which Nasdaq Iceland's settlement
+    calendars (Nasdaq CSD Iceland, LuxCSD) are closed. First Day of Summer is the
+    first Thursday after 18 April; Commerce Day is the first Monday in August."""
+
+    SUMMER = {"2025": "2025-04-24", "2026": "2026-04-23", "2027": "2027-04-22",
+              "2028": "2028-04-20", "2029": "2029-04-19"}
+    COMMERCE = {"2025": "2025-08-04", "2026": "2026-08-03", "2027": "2027-08-02",
+                "2028": "2028-08-07", "2029": "2029-08-06"}
+
+    @pytest.mark.parametrize("year,d", sorted(SUMMER.items()))
+    def test_first_day_of_summer(self, explicit_dates, year, d):
+        assert explicit_dates[d]["name"] == "First Day of Summer"
+        assert date.fromisoformat(d).weekday() == 3          # Thursday
+        assert 19 <= date.fromisoformat(d).day <= 25          # first Thursday after Apr 18
+
+    @pytest.mark.parametrize("year,d", sorted(COMMERCE.items()))
+    def test_commerce_day(self, explicit_dates, year, d):
+        assert explicit_dates[d]["name"] == "Commerce Day"
+        assert date.fromisoformat(d).weekday() == 0          # Monday
+        assert date.fromisoformat(d).day <= 7                 # first Monday of August
+
+    def test_four_confirmed_2025_2026_dates(self, explicit_dates):
+        """The four closures confirmed by both CSD calendars."""
+        for d in ("2025-04-24", "2025-08-04", "2026-04-23", "2026-08-03"):
+            assert d in explicit_dates, d
+
+    def test_commerce_day_has_a_rule(self, xice):
+        rules = {r["name"]: r for r in xice["holidays"]["recurrence_rules"]}
+        r = rules["Commerce Day"]
+        assert (r["rule"], r["month"], r["weekday"], r["n"]) == ("nth_weekday", 8, "monday", 1)
+
+    def test_rule_matches_the_entries(self, xice):
+        import sys
+        sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+        from generate_dates import generate_dates_for_rule
+        rule = next(r for r in xice["holidays"]["recurrence_rules"] if r["name"] == "Commerce Day")
+        for year, d in self.COMMERCE.items():
+            assert generate_dates_for_rule(rule, int(year)).isoformat() == d
+
+    def test_earlier_year_pattern(self, xice):
+        """2024 (outside the range): Commerce Day was Monday 5 Aug, and the
+        first Thursday after 18 April was 25 April."""
+        import sys
+        sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+        from generate_dates import generate_dates_for_rule
+        rule = next(r for r in xice["holidays"]["recurrence_rules"] if r["name"] == "Commerce Day")
+        assert generate_dates_for_rule(rule, 2024) == date(2024, 8, 5)
+
+    def test_built_calendar_has_all_four(self):
+        root = Path(__file__).parent.parent
+        built = json.loads((root / "calendar.json").read_text())["exchanges"]
+        e = next(x for x in built if x["code"] == "XICE")
+        have = {h["date"] for k in ("explicit", "generated") for h in e["holidays"][k]}
+        assert {"2025-04-24", "2025-08-04", "2026-04-23", "2026-08-03"} <= have

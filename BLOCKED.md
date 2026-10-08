@@ -531,6 +531,31 @@ wrong without the reasoning behind it.
   docs/decisions/0010-render-mode.md for the decisions that govern
   this class of block.
 
+## XICE — Nasdaq Iceland (built; rules added 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Added:** First Day of Summer (first Thursday after 18 April) and Commerce
+  Day (first Monday in August), 2025 to 2029. The detector in
+  `docs/task-20-holiday-rule-sweep.md` had flagged four missing dates.
+- **Citation tier: 3, corroborated.** Nasdaq CSD Iceland's settlement calendar
+  (states both rules and the closure) and LuxCSD's non-business-day lists for
+  2025 and 2026 (name the four dates). Both are settlement calendars, not the
+  exchange's own notice, so each is tier 3 under `CONTRIBUTING.md`. The
+  exception in the tier 3 row applies: the two sources agree, and the Nasdaq CSD
+  list matches every other date already in `exchanges/XICE.json`
+  (Maundy Thursday, Good Friday, Easter Monday, Labour Day, Ascension, Whit
+  Monday, 17 June, 24 to 26 December, 31 December).
+- **Source needed:** the Nasdaq Nordic holiday schedule for Iceland (the
+  existing `source_url` of the other entries is
+  `nasdaqomxnordic.com/trading-hours`). Its holiday table did not render as
+  text from this environment, and `nasdaq.com/european-market-activity/trading-hours`
+  showed "Closed" cells without dates. Query: the Iceland column of "Exchange
+  Holiday Schedule 2026".
+- **Rule type:** First Day of Summer has no rule type (a Thursday in 19 to 25
+  April), so it is explicit for all five years, as Victoria Day is for XTSE.
+  Commerce Day has an `nth_weekday` rule and explicit entries.
+
 ## XIST — Borsa Istanbul
 
 **Last verified:** 2026-10-01

@@ -40,6 +40,13 @@ release because it adds a schema field, a rule type and a rule.
   Friday). Earlier text called Labour Day exempt from the Thursday move;
   that was wrong.
 
+- XICE: First Day of Summer and Commerce Day added for 2025 to 2029
+  (ten explicit entries) and a Commerce Day `nth_weekday` rule. Four
+  closures were missing, confirmed by two settlement calendars (Nasdaq CSD
+  Iceland, LuxCSD). `CONTRIBUTING.md` gains a "Citing Sources for Holiday
+  Dates" section and `docs/task-20-holiday-rule-sweep.md` tracks the rest
+  of the sweep.
+
 ### Notes
 
 See the 2.14.0, 2.14.1 and 2.14.2 sections for the detail of each

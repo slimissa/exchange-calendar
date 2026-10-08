@@ -325,7 +325,7 @@ which did not cover an exchange site that cannot be read.
 |------|--------|-----|
 | 1. Primary | A notice issued by the exchange itself (its site, disclosure or circular), or the instrument that sets the holiday (gazette, cabinet or prime-minister decree on a government site) | Cite as verified |
 | 2. Mirrored primary | A republication of the exchange's notice by a wire or news-mirror site that names the exchange as issuer and gives the notice date, the closure date and the resume date | Cite as verified **only when tier 1 is unreachable**, and only with the evidence below |
-| 3. Secondary | A press report that paraphrases a notice, a central-bank or government announcement about other bodies (a bank closure does not by itself prove an exchange closure), a holiday-aggregator site, a holiday library | Never alone for a closure. Use it to find a candidate, then confirm with tier 1 or 2 |
+| 3. Secondary | A press report that paraphrases a notice, a central-bank or government announcement about other bodies (a bank closure does not by itself prove an exchange closure), a holiday-aggregator site, a holiday library | Never alone for a closure. Use it to find a candidate, then confirm with tier 1 or 2. **Exception:** two independent tier 3 sources that agree on the date, where one is a calendar for the same market infrastructure and it already matches every date in the file, are enough to add the entry. Record the tier and the missing primary in `BLOCKED.md` (XICE is the worked example) |
 | 4. Prediction | A date derived from a rule or from a precedent, with no notice yet | Enter with `predicted: true` and the `(predicted)` name suffix; cite the precedent |
 
 A decree is tier 1 for the holiday and tier 3 for the exchange's closure
