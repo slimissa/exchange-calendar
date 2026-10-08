@@ -34,7 +34,7 @@ entries: 97, covered files: 97, drifted: 0
 | Check | Result |
 |-------|--------|
 | All 74 source files validate against `schema.json` | Pass, 0 errors |
-| Every field populated on every exchange, or optional | Pass. Optional and partial: `extended_hours` 30/74, `confidence.note` 213/361, `early_close_time` 150/3,905, `delayed_open_time` 5/3,905, `predicted` 276/3,905, `weekend_exception` 2/3,905 |
+| Every field populated on every exchange, or optional | Pass. Optional and partial: `extended_hours` 30/74, `confidence.note` 213/361, `early_close_time` 150/3,905, `delayed_open_time` 5/3,905, `predicted` 278/3,905, `weekend_exception` 2/3,905 |
 | Enum values closed and documented | Pass. No data value outside any enum |
 | Times `HH:MM`, dates `YYYY-MM-DD` and real dates | Pass, 4,119 records checked |
 | Nested arrays have one shape the wrappers agree on | Pass for data and for all four wrappers (see finding 3 below) |
@@ -70,7 +70,7 @@ entries: 97, covered files: 97, drifted: 0
    2029-07-24.** Resolved in v2.15.0: the generator clips to the range
    exactly.
 3. **Rust and Go `HolidayEntry` had no `predicted` or `weekend_exception`
-   field**, so both dropped them on deserialization (276 entries carry
+   field**, so both dropped them on deserialization (278 entries carry
    `predicted`, 2 carry `weekend_exception`). Resolved in v2.15.0: both
    structs carry the fields. The Python wrapper keeps entries as raw
    dicts and the JavaScript wrapper returns them as stored, so both

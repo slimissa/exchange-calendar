@@ -6605,7 +6605,8 @@
           },
           {
             "date": "2028-05-01",
-            "name": "Labour Day",
+            "name": "Labour Day (predicted)",
+            "predicted": true,
             "source_url": "https://www.egx.com.eg/en/trading-calendar/",
             "status": "closed"
           },
@@ -6665,7 +6666,8 @@
           },
           {
             "date": "2029-05-01",
-            "name": "Labour Day",
+            "name": "Labour Day (predicted)",
+            "predicted": true,
             "source_url": "https://www.egx.com.eg/en/trading-calendar/",
             "status": "closed"
           },

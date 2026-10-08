@@ -479,15 +479,35 @@ wrong without the reasoning behind it.
   The only Friday in range is 2028-01-07, entered as the predicted
   explicit date 2028-01-06. **Still open:** a decree can differ; the
   prediction is replaced when the cabinet decision is published.
-- **Labour Day (resolved 2026-10-07):** it is moved by decree, not
-  exempt. Mon 2023-05-01 was observed Thu 2023-05-04 (EGX disclosure via
-  Arab Finance); Sat 2021-05-01 stayed on the Saturday; Fri 2026-05-01 was
-  replaced by Thu 2026-05-07 (PM decree, CBE notice). The 2026-05-07 entry
-  is sourced to the decree. **Source needed:** the EGX disclosure for
-  2026-05-07 was not found; query "EGX disclosure Labour Day 7 May 2026"
-  on egx.com.eg. **Still open:** 2028-05-01 (Mon) and 2029-05-01 (Tue)
-  stay at the nominal date; the 2023 precedent suggests a Thursday move,
-  but no decree exists yet, so they are left as entered.
+- **Labour Day (2026-10-07, source check 2026-10-07):** it is moved by decree,
+  not exempt. Mon 2023-05-01 was observed Thu 2023-05-04 (EGX disclosure of
+  2023-05-02 via Arab Finance); Sat 2021-05-01 stayed on the Saturday; Fri
+  2026-05-01 was replaced by Thu 2026-05-07 (PM decree, CBE notice).
+  - **2026-05-07, EGX disclosure: not found.** `egx.com.eg/en/Trading_Calendar.aspx`
+    was fetched and returned the 2019 table (cached copy). A search snippet of
+    the live 2026 table shows nominal dates only, with Labor Day "May 01
+    (Friday)" and "Date liable to change". What supports the entry: the PM decree
+    (Arab Finance, cairo.gov.eg), the CBE bank-closure notice (Amwal Al Ghad)
+    and one aggregator (market-holiday.com, "Labor Day (Obs)"). Tier: 1 for the
+    holiday, 3 for EGX's closure. The entry stays. **Source needed:** the EGX
+    disclosure for 2026-05-07 (query: the "Disclosures" or news list on
+    egx.com.eg for 4 to 6 May 2026).
+  - **2028-05-01 and 2029-05-01: option (b), predicted, nominal date.** Both
+    entries are now `predicted: true` with the "(predicted)" suffix. A rule
+    was not added because the precedents disagree: 2023 Monday went to the same
+    week's Thursday, 2026 Friday went to the *following* week's Thursday, and the
+    2026-09-30 report of the new Thursday policy says it excludes Labour Day. A
+    shifted rule would only move a possible error to a different trading day.
+    They are replaced when the cabinet decree is published (about a week
+    before). **Source needed:** that decree and the EGX disclosure.
+- **Extra evidence found 2026-10-07:** EGX's own 2019 calendar page notes
+  "Holiday on 24/01/2019 instead of" Friday 25 January 2019, and "10/11/2019
+  instead of" Saturday 9 November: a Friday holiday goes to the preceding
+  Thursday and a Saturday one to the Sunday, in EGX's own words. A Global
+  Exchanges repost of the EGX notice (globalexchanges.com, "EGX Publishes
+  Holiday Notice") gives Thursday 2025-04-24 for Sinai Liberation Day and
+  Thursday 2025-05-01 for Labour Day; it shows no notice date, so it stays
+  tier 3.
 - **June 30 Revolution Day (added 2026-10-07):** `fixed_with_thursday_observance`.
   EGX notice via mondovisione.com: Thu 2025-07-03 instead of Mon
   2025-06-30. Arab Finance (2026-06-25): EGX halted Thu 2026-07-02 instead

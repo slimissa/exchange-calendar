@@ -35,8 +35,8 @@ Facts the decisions rest on, each checked against the data:
   `sessions`: 0 mismatches across 74 exchanges.
 - Ten exchanges carry two `auction` sessions, so `(exchange, type)`
   is not a key. Stored order is the only identity a session has.
-- `predicted` is present on 276 explicit entries: `true` on 218, `false`
-  on 58. The 218 `true` entries are exactly those carrying a
+- `predicted` is present on 278 explicit entries: `true` on 220, `false`
+  on 58. The 220 `true` entries are exactly those carrying a
   "(predicted)" suffix in `name`.
 - `calendar.json` has no country field. `tools/build.py` drops
   `country` and `country_code`, which the source schema requires.
@@ -140,7 +140,7 @@ the data has none today and the exporters assert it, so CSV can tell
 does not arise: a collection with no members is zero rows.
 
 Booleans are exported as stored: `true`, `false` or NULL. Today
-`predicted` is `true` on 218 entries, `false` on 58 and absent on the
+`predicted` is `true` on 220 entries, `false` on 58 and absent on the
 rest; `weekend_exception` is `true` on 2 and absent elsewhere. The
 schema defines absent `predicted` as false, so consumers read NULL and
 `false` alike. The exporters do not rewrite `false` to NULL or the
@@ -148,7 +148,7 @@ reverse.
 
 Values are exported as stored, with no normalisation. In particular
 `name` keeps its "(predicted)" suffix, and `predicted` is the stored
-flag. The two agree on all 218 `true` entries today.
+flag. The two agree on all 220 `true` entries today.
 
 ### 8. Generated holidays
 

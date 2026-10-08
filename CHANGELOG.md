@@ -40,6 +40,9 @@ release because it adds a schema field, a rule type and a rule.
   Friday). Earlier text called Labour Day exempt from the Thursday move;
   that was wrong.
 
+- XCAI Labour Day 2028 and 2029 are marked predicted (nominal date kept,
+  no shift rule) because the precedents conflict; the 2026-05-07 entry and
+  the source checks are recorded in `BLOCKED.md`.
 - XICE: First Day of Summer and Commerce Day added for 2025 to 2029
   (ten explicit entries) and a Commerce Day `nth_weekday` rule. Four
   closures were missing, confirmed by two settlement calendars (Nasdaq CSD

@@ -536,3 +536,13 @@ class TestXCAIWeekendCases:
         assert built_dates["2028-01-06"] == "Coptic Christmas (predicted)"
         assert "2028-01-09" not in built_dates
         assert "2028-01-07" not in built_dates
+
+    def test_labour_day_2028_2029_are_predicted_nominal_dates(self, xcai):
+        """No decree exists yet and the precedents conflict, so the nominal
+        dates are kept and marked predicted (not shifted by a rule)."""
+        entries = {h["date"]: h for h in xcai["holidays"]["explicit"]}
+        for d in ("2028-05-01", "2029-05-01"):
+            assert entries[d]["name"] == "Labour Day (predicted)"
+            assert entries[d]["predicted"] is True
+        rules = {r["name"]: r for r in xcai["holidays"]["recurrence_rules"]}
+        assert rules["Labour Day"]["rule"] == "fixed_date"
