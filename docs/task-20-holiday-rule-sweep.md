@@ -12,7 +12,7 @@ only in a session transcript. This is the durable copy.
 |---------|-----------|-------|
 | XICE | 4 | **resolved 2026-10-07** (tier 3, corroborated; see `BLOCKED.md`) |
 | XCOL | 19 | **2026 resolved 2026-10-07** (13 candidates, tier 1 circular); 2025 (6 candidates), 2027 and Vesak week open, see `BLOCKED.md` |
-| XGSE | 11 | untouched |
+| XGSE | 11 | **5 of 11 resolved 2026-10-07** (plus 1 added, 1 wrong entry removed); 6 open, see `BLOCKED.md` |
 | XBUE | 12 | untouched |
 | XBUD | 4 | untouched |
 | XBRV, XCAY, XDFM, XMOS, XRIS, XSHE, XSTC | 37 | untouched |
@@ -59,7 +59,7 @@ it stays open here with the source named.
 |----------|---------|-------|-------|--------|-------------------------|
 | XCOL | LK | 19 | Likely closure | 2026 resolved; 2025 open | 2025-01-13 Duruthu Full Moon Poya Day; 2025-02-04 Independence Day; 2025-02-26 Maha Sivarathri Day; 2025-03-31 Eid al-Fitr; 2025-04-18 Good Friday; 2025-09-05 Prophet's Birthday; 2026-01-15 Tamil Thai Pongal Day; 2026-02-04 Independence Day; 2026-03-02 Medin Full Moon Poya Day; 2026-04-01 Bak Full Moon Poya Day; 2026-04-03 Good Friday; 2026-04-13 Day Before Sinhala and Tamil New Year; 2026-05-28 Eid al-Adha; 2026-06-29 Poson Full Moon Poya Day; 2026-07-29 Esala Full Moon Poya Day; 2026-08-26 Prophet's Birthday; 2026-08-27 Nikini Full Moon Poya Day; 2026-11-24 Il Full Moon Poya Day; 2026-12-23 Unduvap Full Moon Poya Day |
 | XBUE | AR | 12 | Likely closure | untouched | 2025-04-17 Maundy Thursday; 2025-05-02 Bridge Public Holiday; 2025-06-16 Pass to the Immortality of General Don Martín Miguel de Güemes; 2025-08-15 Bridge Public Holiday; 2025-11-21 Bridge Public Holiday; 2025-11-24 National Sovereignty Day; 2026-03-23 Bridge Public Holiday; 2026-06-15 Pass to the Immortality of General Don Martín Miguel de Güemes; 2026-07-10 Bridge Public Holiday; 2026-11-09 Visit of His Holiness Pope Leo XIV; 2026-11-23 National Sovereignty Day; 2026-12-07 Bridge Public Holiday |
-| XGSE | GH | 11 | Likely closure | untouched | 2025-03-31 Public Holiday; 2025-04-01 Public Holiday; 2025-06-06 Eid-ul-Adha; 2025-07-01 Republic Day; 2025-07-04 Public Holiday; 2025-09-22 Public Holiday; 2026-01-09 Public Holiday; 2026-03-20 Eid-ul-Fitr; 2026-05-27 Eid-ul-Adha; 2026-07-01 Republic Day; 2026-07-03 Public Holiday |
+| XGSE | GH | 11 | Likely closure | 5 resolved, 6 open | 2025-03-31 Public Holiday; 2025-04-01 Public Holiday; 2025-06-06 Eid-ul-Adha; 2025-07-01 Republic Day; 2025-07-04 Public Holiday; 2025-09-22 Public Holiday; 2026-01-09 Public Holiday; 2026-03-20 Eid-ul-Fitr; 2026-05-27 Eid-ul-Adha; 2026-07-01 Republic Day; 2026-07-03 Public Holiday |
 | XPAR | FR | 11 | Likely non-closure | untouched | 2025-05-08 Victory Day; 2025-05-29 Ascension Day; 2025-06-09 Pentecost Monday; 2025-07-14 National Day; 2025-08-15 Assumption Day; 2025-11-11 Armistice Day; 2026-05-08 Victory Day; 2026-05-14 Ascension Day; 2026-05-25 Pentecost Monday; 2026-07-14 National Day; 2026-11-11 Armistice Day |
 | XBRV | CI | 10 | Likely closure | untouched | 2025-03-27 Day after Night of Power; 2025-03-31 Day after the Eid al-Fitr; 2025-06-06 Eid al-Adha; 2025-08-07 Independence Day; 2025-09-04 Day after Prophet's Birthday; 2026-03-16 Day after Night of Power; 2026-03-20 Eid al-Fitr; 2026-05-27 Eid al-Adha; 2026-08-07 Independence Day; 2026-08-25 Day after Prophet's Birthday |
 | XDFM | AE | 8 | Likely closure | untouched | 2025-03-31 Eid al-Fitr Holiday; 2025-04-01 Eid al-Fitr Holiday; 2025-06-03 Day of Arafah; 2025-06-04 Eid al-Adha; 2025-06-05 Eid al-Adha Holiday; 2025-06-06 Eid al-Adha Holiday; 2026-05-26 Day of Arafah (estimated); 2026-06-16 Islamic New Year (estimated) |
@@ -104,3 +104,14 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
   was not found by two searches. XCOL open items unchanged: 2025 (6 candidates),
   Vesak-week half holiday, four unverified 2027 entries. Next attempt needs a
   direct `cdn.cse.lk` PDF link for each circular.
+- 2026-10-07: XGSE, first six confirmed closures added (2025-03-31, 2025-04-01,
+  2025-06-06, 2026-03-20, 2026-03-23, 2026-05-27) and the stop condition fired.
+  GSE's own 2026 list (tier 1) gave the closure rule and also showed a wrong
+  entry (2026-08-04), now removed. Of the 11 candidates, 5 are resolved
+  (03-31, 04-01, 06-06, 03-20, 05-27); 2026-03-23 was not on the candidate list.
+  Open: 2025-07-01, 2025-07-04, 2025-09-22, 2026-01-09, 2026-07-01, 2026-07-03,
+  plus the 2027 to 2029 Aug 4 entries. Remaining likely closures: 65 (70 minus
+  XGSE's 5), plus XGSE's open items.
+- Method note from XGSE: the exchange's own list contradicted the registry as well
+  as extending it (a wrong 2026 closure), as with XCOL. A sweep that only looks for
+  missing closures misses this class.

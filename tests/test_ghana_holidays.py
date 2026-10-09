@@ -278,8 +278,16 @@ class TestXGSEStructure:
         assert 50 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
-            assert "gse.com.gh" in entry["source_url"]
+        for d, entry in explicit_dates.items():
+            if d in DECREE_CITED:
+                continue
+            assert "gse.com.gh" in entry["source_url"], d
+
+
+# Entries whose date comes from an Interior Ministry declaration, cited to the
+# press report of it (the 2025 decree pages carry a 2025 year token, which
+# tools/check_stale_year_urls.py rejects). See BLOCKED.md, XGSE.
+DECREE_CITED = {"2025-03-31", "2025-04-01", "2025-06-06"}
 
 
 # ──────────────────────────────────────────────────────────────
@@ -310,3 +318,36 @@ class TestXGSESubstitution:
     def test_observed_names(self, explicit_dates):
         observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
         assert observed_count >= 4, f"Expected some observed holidays, got {observed_count}"
+
+
+# ──────────────────────────────────────────────────────────────
+# Eid closures and the 2026 list (Task 20, XGSE cluster)
+# ──────────────────────────────────────────────────────────────
+
+class TestXGSEEidClosures:
+    """GSE's own 2026 list says it closes on public holidays and names
+    Eid-Ul-Fitr and Eid-Al-Adha with dates "subject to the visibility of the
+    New Moon". The dates come from Interior Ministry declarations."""
+
+    EID = {
+        "2025-03-31": "Eid-Ul-Fitr",
+        "2025-04-01": "Eid-Ul-Fitr (additional holiday)",   # E.I. under Act 601
+        "2025-06-06": "Eid-Ul-Adha",
+        "2026-03-20": "Eid-Ul-Fitr",
+        "2026-03-23": "Eid-Ul-Fitr (additional holiday)",   # 03-21 is a Saturday
+        "2026-05-27": "Eid-Ul-Adha",
+    }
+
+    @pytest.mark.parametrize("d,name", sorted(EID.items()))
+    def test_eid_closure(self, explicit_dates, d, name):
+        assert explicit_dates[d]["name"] == name
+
+    def test_no_eid_closure_on_a_weekend(self, explicit_dates):
+        for d in self.EID:
+            assert date.fromisoformat(d).weekday() < 5, d
+
+    def test_2026_aug_4_is_not_a_closure(self, explicit_dates):
+        """GSE's 2026 list has Founder's Day on Monday 21 September and no
+        4 August. The file had a 2026-08-04 closure that is not on the list."""
+        assert "2026-08-04" not in explicit_dates
+        assert explicit_dates["2026-09-21"]["name"] == "Founders' Day"

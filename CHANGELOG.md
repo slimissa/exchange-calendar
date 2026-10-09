@@ -49,6 +49,9 @@ release because it adds a schema field, a rule type and a rule.
   and the Vesak-week half holiday remain open (`BLOCKED.md`).
 - XCOL: the eight 2027 Poya entries are removed (2025's dates repeated).
   They return with CSE's 2027 circular.
+- XGSE: six Eid closures added (2025-03-31, 2025-04-01, 2025-06-06,
+  2026-03-20, 2026-03-23, 2026-05-27) and the 2026-08-04 closure removed,
+  because GSE's own 2026 list has no 4 August. Six more candidates are open.
 - XICE: First Day of Summer and Commerce Day added for 2025 to 2029
   (ten explicit entries) and a Commerce Day `nth_weekday` rule. Four
   closures were missing, confirmed by two settlement calendars (Nasdaq CSD

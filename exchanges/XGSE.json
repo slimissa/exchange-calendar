@@ -58,6 +58,18 @@
         "status": "closed"
       },
       {
+        "date": "2025-03-31",
+        "name": "Eid-Ul-Fitr",
+        "source_url": "https://www.graphic.com.gh/news/general-news/march-31-and-april-1-declared-public-holidays-for-eid-ul-fitr-celebration.html",
+        "status": "closed"
+      },
+      {
+        "date": "2025-04-01",
+        "name": "Eid-Ul-Fitr (additional holiday)",
+        "source_url": "https://www.graphic.com.gh/news/general-news/march-31-and-april-1-declared-public-holidays-for-eid-ul-fitr-celebration.html",
+        "status": "closed"
+      },
+      {
         "date": "2025-04-18",
         "name": "Good Friday",
         "source_url": "https://gse.com.gh/trading-calendar",
@@ -73,6 +85,12 @@
         "date": "2025-05-01",
         "name": "Labour Day",
         "source_url": "https://gse.com.gh/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2025-06-06",
+        "name": "Eid-Ul-Adha",
+        "source_url": "https://www.adomonline.com/govt-declares-friday-june-6-as-public-holiday/",
         "status": "closed"
       },
       {
@@ -118,6 +136,18 @@
         "status": "closed"
       },
       {
+        "date": "2026-03-20",
+        "name": "Eid-Ul-Fitr",
+        "source_url": "https://gse.com.gh/events/",
+        "status": "closed"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Eid-Ul-Fitr (additional holiday)",
+        "source_url": "https://gse.com.gh/events/",
+        "status": "closed"
+      },
+      {
         "date": "2026-04-03",
         "name": "Good Friday",
         "source_url": "https://gse.com.gh/trading-calendar",
@@ -136,15 +166,15 @@
         "status": "closed"
       },
       {
-        "date": "2026-08-04",
-        "name": "Founders' Day",
-        "source_url": "https://gse.com.gh/trading-calendar",
+        "date": "2026-05-27",
+        "name": "Eid-Ul-Adha",
+        "source_url": "https://gse.com.gh/events/",
         "status": "closed"
       },
       {
         "date": "2026-09-21",
-        "name": "Kwame Nkrumah Memorial Day",
-        "source_url": "https://gse.com.gh/trading-calendar",
+        "name": "Founders' Day",
+        "source_url": "https://gse.com.gh/events/",
         "status": "closed"
       },
       {

@@ -577,6 +577,41 @@ wrong without the reasoning behind it.
   April), so it is explicit for all five years, as Victoria Day is for XTSE.
   Commerce Day has an `nth_weekday` rule and explicit entries.
 
+## XGSE — Ghana Stock Exchange (built; six Eid closures added 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Tier 1 for the closure rule.** GSE's own events page (`gse.com.gh/events/`)
+  lists the 2026 public holidays under "The Ghana Stock Exchange will be closed
+  on such holidays". It names Eid-Ul-Fitr and Eid-Al-Adha with dates "subject to
+  the visibility of the New Moon", and states that a holiday on a weekend is
+  observed on the following working day "if declared by the Government".
+- **Dates from Interior Ministry declarations** (tier 1 for the holiday; the
+  quoted text is in press reports, and the ministry page `mint.gov.gh` for
+  2025-06-06 carries a 2025 year token that `tools/check_stale_year_urls.py`
+  rejects, so the entry cites the press report of it):
+  2025-03-31 and 2025-04-01 (Executive Instrument under Act 601, because Eid
+  could fall on Sunday 03-30), 2025-06-06, 2026-03-20 (with 03-21 a Saturday, so
+  an additional holiday on Monday 2026-03-23) and 2026-05-27. The 2025 GSE list
+  was not retrieved; the 2025 entries rest on the standing policy above.
+- **Added (the first six, per the Task 20 stop condition):** 2025-03-31,
+  2025-04-01, 2025-06-06, 2026-03-20, 2026-03-23, 2026-05-27.
+- **Removed:** 2026-08-04 "Founders' Day". GSE's 2026 list has Founder's Day on
+  Monday 21 September and no 4 August. 2026-09-21 is renamed "Founders' Day".
+- **Open, with the source needed for each** (all have a declaration or a listing,
+  deferred only by the stop condition, except where noted):
+  - 2025-07-01 Republic Day: the 2025 declaration (Interior Ministry, June 2025).
+  - 2025-07-04 and 2025-09-22: unclear; no declaration found.
+  - 2026-01-09: the ministry lists "Declaration of Friday, 9th January, 2026 as a
+    Public Holiday"; GSE's 2026 list omits it. Source needed: GSE's notice on
+    whether it closed.
+  - 2026-07-01 Republic Day and 2026-07-03: GSE lists "Friday July 1st/3rd"; a
+    press report quotes the ministry for Wednesday 1 July and a declared Friday
+    3 July. Source needed: the ministry declaration or GSE notice.
+  - 2027 to 2029: 4 August is still an entry in each year (2029: Monday 6
+    August "observed") and is probably wrong under the same list; Eid dates are
+    not in the file for those years. Source needed: GSE's list for each year.
+
 ## XIST — Borsa Istanbul
 
 **Last verified:** 2026-10-01
@@ -1099,7 +1134,7 @@ Combined count for the round: 6 built, 4 blocked.
   circular. The detector flagged Duruthu Poya (file 2025-01-14, public
   holiday list 2025-01-13), Independence Day 2025-02-04, Maha Sivarathri
   2025-02-26, Eid al-Fitr 2025-03-31, Good Friday 2025-04-18 and Prophet's
-  Birthday 2025-09-05. **Source needed:** the CSE circular of late 2024.
+  Birthday 2025-09-05. **Source needed:** the CSE circular of late 2024; the direct `cdn.cse.lk` link was not found. The CDS depository publishes only the current year's list.
 - **2027 Poya days removed (2026-10-07).** The eight 2027 Poya entries
   (Duruthu, Navam, Vesak and its holiday, Poson, Binara, Vap, Il) repeated
   2025's month and day. Poya days move about eleven days a year and the 2026
