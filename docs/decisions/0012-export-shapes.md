@@ -18,7 +18,7 @@ Measured on `calendar.json` v2.13.0 (74 exchanges):
 |------------|------|
 | exchanges | 74 |
 | sessions | 166 |
-| holidays, explicit | 3,904 |
+| holidays, explicit | 3,913 |
 | holidays, generated | 70 |
 | confidence (exchange, year) | 361 |
 | ad_hoc_closures | 0 |

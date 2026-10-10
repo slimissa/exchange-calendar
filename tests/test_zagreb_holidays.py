@@ -298,3 +298,26 @@ class TestXZAGSubstitution:
     def test_observed_names(self, explicit_dates):
         observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
         assert observed_count >= 4, f"Expected some observed holidays, got {observed_count}"
+
+
+def _explicit(code):
+    import json as _j
+    from pathlib import Path as _P
+    x = _j.loads((_P(__file__).resolve().parent.parent / "exchanges" / f"{code}.json").read_text())
+    return {h["date"]: h for h in x["holidays"]["explicit"]}
+
+
+class TestXZAGRemembranceDay:
+    """ZSE's own non-trading-days page (tier 1) lists Remembrance Day for the
+    Victims of the Homeland War (18 Nov) for 2025 and 2026. 2027 is a Thursday;
+    2028 and 2029 fall on a weekend."""
+
+    def test_remembrance_day(self):
+        e = _explicit("XZAG")
+        for d in ("2025-11-18", "2026-11-18", "2027-11-18"):
+            assert e[d]["name"] == "Remembrance Day", d
+            assert e[d]["source_url"] == "https://zse.hr/en/non-trading-days/110"
+
+    def test_no_entry_when_it_is_a_weekend(self):
+        e = _explicit("XZAG")
+        assert "2028-11-18" not in e and "2029-11-18" not in e

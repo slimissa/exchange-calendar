@@ -276,3 +276,34 @@ class TestXLITSubstitution:
     def test_observed_names(self, explicit_dates):
         observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
         assert observed_count >= 4, f"Expected some observed holidays, got {observed_count}"
+
+
+def _explicit(code):
+    import json as _j
+    from pathlib import Path as _P
+    x = _j.loads((_P(__file__).resolve().parent.parent / "exchanges" / f"{code}.json").read_text())
+    return {h["date"]: h for h in x["holidays"]["explicit"]}
+
+
+class TestXLITNasdaqBalticList:
+    """Nasdaq Baltic's own "Trading holidays" page (tier 1) lists, for the Vilnius
+    market in 2026, All Souls' Day (2 Nov), Ascension Day (14 May) and New
+    Year's Eve (31 Dec). The file had none of the three. All Souls' Day is a
+    statutory holiday from 2020, so 2027 to 2029 are entered too; Ascension
+    Day and New Year's Eve are entered for 2026 only, the only year read."""
+
+    def test_2026_additions(self):
+        e = _explicit("XLIT")
+        assert e["2026-05-14"]["name"] == "Ascension Day"
+        assert e["2026-11-02"]["name"] == "All Souls' Day"
+        assert e["2026-12-31"]["name"] == "New Year's Eve"
+
+    def test_all_souls_day_every_year_it_is_a_weekday(self):
+        e = _explicit("XLIT")
+        for d in ("2026-11-02", "2027-11-02", "2028-11-02", "2029-11-02"):
+            assert e[d]["name"] == "All Souls' Day", d
+        assert "2025-11-02" not in e          # a Sunday
+
+    def test_all_souls_day_not_before_2020(self):
+        """The holiday dates from a 2019 law, first observed in 2020."""
+        assert all(not d.startswith(("2019", "2018")) for d in _explicit("XLIT"))

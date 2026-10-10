@@ -174,6 +174,29 @@ This file documents what was checked and why each verdict holds, since "we
 found a different URL" or "it's blocked" is easy to state and easy to get
 wrong without the reasoning behind it.
 
+## XDUB — Euronext Dublin (St Brigid's Day resolved; large discrepancy open, 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Candidate resolved: non-closure.** St Brigid's Day (2025-02-03, 2026-02-02) is a
+  full trading day for Dublin in Euronext's own calendars (tier 1,
+  `live.euronext.com/resources/trading-hours-holidays`, "Calendar of business days
+  2025" and "2026 Holiday Calendar"). Pinned by a test.
+- **Stop condition fired (more than three rules).** The same Euronext calendars show
+  Dublin closed in 2025 on 1 Jan, 18 Apr, 21 Apr, 1 May, 5 May (Irish May Bank
+  Holiday), 25 Dec, 26 Dec, and in 2026 on 1 Jan, 3 Apr, 6 Apr, 1 May, 4 May, 25 Dec,
+  28 Dec (substitute for St Stephen's Day). Against them the file has:
+  - **False closures** (Dublin traded): St. Patrick's Day (2025-03-17, 2026-03-17),
+    June Bank Holiday (2025-06-02, 2026-06-01), August Bank Holiday (2025-08-04,
+    2026-08-03), October Bank Holiday (2025-10-27, 2026-10-26) and a "Christmas Day
+    (substitute)" on 2025-12-29. The rules behind them also generate 2027 to 2029.
+  - **Missing closure:** Labour Day, 1 May (2025-05-01 and 2026-05-01).
+  Fixing it removes four rules and their explicit entries and adds one. Not done: it
+  is more than three rule changes. **Source:** the Euronext page above, which is
+  already tier 1 and covers 2022 to 2026; the 2027 to 2029 years need Euronext's
+  future calendars.
+- Half sessions on 24 and 31 December match Euronext (Dublin closes 13:30 CET).
+
 ## XETR — Xetra (Deutsche Börse) (built; non-closures recorded 2026-10-07)
 
 **Last verified:** 2026-10-07
@@ -183,6 +206,22 @@ wrong without the reasoning behind it.
 - The source file cannot hold this note: `schema.json` sets `additionalProperties:
   false` on the root and on `holidays`, so there is no field for a comment. This
   section is where the next sweep looks.
+
+## XLIT — Nasdaq Vilnius (three closures added 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Tier 1:** Nasdaq Baltic's "Trading holidays" page (`nasdaqbaltic.com/statistics/en/calendar?holidays=1`)
+  lists, for the Vilnius market in 2026: 1 Jan, 16 Feb, 11 Mar, 3 Apr, 6 Apr, 1 May,
+  **14 May** (all three Baltic markets), 24 Jun, 6 Jul, **2 Nov**, 24 and 25 Dec, **31 Dec**.
+- **Candidate resolved: closure.** All Souls' Day (2026-11-02). It became a Lithuanian
+  public holiday by a 2019 law, first observed in 2020, so 2027 to 2029 are entered
+  (2025-11-02 is a Sunday).
+- **Also missing from the file, now added for 2026 only:** Ascension Day 2026-05-14 and
+  New Year's Eve 2026-12-31 (three additions in total, within the three-rule limit).
+- **Open:** whether Ascension Day and 31 December are Nasdaq Baltic trading holidays in
+  other years. **Source needed:** the same page for 2025, and for 2027 onward when
+  published. The page shows only the current year.
 
 ## XMAD — BME Spanish Exchanges (built; non-closures recorded 2026-10-07)
 
@@ -1280,3 +1319,20 @@ of wrong.
 - **Status:** fetcher present but incomplete. Resolution requires
   adding Hungarian observed-day logic to the parser. IMPLEMENTED
   at v2.9.3 (`BudapestFetcher._observed_substitutes`).
+## XZAG — Zagreb Stock Exchange (Remembrance Day added; discrepancies open, 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Tier 1:** ZSE's "Non-trading days" page (`zse.hr/en/non-trading-days/110`). 2026: 1 Jan,
+  6 Jan, 3 Apr, 6 Apr, 1 May, 4 Jun, 22 Jun, 5 Aug, **18 Nov**, 24 Dec, 25 Dec, 31 Dec.
+  The 2025 list (as quoted) has 15 Aug, 18 Nov, 24, 25, 26 and 31 Dec.
+- **Candidate resolved: closure.** Remembrance Day for the Victims of the Homeland War
+  (18 November): entered for 2025, 2026 and 2027 (2028 and 2029 are weekend days).
+- **Stop condition fired (more than three rules).** The same page shows the file is also
+  missing Good Friday (no year has it; 2026-04-03), Christmas Eve (2025-12-24,
+  2026-12-24) and New Year's Eve (2025-12-31, 2026-12-31), and has a closure that is not
+  on ZSE's 2026 list: Independence Day 2026-10-08. Four additions and one removal; only
+  the candidate was done. **Source:** the ZSE page above for 2025 (full list) and for 2027
+  onward when published. Whether ZSE's 24 and 31 December are full closures is as the
+  page states ("closed for trading").
+

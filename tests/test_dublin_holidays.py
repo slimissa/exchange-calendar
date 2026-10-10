@@ -496,3 +496,20 @@ class TestXDUBCalendarCrossChecks:
             if entry["name"] in bank_holiday_names:
                 d = date.fromisoformat(entry["date"])
                 assert d.weekday() == 0, f"{entry['name']} should be Monday: {entry['date']}"
+
+
+def _explicit(code):
+    import json as _j
+    from pathlib import Path as _P
+    x = _j.loads((_P(__file__).resolve().parent.parent / "exchanges" / f"{code}.json").read_text())
+    return {h["date"]: h for h in x["holidays"]["explicit"]}
+
+
+class TestXDUBStBrigidsDay:
+    """Euronext's own 2025 and 2026 holiday calendars (tier 1) show Dublin as a
+    full trading day on St Brigid's Day (2025-02-03, 2026-02-02). A public
+    holiday in Ireland, not an exchange closure."""
+
+    def test_st_brigids_day_is_not_a_closure(self):
+        e = _explicit("XDUB")
+        assert "2025-02-03" not in e and "2026-02-02" not in e

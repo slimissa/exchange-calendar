@@ -16,7 +16,7 @@ only in a session transcript. This is the durable copy.
 | XBUE | 12 | untouched |
 | XBUD | 4 | untouched |
 | XBRV, XCAY, XDFM, XMOS, XRIS, XSHE, XSTC | 37 | untouched |
-| XDUB, XLIT, XZAG | 5 | untouched, unclear |
+| XDUB, XLIT, XZAG | 5 | **all 5 resolved 2026-10-07**: XDUB 2 non-closures, XLIT 1 closure, XZAG 2 closures; each file also has discrepancies open (XDUB, XZAG), see `BLOCKED.md` |
 | XETR, XPAR, XMAD, XNYS, XNAS | 30 | **30 confirmed non-closures 2026-10-07** (tier 1 for all five; 2025 US dates rest on the same fixed set), recorded in `BLOCKED.md`. One real closure found outside the list: XMAD Easter Monday, now a rule |
 
 Recommended order: XICE, XCOL, XGSE, XBUE, XBUD, then the rest of the likely closures.
@@ -125,3 +125,15 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
   rule; XMAD tests that asserted the opposite were rewritten.
 - Method note: a closure that is not a public holiday (Easter Monday for Spain) is
   invisible to a public-holiday detector. The exchanges' own calendars are the check.
+- 2026-10-07: the five unclear candidates are resolved against each exchange's own
+  calendar. XDUB St Brigid's Day (2): non-closure (Euronext). XLIT All Souls' Day (1):
+  closure (Nasdaq Baltic); two further 2026 closures added. XZAG Remembrance Day (2):
+  closure (ZSE). Stop condition fired for XDUB and XZAG: each file differs from its
+  exchange's list by more than three rules. Open: XDUB, false closures for St Patrick's
+  Day and the June, August and October bank holidays (2025 to 2029), a false 2025-12-29
+  "Christmas Day (substitute)", and a missing Labour Day; XZAG, missing Good Friday,
+  Christmas Eve and New Year's Eve and a false 2026-10-08.
+- Method note: the unclear candidates led to the exchange's own list, and that list
+  showed more wrong closures than missing ones for XDUB. Third time (XCOL, XGSE, XDUB):
+  checking a file against the exchange's calendar finds false closures the candidate
+  detector cannot.

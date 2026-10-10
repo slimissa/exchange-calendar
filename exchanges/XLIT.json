@@ -136,6 +136,12 @@
         "status": "closed"
       },
       {
+        "date": "2026-05-14",
+        "name": "Ascension Day",
+        "source_url": "https://nasdaqbaltic.com/statistics/en/calendar?holidays=1",
+        "status": "closed"
+      },
+      {
         "date": "2026-06-24",
         "name": "St. John's Day",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
@@ -148,6 +154,12 @@
         "status": "closed"
       },
       {
+        "date": "2026-11-02",
+        "name": "All Souls' Day",
+        "source_url": "https://nasdaqbaltic.com/statistics/en/calendar?holidays=1",
+        "status": "closed"
+      },
+      {
         "date": "2026-12-24",
         "name": "Christmas Eve",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
@@ -157,6 +169,12 @@
         "date": "2026-12-25",
         "name": "Christmas Day",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "New Year's Eve",
+        "source_url": "https://nasdaqbaltic.com/statistics/en/calendar?holidays=1",
         "status": "closed"
       },
       {
@@ -211,6 +229,12 @@
         "date": "2027-11-01",
         "name": "All Saints' Day",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2027-11-02",
+        "name": "All Souls' Day",
+        "source_url": "https://nasdaqbaltic.com/statistics/en/calendar?holidays=1",
         "status": "closed"
       },
       {
@@ -280,6 +304,12 @@
         "status": "closed"
       },
       {
+        "date": "2028-11-02",
+        "name": "All Souls' Day",
+        "source_url": "https://nasdaqbaltic.com/statistics/en/calendar?holidays=1",
+        "status": "closed"
+      },
+      {
         "date": "2028-12-25",
         "name": "Christmas Day",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
@@ -337,6 +367,12 @@
         "date": "2029-11-01",
         "name": "All Saints' Day",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2029-11-02",
+        "name": "All Souls' Day",
+        "source_url": "https://nasdaqbaltic.com/statistics/en/calendar?holidays=1",
         "status": "closed"
       },
       {

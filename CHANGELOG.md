@@ -57,6 +57,11 @@ release because it adds a schema field, a rule type and a rule.
   the file and its tests said it was open. Generated holidays total 70.
 - The 30 "likely non-closures" (XETR, XPAR, XMAD, XNYS, XNAS) are recorded as
   confirmed non-closures in `BLOCKED.md` against each exchange's own calendar.
+- XLIT: Ascension Day 2026, New Year's Eve 2026 and All Souls' Day (2026 to
+  2029) added from Nasdaq Baltic's trading holidays page. XZAG: Remembrance Day
+  (2025 to 2027) added from ZSE's non-trading days page. XDUB: St Brigid's Day
+  confirmed a non-closure. XDUB and XZAG differ from their exchanges' lists by
+  more than the sweep's limit and are recorded in `BLOCKED.md`.
 - XICE: First Day of Summer and Commerce Day added for 2025 to 2029
   (ten explicit entries) and a Commerce Day `nth_weekday` rule. Four
   closures were missing, confirmed by two settlement calendars (Nasdaq CSD
