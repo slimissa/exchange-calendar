@@ -4,11 +4,14 @@ test_madrid_holidays.py — Ground truth tests for XMAD (Bolsa de Madrid / BME).
 
 Key facts verified:
     - BME is OPEN on most Spanish civil holidays:
-      Epiphany (Jan 6), Easter Monday, Assumption (Aug 15),
+      Epiphany (Jan 6), Assumption (Aug 15),
       Hispanic Day (Oct 12), All Saints (Nov 1),
       Constitution Day (Dec 6), Immaculate Conception (Dec 8)
-    - Only 5 full closures: New Year, Good Friday, Labour Day,
-      Christmas Day, Boxing Day (Dec 26)
+    - Only 6 full closures: New Year, Good Friday, Easter Monday, Labour
+      Day, Christmas Day, Boxing Day (Dec 26). BME closes on Easter Monday:
+      Sociedad de Bolsas Instrucciones Operativas 53/2021 (2022), 45/2023
+      (2024), 52/2024 (2025) and 65/2025 (2026) list it. An earlier version of
+      this file claimed BME was open that day; it has not been since 2022.
     - Christmas Eve and New Year's Eve are half-days (early close 14:00 CET)
     - No lunch break (continuous trading)
     - No weekend observation — Spanish holidays on weekends are NOT shifted
@@ -92,9 +95,21 @@ class TestXMADOpenOnSpanishHolidays:
         assert "2025-01-06" not in explicit_dates
         assert "2026-01-06" not in explicit_dates
 
-    def test_easter_monday_open(self, explicit_dates):
-        """Easter Monday — BME OPEN (unlike UK/France)."""
-        assert "2025-04-21" not in explicit_dates
+    def test_easter_monday_is_a_closure(self, explicit_dates):
+        """Easter Monday — BME CLOSED (Instrucciones Operativas 52/2024 and
+        65/2025: Monday 2025-04-21 and Monday 2026-04-06 are non-business days).
+        2026 is an explicit entry citing the instruction; 2025 and later years
+        come from the easter_offset rule."""
+        assert explicit_dates["2026-04-06"]["name"] == "Easter Monday"
+        assert "bolsasymercados.es" in explicit_dates["2026-04-06"]["source_url"]
+
+    def test_easter_monday_in_built_calendar(self):
+        root = Path(__file__).resolve().parent.parent
+        built = json.loads((root / "calendar.json").read_text())["exchanges"]
+        e = next(x for x in built if x["code"] == "XMAD")
+        have = {h["date"] for k in ("explicit", "generated") for h in e["holidays"][k]
+                if h["name"] == "Easter Monday"}
+        assert {"2025-04-21", "2026-04-06", "2027-03-29", "2028-04-17", "2029-04-02"} <= have
 
     def test_assumption_open(self, explicit_dates):
         """August 15 — BME OPEN."""
@@ -236,11 +251,14 @@ class TestXMADStructure:
         rules = xmad["holidays"].get("recurrence_rules", [])
         assert len(rules) > 0
 
+    def test_easter_monday_rule(self, xmad):
+        rules = {r["name"]: r for r in xmad["holidays"]["recurrence_rules"]}
+        assert (rules["Easter Monday"]["rule"], rules["Easter Monday"]["offset_days"]) == ("easter_offset", 1)
+
     def test_recurrence_rules_no_spanish_holidays(self, xmad):
         rules = xmad["holidays"].get("recurrence_rules", [])
         names = {r["name"] for r in rules}
         assert "Epiphany" not in names
-        assert "Easter Monday" not in names
         assert "Assumption Day" not in names
         assert "Hispanic Day" not in names
         assert "All Saints' Day" not in names

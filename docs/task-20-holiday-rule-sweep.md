@@ -17,7 +17,7 @@ only in a session transcript. This is the durable copy.
 | XBUD | 4 | untouched |
 | XBRV, XCAY, XDFM, XMOS, XRIS, XSHE, XSTC | 37 | untouched |
 | XDUB, XLIT, XZAG | 5 | untouched, unclear |
-| XETR, XPAR, XMAD, XNYS, XNAS | 30 | untouched, need a "trades on this holiday" comment each, not a rule |
+| XETR, XPAR, XMAD, XNYS, XNAS | 30 | **30 confirmed non-closures 2026-10-07** (tier 1 for all five; 2025 US dates rest on the same fixed set), recorded in `BLOCKED.md`. One real closure found outside the list: XMAD Easter Monday, now a rule |
 
 Recommended order: XICE, XCOL, XGSE, XBUE, XBUD, then the rest of the likely closures.
 
@@ -115,3 +115,13 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
 - Method note from XGSE: the exchange's own list contradicted the registry as well
   as extending it (a wrong 2026 closure), as with XCOL. A sweep that only looks for
   missing closures misses this class.
+- 2026-10-07: the 30 likely non-closures (XETR 5, XPAR 11, XMAD 6, XNYS 4, XNAS 4) are
+  confirmed non-closures against each exchange's own calendar (Deutsche Boerse, Euronext,
+  BME instructions, NYSE, Nasdaq). None was a closure, so none became a rule. The note
+  lives in `BLOCKED.md`, one section per exchange, because `schema.json` forbids a
+  comment field (`additionalProperties: false`). Remaining likely closures: 65 (unchanged
+  by this step). The check found a real closure the detector cannot see: BME closes on
+  Easter Monday (instructions for 2022, 2024, 2025, 2026) and the file did not. Added as a
+  rule; XMAD tests that asserted the opposite were rewritten.
+- Method note: a closure that is not a public holiday (Easter Monday for Spain) is
+  invisible to a public-holiday detector. The exchanges' own calendars are the check.

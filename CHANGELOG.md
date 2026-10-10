@@ -52,6 +52,11 @@ release because it adds a schema field, a rule type and a rule.
 - XGSE: six Eid closures added (2025-03-31, 2025-04-01, 2025-06-06,
   2026-03-20, 2026-03-23, 2026-05-27) and the 2026-08-04 closure removed,
   because GSE's own 2026 list has no 4 August. Six more candidates are open.
+- XMAD: Easter Monday added (`easter_offset` +1). BME has closed on it since
+  at least 2022 (its Instrucciones Operativas for 2022, 2024, 2025 and 2026);
+  the file and its tests said it was open. Generated holidays total 70.
+- The 30 "likely non-closures" (XETR, XPAR, XMAD, XNYS, XNAS) are recorded as
+  confirmed non-closures in `BLOCKED.md` against each exchange's own calendar.
 - XICE: First Day of Summer and Commerce Day added for 2025 to 2029
   (ten explicit entries) and a Commerce Day `nth_weekday` rule. Four
   closures were missing, confirmed by two settlement calendars (Nasdaq CSD

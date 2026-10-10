@@ -18,8 +18,8 @@ Measured on `calendar.json` v2.13.0 (74 exchanges):
 |------------|------|
 | exchanges | 74 |
 | sessions | 166 |
-| holidays, explicit | 3,903 |
-| holidays, generated | 66 |
+| holidays, explicit | 3,904 |
+| holidays, generated | 70 |
 | confidence (exchange, year) | 361 |
 | ad_hoc_closures | 0 |
 
@@ -30,7 +30,7 @@ Facts the decisions rest on, each checked against the data:
 
 - All three wrappers (Python, Rust, Go) answer `is_holiday` from
   `explicit` plus `generated` together. Generated entries never
-  overlap explicit ones (0 of 66) and carry no `source_url`.
+  overlap explicit ones (0 of 70) and carry no `source_url`.
 - `extended_hours` and `regular_hours` are fully redundant with
   `sessions`: 0 mismatches across 74 exchanges.
 - Ten exchanges carry two `auction` sessions, so `(exchange, type)`

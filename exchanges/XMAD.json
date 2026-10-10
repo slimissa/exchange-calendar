@@ -106,6 +106,12 @@
         "status": "closed"
       },
       {
+        "date": "2026-04-06",
+        "name": "Easter Monday",
+        "source_url": "https://www.bolsasymercados.es/bme-exchange/docs/regula/sbolsas/esp/instrucc/2025/2025-65-IO-CALENDARIO-DE-SESIONES-2026.pdf",
+        "status": "closed"
+      },
+      {
         "date": "2026-05-01",
         "name": "Labour Day",
         "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
@@ -237,6 +243,12 @@
       {
         "name": "Good Friday",
         "offset_days": -2,
+        "rule": "easter_offset",
+        "status": "closed"
+      },
+      {
+        "name": "Easter Monday",
+        "offset_days": 1,
         "rule": "easter_offset",
         "status": "closed"
       },

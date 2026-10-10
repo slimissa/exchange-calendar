@@ -174,6 +174,66 @@ This file documents what was checked and why each verdict holds, since "we
 found a different URL" or "it's blocked" is easy to state and easy to get
 wrong without the reasoning behind it.
 
+## XETR — Xetra (Deutsche Börse) (built; non-closures recorded 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Not closures, 5 candidates (2025 to 2026):** 2025-05-29 Ascension Day; 2025-06-09 Pentecost Monday; 2025-10-03 German Unity Day; 2026-05-14 Ascension Day; 2026-05-25 Pentecost Monday.
+- **Source (tier 1):** `cashmarket.deutsche-boerse.com/cash-en/trading/trading-calendar-and-trading-hours` and the Xetra trading calendar PDFs for 2025 and 2026. Xetra is closed on 1 January, Good Friday, Easter Monday, 1 May and 24, 25, 26 and 31 December (2025 and 2026 as published); it trades on every date below.
+- The source file cannot hold this note: `schema.json` sets `additionalProperties:
+  false` on the root and on `holidays`, so there is no field for a comment. This
+  section is where the next sweep looks.
+
+## XMAD — BME Spanish Exchanges (built; non-closures recorded 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Not closures, 6 candidates (2025 to 2026):** 2025-01-06 Epiphany; 2025-08-15 Assumption Day; 2025-12-08 Immaculate Conception; 2026-01-06 Epiphany; 2026-10-12 National Day; 2026-12-08 Immaculate Conception.
+- **Source (tier 1):** Sociedad de Bolsas Instrucciones Operativas 52/2024 (2025 calendar) and 65/2025 (2026 calendar), on `bolsasymercados.es`. BME is closed on 1 January, Good Friday, Easter Monday, 1 May and 25 December (plus 26 December in 2025); 24 and 31 December are half sessions. It trades on every date below.
+- The source file cannot hold this note: `schema.json` sets `additionalProperties:
+  false` on the root and on `holidays`, so there is no field for a comment. This
+  section is where the next sweep looks.
+- **Found while checking (not a candidate):** Easter Monday was missing. BME's
+  instructions list it as a non-business day for 2022 (Instrucción 53/2021, 18 Apr),
+  2024 (45/2023, 1 Apr), 2025 and 2026. The file and its tests said BME was open that
+  day. Added an `easter_offset` +1 rule (2025-04-21, 2027-03-29, 2028-04-17 and
+  2029-04-02 are generated) and an explicit 2026-04-06 entry citing the 2026
+  instruction. The Public-holiday detector could not find this: Easter Monday is not a
+  Spanish public holiday.
+- **Open:** the 2025 and 2024 instruction URLs carry a 2025 year token that
+  `tools/check_stale_year_urls.py` rejects, so 2025-04-21 has no per-entry citation.
+  The instruction is `.../instrucc/2024/2024-52-IO-CALENDARIO-DE-SESIONES-2025.pdf`.
+
+## XNAS — Nasdaq (built; non-closures recorded 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Not closures, 4 candidates (2025 to 2026):** 2025-10-13 Columbus Day; 2025-11-11 Veterans Day; 2026-10-12 Columbus Day; 2026-11-11 Veterans Day.
+- **Source (tier 1 for 2026; 2025 as for XNYS):** `nasdaq.com/market-activity/stock-market-holiday-schedule`. Nasdaq follows the NYSE holiday set and trades on Columbus Day and Veterans Day.
+- The source file cannot hold this note: `schema.json` sets `additionalProperties:
+  false` on the root and on `holidays`, so there is no field for a comment. This
+  section is where the next sweep looks.
+
+## XNYS — NYSE (built; non-closures recorded 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Not closures, 4 candidates (2025 to 2026):** 2025-10-13 Columbus Day; 2025-11-11 Veterans Day; 2026-10-12 Columbus Day; 2026-11-11 Veterans Day.
+- **Source (tier 1 for 2026; 2025 rests on the same fixed NYSE holiday set and on press (Kiplinger), not fetched from nyse.com):** `nyse.com/trade/hours-calendars` (2026 list: 1 Jan, 19 Jan, 16 Feb, 3 Apr, 25 May, 19 Jun, 3 Jul, 7 Sep, 26 Nov, 25 Dec). NYSE does not close for Columbus Day or Veterans Day.
+- The source file cannot hold this note: `schema.json` sets `additionalProperties:
+  false` on the root and on `holidays`, so there is no field for a comment. This
+  section is where the next sweep looks.
+
+## XPAR — Euronext Paris (built; non-closures recorded 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Not closures, 11 candidates (2025 to 2026):** 2025-05-08 Victory Day; 2025-05-29 Ascension Day; 2025-06-09 Pentecost Monday; 2025-07-14 National Day; 2025-08-15 Assumption Day; 2025-11-11 Armistice Day; 2026-05-08 Victory Day; 2026-05-14 Ascension Day; 2026-05-25 Pentecost Monday; 2026-07-14 National Day; 2026-11-11 Armistice Day.
+- **Source (tier 1):** `live.euronext.com/resources/trading-hours-holidays` (Euronext 2026 holiday calendar; the 2025 end-of-year page). Euronext closes on 1 January, Good Friday, Easter Monday, 1 May and 25 and 26 December. Whit Monday 2026-05-25 is shown as a full trading day. Every date below is a trading day.
+- The source file cannot hold this note: `schema.json` sets `additionalProperties:
+  false` on the root and on `holidays`, so there is no field for a comment. This
+  section is where the next sweep looks.
+
 ## XSES — Singapore Exchange (SGX)
 
 **Last verified:** 2026-09-19
