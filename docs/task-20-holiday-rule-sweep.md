@@ -8,18 +8,23 @@ only in a session transcript. This is the durable copy.
 
 ## Running status
 
-| Cluster | Candidates | State |
-|---------|-----------|-------|
-| XICE | 4 | **resolved 2026-10-07** (tier 3, corroborated; see `BLOCKED.md`) |
-| XCOL | 19 | **2026 resolved 2026-10-07** (13 candidates, tier 1 circular); 2025 (6 candidates), 2027 and Vesak week open, see `BLOCKED.md` |
-| XGSE | 11 | **5 of 11 resolved 2026-10-07** (plus 1 added, 1 wrong entry removed); 6 open, see `BLOCKED.md` |
-| XBUE | 12 | untouched |
-| XBUD | 4 | untouched |
-| XBRV, XCAY, XDFM, XMOS, XRIS, XSHE, XSTC | 37 | untouched |
-| XDUB, XLIT, XZAG | 5 | **all 5 resolved 2026-10-07**: XDUB 2 non-closures, XLIT 1 closure, XZAG 2 closures; XDUB file corrected against Euronext 2026-10-10 (4 rules removed, Labour Day added; 2027 to 2029 pattern-derived); XZAG file corrected against ZSE 2026-10-11 (9 kinds, 23 entries; 2028 and 2029 pattern-derived), see `BLOCKED.md` |
-| XETR, XPAR, XMAD, XNYS, XNAS | 30 | **30 confirmed non-closures 2026-10-07** (tier 1 for all five; 2025 US dates rest on the same fixed set), recorded in `BLOCKED.md`. One real closure found outside the list: XMAD Easter Monday, now a rule |
+| Cluster | Candidates | False closures found | State |
+|---------|-----------|----------------------|-------|
+| XICE | 4 | — (not run; tier 3 sources only) | **resolved 2026-10-07** (tier 3, corroborated; see `BLOCKED.md`) |
+| XCOL | 19 | 21 entries (13 in 2026, 8 copied Poya dates in 2027) | **2026 resolved 2026-10-07** (13 candidates, tier 1 circular); 2025 (6 candidates), 2027 and Vesak week open, see `BLOCKED.md` |
+| XGSE | 11 | 1 so far (2026-08-04); the 2027 to 2029 Aug 4 entries are open; final count at the XGSE two-sided check | **5 of 11 resolved 2026-10-07** (plus 1 added, 1 wrong entry removed); 6 open, see `BLOCKED.md` |
+| XBUE | 12 | — (not run) | untouched |
+| XBUD | 4 | — (not run) | untouched |
+| XBRV, XCAY, XDFM, XMOS, XRIS, XSHE, XSTC | 37 | — (not run) | untouched |
+| XDUB, XLIT, XZAG | 5 | XDUB 5 kinds, 21 entries; XZAG 6 kinds, 10 entries; XLIT — (not run) | **all 5 resolved 2026-10-07**: XDUB 2 non-closures, XLIT 1 closure, XZAG 2 closures; XDUB file corrected against Euronext 2026-10-10 (4 rules removed, Labour Day added; 2027 to 2029 pattern-derived); XZAG file corrected against ZSE 2026-10-11 (9 kinds, 23 entries; 2028 and 2029 pattern-derived), see `BLOCKED.md` |
+| XETR, XPAR, XMAD, XNYS, XNAS | 30 | XMAD 0 (checked; one missing closure found, Easter Monday); XETR, XPAR, XNYS, XNAS — (not run) | **30 confirmed non-closures 2026-10-07** (tier 1 for all five; 2025 US dates rest on the same fixed set), recorded in `BLOCKED.md`. One real closure found outside the list: XMAD Easter Monday, now a rule |
 
 Recommended order: XICE, XCOL, XGSE, XBUE, XBUD, then the rest of the likely closures.
+
+Reading the new column: a number is what the two-sided check found against the
+exchange's own list, as kinds and as dated entries. `0` means the check was run and found
+none. `—` means the two-sided check has not been run for that exchange, so its true count
+is unknown, not zero.
 
 ## Method and its limits
 
@@ -43,6 +48,76 @@ Recommended order: XICE, XCOL, XGSE, XBUE, XBUD, then the rest of the likely clo
   classes total 4 confirmed, 83 likely closures, 30 likely non-closures and 5 unclear.
   The first report said "about 100" and "36".
 - Candidate names are English where the package supports it. Dates are the package's.
+
+## Two-sided check
+
+For every exchange, compare the file against the exchange's own published list in **both
+directions**. Missing closures and false closures both count. A public-holiday detector
+finds only the first side, so its candidate list understates the work.
+
+**Why.** The method above started from a candidate list and went looking for missing
+closures. Checking against the exchange's own list found the opposite error as often as
+the first: XCOL (21 wrong entries), XGSE (a wrong 2026 closure), XDUB (five kinds of false
+closure) and XZAG (six kinds, including an invented "(observed)" substitute for every
+weekend holiday). XMAD showed the first side from a different angle: Easter Monday is
+not a Spanish public holiday, so the detector could not see that BME closes on it.
+
+**Procedure, per exchange.**
+
+1. Fetch the exchange's own list for every year it publishes. Record each URL and what
+   came back, including failures.
+2. List every closure on it. Compare with the file, year by year, in both directions.
+3. *Missing:* on the exchange's list, absent from the file. Add it under the source rules
+   below.
+4. *False:* in the file, absent from the exchange's list, on a weekday the exchange
+   trades. Remove it under the acceptance rule below.
+5. Record kinds and dated entries separately. A rule that generates five years of
+   entries is one kind and five entries. The stop condition counts kinds; the commit and
+   this file report both, so a reviewer can see the size.
+
+**Sources, by tier** (`CONTRIBUTING.md`, "The hierarchy"):
+
+| Tier | Source | Use here |
+|------|--------|----------|
+| 1 | The exchange's own notice or list, or the decree that sets the holiday | Verifies an addition or a removal |
+| 2 | A mirror of the exchange's notice, with issuer, dates and resume date visible, only when tier 1 is unreachable | Verifies, with the evidence `CONTRIBUTING.md` lists |
+| 3 | Press, settlement calendars, aggregators, holiday libraries | Finds a candidate; never alone for an addition or a removal. Corroborated tier 3 follows `CONTRIBUTING.md` |
+| 4 | A date derived from a rule or precedent, no notice yet | An addition enters with `predicted: true` and the `(predicted)` name suffix |
+
+**What counts as a false closure.** Only something the file lists: a rule, or an explicit
+entry. A closure the file merely omits is *missing*, not false, and is added, not
+removed. The fix for a false closure is to remove what the file lists:
+
+- If the file has no rules (XZAG), remove the explicit entries. XZAG's "(observed)"
+  Labour Day, Christmas, St Stephen's, New Year's and Epiphany days were explicit
+  entries. ZSE never moves a weekend holiday, so each was a non-closure listed as a
+  closure, and removal was the whole fix. A test that fails on any "(observed)" or
+  "(substitute)" entry pins the class.
+- If a rule generates the false closure (XDUB's St Patrick's Day and June, August and
+  October bank holidays), remove the rule **and** its explicit entries. The generator
+  skips any date already explicit, so removing only the rule leaves the entries in
+  place.
+- If the false closure came from a copied date (XCOL repeated 2025's Poya days in 2026
+  and 2027), remove it. Do not relabel it `predicted`: it was copied, not calculated.
+
+**Acceptance rule for a removal.** The exchange's own published list must show the date
+as a trading day, and the removal must cite a tier 1 or tier 2 source. The test that
+accompanies it pins the trading day.
+
+**Unpublished years.** When the exchange has not published a year, a removal for that
+year is pattern-derived: it follows what the published years show. Record it as such in
+that exchange's `BLOCKED.md` section, with the pattern and the years it rests on, and
+say it should be re-checked when the list appears. Do not write it in the source file:
+`schema.json` sets `additionalProperties: false`, so the file cannot carry prose, and
+an absent entry has nowhere to carry a marker. A pattern-derived *addition* is a tier 4
+entry and is marked in the file (`predicted`, with the name suffix).
+
+**Implication for the clusters not yet touched.** XBUE (12), XBUD (4) and XBRV / XCAY /
+XDFM / XMOS / XRIS / XSHE / XSTC (37) have candidate counts that are understated: the
+detector could not find false closures, and four of the five exchanges checked so far
+carried them. Every future cluster session must run the two-sided check against the
+exchange's own list, not only work the candidate list. A `—` in the "False closures
+found" column means that check has not been run.
 
 ## Stop condition and why it still applies
 
