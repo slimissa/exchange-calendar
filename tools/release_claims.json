@@ -444,6 +444,20 @@
       "file": "tests/test_calendar_required_fields.py"
     }
   ],
+  "2.15.2": [
+    {
+      "file": "exchanges/XGSE.json",
+      "contains": "Kwame Nkrumah Memorial Day (observed)"
+    },
+    {
+      "file": "tests/test_ghana_holidays.py",
+      "contains": "TestXGSETwoSidedCheck"
+    },
+    {
+      "file": "docs/task-20-holiday-rule-sweep.md",
+      "contains": "## Two-sided check"
+    }
+  ],
   "2.15.1": [
     {
       "file": "exchanges/XDUB.json",

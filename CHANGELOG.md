@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.15.2] — 2026-10-11
+
+Patch release. New and removed explicit entries on existing rule types; no schema
+change, no new rule type.
+
+### Fixed
+
+- XGSE (Ghana): checked in both directions against GSE's own 2025 and 2026 lists
+  and the Interior Ministry's declarations (3 holiday kinds, 5 dated entries).
+  Added 2025-09-22 (Sunday 21 September observed on the Monday, declared) and
+  2026-07-03 (Republic Day moved to Friday). Removed Founders' Day on 4 August for
+  2027, 2028 and 2029: GSE's 2026 list has Founder's Day on 21 September only.
+  Those three removals rest on the pattern of the published years, not on a
+  published list. Three candidates stay open (2025-07-01, 2025-07-04, 2026-01-09),
+  with the source needed for each. See `BLOCKED.md`.
+
+### Documentation
+
+- `docs/task-20-holiday-rule-sweep.md`: the two-sided check is now written down as a
+  method (sources by tier, how to record a false closure, the acceptance rule for a
+  removal, pattern-derived removals for unpublished years) and the running-status
+  table has a "False closures found" column.
+- `BLOCKED.md`: corrected the XDUB removed-entry count (21 entries in all).
+
+---
+
 ## [2.15.1] — 2026-10-11
 
 Patch release. New data on existing rule types and an existing field (XDUB
