@@ -1,41 +1,23 @@
 {
-  "ad_hoc_closures": [],
   "code": "XNSA",
-  "confidence": {
-    "2025": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2026": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2027": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2028": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2029": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    }
+  "name": "Nigerian Exchange Group",
+  "mic": "XNSA",
+  "timezone": "Africa/Lagos",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "10:00",
+    "close": "14:30"
   },
-  "country": "Nigeria",
-  "country_code": "NG",
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
+  "extended_hours": {},
+  "sessions": [
+    {
+      "close": "14:30",
+      "open": "10:00",
+      "type": "regular"
+    }
   ],
   "holidays": {
     "explicit": [
@@ -103,51 +85,75 @@
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "status": "closed"
+        "name": "New Year\u2019s Day",
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
+      },
+      {
+        "date": "2026-03-20",
+        "name": "Eidul-Fitr",
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Eidul-Fitr",
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
       },
       {
         "date": "2026-04-03",
         "name": "Good Friday",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
       },
       {
         "date": "2026-04-06",
         "name": "Easter Monday",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "status": "closed"
+        "name": "Workers\u2019 Day",
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Eid el-Kabir",
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Eid el-Kabir",
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
       },
       {
         "date": "2026-06-12",
         "name": "Democracy Day",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
       },
       {
         "date": "2026-10-01",
         "name": "Independence Day",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
       },
       {
         "date": "2026-12-25",
         "name": "Christmas Day",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
       },
       {
         "date": "2026-12-28",
-        "name": "Boxing Day (observed)",
-        "source_url": "https://ngxgroup.com/trading-calendar",
-        "status": "closed"
+        "name": "Boxing Day",
+        "status": "closed",
+        "source_url": "https://ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/"
       },
       {
         "date": "2027-01-01",
@@ -345,22 +351,9 @@
     ],
     "recurrence_rules": []
   },
-  "mic": "XNSA",
-  "name": "Nigerian Stock Exchange",
-  "regular_hours": {
-    "close": "14:30",
-    "open": "10:00"
-  },
-  "sessions": [
-    {
-      "close": "14:30",
-      "open": "10:00",
-      "type": "regular"
-    }
-  ],
-  "timezone": "Africa/Lagos",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
   ]
 }

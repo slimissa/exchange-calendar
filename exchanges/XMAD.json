@@ -1,38 +1,16 @@
 {
-  "ad_hoc_closures": [],
   "code": "XMAD",
-  "confidence": {
-    "2025": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2026": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2027": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2028": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2029": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    }
+  "name": "BME (Bolsa de Madrid)",
+  "mic": "XMAD",
+  "timezone": "Europe/Madrid",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "09:00",
+    "close": "17:30"
   },
-  "country": "Spain",
-  "country_code": "ES",
   "extended_hours": {
     "after_hours": {
       "close": "17:35",
@@ -43,9 +21,30 @@
       "open": "08:30"
     }
   },
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
+  "sessions": [
+    {
+      "close": "09:00",
+      "open": "08:30",
+      "type": "pre_market"
+    },
+    {
+      "close": "17:30",
+      "open": "09:00",
+      "type": "regular"
+    },
+    {
+      "at": "09:00",
+      "type": "auction"
+    },
+    {
+      "close": "17:35",
+      "open": "17:30",
+      "type": "post_market"
+    },
+    {
+      "at": "17:30",
+      "type": "auction"
+    }
   ],
   "holidays": {
     "explicit": [
@@ -95,47 +94,52 @@
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "status": "closed"
+        "name": "BME Non-Trading Day",
+        "status": "closed",
+        "source_url": "https://www.bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html",
+        "note": "Source page gives no holiday name for this date -- generic label used"
       },
       {
         "date": "2026-04-03",
-        "name": "Good Friday",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "status": "closed"
+        "name": "BME Non-Trading Day",
+        "status": "closed",
+        "source_url": "https://www.bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html",
+        "note": "Source page gives no holiday name for this date -- generic label used"
       },
       {
         "date": "2026-04-06",
-        "name": "Easter Monday",
-        "source_url": "https://www.bolsasymercados.es/bme-exchange/docs/regula/sbolsas/esp/instrucc/2025/2025-65-IO-CALENDARIO-DE-SESIONES-2026.pdf",
-        "status": "closed"
+        "name": "BME Non-Trading Day",
+        "status": "closed",
+        "source_url": "https://www.bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html",
+        "note": "Source page gives no holiday name for this date -- generic label used"
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "status": "closed"
+        "name": "BME Non-Trading Day",
+        "status": "closed",
+        "source_url": "https://www.bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html",
+        "note": "Source page gives no holiday name for this date -- generic label used"
       },
       {
         "date": "2026-12-24",
-        "early_close_time": "14:00",
-        "name": "Christmas Eve",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "status": "early_close"
+        "name": "BME Early Trading Close",
+        "status": "early_close",
+        "source_url": "https://www.bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html",
+        "note": "Source page gives no holiday name for this date -- generic label used"
       },
       {
         "date": "2026-12-25",
-        "name": "Christmas Day",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "status": "closed"
+        "name": "BME Non-Trading Day",
+        "status": "closed",
+        "source_url": "https://www.bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html",
+        "note": "Source page gives no holiday name for this date -- generic label used"
       },
       {
         "date": "2026-12-31",
-        "early_close_time": "14:00",
-        "name": "New Year's Eve",
-        "source_url": "https://www.bolsasymercados.es/en/trading-calendar",
-        "status": "early_close"
+        "name": "BME Early Trading Close",
+        "status": "early_close",
+        "source_url": "https://www.bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html",
+        "note": "Source page gives no holiday name for this date -- generic label used"
       },
       {
         "date": "2027-01-01",
@@ -275,40 +279,9 @@
       }
     ]
   },
-  "mic": "XMAD",
-  "name": "Bolsa de Madrid",
-  "regular_hours": {
-    "close": "17:30",
-    "open": "09:00"
-  },
-  "sessions": [
-    {
-      "close": "09:00",
-      "open": "08:30",
-      "type": "pre_market"
-    },
-    {
-      "close": "17:30",
-      "open": "09:00",
-      "type": "regular"
-    },
-    {
-      "at": "09:00",
-      "type": "auction"
-    },
-    {
-      "close": "17:35",
-      "open": "17:30",
-      "type": "post_market"
-    },
-    {
-      "at": "17:30",
-      "type": "auction"
-    }
-  ],
-  "timezone": "Europe/Madrid",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
   ]
 }
