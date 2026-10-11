@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.15.1] — 2026-10-11
+
+Patch release. New data on existing rule types and an existing field; no
+schema change, no new rule type.
+
+### Fixed
+
+- XDUB (Euronext Dublin): corrected against Euronext's own holiday
+  calendars (tier 1, 2022 to 2026). Removed the St Patrick's Day, June,
+  August and October bank holiday rules and their entries (Dublin trades
+  on all of them) and the false 2025-12-29 "Christmas Day (substitute)".
+  Added Labour Day (1 May, `fixed_date`), which was missing. 2026-12-28,
+  the substitute for St Stephen's Day, stays: Euronext lists it closed.
+  Euronext has not published 2027 to 2029; those years rest on the
+  pattern of the published years, and the 2029-05-01 entry is marked
+  `predicted`. See `BLOCKED.md`.
+
+---
+
 ## [2.15.0] — 2026-10-07
 
 Cumulative release. It ships everything recorded under 2.14.0, 2.14.1

@@ -444,6 +444,16 @@
       "file": "tests/test_calendar_required_fields.py"
     }
   ],
+  "2.15.1": [
+    {
+      "file": "exchanges/XDUB.json",
+      "contains": "Labour Day (predicted)"
+    },
+    {
+      "file": "tests/test_dublin_holidays.py",
+      "contains": "TestXDUBFalseClosuresRemoved"
+    }
+  ],
   "2.15.0": [
     {
       "file": "tools/build.py",
