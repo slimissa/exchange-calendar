@@ -685,7 +685,7 @@ wrong without the reasoning behind it.
   April), so it is explicit for all five years, as Victoria Day is for XTSE.
   Commerce Day has an `nth_weekday` rule and explicit entries.
 
-## XGSE — Ghana Stock Exchange (built; two-sided check 2026-10-11, three items still open)
+## XGSE — Ghana Stock Exchange (built; open items closed 2026-10-11; 2027 to 2029 is an open class)
 
 **Last verified:** 2026-10-11
 
@@ -694,17 +694,25 @@ wrong without the reasoning behind it.
   Eid-Al-Adha with dates "subject to the visibility of the New Moon", and says a holiday on
   a weekend is observed on the following working day "if declared by the Government".
   GSE's 2025 list, `gse.com.gh/?p=44200` (returned by search, not fetched separately),
-  has the same rule. Interior Ministry declarations: Constitution Day 2026
-  (`mint.gov.gh/?p=29382`, 2 January 2026) and Republic Day 2026 (`mint.gov.gh/?p=30026`,
-  24 June 2026).
+  has the same rule. The Interior Ministry's statements and Executive Instruments name the
+  public holiday: Constitution Day 2026 (`mint.gov.gh/?p=29382`, 2 January 2026) and
+  Republic Day 2026 (`mint.gov.gh/?p=30026`, 24 June 2026). `mint.gov.gh` renders with
+  JavaScript, so a fetch returns no text; those two pages were read as search snippets.
+  Entries cite press reports that reproduce the Ministry's statement.
+- **The law behind the moves.** The Public Holidays and Commemorative Days (Amendment)
+  Act, 2025 (passed 25 June 2025): restores 1 July as Republic Day, a statutory holiday;
+  removes 4 August as Founders' Day and makes 21 September Founders' Day; adds "Shaqq Day"
+  the day after Eid-ul-Fitr; and lets the President move a holiday that falls on a
+  Tuesday, Wednesday or Thursday to the Friday, and a weekend holiday to the following
+  Monday, by Executive Instrument. The move does not apply to religious holidays such as
+  Christmas and Eid. Sources: reports of the Ministry's statements (MyJoyOnline,
+  Ghanaian Times, GhanaWeb, Legal Ink); the Act's text was not read.
 - **Earlier (2026-10-07).** Six closures added (2025-03-31, 2025-04-01, 2025-06-06,
   2026-03-20, 2026-03-23, 2026-05-27) and the false 2026-08-04 removed. The
   2025 and 2026 Eid dates are cited to press reports of the Ministry's declaration
   (the ministry pages for 2025 carry a year token that `tools/check_stale_year_urls.py`
   rejects).
-- **Two-sided check 2026-10-11: 3 kinds, 5 dated entries (limit 10 kinds, not
-  reached).** Against GSE's 2025 and 2026 lists, every other 2025 and 2026 entry in the
-  file is on the list.
+- **Two-sided check 2026-10-11, first pass: 3 kinds, 5 dated entries.**
   - *Added, 2 kinds, 2 entries.* 2025-09-22 "Kwame Nkrumah Memorial Day (observed)":
     21 September 2025 was a Sunday, GSE's list applies the next working day when
     declared, and the Interior Ministry declared Monday 22 September by Executive
@@ -717,30 +725,67 @@ wrong without the reasoning behind it.
     2026 list, not tier 1:** GSE has not published 2027 to 2029 and only one published
     year (2026) shows the change. Re-check when GSE publishes a list for each year.
     2025-08-04 stays: it is on GSE's 2025 list.
-- **Candidate resolved: non-closure.** 2026-07-01: the Ministry's declaration moves
-  Republic Day to Friday 3 July; 1 July is not a public holiday and the file has no entry.
-- **Open, with the source needed for each:**
-  - 2025-07-01: GSE's 2025 list and the Ministry's 2025 holiday list both put Republic
-    Day (Tuesday 1 July) under commemorative days, which are not observed. An aggregator
-    lists a "Day of Prayer and Thanksgiving" on that date. Source needed: the Interior
-    Ministry declaration for 1 July 2025 or a GSE closure notice for that day.
-  - 2025-07-04: no declaration found. Source needed: the same.
-  - 2026-01-07 and 2026-01-09: GSE's 2026 list has Constitution Day on Wednesday 7 January.
-    The Ministry declared Friday 9 January as the holiday for Constitution Day (2 January
-    2026). The file has 2026-01-07 closed and no 2026-01-09. Source needed: a GSE notice or
-    its daily market report for 7 and 9 January 2026. Until then neither entry changes.
-  - 2027 to 2029: Republic Day (restored as a public holiday from 2026) is not in the file
-    for those years; Eid dates are not in the file; and in 2026 the Government moved the
-    midweek holidays to Friday (Constitution Day, Republic Day), so a Tuesday or Thursday
-    holiday in 2027 to 2029 (2027-01-07, 2027-09-21, 2028-09-21) may not close on its own
-    date. Source needed: GSE's list and the Ministry's declarations for each year. The
-    2027 to 2029 September entries still carry GSE's old 2025 name; GSE's 2026 list calls
-    21 September "Founder's Day".
+- **Open items closed 2026-10-11: 2 kinds added, 1 removed, 3 dated entries.**
+  - *2026-01-09, added; 2026-01-07, removed. [Likely].* GSE's 2026 list has Constitution
+    Day on Wednesday 7 January. The Ministry declared by Executive Instrument that Friday
+    9 January is the public holiday (2 January 2026), under the Act that moves a
+    midweek holiday to the Friday. Evidence it is the Friday GSE closed: a press report
+    that the exchange was closed "on Friday" for Constitution Day (it gives the date as
+    10 January, a Saturday, so it is dated wrongly but names the Friday); and GSE's own
+    session numbers, reported by the press, 7,124 on 2 January and 7,129 on 12 January,
+    which leave exactly one closed weekday between them (also checked: 7,095 on
+    18 November 2025 and 7,165 on 3 March 2026 agree with the same counting).
+    The counting shows one closure, not which day. **What would settle it:** a GSE notice
+    or daily report for Wednesday 7 or Friday 9 January 2026. GSE's list is stale in
+    the same way for Republic Day (it prints "July 1st/3rd"), which is why the file
+    follows the Ministry.
+  - *2025-07-04, added.* The Ministry declared Friday 4 July 2025 a public holiday for
+    Republic Day (Tuesday 1 July), by Executive Instrument (reports in Adom Online and
+    GhanaWeb; the second also gives the Act as passed by Parliament but not yet assented
+    to). GSE's own rule closes it on a public holiday.
+  - *2025-07-01, resolved: non-closure.* GSE's 2025 list and the Ministry's 2025 list
+    both put 1 July under commemorative days, and the Ministry's declaration puts the
+    holiday on 4 July. 1 July 2025 held the National Day of Prayer and Thanksgiving, which
+    was an observance, not the holiday.
 - **Not false closures.** The file's "(observed)" entries for weekend holidays (2026-12-28,
   2027-05-03, 2027-12-27, 2027-12-28, 2028-01-03, 2029-01-08) are consistent with GSE's
   own rule, which applies the following working day if the Government declares it. This
   differs from ZSE, which never moves one. They are predictions and are not marked
   `predicted` in the file.
+
+### 2027–2029 open class
+
+**Last verified:** 2026-10-11
+
+**Not filled in. Not this session's scope.** It is a class of gaps, and every date in it
+depends on a publication that does not exist yet: GSE has published no list for 2027 to
+2029, and the Ministry declares each year's moves close to the date (the 2026 declarations
+came on 2 January and 24 June). Filling it from a pattern would write predictions into the
+file as if they were known. Each gap and what it needs:
+
+- **Republic Day (1 July) is missing for 2027, 2028 and 2029.** It is a statutory holiday
+  since the 2025 Act. 2027-07-01 is a Thursday (may move to Friday 2 July), 2028-07-01 a
+  Saturday and 2029-07-01 a Sunday (may move to the Monday). Needs: the Ministry's
+  declaration for each year and GSE's list for that year.
+- **Eid dates are missing for 2027, 2028 and 2029,** including the additional "Shaqq Day"
+  the Act sets the day after Eid-ul-Fitr (the 2026-03-23 entry labelled "additional
+  holiday" looks like that day, a Saturday, moved to the Monday; 2025-04-01 predates the
+  Act). They depend on the New Moon, so no list can precede the year.
+  Needs: the Ministry's declaration for each Eid, as for 2025 and 2026.
+- **The midweek-to-Friday move.** The Act lets the President move a non-religious holiday
+  on a Tuesday, Wednesday or Thursday to the Friday, and in 2025 and 2026 it was used for
+  Republic Day (4 July 2025, 3 July 2026) and Constitution Day (9 January 2026). The
+  file's 2027 to 2029 entries sit on their statutory dates, so a midweek one may close on
+  another day: 2027-01-07 (Thursday), 2027-09-21 (Tuesday) and 2028-09-21 (Thursday).
+  The others in those years fall on a Friday or Monday, or are weekend dates already
+  handled by the "(observed)" entries. Needs: the Ministry's Executive Instrument for
+  each year, and GSE's list for that year.
+- **Names.** The 2027 to 2029 September entries carry GSE's old name, "Kwame Nkrumah
+  Memorial Day"; GSE's 2026 list calls 21 September "Founder's Day". The date is
+  unaffected.
+- **What closes it.** GSE's 2027 list (it published the 2026 list at the start of that year;
+  the 2025 list, `gse.com.gh/?p=44200`, was not updated for the Act) and the Ministry's
+  declarations. A session for this class should start from those, not from the file.
 
 ## XIST — Borsa Istanbul
 

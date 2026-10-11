@@ -291,7 +291,8 @@ class TestXGSEStructure:
 # Entries whose date comes from an Interior Ministry declaration, cited to the
 # press report of it (the 2025 decree pages carry a 2025 year token, which
 # tools/check_stale_year_urls.py rejects). See BLOCKED.md, XGSE.
-DECREE_CITED = {"2025-03-31", "2025-04-01", "2025-06-06", "2025-09-22"}
+DECREE_CITED = {"2025-03-31", "2025-04-01", "2025-06-06", "2025-07-04",
+                "2025-09-22", "2026-01-09"}
 
 
 # ──────────────────────────────────────────────────────────────
@@ -390,3 +391,38 @@ class TestXGSETwoSidedCheck:
         """1 Jul 2026 is a Wednesday. The same declaration moves the holiday to
         Friday 3 July, so 1 July is not a public holiday."""
         assert "2026-07-01" not in explicit_dates
+
+
+class TestXGSEMovedHolidays:
+    """Task 40. The Public Holidays and Commemorative Days (Amendment) Act, 2025 lets
+    the President move a non-religious holiday that falls on a Tuesday, Wednesday or
+    Thursday to the Friday by Executive Instrument, and GSE closes on public holidays
+    (gse.com.gh/events/: "will be closed on such holidays"). The moved holiday replaces
+    the original day: the Interior Ministry's statements name the Friday as the public
+    holiday and the statutory date as an ordinary working day."""
+
+    def test_2025_jul_4_is_a_closure(self, explicit_dates):
+        """Republic Day, Tuesday 1 Jul 2025, moved by Executive Instrument to Friday
+        4 Jul 2025 (Interior Ministry statement)."""
+        e = explicit_dates["2025-07-04"]
+        assert e["name"] == "Republic Day"
+        assert e["status"] == "closed"
+
+    def test_2025_jul_1_is_a_trading_day(self, explicit_dates):
+        """Both GSE's 2025 list and the Ministry's 2025 list put 1 Jul under
+        commemorative days, and the Ministry declared Friday 4 Jul as the holiday.
+        1 Jul 2025 held the National Day of Prayer and Thanksgiving, not a holiday."""
+        assert "2025-07-01" not in explicit_dates
+
+    def test_2026_jan_9_is_a_closure(self, explicit_dates):
+        """Constitution Day, Wednesday 7 Jan 2026, moved by the Interior Ministry
+        (2 Jan 2026) to Friday 9 Jan 2026. [Likely]: GSE's 2026 list still names 7
+        Jan, the statutory date, as it names 1 Jul for Republic Day. Press reports
+        that GSE stayed closed on the Friday, and GSE's session counter (7,124 on
+        2 Jan, 7,129 on 12 Jan) shows exactly one closed weekday between them."""
+        e = explicit_dates["2026-01-09"]
+        assert e["name"] == "Constitution Day"
+        assert e["status"] == "closed"
+
+    def test_2026_jan_7_is_a_trading_day(self, explicit_dates):
+        assert "2026-01-07" not in explicit_dates

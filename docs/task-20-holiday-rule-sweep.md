@@ -12,7 +12,8 @@ only in a session transcript. This is the durable copy.
 |---------|-----------|----------------------|-------|
 | XICE | 4 | — (not run; tier 3 sources only) | **resolved 2026-10-07** (tier 3, corroborated; see `BLOCKED.md`) |
 | XCOL | 19 | 21 entries (13 in 2026, 8 copied Poya dates in 2027) | **2026 resolved 2026-10-07** (13 candidates, tier 1 circular); 2025 (6 candidates), 2027 and Vesak week open, see `BLOCKED.md` |
-| XGSE | 11 | 1 kind, 4 entries (Founders' Day on 4 August: 2026-08-04 removed 2026-10-07; 2027 to 2029 removed 2026-10-11, pattern-derived) | **8 of 11 resolved** (5 on 2026-10-07; 3 on 2026-10-11: 2025-09-22 and 2026-07-03 added, 2026-07-01 a non-closure); 3 open (2025-07-01, 2025-07-04, 2026-01-09) and a 2027 to 2029 gap class, see `BLOCKED.md` |
+| XGSE | 11 | 1 kind, 4 entries (Founders' Day on 4 August: 2026-08-04 removed 2026-10-07; 2027 to 2029 removed 2026-10-11, pattern-derived) | **11 of 11 resolved** (5 on 2026-10-07; 3 on 2026-10-11; 3 on 2026-10-11 after the second pass: 2025-07-04 and 2026-01-09 added, 2025-07-01 a non-closure); 2026-01-09 is [Likely], see `BLOCKED.md` |
+| XGSE 2027 to 2029 (open class) | 3 gaps: Republic Day, Eid dates, midweek-to-Friday moves | — (not run) | **open, deliberately not started.** Needs GSE's 2027 list and the Ministry's declarations, which do not exist yet; see `BLOCKED.md` "2027–2029 open class" |
 | XBUE | 12 | — (not run) | untouched |
 | XBUD | 4 | — (not run) | untouched |
 | XBRV, XCAY, XDFM, XMOS, XRIS, XSHE, XSTC | 37 | — (not run) | untouched |
@@ -236,3 +237,12 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
   and midweek-to-Friday shifts. Unlike ZSE, GSE's own rule observes weekend holidays on
   the next working day if declared, so the file's "(observed)" entries are predictions,
   not false closures. Remaining likely closures: 62 (65 minus the 3 XGSE candidates resolved today), plus open items.
+- 2026-10-11 (second pass): XGSE open items. 2 kinds added, 1 removed, 3 dated entries
+  (limit 10 kinds, not reached). Added 2025-07-04 (Republic Day moved to Friday) and
+  2026-01-09 (Constitution Day moved to Friday); removed 2026-01-07. 2025-07-01 is a
+  non-closure. 2026-01-09 is [Likely]: GSE's own list still prints 7 January, and no GSE
+  notice or daily report for 7 or 9 January was reachable. GSE's reported session numbers
+  show exactly one closed weekday between 2 and 12 January. The 2027 to 2029 class
+  (Republic Day, Eid dates, midweek-to-Friday moves) is tracked as its own row, not
+  filled: it needs publications that do not exist yet. Remaining likely closures: 62
+  (65 minus the 3 XGSE candidates resolved on the first pass), 59 after this one.
