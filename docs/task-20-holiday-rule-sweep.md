@@ -16,7 +16,7 @@ only in a session transcript. This is the durable copy.
 | XBUE | 12 | untouched |
 | XBUD | 4 | untouched |
 | XBRV, XCAY, XDFM, XMOS, XRIS, XSHE, XSTC | 37 | untouched |
-| XDUB, XLIT, XZAG | 5 | **all 5 resolved 2026-10-07**: XDUB 2 non-closures, XLIT 1 closure, XZAG 2 closures; each file also has discrepancies open (XDUB, XZAG), see `BLOCKED.md` |
+| XDUB, XLIT, XZAG | 5 | **all 5 resolved 2026-10-07**: XDUB 2 non-closures, XLIT 1 closure, XZAG 2 closures; XDUB file corrected against Euronext 2026-10-10 (4 rules removed, Labour Day added; 2027 to 2029 pattern-derived); XZAG discrepancies still open, see `BLOCKED.md` |
 | XETR, XPAR, XMAD, XNYS, XNAS | 30 | **30 confirmed non-closures 2026-10-07** (tier 1 for all five; 2025 US dates rest on the same fixed set), recorded in `BLOCKED.md`. One real closure found outside the list: XMAD Easter Monday, now a rule |
 
 Recommended order: XICE, XCOL, XGSE, XBUE, XBUD, then the rest of the likely closures.
@@ -72,7 +72,7 @@ it stays open here with the source named.
 | XICE | IS | 4 | Confirmed | resolved | 2025-04-24 First Day of Summer; 2025-08-04 Commerce Day; 2026-04-23 First Day of Summer; 2026-08-03 Commerce Day |
 | XNAS | US | 4 | Likely non-closure | untouched | 2025-10-13 Columbus Day; 2025-11-11 Veterans Day; 2026-10-12 Columbus Day; 2026-11-11 Veterans Day |
 | XNYS | US | 4 | Likely non-closure | untouched | 2025-10-13 Columbus Day; 2025-11-11 Veterans Day; 2026-10-12 Columbus Day; 2026-11-11 Veterans Day |
-| XDUB | IE | 2 | Unclear | untouched | 2025-02-03 Saint Brigid's Day; 2026-02-02 Saint Brigid's Day |
+| XDUB | IE | 2 | Non-closure | resolved 2026-10-07; file corrected 2026-10-10 | 2025-02-03 Saint Brigid's Day; 2026-02-02 Saint Brigid's Day |
 | XMOS | RU | 2 | Likely closure | untouched | 2025-05-08 Day off (substituted from 02/23/2025); 2025-11-03 Day off (substituted from 11/01/2025) |
 | XZAG | HR | 2 | Unclear | untouched | 2025-11-18 Remembrance Day; 2026-11-18 Remembrance Day |
 | XLIT | LT | 1 | Unclear | untouched | 2026-11-02 All Souls' Day |
@@ -137,3 +137,10 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
   showed more wrong closures than missing ones for XDUB. Third time (XCOL, XGSE, XDUB):
   checking a file against the exchange's calendar finds false closures the candidate
   detector cannot.
+- 2026-10-10: XDUB closed against Euronext's own calendars (tier 1, 2025 and 2026; the
+  page also lists 2020 to 2024). Removed the St Patrick's Day and the June, August and
+  October bank holiday rules and the 2025-12-29 "Christmas Day (substitute)": Dublin
+  trades on all of them. Added Labour Day (1 May, `fixed_date`). Kept 2026-12-28, which
+  Euronext lists as closed (substitute for St Stephen's Day). 2027 to 2029 are
+  pattern-derived from the published years, not tier 1; re-check when Euronext publishes.
+  `calendar.json` and `checksums.json` are regenerated in the next full session.

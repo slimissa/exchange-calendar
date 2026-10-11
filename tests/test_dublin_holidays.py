@@ -7,9 +7,11 @@ Key facts verified:
     - No lunch break (continuous trading)
     - No extended hours sessions
     - UK-style weekend substitution (Sat→Mon, Sun→Mon)
-    - St. Patrick's Day (Mar 17) — with substitution
+    - Labour Day (May 1) — fixed date, no weekend substitution
     - Good Friday and Easter Monday (movable)
-    - Bank Holidays: first Monday in May, June, August; last Monday in October
+    - Irish May Bank Holiday (first Monday in May) is the only Irish bank holiday
+      Euronext closes Dublin for. St. Patrick's Day and the June, August and
+      October bank holidays are full trading days (Euronext holiday calendars).
     - Christmas Eve (Dec 24) — early close at 12:30
     - New Year's Eve (Dec 31) — early close at 12:30
     - Christmas Day and St. Stephen's Day — with substitution
@@ -17,6 +19,12 @@ Key facts verified:
 If any test fails, either:
     1. The registry data is wrong (fix exchanges/XDUB.json)
     2. Irish holiday announcements changed (verify against euronext.com)
+
+Source for the Task 36 corrections: Euronext's own holiday calendars,
+live.euronext.com/en/resources/trading-hours-holidays ("Calendar of business
+days" 2022 to 2025 and "2026 Holiday Calendar for Euronext's Cash and
+Derivatives markets"), tier 1. 2025 and 2026 are published; 2027 to 2029 are not
+and rest on the pattern of the published years (pattern-derived, not tier 1).
 
 Run:
     python3 -m pytest tests/test_dublin_holidays.py -v
@@ -110,21 +118,6 @@ class TestXDUBFixedHolidays:
         assert "2028-01-03" in explicit_dates
         assert "substitute" in explicit_dates["2028-01-03"]["name"].lower()
 
-    def test_st_patricks_day_2025(self, explicit_dates):
-        """Mar 17, 2025 is Monday — no substitution."""
-        assert "2025-03-17" in explicit_dates
-        assert explicit_dates["2025-03-17"]["name"] == "St. Patrick's Day"
-
-    def test_st_patricks_day_2026(self, explicit_dates):
-        """Mar 17, 2026 is Tuesday — no substitution."""
-        assert "2026-03-17" in explicit_dates
-
-    def test_st_patricks_day_2029_substitute(self, explicit_dates):
-        """Mar 17, 2029 is Saturday — substitute to Monday Mar 19."""
-        assert "2029-03-17" not in explicit_dates
-        assert "2029-03-19" in explicit_dates
-        assert "substitute" in explicit_dates["2029-03-19"]["name"].lower()
-
     def test_christmas_day_2025(self, explicit_dates):
         """Dec 25, 2025 is Thursday — no substitution."""
         assert "2025-12-25" in explicit_dates
@@ -168,52 +161,9 @@ class TestXDUBBankHolidays:
         """First Monday in May — May 3, 2027."""
         assert "2027-05-03" in explicit_dates
 
-    def test_june_bank_holiday_2025(self, explicit_dates):
-        """First Monday in June — June 2, 2025."""
-        assert "2025-06-02" in explicit_dates
-        assert explicit_dates["2025-06-02"]["name"] == "June Bank Holiday"
-
-    def test_june_bank_holiday_2026(self, explicit_dates):
-        """First Monday in June — June 1, 2026."""
-        assert "2026-06-01" in explicit_dates
-
-    def test_june_bank_holiday_2027(self, explicit_dates):
-        """First Monday in June — June 7, 2027."""
-        assert "2027-06-07" in explicit_dates
-
-    def test_august_bank_holiday_2025(self, explicit_dates):
-        """First Monday in August — August 4, 2025."""
-        assert "2025-08-04" in explicit_dates
-        assert explicit_dates["2025-08-04"]["name"] == "August Bank Holiday"
-
-    def test_august_bank_holiday_2026(self, explicit_dates):
-        """First Monday in August — August 3, 2026."""
-        assert "2026-08-03" in explicit_dates
-
-    def test_august_bank_holiday_2027(self, explicit_dates):
-        """First Monday in August — August 2, 2027."""
-        assert "2027-08-02" in explicit_dates
-
-    def test_october_bank_holiday_2025(self, explicit_dates):
-        """Last Monday in October — October 27, 2025."""
-        assert "2025-10-27" in explicit_dates
-        assert explicit_dates["2025-10-27"]["name"] == "October Bank Holiday"
-
-    def test_october_bank_holiday_2026(self, explicit_dates):
-        """Last Monday in October — October 26, 2026."""
-        assert "2026-10-26" in explicit_dates
-
-    def test_october_bank_holiday_2027(self, explicit_dates):
-        """Last Monday in October — October 25, 2027."""
-        assert "2027-10-25" in explicit_dates
-
-    def test_october_bank_holiday_2028(self, explicit_dates):
-        """Last Monday in October — October 30, 2028."""
-        assert "2028-10-30" in explicit_dates
-
-    def test_october_bank_holiday_2029(self, explicit_dates):
-        """Last Monday in October — October 29, 2029."""
-        assert "2029-10-29" in explicit_dates
+    def test_may_bank_holiday_2028_coincides_with_labour_day(self, explicit_dates):
+        """May 1, 2028 is a Monday: Irish May Bank Holiday and Labour Day on one date."""
+        assert "2028-05-01" in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -308,13 +258,10 @@ class TestXDUBRecurrence:
         names = set(recurrence_rules.keys())
         expected = {
             "New Year's Day",
-            "St. Patrick's Day",
+            "Labour Day",
             "Good Friday",
             "Easter Monday",
             "May Bank Holiday",
-            "June Bank Holiday",
-            "August Bank Holiday",
-            "October Bank Holiday",
             "Christmas Day",
             "St. Stephen's Day",
         }
@@ -323,7 +270,7 @@ class TestXDUBRecurrence:
 
     def test_weekend_adjustment_rules(self, recurrence_rules):
         """UK-style substitution: Sat→Mon, Sun→Mon."""
-        for name in ["New Year's Day", "St. Patrick's Day", "Christmas Day", "St. Stephen's Day"]:
+        for name in ["New Year's Day", "Christmas Day", "St. Stephen's Day"]:
             rule = recurrence_rules[name]
             assert rule["rule"] == "fixed_with_weekend_adjustment", f"{name} should use weekend adjustment"
 
@@ -335,18 +282,24 @@ class TestXDUBRecurrence:
         assert recurrence_rules["Easter Monday"]["offset_days"] == 1
 
     def test_bank_holiday_rules(self, recurrence_rules):
-        for name in ["May Bank Holiday", "June Bank Holiday", "August Bank Holiday"]:
-            rule = recurrence_rules[name]
-            assert rule["rule"] == "nth_weekday"
-            assert rule["weekday"] == "monday"
-            assert rule["n"] == 1
-
-    def test_october_bank_holiday_rule(self, recurrence_rules):
-        """October Bank Holiday is the LAST Monday, not first."""
-        rule = recurrence_rules["October Bank Holiday"]
+        rule = recurrence_rules["May Bank Holiday"]
         assert rule["rule"] == "nth_weekday"
         assert rule["weekday"] == "monday"
-        assert rule["n"] == 4  # 4th Monday (last in most years)
+        assert rule["n"] == 1
+
+    def test_labour_day_rule(self, recurrence_rules):
+        """Labour Day, 1 May: Euronext closes all markets (Euronext holiday calendars
+        2022 to 2026, tier 1). Fixed date, no weekend substitution: when 1 May is a
+        Saturday (2027) Euronext does not close on the Monday."""
+        rule = recurrence_rules["Labour Day"]
+        assert rule["rule"] == "fixed_date"
+        assert (rule["month"], rule["day"]) == (5, 1)
+
+    def test_removed_rules_stay_removed(self, recurrence_rules):
+        """Euronext's calendars show Dublin trading on these days (2022 to 2026)."""
+        for name in ["St. Patrick's Day", "June Bank Holiday",
+                     "August Bank Holiday", "October Bank Holiday"]:
+            assert name not in recurrence_rules, f"{name} is not a Euronext Dublin closure"
 
     def test_no_early_close_rules(self, recurrence_rules):
         """Early close days are explicit only, not in recurrence rules."""
@@ -406,8 +359,8 @@ class TestXDUBStructure:
             assert start <= d <= end, f"Date outside range: {date_str}"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~55-65 entries: 10 holidays × 5 years + substitutes."""
-        assert 50 <= len(explicit_dates) <= 70, f"Unexpected count: {len(explicit_dates)}"
+        """~35-50 entries: 7 closure types × 5 years + early closes + substitutes."""
+        assert 35 <= len(explicit_dates) <= 50, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         """All source URLs should be from euronext.com."""
@@ -449,7 +402,6 @@ class TestXDUBSubstitution:
             ("2027-12-25", "Christmas Day (Saturday)"),
             ("2027-12-26", "St. Stephen's Day (Sunday)"),
             ("2028-01-01", "New Year's Day (Saturday)"),
-            ("2029-03-17", "St. Patrick's Day (Saturday)"),
         ]
         for date_str, name in weekend_holidays:
             assert date_str not in explicit_dates, f"{name} should not be in explicit dates"
@@ -486,12 +438,7 @@ class TestXDUBCalendarCrossChecks:
 
     def test_bank_holiday_mondays(self, explicit_dates):
         """Verify all bank holidays fall on Mondays."""
-        bank_holiday_names = [
-            "May Bank Holiday",
-            "June Bank Holiday",
-            "August Bank Holiday",
-            "October Bank Holiday",
-        ]
+        bank_holiday_names = ["May Bank Holiday"]
         for entry in explicit_dates.values():
             if entry["name"] in bank_holiday_names:
                 d = date.fromisoformat(entry["date"])
@@ -513,3 +460,74 @@ class TestXDUBStBrigidsDay:
     def test_st_brigids_day_is_not_a_closure(self):
         e = _explicit("XDUB")
         assert "2025-02-03" not in e and "2026-02-02" not in e
+
+
+class TestXDUBFalseClosuresRemoved:
+    """Task 36. Euronext's own calendars (tier 1, live.euronext.com/en/resources/
+    trading-hours-holidays: "Calendar of business days 2025" and "2026 Holiday
+    Calendar") list Dublin closed only on 1 Jan, Good Friday, Easter Monday,
+    1 May, the Irish May Bank Holiday, 25 Dec and 26 Dec (28 Dec 2026 as the
+    substitute for St Stephen's Day). Dublin trades on St Patrick's Day, the
+    June, August and October bank holidays and on 29 Dec 2025."""
+
+    FALSE_2025_2026 = [
+        "2025-03-17", "2025-06-02", "2025-08-04", "2025-10-27", "2025-12-29",
+        "2026-03-17", "2026-06-01", "2026-08-03", "2026-10-26",
+    ]
+    # 2027 to 2029: Euronext has not published these years. Absent on the pattern
+    # of 2022 to 2026 (pattern-derived, not tier 1); re-check when published.
+    FALSE_2027_2029 = [
+        "2027-03-17", "2027-06-07", "2027-08-02", "2027-10-25",
+        "2028-03-17", "2028-06-05", "2028-08-07", "2028-10-30",
+        "2029-03-19", "2029-06-04", "2029-08-06", "2029-10-29",
+    ]
+
+    def test_false_closures_absent_2025_2026(self):
+        e = _explicit("XDUB")
+        for d in self.FALSE_2025_2026:
+            assert d not in e, f"{d}: Euronext shows Dublin as a full trading day"
+
+    def test_false_closures_absent_2027_2029_pattern_derived(self):
+        e = _explicit("XDUB")
+        for d in self.FALSE_2027_2029:
+            assert d not in e, f"{d}: absent on the pattern of published years"
+
+
+class TestXDUBLabourDay:
+    """Task 36. Euronext closes all markets on 1 May (Euronext holiday calendars
+    2025 and 2026, tier 1). 2027-05-01 is a Saturday. 2028-05-01 is a Monday and
+    also the Irish May Bank Holiday. 2029 is not yet published."""
+
+    def test_labour_day_2025(self):
+        e = _explicit("XDUB")
+        assert e["2025-05-01"]["name"] == "Labour Day"
+        assert e["2025-05-01"]["status"] == "closed"
+
+    def test_labour_day_2026(self):
+        e = _explicit("XDUB")
+        assert e["2026-05-01"]["name"] == "Labour Day"
+        assert e["2026-05-01"]["status"] == "closed"
+
+    def test_labour_day_2027_saturday_has_no_entry(self):
+        assert "2027-05-01" not in _explicit("XDUB")
+        assert "2027-05-03" in _explicit("XDUB")  # Irish May Bank Holiday only
+
+    def test_labour_day_2029_is_pattern_derived(self):
+        entry = _explicit("XDUB")["2029-05-01"]
+        assert entry["predicted"] is True
+        assert entry["name"] == "Labour Day (predicted)"
+
+
+class TestXDUBSubstituteDays:
+    """Euronext Dublin keeps weekend substitutes for New Year's Day, Christmas Day
+    and St Stephen's Day (Euronext calendars: 2022-01-03, 2022-12-27, 2023-01-02,
+    2020-12-28, 2021-12-27 and 2021-12-28, 2026-12-28). 29 Dec 2025 is not one:
+    25 and 26 Dec 2025 were Thursday and Friday."""
+
+    def test_2026_12_28_closed(self):
+        e = _explicit("XDUB")["2026-12-28"]
+        assert e["status"] == "closed"
+        assert "St. Stephen's Day" in e["name"]
+
+    def test_2025_12_29_is_a_trading_day(self):
+        assert "2025-12-29" not in _explicit("XDUB")

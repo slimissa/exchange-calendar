@@ -174,27 +174,36 @@ This file documents what was checked and why each verdict holds, since "we
 found a different URL" or "it's blocked" is easy to state and easy to get
 wrong without the reasoning behind it.
 
-## XDUB — Euronext Dublin (St Brigid's Day resolved; large discrepancy open, 2026-10-07)
+## XDUB — Euronext Dublin (corrected against the Euronext calendars 2026-10-10; 2027 to 2029 pattern-derived)
 
-**Last verified:** 2026-10-07
+**Last verified:** 2026-10-10
 
 - **Candidate resolved: non-closure.** St Brigid's Day (2025-02-03, 2026-02-02) is a
   full trading day for Dublin in Euronext's own calendars (tier 1,
-  `live.euronext.com/resources/trading-hours-holidays`, "Calendar of business days
+  `live.euronext.com/en/resources/trading-hours-holidays`, "Calendar of business days
   2025" and "2026 Holiday Calendar"). Pinned by a test.
-- **Stop condition fired (more than three rules).** The same Euronext calendars show
-  Dublin closed in 2025 on 1 Jan, 18 Apr, 21 Apr, 1 May, 5 May (Irish May Bank
-  Holiday), 25 Dec, 26 Dec, and in 2026 on 1 Jan, 3 Apr, 6 Apr, 1 May, 4 May, 25 Dec,
-  28 Dec (substitute for St Stephen's Day). Against them the file has:
-  - **False closures** (Dublin traded): St. Patrick's Day (2025-03-17, 2026-03-17),
-    June Bank Holiday (2025-06-02, 2026-06-01), August Bank Holiday (2025-08-04,
-    2026-08-03), October Bank Holiday (2025-10-27, 2026-10-26) and a "Christmas Day
-    (substitute)" on 2025-12-29. The rules behind them also generate 2027 to 2029.
-  - **Missing closure:** Labour Day, 1 May (2025-05-01 and 2026-05-01).
-  Fixing it removes four rules and their explicit entries and adds one. Not done: it
-  is more than three rule changes. **Source:** the Euronext page above, which is
-  already tier 1 and covers 2022 to 2026; the 2027 to 2029 years need Euronext's
-  future calendars.
+- **Corrected (stop condition lifted for this exchange).** Euronext lists Dublin closed
+  in 2025 on 1 Jan, 18 Apr, 21 Apr, 1 May, 5 May (Irish May Bank Holiday), 25 Dec,
+  26 Dec, and in 2026 on 1 Jan, 3 Apr, 6 Apr, 1 May, 4 May, 25 Dec, 28 Dec (substitute
+  for St Stephen's Day). The file now matches. Removed: the rules and entries for
+  St. Patrick's Day and the June, August and October bank holidays (21 entries,
+  2025 to 2029, including 2029-03-19), and the 2025-12-29 "Christmas Day
+  (substitute)". Added: Labour Day, 1 May, as a `fixed_date` rule (no weekend
+  substitute; 2027-05-01 is a Saturday and Euronext does not move it), with explicit
+  entries 2025-05-01, 2026-05-01 and 2029-05-01. 2028-05-01 was already present as the
+  May Bank Holiday and is the same day.
+- **Kept, 2026-12-28 "St. Stephen's Day (substitute)".** Euronext's 2026 calendar lists
+  Dublin closed on Monday 28 December 2026 (tier 1). Substitute days also appear in
+  Euronext's calendars for 2020 (28 Dec), 2021 (27 and 28 Dec), 2022 (3 Jan, 27 Dec) and
+  2023 (2 Jan). The 2027 (27 and 28 Dec) and 2028 (3 Jan) substitutes follow the same
+  pattern.
+- **2027 to 2029 are pattern-derived, not tier 1.** Euronext has not published
+  2027 to 2029; the entries were removed on the pattern from 2022 to 2026 (St Patrick's
+  Day and the June, August and October bank holidays are full trading days in every
+  published year, 2022 to 2026) and should be re-checked when the calendars publish.
+  The 2029-05-01 Labour Day entry is marked `predicted` for the same reason. The
+  source file cannot hold prose (`schema.json` forbids extra fields) and
+  `source_url` must be a URL on euronext.com, so this section carries the note.
 - Half sessions on 24 and 31 December match Euronext (Dublin closes 13:30 CET).
 
 ## XETR — Xetra (Deutsche Börse) (built; non-closures recorded 2026-10-07)

@@ -9013,12 +9013,6 @@
             "status": "closed"
           },
           {
-            "date": "2025-03-17",
-            "name": "St. Patrick's Day",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2025-04-18",
             "name": "Good Friday",
             "source_url": "https://www.euronext.com/en/trading-calendar",
@@ -9031,26 +9025,14 @@
             "status": "closed"
           },
           {
+            "date": "2025-05-01",
+            "name": "Labour Day",
+            "source_url": "https://live.euronext.com/en/resources/trading-hours-holidays",
+            "status": "closed"
+          },
+          {
             "date": "2025-05-05",
             "name": "May Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2025-06-02",
-            "name": "June Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2025-08-04",
-            "name": "August Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2025-10-27",
-            "name": "October Bank Holiday",
             "source_url": "https://www.euronext.com/en/trading-calendar",
             "status": "closed"
           },
@@ -9074,12 +9056,6 @@
             "status": "closed"
           },
           {
-            "date": "2025-12-29",
-            "name": "Christmas Day (substitute)",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2025-12-31",
             "early_close_time": "12:30",
             "name": "New Year's Eve",
@@ -9089,12 +9065,6 @@
           {
             "date": "2026-01-01",
             "name": "New Year's Day",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2026-03-17",
-            "name": "St. Patrick's Day",
             "source_url": "https://www.euronext.com/en/trading-calendar",
             "status": "closed"
           },
@@ -9111,26 +9081,14 @@
             "status": "closed"
           },
           {
+            "date": "2026-05-01",
+            "name": "Labour Day",
+            "source_url": "https://live.euronext.com/en/resources/trading-hours-holidays",
+            "status": "closed"
+          },
+          {
             "date": "2026-05-04",
             "name": "May Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2026-06-01",
-            "name": "June Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2026-08-03",
-            "name": "August Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2026-10-26",
-            "name": "October Bank Holiday",
             "source_url": "https://www.euronext.com/en/trading-calendar",
             "status": "closed"
           },
@@ -9167,12 +9125,6 @@
             "status": "closed"
           },
           {
-            "date": "2027-03-17",
-            "name": "St. Patrick's Day",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2027-03-26",
             "name": "Good Friday",
             "source_url": "https://www.euronext.com/en/trading-calendar",
@@ -9187,24 +9139,6 @@
           {
             "date": "2027-05-03",
             "name": "May Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2027-06-07",
-            "name": "June Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2027-08-02",
-            "name": "August Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2027-10-25",
-            "name": "October Bank Holiday",
             "source_url": "https://www.euronext.com/en/trading-calendar",
             "status": "closed"
           },
@@ -9241,12 +9175,6 @@
             "status": "closed"
           },
           {
-            "date": "2028-03-17",
-            "name": "St. Patrick's Day",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2028-04-14",
             "name": "Good Friday",
             "source_url": "https://www.euronext.com/en/trading-calendar",
@@ -9261,24 +9189,6 @@
           {
             "date": "2028-05-01",
             "name": "May Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2028-06-05",
-            "name": "June Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2028-08-07",
-            "name": "August Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2028-10-30",
-            "name": "October Bank Holiday",
             "source_url": "https://www.euronext.com/en/trading-calendar",
             "status": "closed"
           },
@@ -9301,12 +9211,6 @@
             "status": "closed"
           },
           {
-            "date": "2029-03-19",
-            "name": "St. Patrick's Day (substitute)",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2029-03-30",
             "name": "Good Friday",
             "source_url": "https://www.euronext.com/en/trading-calendar",
@@ -9319,26 +9223,15 @@
             "status": "closed"
           },
           {
+            "date": "2029-05-01",
+            "name": "Labour Day (predicted)",
+            "predicted": true,
+            "source_url": "https://live.euronext.com/en/resources/trading-hours-holidays",
+            "status": "closed"
+          },
+          {
             "date": "2029-05-07",
             "name": "May Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2029-06-04",
-            "name": "June Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2029-08-06",
-            "name": "August Bank Holiday",
-            "source_url": "https://www.euronext.com/en/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2029-10-29",
-            "name": "October Bank Holiday",
             "source_url": "https://www.euronext.com/en/trading-calendar",
             "status": "closed"
           },
@@ -9369,23 +9262,7 @@
             "status": "early_close"
           }
         ],
-        "generated": [
-          {
-            "date": "2028-10-23",
-            "name": "October Bank Holiday",
-            "status": "closed"
-          },
-          {
-            "date": "2029-03-16",
-            "name": "St. Patrick's Day",
-            "status": "closed"
-          },
-          {
-            "date": "2029-10-22",
-            "name": "October Bank Holiday",
-            "status": "closed"
-          }
-        ]
+        "generated": []
       },
       "mic": "XDUB",
       "name": "Euronext Dublin",
