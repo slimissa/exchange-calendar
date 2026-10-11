@@ -9,9 +9,15 @@ Key facts verified:
     - Statehood Day (May 30)
     - Anti-Fascist Struggle Day (Jun 22)
     - Victory Day (Aug 5)
-    - Independence Day (Oct 8)
-    - Croatia uses substitution for some weekend holidays
+    - Good Friday, Christmas Eve (Dec 24) and New Year's Eve (Dec 31) are closures
+    - Independence Day (Oct 8) is NOT a closure: it is on none of ZSE's lists
+    - ZSE never moves a weekend holiday: no "(observed)" or "(substitute)" entries
     - No recurrence rules — all dates explicit
+
+Sources (tier 1, ZSE's own lists): zse.hr/en/trading-calendar-in-2025/2870 (2025),
+zse.hr/en/non-trading-days/110 (2026 and 2027) and
+zse.hr/en/trading-calendar-in-2027/3574 (2027). 2028 and 2029 are not published;
+those years follow the pattern of 2025 to 2027 (pattern-derived, not tier 1).
 
 If any test fails, either:
     1. The registry data is wrong (fix exchanges/XZAG.json)
@@ -96,30 +102,32 @@ class TestXZAGFixedHolidaysJanMay:
         assert "2025-01-01" in explicit_dates
         assert explicit_dates["2025-01-01"]["name"] == "New Year's Day"
 
-    def test_new_year_2028_substitute(self, explicit_dates):
-        """Jan 1, 2028 is Saturday — substitute to Monday Jan 3."""
+    def test_new_year_2028_no_substitute(self, explicit_dates):
+        """Jan 1, 2028 is Saturday. ZSE does not move weekend holidays
+        (2025 to 2027 lists), so Monday Jan 3 trades. Pattern-derived."""
         assert "2028-01-01" not in explicit_dates
-        assert "2028-01-03" in explicit_dates
+        assert "2028-01-03" not in explicit_dates
 
     def test_epiphany_2025(self, explicit_dates):
         """Jan 6, 2025 is Monday."""
         assert "2025-01-06" in explicit_dates
         assert "Epiphany" in explicit_dates["2025-01-06"]["name"]
 
-    def test_epiphany_2029_substitute(self, explicit_dates):
-        """Jan 6, 2029 is Saturday — substitute to Monday Jan 8."""
+    def test_epiphany_2029_no_substitute(self, explicit_dates):
+        """Jan 6, 2029 is Saturday. No substitute, Monday Jan 8 trades
+        (pattern-derived, ZSE has not published 2029)."""
         assert "2029-01-06" not in explicit_dates
-        assert "2029-01-08" in explicit_dates
+        assert "2029-01-08" not in explicit_dates
 
     def test_labour_day_2025(self, explicit_dates):
         """May 1, 2025 is Thursday."""
         assert "2025-05-01" in explicit_dates
         assert explicit_dates["2025-05-01"]["name"] == "Labour Day"
 
-    def test_labour_day_2027_substitute(self, explicit_dates):
-        """May 1, 2027 is Saturday — substitute to Monday May 3."""
+    def test_labour_day_2027_no_substitute(self, explicit_dates):
+        """May 1, 2027 is Saturday. ZSE's 2027 list (tier 1) has no May 3 closure."""
         assert "2027-05-01" not in explicit_dates
-        assert "2027-05-03" in explicit_dates
+        assert "2027-05-03" not in explicit_dates
 
     def test_statehood_2025(self, explicit_dates):
         """May 30, 2025 is Friday."""
@@ -146,15 +154,12 @@ class TestXZAGFixedHolidaysJunDec:
         assert "2025-08-15" in explicit_dates
         assert "Assumption" in explicit_dates["2025-08-15"]["name"]
 
-    def test_independence_2025(self, explicit_dates):
-        """Oct 8, 2025 is Wednesday."""
-        assert "2025-10-08" in explicit_dates
-        assert "Independence" in explicit_dates["2025-10-08"]["name"]
-
-    def test_independence_2028_substitute(self, explicit_dates):
-        """Oct 8, 2028 is Sunday — substitute to Monday Oct 9."""
-        assert "2028-10-08" not in explicit_dates
-        assert "2028-10-09" in explicit_dates
+    def test_independence_day_is_not_a_closure(self, explicit_dates):
+        """Oct 8 is on none of ZSE's published lists (2025, 2026, 2027; tier 1), so
+        Zagreb trades. 2028 and 2029 are pattern-derived."""
+        for d in ("2025-10-08", "2026-10-08", "2027-10-08",
+                  "2028-10-08", "2028-10-09", "2029-10-08"):
+            assert d not in explicit_dates, f"{d}: ZSE trades on Independence Day"
 
     def test_all_saints_2025(self, explicit_dates):
         """Nov 1, 2025 is Saturday (weekend) — no explicit entry."""
@@ -208,15 +213,15 @@ class TestXZAGChristmas:
         assert "2025-12-26" in explicit_dates
         assert "Stephen" in explicit_dates["2025-12-26"]["name"]
 
-    def test_christmas_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27."""
+    def test_christmas_2027_no_substitute(self, explicit_dates):
+        """Dec 25, 2027 is Saturday. ZSE's 2027 list (tier 1) has no Dec 27 closure."""
         assert "2027-12-25" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
+        assert "2027-12-27" not in explicit_dates
 
-    def test_st_stephens_2027_substitute(self, explicit_dates):
-        """Dec 26, 2027 is Sunday — substitute to Tuesday Dec 28."""
+    def test_st_stephens_2027_no_substitute(self, explicit_dates):
+        """Dec 26, 2027 is Sunday. ZSE's 2027 list (tier 1) has no Dec 28 closure."""
         assert "2027-12-26" not in explicit_dates
-        assert "2027-12-28" in explicit_dates
+        assert "2027-12-28" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -295,9 +300,34 @@ class TestXZAGSubstitution:
         assert "2028-01-01" not in explicit_dates  # Saturday
         assert "2027-05-01" not in explicit_dates  # Saturday
 
-    def test_observed_names(self, explicit_dates):
-        observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
-        assert observed_count >= 4, f"Expected some observed holidays, got {observed_count}"
+    def test_no_observed_or_substitute_entries(self, explicit_dates):
+        """ZSE never moves a weekend holiday. Its 2025 list (zse.hr/en/trading-
+        calendar-in-2025/2870) has none (1 Nov and 22 Jun fall on a weekend, no
+        substitute). Its 2026 and 2027 lists (zse.hr/en/non-trading-days/110) have
+        none either: 30 May, 15 Aug, 26 Dec 2026 and 1 May, 25 and 26 Dec 2027 fall
+        on a weekend and the following Monday or Tuesday is a trading day. An
+        "(observed)" or "(substitute)" entry is therefore always a false closure."""
+        bad = {d: e["name"] for d, e in explicit_dates.items()
+               if "observed" in e["name"].lower() or "substitute" in e["name"].lower()}
+        assert bad == {}, f"ZSE does not move weekend holidays: {bad}"
+
+    def test_no_closure_follows_a_weekend_holiday(self, explicit_dates):
+        """For every fixed-date ZSE holiday that falls on a weekend, none of the next
+        three days is a closure unless that day is itself a fixed-date holiday."""
+        from datetime import timedelta
+        fixed = [(1, 1), (1, 6), (5, 1), (5, 30), (6, 22), (8, 5), (8, 15),
+                 (11, 1), (11, 18), (12, 24), (12, 25), (12, 26), (12, 31)]
+        for year in range(2025, 2030):
+            for month, day in fixed:
+                h = date(year, month, day)
+                if h.weekday() < 5:
+                    continue
+                for k in (1, 2, 3):
+                    n = h + timedelta(days=k)
+                    if (n.month, n.day) in fixed or n.weekday() >= 5:
+                        continue
+                    assert n.isoformat() not in explicit_dates, (
+                        f"{n} follows weekend holiday {h}: ZSE does not substitute")
 
 
 def _explicit(code):
@@ -321,3 +351,63 @@ class TestXZAGRemembranceDay:
     def test_no_entry_when_it_is_a_weekend(self):
         e = _explicit("XZAG")
         assert "2028-11-18" not in e and "2029-11-18" not in e
+
+
+class TestXZAGFalseClosuresRemoved:
+    """Task 37. Independence Day (8 Oct) and the "(observed)" days are on none of
+    ZSE's own lists (tier 1: 2025, 2026, 2027). 2028 and 2029 are pattern-derived."""
+
+    def test_independence_day_absent_all_years(self):
+        e = _explicit("XZAG")
+        for d in ("2025-10-08", "2026-10-08", "2027-10-08", "2028-10-09", "2029-10-08"):
+            assert d not in e, d
+
+    def test_observed_days_absent_2027(self):
+        e = _explicit("XZAG")
+        for d in ("2027-05-03", "2027-12-27", "2027-12-28"):
+            assert d not in e, d
+
+    def test_observed_days_absent_2028_2029_pattern_derived(self):
+        e = _explicit("XZAG")
+        for d in ("2028-01-03", "2029-01-08"):
+            assert d not in e, d
+
+
+class TestXZAGGoodFriday:
+    """ZSE lists Good Friday: 2025-04-18, 2026-04-03, 2027-03-26 (tier 1).
+    2028-04-14 and 2029-03-30 are Easter - 2 days (pattern-derived, predicted)."""
+
+    def test_published_years(self):
+        e = _explicit("XZAG")
+        for d in ("2025-04-18", "2026-04-03", "2027-03-26"):
+            assert e[d]["name"] == "Good Friday", d
+            assert e[d]["status"] == "closed"
+            assert "predicted" not in e[d]
+
+    def test_predicted_years(self):
+        e = _explicit("XZAG")
+        for d in ("2028-04-14", "2029-03-30"):
+            assert e[d]["name"] == "Good Friday (predicted)", d
+            assert e[d]["predicted"] is True
+
+
+class TestXZAGChristmasEveAndNewYearsEve:
+    """ZSE closes on 24 and 31 December: 2025, 2026 and 2027 are on its lists
+    (tier 1). 2028 (both Sundays) has none. 2029 (both Mondays) is predicted."""
+
+    def test_published_years(self):
+        e = _explicit("XZAG")
+        for y in (2025, 2026, 2027):
+            assert e[f"{y}-12-24"]["name"] == "Christmas Eve"
+            assert e[f"{y}-12-31"]["name"] == "New Year's Eve"
+            assert e[f"{y}-12-24"]["status"] == e[f"{y}-12-31"]["status"] == "closed"
+
+    def test_2028_weekend_has_no_entry(self):
+        e = _explicit("XZAG")
+        assert "2028-12-24" not in e and "2028-12-31" not in e
+
+    def test_2029_predicted(self):
+        e = _explicit("XZAG")
+        assert e["2029-12-24"]["name"] == "Christmas Eve (predicted)"
+        assert e["2029-12-31"]["name"] == "New Year's Eve (predicted)"
+        assert e["2029-12-24"]["predicted"] is e["2029-12-31"]["predicted"] is True

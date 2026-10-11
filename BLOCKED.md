@@ -1328,20 +1328,37 @@ of wrong.
 - **Status:** fetcher present but incomplete. Resolution requires
   adding Hungarian observed-day logic to the parser. IMPLEMENTED
   at v2.9.3 (`BudapestFetcher._observed_substitutes`).
-## XZAG — Zagreb Stock Exchange (Remembrance Day added; discrepancies open, 2026-10-07)
+## XZAG — Zagreb Stock Exchange (corrected against the ZSE lists 2026-10-11; 2028 and 2029 pattern-derived)
 
-**Last verified:** 2026-10-07
+**Last verified:** 2026-10-11
 
-- **Tier 1:** ZSE's "Non-trading days" page (`zse.hr/en/non-trading-days/110`). 2026: 1 Jan,
-  6 Jan, 3 Apr, 6 Apr, 1 May, 4 Jun, 22 Jun, 5 Aug, **18 Nov**, 24 Dec, 25 Dec, 31 Dec.
-  The 2025 list (as quoted) has 15 Aug, 18 Nov, 24, 25, 26 and 31 Dec.
-- **Candidate resolved: closure.** Remembrance Day for the Victims of the Homeland War
-  (18 November): entered for 2025, 2026 and 2027 (2028 and 2029 are weekend days).
-- **Stop condition fired (more than three rules).** The same page shows the file is also
-  missing Good Friday (no year has it; 2026-04-03), Christmas Eve (2025-12-24,
-  2026-12-24) and New Year's Eve (2025-12-31, 2026-12-31), and has a closure that is not
-  on ZSE's 2026 list: Independence Day 2026-10-08. Four additions and one removal; only
-  the candidate was done. **Source:** the ZSE page above for 2025 (full list) and for 2027
-  onward when published. Whether ZSE's 24 and 31 December are full closures is as the
-  page states ("closed for trading").
+- **Tier 1, ZSE's own lists.** 2025: `zse.hr/en/trading-calendar-in-2025/2870`. 2026 and
+  2027: `zse.hr/en/non-trading-days/110` (re-read 2026-10-11; 2027 also at
+  `zse.hr/en/trading-calendar-in-2027/3574`, dated 2026-09-09). 2026: 1 Jan, 6 Jan,
+  3 Apr, 6 Apr, 1 May, 4 Jun, 22 Jun, 5 Aug, 18 Nov, 24 Dec, 25 Dec, 31 Dec. 2027:
+  1 Jan, 6 Jan, 26 Mar, 29 Mar, 27 May, 22 Jun, 5 Aug, 1 Nov, 18 Nov, 24 Dec, 31 Dec.
+- **Candidate resolved: closure.** Remembrance Day (18 November), 2025 to 2027.
+- **`source_url` note.** The 2025 additions cite the generic `https://zse.hr/trading-calendar`
+  (the file's existing 2025 URL), not the year-specific 2025 page above, which
+  `check_stale_year_urls.py` flags as stale in 2026. The 2025 list itself is that page.
+- **Corrected (stop condition lifted for this exchange): 9 holiday kinds, 23 dated
+  entries (7 kinds and 15 entries on the published years 2025 to 2027).**
+  - *Removed, 6 kinds, 10 entries.* Independence Day (2025-10-08, 2026-10-08,
+    2027-10-08, 2028-10-09, 2029-10-08): on none of ZSE's lists. The "(observed)"
+    substitutes for Labour Day (2027-05-03), Christmas Day (2027-12-27), St Stephen's Day
+    (2027-12-28), New Year's Day (2028-01-03) and Epiphany (2029-01-08): ZSE does not move
+    a weekend holiday (2025 to 2027 lists), so they were false closures.
+  - *Added, 3 kinds, 13 entries.* Good Friday (2025-04-18, 2026-04-03, 2027-03-26,
+    2028-04-14, 2029-03-30), Christmas Eve (2025, 2026, 2027, 2029-12-24) and New Year's
+    Eve (2025, 2026, 2027, 2029-12-31). 2028-12-24 and 2028-12-31 are Sundays.
+  - All changes are explicit dated entries; XZAG has no `recurrence_rules` and no rule
+    was added.
+- **2028 and 2029 are pattern-derived, not tier 1.** ZSE has not published them. The
+  4 removals and 4 additions for those years follow the pattern of 2025 to 2027 and
+  should be re-checked when ZSE publishes. The 4 added entries (2028-04-14, 2029-03-30,
+  2029-12-24, 2029-12-31) are marked `predicted`; the source file cannot hold prose
+  (`schema.json` forbids extra fields), so this section carries the note.
+- Whether 24 and 31 December are full closures is as ZSE's lists state ("closed for
+  trading"). An older UniCredit notice describes an early close on 31 December; it is
+  tier 3 and undated, and ZSE's own 2025 to 2027 lists do not show one.
 

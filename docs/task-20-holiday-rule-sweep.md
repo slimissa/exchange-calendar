@@ -16,7 +16,7 @@ only in a session transcript. This is the durable copy.
 | XBUE | 12 | untouched |
 | XBUD | 4 | untouched |
 | XBRV, XCAY, XDFM, XMOS, XRIS, XSHE, XSTC | 37 | untouched |
-| XDUB, XLIT, XZAG | 5 | **all 5 resolved 2026-10-07**: XDUB 2 non-closures, XLIT 1 closure, XZAG 2 closures; XDUB file corrected against Euronext 2026-10-10 (4 rules removed, Labour Day added; 2027 to 2029 pattern-derived); XZAG discrepancies still open, see `BLOCKED.md` |
+| XDUB, XLIT, XZAG | 5 | **all 5 resolved 2026-10-07**: XDUB 2 non-closures, XLIT 1 closure, XZAG 2 closures; XDUB file corrected against Euronext 2026-10-10 (4 rules removed, Labour Day added; 2027 to 2029 pattern-derived); XZAG file corrected against ZSE 2026-10-11 (9 kinds, 23 entries; 2028 and 2029 pattern-derived), see `BLOCKED.md` |
 | XETR, XPAR, XMAD, XNYS, XNAS | 30 | **30 confirmed non-closures 2026-10-07** (tier 1 for all five; 2025 US dates rest on the same fixed set), recorded in `BLOCKED.md`. One real closure found outside the list: XMAD Easter Monday, now a rule |
 
 Recommended order: XICE, XCOL, XGSE, XBUE, XBUD, then the rest of the likely closures.
@@ -74,7 +74,7 @@ it stays open here with the source named.
 | XNYS | US | 4 | Likely non-closure | untouched | 2025-10-13 Columbus Day; 2025-11-11 Veterans Day; 2026-10-12 Columbus Day; 2026-11-11 Veterans Day |
 | XDUB | IE | 2 | Non-closure | resolved 2026-10-07; file corrected 2026-10-10 | 2025-02-03 Saint Brigid's Day; 2026-02-02 Saint Brigid's Day |
 | XMOS | RU | 2 | Likely closure | untouched | 2025-05-08 Day off (substituted from 02/23/2025); 2025-11-03 Day off (substituted from 11/01/2025) |
-| XZAG | HR | 2 | Unclear | untouched | 2025-11-18 Remembrance Day; 2026-11-18 Remembrance Day |
+| XZAG | HR | 2 | Closure | resolved 2026-10-07; file corrected 2026-10-11 | 2025-11-18 Remembrance Day; 2026-11-18 Remembrance Day |
 | XLIT | LT | 1 | Unclear | untouched | 2026-11-02 All Souls' Day |
 | XSHE | CN | 1 | Likely closure | untouched | 2026-01-02 Day off (substituted from 01/04/2026) |
 
@@ -144,3 +144,10 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
   Euronext lists as closed (substitute for St Stephen's Day). 2027 to 2029 are
   pattern-derived from the published years, not tier 1; re-check when Euronext publishes.
   `calendar.json` and `checksums.json` are regenerated in the next full session.
+- 2026-10-11: XZAG closed against ZSE's own lists (tier 1: 2025, 2026, 2027). Stop
+  condition lifted. 9 kinds changed, 23 dated entries (7 kinds and 15 entries on the
+  published years). Removed 6 kinds, 10 entries: Independence Day (5) and the
+  "(observed)" Labour Day, Christmas, St Stephen's, New Year's and Epiphany days (5),
+  because ZSE does not move a weekend holiday. Added 3 kinds, 13 entries: Good Friday,
+  Christmas Eve, New Year's Eve. 2028 and 2029 are pattern-derived (8 entries); re-check
+  when ZSE publishes. A test now fails on any "(observed)" or "(substitute)" entry.

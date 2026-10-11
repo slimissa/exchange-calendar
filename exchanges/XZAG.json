@@ -52,6 +52,12 @@
         "status": "closed"
       },
       {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "source_url": "https://zse.hr/trading-calendar",
+        "status": "closed"
+      },
+      {
         "date": "2025-04-21",
         "name": "Easter Monday",
         "source_url": "https://zse.hr/trading-calendar",
@@ -88,15 +94,15 @@
         "status": "closed"
       },
       {
-        "date": "2025-10-08",
-        "name": "Independence Day",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
-      },
-      {
         "date": "2025-11-18",
         "name": "Remembrance Day",
         "source_url": "https://zse.hr/en/non-trading-days/110",
+        "status": "closed"
+      },
+      {
+        "date": "2025-12-24",
+        "name": "Christmas Eve",
+        "source_url": "https://zse.hr/trading-calendar",
         "status": "closed"
       },
       {
@@ -112,6 +118,12 @@
         "status": "closed"
       },
       {
+        "date": "2025-12-31",
+        "name": "New Year's Eve",
+        "source_url": "https://zse.hr/trading-calendar",
+        "status": "closed"
+      },
+      {
         "date": "2026-01-01",
         "name": "New Year's Day",
         "source_url": "https://zse.hr/trading-calendar",
@@ -121,6 +133,12 @@
         "date": "2026-01-06",
         "name": "Epiphany",
         "source_url": "https://zse.hr/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "source_url": "https://zse.hr/en/non-trading-days/110",
         "status": "closed"
       },
       {
@@ -154,14 +172,14 @@
         "status": "closed"
       },
       {
-        "date": "2026-10-08",
-        "name": "Independence Day",
-        "source_url": "https://zse.hr/trading-calendar",
+        "date": "2026-11-18",
+        "name": "Remembrance Day",
+        "source_url": "https://zse.hr/en/non-trading-days/110",
         "status": "closed"
       },
       {
-        "date": "2026-11-18",
-        "name": "Remembrance Day",
+        "date": "2026-12-24",
+        "name": "Christmas Eve",
         "source_url": "https://zse.hr/en/non-trading-days/110",
         "status": "closed"
       },
@@ -169,6 +187,12 @@
         "date": "2026-12-25",
         "name": "Christmas Day",
         "source_url": "https://zse.hr/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "New Year's Eve",
+        "source_url": "https://zse.hr/en/non-trading-days/110",
         "status": "closed"
       },
       {
@@ -184,14 +208,14 @@
         "status": "closed"
       },
       {
-        "date": "2027-03-29",
-        "name": "Easter Monday",
-        "source_url": "https://zse.hr/trading-calendar",
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "source_url": "https://zse.hr/en/non-trading-days/110",
         "status": "closed"
       },
       {
-        "date": "2027-05-03",
-        "name": "Labour Day (observed)",
+        "date": "2027-03-29",
+        "name": "Easter Monday",
         "source_url": "https://zse.hr/trading-calendar",
         "status": "closed"
       },
@@ -214,12 +238,6 @@
         "status": "closed"
       },
       {
-        "date": "2027-10-08",
-        "name": "Independence Day",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
-      },
-      {
         "date": "2027-11-01",
         "name": "All Saints' Day",
         "source_url": "https://zse.hr/trading-calendar",
@@ -232,27 +250,28 @@
         "status": "closed"
       },
       {
-        "date": "2027-12-27",
-        "name": "Christmas Day (observed)",
-        "source_url": "https://zse.hr/trading-calendar",
+        "date": "2027-12-24",
+        "name": "Christmas Eve",
+        "source_url": "https://zse.hr/en/non-trading-days/110",
         "status": "closed"
       },
       {
-        "date": "2027-12-28",
-        "name": "St. Stephen's Day (observed)",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-01-03",
-        "name": "New Year's Day (observed)",
-        "source_url": "https://zse.hr/trading-calendar",
+        "date": "2027-12-31",
+        "name": "New Year's Eve",
+        "source_url": "https://zse.hr/en/non-trading-days/110",
         "status": "closed"
       },
       {
         "date": "2028-01-06",
         "name": "Epiphany",
         "source_url": "https://zse.hr/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2028-04-14",
+        "name": "Good Friday (predicted)",
+        "predicted": true,
+        "source_url": "https://zse.hr/en/non-trading-days/110",
         "status": "closed"
       },
       {
@@ -292,12 +311,6 @@
         "status": "closed"
       },
       {
-        "date": "2028-10-09",
-        "name": "Independence Day (observed)",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
-      },
-      {
         "date": "2028-11-01",
         "name": "All Saints' Day",
         "source_url": "https://zse.hr/trading-calendar",
@@ -322,9 +335,10 @@
         "status": "closed"
       },
       {
-        "date": "2029-01-08",
-        "name": "Epiphany (observed)",
-        "source_url": "https://zse.hr/trading-calendar",
+        "date": "2029-03-30",
+        "name": "Good Friday (predicted)",
+        "predicted": true,
+        "source_url": "https://zse.hr/en/non-trading-days/110",
         "status": "closed"
       },
       {
@@ -364,15 +378,16 @@
         "status": "closed"
       },
       {
-        "date": "2029-10-08",
-        "name": "Independence Day",
+        "date": "2029-11-01",
+        "name": "All Saints' Day",
         "source_url": "https://zse.hr/trading-calendar",
         "status": "closed"
       },
       {
-        "date": "2029-11-01",
-        "name": "All Saints' Day",
-        "source_url": "https://zse.hr/trading-calendar",
+        "date": "2029-12-24",
+        "name": "Christmas Eve (predicted)",
+        "predicted": true,
+        "source_url": "https://zse.hr/en/non-trading-days/110",
         "status": "closed"
       },
       {
@@ -385,6 +400,13 @@
         "date": "2029-12-26",
         "name": "St. Stephen's Day",
         "source_url": "https://zse.hr/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "New Year's Eve (predicted)",
+        "predicted": true,
+        "source_url": "https://zse.hr/en/non-trading-days/110",
         "status": "closed"
       }
     ],
