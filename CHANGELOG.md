@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.15.1] — 2026-10-11
 
-Patch release. New data on existing rule types and an existing field; no
-schema change, no new rule type.
+Patch release. New data on existing rule types and an existing field (XDUB
+rule and entries, XZAG explicit entries); no schema change, no new rule type.
 
 ### Fixed
 
@@ -23,6 +23,15 @@ schema change, no new rule type.
   Euronext has not published 2027 to 2029; those years rest on the
   pattern of the published years, and the 2029-05-01 entry is marked
   `predicted`. See `BLOCKED.md`.
+- XZAG (Zagreb): corrected against ZSE's own lists (tier 1, 2025 to 2027).
+  Removed Independence Day (8 Oct, not a ZSE closure) and the "(observed)"
+  Labour Day, Christmas, St Stephen's, New Year's and Epiphany days: ZSE does
+  not move a weekend holiday. Added the missing Good Friday, Christmas Eve and
+  New Year's Eve. 9 holiday kinds, 23 dated entries (7 kinds and 15 entries on
+  the published years); 2028 and 2029 are pattern-derived, and the 4 added
+  entries for those years are marked `predicted`. All explicit entries, no new
+  rule. A test now fails on any "(observed)" or "(substitute)" entry. See
+  `BLOCKED.md`.
 
 ---
 

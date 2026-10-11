@@ -452,6 +452,14 @@
     {
       "file": "tests/test_dublin_holidays.py",
       "contains": "TestXDUBFalseClosuresRemoved"
+    },
+    {
+      "file": "exchanges/XZAG.json",
+      "contains": "Christmas Eve (predicted)"
+    },
+    {
+      "file": "tests/test_zagreb_holidays.py",
+      "contains": "test_no_observed_or_substitute_entries"
     }
   ],
   "2.15.0": [
