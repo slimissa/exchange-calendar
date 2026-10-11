@@ -8,8 +8,9 @@ Key facts verified:
     - Weekend is Saturday-Sunday (Western weekend)
     - Constitution Day (Jan 7)
     - Independence Day (Mar 6)
-    - Founders' Day (Aug 4)
-    - Kwame Nkrumah Memorial Day (Sep 21)
+    - Founders' Day (Sep 21 from 2026; GSE's 2026 list has no Aug 4)
+    - Kwame Nkrumah Memorial Day (Sep 21, GSE's 2025 name for the same date)
+    - Republic Day (1 Jul) is a public holiday again from 2026
     - Farmers' Day (first Friday in December)
     - Christmas Day and Boxing Day
     - No recurrence rules — all dates explicit
@@ -138,10 +139,13 @@ class TestXGSEFixedHolidaysMaySep:
         assert "2025-08-04" in explicit_dates
         assert "Founders" in explicit_dates["2025-08-04"]["name"]
 
-    def test_founders_2029_substitute(self, explicit_dates):
-        """Aug 4, 2029 is Saturday — substitute to Monday Aug 6."""
-        assert "2029-08-04" not in explicit_dates
-        assert "2029-08-06" in explicit_dates
+    def test_founders_aug_4_after_2025_not_a_closure(self, explicit_dates):
+        """GSE's 2025 list has Founder's Day on 4 August and Kwame Nkrumah Memorial
+        Day on 21 September. Its 2026 list has Founder's Day on 21 September and no
+        4 August. 2027 to 2029 are not published: removed on the pattern of the 2026
+        list (pattern-derived, not tier 1). See BLOCKED.md, XGSE."""
+        for d in ("2027-08-04", "2028-08-04", "2029-08-04", "2029-08-06"):
+            assert d not in explicit_dates, d
 
     def test_kwame_nkrumah_2025(self, explicit_dates):
         """Sep 21, 2025 is Sunday (weekend) — no explicit entry."""
@@ -287,7 +291,7 @@ class TestXGSEStructure:
 # Entries whose date comes from an Interior Ministry declaration, cited to the
 # press report of it (the 2025 decree pages carry a 2025 year token, which
 # tools/check_stale_year_urls.py rejects). See BLOCKED.md, XGSE.
-DECREE_CITED = {"2025-03-31", "2025-04-01", "2025-06-06"}
+DECREE_CITED = {"2025-03-31", "2025-04-01", "2025-06-06", "2025-09-22"}
 
 
 # ──────────────────────────────────────────────────────────────
@@ -351,3 +355,38 @@ class TestXGSEEidClosures:
         4 August. The file had a 2026-08-04 closure that is not on the list."""
         assert "2026-08-04" not in explicit_dates
         assert explicit_dates["2026-09-21"]["name"] == "Founders' Day"
+
+
+# ──────────────────────────────────────────────────────────────
+# Two-sided check (Task 20): GSE's own 2025 and 2026 lists
+# ──────────────────────────────────────────────────────────────
+
+class TestXGSETwoSidedCheck:
+    """Sources, tier 1: GSE's 2025 list (gse.com.gh/?p=44200) and 2026 list
+    (gse.com.gh/events/), which state that GSE closes on public holidays and that a
+    holiday on a weekend is observed on the following working day if the Government
+    declares it, and the Interior Ministry's declarations."""
+
+    def test_2025_aug_4_is_a_closure(self, explicit_dates):
+        """GSE's 2025 list has Founder's Day on Monday 4 August."""
+        assert explicit_dates["2025-08-04"]["status"] == "closed"
+        assert "Founders" in explicit_dates["2025-08-04"]["name"]
+
+    def test_2025_sep_22_is_a_closure(self, explicit_dates):
+        """21 Sep 2025 is a Sunday. The Interior Ministry declared Monday 22 Sep
+        by Executive Instrument under Act 601, and GSE's list applies the
+        following working day when it is declared."""
+        e = explicit_dates["2025-09-22"]
+        assert e["status"] == "closed"
+        assert e["name"] == "Kwame Nkrumah Memorial Day (observed)"
+
+    def test_2026_jul_3_is_a_closure(self, explicit_dates):
+        """GSE's 2026 list has Republic Day on 'Friday July 1st/3rd'. The Interior
+        Ministry (24 June 2026) declared Friday 3 July as the holiday."""
+        assert explicit_dates["2026-07-03"]["name"] == "Republic Day"
+        assert explicit_dates["2026-07-03"]["status"] == "closed"
+
+    def test_2026_jul_1_is_a_trading_day(self, explicit_dates):
+        """1 Jul 2026 is a Wednesday. The same declaration moves the holiday to
+        Friday 3 July, so 1 July is not a public holiday."""
+        assert "2026-07-01" not in explicit_dates

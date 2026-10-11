@@ -12,7 +12,7 @@ only in a session transcript. This is the durable copy.
 |---------|-----------|----------------------|-------|
 | XICE | 4 | — (not run; tier 3 sources only) | **resolved 2026-10-07** (tier 3, corroborated; see `BLOCKED.md`) |
 | XCOL | 19 | 21 entries (13 in 2026, 8 copied Poya dates in 2027) | **2026 resolved 2026-10-07** (13 candidates, tier 1 circular); 2025 (6 candidates), 2027 and Vesak week open, see `BLOCKED.md` |
-| XGSE | 11 | 1 so far (2026-08-04); the 2027 to 2029 Aug 4 entries are open; final count at the XGSE two-sided check | **5 of 11 resolved 2026-10-07** (plus 1 added, 1 wrong entry removed); 6 open, see `BLOCKED.md` |
+| XGSE | 11 | 1 kind, 4 entries (Founders' Day on 4 August: 2026-08-04 removed 2026-10-07; 2027 to 2029 removed 2026-10-11, pattern-derived) | **8 of 11 resolved** (5 on 2026-10-07; 3 on 2026-10-11: 2025-09-22 and 2026-07-03 added, 2026-07-01 a non-closure); 3 open (2025-07-01, 2025-07-04, 2026-01-09) and a 2027 to 2029 gap class, see `BLOCKED.md` |
 | XBUE | 12 | — (not run) | untouched |
 | XBUD | 4 | — (not run) | untouched |
 | XBRV, XCAY, XDFM, XMOS, XRIS, XSHE, XSTC | 37 | — (not run) | untouched |
@@ -226,3 +226,13 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
   because ZSE does not move a weekend holiday. Added 3 kinds, 13 entries: Good Friday,
   Christmas Eve, New Year's Eve. 2028 and 2029 are pattern-derived (8 entries); re-check
   when ZSE publishes. A test now fails on any "(observed)" or "(substitute)" entry.
+- 2026-10-11: XGSE two-sided check against GSE's own 2025 and 2026 lists (tier 1) and the
+  Interior Ministry's declarations. 3 kinds, 5 dated entries (limit 10 kinds, not
+  reached). Added 2 kinds, 2 entries: 2025-09-22 (Sunday 21 September observed on the
+  Monday, declared) and 2026-07-03 (Republic Day moved to Friday). Removed 1 kind, 3
+  entries: Founders' Day on 4 August, 2027 to 2029, pattern-derived from GSE's 2026
+  list. 2026-07-01 is a non-closure. Open: 2025-07-01, 2025-07-04, 2026-01-09 (GSE's list
+  says 7 January, the Ministry declared 9 January), and 2027 to 2029 Republic Day, Eid
+  and midweek-to-Friday shifts. Unlike ZSE, GSE's own rule observes weekend holidays on
+  the next working day if declared, so the file's "(observed)" entries are predictions,
+  not false closures. Remaining likely closures: 62 (65 minus the 3 XGSE candidates resolved today), plus open items.
