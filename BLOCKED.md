@@ -720,11 +720,10 @@ wrong without the reasoning behind it.
     GSE's 2026 list has Republic Day on "Friday July 1st/3rd" and the Ministry declared
     Friday 3 July as the holiday (cited to GSE's list).
   - *Removed, 1 kind, 3 entries.* Founders' Day on 4 August: 2027-08-04, 2028-08-04 and
-    2029-08-06. GSE's 2025 list has both 4 August and 21 September; its 2026 list has
-    Founder's Day on 21 September only. **These 3 removals are pattern-derived from the
-    2026 list, not tier 1:** GSE has not published 2027 to 2029 and only one published
-    year (2026) shows the change. Re-check when GSE publishes a list for each year.
-    2025-08-04 stays: it is on GSE's 2025 list.
+    2029-08-06. GSE's 2026 list has Founder's Day on 21 September only, and the 2025 Act
+    removed 4 August as Founders' Day (see the 2025-08-04 correction below). GSE has not
+    published 2027 to 2029, so for those years the removals rest on the Act and the 2026
+    list, not on a list for the year. Re-check when GSE publishes.
 - **Open items closed 2026-10-11: 2 kinds added, 1 removed, 3 dated entries.**
   - *2026-01-09, added; 2026-01-07, removed. [Likely].* GSE's 2026 list has Constitution
     Day on Wednesday 7 January. The Ministry declared by Executive Instrument that Friday
@@ -747,6 +746,18 @@ wrong without the reasoning behind it.
     both put 1 July under commemorative days, and the Ministry's declaration puts the
     holiday on 4 July. 1 July 2025 held the National Day of Prayer and Thanksgiving, which
     was an observance, not the holiday.
+- **Correction 2026-10-11: 2025-08-04 removed (a false closure the first pass kept).**
+  The first pass kept 2025-08-04 "because it is on GSE's 2025 list". That reasoning was
+  wrong: GSE's 2025 list was written before the Act and also prints Republic Day as an
+  unobserved commemorative day, which the Ministry then moved to Friday 4 July. The
+  Interior Ministry stated on 31 July 2025 that Monday 4 August 2025 "is not a public
+  holiday" and should be treated as a regular working day (reported by MyJoyOnline,
+  Ghanaian Times and Modern Ghana); GSE closes on public holidays. **[Likely]:** no GSE
+  notice or daily report for 4 August 2025 was reachable. A weak tier 3 hint: IC
+  Securities' weekly wrap for 4 to 8 August 2025 gives total value traded 32.2 and
+  daily value traded 6.4, a ratio of 5, which fits five sessions if the divisor is the
+  real day count. **What would settle it:** a GSE daily report for that Monday. 1 kind
+  (the same Founders' Day 4 August kind as the three removals above), 1 entry.
 - **Not false closures.** The file's "(observed)" entries for weekend holidays (2026-12-28,
   2027-05-03, 2027-12-27, 2027-12-28, 2028-01-03, 2029-01-08) are consistent with GSE's
   own rule, which applies the following working day if the Government declares it. This

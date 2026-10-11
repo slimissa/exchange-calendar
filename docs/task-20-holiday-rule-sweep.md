@@ -12,7 +12,7 @@ only in a session transcript. This is the durable copy.
 |---------|-----------|----------------------|-------|
 | XICE | 4 | — (not run; tier 3 sources only) | **resolved 2026-10-07** (tier 3, corroborated; see `BLOCKED.md`) |
 | XCOL | 19 | 21 entries (13 in 2026, 8 copied Poya dates in 2027) | **2026 resolved 2026-10-07** (13 candidates, tier 1 circular); 2025 (6 candidates), 2027 and Vesak week open, see `BLOCKED.md` |
-| XGSE | 11 | 1 kind, 4 entries (Founders' Day on 4 August: 2026-08-04 removed 2026-10-07; 2027 to 2029 removed 2026-10-11, pattern-derived) | **11 of 11 resolved** (5 on 2026-10-07; 3 on 2026-10-11; 3 on 2026-10-11 after the second pass: 2025-07-04 and 2026-01-09 added, 2025-07-01 a non-closure); 2026-01-09 is [Likely], see `BLOCKED.md` |
+| XGSE | 11 | 1 kind, 5 entries (Founders' Day on 4 August: 2026-08-04 removed 2026-10-07; 2025-08-04 and 2027 to 2029 removed 2026-10-11; 2025-08-04 and the 2027 to 2029 ones rest on the 2025 Act and the Ministry, not on a GSE list for the year) | **11 of 11 resolved** (5 on 2026-10-07; 3 on 2026-10-11; 3 on 2026-10-11 after the second pass: 2025-07-04 and 2026-01-09 added, 2025-07-01 a non-closure); 2026-01-09 is [Likely], see `BLOCKED.md` |
 | XGSE 2027 to 2029 (open class) | 3 gaps: Republic Day, Eid dates, midweek-to-Friday moves | — (not run) | **open, deliberately not started.** Needs GSE's 2027 list and the Ministry's declarations, which do not exist yet; see `BLOCKED.md` "2027–2029 open class" |
 | XBUE | 12 | — (not run) | untouched |
 | XBUD | 4 | — (not run) | untouched |
@@ -246,3 +246,9 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
   (Republic Day, Eid dates, midweek-to-Friday moves) is tracked as its own row, not
   filled: it needs publications that do not exist yet. Remaining likely closures: 62
   (65 minus the 3 XGSE candidates resolved on the first pass), 59 after this one.
+- 2026-10-11 (correction): XGSE 2025-08-04 removed. The first pass kept it because it is on
+  GSE's 2025 list; that list predates the 2025 Act and is stale (it also misses the 4 July
+  Republic Day). The Interior Ministry stated on 31 July 2025 that 4 August 2025 is not a
+  public holiday. [Likely]: no GSE daily report for that day was reachable. 1 kind, 1
+  entry. This also changes the basis for the 2027 to 2029 Aug 4 removals: the Act, not
+  only the pattern of the 2026 list.

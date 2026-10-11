@@ -134,16 +134,17 @@ class TestXGSEFixedHolidaysMaySep:
         assert "2027-05-01" not in explicit_dates
         assert "2027-05-03" in explicit_dates
 
-    def test_founders_2025(self, explicit_dates):
-        """Aug 4, 2025 is Monday."""
-        assert "2025-08-04" in explicit_dates
-        assert "Founders" in explicit_dates["2025-08-04"]["name"]
+    def test_founders_2025_aug_4_is_a_trading_day(self, explicit_dates):
+        """Aug 4, 2025 is a Monday. The Interior Ministry stated on 31 Jul 2025 that
+        it is not a public holiday (the 2025 Act removed 4 August as Founders' Day)."""
+        assert "2025-08-04" not in explicit_dates
 
     def test_founders_aug_4_after_2025_not_a_closure(self, explicit_dates):
-        """GSE's 2025 list has Founder's Day on 4 August and Kwame Nkrumah Memorial
-        Day on 21 September. Its 2026 list has Founder's Day on 21 September and no
-        4 August. 2027 to 2029 are not published: removed on the pattern of the 2026
-        list (pattern-derived, not tier 1). See BLOCKED.md, XGSE."""
+        """The Public Holidays and Commemorative Days (Amendment) Act, 2025 removed
+        4 August as Founders' Day and made 21 September Founders' Day; GSE's 2026 list
+        has 21 September only. 2027 to 2029 lists are not published, so these
+        removals rest on the Act and the 2026 list, not on a list for those years.
+        See BLOCKED.md, XGSE."""
         for d in ("2027-08-04", "2028-08-04", "2029-08-04", "2029-08-06"):
             assert d not in explicit_dates, d
 
@@ -368,10 +369,13 @@ class TestXGSETwoSidedCheck:
     holiday on a weekend is observed on the following working day if the Government
     declares it, and the Interior Ministry's declarations."""
 
-    def test_2025_aug_4_is_a_closure(self, explicit_dates):
-        """GSE's 2025 list has Founder's Day on Monday 4 August."""
-        assert explicit_dates["2025-08-04"]["status"] == "closed"
-        assert "Founders" in explicit_dates["2025-08-04"]["name"]
+    def test_2025_aug_4_is_a_trading_day(self, explicit_dates):
+        """GSE's 2025 list, written before the Act, still prints Founder's Day on
+        4 August. The Interior Ministry's statement of 31 Jul 2025 (reported by
+        MyJoyOnline, Ghanaian Times, Modern Ghana) says Monday 4 August 2025 is not a
+        public holiday, and GSE closes on public holidays. [Likely]: no GSE report
+        for that day was reachable."""
+        assert "2025-08-04" not in explicit_dates
 
     def test_2025_sep_22_is_a_closure(self, explicit_dates):
         """21 Sep 2025 is a Sunday. The Interior Ministry declared Monday 22 Sep
