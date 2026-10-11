@@ -186,9 +186,9 @@ wrong without the reasoning behind it.
   in 2025 on 1 Jan, 18 Apr, 21 Apr, 1 May, 5 May (Irish May Bank Holiday), 25 Dec,
   26 Dec, and in 2026 on 1 Jan, 3 Apr, 6 Apr, 1 May, 4 May, 25 Dec, 28 Dec (substitute
   for St Stephen's Day). The file now matches. Removed: the rules and entries for
-  St. Patrick's Day and the June, August and October bank holidays (21 entries,
-  2025 to 2029, including 2029-03-19), and the 2025-12-29 "Christmas Day
-  (substitute)". Added: Labour Day, 1 May, as a `fixed_date` rule (no weekend
+  St. Patrick's Day and the June, August and October bank holidays (4 kinds, 20
+  entries, 2025 to 2029, including 2029-03-19), and the 2025-12-29 "Christmas Day
+  (substitute)" (1 entry): 21 entries in all. Added: Labour Day, 1 May, as a `fixed_date` rule (no weekend
   substitute; 2027-05-01 is a Saturday and Euronext does not move it), with explicit
   entries 2025-05-01, 2026-05-01 and 2029-05-01. 2028-05-01 was already present as the
   May Bank Holiday and is the same day.
