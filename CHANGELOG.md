@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.15.3] — 2026-10-11
+
+Patch release. Added and removed explicit entries on existing rule types; no schema
+change, no new rule type.
+
+### Fixed
+
+- XGSE (Ghana): closed the open items from the two-sided check. Added 2025-07-04
+  (Republic Day, moved by Executive Instrument from Tuesday 1 July) and 2026-01-09
+  (Constitution Day, moved from Wednesday 7 January); removed 2026-01-07. The
+  2026-01-09 entry is [Likely]: GSE's own 2026 list still prints 7 January and no GSE
+  notice or daily report was reachable, so the file follows the Interior Ministry's
+  declaration. Removed 2025-08-04, which the previous release kept from GSE's 2025
+  list: that list predates the 2025 Act, and the Ministry stated that 4 August 2025
+  was not a public holiday. The 2027 to 2029 Founders' Day removals from 2.15.2
+  now rest on that Act as well as on GSE's 2026 list. 2025-07-01 is a non-closure.
+  The 2027 to 2029 gaps (Republic Day, Eid dates, midweek-to-Friday moves) are
+  recorded as an open class in `BLOCKED.md`, not filled in. See `BLOCKED.md`.
+
+---
+
 ## [2.15.2] — 2026-10-11
 
 Patch release. New and removed explicit entries on existing rule types; no schema

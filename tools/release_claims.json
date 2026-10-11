@@ -444,6 +444,20 @@
       "file": "tests/test_calendar_required_fields.py"
     }
   ],
+  "2.15.3": [
+    {
+      "file": "exchanges/XGSE.json",
+      "contains": "2026-01-09"
+    },
+    {
+      "file": "tests/test_ghana_holidays.py",
+      "contains": "TestXGSEMovedHolidays"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "2027–2029 open class"
+    }
+  ],
   "2.15.2": [
     {
       "file": "exchanges/XGSE.json",
