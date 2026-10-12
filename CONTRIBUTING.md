@@ -329,7 +329,36 @@ which did not cover an exchange site that cannot be read.
 | 4. Prediction | A date derived from a rule or from a precedent, with no notice yet | Enter with `predicted: true` and the `(predicted)` name suffix; cite the precedent |
 
 A decree is tier 1 for the holiday and tier 3 for the exchange's closure
-unless the exchange announces it too. Where the two differ, the exchange wins.
+unless the exchange announces it too.
+
+**Precedence when the exchange and the decree differ.** One test tells the two
+cases apart: *does the exchange's source postdate the decree (or the law that
+changed the holiday)?*
+
+- **Yes, the exchange's source is a closure announcement** (a notice, a circular,
+  a trading calendar for the year, a market report) published on or after the
+  decree. The exchange wins: it knew about the decree and still said what it said.
+- **No, the exchange's source is a static annual list published before the decree
+  or the law,** and the decree or ministry statement names the changed date. The
+  decree wins. The list was right when written; it is not a closure announcement
+  for the day that changed.
+
+Establish the dates from the document: the circular's date, the page's published
+date. An undated list carries its own evidence of age. A line that reflects a
+later decree shows it was edited after that decree; a change the same law made
+that it still omits shows it predates the law. When those signals disagree the
+rule does not decide: follow the decree, mark the result `[Likely]`, and record
+the conflict.
+
+**Recording an override.** Every override goes in the exchange's section of
+`BLOCKED.md`: the exchange's source and its date (or why it is undated), the
+decree and its date, which one wins, the `[Likely]` or `[Confirmed]` tag, and what
+would settle it (an exchange notice for the day). An override is `[Likely]`, never
+`[Confirmed]`, until the exchange has itself published a notice after the decree
+that agrees with it. Worked example: XGSE 2025-08-04, removed in `d15d163`. GSE's
+2025 list, written before the Public Holidays and Commemorative Days (Amendment)
+Act, 2025, still prints Founder's Day on 4 August; the Interior Ministry stated on
+31 July 2025 that it is not a public holiday.
 
 ### Corroborated tier 3
 
