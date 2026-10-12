@@ -11,7 +11,7 @@ only in a session transcript. This is the durable copy.
 | Cluster | Candidates | False closures found | State |
 |---------|-----------|----------------------|-------|
 | XICE | 4 | — (not run; tier 3 sources only) | **resolved 2026-10-07** (tier 3, corroborated; see `BLOCKED.md`) |
-| XCOL | 19 | 21 entries (13 in 2026, 8 copied Poya dates in 2027) | **2026 resolved 2026-10-07** (13 candidates, tier 1 circular); 2025 (6 candidates), 2027 and Vesak week open, see `BLOCKED.md` |
+| XCOL | 19 | 24 entries (13 in 2026, 8 copied Poya dates in 2027 on 2026-10-07; 3 more 2027 entries on 2026-10-11) | **2026 resolved 2026-10-07** (13 candidates, tier 1 circular); 2027 residuals resolved 2026-10-11 (3 removed, 2 marked predicted, from the 2027 gazette); 2025 (6 candidates), the Vesak half holiday and the rest of 2027 still open, see `BLOCKED.md` |
 | XGSE | 11 | 1 kind, 5 entries (Founders' Day on 4 August: 2026-08-04 removed 2026-10-07; 2025-08-04 and 2027 to 2029 removed 2026-10-11; 2025-08-04 and the 2027 to 2029 ones rest on the 2025 Act and the Ministry, not on a GSE list for the year) | **11 of 11 resolved** (5 on 2026-10-07; 3 on 2026-10-11; 3 on 2026-10-11 after the second pass: 2025-07-04 and 2026-01-09 added, 2025-07-01 a non-closure); 2026-01-09 is [Likely], see `BLOCKED.md` |
 | XGSE 2027 to 2029 (open class) | 3 gaps: Republic Day, Eid dates, midweek-to-Friday moves | — (not run) | **open, deliberately not started.** Needs GSE's 2027 list and the Ministry's declarations, which do not exist yet; see `BLOCKED.md` "2027–2029 open class" |
 | XBUE | 12 | — (not run) | untouched |
@@ -252,3 +252,13 @@ Class totals: Confirmed 4, Likely closure 83, Likely non-closure 30, Unclear 5.
   public holiday. [Likely]: no GSE daily report for that day was reachable. 1 kind, 1
   entry. This also changes the basis for the 2027 to 2029 Aug 4 removals: the Act, not
   only the pattern of the 2026 list.
+- 2026-10-11: XCOL residuals. 5 kinds, 5 dated entries (limit 10 kinds, not reached). The
+  amended 2026 circular and the 2025 circular were not retrievable (three searches for the
+  2025 one, two for the amended one), so the Vesak half holiday and the six 2025
+  candidates stay open with the exact source named. The four unverified 2027 entries
+  were settled against the Government's 2027 gazette (No. 2493/05, 16 June 2026), tier 1
+  for the holiday: removed 2027-04-15, 2027-05-03 (observed) and 2027-12-27 (observed);
+  2027-04-14 and 2027-10-28 marked predicted. CSE's 2026 circular has no Monday closure
+  for any weekend holiday; its one compensation is a half holiday in lieu of Saturday
+  2 May, the open Vesak-week item. The rest of 2027 stays out until CSE's 2027 circular, normally
+  issued in October and not yet found.

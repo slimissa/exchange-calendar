@@ -1278,9 +1278,9 @@ Combined count for the round: 6 built, 4 blocked.
   reach it. A future maintainer seeing `ParseError` in a log should look
   here before touching `NigeriaExchangeFetcher`.
 
-## XCOL — Colombo Stock Exchange (built; 2026 corrected 2026-10-07)
+## XCOL — Colombo Stock Exchange (built; 2026 corrected 2026-10-07; 2027 corrected 2026-10-11)
 
-**Last verified:** 2026-10-07
+**Last verified:** 2026-10-11
 
 - **2026 is now the exchange's own list.** CSE Circular No. 07-10-2025,
   "Colombo Stock Exchange Holidays for 2026" (22 October 2025), fetched from
@@ -1306,6 +1306,16 @@ Combined count for the round: 6 built, 4 blocked.
   - The 2025 circular: two searches ("COLOMBO STOCK EXCHANGE HOLIDAYS FOR 2025
     circular ...") returned no CSE document, only Indian-exchange pages and an
     unrelated biography. No URL was found, so nothing was fetched.
+- **Source check 2026-10-11.** The CSE circulars list page was not retried (it needs a
+  browser). Searches only:
+  - Amended 2026 circular (Circular 03-04-2026, 20 April 2026): two searches
+    ("CIRCULAR NO: 03-04-2026 ... Amended", "Holidays for 2026 amended April 2026 half
+    holiday ... cancelled"). They returned only the October 2025 circular
+    (`cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf`),
+    a Global Exchanges summary of it and aggregator pages. **Not retrieved.**
+  - 2025 circular: one more search ("COLOMBO STOCK EXCHANGE HOLIDAYS FOR 2025" ...),
+    three in all. No CSE document. **Not retrieved.**
+  - 2027 circular: one search. None found.
 - **Open: Vesak week.** The circular lists an additional half holiday on
   Thu 2026-04-30 (in lieu of the day after Vesak Poya, which falls on a
   Saturday) and May Day on Fri 2026-05-01. CSE then issued Circular No.
@@ -1315,7 +1325,13 @@ Combined count for the round: 6 built, 4 blocked.
   list on cse.lk, or its direct `cdn.cse.lk` PDF link (the list page does not
   render without a browser). The half holiday has no entry because the
   circular gives no hours; an `early_close` entry needs an `early_close_time`.
-  CalendarLabs (aggregator, not used) shows "Evening Off".
+  CalendarLabs (aggregator, not used) shows "Evening Off". Context found 2026-10-11:
+  the Labour Department stated that Gazette 2438/22 had not been amended and that the
+  day after Vesak would not be a holiday; the Government then moved
+  that holiday from 2 May to 31 May by Extraordinary Gazette (Daily Mirror, 24 April
+  2026). Whether CSE's amended circular removed the 30 April half holiday is not
+  known: do not infer it. **Exact source needed:** the `cdn.cse.lk` PDF of Circular
+  03-04-2026. No `early_close` entry is added: the circular gives no hours.
 - **Open: 2025.** The 2025 entries have not been checked against CSE's 2025
   circular. The detector flagged Duruthu Poya (file 2025-01-14, public
   holiday list 2025-01-13), Independence Day 2025-02-04, Maha Sivarathri
@@ -1332,10 +1348,46 @@ Combined count for the round: 6 built, 4 blocked.
   the Poya, the full moon is 03-03). The registry has no Poya closures for 2027
   until CSE issues its 2027 circular (normally October).
   **Source needed:** CSE's "Colombo Stock Exchange Holidays for 2027" circular.
-  **Still open, unverified, not shown wrong:** 2027-04-15 (the 2026 circular
-  had Apr 13 and 14 only), 2027-05-03 "May Day (observed)", 2027-10-28
-  Deepavali and 2027-12-27 "Christmas Day (observed)". Whether CSE observes
-  weekend holidays on the Monday is not stated in the 2026 circular.
+  The four 2027 entries left in place that day are resolved on 2026-10-11, below.
+- **2027 residuals resolved 2026-10-11: 5 kinds, 5 dated entries (limit 10 kinds, not
+  reached).** The Government's Extraordinary Gazette No. 2493/05 of 16 June 2026
+  (Public and Bank Holidays for 2027) is tier 1 for the *holiday*; CSE has not issued
+  its own 2027 circular (the 2026 one is dated 22 October 2025). The gazette's text was
+  read in the Central Bank of Sri Lanka's list (`cbsl.gov.lk/en/about/about-the-bank/
+  bank-holidays-2027`, an official body, tier 3 for the exchange) and in the Daily Mirror
+  report of 6 July 2026; the PDF at `documents.gov.lk/view/egz/2026/6/2493-05_E.pdf` could
+  not be fetched (the tool only fetches URLs that a search returned).
+  - *Removed (choice b), 3 kinds, 3 entries.* **2027-04-15**: the gazette lists 13 and 14
+    April only. **2027-05-03 "May Day (observed)"** and **2027-12-27 "Christmas Day
+    (observed)"**: the gazette lists 1 May and 25 December (both Saturdays) as such, and
+    CSE's 2026 circular (tier 1) has no Monday closure for any of the seven weekend
+    holidays (Poya 3 Jan, 1 Feb, 26 Sep and 25 Oct; Maha Sivarathri 15 Feb;
+    Eid-ul-Fitr 21 Mar; Deepavali 8 Nov). Its one compensation for a weekend
+    holiday is the half holiday on Thursday 30 April in lieu of Saturday 2 May, the
+    day after Vesak: a half day, and the open Vesak-week item. A 2027 circular could
+    compensate May Day the same way; that cannot be known before it is issued. Reasons for
+    removing, not keeping: the gazette shows each is not a holiday, the file's "observed"
+    convention is contradicted by the circular, and all three came from the same
+    copied-from-2025 pattern that produced the 13 wrong 2026 entries. The earlier
+    reason for keeping them ("not shown wrong") no longer holds: they are now shown
+    wrong by tier 1 for the holiday.
+  - *Kept as predicted (choice c), 2 kinds, 2 entries.* **2027-10-28 Deepavali** and
+    **2027-04-14 Sinhala and Tamil New Year** are both on the gazette (Wednesday and
+    Thursday). CSE has not announced them, so each is marked `predicted` with the
+    `(predicted)` suffix. 2027-04-14 was not on the list of four; it has the same
+    status, so it is treated the same. Choice (a), keep as confirmed, would claim
+    more than the gazette shows: it is tier 1 for the holiday and tier 3 for CSE's
+    closure. `source_url` still reads `cse.lk/trading-calendar` because
+    `test_source_url_consistency` requires `cse.lk`; the gazette is cited here.
+  - *Not done: the rest of 2027.* The gazette lists weekday holidays that CSE closed on
+    in 2026 (every weekday gazetted holiday in 2026 is on the circular, plus 1 January)
+    and that are not in the file for 2027: Tamil Thai Pongal, Independence Day, Good
+    Friday, 13 April, the Poya days, Hadji, Vesak and the day after it, and
+    1 January. They are left out for the same reason the eight
+    Poya entries were: only CSE's 2027 circular can date them for the exchange, and a
+    prediction of that size belongs in its own session, as with XGSE 2027 to 2029.
+    **Source needed:** CSE's "Colombo Stock Exchange Holidays for 2027" circular
+    (normally issued in October; not found by a search on 2026-10-11).
 - A calendar-aggregator page (calendarlabs.com) lists the same 2026 dates as
   the circular; it was not used as a source.
 

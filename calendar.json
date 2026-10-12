@@ -7851,31 +7851,15 @@
           },
           {
             "date": "2027-04-14",
-            "name": "Sinhala and Tamil New Year",
-            "source_url": "https://www.cse.lk/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2027-04-15",
-            "name": "Sinhala and Tamil New Year Holiday",
-            "source_url": "https://www.cse.lk/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2027-05-03",
-            "name": "May Day (observed)",
+            "name": "Sinhala and Tamil New Year (predicted)",
+            "predicted": true,
             "source_url": "https://www.cse.lk/trading-calendar",
             "status": "closed"
           },
           {
             "date": "2027-10-28",
-            "name": "Deepavali",
-            "source_url": "https://www.cse.lk/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-27",
-            "name": "Christmas Day (observed)",
+            "name": "Deepavali (predicted)",
+            "predicted": true,
             "source_url": "https://www.cse.lk/trading-calendar",
             "status": "closed"
           }

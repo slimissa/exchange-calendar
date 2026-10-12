@@ -108,20 +108,26 @@ class TestXCOLFixedHolidays:
         assert "2025-05-01" in explicit_dates
         assert explicit_dates["2025-05-01"]["name"] == "May Day"
 
-    def test_may_day_2027_substitute(self, explicit_dates):
-        """May 1, 2027 is Saturday — substitute to Monday May 3."""
+    def test_may_day_2027_has_no_substitute(self, explicit_dates):
+        """May 1, 2027 is a Saturday. Gazette 2493/05 (16 Jun 2026) lists May Day on
+        1 May only, and CSE Circular 07-10-2025 has no Monday closure for any of
+        2026's seven weekend holidays, so Monday 3 May trades. (CSE's one
+        compensation, a half holiday on 30 Apr 2026 in lieu of Saturday 2 May, is a
+        different thing: see BLOCKED.md, Vesak week.)"""
         assert "2027-05-01" not in explicit_dates
-        assert "2027-05-03" in explicit_dates
+        assert "2027-05-03" not in explicit_dates
 
     def test_christmas_2025(self, explicit_dates):
         """Dec 25, 2025 is Thursday."""
         assert "2025-12-25" in explicit_dates
         assert "Christmas" in explicit_dates["2025-12-25"]["name"]
 
-    def test_christmas_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27."""
+    def test_christmas_2027_has_no_substitute(self, explicit_dates):
+        """Dec 25, 2027 is a Saturday. The gazette lists Christmas Day on 25 Dec
+        only, and CSE closes on no Monday for a weekend holiday in 2026, so Monday
+        27 Dec trades."""
         assert "2027-12-25" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
+        assert "2027-12-27" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -222,8 +228,12 @@ class TestXCOLDeepavali:
         assert "2026-11-09" not in explicit_dates
 
     def test_deepavali_2027(self, explicit_dates):
-        """Deepavali 2027 — Oct 28."""
-        assert "2027-10-28" in explicit_dates
+        """Deepavali 2027 — Thursday 28 Oct, in Gazette 2493/05 (16 Jun 2026, tier 1
+        for the holiday). CSE has not issued its 2027 circular, so the closure is
+        a prediction: marked predicted, not tier 1 for the exchange."""
+        e = explicit_dates["2027-10-28"]
+        assert e["name"] == "Deepavali (predicted)"
+        assert e["predicted"] is True
 
 
 # ──────────────────────────────────────────────────────────────
@@ -304,9 +314,15 @@ class TestXCOLSubstitution:
         assert "2027-05-01" not in explicit_dates  # Saturday
         assert "2027-12-25" not in explicit_dates  # Saturday
 
-    def test_observed_names(self, explicit_dates):
-        observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
-        assert observed_count >= 2, f"Expected some observed holidays, got {observed_count}"
+    def test_no_observed_or_substitute_entries(self, explicit_dates):
+        """CSE closes on no Monday for a weekend holiday. Circular 07-10-2025 (tier 1)
+        has no Monday closure for 2026's weekend holidays (Poya 3 Jan, 1 Feb, 26 Sep,
+        25 Oct; Maha Sivarathri 15 Feb; Eid-ul-Fitr 21 Mar; Deepavali 8 Nov) and the
+        2027 gazette lists Saturday 1 May and Saturday 25 Dec as such. An "(observed)"
+        or "(substitute)" full-day entry is a false closure."""
+        bad = {d: e["name"] for d, e in explicit_dates.items()
+               if "observed" in e["name"].lower() or "substitute" in e["name"].lower()}
+        assert bad == {}, f"CSE closes on no Monday for a weekend holiday: {bad}"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -382,7 +398,16 @@ class TestXCOL2027Poya:
         assert [d for d, h in explicit_dates.items()
                 if d.startswith("2027") and "Poya" in h["name"]] == []
 
-    def test_other_2027_entries_are_kept_but_open(self, explicit_dates):
-        """Not shown wrong; unverified. Listed as open in BLOCKED.md."""
-        for d in ("2027-04-14", "2027-04-15", "2027-05-03", "2027-10-28", "2027-12-27"):
-            assert d in explicit_dates, d
+    def test_remaining_2027_entries_are_predicted(self, explicit_dates):
+        """Gazette 2493/05 (16 Jun 2026, tier 1 for the holiday) lists 14 April and
+        28 October. CSE has not issued its 2027 circular, so both are predictions:
+        marked predicted."""
+        for d in ("2027-04-14", "2027-10-28"):
+            assert explicit_dates[d]["predicted"] is True, d
+            assert explicit_dates[d]["name"].endswith("(predicted)"), d
+
+    def test_2027_entries_the_gazette_contradicts_are_gone(self, explicit_dates):
+        """2027-04-15 (the gazette lists 13 and 14 April only), 2027-05-03 and
+        2027-12-27 (no weekend substitution) were copied from 2025's pattern."""
+        for d in ("2027-04-15", "2027-05-03", "2027-12-27"):
+            assert d not in explicit_dates, d
