@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.15.4] — 2026-10-11
+
+Patch release. Removed explicit entries and marked two as predicted on existing rule
+types; no schema change, no new rule type.
+
+### Fixed
+
+- XCOL (Sri Lanka): settled the four unverified 2027 entries against the Government's
+  Extraordinary Gazette No. 2493/05 of 16 June 2026, which is tier 1 for the holiday.
+  Removed 2027-04-15 (the gazette lists 13 and 14 April only), 2027-05-03 and
+  2027-12-27 (the "observed" weekend substitutes: the gazette lists the Saturdays, and
+  CSE's 2026 circular has no Monday closure for any weekend holiday). Marked
+  2027-04-14 and 2027-10-28 `predicted`: they are on the gazette, but CSE has not
+  issued its 2027 circular. The Vesak-week half holiday and the six 2025 candidates
+  stay open: CSE's amended 2026 circular and its 2025 circular could not be retrieved.
+  See `BLOCKED.md`.
+
+### Documentation
+
+- `CONTRIBUTING.md`: the source-precedence rule now distinguishes a closure
+  announcement from a static annual list that predates a decree or law, gives the test
+  (does the exchange's source postdate the decree?), and says how an override is
+  recorded. It replaces "where the two differ, the exchange wins".
+
+---
+
 ## [2.15.3] — 2026-10-11
 
 Patch release. Added and removed explicit entries on existing rule types; no schema

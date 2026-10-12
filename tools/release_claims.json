@@ -444,6 +444,20 @@
       "file": "tests/test_calendar_required_fields.py"
     }
   ],
+  "2.15.4": [
+    {
+      "file": "exchanges/XCOL.json",
+      "contains": "Deepavali (predicted)"
+    },
+    {
+      "file": "tests/test_colombo_holidays.py",
+      "contains": "test_2027_entries_the_gazette_contradicts_are_gone"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "contains": "Precedence when the exchange and the decree differ"
+    }
+  ],
   "2.15.3": [
     {
       "file": "exchanges/XGSE.json",
