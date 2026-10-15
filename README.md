@@ -3,17 +3,17 @@
 **The world's most comprehensive open-source registry of global exchange trading calendars — 74 exchanges across 6 continents.**
 
 One JSON file per exchange. Zero runtime dependencies. Four language wrappers.
-Seventy-four exchanges. 45 have registered fetchers — 40 verified against live sources from CI on every run, 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or permanently blocked (XKUW, XSAU). The remaining 29 are documented as blocked sources, with reasoning recorded in [BLOCKED.md](./BLOCKED.md).
+Seventy-four exchanges. 46 have registered fetchers — 41 verified against live sources from CI on every run, 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or permanently blocked (XKUW, XSAU). The remaining 28 are documented as blocked sources, with reasoning recorded in [BLOCKED.md](./BLOCKED.md).
 
 [![Validate](https://github.com/slimissa/exchange-calendar/actions/workflows/validate.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/validate.yml)
 [![Update](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Schema Version](https://img.shields.io/badge/schema-2.1.1-green.svg)](./schema.json)
 [![Registry Version](https://img.shields.io/badge/registry-2.15.4-orange.svg)](./CHANGELOG.md)
-[![Tests](https://img.shields.io/badge/tests-4070+-green.svg)](./tests/)
+[![Tests](https://img.shields.io/badge/tests-4500+-green.svg)](./tests/)
 [![Exchanges](https://img.shields.io/badge/exchanges-74-blue.svg)](./exchanges/)
-[![Fetchers](https://img.shields.io/badge/fetchers-40_CI--verified-green.svg)](./.github/workflows/live-fetcher-check.yml)
-[![Blocked](https://img.shields.io/badge/blocked-35-lightgrey.svg)](./BLOCKED.md)
+[![Fetchers](https://img.shields.io/badge/fetchers-41_CI--verified-green.svg)](./.github/workflows/live-fetcher-check.yml)
+[![Blocked](https://img.shields.io/badge/blocked-30-lightgrey.svg)](./BLOCKED.md)
 [![Coverage](https://img.shields.io/badge/coverage-6_continents-purple.svg)](./exchanges/)
 [![Calendar Systems](https://img.shields.io/badge/calendar_systems-6-red.svg)](./docs/)
 
@@ -83,9 +83,9 @@ warns when either falls past due.
 |--------|-----------|-------|
 | North America | NYSE, NASDAQ, Toronto, Mexico, Bermuda, Cayman | 6 |
 | Latin America | B3 Brazil, Santiago, Bogota, Lima, Buenos Aires | 5 |
-| Europe | London, Euronext (Paris, Amsterdam, Brussels, Lisbon, Dublin), Deutsche Börse, SIX Swiss, Madrid, Vienna, Athens, Istanbul, Warsaw, Prague, Budapest, Luxembourg, Malta, Bulgaria, Zagreb | 20 |
+| Europe | London, Euronext (Paris, Amsterdam, Brussels, Lisbon, Dublin), Deutsche Börse, SIX Swiss, Madrid, Vienna, Athens, Istanbul, Warsaw, Prague, Budapest, Luxembourg, Malta, Bulgaria, Zagreb | 19 |
 | Nordic/Baltic | Stockholm, Oslo, Copenhagen, Helsinki, Iceland, Vilnius, Riga, Tallinn | 8 |
-| Middle East | Saudi Tadawul, Dubai, Abu Dhabi, Qatar, Bahrain, Kuwait, Muscat, Cairo | 8 |
+| Middle East | Saudi Tadawul, Dubai, Abu Dhabi, Qatar, Bahrain, Kuwait, Muscat, Cairo | 9 |
 | Africa | Johannesburg, Nigeria, Nairobi, Tunis, Ghana, BRVM (West Africa), Casablanca | 7 |
 | Asia-Pacific | Tokyo, Hong Kong, Shanghai, Shenzhen, Korea, Australia, Singapore, Taiwan, Indonesia, Malaysia, Philippines, Thailand, Ho Chi Minh, Karachi, Dhaka, Colombo, New Zealand, India (BSE, NSE) | 19 |
 | Eurasia | Moscow Exchange | 1 |
@@ -229,7 +229,7 @@ python3 tools/update_from_exchange.py --all --force
 
 ### Currently Supported Fetchers
 
-**45 of 74 registry exchanges have automated fetchers as of v2.1.11** — 40 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or permanently blocked (XKUW, XSAU). The remaining 29 are documented as blocked sources in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange.
+**46 of 74 registry exchanges have automated fetchers as of v2.15.4** — 41 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or permanently blocked (XKUW, XSAU). The remaining 28 are documented as blocked sources in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange.
 
 #### Tier 1 (11 of 11)
 
@@ -262,7 +262,7 @@ python3 tools/update_from_exchange.py --all --force
 | Indonesia Stock Exchange | XJKT | ⛔ Blocked | Real PDF exists but bot-blocked — see `BLOCKED.md` |
 | Taiwan Stock Exchange | XTAI | ⛔ Blocked | JS-rendered page; full public API spec reviewed, no holiday endpoint exists — see `BLOCKED.md` |
 
-#### Tier 3 (3 of 10 — Gulf/EMEA; PDF-only was the dominant blocker here, not JS-rendering)
+#### Tier 3 (4 of 10 — Gulf/EMEA; PDF-only was the dominant blocker here, not JS-rendering)
 
 | Exchange | MIC | Status | Source |
 |----------|-----|--------|--------|
@@ -277,7 +277,7 @@ python3 tools/update_from_exchange.py --all --force
 | Borsa Istanbul | XIST | ⛔ Blocked (deferred) | Real, fetchable PDF, but this sandbox structurally cannot download PDF bytes for this domain — confirmed 3 rounds running, deferred permanently — see `BLOCKED.md` |
 | Muscat Securities Market | XMUS | ⛔ Blocked | Found the real page; content area is empty (client-side) — see `BLOCKED.md` |
 
-#### Tier 4 (9 of 10 — European smaller markets; best hit rate after Tier 1)
+#### Tier 4 (8 of 9 — European smaller markets; best hit rate after Tier 1)
 
 | Exchange | MIC | Status | Source |
 |----------|-----|--------|--------|
@@ -322,7 +322,7 @@ python3 tools/update_from_exchange.py --all --force
 
 | Exchange | MIC | Status | Source |
 |----------|-----|--------|--------|
-| Nigerian Exchange Group | XNSA | ✅ Implemented | ngxgroup.com — see note below |
+| Nigerian Exchange Group | XNSA | ⚠️ CI-unreachable | ngxgroup.com — see note below |
 | BRVM (8 UEMOA countries) | XBRV | ✅ Implemented | brvm.org — see note below (shared-infrastructure win) |
 | Colombo Stock Exchange | XCOL | ✅ Implemented | cdn.cse.lk official circular — see note below |
 | Bourse de Tunis | XTUN | ⛔ Blocked | JS-rendered — see `BLOCKED.md` |
@@ -332,7 +332,7 @@ python3 tools/update_from_exchange.py --all --force
 | Nairobi Securities Exchange | XNAI | ⛔ Blocked | Resolved in Tier 8: 6 pages, identical JS-SPA signature — see `BLOCKED.md` |
 | Ghana Stock Exchange | XGSE | ✅ Implemented | Resolved in Tier 8: gse.com.gh/events/ — see note below |
 
-#### Tier 8 (6 of 8 — small/island markets; FINAL TIER)
+#### Tier 8 (5 of 8 — small/island markets; FINAL TIER)
 
 | Exchange | MIC | Status | Source |
 |----------|-----|--------|--------|
@@ -345,7 +345,7 @@ python3 tools/update_from_exchange.py --all --force
 | Beirut Stock Exchange | XBEY | ⛔ Blocked | 2 independent timeouts — confirms the brief's own instability concern — see `BLOCKED.md` |
 | New Zealand Exchange | XNZE | ⛔ Blocked | JS-loaded content + 2 dead-end PDF/page links — contradicts "likely simple" — see `BLOCKED.md` |
 
-| *(29 exchanges)* | — | ⛔ Blocked | All confirmed blocked across Tiers 2-8 — see `BLOCKED.md` for full detail per exchange |
+| *(28 exchanges)* | — | ⛔ Blocked | All confirmed blocked across Tiers 2-8 — see `BLOCKED.md` for full detail per exchange |
 
 **NYSE note:** nyse.com blocks programmatic requests at the WAF level
 ("bot detection" — confirmed via `web_fetch`, not fixable with a different
@@ -569,12 +569,12 @@ The GitHub Actions workflow runs weekly:
 
 | Suite | Tests | Status |
 |-------|-------|--------|
-| Python — core tools | 3,774 | ✅ Passing |
-| Python — wrapper | 64 | ✅ Passing |
-| JavaScript | 82 | ✅ Passing |
-| Go | 72 | ✅ Passing |
+| Python — core tools | 4,164 | ✅ Passing |
+| Python — wrapper | 95 | ✅ Passing |
+| JavaScript | 94 | ✅ Passing |
+| Go | 81 | ✅ Passing |
 | Rust | 78 | ✅ Passing |
-| **Total** | **4,070+** | ✅ All Green |
+| **Total** | **4,512** | ✅ All Green |
 
 ```bash
 # Run all tests
@@ -636,8 +636,8 @@ Every explicit holiday entry must include a `source_url` pointing to the officia
 ```
 exchange-calendar/
 ├── .github/
-│   ├── ISSUE_TEMPLATE/          # 7 issue templates
-│   ├── workflows/               # 3 CI/CD workflows
+│   ├── ISSUE_TEMPLATE/          # 5 issue templates
+│   ├── workflows/               # 4 CI/CD workflows
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── dependabot.yml
 ├── exchanges/                   # 74 exchange JSON files
@@ -652,7 +652,7 @@ exchange-calendar/
 │   ├── javascript/              # npm package
 │   ├── go/                      # Go module
 │   └── rust/                    # Rust crate
-├── tests/                       # 4,070+ tests
+├── tests/                       # 4,500+ tests
 ├── docs/
 ├── SECURITY.md                  # Security policy
 ├── CONTRIBUTING.md              # Contribution guidelines
