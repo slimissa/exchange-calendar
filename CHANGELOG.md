@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Changed
+
+- `schema.json` `version` bumped from `2.0.0` to `2.1.1`. The field was set once,
+  in `e95238e`, and three later schema changes left it alone: Schema 2.1 (`519cd48`,
+  sessions accept six types), Schema 2.1.1 (`368d62f`, per-year `confidence`) and the
+  `fixed_with_thursday_observance` rule type (`cba973d`, shipped in 2.15.0).
+  `README.md`, `docs/CONSUMERS.md` and `docs/MARKET_CONTEXT_SPEC.md` already said
+  2.1.1. The rule-type addition is arguably a minor change, so the planned next
+  schema bump is `2.2.0`, pending a review of `docs/MARKET_CONTEXT_SPEC.md`, which
+  requires one at 2.2 or higher. Schema axis only: the registry `VERSION` is unchanged.
+
+---
+
 ## [2.15.4] — 2026-10-11
 
 Patch release. Removed explicit entries and marked two as predicted on existing rule
