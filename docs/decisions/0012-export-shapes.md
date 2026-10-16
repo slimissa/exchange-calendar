@@ -2,6 +2,7 @@
 
 **Status:** Accepted
 **Date:** 2026-10-05
+**Amended:** 2026-10-16 - SQL dialect matrix and idempotency clarified. Idempotency is `DROP TABLE IF EXISTS`; the commented PostgreSQL `ON CONFLICT` block is for additive loading only.
 **Depends on:** ADR 0011 (snapshots are validators, not vendored data)
 
 ## Context
@@ -58,26 +59,213 @@ Tables: `exchanges`, `sessions`, `holidays`, `ad_hoc_closures`,
 
 ### 2. SQL
 
-Normalised tables, not nested JSON columns.
+Normalised tables, not nested JSON columns. Amended after checking the
+repo: the text this replaces is quoted under "Changed from the
+original" at the end of this section. Types and CHECKs are in 2a,
+column order in 5.
 
-- `exchanges` primary key `code`; `mic` is `UNIQUE NOT NULL`.
-- `sessions` primary key `(exchange_code, ordinal)`. `ordinal` is the
-  zero-based position in the stored array.
-- `holidays` primary key `(exchange_code, date)`. The key doubles as a
-  guard: if generated and explicit ever overlap, the export fails
-  instead of emitting duplicates.
-- `ad_hoc_closures` primary key `(exchange_code, date)`.
-- `confidence` primary key `(exchange_code, year)`.
-- Every child table has a foreign key `exchange_code` to
-  `exchanges(code)` with `ON DELETE CASCADE`.
+**Primary keys.** A key is tightened to its natural key only where
+`schema.json` guarantees uniqueness. Data that happens to be unique
+today is not a guarantee. Where the schema gives none, the key carries
+`seq`: a `SMALLINT NOT NULL` holding the 1-based position among rows
+that share the natural key, in source order (almost always 1).
+
+- `exchanges`: `code`; `mic` is `UNIQUE NOT NULL`. The generator
+  asserts both are unique across files, because the schema describes
+  one file at a time.
+- `sessions`: `(exchange_code, type, seq)`. `sessions` is an unkeyed
+  array with no `uniqueItems`, and ten exchanges carry two `auction`
+  sessions, so `(exchange_code, type)` is not a key.
+- `holidays`: `(exchange_code, date, origin, seq)`. `holidays.explicit`
+  is an unkeyed array with no `uniqueItems`, and `holidays.generated`
+  is not in `schema.json` at all; `build.py` writes it.
+- `ad_hoc_closures`: `(exchange_code, date, seq)`. Unkeyed array, no
+  `uniqueItems`. It has no rows today, so no data could justify a
+  tighter key.
+- `confidence`: `(exchange_code, year)`, no `seq`. The schema keys it
+  by year (`propertyNames` pattern `^\d{4}$`), so the pair is unique
+  by construction.
+
+The generator checks every primary key before it writes any file and
+exits non-zero on a violation. The database is never the first to
+notice one, and nothing is deduplicated silently.
+
+The original `holidays` key doubled as a guard against generated and
+explicit rows on the same date. With `origin` in the key the guard is
+gone: an overlap would load as two rows. There are none today (0 of
+67 generated rows), and whether an explicit row supersedes a generated
+one is not decided here.
+
+**Foreign keys.** Every child table carries a constraint such as
+`CONSTRAINT fk_sessions_exchange FOREIGN KEY (exchange_code) REFERENCES
+exchanges (code) ON DELETE NO ACTION ON UPDATE NO ACTION` (named `fk_`,
+the table name, `_exchange`), identical in all four dialects. `NO
+ACTION` because deleting an exchange must not silently remove its
+history, and a code change is a migration, not an
+update. Not `DEFERRABLE`: the load order is acyclic and MySQL has no
+deferrable constraints. The child `exchange_code` has exactly the type
+and length of `exchanges.code`, or MySQL rejects the key. Every
+primary key that includes `exchange_code` leads with it, which
+satisfies InnoDB's foreign-key index requirement.
+
+SQLite checks foreign keys only when `PRAGMA foreign_keys` is on. The
+setting is per connection, off by default, and a no-op inside a
+transaction (verified on SQLite 3.45.1). The SQLite file sets it
+before any `BEGIN`. Tests assert that the file leaves it on and set it
+on any connection they open themselves, or an orphan-insert test
+passes and hides the bug.
 
 There are no foreign keys to ISO reference tables. The exports ship
 no ISO tables, and the vendored snapshots are validators (ADR 0011):
 a MIC foreign key would drag 2,883 rows in to constrain 74.
-Instead: `mic` has `CHECK (mic ~ '^[A-Z0-9]{4}$')` and
-`country_code` has `CHECK (country_code ~ '^[A-Z]{2}$')`. Membership
-in ISO 10383 and ISO 3166 stays enforced by `check_mic_codes.py` and
-`check_country_codes.py` at build time.
+Membership in ISO 10383 and ISO 3166 stays enforced by
+`check_mic_codes.py` and `check_country_codes.py` at build time.
+
+**Idempotency.** Each file is `DROP TABLE IF EXISTS` for the children
+and then the parent, `CREATE TABLE` for the parent and then the
+children, then one `INSERT` per row, parent first, with no conflict
+clause. A conflict clause would leave stale rows from an older version
+in place, and `CREATE TABLE IF NOT EXISTS` would keep an old table
+shape that the new `INSERT` no longer fits. Every header states the
+limit: "Drops and recreates these five tables. Not safe if other
+tables reference them." The PostgreSQL file carries a commented
+`ON CONFLICT` block, one example per table with that table's own
+primary key as the target. It is for additive loading only, and stale
+rows persist.
+
+**Transactions.** The SQLite, PostgreSQL and MySQL files wrap the
+`INSERT` block in `BEGIN` or `START TRANSACTION` and `COMMIT`; MySQL
+starts the wrapper after the `CREATE` statements because its DDL
+commits implicitly. The ANSI file has no wrapper, because no keyword
+is valid across the engines it targets. The live total is about 4,560
+rows (74 exchanges, 166 sessions, 3,961 holidays, 361 confidence, 0
+closures), against 302 in the sibling iso4217 exports. Autocommit per
+`INSERT` dominates the load time at that size, and a failure part way
+through the file would leave partial tables. This is a difference of
+size from the sibling, not a departure from its pattern.
+
+**Prerequisite.** No `.gitattributes` exists at `a1b166d`, so `*.sql`
+files have no line-ending rule. Adding one is a prerequisite for the
+SQL exporter.
+
+**Changed from the original** (text at `a1b166d`, replaced above):
+
+- Regex CHECKs. Original: "Instead: `mic` has `CHECK (mic ~
+  '^[A-Z0-9]{4}$')` and `country_code` has `CHECK (country_code ~
+  '^[A-Z]{2}$')`." Dropped in every dialect, see 2a. The membership
+  sentence that followed it is unchanged.
+- Table list. Unchanged: section 1 of the original lists five tables
+  (`exchanges`, `sessions`, `holidays`, `ad_hoc_closures`,
+  `confidence`) and the amendment keeps the same five.
+- Keys. Original: "`sessions` primary key `(exchange_code,
+  ordinal)`. `ordinal` is the zero-based position in the stored
+  array." Now `(exchange_code, type, seq)`; `ordinal` stays a column
+  (see 5) but is no longer part of the key. Original: "`holidays`
+  primary key `(exchange_code, date)`. The key doubles as a guard: if
+  generated and explicit ever overlap, the export fails instead of
+  emitting duplicates." Now `(exchange_code, date, origin, seq)`; the
+  guard is gone, see the overlap note above. Original:
+  "`ad_hoc_closures` primary key `(exchange_code, date)`." Now
+  `(exchange_code, date, seq)`. `exchanges` and `confidence` keys are
+  unchanged. Why: a key is tightened only where the schema guarantees
+  uniqueness, and for these three tables it does not.
+- Foreign keys. Original: "Every child table has a foreign key
+  `exchange_code` to `exchanges(code)` with `ON DELETE CASCADE`." Now
+  `ON DELETE NO ACTION ON UPDATE NO ACTION`, so removing an exchange
+  cannot silently delete its history.
+- Column lists (5). Original `sessions`: "`exchange_code`, `ordinal`,
+  `type`, `open`, `close`, `at`". Original `holidays`:
+  "`exchange_code`, `date`, `name`, `status`, `origin`,
+  `early_close_time`, `delayed_open_time`, `predicted`,
+  `weekend_exception`, `source_url`". Original `ad_hoc_closures`:
+  "`exchange_code`, `date`, `name`, `status`, `early_close_time`,
+  `source_url`". Each gains `seq` and nothing else changes.
+
+### 2a. SQL types and CHECKs
+
+This is the only place the per-dialect types and CHECKs are written.
+Identifiers are unquoted. Check constraints are named `chk_`, the table
+name, `_`, the column name and an optional kind suffix (for example
+`chk_holidays_status`); foreign keys are named as in section 2. Unquoted `date`, `year`,
+`level`, `open`, `close`, `at` and `type` were executed on SQLite
+3.45.1 only; the other engines are unverified.
+
+| Field | ANSI / PostgreSQL / MySQL | SQLite STRICT | CHECK | Exact? |
+|---|---|---|---|---|
+| code | `VARCHAR(n)` | `TEXT` | C1 | length yes; pattern dropped |
+| mic | `CHAR(4)` | `TEXT` | C1 (=4) | length yes; pattern dropped |
+| country_code | `CHAR(2)` | `TEXT` | C1 (=2) | length yes; pattern dropped |
+| date | `DATE` | `TEXT` | C4 (SQLite only) | yes |
+| time | `VARCHAR(5)` | `TEXT` | C5, all four | approximate |
+| year | `SMALLINT` | `INTEGER` | C3 if the schema bounds it | yes |
+| origin | `VARCHAR(n)` | `TEXT` | C2 | yes |
+| status, level | `VARCHAR(n)` | `TEXT` | C2 where the schema has an enum | yes |
+| source | `VARCHAR(n)` | `TEXT` | none | n/a |
+
+`n` is the `maxLength` in `schema.json`. The schema declares no
+`maxLength` on any field, so the exporter sets an explicit bound per
+column and the generator fails above it. It never truncates.
+
+The CHECK forms, with `c` standing for the column:
+
+- C1: `LENGTH(c) BETWEEN lo AND hi`. MySQL's `LENGTH` counts bytes, so
+  the generator asserts `isascii()` on these columns, which makes bytes
+  equal characters.
+- C2: `c IN (...)`, with the exact literals from the schema. Closed
+  enums at `a1b166d`: `holidays.status` is `closed`, `early_close`,
+  `delayed_open`, `special_session`; `ad_hoc_closures.status` is
+  `closed`, `early_close`; `confidence.level` is `high`, `medium`,
+  `low`. `origin` is not in the schema; its two values are `explicit`
+  and `generated` (section 8).
+- C3: `c BETWEEN lo AND hi`. `schema.json` gives no bounds for the
+  year, so the check is not emitted until it does.
+- C4: `c GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND date(c)
+  = c`. SQLite's `date()` normalises `2026-02-30` to `2026-03-02`
+  (verified on 3.45.1), so the equality rejects it. The exporter tests
+  that insert.
+- C5: `LENGTH(c)=5 AND SUBSTR(c,3,1)=':' AND SUBSTR(c,1,2) BETWEEN '00'
+  AND '23' AND SUBSTR(c,4,2) BETWEEN '00' AND '59'`. It does not
+  reject a non-digit second character such as `1a:30`; the schema's
+  time pattern does. All 731 time values in `calendar.json` at
+  `a1b166d` pass it, and none is `24:00`.
+
+Pattern CHECKs on `code`, `mic` and `country_code` are dropped in every
+dialect. They cannot be written exactly in ANSI or SQLite, and
+PostgreSQL's `~` and MySQL's `REGEXP` would make the files differ by
+capability instead of syntax; MySQL 8 (ICU) and MariaDB (PCRE) regex
+semantics differ as well. The cost is that a lowercase code passes the
+database, but `validate.py` and the generator's assertions reject it
+first.
+
+Dates and times. ANSI, PostgreSQL and MySQL use `DATE`. SQLite STRICT
+accepts only `INT`, `INTEGER`, `REAL`, `TEXT`, `BLOB` and `ANY`
+(`DATE` fails with "unknown datatype", verified), so dates are `TEXT`
+holding ISO-8601, C4 replaces the type check, and tests compare
+strings. Date literals are plain `'YYYY-MM-DD'` in all four files; a
+`DATE '...'` literal is a syntax error in SQLite. Times are text in
+every dialect (section 6).
+
+Dialect differences:
+
+- MySQL: `ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin`.
+  The default collation is case-insensitive and would loosen key and
+  foreign-key matching compared with the other three files. The header
+  says MySQL 8.0.16 or later, because earlier 8.0 parses `CHECK` and
+  ignores it.
+- SQLite: `STRICT`, `TEXT` for dates and fixed-width fields, `PRAGMA
+  foreign_keys=ON` before any `BEGIN`, and C4.
+- PostgreSQL: the commented `ON CONFLICT` block (section 2).
+- ANSI: the baseline, with no wrapper and no dialect extras.
+
+Not covered by this matrix, and not decided here: `name`, `timezone`,
+`weekend_day_1` and `weekend_day_2` (schema bounds 0 to 6), `ordinal`,
+`source_url`, `note`, `sessions.type` (a closed enum of `regular`,
+`pre_market`, `post_market`, `lunch_break`, `auction`, `halt`), the
+booleans `predicted` and `weekend_exception` (SQLite STRICT has no
+`BOOLEAN` type, verified), and per-column `NOT NULL`. `source` is
+listed above with no CHECK, but `schema.json` closes
+`confidence.source` to `fetcher`, `manual`, `predicted`. These are
+settled before the SQL exporter is written.
 
 ### 3. CSV
 
@@ -103,14 +291,19 @@ first, then descriptive columns, then data.
 - `exchanges`: `code`, `name`, `mic`, `country_code`, `timezone`,
   `weekend_day_1`, `weekend_day_2`, `regular_open`, `regular_close`,
   `generation_start`, `generation_end`
-- `sessions`: `exchange_code`, `ordinal`, `type`, `open`, `close`, `at`
+- `sessions`: `exchange_code`, `ordinal`, `type`, `seq`, `open`,
+  `close`, `at`
 - `holidays`: `exchange_code`, `date`, `name`, `status`, `origin`,
-  `early_close_time`, `delayed_open_time`, `predicted`,
+  `seq`, `early_close_time`, `delayed_open_time`, `predicted`,
   `weekend_exception`, `source_url`
-- `ad_hoc_closures`: `exchange_code`, `date`, `name`, `status`,
-  `early_close_time`, `source_url`
+- `ad_hoc_closures`: `exchange_code`, `date`, `seq`, `name`,
+  `status`, `early_close_time`, `source_url`
 - `confidence`: `exchange_code`, `year`, `level`, `source`,
   `last_verified`, `note`
+
+`seq` (section 2) sits right after the last column of its table's
+natural key. `ordinal` is unchanged. Types and CHECKs for every
+column are in 2a, not here.
 
 `weekend_days` and `generation_range` are exactly two items by schema
 (`minItems` = `maxItems` = 2), so they become two columns each,
