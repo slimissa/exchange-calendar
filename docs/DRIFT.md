@@ -24,10 +24,7 @@ Go and Rust counts are static (`func Test`, `#[test]`); the toolchains were not 
 
 ## Left alone on purpose
 
-- `What's New in v2.1.11` is a dated copy of that release's changelog entry, correct for its version. Replacing it is a structural decision.
-- The schema badge (2.1.1) disagrees with `schema.json` `version` (2.0.0). Resolving it means touching the schema.
-- The XIST and XHKG rows use ⛔ / ⚠️ while `BLOCKED.md` marks both `resolved`.
-- The Beirut name is missing from the Middle East list.
+- The XHKG row stays `⚠️ CI-unreachable` while `BLOCKED.md` marks it `resolved`. The exchange is built; `live-fetcher-check.yml` still excludes it as CI-unreachable. Intentional.
 
 ## Follow-ups
 
@@ -38,7 +35,7 @@ Closed after v2.15.4, documentation only (no version bump):
 - Beirut added to the Middle East list, so the names match the count of 9.
 - JavaScript test path corrected, and the `make test` line removed (the Makefile has no `test` target).
 - `docs/CONSUMERS.md` registry version fixed in `34a1b28`.
-- Still open: the XHKG row stays `⚠️ CI-unreachable` on purpose, since `live-fetcher-check.yml` still excludes it, and the schema badge mismatch.
+- Schema badge (2.1.1) no longer disagrees with `schema.json` `version`: the schema was bumped from 2.0.0 to 2.1.1 (see `CHANGELOG.md`).
 
 ## Why CI did not catch it
 
