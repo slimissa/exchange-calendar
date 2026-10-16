@@ -29,6 +29,17 @@ Go and Rust counts are static (`func Test`, `#[test]`); the toolchains were not 
 - The XIST and XHKG rows use ⛔ / ⚠️ while `BLOCKED.md` marks both `resolved`.
 - The Beirut name is missing from the Middle East list.
 
+## Follow-ups
+
+Closed after v2.15.4, documentation only (no version bump):
+
+- XIST row corrected: `BLOCKED.md` said `resolved`, the README said blocked. It now reads Implemented.
+- `What's New in v2.1.11` retired, superseded by `CHANGELOG.md`.
+- Beirut added to the Middle East list, so the names match the count of 9.
+- JavaScript test path corrected, and the `make test` line removed (the Makefile has no `test` target).
+- `docs/CONSUMERS.md` registry version fixed in `34a1b28`.
+- Still open: the XHKG row stays `⚠️ CI-unreachable` on purpose, since `live-fetcher-check.yml` still excludes it, and the schema badge mismatch.
+
 ## Why CI did not catch it
 
 `version-consistency` compares four sources: `VERSION`, the README registry

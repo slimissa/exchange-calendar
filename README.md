@@ -56,22 +56,7 @@ warns when either falls past due.
 
 ---
 
-## What's New in v2.1.11
-
-### Honest coverage accounting
-- ✅ **40 fetchers CI-verified** on every run against live sources
-- ⚠️ **3 CI-unreachable** (XHKG, XSHG, XNSA) — work from residential IP, blocked from GitHub runners
-- ⛔ **2 permanently blocked** (XKUW, XSAU) — 403 from all IPs
-- ⛔ **29 blocked sources** — reasoning per exchange in [BLOCKED.md](./BLOCKED.md)
-
-### Fixed
-- ✅ **SZSE parser rewritten** for prose format (was table-based, returned zero holidays on the live page)
-- ✅ **Date regex ordinal-suffix bug** fixed across 11 fetchers (`16 th` was not matching `(\d{1,2})(?:st|nd|rd|th)?`)
-- ✅ **Live-check workflow split** into stable (blocking) / CI-unreachable (informational) / blocked (informational) jobs
-
-### Added
-- ✅ `--only` / `--exclude` flags on `live_fetcher_check.py`
-- ✅ `BLOCKED.md` now distinguishes permanently blocked from CI-unreachable
+Release notes for every version are in [CHANGELOG.md](CHANGELOG.md).
 
 ---
 
@@ -85,7 +70,7 @@ warns when either falls past due.
 | Latin America | B3 Brazil, Santiago, Bogota, Lima, Buenos Aires | 5 |
 | Europe | London, Euronext (Paris, Amsterdam, Brussels, Lisbon, Dublin), Deutsche Börse, SIX Swiss, Madrid, Vienna, Athens, Istanbul, Warsaw, Prague, Budapest, Luxembourg, Malta, Bulgaria, Zagreb | 19 |
 | Nordic/Baltic | Stockholm, Oslo, Copenhagen, Helsinki, Iceland, Vilnius, Riga, Tallinn | 8 |
-| Middle East | Saudi Tadawul, Dubai, Abu Dhabi, Qatar, Bahrain, Kuwait, Muscat, Cairo | 9 |
+| Middle East | Saudi Tadawul, Dubai, Abu Dhabi, Qatar, Bahrain, Kuwait, Muscat, Cairo, Beirut | 9 |
 | Africa | Johannesburg, Nigeria, Nairobi, Tunis, Ghana, BRVM (West Africa), Casablanca | 7 |
 | Asia-Pacific | Tokyo, Hong Kong, Shanghai, Shenzhen, Korea, Australia, Singapore, Taiwan, Indonesia, Malaysia, Philippines, Thailand, Ho Chi Minh, Karachi, Dhaka, Colombo, New Zealand, India (BSE, NSE) | 19 |
 | Eurasia | Moscow Exchange | 1 |
@@ -274,7 +259,7 @@ python3 tools/update_from_exchange.py --all --force
 | Qatar Exchange | DSMD | ⛔ Blocked | JS/AJAX Liferay portal widget — see `BLOCKED.md` |
 | Egyptian Exchange | XCAI | ⛔ Blocked | Static HTML but stuck serving 2019 data — see `BLOCKED.md` |
 | Johannesburg Stock Exchange | XJSE | ⛔ Blocked | PDF exists but is itself bot-walled — see `BLOCKED.md` |
-| Borsa Istanbul | XIST | ⛔ Blocked (deferred) | Real, fetchable PDF, but this sandbox structurally cannot download PDF bytes for this domain — confirmed 3 rounds running, deferred permanently — see `BLOCKED.md` |
+| Borsa Istanbul | XIST | ✅ Implemented | borsaistanbul.com equity-market holiday PDF (one PDF per market segment; Turkish closures only) — see `BLOCKED.md` |
 | Muscat Securities Market | XMUS | ⛔ Blocked | Found the real page; content area is empty (client-side) — see `BLOCKED.md` |
 
 #### Tier 4 (8 of 9 — European smaller markets; best hit rate after Tier 1)
@@ -577,12 +562,9 @@ The GitHub Actions workflow runs weekly:
 | **Total** | **4,512** | ✅ All Green |
 
 ```bash
-# Run all tests
-make test
-
-# Run specific test suites
+# Run test suites
 python3 -m pytest tests/ -v                    # Python tests
-node --test tests/test_wrappers.js             # JavaScript tests
+node --test wrappers/javascript/tests/test_wrappers.js  # JavaScript tests
 cd wrappers/go && go test ./tests/ -v         # Go tests
 cd wrappers/rust && cargo test                 # Rust tests
 
