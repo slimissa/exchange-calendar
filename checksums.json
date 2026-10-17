@@ -84,6 +84,7 @@
     "tools/check_release_claims.py": "ca68c1ca84f8663c00300278396ed640faef8c57ae7f2f1676263412c797f434",
     "tools/check_removed_entries.py": "ea0907ed3eb13cd0d01365d7632d89ee311bea2e62d1847042ed5630d68cc6eb",
     "tools/check_snapshot_freshness.py": "8e36ceca472ac24bc99d4ffe152eae4e01804342f80c07a46d228193542fca04",
+    "tools/check_sql_dialects.py": "3316e7b1b6d341c90e43c4ba66e59ec3888d213600961efcba8a976f58189ff1",
     "tools/check_stale_verifications.py": "6ebfa1d432cd7bb7d6cc333d3043a5c2606a7203883ac6ec8cd7284faadc5ca8",
     "tools/check_stale_year_urls.py": "b9c1d20215ba7399926a6b90e416925f3bf3339904664ceecc644812e92df1cf",
     "tools/check_wrapper_snapshot.py": "1fa8df6f8035a5969885a82403166ea1fe7833e7ef05771fc8f0b41f6496f99c",

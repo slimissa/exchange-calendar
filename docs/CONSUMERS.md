@@ -104,7 +104,9 @@ database: `exchange_calendar.sql` (ANSI SQL-92), `exchange_calendar.postgresql.s
 if other tables reference them. Types, keys and CHECKs are specified in ADR 0012. SQLite
 enforces foreign keys only when `PRAGMA foreign_keys=ON`, which the SQLite file sets.
 Regenerate with `python3 tools/export_sql.py`; `--check` exits non-zero when a committed
-file is stale.
+file is stale. CI loads the PostgreSQL and MySQL files into real servers (PostgreSQL 15 and
+MySQL 8.0) and checks the stored row counts, the stored values and that the keys and CHECKs
+are enforced; the SQLite and ANSI files are loaded into SQLite by the test suite.
 
 **Publication to package registries is deferred.** The wrappers are
 not on PyPI, npm, crates.io, or the Go module proxy. The trigger for

@@ -83,6 +83,9 @@ jobs:
       - name: Verify checksums.json has not drifted
         run: python3 tools/verify_checksums.py
 
+      - name: Check SQL exports
+        run: python3 tools/export_sql.py --check
+
       - name: Run Python tests
         run: |
           python3 -m pytest tests/ -v --tb=short
@@ -296,3 +299,47 @@ jobs:
           )
           print(f"OK: VERSION={version} matches calendar.json")
           EOF
+
+  check-sql-execution:
+    name: SQL Execution (PostgreSQL & MySQL)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      - name: Execute the SQL exports on PostgreSQL and MySQL
+        run: python3 tools/check_sql_dialects.py --wait-seconds 120

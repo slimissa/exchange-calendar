@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- CI drift gate: a `Check SQL exports` step in the `python-core` job runs
+  `python3 tools/export_sql.py --check` after `calendar.json` is built, so a stale SQL file
+  fails the build.
+- `tools/check_sql_dialects.py` executes `exchange_calendar.postgresql.sql` on a real
+  PostgreSQL server and `exchange_calendar.mysql.sql` on a real MySQL server, then checks that
+  the five row counts equal `calendar.json`, that every stored row equals the exporter's row
+  (quote escaping, non-ASCII text), and that a foreign key, a primary key, NOT NULL, a CHECK,
+  a time CHECK and an impossible date are rejected while valid rows are accepted. It retries
+  connecting for `--wait-seconds` and exits non-zero if a server never answers (no skips).
+- `check-sql-execution` job in `validate.yml`: `postgres:15` and `mysql:8.0` service
+  containers, then `tools/check_sql_dialects.py`.
+- `requirements-dev.txt` with the database drivers (`psycopg2-binary`, `PyMySQL[rsa]`), kept out
+  of `requirements.txt` so the runtime install stays small.
+- `tests/test_check_sql_dialects.py`: unit tests that need no server or driver.
+
+### Notes
+
+- This supersedes the 2.16.0 note that the PostgreSQL and MySQL files are not executed in CI.
+- Tooling and CI only: no data, schema or consumer-facing change, so no version bump
+  (`RELEASE_PATTERN.md` rule 8). These changes ship in the next release.
+
 ## [2.16.0] — 2026-10-17
 
 Minor release. Adds the SQL exporter and the four SQL files it writes. No data change:
