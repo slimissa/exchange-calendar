@@ -92,8 +92,19 @@ directly.
 | JavaScript wrapper | `wrappers/javascript/` | `npm install ./wrappers/javascript` |
 | Rust wrapper | `wrappers/rust/` | `cargo add --path wrappers/rust` |
 | Go wrapper | `wrappers/go/` | `go get github.com/slimissa/exchange-calendar/wrappers/go` |
-| SQL / CSV / Parquet | not yet shipped | planned for v3.0.0 |
+| SQL | repo root, four `exchange_calendar*.sql` files | load the file for your database |
+| CSV / Parquet | not yet shipped | planned for v3.0.0 |
 | CLI | not yet shipped | planned for v3.0.0 |
+
+**SQL exports.** Four files at the repository root load the registry into a relational
+database: `exchange_calendar.sql` (ANSI SQL-92), `exchange_calendar.postgresql.sql`,
+`exchange_calendar.mysql.sql` (MySQL 8.0.16 or later) and `exchange_calendar.sqlite.sql`
+(SQLite 3.37 or later). Each drops and recreates five tables (`exchanges`, `sessions`,
+`holidays`, `ad_hoc_closures`, `confidence`) and then inserts every row, so it is not safe
+if other tables reference them. Types, keys and CHECKs are specified in ADR 0012. SQLite
+enforces foreign keys only when `PRAGMA foreign_keys=ON`, which the SQLite file sets.
+Regenerate with `python3 tools/export_sql.py`; `--check` exits non-zero when a committed
+file is stale.
 
 **Publication to package registries is deferred.** The wrappers are
 not on PyPI, npm, crates.io, or the Go module proxy. The trigger for
