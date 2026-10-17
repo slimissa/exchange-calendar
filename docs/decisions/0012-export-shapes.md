@@ -3,6 +3,7 @@
 **Status:** Accepted
 **Date:** 2026-10-05
 **Amended:** 2026-10-16 - SQL dialect matrix and idempotency clarified. Idempotency is `DROP TABLE IF EXISTS`; the commented PostgreSQL `ON CONFLICT` block is for additive loading only.
+**Amended:** 2026-10-17 - Phase B: `sessions` drops `ordinal`, the remaining column types and the `NOT NULL` rule are added to 2a, and the holiday overlap guard is restored. The `name` type is still open.
 **Depends on:** ADR 0011 (snapshots are validators, not vendored data)
 
 ## Context
@@ -92,9 +93,11 @@ notice one, and nothing is deduplicated silently.
 
 The original `holidays` key doubled as a guard against generated and
 explicit rows on the same date. With `origin` in the key the guard is
-gone: an overlap would load as two rows. There are none today (0 of
-67 generated rows), and whether an explicit row supersedes a generated
-one is not decided here.
+gone: an overlap would load as two rows. The exporter therefore checks
+for `(exchange_code, date)` overlaps between `holidays.explicit` and
+`holidays.generated` and exits non-zero if any exist, which restores the
+guard the original key provided. Today's overlap count is 0 (0 of 67
+generated rows).
 
 **Foreign keys.** Every child table carries a constraint such as
 `CONSTRAINT fk_sessions_exchange FOREIGN KEY (exchange_code) REFERENCES
@@ -159,12 +162,13 @@ SQL exporter.
   `confidence`) and the amendment keeps the same five.
 - Keys. Original: "`sessions` primary key `(exchange_code,
   ordinal)`. `ordinal` is the zero-based position in the stored
-  array." Now `(exchange_code, type, seq)`; `ordinal` stays a column
-  (see 5) but is no longer part of the key. Original: "`holidays`
+  array." Now `(exchange_code, type, seq)`; `ordinal` is dropped as a
+  column (Phase B, below). Original: "`holidays`
   primary key `(exchange_code, date)`. The key doubles as a guard: if
   generated and explicit ever overlap, the export fails instead of
   emitting duplicates." Now `(exchange_code, date, origin, seq)`; the
-  guard is gone, see the overlap note above. Original:
+  key no longer carries the guard and an exporter check restores it
+  (see the overlap note above). Original:
   "`ad_hoc_closures` primary key `(exchange_code, date)`." Now
   `(exchange_code, date, seq)`. `exchanges` and `confidence` keys are
   unchanged. Why: a key is tightened only where the schema guarantees
@@ -179,7 +183,25 @@ SQL exporter.
   `early_close_time`, `delayed_open_time`, `predicted`,
   `weekend_exception`, `source_url`". Original `ad_hoc_closures`:
   "`exchange_code`, `date`, `name`, `status`, `early_close_time`,
-  `source_url`". Each gains `seq` and nothing else changes.
+  `source_url`". `holidays` and `ad_hoc_closures` gain `seq` and nothing
+  else changes; `sessions` gains `seq` and, in Phase B, loses `ordinal`.
+
+Further changes (Phase B, replacing text at `cca603c`):
+
+- `ordinal` dropped. It is the zero-based array position in the JSON, a
+  serialization artifact, and `seq` disambiguates the same rows, so
+  keeping both is redundant. This supersedes the Phase A text that kept
+  `ordinal` as a plain column.
+- Sort order. Original: "Rows are sorted by `code`, then `ordinal`,
+  `date` or `year`, so that exports are byte-reproducible." Now `type`
+  replaces `ordinal`, and ties break by `seq`. `type` is the next key
+  column of the `sessions` primary key; the effect is that sessions sort
+  by type name instead of array position.
+- Overlap guard. Supersedes the Phase A sentence that left a generated
+  and explicit overlap undecided: an overlap is now an error.
+- Matrix. The `source` row said no CHECK; `confidence.source` is a closed
+  enum and now carries C2. The "not decided here" list is replaced by
+  the second table and the rules after it, except for `name`.
 
 ### 2a. SQL types and CHECKs
 
@@ -200,7 +222,7 @@ name, `_`, the column name and an optional kind suffix (for example
 | year | `SMALLINT` | `INTEGER` | C3 if the schema bounds it | yes |
 | origin | `VARCHAR(n)` | `TEXT` | C2 | yes |
 | status, level | `VARCHAR(n)` | `TEXT` | C2 where the schema has an enum | yes |
-| source | `VARCHAR(n)` | `TEXT` | none | n/a |
+| source (confidence) | `VARCHAR(32)` | `TEXT` | C2: `IN ('fetcher','manual','predicted')` | yes |
 
 `n` is the `maxLength` in `schema.json`. The schema declares no
 `maxLength` on any field, so the exporter sets an explicit bound per
@@ -217,8 +239,9 @@ The CHECK forms, with `c` standing for the column:
   `closed`, `early_close`; `confidence.level` is `high`, `medium`,
   `low`. `origin` is not in the schema; its two values are `explicit`
   and `generated` (section 8).
-- C3: `c BETWEEN lo AND hi`. `schema.json` gives no bounds for the
-  year, so the check is not emitted until it does.
+- C3: `c BETWEEN lo AND hi`, or `c >= lo` where only a lower bound
+  applies. `schema.json` gives no bounds for the year, so the check is
+  not emitted until it does.
 - C4: `c GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND date(c)
   = c`. SQLite's `date()` normalises `2026-02-30` to `2026-03-02`
   (verified on 3.45.1), so the equality rejects it. The exporter tests
@@ -257,15 +280,41 @@ Dialect differences:
 - PostgreSQL: the commented `ON CONFLICT` block (section 2).
 - ANSI: the baseline, with no wrapper and no dialect extras.
 
-Not covered by this matrix, and not decided here: `name`, `timezone`,
-`weekend_day_1` and `weekend_day_2` (schema bounds 0 to 6), `ordinal`,
-`source_url`, `note`, `sessions.type` (a closed enum of `regular`,
-`pre_market`, `post_market`, `lunch_break`, `auction`, `halt`), the
-booleans `predicted` and `weekend_exception` (SQLite STRICT has no
-`BOOLEAN` type, verified), and per-column `NOT NULL`. `source` is
-listed above with no CHECK, but `schema.json` closes
-`confidence.source` to `fetcher`, `manual`, `predicted`. These are
-settled before the SQL exporter is written.
+Columns beyond the first matrix (Phase B):
+
+| Column | ANSI / PostgreSQL / MySQL | SQLite STRICT | CHECK |
+|---|---|---|---|
+| timezone | `VARCHAR(64)` | `TEXT` | none |
+| weekend_day_1, weekend_day_2 | `SMALLINT` | `INTEGER` | C3: `BETWEEN 0 AND 6` |
+| source_url | `VARCHAR(2048)` | `TEXT` | none |
+| note | `VARCHAR(4096)` | `TEXT` | none |
+| sessions.type | `VARCHAR(16)` | `TEXT` | C2: `IN ('regular','pre_market','post_market','lunch_break','auction','halt')` |
+| predicted, weekend_exception | `SMALLINT` | `INTEGER` | C2: `IN (0, 1)` |
+| seq | `SMALLINT NOT NULL` | `INTEGER NOT NULL` | C3: `>= 1` |
+| origin | `VARCHAR(16)` | `TEXT` | C2: `IN ('explicit','generated')` |
+
+The `origin` row replaces the `VARCHAR(n)` entry in the first matrix.
+
+Booleans (`predicted`, `weekend_exception`) are `SMALLINT` with
+`CHECK IN (0, 1)` in all four dialects, not a native `BOOLEAN`. SQLite
+STRICT has no `BOOLEAN` (verified), and MySQL's `BOOLEAN` is
+`TINYINT(1)`. Consistency across the four files wins over native types.
+Section 7 still applies: a stored `true`, `false` or absent value
+becomes 1, 0 or NULL.
+
+Nullability. A column is `NOT NULL` if and only if its field is in the
+`required` array of `schema.json` for that record type. `seq` and
+`origin` are `NOT NULL` by definition, because the exporter adds them.
+Primary key columns are `NOT NULL` through the key itself.
+
+Still open: `name` (`exchanges`, `holidays`, `ad_hoc_closures`). The
+proposed type is `VARCHAR(255)` with C1 `LENGTH(c) BETWEEN 3 AND 255`,
+but C1's ASCII assertion cannot hold for it: at `cca603c` three exchange
+names (for example `Deutsche Börse`) and 25 holiday names (for example
+`Battle of Boyacá`) contain non-ASCII characters, and MySQL's `LENGTH`
+counts bytes. The `name` type and CHECK are not part of this matrix
+until that is resolved. The bound `n` for `status` and `level` is also
+not yet set.
 
 ### 3. CSV
 
@@ -291,8 +340,7 @@ first, then descriptive columns, then data.
 - `exchanges`: `code`, `name`, `mic`, `country_code`, `timezone`,
   `weekend_day_1`, `weekend_day_2`, `regular_open`, `regular_close`,
   `generation_start`, `generation_end`
-- `sessions`: `exchange_code`, `ordinal`, `type`, `seq`, `open`,
-  `close`, `at`
+- `sessions`: `exchange_code`, `type`, `seq`, `open`, `close`, `at`
 - `holidays`: `exchange_code`, `date`, `name`, `status`, `origin`,
   `seq`, `early_close_time`, `delayed_open_time`, `predicted`,
   `weekend_exception`, `source_url`
@@ -302,8 +350,7 @@ first, then descriptive columns, then data.
   `last_verified`, `note`
 
 `seq` (section 2) sits right after the last column of its table's
-natural key. `ordinal` is unchanged. Types and CHECKs for every
-column are in 2a, not here.
+natural key. Types and CHECKs for every column are in 2a, not here.
 
 `weekend_days` and `generation_range` are exactly two items by schema
 (`minItems` = `maxItems` = 2), so they become two columns each,
@@ -312,8 +359,8 @@ a redundant projection of the `pre_market` and `post_market`
 sessions. `regular_open` and `regular_close` stay on `exchanges`
 because every wrapper exposes them.
 
-Rows are sorted by `code`, then `ordinal`, `date` or `year`, so that
-exports are byte-reproducible.
+Rows are sorted by `code`, then `type`, `date` or `year`, so that
+exports are byte-reproducible. Ties break by `seq`.
 
 ### 6. Dates and times
 
