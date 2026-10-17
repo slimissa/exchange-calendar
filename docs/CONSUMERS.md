@@ -212,4 +212,4 @@ separate PR against wrappers/.
     docs/decisions/ — ADRs, including ADR 0009 on the
     Playwright fetch-mode decision.
 
-Last updated: 2026-10-04 · Registry version: 2.15.4 · Schema version: 2.1.1
+Last updated: 2026-10-17 · Registry version: 2.16.0 · Schema version: 2.1.1

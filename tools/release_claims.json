@@ -444,6 +444,31 @@
       "file": "tests/test_calendar_required_fields.py"
     }
   ],
+  "2.16.0": [
+    {
+      "file": "tools/export_sql.py",
+      "contains": "def generate_all"
+    },
+    {
+      "file": "tests/test_export_sql.py",
+      "contains": "class TestCrossDialect"
+    },
+    {
+      "file": "exchange_calendar.sqlite.sql",
+      "contains": "PRAGMA foreign_keys=ON;"
+    },
+    {
+      "file": "exchange_calendar.sql"
+    },
+    {
+      "file": ".gitattributes",
+      "contains": "*.sql text eol=lf"
+    },
+    {
+      "file": "schema.json",
+      "contains": "\"version\": \"2.1.1\""
+    }
+  ],
   "2.15.4": [
     {
       "file": "exchanges/XCOL.json",

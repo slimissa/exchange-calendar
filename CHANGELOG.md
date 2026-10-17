@@ -7,7 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
+## [2.16.0] — 2026-10-17
+
+Minor release. Adds the SQL exporter and the four SQL files it writes. No data change:
+`calendar.json` differs from 2.15.4 only in `meta.version`.
+
+### Added
+
+- `tools/export_sql.py` and four committed files at the repository root:
+  `exchange_calendar.sql` (ANSI SQL-92), `exchange_calendar.postgresql.sql`,
+  `exchange_calendar.mysql.sql` (MySQL 8.0.16 or later) and
+  `exchange_calendar.sqlite.sql` (SQLite 3.37 or later, STRICT). Five tables
+  (`exchanges`, `sessions`, `holidays`, `ad_hoc_closures`, `confidence`), the primary keys,
+  foreign keys, CHECKs and column order of ADR 0012, one `INSERT` per row, and a header that
+  reads `meta.version`. The SQLite, PostgreSQL and MySQL files wrap the inserts in a
+  transaction. `--check` regenerates into a temporary directory and compares bytes; exit
+  codes are 0 match, 1 mismatch, 2 fatal, 3 committed file missing.
+- Generator guards that exit 2 before any file is written: key uniqueness, a generated or
+  explicit holiday overlap, non-ASCII `code`, `mic` or `country_code`, over-long values, and
+  values the database CHECKs would reject.
+- `tests/test_export_sql.py`: the SQLite and ANSI files are loaded and exercised, and
+  `sqlglot` parses the PostgreSQL, MySQL and ANSI files and compares their literals with the
+  SQLite rows for all five tables. `sqlglot>=30.0` is now in `requirements.txt`, and the
+  tests fail rather than skip when it is missing.
+- `.gitattributes` with `*.sql text eol=lf`, so a checkout cannot rewrite line endings and
+  break `--check`.
 
 ### Changed
 
@@ -18,7 +42,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `README.md`, `docs/CONSUMERS.md` and `docs/MARKET_CONTEXT_SPEC.md` already said
   2.1.1. The rule-type addition is arguably a minor change, so the planned next
   schema bump is `2.2.0`, pending a review of `docs/MARKET_CONTEXT_SPEC.md`, which
-  requires one at 2.2 or higher. Schema axis only: the registry `VERSION` is unchanged.
+  requires one at 2.2 or higher. The schema version is independent of the registry
+  `VERSION`.
+- `docs/decisions/0012-export-shapes.md` amended for the SQL shapes (keys, `seq`, foreign
+  keys, idempotency, transactions, per-dialect types and CHECKs). `sessions` no longer has
+  an `ordinal` column and sorts by type, then `seq`.
+
+### Notes
+
+- Verification is uneven by dialect. The SQLite and ANSI files are executed in the tests,
+  both on SQLite. The PostgreSQL and MySQL files are parsed and their literals are
+  cross-checked against the SQLite rows, but they are not executed in CI.
+- The SQL files are not in `checksums.json`; `tools/export_sql.py` is, and
+  `python3 tools/export_sql.py --check` is the guard against a stale SQL file. Nothing runs
+  it automatically yet.
 
 ---
 
