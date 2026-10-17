@@ -3,7 +3,8 @@
 **Status:** Accepted
 **Date:** 2026-10-05
 **Amended:** 2026-10-16 - SQL dialect matrix and idempotency clarified. Idempotency is `DROP TABLE IF EXISTS`; the commented PostgreSQL `ON CONFLICT` block is for additive loading only.
-**Amended:** 2026-10-17 - Phase B: `sessions` drops `ordinal`, the remaining column types and the `NOT NULL` rule are added to 2a, and the holiday overlap guard is restored. The `name` type is still open.
+**Amended:** 2026-10-17 - Phase B: `sessions` drops `ordinal`, the remaining column types and the `NOT NULL` rule are added to 2a, and the holiday overlap guard is restored.
+**Amended:** 2026-10-17 - No CHECK on `name`; the ASCII assertion is limited to `code`, `mic` and `country_code`; `status` and `level` sizes are set.
 **Depends on:** ADR 0011 (snapshots are validators, not vendored data)
 
 ## Context
@@ -201,7 +202,20 @@ Further changes (Phase B, replacing text at `cca603c`):
   and explicit overlap undecided: an overlap is now an error.
 - Matrix. The `source` row said no CHECK; `confidence.source` is a closed
   enum and now carries C2. The "not decided here" list is replaced by
-  the second table and the rules after it, except for `name`.
+  the second table and the rules after it.
+
+Further changes (Phase B, second pass, replacing text at `3735b3c`):
+
+- `name`. The previous text left it open, with a proposed
+  `VARCHAR(255)` and C1 `LENGTH(c) BETWEEN 3 AND 255`. Now `VARCHAR(255)`,
+  `TEXT` in SQLite, with no CHECK, for all three tables that have it.
+  Why: the schema's `minLength` counts characters, no dialect has a
+  portable character-count function, and non-ASCII names exist.
+- ASCII assertion. The previous C1 text said it covered "these
+  columns". It now names `code`, `mic` and `country_code`, the only
+  C1 columns.
+- `status` and `level`. `VARCHAR(n)` became `VARCHAR(16)` and
+  `VARCHAR(8)`; both are closed enums well inside those bounds.
 
 ### 2a. SQL types and CHECKs
 
@@ -221,7 +235,8 @@ name, `_`, the column name and an optional kind suffix (for example
 | time | `VARCHAR(5)` | `TEXT` | C5, all four | approximate |
 | year | `SMALLINT` | `INTEGER` | C3 if the schema bounds it | yes |
 | origin | `VARCHAR(n)` | `TEXT` | C2 | yes |
-| status, level | `VARCHAR(n)` | `TEXT` | C2 where the schema has an enum | yes |
+| status | `VARCHAR(16)` | `TEXT` | C2 | yes |
+| level | `VARCHAR(8)` | `TEXT` | C2 | yes |
 | source (confidence) | `VARCHAR(32)` | `TEXT` | C2: `IN ('fetcher','manual','predicted')` | yes |
 
 `n` is the `maxLength` in `schema.json`. The schema declares no
@@ -231,7 +246,9 @@ column and the generator fails above it. It never truncates.
 The CHECK forms, with `c` standing for the column:
 
 - C1: `LENGTH(c) BETWEEN lo AND hi`. MySQL's `LENGTH` counts bytes, so
-  the generator asserts `isascii()` on these columns, which makes bytes
+  the generator asserts `isascii()` on `code`, `mic` and `country_code`,
+  the only columns that carry C1 and whose schema patterns
+  (`^[A-Z0-9]{4}$`, `^[A-Z]{2}$`) allow only ASCII, which makes bytes
   equal characters.
 - C2: `c IN (...)`, with the exact literals from the schema. Closed
   enums at `a1b166d`: `holidays.status` is `closed`, `early_close`,
@@ -284,6 +301,7 @@ Columns beyond the first matrix (Phase B):
 
 | Column | ANSI / PostgreSQL / MySQL | SQLite STRICT | CHECK |
 |---|---|---|---|
+| name | `VARCHAR(255)` | `TEXT` | none |
 | timezone | `VARCHAR(64)` | `TEXT` | none |
 | weekend_day_1, weekend_day_2 | `SMALLINT` | `INTEGER` | C3: `BETWEEN 0 AND 6` |
 | source_url | `VARCHAR(2048)` | `TEXT` | none |
@@ -307,14 +325,13 @@ Nullability. A column is `NOT NULL` if and only if its field is in the
 `origin` are `NOT NULL` by definition, because the exporter adds them.
 Primary key columns are `NOT NULL` through the key itself.
 
-Still open: `name` (`exchanges`, `holidays`, `ad_hoc_closures`). The
-proposed type is `VARCHAR(255)` with C1 `LENGTH(c) BETWEEN 3 AND 255`,
-but C1's ASCII assertion cannot hold for it: at `cca603c` three exchange
-names (for example `Deutsche Börse`) and 25 holiday names (for example
-`Battle of Boyacá`) contain non-ASCII characters, and MySQL's `LENGTH`
-counts bytes. The `name` type and CHECK are not part of this matrix
-until that is resolved. The bound `n` for `status` and `level` is also
-not yet set.
+No CHECK on `name` (`exchanges`, `holidays`, `ad_hoc_closures`): the
+schema's `minLength` counts characters, and no dialect has a portable
+character-count function. SQLite has no `CHAR_LENGTH` and MySQL's
+`LENGTH` counts bytes, so a length check on text that can be non-ASCII
+(three exchange names and 25 holiday names are at `cca603c`) would not
+mean the same thing in every file. `validate.py` enforces `minLength`
+at build time.
 
 ### 3. CSV
 
