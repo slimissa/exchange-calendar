@@ -47,6 +47,8 @@ cleanup_on_failure() {
     # HEAD was the release commit itself, leaving the tree half-bumped
     # and the next release.sh refusing on `VERSION is already X`.
     local files="VERSION README.md CHANGELOG.md calendar.json wrappers/python/exchange_calendar/calendar.json"
+    files="$files exchange_calendar.sql exchange_calendar.postgresql.sql"
+    files="$files exchange_calendar.mysql.sql exchange_calendar.sqlite.sql"
 
     if git log -1 --format=%s 2>/dev/null | grep -q '^Release v'; then
         if git branch -r --contains HEAD 2>/dev/null | grep -q 'origin/main'; then
@@ -91,6 +93,8 @@ POLLED_WORKFLOWS=(
 RELEASE_FILES=(
     VERSION README.md CHANGELOG.md
     calendar.json wrappers/python/exchange_calendar/calendar.json
+    exchange_calendar.sql exchange_calendar.postgresql.sql
+    exchange_calendar.mysql.sql exchange_calendar.sqlite.sql
 )
 
 # ── helpers ────────────────────────────────────────────────────────
@@ -335,6 +339,10 @@ ok "CHANGELOG top entry = $VERSION"
 say "Rebuilding distribution artifacts"
 
 run python3 tools/build.py
+# The SQL exports carry calendar.json's meta.version in their header, so they
+# are stale as soon as build.py has bumped it. Rewrite them (not --check) so
+# the pytest gate and the CI drift check see matching files.
+run python3 tools/export_sql.py
 run make package
 
 if [[ "$DRY_RUN" != "1" ]]; then
