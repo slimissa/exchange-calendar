@@ -5,6 +5,9 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+# Fail before spawning any wrapper if the fixture has duplicate labels.
+python3 tools/check_fixture_labels.py || exit 1
+
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
