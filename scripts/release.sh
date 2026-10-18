@@ -415,8 +415,9 @@ if [[ "$DRY_RUN" == "1" ]]; then
     echo "    git commit -m 'Release v$VERSION'"
     echo "    git push origin main"
     echo "    (poll CI on the pushed SHA)"
-    echo "    git tag -a v$VERSION -m 'Release v$VERSION'"
-    echo "    git push --tags"
+    echo "    # tag message derived from CHANGELOG into /tmp/release-tag-message.txt"
+    echo "    git tag -a v$VERSION -F /tmp/release-tag-message.txt"
+    echo "    git push origin v$VERSION"
     exit 0
 fi
 
@@ -493,9 +494,31 @@ done
 # ── tag ────────────────────────────────────────────────────────────
 say "Tagging (CI green on $SHA)"
 
-git tag -a "v$VERSION" -m "Release v$VERSION"
-git push --tags
-ok "tagged v$VERSION and pushed"
+# Generate the tag message from the CHANGELOG
+TAG_MESSAGE_FILE="/tmp/release-tag-message.txt"
+python3 - "$VERSION" > "$TAG_MESSAGE_FILE" <<'PYEOF'
+import re, sys
+from pathlib import Path
+version = sys.argv[1]
+text = Path("CHANGELOG.md").read_text(encoding="utf-8")
+pattern = rf"^## \[{re.escape(version)}\][^\n]*\n(.*?)(?=^## \[|\Z)"
+m = re.search(pattern, text, re.M | re.S)
+if not m: sys.exit(f"CHANGELOG section for {version} not found")
+print(f"Exchange Calendar Registry v{version}")
+print()
+print(m.group(1).strip())
+PYEOF
+
+# Tag using the file
+git tag -a "v$VERSION" -F "$TAG_MESSAGE_FILE"
+
+# Verify git recorded exactly what is in the file
+if ! diff -q <(git for-each-ref "refs/tags/v$VERSION" --format='%(contents)') "$TAG_MESSAGE_FILE" > /dev/null; then
+    die "tag message in git does not match the file; delete the tag and retry"
+fi
+
+# Push the specific tag
+git push origin "v$VERSION"
 
 # ── summary ────────────────────────────────────────────────────────
 say "Done."
