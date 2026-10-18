@@ -136,11 +136,17 @@ class TestUris:
         pg = csd.parse_uri(csd.DEFAULT_POSTGRES_URI, ("postgresql",), 5432)
         my = csd.parse_uri(csd.DEFAULT_MYSQL_URI, ("mysql",), 3306)
         assert (pg.host, pg.port, pg.user, pg.password, pg.database) == ("localhost", 5432, "postgres", "postgres", "postgres")
-        assert (my.host, my.port, my.user, my.password, my.database) == ("127.0.0.1", 3306, "root", "root", "mysql")
+        assert (my.host, my.port, my.user, my.password, my.database) == (
+            "127.0.0.1", 3306, "root", "root", "exchange_calendar")
 
     def test_documented_defaults_are_exact(self):
         assert csd.DEFAULT_POSTGRES_URI == "postgresql://postgres:postgres@localhost:5432/postgres"
-        assert csd.DEFAULT_MYSQL_URI == "mysql://root:root@127.0.0.1:3306/mysql"
+        assert csd.DEFAULT_MYSQL_URI == "mysql://root:root@127.0.0.1:3306/exchange_calendar"
+
+    def test_mysql_default_never_targets_a_system_schema(self):
+        db = csd.parse_uri(csd.DEFAULT_MYSQL_URI, ("mysql",), 3306).database
+        assert db == "exchange_calendar"
+        assert db not in {"mysql", "sys", "information_schema", "performance_schema"}
 
     def test_percent_encoded_password_and_default_port(self):
         p = csd.parse_uri("mysql://me:p%40ss%3Aword@db.example/x", ("mysql",), 3306)
@@ -313,6 +319,90 @@ class TestRule7:
 
 
 # ---------------------------------------------------------------------------
+# MySQL: the database is created, then selected
+# ---------------------------------------------------------------------------
+
+def _fake_pymysql(monkeypatch, fail_on_create=False):
+    """A stand-in pymysql that records what the engine does, in order."""
+    import types
+
+    calls = []
+
+    class MySQLError(Exception):
+        pass
+
+    class Cursor:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+        def execute(self, sql):
+            calls.append(("execute", sql))
+            if fail_on_create:
+                raise MySQLError("access denied for CREATE")
+
+    class Conn:
+        def cursor(self):
+            return Cursor()
+
+        def select_db(self, name):
+            calls.append(("select_db", name))
+
+        def close(self):
+            calls.append(("close",))
+
+    def connect(**kwargs):
+        calls.append(("connect", kwargs))
+        return Conn()
+
+    module = types.ModuleType("pymysql")
+    module.MySQLError = MySQLError
+    module.connect = connect
+    monkeypatch.setitem(sys.modules, "pymysql", module)
+    return calls
+
+
+class TestMysqlDatabase:
+    def test_connects_to_the_server_without_a_database_then_creates_then_selects(self, monkeypatch):
+        calls = _fake_pymysql(monkeypatch)
+        csd.MysqlEngine(csd.DEFAULT_MYSQL_URI, 0)
+        assert [c[0] for c in calls] == ["connect", "execute", "select_db"]
+        assert "database" not in calls[0][1]
+        assert calls[1] == ("execute", "CREATE DATABASE IF NOT EXISTS `exchange_calendar`")
+        assert calls[2] == ("select_db", "exchange_calendar")
+
+    def test_a_custom_database_name_is_used(self, monkeypatch):
+        calls = _fake_pymysql(monkeypatch)
+        csd.MysqlEngine("mysql://u:p@h:3306/scratch_1", 0)
+        assert ("execute", "CREATE DATABASE IF NOT EXISTS `scratch_1`") in calls
+        assert ("select_db", "scratch_1") in calls
+
+    def test_a_failed_create_is_fatal_and_is_not_retried(self, monkeypatch):
+        calls = _fake_pymysql(monkeypatch, fail_on_create=True)
+        with pytest.raises(csd.CheckError) as err:
+            csd.MysqlEngine(csd.DEFAULT_MYSQL_URI, 60)
+        assert "cannot create or select MySQL database 'exchange_calendar'" in str(err.value)
+        assert [c[0] for c in calls].count("connect") == 1 and ("close",) in calls
+
+    @pytest.mark.parametrize("uri", ["mysql://u:p@h:3306", "mysql://u:p@h:3306/"])
+    def test_a_uri_without_a_database_is_rejected_before_connecting(self, monkeypatch, uri):
+        calls = _fake_pymysql(monkeypatch)
+        with pytest.raises(csd.CheckError) as err:
+            csd.MysqlEngine(uri, 0)
+        assert "must name a database" in str(err.value) and calls == []
+
+    @pytest.mark.parametrize("name", ["bad-name", "a b", "x`; DROP DATABASE y; --", "naïve"])
+    def test_unsafe_database_names_are_rejected_before_connecting(self, monkeypatch, name):
+        calls = _fake_pymysql(monkeypatch)
+        from urllib.parse import quote
+        with pytest.raises(csd.CheckError):
+            csd.MysqlEngine(f"mysql://u:p@h:3306/{quote(name)}", 0)
+        assert calls == []
+
+
+# ---------------------------------------------------------------------------
 # Dependencies and workflow wiring
 # ---------------------------------------------------------------------------
 
@@ -334,3 +424,10 @@ class TestWiring:
         assert "python3 tools/check_sql_dialects.py" in wf
         assert "postgres:15" in wf and "mysql:8.0" in wf
         assert "requirements-dev.txt" in wf
+
+    def test_ci_mysql_service_creates_the_default_database(self):
+        wf = (REPO / ".github/workflows/validate.yml").read_text(encoding="utf-8")
+        job = wf[wf.index("check-sql-execution:"):]
+        mysql_service = job[job.index("image: mysql:8.0"):job.index("steps:")]
+        default_db = csd.parse_uri(csd.DEFAULT_MYSQL_URI, ("mysql",), 3306).database
+        assert f"MYSQL_DATABASE: {default_db}" in mysql_service and default_db == "exchange_calendar"

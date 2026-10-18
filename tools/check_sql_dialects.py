@@ -27,12 +27,20 @@ Usage:
 
 Defaults point at the standard local servers (the CI service containers):
     postgresql://postgres:postgres@localhost:5432/postgres
-    mysql://root:root@127.0.0.1:3306/mysql
+    mysql://root:root@127.0.0.1:3306/exchange_calendar
 
 WARNING: each file DROPs and recreates exchanges, sessions, holidays,
-ad_hoc_closures and confidence in the target database. Point it at a
-disposable database. The MySQL default is the `mysql` schema, which is fine for
-a throwaway CI container but not for a server you care about.
+ad_hoc_closures and confidence in the target database. The target database
+must be disposable: use a scratch database, never one that holds data you
+care about, and never a MySQL system schema (mysql, sys, information_schema,
+performance_schema).
+
+The MySQL database named in the URI does not have to exist. After connecting
+to the server the script runs CREATE DATABASE IF NOT EXISTS for it, then
+switches to it, so the default (exchange_calendar) never touches the `mysql`
+system schema. PostgreSQL is not auto-created: the default is the `postgres`
+database, so pass --postgres-uri with a scratch database for anything you care
+about.
 
 Connecting is retried until --wait-seconds elapses, because service containers
 boot slowly. A server that never answers is a failure, never a skip.
@@ -48,6 +56,7 @@ Exit codes:
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 import time
 from collections import Counter
@@ -61,7 +70,7 @@ import export_sql  # noqa: E402
 
 PROJECT_ROOT: Path = Path(__file__).resolve().parent.parent
 DEFAULT_POSTGRES_URI = "postgresql://postgres:postgres@localhost:5432/postgres"
-DEFAULT_MYSQL_URI = "mysql://root:root@127.0.0.1:3306/mysql"
+DEFAULT_MYSQL_URI = "mysql://root:root@127.0.0.1:3306/exchange_calendar"
 DEFAULT_WAIT_SECONDS = 60.0
 RETRY_INTERVAL = 2.0
 
@@ -106,6 +115,24 @@ def parse_uri(uri: str, schemes: tuple[str, ...], default_port: int) -> ParsedUr
         password=unquote(parts.password or ""),
         database=unquote(parts.path.lstrip("/")),
     )
+
+
+_DATABASE_NAME = re.compile(r"[A-Za-z0-9_$]+")
+
+
+def mysql_database_name(target: ParsedUri) -> str:
+    """The database to create and use. Restricted so it is safe inside backticks."""
+    name = target.database
+    if not name:
+        raise CheckError(
+            "the MySQL URI must name a database, for example "
+            f"{DEFAULT_MYSQL_URI}"
+        )
+    if not _DATABASE_NAME.fullmatch(name):
+        raise CheckError(
+            f"unsupported MySQL database name {name!r}: use letters, digits, _ and $"
+        )
+    return name
 
 
 def split_statements(text: str) -> list[str]:
@@ -285,6 +312,7 @@ class MysqlEngine(Engine):
 
     def __init__(self, uri: str, wait_seconds: float):
         target = parse_uri(uri, ("mysql",), 3306)
+        database = mysql_database_name(target)
 
         def connect():
             try:
@@ -293,11 +321,22 @@ class MysqlEngine(Engine):
                 raise CheckError(
                     "PyMySQL is not installed; run: pip install -r requirements-dev.txt"
                 ) from exc
-            return pymysql.connect(
+            # Connect to the server only: the database may not exist yet.
+            conn = pymysql.connect(
                 host=target.host, port=target.port, user=target.user,
-                password=target.password, database=target.database or None,
-                charset="utf8mb4", autocommit=True, connect_timeout=5,
+                password=target.password, charset="utf8mb4", autocommit=True,
+                connect_timeout=5,
             )
+            try:
+                with conn.cursor() as cur:
+                    cur.execute(f"CREATE DATABASE IF NOT EXISTS `{database}`")
+                conn.select_db(database)
+            except pymysql.MySQLError as exc:
+                conn.close()
+                raise CheckError(
+                    f"cannot create or select MySQL database {database!r}: {exc}"
+                ) from exc
+            return conn
 
         self._conn = connect_with_retry(connect, f"MySQL at {target.host}:{target.port}", wait_seconds)
         import pymysql
