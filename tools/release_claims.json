@@ -444,6 +444,28 @@
       "file": "tests/test_calendar_required_fields.py"
     }
   ],
+  "2.16.1": [
+    {
+      "file": ".github/workflows/validate.yml",
+      "contains": "check-sql-execution:"
+    },
+    {
+      "file": ".github/workflows/validate.yml",
+      "contains": "name: Check SQL exports"
+    },
+    {
+      "file": ".github/workflows/validate.yml",
+      "contains": "MYSQL_DATABASE: exchange_calendar"
+    },
+    {
+      "file": "tools/check_sql_dialects.py",
+      "contains": "CREATE DATABASE IF NOT EXISTS"
+    },
+    {
+      "file": "requirements-dev.txt",
+      "contains": "psycopg2-binary"
+    }
+  ],
   "2.16.0": [
     {
       "file": "tools/export_sql.py",
