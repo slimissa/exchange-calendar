@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [Unreleased]
+## [2.16.1] - 2026-10-18
+
+Patch release. Tooling and CI only: no data, schema or consumer-facing change.
 
 ### Added
 
@@ -20,17 +22,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (quote escaping, non-ASCII text), and that a foreign key, a primary key, NOT NULL, a CHECK,
   a time CHECK and an impossible date are rejected while valid rows are accepted. It retries
   connecting for `--wait-seconds` and exits non-zero if a server never answers (no skips).
+  The MySQL database is created on demand and defaults to `exchange_calendar`, never the
+  `mysql` system schema.
 - `check-sql-execution` job in `validate.yml`: `postgres:15` and `mysql:8.0` service
   containers, then `tools/check_sql_dialects.py`.
 - `requirements-dev.txt` with the database drivers (`psycopg2-binary`, `PyMySQL[rsa]`), kept out
   of `requirements.txt` so the runtime install stays small.
 - `tests/test_check_sql_dialects.py`: unit tests that need no server or driver.
 
+### Fixed
+
+- `checksums.json` had no entry for `tools/check_fixture_labels.py`, which `schema_audit.py`
+  reported as a gap. It now has 100 entries.
+
 ### Notes
 
 - This supersedes the 2.16.0 note that the PostgreSQL and MySQL files are not executed in CI.
-- Tooling and CI only: no data, schema or consumer-facing change, so no version bump
-  (`RELEASE_PATTERN.md` rule 8). These changes ship in the next release.
+
+---
 
 ## [2.16.0] — 2026-10-17
 
@@ -2475,17 +2484,6 @@ live via `web_fetch` before fixing — none guessed at.
 - Schema draft
 - Placeholder files for all planned exchanges
 - Initial NYSE.json draft
-
----
-
-## [Unreleased]
-
-### Planned for v2.2.0
-
-- SQL dump export for direct database import
-- CSV export
-- Additional language wrappers (C#, Java, Swift, Kotlin, Ruby)
-- CLI tool for registry queries (`exchange_calendar XNYS --is-open 2025-07-03 10:00`)
 
 ---
 
