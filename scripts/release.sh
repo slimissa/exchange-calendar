@@ -321,7 +321,8 @@ run bash -c "echo '$VERSION' > VERSION"
 ok "VERSION → $VERSION"
 
 run bash -c "sed -i 's|registry-[0-9.]*-orange|registry-${VERSION}-orange|' README.md"
-grep -q "registry-${VERSION}-orange" README.md || die "README badge not updated"
+[[ "$DRY_RUN" == "1" ]] || grep -q "registry-${VERSION}-orange" README.md \
+    || die "README badge not updated"
 ok "README badge → $VERSION"
 
 # CHANGELOG top entry is already correct (checked above). Verify
