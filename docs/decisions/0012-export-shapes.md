@@ -5,6 +5,7 @@
 **Amended:** 2026-10-16 - SQL dialect matrix and idempotency clarified. Idempotency is `DROP TABLE IF EXISTS`; the commented PostgreSQL `ON CONFLICT` block is for additive loading only.
 **Amended:** 2026-10-17 - Phase B: `sessions` drops `ordinal`, the remaining column types and the `NOT NULL` rule are added to 2a, and the holiday overlap guard is restored.
 **Amended:** 2026-10-17 - No CHECK on `name`; the ASCII assertion is limited to `code`, `mic` and `country_code`; `status` and `level` sizes are set.
+**Amended:** 2026-10-18 - CSV shape confirmed (five files, one dialect, formula guard); counts in Context, section 3 and section 7 refreshed to v2.16.1.
 **Depends on:** ADR 0011 (snapshots are validators, not vendored data)
 
 ## Context
@@ -15,14 +16,14 @@ each session answers the same questions ad hoc and the formats
 diverge, which is the failure the cross-language fixture exists to
 prevent for the wrappers.
 
-Measured on `calendar.json` v2.13.0 (74 exchanges):
+Measured on `calendar.json` v2.16.1 (74 exchanges):
 
 | Collection | Rows |
 |------------|------|
 | exchanges | 74 |
 | sessions | 166 |
-| holidays, explicit | 3,913 |
-| holidays, generated | 70 |
+| holidays, explicit | 3,894 |
+| holidays, generated | 67 |
 | confidence (exchange, year) | 361 |
 | ad_hoc_closures | 0 |
 
@@ -33,13 +34,13 @@ Facts the decisions rest on, each checked against the data:
 
 - All three wrappers (Python, Rust, Go) answer `is_holiday` from
   `explicit` plus `generated` together. Generated entries never
-  overlap explicit ones (0 of 70) and carry no `source_url`.
+  overlap explicit ones (0 of 67) and carry no `source_url`.
 - `extended_hours` and `regular_hours` are fully redundant with
   `sessions`: 0 mismatches across 74 exchanges.
 - Ten exchanges carry two `auction` sessions, so `(exchange, type)`
   is not a key. Stored order is the only identity a session has.
-- `predicted` is present on 278 explicit entries: `true` on 220, `false`
-  on 58. The 220 `true` entries are exactly those carrying a
+- `predicted` is present on 285 explicit entries: `true` on 227, `false`
+  on 58. The 227 `true` entries are exactly those carrying a
   "(predicted)" suffix in `name`.
 - `calendar.json` has no country field. `tools/build.py` drops
   `country` and `country_code`, which the source schema requires.
@@ -339,8 +340,52 @@ One row per exchange, one per session, one per holiday, one per
 `(exchange, year)`. Not nested JSON strings, not semicolon-delimited
 pairs: both defeat `GROUP BY` and force every consumer to write a
 parser. UTF-8, no BOM, LF line endings, RFC 4180 quoting, header row
-always present. Names contain commas (4) and non-ASCII characters
-(25), so quoting and encoding are not optional.
+always present. Names contain commas (4, all holiday names) and
+non-ASCII characters (28: 3 exchange names and 25 holiday names), so
+quoting and encoding are not optional.
+
+**Files.** Five files at the repository root, one per table:
+`exchange_calendar.exchanges.csv`, `exchange_calendar.sessions.csv`,
+`exchange_calendar.holidays.csv`, `exchange_calendar.ad_hoc_closures.csv`
+and `exchange_calendar.confidence.csv`. The header row is that table's
+column list from section 5, with the same names in the same order.
+`sessions` and `confidence` are files of their own and nothing is nested
+into `exchanges`. `holidays` carries explicit and generated rows
+together, told apart by `origin` (section 8). The `ad_hoc_closures` file
+is a header row and no records while the table is empty.
+
+**One dialect.** Comma-delimited, UTF-8 without a BOM. There is no
+Excel, European or tab-separated variant, unlike the sibling iso4217
+export, which ships four dialect variants of its one table. This ADR
+is the contract; a BOM variant would be a new decision if consumers
+ask for one. Excel on Windows guesses the code page of a file with no
+BOM, so the 28 non-ASCII names need an explicit UTF-8 import there, or
+pandas or Sheets.
+
+**Quoting and line endings.** Minimal quoting: a field is quoted if and
+only if it contains a comma, a double quote, CR or LF, and a double
+quote inside a quoted field is doubled. Every record ends with LF,
+including the last, so the file ends with one newline and has no blank
+trailing line. An absent value is an empty, unquoted field and booleans
+are `true` or `false` (section 7); dates and times are the text of
+section 6; `year`, `seq` and the weekend days are plain integers.
+
+**Formula guard.** A spreadsheet runs a cell that starts with `=`, `+`,
+`-` or `@`. No field does today. The exporter exits 2, before writing
+any file, if the text of any field in any table starts with one of
+those four characters.
+
+**Command line.** The same as the SQL exporter: `--registry` (`-r`),
+`--stdout` and `--check`, with `--table` in place of `--dialect`. The
+value is `exchanges`, `sessions`, `holidays`, `ad_hoc_closures`,
+`confidence` or `all`, and `all` is the default; `--stdout` needs one
+table. `--check` regenerates into a temporary directory and compares
+bytes. Exit codes: 0 success or match, 1 mismatch, 2 fatal (bad input
+or a failed guard), 3 a committed file is missing.
+
+**Prerequisite.** `.gitattributes` has a rule for `*.sql` and none for
+`*.csv`. It needs `*.csv text eol=lf` before the exporter ships, or a
+Windows checkout rewrites line endings and `--check` fails.
 
 ### 4. Parquet
 
@@ -352,7 +397,8 @@ logical type; every other column is a string, integer or boolean.
 ### 5. Column order
 
 Semantic, not alphabetical, identical across formats. Key columns
-first, then descriptive columns, then data.
+first, then descriptive columns, then data. In CSV each list below is
+the header row of that table's file (section 3).
 
 - `exchanges`: `code`, `name`, `mic`, `country_code`, `timezone`,
   `weekend_day_1`, `weekend_day_2`, `regular_open`, `regular_close`,
@@ -397,7 +443,7 @@ the data has none today and the exporters assert it, so CSV can tell
 does not arise: a collection with no members is zero rows.
 
 Booleans are exported as stored: `true`, `false` or NULL. Today
-`predicted` is `true` on 220 entries, `false` on 58 and absent on the
+`predicted` is `true` on 227 entries, `false` on 58 and absent on the
 rest; `weekend_exception` is `true` on 2 and absent elsewhere. The
 schema defines absent `predicted` as false, so consumers read NULL and
 `false` alike. The exporters do not rewrite `false` to NULL or the
@@ -405,7 +451,7 @@ reverse.
 
 Values are exported as stored, with no normalisation. In particular
 `name` keeps its "(predicted)" suffix, and `predicted` is the stored
-flag. The two agree on all 220 `true` entries today.
+flag. The two agree on all 227 `true` entries today.
 
 ### 8. Generated holidays
 
