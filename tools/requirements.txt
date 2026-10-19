@@ -22,7 +22,7 @@ jsonschema>=4.0.0
 pdfplumber>=0.10.0
 
 # Optional (for async fetching)
-aiohttp>=3.14.3
+aiohttp>=3.14.5
 
 # Testing
 pytest>=9.1.1
