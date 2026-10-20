@@ -702,3 +702,14 @@ class TestWiring:
         for path in (REPO / "wrappers/python").rglob("*"):
             if path.is_file() and path.suffix in (".py", ".toml", ".cfg", ".txt"):
                 assert "pyarrow" not in path.read_text(encoding="utf-8", errors="ignore"), path
+
+    def test_release_script_regenerates_and_ships_the_parquet_files(self):
+        text = (REPO / "scripts/release.sh").read_text()
+        release_files = text.split("RELEASE_FILES=(")[1].split(")")[0]
+        trap = text.split("local files=")[1].split("if git log")[0]
+        for name in export_parquet.expected_filenames():
+            assert name in release_files, f"{name}: missing from RELEASE_FILES"
+            assert name in trap, f"{name}: missing from the cleanup trap"
+        sql = text.index("run python3 tools/export_sql.py")
+        parquet = text.index("run python3 tools/export_parquet.py")
+        assert sql < parquet < text.index("run make package")

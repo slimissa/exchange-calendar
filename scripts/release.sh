@@ -49,6 +49,9 @@ cleanup_on_failure() {
     local files="VERSION README.md CHANGELOG.md calendar.json wrappers/python/exchange_calendar/calendar.json"
     files="$files exchange_calendar.sql exchange_calendar.postgresql.sql"
     files="$files exchange_calendar.mysql.sql exchange_calendar.sqlite.sql"
+    files="$files exchange_calendar.exchanges.parquet exchange_calendar.sessions.parquet"
+    files="$files exchange_calendar.holidays.parquet exchange_calendar.ad_hoc_closures.parquet"
+    files="$files exchange_calendar.confidence.parquet"
 
     if git log -1 --format=%s 2>/dev/null | grep -q '^Release v'; then
         if git branch -r --contains HEAD 2>/dev/null | grep -q 'origin/main'; then
@@ -95,6 +98,9 @@ RELEASE_FILES=(
     calendar.json wrappers/python/exchange_calendar/calendar.json
     exchange_calendar.sql exchange_calendar.postgresql.sql
     exchange_calendar.mysql.sql exchange_calendar.sqlite.sql
+    exchange_calendar.exchanges.parquet exchange_calendar.sessions.parquet
+    exchange_calendar.holidays.parquet exchange_calendar.ad_hoc_closures.parquet
+    exchange_calendar.confidence.parquet
 )
 
 # ── helpers ────────────────────────────────────────────────────────
@@ -343,6 +349,11 @@ run python3 tools/build.py
 # are stale as soon as build.py has bumped it. Rewrite them (not --check) so
 # the pytest gate and the CI drift check see matching files.
 run python3 tools/export_sql.py
+# The Parquet footers carry meta.version too (ADR 0012 section 4), so the five
+# files are stale as soon as build.py has bumped it. Needs pyarrow
+# (pip install -r requirements.txt). The CSV and TSV files carry no version and
+# are not regenerated here.
+run python3 tools/export_parquet.py
 run make package
 
 if [[ "$DRY_RUN" != "1" ]]; then
