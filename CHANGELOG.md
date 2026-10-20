@@ -7,6 +7,59 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.18.0] - 2026-10-20
+
+Minor release. Adds the Parquet export. No data change: `calendar.json` differs from 2.17.1 only
+in `meta.version`. The five Parquet files carry that version in their footer, so unlike the CSV
+and TSV files they change with every release.
+
+### Added
+
+- `tools/export_parquet.py` and five committed files at the repository root, one per table:
+  `exchange_calendar.exchanges.parquet`, `exchange_calendar.sessions.parquet`,
+  `exchange_calendar.holidays.parquet`, `exchange_calendar.ad_hoc_closures.parquet` and
+  `exchange_calendar.confidence.parquet`. The columns are the ADR 0012 section 5 list. Dates are
+  `date32`, times are `HH:MM` text, `seq`, `year` and the weekend days are `int16`, `predicted`
+  and `weekend_exception` are booleans, `exchange_code` is a plain string, and an absent value is
+  a real null, never an empty string. A column that is `NOT NULL` in the SQL export is a required
+  field. Files are snappy-compressed with one row group, and the footer carries
+  `exchange_calendar.version` and `exchange_calendar.table`.
+- The rows are the ones `tools/export_sql.py` builds, so the Parquet, CSV and SQL exports cannot
+  disagree, and the SQL exporter's guards apply. A string column holding an empty string exits 2.
+- `--check` compares logical content, not bytes: it reads the committed file and requires
+  `pyarrow.Table.equals(..., check_metadata=True)` against a fresh build, so a file rewritten with
+  another compression or row-group size passes, and a changed value, type, nullability, row or
+  footer key fails with the column and row named. `--table` selects one table, `--stdout` writes
+  one table's bytes. Exit codes are 0 match, 1 mismatch, 2 fatal, 3 committed file missing.
+- `tests/test_export_parquet.py`: the schema is checked against a table written out in the test,
+  every value is compared with the committed CSV files, nulls, booleans, footer keys and the
+  writer options are checked, fifteen kinds of mutation are shown to be caught, and `--check`,
+  the CLI and the repository wiring are tested.
+- `.gitattributes` rule `*.parquet binary`.
+- `pyarrow>=22.0` in `requirements.txt`, a lower bound with no pin. It is a build-time dependency
+  of `tools/export_parquet.py` only; the wrappers do not use it.
+
+### Changed
+
+- `scripts/release.sh` regenerates the Parquet files after `tools/export_sql.py` and lists them in
+  `RELEASE_FILES` and in the cleanup trap.
+- `docs/decisions/0012-export-shapes.md`: section 4 records what the Parquet exporter does, and
+  the choices left open after Phase A are marked confirmed.
+- `docs/CONSUMERS.md`: a Parquet paragraph, and the distribution table row.
+- `checksums.json` covers `tools/export_parquet.py`.
+
+### Notes
+
+- The four SQL files change by one header line (`Source: calendar.json v2.18.0`) and the five
+  Parquet files by their `exchange_calendar.version` footer key.
+- Nothing in CI runs `python3 tools/export_parquet.py --check` as its own step yet. The test suite
+  runs it on the committed files, so a stale file still fails the build.
+- `pyarrow` writes the same bytes for the same table across 22.0.0 to 26.0.0 except the version
+  digits in the footer's `created_by` string, which is why `--check` is logical and no exact pin
+  is needed.
+
+---
+
 ## [2.17.1] - 2026-10-20
 
 Patch release. Tooling and CI only: no data, schema or consumer-facing change. `calendar.json`
