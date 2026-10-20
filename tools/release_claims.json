@@ -444,6 +444,30 @@
       "file": "tests/test_calendar_required_fields.py"
     }
   ],
+  "2.17.0": [
+    {
+      "file": "tools/export_csv.py",
+      "contains": "def generate_all"
+    },
+    {
+      "file": "tests/test_export_csv.py",
+      "contains": "class TestCheckMode"
+    },
+    {
+      "file": "exchange_calendar.holidays.excel.csv"
+    },
+    {
+      "file": "exchange_calendar.exchanges.tsv"
+    },
+    {
+      "file": ".gitattributes",
+      "contains": "*.tsv text eol=lf"
+    },
+    {
+      "file": "docs/decisions/0012-export-shapes.md",
+      "contains": "Excel: comma-delimited, UTF-8 with a BOM"
+    }
+  ],
   "2.16.1": [
     {
       "file": ".github/workflows/validate.yml",
