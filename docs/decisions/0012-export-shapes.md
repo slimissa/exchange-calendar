@@ -8,6 +8,7 @@
 **Amended:** 2026-10-18 - CSV shape confirmed (five files, one dialect, formula guard); counts in Context, section 3 and section 7 refreshed to v2.16.1.
 **Amended:** 2026-10-19 - CSV: four dialects per table (20 files) following the iso4217 sibling, replacing the one-dialect text; stale Context text corrected.
 **Amended:** 2026-10-20 - Parquet Phase A: section 4 records what sections 1, 6 and 7 already settle and lists the open choices (integer width, dictionary typing, nullability, writer options, footer metadata, `--check` strategy, pinning) as Proposed defaults awaiting confirmation. No exporter code.
+**Amended:** 2026-10-20 - Parquet Phase B: P1 to P8 confirmed (P5 with the version key, P6 as a logical `--check` using `pyarrow.Table.equals`); `tools/export_parquet.py` ships the five files.
 **Depends on:** ADR 0011 (snapshots are validators, not vendored data)
 
 ## Context
@@ -432,9 +433,8 @@ logical type; every other column is a string, integer or boolean.
 
 Phase A (2026-10-20) measured everything below on `calendar.json`
 v2.17.1 with pyarrow 22.0.0, 24.0.0, 25.0.1 and 26.0.0 (CPython 3.12,
-Linux x86-64). Items under "Proposed" are not decided: sections 1, 6 and 7
-are silent on them, and the Parquet exporter is not written until they are
-confirmed.
+Linux x86-64). Items under "Confirmed" were open after sections 1, 6 and 7;
+they were confirmed on 2026-10-20, before the exporter was written.
 
 **Settled by earlier sections (no new decision).**
 
@@ -444,7 +444,7 @@ confirmed.
   `exchange_calendar.ad_hoc_closures.parquet` and
   `exchange_calendar.confidence.parquet`. The pattern is the CSV one without a
   dialect infix, because Parquet has one dialect. `ad_hoc_closures` ships with
-  zero rows, its schema and its footer (1,283 bytes today), like its SQL and
+  zero rows, its schema and its footer (1,554 bytes today), like its SQL and
   CSV counterparts.
 - **Dates.** Parquet `DATE` (Arrow `date32`), as in sections 4 and 6.
 - **Times.** Text `HH:MM`, as in section 6. Parquet `TIME` is not used, for
@@ -458,7 +458,7 @@ confirmed.
   `SMALLINT` 0/1 because of dialect limits (2a); Parquet has no such limit.
 - **Column order.** Section 5, unchanged.
 
-**Proposed, awaiting confirmation.**
+**Confirmed on 2026-10-20 (open after sections 1, 6 and 7).**
 
 - **P1. Integer width: `int16`** for `seq`, `year` and `weekend_day_1`/
   `weekend_day_2`, matching SQL `SMALLINT` (2a). The ADR says only "integer".
@@ -475,8 +475,8 @@ confirmed.
 - **P3. Nullability mirrors 2a.** A column that is `NOT NULL` in SQL is a
   required (non-nullable) field in Parquet; every other column is nullable.
 - **P4. Writer options.** `compression="snappy"` passed explicitly, one row
-  group, pyarrow defaults for everything else (format version 2.6). Measured
-  total for the five files: 39,692 bytes. `zstd` is smaller (holidays 21,410
+  group, pyarrow defaults for everything else (format version 2.6). The five
+  files total 40,998 bytes, footer keys included. `zstd` is smaller (holidays 21,410
   bytes) but the difference is irrelevant at this size and both siblings use
   snappy.
 - **P5. Footer metadata: two keys.** `exchange_calendar.version`
@@ -489,17 +489,18 @@ confirmed.
   (`iso4217.version`, `iso3166.updated`); iso4217 adds `iso4217.amendment`,
   iso3166 adds `iso3166.schema_version` and `iso3166.generator`.
   **Cost of `exchange_calendar.version`:** all five Parquet files change on
-  every version bump, as the four SQL files do. They would join
+  every version bump, as the four SQL files do. They join
   `RELEASE_FILES` and the `release.sh` regeneration step (the CSV files carry
-  no version and are not in it). Dropping the key leaves Parquet like CSV, at
-  the price of a file that does not say which release it came from.
+  no version and are not in it). Without the key Parquet would behave like
+  CSV, at the price of a file that does not say which release it came from.
 - **P6. `--check` compares logical content, not bytes, and needs no exact
   pin.** `tools/export_parquet.py --check` reads the committed file with
   `pyarrow.parquet.read_table`, rebuilds the table from `calendar.json`, and
   compares: (1) file exists (exit 3 if not); (2) field names, order, types and
   nullability; (3) every value, row for row; (4) the `exchange_calendar.*`
   footer keys. It ignores `created_by`, row-group layout, encodings and
-  compression. `pyarrow>=22.0` goes in `requirements.txt`, because the
+  compression. The verdict is `pyarrow.Table.equals(..., check_metadata=True)`;
+  the per-column messages only explain it. `pyarrow>=22.0` goes in `requirements.txt`, because the
   `python-core` job installs that file and will run the check; the lower
   bound is the oldest version tested. pyarrow is a build-time dependency
   only: the Python wrapper stays zero-dependency. The tests use pyarrow and

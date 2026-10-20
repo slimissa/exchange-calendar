@@ -94,7 +94,7 @@ directly.
 | Go wrapper | `wrappers/go/` | `go get github.com/slimissa/exchange-calendar/wrappers/go` |
 | SQL | repo root, four `exchange_calendar*.sql` files | load the file for your database |
 | CSV / TSV | repo root, twenty `exchange_calendar.TABLE*.csv` and `.tsv` files | open the dialect your tool reads |
-| Parquet | not yet shipped | planned for v3.0.0 |
+| Parquet | repo root, five `exchange_calendar.TABLE.parquet` files | read with any Parquet reader |
 | CLI | not yet shipped | planned for v3.0.0 |
 
 **SQL exports.** Four files at the repository root load the registry into a relational
@@ -119,6 +119,17 @@ The header row is the table's column list from ADR 0012 section 5, an absent val
 field, and booleans are `true` or `false`. Sessions and confidence entries are their own files,
 never nested into `exchanges`. Regenerate with `python3 tools/export_csv.py`; `--check` exits
 non-zero when a committed file is stale.
+
+**Parquet exports.** Each of the five tables (`exchanges`, `sessions`, `holidays`,
+`ad_hoc_closures`, `confidence`) is one flat file at the repository root, for example
+`exchange_calendar.holidays.parquet`, with the columns of ADR 0012 section 5. Dates use the
+Parquet `DATE` type, times are `HH:MM` text, `seq`, `year` and the weekend days are `int16`,
+`predicted` and `weekend_exception` are booleans, and an absent value is a real null, not an
+empty string. The files are snappy-compressed and each footer records `exchange_calendar.version`
+and `exchange_calendar.table`. Reading them needs only a Parquet reader; regenerating them with
+`python3 tools/export_parquet.py` needs pyarrow 22.0 or later, and the wrappers do not depend on
+it. `--check` compares logical content, not bytes, so a file rewritten with another compression
+or row-group size still passes; it exits non-zero when a value, type, row or footer key differs.
 
 **Publication to package registries is deferred.** The wrappers are
 not on PyPI, npm, crates.io, or the Go module proxy. The trigger for

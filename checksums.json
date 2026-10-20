@@ -91,6 +91,7 @@
     "tools/check_wrapper_snapshot.py": "1fa8df6f8035a5969885a82403166ea1fe7833e7ef05771fc8f0b41f6496f99c",
     "tools/derive_confidence.py": "641ed202e1531a9dccecbd47efb2640991dbdb7fe7b3c3c9243fd95d0b8906d6",
     "tools/export_csv.py": "872adad4531fee48d82f6bc8cd130243eb9caf13ede1a6876763da294c868152",
+    "tools/export_parquet.py": "dd74e29de9d45eeeee50bc4fe2193de480593983e6fbfba438f2270069003e40",
     "tools/export_sql.py": "277b8b334c16049712ffdca0f218fdd9ef8ef15b65f2783ff7f771dc175bdf4d",
     "tools/generate_checksums.py": "99e53706305fabf92ce4e6960d2f1a32c1c06d5a5939ffeb2cc8facb5a631565",
     "tools/generate_dates.py": "bd87b1cb915c174cfc39a0251553371ade59e551231a0e426e5ad99a2529af27",

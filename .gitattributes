@@ -1,3 +1,4 @@
 *.sql text eol=lf
 *.csv text eol=lf
 *.tsv text eol=lf whitespace=-blank-at-eol
+*.parquet binary
