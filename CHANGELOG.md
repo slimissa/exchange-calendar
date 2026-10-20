@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.17.1] - 2026-10-20
+
+Patch release. Tooling and CI only: no data, schema or consumer-facing change. `calendar.json`
+differs from 2.17.0 only in `meta.version`, and the CSV and TSV files carry no version, so none
+of them changes with it. The four SQL files change by one header line.
+
+### Added
+
+- CI drift gate: a `Check CSV/TSV exports` step in the `python-core` job runs
+  `python3 tools/export_csv.py --check` right after `Check SQL exports`, so a stale CSV or TSV
+  file fails the build the same way a stale SQL file does.
+
+### Fixed
+
+- `.gitattributes`: the `*.tsv` rule is now `text eol=lf whitespace=-blank-at-eol`. An empty
+  trailing field ends a TSV line in a tab, which is valid but tripped git's blank-at-eol check
+  and made `git am` warn.
+
+### Notes
+
+- The 2.17.0 note that nothing in CI runs `tools/export_csv.py --check` is true of 2.17.0 and
+  no longer true from this release on.
+
+---
+
 ## [2.17.0] - 2026-10-19
 
 Minor release. Adds the CSV and TSV exports. No data change: `calendar.json` differs from

@@ -444,6 +444,20 @@
       "file": "tests/test_calendar_required_fields.py"
     }
   ],
+  "2.17.1": [
+    {
+      "file": ".github/workflows/validate.yml",
+      "contains": "name: Check CSV/TSV exports"
+    },
+    {
+      "file": ".github/workflows/validate.yml",
+      "contains": "python3 tools/export_csv.py --check"
+    },
+    {
+      "file": ".gitattributes",
+      "contains": "*.tsv text eol=lf whitespace=-blank-at-eol"
+    }
+  ],
   "2.17.0": [
     {
       "file": "tools/export_csv.py",
