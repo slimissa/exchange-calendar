@@ -7,6 +7,7 @@
 **Amended:** 2026-10-17 - No CHECK on `name`; the ASCII assertion is limited to `code`, `mic` and `country_code`; `status` and `level` sizes are set.
 **Amended:** 2026-10-18 - CSV shape confirmed (five files, one dialect, formula guard); counts in Context, section 3 and section 7 refreshed to v2.16.1.
 **Amended:** 2026-10-19 - CSV: four dialects per table (20 files) following the iso4217 sibling, replacing the one-dialect text; stale Context text corrected.
+**Amended:** 2026-10-20 - Parquet Phase A: section 4 records what sections 1, 6 and 7 already settle and lists the open choices (integer width, dictionary typing, nullability, writer options, footer metadata, `--check` strategy, pinning) as Proposed defaults awaiting confirmation. No exporter code.
 **Depends on:** ADR 0011 (snapshots are validators, not vendored data)
 
 ## Context
@@ -429,6 +430,105 @@ make Parquet the one format whose shape differs from the other two,
 and at 4,600 rows it buys nothing. Dates use the Parquet `DATE`
 logical type; every other column is a string, integer or boolean.
 
+Phase A (2026-10-20) measured everything below on `calendar.json`
+v2.17.1 with pyarrow 22.0.0, 24.0.0, 25.0.1 and 26.0.0 (CPython 3.12,
+Linux x86-64). Items under "Proposed" are not decided: sections 1, 6 and 7
+are silent on them, and the Parquet exporter is not written until they are
+confirmed.
+
+**Settled by earlier sections (no new decision).**
+
+- **Files.** One file per table (section 1), five files at the repository
+  root: `exchange_calendar.exchanges.parquet`,
+  `exchange_calendar.sessions.parquet`, `exchange_calendar.holidays.parquet`,
+  `exchange_calendar.ad_hoc_closures.parquet` and
+  `exchange_calendar.confidence.parquet`. The pattern is the CSV one without a
+  dialect infix, because Parquet has one dialect. `ad_hoc_closures` ships with
+  zero rows, its schema and its footer (1,283 bytes today), like its SQL and
+  CSV counterparts.
+- **Dates.** Parquet `DATE` (Arrow `date32`), as in sections 4 and 6.
+- **Times.** Text `HH:MM`, as in section 6. Parquet `TIME` is not used, for
+  the reason section 6 gives for SQL `TIME`: it carries seconds. Measured:
+  a `time32[ms]` column reads back as `09:30:00`.
+- **Nulls.** Real Parquet nulls, never empty strings (section 7). Measured:
+  zero empty strings in any column. `holidays.predicted` has 227 `true`,
+  58 `false` and 3,676 null; `weekend_exception` has 2 `true` and 3,959 null.
+  They are written as stored, with no rewriting of `false` to null.
+- **Booleans.** Native Parquet `BOOLEAN`, nullable. SQL stores them as
+  `SMALLINT` 0/1 because of dialect limits (2a); Parquet has no such limit.
+- **Column order.** Section 5, unchanged.
+
+**Proposed, awaiting confirmation.**
+
+- **P1. Integer width: `int16`** for `seq`, `year` and `weekend_day_1`/
+  `weekend_day_2`, matching SQL `SMALLINT` (2a). The ADR says only "integer".
+  The siblings use `int8` (iso4217 `minor_units`) and `int16` (iso3166
+  `numeric_code`), each sized to its data.
+- **P2. `exchange_code` is a plain `string`, not a dictionary type.** Measured:
+  a dictionary-typed column made `sessions` 3,003 to 3,055 bytes and `holidays`
+  26,149 to 26,205, so it saves nothing. The default writer already
+  dictionary-*encodes* string columns on disk (`RLE_DICTIONARY` in the footer),
+  invisibly. A dictionary *type* is visible: pyarrow reads it back as
+  `dictionary<values=string, indices=int8>`, which is a different schema from
+  the other formats, and `int8` indices cap the column at 128 distinct values
+  (74 exchanges today).
+- **P3. Nullability mirrors 2a.** A column that is `NOT NULL` in SQL is a
+  required (non-nullable) field in Parquet; every other column is nullable.
+- **P4. Writer options.** `compression="snappy"` passed explicitly, one row
+  group, pyarrow defaults for everything else (format version 2.6). Measured
+  total for the five files: 39,692 bytes. `zstd` is smaller (holidays 21,410
+  bytes) but the difference is irrelevant at this size and both siblings use
+  snappy.
+- **P5. Footer metadata: two keys.** `exchange_calendar.version`
+  (`meta.version` from `calendar.json`) and `exchange_calendar.table` (the
+  table name, so a file read alone says what it is). No `updated` key:
+  `calendar.json` `meta` holds only `exchange_count` and `version`, so there
+  is no deterministic source, and a wall-clock value would break
+  reproducibility. Adding a field to `calendar.json` is out of scope. The
+  siblings write a version key and an updated key under their own prefix
+  (`iso4217.version`, `iso3166.updated`); iso4217 adds `iso4217.amendment`,
+  iso3166 adds `iso3166.schema_version` and `iso3166.generator`.
+  **Cost of `exchange_calendar.version`:** all five Parquet files change on
+  every version bump, as the four SQL files do. They would join
+  `RELEASE_FILES` and the `release.sh` regeneration step (the CSV files carry
+  no version and are not in it). Dropping the key leaves Parquet like CSV, at
+  the price of a file that does not say which release it came from.
+- **P6. `--check` compares logical content, not bytes, and needs no exact
+  pin.** `tools/export_parquet.py --check` reads the committed file with
+  `pyarrow.parquet.read_table`, rebuilds the table from `calendar.json`, and
+  compares: (1) file exists (exit 3 if not); (2) field names, order, types and
+  nullability; (3) every value, row for row; (4) the `exchange_calendar.*`
+  footer keys. It ignores `created_by`, row-group layout, encodings and
+  compression. `pyarrow>=22.0` goes in `requirements.txt`, because the
+  `python-core` job installs that file and will run the check; the lower
+  bound is the oldest version tested. pyarrow is a build-time dependency
+  only: the Python wrapper stays zero-dependency. The tests use pyarrow and
+  fail rather than skip when it is missing, as with sqlglot.
+- **P7. `.gitattributes`: `*.parquet binary`**, so git never applies
+  end-of-line conversion or text diffs to the files.
+- **P8. CLI and exit codes follow `export_csv.py`:** `--table`, `--check`,
+  and exit 0 ok, 1 mismatch, 2 fatal, 3 missing file.
+
+**Evidence for P6.** Within one pyarrow version, writing the same table
+twice gave identical bytes for every table under `snappy`, `zstd` and no
+compression (45 of 45 comparisons). Across 22.0.0, 24.0.0, 25.0.1 and 26.0.0
+the files had the same sizes and differed by exactly two bytes each: the
+version digits in the footer's `created_by` string
+(`parquet-cpp-arrow version N`). With those digits masked, all four versions
+produced identical files. So a byte comparison would work today, but only with
+an exact pin, because `created_by` changes with every pyarrow release and the
+writer does not let a caller set it.
+
+The byte-level alternative is therefore `pyarrow==26.0.0` (the current
+release; both siblings pin exactly that) with `--check` comparing bytes. It is
+not proposed, for three reasons. Every pyarrow bump, including an automated
+one, would fail CI until five binary files were regenerated, with no change
+to the data. `requirements.txt` uses lower bounds throughout and would gain
+its first exact pin. And a contributor with any other pyarrow could not run
+`--check` locally without a false failure. Byte-identity was verified on one
+platform only; the bundled snappy build on macOS, Windows or arm64 was not
+tested.
+
 ### 5. Column order
 
 Semantic, not alphabetical, identical across formats. Key columns
@@ -533,3 +633,11 @@ is derivable from ISO 3166.
 - A foreign key to an ISO 10383 table: see Decision 2.
 - Alphabetical column order: separates `code` from `name`, and buries
   the key columns.
+- Parquet `TIME` columns: render seconds, and make Parquet differ from the
+  `HH:MM` text in SQL and CSV (section 4).
+- A dictionary-typed `exchange_code`: no size gain, a different schema for
+  pyarrow readers, and a 128-value cap (section 4, P2).
+- An `exchange_calendar.updated` footer key: `calendar.json` has no field to
+  take it from (section 4, P5).
+- A byte-level Parquet `--check`: needs an exact pyarrow pin and regenerates
+  binaries on every bump (section 4, P6).
