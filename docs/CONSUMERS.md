@@ -93,7 +93,8 @@ directly.
 | Rust wrapper | `wrappers/rust/` | `cargo add --path wrappers/rust` |
 | Go wrapper | `wrappers/go/` | `go get github.com/slimissa/exchange-calendar/wrappers/go` |
 | SQL | repo root, four `exchange_calendar*.sql` files | load the file for your database |
-| CSV / Parquet | not yet shipped | planned for v3.0.0 |
+| CSV / TSV | repo root, twenty `exchange_calendar.TABLE*.csv` and `.tsv` files | open the dialect your tool reads |
+| Parquet | not yet shipped | planned for v3.0.0 |
 | CLI | not yet shipped | planned for v3.0.0 |
 
 **SQL exports.** Four files at the repository root load the registry into a relational
@@ -107,6 +108,17 @@ Regenerate with `python3 tools/export_sql.py`; `--check` exits non-zero when a c
 file is stale. CI loads the PostgreSQL and MySQL files into real servers (PostgreSQL 15 and
 MySQL 8.0) and checks the stored row counts, the stored values and that the keys and CHECKs
 are enforced; the SQLite and ANSI files are loaded into SQLite by the test suite.
+
+**CSV and TSV exports.** Each of the five tables (`exchanges`, `sessions`, `holidays`,
+`ad_hoc_closures`, `confidence`) is a flat file in four dialects, twenty files at the
+repository root. For `holidays`: `exchange_calendar.holidays.csv` (RFC 4180, comma, UTF-8),
+`exchange_calendar.holidays.excel.csv` (comma, UTF-8 with a BOM, which Excel needs to read
+non-ASCII names correctly), `exchange_calendar.holidays.european.csv` (semicolon) and
+`exchange_calendar.holidays.tsv` (tab). The dialects differ only in the delimiter and the BOM.
+The header row is the table's column list from ADR 0012 section 5, an absent value is an empty
+field, and booleans are `true` or `false`. Sessions and confidence entries are their own files,
+never nested into `exchanges`. Regenerate with `python3 tools/export_csv.py`; `--check` exits
+non-zero when a committed file is stale.
 
 **Publication to package registries is deferred.** The wrappers are
 not on PyPI, npm, crates.io, or the Go module proxy. The trigger for
