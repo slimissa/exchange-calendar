@@ -149,9 +149,16 @@ class TestFilesAndDialects:
         ]
 
     def test_gitattributes_covers_sql_csv_and_tsv(self):
-        lines = (REPO / ".gitattributes").read_text().splitlines()
-        for rule in ("*.sql text eol=lf", "*.csv text eol=lf", "*.tsv text eol=lf"):
-            assert rule in lines
+        rules = {}
+        for line in (REPO / ".gitattributes").read_text().splitlines():
+            pattern, *attrs = line.split()
+            rules[pattern] = attrs
+        # Match by attribute, not by whole line, so a rule may carry more
+        # (the TSV rule adds whitespace=-blank-at-eol).
+        for pattern in ("*.sql", "*.csv", "*.tsv"):
+            assert "text" in rules[pattern]
+            assert "eol=lf" in rules[pattern]
+        assert "whitespace=-blank-at-eol" in rules["*.tsv"]
 
     def test_boolean_columns_are_exactly_the_zero_one_columns_of_the_sql_tables(self):
         zero_one = {
