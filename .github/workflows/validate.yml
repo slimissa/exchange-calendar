@@ -89,6 +89,9 @@ jobs:
       - name: Check CSV/TSV exports
         run: python3 tools/export_csv.py --check
 
+      - name: Check Parquet exports
+        run: python3 tools/export_parquet.py --check
+
       - name: Run Python tests
         run: |
           python3 -m pytest tests/ -v --tb=short
