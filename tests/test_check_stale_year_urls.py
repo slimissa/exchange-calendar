@@ -14,6 +14,12 @@ Tests that the year-rollover checker correctly:
     6. Reports file/line for fetcher hits and file/entry for JSON hits
     7. Exits 2 when a scanned path does not exist
     8. Exits 1 (not a silent pass) when zero year-token URLs are found
+    9. Allowlist: a stale URL on an unexpired allowlist entry passes, the
+       expiry date itself is still covered, the day after fails with the
+       entry named, non-allowlisted stale URLs still fail, an invalid date
+       exits 2, and an entry matching no scanned URL only warns
+   10. The real repo passes a simulated 2027-01-01 rollover (via the real
+       ALLOWLIST) and fails once every entry has expired
 
 All tests build their own temp fetchers file and/or temp exchanges/
 directory (via pytest's tmp_path fixture) — none of them depend on the
@@ -26,6 +32,7 @@ Run:
 
 import json
 import sys
+from datetime import date
 from pathlib import Path
 
 import pytest
@@ -298,3 +305,157 @@ def test_real_repo_passes():
     exit_code, report = checker.run_check(fetchers, exchanges_dir)
 
     assert exit_code == 0, "\n".join(report)
+
+
+# ──────────────────────────────────────────────────────────────
+# Allowlist
+# ──────────────────────────────────────────────────────────────
+
+STALE_URL = "https://example.com/circular-2026.pdf"
+
+
+def stale_setup(tmp_path):
+    """A fetchers file whose only year-token URL is STALE_URL, judged
+    against a 2027 'current year'."""
+    fetchers = write_fetchers_file(tmp_path, f'source_url="{STALE_URL}"\n')
+    exchanges_dir = empty_exchanges_dir(tmp_path)
+    write_exchange_json(exchanges_dir, "XTST.json", [])
+    return fetchers, exchanges_dir
+
+
+def test_allowlisted_stale_url_passes_before_expiry(tmp_path):
+    fetchers, exchanges_dir = stale_setup(tmp_path)
+
+    exit_code, report = checker.run_check(
+        fetchers, exchanges_dir, current_year=2027,
+        allowlist={STALE_URL: "2027-06-01"}, today=date(2027, 1, 1),
+    )
+    joined = "\n".join(report)
+
+    assert exit_code == 0
+    assert "ALLOWLISTED" in joined
+    assert "2027-06-01" in joined
+    assert "STALE YEAR URLS" not in joined
+
+
+def test_allowlist_covers_the_expiry_date_itself(tmp_path):
+    fetchers, exchanges_dir = stale_setup(tmp_path)
+
+    exit_code, _ = checker.run_check(
+        fetchers, exchanges_dir, current_year=2027,
+        allowlist={STALE_URL: "2027-06-01"}, today=date(2027, 6, 1),
+    )
+
+    assert exit_code == 0
+
+
+def test_allowlist_expired_day_after_fails(tmp_path):
+    fetchers, exchanges_dir = stale_setup(tmp_path)
+
+    exit_code, report = checker.run_check(
+        fetchers, exchanges_dir, current_year=2027,
+        allowlist={STALE_URL: "2027-06-01"}, today=date(2027, 6, 2),
+    )
+    joined = "\n".join(report)
+
+    assert exit_code == 1
+    assert "EXPIRED ALLOWLIST ENTRIES" in joined
+    assert "expired 2027-06-01" in joined
+    assert STALE_URL in joined
+
+
+def test_allowlist_does_not_cover_other_stale_urls(tmp_path):
+    fetchers = write_fetchers_file(
+        tmp_path,
+        f'source_url="{STALE_URL}"\n'
+        'source_url="https://example.com/other-2025.pdf"\n',
+    )
+    exchanges_dir = empty_exchanges_dir(tmp_path)
+    write_exchange_json(exchanges_dir, "XTST.json", [])
+
+    exit_code, report = checker.run_check(
+        fetchers, exchanges_dir, current_year=2027,
+        allowlist={STALE_URL: "2027-06-01"}, today=date(2027, 1, 1),
+    )
+    joined = "\n".join(report)
+
+    assert exit_code == 1
+    assert "STALE YEAR URLS (1)" in joined
+    assert "other-2025.pdf" in joined
+
+
+def test_allowlist_matches_json_and_fetcher_hits_for_one_url(tmp_path):
+    """One URL cited by a fetcher constant and by JSON entries is covered
+    by a single allowlist entry."""
+    fetchers = write_fetchers_file(tmp_path, f'source_url="{STALE_URL}"\n')
+    exchanges_dir = empty_exchanges_dir(tmp_path)
+    write_exchange_json(exchanges_dir, "XTST.json", [STALE_URL, STALE_URL])
+
+    exit_code, report = checker.run_check(
+        fetchers, exchanges_dir, current_year=2027,
+        allowlist={STALE_URL: "2027-06-01"}, today=date(2027, 1, 1),
+    )
+
+    assert exit_code == 0
+    assert "(3 hits)" in "\n".join(report)
+
+
+def test_allowlist_invalid_date_exits_2(tmp_path):
+    fetchers, exchanges_dir = stale_setup(tmp_path)
+
+    exit_code, report = checker.run_check(
+        fetchers, exchanges_dir, current_year=2027,
+        allowlist={STALE_URL: "June 2027"}, today=date(2027, 1, 1),
+    )
+
+    assert exit_code == 2
+    assert "invalid expiry date" in "\n".join(report)
+
+
+def test_allowlist_entry_matching_nothing_only_warns(tmp_path):
+    fetchers = write_fetchers_file(tmp_path, 'source_url="https://example.com/x-2027.pdf"\n')
+    exchanges_dir = empty_exchanges_dir(tmp_path)
+    write_exchange_json(exchanges_dir, "XTST.json", [])
+
+    exit_code, report = checker.run_check(
+        fetchers, exchanges_dir, current_year=2027,
+        allowlist={STALE_URL: "2027-06-01"}, today=date(2027, 1, 1),
+    )
+    joined = "\n".join(report)
+
+    assert exit_code == 0
+    assert "matches no scanned URL" in joined
+
+
+def test_main_today_flag_simulates_a_date(tmp_path, capsys):
+    fetchers, exchanges_dir = stale_setup(tmp_path)
+    args = ["check_stale_year_urls.py", "--fetchers", str(fetchers),
+            "--exchanges-dir", str(exchanges_dir)]
+
+    # STALE_URL is not on the real ALLOWLIST, so a 2027 date must fail.
+    assert checker.main(args + ["--today", "2027-01-01"]) == 1
+    assert "Current year: 2027" in capsys.readouterr().out
+    assert checker.main(args + ["--today", "not-a-date"]) == 2
+
+
+def test_real_repo_survives_2027_rollover_until_allowlist_expires():
+    """The release-blocking property this allowlist exists for: on
+    2027-01-01 the real repo's 12 stale hits are all covered, and once
+    the latest entry has expired the check fails again."""
+    repo_root = Path(__file__).parent.parent
+    fetchers = repo_root / "tools" / "update_from_exchange.py"
+    exchanges_dir = repo_root / "exchanges"
+    if not fetchers.exists() or not exchanges_dir.exists():
+        pytest.skip("real repo files not present in this checkout")
+
+    latest = max(date.fromisoformat(d) for d in checker.ALLOWLIST.values())
+
+    exit_code, report = checker.run_check(
+        fetchers, exchanges_dir, today=date(2027, 1, 1)
+    )
+    assert exit_code == 0, "\n".join(report)
+
+    exit_code, report = checker.run_check(
+        fetchers, exchanges_dir, today=date.fromordinal(latest.toordinal() + 1)
+    )
+    assert exit_code == 1, "\n".join(report)
