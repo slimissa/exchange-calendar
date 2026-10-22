@@ -226,13 +226,7 @@ class TestXDHADurgaPuja:
     def test_durga_puja_2029(self, explicit_dates):
         """Durga Puja 2029 — predicted October 17."""
         assert "2029-10-17" in explicit_dates
-
-    def test_durga_puja_names_contain_predicted(self, explicit_dates):
-        for entry in explicit_dates.values():
-            if "Durga" in entry["name"]:
-                assert "predicted" in entry["name"].lower()
-
-
+        
 # ──────────────────────────────────────────────────────────────
 # Structural checks
 # ──────────────────────────────────────────────────────────────

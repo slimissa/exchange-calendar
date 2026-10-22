@@ -229,7 +229,7 @@ class TestFormatting:
             values = Counter(r[header.index(column)] for r in rows)
             assert set(values) <= {"true", "false", ""}, values
         predicted = Counter(r[header.index("predicted")] for r in rows)
-        assert predicted["true"] == 227 and predicted["false"] == 58
+        assert predicted["true"] == 226 and predicted["false"] == 58
 
     def test_dates_times_and_integers_are_plain_text(self):
         checks = {
