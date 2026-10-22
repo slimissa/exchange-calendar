@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.18.1] - 2026-10-21
+
+Patch release. Tooling and tests only: no data, schema or consumer-facing change. `calendar.json`
+differs from 2.18.0 only in `meta.version`. The four SQL files change by one header line and the
+five Parquet files by their `exchange_calendar.version` footer key; the 20 CSV and TSV files do not
+change.
+
+### Added
+
+- CI drift gate: a `Check Parquet exports` step in the `python-core` job runs
+  `python3 tools/export_parquet.py --check` right after `Check CSV/TSV exports`, so a stale
+  Parquet file fails the build in its own named step, as stale SQL and CSV files already do.
+- `tests/test_cross_format_consistency.py`: ADR 0012 promises one shape in three formats, and this
+  test checks it. Each of the five tables is loaded from `exchange_calendar.sqlite.sql` (in-memory
+  SQLite), the RFC CSV file and the Parquet file, and the three must agree on row count, columns
+  and every value in the same row order. Cells are normalized by column kind first (null, boolean,
+  integer, ISO date). The normalizers are strict: `"True"`, SQLite `2` for a boolean, a datetime
+  where a date belongs, and an empty string in SQLite or Parquet are errors, not coerced. Self-tests
+  alter one source at a time and require the comparison to notice.
+
+### Notes
+
+- The 2.18.0 note that nothing in CI runs `tools/export_parquet.py --check` as its own step is true
+  of 2.18.0 and no longer true from this release on.
+- The test covers the RFC CSV dialect only. The Excel, European and TSV files are covered by
+  `tests/test_export_csv.py`.
+
+---
+
 ## [2.18.0] - 2026-10-20
 
 Minor release. Adds the Parquet export. No data change: `calendar.json` differs from 2.17.1 only

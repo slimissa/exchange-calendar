@@ -444,6 +444,20 @@
       "file": "tests/test_calendar_required_fields.py"
     }
   ],
+  "2.18.1": [
+    {
+      "file": ".github/workflows/validate.yml",
+      "contains": "name: Check Parquet exports"
+    },
+    {
+      "file": ".github/workflows/validate.yml",
+      "contains": "python3 tools/export_parquet.py --check"
+    },
+    {
+      "file": "tests/test_cross_format_consistency.py",
+      "contains": "class TestCrossFormat"
+    }
+  ],
   "2.18.0": [
     {
       "file": "tools/export_parquet.py",
