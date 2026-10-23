@@ -1,6 +1,6 @@
 # Fetcher notes
 
-Per-exchange notes for the 46 fetchers registered in `tools/update_from_exchange.py`, moved out of `README.md` in Phase 1a. The 29 sections that existed as README notes are copied verbatim, so each still describes its source as it was at `9b75ff2`. Five fetchers had no README note (XETR, XASX, XTKS, XPRA, XIST) and have a short stub, placed after the notes. The 28 exchanges that are blocked and have no fetcher are not here; they are in [`BLOCKED.md`](../BLOCKED.md). Status per exchange is in the tier tables in [`README.md`](../README.md).
+Per-exchange notes for the 46 fetchers registered in `tools/update_from_exchange.py`, moved out of `README.md` in Phase 1a. The 29 sections that existed as README notes are copied verbatim, so each still describes its source as it was at `9b75ff2`. Five fetchers had no README note (XETR, XASX, XTKS, XPRA, XIST) and have a short stub, placed after the notes. The 28 exchanges that are blocked and have no fetcher are not here; they are in [`BLOCKED.md`](../BLOCKED.md). Status per exchange is in the exchange table in [`README.md`](../README.md).
 
 **Anchors.** Every MIC has an anchor in lowercase, placed above its section: link to `FETCHERS.md#xpar`, not to a heading. Heading text may change; the MIC anchors are the stable reference. Three families also have a name anchor: `#euronext-family`, `#nasdaq-nordic`, `#nasdaq-baltic`.
 
@@ -340,56 +340,56 @@ XTSE and XBSP.
 <a id="xetr"></a>
 ## Xetra (XETR)
 
-*Stub: the README had no note for this exchange. The facts below come from the README tier table and the fetcher class docstring in `tools/update_from_exchange.py`; nothing was re-verified when this file was created.*
+*Stub: the README had no note for this exchange. The facts below come from the README tier table (as it stood at `9b75ff2`) and the fetcher class docstring in `tools/update_from_exchange.py`; nothing was re-verified when this file was created.*
 
-- Status (README tier table): implemented
+- Status (README tier table at `9b75ff2`): implemented
 - Fetcher: `XETRFetcher`
 - Source: <https://www.cashmarket.deutsche-boerse.com/cash-en/trading/trading-calendar-and-trading-hours>
-- Tier table source column: cashmarket.deutsche-boerse.com
+- Source column (README tier table at `9b75ff2`): cashmarket.deutsche-boerse.com
 - Verified live 2026-08-26 (per the docstring): a server-rendered HTML table with one row per holiday name and one column per year (2026 to 2032). The fetcher extracts every `Mon DD, YYYY` date in a row, computes the weekday itself and drops Saturdays and Sundays, so it does not depend on cell styling.
 
 <a id="xasx"></a>
 ## ASX (XASX)
 
-*Stub: the README had no note for this exchange. The facts below come from the README tier table and the fetcher class docstring in `tools/update_from_exchange.py`; nothing was re-verified when this file was created.*
+*Stub: the README had no note for this exchange. The facts below come from the README tier table (as it stood at `9b75ff2`) and the fetcher class docstring in `tools/update_from_exchange.py`; nothing was re-verified when this file was created.*
 
-- Status (README tier table): implemented
+- Status (README tier table at `9b75ff2`): implemented
 - Fetcher: `ASXFetcher`
 - Source: <https://www.asx.com.au/markets/market-resources/trading-hours-calendar/cash-market-trading-hours/trading-calendar>
-- Tier table source column: asx.com.au
+- Source column (README tier table at `9b75ff2`): asx.com.au
 - Verified live 2026-08-26 (per the docstring): server-rendered HTML. The page carries two tables (2026 and 2027), each with its own `Dates for <year>` header, and the fetcher reads the year per table. The Trading Day column maps `CLOSED` to a closure and `CLOSE EARLY` to an early close.
 
 <a id="xtks"></a>
 ## Tokyo (XTKS)
 
-*Stub: the README had no note for this exchange. The facts below come from the README tier table and the fetcher class docstring in `tools/update_from_exchange.py`; nothing was re-verified when this file was created.*
+*Stub: the README had no note for this exchange. The facts below come from the README tier table (as it stood at `9b75ff2`) and the fetcher class docstring in `tools/update_from_exchange.py`; nothing was re-verified when this file was created.*
 
-- Status (README tier table): implemented
+- Status (README tier table at `9b75ff2`): implemented
 - Fetcher: `TokyoFetcher`
 - Source: <https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html>
-- Tier table source column: jpx.co.jp (English-language table)
+- Source column (README tier table at `9b75ff2`): jpx.co.jp (English-language table)
 - Verified live 2026-08-26 (per the docstring): a server-rendered English table under per-year headings, with dates written like `Jan. 1 (Thu.)`. The year comes from the nearest preceding heading.
 
 <a id="xpra"></a>
 ## Prague (XPRA)
 
-*Stub: the README had no note for this exchange. The facts below come from the README tier table and the fetcher class docstring in `tools/update_from_exchange.py`; nothing was re-verified when this file was created.*
+*Stub: the README had no note for this exchange. The facts below come from the README tier table (as it stood at `9b75ff2`) and the fetcher class docstring in `tools/update_from_exchange.py`; nothing was re-verified when this file was created.*
 
-- Status (README tier table): implemented
+- Status (README tier table at `9b75ff2`): implemented
 - Fetcher: `PragueFetcher`
 - Source: <https://www.pse.cz/en/trading/trading-information/trading-calendar>
-- Tier table source column: pse.cz
+- Source column (README tier table at `9b75ff2`): pse.cz
 - Verified live 2026-08-31 (per the docstring): static HTML with real holiday names, grouped under `YYYY Non-business days` headings, with 2025 and 2026 both present at verification time.
 
 <a id="xist"></a>
 ## Borsa Istanbul (XIST)
 
-*Stub: the README had no note for this exchange. The facts below come from the README tier table and the fetcher class docstring in `tools/update_from_exchange.py`; nothing was re-verified when this file was created.*
+*Stub: the README had no note for this exchange. The facts below come from the README tier table (as it stood at `9b75ff2`) and the fetcher class docstring in `tools/update_from_exchange.py`; nothing was re-verified when this file was created.*
 
-- Status (README tier table): implemented
+- Status (README tier table at `9b75ff2`): implemented
 - Fetcher: `XISTFetcher`
 - Source: <https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf>
-- Tier table source column: borsaistanbul.com equity-market holiday PDF (one PDF per market segment; Turkish closures only); the tier table also points to `BLOCKED.md`
+- Source column (README tier table at `9b75ff2`): borsaistanbul.com equity-market holiday PDF (one PDF per market segment; Turkish closures only); the tier table also points to `BLOCKED.md`
 - Verified live 2026-10-01 (per the docstring): Borsa Istanbul publishes one PDF per market segment and only the equity PDF is used. Known limitation from the docstring: single-year PDF, year-specific URL, the same annual-update pattern as XDFM, XWBO and XBUD. The URL is assembled from two adjacent string literals, so `tools/check_stale_year_urls.py` does not scan it.
 
 ## Discrepancies

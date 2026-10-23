@@ -216,123 +216,86 @@ python3 tools/update_from_exchange.py --all --force
 
 **46 of 74 registry exchanges have automated fetchers as of v2.15.4** — 41 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or permanently blocked (XKUW, XSAU). The remaining 28 are documented as blocked sources in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange.
 
-#### Tier 1 (11 of 11)
+Sorted by MIC. ✅ implemented, verified from CI on every run · ⚠️ CI-unreachable: a fetcher exists, but the source rejects GitHub-hosted runners (XSHG: 403; XHKG: CDN returns 404 to GitHub IPs; XNSA: see its BLOCKED.md entry) · ⛔ blocked: the source cannot be fetched automatically and the calendar is maintained by hand.
 
-| Exchange | MIC | Status | Source |
-|----------|-----|--------|--------|
-| New York Stock Exchange | XNYS | ✅ Implemented | ir.theice.com (IR press release — see [FETCHERS.md#xnys](./docs/FETCHERS.md#xnys)) |
-| NASDAQ | XNAS | ✅ Implemented | Mirrors NYSE — see [FETCHERS.md#xnas](./docs/FETCHERS.md#xnas) |
-| London Stock Exchange | XLON | ✅ Implemented | UK gov bank-holidays.json (proxy, not LSE-published) — see [FETCHERS.md#xlon](./docs/FETCHERS.md#xlon) |
-| Deutsche Boerse Xetra | XETR | ✅ Implemented | cashmarket.deutsche-boerse.com — see [FETCHERS.md#xetr](./docs/FETCHERS.md#xetr) |
-| Australian Securities Exchange | XASX | ✅ Implemented | asx.com.au — see [FETCHERS.md#xasx](./docs/FETCHERS.md#xasx) |
-| Euronext Paris | XPAR | ✅ Implemented | euronext.com (shared Euronext fetcher) — see [FETCHERS.md#xpar](./docs/FETCHERS.md#xpar) |
-| Euronext Amsterdam | XAMS | ✅ Implemented | euronext.com (shared Euronext fetcher) — see [FETCHERS.md#xams](./docs/FETCHERS.md#xams) |
-| Tokyo Stock Exchange | XTKS | ✅ Implemented | jpx.co.jp (English-language table) — see [FETCHERS.md#xtks](./docs/FETCHERS.md#xtks) |
-| Shanghai Stock Exchange | XSHG | ⚠️ CI-unreachable | english.sse.com.cn — 403 from GitHub runners, works from residential IP — see [FETCHERS.md#xshg](./docs/FETCHERS.md#xshg) |
-| Shenzhen Stock Exchange | XSHE | ✅ Implemented | szse.cn — parser rewritten 2026-09-17 for prose format (was table-based) — see [FETCHERS.md#xshe](./docs/FETCHERS.md#xshe) |
-| Hong Kong Exchange | XHKG | ⚠️ CI-unreachable | hkex.com.hk Stock Connect CSV — CDN returns 404 to GitHub IPs — see [FETCHERS.md#xhkg](./docs/FETCHERS.md#xhkg) |
+| Exchange | MIC | Status | Source | Notes |
+|----------|-----|:------:|--------|-------|
+| Qatar Exchange | DSMD | ⛔ | qe.com.qa | [BLOCKED.md#dsmd](BLOCKED.md#dsmd) |
+| Euronext Amsterdam | XAMS | ✅ | euronext.com | [#xams](docs/FETCHERS.md#xams) |
+| Australian Securities Exchange | XASX | ✅ | asx.com.au | [#xasx](docs/FETCHERS.md#xasx) |
+| Athens Exchange | XATH | ⛔ | athens.euronext.com | [BLOCKED.md#xath](BLOCKED.md#xath) |
+| Bahrain Bourse | XBAH | ⛔ | bahrainbourse.com | [BLOCKED.md#xbah](BLOCKED.md#xbah) |
+| Bermuda Stock Exchange | XBDA | ✅ | bsx.com | [#xbda](docs/FETCHERS.md#xbda) |
+| Beirut Stock Exchange | XBEY | ⛔ | bse.com.lb | [BLOCKED.md#xbey](BLOCKED.md#xbey) |
+| Stock Exchange of Thailand | XBKK | ⛔ | set.or.th | [BLOCKED.md#xbkk](BLOCKED.md#xbkk) |
+| Bolsa de Valores de Colombia | XBOG | ⛔ | bvc.com.co | [BLOCKED.md#xbog](BLOCKED.md#xbog) |
+| BSE India | XBOM | ⛔ | bseindia.com | [BLOCKED.md#xbom](BLOCKED.md#xbom) |
+| Euronext Brussels | XBRU | ✅ | euronext.com | [#xbru](docs/FETCHERS.md#xbru) |
+| BRVM (8 UEMOA countries) | XBRV | ✅ | brvm.org | [#xbrv](docs/FETCHERS.md#xbrv) |
+| B3 (Brazil) | XBSP | ✅ | b3.com.br | [#xbsp](docs/FETCHERS.md#xbsp) |
+| Budapest Stock Exchange | XBUD | ✅ | bse.hu | [#xbud](docs/FETCHERS.md#xbud) |
+| Bolsas y Mercados Argentinos | XBUE | ✅ | byma.com.ar | [#xbue](docs/FETCHERS.md#xbue) |
+| Bulgarian Stock Exchange | XBUL | ⛔ | bse-sofia.bg | [BLOCKED.md#xbul](BLOCKED.md#xbul) |
+| Egyptian Exchange | XCAI | ⛔ | egx.com.eg | [BLOCKED.md#xcai](BLOCKED.md#xcai) |
+| Bourse de Casablanca | XCAS | ⛔ | casablanca-bourse.com | [BLOCKED.md#xcas](BLOCKED.md#xcas) |
+| Cayman Islands Stock Exchange | XCAY | ✅ | csx.ky | [#xcay](docs/FETCHERS.md#xcay) |
+| Colombo Stock Exchange | XCOL | ✅ | cdn.cse.lk | [#xcol](docs/FETCHERS.md#xcol) |
+| Nasdaq Copenhagen | XCSE | ✅ | nasdaq.com | [#xcse](docs/FETCHERS.md#xcse) |
+| Dubai Financial Market | XDFM | ✅ | assets.dfm.ae | [#xdfm](docs/FETCHERS.md#xdfm) |
+| Dhaka Stock Exchange | XDHA | ⛔ | dsebd.org | [BLOCKED.md#xdha](BLOCKED.md#xdha) |
+| Euronext Dublin | XDUB | ✅ | euronext.com | [#xdub](docs/FETCHERS.md#xdub) |
+| Deutsche Boerse Xetra | XETR | ✅ | cashmarket.deutsche-boerse.com | [#xetr](docs/FETCHERS.md#xetr) |
+| Ghana Stock Exchange | XGSE | ✅ | gse.com.gh | [#xgse](docs/FETCHERS.md#xgse) |
+| Nasdaq Helsinki | XHEL | ✅ | nasdaq.com | [#xhel](docs/FETCHERS.md#xhel) |
+| Hong Kong Exchange | XHKG | ⚠️ | hkex.com.hk | [#xhkg](docs/FETCHERS.md#xhkg), [BLOCKED.md#xhkg](BLOCKED.md#xhkg) |
+| Nasdaq Iceland | XICE | ✅ | nasdaq.com | [#xice](docs/FETCHERS.md#xice) |
+| Borsa Istanbul | XIST | ✅ | borsaistanbul.com | [#xist](docs/FETCHERS.md#xist) |
+| Indonesia Stock Exchange | XJKT | ⛔ | idx.co.id | [BLOCKED.md#xjkt](BLOCKED.md#xjkt) |
+| Johannesburg Stock Exchange | XJSE | ⛔ | jse.co.za | [BLOCKED.md#xjse](BLOCKED.md#xjse) |
+| Pakistan Stock Exchange | XKAR | ⛔ | psx.com.pk | [BLOCKED.md#xkar](BLOCKED.md#xkar) |
+| Bursa Malaysia | XKLS | ⛔ | bursamalaysia.com | [BLOCKED.md#xkls](BLOCKED.md#xkls) |
+| Korea Exchange | XKRX | ⛔ | global.krx.co.kr | [BLOCKED.md#xkrx](BLOCKED.md#xkrx) |
+| Boursa Kuwait | XKUW | ⛔ | boursakuwait.com.kw | [#xkuw](docs/FETCHERS.md#xkuw), [BLOCKED.md#xkuw](BLOCKED.md#xkuw) |
+| Bolsa de Valores de Lima | XLIM | ⛔ | bvl.com.pe | [BLOCKED.md#xlim](BLOCKED.md#xlim) |
+| Euronext Lisbon | XLIS | ✅ | euronext.com | [#xlis](docs/FETCHERS.md#xlis) |
+| Nasdaq Vilnius | XLIT | ✅ | nasdaqbaltic.com | [#xlit](docs/FETCHERS.md#xlit) |
+| London Stock Exchange | XLON | ✅ | gov.uk | [#xlon](docs/FETCHERS.md#xlon) |
+| Luxembourg Stock Exchange | XLUX | ✅ | luxse.com | [#xlux](docs/FETCHERS.md#xlux) |
+| BME (Bolsa de Madrid) | XMAD | ✅ | bolsasymercados.es | [#xmad](docs/FETCHERS.md#xmad) |
+| Malta Stock Exchange | XMAL | ✅ | borzamalta.com.mt | [#xmal](docs/FETCHERS.md#xmal) |
+| Bolsa Mexicana de Valores | XMEX | ✅ | bmv.com.mx | [#xmex](docs/FETCHERS.md#xmex) |
+| Moscow Exchange | XMOS | ✅ | moex.com | [#xmos](docs/FETCHERS.md#xmos) |
+| Muscat Securities Market | XMUS | ⛔ | msx.om | [BLOCKED.md#xmus](BLOCKED.md#xmus) |
+| Nairobi Securities Exchange | XNAI | ⛔ | nse.co.ke | [BLOCKED.md#xnai](BLOCKED.md#xnai) |
+| NASDAQ | XNAS | ✅ | ir.theice.com | [#xnas](docs/FETCHERS.md#xnas) |
+| Nigerian Exchange Group | XNSA | ⚠️ | ngxgroup.com | [#xnsa](docs/FETCHERS.md#xnsa), [BLOCKED.md#xnsa](BLOCKED.md#xnsa) |
+| NSE India | XNSE | ⛔ | nseindia.com | [BLOCKED.md#xnse](BLOCKED.md#xnse) |
+| New York Stock Exchange | XNYS | ✅ | ir.theice.com | [#xnys](docs/FETCHERS.md#xnys) |
+| New Zealand Exchange | XNZE | ⛔ | nzx.com | [BLOCKED.md#xnze](BLOCKED.md#xnze) |
+| Oslo Bors (Euronext Oslo) | XOSL | ✅ | euronext.com | [#xosl](docs/FETCHERS.md#xosl) |
+| Euronext Paris | XPAR | ✅ | euronext.com | [#xpar](docs/FETCHERS.md#xpar) |
+| Philippine Stock Exchange | XPHS | ⛔ | pse.com.ph | [BLOCKED.md#xphs](BLOCKED.md#xphs) |
+| Prague Stock Exchange | XPRA | ✅ | pse.cz | [#xpra](docs/FETCHERS.md#xpra) |
+| Nasdaq Riga | XRIS | ✅ | nasdaqbaltic.com | [#xris](docs/FETCHERS.md#xris) |
+| Saudi Exchange (Tadawul) | XSAU | ⛔ | saudiexchange.sa | [#xsau](docs/FETCHERS.md#xsau), [BLOCKED.md#xsau](BLOCKED.md#xsau) |
+| Singapore Exchange | XSES | ⛔ | sgx.com | [BLOCKED.md#xses](BLOCKED.md#xses) |
+| Santiago Stock Exchange | XSGO | ⛔ | bolsadesantiago.com | [BLOCKED.md#xsgo](BLOCKED.md#xsgo) |
+| Shenzhen Stock Exchange | XSHE | ✅ | szse.cn | [#xshe](docs/FETCHERS.md#xshe) |
+| Shanghai Stock Exchange | XSHG | ⚠️ | english.sse.com.cn | [#xshg](docs/FETCHERS.md#xshg), [BLOCKED.md#xshg](BLOCKED.md#xshg) |
+| Ho Chi Minh Stock Exchange | XSTC | ✅ | staticfile.hsx.vn | [#xstc](docs/FETCHERS.md#xstc) |
+| Nasdaq Stockholm | XSTO | ✅ | nasdaq.com | [#xsto](docs/FETCHERS.md#xsto) |
+| SIX Swiss Exchange | XSWX | ⛔ | six-group.com | [BLOCKED.md#xswx](BLOCKED.md#xswx) |
+| Abu Dhabi Securities Exchange | XTAD | ⛔ | adx.ae | [BLOCKED.md#xtad](BLOCKED.md#xtad) |
+| Taiwan Stock Exchange | XTAI | ⛔ | twse.com.tw | [BLOCKED.md#xtai](BLOCKED.md#xtai) |
+| Nasdaq Tallinn | XTAL | ✅ | nasdaqbaltic.com | [#xtal](docs/FETCHERS.md#xtal) |
+| Tokyo Stock Exchange | XTKS | ✅ | jpx.co.jp | [#xtks](docs/FETCHERS.md#xtks) |
+| Toronto Stock Exchange | XTSE | ✅ | tsx.com | [#xtse](docs/FETCHERS.md#xtse) |
+| Bourse de Tunis | XTUN | ⛔ | bvmt.com.tn | [BLOCKED.md#xtun](BLOCKED.md#xtun) |
+| Warsaw Stock Exchange | XWAR | ✅ | gpw.pl | [#xwar](docs/FETCHERS.md#xwar) |
+| Vienna Stock Exchange | XWBO | ✅ | wienerborse.at | [#xwbo](docs/FETCHERS.md#xwbo) |
+| Zagreb Stock Exchange | XZAG | ✅ | zse.hr | [#xzag](docs/FETCHERS.md#xzag) |
 
-#### Tier 2 (3 of 10 — regional hubs proved much harder to automate)
-
-| Exchange | MIC | Status | Source |
-|----------|-----|--------|--------|
-| Toronto Stock Exchange | XTSE | ✅ Implemented | tsx.com — see [FETCHERS.md#xtse](./docs/FETCHERS.md#xtse) |
-| BME (Bolsa de Madrid) | XMAD | ✅ Implemented | bolsasymercados.es — see [FETCHERS.md#xmad](./docs/FETCHERS.md#xmad) |
-| Saudi Exchange (Tadawul) | XSAU | ⛔ Blocked (403 from all IPs) | saudiexchange.sa — see `BLOCKED.md` and [FETCHERS.md#xsau](./docs/FETCHERS.md#xsau) |
-| Singapore Exchange | XSES | ⛔ Blocked | JS shell + derivatives-only PDF — see `BLOCKED.md` |
-| SIX Swiss Exchange | XSWX | ⛔ Blocked | PDF visual grid, no per-day text labels — see `BLOCKED.md` |
-| Korea Exchange | XKRX | ⛔ Blocked | JS/AJAX grid, no API found — see `BLOCKED.md` |
-| BSE India | XBOM | ⛔ Blocked | Known page is bot-walled — see `BLOCKED.md` |
-| NSE India | XNSE | ⛔ Blocked | JS/AJAX table behind dropdowns — see `BLOCKED.md` |
-| Indonesia Stock Exchange | XJKT | ⛔ Blocked | Real PDF exists but bot-blocked — see `BLOCKED.md` |
-| Taiwan Stock Exchange | XTAI | ⛔ Blocked | JS-rendered page; full public API spec reviewed, no holiday endpoint exists — see `BLOCKED.md` |
-
-#### Tier 3 (4 of 10 — Gulf/EMEA; PDF-only was the dominant blocker here, not JS-rendering)
-
-| Exchange | MIC | Status | Source |
-|----------|-----|--------|--------|
-| Dubai Financial Market | XDFM | ✅ Implemented | dfm.ae annual PDF circular — see [FETCHERS.md#xdfm](./docs/FETCHERS.md#xdfm) |
-| Boursa Kuwait | XKUW | ⛔ Blocked (403 from all IPs) | boursakuwait.com.kw — see `BLOCKED.md` and [FETCHERS.md#xkuw](./docs/FETCHERS.md#xkuw) |
-| Moscow Exchange | XMOS | ✅ Implemented | moex.com — see [FETCHERS.md#xmos](./docs/FETCHERS.md#xmos) (fragile source) |
-| Abu Dhabi Securities Exchange | XTAD | ⛔ Blocked | Next.js JS SPA — see `BLOCKED.md` |
-| Bahrain Bourse | XBAH | ⛔ Blocked | Official Holidays page content area is empty (client-side webpart) — see `BLOCKED.md` |
-| Qatar Exchange | DSMD | ⛔ Blocked | JS/AJAX Liferay portal widget — see `BLOCKED.md` |
-| Egyptian Exchange | XCAI | ⛔ Blocked | Static HTML but stuck serving 2019 data — see `BLOCKED.md` |
-| Johannesburg Stock Exchange | XJSE | ⛔ Blocked | PDF exists but is itself bot-walled — see `BLOCKED.md` |
-| Borsa Istanbul | XIST | ✅ Implemented | borsaistanbul.com equity-market holiday PDF (one PDF per market segment; Turkish closures only) — see `BLOCKED.md` and [FETCHERS.md#xist](./docs/FETCHERS.md#xist) |
-| Muscat Securities Market | XMUS | ⛔ Blocked | Found the real page; content area is empty (client-side) — see `BLOCKED.md` |
-
-#### Tier 4 (8 of 9 — European smaller markets; best hit rate after Tier 1)
-
-| Exchange | MIC | Status | Source |
-|----------|-----|--------|--------|
-| Vienna Stock Exchange | XWBO | ✅ Implemented | wienerborse.at PDF — see [FETCHERS.md#xwbo](./docs/FETCHERS.md#xwbo) |
-| Warsaw Stock Exchange | XWAR | ✅ Implemented | gpw.pl — see [FETCHERS.md#xwar](./docs/FETCHERS.md#xwar) |
-| Prague Stock Exchange | XPRA | ✅ Implemented | pse.cz — cleanest source found this round — see [FETCHERS.md#xpra](./docs/FETCHERS.md#xpra) |
-| Budapest Stock Exchange | XBUD | ✅ Implemented | bse.hu PDF resolution — see [FETCHERS.md#xbud](./docs/FETCHERS.md#xbud) |
-| Euronext Dublin | XDUB | ✅ Implemented | euronext.com (shared Euronext fetcher) — see [FETCHERS.md#xdub](./docs/FETCHERS.md#xdub) |
-| Euronext Brussels | XBRU | ✅ Implemented | euronext.com (shared Euronext fetcher) — see [FETCHERS.md#xbru](./docs/FETCHERS.md#xbru) |
-| Euronext Lisbon | XLIS | ✅ Implemented | euronext.com (shared Euronext fetcher) — see [FETCHERS.md#xlis](./docs/FETCHERS.md#xlis) |
-| Oslo Bors (Euronext Oslo) | XOSL | ✅ Implemented | euronext.com — see [FETCHERS.md#xosl](./docs/FETCHERS.md#xosl) (NOT Nasdaq Nordic) |
-| Athens Exchange | XATH | ⛔ Blocked | Visual-grid PDF, no per-day text labels — see `BLOCKED.md` |
-
-#### Tier 5 (7 of 7 — Nordic/Baltic; clean sweep via two shared sources)
-
-| Exchange | MIC | Status | Source |
-|----------|-----|--------|--------|
-| Nasdaq Stockholm | XSTO | ✅ Implemented | nasdaq.com Nordic trading-hours page — see [FETCHERS.md#xsto](./docs/FETCHERS.md#xsto) |
-| Nasdaq Helsinki | XHEL | ✅ Implemented | nasdaq.com Nordic trading-hours page — see [FETCHERS.md#xhel](./docs/FETCHERS.md#xhel) |
-| Nasdaq Copenhagen | XCSE | ✅ Implemented | nasdaq.com Nordic trading-hours page — see [FETCHERS.md#xcse](./docs/FETCHERS.md#xcse) |
-| Nasdaq Iceland | XICE | ✅ Implemented | nasdaq.com Nordic trading-hours page — see [FETCHERS.md#xice](./docs/FETCHERS.md#xice) |
-| Nasdaq Tallinn | XTAL | ✅ Implemented | nasdaqbaltic.com — see [FETCHERS.md#xtal](./docs/FETCHERS.md#xtal) |
-| Nasdaq Riga | XRIS | ✅ Implemented | nasdaqbaltic.com — see [FETCHERS.md#xris](./docs/FETCHERS.md#xris) |
-| Nasdaq Vilnius | XLIT | ✅ Implemented | nasdaqbaltic.com — see [FETCHERS.md#xlit](./docs/FETCHERS.md#xlit) |
-
-#### Tier 6 (4 of 10 implemented — emerging markets; thorough on Latin America, resolved the rest)
-
-| Exchange | MIC | Status | Source |
-|----------|-----|--------|--------|
-| B3 (Brazil) | XBSP | ✅ Implemented | b3.com.br — see [FETCHERS.md#xbsp](./docs/FETCHERS.md#xbsp) (most complex fetcher in this registry) |
-| Bolsa Mexicana de Valores | XMEX | ✅ Implemented | bmv.com.mx — see [FETCHERS.md#xmex](./docs/FETCHERS.md#xmex) |
-| Bolsas y Mercados Argentinos | XBUE | ✅ Implemented | byma.com.ar — see [FETCHERS.md#xbue](./docs/FETCHERS.md#xbue) |
-| Santiago Stock Exchange | XSGO | ⛔ Blocked | JS SPA shell — see `BLOCKED.md` |
-| Bursa Malaysia | XKLS | ⛔ Blocked | Bot-walled — see `BLOCKED.md` |
-| Bolsa de Valores de Colombia | XBOG | ⛔ Blocked | No first-party page found across two search attempts — see `BLOCKED.md` |
-| Bolsa de Valores de Lima | XLIM | ⛔ Blocked | Found the page; confirmed JS SPA shell — see `BLOCKED.md` |
-| Philippine Stock Exchange | XPHS | ⛔ Blocked | Found the exact holiday table; empty with unrendered template placeholder — see `BLOCKED.md` |
-| Stock Exchange of Thailand | XBKK | ⛔ Blocked | Both PDF and "E-Calendar" are flipbook renderers, no extractable text — see `BLOCKED.md` |
-| Ho Chi Minh Stock Exchange | XSTC | ✅ Implemented | staticfile.hsx.vn — resolved in Tier 7, see [FETCHERS.md#xstc](./docs/FETCHERS.md#xstc) |
-
-#### Tier 7 (4 of 9 — Africa/South Asia; infrastructure model applied as a predictive filter)
-
-| Exchange | MIC | Status | Source |
-|----------|-----|--------|--------|
-| Nigerian Exchange Group | XNSA | ⚠️ CI-unreachable | ngxgroup.com — see [FETCHERS.md#xnsa](./docs/FETCHERS.md#xnsa) |
-| BRVM (8 UEMOA countries) | XBRV | ✅ Implemented | brvm.org — see [FETCHERS.md#xbrv](./docs/FETCHERS.md#xbrv) (shared-infrastructure win) |
-| Colombo Stock Exchange | XCOL | ✅ Implemented | cdn.cse.lk official circular — see [FETCHERS.md#xcol](./docs/FETCHERS.md#xcol) |
-| Bourse de Tunis | XTUN | ⛔ Blocked | JS-rendered — see `BLOCKED.md` |
-| Bourse de Casablanca | XCAS | ⛔ Blocked | robots.txt disallows automated access — see `BLOCKED.md` |
-| Pakistan Stock Exchange | XKAR | ⛔ Blocked | Official PDF returns no extractable text — see `BLOCKED.md` |
-| Dhaka Stock Exchange | XDHA | ⛔ Blocked | robots.txt disallows automated access — see `BLOCKED.md` |
-| Nairobi Securities Exchange | XNAI | ⛔ Blocked | Resolved in Tier 8: 6 pages, identical JS-SPA signature — see `BLOCKED.md` |
-| Ghana Stock Exchange | XGSE | ✅ Implemented | Resolved in Tier 8: gse.com.gh/events/ — see [FETCHERS.md#xgse](./docs/FETCHERS.md#xgse) |
-
-#### Tier 8 (5 of 8 — small/island markets; FINAL TIER)
-
-| Exchange | MIC | Status | Source |
-|----------|-----|--------|--------|
-| Bermuda Stock Exchange | XBDA | ✅ Implemented | bsx.com — see [FETCHERS.md#xbda](./docs/FETCHERS.md#xbda) (one of the cleanest sources in this registry) |
-| Cayman Islands Stock Exchange | XCAY | ✅ Implemented | csx.ky — see [FETCHERS.md#xcay](./docs/FETCHERS.md#xcay) |
-| Luxembourg Stock Exchange | XLUX | ✅ Implemented | luxse.com — see [FETCHERS.md#xlux](./docs/FETCHERS.md#xlux) (deliberately sparse, flagged) |
-| Malta Stock Exchange | XMAL | ✅ Implemented | borzamalta.com.mt — see [FETCHERS.md#xmal](./docs/FETCHERS.md#xmal) |
-| Bulgarian Stock Exchange | XBUL | ⛔ Blocked | Calendar widget appears dynamically loaded — see `BLOCKED.md` |
-| Zagreb Stock Exchange | XZAG | ✅ Implemented | zse.hr — see [FETCHERS.md#xzag](./docs/FETCHERS.md#xzag) |
-| Beirut Stock Exchange | XBEY | ⛔ Blocked | 2 independent timeouts — confirms the brief's own instability concern — see `BLOCKED.md` |
-| New Zealand Exchange | XNZE | ⛔ Blocked | JS-loaded content + 2 dead-end PDF/page links — contradicts "likely simple" — see `BLOCKED.md` |
-
-| *(28 exchanges)* | — | ⛔ Blocked | All confirmed blocked across Tiers 2-8 — see `BLOCKED.md` for full detail per exchange |
-
-Per-exchange fetcher notes (source quirks, known limitations, expiring sources) are in [`docs/FETCHERS.md`](./docs/FETCHERS.md); each row above that has a fetcher links to its section.
+Fetcher notes (source quirks, known limitations, expiring sources) are in [`docs/FETCHERS.md`](./docs/FETCHERS.md); the reasoning behind every blocked source is in [`BLOCKED.md`](./BLOCKED.md).
 
 ### CI/CD Automation
 
