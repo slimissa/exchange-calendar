@@ -3,7 +3,7 @@
 **The world's most comprehensive open-source registry of global exchange trading calendars — 74 exchanges across 6 continents.**
 
 One JSON file per exchange. Zero runtime dependencies. Four language wrappers.
-Seventy-four exchanges. 46 have registered fetchers — 41 verified against live sources from CI on every run, 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 28 are documented as blocked sources, with reasoning recorded in [BLOCKED.md](./BLOCKED.md).
+Seventy-four exchanges. 46 have registered fetchers — 41 verified against live sources from CI on every run, 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 28 have no fetcher and are documented as blocked sources (30 exchanges are blocked in total, counting XKUW and XSAU), with reasoning recorded in [BLOCKED.md](./BLOCKED.md).
 
 [![Validate](https://github.com/slimissa/exchange-calendar/actions/workflows/validate.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/validate.yml)
 [![Update](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml)
@@ -214,7 +214,7 @@ python3 tools/update_from_exchange.py --all --force
 
 ### Currently Supported Fetchers
 
-**46 of 74 registry exchanges have automated fetchers as of v2.15.4** — 41 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 28 are documented as blocked sources in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange.
+**46 of 74 registry exchanges have automated fetchers as of v2.15.4** — 41 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 28 have no fetcher and are documented as blocked sources (30 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange.
 
 Sorted by MIC. ✅ implemented, verified from CI on every run · ⚠️ CI-unreachable: a fetcher exists, but the source rejects GitHub-hosted runners (XSHG: 403; XHKG: CDN returns 404 to GitHub IPs; XNSA: see its BLOCKED.md entry) · ⛔ blocked: the source cannot be fetched automatically and the calendar is maintained by hand.
 

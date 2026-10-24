@@ -77,10 +77,11 @@ holiday-by-holiday against LSE's actual closures.
 **XSHG/XSHE note:** both pages describe closures as natural-language date
 ranges ("close from X to Y") rather than one row per date, so these fetchers
 expand ranges into individual weekdays rather than reading dates directly.
-**As of verification, neither page had published 2026 Golden Week dates yet**
-— both fetchers read whatever year sections exist on the page rather than
-hardcoding a year, so they'll pick up new years automatically once published,
+Both fetchers read whatever year sections exist on the page rather than
+hardcoding a year, so they pick up new years automatically once published,
 but don't assume current-year coverage without checking the returned dates.
+(`XSHG.json` and `XSHE.json` both carry the October 2026 National Day closures,
+from 2026-10-01.)
 
 <a id="xhkg"></a>
 ## Hong Kong (XHKG)
@@ -382,12 +383,13 @@ candidate year makes the first row's stated weekday match a computed date.
 <a id="xlux"></a>
 ## Luxembourg (XLUX)
 
-**XLUX note (Luxembourg):** real but deliberately sparse — only one
-closure (Christmas Day) was confirmed present for 2026. This may
-accurately reflect LuxSE's calendar (primarily a listing venue, not a
-high-volume equity market) or may omit client-side-rendered entries. Every
-entry carries an explicit `note` flagging this as not confirmed complete,
-rather than presenting it with the same confidence as richer sources.
+**XLUX note (Luxembourg):** `XLUX.json` has 10 closures for 2026 (New Year's
+Day, Good Friday, Easter Monday, Labour Day, Ascension Day, Whit Monday,
+National Day, Christmas Eve, Christmas Day, and a substituted Boxing Day on
+2026-12-28). Entries carry no `note`: `schema.json` allows none on explicit
+holiday entries. LuxSE is primarily a listing venue, not a
+high-volume equity market; whether the calendar is complete is not recorded
+here.
 
 <a id="xmal"></a>
 ## Malta (XMAL)

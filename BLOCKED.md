@@ -1432,8 +1432,6 @@ wrong without the reasoning behind it.
 marked `built`.
 
 - **built** — a calendar exists and no unresolved block is recorded.
-  Four of these (XBUD, XDFM, XGSE, XSTC) have a section above because a
-  fetcher exists and its health or one date needs tracking.
 - **blocked** — the source cannot be fetched automatically (bot wall,
   dead URL, robots.txt, visual-grid PDF, no endpoint). The calendar
   itself is maintained by hand.
