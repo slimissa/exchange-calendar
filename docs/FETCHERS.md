@@ -37,7 +37,10 @@ User-Agent since it's not a header check; an earlier report of a plain
 allowlist, a mistake worth naming rather than glossing over). `NYSEFetcher`
 now points at NYSE Group's own Investor Relations press release on
 `ir.theice.com`, which publishes the same authoritative 3-year holiday table
-and isn't blocked. **Updated again 2026-08-29** to the newer 2026-2028
+and isn't blocked. BLOCKED.md (2026-10-07) cites
+`nyse.com/trade/hours-calendars` as the tier-1 source for the 2026 list, so
+nyse.com is a tier-1 source for 2026 even though its WAF makes it hard for the
+fetcher to read. **Updated again 2026-08-29** to the newer 2026-2028
 release after the previous 2025-2027 one was flagged as going stale — this
 had sat unfixed for two rounds after first being noted, fixed now rather
 than deferred again. **This URL will need manual updating once the 2028
@@ -53,8 +56,11 @@ blank day grid). Rather than ship a scraper against a page that doesn't
 expose its data, `NASDAQFetcher` reuses `NYSEFetcher`'s parser against
 whichever source `NYSEFetcher` itself currently uses (read dynamically, not
 hardcoded, so the two can't silently drift apart the way they briefly did),
-since NASDAQ and NYSE observe an identical US equity holiday calendar. Every
-mirrored entry carries a `note` field documenting this.
+since NASDAQ and NYSE observe an identical US equity holiday calendar.
+BLOCKED.md (2026-10-07) cites a different nasdaq.com page,
+`nasdaq.com/market-activity/stock-market-holiday-schedule`, as the tier-1
+source for 2026, so nasdaq.com is a tier-1 source for 2026 even though the
+fetcher does not read it.
 
 <a id="xlon"></a>
 ## London (XLON)
@@ -102,8 +108,13 @@ issues, not actual TSX closures) in the same accordion widget.
 ## Madrid (XMAD)
 
 **XMAD note:** bolsasymercados.es gives no holiday names at all — only
-"Nth of Month / Weekday" pairs — and only publishes the current year, no
-multi-year table. `BMEMadridFetcher` uses generic labels ("BME Non-Trading
+"Nth of Month / Weekday" pairs — and the page the fetcher reads
+(`bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html`) shows
+only the current year, with no multi-year table. BME does publish multi-year
+calendars elsewhere on `bolsasymercados.es`: its operational
+instructions (Instrucciones Operativas) cover 2022 (53/2021), 2024 (45/2023),
+2025 (52/2024) and 2026 (65/2025), and BLOCKED.md uses them as its tier-1
+source. `BMEMadridFetcher` uses generic labels ("BME Non-Trading
 Day") rather than guessing real names, and exposes a
 `current_year_only = True` class attribute so callers know not to expect
 forward coverage the way NYSE/XETR/XSAU provide.
@@ -146,7 +157,12 @@ be the single most common blocker across all three tiers checked so far.
 Islamic holidays are footnoted "*" by DFM itself as tentative, mapped
 directly onto `HolidayEntry.predicted`. Like NYSE/HKEX, the PDF's URL is
 circular-specific and year-specific; will need a manual update once DFM
-issues its 2027 circular.
+issues its 2027 circular. **Divergence recorded 2026-10-03 (BLOCKED.md):**
+the PDF omits 2026-12-01 (Commemoration Day) while `XDFM.json` keeps it as a
+closure. The two disagree, and the file keeps the entry. The fetcher is
+present but not authoritative for that date, and the removal guard blocks a
+refresh until a third source (the prior-year DFM circular or a UAE regulatory
+notice) settles it.
 
 <a id="xkuw"></a>
 ## Kuwait (XKUW)
@@ -230,6 +246,19 @@ XOSL since that MIC already has a working Euronext-sourced fetcher and
 using two sources for one MIC risks silent disagreement. No per-day holiday
 names given, only a combined list per market.
 
+**How the page is read (code, XICE included).** The fetcher requests
+`https://www.nasdaq.com/european-market-activity/trading-hours`. For each
+"Exchange Holiday Schedule <year>" section it finds the market's row ("Iceland"
+for XICE) and takes the second cell, the Equity/Equity derivatives column.
+It splits that cell at "Half trading days:". In the part before it (the
+"Closed" cell) it reads every `Mon D, YYYY` date; the part after it gives the
+half days. So a "Closed" cell is parsed only if the dates are in its text. On
+2026-10-07 BLOCKED.md recorded that, from the environment used for the sweep,
+this page showed "Closed" cells without dates for Iceland, and that the
+`source_url` on the existing XICE entries is
+`nasdaqomxnordic.com/trading-hours`, a different page from the one the fetcher
+reads. With no dates found for a market the fetcher raises `ParseError`.
+
 <a id="xtal"></a>
 <a id="xris"></a>
 <a id="xlit"></a>
@@ -306,12 +335,24 @@ confirmed. Islamic holidays footnoted `(*)` by BRVM itself, mapped to
 <a id="xcol"></a>
 ## Sri Lanka (XCOL)
 
-**XCOL note (Sri Lanka):** includes both Buddhist Poya (full-moon) holidays
-(not predicted — computable, not sighting-dependent) and Islamic holidays
-(predicted). Found a real edge case: two holidays can share a date (May Day
-and Vesak Poya both fall on 2026-05-01) — since `ExchangeData.validate()`
-rejects duplicate dates, same-date entries are merged into one with a
-combined name rather than changing that core validation rule.
+**XCOL note (Sri Lanka):** includes Buddhist Poya (full-moon) holidays and
+Islamic holidays (predicted). Poya days are not safely computable: they move
+about eleven days a year, and CSE's observance can differ from the
+astronomical full moon by a day. In 2026 twelve entries had been 2025 dates
+repeated, and all 2026 dates are now CSE's own circular (BLOCKED.md,
+2026-10-07 and 2026-10-11). The 2027 Poya entries were removed, not predicted.
+
+*Vesak week.* Two holidays can share a date (May Day and Vesak Poya both fall
+on 2026-05-01); since `ExchangeData.validate()` rejects duplicate dates,
+same-date entries are merged into one with a combined name rather than
+changing that core validation rule. The merge loses the Vesak name:
+`XCOL.json` reads only "May Day" on 2026-05-01. The circular also lists a half
+holiday on 2026-04-30, in lieu of the day after Vesak Poya. The Government
+moved the day after Vesak from 2 May to 31 May by Extraordinary Gazette
+(Daily Mirror, 24 April 2026), and CSE issued Circular 03-04-2026
+("Holidays for 2026 - Amended", 20 April 2026), whose text was not retrieved.
+Whether it removed the 30 April half holiday is not known, and no
+`early_close` entry exists.
 
 <a id="xgse"></a>
 ## Ghana (XGSE)
@@ -359,7 +400,12 @@ XTSE and XBSP.
 <a id="xzag"></a>
 ## Zagreb (XZAG)
 
-**XZAG note (Zagreb):** real, clean, single-year source with real names.
+**XZAG note (Zagreb):** real, clean source with real names. The fetcher
+reads a news post stamped 2026 (`zse.hr/en/trading-calendar-in-2026/3260`)
+and returns one year. The source is not single-year: ZSE's stable page
+`zse.hr/en/non-trading-days/110` lists 2026 and 2027, and ZSE also has its own
+2025 post (BLOCKED.md, re-read 2026-10-11). The fetcher has not been pointed
+at that page.
 
 <a id="xetr"></a>
 ## Xetra (XETR)
