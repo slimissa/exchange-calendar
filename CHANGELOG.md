@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.19.1] - 2026-10-24
+
+### Changed
+- Documentation restructure: Extracted fetcher notes to `docs/FETCHERS.md`, consolidated README tables into a single lookup, and grouped `BLOCKED.md` by blocker class.
+- Fixed a 2027 time-bomb in `check_stale_year_urls.py`.
+
 ## [2.18.1] - 2026-10-21
 
 Patch release. Tooling and tests only: no data, schema or consumer-facing change. `calendar.json`
