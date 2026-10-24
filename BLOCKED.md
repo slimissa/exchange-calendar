@@ -1,315 +1,343 @@
 # Blocked / Not Automated
 
-> **A finding in this file is a snapshot, not a permanent fact.**
-> Every entry carries a `Last verified:` date. Sources change: a WAF
-> is added or removed, a URL rotates, a PDF gains a text layer, a
-> page is redesigned. Re-test before trusting an entry, especially
-> one that has not been re-checked in six months.
->
-> Four entries demonstrate the pattern. **XKRX** was RESOLVED on
-> 2026-09-19 and BLOCKED again on 2026-10-01 (HTTP 200, HTML 403
-> body). **XIST** was BLOCKED on 2026-09-04 with a note describing
-> "four market-segment tables in one PDF with a US-holiday template
-> error"; re-testing showed the site publishes four separate PDFs
-> and the equity PDF contains only Turkish closures. **XBUD**
-> blocked at v2.9.1 with in-window removals that resolved to a
-> parser gap for Hungarian substitute Mondays. **XPHS** was
-> marked RESOLVED on 2026-09-19 on the strength of a network-path probe;
-> re-testing on 2026-10-04 found that robots.txt disallows the same
-> path, and the verdict was corrected to BLOCKED (robots.txt).
+> **A finding in this file is a snapshot, not a permanent fact.** Every entry carries a `Last verified:` date; re-test before trusting one that is old. The full note is under [How to read this file](#how-to-read-this-file).
 
+# Index
 
-**Summary of all 74 registry exchanges.** One row per exchange in
-`exchanges/`; the sections below give the evidence for every row not
-marked `built`.
+30 exchanges are blocked. Each blocked exchange is filed under the class its own final verdict names. Where the verdict names none, the class comes from the entry's own finding. Entries that record a second obstacle (for example XNSE: a JS-built table behind an Akamai 403) are filed under the one the verdict states.
 
-- **built** — a calendar exists and no unresolved block is recorded.
-  Four of these (XBUD, XDFM, XGSE, XSTC) have a section below because a
-  fetcher exists and its health or one date needs tracking.
-- **blocked** — the source cannot be fetched automatically (bot wall,
-  dead URL, robots.txt, visual-grid PDF, no endpoint). The calendar
-  itself is maintained by hand.
-- **CI-unreachable** — reachable from a residential IP but not from CI;
-  not a permanent block.
-- **resolved** — was blocked, no longer is.
+| Class | Count | Exchanges |
+|---|---:|---|
+| [JS SPA / Client-Rendered](#js-spa) | 8 | [XBAH](#xbah), [XBOG](#xbog), [XBUL](#xbul), [XLIM](#xlim), [XMUS](#xmus), [XNZE](#xnze), [XTAD](#xtad), [XTUN](#xtun) |
+| [Bot-Walled / WAF](#bot-wall) | 13 | [XBOM](#xbom), [XCAS](#xcas), [XDHA](#xdha), [XJKT](#xjkt), [XJSE](#xjse), [XKLS](#xkls), [XKRX](#xkrx), [XKUW](#xkuw), [XNSE](#xnse), [XPHS](#xphs), [XSAU](#xsau), [XSES](#xses), [XSGO](#xsgo) |
+| [PDF Visual Grid / OCR](#pdf-grid) | 4 | [XATH](#xath), [XBKK](#xbkk), [XKAR](#xkar), [XSWX](#xswx) |
+| [Closed API / Requires Auth](#closed-api) | 0 | none |
+| [Dead Source / No First-Party Page](#dead-source) | 5 | [DSMD](#dsmd), [XBEY](#xbey), [XCAI](#xcai), [XNAI](#xnai), [XTAI](#xtai) |
 
-| Code | Exchange | State |
-|------|----------|-------|
-| DSMD | Qatar Stock Exchange | blocked |
-| XAMS | Euronext Amsterdam | built |
-| XASX | Australian Securities Exchange | built |
-| XATH | Athens Stock Exchange | blocked |
-| XBAH | Bahrain Bourse | blocked |
-| XBDA | Bermuda Stock Exchange | built |
-| XBEY | Beirut Stock Exchange | blocked |
-| XBKK | Stock Exchange of Thailand | blocked |
-| XBOG | Colombia Stock Exchange | blocked |
-| XBOM | Bombay Stock Exchange | blocked |
-| XBRU | Euronext Brussels | built |
-| XBRV | BRVM (West Africa Regional Stock Exchange) | built |
-| XBSP | B3 (São Paulo Stock Exchange) | built |
-| XBUD | Budapest Stock Exchange | built |
-| XBUE | Buenos Aires Stock Exchange | built |
-| XBUL | Bulgarian Stock Exchange | blocked |
-| XCAI | Egyptian Exchange | blocked |
-| XCAS | Casablanca Stock Exchange | blocked |
-| XCAY | Cayman Islands Stock Exchange | built |
-| XCOL | Colombo Stock Exchange | built |
-| XCSE | Nasdaq Copenhagen | built |
-| XDFM | Dubai Financial Market | built |
-| XDHA | Dhaka Stock Exchange | blocked |
-| XDUB | Euronext Dublin | built |
-| XETR | Deutsche Börse | built |
-| XGSE | Ghana Stock Exchange | built |
-| XHEL | Nasdaq Helsinki | built |
-| XHKG | Hong Kong Exchange | resolved |
-| XICE | Nasdaq Iceland | built |
-| XIST | Borsa Istanbul | resolved |
-| XJKT | Indonesia Stock Exchange | blocked |
-| XJSE | Johannesburg Stock Exchange | blocked |
-| XKAR | Pakistan Stock Exchange | blocked |
-| XKLS | Bursa Malaysia | blocked |
-| XKRX | Korea Exchange | blocked |
-| XKUW | Bursa Kuwait | blocked |
-| XLIM | Lima Stock Exchange | blocked |
-| XLIS | Euronext Lisbon | built |
-| XLIT | Nasdaq Vilnius | built |
-| XLON | London Stock Exchange | built |
-| XLUX | Luxembourg Stock Exchange | built |
-| XMAD | Bolsa de Madrid | built |
-| XMAL | Malta Stock Exchange | built |
-| XMEX | Mexican Stock Exchange | built |
-| XMOS | Moscow Exchange | built |
-| XMUS | Muscat Stock Exchange | blocked |
-| XNAI | Nairobi Securities Exchange | blocked |
-| XNAS | NASDAQ | built |
-| XNSA | Nigerian Stock Exchange | CI-unreachable |
-| XNSE | National Stock Exchange of India | blocked |
-| XNYS | New York Stock Exchange | built |
-| XNZE | New Zealand Exchange | blocked |
-| XOSL | Oslo Børs | built |
-| XPAR | Euronext Paris | built |
-| XPHS | Philippine Stock Exchange | blocked |
-| XPRA | Prague Stock Exchange | built |
-| XRIS | Nasdaq Riga | built |
-| XSAU | Saudi Stock Exchange (Tadawul) | blocked |
-| XSES | Singapore Exchange | blocked |
-| XSGO | Santiago Stock Exchange | blocked |
-| XSHE | Shenzhen Stock Exchange | built |
-| XSHG | Shanghai Stock Exchange | CI-unreachable |
-| XSTC | Ho Chi Minh Stock Exchange | built |
-| XSTO | Nasdaq Stockholm | built |
-| XSWX | SIX Swiss Exchange | blocked |
-| XTAD | Abu Dhabi Securities Exchange | blocked |
-| XTAI | Taiwan Stock Exchange | blocked |
-| XTAL | Nasdaq Tallinn | built |
-| XTKS | Tokyo Stock Exchange | built |
-| XTSE | Toronto Stock Exchange | built |
-| XTUN | Tunis Stock Exchange | blocked |
-| XWAR | Warsaw Stock Exchange | built |
-| XWBO | Vienna Stock Exchange | built |
-| XZAG | Zagreb Stock Exchange | built |
+Not blocked, tracked here: [CI-unreachable](#ci-unreachable) ([XNSA](#xnsa), [XSHG](#xshg)); [resolved](#resolved) ([XHKG](#xhkg), [XIST](#xist)); [built, with tracking notes](#built-tracking) ([XBUD](#xbud), [XCOL](#xcol), [XDFM](#xdfm), [XDUB](#xdub), [XETR](#xetr), [XGSE](#xgse), [XICE](#xice), [XLIT](#xlit), [XMAD](#xmad), [XNAS](#xnas), [XNYS](#xnys), [XPAR](#xpar), [XSTC](#xstc), [XZAG](#xzag)). Reference: [How to read this file](#how-to-read-this-file), [Summary of all 74 exchanges](#summary-of-all-74-exchanges), [Round summaries](#round-summaries).
 
-**Last-verified dates.** Each section below carries a **Last verified**
-line recording the date its verdict was last actually checked (fetched,
-re-tested, or re-derived against a live source) — not merely the date
-the section's prose was last edited for wording. It's added by whoever
-does that verification work, drawn from the check itself (a live fetch,
-a re-run of `live_fetcher_check.py`, a documented re-derivation) rather
-than guessed. It should be updated any time a verdict is re-checked,
-whether the verdict changes or not — a re-check that confirms the
-existing verdict still bumps the date; a section that is only reworded
-without re-testing the underlying source should not.
+<a id="js-spa"></a>
+# JS SPA / Client-Rendered
 
-**Tier 2 (regional hubs) update 2026-08-27:** 7 of 10 Tier 2 exchanges
-checked are blocked (XSES, XSWX, XKRX, XBOM, XNSE, XJKT, XTAI). Only XTSE,
-XMAD, and XSAU were buildable.
+The page is real, but the holiday data is not in the HTML a plain request receives: it is rendered client-side (an SPA shell, an AJAX widget, a webpart) or the response body is empty. Fetching these would need a browser-rendering fetcher; see [ADR 0009](docs/decisions/0009-playwright-fetcher-category.md) and [ADR 0010](docs/decisions/0010-render-mode.md).
 
-**Tier 3 (Gulf/EMEA) update 2026-08-29:** 6 of 10 confirmed blocked (XTAD,
-XBAH, DSMD, XCAI, XJSE, XIST), 1 unverified (XMUS), 3 buildable (XDFM,
-XKUW, XMOS).
+<a id="xbah"></a>
+## XBAH — Bahrain Bourse
 
-**Tier 4 (European smaller markets) update 2026-08-31:** 8 of 10 buildable
-(XWBO, XWAR, XPRA, XBUD, XDUB, XBRU, XLIS, XOSL — the last four via
-extending the existing shared Euronext fetcher). Only 1 confirmed blocked
-this round (XATH — same visual-grid-PDF problem as XSWX). This is by far
-the best hit rate of any tier after Tier 1, supporting the hypothesis that
-European exchanges lean toward simpler, more static infrastructure — though
-XATH shows that's not universal even within Europe.
+**Last verified:** 2026-08-29
 
-**Tier 5 (Nordic/Baltic) update 2026-08-31:** 7 of 7 buildable — a clean
-sweep, via two shared fetchers (`NasdaqNordicFetcher` for XSTO/XHEL/XCSE/
-XICE, `NasdaqBalticFetcher` for XTAL/XRIS/XLIT), confirming the "shared
-infrastructure" hypothesis proposed after Tier 4's Euronext discovery. No
-new blocks this round.
+- **Checked:** bahrainbourse.com's "Official Holidays" page (real SharePoint
+  site, not JS-rendered overall)
+- **Finding:** the site itself is real and static, but this specific page's
+  content area is empty in the raw HTML — populated by a client-side
+  SharePoint webpart. Bahrain Bourse otherwise only announces holidays
+  individually via one-off "Market Message" news posts, not a structured
+  calendar.
+- **Verdict:** BLOCKED.
 
-**Tier 6 (emerging markets) update 2026-09-04:** 3 of 10 buildable (XBSP,
-XMEX, XBUE — Latin America, checked with real depth rather than shallow
-coverage of all ten). 8 confirmed blocked after a full resolution pass
-(XSGO, XKLS, XBOG, XLIM, XPHS, XBKK, plus XMUS and XIST carried over from
-earlier tiers, resolved this round rather than left ambiguous). XSTC
-(Vietnam) remains genuinely unchecked — reported honestly rather than
-guessed at.
+<a id="xbog"></a>
+## XBOG — Bolsa de Valores de Colombia (BVC)
 
-**Tier 7 (Africa/South Asia) update 2026-09-06:** applied the accumulated
-infrastructure model (static/shared = buildable, JS/bot-wall/visual-PDF =
-blocked) as a fast predictive filter. 4 of 9 buildable (XNSA, XBRV, XCOL,
-plus XSTC resolved as a carryover from Tier 6). 4 confirmed blocked, 2 of
-them by robots.txt (XCAS, XDHA — respected by design, not worked around),
-1 by an unreadable PDF (XKAR), 1 by an empty page response (XTUN;
-originally recorded as JS-rendered, see its section). 2 remain
-genuinely unverified (XNAI, XGSE) rather than forced to a verdict.
+**Last verified:** 2026-09-18
 
-**Tier 8 (small/island markets) update 2026-09-06 — FINAL TIER:** 5 of
-the 8 Tier 8 exchanges were buildable (XBDA, XCAY, XLUX, XMAL, XZAG); 3
-were confirmed blocked (XBUL, XBEY, XNZE). Two Tier 7 carryovers were also
-resolved in this round: XGSE (built) and XNAI (confirmed blocked).
-Combined count for the round: 6 built, 4 blocked. Notably, the brief's
-own predictions for this tier were mixed: New Zealand was expected to be
-simple and turned out JS-blocked; Beirut was flagged as uncertain due to
-instability and that concern was directly confirmed (2 independent server
-timeouts).
+- **Checked:** two independent search attempts for a first-party bvc.com.co
+  holiday/calendar page
+- **Finding:** no first-party page found in either attempt -- only
+  third-party aggregators and articles referencing "the BVC calendar"
+  without linking a real source page. Note: "BVC" is also the ticker/
+  abbreviation for the unrelated Caracas Stock Exchange (Bolsa de Valores
+  de Caracas), which polluted several search results and made this harder
+  to resolve than most.
+- **Verdict:** BLOCKED (treated the same as two independent misses for
+  XMUS were treated before its page was eventually found by browsing site
+  navigation directly -- that approach wasn't attempted here due to time
+  spent on the Caracas/Colombia naming collision).
+- **Re-checked 2026-09-17 (direct navigation, not search):** fetched
+  `bvc.com.co`'s homepage directly. Unlike XMUS, there was no nav menu to
+  follow -- the homepage itself is a Next.js client-side-rendered SPA shell,
+  raw response containing only meta tags and a Google Tag Manager reference,
+  zero server-rendered links or content. Same failure signature as XSGO and
+  XLIM. Full evidence and a disclosed tooling limitation (this environment's
+  sandbox cannot `curl` the domain directly; a different fetch tool with a
+  broader network allowlist was used instead) in
+  `docs/verifications/2026-09-17_xbog.md`.
+- **Task 0, 2026-09-17: `exchanges/XBOG.json` audited and corrected.** The
+  open issue above was investigated. Finding: the ~90 entries were
+  hand-authored in a single 2026-08-18 commit, with no fetcher and no
+  reachable page behind the `source_url` they all cited (confirmed above).
+  Worse, independent of that citation problem, the data itself had real
+  errors: three fixed, non-transferable holidays (Labour Day 2027, Christmas
+  2027, New Year 2028) were wrongly Monday-shifted as if they were
+  Emiliani-movable; three Emiliani-movable feast dates were shifted a week
+  in the wrong direction (Saint Peter & Paul 2027, Ascension 2028, Corpus
+  Christi 2028); and 2028's Corpus Christi / Sacred Heart were mislabeled
+  and one was missing outright. Corrected all of these against an
+  independently-implemented, Easter-date-validated reconstruction of
+  Colombia's statutory holiday law (Ley 51 de 1983, "Ley Emiliani"),
+  cross-checked against a reachable third-party source
+  (rankia.co, matching all 18 of 2026's holidays exactly) and convergent
+  Colombian press coverage of the 2025 official calendar. The 8
+  Christmas-Eve/New-Year's-Eve early-close entries (claimed 11:30, never
+  sourced) were removed rather than kept unverified -- one genuine piece of
+  contrary evidence (a 2020 BVC announcement citing a different time) was
+  found and no supporting evidence was. 95 entries -> 84. Full methodology,
+  every diff, and the one real mistake I made and caught before committing
+  (a first-pass fix that broke a genuine Colombian holiday-collision rule
+  the original file had actually gotten right) are in
+  `docs/verifications/2026-09-17_xbog_task0.md`.
+- **Verdict: still BLOCKED for automated-fetcher purposes** — `bvc.com.co`
+  is still unreachable, so there is still no `XBOGColombiaFetcher` and none
+  is possible right now. But the manually-curated data in
+  `exchanges/XBOG.json` is, as of 2026-09-17, verified as far as it's
+  currently possible to verify it without a working first-party page --
+  not merely "populated." Anyone re-blocking or re-populating this file
+  in the future should read the Task 0 doc first; several of its findings
+  (the fixed-vs-movable distinction, the 2025 collision rule) are easy to
+  get wrong again from scratch.
 
-This file documents what was checked and why each verdict holds, since "we
-found a different URL" or "it's blocked" is easy to state and easy to get
-wrong without the reasoning behind it.
+<a id="xbul"></a>
+## XBUL — Bulgarian Stock Exchange
 
-## XDUB — Euronext Dublin (corrected against the Euronext calendars 2026-10-10; 2027 to 2029 pattern-derived)
+**Last verified:** 2026-09-06
 
-**Last verified:** 2026-10-10
+- **Checked:** bse-sofia.bg's trading-calendar page directly (found via a
+  targeted search after an initial generic search failed on an unrelated
+  "BSE" naming collision)
+- **Finding:** the page itself is real (a genuine dashboard with live
+  market-data widgets, navigation, and rules links all present in the raw
+  HTML), but the actual holiday calendar content was not present anywhere
+  in the response -- only the surrounding page chrome and unrelated
+  market-data widgets. This suggests the specific calendar widget is loaded
+  dynamically within an otherwise mostly-static page.
+- **Verdict:** BLOCKED.
 
-- **Candidate resolved: non-closure.** St Brigid's Day (2025-02-03, 2026-02-02) is a
-  full trading day for Dublin in Euronext's own calendars (tier 1,
-  `live.euronext.com/en/resources/trading-hours-holidays`, "Calendar of business days
-  2025" and "2026 Holiday Calendar"). Pinned by a test.
-- **Corrected (stop condition lifted for this exchange).** Euronext lists Dublin closed
-  in 2025 on 1 Jan, 18 Apr, 21 Apr, 1 May, 5 May (Irish May Bank Holiday), 25 Dec,
-  26 Dec, and in 2026 on 1 Jan, 3 Apr, 6 Apr, 1 May, 4 May, 25 Dec, 28 Dec (substitute
-  for St Stephen's Day). The file now matches. Removed: the rules and entries for
-  St. Patrick's Day and the June, August and October bank holidays (4 kinds, 20
-  entries, 2025 to 2029, including 2029-03-19), and the 2025-12-29 "Christmas Day
-  (substitute)" (1 entry): 21 entries in all. Added: Labour Day, 1 May, as a `fixed_date` rule (no weekend
-  substitute; 2027-05-01 is a Saturday and Euronext does not move it), with explicit
-  entries 2025-05-01, 2026-05-01 and 2029-05-01. 2028-05-01 was already present as the
-  May Bank Holiday and is the same day.
-- **Kept, 2026-12-28 "St. Stephen's Day (substitute)".** Euronext's 2026 calendar lists
-  Dublin closed on Monday 28 December 2026 (tier 1). Substitute days also appear in
-  Euronext's calendars for 2020 (28 Dec), 2021 (27 and 28 Dec), 2022 (3 Jan, 27 Dec) and
-  2023 (2 Jan). The 2027 (27 and 28 Dec) and 2028 (3 Jan) substitutes follow the same
-  pattern.
-- **2027 to 2029 are pattern-derived, not tier 1.** Euronext has not published
-  2027 to 2029; the entries were removed on the pattern from 2022 to 2026 (St Patrick's
-  Day and the June, August and October bank holidays are full trading days in every
-  published year, 2022 to 2026) and should be re-checked when the calendars publish.
-  The 2029-05-01 Labour Day entry is marked `predicted` for the same reason. The
-  source file cannot hold prose (`schema.json` forbids extra fields) and
-  `source_url` must be a URL on euronext.com, so this section carries the note.
-- Half sessions on 24 and 31 December match Euronext (Dublin closes 13:30 CET).
-
-## XETR — Xetra (Deutsche Börse) (built; non-closures recorded 2026-10-07)
-
-**Last verified:** 2026-10-07
-
-- **Not closures, 5 candidates (2025 to 2026):** 2025-05-29 Ascension Day; 2025-06-09 Pentecost Monday; 2025-10-03 German Unity Day; 2026-05-14 Ascension Day; 2026-05-25 Pentecost Monday.
-- **Source (tier 1):** `cashmarket.deutsche-boerse.com/cash-en/trading/trading-calendar-and-trading-hours` and the Xetra trading calendar PDFs for 2025 and 2026. Xetra is closed on 1 January, Good Friday, Easter Monday, 1 May and 24, 25, 26 and 31 December (2025 and 2026 as published); it trades on every date below.
-- The source file cannot hold this note: `schema.json` sets `additionalProperties:
-  false` on the root and on `holidays`, so there is no field for a comment. This
-  section is where the next sweep looks.
-
-## XLIT — Nasdaq Vilnius (three closures added 2026-10-07)
-
-**Last verified:** 2026-10-07
-
-- **Tier 1:** Nasdaq Baltic's "Trading holidays" page (`nasdaqbaltic.com/statistics/en/calendar?holidays=1`)
-  lists, for the Vilnius market in 2026: 1 Jan, 16 Feb, 11 Mar, 3 Apr, 6 Apr, 1 May,
-  **14 May** (all three Baltic markets), 24 Jun, 6 Jul, **2 Nov**, 24 and 25 Dec, **31 Dec**.
-- **Candidate resolved: closure.** All Souls' Day (2026-11-02). It became a Lithuanian
-  public holiday by a 2019 law, first observed in 2020, so 2027 to 2029 are entered
-  (2025-11-02 is a Sunday).
-- **Also missing from the file, now added for 2026 only:** Ascension Day 2026-05-14 and
-  New Year's Eve 2026-12-31 (three additions in total, within the three-rule limit).
-- **Open:** whether Ascension Day and 31 December are Nasdaq Baltic trading holidays in
-  other years. **Source needed:** the same page for 2025, and for 2027 onward when
-  published. The page shows only the current year.
-
-## XMAD — BME Spanish Exchanges (built; non-closures recorded 2026-10-07)
-
-**Last verified:** 2026-10-07
-
-- **Not closures, 6 candidates (2025 to 2026):** 2025-01-06 Epiphany; 2025-08-15 Assumption Day; 2025-12-08 Immaculate Conception; 2026-01-06 Epiphany; 2026-10-12 National Day; 2026-12-08 Immaculate Conception.
-- **Source (tier 1):** Sociedad de Bolsas Instrucciones Operativas 52/2024 (2025 calendar) and 65/2025 (2026 calendar), on `bolsasymercados.es`. BME is closed on 1 January, Good Friday, Easter Monday, 1 May and 25 December (plus 26 December in 2025); 24 and 31 December are half sessions. It trades on every date below.
-- The source file cannot hold this note: `schema.json` sets `additionalProperties:
-  false` on the root and on `holidays`, so there is no field for a comment. This
-  section is where the next sweep looks.
-- **Found while checking (not a candidate):** Easter Monday was missing. BME's
-  instructions list it as a non-business day for 2022 (Instrucción 53/2021, 18 Apr),
-  2024 (45/2023, 1 Apr), 2025 and 2026. The file and its tests said BME was open that
-  day. Added an `easter_offset` +1 rule (2025-04-21, 2027-03-29, 2028-04-17 and
-  2029-04-02 are generated) and an explicit 2026-04-06 entry citing the 2026
-  instruction. The Public-holiday detector could not find this: Easter Monday is not a
-  Spanish public holiday.
-- **Open:** the 2025 and 2024 instruction URLs carry a 2025 year token that
-  `tools/check_stale_year_urls.py` rejects, so 2025-04-21 has no per-entry citation.
-  The instruction is `.../instrucc/2024/2024-52-IO-CALENDARIO-DE-SESIONES-2025.pdf`.
-
-## XNAS — Nasdaq (built; non-closures recorded 2026-10-07)
-
-**Last verified:** 2026-10-07
-
-- **Not closures, 4 candidates (2025 to 2026):** 2025-10-13 Columbus Day; 2025-11-11 Veterans Day; 2026-10-12 Columbus Day; 2026-11-11 Veterans Day.
-- **Source (tier 1 for 2026; 2025 as for XNYS):** `nasdaq.com/market-activity/stock-market-holiday-schedule`. Nasdaq follows the NYSE holiday set and trades on Columbus Day and Veterans Day.
-- The source file cannot hold this note: `schema.json` sets `additionalProperties:
-  false` on the root and on `holidays`, so there is no field for a comment. This
-  section is where the next sweep looks.
-
-## XNYS — NYSE (built; non-closures recorded 2026-10-07)
-
-**Last verified:** 2026-10-07
-
-- **Not closures, 4 candidates (2025 to 2026):** 2025-10-13 Columbus Day; 2025-11-11 Veterans Day; 2026-10-12 Columbus Day; 2026-11-11 Veterans Day.
-- **Source (tier 1 for 2026; 2025 rests on the same fixed NYSE holiday set and on press (Kiplinger), not fetched from nyse.com):** `nyse.com/trade/hours-calendars` (2026 list: 1 Jan, 19 Jan, 16 Feb, 3 Apr, 25 May, 19 Jun, 3 Jul, 7 Sep, 26 Nov, 25 Dec). NYSE does not close for Columbus Day or Veterans Day.
-- The source file cannot hold this note: `schema.json` sets `additionalProperties:
-  false` on the root and on `holidays`, so there is no field for a comment. This
-  section is where the next sweep looks.
-
-## XPAR — Euronext Paris (built; non-closures recorded 2026-10-07)
-
-**Last verified:** 2026-10-07
-
-- **Not closures, 11 candidates (2025 to 2026):** 2025-05-08 Victory Day; 2025-05-29 Ascension Day; 2025-06-09 Pentecost Monday; 2025-07-14 National Day; 2025-08-15 Assumption Day; 2025-11-11 Armistice Day; 2026-05-08 Victory Day; 2026-05-14 Ascension Day; 2026-05-25 Pentecost Monday; 2026-07-14 National Day; 2026-11-11 Armistice Day.
-- **Source (tier 1):** `live.euronext.com/resources/trading-hours-holidays` (Euronext 2026 holiday calendar; the 2025 end-of-year page). Euronext closes on 1 January, Good Friday, Easter Monday, 1 May and 25 and 26 December. Whit Monday 2026-05-25 is shown as a full trading day. Every date below is a trading day.
-- The source file cannot hold this note: `schema.json` sets `additionalProperties:
-  false` on the root and on `holidays`, so there is no field for a comment. This
-  section is where the next sweep looks.
-
-## XSES — Singapore Exchange (SGX)
+<a id="xlim"></a>
+## XLIM — Bolsa de Valores de Lima (BVL)
 
 **Last verified:** 2026-09-19
 
-- **Checked:** sgx.com/trading and related pages
-- **Finding:** JS-rendered shell. No first-party equities holiday HTML or
-  CSV/JSON found — only a derivatives-specific trading circular PDF (a
-  different market segment than the equities calendar this registry needs)
-  and third-party aggregators, which are not authoritative.
-- **Finding (2026-09-19):** Playwright Chromium receives HTTP 403 from both
-  www.sgx.com/trading/trading-hours (308 bytes) and sgx.com/trading (294
-  bytes); Akamai present in the network log. The block is at HTTP level,
-  before any rendering; a headless browser does not bypass it.
-- **Verdict:** BLOCKED (other: Akamai, HTTP 403).
+- **Checked:** found the real page (bvl.com.pe/mercado/resumen-mercado/
+  feriados-y-horarios-de-negociacion) and fetched it directly
+- **Finding:** confirmed pure JS SPA shell -- raw HTML contains only meta
+  tags and a Google Tag Manager script, same pattern as XSGO.
+- **Finding (2026-09-19):** www.bvl.com.pe/calendario returns HTTP 200
+  (149,967 bytes) with no calendar terms; Cloudflare and reCAPTCHA appear in
+  the network log, and no challenge page was observed. The Checked page above
+  was not successfully tested (apex bvl.com.pe fails DNS). reCAPTCHA presence
+  alone does not show it gates the calendar.
+- **Finding (2026-09-19, retest):** The only JSON endpoint flagged,
+  stock-quote/home, is equities data, not holidays (a false positive of the
+  tool's date+name key heuristic). The calendar page is an SPA and no holiday
+  source is reachable in its network log.
+- **Verdict:** BLOCKED (no holiday endpoint: SPA calendar page; the only JSON seen is equities data).
 
-## XSWX — SIX Swiss Exchange
+<a id="xmus"></a>
+## XMUS — Muscat Securities Market (MSX, formerly MSM)
 
-**Last verified:** 2026-08-27
+**Last verified:** 2026-09-04
 
-- **Checked:** six-group.com/en/market-data/news-tools/trading-currency-holiday-calendar.html
-- **Finding:** the page itself is real and static, but its only calendar
-  data is a PDF -- a visual calendar grid with no per-day text labels
-  identifying which holiday falls on which greyed-out date. Parsing this
-  reliably would require either OCR or a pixel-level heuristic against
-  cell shading, neither of which this project's text-based framework does
-  (or should attempt to guess at).
+- **Checked:** searched for msx.om (the current domain, rebranded from
+  msm.gov.om) holiday/trading-calendar pages
+- **Finding:** no first-party holiday page was found within the search
+  budget spent. This is NOT the same as "confirmed blocked" — it means the
+  right page (if one exists) wasn't located, not that a located page failed
+  verification.
+- **Verdict (superseded 2026-09-04, see Resolved below):** NOT VERIFIED. Worth another, more targeted search pass in a
+  future round rather than being carried forward indefinitely as "blocked."
+- **Re-checked 2026-08-31 (Tier 5 "quick win" attempt):** searched again
+  with a second, differently-worded query. Same result: only third-party
+  aggregators (TradingHours.com, MarketHours.io, calendarlabs,
+  globalexchangesdirectory) turned up, no first-party msx.om page. Two
+  independent search attempts across two rounds have now failed to locate
+  one — this either doesn't exist as a scrapable HTML/PDF resource, or
+  needs a research approach beyond keyword search (e.g. browsing msx.om's
+  own site navigation directly) to find. Still NOT VERIFIED, but the
+  confidence that a page is simply "out there, unfound" should be lower
+  after two misses than after one.
+- **Resolved 2026-09-04 (Tier 6 pre-check):** rather than search again, this
+  time navigated msx.om's own site chrome directly -- fetched the
+  homepage, found "Exchange Events/Holidays" in the actual left-nav menu,
+  and followed it to `msx.om/exchange-holidays.aspx`. That page IS real and
+  IS the correct page, but its content area under the "Exchange Holidays"
+  heading is empty in the raw HTML response -- populated client-side, same
+  pattern as XBAH's "Official Holidays" page. **Verdict upgraded from "not
+  verified" to confirmed BLOCKED** -- the two prior search misses weren't a
+  search-quality problem, they were correctly finding nothing indexed
+  because the actual content isn't in static HTML at all.
+
+<a id="xnze"></a>
+## XNZE — New Zealand Exchange (NZX)
+
+**Last verified:** 2026-09-06
+
+- **Checked:** the official NZX Market Holidays announcement page
+  (nzx.com/announcements/443000), the PDF it references, and the
+  trading-hours page mentioned in that PDF's own memo text
+- **Finding:** all three failed differently. The announcement page's
+  holiday content is a JS-loaded "Updating..." placeholder for an embedded
+  attachment. The directly-referenced PDF URL 404'd. The trading-hours page
+  URL from the memo's own text also 404'd. This directly contradicts the
+  brief's assumption that New Zealand would be "likely simple" -- a good
+  illustration that a well-documented, mature exchange doesn't necessarily
+  mean an accessible one.
 - **Verdict:** BLOCKED.
 
+<a id="xtad"></a>
+## XTAD — Abu Dhabi Securities Exchange (ADX)
+
+**Last verified:** 2026-09-19
+
+- **Checked:** adx.ae/about-adx/media/adx-events-calendar
+- **Finding:** confirmed Next.js JS-rendered SPA — the raw HTML contains
+  only "Loading component..." placeholders, no static holiday data.
+- **Finding (2026-09-19):** adx.ae/about-adx/media/adx-events-calendar returns
+  HTTP 200 (241,246 bytes in the sweep, 240,197 in the probe, 101,032 bytes
+  visible text) with no calendar terms in visible text; the sweep's raw
+  "holiday" match is not in visible text. www.adx.ae/trading-calendar timed
+  out at 30 s. Cloudflare and reCAPTCHA appear in the network log, but the
+  same URL returned HTTP 403 in an earlier spike run, so Cloudflare behaviour
+  is inconsistent. This is consistent with the placeholder finding above.
+- **Finding (2026-09-19, retest):** The _next/data JSON files contain
+  no holiday keys, so no holiday endpoint was found. The tool's
+  recaptcha-challenge marker on the second URL matches ordinary reCAPTCHA form
+  widgets and is not treated as a block.
+- **Verdict:** BLOCKED (no holiday endpoint: _next/data files have no holiday keys).
+
+<a id="xtun"></a>
+## XTUN — Bourse de Tunis (Tunisia)
+
+**Last verified:** 2026-09-19
+
+- **Checked:** bvmt.com.tn/fr/content/jours-feries-de-2026 directly
+- **Finding:** confirmed JS-rendered -- the fetch tool itself reported "no
+  readable text... rendered with JavaScript."
+- **Finding (2026-09-19):** Both bvmt.com.tn candidates return HTTP 200 with a
+  39-byte body after Playwright Chromium's 8 s wait; no anti-bot service in
+  the network log and no calendar terms. The earlier "JS-rendered" observation
+  is neither confirmed nor refuted by an empty response.
+- **Finding (2026-09-19, retest):** With a 30 s wait and XHR logging,
+  every URL tried returns a 39-byte body and no JSON endpoint appeared.
+- **Verdict:** BLOCKED (empty response: 39-byte body on every URL tried).
+
+<a id="bot-wall"></a>
+# Bot-Walled / WAF
+
+The source answers plain and headless-browser requests with a challenge or an HTTP 403/503 (Akamai, Cloudflare, hCaptcha, a client-side WAF), or its robots.txt disallows automated access. The robots.txt entries (XCAS, XDHA, XPHS) are respected by design, not worked around.
+
+<a id="xbom"></a>
+## XBOM — BSE India (Bombay Stock Exchange)
+
+**Last verified:** 2026-09-19
+
+- **Checked:** bseindia.com/static/markets/marketinfo/listholi.aspx (the
+  page referenced by other open-source market-calendar projects, e.g.
+  `pandas_market_calendars`)
+- **Finding:** the page is real and known to have a parseable structure
+  historically, but direct `web_fetch` access returned "Site blocked the
+  request (bot detection)" on both the `www.` and `beta.` subdomains.
+  Undocumented "hidden" API endpoints exist (per third-party blog posts
+  reverse-engineering bseindia.com's frontend calls) but were not used —
+  they aren't officially documented, could change or be revoked without
+  notice, and reverse-engineering internal endpoints crosses into a
+  different risk category than parsing a published page.
+- **Finding (2026-09-19):** Playwright Chromium receives HTTP 403 from both
+  bseindia.com URLs (331 and 327 bytes); Akamai present in the network log.
+  The "holiday" match in the 403 body is the requested URL echoed back, not
+  calendar content. Headless browser does not bypass.
+- **Verdict:** BLOCKED (other: Akamai, HTTP 403).
+
+<a id="xcas"></a>
+## XCAS — Bourse de Casablanca (Morocco)
+
+**Last verified:** 2026-09-06
+
+- **Checked:** casablanca-bourse.com/market-data/jours-feries directly
+- **Finding:** the page is real and appears to have real structured content
+  (fixed-date vs. mobile Hijri-date holiday sections, per the search
+  snippet), but **robots.txt explicitly disallows automated access** --
+  confirmed by the fetch tool itself refusing the request on that basis.
+  This framework respects robots.txt by design (added in Tier 1); this is
+  the first exchange blocked specifically by that check rather than by a
+  technical limitation.
+- **Verdict:** BLOCKED (by design, not by inability).
+
+<a id="xdha"></a>
+## XDHA — Dhaka Stock Exchange
+
+**Last verified:** 2026-09-06
+
+- **Checked:** dsebd.org/hts.php ("Holidays and Trading Sessions") directly
+  -- a real page confirmed to exist and to list "DSE will observe following
+  Holidays during the Calendar Year 2026" in search results
+- **Finding:** **robots.txt explicitly disallows automated access**, same
+  as XCAS.
+- **Verdict:** BLOCKED (by design, not by inability).
+
+<a id="xjkt"></a>
+## XJKT — Indonesia Stock Exchange (IDX)
+
+**Last verified:** 2026-09-19
+
+- **Checked:** idx.co.id's official static PDF announcement
+  ("Peng-00171 Libur Bursa 2026")
+- **Finding:** a real, first-party, government-adjacent PDF exists and is
+  linked from IDX's own site — but the direct fetch request itself was
+  bot-blocked, and even if it weren't, PDF parsing is out of scope for this
+  `BeautifulSoup`-based HTML framework (same reasoning as XSWX).
+- **Finding (2026-09-19):** Playwright Chromium receives HTTP 503 (1,240
+  bytes) from www.idx.co.id/en/idx-trading-holidays and HTTP 403 (4,839 bytes)
+  from idx.co.id; Cloudflare present in the network log. Headless browser does
+  not bypass.
+- **Verdict:** BLOCKED (Cloudflare, HTTP 503/403).
+
+<a id="xjse"></a>
+## XJSE — Johannesburg Stock Exchange (JSE)
+
+**Last verified:** 2026-10-04
+
+- **Checked:** jse.co.za and clientportal.jse.co.za Market Notice PDFs
+- **Finding (2026-08-29):** expected to be one of the simpler Tier 3
+  sources; instead, the PDF itself returned "Site blocked the request
+  (bot detection)" on direct fetch.
+- **Finding (2026-10-04, Playwright probe):** `page.goto` through
+  headless Chromium returns HTTP 200 with the site's own HTML (402 KB),
+  confirming Cloudflare's challenge is satisfied by a browser session.
+  A one-level PDF scan from the homepage returned 137 links and one
+  contact-list PDF. No holiday calendar URL surfaced.
+- **Finding (2026-10-04, plain-HTTP re-probe, v2.12.5):** every URL
+  returns 403 with the same 5017-byte Cloudflare challenge page:
+  the homepage, `/robots.txt`, `/sitemap.xml`, `/sitemap_index.xml`,
+  the four previously recorded paths, and fourteen additional
+  candidates. `clientportal.jse.co.za` also returns 403 with a
+  full Chrome UA and browser-like `Accept` headers. Nothing on the
+  site is reachable from a plain HTTP client.
+- **Verdict:** BLOCKED (permanent). The site is entirely behind
+  Cloudflare for non-browser clients. The holiday calendar is
+  published as a Market Notice PDF; no URL for it was enumerated by
+  two discovery sessions (plain HTTP: fails at Cloudflare; one-level
+  Playwright PDF scan: homepage loads, no PDF found).
+- **Reopen condition:** a Playwright-driven **navigation walk** —
+  following the site's own menu into the market notices or regulation
+  section rather than scanning the homepage for direct PDF links.
+  That is the one technique not yet tried. If it also fails, the
+  source is documented as not publicly enumerable and the block is
+  truly permanent.
+
+- **See:** docs/decisions/0009-playwright-fetcher-category.md and
+  docs/decisions/0010-render-mode.md for the decisions that govern
+  this class of block.
+
+<a id="xkls"></a>
+## XKLS — Bursa Malaysia
+
+**Last verified:** 2026-09-04
+
+- **Checked:** bursamalaysia.com/about_bursa/about_us/calendar directly
+- **Finding:** confirmed bot-walled -- "Site blocked the request (bot
+  detection)" on direct fetch.
+- **Verdict:** BLOCKED.
+
+<a id="xkrx"></a>
 ## XKRX — Korea Exchange (KRX)
 
 **Last verified:** 2026-09-19
@@ -354,6 +382,140 @@ wrong without the reasoning behind it.
   than the headless-to-headful delta, which also failed. See
   `docs/decisions/0010-render-mode.md`.
 
+<a id="xkuw"></a>
+## XKUW — Boursa Kuwait
+
+**Last verified:** 2026-09-17
+
+- **Checked:** boursakuwait.com.kw/en/securities/trading/market-holidays/
+- **Finding:** HTTP 403 Forbidden from both GitHub Actions runners and
+  residential IPs, with a browser User-Agent. The site's bot detection
+  cannot be bypassed with header spoofing alone.
+- **Verdict:** BLOCKED (HTTP 403 on 2026-09-17). One probe on one day;
+  not shown to be permanent. `XKUW`'s fetcher stays registered and the
+  informational job in `live-fetcher-check.yml` still exercises it.
+  **Would unblock:** a 200 from `python tools/live_fetcher_check.py --only
+  XKUW`. Only header changes are recorded as tried; a browser-grade
+  render path (ADR 0009/0010) and a different egress have not been
+  tried against this site. Until then the calendar is maintained by hand.
+
+<a id="xnse"></a>
+## XNSE — National Stock Exchange of India (NSE)
+
+**Last verified:** 2026-09-19
+
+- **Checked:** nseindia.com/resources/exchange-communication-holidays
+- **Finding:** the page itself loads (not bot-blocked), but the actual
+  holiday table is populated via JS/AJAX behind "Select Product" and
+  "Year" dropdowns -- the static HTML contains only a single hardcoded
+  note about one specific 2026 date, not the table. NSE is also widely
+  documented (across multiple open-source projects) as requiring a
+  session-cookie handshake before its internal APIs will respond to plain
+  HTTP requests, which this framework's `requests`-based approach doesn't
+  perform.
+- **Finding (2026-09-19):** Playwright Chromium receives HTTP 403 from both
+  www.nseindia.com and nseindia.com (335 and 331 bytes); Akamai present in the
+  network log. This differs from the 2026-08-27 note that the page loaded; the
+  "holiday" matches are the requested URL echoed in the 403 body. Headless
+  browser does not bypass.
+- **Verdict:** BLOCKED (other: Akamai, HTTP 403).
+
+<a id="xphs"></a>
+## XPHS — Philippine Stock Exchange (PSE)
+
+**Last verified:** 2026-09-19
+
+- **Checked:** found the real "Trading Hours & Holidays" section on
+  pse.com.ph/investing-at-pse/ (an anchor-linked section, not a separate
+  page -- the earlier attempt at edge.pse.com.ph/companyPage/
+  marketCalendar.do had found a *different*, unrelated corporate-actions
+  calendar by mistake)
+- **Finding:** the "National & Special Holidays" table exists in the raw
+  HTML with real column headers ("Date", "Holiday", "Year") but zero data
+  rows, plus an unrendered template placeholder literally reading
+  "hf:categories" in the header row -- confirming the table is populated
+  by JavaScript/AJAX from a custom data source, not present in the static
+  response.
+- **Finding (2026-09-19):** The sweep's pse.com.ph/trading-holidays/ returns
+  HTTP 404 (156,901 bytes; Cloudflare and reCAPTCHA in the network log). The
+  Checked page pse.com.ph/investing-at-pse/ loaded in an earlier Playwright
+  run (HTTP 200, 528,057 bytes) with no Holiday/Eid/Ramadan/Arafat in visible
+  text (the one raw hit was inside a <style> block); a retest timed out. The
+  2026-09-04 finding above reported a "Holiday" column header in raw HTML,
+  which this run did not reproduce.
+- **Finding (2026-09-19, retest):** Retest found a JSON endpoint: POST
+  https://www.pse.com.ph/wp-admin/admin-ajax.php returns JSON whose data[]
+  entries carry cf:holiday_title, content (dates) and categories (years), and
+  plain requests (no browser) reaches it. This is consistent with the
+  2026-09-04 note of a table populated by AJAX, and supersedes the sweep's
+  no-visible-content result.
+- **Finding (2026-10-04):** an `XPHSFetcher` was attempted and reverted.
+  The endpoint works from a plain HTTP client, but pse.com.ph's
+  robots.txt disallows `/wp-admin/` for all User-agents, and the
+  fetcher framework respects robots.txt (fail-closed when explicitly
+  disallowed — the same reason XCAS and XDHA are blocked). The
+  2026-09-19 note "plain requests (no browser) reaches it" was
+  accurate about the *network path* but omitted the robots.txt check.
+- **Verdict:** BLOCKED (robots.txt). Same class as XCAS and XDHA. Not
+  worked around by design.
+
+- **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
+
+<a id="xsau"></a>
+## XSAU — Saudi Exchange (Tadawul)
+
+**Last verified:** 2026-09-17
+
+- **Checked:** saudiexchange.sa/.../saudi-exchange-holiday-calendar
+- **Finding:** HTTP 403 Forbidden from both GitHub Actions runners and
+  residential IPs, with a browser User-Agent. Same pattern as XKUW.
+- **Verdict:** BLOCKED (HTTP 403 on 2026-09-17). One probe on one day;
+  not shown to be permanent. `SaudiExchangeFetcher` stays registered and
+  the informational job in `live-fetcher-check.yml` still exercises it.
+  **Would unblock:** a 200 from `python tools/live_fetcher_check.py --only
+  XSAU`. Only header changes are recorded as tried (the fetcher already
+  sends browser-like headers); a browser-grade render path (ADR 0009/0010)
+  and a different egress have not been tried against this site. Until
+  then the calendar is maintained by hand.
+
+<a id="xses"></a>
+## XSES — Singapore Exchange (SGX)
+
+**Last verified:** 2026-09-19
+
+- **Checked:** sgx.com/trading and related pages
+- **Finding:** JS-rendered shell. No first-party equities holiday HTML or
+  CSV/JSON found — only a derivatives-specific trading circular PDF (a
+  different market segment than the equities calendar this registry needs)
+  and third-party aggregators, which are not authoritative.
+- **Finding (2026-09-19):** Playwright Chromium receives HTTP 403 from both
+  www.sgx.com/trading/trading-hours (308 bytes) and sgx.com/trading (294
+  bytes); Akamai present in the network log. The block is at HTTP level,
+  before any rendering; a headless browser does not bypass it.
+- **Verdict:** BLOCKED (other: Akamai, HTTP 403).
+
+<a id="xsgo"></a>
+## XSGO — Santiago Stock Exchange (Bolsa de Santiago)
+
+**Last verified:** 2026-09-19
+
+- **Checked:** bolsadesantiago.com/mercado_horarios_feriados directly
+- **Finding:** confirmed pure JS SPA shell (rebranded "SANTIAGOX") -- raw
+  HTML contains only meta tags and a Google Tag Manager script, zero
+  content.
+- **Finding (2026-09-19):** www.bolsadesantiago.com/horarios returns HTTP 200
+  with an 859-byte body; Cloudflare, hCaptcha and Perfdrive appear in the
+  network log. The apex bolsadesantiago.com/mercado_horarios_feriados fails
+  with ERR_CERT_COMMON_NAME_INVALID. Headless browser does not bypass; no
+  CAPTCHA solving attempted.
+- **Verdict:** BLOCKED (hCaptcha).
+
+<a id="pdf-grid"></a>
+# PDF Visual Grid / OCR
+
+The calendar exists only as a PDF whose holidays are carried by layout or cell colour, or that has no text layer, so extracting it needs OCR or colour detection. [ADR 0009](docs/decisions/0009-playwright-fetcher-category.md) named this class.
+
+<a id="xath"></a>
 ## XATH — Athens Exchange
 
 **Last verified:** 2026-10-04
@@ -380,153 +542,69 @@ wrong without the reasoning behind it.
   require color/fill detection on the PDF cells, which is outside
   the current fetcher framework's scope. Permanent block.
 
-## XBOM — BSE India (Bombay Stock Exchange)
+<a id="xbkk"></a>
+## XBKK — Stock Exchange of Thailand (SET)
 
-**Last verified:** 2026-09-19
+**Last verified:** 2026-09-04
 
-- **Checked:** bseindia.com/static/markets/marketinfo/listholi.aspx (the
-  page referenced by other open-source market-calendar projects, e.g.
-  `pandas_market_calendars`)
-- **Finding:** the page is real and known to have a parseable structure
-  historically, but direct `web_fetch` access returned "Site blocked the
-  request (bot detection)" on both the `www.` and `beta.` subdomains.
-  Undocumented "hidden" API endpoints exist (per third-party blog posts
-  reverse-engineering bseindia.com's frontend calls) but were not used —
-  they aren't officially documented, could change or be revoked without
-  notice, and reverse-engineering internal endpoints crosses into a
-  different risk category than parsing a published page.
-- **Finding (2026-09-19):** Playwright Chromium receives HTTP 403 from both
-  bseindia.com URLs (331 and 327 bytes); Akamai present in the network log.
-  The "holiday" match in the 403 body is the requested URL echoed back, not
-  calendar content. Headless browser does not bypass.
-- **Verdict:** BLOCKED (other: Akamai, HTTP 403).
+- **Finding (2026-10-04, v2.12.4 reconnaissance):** SET's current
+  holiday page at `/en/about/event-calendar/holiday` links to two
+  plain PDFs on `media.set.or.th` — not the AnyFlip flipbook the
+  2026-09-04 note described. The site redesigned between the two
+  observations.
+- **Finding (2026-10-04):** the 2026 PDF (26 pages, 39725
+  extractable characters) has a text layer, but the text is a
+  **calendar grid**: month names in headers, day numbers in rows
+  under a `SUNDAY MONDAY TUESDAY ...` column header, holiday names
+  as separate text below each row. Nothing in the extracted text
+  links a name to a date. `pdfplumber.extract_text()` returns the
+  numerals and the labels as separate blocks; recovering the
+  mapping requires word coordinates and column reconstruction,
+  which `PDFFetcher` does not expose.
+- **Verdict:** BLOCKED (visual-grid PDF). Second confirmed member
+  of the class ADR 0009 named, alongside XATH. The source is not
+  scanned, but its structure lives in cell position, not text.
+  Reopening requires a grid-aware PDF parser that reads word
+  coordinates — outside the framework's current scope. Permanent
+  block.
 
-## XNSE — National Stock Exchange of India (NSE)
+<a id="xkar"></a>
+## XKAR — Pakistan Stock Exchange
 
-**Last verified:** 2026-09-19
+**Last verified:** 2026-09-06
 
-- **Checked:** nseindia.com/resources/exchange-communication-holidays
-- **Finding:** the page itself loads (not bot-blocked), but the actual
-  holiday table is populated via JS/AJAX behind "Select Product" and
-  "Year" dropdowns -- the static HTML contains only a single hardcoded
-  note about one specific 2026 date, not the table. NSE is also widely
-  documented (across multiple open-source projects) as requiring a
-  session-cookie handshake before its internal APIs will respond to plain
-  HTTP requests, which this framework's `requests`-based approach doesn't
-  perform.
-- **Finding (2026-09-19):** Playwright Chromium receives HTTP 403 from both
-  www.nseindia.com and nseindia.com (335 and 331 bytes); Akamai present in the
-  network log. This differs from the 2026-08-27 note that the page loaded; the
-  "holiday" matches are the requested URL echoed in the 403 body. Headless
-  browser does not bypass.
-- **Verdict:** BLOCKED (other: Akamai, HTTP 403).
+- **Checked:** psx.com.pk's official "HOLIDAY CALENDAR - 2026" PDF directly
+- **Finding:** the PDF returned no extractable text at all -- almost
+  certainly a scanned-image or otherwise non-text-based PDF, the same
+  fundamental category as XSWX/XATH's visual-grid PDFs even though the
+  failure mode looked different at the fetch-tool level.
+- **Verdict:** BLOCKED.
 
-## XJKT — Indonesia Stock Exchange (IDX)
-
-**Last verified:** 2026-09-19
-
-- **Checked:** idx.co.id's official static PDF announcement
-  ("Peng-00171 Libur Bursa 2026")
-- **Finding:** a real, first-party, government-adjacent PDF exists and is
-  linked from IDX's own site — but the direct fetch request itself was
-  bot-blocked, and even if it weren't, PDF parsing is out of scope for this
-  `BeautifulSoup`-based HTML framework (same reasoning as XSWX).
-- **Finding (2026-09-19):** Playwright Chromium receives HTTP 503 (1,240
-  bytes) from www.idx.co.id/en/idx-trading-holidays and HTTP 403 (4,839 bytes)
-  from idx.co.id; Cloudflare present in the network log. Headless browser does
-  not bypass.
-- **Verdict:** BLOCKED (Cloudflare, HTTP 503/403).
-
-## XTAI — Taiwan Stock Exchange (TWSE)
-
-**Last verified:** 2026-09-19
-
-- **Checked:** twse.com.tw/en/trading/holiday.html (JS-rendered, confirmed
-  no data in raw HTML) AND `openapi.twse.com.tw/v1` — TWSE's real, public,
-  documented OpenAPI, fetched its full `swagger.json` spec directly and
-  reviewed every listed endpoint (company governance, financials, indices,
-  securities-firm data, trading reports, etc).
-- **Finding:** **no holiday or trading-calendar endpoint exists in the
-  public API.** Third-party MCP-server projects claiming "market calendar"
-  support most likely scrape the same JS-rendered page rather than using a
-  documented API endpoint, since none exists.
-- **Finding (2026-09-19):** www.twse.com.tw/en/page/trading/exchange.html
-  returns HTTP 200 but redirects to /page-not-found.html (698 bytes, no
-  calendar terms), so that registry URL is dead. The Checked page was only
-  tried at the apex twse.com.tw, which fails DNS (ERR_NAME_NOT_RESOLVED); the
-  www variant was not tested. The no-API finding above is unaffected.
-- **Verdict:** BLOCKED (dead URL: registry source_url redirects to page-not-found) —
-  earlier note: this one moved from "needs more verification" to a confirmed
-  blocker, not a resolved build.
-
-## Resolved: XHKG — Hong Kong Exchanges and Clearing (HKEX)
+<a id="xswx"></a>
+## XSWX — SIX Swiss Exchange
 
 **Last verified:** 2026-08-27
 
-- **Originally blocked on:** `https://www.hkex.com.hk/News/HKEX-Calendar?sc_lang=en`
-  — confirmed JS-rendered widget, no holiday data in raw HTML, no first-party
-  JSON API found (only paid third-party scraper wrappers, rejected as not
-  authoritative).
-- **Resolution:** a *different* page on the same domain — HKEX's own "Trading
-  Hour, Trading and Settlement Calendar" page for Stock Connect — links
-  directly to real, static CSV files (e.g.
-  `.../2026-Calendar_csv_e.csv`), verified live and fetchable, not
-  JS-rendered, not bot-walled.
-- **Important nuance, not a footnote:** this CSV is the *Stock Connect*
-  trading calendar, which combines Hong Kong, Shanghai & Shenzhen, and
-  Northbound/Southbound trading status in one file. Stock Connect can show
-  "Closed" on a day when Hong Kong's own market is actually open (e.g. when
-  only the mainland side is on holiday). `HKEXFetcher` reads ONLY the "Hong
-  Kong" column, not the Stock Connect / mainland columns — verified against
-  a real fetched row where the "Hong Kong" column was blank while "Shanghai &
-  Shenzhen" said "Holiday" (2026-01-02, the day after New Year's, a
-  mainland-only closure). Reading the wrong column would have silently
-  produced a mainland calendar mislabeled as XHKG's own.
-- **Known limitation carried forward:** like NYSE/SSE/SZSE, this CSV's URL is
-  year-specific (`{year}-Calendar_csv_e.csv`) and not guaranteed stable
-  forever. `fetch()` tries the current year and next year automatically
-  (HKEX has historically published next year's file in December), but the
-  URL template will eventually need a manual update if HKEX changes the
-  naming convention.
-- **Specific holiday names not available:** unlike the other 9 fetchers, this
-  source doesn't name the holiday (e.g. "Lunar New Year" vs "National Day")
-  — only "Holiday" or "Half Day" per date. `HKEXFetcher` labels entries
-  generically ("Hong Kong Public Holiday" / "Hong Kong Half Trading Day")
-  rather than inventing a name the source doesn't provide.
-
-## XTAD — Abu Dhabi Securities Exchange (ADX)
-
-**Last verified:** 2026-09-19
-
-- **Checked:** adx.ae/about-adx/media/adx-events-calendar
-- **Finding:** confirmed Next.js JS-rendered SPA — the raw HTML contains
-  only "Loading component..." placeholders, no static holiday data.
-- **Finding (2026-09-19):** adx.ae/about-adx/media/adx-events-calendar returns
-  HTTP 200 (241,246 bytes in the sweep, 240,197 in the probe, 101,032 bytes
-  visible text) with no calendar terms in visible text; the sweep's raw
-  "holiday" match is not in visible text. www.adx.ae/trading-calendar timed
-  out at 30 s. Cloudflare and reCAPTCHA appear in the network log, but the
-  same URL returned HTTP 403 in an earlier spike run, so Cloudflare behaviour
-  is inconsistent. This is consistent with the placeholder finding above.
-- **Finding (2026-09-19, retest):** The _next/data JSON files contain
-  no holiday keys, so no holiday endpoint was found. The tool's
-  recaptcha-challenge marker on the second URL matches ordinary reCAPTCHA form
-  widgets and is not treated as a block.
-- **Verdict:** BLOCKED (no holiday endpoint: _next/data files have no holiday keys).
-
-## XBAH — Bahrain Bourse
-
-**Last verified:** 2026-08-29
-
-- **Checked:** bahrainbourse.com's "Official Holidays" page (real SharePoint
-  site, not JS-rendered overall)
-- **Finding:** the site itself is real and static, but this specific page's
-  content area is empty in the raw HTML — populated by a client-side
-  SharePoint webpart. Bahrain Bourse otherwise only announces holidays
-  individually via one-off "Market Message" news posts, not a structured
-  calendar.
+- **Checked:** six-group.com/en/market-data/news-tools/trading-currency-holiday-calendar.html
+- **Finding:** the page itself is real and static, but its only calendar
+  data is a PDF -- a visual calendar grid with no per-day text labels
+  identifying which holiday falls on which greyed-out date. Parsing this
+  reliably would require either OCR or a pixel-level heuristic against
+  cell shading, neither of which this project's text-based framework does
+  (or should attempt to guess at).
 - **Verdict:** BLOCKED.
 
+<a id="closed-api"></a>
+# Closed API / Requires Auth
+
+The data is only reachable through an interface that needs a key, a login or a licence. No exchange is filed here today: none of the 30 blocked entries records a credential requirement.
+
+<a id="dead-source"></a>
+# Dead Source / No First-Party Page
+
+There is no usable first-party page: the URL returns 404 or a not-found redirect, the host times out, the page serves stale data, or none could be located.
+
+<a id="dsmd"></a>
 ## DSMD — Qatar Exchange
 
 **Last verified:** 2026-09-19
@@ -548,6 +626,20 @@ wrong without the reasoning behind it.
   Fixing them is a separate task.
 - **Verdict:** BLOCKED (dead URL: HTTP 404; site reachable).
 
+<a id="xbey"></a>
+## XBEY — Beirut Stock Exchange (Bourse de Beyrouth)
+
+**Last verified:** 2026-09-06
+
+- **Checked:** bse.com.lb's official holidays page directly, twice
+  (independent attempts)
+- **Finding:** both attempts timed out (`Read timeout while fetching the
+  URL`). This directly confirms the brief's own stated concern about this
+  exchange specifically ("instability") -- not a speculative worry, an
+  observed result.
+- **Verdict:** BLOCKED.
+
+<a id="xcai"></a>
 ## XCAI — Egyptian Exchange (EGX)
 
 **Last verified:** 2026-10-07
@@ -623,181 +715,131 @@ wrong without the reasoning behind it.
   Thu 2020-07-02). In 2024 EGX closed on the Sunday itself, before the
   2025 policy, which is why the rule starts at 2025.
 
-## XJSE — Johannesburg Stock Exchange (JSE)
+<a id="xnai"></a>
+## XNAI — Nairobi Securities Exchange
 
-**Last verified:** 2026-10-04
+**Last verified:** 2026-09-19
 
-- **Checked:** jse.co.za and clientportal.jse.co.za Market Notice PDFs
-- **Finding (2026-08-29):** expected to be one of the simpler Tier 3
-  sources; instead, the PDF itself returned "Site blocked the request
-  (bot detection)" on direct fetch.
-- **Finding (2026-10-04, Playwright probe):** `page.goto` through
-  headless Chromium returns HTTP 200 with the site's own HTML (402 KB),
-  confirming Cloudflare's challenge is satisfied by a browser session.
-  A one-level PDF scan from the homepage returned 137 links and one
-  contact-list PDF. No holiday calendar URL surfaced.
-- **Finding (2026-10-04, plain-HTTP re-probe, v2.12.5):** every URL
-  returns 403 with the same 5017-byte Cloudflare challenge page:
-  the homepage, `/robots.txt`, `/sitemap.xml`, `/sitemap_index.xml`,
-  the four previously recorded paths, and fourteen additional
-  candidates. `clientportal.jse.co.za` also returns 403 with a
-  full Chrome UA and browser-like `Accept` headers. Nothing on the
-  site is reachable from a plain HTTP client.
-- **Verdict:** BLOCKED (permanent). The site is entirely behind
-  Cloudflare for non-browser clients. The holiday calendar is
-  published as a Market Notice PDF; no URL for it was enumerated by
-  two discovery sessions (plain HTTP: fails at Cloudflare; one-level
-  Playwright PDF scan: homepage loads, no PDF found).
-- **Reopen condition:** a Playwright-driven **navigation walk** —
-  following the site's own menu into the market notices or regulation
-  section rather than scanning the homepage for direct PDF links.
-  That is the one technique not yet tried. If it also fails, the
-  source is documented as not publicly enumerable and the block is
-  truly permanent.
+- **Checked:** nse.co.ke's investor-calendar mechanism, which turned out to
+  be a directory of individual LISTED COMPANIES' corporate-events PDFs
+  (dividends, AGMs), not the exchange's own trading-holiday calendar. The
+  correct page was not located within this round's time budget.
+- **Verdict (superseded 2026-09-06, see Resolved below):** NOT VERIFIED -- genuinely open, not guessed at. A more
+  targeted search (or direct site-navigation, the approach that worked for
+  XMUS in Tier 6) is the likely next step.
+- **Resolved 2026-09-06 (Tier 8):** checked 6 different nse.co.ke pages
+  directly (homepage, investor calendar, events, investor news, press
+  releases, mobile trading) -- every single one returned identical generic
+  cookie-consent boilerplate text with zero page-specific content. This
+  consistent pattern across 6 independent URLs is a decisive signal (not a
+  single wrong-page miss) that nse.co.ke is a JS-rendered SPA where only
+  the cookie banner renders server-side.
+- **Finding (2026-09-19):** www.nse.co.ke/trading-calendar and
+  www.nse.co.ke/investor-relations/ both return HTTP 404 (174,568 and 174,596
+  bytes; 96,178 bytes visible text on the second, no calendar terms).
+  Cloudflare and reCAPTCHA appear in the network log but full pages are
+  served, with no challenge page observed. The homepage returns 200 (334,434
+  bytes) with a "holiday" match that was not inspected. The tested URLs are
+  dead; the real calendar page, if any, was not located.
+- **Verdict:** BLOCKED (dead URL: HTTP 404; calendar page not located).
 
-- **See:** docs/decisions/0009-playwright-fetcher-category.md and
-  docs/decisions/0010-render-mode.md for the decisions that govern
-  this class of block.
+<a id="xtai"></a>
+## XTAI — Taiwan Stock Exchange (TWSE)
 
-## XICE — Nasdaq Iceland (built; rules added 2026-10-07)
+**Last verified:** 2026-09-19
 
-**Last verified:** 2026-10-07
+- **Checked:** twse.com.tw/en/trading/holiday.html (JS-rendered, confirmed
+  no data in raw HTML) AND `openapi.twse.com.tw/v1` — TWSE's real, public,
+  documented OpenAPI, fetched its full `swagger.json` spec directly and
+  reviewed every listed endpoint (company governance, financials, indices,
+  securities-firm data, trading reports, etc).
+- **Finding:** **no holiday or trading-calendar endpoint exists in the
+  public API.** Third-party MCP-server projects claiming "market calendar"
+  support most likely scrape the same JS-rendered page rather than using a
+  documented API endpoint, since none exists.
+- **Finding (2026-09-19):** www.twse.com.tw/en/page/trading/exchange.html
+  returns HTTP 200 but redirects to /page-not-found.html (698 bytes, no
+  calendar terms), so that registry URL is dead. The Checked page was only
+  tried at the apex twse.com.tw, which fails DNS (ERR_NAME_NOT_RESOLVED); the
+  www variant was not tested. The no-API finding above is unaffected.
+- **Verdict:** BLOCKED (dead URL: registry source_url redirects to page-not-found) —
+  earlier note: this one moved from "needs more verification" to a confirmed
+  blocker, not a resolved build.
 
-- **Added:** First Day of Summer (first Thursday after 18 April) and Commerce
-  Day (first Monday in August), 2025 to 2029. The detector in
-  `docs/task-20-holiday-rule-sweep.md` had flagged four missing dates.
-- **Citation tier: 3, corroborated** (`CONTRIBUTING.md`, "Corroborated tier 3").
-  The four conditions: (1) two independent sources, Nasdaq CSD Iceland's settlement
-  calendar (states both rules and the closure) and LuxCSD's non-business-day lists
-  for 2025 and 2026 (name the four dates), each from a different issuer. (2) Nasdaq
-  CSD Iceland is the same-infrastructure calendar: the depository that settles Nasdaq
-  Iceland trades. (3) Validated: its list matches every other closure already in
-  `exchanges/XICE.json` for 2025 and 2026 (Maundy Thursday, Good Friday, Easter
-  Monday, Labour Day, Ascension, Whit Monday, 17 June, 24 to 26 December, 31
-  December), with none extra. (4) This note. The entries are not marked predicted.
-- **Source needed:** the Nasdaq Nordic holiday schedule for Iceland (the
-  existing `source_url` of the other entries is
-  `nasdaqomxnordic.com/trading-hours`). Its holiday table did not render as
-  text from this environment, and `nasdaq.com/european-market-activity/trading-hours`
-  showed "Closed" cells without dates. Query: the Iceland column of "Exchange
-  Holiday Schedule 2026".
-- **Rule type:** First Day of Summer has no rule type (a Thursday in 19 to 25
-  April), so it is explicit for all five years, as Victoria Day is for XTSE.
-  Commerce Day has an `nth_weekday` rule and explicit entries.
+<a id="ci-unreachable"></a>
+# Not blocked: CI-unreachable
 
-## XGSE — Ghana Stock Exchange (built; open items closed 2026-10-11; 2027 to 2029 is an open class)
+Reachable from a residential IP but not from CI; not a permanent block. Each of these has a fetcher.
 
-**Last verified:** 2026-10-11
+<a id="xnsa"></a>
+## XNSA — Nigerian Exchange Group (CI-unreachable)
 
-- **Sources, tier 1.** GSE's own 2026 list, `gse.com.gh/events/` (re-read 2026-10-11): it
-  states "The Ghana Stock Exchange will be closed on such holidays", names Eid-Ul-Fitr and
-  Eid-Al-Adha with dates "subject to the visibility of the New Moon", and says a holiday on
-  a weekend is observed on the following working day "if declared by the Government".
-  GSE's 2025 list, `gse.com.gh/?p=44200` (returned by search, not fetched separately),
-  has the same rule. The Interior Ministry's statements and Executive Instruments name the
-  public holiday: Constitution Day 2026 (`mint.gov.gh/?p=29382`, 2 January 2026) and
-  Republic Day 2026 (`mint.gov.gh/?p=30026`, 24 June 2026). `mint.gov.gh` renders with
-  JavaScript, so a fetch returns no text; those two pages were read as search snippets.
-  Entries cite press reports that reproduce the Ministry's statement.
-- **The law behind the moves.** The Public Holidays and Commemorative Days (Amendment)
-  Act, 2025 (passed 25 June 2025): restores 1 July as Republic Day, a statutory holiday;
-  removes 4 August as Founders' Day and makes 21 September Founders' Day; adds "Shaqq Day"
-  the day after Eid-ul-Fitr; and lets the President move a holiday that falls on a
-  Tuesday, Wednesday or Thursday to the Friday, and a weekend holiday to the following
-  Monday, by Executive Instrument. The move does not apply to religious holidays such as
-  Christmas and Eid. Sources: reports of the Ministry's statements (MyJoyOnline,
-  Ghanaian Times, GhanaWeb, Legal Ink); the Act's text was not read.
-- **Earlier (2026-10-07).** Six closures added (2025-03-31, 2025-04-01, 2025-06-06,
-  2026-03-20, 2026-03-23, 2026-05-27) and the false 2026-08-04 removed. The
-  2025 and 2026 Eid dates are cited to press reports of the Ministry's declaration
-  (the ministry pages for 2025 carry a year token that `tools/check_stale_year_urls.py`
-  rejects).
-- **Two-sided check 2026-10-11, first pass: 3 kinds, 5 dated entries.**
-  - *Added, 2 kinds, 2 entries.* 2025-09-22 "Kwame Nkrumah Memorial Day (observed)":
-    21 September 2025 was a Sunday, GSE's list applies the next working day when
-    declared, and the Interior Ministry declared Monday 22 September by Executive
-    Instrument (Ghanaian Times report, cited in the entry). 2026-07-03 "Republic Day":
-    GSE's 2026 list has Republic Day on "Friday July 1st/3rd" and the Ministry declared
-    Friday 3 July as the holiday (cited to GSE's list).
-  - *Removed, 1 kind, 3 entries.* Founders' Day on 4 August: 2027-08-04, 2028-08-04 and
-    2029-08-06. GSE's 2026 list has Founder's Day on 21 September only, and the 2025 Act
-    removed 4 August as Founders' Day (see the 2025-08-04 correction below). GSE has not
-    published 2027 to 2029, so for those years the removals rest on the Act and the 2026
-    list, not on a list for the year. Re-check when GSE publishes.
-- **Open items closed 2026-10-11: 2 kinds added, 1 removed, 3 dated entries.**
-  - *2026-01-09, added; 2026-01-07, removed. [Likely].* GSE's 2026 list has Constitution
-    Day on Wednesday 7 January. The Ministry declared by Executive Instrument that Friday
-    9 January is the public holiday (2 January 2026), under the Act that moves a
-    midweek holiday to the Friday. Evidence it is the Friday GSE closed: a press report
-    that the exchange was closed "on Friday" for Constitution Day (it gives the date as
-    10 January, a Saturday, so it is dated wrongly but names the Friday); and GSE's own
-    session numbers, reported by the press, 7,124 on 2 January and 7,129 on 12 January,
-    which leave exactly one closed weekday between them (also checked: 7,095 on
-    18 November 2025 and 7,165 on 3 March 2026 agree with the same counting).
-    The counting shows one closure, not which day. **What would settle it:** a GSE notice
-    or daily report for Wednesday 7 or Friday 9 January 2026. GSE's list is stale in
-    the same way for Republic Day (it prints "July 1st/3rd"), which is why the file
-    follows the Ministry.
-  - *2025-07-04, added.* The Ministry declared Friday 4 July 2025 a public holiday for
-    Republic Day (Tuesday 1 July), by Executive Instrument (reports in Adom Online and
-    GhanaWeb; the second also gives the Act as passed by Parliament but not yet assented
-    to). GSE's own rule closes it on a public holiday.
-  - *2025-07-01, resolved: non-closure.* GSE's 2025 list and the Ministry's 2025 list
-    both put 1 July under commemorative days, and the Ministry's declaration puts the
-    holiday on 4 July. 1 July 2025 held the National Day of Prayer and Thanksgiving, which
-    was an observance, not the holiday.
-- **Correction 2026-10-11: 2025-08-04 removed (a false closure the first pass kept).**
-  The first pass kept 2025-08-04 "because it is on GSE's 2025 list". That reasoning was
-  wrong: GSE's 2025 list was written before the Act and also prints Republic Day as an
-  unobserved commemorative day, which the Ministry then moved to Friday 4 July. The
-  Interior Ministry stated on 31 July 2025 that Monday 4 August 2025 "is not a public
-  holiday" and should be treated as a regular working day (reported by MyJoyOnline,
-  Ghanaian Times and Modern Ghana); GSE closes on public holidays. **[Likely]:** no GSE
-  notice or daily report for 4 August 2025 was reachable. A weak tier 3 hint: IC
-  Securities' weekly wrap for 4 to 8 August 2025 gives total value traded 32.2 and
-  daily value traded 6.4, a ratio of 5, which fits five sessions if the divisor is the
-  real day count. **What would settle it:** a GSE daily report for that Monday. 1 kind
-  (the same Founders' Day 4 August kind as the three removals above), 1 entry.
-- **Not false closures.** The file's "(observed)" entries for weekend holidays (2026-12-28,
-  2027-05-03, 2027-12-27, 2027-12-28, 2028-01-03, 2029-01-08) are consistent with GSE's
-  own rule, which applies the following working day if the Government declares it. This
-  differs from ZSE, which never moves one. They are predictions and are not marked
-  `predicted` in the file.
+**Last verified:** 2026-09-17
 
-### 2027–2029 open class
+- **Checked:** ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/
+- **Finding:** fetches cleanly from residential IP (12 holidays, verified
+  2026-09-17). Fails from GitHub Actions with `ParseError: No holidays
+  found` — the page is behind Sucuri (`x-sucuri-id: 19017`), which serves
+  a challenge body instead of the calendar to datacenter IP ranges.
+- **Verdict:** CI-UNREACHABLE (not a parser bug, not permanently
+  blocked). Works when run locally; only the scheduled CI check cannot
+  reach it. A future maintainer seeing `ParseError` in a log should look
+  here before touching `NigeriaExchangeFetcher`.
 
-**Last verified:** 2026-10-11
+<a id="xshg"></a>
+## XSHG — Shanghai Stock Exchange (CI-unreachable)
 
-**Not filled in. Not this session's scope.** It is a class of gaps, and every date in it
-depends on a publication that does not exist yet: GSE has published no list for 2027 to
-2029, and the Ministry declares each year's moves close to the date (the 2026 declarations
-came on 2 January and 24 June). Filling it from a pattern would write predictions into the
-file as if they were known. Each gap and what it needs:
+**Last verified:** 2026-09-17
 
-- **Republic Day (1 July) is missing for 2027, 2028 and 2029.** It is a statutory holiday
-  since the 2025 Act. 2027-07-01 is a Thursday (may move to Friday 2 July), 2028-07-01 a
-  Saturday and 2029-07-01 a Sunday (may move to the Monday). Needs: the Ministry's
-  declaration for each year and GSE's list for that year.
-- **Eid dates are missing for 2027, 2028 and 2029,** including the additional "Shaqq Day"
-  the Act sets the day after Eid-ul-Fitr (the 2026-03-23 entry labelled "additional
-  holiday" looks like that day, a Saturday, moved to the Monday; 2025-04-01 predates the
-  Act). They depend on the New Moon, so no list can precede the year.
-  Needs: the Ministry's declaration for each Eid, as for 2025 and 2026.
-- **The midweek-to-Friday move.** The Act lets the President move a non-religious holiday
-  on a Tuesday, Wednesday or Thursday to the Friday, and in 2025 and 2026 it was used for
-  Republic Day (4 July 2025, 3 July 2026) and Constitution Day (9 January 2026). The
-  file's 2027 to 2029 entries sit on their statutory dates, so a midweek one may close on
-  another day: 2027-01-07 (Thursday), 2027-09-21 (Tuesday) and 2028-09-21 (Thursday).
-  The others in those years fall on a Friday or Monday, or are weekend dates already
-  handled by the "(observed)" entries. Needs: the Ministry's Executive Instrument for
-  each year, and GSE's list for that year.
-- **Names.** The 2027 to 2029 September entries carry GSE's old name, "Kwame Nkrumah
-  Memorial Day"; GSE's 2026 list calls 21 September "Founder's Day". The date is
-  unaffected.
-- **What closes it.** GSE's 2027 list (it published the 2026 list at the start of that year;
-  the 2025 list, `gse.com.gh/?p=44200`, was not updated for the Act) and the Ministry's
-  declarations. A session for this class should start from those, not from the file.
+- **Checked:** english.sse.com.cn/start/trading/schedule/
+- **Finding:** HTTP 403 from GitHub Actions runners; HTTP 200 from
+  residential IP with browser User-Agent. Same CDN IP-block pattern as
+  XHKG. The source itself works.
+- **Verdict:** CI-UNREACHABLE (not permanently blocked). No manual
+  updates needed; works when run locally.
 
+<a id="resolved"></a>
+# Not blocked: resolved
+
+Was blocked, no longer is. Kept as the history of the verdict change.
+
+<a id="xhkg"></a>
+## Resolved: XHKG — Hong Kong Exchanges and Clearing (HKEX)
+
+**Last verified:** 2026-08-27
+
+- **Originally blocked on:** `https://www.hkex.com.hk/News/HKEX-Calendar?sc_lang=en`
+  — confirmed JS-rendered widget, no holiday data in raw HTML, no first-party
+  JSON API found (only paid third-party scraper wrappers, rejected as not
+  authoritative).
+- **Resolution:** a *different* page on the same domain — HKEX's own "Trading
+  Hour, Trading and Settlement Calendar" page for Stock Connect — links
+  directly to real, static CSV files (e.g.
+  `.../2026-Calendar_csv_e.csv`), verified live and fetchable, not
+  JS-rendered, not bot-walled.
+- **Important nuance, not a footnote:** this CSV is the *Stock Connect*
+  trading calendar, which combines Hong Kong, Shanghai & Shenzhen, and
+  Northbound/Southbound trading status in one file. Stock Connect can show
+  "Closed" on a day when Hong Kong's own market is actually open (e.g. when
+  only the mainland side is on holiday). `HKEXFetcher` reads ONLY the "Hong
+  Kong" column, not the Stock Connect / mainland columns — verified against
+  a real fetched row where the "Hong Kong" column was blank while "Shanghai &
+  Shenzhen" said "Holiday" (2026-01-02, the day after New Year's, a
+  mainland-only closure). Reading the wrong column would have silently
+  produced a mainland calendar mislabeled as XHKG's own.
+- **Known limitation carried forward:** like NYSE/SSE/SZSE, this CSV's URL is
+  year-specific (`{year}-Calendar_csv_e.csv`) and not guaranteed stable
+  forever. `fetch()` tries the current year and next year automatically
+  (HKEX has historically published next year's file in December), but the
+  URL template will eventually need a manual update if HKEX changes the
+  naming convention.
+- **Specific holiday names not available:** unlike the other 9 fetchers, this
+  source doesn't name the holiday (e.g. "Lunar New Year" vs "National Day")
+  — only "Holiday" or "Half Day" per date. `HKEXFetcher` labels entries
+  generically ("Hong Kong Public Holiday" / "Hong Kong Half Trading Day")
+  rather than inventing a name the source doesn't provide.
+
+<a id="xist"></a>
 ## XIST — Borsa Istanbul
 
 **Last verified:** 2026-10-01
@@ -853,431 +895,29 @@ file as if they were known. Each gap and what it needs:
   `level: high`, `last_verified: 2026-10-01`. The notes above are kept
   as history; the permanent deferral in the last bullet no longer holds.
 
-## XMUS — Muscat Securities Market (MSX, formerly MSM)
-
-**Last verified:** 2026-09-04
-
-- **Checked:** searched for msx.om (the current domain, rebranded from
-  msm.gov.om) holiday/trading-calendar pages
-- **Finding:** no first-party holiday page was found within the search
-  budget spent. This is NOT the same as "confirmed blocked" — it means the
-  right page (if one exists) wasn't located, not that a located page failed
-  verification.
-- **Verdict (superseded 2026-09-04, see Resolved below):** NOT VERIFIED. Worth another, more targeted search pass in a
-  future round rather than being carried forward indefinitely as "blocked."
-- **Re-checked 2026-08-31 (Tier 5 "quick win" attempt):** searched again
-  with a second, differently-worded query. Same result: only third-party
-  aggregators (TradingHours.com, MarketHours.io, calendarlabs,
-  globalexchangesdirectory) turned up, no first-party msx.om page. Two
-  independent search attempts across two rounds have now failed to locate
-  one — this either doesn't exist as a scrapable HTML/PDF resource, or
-  needs a research approach beyond keyword search (e.g. browsing msx.om's
-  own site navigation directly) to find. Still NOT VERIFIED, but the
-  confidence that a page is simply "out there, unfound" should be lower
-  after two misses than after one.
-- **Resolved 2026-09-04 (Tier 6 pre-check):** rather than search again, this
-  time navigated msx.om's own site chrome directly -- fetched the
-  homepage, found "Exchange Events/Holidays" in the actual left-nav menu,
-  and followed it to `msx.om/exchange-holidays.aspx`. That page IS real and
-  IS the correct page, but its content area under the "Exchange Holidays"
-  heading is empty in the raw HTML response -- populated client-side, same
-  pattern as XBAH's "Official Holidays" page. **Verdict upgraded from "not
-  verified" to confirmed BLOCKED** -- the two prior search misses weren't a
-  search-quality problem, they were correctly finding nothing indexed
-  because the actual content isn't in static HTML at all.
-
-## XSGO — Santiago Stock Exchange (Bolsa de Santiago)
-
-**Last verified:** 2026-09-19
-
-- **Checked:** bolsadesantiago.com/mercado_horarios_feriados directly
-- **Finding:** confirmed pure JS SPA shell (rebranded "SANTIAGOX") -- raw
-  HTML contains only meta tags and a Google Tag Manager script, zero
-  content.
-- **Finding (2026-09-19):** www.bolsadesantiago.com/horarios returns HTTP 200
-  with an 859-byte body; Cloudflare, hCaptcha and Perfdrive appear in the
-  network log. The apex bolsadesantiago.com/mercado_horarios_feriados fails
-  with ERR_CERT_COMMON_NAME_INVALID. Headless browser does not bypass; no
-  CAPTCHA solving attempted.
-- **Verdict:** BLOCKED (hCaptcha).
-
-## XKLS — Bursa Malaysia
-
-**Last verified:** 2026-09-04
-
-- **Checked:** bursamalaysia.com/about_bursa/about_us/calendar directly
-- **Finding:** confirmed bot-walled -- "Site blocked the request (bot
-  detection)" on direct fetch.
-- **Verdict:** BLOCKED.
-
-## XBOG — Bolsa de Valores de Colombia (BVC)
-
-**Last verified:** 2026-09-18
-
-- **Checked:** two independent search attempts for a first-party bvc.com.co
-  holiday/calendar page
-- **Finding:** no first-party page found in either attempt -- only
-  third-party aggregators and articles referencing "the BVC calendar"
-  without linking a real source page. Note: "BVC" is also the ticker/
-  abbreviation for the unrelated Caracas Stock Exchange (Bolsa de Valores
-  de Caracas), which polluted several search results and made this harder
-  to resolve than most.
-- **Verdict:** BLOCKED (treated the same as two independent misses for
-  XMUS were treated before its page was eventually found by browsing site
-  navigation directly -- that approach wasn't attempted here due to time
-  spent on the Caracas/Colombia naming collision).
-- **Re-checked 2026-09-17 (direct navigation, not search):** fetched
-  `bvc.com.co`'s homepage directly. Unlike XMUS, there was no nav menu to
-  follow -- the homepage itself is a Next.js client-side-rendered SPA shell,
-  raw response containing only meta tags and a Google Tag Manager reference,
-  zero server-rendered links or content. Same failure signature as XSGO and
-  XLIM. Full evidence and a disclosed tooling limitation (this environment's
-  sandbox cannot `curl` the domain directly; a different fetch tool with a
-  broader network allowlist was used instead) in
-  `docs/verifications/2026-09-17_xbog.md`.
-- **Task 0, 2026-09-17: `exchanges/XBOG.json` audited and corrected.** The
-  open issue above was investigated. Finding: the ~90 entries were
-  hand-authored in a single 2026-08-18 commit, with no fetcher and no
-  reachable page behind the `source_url` they all cited (confirmed above).
-  Worse, independent of that citation problem, the data itself had real
-  errors: three fixed, non-transferable holidays (Labour Day 2027, Christmas
-  2027, New Year 2028) were wrongly Monday-shifted as if they were
-  Emiliani-movable; three Emiliani-movable feast dates were shifted a week
-  in the wrong direction (Saint Peter & Paul 2027, Ascension 2028, Corpus
-  Christi 2028); and 2028's Corpus Christi / Sacred Heart were mislabeled
-  and one was missing outright. Corrected all of these against an
-  independently-implemented, Easter-date-validated reconstruction of
-  Colombia's statutory holiday law (Ley 51 de 1983, "Ley Emiliani"),
-  cross-checked against a reachable third-party source
-  (rankia.co, matching all 18 of 2026's holidays exactly) and convergent
-  Colombian press coverage of the 2025 official calendar. The 8
-  Christmas-Eve/New-Year's-Eve early-close entries (claimed 11:30, never
-  sourced) were removed rather than kept unverified -- one genuine piece of
-  contrary evidence (a 2020 BVC announcement citing a different time) was
-  found and no supporting evidence was. 95 entries -> 84. Full methodology,
-  every diff, and the one real mistake I made and caught before committing
-  (a first-pass fix that broke a genuine Colombian holiday-collision rule
-  the original file had actually gotten right) are in
-  `docs/verifications/2026-09-17_xbog_task0.md`.
-- **Verdict: still BLOCKED for automated-fetcher purposes** — `bvc.com.co`
-  is still unreachable, so there is still no `XBOGColombiaFetcher` and none
-  is possible right now. But the manually-curated data in
-  `exchanges/XBOG.json` is, as of 2026-09-17, verified as far as it's
-  currently possible to verify it without a working first-party page --
-  not merely "populated." Anyone re-blocking or re-populating this file
-  in the future should read the Task 0 doc first; several of its findings
-  (the fixed-vs-movable distinction, the 2025 collision rule) are easy to
-  get wrong again from scratch.
-
-## XLIM — Bolsa de Valores de Lima (BVL)
-
-**Last verified:** 2026-09-19
-
-- **Checked:** found the real page (bvl.com.pe/mercado/resumen-mercado/
-  feriados-y-horarios-de-negociacion) and fetched it directly
-- **Finding:** confirmed pure JS SPA shell -- raw HTML contains only meta
-  tags and a Google Tag Manager script, same pattern as XSGO.
-- **Finding (2026-09-19):** www.bvl.com.pe/calendario returns HTTP 200
-  (149,967 bytes) with no calendar terms; Cloudflare and reCAPTCHA appear in
-  the network log, and no challenge page was observed. The Checked page above
-  was not successfully tested (apex bvl.com.pe fails DNS). reCAPTCHA presence
-  alone does not show it gates the calendar.
-- **Finding (2026-09-19, retest):** The only JSON endpoint flagged,
-  stock-quote/home, is equities data, not holidays (a false positive of the
-  tool's date+name key heuristic). The calendar page is an SPA and no holiday
-  source is reachable in its network log.
-- **Verdict:** BLOCKED (no holiday endpoint: SPA calendar page; the only JSON seen is equities data).
-
-## XPHS — Philippine Stock Exchange (PSE)
-
-**Last verified:** 2026-09-19
-
-- **Checked:** found the real "Trading Hours & Holidays" section on
-  pse.com.ph/investing-at-pse/ (an anchor-linked section, not a separate
-  page -- the earlier attempt at edge.pse.com.ph/companyPage/
-  marketCalendar.do had found a *different*, unrelated corporate-actions
-  calendar by mistake)
-- **Finding:** the "National & Special Holidays" table exists in the raw
-  HTML with real column headers ("Date", "Holiday", "Year") but zero data
-  rows, plus an unrendered template placeholder literally reading
-  "hf:categories" in the header row -- confirming the table is populated
-  by JavaScript/AJAX from a custom data source, not present in the static
-  response.
-- **Finding (2026-09-19):** The sweep's pse.com.ph/trading-holidays/ returns
-  HTTP 404 (156,901 bytes; Cloudflare and reCAPTCHA in the network log). The
-  Checked page pse.com.ph/investing-at-pse/ loaded in an earlier Playwright
-  run (HTTP 200, 528,057 bytes) with no Holiday/Eid/Ramadan/Arafat in visible
-  text (the one raw hit was inside a <style> block); a retest timed out. The
-  2026-09-04 finding above reported a "Holiday" column header in raw HTML,
-  which this run did not reproduce.
-- **Finding (2026-09-19, retest):** Retest found a JSON endpoint: POST
-  https://www.pse.com.ph/wp-admin/admin-ajax.php returns JSON whose data[]
-  entries carry cf:holiday_title, content (dates) and categories (years), and
-  plain requests (no browser) reaches it. This is consistent with the
-  2026-09-04 note of a table populated by AJAX, and supersedes the sweep's
-  no-visible-content result.
-- **Finding (2026-10-04):** an `XPHSFetcher` was attempted and reverted.
-  The endpoint works from a plain HTTP client, but pse.com.ph's
-  robots.txt disallows `/wp-admin/` for all User-agents, and the
-  fetcher framework respects robots.txt (fail-closed when explicitly
-  disallowed — the same reason XCAS and XDHA are blocked). The
-  2026-09-19 note "plain requests (no browser) reaches it" was
-  accurate about the *network path* but omitted the robots.txt check.
-- **Verdict:** BLOCKED (robots.txt). Same class as XCAS and XDHA. Not
-  worked around by design.
-
-- **See:** docs/decisions/0009-playwright-fetcher-category.md for the decision that governs this class of block.
-
-## XBKK — Stock Exchange of Thailand (SET)
-
-**Last verified:** 2026-09-04
-
-- **Finding (2026-10-04, v2.12.4 reconnaissance):** SET's current
-  holiday page at `/en/about/event-calendar/holiday` links to two
-  plain PDFs on `media.set.or.th` — not the AnyFlip flipbook the
-  2026-09-04 note described. The site redesigned between the two
-  observations.
-- **Finding (2026-10-04):** the 2026 PDF (26 pages, 39725
-  extractable characters) has a text layer, but the text is a
-  **calendar grid**: month names in headers, day numbers in rows
-  under a `SUNDAY MONDAY TUESDAY ...` column header, holiday names
-  as separate text below each row. Nothing in the extracted text
-  links a name to a date. `pdfplumber.extract_text()` returns the
-  numerals and the labels as separate blocks; recovering the
-  mapping requires word coordinates and column reconstruction,
-  which `PDFFetcher` does not expose.
-- **Verdict:** BLOCKED (visual-grid PDF). Second confirmed member
-  of the class ADR 0009 named, alongside XATH. The source is not
-  scanned, but its structure lives in cell position, not text.
-  Reopening requires a grid-aware PDF parser that reads word
-  coordinates — outside the framework's current scope. Permanent
-  block.
-
-## XSTC — Ho Chi Minh Stock Exchange (Vietnam)
-
-**Last verified:** 2026-09-06
-
-- **Originally checked:** nothing in Tier 6. This exchange was in scope for
-  Tier 6's resolution pass but was not reached before that round's time
-  budget ran out.
-- **Resolved 2026-09-06 (Tier 7):** searched for HOSE's official trading-
-  holiday notice and found a real, clean, English-language, text-
-  extractable PDF at `staticfile.hsx.vn`. Buildable. Built as
-  `HOSEVietnamFetcher`. See `docs/fetcher_verification.md` for the parsing
-  details (nested-parenthesis stripping, combined-event date pairs).
-- **Verdict: BUILD** (no longer blocked/unverified).
-
-## Tier 7 (Africa/South Asia) — 2026-09-06
-
-**Last verified:** 2026-09-06
-
-Applied the accumulated 6-tier infrastructure model as a predictive filter
-rather than deep-diving every exchange from scratch.
-
-### XTUN — Bourse de Tunis (Tunisia)
-
-**Last verified:** 2026-09-19
-
-- **Checked:** bvmt.com.tn/fr/content/jours-feries-de-2026 directly
-- **Finding:** confirmed JS-rendered -- the fetch tool itself reported "no
-  readable text... rendered with JavaScript."
-- **Finding (2026-09-19):** Both bvmt.com.tn candidates return HTTP 200 with a
-  39-byte body after Playwright Chromium's 8 s wait; no anti-bot service in
-  the network log and no calendar terms. The earlier "JS-rendered" observation
-  is neither confirmed nor refuted by an empty response.
-- **Finding (2026-09-19, retest):** With a 30 s wait and XHR logging,
-  every URL tried returns a 39-byte body and no JSON endpoint appeared.
-- **Verdict:** BLOCKED (empty response: 39-byte body on every URL tried).
-
-### XCAS — Bourse de Casablanca (Morocco)
-
-**Last verified:** 2026-09-06
-
-- **Checked:** casablanca-bourse.com/market-data/jours-feries directly
-- **Finding:** the page is real and appears to have real structured content
-  (fixed-date vs. mobile Hijri-date holiday sections, per the search
-  snippet), but **robots.txt explicitly disallows automated access** --
-  confirmed by the fetch tool itself refusing the request on that basis.
-  This framework respects robots.txt by design (added in Tier 1); this is
-  the first exchange blocked specifically by that check rather than by a
-  technical limitation.
-- **Verdict:** BLOCKED (by design, not by inability).
-
-### XKAR — Pakistan Stock Exchange
-
-**Last verified:** 2026-09-06
-
-- **Checked:** psx.com.pk's official "HOLIDAY CALENDAR - 2026" PDF directly
-- **Finding:** the PDF returned no extractable text at all -- almost
-  certainly a scanned-image or otherwise non-text-based PDF, the same
-  fundamental category as XSWX/XATH's visual-grid PDFs even though the
-  failure mode looked different at the fetch-tool level.
-- **Verdict:** BLOCKED.
-
-### XDHA — Dhaka Stock Exchange
-
-**Last verified:** 2026-09-06
-
-- **Checked:** dsebd.org/hts.php ("Holidays and Trading Sessions") directly
-  -- a real page confirmed to exist and to list "DSE will observe following
-  Holidays during the Calendar Year 2026" in search results
-- **Finding:** **robots.txt explicitly disallows automated access**, same
-  as XCAS.
-- **Verdict:** BLOCKED (by design, not by inability).
-
-### XNAI — Nairobi Securities Exchange
-
-**Last verified:** 2026-09-19
-
-- **Checked:** nse.co.ke's investor-calendar mechanism, which turned out to
-  be a directory of individual LISTED COMPANIES' corporate-events PDFs
-  (dividends, AGMs), not the exchange's own trading-holiday calendar. The
-  correct page was not located within this round's time budget.
-- **Verdict (superseded 2026-09-06, see Resolved below):** NOT VERIFIED -- genuinely open, not guessed at. A more
-  targeted search (or direct site-navigation, the approach that worked for
-  XMUS in Tier 6) is the likely next step.
-- **Resolved 2026-09-06 (Tier 8):** checked 6 different nse.co.ke pages
-  directly (homepage, investor calendar, events, investor news, press
-  releases, mobile trading) -- every single one returned identical generic
-  cookie-consent boilerplate text with zero page-specific content. This
-  consistent pattern across 6 independent URLs is a decisive signal (not a
-  single wrong-page miss) that nse.co.ke is a JS-rendered SPA where only
-  the cookie banner renders server-side.
-- **Finding (2026-09-19):** www.nse.co.ke/trading-calendar and
-  www.nse.co.ke/investor-relations/ both return HTTP 404 (174,568 and 174,596
-  bytes; 96,178 bytes visible text on the second, no calendar terms).
-  Cloudflare and reCAPTCHA appear in the network log but full pages are
-  served, with no challenge page observed. The homepage returns 200 (334,434
-  bytes) with a "holiday" match that was not inspected. The tested URLs are
-  dead; the real calendar page, if any, was not located.
-- **Verdict:** BLOCKED (dead URL: HTTP 404; calendar page not located).
-
-### XGSE — Ghana Stock Exchange
-
-**Last verified:** 2026-09-06
-
-- **Checked:** gse.com.gh and gsewebportal.com; confirmed an "Events &
-  Holidays" nav item exists but no direct URL with actual holiday data was
-  located within this round's budget.
-- **Verdict (superseded 2026-09-06, see Resolved below):** NOT VERIFIED -- same caveat as XNAI.
-- **Resolved 2026-09-06 (Tier 8):** fetched gse.com.gh's homepage directly
-  (not via search) and found the exact nav link ("Events & Holidays" ->
-  `gse.com.gh/events/`) in the real, static WordPress site's menu. That
-  page has a real, static holiday table with names, alternate-date rows
-  disambiguated by weekday, and Islamic holidays footnoted as
-  moon-sighting-dependent.
-- **Verdict: BUILD.** Built as `GhanaExchangeFetcher`.
-
-## Tier 8 (small/island markets) — 2026-09-06 — FINAL TIER
-
-**Last verified:** 2026-09-17
-
-**Tier 8 (small/island markets) update 2026-09-06 — FINAL TIER:** 5 of the
-8 Tier 8 exchanges were buildable (XBDA, XCAY, XLUX, XMAL, XZAG); 3 were
-confirmed blocked (XBUL, XBEY, XNZE). Two Tier 7 carryovers were also
-resolved in this round: XGSE (built) and XNAI (confirmed blocked).
-Combined count for the round: 6 built, 4 blocked.
-
-### XBUL — Bulgarian Stock Exchange
-
-**Last verified:** 2026-09-06
-
-- **Checked:** bse-sofia.bg's trading-calendar page directly (found via a
-  targeted search after an initial generic search failed on an unrelated
-  "BSE" naming collision)
-- **Finding:** the page itself is real (a genuine dashboard with live
-  market-data widgets, navigation, and rules links all present in the raw
-  HTML), but the actual holiday calendar content was not present anywhere
-  in the response -- only the surrounding page chrome and unrelated
-  market-data widgets. This suggests the specific calendar widget is loaded
-  dynamically within an otherwise mostly-static page.
-- **Verdict:** BLOCKED.
-
-### XBEY — Beirut Stock Exchange (Bourse de Beyrouth)
-
-**Last verified:** 2026-09-06
-
-- **Checked:** bse.com.lb's official holidays page directly, twice
-  (independent attempts)
-- **Finding:** both attempts timed out (`Read timeout while fetching the
-  URL`). This directly confirms the brief's own stated concern about this
-  exchange specifically ("instability") -- not a speculative worry, an
-  observed result.
-- **Verdict:** BLOCKED.
-
-### XNZE — New Zealand Exchange (NZX)
-
-**Last verified:** 2026-09-06
-
-- **Checked:** the official NZX Market Holidays announcement page
-  (nzx.com/announcements/443000), the PDF it references, and the
-  trading-hours page mentioned in that PDF's own memo text
-- **Finding:** all three failed differently. The announcement page's
-  holiday content is a JS-loaded "Updating..." placeholder for an embedded
-  attachment. The directly-referenced PDF URL 404'd. The trading-hours page
-  URL from the memo's own text also 404'd. This directly contradicts the
-  brief's assumption that New Zealand would be "likely simple" -- a good
-  illustration that a well-documented, mature exchange doesn't necessarily
-  mean an accessible one.
-- **Verdict:** BLOCKED.
-
-## XKUW — Boursa Kuwait
-
-**Last verified:** 2026-09-17
-
-- **Checked:** boursakuwait.com.kw/en/securities/trading/market-holidays/
-- **Finding:** HTTP 403 Forbidden from both GitHub Actions runners and
-  residential IPs, with a browser User-Agent. The site's bot detection
-  cannot be bypassed with header spoofing alone.
-- **Verdict:** BLOCKED (HTTP 403 on 2026-09-17). One probe on one day;
-  not shown to be permanent. `XKUW`'s fetcher stays registered and the
-  informational job in `live-fetcher-check.yml` still exercises it.
-  **Would unblock:** a 200 from `python tools/live_fetcher_check.py --only
-  XKUW`. Only header changes are recorded as tried; a browser-grade
-  render path (ADR 0009/0010) and a different egress have not been
-  tried against this site. Until then the calendar is maintained by hand.
-
-## XSAU — Saudi Exchange (Tadawul)
-
-**Last verified:** 2026-09-17
-
-- **Checked:** saudiexchange.sa/.../saudi-exchange-holiday-calendar
-- **Finding:** HTTP 403 Forbidden from both GitHub Actions runners and
-  residential IPs, with a browser User-Agent. Same pattern as XKUW.
-- **Verdict:** BLOCKED (HTTP 403 on 2026-09-17). One probe on one day;
-  not shown to be permanent. `SaudiExchangeFetcher` stays registered and
-  the informational job in `live-fetcher-check.yml` still exercises it.
-  **Would unblock:** a 200 from `python tools/live_fetcher_check.py --only
-  XSAU`. Only header changes are recorded as tried (the fetcher already
-  sends browser-like headers); a browser-grade render path (ADR 0009/0010)
-  and a different egress have not been tried against this site. Until
-  then the calendar is maintained by hand.
-
-## XSHG — Shanghai Stock Exchange (CI-unreachable)
-
-**Last verified:** 2026-09-17
-
-- **Checked:** english.sse.com.cn/start/trading/schedule/
-- **Finding:** HTTP 403 from GitHub Actions runners; HTTP 200 from
-  residential IP with browser User-Agent. Same CDN IP-block pattern as
-  XHKG. The source itself works.
-- **Verdict:** CI-UNREACHABLE (not permanently blocked). No manual
-  updates needed; works when run locally.
-
-## XNSA — Nigerian Exchange Group (CI-unreachable)
-
-**Last verified:** 2026-09-17
-
-- **Checked:** ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/
-- **Finding:** fetches cleanly from residential IP (12 holidays, verified
-  2026-09-17). Fails from GitHub Actions with `ParseError: No holidays
-  found` — the page is behind Sucuri (`x-sucuri-id: 19017`), which serves
-  a challenge body instead of the calendar to datacenter IP ranges.
-- **Verdict:** CI-UNREACHABLE (not a parser bug, not permanently
-  blocked). Works when run locally; only the scheduled CI check cannot
-  reach it. A future maintainer seeing `ParseError` in a log should look
-  here before touching `NigeriaExchangeFetcher`.
-
+<a id="built-tracking"></a>
+# Not blocked: built, with tracking notes
+
+A calendar exists and no unresolved block is recorded. These entries are kept because a fetcher's health, a date or a correction needs tracking.
+
+<a id="xbud"></a>
+## XBUD — Budapest Stock Exchange
+
+**Last verified:** 2026-10-03
+
+- **Finding (2026-10-03):** the BSE PDF resolution lists 12 trading
+  holidays for 2026 but omits 2026-03-16 (National Day observed) and
+  2026-12-28 (Boxing Day substitute). The current file carries both
+  with `name` fields that say "(observed)" and "(substitute)". They
+  are real closures under Hungarian labour law — March 15 and
+  December 26, 2026 fall on a weekend and Hungarian law grants the
+  Monday. The BSE resolution doesn't list them because the substitute
+  is automatic.
+- **Status:** fetcher present but incomplete. Resolution requires
+  adding Hungarian observed-day logic to the parser. IMPLEMENTED
+  at v2.9.3 (`BudapestFetcher._observed_substitutes`).
+
+<a id="xcol"></a>
 ## XCOL — Colombo Stock Exchange (built; 2026 corrected 2026-10-07; 2027 corrected 2026-10-11)
 
 **Last verified:** 2026-10-11
@@ -1391,6 +1031,7 @@ Combined count for the round: 6 built, 4 blocked.
 - A calendar-aggregator page (calendarlabs.com) lists the same 2026 dates as
   the circular; it was not used as a source.
 
+<a id="xdfm"></a>
 ## XDFM — Dubai Financial Market (reconciled 2026-09-17)
 
 **Last verified:** 2026-09-17
@@ -1415,49 +1056,295 @@ Combined count for the round: 6 built, 4 blocked.
   The removal guard blocks refresh until the divergence is
   resolved.
 
-## Past-due reconciliation — 2026-09-17
+<a id="xdub"></a>
+## XDUB — Euronext Dublin (corrected against the Euronext calendars 2026-10-10; 2027 to 2029 pattern-derived)
 
-**Last verified:** 2026-09-17
+**Last verified:** 2026-10-10
 
-Seven exchanges had their past-due predicted entries removed on
-2026-09-17 because the source URLs cited in `exchanges/*.json` are
-unreachable from any available IP (tests run from residential, browser
-UA):
+- **Candidate resolved: non-closure.** St Brigid's Day (2025-02-03, 2026-02-02) is a
+  full trading day for Dublin in Euronext's own calendars (tier 1,
+  `live.euronext.com/en/resources/trading-hours-holidays`, "Calendar of business days
+  2025" and "2026 Holiday Calendar"). Pinned by a test.
+- **Corrected (stop condition lifted for this exchange).** Euronext lists Dublin closed
+  in 2025 on 1 Jan, 18 Apr, 21 Apr, 1 May, 5 May (Irish May Bank Holiday), 25 Dec,
+  26 Dec, and in 2026 on 1 Jan, 3 Apr, 6 Apr, 1 May, 4 May, 25 Dec, 28 Dec (substitute
+  for St Stephen's Day). The file now matches. Removed: the rules and entries for
+  St. Patrick's Day and the June, August and October bank holidays (4 kinds, 20
+  entries, 2025 to 2029, including 2029-03-19), and the 2025-12-29 "Christmas Day
+  (substitute)" (1 entry): 21 entries in all. Added: Labour Day, 1 May, as a `fixed_date` rule (no weekend
+  substitute; 2027-05-01 is a Saturday and Euronext does not move it), with explicit
+  entries 2025-05-01, 2026-05-01 and 2029-05-01. 2028-05-01 was already present as the
+  May Bank Holiday and is the same day.
+- **Kept, 2026-12-28 "St. Stephen's Day (substitute)".** Euronext's 2026 calendar lists
+  Dublin closed on Monday 28 December 2026 (tier 1). Substitute days also appear in
+  Euronext's calendars for 2020 (28 Dec), 2021 (27 and 28 Dec), 2022 (3 Jan, 27 Dec) and
+  2023 (2 Jan). The 2027 (27 and 28 Dec) and 2028 (3 Jan) substitutes follow the same
+  pattern.
+- **2027 to 2029 are pattern-derived, not tier 1.** Euronext has not published
+  2027 to 2029; the entries were removed on the pattern from 2022 to 2026 (St Patrick's
+  Day and the June, August and October bank holidays are full trading days in every
+  published year, 2022 to 2026) and should be re-checked when the calendars publish.
+  The 2029-05-01 Labour Day entry is marked `predicted` for the same reason. The
+  source file cannot hold prose (`schema.json` forbids extra fields) and
+  `source_url` must be a URL on euronext.com, so this section carries the note.
+- Half sessions on 24 and 31 December match Euronext (Dublin closes 13:30 CET).
 
-- **XCAS**: robots.txt disallows automated access
-- **XDHA**: robots.txt disallows automated access
-- **XKAR**: PDF has no extractable text (scanned image)
-- **XKUW**: 403 from all IPs probed (see the XKUW section)
-- **XBAH**: content area is a client-side SharePoint webpart
+<a id="xetr"></a>
+## XETR — Xetra (Deutsche Börse) (built; non-closures recorded 2026-10-07)
 
-Entries were removed rather than left marked `predicted`. A `predicted`
-entry with a past date is a silent-correctness bug — a caller reading
-`is_holiday()` gets a confident answer for a date that was never
-confirmed. Removing the entry makes the missing data explicit instead
-of wrong.
+**Last verified:** 2026-10-07
 
-- **Finding (2026-10-02):** the DFM PDF omits <date>. The current
-  file has it as <name>. The two sources disagree; the file is
-  preserved. Resolution requires a third source — DFM's own circular
-  from the prior year, or a UAE regulatory notice.
-- **Status:** fetcher present but not authoritative for this date.
+- **Not closures, 5 candidates (2025 to 2026):** 2025-05-29 Ascension Day; 2025-06-09 Pentecost Monday; 2025-10-03 German Unity Day; 2026-05-14 Ascension Day; 2026-05-25 Pentecost Monday.
+- **Source (tier 1):** `cashmarket.deutsche-boerse.com/cash-en/trading/trading-calendar-and-trading-hours` and the Xetra trading calendar PDFs for 2025 and 2026. Xetra is closed on 1 January, Good Friday, Easter Monday, 1 May and 24, 25, 26 and 31 December (2025 and 2026 as published); it trades on every date below.
+- The source file cannot hold this note: `schema.json` sets `additionalProperties:
+  false` on the root and on `holidays`, so there is no field for a comment. This
+  section is where the next sweep looks.
 
+<a id="xgse"></a>
+## XGSE — Ghana Stock Exchange (built; open items closed 2026-10-11; 2027 to 2029 is an open class)
 
-## XBUD — Budapest Stock Exchange
+**Last verified:** 2026-10-11
 
-**Last verified:** 2026-10-03
+- **Sources, tier 1.** GSE's own 2026 list, `gse.com.gh/events/` (re-read 2026-10-11): it
+  states "The Ghana Stock Exchange will be closed on such holidays", names Eid-Ul-Fitr and
+  Eid-Al-Adha with dates "subject to the visibility of the New Moon", and says a holiday on
+  a weekend is observed on the following working day "if declared by the Government".
+  GSE's 2025 list, `gse.com.gh/?p=44200` (returned by search, not fetched separately),
+  has the same rule. The Interior Ministry's statements and Executive Instruments name the
+  public holiday: Constitution Day 2026 (`mint.gov.gh/?p=29382`, 2 January 2026) and
+  Republic Day 2026 (`mint.gov.gh/?p=30026`, 24 June 2026). `mint.gov.gh` renders with
+  JavaScript, so a fetch returns no text; those two pages were read as search snippets.
+  Entries cite press reports that reproduce the Ministry's statement.
+- **The law behind the moves.** The Public Holidays and Commemorative Days (Amendment)
+  Act, 2025 (passed 25 June 2025): restores 1 July as Republic Day, a statutory holiday;
+  removes 4 August as Founders' Day and makes 21 September Founders' Day; adds "Shaqq Day"
+  the day after Eid-ul-Fitr; and lets the President move a holiday that falls on a
+  Tuesday, Wednesday or Thursday to the Friday, and a weekend holiday to the following
+  Monday, by Executive Instrument. The move does not apply to religious holidays such as
+  Christmas and Eid. Sources: reports of the Ministry's statements (MyJoyOnline,
+  Ghanaian Times, GhanaWeb, Legal Ink); the Act's text was not read.
+- **Earlier (2026-10-07).** Six closures added (2025-03-31, 2025-04-01, 2025-06-06,
+  2026-03-20, 2026-03-23, 2026-05-27) and the false 2026-08-04 removed. The
+  2025 and 2026 Eid dates are cited to press reports of the Ministry's declaration
+  (the ministry pages for 2025 carry a year token that `tools/check_stale_year_urls.py`
+  rejects).
+- **Two-sided check 2026-10-11, first pass: 3 kinds, 5 dated entries.**
+  - *Added, 2 kinds, 2 entries.* 2025-09-22 "Kwame Nkrumah Memorial Day (observed)":
+    21 September 2025 was a Sunday, GSE's list applies the next working day when
+    declared, and the Interior Ministry declared Monday 22 September by Executive
+    Instrument (Ghanaian Times report, cited in the entry). 2026-07-03 "Republic Day":
+    GSE's 2026 list has Republic Day on "Friday July 1st/3rd" and the Ministry declared
+    Friday 3 July as the holiday (cited to GSE's list).
+  - *Removed, 1 kind, 3 entries.* Founders' Day on 4 August: 2027-08-04, 2028-08-04 and
+    2029-08-06. GSE's 2026 list has Founder's Day on 21 September only, and the 2025 Act
+    removed 4 August as Founders' Day (see the 2025-08-04 correction below). GSE has not
+    published 2027 to 2029, so for those years the removals rest on the Act and the 2026
+    list, not on a list for the year. Re-check when GSE publishes.
+- **Open items closed 2026-10-11: 2 kinds added, 1 removed, 3 dated entries.**
+  - *2026-01-09, added; 2026-01-07, removed. [Likely].* GSE's 2026 list has Constitution
+    Day on Wednesday 7 January. The Ministry declared by Executive Instrument that Friday
+    9 January is the public holiday (2 January 2026), under the Act that moves a
+    midweek holiday to the Friday. Evidence it is the Friday GSE closed: a press report
+    that the exchange was closed "on Friday" for Constitution Day (it gives the date as
+    10 January, a Saturday, so it is dated wrongly but names the Friday); and GSE's own
+    session numbers, reported by the press, 7,124 on 2 January and 7,129 on 12 January,
+    which leave exactly one closed weekday between them (also checked: 7,095 on
+    18 November 2025 and 7,165 on 3 March 2026 agree with the same counting).
+    The counting shows one closure, not which day. **What would settle it:** a GSE notice
+    or daily report for Wednesday 7 or Friday 9 January 2026. GSE's list is stale in
+    the same way for Republic Day (it prints "July 1st/3rd"), which is why the file
+    follows the Ministry.
+  - *2025-07-04, added.* The Ministry declared Friday 4 July 2025 a public holiday for
+    Republic Day (Tuesday 1 July), by Executive Instrument (reports in Adom Online and
+    GhanaWeb; the second also gives the Act as passed by Parliament but not yet assented
+    to). GSE's own rule closes it on a public holiday.
+  - *2025-07-01, resolved: non-closure.* GSE's 2025 list and the Ministry's 2025 list
+    both put 1 July under commemorative days, and the Ministry's declaration puts the
+    holiday on 4 July. 1 July 2025 held the National Day of Prayer and Thanksgiving, which
+    was an observance, not the holiday.
+- **Correction 2026-10-11: 2025-08-04 removed (a false closure the first pass kept).**
+  The first pass kept 2025-08-04 "because it is on GSE's 2025 list". That reasoning was
+  wrong: GSE's 2025 list was written before the Act and also prints Republic Day as an
+  unobserved commemorative day, which the Ministry then moved to Friday 4 July. The
+  Interior Ministry stated on 31 July 2025 that Monday 4 August 2025 "is not a public
+  holiday" and should be treated as a regular working day (reported by MyJoyOnline,
+  Ghanaian Times and Modern Ghana); GSE closes on public holidays. **[Likely]:** no GSE
+  notice or daily report for 4 August 2025 was reachable. A weak tier 3 hint: IC
+  Securities' weekly wrap for 4 to 8 August 2025 gives total value traded 32.2 and
+  daily value traded 6.4, a ratio of 5, which fits five sessions if the divisor is the
+  real day count. **What would settle it:** a GSE daily report for that Monday. 1 kind
+  (the same Founders' Day 4 August kind as the three removals above), 1 entry.
+- **Not false closures.** The file's "(observed)" entries for weekend holidays (2026-12-28,
+  2027-05-03, 2027-12-27, 2027-12-28, 2028-01-03, 2029-01-08) are consistent with GSE's
+  own rule, which applies the following working day if the Government declares it. This
+  differs from ZSE, which never moves one. They are predictions and are not marked
+  `predicted` in the file.
 
-- **Finding (2026-10-03):** the BSE PDF resolution lists 12 trading
-  holidays for 2026 but omits 2026-03-16 (National Day observed) and
-  2026-12-28 (Boxing Day substitute). The current file carries both
-  with `name` fields that say "(observed)" and "(substitute)". They
-  are real closures under Hungarian labour law — March 15 and
-  December 26, 2026 fall on a weekend and Hungarian law grants the
-  Monday. The BSE resolution doesn't list them because the substitute
-  is automatic.
-- **Status:** fetcher present but incomplete. Resolution requires
-  adding Hungarian observed-day logic to the parser. IMPLEMENTED
-  at v2.9.3 (`BudapestFetcher._observed_substitutes`).
+### 2027–2029 open class
+
+**Last verified:** 2026-10-11
+
+**Not filled in. Not this session's scope.** It is a class of gaps, and every date in it
+depends on a publication that does not exist yet: GSE has published no list for 2027 to
+2029, and the Ministry declares each year's moves close to the date (the 2026 declarations
+came on 2 January and 24 June). Filling it from a pattern would write predictions into the
+file as if they were known. Each gap and what it needs:
+
+- **Republic Day (1 July) is missing for 2027, 2028 and 2029.** It is a statutory holiday
+  since the 2025 Act. 2027-07-01 is a Thursday (may move to Friday 2 July), 2028-07-01 a
+  Saturday and 2029-07-01 a Sunday (may move to the Monday). Needs: the Ministry's
+  declaration for each year and GSE's list for that year.
+- **Eid dates are missing for 2027, 2028 and 2029,** including the additional "Shaqq Day"
+  the Act sets the day after Eid-ul-Fitr (the 2026-03-23 entry labelled "additional
+  holiday" looks like that day, a Saturday, moved to the Monday; 2025-04-01 predates the
+  Act). They depend on the New Moon, so no list can precede the year.
+  Needs: the Ministry's declaration for each Eid, as for 2025 and 2026.
+- **The midweek-to-Friday move.** The Act lets the President move a non-religious holiday
+  on a Tuesday, Wednesday or Thursday to the Friday, and in 2025 and 2026 it was used for
+  Republic Day (4 July 2025, 3 July 2026) and Constitution Day (9 January 2026). The
+  file's 2027 to 2029 entries sit on their statutory dates, so a midweek one may close on
+  another day: 2027-01-07 (Thursday), 2027-09-21 (Tuesday) and 2028-09-21 (Thursday).
+  The others in those years fall on a Friday or Monday, or are weekend dates already
+  handled by the "(observed)" entries. Needs: the Ministry's Executive Instrument for
+  each year, and GSE's list for that year.
+- **Names.** The 2027 to 2029 September entries carry GSE's old name, "Kwame Nkrumah
+  Memorial Day"; GSE's 2026 list calls 21 September "Founder's Day". The date is
+  unaffected.
+- **What closes it.** GSE's 2027 list (it published the 2026 list at the start of that year;
+  the 2025 list, `gse.com.gh/?p=44200`, was not updated for the Act) and the Ministry's
+  declarations. A session for this class should start from those, not from the file.
+
+<a id="xgse-tier7"></a>
+## XGSE — Ghana Stock Exchange
+
+**Last verified:** 2026-09-06
+
+- **Checked:** gse.com.gh and gsewebportal.com; confirmed an "Events &
+  Holidays" nav item exists but no direct URL with actual holiday data was
+  located within this round's budget.
+- **Verdict (superseded 2026-09-06, see Resolved below):** NOT VERIFIED -- same caveat as XNAI.
+- **Resolved 2026-09-06 (Tier 8):** fetched gse.com.gh's homepage directly
+  (not via search) and found the exact nav link ("Events & Holidays" ->
+  `gse.com.gh/events/`) in the real, static WordPress site's menu. That
+  page has a real, static holiday table with names, alternate-date rows
+  disambiguated by weekday, and Islamic holidays footnoted as
+  moon-sighting-dependent.
+- **Verdict: BUILD.** Built as `GhanaExchangeFetcher`.
+
+<a id="xice"></a>
+## XICE — Nasdaq Iceland (built; rules added 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Added:** First Day of Summer (first Thursday after 18 April) and Commerce
+  Day (first Monday in August), 2025 to 2029. The detector in
+  `docs/task-20-holiday-rule-sweep.md` had flagged four missing dates.
+- **Citation tier: 3, corroborated** (`CONTRIBUTING.md`, "Corroborated tier 3").
+  The four conditions: (1) two independent sources, Nasdaq CSD Iceland's settlement
+  calendar (states both rules and the closure) and LuxCSD's non-business-day lists
+  for 2025 and 2026 (name the four dates), each from a different issuer. (2) Nasdaq
+  CSD Iceland is the same-infrastructure calendar: the depository that settles Nasdaq
+  Iceland trades. (3) Validated: its list matches every other closure already in
+  `exchanges/XICE.json` for 2025 and 2026 (Maundy Thursday, Good Friday, Easter
+  Monday, Labour Day, Ascension, Whit Monday, 17 June, 24 to 26 December, 31
+  December), with none extra. (4) This note. The entries are not marked predicted.
+- **Source needed:** the Nasdaq Nordic holiday schedule for Iceland (the
+  existing `source_url` of the other entries is
+  `nasdaqomxnordic.com/trading-hours`). Its holiday table did not render as
+  text from this environment, and `nasdaq.com/european-market-activity/trading-hours`
+  showed "Closed" cells without dates. Query: the Iceland column of "Exchange
+  Holiday Schedule 2026".
+- **Rule type:** First Day of Summer has no rule type (a Thursday in 19 to 25
+  April), so it is explicit for all five years, as Victoria Day is for XTSE.
+  Commerce Day has an `nth_weekday` rule and explicit entries.
+
+<a id="xlit"></a>
+## XLIT — Nasdaq Vilnius (three closures added 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Tier 1:** Nasdaq Baltic's "Trading holidays" page (`nasdaqbaltic.com/statistics/en/calendar?holidays=1`)
+  lists, for the Vilnius market in 2026: 1 Jan, 16 Feb, 11 Mar, 3 Apr, 6 Apr, 1 May,
+  **14 May** (all three Baltic markets), 24 Jun, 6 Jul, **2 Nov**, 24 and 25 Dec, **31 Dec**.
+- **Candidate resolved: closure.** All Souls' Day (2026-11-02). It became a Lithuanian
+  public holiday by a 2019 law, first observed in 2020, so 2027 to 2029 are entered
+  (2025-11-02 is a Sunday).
+- **Also missing from the file, now added for 2026 only:** Ascension Day 2026-05-14 and
+  New Year's Eve 2026-12-31 (three additions in total, within the three-rule limit).
+- **Open:** whether Ascension Day and 31 December are Nasdaq Baltic trading holidays in
+  other years. **Source needed:** the same page for 2025, and for 2027 onward when
+  published. The page shows only the current year.
+
+<a id="xmad"></a>
+## XMAD — BME Spanish Exchanges (built; non-closures recorded 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Not closures, 6 candidates (2025 to 2026):** 2025-01-06 Epiphany; 2025-08-15 Assumption Day; 2025-12-08 Immaculate Conception; 2026-01-06 Epiphany; 2026-10-12 National Day; 2026-12-08 Immaculate Conception.
+- **Source (tier 1):** Sociedad de Bolsas Instrucciones Operativas 52/2024 (2025 calendar) and 65/2025 (2026 calendar), on `bolsasymercados.es`. BME is closed on 1 January, Good Friday, Easter Monday, 1 May and 25 December (plus 26 December in 2025); 24 and 31 December are half sessions. It trades on every date below.
+- The source file cannot hold this note: `schema.json` sets `additionalProperties:
+  false` on the root and on `holidays`, so there is no field for a comment. This
+  section is where the next sweep looks.
+- **Found while checking (not a candidate):** Easter Monday was missing. BME's
+  instructions list it as a non-business day for 2022 (Instrucción 53/2021, 18 Apr),
+  2024 (45/2023, 1 Apr), 2025 and 2026. The file and its tests said BME was open that
+  day. Added an `easter_offset` +1 rule (2025-04-21, 2027-03-29, 2028-04-17 and
+  2029-04-02 are generated) and an explicit 2026-04-06 entry citing the 2026
+  instruction. The Public-holiday detector could not find this: Easter Monday is not a
+  Spanish public holiday.
+- **Open:** the 2025 and 2024 instruction URLs carry a 2025 year token that
+  `tools/check_stale_year_urls.py` rejects, so 2025-04-21 has no per-entry citation.
+  The instruction is `.../instrucc/2024/2024-52-IO-CALENDARIO-DE-SESIONES-2025.pdf`.
+
+<a id="xnas"></a>
+## XNAS — Nasdaq (built; non-closures recorded 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Not closures, 4 candidates (2025 to 2026):** 2025-10-13 Columbus Day; 2025-11-11 Veterans Day; 2026-10-12 Columbus Day; 2026-11-11 Veterans Day.
+- **Source (tier 1 for 2026; 2025 as for XNYS):** `nasdaq.com/market-activity/stock-market-holiday-schedule`. Nasdaq follows the NYSE holiday set and trades on Columbus Day and Veterans Day.
+- The source file cannot hold this note: `schema.json` sets `additionalProperties:
+  false` on the root and on `holidays`, so there is no field for a comment. This
+  section is where the next sweep looks.
+
+<a id="xnys"></a>
+## XNYS — NYSE (built; non-closures recorded 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Not closures, 4 candidates (2025 to 2026):** 2025-10-13 Columbus Day; 2025-11-11 Veterans Day; 2026-10-12 Columbus Day; 2026-11-11 Veterans Day.
+- **Source (tier 1 for 2026; 2025 rests on the same fixed NYSE holiday set and on press (Kiplinger), not fetched from nyse.com):** `nyse.com/trade/hours-calendars` (2026 list: 1 Jan, 19 Jan, 16 Feb, 3 Apr, 25 May, 19 Jun, 3 Jul, 7 Sep, 26 Nov, 25 Dec). NYSE does not close for Columbus Day or Veterans Day.
+- The source file cannot hold this note: `schema.json` sets `additionalProperties:
+  false` on the root and on `holidays`, so there is no field for a comment. This
+  section is where the next sweep looks.
+
+<a id="xpar"></a>
+## XPAR — Euronext Paris (built; non-closures recorded 2026-10-07)
+
+**Last verified:** 2026-10-07
+
+- **Not closures, 11 candidates (2025 to 2026):** 2025-05-08 Victory Day; 2025-05-29 Ascension Day; 2025-06-09 Pentecost Monday; 2025-07-14 National Day; 2025-08-15 Assumption Day; 2025-11-11 Armistice Day; 2026-05-08 Victory Day; 2026-05-14 Ascension Day; 2026-05-25 Pentecost Monday; 2026-07-14 National Day; 2026-11-11 Armistice Day.
+- **Source (tier 1):** `live.euronext.com/resources/trading-hours-holidays` (Euronext 2026 holiday calendar; the 2025 end-of-year page). Euronext closes on 1 January, Good Friday, Easter Monday, 1 May and 25 and 26 December. Whit Monday 2026-05-25 is shown as a full trading day. Every date below is a trading day.
+- The source file cannot hold this note: `schema.json` sets `additionalProperties:
+  false` on the root and on `holidays`, so there is no field for a comment. This
+  section is where the next sweep looks.
+
+<a id="xstc"></a>
+## XSTC — Ho Chi Minh Stock Exchange (Vietnam)
+
+**Last verified:** 2026-09-06
+
+- **Originally checked:** nothing in Tier 6. This exchange was in scope for
+  Tier 6's resolution pass but was not reached before that round's time
+  budget ran out.
+- **Resolved 2026-09-06 (Tier 7):** searched for HOSE's official trading-
+  holiday notice and found a real, clean, English-language, text-
+  extractable PDF at `staticfile.hsx.vn`. Buildable. Built as
+  `HOSEVietnamFetcher`. See `docs/fetcher_verification.md` for the parsing
+  details (nested-parenthesis stripping, combined-event date pairs).
+- **Verdict: BUILD** (no longer blocked/unverified).
+
+<a id="xzag"></a>
 ## XZAG — Zagreb Stock Exchange (corrected against the ZSE lists 2026-10-11; 2028 and 2029 pattern-derived)
 
 **Last verified:** 2026-10-11
@@ -1492,3 +1379,228 @@ of wrong.
   trading"). An older UniCredit notice describes an early close on 31 December; it is
   tier 3 and undated, and ZSE's own 2025 to 2027 lists do not show one.
 
+<a id="how-to-read-this-file"></a>
+# How to read this file
+
+> **A finding in this file is a snapshot, not a permanent fact.**
+> Every entry carries a `Last verified:` date. Sources change: a WAF
+> is added or removed, a URL rotates, a PDF gains a text layer, a
+> page is redesigned. Re-test before trusting an entry, especially
+> one that has not been re-checked in six months.
+>
+> Four entries demonstrate the pattern. **XKRX** was RESOLVED on
+> 2026-09-19 and BLOCKED again on 2026-10-01 (HTTP 200, HTML 403
+> body). **XIST** was BLOCKED on 2026-09-04 with a note describing
+> "four market-segment tables in one PDF with a US-holiday template
+> error"; re-testing showed the site publishes four separate PDFs
+> and the equity PDF contains only Turkish closures. **XBUD**
+> blocked at v2.9.1 with in-window removals that resolved to a
+> parser gap for Hungarian substitute Mondays. **XPHS** was
+> marked RESOLVED on 2026-09-19 on the strength of a network-path probe;
+> re-testing on 2026-10-04 found that robots.txt disallows the same
+> path, and the verdict was corrected to BLOCKED (robots.txt).
+
+**Last-verified dates.** Each section above carries a **Last verified**
+line recording the date its verdict was last actually checked (fetched,
+re-tested, or re-derived against a live source) — not merely the date
+the section's prose was last edited for wording. It's added by whoever
+does that verification work, drawn from the check itself (a live fetch,
+a re-run of `live_fetcher_check.py`, a documented re-derivation) rather
+than guessed. It should be updated any time a verdict is re-checked,
+whether the verdict changes or not — a re-check that confirms the
+existing verdict still bumps the date; a section that is only reworded
+without re-testing the underlying source should not.
+
+This file documents what was checked and why each verdict holds, since "we
+found a different URL" or "it's blocked" is easy to state and easy to get
+wrong without the reasoning behind it.
+
+<a id="summary-of-all-74-exchanges"></a>
+# Summary of all 74 exchanges
+
+**Summary of all 74 registry exchanges.** One row per exchange in
+`exchanges/`; the sections above give the evidence for every row not
+marked `built`.
+
+- **built** — a calendar exists and no unresolved block is recorded.
+  Four of these (XBUD, XDFM, XGSE, XSTC) have a section above because a
+  fetcher exists and its health or one date needs tracking.
+- **blocked** — the source cannot be fetched automatically (bot wall,
+  dead URL, robots.txt, visual-grid PDF, no endpoint). The calendar
+  itself is maintained by hand.
+- **CI-unreachable** — reachable from a residential IP but not from CI;
+  not a permanent block.
+- **resolved** — was blocked, no longer is.
+
+| Code | Exchange | State |
+|------|----------|-------|
+| DSMD | Qatar Stock Exchange | blocked |
+| XAMS | Euronext Amsterdam | built |
+| XASX | Australian Securities Exchange | built |
+| XATH | Athens Stock Exchange | blocked |
+| XBAH | Bahrain Bourse | blocked |
+| XBDA | Bermuda Stock Exchange | built |
+| XBEY | Beirut Stock Exchange | blocked |
+| XBKK | Stock Exchange of Thailand | blocked |
+| XBOG | Colombia Stock Exchange | blocked |
+| XBOM | Bombay Stock Exchange | blocked |
+| XBRU | Euronext Brussels | built |
+| XBRV | BRVM (West Africa Regional Stock Exchange) | built |
+| XBSP | B3 (São Paulo Stock Exchange) | built |
+| XBUD | Budapest Stock Exchange | built |
+| XBUE | Buenos Aires Stock Exchange | built |
+| XBUL | Bulgarian Stock Exchange | blocked |
+| XCAI | Egyptian Exchange | blocked |
+| XCAS | Casablanca Stock Exchange | blocked |
+| XCAY | Cayman Islands Stock Exchange | built |
+| XCOL | Colombo Stock Exchange | built |
+| XCSE | Nasdaq Copenhagen | built |
+| XDFM | Dubai Financial Market | built |
+| XDHA | Dhaka Stock Exchange | blocked |
+| XDUB | Euronext Dublin | built |
+| XETR | Deutsche Börse | built |
+| XGSE | Ghana Stock Exchange | built |
+| XHEL | Nasdaq Helsinki | built |
+| XHKG | Hong Kong Exchange | resolved |
+| XICE | Nasdaq Iceland | built |
+| XIST | Borsa Istanbul | resolved |
+| XJKT | Indonesia Stock Exchange | blocked |
+| XJSE | Johannesburg Stock Exchange | blocked |
+| XKAR | Pakistan Stock Exchange | blocked |
+| XKLS | Bursa Malaysia | blocked |
+| XKRX | Korea Exchange | blocked |
+| XKUW | Bursa Kuwait | blocked |
+| XLIM | Lima Stock Exchange | blocked |
+| XLIS | Euronext Lisbon | built |
+| XLIT | Nasdaq Vilnius | built |
+| XLON | London Stock Exchange | built |
+| XLUX | Luxembourg Stock Exchange | built |
+| XMAD | Bolsa de Madrid | built |
+| XMAL | Malta Stock Exchange | built |
+| XMEX | Mexican Stock Exchange | built |
+| XMOS | Moscow Exchange | built |
+| XMUS | Muscat Stock Exchange | blocked |
+| XNAI | Nairobi Securities Exchange | blocked |
+| XNAS | NASDAQ | built |
+| XNSA | Nigerian Stock Exchange | CI-unreachable |
+| XNSE | National Stock Exchange of India | blocked |
+| XNYS | New York Stock Exchange | built |
+| XNZE | New Zealand Exchange | blocked |
+| XOSL | Oslo Børs | built |
+| XPAR | Euronext Paris | built |
+| XPHS | Philippine Stock Exchange | blocked |
+| XPRA | Prague Stock Exchange | built |
+| XRIS | Nasdaq Riga | built |
+| XSAU | Saudi Stock Exchange (Tadawul) | blocked |
+| XSES | Singapore Exchange | blocked |
+| XSGO | Santiago Stock Exchange | blocked |
+| XSHE | Shenzhen Stock Exchange | built |
+| XSHG | Shanghai Stock Exchange | CI-unreachable |
+| XSTC | Ho Chi Minh Stock Exchange | built |
+| XSTO | Nasdaq Stockholm | built |
+| XSWX | SIX Swiss Exchange | blocked |
+| XTAD | Abu Dhabi Securities Exchange | blocked |
+| XTAI | Taiwan Stock Exchange | blocked |
+| XTAL | Nasdaq Tallinn | built |
+| XTKS | Tokyo Stock Exchange | built |
+| XTSE | Toronto Stock Exchange | built |
+| XTUN | Tunis Stock Exchange | blocked |
+| XWAR | Warsaw Stock Exchange | built |
+| XWBO | Vienna Stock Exchange | built |
+| XZAG | Zagreb Stock Exchange | built |
+
+<a id="round-summaries"></a>
+# Round summaries
+
+**Tier 2 (regional hubs) update 2026-08-27:** 7 of 10 Tier 2 exchanges
+checked are blocked (XSES, XSWX, XKRX, XBOM, XNSE, XJKT, XTAI). Only XTSE,
+XMAD, and XSAU were buildable.
+
+**Tier 3 (Gulf/EMEA) update 2026-08-29:** 6 of 10 confirmed blocked (XTAD,
+XBAH, DSMD, XCAI, XJSE, XIST), 1 unverified (XMUS), 3 buildable (XDFM,
+XKUW, XMOS).
+
+**Tier 4 (European smaller markets) update 2026-08-31:** 8 of 10 buildable
+(XWBO, XWAR, XPRA, XBUD, XDUB, XBRU, XLIS, XOSL — the last four via
+extending the existing shared Euronext fetcher). Only 1 confirmed blocked
+this round (XATH — same visual-grid-PDF problem as XSWX). This is by far
+the best hit rate of any tier after Tier 1, supporting the hypothesis that
+European exchanges lean toward simpler, more static infrastructure — though
+XATH shows that's not universal even within Europe.
+
+**Tier 5 (Nordic/Baltic) update 2026-08-31:** 7 of 7 buildable — a clean
+sweep, via two shared fetchers (`NasdaqNordicFetcher` for XSTO/XHEL/XCSE/
+XICE, `NasdaqBalticFetcher` for XTAL/XRIS/XLIT), confirming the "shared
+infrastructure" hypothesis proposed after Tier 4's Euronext discovery. No
+new blocks this round.
+
+**Tier 6 (emerging markets) update 2026-09-04:** 3 of 10 buildable (XBSP,
+XMEX, XBUE — Latin America, checked with real depth rather than shallow
+coverage of all ten). 8 confirmed blocked after a full resolution pass
+(XSGO, XKLS, XBOG, XLIM, XPHS, XBKK, plus XMUS and XIST carried over from
+earlier tiers, resolved this round rather than left ambiguous). XSTC
+(Vietnam) remains genuinely unchecked — reported honestly rather than
+guessed at.
+
+**Tier 7 (Africa/South Asia) update 2026-09-06:** applied the accumulated
+infrastructure model (static/shared = buildable, JS/bot-wall/visual-PDF =
+blocked) as a fast predictive filter. 4 of 9 buildable (XNSA, XBRV, XCOL,
+plus XSTC resolved as a carryover from Tier 6). 4 confirmed blocked, 2 of
+them by robots.txt (XCAS, XDHA — respected by design, not worked around),
+1 by an unreadable PDF (XKAR), 1 by an empty page response (XTUN;
+originally recorded as JS-rendered, see its section). 2 remain
+genuinely unverified (XNAI, XGSE) rather than forced to a verdict.
+
+**Tier 8 (small/island markets) update 2026-09-06 — FINAL TIER:** 5 of
+the 8 Tier 8 exchanges were buildable (XBDA, XCAY, XLUX, XMAL, XZAG); 3
+were confirmed blocked (XBUL, XBEY, XNZE). Two Tier 7 carryovers were also
+resolved in this round: XGSE (built) and XNAI (confirmed blocked).
+Combined count for the round: 6 built, 4 blocked. Notably, the brief's
+own predictions for this tier were mixed: New Zealand was expected to be
+simple and turned out JS-blocked; Beirut was flagged as uncertain due to
+instability and that concern was directly confirmed (2 independent server
+timeouts).
+
+## Tier 7 (Africa/South Asia) — 2026-09-06
+
+**Last verified:** 2026-09-06
+
+Applied the accumulated 6-tier infrastructure model as a predictive filter
+rather than deep-diving every exchange from scratch.
+
+## Tier 8 (small/island markets) — 2026-09-06 — FINAL TIER
+
+**Last verified:** 2026-09-17
+
+**Tier 8 (small/island markets) update 2026-09-06 — FINAL TIER:** 5 of the
+8 Tier 8 exchanges were buildable (XBDA, XCAY, XLUX, XMAL, XZAG); 3 were
+confirmed blocked (XBUL, XBEY, XNZE). Two Tier 7 carryovers were also
+resolved in this round: XGSE (built) and XNAI (confirmed blocked).
+Combined count for the round: 6 built, 4 blocked.
+
+## Past-due reconciliation — 2026-09-17
+
+**Last verified:** 2026-09-17
+
+Seven exchanges had their past-due predicted entries removed on
+2026-09-17 because the source URLs cited in `exchanges/*.json` are
+unreachable from any available IP (tests run from residential, browser
+UA):
+
+- **XCAS**: robots.txt disallows automated access
+- **XDHA**: robots.txt disallows automated access
+- **XKAR**: PDF has no extractable text (scanned image)
+- **XKUW**: 403 from all IPs probed (see the XKUW section)
+- **XBAH**: content area is a client-side SharePoint webpart
+
+Entries were removed rather than left marked `predicted`. A `predicted`
+entry with a past date is a silent-correctness bug — a caller reading
+`is_holiday()` gets a confident answer for a date that was never
+confirmed. Removing the entry makes the missing data explicit instead
+of wrong.
+
+- **Finding (2026-10-02):** the DFM PDF omits <date>. The current
+  file has it as <name>. The two sources disagree; the file is
+  preserved. Resolution requires a third source — DFM's own circular
+  from the prior year, or a UAE regulatory notice.
+- **Status:** fetcher present but not authoritative for this date.
