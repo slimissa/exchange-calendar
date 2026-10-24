@@ -395,6 +395,9 @@ ok "check_stale_verifications.py"
 run python3 tools/check_stale_year_urls.py
 ok "check_stale_year_urls.py"
 
+run python3 tools/check_doc_links.py
+ok "check_doc_links.py"
+
 run python3 tools/check_wrapper_snapshot.py
 ok "check_wrapper_snapshot.py"
 
