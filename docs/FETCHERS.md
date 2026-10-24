@@ -18,7 +18,7 @@ Sources that will stop being current on a known trigger, or that already depend 
 | [XIST](#xist) | borsaistanbul.com `equity-market-2026-holiday-schedule.pdf` | Single-year, year-specific URL (docstring). Invisible to the URL gate; covered only by the freshness check in `fetcher_manifest.json` (`max_age_days` 400) | Update `source_url` when the 2027 PDF is published |
 | [XHKG](#xhkg) | HKEX Stock Connect CSV, URL template `{year}-Calendar_csv_e.csv` | The note says the fetcher tries the current and the next year, and the template may need updating if HKEX changes its naming. The URL gate skips template URLs (warning only) | Confirm the 2027 CSV resolves once published; edit `BASE_PAGE_TEMPLATE` only if the naming changes |
 | [XMOS](#xmos) | moex.com news post (year-specific ID, no predictable pattern) | Each new year's schedule is a new post. No year token, so the URL gate cannot see it | Find the new post each year and update `source_url` |
-| [XMAD](#xmad), [XKUW](#xkuw), [XMEX](#xmex) | Respective exchange pages, `current_year_only = True` | The page shows only the current year, so there is no forward coverage; the page changes each January. XKUW is also blocked (see D2) | Annual refresh |
+| [XMAD](#xmad), [XKUW](#xkuw), [XMEX](#xmex) | Respective exchange pages, `current_year_only = True` | The page shows only the current year, so there is no forward coverage; the page changes each January. XKUW is also blocked (HTTP 403 on 2026-09-17, see its section) | Annual refresh |
 | [XBDA](#xbda) | bsx.com trading-hours-and-holidays page | The note records a table covering 2024 to 2027 | Look for a 2028 table during 2027 |
 | [XTSE](#xtse), [XSAU](#xsau) | tsx.com holiday page; Saudi Exchange table | Point-in-time claims: XTSE "2025 and 2026 both present at verification time"; XSAU "table spanning 2020 to 2029" (moot while XSAU is blocked) | Re-verify before relying on the year range |
 | [XDFM](#xdfm), XCAI, [XMAD](#xmad) | 8 `source_url` fields in `exchanges/*.json` (XDFM x5, XCAI x2, XMAD x1) that cite 2026 documents | URL gate: allowlisted until 2027-06-01 | Re-source, or teach the gate that an entry dated 2026 may cite a 2026 document |
@@ -111,6 +111,16 @@ forward coverage the way NYSE/XETR/XSAU provide.
 <a id="xsau"></a>
 ## Saudi Arabia (XSAU)
 
+**Status (BLOCKED.md, 2026-09-17): blocked, not CI-unreachable.** The parser
+was written against a live fetch on 2026-08-27. On 2026-09-17 the page
+returned HTTP 403 to both GitHub Actions runners and a residential IP with a
+browser User-Agent, so "works locally" is not currently shown and the
+exchange is not filed as CI-unreachable. One probe on one day: not shown to
+be permanent. `SaudiExchangeFetcher` stays registered; the informational job
+`live-check-blocked` in `live-fetcher-check.yml` still runs it, and a pass
+would reopen it. Until then the calendar is maintained by hand. The note
+below describes the table as it looked on 2026-08-27.
+
 **XSAU note:** the richest Tier 2 source found — a real static table
 spanning 2020-2029. The same table mixes in unrelated IPO "Listing of..."
 announcement rows, filtered out via an allowlist (only rows mentioning
@@ -141,10 +151,18 @@ issues its 2027 circular.
 <a id="xkuw"></a>
 ## Kuwait (XKUW)
 
-**XKUW note:** boursakuwait.com.kw is Gatsby-generated (built at compile
-time), so its holiday table is present in the raw static HTML despite the
-site otherwise looking like a JS app. Single-year only, same
-`current_year_only` pattern as XMAD.
+**Status (BLOCKED.md, 2026-09-17): blocked by bot detection.** On
+2026-09-17 boursakuwait.com.kw returned HTTP 403 to both GitHub Actions
+runners and a residential IP with a browser User-Agent; header spoofing did
+not get past it. One probe on one day: not shown to be permanent.
+`BoursaKuwaitFetcher` stays registered and `live-check-blocked` still runs
+it. Until then the calendar is maintained by hand.
+
+**XKUW note:** as verified live on 2026-08-27 (before the block),
+boursakuwait.com.kw is Gatsby-generated (built at compile time), so its
+holiday table was present in the raw static HTML despite the site otherwise
+looking like a JS app. Single-year only, same `current_year_only` pattern as
+XMAD.
 
 <a id="xmos"></a>
 ## Moscow (XMOS)
@@ -265,10 +283,16 @@ date-shifting logic was needed beyond standard weekend exclusion.
 
 **XNSA note (Nigeria):** real static table, includes Eidul-Fitr and Eid
 el-Kabir (both `predicted=True`, footnoted by NGX itself as dependent on
-government announcement). Showing 2024 data at verification time — treated
+government announcement). Showing 2024 data at the 2026-09-06 verification — treated
 as "not yet updated" rather than a structural blocker, since it's a plain
 table with no evidence of the postback-gating that made XCAI's staleness
-permanent.
+permanent. **Status (BLOCKED.md, 2026-09-17): CI-unreachable, parser
+works.** On 2026-09-17 the page fetched cleanly from a residential IP (12
+holidays; the year of those rows was not recorded). From GitHub Actions the
+same fetch fails with `ParseError: No holidays found`: the site is behind
+Sucuri, which serves a challenge page instead of the table to datacenter IP
+ranges. This is the CI WAF, not a parser bug. The 2024 data seen on
+2026-09-06 is therefore not the current explanation for a CI failure.
 
 <a id="xbrv"></a>
 ## BRVM (XBRV)

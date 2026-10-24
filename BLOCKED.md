@@ -14,7 +14,7 @@
 | [Closed API / Requires Auth](#closed-api) | 0 | none |
 | [Dead Source / No First-Party Page](#dead-source) | 5 | [DSMD](#dsmd), [XBEY](#xbey), [XCAI](#xcai), [XNAI](#xnai), [XTAI](#xtai) |
 
-Not blocked, tracked here: [CI-unreachable](#ci-unreachable) ([XNSA](#xnsa), [XSHG](#xshg)); [resolved](#resolved) ([XHKG](#xhkg), [XIST](#xist)); [built, with tracking notes](#built-tracking) ([XBUD](#xbud), [XCOL](#xcol), [XDFM](#xdfm), [XDUB](#xdub), [XETR](#xetr), [XGSE](#xgse), [XICE](#xice), [XLIT](#xlit), [XMAD](#xmad), [XNAS](#xnas), [XNYS](#xnys), [XPAR](#xpar), [XSTC](#xstc), [XZAG](#xzag)). Reference: [How to read this file](#how-to-read-this-file), [Summary of all 74 exchanges](#summary-of-all-74-exchanges), [Round summaries](#round-summaries).
+Not blocked, tracked here: [CI-unreachable](#ci-unreachable) ([XHKG](#xhkg), [XNSA](#xnsa), [XSHG](#xshg)); [resolved](#resolved) ([XIST](#xist)); [built, with tracking notes](#built-tracking) ([XBUD](#xbud), [XCOL](#xcol), [XDFM](#xdfm), [XDUB](#xdub), [XETR](#xetr), [XGSE](#xgse), [XICE](#xice), [XLIT](#xlit), [XMAD](#xmad), [XNAS](#xnas), [XNYS](#xnys), [XPAR](#xpar), [XSTC](#xstc), [XZAG](#xzag)). Reference: [How to read this file](#how-to-read-this-file), [Summary of all 74 exchanges](#summary-of-all-74-exchanges), [Round summaries](#round-summaries).
 
 <a id="js-spa"></a>
 # JS SPA / Client-Rendered
@@ -771,40 +771,8 @@ There is no usable first-party page: the URL returns 404 or a not-found redirect
 
 Reachable from a residential IP but not from CI; not a permanent block. Each of these has a fetcher.
 
-<a id="xnsa"></a>
-## XNSA — Nigerian Exchange Group (CI-unreachable)
-
-**Last verified:** 2026-09-17
-
-- **Checked:** ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/
-- **Finding:** fetches cleanly from residential IP (12 holidays, verified
-  2026-09-17). Fails from GitHub Actions with `ParseError: No holidays
-  found` — the page is behind Sucuri (`x-sucuri-id: 19017`), which serves
-  a challenge body instead of the calendar to datacenter IP ranges.
-- **Verdict:** CI-UNREACHABLE (not a parser bug, not permanently
-  blocked). Works when run locally; only the scheduled CI check cannot
-  reach it. A future maintainer seeing `ParseError` in a log should look
-  here before touching `NigeriaExchangeFetcher`.
-
-<a id="xshg"></a>
-## XSHG — Shanghai Stock Exchange (CI-unreachable)
-
-**Last verified:** 2026-09-17
-
-- **Checked:** english.sse.com.cn/start/trading/schedule/
-- **Finding:** HTTP 403 from GitHub Actions runners; HTTP 200 from
-  residential IP with browser User-Agent. Same CDN IP-block pattern as
-  XHKG. The source itself works.
-- **Verdict:** CI-UNREACHABLE (not permanently blocked). No manual
-  updates needed; works when run locally.
-
-<a id="resolved"></a>
-# Not blocked: resolved
-
-Was blocked, no longer is. Kept as the history of the verdict change.
-
 <a id="xhkg"></a>
-## Resolved: XHKG — Hong Kong Exchanges and Clearing (HKEX)
+## XHKG — Hong Kong Exchanges and Clearing (HKEX) (CI-unreachable)
 
 **Last verified:** 2026-08-27
 
@@ -838,6 +806,47 @@ Was blocked, no longer is. Kept as the history of the verdict change.
   — only "Holiday" or "Half Day" per date. `HKEXFetcher` labels entries
   generically ("Hong Kong Public Holiday" / "Hong Kong Half Trading Day")
   rather than inventing a name the source doesn't provide.
+- **Verdict:** CI-UNREACHABLE (not a block on the source). The fetcher
+  was built and verified live on 2026-08-27 (the "resolved" above), but
+  GitHub Actions runners do not get the CSV: the README records a 404 from
+  GitHub IPs, and `live-fetcher-check.yml` excludes XHKG from the stable set
+  and runs it only in the informational `live-check-ci-unreachable` job.
+  XSHG shows the same CDN IP-block pattern. The repository holds no CI log
+  and no dated local re-run after 2026-08-27, so `Last verified` stays at
+  that date. A future maintainer seeing a failure here in CI should look
+  here before touching `HKEXFetcher`.
+
+<a id="xnsa"></a>
+## XNSA — Nigerian Exchange Group (CI-unreachable)
+
+**Last verified:** 2026-09-17
+
+- **Checked:** ngxgroup.com/exchange/trade/becoming-an-investor/trading-holidays/
+- **Finding:** fetches cleanly from residential IP (12 holidays, verified
+  2026-09-17). Fails from GitHub Actions with `ParseError: No holidays
+  found` — the page is behind Sucuri (`x-sucuri-id: 19017`), which serves
+  a challenge body instead of the calendar to datacenter IP ranges.
+- **Verdict:** CI-UNREACHABLE (not a parser bug, not permanently
+  blocked). Works when run locally; only the scheduled CI check cannot
+  reach it. A future maintainer seeing `ParseError` in a log should look
+  here before touching `NigeriaExchangeFetcher`.
+
+<a id="xshg"></a>
+## XSHG — Shanghai Stock Exchange (CI-unreachable)
+
+**Last verified:** 2026-09-17
+
+- **Checked:** english.sse.com.cn/start/trading/schedule/
+- **Finding:** HTTP 403 from GitHub Actions runners; HTTP 200 from
+  residential IP with browser User-Agent. Same CDN IP-block pattern as
+  XHKG. The source itself works.
+- **Verdict:** CI-UNREACHABLE (not permanently blocked). No manual
+  updates needed; works when run locally.
+
+<a id="resolved"></a>
+# Not blocked: resolved
+
+Was blocked, no longer is. Kept as the history of the verdict change.
 
 <a id="xist"></a>
 ## XIST — Borsa Istanbul
@@ -1461,7 +1470,7 @@ marked `built`.
 | XETR | Deutsche Börse | built |
 | XGSE | Ghana Stock Exchange | built |
 | XHEL | Nasdaq Helsinki | built |
-| XHKG | Hong Kong Exchange | resolved |
+| XHKG | Hong Kong Exchange | CI-unreachable |
 | XICE | Nasdaq Iceland | built |
 | XIST | Borsa Istanbul | resolved |
 | XJKT | Indonesia Stock Exchange | blocked |

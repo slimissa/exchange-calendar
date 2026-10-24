@@ -22,10 +22,6 @@ v2.1.11 era and were never updated when later releases changed the registry.
 
 Go and Rust counts are static (`func Test`, `#[test]`); the toolchains were not available, so those suites were not run.
 
-## Left alone on purpose
-
-- The XHKG row stays `⚠️ CI-unreachable` while `BLOCKED.md` marks it `resolved`. The exchange is built; `live-fetcher-check.yml` still excludes it as CI-unreachable. Intentional.
-
 ## Follow-ups
 
 Closed after v2.15.4, documentation only (no version bump):
