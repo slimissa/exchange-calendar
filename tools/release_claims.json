@@ -676,5 +676,35 @@
       "contains": "TestGenerationRangeBoundary"
     }
   ],
-  "2.19.3": []
+  "2.19.3": [],
+  "2.20.0": [
+    {
+      "file": "schema.json",
+      "contains": "\"fetcher_status\": {"
+    },
+    {
+      "file": "schema.json",
+      "contains": "\"sessions\",\n    \"fetcher_status\"\n  ],"
+    },
+    {
+      "file": "tools/build.py",
+      "contains": "exchange.get(\"fetcher_status\")"
+    },
+    {
+      "file": "tests/test_validate.py",
+      "contains": "test_fetcher_status_rejects_anything_else"
+    },
+    {
+      "file": "tests/test_fetcher_status.py",
+      "contains": "test_value_is_allowed_and_matches_registry"
+    },
+    {
+      "file": "tools/check_doc_links.py",
+      "contains": "STATUS_FOR_ICON"
+    },
+    {
+      "file": "exchanges/XNYS.json",
+      "contains": "\"fetcher_status\": \"implemented\""
+    }
+  ]
 }

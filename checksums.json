@@ -78,7 +78,7 @@
     "schema.json": "c50eda6b51b85b18a86ac3d71cf911179633448a107560276f5e88c53e721f61",
     "tools/build.py": "a4fc45916e3e93c81c08dc43ab7123feb905fb1b6536c77db39fa3111d888fcc",
     "tools/check_country_codes.py": "3ab402d13e9d94a804ab899e86ed217aa1a65b29fc215d2fae0d9c0d91dd68d1",
-    "tools/check_doc_links.py": "a163e15679e0e773e03a25d84e2e5999e1f8b8e6adb619632a96ed5a76d0c3c8",
+    "tools/check_doc_links.py": "87e27afb48e813d697bd496de8fad21dc9b17fd4ac0cbb8cb176b90979980b34",
     "tools/check_expiring_sources.py": "4494a1ecfdcb71f1e342c9b3cc0b5976165cfa2d39ffec30350a8a4c831b03e9",
     "tools/check_fetcher_freshness.py": "c3c7ac36c11dba5b2a697f299391e071c9e07305a342e71b199d50a7d7efca3f",
     "tools/check_fixture_labels.py": "4d86cba5ff9377a168019e0ea0b34f7ed70246e462d4c716e846dcc2d1bf11eb",

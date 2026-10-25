@@ -1,20 +1,17 @@
-## [2.19.3] - 2026-10-25
-
-### Added
-- Expiring sources CI gate.
-
 # Changelog
 
-All notable changes to the exchange-calendar registry will be documented in this file.
+All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [2.20.0] - 2026-10-25
 
----
+### Added
+- Added `fetcher_status` to the exchange schema to serve as the machine-readable source of truth for which exchanges have working fetchers.
+
+### Changed
+- Updated `tools/check_doc_links.py` to verify README status icons against `fetcher_status`.
+- Resynchronized the Python wrapper `calendar.json`.
 
 ## [2.19.3] - 2026-10-25
-
-Patch release. CI tooling and documentation only: no data, schema or consumer-facing change.
 
 ### Added
 - `tools/check_expiring_sources.py`: A new CI gate that parses the `## Expiring sources` table in `docs/FETCHERS.md` and fails the build if a documented source has passed its expiry date.
@@ -22,15 +19,11 @@ Patch release. CI tooling and documentation only: no data, schema or consumer-fa
 
 ## [2.19.2] - 2026-10-24
 
-Patch release. Documentation and tooling only.
-
 ### Changed
 - Resolved 15 fetcher discrepancies (D1–D15) found during the docs extraction. Notes in `docs/FETCHERS.md` and `BLOCKED.md` now accurately reflect CI failures (WAF blocks vs. parser bugs) and source changes.
 - Removed the empty `## Discrepancies` table from `docs/FETCHERS.md`.
 
 ## [2.19.1] - 2026-10-24
-
-Patch release. Documentation only.
 
 ### Changed
 - Restructured `README.md` to replace the 8 tier tables with a single, unified 74-row lookup table.
@@ -38,8 +31,6 @@ Patch release. Documentation only.
 - Added `tools/check_doc_links.py` to ensure all README, BLOCKED.md, and FETCHERS.md cross-links resolve correctly.
 
 ## [2.19.0] - 2026-10-22
-
-Minor release. Documentation and CI tooling.
 
 ### Added
 - `docs/FETCHERS.md`: Extracted 29 fetcher notes out of README prose, added stable `<a id="mic">` anchors, and included a new "Expiring sources" table and a "Discrepancies" table (since resolved).
