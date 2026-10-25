@@ -79,6 +79,7 @@
     "tools/build.py": "a79452da2eea6b8fa7288c362baf9b3c3929a6be4cd6ca299aca78cda353b069",
     "tools/check_country_codes.py": "3ab402d13e9d94a804ab899e86ed217aa1a65b29fc215d2fae0d9c0d91dd68d1",
     "tools/check_doc_links.py": "a163e15679e0e773e03a25d84e2e5999e1f8b8e6adb619632a96ed5a76d0c3c8",
+    "tools/check_expiring_sources.py": "4494a1ecfdcb71f1e342c9b3cc0b5976165cfa2d39ffec30350a8a4c831b03e9",
     "tools/check_fetcher_freshness.py": "c3c7ac36c11dba5b2a697f299391e071c9e07305a342e71b199d50a7d7efca3f",
     "tools/check_fixture_labels.py": "4d86cba5ff9377a168019e0ea0b34f7ed70246e462d4c716e846dcc2d1bf11eb",
     "tools/check_mic_codes.py": "5bbcdb2f1b133536c47798cf8ac62ea9a037fc06e6569efb08d074964736be97",

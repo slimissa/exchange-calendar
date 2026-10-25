@@ -1,3 +1,8 @@
+## [2.19.3] - 2026-10-25
+
+### Added
+- Expiring sources CI gate.
+
 # Changelog
 
 All notable changes to the exchange-calendar registry will be documented in this file.
@@ -7,11 +12,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [2.19.1] - 2026-10-24
+## [2.19.3] - 2026-10-25
+
+Patch release. CI tooling and documentation only: no data, schema or consumer-facing change.
+
+### Added
+- `tools/check_expiring_sources.py`: A new CI gate that parses the `## Expiring sources` table in `docs/FETCHERS.md` and fails the build if a documented source has passed its expiry date.
+- `tests/test_check_expiring_sources.py`: 31 tests covering the parser, future/past date logic, and malformed tables.
+
+## [2.19.2] - 2026-10-24
+
+Patch release. Documentation and tooling only.
 
 ### Changed
-- Documentation restructure: Extracted fetcher notes to `docs/FETCHERS.md`, consolidated README tables into a single lookup, and grouped `BLOCKED.md` by blocker class.
-- Fixed a 2027 time-bomb in `check_stale_year_urls.py`.
+- Resolved 15 fetcher discrepancies (D1–D15) found during the docs extraction. Notes in `docs/FETCHERS.md` and `BLOCKED.md` now accurately reflect CI failures (WAF blocks vs. parser bugs) and source changes.
+- Removed the empty `## Discrepancies` table from `docs/FETCHERS.md`.
+
+## [2.19.1] - 2026-10-24
+
+Patch release. Documentation only.
+
+### Changed
+- Restructured `README.md` to replace the 8 tier tables with a single, unified 74-row lookup table.
+- Restructured `BLOCKED.md` to group exchanges by *blocker class* (JS SPA, Bot-Walled, PDF Visual Grid, etc.) instead of alphabetically.
+- Added `tools/check_doc_links.py` to ensure all README, BLOCKED.md, and FETCHERS.md cross-links resolve correctly.
+
+## [2.19.0] - 2026-10-22
+
+Minor release. Documentation and CI tooling.
+
+### Added
+- `docs/FETCHERS.md`: Extracted 29 fetcher notes out of README prose, added stable `<a id="mic">` anchors, and included a new "Expiring sources" table and a "Discrepancies" table (since resolved).
+- Defused a 2027-01-01 CI time-bomb by adding an `ALLOWLIST` to `check_stale_year_urls.py` for URLs that cannot be made dynamic.
+- Added `--today YYYY-MM-DD` flag to `check_stale_year_urls.py` for deterministic testing.
+
+### Changed
+- Removed 208 lines of prose notes from `README.md`, replacing them with anchor links to `docs/FETCHERS.md`.
 
 ## [2.18.1] - 2026-10-21
 

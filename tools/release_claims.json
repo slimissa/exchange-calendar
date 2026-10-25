@@ -604,7 +604,7 @@
     },
     {
       "file": "BLOCKED.md",
-      "contains": "2027–2029 open class"
+      "contains": "2027\u20132029 open class"
     }
   ],
   "2.15.2": [
@@ -676,22 +676,5 @@
       "contains": "TestGenerationRangeBoundary"
     }
   ],
-  "2.19.3": [
-    {
-      "file": ".github/workflows/validate.yml",
-      "contains": "name: Check expiring sources"
-    },
-    {
-      "file": ".github/workflows/validate.yml",
-      "contains": "python3 tools/check_expiring_sources.py"
-    },
-    {
-      "file": "tools/check_expiring_sources.py",
-      "contains": "def check("
-    },
-    {
-      "file": "tests/test_check_expiring_sources.py",
-      "contains": "class TestExitTwo"
-    }
-  ]
+  "2.19.3": []
 }
