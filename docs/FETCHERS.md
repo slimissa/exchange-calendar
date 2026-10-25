@@ -10,7 +10,7 @@ Sources that will stop being current on a known trigger, or that already depend 
 
 | Exchange | Source | Expiry / trigger | Action needed |
 |---|---|---|---|
-| [XNYS](#xnys) (XNAS follows) | ir.theice.com press release covering 2026 to 2028 | ICE posts a new release every year or two, at an unpredictable URL (note). The fetcher docstring dates the two latest releases 2024-11-08 and 2025-12-23, so the next is plausible in Nov-Dec 2026 (inferred, not announced). The URL gate starts flagging this URL on 2029-01-01 | Replace `NYSEFetcher.source_url` when the new release appears |
+| [XNYS](#xnys) (XNAS follows) | ir.theice.com press release covering 2026 to 2028 | ICE posts a new release every year or two, at an unpredictable URL (note). The fetcher docstring dates the two latest releases 2024-11-08 and 2025-12-23, so the next is plausible in Nov-Dec 2026 (inferred, not announced). Covered until 2028-12-31, so `check_expiring_sources.py` fails from 2029-01-01; the URL gate flags the same URL that day | Replace `NYSEFetcher.source_url` when the new release appears |
 | [XDFM](#xdfm) | DFM circular PDF for 2026 (opaque circular ID and `sfvrsn` hash) | DFM issues the 2027 circular. URL gate: allowlisted until 2027-06-01 (the same URL is cited by 5 entries in `XDFM.json`) | Update `XDFMFetcher.source_url`; decide how the 2026-dated JSON entries cite the circular |
 | [XWBO](#xwbo) | wienerborse.at PDF `stock-exchange-holidays-2026-en.pdf` | Single-year, year-specific URL (docstring; not stated in the README note). URL gate: allowlisted until 2027-03-31 | Update `source_url` when the 2027 PDF is published |
 | [XBUD](#xbud) | bse.hu resolution `trading-holidays-2026` | Single-year, year-specific URL (docstring; not stated in the README note). URL gate: allowlisted until 2027-03-31 | Update `source_url` when the next resolution is published |
@@ -22,6 +22,8 @@ Sources that will stop being current on a known trigger, or that already depend 
 | [XBDA](#xbda) | bsx.com trading-hours-and-holidays page | The note records a table covering 2024 to 2027 | Look for a 2028 table during 2027 |
 | [XTSE](#xtse), [XSAU](#xsau) | tsx.com holiday page; Saudi Exchange table | Point-in-time claims: XTSE "2025 and 2026 both present at verification time"; XSAU "table spanning 2020 to 2029" (moot while XSAU is blocked) | Re-verify before relying on the year range |
 | [XDFM](#xdfm), XCAI, [XMAD](#xmad) | 8 `source_url` fields in `exchanges/*.json` (XDFM x5, XCAI x2, XMAD x1) that cite 2026 documents | URL gate: allowlisted until 2027-06-01 | Re-source, or teach the gate that an entry dated 2026 may cite a 2026 document |
+
+`tools/check_expiring_sources.py` runs in CI and fails when a row in this table has expired. It reads only dates stated as an expiry in the `Expiry / trigger` column: `until`, `expires`, `expiry` or `expiring` followed by `YYYY-MM-DD`, `YYYY-MM` or `YYYY`, or a coverage range `YYYY to YYYY` (expires at the end of the second year). Other dates in that column, such as release dates, are context and are ignored. A row with none of these (for example "current year") is not checked. When you add a row with a known expiry, write it in one of these forms.
 
 Only four fetchers (XBUD, XDFM, XIST, XWBO) have a freshness entry in `fetcher_manifest.json`; the rest have no staleness signal beyond the URL gate.
 
