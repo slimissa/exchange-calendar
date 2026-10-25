@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.21.1] - 2026-10-26
+
+### Fixed
+- Fixed XASX 2026 closures (ANZAC substitute and Labour Day) found by divergence testing.
+
+### Added
+- docs/DIVERGENCE.md report generating agreement rates across all reference exchanges.
+
 ## [2.21.0] - 2026-10-26
 
 ### Added

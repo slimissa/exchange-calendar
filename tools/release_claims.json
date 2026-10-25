@@ -812,5 +812,47 @@
       "file": "README.md",
       "contains": "automated fetchers as of v2.21.0"
     }
+  ],
+  "2.21.1": [
+    {
+      "file": "VERSION",
+      "contains": "2.21.1"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.21.1] - 2026-10-26"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Fixed XASX 2026 closures (ANZAC substitute and Labour Day) found by divergence testing."
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "docs/DIVERGENCE.md report generating agreement rates across all reference exchanges."
+    },
+    {
+      "file": "exchanges/XASX.json",
+      "contains": "\"name\": \"ANZAC Day\",\n        \"rule\": \"fixed_date\""
+    },
+    {
+      "file": "tools/divergence_report.py",
+      "contains": "def render(report):"
+    },
+    {
+      "file": "docs/DIVERGENCE.md",
+      "contains": "# Divergence report"
+    },
+    {
+      "file": "tests/test_asx_holidays.py",
+      "contains": "class TestXASXDivergenceRegression"
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.21.1-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.21.1"
+    }
   ]
 }
