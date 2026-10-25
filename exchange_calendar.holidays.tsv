@@ -79,7 +79,6 @@ XASX	2025-04-18	Good Friday	closed	explicit	1					https://www.asx.com.au/market-
 XASX	2025-04-21	Easter Monday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2025-04-25	ANZAC Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2025-06-09	King's Birthday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
-XASX	2025-10-06	Labour Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2025-12-24	Christmas Eve (half-day)	early_close	explicit	1	14:10				https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2025-12-25	Christmas Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2025-12-26	Boxing Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
@@ -88,9 +87,7 @@ XASX	2026-01-01	New Year's Day	closed	explicit	1					https://www.asx.com.au/mark
 XASX	2026-01-26	Australia Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2026-04-03	Good Friday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2026-04-06	Easter Monday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
-XASX	2026-04-24	ANZAC Day	closed	generated	1					
 XASX	2026-06-08	King's Birthday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
-XASX	2026-10-05	Labour Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2026-12-24	Christmas Eve (half-day)	early_close	explicit	1	14:10				https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2026-12-25	Christmas Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2026-12-28	Boxing Day (observed)	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
@@ -99,9 +96,7 @@ XASX	2027-01-01	New Year's Day	closed	explicit	1					https://www.asx.com.au/mark
 XASX	2027-01-26	Australia Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2027-03-26	Good Friday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2027-03-29	Easter Monday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
-XASX	2027-04-26	ANZAC Day (observed)	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2027-06-14	King's Birthday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
-XASX	2027-10-04	Labour Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2027-12-24	Christmas Eve (half-day)	early_close	explicit	1	14:10				https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2027-12-27	Christmas Day (observed)	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2027-12-28	Boxing Day (observed)	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
@@ -111,7 +106,6 @@ XASX	2028-04-14	Good Friday	closed	explicit	1					https://www.asx.com.au/market-
 XASX	2028-04-17	Easter Monday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2028-04-25	ANZAC Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2028-06-12	King's Birthday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
-XASX	2028-10-02	Labour Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2028-12-25	Christmas Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2028-12-26	Boxing Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2029-01-01	New Year's Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
@@ -120,7 +114,6 @@ XASX	2029-03-30	Good Friday	closed	explicit	1					https://www.asx.com.au/market-
 XASX	2029-04-02	Easter Monday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2029-04-25	ANZAC Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2029-06-11	King's Birthday	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
-XASX	2029-10-01	Labour Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2029-12-24	Christmas Eve (half-day)	early_close	explicit	1	14:10				https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2029-12-25	Christmas Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar
 XASX	2029-12-26	Boxing Day	closed	explicit	1					https://www.asx.com.au/market-data/trading-hours-calendar

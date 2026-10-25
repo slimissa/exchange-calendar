@@ -5,7 +5,9 @@ test_asx_holidays.py — Ground truth tests for XASX (Australian Securities Exch
 Key facts verified:
     - ASX is OPEN on NSW Bank Holiday (first Monday of August)
     - ANZAC Day on Saturday does NOT shift to Monday
-    - ANZAC Day on Sunday IS observed Monday (NSW rule)
+    - ANZAC Day on Sunday is NOT observed Monday either (ASX 2027 calendar:
+      Monday 26 April is OPEN, "substitute for Sunday 25 April")
+    - Labour Day (NSW, first Monday of October) is NOT an ASX closure
     - Christmas Eve and New Year's Eve are half-days (early close 14:10 AEDT/AEST)
     - Australia observes holidays on Monday when they fall on Sunday
     - No lunch break (continuous trading)
@@ -129,14 +131,14 @@ class TestXASXANZAC:
         assert "2026-04-25" not in explicit_dates  # Saturday, no explicit
         assert "2026-04-27" not in explicit_dates  # No Monday shift
 
-    def test_anzac_observed_2027_sunday(self, explicit_dates):
+    def test_no_anzac_observed_2027_sunday(self, explicit_dates):
         """
-        April 25, 2027 is Sunday.
-        NSW law observes Monday April 26.
+        April 25, 2027 is Sunday. ASX does not shift ANZAC Day to Monday:
+        its 2027 calendar lists Monday 26 April as OPEN ("Substitute for
+        Sunday 25 April" is the trading day, not a closure).
         """
         assert "2027-04-25" not in explicit_dates  # Sunday, no explicit
-        assert "2027-04-26" in explicit_dates
-        assert "ANZAC" in explicit_dates["2027-04-26"]["name"]
+        assert "2027-04-26" not in explicit_dates  # No Monday shift
 
     def test_anzac_2028_weekday(self, explicit_dates):
         """April 25, 2028 is Tuesday — closed."""
@@ -225,8 +227,9 @@ class TestXASXClosures2025:
     def test_kings_birthday(self, explicit_dates):
         assert "2025-06-09" in explicit_dates
 
-    def test_labour_day(self, explicit_dates):
-        assert "2025-10-06" in explicit_dates
+    def test_no_labour_day(self, explicit_dates):
+        """ASX trades on NSW Labour Day (Monday 6 October 2025)."""
+        assert "2025-10-06" not in explicit_dates
 
     def test_christmas_day(self, explicit_dates):
         assert "2025-12-25" in explicit_dates
@@ -289,10 +292,77 @@ class TestXASXStructure:
         assert "Easter Monday" in names
         assert "ANZAC Day" in names
         assert "King's Birthday" in names
-        assert "Labour Day" in names
         assert "Christmas Day" in names
         assert "Boxing Day" in names
 
+    def test_no_labour_day_rule_or_entries(self, xasx, explicit_dates):
+        """Labour Day is a NSW public holiday, not an ASX closure."""
+        rules = xasx["holidays"].get("recurrence_rules", [])
+        assert "Labour Day" not in {r["name"] for r in rules}
+        assert not [d for d, e in explicit_dates.items() if "Labour" in e["name"]]
+
+    def test_anzac_rule_has_no_weekend_adjustment(self, xasx):
+        """ANZAC Day on a weekend is not substituted, so the rule must be
+        fixed_date (the generator drops a fixed_date that lands on a
+        weekend). fixed_with_weekend_adjustment moved Saturday 2026-04-25
+        to Friday 2026-04-24, a day ASX is open."""
+        rules = {r["name"]: r for r in xasx["holidays"]["recurrence_rules"]}
+        assert rules["ANZAC Day"]["rule"] == "fixed_date"
+
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~51 entries: 9 main closures × 5 years + 8 half-days."""
-        assert 45 <= len(explicit_dates) <= 60
+        """~45 entries: 8 main closures x 5 years minus ANZAC on a weekend
+        in 2026 and 2027, plus 8 half-days."""
+        assert 40 <= len(explicit_dates) <= 60
+
+
+# ──────────────────────────────────────────────────────────────
+# Regression: 2026-04-24 and 2026-10-05 are trading days
+# (found by tools/divergence_test.py: registry said closed, ASX's own
+# 2026 calendar and both reference libraries said open)
+# ──────────────────────────────────────────────────────────────
+
+@pytest.fixture(scope="module")
+def closed_dates(xasx):
+    """Closed dates after recurrence rules are expanded, as build.py does."""
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+    from generate_dates import expand_exchange
+
+    entries = list(xasx["holidays"]["explicit"]) + expand_exchange(xasx)
+    return {e["date"] for e in entries if e["status"] == "closed"}
+
+
+class TestXASXDivergenceRegression:
+    @pytest.mark.parametrize("day", ["2026-04-24", "2026-10-05"])
+    def test_is_a_trading_day(self, closed_dates, day):
+        d = date.fromisoformat(day)
+        assert d.weekday() < 5, "pin only makes sense on a weekday"
+        assert day not in closed_dates
+
+    def test_anzac_saturday_2026_is_not_moved_to_friday(self, closed_dates):
+        assert "2026-04-25" not in closed_dates  # Saturday
+        assert "2026-04-24" not in closed_dates  # Friday before
+        assert "2026-04-27" not in closed_dates  # Monday after
+
+    def test_no_anzac_or_labour_day_closure_in_weekend_years(self, closed_dates):
+        assert "2027-04-26" not in closed_dates
+        assert not [d for d in closed_dates if d.startswith(("2025-10", "2026-10", "2027-10",
+                                                             "2028-10", "2029-10"))]
+
+    def test_real_anzac_weekdays_still_closed(self, closed_dates):
+        for day in ("2025-04-25", "2028-04-25", "2029-04-25"):
+            assert day in closed_dates
+
+    def test_built_calendar_matches(self):
+        """The shipped calendar.json carries the same fix."""
+        path = Path(__file__).parent.parent / "calendar.json"
+        with open(path) as f:
+            cal = json.load(f)
+        entry = next(e for e in cal["exchanges"] if e["code"] == "XASX")
+        closed = {
+            h["date"]
+            for h in entry["holidays"]["explicit"] + entry["holidays"]["generated"]
+            if h["status"] == "closed"
+        }
+        assert "2026-04-24" not in closed
+        assert "2026-10-05" not in closed
