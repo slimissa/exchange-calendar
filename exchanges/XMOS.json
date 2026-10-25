@@ -15,6 +15,7 @@
   },
   "country": "Russian Federation",
   "country_code": "RU",
+  "fetcher_status": "implemented",
   "generation_range": [
     "2025-01-01",
     "2026-12-31"

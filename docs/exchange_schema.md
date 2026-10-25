@@ -66,6 +66,7 @@ Every exchange file is a JSON object with this shape:
 | `country` | string | Country name (ISO 3166). |
 | `country_code` | string | ISO 3166-1 alpha-2, 2 uppercase letters. |
 | `sessions` | array | Typed trading sessions, at least one; see [`sessions`](#sessions-required) |
+| `fetcher_status` | string | State of the exchange's automated fetcher; see [`fetcher_status`](#fetcher_status-required) |
 
 ---
 
@@ -372,6 +373,19 @@ authored (`tools/derive_confidence.py`).
   require the key; the built file always writes it.
 
 ---
+
+### `fetcher_status` (Required)
+
+State of the exchange's automated fetcher in `tools/update_from_exchange.py`. One of:
+
+| Value | Meaning |
+|-------|---------|
+| `implemented` | A fetcher is registered and CI verifies it against the live source. |
+| `ci_unreachable` | A fetcher is registered and works, but the source cannot be reached from GitHub Actions runners, so CI does not verify it. |
+| `blocked` | A fetcher is registered, but the source currently refuses it from every network tried. |
+| `none` | No fetcher is registered. The exchange is maintained by hand. |
+
+This field is authored, not derived. `tests/test_fetcher_status.py` checks that `none` appears exactly for the MICs without a registered fetcher.
 
 ### `ad_hoc_closures` (Optional)
 

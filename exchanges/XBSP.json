@@ -43,6 +43,7 @@
       "open": "09:45"
     }
   },
+  "fetcher_status": "implemented",
   "generation_range": [
     "2025-01-01",
     "2029-12-31"

@@ -33,6 +33,7 @@
   },
   "country": "Nigeria",
   "country_code": "NG",
+  "fetcher_status": "ci_unreachable",
   "generation_range": [
     "2025-01-01",
     "2029-12-31"

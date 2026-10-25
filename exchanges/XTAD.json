@@ -33,6 +33,7 @@
   },
   "country": "United Arab Emirates",
   "country_code": "AE",
+  "fetcher_status": "none",
   "generation_range": [
     "2025-01-01",
     "2029-12-31"

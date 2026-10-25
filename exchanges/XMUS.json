@@ -33,6 +33,7 @@
   },
   "country": "Oman",
   "country_code": "OM",
+  "fetcher_status": "none",
   "generation_range": [
     "2025-01-01",
     "2029-12-31"

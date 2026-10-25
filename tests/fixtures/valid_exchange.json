@@ -3,6 +3,7 @@
   "code": "TEST",
   "country": "United States of America",
   "country_code": "US",
+  "fetcher_status": "none",
   "generation_range": [
     "2025-01-01",
     "2025-12-31"

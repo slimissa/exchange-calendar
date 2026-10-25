@@ -33,6 +33,7 @@
   },
   "country": "Kuwait",
   "country_code": "KW",
+  "fetcher_status": "blocked",
   "generation_range": [
     "2025-01-01",
     "2029-07-24"

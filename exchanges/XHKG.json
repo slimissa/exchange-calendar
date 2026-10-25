@@ -33,6 +33,7 @@
   },
   "country": "China, Hong Kong Special Administrative Region",
   "country_code": "HK",
+  "fetcher_status": "ci_unreachable",
   "generation_range": [
     "2025-01-01",
     "2029-12-31"

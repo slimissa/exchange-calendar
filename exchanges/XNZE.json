@@ -33,6 +33,7 @@
   },
   "country": "New Zealand",
   "country_code": "NZ",
+  "fetcher_status": "none",
   "generation_range": [
     "2025-01-01",
     "2029-12-31"

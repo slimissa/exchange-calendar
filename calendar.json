@@ -36,6 +36,7 @@
       "country": "Qatar",
       "country_code": "QA",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -330,6 +331,7 @@
       "country": "Netherlands (Kingdom of the)",
       "country_code": "NL",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -643,6 +645,7 @@
           "open": "07:00"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -1045,6 +1048,7 @@
       "country": "Greece",
       "country_code": "GR",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -1447,6 +1451,7 @@
       "country": "Bahrain",
       "country_code": "BH",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -1782,6 +1787,7 @@
       "country": "Bermuda",
       "country_code": "BM",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -2202,6 +2208,7 @@
       "country": "Lebanon",
       "country_code": "LB",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -2505,6 +2512,7 @@
       "country": "Thailand",
       "country_code": "TH",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2027-12-31"
@@ -2910,6 +2918,7 @@
       "country": "Colombia",
       "country_code": "CO",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -3487,6 +3496,7 @@
           "open": "09:00"
         }
       },
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -3946,6 +3956,7 @@
       "country": "Belgium",
       "country_code": "BE",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -4304,6 +4315,7 @@
       "country": "Côte d’Ivoire",
       "country_code": "CI",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -4593,6 +4605,7 @@
           "open": "09:45"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -5080,6 +5093,7 @@
       "country": "Hungary",
       "country_code": "HU",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -5503,6 +5517,7 @@
       "country": "Argentina",
       "country_code": "AR",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -6043,6 +6058,7 @@
       "country": "Bulgaria",
       "country_code": "BG",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -6425,6 +6441,7 @@
       "country": "Egypt",
       "country_code": "EG",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-07-24"
@@ -6814,6 +6831,7 @@
       "country": "Morocco",
       "country_code": "MA",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -7201,6 +7219,7 @@
       "country": "Cayman Islands",
       "country_code": "KY",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -7639,6 +7658,7 @@
       "country": "Sri Lanka",
       "country_code": "LK",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2027-12-31"
@@ -7930,6 +7950,7 @@
           "open": "08:00"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -8315,6 +8336,7 @@
           "open": "09:30"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -8648,6 +8670,7 @@
       "country": "Bangladesh",
       "country_code": "BD",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -8983,6 +9006,7 @@
       "country": "Ireland",
       "country_code": "IE",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -9311,6 +9335,7 @@
           "open": "08:00"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -9591,6 +9616,7 @@
       "country": "Ghana",
       "country_code": "GH",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -10006,6 +10032,7 @@
           "open": "08:00"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -10362,6 +10389,7 @@
       "country": "China, Hong Kong Special Administrative Region",
       "country_code": "HK",
       "extended_hours": {},
+      "fetcher_status": "ci_unreachable",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -10912,6 +10940,7 @@
           "open": "09:00"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -11361,6 +11390,7 @@
           "open": "09:40"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -11635,6 +11665,7 @@
           "open": "08:45"
         }
       },
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -12053,6 +12084,7 @@
           "open": "08:30"
         }
       },
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -12463,6 +12495,7 @@
       "country": "Pakistan",
       "country_code": "PK",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -12817,6 +12850,7 @@
           "open": "08:30"
         }
       },
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -13361,6 +13395,7 @@
           "open": "08:30"
         }
       },
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -13869,6 +13904,7 @@
       "country": "Kuwait",
       "country_code": "KW",
       "extended_hours": {},
+      "fetcher_status": "blocked",
       "generation_range": [
         "2025-01-01",
         "2029-07-24"
@@ -14162,6 +14198,7 @@
       "country": "Peru",
       "country_code": "PE",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -14689,6 +14726,7 @@
       "country": "Portugal",
       "country_code": "PT",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -15077,6 +15115,7 @@
       "country": "Lithuania",
       "country_code": "LT",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -15504,6 +15543,7 @@
           "open": "07:50"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -15882,6 +15922,7 @@
       "country": "Luxembourg",
       "country_code": "LU",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -16303,6 +16344,7 @@
           "open": "08:30"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -16588,6 +16630,7 @@
       "country": "Malta",
       "country_code": "MT",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -17033,6 +17076,7 @@
           "open": "07:30"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -17347,6 +17391,7 @@
       "country": "Russian Federation",
       "country_code": "RU",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2026-12-31"
@@ -17585,6 +17630,7 @@
       "country": "Oman",
       "country_code": "OM",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -17907,6 +17953,7 @@
       "country": "Kenya",
       "country_code": "KE",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -18267,6 +18314,7 @@
           "open": "04:00"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -18725,6 +18773,7 @@
       "country": "Nigeria",
       "country_code": "NG",
       "extended_hours": {},
+      "fetcher_status": "ci_unreachable",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -19101,6 +19150,7 @@
           "open": "09:00"
         }
       },
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -19569,6 +19619,7 @@
           "open": "04:00"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -20027,6 +20078,7 @@
       "country": "New Zealand",
       "country_code": "NZ",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -20430,6 +20482,7 @@
           "open": "08:15"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -20813,6 +20866,7 @@
           "open": "07:15"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -21109,6 +21163,7 @@
           "open": "09:00"
         }
       },
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -21573,6 +21628,7 @@
       "country": "Czechia",
       "country_code": "CZ",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -22034,6 +22090,7 @@
       "country": "Latvia",
       "country_code": "LV",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -22419,6 +22476,7 @@
           "open": "09:30"
         }
       },
+      "fetcher_status": "blocked",
       "generation_range": [
         "2025-01-01",
         "2029-09-23"
@@ -22695,6 +22753,7 @@
           "open": "08:30"
         }
       },
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -23162,6 +23221,7 @@
       "country": "Chile",
       "country_code": "CL",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -23685,6 +23745,7 @@
       "country": "China",
       "country_code": "CN",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2027-12-31"
@@ -24099,6 +24160,7 @@
           "open": "09:15"
         }
       },
+      "fetcher_status": "ci_unreachable",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -24656,6 +24718,7 @@
       "country": "Viet Nam",
       "country_code": "VN",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-09-30"
@@ -25010,6 +25073,7 @@
           "open": "08:00"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -25399,6 +25463,7 @@
           "open": "07:30"
         }
       },
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -25775,6 +25840,7 @@
       "country": "United Arab Emirates",
       "country_code": "AE",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -26058,6 +26124,7 @@
           "open": "08:30"
         }
       },
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -26528,6 +26595,7 @@
       "country": "Estonia",
       "country_code": "EE",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -26904,6 +26972,7 @@
       "country": "Japan",
       "country_code": "JP",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -27504,6 +27573,7 @@
           "open": "07:00"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -27919,6 +27989,7 @@
       "country": "Tunisia",
       "country_code": "TN",
       "extended_hours": {},
+      "fetcher_status": "none",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -28316,6 +28387,7 @@
           "open": "08:30"
         }
       },
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -28714,6 +28786,7 @@
       "country": "Austria",
       "country_code": "AT",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"
@@ -29148,6 +29221,7 @@
       "country": "Croatia",
       "country_code": "HR",
       "extended_hours": {},
+      "fetcher_status": "implemented",
       "generation_range": [
         "2025-01-01",
         "2029-12-31"

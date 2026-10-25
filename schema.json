@@ -117,6 +117,16 @@
       },
       "type": "object"
     },
+    "fetcher_status": {
+      "description": "State of this exchange's automated fetcher in tools/update_from_exchange.py. implemented: a fetcher is registered and CI verifies it against the live source. ci_unreachable: a fetcher is registered and works, but the source cannot be reached from GitHub Actions runners, so CI does not verify it. blocked: a fetcher is registered but the source currently refuses it (for example HTTP 403) from every network tried. none: no fetcher is registered; the exchange is maintained by hand. This field is the source of truth for fetcher status.",
+      "enum": [
+        "implemented",
+        "ci_unreachable",
+        "blocked",
+        "none"
+      ],
+      "type": "string"
+    },
     "generation_range": {
       "description": "Inclusive date range [start, end] within which explicit dates are verified.",
       "items": {
@@ -596,7 +606,8 @@
     "generation_range",
     "country",
     "country_code",
-    "sessions"
+    "sessions",
+    "fetcher_status"
   ],
   "title": "Exchange Calendar Entry",
   "type": "object",

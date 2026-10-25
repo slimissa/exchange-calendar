@@ -21,6 +21,7 @@
   },
   "country": "Thailand",
   "country_code": "TH",
+  "fetcher_status": "none",
   "generation_range": [
     "2025-01-01",
     "2027-12-31"

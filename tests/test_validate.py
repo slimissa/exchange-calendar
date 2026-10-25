@@ -43,6 +43,7 @@ def make_valid_exchange(code="TEST", mic="TEST"):
     return {
         "country": "United States of America",
         "country_code": "US",
+        "fetcher_status": "none",
 
         "code": code,
         "name": f"Test Exchange {code}",
@@ -92,6 +93,34 @@ class TestSchemaValidation:
         errors = validator.validate_schema(exchange, schema, path.name)
         assert len(errors) > 0
         assert any("timezone" in e for e in errors)
+
+    def test_missing_fetcher_status(self, tmp_path):
+        exchange = make_valid_exchange()
+        del exchange["fetcher_status"]
+
+        schema = json.loads((Path(__file__).parent.parent / "schema.json").read_text())
+
+        errors = validator.validate_schema(exchange, schema, "TEST.json")
+        assert any("fetcher_status" in e for e in errors)
+
+    @pytest.mark.parametrize("value", ["implemented", "ci_unreachable", "blocked", "none"])
+    def test_fetcher_status_accepts_each_allowed_value(self, value):
+        exchange = make_valid_exchange()
+        exchange["fetcher_status"] = value
+
+        schema = json.loads((Path(__file__).parent.parent / "schema.json").read_text())
+
+        assert validator.validate_schema(exchange, schema, "TEST.json") == []
+
+    @pytest.mark.parametrize("value", ["working", "Implemented", "", None, True, 1])
+    def test_fetcher_status_rejects_anything_else(self, value):
+        exchange = make_valid_exchange()
+        exchange["fetcher_status"] = value
+
+        schema = json.loads((Path(__file__).parent.parent / "schema.json").read_text())
+
+        errors = validator.validate_schema(exchange, schema, "TEST.json")
+        assert any("fetcher_status" in e for e in errors)
 
     def test_invalid_code_pattern(self, tmp_path):
         exchange = make_valid_exchange(code="TOOLONG")

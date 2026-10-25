@@ -21,6 +21,7 @@
   },
   "country": "China",
   "country_code": "CN",
+  "fetcher_status": "implemented",
   "generation_range": [
     "2025-01-01",
     "2027-12-31"

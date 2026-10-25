@@ -33,6 +33,7 @@
   },
   "country": "Viet Nam",
   "country_code": "VN",
+  "fetcher_status": "implemented",
   "generation_range": [
     "2025-01-01",
     "2029-09-30"

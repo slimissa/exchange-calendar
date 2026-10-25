@@ -43,6 +43,7 @@
       "open": "09:30"
     }
   },
+  "fetcher_status": "blocked",
   "generation_range": [
     "2025-01-01",
     "2029-09-23"
