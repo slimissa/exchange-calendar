@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.20.1] - 2026-10-25
+
+Patch release. CI and tooling only: no change to any exchange, to `calendar.json` content or to the schema.
+
+### Added
+- Added docs/facts.json, update_facts.py, and check_doc_facts.py to prevent README prose drift.
+- Added the `Check doc facts` step to the `python-core` job: `update_facts.py --check` compares `docs/facts.json` with the tree, `check_doc_facts.py` compares the numbers in the prose with it.
+
 ## [2.20.0] - 2026-10-25
 
 ### Added

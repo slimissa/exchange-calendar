@@ -731,6 +731,14 @@
     {
       "file": "tests/test_check_doc_facts.py",
       "contains": "test_bare_count_is_not_a_claim"
+    },
+    {
+      "file": "VERSION",
+      "contains": "2.20.1"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.20.1] - 2026-10-25"
     }
   ]
 }
