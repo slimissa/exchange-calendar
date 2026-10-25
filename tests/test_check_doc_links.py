@@ -27,6 +27,7 @@ Run:
     python3 -m pytest tests/test_check_doc_links.py -v
 """
 
+import json
 import sys
 from pathlib import Path
 
@@ -46,8 +47,8 @@ def make_repo(tmp_path):
     """A small, consistent repo: XAAA implemented, XBBB blocked, XCCC
     CI-unreachable (both links)."""
     (tmp_path / "exchanges").mkdir()
-    for mic in ("XAAA", "XBBB", "XCCC"):
-        (tmp_path / "exchanges" / f"{mic}.json").write_text("{}")
+    for mic, status in (("XAAA", "implemented"), ("XBBB", "none"), ("XCCC", "ci_unreachable")):
+        (tmp_path / "exchanges" / f"{mic}.json").write_text(json.dumps({"fetcher_status": status}))
     (tmp_path / "docs").mkdir()
 
     (tmp_path / "README.md").write_text(
@@ -235,6 +236,40 @@ def test_warning_row_needs_both_links(tmp_path):
 
 
 # ---------------------------------------------------- cross-document sync
+
+def set_status(root, mic, status):
+    p = root / "exchanges" / f"{mic}.json"
+    p.write_text(json.dumps({"fetcher_status": status}))
+
+
+def test_icon_disagrees_with_fetcher_status_fails(tmp_path):
+    root = make_repo(tmp_path)
+    set_status(root, "XAAA", "ci_unreachable")
+    code, report = run(root)
+    assert code == 1
+    assert 'XAAA shows' in report and 'fetcher_status "ci_unreachable"' in report
+
+
+def test_blocked_icon_with_implemented_status_fails(tmp_path):
+    root = make_repo(tmp_path)
+    set_status(root, "XBBB", "implemented")
+    code, report = run(root)
+    assert code == 1 and "XBBB shows" in report
+
+
+def test_fetchers_link_with_status_none_fails(tmp_path):
+    root = make_repo(tmp_path)
+    set_status(root, "XAAA", "none")
+    code, report = run(root)
+    assert code == 1
+    assert "XAAA" in report and "do not link" not in report and "link FETCHERS.md" in report
+
+
+def test_missing_fetcher_status_is_skipped(tmp_path):
+    root = make_repo(tmp_path)
+    (root / "exchanges" / "XAAA.json").write_text("{}")
+    assert run(root)[0] == 0
+
 
 def test_readme_blocked_vs_summary_mismatch_fails(tmp_path):
     root = make_repo(tmp_path)

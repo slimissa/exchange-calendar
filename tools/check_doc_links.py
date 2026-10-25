@@ -19,6 +19,11 @@ What it checks
    the three icons; the Notes links of each row point at that row's own MIC
    (`#xnys` for XNYS); a green row links FETCHERS.md, a warning row links
    both FETCHERS.md and BLOCKED.md, a blocked row links BLOCKED.md.
+   The status icon must also agree with `fetcher_status` in that exchange's
+   JSON file (green = implemented, warning = ci_unreachable, blocked =
+   blocked or none), and a row links FETCHERS.md exactly when
+   `fetcher_status` is not none. A file without the field is skipped here;
+   tools/validate.py reports it.
 3. Agreement between documents:
    - the README's blocked rows are exactly the `blocked` rows of the
      BLOCKED.md summary table, and that table lists every exchange;
@@ -38,6 +43,7 @@ Exit codes:
     2 -- a required file or directory is missing
 """
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -59,6 +65,12 @@ ROW_RE = re.compile(
 SUMMARY_ROW_RE = re.compile(
     r"^\| (DSMD|X[A-Z]{3}) \| .+? \| (built|blocked|CI-unreachable|resolved) \|$"
 )
+# README status icon -> the fetcher_status values in exchanges/*.json it may show.
+STATUS_FOR_ICON = {
+    ICON_OK: {"implemented"},
+    ICON_WARN: {"ci_unreachable"},
+    ICON_BLOCKED: {"blocked", "none"},
+}
 INDEX_ROW_RE = re.compile(r"^\| \[([^\]]+)\]\(#([a-z0-9-]+)\) \| (\d+) \| (.+) \|$")
 MIC_LINK_RE = re.compile(r"\[((?:DSMD|X[A-Z]{3}))\]\(#([a-z0-9]+)\)")
 
@@ -208,6 +220,31 @@ def run_check(root):
             errors.append(f"{where}: blocked row has no BLOCKED.md link")
         if f_links:
             fetchers_rows.add(mic_l)
+
+    # ---- 2b. README status icons against fetcher_status in exchanges/*.json
+    for r in rows:
+        path = exchanges_dir / f"{r['mic']}.json"
+        if not path.is_file():
+            continue
+        try:
+            status = json.loads(path.read_text(encoding="utf-8")).get("fetcher_status")
+        except (ValueError, AttributeError):
+            continue  # malformed JSON is tools/validate.py's to report
+        if status is None:
+            continue  # a missing field is tools/validate.py's to report
+        allowed = STATUS_FOR_ICON[r["status"]]
+        if status not in allowed:
+            errors.append(
+                f"README.md:{r['line']}: {r['mic']} shows {r['status']} but "
+                f"exchanges/{r['mic']}.json has fetcher_status \"{status}\" "
+                f"(expected one of: {', '.join(sorted(allowed))})"
+            )
+        has_f_link = bool(re.search(r"\]\(docs/FETCHERS\.md#", r["notes"]))
+        if (status == "none") == has_f_link:
+            errors.append(
+                f"README.md:{r['line']}: {r['mic']} has fetcher_status \"{status}\" "
+                f"but its Notes {'link FETCHERS.md' if has_f_link else 'do not link FETCHERS.md'}"
+            )
 
     # ---- 3. agreement between documents
     readme_blocked = {r["mic"] for r in rows if r["status"] == ICON_BLOCKED}

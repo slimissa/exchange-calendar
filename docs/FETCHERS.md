@@ -4,6 +4,8 @@ Per-exchange notes for the 46 fetchers registered in `tools/update_from_exchange
 
 **Anchors.** Every MIC has an anchor in lowercase, placed above its section: link to `FETCHERS.md#xpar`, not to a heading. Heading text may change; the MIC anchors are the stable reference. Three families also have a name anchor: `#euronext-family`, `#nasdaq-nordic`, `#nasdaq-baltic`.
 
+**Status source of truth.** The status of each exchange is the `fetcher_status` field in `exchanges/<MIC>.json`: `implemented`, `ci_unreachable`, `blocked` or `none` (see `docs/exchange_schema.md`). It is not tracked anywhere else. The README Status column repeats it and `tools/check_doc_links.py` fails CI when an icon or a FETCHERS.md link disagrees with the field; `tests/test_fetcher_status.py` fails CI when the field disagrees with the fetchers registered in `tools/update_from_exchange.py`. Counts written in prose, such as "46 fetchers" in the README intro and above, are not checked yet: when a status changes, change the JSON first, then recount the prose.
+
 ## Expiring sources
 
 Sources that will stop being current on a known trigger, or that already depend on a manual annual update. Triggers come from the README notes and the fetcher docstrings; where only a docstring says it, the row says so. "URL gate" refers to `ALLOWLIST` in `tools/check_stale_year_urls.py`: until the listed date the gate tolerates the stale URL, and after it the CI step fails.
