@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.21.0] - 2026-10-26
+
+### Added
+- Added tools/divergence_test.py to compare the registry against pandas_market_calendars and exchange_calendars.
+
 ## [2.20.2] - 2026-10-25
 
 Patch release. CI and tooling only: no change to any exchange, to `calendar.json` content or to the schema.

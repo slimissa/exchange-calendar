@@ -774,5 +774,43 @@
       "file": "README.md",
       "contains": "automated fetchers as of v2.20.2"
     }
+  ],
+  "2.21.0": [
+    {
+      "file": "VERSION",
+      "contains": "2.21.0"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.21.0] - 2026-10-26"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Added tools/divergence_test.py to compare the registry against pandas_market_calendars and exchange_calendars."
+    },
+    {
+      "file": "tools/divergence_test.py",
+      "contains": "NO_REFERENCE_DATA = \"No reference data\""
+    },
+    {
+      "file": "tests/test_divergence.py",
+      "contains": "class TestKnownFixedHoliday"
+    },
+    {
+      "file": "requirements-dev.txt",
+      "contains": "pandas_market_calendars"
+    },
+    {
+      "file": "requirements-dev.txt",
+      "contains": "exchange_calendars"
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.21.0-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.21.0"
+    }
   ]
 }
