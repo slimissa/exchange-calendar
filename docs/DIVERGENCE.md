@@ -7,7 +7,7 @@ python3 tools/divergence_test.py --exchanges all --year 2024-2026
 python3 tools/divergence_report.py
 ```
 
-Reference libraries: `exchange_calendars` None, `pandas_market_calendars` None. PMC is `pandas_market_calendars`, EC is `exchange_calendars`.
+Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.0. PMC is `pandas_market_calendars`, EC is `exchange_calendars`.
 
 ## How to read this
 
@@ -15,7 +15,7 @@ Reference libraries: `exchange_calendars` None, `pandas_market_calendars` None. 
 - For the registry, a trading day is a date that is not one of the exchange's `weekend_days` and not a `closed` holiday or ad-hoc closure. `early_close` and `delayed_open` days are trading days, so half days are not disagreements.
 - Registry, PMC and EC columns are trading days summed over the registry years above. `n/a` means the registry has no data; `No reference data` means that library does not know the exchange. A trailing `*` means the library was missing in some of those years.
 - Agreement is trading days on which every available source agrees, divided by that count plus the disagreeing days. Days all sources agree are closed (weekends, shared holidays) are not counted. It is `n/a` when neither library has data.
-- PMC and EC are not independent. PMC serves 0 of the exchanges that both libraries cover straight from `exchange_calendars` (its mirror calendars), so for those the PMC and EC columns are one source counted twice. PMC has its own implementation for no exchange here. Effectively the registry is being compared against one reference for the rest.
+- PMC and EC are not independent. PMC serves 46 of the exchanges that both libraries cover straight from `exchange_calendars` (its mirror calendars), so for those the PMC and EC columns are one source counted twice. PMC has its own implementation for XBOM, XNSE. Effectively the registry is being compared against one reference for the rest.
 - A disagreement says nothing about which source is right. Nothing below has been checked against the exchange's own calendar unless stated.
 
 ## Summary
@@ -23,173 +23,273 @@ Reference libraries: `exchange_calendars` None, `pandas_market_calendars` None. 
 | Exchange | Registry | PMC | EC | Disagreements | Agreement |
 |---|---:|---:|---:|---:|---:|
 | DSMD | 514 | No reference data | No reference data | n/a | n/a |
-| XAMS | 506 | No reference data | No reference data | n/a | n/a |
-| XASX | 507 | No reference data | No reference data | n/a | n/a |
+| XAMS | 506 | 511 | 511 | 9 | 98.2% |
+| XASX | 507 | 507 | 507 | 0 | 100.0% |
 | XATH | 500 | No reference data | No reference data | n/a | n/a |
 | XBAH | 508 | No reference data | No reference data | n/a | n/a |
-| XBDA | 502 | No reference data | No reference data | n/a | n/a |
+| XBDA | 502 | 502 | 502 | 0 | 100.0% |
 | XBEY | 514 | No reference data | No reference data | n/a | n/a |
-| XBKK | 484 | No reference data | No reference data | n/a | n/a |
-| XBOG | 487 | No reference data | No reference data | n/a | n/a |
-| XBOM | 494 | No reference data | No reference data | n/a | n/a |
-| XBRU | 503 | No reference data | No reference data | n/a | n/a |
+| XBKK | 484 | 484 | 484 | 10 | 98.0% |
+| XBOG | 487 | 486 | 486 | 3 | 99.4% |
+| XBOM | 494 | 492 | 492 | 12 | 97.6% |
+| XBRU | 503 | 511 | 511 | 12 | 97.7% |
 | XBRV | 509 | No reference data | No reference data | n/a | n/a |
 | XBSP | 497 | No reference data | No reference data | n/a | n/a |
-| XBUD | 498 | No reference data | No reference data | n/a | n/a |
-| XBUE | 496 | No reference data | No reference data | n/a | n/a |
+| XBUD | 498 | 497 | 497 | 7 | 98.6% |
+| XBUE | 496 | 491 | 491 | 9 | 98.2% |
 | XBUL | 502 | No reference data | No reference data | n/a | n/a |
 | XCAI | 503 | No reference data | No reference data | n/a | n/a |
 | XCAS | 503 | No reference data | No reference data | n/a | n/a |
 | XCAY | 500 | No reference data | No reference data | n/a | n/a |
 | XCOL | 488 | No reference data | No reference data | n/a | n/a |
-| XCSE | 499 | No reference data | No reference data | n/a | n/a |
+| XCSE | 499 | 499 | 499 | 4 | 99.2% |
 | XDFM | 507 | No reference data | No reference data | n/a | n/a |
 | XDHA | 510 | No reference data | No reference data | n/a | n/a |
-| XDUB | 508 | No reference data | No reference data | n/a | n/a |
-| XETR | 507 | No reference data | No reference data | n/a | n/a |
+| XDUB | 508 | 508 | 508 | 0 | 100.0% |
+| XETR | 507 | 507 | 507 | 0 | 100.0% |
 | XGSE | 494 | No reference data | No reference data | n/a | n/a |
-| XHEL | 501 | No reference data | No reference data | n/a | n/a |
-| XHKG | 494 | No reference data | No reference data | n/a | n/a |
-| XICE | 495 | No reference data | No reference data | n/a | n/a |
-| XIST | 510 | No reference data | No reference data | n/a | n/a |
+| XHEL | 501 | 501 | 501 | 0 | 100.0% |
+| XHKG | 494 | 493 | 493 | 3 | 99.4% |
+| XICE | 495 | 495 | 495 | 0 | 100.0% |
+| XIST | 510 | 502 | 502 | 8 | 98.4% |
 | XJKT | 492 | No reference data | No reference data | n/a | n/a |
-| XJSE | 498 | No reference data | No reference data | n/a | n/a |
-| XKAR | 508 | No reference data | No reference data | n/a | n/a |
-| XKLS | 491 | No reference data | No reference data | n/a | n/a |
-| XKRX | 491 | No reference data | No reference data | n/a | n/a |
+| XJSE | 498 | 501 | 501 | 3 | 99.4% |
+| XKAR | 508 | 504 | 504 | 6 | 98.8% |
+| XKLS | 491 | 492 | 492 | 3 | 99.4% |
+| XKRX | 491 | 488 | 488 | 5 | 99.0% |
 | XKUW | 510 | No reference data | No reference data | n/a | n/a |
-| XLIM | 496 | No reference data | No reference data | n/a | n/a |
-| XLIS | 501 | No reference data | No reference data | n/a | n/a |
-| XLIT | 499 | No reference data | No reference data | n/a | n/a |
-| XLON | 506 | No reference data | No reference data | n/a | n/a |
-| XLUX | 500 | No reference data | No reference data | n/a | n/a |
-| XMAD | 511 | No reference data | No reference data | n/a | n/a |
+| XLIM | 496 | 497 | 497 | 5 | 99.0% |
+| XLIS | 501 | 511 | 511 | 12 | 97.7% |
+| XLIT | 499 | 499 | 499 | 4 | 99.2% |
+| XLON | 506 | 506 | 506 | 0 | 100.0% |
+| XLUX | 500 | 511 | 511 | 11 | 97.8% |
+| XMAD | 511 | 511 | 511 | 0 | 100.0% |
 | XMAL | 499 | No reference data | No reference data | n/a | n/a |
-| XMEX | 503 | No reference data | No reference data | n/a | n/a |
-| XMOS | 493 | No reference data | No reference data | n/a | n/a |
+| XMEX | 503 | 502 | 502 | 1 | 99.8% |
+| XMOS | 493 | 502 | 502 | 9 | 98.2% |
 | XMUS | 508 | No reference data | No reference data | n/a | n/a |
 | XNAI | 504 | No reference data | No reference data | n/a | n/a |
-| XNAS | 501 | No reference data | No reference data | n/a | n/a |
+| XNAS | 501 | No reference data | 501 | 0 | 100.0% |
 | XNSA | 504 | No reference data | No reference data | n/a | n/a |
-| XNSE | 494 | No reference data | No reference data | n/a | n/a |
-| XNYS | 501 | No reference data | No reference data | n/a | n/a |
-| XNZE | 500 | No reference data | No reference data | n/a | n/a |
-| XOSL | 501 | No reference data | No reference data | n/a | n/a |
-| XPAR | 511 | No reference data | No reference data | n/a | n/a |
-| XPHS | 494 | No reference data | No reference data | n/a | n/a |
-| XPRA | 498 | No reference data | No reference data | n/a | n/a |
-| XRIS | 500 | No reference data | No reference data | n/a | n/a |
-| XSAU | 515 | No reference data | No reference data | n/a | n/a |
-| XSES | 502 | No reference data | No reference data | n/a | n/a |
-| XSGO | 495 | No reference data | No reference data | n/a | n/a |
+| XNSE | 494 | 493 | No reference data | 13 | 97.4% |
+| XNYS | 501 | 501 | 501 | 0 | 100.0% |
+| XNZE | 500 | 500 | 500 | 0 | 100.0% |
+| XOSL | 501 | 501 | 501 | 0 | 100.0% |
+| XPAR | 511 | 511 | 511 | 0 | 100.0% |
+| XPHS | 494 | 487 | 487 | 9 | 98.2% |
+| XPRA | 498 | 499 | 499 | 5 | 99.0% |
+| XRIS | 500 | 497 | 497 | 7 | 98.6% |
+| XSAU | 515 | 500 | 500 | 17 | 96.7% |
+| XSES | 502 | 503 | 503 | 1 | 99.8% |
+| XSGO | 495 | No reference data | 498 | 7 | 98.6% |
 | XSHE | 485 | No reference data | No reference data | n/a | n/a |
-| XSHG | 486 | No reference data | No reference data | n/a | n/a |
+| XSHG | 486 | 485 | 485 | 1 | 99.8% |
 | XSTC | 502 | No reference data | No reference data | n/a | n/a |
-| XSTO | 500 | No reference data | No reference data | n/a | n/a |
-| XSWX | 500 | No reference data | No reference data | n/a | n/a |
+| XSTO | 500 | 500 | 500 | 0 | 100.0% |
+| XSWX | 500 | 500 | 500 | 0 | 100.0% |
 | XTAD | 510 | No reference data | No reference data | n/a | n/a |
-| XTAI | 494 | No reference data | No reference data | n/a | n/a |
-| XTAL | 499 | No reference data | No reference data | n/a | n/a |
-| XTKS | 485 | No reference data | No reference data | n/a | n/a |
-| XTSE | 502 | No reference data | No reference data | n/a | n/a |
+| XTAI | 494 | 486 | 486 | 8 | 98.4% |
+| XTAL | 499 | 499 | 499 | 4 | 99.2% |
+| XTKS | 485 | 485 | 485 | 0 | 100.0% |
+| XTSE | 502 | 502 | 502 | 0 | 100.0% |
 | XTUN | 503 | No reference data | No reference data | n/a | n/a |
-| XWAR | 500 | No reference data | No reference data | n/a | n/a |
-| XWBO | 501 | No reference data | No reference data | n/a | n/a |
-| XZAG | 496 | No reference data | No reference data | n/a | n/a |
+| XWAR | 500 | 500 | 500 | 0 | 100.0% |
+| XWBO | 501 | 506 | 506 | 17 | 96.7% |
+| XZAG | 496 | 496 | 496 | 0 | 100.0% |
 
 - Exchanges in the registry: 74.
-- Exchanges with at least one reference library: 0; with none: 74.
-- Exchanges with no disagreement: 0 of 0.
+- Exchanges with at least one reference library: 50; with none: 24.
+- Exchanges with no disagreement: 19 of 50.
+- Trading days on which all available sources agree: 24849 of 25074 (99.1%).
 
 ## No reference data
 
-- Neither library (74): DSMD, XAMS, XASX, XATH, XBAH, XBDA, XBEY, XBKK, XBOG, XBOM, XBRU, XBRV, XBSP, XBUD, XBUE, XBUL, XCAI, XCAS, XCAY, XCOL, XCSE, XDFM, XDHA, XDUB, XETR, XGSE, XHEL, XHKG, XICE, XIST, XJKT, XJSE, XKAR, XKLS, XKRX, XKUW, XLIM, XLIS, XLIT, XLON, XLUX, XMAD, XMAL, XMEX, XMOS, XMUS, XNAI, XNAS, XNSA, XNSE, XNYS, XNZE, XOSL, XPAR, XPHS, XPRA, XRIS, XSAU, XSES, XSGO, XSHE, XSHG, XSTC, XSTO, XSWX, XTAD, XTAI, XTAL, XTKS, XTSE, XTUN, XWAR, XWBO, XZAG
-- Only PMC missing, EC has it (0): none
-- Only EC missing, PMC has it (0): none
+- Neither library (24): DSMD, XATH, XBAH, XBEY, XBRV, XBSP, XBUL, XCAI, XCAS, XCAY, XCOL, XDFM, XDHA, XGSE, XJKT, XKUW, XMAL, XMUS, XNAI, XNSA, XSHE, XSTC, XTAD, XTUN
+- Only PMC missing, EC has it (2): XNAS, XSGO
+- Only EC missing, PMC has it (1): XNSE
 
 | Exchange | PMC | EC |
 |---|---|---|
-| DSMD | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XAMS | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XASX | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XATH | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBAH | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBDA | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBEY | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBKK | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBOG | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBOM | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBRU | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBRV | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBSP | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBUD | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBUE | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XBUL | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XCAI | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XCAS | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XCAY | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XCOL | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XCSE | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XDFM | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XDHA | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XDUB | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XETR | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XGSE | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XHEL | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XHKG | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XICE | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XIST | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XJKT | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XJSE | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XKAR | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XKLS | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XKRX | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XKUW | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XLIM | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XLIS | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XLIT | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XLON | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XLUX | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XMAD | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XMAL | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XMEX | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XMOS | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XMUS | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XNAI | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XNAS | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XNSA | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XNSE | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XNYS | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XNZE | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XOSL | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XPAR | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XPHS | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XPRA | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XRIS | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XSAU | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XSES | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XSGO | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XSHE | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XSHG | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XSTC | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XSTO | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XSWX | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XTAD | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XTAI | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XTAL | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XTKS | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XTSE | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XTUN | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XWAR | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XWBO | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
-| XZAG | library not installed (No module named 'pandas_market_calendars') | library not installed (No module named 'exchange_calendars') |
+| DSMD | RuntimeError: Class DSMD is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, DSMD, does not... |
+| XATH | RuntimeError: Class XATH is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XATH, does not... |
+| XBAH | RuntimeError: Class XBAH is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XBAH, does not... |
+| XBEY | RuntimeError: Class XBEY is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XBEY, does not... |
+| XBRV | RuntimeError: Class XBRV is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XBRV, does not... |
+| XBSP | RuntimeError: Class XBSP is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XBSP, does not... |
+| XBUL | RuntimeError: Class XBUL is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XBUL, does not... |
+| XCAI | RuntimeError: Class XCAI is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XCAI, does not... |
+| XCAS | RuntimeError: Class XCAS is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XCAS, does not... |
+| XCAY | RuntimeError: Class XCAY is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XCAY, does not... |
+| XCOL | RuntimeError: Class XCOL is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XCOL, does not... |
+| XDFM | RuntimeError: Class XDFM is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XDFM, does not... |
+| XDHA | RuntimeError: Class XDHA is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XDHA, does not... |
+| XGSE | RuntimeError: Class XGSE is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XGSE, does not... |
+| XJKT | RuntimeError: Class XJKT is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XJKT, does not... |
+| XKUW | RuntimeError: Class XKUW is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XKUW, does not... |
+| XMAL | RuntimeError: Class XMAL is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XMAL, does not... |
+| XMUS | RuntimeError: Class XMUS is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XMUS, does not... |
+| XNAI | RuntimeError: Class XNAI is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XNAI, does not... |
+| XNAS | RuntimeError: Class XNAS is not one of the registered classes: dict... | available |
+| XNSA | RuntimeError: Class XNSA is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XNSA, does not... |
+| XNSE | available | InvalidCalendarName: The requested ExchangeCalendar, XNSE, does not... |
+| XSGO | ValueError: 'market_close' is not in list | available |
+| XSHE | RuntimeError: Class XSHE is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XSHE, does not... |
+| XSTC | RuntimeError: Class XSTC is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XSTC, does not... |
+| XTAD | RuntimeError: Class XTAD is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XTAD, does not... |
+| XTUN | RuntimeError: Class XTUN is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XTUN, does not... |
 
 ## Disagreements
 
-None.
+### XAMS (9)
+
+- registry closed, PMC open, EC open (7): 2025-05-05 Mo, 2025-05-29 Th, 2025-06-09 Mo, 2026-04-27 Mo, 2026-05-14 Th, 2026-05-25 Mo, 2026-12-28 Mo
+- registry open, PMC closed, EC closed (2): 2025-05-01 Th, 2026-05-01 Fr
+
+### XBKK (10)
+
+- registry closed, PMC open, EC open (5): 2025-01-02 Th, 2025-04-16 We, 2025-07-11 Fr, 2026-05-25 Mo, 2026-07-30 Th
+- registry open, PMC closed, EC closed (5): 2025-06-02 Mo, 2025-07-28 Mo, 2025-08-11 Mo, 2026-06-01 Mo, 2026-07-28 Tu
+
+### XBOG (3)
+
+- registry open, PMC closed, EC closed (2): 2025-12-31 We, 2026-12-31 Th
+- registry closed, PMC open, EC open (1): 2025-07-01 Tu
+
+### XBOM (12)
+
+- registry open, PMC closed, EC closed (7): 2026-01-15 Th, 2026-03-03 Tu, 2026-03-26 Th, 2026-03-31 Tu, 2026-05-28 Th, 2026-09-14 Mo, 2026-11-10 Tu
+- registry closed, PMC open, EC open (5): 2026-03-04 We, 2026-03-20 Fr, 2026-05-27 We, 2026-09-15 Tu, 2026-11-09 Mo
+
+### XBRU (12)
+
+- registry closed, PMC open, EC open (10): 2025-05-29 Th, 2025-06-09 Mo, 2025-07-21 Mo, 2025-08-15 Fr, 2025-11-11 Tu, 2026-05-14 Th, 2026-05-25 Mo, 2026-07-21 Tu, 2026-11-11 We, 2026-12-28 Mo
+- registry open, PMC closed, EC closed (2): 2025-04-18 Fr, 2026-04-03 Fr
+
+### XBUD (7)
+
+- registry open, PMC closed, EC closed (4): 2025-05-02 Fr, 2025-10-24 Fr, 2026-01-02 Fr, 2026-08-21 Fr
+- registry closed, PMC open, EC open (3): 2025-03-14 Fr, 2026-03-16 Mo, 2026-12-28 Mo
+
+### XBUE (9)
+
+- registry open, PMC closed, EC closed (7): 2025-04-17 Th, 2025-06-17 Tu, 2025-08-18 Mo, 2025-10-13 Mo, 2025-11-17 Mo, 2026-06-17 We, 2026-11-23 Mo
+- registry closed, PMC open, EC open (2): 2025-11-20 Th, 2026-11-20 Fr
+
+### XCSE (4)
+
+- registry closed, PMC open, EC open (2): 2025-05-01 Th, 2026-05-01 Fr
+- registry open, PMC closed, EC closed (2): 2025-05-30 Fr, 2026-05-15 Fr
+
+### XHKG (3)
+
+- registry open, PMC closed, EC closed (2): 2026-04-07 Tu, 2026-10-19 Mo
+- registry closed, PMC open, EC open (1): 2026-09-25 Fr
+
+### XIST (8)
+
+- registry open, PMC closed, EC closed (8): 2025-03-31 Mo, 2025-04-01 Tu, 2025-06-06 Fr, 2025-06-09 Mo, 2026-03-20 Fr, 2026-05-27 We, 2026-05-28 Th, 2026-05-29 Fr
+
+### XJSE (3)
+
+- registry closed, PMC open, EC open (3): 2025-08-08 Fr, 2025-08-11 Mo, 2026-03-20 Fr
+
+### XKAR (6)
+
+- registry open, PMC closed, EC closed (5): 2025-03-28 Fr, 2025-05-28 We, 2025-06-09 Mo, 2025-09-05 Fr, 2026-05-28 Th
+- registry closed, PMC open, EC open (1): 2025-01-01 We
+
+### XKLS (3)
+
+- registry closed, PMC open, EC open (2): 2026-03-20 Fr, 2026-06-02 Tu
+- registry open, PMC closed, EC closed (1): 2025-03-18 Tu
+
+### XKRX (5)
+
+- registry open, PMC closed, EC closed (4): 2025-01-27 Mo, 2025-06-03 Tu, 2025-10-03 Fr, 2026-05-01 Fr
+- registry closed, PMC open, EC open (1): 2026-06-08 Mo
+
+### XLIM (5)
+
+- registry closed, PMC open, EC open (3): 2026-06-08 Mo, 2026-08-31 Mo, 2026-11-02 Mo
+- registry open, PMC closed, EC closed (2): 2025-12-09 Tu, 2026-12-09 We
+
+### XLIS (12)
+
+- registry closed, PMC open, EC open (11): 2025-04-25 Fr, 2025-06-10 Tu, 2025-06-19 Th, 2025-08-15 Fr, 2025-12-01 Mo, 2025-12-08 Mo, 2026-06-04 Th, 2026-06-10 We, 2026-10-05 Mo, 2026-12-01 Tu, 2026-12-08 Tu
+- registry open, PMC closed, EC closed (1): 2025-12-26 Fr
+
+### XLIT (4)
+
+- registry closed, PMC open, EC open (2): 2025-12-25 Th, 2026-12-25 Fr
+- registry open, PMC closed, EC closed (2): 2025-05-29 Th, 2025-12-31 We
+
+### XLUX (11)
+
+- registry closed, PMC open, EC open (11): 2025-05-09 Fr, 2025-05-29 Th, 2025-06-09 Mo, 2025-06-23 Mo, 2025-08-15 Fr, 2025-12-24 We, 2026-05-14 Th, 2026-05-25 Mo, 2026-06-23 Tu, 2026-12-24 Th, 2026-12-28 Mo
+
+### XMEX (1)
+
+- registry open, PMC closed, EC closed (1): 2026-11-02 Mo
+
+### XMOS (9)
+
+- registry closed, PMC open, EC open (9): 2025-01-03 Fr, 2025-01-06 Mo, 2025-01-08 We, 2025-05-02 Fr, 2025-06-13 Fr, 2026-01-05 Mo, 2026-01-06 Tu, 2026-01-08 Th, 2026-05-04 Mo
+
+### XNSE (13)
+
+- registry open, PMC closed (7): 2026-01-15 Th, 2026-03-03 Tu, 2026-03-26 Th, 2026-03-31 Tu, 2026-05-28 Th, 2026-09-14 Mo, 2026-11-10 Tu
+- registry closed, PMC open (6): 2025-10-21 Tu, 2026-03-04 We, 2026-03-20 Fr, 2026-05-27 We, 2026-09-15 Tu, 2026-11-09 Mo
+
+### XPHS (9)
+
+- registry open, PMC closed, EC closed (8): 2025-01-29 We, 2025-04-01 Tu, 2025-05-12 Mo, 2025-06-06 Fr, 2025-10-31 Fr, 2026-02-17 Tu, 2026-03-20 Fr, 2026-05-27 We
+- registry closed, PMC open, EC open (1): 2026-11-02 Mo
+
+### XPRA (5)
+
+- registry closed, PMC open, EC open (3): 2025-07-04 Fr, 2025-07-07 Mo, 2025-09-29 Mo
+- registry open, PMC closed, EC closed (2): 2025-12-31 We, 2026-12-31 Th
+
+### XRIS (7)
+
+- registry open, PMC closed, EC closed (5): 2025-05-02 Fr, 2025-05-05 Mo, 2025-05-29 Th, 2025-11-17 Mo, 2026-05-14 Th
+- registry closed, PMC open, EC open (2): 2025-12-25 Th, 2026-12-25 Fr
+
+### XSAU (17)
+
+- registry open, PMC closed, EC closed (16): 2025-03-27 Th, 2025-04-02 We, 2025-06-04 We, 2025-06-05 Th, 2025-06-08 Su, 2025-06-09 Mo, 2026-03-17 Tu, 2026-03-18 We, 2026-03-19 Th, 2026-03-22 Su, 2026-03-23 Mo, 2026-05-24 Su, 2026-05-25 Mo, 2026-05-26 Tu, 2026-05-27 We, 2026-05-28 Th
+- registry closed, PMC open, EC open (1): 2025-02-23 Su
+
+### XSES (1)
+
+- registry closed, PMC open, EC open (1): 2026-03-20 Fr
+
+### XSGO (7)
+
+- registry closed, EC open (5): 2025-06-30 Mo, 2025-10-13 Mo, 2026-06-19 Fr, 2026-08-14 Fr, 2026-10-30 Fr
+- registry open, EC closed (2): 2025-12-31 We, 2026-12-31 Th
+
+### XSHG (1)
+
+- registry open, PMC closed, EC closed (1): 2026-01-02 Fr
+
+### XTAI (8)
+
+- registry open, PMC closed, EC closed (8): 2025-01-27 Mo, 2025-09-29 Mo, 2025-10-24 Fr, 2025-12-25 Th, 2026-04-06 Mo, 2026-09-28 Mo, 2026-10-26 Mo, 2026-12-25 Fr
+
+### XTAL (4)
+
+- registry closed, PMC open, EC open (2): 2025-12-25 Th, 2026-12-25 Fr
+- registry open, PMC closed, EC closed (2): 2025-05-29 Th, 2026-05-14 Th
+
+### XWBO (17)
+
+- registry closed, PMC open, EC open (11): 2025-01-06 Mo, 2025-05-29 Th, 2025-06-09 Mo, 2025-06-19 Th, 2025-08-15 Fr, 2025-12-08 Mo, 2026-01-06 Tu, 2026-05-14 Th, 2026-05-25 Mo, 2026-06-04 Th, 2026-12-08 Tu
+- registry open, PMC closed, EC closed (6): 2025-04-18 Fr, 2025-12-24 We, 2025-12-31 We, 2026-04-03 Fr, 2026-12-24 Th, 2026-12-31 Th
 
 ## Libraries only (years outside the registry range)
 
 Years 2024: PMC against EC, for exchanges where both have data.
 
+- Exchanges compared this way: 47.
 - No disagreement between the two libraries.
