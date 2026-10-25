@@ -1,0 +1,13 @@
+{
+  "csv_tsv_files": 20,
+  "exchanges_blocked_total": 30,
+  "exchanges_no_fetcher": 28,
+  "exchanges_total": 74,
+  "fetchers_blocked": 2,
+  "fetchers_ci_unreachable": 3,
+  "fetchers_implemented": 41,
+  "fetchers_registered": 46,
+  "parquet_files": 5,
+  "sql_files": 4,
+  "tests_total": 4996
+}

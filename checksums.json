@@ -101,6 +101,7 @@
     "tools/migrate_sessions.py": "d50b992ee3223affed9d78d0480f3179cb5f4756c957866263ce4910f297dd6e",
     "tools/schema_audit.py": "4df066edb110958d2eeb3f8cd0803615708382c89da0785d1c46363ad6ae4b40",
     "tools/summarize_blocked.py": "f254a99299359c380398b5debe714f77747d967a3543cc39dd6eca0d8a4f6c26",
+    "tools/update_facts.py": "2fec80abedfe063cbe17ae726176705abd2a804dc0a43ea0759874f78437d79f",
     "tools/update_from_exchange.py": "0e4570c73aaf0874ce3969bf3686245e005824522ba8a0e643ebcc15f068a9aa",
     "tools/validate.py": "310990cbf12db345badf6f6d7c53e7cc4a99ea5efb6db50c9c6db1047d9605b9",
     "tools/verify_checksums.py": "ce94243ab814f1f44cb9c35a3aee998a14ced75aaaaf08d8c037d87440beb78d",
