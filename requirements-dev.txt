@@ -1,2 +1,4 @@
 psycopg2-binary>=2.9
 PyMySQL[rsa]>=1.1
+pandas_market_calendars
+exchange_calendars
