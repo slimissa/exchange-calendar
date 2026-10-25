@@ -35,6 +35,9 @@ def make_tree(tmp_path, statuses=("implemented", "implemented", "ci_unreachable"
     (tmp_path / "docs").mkdir()
     for name in ("a.sql", "b.sql", "t.csv", "t.european.csv", "t.tsv", "t.parquet"):
         (tmp_path / name).write_text("x")
+    (tmp_path / "tests").mkdir()
+    for name in ("test_xaaa_holidays.py", "test_xbbb_holidays.py", "test_validate.py", "helper_holidays.py"):
+        (tmp_path / "tests" / name).write_text("x")
     return tmp_path
 
 
@@ -56,6 +59,9 @@ class TestDerive:
     def test_file_counts(self, tmp_path):
         f = uf.derive(make_tree(tmp_path), with_tests=False)
         assert (f["sql_files"], f["csv_tsv_files"], f["parquet_files"]) == (2, 3, 1)
+
+    def test_test_files_count_matches_only_holiday_test_files(self, tmp_path):
+        assert uf.derive(make_tree(tmp_path), with_tests=False)["test_files_count"] == 2
 
     def test_files_in_subdirectories_are_not_counted(self, tmp_path):
         root = make_tree(tmp_path)
@@ -133,3 +139,7 @@ class TestRealTree:
         f = json.loads((ROOT / "docs" / "facts.json").read_text())
         assert f["fetchers_registered"] + f["exchanges_no_fetcher"] == f["exchanges_total"]
         assert f["exchanges_blocked_total"] == f["fetchers_blocked"] + f["exchanges_no_fetcher"]
+
+    def test_one_holiday_test_file_per_exchange(self):
+        f = json.loads((ROOT / "docs" / "facts.json").read_text())
+        assert f["test_files_count"] == f["exchanges_total"]

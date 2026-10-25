@@ -9,5 +9,6 @@
   "fetchers_registered": 46,
   "parquet_files": 5,
   "sql_files": 4,
-  "tests_total": 5035
+  "test_files_count": 74,
+  "tests_total": 5040
 }

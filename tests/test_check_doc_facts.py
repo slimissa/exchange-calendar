@@ -35,6 +35,7 @@ FACTS = {
     "csv_tsv_files": 20, "exchanges_blocked_total": 30, "exchanges_no_fetcher": 28,
     "exchanges_total": 74, "fetchers_blocked": 2, "fetchers_ci_unreachable": 3,
     "fetchers_implemented": 41, "fetchers_registered": 46, "parquet_files": 5, "sql_files": 4,
+    "test_files_count": 74,
 }
 
 
@@ -142,6 +143,22 @@ class TestVersion:
     def test_version_claim_alone_satisfies_the_no_claim_rule(self, tmp_path, capsys):
         root = tree(tmp_path, "As of v2.20.1 it works.\n")
         (root / "VERSION").write_text("2.20.1\n")
+        assert run(root, capsys)[0] == 0
+
+
+class TestTestFiles:
+    def test_matching_count_passes(self, tmp_path, capsys):
+        root = tree(tmp_path, "- **74 exchange test files** (`tests/test_*_holidays.py`)\n")
+        code, out, _ = run(root, capsys)
+        assert code == 0 and "1 claim(s)" in out
+
+    def test_wrong_count_fails(self, tmp_path, capsys):
+        root = tree(tmp_path, "- **73 exchange test files** (`tests/test_*_holidays.py`)\n")
+        code, out, _ = run(root, capsys)
+        assert code == 1 and "says 73" in out and "test_files_count" in out
+
+    def test_word_count_is_read(self, tmp_path, capsys):
+        root = tree(tmp_path, "Seventy-four exchange test files exist.\n")
         assert run(root, capsys)[0] == 0
 
 

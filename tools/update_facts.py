@@ -12,7 +12,8 @@ Sources
 -------
     calendar.json            exchange count and fetcher_status counts
     repository root          *.sql, *.csv, *.tsv and *.parquet export files
-    tests/                   test count, from `pytest --collect-only -q`
+    tests/                   per-exchange test files, and the test count from
+                             `pytest --collect-only -q`
 
 Derived facts
 -------------
@@ -24,6 +25,7 @@ Derived facts
     fetchers_registered      implemented + ci_unreachable + blocked
     exchanges_blocked_total  blocked + none (every exchange BLOCKED.md files)
     sql_files, csv_tsv_files, parquet_files
+    test_files_count         files matching tests/test_*_holidays.py
     tests_total
 
 calendar.json must be current: run tools/build.py first. tests_total depends
@@ -103,6 +105,7 @@ def derive(root: Path = REPO_ROOT, with_tests: bool = True) -> dict:
         "fetchers_registered": counts["implemented"] + counts["ci_unreachable"] + counts["blocked"],
         "parquet_files": n("*.parquet"),
         "sql_files": n("*.sql"),
+        "test_files_count": n("tests/test_*_holidays.py"),
     }
     if with_tests:
         facts["tests_total"] = count_tests(root)

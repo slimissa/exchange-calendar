@@ -110,6 +110,7 @@ CLAIMS: list[tuple[str, str, str]] = [
     ("csv_tsv_files", "csv_tsv_files",
      r"\b" + NUM + r" " + TICK + r"exchange_calendar\.TABLE\*\.csv" + TICK + r" and " + TICK + r"\.tsv" + TICK + r" files"),
     ("csv_tsv_files", "csv_tsv_files", r"\bdialects, " + NUM + r" files"),
+    ("test_files_count", "test_files_count", r"\b" + NUM + r" exchange test files\b"),
     ("parquet_files", "parquet_files",
      r"\b" + NUM + r" " + TICK + r"exchange_calendar\.TABLE\.parquet" + TICK + r" files"),
 ]
