@@ -706,5 +706,31 @@
       "file": "exchanges/XNYS.json",
       "contains": "\"fetcher_status\": \"implemented\""
     }
+  ],
+  "2.20.1": [
+    {
+      "file": ".github/workflows/validate.yml",
+      "contains": "name: Check doc facts"
+    },
+    {
+      "file": ".github/workflows/validate.yml",
+      "contains": "python3 tools/update_facts.py --check && python3 tools/check_doc_facts.py"
+    },
+    {
+      "file": "tools/update_facts.py",
+      "contains": "def derive("
+    },
+    {
+      "file": "tools/check_doc_facts.py",
+      "contains": "CLAIMS: list[tuple[str, str, str]]"
+    },
+    {
+      "file": "docs/facts.json",
+      "contains": "\"exchanges_total\": 74"
+    },
+    {
+      "file": "tests/test_check_doc_facts.py",
+      "contains": "test_bare_count_is_not_a_claim"
+    }
   ]
 }
