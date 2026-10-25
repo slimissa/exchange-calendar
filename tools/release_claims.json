@@ -740,5 +740,39 @@
       "file": "CHANGELOG.md",
       "contains": "## [2.20.1] - 2026-10-25"
     }
+  ],
+  "2.20.2": [
+    {
+      "file": "VERSION",
+      "contains": "2.20.2"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.20.2] - 2026-10-25"
+    },
+    {
+      "file": "tools/check_doc_facts.py",
+      "contains": "VERSION_CLAIMS = ["
+    },
+    {
+      "file": "tools/check_doc_facts.py",
+      "contains": "exchange test files"
+    },
+    {
+      "file": "tools/update_facts.py",
+      "contains": "\"test_files_count\": n("
+    },
+    {
+      "file": "docs/facts.json",
+      "contains": "\"test_files_count\": 74"
+    },
+    {
+      "file": "scripts/release.sh",
+      "contains": "automated fetchers as of v${VERSION}"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.20.2"
+    }
   ]
 }

@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.20.2] - 2026-10-25
+
+Patch release. CI and tooling only: no change to any exchange, to `calendar.json` content or to the schema.
+
+### Changed
+- Expanded check_doc_facts.py to cover version strings and the test file count.
+- `scripts/release.sh` now rewrites the README sentence "as of vX.Y.Z" together with the badge, because the checker compares it with `VERSION`.
+
 ## [2.20.1] - 2026-10-25
 
 Patch release. CI and tooling only: no change to any exchange, to `calendar.json` content or to the schema.
