@@ -10,6 +10,10 @@ Checks that the comparison engine:
        crashing, and leaves it out of the vote
     4. Reports a disagreement with which source says what
     5. Does not shift dates by timezone (Christmas Day stays closed)
+    6. Accepts a single year or an inclusive range, and every exchange ("all")
+    7. Records a year outside the registry's generation_range as
+       "No registry data" and compares the two libraries alone
+    8. Flags exchanges whose PMC calendar is a mirror of exchange_calendars
 
 Run:
     python3 -m pytest tests/test_divergence.py -v
@@ -150,18 +154,95 @@ class TestMissingReferenceData:
         assert res["sources_compared"] == ["registry"]
 
 
+class TestYears:
+    def test_single_year(self):
+        assert dv.parse_years("2026") == [2026]
+
+    def test_inclusive_range(self):
+        assert dv.parse_years("2024-2026") == [2024, 2025, 2026]
+
+    @pytest.mark.parametrize("bad", ["", "abc", "2026-2024", "2024-", "2024-20x6"])
+    def test_rejects_bad_input(self, bad):
+        with pytest.raises(ValueError):
+            dv.parse_years(bad)
+
+    def test_default_covers_2024_to_2026(self):
+        assert dv.parse_years(dv.DEFAULT_YEARS) == [2024, 2025, 2026]
+
+
+class TestRegistryCoverage:
+    def test_year_outside_generation_range_has_no_registry_data(self):
+        res = dv.run_exchange("XNYS", 2024)
+        assert res["total_trading_days"]["registry"].startswith(dv.NO_REGISTRY_DATA)
+        assert "registry" in res["sources_unavailable"]
+        assert "registry" not in res["sources_compared"]
+
+    def test_year_inside_generation_range_has_registry_data(self):
+        res = dv.run_exchange("XNYS", 2025)
+        assert isinstance(res["total_trading_days"]["registry"], int)
+
+    def test_registry_covers_uses_generation_range(self):
+        entry = {"generation_range": ["2025-01-01", "2029-12-31"]}
+        assert dv.registry_covers(entry, dt.date(2025, 1, 1), dt.date(2025, 12, 31))
+        assert not dv.registry_covers(entry, dt.date(2024, 1, 1), dt.date(2024, 12, 31))
+        assert not dv.registry_covers({}, dt.date(2025, 1, 1), dt.date(2025, 12, 31))
+
+    @needs_refs
+    def test_2024_compares_libraries_only(self):
+        res = dv.run_exchange("XNYS", 2024)
+        assert res["sources_compared"] == ["exchange_calendars",
+                                           "pandas_market_calendars"]
+        assert res["disagreements"] == []
+
+
+@needs_refs
+class TestMirror:
+    def test_mirrored_exchange_is_flagged(self):
+        assert dv.pmc_is_mirror("XNYS") is True
+        assert dv.run_exchange("XNYS", 2026)["pmc_mirrors_exchange_calendars"] is True
+
+    def test_unknown_exchange_is_none(self):
+        assert dv.pmc_is_mirror("DSMD") is None
+
+
 class TestCli:
     def test_writes_json_report(self, tmp_path):
         out = tmp_path / "divergence.json"
         assert dv.main(["--exchanges", "XNYS", "--year", "2026",
                         "--output", str(out)]) == 0
         report = json.loads(out.read_text())
-        assert report["year"] == 2026
-        assert "XNYS" in report["exchanges"]
-        assert "total_trading_days" in report["exchanges"]["XNYS"]
+        assert report["years"] == [2026]
+        year = report["exchanges"]["XNYS"]["years"]["2026"]
+        assert "total_trading_days" in year
+
+    def test_range_writes_every_year(self, tmp_path):
+        out = tmp_path / "divergence.json"
+        assert dv.main(["--exchanges", "XNYS,XASX", "--year", "2024-2026",
+                        "--output", str(out)]) == 0
+        report = json.loads(out.read_text())
+        assert report["years"] == [2024, 2025, 2026]
+        for code in ("XNYS", "XASX"):
+            assert sorted(report["exchanges"][code]["years"]) == ["2024", "2025", "2026"]
+
+    def test_all_means_every_registry_exchange(self, tmp_path, monkeypatch):
+        # Stub the per-exchange work: only the code selection is under test.
+        monkeypatch.setattr(dv, "run_exchange", lambda code, year, path=None: {
+            "sources_unavailable": {}, "summary": {"disagreements": 0}})
+        out = tmp_path / "divergence.json"
+        assert dv.main(["--exchanges", "all", "--year", "2026",
+                        "--output", str(out)]) == 0
+        report = json.loads(out.read_text())
+        assert sorted(report["exchanges"]) == dv.registry_codes()
+        assert len(report["exchanges"]) == 74
+
+    def test_bad_year_exits_nonzero(self, tmp_path, capsys):
+        with pytest.raises(SystemExit) as exc:
+            dv.main(["--year", "2026-2024", "--output", str(tmp_path / "x.json")])
+        assert exc.value.code == 2
 
     def test_unknown_exchange_is_reported_not_fatal(self, tmp_path):
         out = tmp_path / "divergence.json"
-        assert dv.main(["--exchanges", "ZZZZ", "--output", str(out)]) == 0
+        assert dv.main(["--exchanges", "ZZZZ", "--year", "2026",
+                        "--output", str(out)]) == 0
         report = json.loads(out.read_text())
         assert "error" in report["exchanges"]["ZZZZ"]
