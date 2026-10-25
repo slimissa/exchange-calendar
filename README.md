@@ -214,7 +214,7 @@ python3 tools/update_from_exchange.py --all --force
 
 ### Currently Supported Fetchers
 
-**46 of 74 registry exchanges have automated fetchers as of v2.15.4** — 41 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 28 have no fetcher and are documented as blocked sources (30 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange.
+**46 of 74 registry exchanges have automated fetchers as of v2.20.1** — 41 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 28 have no fetcher and are documented as blocked sources (30 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange.
 
 Sorted by MIC. ✅ implemented, verified from CI on every run · ⚠️ CI-unreachable: a fetcher exists, but the source rejects GitHub-hosted runners (XSHG: 403; XHKG: CDN returns 404 to GitHub IPs; XNSA: see its BLOCKED.md entry) · ⛔ blocked: the source cannot be fetched automatically and the calendar is maintained by hand.
 

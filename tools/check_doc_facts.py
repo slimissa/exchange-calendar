@@ -11,6 +11,13 @@ Scanned by default: README.md, BLOCKED.md, CONTRIBUTING.md,
 docs/CONSUMERS.md, docs/FETCHERS.md. Fenced code blocks are skipped. A claim
 is read from one line; a sentence wrapped across lines is not matched.
 
+Version claims
+--------------
+"as of vX.Y.Z" is checked against the VERSION file (whitespace stripped), not
+against facts.json: a recorded version would go stale on every release, and
+scripts/release.sh does not regenerate facts.json. release.sh rewrites the
+README sentence together with the badge, so the two move together.
+
 Which sentences count
 ---------------------
 Each claim is a fixed phrase with a number (digits, or a word from zero to
@@ -109,6 +116,10 @@ CLAIMS: list[tuple[str, str, str]] = [
 COMPILED = [(name, expr, re.compile(rx, re.IGNORECASE)) for name, expr, rx in CLAIMS]
 
 
+# Prose that states the registry version. Compared with the VERSION file.
+VERSION_CLAIMS = [re.compile(r"\bas of v(\d+\.\d+\.\d+)\b", re.IGNORECASE)]
+
+
 class ReadProblem(Exception):
     """Raised for anything that should exit 2."""
 
@@ -131,11 +142,23 @@ def prose_lines(text: str):
             yield n, line
 
 
-def scan(text: str, facts: dict) -> tuple[list[dict], int]:
-    """Return (wrong claims, number of claims found) for one document."""
+def scan(text: str, facts: dict, version: str | None = None) -> tuple[list[dict], int]:
+    """Return (wrong claims, number of claims found) for one document.
+
+    `version` is the content of the VERSION file. A version claim found while
+    it is None is a ReadProblem, since there is nothing to compare it with.
+    """
     wrong: list[dict] = []
     found = 0
     for n, line in prose_lines(text):
+        for rx in VERSION_CLAIMS:
+            for m in rx.finditer(line):
+                if version is None:
+                    raise ReadProblem(f"line {n} states {m.group(0)!r} but VERSION cannot be read")
+                found += 1
+                if m.group(1) != version:
+                    wrong.append({"line": n, "fact": "VERSION", "expected": version,
+                                  "actual": m.group(1), "text": m.group(0)})
         for name, expr, rx in COMPILED:
             for m in rx.finditer(line):
                 found += 1
@@ -161,6 +184,10 @@ def main(argv: list[str] | None = None) -> int:
     if not isinstance(facts, dict):
         print("error: docs/facts.json is not a JSON object", file=sys.stderr)
         return 2
+    try:
+        version = (root / "VERSION").read_text(encoding="utf-8").strip() or None
+    except OSError:
+        version = None
     bad = 0
     total = 0
     try:
@@ -169,7 +196,7 @@ def main(argv: list[str] | None = None) -> int:
                 text = (root / rel).read_text(encoding="utf-8")
             except OSError as exc:
                 raise ReadProblem(f"cannot read {rel}: {exc}") from None
-            wrong, found = scan(text, facts)
+            wrong, found = scan(text, facts, version)
             if found == 0:
                 raise ReadProblem(
                     f"{rel}: no claim found. Either the prose was reworded away from every "
@@ -178,13 +205,14 @@ def main(argv: list[str] | None = None) -> int:
             total += found
             for w in wrong:
                 bad += 1
-                print(f"{rel}:{w['line']}: says {w['actual']} but facts.json has {w['expected']} "
+                source = "VERSION" if w["fact"] == "VERSION" else "facts.json"
+                print(f"{rel}:{w['line']}: says {w['actual']} but {source} has {w['expected']} "
                       f"for {w['fact']}: \"{w['text']}\"")
     except ReadProblem as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     if bad:
-        print(f"\n{bad} claim(s) disagree with docs/facts.json. Fix the prose; "
+        print(f"\n{bad} claim(s) disagree with docs/facts.json or VERSION. Fix the prose; "
               "if the tree changed, run tools/update_facts.py first.")
         return 1
     print(f"OK: {total} claim(s) in {len(args.files or DEFAULT_FILES)} file(s) match docs/facts.json")

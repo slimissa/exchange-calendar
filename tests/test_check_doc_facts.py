@@ -106,6 +106,45 @@ class TestMatching:
         assert run(tree(tmp_path, text.replace("four", "three")), capsys)[0] == 1
 
 
+class TestVersion:
+    def test_matching_version_passes(self, tmp_path, capsys):
+        root = tree(tmp_path, "46 of 74 registry exchanges have automated fetchers as of v2.20.1.\n")
+        (root / "VERSION").write_text("2.20.1\n")
+        code, out, _ = run(root, capsys)
+        assert code == 0 and "3 claim(s)" in out  # exchanges_total, fetchers_registered, version
+
+    def test_stale_version_fails_naming_version_file(self, tmp_path, capsys):
+        root = tree(tmp_path, "74 exchanges across 6.\nAs of v2.15.4 the fetchers work.\n")
+        (root / "VERSION").write_text("2.20.1\n")
+        code, out, _ = run(root, capsys)
+        assert code == 1
+        assert "README.md:2" in out and "says 2.15.4" in out and "VERSION has 2.20.1" in out
+
+    def test_version_file_whitespace_is_stripped(self, tmp_path, capsys):
+        root = tree(tmp_path, "As of v2.20.1 the fetchers work.\n")
+        (root / "VERSION").write_text("  2.20.1  \n\n")
+        assert run(root, capsys)[0] == 0
+
+    def test_prefix_of_a_longer_version_is_not_a_match(self, tmp_path, capsys):
+        root = tree(tmp_path, "As of v2.20.1 the fetchers work.\n")
+        (root / "VERSION").write_text("2.20.10\n")
+        assert run(root, capsys)[0] == 1
+
+    def test_version_claim_without_version_file_is_exit_two(self, tmp_path, capsys):
+        root = tree(tmp_path, "74 exchanges across 6.\nAs of v2.20.1 it works.\n")
+        code, _, err = run(root, capsys)
+        assert code == 2 and "VERSION" in err
+
+    def test_as_of_without_a_version_is_ignored(self, tmp_path, capsys):
+        root = tree(tmp_path, "74 exchanges across 6.\nAs of today, and as of v2 later.\n")
+        assert run(root, capsys)[0] == 0
+
+    def test_version_claim_alone_satisfies_the_no_claim_rule(self, tmp_path, capsys):
+        root = tree(tmp_path, "As of v2.20.1 it works.\n")
+        (root / "VERSION").write_text("2.20.1\n")
+        assert run(root, capsys)[0] == 0
+
+
 class TestNotClaims:
     def test_bare_count_is_not_a_claim(self, tmp_path, capsys):
         root = tree(tmp_path, "74 exchanges across 6.\n| Saturday-Sunday | 67 exchanges (includes UAE) |\n"
@@ -165,5 +204,6 @@ class TestRealDocuments:
     @pytest.mark.parametrize("rel", cdf.DEFAULT_FILES)
     def test_every_default_file_has_a_claim(self, rel):
         facts = json.loads((ROOT / "docs" / "facts.json").read_text())
-        _, found = cdf.scan((ROOT / rel).read_text(encoding="utf-8"), facts)
+        version = (ROOT / "VERSION").read_text().strip()
+        _, found = cdf.scan((ROOT / rel).read_text(encoding="utf-8"), facts, version)
         assert found >= 1, rel

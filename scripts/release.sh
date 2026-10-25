@@ -335,6 +335,13 @@ run bash -c "sed -i 's|registry-[0-9.]*-orange|registry-${VERSION}-orange|' READ
     || die "README badge not updated"
 ok "README badge → $VERSION"
 
+# tools/check_doc_facts.py compares "as of vX.Y.Z" in the README prose with
+# VERSION, so the sentence moves with the badge or CI fails after the release.
+run bash -c "sed -i 's|automated fetchers as of v[0-9.]*|automated fetchers as of v${VERSION}|' README.md"
+[[ "$DRY_RUN" == "1" ]] || grep -q "automated fetchers as of v${VERSION}" README.md \
+    || die "README 'as of v...' sentence not updated"
+ok "README 'as of' sentence → v$VERSION"
+
 # CHANGELOG top entry is already correct (checked above). Verify
 # it's still the first dated version heading.
 TOP="$(grep -m1 '^## \[' CHANGELOG.md | sed -E 's/^## \[([^]]+)\].*/\1/')"
