@@ -854,5 +854,51 @@
       "file": "README.md",
       "contains": "automated fetchers as of v2.21.1"
     }
+  ],
+  "2.21.2": [
+    {
+      "file": "VERSION",
+      "contains": "2.21.2"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.21.2] - 2026-10-26"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Triaged and fixed divergence test disagreements for XAMS, XWBO, and XSAU."
+    },
+    {
+      "file": "exchanges/XAMS.json",
+      "contains": "\"date\": \"2026-05-01\",\n        \"name\": \"Labour Day\""
+    },
+    {
+      "file": "exchanges/XWBO.json",
+      "contains": "\"name\": \"Good Friday\""
+    },
+    {
+      "file": "exchanges/XSAU.json",
+      "contains": "\"date\": \"2026-05-28\""
+    },
+    {
+      "file": "docs/divergence_triage.json",
+      "contains": "\"verdict\": \"library_error\""
+    },
+    {
+      "file": "tests/test_vienna_holidays.py",
+      "contains": "class TestXWBODivergenceRegression"
+    },
+    {
+      "file": "tests/test_saudi_holidays.py",
+      "contains": "class TestXSAUDivergenceRegression"
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.21.2-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.21.2"
+    }
   ]
 }

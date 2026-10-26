@@ -9,7 +9,7 @@ Seventy-four exchanges. 46 have registered fetchers — 41 verified against live
 [![Update](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Schema Version](https://img.shields.io/badge/schema-2.1.1-green.svg)](./schema.json)
-[![Registry Version](https://img.shields.io/badge/registry-2.21.1-orange.svg)](./CHANGELOG.md)
+[![Registry Version](https://img.shields.io/badge/registry-2.21.2-orange.svg)](./CHANGELOG.md)
 [![Tests](https://img.shields.io/badge/tests-4500+-green.svg)](./tests/)
 [![Exchanges](https://img.shields.io/badge/exchanges-74-blue.svg)](./exchanges/)
 [![Fetchers](https://img.shields.io/badge/fetchers-41_CI--verified-green.svg)](./.github/workflows/live-fetcher-check.yml)
@@ -214,7 +214,7 @@ python3 tools/update_from_exchange.py --all --force
 
 ### Currently Supported Fetchers
 
-**46 of 74 registry exchanges have automated fetchers as of v2.21.1** — 41 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 28 have no fetcher and are documented as blocked sources (30 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange.
+**46 of 74 registry exchanges have automated fetchers as of v2.21.2** — 41 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 28 have no fetcher and are documented as blocked sources (30 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange.
 
 Sorted by MIC. ✅ implemented, verified from CI on every run · ⚠️ CI-unreachable: a fetcher exists, but the source rejects GitHub-hosted runners (XSHG: 403; XHKG: CDN returns 404 to GitHub IPs; XNSA: see its BLOCKED.md entry) · ⛔ blocked: the source cannot be fetched automatically and the calendar is maintained by hand.
 
