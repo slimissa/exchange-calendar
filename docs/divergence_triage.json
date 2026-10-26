@@ -47,6 +47,32 @@
       "dates": ["2025-02-23", "2025-03-27", "2025-06-04", "2025-06-10"],
       "summary": "The Saudi Exchange lists Founding Day as Sunday 2025-02-23 (closed), says trading discontinues at the END of 2025-03-27 and 2025-06-04 (both are trading days), and resumes on 2025-04-03 and 2025-06-11, which makes 2025-06-10 a closed day. Both libraries are wrong on all four. This is not a Hijri approximation: they carry the 2026 Eid spans exactly, but start both 2025 spans on the last trading day (2025-03-27, 2025-06-04) and end the 2025 Adha span a day early.",
       "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/saudi-exchange-holiday-calendar"
+    },
+    {
+      "exchange": "XBRU",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.21.3",
+      "dates": [
+        "2025-04-18", "2025-05-29", "2025-06-09", "2025-07-21", "2025-08-15",
+        "2025-11-11", "2026-04-03", "2026-05-14", "2026-05-25", "2026-07-21",
+        "2026-11-11", "2026-12-28"
+      ],
+      "summary": "Euronext's calendars for 2025 and 2026 close Brussels on Good Friday, Easter Monday, Labour Day, Christmas Day and (2025) Boxing Day only. Ascension Day, Whit Monday, Belgian National Day, Assumption Day, Armistice Day and the Dec 28 2026 substitute (Dublin only) are full trading days. The registry closed those ten and was missing Good Friday on 2025-04-18 and 2026-04-03.",
+      "source_url": "https://live.euronext.com/en/resources/trading-hours-holidays"
+    },
+    {
+      "exchange": "XLIS",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.21.3",
+      "dates": [
+        "2025-04-25", "2025-06-10", "2025-06-19", "2025-08-15", "2025-12-01",
+        "2025-12-08", "2025-12-26", "2026-06-04", "2026-06-10", "2026-10-05",
+        "2026-12-01", "2026-12-08"
+      ],
+      "summary": "Euronext's calendars for 2025 and 2026 close Lisbon only on the common Euronext closures; Freedom Day, Portugal Day, Corpus Christi, Assumption Day, Republic Day, Restoration of Independence and Immaculate Conception are full trading days. The registry closed those eleven and was missing Boxing Day on Friday 2025-12-26.",
+      "source_url": "https://live.euronext.com/en/resources/trading-hours-holidays"
     }
   ]
 }

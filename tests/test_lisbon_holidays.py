@@ -6,17 +6,21 @@ Key facts verified:
     - Regular hours: 09:00-17:30 (Euronext standard)
     - No lunch break
     - Weekend is Saturday-Sunday (Western weekend)
-    - Freedom Day (Apr 25)
-    - Portugal Day (Jun 10)
-    - Republic Day (Oct 5)
-    - Restoration of Independence (Dec 1)
-    - Immaculate Conception (Dec 8)
-    - 13 national holidays
+    - Euronext Lisbon closes only on New Year's Day, Good Friday, Easter
+      Monday, Labour Day (May 1), Christmas Day and Boxing Day (Dec 26)
+    - Freedom Day (Apr 25), Corpus Christi, Portugal Day (Jun 10), Assumption
+      (Aug 15), Republic Day (Oct 5), All Saints' Day, Restoration of
+      Independence (Dec 1) and Immaculate Conception (Dec 8) are Portuguese
+      holidays but FULL TRADING DAYS on Euronext Lisbon
+    - Weekend holidays are not substituted (Euronext 2026 calendar: Jan 2 and
+      Dec 28 are full trading days for Lisbon)
+    - Source: Euronext "Holiday Calendar for Cash and Derivatives markets",
+      2025 and 2026 (live.euronext.com/en/resources/trading-hours-holidays)
     - No recurrence rules — all dates explicit
 
 If any test fails, either:
     1. The registry data is wrong (fix exchanges/XLIS.json)
-    2. Portuguese holiday announcements changed (verify against euronext.com)
+    2. Euronext announcements changed (verify against euronext.com)
 
 Run:
     python3 -m pytest tests/test_lisbon_holidays.py -v
@@ -88,78 +92,41 @@ class TestXLISProperties:
 
 
 # ──────────────────────────────────────────────────────────────
-# Fixed national holidays (January-April)
+# Fixed holidays
 # ──────────────────────────────────────────────────────────────
 
-class TestXLISFixedHolidaysJanApr:
+class TestXLISFixedHolidays:
     def test_new_year_2025(self, explicit_dates):
         """Jan 1, 2025 is Wednesday."""
         assert "2025-01-01" in explicit_dates
         assert explicit_dates["2025-01-01"]["name"] == "New Year's Day"
 
-    def test_new_year_2028_substitute(self, explicit_dates):
-        """Jan 1, 2028 is Saturday — substitute to Monday Jan 3."""
+    def test_new_year_2028_no_substitute(self, explicit_dates):
+        """Jan 1, 2028 is Saturday: closed on neither Jan 1 nor Jan 3."""
         assert "2028-01-01" not in explicit_dates
-        assert "2028-01-03" in explicit_dates
+        assert "2028-01-03" not in explicit_dates
 
-    def test_freedom_day_2025(self, explicit_dates):
-        """Apr 25, 2025 is Friday."""
-        assert "2025-04-25" in explicit_dates
-        assert "Freedom" in explicit_dates["2025-04-25"]["name"]
-
-    def test_freedom_day_2026(self, explicit_dates):
-        """Apr 25, 2026 is Saturday — no explicit entry (no substitution)."""
-        assert "2026-04-25" not in explicit_dates
-
-
-# ──────────────────────────────────────────────────────────────
-# Fixed national holidays (May-August)
-# ──────────────────────────────────────────────────────────────
-
-class TestXLISFixedHolidaysMayAug:
     def test_labour_day_2025(self, explicit_dates):
         """May 1, 2025 is Thursday."""
         assert "2025-05-01" in explicit_dates
         assert explicit_dates["2025-05-01"]["name"] == "Labour Day"
 
-    def test_labour_day_2027_substitute(self, explicit_dates):
-        """May 1, 2027 is Saturday — substitute to Monday May 3."""
+    def test_labour_day_2027_weekend(self, explicit_dates):
+        """May 1, 2027 is Saturday: no substitute on Monday May 3."""
         assert "2027-05-01" not in explicit_dates
-        assert "2027-05-03" in explicit_dates
+        assert "2027-05-03" not in explicit_dates
 
-    def test_portugal_day_2025(self, explicit_dates):
-        """Jun 10, 2025 is Tuesday."""
-        assert "2025-06-10" in explicit_dates
-        assert "Portugal" in explicit_dates["2025-06-10"]["name"]
-
-    def test_assumption_2025(self, explicit_dates):
-        """Aug 15, 2025 is Friday."""
-        assert "2025-08-15" in explicit_dates
-        assert "Assumption" in explicit_dates["2025-08-15"]["name"]
-
-
-# ──────────────────────────────────────────────────────────────
-# Fixed national holidays (September-December)
-# ──────────────────────────────────────────────────────────────
-
-class TestXLISFixedHolidaysSepDec:
-    def test_republic_day_2025(self, explicit_dates):
-        """Oct 5, 2025 is Sunday (weekend) — no explicit entry."""
-        assert "2025-10-05" not in explicit_dates
-
-    def test_all_saints_2025(self, explicit_dates):
-        """Nov 1, 2025 is Saturday (weekend) — no explicit entry."""
-        assert "2025-11-01" not in explicit_dates
-
-    def test_restoration_2025(self, explicit_dates):
-        """Dec 1, 2025 is Monday."""
-        assert "2025-12-01" in explicit_dates
-        assert "Restoration" in explicit_dates["2025-12-01"]["name"]
-
-    def test_immaculate_conception_2025(self, explicit_dates):
-        """Dec 8, 2025 is Monday."""
-        assert "2025-12-08" in explicit_dates
-        assert "Immaculate" in explicit_dates["2025-12-08"]["name"]
+    def test_portuguese_holidays_are_trading_days(self, explicit_dates):
+        """Portuguese public holidays that Euronext does not list stay open."""
+        for day in ("2025-04-25", "2025-06-10", "2025-06-19", "2025-08-15",
+                    "2025-12-01", "2025-12-08", "2026-06-04", "2026-06-10",
+                    "2026-10-05", "2026-12-01", "2026-12-08", "2027-05-27",
+                    "2027-06-10", "2027-10-05", "2027-11-01", "2027-12-01",
+                    "2027-12-08", "2028-04-25", "2028-06-15", "2028-08-15",
+                    "2028-10-05", "2028-11-01", "2028-12-01", "2028-12-08",
+                    "2029-04-25", "2029-05-31", "2029-08-15", "2029-10-05",
+                    "2029-11-01"):
+            assert day not in explicit_dates, day
 
 
 # ──────────────────────────────────────────────────────────────
@@ -172,10 +139,29 @@ class TestXLISChristmas:
         assert "2025-12-25" in explicit_dates
         assert explicit_dates["2025-12-25"]["name"] == "Christmas Day"
 
-    def test_christmas_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27."""
+    def test_boxing_day_2025(self, explicit_dates):
+        """Dec 26, 2025 is Friday: Euronext lists it as closed for every market."""
+        assert "2025-12-26" in explicit_dates
+        assert explicit_dates["2025-12-26"]["name"] == "Boxing Day"
+
+    def test_boxing_day_2028_2029(self, explicit_dates):
+        for day in ("2028-12-26", "2029-12-26"):
+            assert day in explicit_dates, day
+
+    def test_christmas_2027_no_substitute(self, explicit_dates):
+        """Dec 25, 2027 is Saturday: no Monday Dec 27 closure."""
         assert "2027-12-25" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
+        assert "2027-12-27" not in explicit_dates
+
+    def test_boxing_day_2026_no_substitute(self, explicit_dates):
+        """Dec 26, 2026 is Saturday: Euronext lists Dec 28 as a full trading day."""
+        assert "2026-12-26" not in explicit_dates
+        assert "2026-12-28" not in explicit_dates
+
+    def test_boxing_day_2027_no_substitute(self, explicit_dates):
+        """Dec 26, 2027 is Sunday: no Tuesday Dec 28 closure."""
+        assert "2027-12-26" not in explicit_dates
+        assert "2027-12-28" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -191,29 +177,29 @@ class TestXLISEaster:
     def test_good_friday_2026(self, explicit_dates):
         """Easter - 2 days — April 3, 2026."""
         assert "2026-04-03" in explicit_dates
+        assert explicit_dates["2026-04-03"]["name"] == "Good Friday"
+
+    def test_good_friday_2027_2029(self, explicit_dates):
+        for day in ("2027-03-26", "2028-04-14", "2029-03-30"):
+            assert day in explicit_dates, day
 
     def test_easter_monday_2025(self, explicit_dates):
         """Easter + 1 day — April 21, 2025."""
         assert "2025-04-21" in explicit_dates
         assert explicit_dates["2025-04-21"]["name"] == "Easter Monday"
 
+    def test_easter_monday_2026(self, explicit_dates):
+        """Easter + 1 day — April 6, 2026."""
+        assert "2026-04-06" in explicit_dates
+
     def test_easter_monday_2027(self, explicit_dates):
         """Easter + 1 day — March 29, 2027."""
         assert "2027-03-29" in explicit_dates
 
-    def test_corpus_christi_2025(self, explicit_dates):
-        """Easter + 60 days — June 19, 2025."""
-        assert "2025-06-19" in explicit_dates
-        assert "Corpus" in explicit_dates["2025-06-19"]["name"]
-
-    def test_corpus_christi_2028(self, explicit_dates):
-        """Easter + 60 days — June 15, 2028."""
-        assert "2028-06-15" in explicit_dates
-
-    def test_corpus_christi_2029(self, explicit_dates):
-        """Easter + 60 days — May 31, 2029."""
-        assert "2029-05-31" in explicit_dates
-
+    def test_corpus_christi_is_a_trading_day(self, explicit_dates):
+        """Corpus Christi is a Portuguese holiday but not an Euronext Lisbon closure."""
+        for day in ("2025-06-19", "2026-06-04", "2027-05-27", "2028-06-15", "2029-05-31"):
+            assert day not in explicit_dates, day
 
 # ──────────────────────────────────────────────────────────────
 # Structural checks
@@ -258,8 +244,8 @@ class TestXLISStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~60-70 entries."""
-        assert 50 <= len(explicit_dates) <= 70, f"Unexpected count: {len(explicit_dates)}"
+        """25 closures: the Euronext common calendar, 2025-2029."""
+        assert 20 <= len(explicit_dates) <= 30, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
@@ -289,9 +275,76 @@ class TestXLISWeekendPattern:
 class TestXLISSubstitution:
     def test_weekend_holidays_absent(self, explicit_dates):
         assert "2028-01-01" not in explicit_dates  # Saturday
-        assert "2025-10-05" not in explicit_dates  # Sunday
+        assert "2027-05-01" not in explicit_dates  # Saturday
 
-    def test_observed_and_substitute_names(self, explicit_dates):
-        count = sum(1 for e in explicit_dates.values() 
-                   if "observed" in e["name"].lower() or "substitute" in e["name"].lower())
-        assert count >= 3, f"Expected some observed/substitute holidays, got {count}"
+    def test_no_substitute_holidays(self, explicit_dates):
+        """Euronext does not shift weekend holidays to weekdays."""
+        bad = [e["name"] for e in explicit_dates.values()
+               if "observed" in e["name"].lower() or "substitute" in e["name"].lower()]
+        assert bad == []
+
+
+# ──────────────────────────────────────────────────────────────
+# Divergence regression (Phase 2, session 4)
+# ──────────────────────────────────────────────────────────────
+
+# Euronext "Holiday Calendar for Cash and Derivatives markets", column for this
+# exchange. Closed days only (Dec 24 and Dec 31 are half trading days).
+OFFICIAL_CLOSED_2025 = {
+    "2025-01-01", "2025-04-18", "2025-04-21", "2025-05-01",
+    "2025-12-25", "2025-12-26",
+}
+OFFICIAL_CLOSED_2026 = {
+    "2026-01-01", "2026-04-03", "2026-04-06", "2026-05-01", "2026-12-25",
+}
+
+# The 12 dates tools/divergence_test.py flagged for XLIS.
+WRONGLY_CLOSED = [
+    "2025-04-25",  # Freedom Day
+    "2025-06-10",  # Portugal Day
+    "2025-06-19",  # Corpus Christi
+    "2025-08-15",  # Assumption Day
+    "2025-12-01",  # Restoration of Independence
+    "2025-12-08",  # Immaculate Conception
+    "2026-06-04",  # Corpus Christi
+    "2026-06-10",  # Portugal Day
+    "2026-10-05",  # Republic Day
+    "2026-12-01",  # Restoration of Independence
+    "2026-12-08",  # Immaculate Conception
+]
+WRONGLY_OPEN = [
+    "2025-12-26",  # Boxing Day
+]
+
+
+class TestXLISDivergenceRegression:
+    def test_closures_match_euronext_2025(self, explicit_dates):
+        assert {d for d in explicit_dates if d.startswith("2025")} == OFFICIAL_CLOSED_2025
+
+    def test_closures_match_euronext_2026(self, explicit_dates):
+        assert {d for d in explicit_dates if d.startswith("2026")} == OFFICIAL_CLOSED_2026
+
+    @pytest.mark.parametrize("day", WRONGLY_CLOSED)
+    def test_full_trading_day_is_open(self, explicit_dates, day):
+        assert date.fromisoformat(day).weekday() < 5
+        assert day not in explicit_dates
+
+    @pytest.mark.parametrize("day", WRONGLY_OPEN)
+    def test_missing_closure_is_closed(self, explicit_dates, day):
+        assert date.fromisoformat(day).weekday() < 5
+        assert explicit_dates[day]["status"] == "closed"
+        assert explicit_dates[day]["name"] == "Boxing Day"
+
+    def test_built_calendar_matches(self):
+        """The shipped calendar.json carries the same fix."""
+        path = Path(__file__).parent.parent / "calendar.json"
+        with open(path) as f:
+            cal = json.load(f)
+        entry = next(e for e in cal["exchanges"] if e["code"] == "XLIS")
+        closed = {
+            h["date"]
+            for h in entry["holidays"]["explicit"] + entry["holidays"]["generated"]
+            if h["status"] == "closed"
+        }
+        assert {d for d in closed if d.startswith("2025")} == OFFICIAL_CLOSED_2025
+        assert {d for d in closed if d.startswith("2026")} == OFFICIAL_CLOSED_2026

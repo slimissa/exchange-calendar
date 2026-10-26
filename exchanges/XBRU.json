@@ -47,6 +47,12 @@
         "status": "closed"
       },
       {
+        "date": "2025-04-18",
+        "name": "Good Friday",
+        "source_url": "https://live.euronext.com/en/resources/trading-hours-holidays",
+        "status": "closed"
+      },
+      {
         "date": "2025-04-21",
         "name": "Easter Monday",
         "source_url": "https://www.euronext.com/en/trading-calendar",
@@ -55,36 +61,6 @@
       {
         "date": "2025-05-01",
         "name": "Labour Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2025-05-29",
-        "name": "Ascension Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2025-06-09",
-        "name": "Whit Monday",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2025-07-21",
-        "name": "Belgian National Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2025-08-15",
-        "name": "Assumption Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2025-11-11",
-        "name": "Armistice Day",
         "source_url": "https://www.euronext.com/en/trading-calendar",
         "status": "closed"
       },
@@ -107,6 +83,12 @@
         "status": "closed"
       },
       {
+        "date": "2026-04-03",
+        "name": "Good Friday",
+        "source_url": "https://live.euronext.com/en/resources/trading-hours-holidays",
+        "status": "closed"
+      },
+      {
         "date": "2026-04-06",
         "name": "Easter Monday",
         "source_url": "https://www.euronext.com/en/trading-calendar",
@@ -119,38 +101,8 @@
         "status": "closed"
       },
       {
-        "date": "2026-05-14",
-        "name": "Ascension Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2026-05-25",
-        "name": "Whit Monday",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2026-07-21",
-        "name": "Belgian National Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2026-11-11",
-        "name": "Armistice Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
         "date": "2026-12-25",
         "name": "Christmas Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2026-12-28",
-        "name": "Boxing Day (substitute)",
         "source_url": "https://www.euronext.com/en/trading-calendar",
         "status": "closed"
       },
@@ -161,62 +113,20 @@
         "status": "closed"
       },
       {
+        "date": "2027-03-26",
+        "name": "Good Friday",
+        "source_url": "https://www.euronext.com/en/trading-calendar",
+        "status": "closed"
+      },
+      {
         "date": "2027-03-29",
         "name": "Easter Monday",
         "source_url": "https://www.euronext.com/en/trading-calendar",
         "status": "closed"
       },
       {
-        "date": "2027-05-03",
-        "name": "Labour Day (observed)",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-05-06",
-        "name": "Ascension Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-05-17",
-        "name": "Whit Monday",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-07-21",
-        "name": "Belgian National Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-11-01",
-        "name": "All Saints' Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-11-11",
-        "name": "Armistice Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-12-27",
-        "name": "Christmas Day (substitute)",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-12-28",
-        "name": "Boxing Day (substitute)",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-01-03",
-        "name": "New Year's Day (substitute)",
+        "date": "2028-04-14",
+        "name": "Good Friday",
         "source_url": "https://www.euronext.com/en/trading-calendar",
         "status": "closed"
       },
@@ -229,36 +139,6 @@
       {
         "date": "2028-05-01",
         "name": "Labour Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-05-25",
-        "name": "Ascension Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-06-05",
-        "name": "Whit Monday",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-07-21",
-        "name": "Belgian National Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-08-15",
-        "name": "Assumption Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-11-01",
-        "name": "All Saints' Day",
         "source_url": "https://www.euronext.com/en/trading-calendar",
         "status": "closed"
       },
@@ -281,6 +161,12 @@
         "status": "closed"
       },
       {
+        "date": "2029-03-30",
+        "name": "Good Friday",
+        "source_url": "https://www.euronext.com/en/trading-calendar",
+        "status": "closed"
+      },
+      {
         "date": "2029-04-02",
         "name": "Easter Monday",
         "source_url": "https://www.euronext.com/en/trading-calendar",
@@ -289,36 +175,6 @@
       {
         "date": "2029-05-01",
         "name": "Labour Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2029-05-10",
-        "name": "Ascension Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2029-05-21",
-        "name": "Whit Monday",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2029-08-15",
-        "name": "Assumption Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2029-11-01",
-        "name": "All Saints' Day",
-        "source_url": "https://www.euronext.com/en/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2029-11-12",
-        "name": "Armistice Day (observed)",
         "source_url": "https://www.euronext.com/en/trading-calendar",
         "status": "closed"
       },
