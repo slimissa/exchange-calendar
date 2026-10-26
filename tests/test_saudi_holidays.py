@@ -13,8 +13,10 @@ Key facts verified:
       Trade-at-Last: 15:10-15:20
 
 Note: Islamic holidays (Eid al-Fitr, Eid al-Adha, Islamic New Year,
-Prophet's Birthday) are included for 2025-2029, sourced from the Saudi
-Umm al-Qura calendar. Dates falling on the Friday/Saturday weekend are
+Prophet's Birthday) are included for 2025-2029. 2025 and 2026 follow the
+Saudi Exchange's own announcements ("trading will discontinue at the end of
+trading day X ... resume on Y": X is a TRADING day, Y is the first day back);
+2027-2029 are predictions from the Saudi Umm al-Qura calendar. Dates falling on the Friday/Saturday weekend are
 intentionally omitted from `explicit` (the weekend closure already
 covers them), matching the convention used by every other
 Islamic-weekend exchange in this registry (see XBAH).
@@ -29,7 +31,7 @@ Run:
 
 import json
 import pytest
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 
@@ -303,17 +305,21 @@ class TestXSAUIslamicHolidays:
         carry '(predicted)'; all other years still do."""
         islamic_keywords = ("Eid al-Fitr", "Eid al-Adha", "Islamic New Year", "Prophet's Birthday")
         for date_str, entry in explicit_dates.items():
-            if date_str.startswith("2025"):
-                continue
+            if date_str.startswith(("2025", "2026")):
+                continue  # announced by the Saudi Exchange, not predicted
             if any(k in entry["name"] for k in islamic_keywords):
                 assert "(predicted)" in entry["name"], \
                     f"{date_str} ({entry['name']}) should be marked predicted"
 
     def test_all_islamic_entries_use_umm_al_qura_source(self, explicit_dates):
         islamic_keywords = ("Eid al-Fitr", "Eid al-Adha", "Islamic New Year", "Prophet's Birthday")
+        announced = ("https://www.saudiexchange.sa/wps/portal/saudiexchange/"
+                     "about-saudi-exchange/exchange-media-centre/events")
         for date_str, entry in explicit_dates.items():
             if any(k in entry["name"] for k in islamic_keywords):
-                assert entry["source_url"] == "https://www.ummulqura.org.sa/", \
+                expected = (announced if date_str.startswith(("2025", "2026"))
+                            else "https://www.ummulqura.org.sa/")
+                assert entry["source_url"] == expected, \
                     f"{date_str} has unexpected source_url: {entry['source_url']}"
 
     def test_2025_entries_use_structured_predicted_field(self, explicit_dates):
@@ -322,7 +328,96 @@ class TestXSAUIslamicHolidays:
         and the (now-absent) name suffix agree -- verifying the M6
         consistency check has something real to check against."""
         for date_str, entry in explicit_dates.items():
-            if date_str.startswith("2025") and "Eid al-Fitr" in entry["name"]:
+            if date_str.startswith(("2025", "2026")) and any(
+                    k in entry["name"] for k in ("Eid al-Fitr", "Eid al-Adha")):
                 assert entry.get("predicted") is False, \
                     f"{date_str} should explicitly set predicted=false"
                 assert "(predicted)" not in entry["name"]
+
+
+# ──────────────────────────────────────────────────────────────
+# Regression: dates found by tools/divergence_test.py
+# Registry and both reference libraries disagreed on 17 dates. The Saudi
+# Exchange's own holiday announcements (saudiexchange.sa events and holiday
+# calendar pages) settle them: the registry was missing 14 Eid closures, and
+# the libraries are wrong on the other 3 (plus 2025-06-10, which both missed).
+# ──────────────────────────────────────────────────────────────
+
+@pytest.fixture(scope="module")
+def closed_dates(xsau):
+    """Closed dates after recurrence rules are expanded, as build.py does."""
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+    from generate_dates import expand_exchange
+
+    entries = list(xsau["holidays"]["explicit"]) + expand_exchange(xsau)
+    return {e["date"] for e in entries if e["status"] == "closed"}
+
+
+# Closed weekdays between "trading discontinues at the end of X" and
+# "trading resumes on Y" (Friday and Saturday are the weekend).
+EID_CLOSURES = {
+    "Eid al-Fitr 2025": ["2025-03-30", "2025-03-31", "2025-04-01", "2025-04-02"],
+    "Eid al-Adha 2025": ["2025-06-05", "2025-06-08", "2025-06-09", "2025-06-10"],
+    "Eid al-Fitr 2026": ["2026-03-17", "2026-03-18", "2026-03-19",
+                         "2026-03-22", "2026-03-23"],
+    "Eid al-Adha 2026": ["2026-05-24", "2026-05-25", "2026-05-26",
+                         "2026-05-27", "2026-05-28"],
+}
+# (last trading day, first day back) per announcement
+EID_BOUNDARIES = {
+    "Eid al-Fitr 2025": ("2025-03-27", "2025-04-03"),
+    "Eid al-Adha 2025": ("2025-06-04", "2025-06-11"),
+    "Eid al-Fitr 2026": ("2026-03-16", "2026-03-24"),
+    "Eid al-Adha 2026": ("2026-05-21", "2026-05-31"),
+}
+
+
+class TestXSAUDivergenceRegression:
+    @pytest.mark.parametrize("holiday", sorted(EID_CLOSURES))
+    def test_eid_closures_match_announcement(self, closed_dates, holiday):
+        last_trading, first_back = EID_BOUNDARIES[holiday]
+        weekdays_between = [
+            d.isoformat()
+            for d in (date.fromisoformat(last_trading) + timedelta(n)
+                      for n in range(1, (date.fromisoformat(first_back)
+                                         - date.fromisoformat(last_trading)).days))
+            if d.weekday() not in (4, 5)
+        ]
+        assert weekdays_between == EID_CLOSURES[holiday]  # test data is consistent
+        for day in EID_CLOSURES[holiday]:
+            assert day in closed_dates, f"{day} ({holiday}) should be closed"
+
+    @pytest.mark.parametrize("holiday", sorted(EID_BOUNDARIES))
+    def test_last_trading_day_and_first_day_back_are_open(self, closed_dates, holiday):
+        """'Trading will discontinue at the END of day X' means X trades. The
+        reference libraries close X, and the registry must not."""
+        for day in EID_BOUNDARIES[holiday]:
+            assert date.fromisoformat(day).weekday() not in (4, 5)
+            assert day not in closed_dates, f"{day} ({holiday}) is a trading day"
+
+    def test_founding_day_2025_observed_sunday_is_closed(self, closed_dates):
+        """The Saudi Exchange lists Founding Day as 23/02/2025. The libraries
+        have the exchange open."""
+        assert "2025-02-23" in closed_dates
+
+    def test_other_announced_holidays_unchanged(self, closed_dates):
+        assert "2025-09-23" in closed_dates   # National Day (Tuesday)
+        assert "2026-02-22" in closed_dates   # Founding Day (Sunday)
+        assert "2026-09-23" in closed_dates   # National Day (Wednesday)
+        assert "2026-09-22" not in closed_dates  # last trading day before it
+
+    def test_built_calendar_matches(self):
+        """The shipped calendar.json carries the same closures."""
+        path = Path(__file__).parent.parent / "calendar.json"
+        with open(path) as f:
+            cal = json.load(f)
+        entry = next(e for e in cal["exchanges"] if e["code"] == "XSAU")
+        closed = {
+            h["date"]
+            for h in entry["holidays"]["explicit"] + entry["holidays"]["generated"]
+            if h["status"] == "closed"
+        }
+        for days in EID_CLOSURES.values():
+            assert set(days) <= closed
+        assert "2025-03-27" not in closed and "2025-06-04" not in closed

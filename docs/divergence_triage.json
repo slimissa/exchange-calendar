@@ -1,0 +1,52 @@
+{
+  "_comment": "Hand-checked verdicts for disagreements listed by tools/divergence_test.py. Read by tools/divergence_report.py to annotate docs/DIVERGENCE.md. verdict: registry_error (registry was wrong, status fixed), library_error (registry verified against the exchange, the reference libraries are wrong) or convention_difference (both defensible, sources use different conventions). Every entry must cite the exchange's own publication.",
+  "entries": [
+    {
+      "exchange": "XAMS",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.21.2",
+      "dates": [
+        "2025-05-01", "2025-05-05", "2025-05-29", "2025-06-09",
+        "2026-04-27", "2026-05-01", "2026-05-14", "2026-05-25", "2026-12-28"
+      ],
+      "summary": "Euronext's calendars for 2025 and 2026 close Amsterdam on Labour Day (May 1) and list Liberation Day, King's Day, Ascension Day, Whit Monday and the Dec 28 2026 substitute (Dublin only) as full trading days. The registry had them the other way round.",
+      "source_url": "https://live.euronext.com/en/resources/trading-hours-holidays"
+    },
+    {
+      "exchange": "XWBO",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.21.2",
+      "dates": [
+        "2025-01-06", "2025-04-18", "2025-05-29", "2025-06-09", "2025-06-19",
+        "2025-08-15", "2025-12-08", "2025-12-24", "2025-12-31",
+        "2026-01-06", "2026-04-03", "2026-05-14", "2026-05-25", "2026-06-04",
+        "2026-12-08", "2026-12-24", "2026-12-31"
+      ],
+      "summary": "The Wiener Boerse lists Good Friday, Dec 24 and Dec 31 as closed (handelsfrei) and Epiphany, Ascension Day, Whit Monday, Corpus Christi, Assumption Day and Immaculate Conception as additional trading days. The registry closed the second group and treated the eves as half days.",
+      "source_url": "https://www.wienerborse.at/uploads/u/cms/files/handel/boersenfeiertage-2026-de.pdf"
+    },
+    {
+      "exchange": "XSAU",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.21.2",
+      "dates": [
+        "2025-04-02", "2025-06-05", "2025-06-08", "2025-06-09",
+        "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-22", "2026-03-23",
+        "2026-05-24", "2026-05-25", "2026-05-26", "2026-05-27", "2026-05-28"
+      ],
+      "summary": "The Saudi Exchange announced the 2025 and 2026 Eid holidays by the last trading day and the resumption day. The registry was missing 14 closed weekdays inside those spans, and 2025-06-10 as well (the libraries are also open on it, so it appears below as a library error).",
+      "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events"
+    },
+    {
+      "exchange": "XSAU",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": ["2025-02-23", "2025-03-27", "2025-06-04", "2025-06-10"],
+      "summary": "The Saudi Exchange lists Founding Day as Sunday 2025-02-23 (closed), says trading discontinues at the END of 2025-03-27 and 2025-06-04 (both are trading days), and resumes on 2025-04-03 and 2025-06-11, which makes 2025-06-10 a closed day. Both libraries are wrong on all four. This is not a Hijri approximation: they carry the 2026 Eid spans exactly, but start both 2025 spans on the last trading day (2025-03-27, 2025-06-04) and end the 2025 Adha span a day early.",
+      "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/saudi-exchange-holiday-calendar"
+    }
+  ]
+}

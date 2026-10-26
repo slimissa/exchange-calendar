@@ -60,21 +60,56 @@
         "date": "2025-03-30",
         "name": "Eid al-Fitr",
         "predicted": false,
-        "source_url": "https://www.ummulqura.org.sa/",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
         "status": "closed"
       },
       {
         "date": "2025-03-31",
         "name": "Eid al-Fitr Holiday",
         "predicted": false,
-        "source_url": "https://www.ummulqura.org.sa/",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
         "status": "closed"
       },
       {
         "date": "2025-04-01",
         "name": "Eid al-Fitr Holiday",
         "predicted": false,
-        "source_url": "https://www.ummulqura.org.sa/",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2025-04-02",
+        "name": "Eid al-Fitr Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2025-06-05",
+        "name": "Eid al-Adha Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2025-06-08",
+        "name": "Eid al-Adha Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2025-06-09",
+        "name": "Eid al-Adha Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2025-06-10",
+        "name": "Eid al-Adha Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
         "status": "closed"
       },
       {
@@ -87,6 +122,76 @@
         "date": "2026-02-22",
         "name": "Saudi Founding Day",
         "source_url": "https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2026-03-17",
+        "name": "Eid al-Fitr Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2026-03-18",
+        "name": "Eid al-Fitr Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2026-03-19",
+        "name": "Eid al-Fitr Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2026-03-22",
+        "name": "Eid al-Fitr Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2026-03-23",
+        "name": "Eid al-Fitr Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2026-05-24",
+        "name": "Eid al-Adha Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2026-05-25",
+        "name": "Eid al-Adha Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2026-05-26",
+        "name": "Eid al-Adha Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Eid al-Adha Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Eid al-Adha Holiday",
+        "predicted": false,
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
         "status": "closed"
       },
       {

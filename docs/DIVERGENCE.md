@@ -23,7 +23,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | Exchange | Registry | PMC | EC | Disagreements | Agreement |
 |---|---:|---:|---:|---:|---:|
 | DSMD | 514 | No reference data | No reference data | n/a | n/a |
-| XAMS | 506 | 511 | 511 | 9 | 98.2% |
+| XAMS | 511 | 511 | 511 | 0 | 100.0% |
 | XASX | 507 | 507 | 507 | 0 | 100.0% |
 | XATH | 500 | No reference data | No reference data | n/a | n/a |
 | XBAH | 508 | No reference data | No reference data | n/a | n/a |
@@ -79,7 +79,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XPHS | 494 | 487 | 487 | 9 | 98.2% |
 | XPRA | 498 | 499 | 499 | 5 | 99.0% |
 | XRIS | 500 | 497 | 497 | 7 | 98.6% |
-| XSAU | 515 | 500 | 500 | 17 | 96.7% |
+| XSAU | 500 | 500 | 500 | 4 | 99.2% |
 | XSES | 502 | 503 | 503 | 1 | 99.8% |
 | XSGO | 495 | No reference data | 498 | 7 | 98.6% |
 | XSHE | 485 | No reference data | No reference data | n/a | n/a |
@@ -94,13 +94,13 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XTSE | 502 | 502 | 502 | 0 | 100.0% |
 | XTUN | 503 | No reference data | No reference data | n/a | n/a |
 | XWAR | 500 | 500 | 500 | 0 | 100.0% |
-| XWBO | 501 | 506 | 506 | 17 | 96.7% |
+| XWBO | 506 | 506 | 506 | 0 | 100.0% |
 | XZAG | 496 | 496 | 496 | 0 | 100.0% |
 
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 19 of 50.
-- Trading days on which all available sources agree: 24849 of 25074 (99.1%).
+- Exchanges with no disagreement: 21 of 50.
+- Trading days on which all available sources agree: 24866 of 25052 (99.3%).
 
 ## No reference data
 
@@ -139,11 +139,6 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XTUN | RuntimeError: Class XTUN is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XTUN, does not... |
 
 ## Disagreements
-
-### XAMS (9)
-
-- registry closed, PMC open, EC open (7): 2025-05-05 Mo, 2025-05-29 Th, 2025-06-09 Mo, 2026-04-27 Mo, 2026-05-14 Th, 2026-05-25 Mo, 2026-12-28 Mo
-- registry open, PMC closed, EC closed (2): 2025-05-01 Th, 2026-05-01 Fr
 
 ### XBKK (10)
 
@@ -255,10 +250,10 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 - registry open, PMC closed, EC closed (5): 2025-05-02 Fr, 2025-05-05 Mo, 2025-05-29 Th, 2025-11-17 Mo, 2026-05-14 Th
 - registry closed, PMC open, EC open (2): 2025-12-25 Th, 2026-12-25 Fr
 
-### XSAU (17)
+### XSAU (4)
 
-- registry open, PMC closed, EC closed (16): 2025-03-27 Th, 2025-04-02 We, 2025-06-04 We, 2025-06-05 Th, 2025-06-08 Su, 2025-06-09 Mo, 2026-03-17 Tu, 2026-03-18 We, 2026-03-19 Th, 2026-03-22 Su, 2026-03-23 Mo, 2026-05-24 Su, 2026-05-25 Mo, 2026-05-26 Tu, 2026-05-27 We, 2026-05-28 Th
-- registry closed, PMC open, EC open (1): 2025-02-23 Su
+- registry closed, PMC open, EC open (2): 2025-02-23 Su [library error], 2025-06-10 Tu [library error]
+- registry open, PMC closed, EC closed (2): 2025-03-27 Th [library error], 2025-06-04 We [library error]
 
 ### XSES (1)
 
@@ -282,10 +277,43 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 - registry closed, PMC open, EC open (2): 2025-12-25 Th, 2026-12-25 Fr
 - registry open, PMC closed, EC closed (2): 2025-05-29 Th, 2026-05-14 Th
 
-### XWBO (17)
+## Triage
 
-- registry closed, PMC open, EC open (11): 2025-01-06 Mo, 2025-05-29 Th, 2025-06-09 Mo, 2025-06-19 Th, 2025-08-15 Fr, 2025-12-08 Mo, 2026-01-06 Tu, 2026-05-14 Th, 2026-05-25 Mo, 2026-06-04 Th, 2026-12-08 Tu
-- registry open, PMC closed, EC closed (6): 2025-04-18 Fr, 2025-12-24 We, 2025-12-31 We, 2026-04-03 Fr, 2026-12-24 Th, 2026-12-31 Th
+Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there.
+
+- Library error: 4 dates; Registry error: 40 dates.
+
+### XAMS: Registry error (9, fixed in 2.21.2)
+
+Euronext's calendars for 2025 and 2026 close Amsterdam on Labour Day (May 1) and list Liberation Day, King's Day, Ascension Day, Whit Monday and the Dec 28 2026 substitute (Dublin only) as full trading days. The registry had them the other way round.
+
+Dates: 2025-05-01, 2025-05-05, 2025-05-29, 2025-06-09, 2026-04-27, 2026-05-01, 2026-05-14, 2026-05-25, 2026-12-28.
+
+Source: https://live.euronext.com/en/resources/trading-hours-holidays
+
+### XSAU: Library error (4, registry verified, no change)
+
+The Saudi Exchange lists Founding Day as Sunday 2025-02-23 (closed), says trading discontinues at the END of 2025-03-27 and 2025-06-04 (both are trading days), and resumes on 2025-04-03 and 2025-06-11, which makes 2025-06-10 a closed day. Both libraries are wrong on all four. This is not a Hijri approximation: they carry the 2026 Eid spans exactly, but start both 2025 spans on the last trading day (2025-03-27, 2025-06-04) and end the 2025 Adha span a day early.
+
+Dates: 2025-02-23, 2025-03-27, 2025-06-04, 2025-06-10.
+
+Source: https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/saudi-exchange-holiday-calendar
+
+### XSAU: Registry error (14, fixed in 2.21.2)
+
+The Saudi Exchange announced the 2025 and 2026 Eid holidays by the last trading day and the resumption day. The registry was missing 14 closed weekdays inside those spans, and 2025-06-10 as well (the libraries are also open on it, so it appears below as a library error).
+
+Dates: 2025-04-02, 2025-06-05, 2025-06-08, 2025-06-09, 2026-03-17, 2026-03-18, 2026-03-19, 2026-03-22, 2026-03-23, 2026-05-24, 2026-05-25, 2026-05-26, 2026-05-27, 2026-05-28.
+
+Source: https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+
+### XWBO: Registry error (17, fixed in 2.21.2)
+
+The Wiener Boerse lists Good Friday, Dec 24 and Dec 31 as closed (handelsfrei) and Epiphany, Ascension Day, Whit Monday, Corpus Christi, Assumption Day and Immaculate Conception as additional trading days. The registry closed the second group and treated the eves as half days.
+
+Dates: 2025-01-06, 2025-04-18, 2025-05-29, 2025-06-09, 2025-06-19, 2025-08-15, 2025-12-08, 2025-12-24, 2025-12-31, 2026-01-06, 2026-04-03, 2026-05-14, 2026-05-25, 2026-06-04, 2026-12-08, 2026-12-24, 2026-12-31.
+
+Source: https://www.wienerborse.at/uploads/u/cms/files/handel/boersenfeiertage-2026-de.pdf
 
 ## Libraries only (years outside the registry range)
 

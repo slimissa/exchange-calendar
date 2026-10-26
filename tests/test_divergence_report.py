@@ -10,6 +10,8 @@ Checks that the report generator:
     3. Lists every disagreeing date with what each source says
     4. Computes agreement as agreed trading days / (agreed + disagreeing)
     5. Is deterministic and exits 2 on an unreadable input
+    6. Annotates still-disagreeing dates with a hand-checked triage verdict and
+       lists the triage entries, and rejects an unknown verdict
 
 Run:
     python3 -m pytest tests/test_divergence_report.py -v
@@ -122,3 +124,61 @@ class TestMain:
         src = tmp_path / "in.json"
         src.write_text(json.dumps({"hello": 1}))
         assert dr.main(["--input", str(src), "--output", str(tmp_path / "o.md")]) == 2
+
+
+def _triage():
+    return {"entries": [
+        {"exchange": "XAAA", "verdict": "library_error", "status": "registry_verified",
+         "dates": ["2026-04-24"], "summary": "The exchange lists it as closed.",
+         "source_url": "https://example.com/calendar"},
+        {"exchange": "XCCC", "verdict": "registry_error", "status": "fixed",
+         "fixed_in": "9.9.9", "dates": ["2026-01-02", "2026-01-03"],
+         "summary": "Was missing.", "source_url": "https://example.com/other"},
+    ]}
+
+
+class TestTriage:
+    def test_disagreeing_date_is_annotated_with_verdict(self):
+        text = dr.render(_report(), _triage())
+        assert "2026-04-24 Fr [library error]" in text
+
+    def test_untriaged_date_has_no_tag(self):
+        text = dr.render(_report())
+        assert "2026-04-24 Fr" in text and "[library error]" not in text
+
+    def test_triage_section_lists_entries_and_counts(self):
+        text = dr.render(_report(), _triage())
+        assert "## Triage" in text
+        assert "Library error: 1 dates; Registry error: 2 dates." in text
+        assert "### XAAA: Library error (1, registry verified, no change)" in text
+        assert "### XCCC: Registry error (2, fixed in 9.9.9)" in text
+        assert "Source: https://example.com/calendar" in text
+
+    def test_no_triage_section_without_entries(self):
+        assert "## Triage" not in dr.render(_report(), {"entries": []})
+
+    def test_main_reads_triage_file(self, tmp_path):
+        import json as _json
+        src, tri, dst = tmp_path / "in.json", tmp_path / "t.json", tmp_path / "o.md"
+        src.write_text(_json.dumps(_report()))
+        tri.write_text(_json.dumps(_triage()))
+        assert dr.main(["--input", str(src), "--triage", str(tri),
+                        "--output", str(dst)]) == 0
+        assert "[library error]" in dst.read_text()
+
+    def test_unknown_verdict_exits_2(self, tmp_path):
+        import json as _json
+        src, tri = tmp_path / "in.json", tmp_path / "t.json"
+        src.write_text(_json.dumps(_report()))
+        bad = _triage()
+        bad["entries"][0]["verdict"] = "whatever"
+        tri.write_text(_json.dumps(bad))
+        assert dr.main(["--input", str(src), "--triage", str(tri),
+                        "--output", str(tmp_path / "o.md")]) == 2
+
+    def test_missing_triage_file_is_fine(self, tmp_path):
+        import json as _json
+        src = tmp_path / "in.json"
+        src.write_text(_json.dumps(_report()))
+        assert dr.main(["--input", str(src), "--triage", str(tmp_path / "none.json"),
+                        "--output", str(tmp_path / "o.md")]) == 0

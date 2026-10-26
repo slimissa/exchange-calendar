@@ -5,11 +5,15 @@ The output is deterministic (no timestamps, sorted exchanges and dates), so
 re-running the two tools on an unchanged tree reproduces the file byte for
 byte.
 
+Hand-checked verdicts are read from docs/divergence_triage.json (when it
+exists) and shown next to the dates they cover, so a verified library error is
+not mistaken for an open registry bug.
+
 Usage:
     python3 tools/divergence_test.py --exchanges all --year 2024-2026
     python3 tools/divergence_report.py
     python3 tools/divergence_report.py --input /tmp/divergence.json \\
-        --output docs/DIVERGENCE.md
+        --triage docs/divergence_triage.json --output docs/DIVERGENCE.md
 
 Exit codes:
     0  report written
@@ -24,6 +28,18 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_INPUT = "/tmp/divergence.json"
 DEFAULT_OUTPUT = REPO_ROOT / "docs" / "DIVERGENCE.md"
+DEFAULT_TRIAGE = REPO_ROOT / "docs" / "divergence_triage.json"
+
+VERDICT_LABEL = {
+    "registry_error": "Registry error",
+    "library_error": "Library error",
+    "convention_difference": "Convention difference",
+}
+VERDICT_TAG = {
+    "registry_error": "registry error",
+    "library_error": "library error",
+    "convention_difference": "convention difference",
+}
 
 REGISTRY = "registry"
 PMC = "pandas_market_calendars"
@@ -112,7 +128,17 @@ def _pattern_text(pattern):
     return ", ".join(f"{name} {state}" for name, state in pattern)
 
 
-def render(report):
+def _triage_index(triage):
+    """{(exchange, date): verdict} for every date a triage entry covers."""
+    index = {}
+    for entry in (triage or {}).get("entries", []):
+        for day in entry["dates"]:
+            index[(entry["exchange"], day)] = entry["verdict"]
+    return index
+
+
+def render(report, triage=None):
+    triage_index = _triage_index(triage)
     exchanges = report["exchanges"]
     years = report["years"]
     libs = report.get("libraries", {})
@@ -262,12 +288,43 @@ def render(report):
         w(f"### {code} ({total})")
         w("")
         for pattern, dates in sorted(groups.items(), key=lambda kv: (-len(kv[1]), kv[0])):
-            listing = ", ".join(f"{d} {wd}" for d, wd in dates)
+            listing = ", ".join(
+                f"{d} {wd}" + (f" [{VERDICT_TAG[triage_index[(code, d)]]}]"
+                               if (code, d) in triage_index else "")
+                for d, wd in dates)
             w(f"- {_pattern_text(pattern)} ({len(dates)}): {listing}")
         w("")
     if not any_diff:
         w("None.")
         w("")
+
+    # ---- triage -----------------------------------------------------------
+    entries = (triage or {}).get("entries", [])
+    if entries:
+        w("## Triage")
+        w("")
+        w("Verdicts checked by hand against each exchange's own publication. "
+          "Dates marked in the list above are the ones still disagreeing; "
+          "\"fixed\" entries are already corrected in the registry, so their "
+          "dates no longer appear there.")
+        w("")
+        counts = {}
+        for e in entries:
+            counts[e["verdict"]] = counts.get(e["verdict"], 0) + len(e["dates"])
+        w("- " + "; ".join(f"{VERDICT_LABEL[v]}: {n} dates"
+                           for v, n in sorted(counts.items())) + ".")
+        w("")
+        for e in sorted(entries, key=lambda e: (e["exchange"], e["verdict"])):
+            state = (f"fixed in {e['fixed_in']}" if e.get("status") == "fixed"
+                     else "registry verified, no change")
+            w(f"### {e['exchange']}: {VERDICT_LABEL[e['verdict']]} ({len(e['dates'])}, {state})")
+            w("")
+            w(e["summary"])
+            w("")
+            w("Dates: " + ", ".join(e["dates"]) + ".")
+            w("")
+            w(f"Source: {e['source_url']}")
+            w("")
 
     # ---- reference-only years --------------------------------------------
     if ref_only_years:
@@ -316,6 +373,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--input", default=DEFAULT_INPUT,
                         help="JSON from tools/divergence_test.py (default: %(default)s)")
+    parser.add_argument("--triage", default=str(DEFAULT_TRIAGE),
+                        help="Hand-checked verdicts, optional (default: %(default)s)")
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT),
                         help="Markdown file to write (default: %(default)s)")
     args = parser.parse_args(argv)
@@ -328,7 +387,18 @@ def main(argv=None):
         print(f"ERROR: cannot read {args.input}: {exc}", file=sys.stderr)
         return 2
 
-    text = render(report)
+    triage = None
+    if Path(args.triage).exists():
+        try:
+            triage = json.loads(Path(args.triage).read_text(encoding="utf-8"))
+            for entry in triage.get("entries", []):
+                if entry["verdict"] not in VERDICT_LABEL:
+                    raise ValueError(f"unknown verdict {entry['verdict']!r}")
+        except (OSError, ValueError, KeyError) as exc:
+            print(f"ERROR: cannot read {args.triage}: {exc}", file=sys.stderr)
+            return 2
+
+    text = render(report, triage)
     Path(args.output).write_text(text, encoding="utf-8")
     print(f"Wrote {args.output} ({len(text.splitlines())} lines)")
     return 0
