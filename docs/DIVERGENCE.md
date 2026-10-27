@@ -7,6 +7,8 @@ python3 tools/divergence_test.py --exchanges all --year 2024-2026
 python3 tools/divergence_report.py
 ```
 
+This file is regenerated automatically every Monday at 08:00 UTC by the Divergence workflow (`.github/workflows/divergence.yml`), which opens a pull request when it changes. Manual edits will be overwritten; record verdicts in `docs/divergence_triage.json` instead.
+
 Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.0. PMC is `pandas_market_calendars`, EC is `exchange_calendars`.
 
 ## How to read this

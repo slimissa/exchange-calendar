@@ -158,6 +158,11 @@ def render(report, triage=None):
     w("python3 tools/divergence_report.py")
     w("```")
     w("")
+    w("This file is regenerated automatically every Monday at 08:00 UTC by the "
+      "Divergence workflow (`.github/workflows/divergence.yml`), which opens a "
+      "pull request when it changes. Manual edits will be overwritten; record "
+      "verdicts in `docs/divergence_triage.json` instead.")
+    w("")
     w("Reference libraries: "
       + ", ".join(f"`{name}` {version}" for name, version in sorted(libs.items()))
       + ". PMC is `pandas_market_calendars`, EC is `exchange_calendars`.")

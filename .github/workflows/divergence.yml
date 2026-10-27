@@ -1,0 +1,50 @@
+name: Divergence
+
+# Weekly check of the registry against pandas_market_calendars and
+# exchange_calendars. Opens a PR when docs/DIVERGENCE.md (or the triage file)
+# changes, for example when a reference library drifts.
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'   # Mondays 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  divergence:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+
+      - name: Run divergence test
+        run: python3 tools/divergence_test.py --exchanges all --year 2024-2026
+
+      - name: Generate divergence report
+        run: python3 tools/divergence_report.py
+
+      - name: Open pull request if the report changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          add-paths: |
+            docs/DIVERGENCE.md
+            docs/divergence_triage.json
+          branch: automated/divergence-report
+          delete-branch: true
+          commit-message: "Update divergence report"
+          title: "📊 Weekly divergence report"
+          body: "Automated divergence check against pandas_market_calendars and exchange_calendars."
