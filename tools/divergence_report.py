@@ -180,6 +180,11 @@ def render(report, triage=None):
       "exchange's `weekend_days` and not a `closed` holiday or ad-hoc closure. "
       "`early_close` and `delayed_open` days are trading days, so half days "
       "are not disagreements.")
+    w("- Only regular working days are compared. A date on the exchange's "
+      "`weekend_days` is skipped for all three sources, because the "
+      "libraries model one-off weekend sessions (Budget Day, Muhurat, "
+      "make-up Saturdays) that the registry does not and that differ "
+      "between library versions.")
     w("- Registry, PMC and EC columns are trading days summed over the "
       "registry years above. `n/a` means the registry has no data; "
       f"`{NO_REFERENCE_DATA}` means that library does not know the exchange. "

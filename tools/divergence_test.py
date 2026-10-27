@@ -4,6 +4,10 @@
 For each exchange and year (or inclusive range of years), this tool builds
 three sets of trading days:
 
+Only regular working days are compared. A day that falls on the exchange's
+weekend_days (Saturday/Sunday for most exchanges, Friday/Saturday for the
+Gulf exchanges and a few others) is skipped for all three sources.
+
   registry  -- calendar.json: a day is a trading day unless it falls on one of
                the exchange's weekend_days or on a holiday / ad-hoc closure
                whose status is "closed". early_close and delayed_open days are
@@ -190,24 +194,33 @@ def xc_trading_days(code, start, end):
 # Comparison (pure function -- no I/O, easy to test)
 # ---------------------------------------------------------------------------
 
-def compare_sources(sources, start, end, early_closes=None):
+def compare_sources(sources, start, end, early_closes=None, weekend=None):
     """Compare trading-day sets.
 
     sources: {name: set[date] | str}. A string value means the source has no
     data (it is recorded verbatim, e.g. "No reference data: <reason>") and is
     left out of the vote.
+
+    weekend: weekday numbers (Monday=0) that are the exchange's weekend. Those
+    days are skipped for every source: the reference libraries model one-off
+    weekend sessions (Budget Day, Muhurat, Russian make-up Saturdays) that the
+    registry does not, and which libraries and versions do not agree on. Only
+    regular working days are compared. Defaults to Saturday and Sunday.
     """
     early_closes = early_closes or {}
+    weekend = {5, 6} if weekend is None else set(weekend)
     available = {k: v for k, v in sources.items() if not isinstance(v, str)}
     unavailable = {k: v for k, v in sources.items() if isinstance(v, str)}
 
     agree_trading, agree_closed_weekdays, disagreements = [], [], []
     for day in iter_days(start, end):
+        if day.weekday() in weekend:
+            continue
         votes = {name: (day in days) for name, days in available.items()}
         if len(set(votes.values())) <= 1 and votes:
             if next(iter(votes.values())):
                 agree_trading.append(day.isoformat())
-            elif day.weekday() < 5:
+            else:
                 agree_closed_weekdays.append(day.isoformat())
         elif votes:
             row = {
@@ -260,7 +273,8 @@ def run_exchange(code, year, calendar_path=DEFAULT_CALENDAR):
         "pandas_market_calendars": _guarded(pmc_trading_days, code, start, end),
         "exchange_calendars": _guarded(xc_trading_days, code, start, end),
     }
-    result = compare_sources(sources, start, end, registry_early_closes(entry))
+    result = compare_sources(sources, start, end, registry_early_closes(entry),
+                             weekend=entry.get("weekend_days", [5, 6]))
     result["pmc_mirrors_exchange_calendars"] = pmc_is_mirror(code)
     return result
 

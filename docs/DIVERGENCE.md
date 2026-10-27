@@ -13,6 +13,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 
 - Years requested: 2024 to 2026. The registry only has data inside each exchange's `generation_range`, so the registry is compared for 2025, 2026; 2024 compares the two libraries with each other only.
 - For the registry, a trading day is a date that is not one of the exchange's `weekend_days` and not a `closed` holiday or ad-hoc closure. `early_close` and `delayed_open` days are trading days, so half days are not disagreements.
+- Only regular working days are compared. A date on the exchange's `weekend_days` is skipped for all three sources, because the libraries model one-off weekend sessions (Budget Day, Muhurat, make-up Saturdays) that the registry does not and that differ between library versions.
 - Registry, PMC and EC columns are trading days summed over the registry years above. `n/a` means the registry has no data; `No reference data` means that library does not know the exchange. A trailing `*` means the library was missing in some of those years.
 - Agreement is trading days on which every available source agrees, divided by that count plus the disagreeing days. Days all sources agree are closed (weekends, shared holidays) are not counted. It is `n/a` when neither library has data.
 - PMC and EC are not independent. PMC serves 46 of the exchanges that both libraries cover straight from `exchange_calendars` (its mirror calendars), so for those the PMC and EC columns are one source counted twice. PMC has its own implementation for XBOM, XNSE. Effectively the registry is being compared against one reference for the rest.
@@ -31,8 +32,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XBEY | 514 | No reference data | No reference data | n/a | n/a |
 | XBKK | 484 | 484 | 484 | 10 | 98.0% |
 | XBOG | 487 | 486 | 486 | 3 | 99.4% |
-| XBOM | 494 | 492 | 492 | 12 | 97.6% |
-| XBRU | 503 | 511 | 511 | 12 | 97.7% |
+| XBOM | 492 | 492 | 493 | 0 | 100.0% |
+| XBRU | 511 | 511 | 511 | 0 | 100.0% |
 | XBRV | 509 | No reference data | No reference data | n/a | n/a |
 | XBSP | 497 | No reference data | No reference data | n/a | n/a |
 | XBUD | 498 | 497 | 497 | 7 | 98.6% |
@@ -59,7 +60,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XKRX | 491 | 488 | 488 | 5 | 99.0% |
 | XKUW | 510 | No reference data | No reference data | n/a | n/a |
 | XLIM | 496 | 497 | 497 | 5 | 99.0% |
-| XLIS | 501 | 511 | 511 | 12 | 97.7% |
+| XLIS | 511 | 511 | 511 | 0 | 100.0% |
 | XLIT | 499 | 499 | 499 | 4 | 99.2% |
 | XLON | 506 | 506 | 506 | 0 | 100.0% |
 | XLUX | 500 | 511 | 511 | 11 | 97.8% |
@@ -71,7 +72,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XNAI | 504 | No reference data | No reference data | n/a | n/a |
 | XNAS | 501 | No reference data | 501 | 0 | 100.0% |
 | XNSA | 504 | No reference data | No reference data | n/a | n/a |
-| XNSE | 494 | 493 | No reference data | 13 | 97.4% |
+| XNSE | 492 | 493 | No reference data | 1 | 99.8% |
 | XNYS | 501 | 501 | 501 | 0 | 100.0% |
 | XNZE | 500 | 500 | 500 | 0 | 100.0% |
 | XOSL | 501 | 501 | 501 | 0 | 100.0% |
@@ -99,8 +100,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 21 of 50.
-- Trading days on which all available sources agree: 24866 of 25052 (99.3%).
+- Exchanges with no disagreement: 24 of 50.
+- Trading days on which all available sources agree: 24897 of 25035 (99.4%).
 
 ## No reference data
 
@@ -150,16 +151,6 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 - registry open, PMC closed, EC closed (2): 2025-12-31 We, 2026-12-31 Th
 - registry closed, PMC open, EC open (1): 2025-07-01 Tu
 
-### XBOM (12)
-
-- registry open, PMC closed, EC closed (7): 2026-01-15 Th, 2026-03-03 Tu, 2026-03-26 Th, 2026-03-31 Tu, 2026-05-28 Th, 2026-09-14 Mo, 2026-11-10 Tu
-- registry closed, PMC open, EC open (5): 2026-03-04 We, 2026-03-20 Fr, 2026-05-27 We, 2026-09-15 Tu, 2026-11-09 Mo
-
-### XBRU (12)
-
-- registry closed, PMC open, EC open (10): 2025-05-29 Th, 2025-06-09 Mo, 2025-07-21 Mo, 2025-08-15 Fr, 2025-11-11 Tu, 2026-05-14 Th, 2026-05-25 Mo, 2026-07-21 Tu, 2026-11-11 We, 2026-12-28 Mo
-- registry open, PMC closed, EC closed (2): 2025-04-18 Fr, 2026-04-03 Fr
-
 ### XBUD (7)
 
 - registry open, PMC closed, EC closed (4): 2025-05-02 Fr, 2025-10-24 Fr, 2026-01-02 Fr, 2026-08-21 Fr
@@ -208,11 +199,6 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 - registry closed, PMC open, EC open (3): 2026-06-08 Mo, 2026-08-31 Mo, 2026-11-02 Mo
 - registry open, PMC closed, EC closed (2): 2025-12-09 Tu, 2026-12-09 We
 
-### XLIS (12)
-
-- registry closed, PMC open, EC open (11): 2025-04-25 Fr, 2025-06-10 Tu, 2025-06-19 Th, 2025-08-15 Fr, 2025-12-01 Mo, 2025-12-08 Mo, 2026-06-04 Th, 2026-06-10 We, 2026-10-05 Mo, 2026-12-01 Tu, 2026-12-08 Tu
-- registry open, PMC closed, EC closed (1): 2025-12-26 Fr
-
 ### XLIT (4)
 
 - registry closed, PMC open, EC open (2): 2025-12-25 Th, 2026-12-25 Fr
@@ -230,10 +216,9 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 
 - registry closed, PMC open, EC open (9): 2025-01-03 Fr, 2025-01-06 Mo, 2025-01-08 We, 2025-05-02 Fr, 2025-06-13 Fr, 2026-01-05 Mo, 2026-01-06 Tu, 2026-01-08 Th, 2026-05-04 Mo
 
-### XNSE (13)
+### XNSE (1)
 
-- registry open, PMC closed (7): 2026-01-15 Th, 2026-03-03 Tu, 2026-03-26 Th, 2026-03-31 Tu, 2026-05-28 Th, 2026-09-14 Mo, 2026-11-10 Tu
-- registry closed, PMC open (6): 2025-10-21 Tu, 2026-03-04 We, 2026-03-20 Fr, 2026-05-27 We, 2026-09-15 Tu, 2026-11-09 Mo
+- registry closed, PMC open (1): 2025-10-21 Tu [convention difference]
 
 ### XPHS (9)
 
@@ -281,7 +266,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there.
 
-- Library error: 4 dates; Registry error: 40 dates.
+- Convention difference: 1 dates; Library error: 4 dates; Registry error: 88 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -290,6 +275,46 @@ Euronext's calendars for 2025 and 2026 close Amsterdam on Labour Day (May 1) and
 Dates: 2025-05-01, 2025-05-05, 2025-05-29, 2025-06-09, 2026-04-27, 2026-05-01, 2026-05-14, 2026-05-25, 2026-12-28.
 
 Source: https://live.euronext.com/en/resources/trading-hours-holidays
+
+### XBOM: Registry error (12, fixed in 2.21.3)
+
+The NSE and BSE 2026 trading-holiday lists close on Thu 2026-01-15 (Maharashtra municipal corporation election), Tue 03-03 (Holi), Thu 03-26 (Ram Navami), Tue 03-31 (Mahavir Jayanti), Thu 05-28 (Bakri Id), Mon 09-14 (Ganesh Chaturthi) and Tue 11-10 (Diwali-Balipratipada). The registry had three of them a day late (Holi 03-04, Bakri Id 05-27, Ganesh Chaturthi 09-15), Balipratipada a day early (11-09), a closure on Fri 03-20 (Id-Ul-Fitr is Saturday 03-21, so it is a weekend day) and was missing the election holiday, Ram Navami and Mahavir Jayanti.
+
+Dates: 2026-01-15, 2026-03-03, 2026-03-04, 2026-03-20, 2026-03-26, 2026-03-31, 2026-05-27, 2026-05-28, 2026-09-14, 2026-09-15, 2026-11-09, 2026-11-10.
+
+Source: https://www.bseindia.com/markets/marketinfo/market_holidays.aspx
+
+### XBRU: Registry error (12, fixed in 2.21.3)
+
+Euronext's calendars for 2025 and 2026 close Brussels on Good Friday, Easter Monday, Labour Day, Christmas Day and (2025) Boxing Day only. Ascension Day, Whit Monday, Belgian National Day, Assumption Day, Armistice Day and the Dec 28 2026 substitute (Dublin only) are full trading days. The registry closed those ten and was missing Good Friday on 2025-04-18 and 2026-04-03.
+
+Dates: 2025-04-18, 2025-05-29, 2025-06-09, 2025-07-21, 2025-08-15, 2025-11-11, 2026-04-03, 2026-05-14, 2026-05-25, 2026-07-21, 2026-11-11, 2026-12-28.
+
+Source: https://live.euronext.com/en/resources/trading-hours-holidays
+
+### XLIS: Registry error (12, fixed in 2.21.3)
+
+Euronext's calendars for 2025 and 2026 close Lisbon only on the common Euronext closures; Freedom Day, Portugal Day, Corpus Christi, Assumption Day, Republic Day, Restoration of Independence and Immaculate Conception are full trading days. The registry closed those eleven and was missing Boxing Day on Friday 2025-12-26.
+
+Dates: 2025-04-25, 2025-06-10, 2025-06-19, 2025-08-15, 2025-12-01, 2025-12-08, 2025-12-26, 2026-06-04, 2026-06-10, 2026-10-05, 2026-12-01, 2026-12-08.
+
+Source: https://live.euronext.com/en/resources/trading-hours-holidays
+
+### XNSE: Convention difference (1, registry verified, no change)
+
+NSE lists Tuesday 2025-10-21 (Diwali Laxmi Pujan) as a trading holiday and runs only a one-hour Muhurat session (13:45-14:45) on it; the next day is Diwali-Balipratipada. The registry keeps the day closed, like the exchange's list and like BSE (XBOM, where both libraries agree). pandas_market_calendars counts the day as open because of the Muhurat session. Both are defensible; no data change.
+
+Dates: 2025-10-21.
+
+Source: https://www.nseindia.com/resources/exchange-communication-holidays
+
+### XNSE: Registry error (12, fixed in 2.21.3)
+
+The NSE and BSE 2026 trading-holiday lists close on Thu 2026-01-15 (Maharashtra municipal corporation election), Tue 03-03 (Holi), Thu 03-26 (Ram Navami), Tue 03-31 (Mahavir Jayanti), Thu 05-28 (Bakri Id), Mon 09-14 (Ganesh Chaturthi) and Tue 11-10 (Diwali-Balipratipada). The registry had three of them a day late (Holi 03-04, Bakri Id 05-27, Ganesh Chaturthi 09-15), Balipratipada a day early (11-09), a closure on Fri 03-20 (Id-Ul-Fitr is Saturday 03-21, so it is a weekend day) and was missing the election holiday, Ram Navami and Mahavir Jayanti.
+
+Dates: 2026-01-15, 2026-03-03, 2026-03-04, 2026-03-20, 2026-03-26, 2026-03-31, 2026-05-27, 2026-05-28, 2026-09-14, 2026-09-15, 2026-11-09, 2026-11-10.
+
+Source: https://www.nseindia.com/resources/exchange-communication-holidays
 
 ### XSAU: Library error (4, registry verified, no change)
 

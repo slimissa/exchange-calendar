@@ -82,6 +82,46 @@ class TestCompareSources:
         assert res["disagreements"] == []
 
 
+class TestWeekendSkipping:
+    SAT = dt.date(2026, 1, 3)
+    SUN = dt.date(2026, 1, 4)
+
+    def test_default_skips_saturday_and_sunday_disagreements(self):
+        """A library-only weekend session is not a disagreement."""
+        res = dv.compare_sources(
+            {"registry": set(), "pandas_market_calendars": {self.SAT},
+             "exchange_calendars": {self.SAT, self.SUN}},
+            self.SAT, self.SUN,
+        )
+        assert res["disagreements"] == []
+        assert res["all_agree_trading_days"] == []
+
+    def test_weekday_disagreement_still_reported(self):
+        mon = dt.date(2026, 1, 5)
+        res = dv.compare_sources(
+            {"registry": {mon}, "pandas_market_calendars": set()}, mon, mon)
+        assert len(res["disagreements"]) == 1
+
+    def test_friday_saturday_weekend_compares_sunday_and_skips_friday(self):
+        fri, sun = dt.date(2026, 1, 2), dt.date(2026, 1, 4)
+        res = dv.compare_sources(
+            {"registry": set(), "pandas_market_calendars": {fri, sun}},
+            fri, sun, weekend=[4, 5],
+        )
+        assert [r["date"] for r in res["disagreements"]] == ["2026-01-04"]
+
+    def test_xbom_budget_saturday_is_not_compared(self):
+        res = dv.run_exchange("XBOM", 2025)
+        assert "2025-02-01" not in [r["date"] for r in res["disagreements"]]
+
+    def test_gulf_sunday_still_compared(self):
+        """XSAU trades Sunday-Thursday: Sunday must not be skipped."""
+        res = dv.run_exchange("XSAU", 2025)
+        assert res["all_agree_trading_days"]
+        assert any(d for d in res["all_agree_trading_days"]
+                   if dt.date.fromisoformat(d).weekday() == 6)
+
+
 class TestRegistryLoader:
     def test_jan_1_2026_xnys_is_closed_in_registry(self):
         entry = dv.load_registry_entry("XNYS")
