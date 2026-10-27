@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.21.4] - 2026-10-27
+
+### Added
+- Added weekly CI workflow to run divergence tests and automatically open PRs if the reference libraries drift.
+
 ## [2.21.3] - 2026-10-27
 
 ### Fixed

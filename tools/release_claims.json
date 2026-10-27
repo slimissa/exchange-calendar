@@ -958,5 +958,55 @@
       "file": "README.md",
       "contains": "automated fetchers as of v2.21.3"
     }
+  ],
+  "2.21.4": [
+    {
+      "file": "VERSION",
+      "contains": "2.21.4"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.21.4] - 2026-10-27"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Added weekly CI workflow to run divergence tests and automatically open PRs if the reference libraries drift."
+    },
+    {
+      "file": ".github/workflows/divergence.yml",
+      "contains": "cron: '0 8 * * 1'"
+    },
+    {
+      "file": ".github/workflows/divergence.yml",
+      "contains": "peter-evans/create-pull-request@v6"
+    },
+    {
+      "file": "tools/divergence_test.py",
+      "contains": "if day.weekday() in weekend:"
+    },
+    {
+      "file": "docs/DIVERGENCE.md",
+      "contains": "regenerated automatically every Monday at 08:00 UTC"
+    },
+    {
+      "file": "tests/test_divergence_workflow.py",
+      "contains": "def test_runs_weekly_on_monday_0800_utc_and_on_demand"
+    },
+    {
+      "file": "tests/test_divergence.py",
+      "contains": "class TestWeekendSkipping"
+    },
+    {
+      "file": "README.md",
+      "contains": "actions/workflows/divergence.yml/badge.svg"
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.21.4-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.21.4"
+    }
   ]
 }
