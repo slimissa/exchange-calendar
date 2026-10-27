@@ -34,7 +34,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XBEY | 514 | No reference data | No reference data | n/a | n/a |
 | XBKK | 484 | 484 | 484 | 10 | 98.0% |
 | XBOG | 487 | 486 | 486 | 3 | 99.4% |
-| XBOM | 492 | 492 | 493 | 0 | 100.0% |
+| XBOM | 492 | 492 | 492 | 0 | 100.0% |
 | XBRU | 511 | 511 | 511 | 0 | 100.0% |
 | XBRV | 509 | No reference data | No reference data | n/a | n/a |
 | XBSP | 497 | No reference data | No reference data | n/a | n/a |
