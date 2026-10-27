@@ -73,6 +73,40 @@
       ],
       "summary": "Euronext's calendars for 2025 and 2026 close Lisbon only on the common Euronext closures; Freedom Day, Portugal Day, Corpus Christi, Assumption Day, Republic Day, Restoration of Independence and Immaculate Conception are full trading days. The registry closed those eleven and was missing Boxing Day on Friday 2025-12-26.",
       "source_url": "https://live.euronext.com/en/resources/trading-hours-holidays"
+    },
+    {
+      "exchange": "XBOM",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.21.3",
+      "dates": [
+        "2026-01-15", "2026-03-03", "2026-03-04", "2026-03-20", "2026-03-26",
+        "2026-03-31", "2026-05-27", "2026-05-28", "2026-09-14", "2026-09-15",
+        "2026-11-09", "2026-11-10"
+      ],
+      "summary": "The NSE and BSE 2026 trading-holiday lists close on Thu 2026-01-15 (Maharashtra municipal corporation election), Tue 03-03 (Holi), Thu 03-26 (Ram Navami), Tue 03-31 (Mahavir Jayanti), Thu 05-28 (Bakri Id), Mon 09-14 (Ganesh Chaturthi) and Tue 11-10 (Diwali-Balipratipada). The registry had three of them a day late (Holi 03-04, Bakri Id 05-27, Ganesh Chaturthi 09-15), Balipratipada a day early (11-09), a closure on Fri 03-20 (Id-Ul-Fitr is Saturday 03-21, so it is a weekend day) and was missing the election holiday, Ram Navami and Mahavir Jayanti.",
+      "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.aspx"
+    },
+    {
+      "exchange": "XNSE",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.21.3",
+      "dates": [
+        "2026-01-15", "2026-03-03", "2026-03-04", "2026-03-20", "2026-03-26",
+        "2026-03-31", "2026-05-27", "2026-05-28", "2026-09-14", "2026-09-15",
+        "2026-11-09", "2026-11-10"
+      ],
+      "summary": "The NSE and BSE 2026 trading-holiday lists close on Thu 2026-01-15 (Maharashtra municipal corporation election), Tue 03-03 (Holi), Thu 03-26 (Ram Navami), Tue 03-31 (Mahavir Jayanti), Thu 05-28 (Bakri Id), Mon 09-14 (Ganesh Chaturthi) and Tue 11-10 (Diwali-Balipratipada). The registry had three of them a day late (Holi 03-04, Bakri Id 05-27, Ganesh Chaturthi 09-15), Balipratipada a day early (11-09), a closure on Fri 03-20 (Id-Ul-Fitr is Saturday 03-21, so it is a weekend day) and was missing the election holiday, Ram Navami and Mahavir Jayanti.",
+      "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+    },
+    {
+      "exchange": "XNSE",
+      "verdict": "convention_difference",
+      "status": "registry_unchanged",
+      "dates": ["2025-10-21"],
+      "summary": "NSE lists Tuesday 2025-10-21 (Diwali Laxmi Pujan) as a trading holiday and runs only a one-hour Muhurat session (13:45-14:45) on it; the next day is Diwali-Balipratipada. The registry keeps the day closed, like the exchange's list and like BSE (XBOM, where both libraries agree). pandas_market_calendars counts the day as open because of the Muhurat session. Both are defensible; no data change.",
+      "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
     }
   ]
 }

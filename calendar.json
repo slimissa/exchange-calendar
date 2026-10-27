@@ -3456,20 +3456,32 @@
             "status": "closed"
           },
           {
+            "date": "2026-01-15",
+            "name": "Municipal Corporation Election (Maharashtra)",
+            "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.html",
+            "status": "closed"
+          },
+          {
             "date": "2026-01-26",
             "name": "Republic Day",
             "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.html",
             "status": "closed"
           },
           {
-            "date": "2026-03-04",
+            "date": "2026-03-03",
             "name": "Holi",
             "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.html",
             "status": "closed"
           },
           {
-            "date": "2026-03-20",
-            "name": "Id-Ul-Fitr (Ramzan Id)",
+            "date": "2026-03-26",
+            "name": "Ram Navami",
+            "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.html",
+            "status": "closed"
+          },
+          {
+            "date": "2026-03-31",
+            "name": "Mahavir Jayanti",
             "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.html",
             "status": "closed"
           },
@@ -3492,7 +3504,7 @@
             "status": "closed"
           },
           {
-            "date": "2026-05-27",
+            "date": "2026-05-28",
             "name": "Bakri Id (Eid-ul-Adha)",
             "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.html",
             "status": "closed"
@@ -3504,7 +3516,7 @@
             "status": "closed"
           },
           {
-            "date": "2026-09-15",
+            "date": "2026-09-14",
             "name": "Ganesh Chaturthi",
             "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.html",
             "status": "closed"
@@ -3529,7 +3541,7 @@
             "weekend_exception": true
           },
           {
-            "date": "2026-11-09",
+            "date": "2026-11-10",
             "name": "Diwali Balipratipada",
             "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.html",
             "status": "closed"
@@ -18792,20 +18804,32 @@
             "status": "closed"
           },
           {
+            "date": "2026-01-15",
+            "name": "Municipal Corporation Election (Maharashtra)",
+            "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays",
+            "status": "closed"
+          },
+          {
             "date": "2026-01-26",
             "name": "Republic Day",
             "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays",
             "status": "closed"
           },
           {
-            "date": "2026-03-04",
+            "date": "2026-03-03",
             "name": "Holi",
             "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays",
             "status": "closed"
           },
           {
-            "date": "2026-03-20",
-            "name": "Id-Ul-Fitr (Ramzan Id)",
+            "date": "2026-03-26",
+            "name": "Ram Navami",
+            "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays",
+            "status": "closed"
+          },
+          {
+            "date": "2026-03-31",
+            "name": "Mahavir Jayanti",
             "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays",
             "status": "closed"
           },
@@ -18828,7 +18852,7 @@
             "status": "closed"
           },
           {
-            "date": "2026-05-27",
+            "date": "2026-05-28",
             "name": "Bakri Id (Eid-ul-Adha)",
             "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays",
             "status": "closed"
@@ -18840,7 +18864,7 @@
             "status": "closed"
           },
           {
-            "date": "2026-09-15",
+            "date": "2026-09-14",
             "name": "Ganesh Chaturthi",
             "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays",
             "status": "closed"
@@ -18865,7 +18889,7 @@
             "weekend_exception": true
           },
           {
-            "date": "2026-11-09",
+            "date": "2026-11-10",
             "name": "Diwali Balipratipada",
             "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays",
             "status": "closed"

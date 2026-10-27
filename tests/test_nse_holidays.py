@@ -93,7 +93,8 @@ class TestXNSEKeyHolidays:
         assert "2026-11-08" in explicit_dates
         assert explicit_dates["2026-11-08"]["name"] == "Diwali (Laxmi Pujan)"
         assert explicit_dates["2026-11-08"].get("weekend_exception") is True
-        assert "2026-11-09" in explicit_dates  # Balipratipada, unaffected
+        assert "2026-11-10" in explicit_dates  # Balipratipada is Tuesday
+        assert "2026-11-09" not in explicit_dates
 
     def test_holi_2025(self, explicit_dates):
         assert "2025-03-14" in explicit_dates
@@ -128,3 +129,65 @@ class TestXNSEStructure:
     def test_all_statuses_closed(self, explicit_dates):
         for entry in explicit_dates.values():
             assert entry["status"] == "closed"
+
+
+# ──────────────────────────────────────────────────────────────
+# Divergence regression (Phase 2, session 4)
+# ──────────────────────────────────────────────────────────────
+
+# NSE and BSE 2026 trading holidays that fall on a weekday (equity, equity
+# derivatives and SLB segments), as published by the exchanges.
+OFFICIAL_CLOSED_2026 = {
+    "2026-01-15",  # Municipal Corporation Election - Maharashtra
+    "2026-01-26",  # Republic Day
+    "2026-03-03",  # Holi
+    "2026-03-26",  # Shri Ram Navami
+    "2026-03-31",  # Shri Mahavir Jayanti
+    "2026-04-03",  # Good Friday
+    "2026-04-14",  # Dr. Baba Saheb Ambedkar Jayanti
+    "2026-05-01",  # Maharashtra Day
+    "2026-05-28",  # Bakri Id
+    "2026-06-26",  # Muharram
+    "2026-09-14",  # Ganesh Chaturthi
+    "2026-10-02",  # Mahatma Gandhi Jayanti
+    "2026-10-20",  # Dussehra
+    "2026-11-10",  # Diwali-Balipratipada
+    "2026-11-24",  # Guru Nanak Jayanti
+    "2026-12-25",  # Christmas
+}
+# Sunday 2026-11-08 (Diwali Laxmi Pujan, Muhurat session) is the one
+# weekend_exception row.
+WRONGLY_OPEN = ["2026-01-15", "2026-03-03", "2026-03-26", "2026-03-31",
+                "2026-05-28", "2026-09-14", "2026-11-10"]
+WRONGLY_CLOSED = ["2026-03-04", "2026-03-20", "2026-05-27", "2026-09-15",
+                  "2026-11-09"]
+
+
+class TestXNSEDivergenceRegression:
+    def test_weekday_closures_match_exchange_2026(self, explicit_dates):
+        weekdays = {d for d, e in explicit_dates.items()
+                    if d.startswith("2026") and not e.get("weekend_exception")}
+        assert weekdays == OFFICIAL_CLOSED_2026
+
+    @pytest.mark.parametrize("day", WRONGLY_OPEN)
+    def test_missing_closure_is_closed(self, explicit_dates, day):
+        assert date.fromisoformat(day).weekday() < 5
+        assert explicit_dates[day]["status"] == "closed"
+
+    @pytest.mark.parametrize("day", WRONGLY_CLOSED)
+    def test_wrong_closure_is_gone(self, explicit_dates, day):
+        assert day not in explicit_dates
+
+    def test_built_calendar_matches(self):
+        """The shipped calendar.json carries the same fix."""
+        path = Path(__file__).parent.parent / "calendar.json"
+        with open(path) as f:
+            cal = json.load(f)
+        entry = next(e for e in cal["exchanges"] if e["code"] == "XNSE")
+        closed = {
+            h["date"]
+            for h in entry["holidays"]["explicit"] + entry["holidays"]["generated"]
+            if h["status"] == "closed" and h["date"].startswith("2026")
+            and date.fromisoformat(h["date"]).weekday() < 5
+        }
+        assert closed == OFFICIAL_CLOSED_2026
