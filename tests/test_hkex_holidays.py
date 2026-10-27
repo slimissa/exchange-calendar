@@ -34,7 +34,9 @@ def xhkg():
 
 @pytest.fixture(scope="module")
 def explicit_dates(xhkg):
-    return {e["date"]: e for e in xhkg["holidays"]["explicit"]}
+    # 2025 onward: the original data window (the 1990-2024 backfill is tested
+    # in test_divergence.py; its early closes were 12:30 in some years)
+    return {e["date"]: e for e in xhkg["holidays"]["explicit"] if e["date"] >= "2025-01-01"}
 
 
 # ──────────────────────────────────────────────────────────────

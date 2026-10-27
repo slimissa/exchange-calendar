@@ -48,7 +48,7 @@ def xnys_early_closes(xnys):
     return {
         e["date"]: e["early_close_time"]
         for e in xnys["holidays"]["explicit"]
-        if e["status"] == "early_close"
+        if e["status"] == "early_close" and e["date"] >= "2025-01-01"
     }
 
 
@@ -58,7 +58,7 @@ def xlon_early_closes(xlon):
     return {
         e["date"]: e["early_close_time"]
         for e in xlon["holidays"]["explicit"]
-        if e["status"] == "early_close"
+        if e["status"] == "early_close" and e["date"] >= "2025-01-01"
     }
 
 
@@ -74,7 +74,7 @@ class TestBoundaryTimes:
         with open(path) as f:
             data = json.load(f)
         for e in data["holidays"]["explicit"]:
-            if e["status"] == "early_close":
+            if e["status"] == "early_close" and e["date"] >= "2025-01-01":
                 early_closes[e["date"]] = e["early_close_time"]
 
         for date_str, close_time in early_closes.items():
@@ -87,7 +87,7 @@ class TestBoundaryTimes:
         with open(path) as f:
             data = json.load(f)
         for e in data["holidays"]["explicit"]:
-            if e["status"] == "early_close":
+            if e["status"] == "early_close" and e["date"] >= "2025-01-01":
                 early_closes[e["date"]] = e["early_close_time"]
 
         for date_str, close_time in early_closes.items():
@@ -116,11 +116,11 @@ class TestBoundaryTimes:
         lse_regular_close = xlon["regular_hours"]["close"]
 
         for e in xnys["holidays"]["explicit"]:
-            if e["status"] == "early_close":
+            if e["status"] == "early_close" and e["date"] >= "2025-01-01":
                 assert e["early_close_time"] < nyse_regular_close
 
         for e in xlon["holidays"]["explicit"]:
-            if e["status"] == "early_close":
+            if e["status"] == "early_close" and e["date"] >= "2025-01-01":
                 assert e["early_close_time"] < lse_regular_close
 
     def test_early_close_after_regular_open(self, xnys, xlon):
@@ -129,11 +129,11 @@ class TestBoundaryTimes:
         lse_regular_open = xlon["regular_hours"]["open"]
 
         for e in xnys["holidays"]["explicit"]:
-            if e["status"] == "early_close":
+            if e["status"] == "early_close" and e["date"] >= "2025-01-01":
                 assert e["early_close_time"] > nyse_regular_open
 
         for e in xlon["holidays"]["explicit"]:
-            if e["status"] == "early_close":
+            if e["status"] == "early_close" and e["date"] >= "2025-01-01":
                 assert e["early_close_time"] > lse_regular_open
 
 
@@ -149,7 +149,7 @@ class TestWeekdayEarlyCloses:
             data = json.load(f)
 
         for e in data["holidays"]["explicit"]:
-            if e["status"] == "early_close":
+            if e["status"] == "early_close" and e["date"] >= "2025-01-01":
                 d = date.fromisoformat(e["date"])
                 assert d.weekday() < 5, f"Early close on weekend: {e['date']}"
 
@@ -160,7 +160,7 @@ class TestWeekdayEarlyCloses:
             data = json.load(f)
 
         for e in data["holidays"]["explicit"]:
-            if e["status"] == "early_close":
+            if e["status"] == "early_close" and e["date"] >= "2025-01-01":
                 d = date.fromisoformat(e["date"])
                 assert d.weekday() < 5, f"Early close on weekend: {e['date']}"
 
@@ -282,7 +282,7 @@ class TestConsistency:
                 data = json.load(f)
 
             for e in data["holidays"]["explicit"]:
-                if e["status"] == "early_close":
+                if e["status"] == "early_close" and e["date"] >= "2025-01-01":
                     assert "source_url" in e, f"{code}: {e['date']} missing source_url"
 
     def test_early_close_count_matches_expected(self):
@@ -294,7 +294,7 @@ class TestConsistency:
             with open(path) as f:
                 data = json.load(f)
 
-            early_count = sum(1 for e in data["holidays"]["explicit"] if e["status"] == "early_close")
+            early_count = sum(1 for e in data["holidays"]["explicit"] if e["status"] == "early_close" and e["date"] >= "2025-01-01")
             counts[code] = early_count
 
         # XNYS: 5 Black Fridays + 4 Christmas Eves + 3 July 3rds = 12

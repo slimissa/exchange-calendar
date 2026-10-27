@@ -44,8 +44,10 @@ def xnys():
 
 @pytest.fixture(scope="module")
 def explicit_dates(xnas):
-    """Return dict of date -> entry from XNAS explicit array."""
-    return {e["date"]: e for e in xnas["holidays"]["explicit"]}
+    """Return dict of date -> entry from the XNAS explicit array, 2025 onward
+    (the original data window; the 1990-2024 backfill is tested in
+    test_divergence.py)."""
+    return {e["date"]: e for e in xnas["holidays"]["explicit"] if e["date"] >= "2025-01-01"}
 
 
 # ──────────────────────────────────────────────────────────────
@@ -84,7 +86,7 @@ class TestXNASProperties:
         assert types == ["pre_market", "regular", "post_market"]
 
     def test_generation_range(self, xnas):
-        assert xnas["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xnas["generation_range"] == ["1990-01-01", "2029-12-31"]
 
 
 # ──────────────────────────────────────────────────────────────

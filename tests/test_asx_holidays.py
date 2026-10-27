@@ -42,8 +42,9 @@ def xasx():
 
 @pytest.fixture(scope="module")
 def explicit_dates(xasx):
-    """Return dict of date -> entry."""
-    return {e["date"]: e for e in xasx["holidays"]["explicit"]}
+    """Return dict of date -> entry, 2025 onward (the original data window; the
+    1990-2024 backfill is tested in test_divergence.py)."""
+    return {e["date"]: e for e in xasx["holidays"]["explicit"] if e["date"] >= "2025-01-01"}
 
 
 # ──────────────────────────────────────────────────────────────

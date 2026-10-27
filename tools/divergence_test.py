@@ -193,11 +193,25 @@ def pmc_is_mirror(code):
     return type(cal).__module__.rsplit(".", 1)[-1] == "mirror"
 
 
-def xc_trading_days(code, start, end):
+def _xc_calendar(code, start, end):
+    """exchange_calendars calendar covering [start, end].
+
+    get_calendar(code) alone only covers the last ~20 years from today
+    (it starts 2006-10-27 in 2026), which made every earlier year come back
+    empty. The explicit bounds are whole calendar years. A calendar that
+    cannot reach back that far (XTKS before 1997, XHKG before 1960) raises,
+    which _guarded() records as "unavailable" for that year.
+    """
     import exchange_calendars as xc
 
-    cal = xc.get_calendar(code)
-    sessions = cal.sessions_in_range(start.isoformat(), end.isoformat())
+    return xc.get_calendar(code, start=dt.date(start.year, 1, 1).isoformat(),
+                           end=dt.date(end.year, 12, 31).isoformat())
+
+
+def xc_trading_days(code, start, end):
+    cal = _xc_calendar(code, start, end)
+    sessions = cal.sessions
+    sessions = sessions[(sessions >= start.isoformat()) & (sessions <= end.isoformat())]
     return {_to_date(ts) for ts in sessions}
 
 
@@ -336,10 +350,12 @@ def registry_sessions(entry, start, end):
     for day in sorted(registry_trading_days(entry, start, end)):
         rec = special.get(day, {})
         early = rec.get("status") == "early_close"
+        day_close = (rec.get("early_close_time") or close) if early else close
         out[day] = {
             "open": rec.get("delayed_open_time") or open_,
-            "close": (rec.get("early_close_time") or close) if early else close,
-            "break": brk,
+            "close": day_close,
+            # a half day that closes before the break would end has no break
+            "break": None if brk and day_close <= brk.split("-")[1] else brk,
             "half_day": early,
         }
     return out
@@ -362,9 +378,7 @@ def pmc_sessions(code, start, end, tz):
 
 
 def xc_sessions(code, start, end, tz):
-    import exchange_calendars as xc
-
-    cal = xc.get_calendar(code)
+    cal = _xc_calendar(code, start, end)
     sched = cal.schedule.loc[start.isoformat():end.isoformat()]
     has_break = {"break_start", "break_end"} <= set(sched.columns)
     out = {}

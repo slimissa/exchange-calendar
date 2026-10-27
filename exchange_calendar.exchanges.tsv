@@ -1,7 +1,7 @@
 code	name	mic	country_code	timezone	weekend_day_1	weekend_day_2	regular_open	regular_close	generation_start	generation_end
 DSMD	Qatar Stock Exchange	DSMD	QA	Asia/Qatar	4	5	09:30	13:15	2025-01-01	2029-12-31
 XAMS	Euronext Amsterdam	XAMS	NL	Europe/Amsterdam	5	6	09:00	17:30	2025-01-01	2029-12-31
-XASX	Australian Securities Exchange	XASX	AU	Australia/Sydney	5	6	10:00	16:00	2025-01-01	2029-12-31
+XASX	Australian Securities Exchange	XASX	AU	Australia/Sydney	5	6	10:00	16:00	1990-01-01	2029-12-31
 XATH	Athens Stock Exchange	XATH	GR	Europe/Athens	5	6	10:30	17:00	2025-01-01	2029-12-31
 XBAH	Bahrain Bourse	XBAH	BH	Asia/Bahrain	4	5	09:30	13:00	2025-01-01	2029-12-31
 XBDA	Bermuda Stock Exchange	XBDA	BM	Atlantic/Bermuda	5	6	10:00	16:00	2025-01-01	2029-12-31
@@ -26,7 +26,7 @@ XDUB	Euronext Dublin	XDUB	IE	Europe/Dublin	5	6	08:00	16:30	2025-01-01	2029-12-31
 XETR	Deutsche Börse	XETR	DE	Europe/Berlin	5	6	09:00	17:30	2025-01-01	2029-12-31
 XGSE	Ghana Stock Exchange	XGSE	GH	Africa/Accra	5	6	10:00	15:00	2025-01-01	2029-12-31
 XHEL	Nasdaq Helsinki	XHEL	FI	Europe/Helsinki	5	6	09:00	18:30	2025-01-01	2029-12-31
-XHKG	Hong Kong Exchange	XHKG	HK	Asia/Hong_Kong	5	6	09:30	16:00	2025-01-01	2029-12-31
+XHKG	Hong Kong Exchange	XHKG	HK	Asia/Hong_Kong	5	6	09:30	16:00	1990-01-01	2029-12-31
 XICE	Nasdaq Iceland	XICE	IS	Atlantic/Reykjavik	5	6	09:30	15:30	2025-01-01	2029-12-31
 XIST	Borsa Istanbul	XIST	TR	Europe/Istanbul	5	6	10:00	18:00	2025-01-01	2029-12-31
 XJKT	Indonesia Stock Exchange	XJKT	ID	Asia/Jakarta	5	6	09:00	16:00	2025-01-01	2029-12-31
@@ -38,7 +38,7 @@ XKUW	Bursa Kuwait	XKUW	KW	Asia/Kuwait	4	5	09:00	12:30	2025-01-01	2029-07-24
 XLIM	Lima Stock Exchange	XLIM	PE	America/Lima	5	6	09:00	13:30	2025-01-01	2029-12-31
 XLIS	Euronext Lisbon	XLIS	PT	Europe/Lisbon	5	6	09:00	17:30	2025-01-01	2029-12-31
 XLIT	Nasdaq Vilnius	XLIT	LT	Europe/Vilnius	5	6	10:00	16:00	2025-01-01	2029-12-31
-XLON	London Stock Exchange	XLON	GB	Europe/London	5	6	08:00	16:30	2025-01-01	2029-12-31
+XLON	London Stock Exchange	XLON	GB	Europe/London	5	6	08:00	16:30	1990-01-01	2029-12-31
 XLUX	Luxembourg Stock Exchange	XLUX	LU	Europe/Luxembourg	5	6	09:00	17:30	2025-01-01	2029-12-31
 XMAD	Bolsa de Madrid	XMAD	ES	Europe/Madrid	5	6	09:00	17:30	2025-01-01	2029-12-31
 XMAL	Malta Stock Exchange	XMAL	MT	Europe/Malta	5	6	09:00	15:30	2025-01-01	2029-12-31
@@ -46,10 +46,10 @@ XMEX	Mexican Stock Exchange	XMEX	MX	America/Mexico_City	5	6	08:30	15:00	2025-01-
 XMOS	Moscow Exchange	XMOS	RU	Europe/Moscow	5	6	10:00	18:45	2025-01-01	2026-12-31
 XMUS	Muscat Stock Exchange	XMUS	OM	Asia/Muscat	4	5	10:00	13:00	2025-01-01	2029-12-31
 XNAI	Nairobi Securities Exchange	XNAI	KE	Africa/Nairobi	5	6	09:30	15:00	2025-01-01	2029-12-31
-XNAS	NASDAQ	XNAS	US	America/New_York	5	6	09:30	16:00	2025-01-01	2029-12-31
+XNAS	NASDAQ	XNAS	US	America/New_York	5	6	09:30	16:00	1990-01-01	2029-12-31
 XNSA	Nigerian Stock Exchange	XNSA	NG	Africa/Lagos	5	6	10:00	14:30	2025-01-01	2029-12-31
 XNSE	National Stock Exchange of India	XNSE	IN	Asia/Kolkata	5	6	09:15	15:30	2025-01-01	2029-12-31
-XNYS	New York Stock Exchange	XNYS	US	America/New_York	5	6	09:30	16:00	2025-01-01	2029-12-31
+XNYS	New York Stock Exchange	XNYS	US	America/New_York	5	6	09:30	16:00	1990-01-01	2029-12-31
 XNZE	New Zealand Exchange	XNZE	NZ	Pacific/Auckland	5	6	10:00	16:45	2025-01-01	2029-12-31
 XOSL	Oslo Børs	XOSL	NO	Europe/Oslo	5	6	09:00	16:30	2025-01-01	2029-12-31
 XPAR	Euronext Paris	XPAR	FR	Europe/Paris	5	6	09:00	17:30	2025-01-01	2029-12-31
@@ -67,7 +67,7 @@ XSWX	SIX Swiss Exchange	XSWX	CH	Europe/Zurich	5	6	09:00	17:30	2025-01-01	2029-12
 XTAD	Abu Dhabi Securities Exchange	XTAD	AE	Asia/Dubai	5	6	10:00	14:00	2025-01-01	2029-12-31
 XTAI	Taiwan Stock Exchange	XTAI	TW	Asia/Taipei	5	6	09:00	13:30	2025-01-01	2029-12-31
 XTAL	Nasdaq Tallinn	XTAL	EE	Europe/Tallinn	5	6	10:00	16:00	2025-01-01	2029-12-31
-XTKS	Tokyo Stock Exchange	XTKS	JP	Asia/Tokyo	5	6	09:00	15:30	2025-01-01	2029-12-31
+XTKS	Tokyo Stock Exchange	XTKS	JP	Asia/Tokyo	5	6	09:00	15:30	1997-01-01	2029-12-31
 XTSE	Toronto Stock Exchange	XTSE	CA	America/Toronto	5	6	09:30	16:00	2025-01-01	2029-12-31
 XTUN	Tunis Stock Exchange	XTUN	TN	Africa/Tunis	5	6	09:00	14:00	2025-01-01	2029-12-31
 XWAR	Warsaw Stock Exchange	XWAR	PL	Europe/Warsaw	5	6	09:00	17:00	2025-01-01	2029-12-31

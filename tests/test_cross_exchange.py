@@ -148,7 +148,9 @@ class TestStructure:
         if len(exchange_list) < 2:
             pytest.skip("Need at least 2 exchanges to compare ranges")
 
-        start_years = [int(e["generation_range"][0][:4]) for e in exchange_list]
+        # Exchanges whose history was backfilled start earlier on purpose.
+        start_years = [int(e["generation_range"][0][:4]) for e in exchange_list
+                       if e["generation_range"][0] >= "2025-01-01"]
         end_years = [int(e["generation_range"][1][:4]) for e in exchange_list]
 
         assert max(start_years) - min(start_years) <= 2, "Start years differ by more than 2"

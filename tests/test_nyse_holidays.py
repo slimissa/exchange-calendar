@@ -34,8 +34,9 @@ def xnys():
 
 @pytest.fixture(scope="module")
 def explicit_dates(xnys):
-    """Return a dict of date -> entry from the explicit array."""
-    return {e["date"]: e for e in xnys["holidays"]["explicit"]}
+    """Return a dict of date -> entry from the explicit array, 2025 onward (the
+    original data window; the 1990-2024 backfill is tested in test_divergence.py)."""
+    return {e["date"]: e for e in xnys["holidays"]["explicit"] if e["date"] >= "2025-01-01"}
 
 
 # ──────────────────────────────────────────────────────────────

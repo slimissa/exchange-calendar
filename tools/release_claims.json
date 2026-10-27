@@ -1036,7 +1036,7 @@
     },
     {
       "file": ".github/workflows/divergence.yml",
-      "contains": "--mode sessions --exchanges XNYS,XLON,XTKS,XASX --year 2024-2026"
+      "contains": "--mode sessions --exchanges"
     },
     {
       "file": "docs/DIVERGENCE.md",

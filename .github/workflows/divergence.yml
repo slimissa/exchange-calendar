@@ -34,7 +34,7 @@ jobs:
         run: python3 tools/divergence_test.py --exchanges all --year 2024-2026
 
       - name: Run session-time divergence test
-        run: python3 tools/divergence_test.py --mode sessions --exchanges XNYS,XLON,XTKS,XASX --year 2024-2026
+        run: python3 tools/divergence_test.py --mode sessions --exchanges XNYS,XNAS,XLON,XTKS,XASX,XHKG --year 1990-2026
 
       - name: Generate divergence report
         run: python3 tools/divergence_report.py

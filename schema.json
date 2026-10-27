@@ -354,6 +354,11 @@
                 "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
                 "type": "string"
               },
+              "effective_from": {
+                "description": "First date on which this rule generates a holiday (inclusive). Earlier dates are not generated and must be listed in holidays.explicit, for rules that were not in force historically or whose earlier years are backfilled explicitly.",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+                "type": "string"
+              },
               "month": {
                 "maximum": 12,
                 "minimum": 1,

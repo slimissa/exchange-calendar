@@ -27,6 +27,7 @@ Exit codes:
 
 import argparse
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -150,7 +151,25 @@ TYPE_LABEL = {"open_time": "open", "close_time": "close", "half_day": "half-day"
 
 
 def _pct(agree, compared):
-    return "n/a" if not compared else f"{agree / compared * 100:.1f}%"
+    """Agreement as a percentage, rounded down so only a perfect score reads 100.0%."""
+    if not compared:
+        return "n/a"
+    if agree == compared:
+        return "100.0%"
+    return f"{math.floor(agree / compared * 1000) / 10:.1f}%"
+
+
+def _year_span(years):
+    """['2025', '2026'] -> '2025-2026'; a gap in the years is spelled out."""
+    nums = sorted(int(y) for y in years)
+    spans, start = [], None
+    for i, n in enumerate(nums):
+        if start is None:
+            start = n
+        if i + 1 == len(nums) or nums[i + 1] != n + 1:
+            spans.append(str(start) if start == n else f"{start}-{n}")
+            start = None
+    return ", ".join(spans)
 
 
 def summarise_sessions(code, exchange):
@@ -174,13 +193,33 @@ def summarise_sessions(code, exchange):
             sum(exchange["years"][y]["metrics"][metric]["agree"] for y in years),
             sum(exchange["years"][y]["metrics"][metric]["compared"] for y in years))
     for y in years:
-        r = exchange["years"][y]
-        for item in r["trading_days"]["disagreements"]:
+        for item in exchange["years"][y]["trading_days"]["disagreements"]:
             row["notes"].append(f"{item['date']} trading day")
-        for item in r["disagreements"]:
-            vals = ", ".join(f"{LABEL_BY_KEY[k]} {item[k]}" for k in ("registry", "pmc", "xc"))
-            row["notes"].append(f"{item['date']} {TYPE_LABEL[item['type']]} ({vals})")
+    row["notes"].extend(_group_notes([d for y in years
+                                      for d in exchange["years"][y]["disagreements"]]))
     return row
+
+
+def _group_notes(items):
+    """One note per (type, values) group; dates listed when there are 3 or fewer.
+
+    Hours that changed over time (a close moved by 30 minutes) disagree on
+    thousands of days, so a long run is reported as a date range and a count.
+    """
+    groups = {}
+    for item in items:
+        key = (item["type"], item["registry"], item["pmc"], item["xc"])
+        groups.setdefault(key, []).append(item["date"])
+    notes = []
+    for (kind, reg, pmc, xc), dates in sorted(groups.items(), key=lambda kv: kv[1][0]):
+        vals = ", ".join(f"{label} {'none' if v is None else v}" for label, v in
+                         (("registry", reg), ("PMC", pmc), ("EC", xc)))
+        if len(dates) <= 3:
+            notes.extend(f"{d} {TYPE_LABEL[kind]} ({vals})" for d in dates)
+        else:
+            notes.append(f"{TYPE_LABEL[kind]} {dates[0]} to {dates[-1]}, "
+                         f"{len(dates)} days ({vals})")
+    return notes
 
 
 LABEL_BY_KEY = {"registry": "registry", "pmc": "PMC", "xc": "EC"}
@@ -224,7 +263,7 @@ def render_sessions(sessions):
       "Half-days agree | Break agree | Notes |")
     w("|---|---|---:|---:|---:|---:|---:|---|")
     for r in rows:
-        yrs = ", ".join(r["years"]) if r["years"] else "none"
+        yrs = _year_span(r["years"]) if r["years"] else "none"
         cells = [_pct(*r["trading_days"])] + [_pct(*r[m]) for m, _ in SESSION_COLUMNS]
         note = "; ".join(r["notes"]) if r["notes"] else (
             "No disagreements" if r["years"] else "No registry data to compare")
@@ -246,7 +285,73 @@ def render_sessions(sessions):
     return out
 
 
-def render(report, triage=None, sessions=None):
+def summarise_history(code, exchange, entry, cutoff="2025-01-01"):
+    """One History row: how far back the registry goes and how it compares.
+
+    `exchange` is a sessions-mode result (it carries the trading-day
+    comparison per year). Only years before `cutoff` (the start of the
+    registry's original data) count. Returns None when the exchange has no registry data before it.
+    """
+    start = (entry.get("generation_range") or [cutoff])[0]
+    if start >= cutoff:
+        return None
+    explicit = [h for h in entry["holidays"]["explicit"] if h["date"] < cutoff]
+    years = []
+    for y, r in sorted(exchange["years"].items()):
+        compared = r["trading_days"]["sources_compared"]
+        if int(y) < int(cutoff[:4]) and REGISTRY in compared and len(compared) > 1:
+            years.append(y)
+    days = [exchange["years"][y]["trading_days"]["summary"] for y in years]
+    agree = sum(d["agree_trading"] for d in days)
+    total = sum(d["agree_trading"] + d["disagreements"] for d in days)
+    return {"code": code, "start": start,
+            "closed": sum(1 for h in explicit if h["status"] == "closed"),
+            "early": sum(1 for h in explicit if h["status"] == "early_close"),
+            "years": years, "agree": agree, "total": total,
+            "disagreements": [d["date"] for y in years
+                              for d in exchange["years"][y]["trading_days"]["disagreements"]]}
+
+
+def render_history(sessions, calendar):
+    """Markdown lines for the History section, or [] without history."""
+    entries = {e["code"]: e for e in calendar.get("exchanges", [])}
+    rows = [r for c, e in sorted(sessions["exchanges"].items())
+            if "years" in e and c in entries
+            for r in [summarise_history(c, e, entries[c])] if r]
+    if not rows:
+        return []
+    out = []
+    w = out.append
+    w("## History")
+    w("")
+    w("Registry data before 2025, backfilled from `exchange_calendars` "
+      "(entries named `Historical Holiday` and `Historical Early Close`). "
+      "Recurrence rules on these exchanges carry `effective_from` 2025-01-01, "
+      "so history is explicit dates only and modern holidays (Juneteenth, "
+      "Martin Luther King Jr. Day) are not generated into years that had none.")
+    w("")
+    w("- The backfilled data comes from `exchange_calendars`, so agreement with "
+      "that library is expected by construction and is not independent "
+      "verification. `pandas_market_calendars` mirrors `exchange_calendars` "
+      "for most exchanges, so it is not independent either. Neither library "
+      "has been checked here against the exchanges' own historical "
+      "publications.")
+    w("- A half day is an `early_close` entry: the close is earlier than the "
+      "library's usual close for that calendar year.")
+    w("")
+    w("| Exchange | Registry starts | Closed days added | Early closes added | "
+      "Years compared | Trading days agree | Notes |")
+    w("|---|---|---:|---:|---|---:|---|")
+    for r in rows:
+        yrs = _year_span(r["years"]) if r["years"] else "none"
+        note = ", ".join(r["disagreements"][:3]) if r["disagreements"] else "No disagreements"
+        w(f"| {r['code']} | {r['start']} | {r['closed']} | {r['early']} | {yrs} | "
+          f"{_pct(r['agree'], r['total'])} | {note} |")
+    w("")
+    return out
+
+
+def render(report, triage=None, sessions=None, calendar=None):
     triage_index = _triage_index(triage)
     exchanges = report["exchanges"]
     years = report["years"]
@@ -483,6 +588,8 @@ def render(report, triage=None, sessions=None):
         w("")
 
     if sessions is not None:
+        if calendar is not None:
+            out.extend(render_history(sessions, calendar))
         out.extend(render_sessions(sessions))
 
     if errors:
@@ -499,6 +606,9 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--input", default=DEFAULT_INPUT,
                         help="JSON from tools/divergence_test.py (default: %(default)s)")
+    parser.add_argument("--calendar", default=str(REPO_ROOT / "calendar.json"),
+                        help="Built registry, for the History section "
+                             "(default: %(default)s)")
     parser.add_argument("--sessions", default=DEFAULT_SESSIONS,
                         help="JSON from divergence_test.py --mode sessions; the "
                              "Session Times section is added when it exists "
@@ -539,7 +649,11 @@ def main(argv=None):
             print(f"ERROR: cannot read {args.sessions}: {exc}", file=sys.stderr)
             return 2
 
-    text = render(report, triage, sessions)
+    calendar = None
+    if Path(args.calendar).exists():
+        calendar = json.loads(Path(args.calendar).read_text(encoding="utf-8"))
+
+    text = render(report, triage, sessions, calendar)
     Path(args.output).write_text(text, encoding="utf-8")
     print(f"Wrote {args.output} ({len(text.splitlines())} lines)")
     return 0

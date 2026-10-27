@@ -299,7 +299,7 @@ class TestExchangeProperties:
     def test_confidence_unknown_year(self):
         from exchange_calendar import CalendarRegistry
         r = CalendarRegistry()
-        assert r.confidence("XNYS", 1999) is None
+        assert r.confidence("XNYS", 1980) is None
 
     def test_as_of_filters_confidence(self):
         from exchange_calendar import CalendarRegistry
@@ -375,8 +375,9 @@ class TestHolidayDetection:
         assert xlon.is_holiday("2025-04-21") is True
 
     def test_holiday_count_xnys(self, xnys):
+        # 62 in 2025-2029 plus 389 backfilled for 1990-2024
         count = xnys.holiday_count()
-        assert count == 62
+        assert count == 451
 
     def test_holiday_count_xnys_2025(self, xnys):
         # XNYS.json 2025: 11 full closures + 3 early closes = 14 total

@@ -244,7 +244,9 @@ class TestVerify:
     def test_a_missing_row_is_reported_as_a_count_and_a_content_problem(self, engine, tables, counts):
         engine.conn.execute("DELETE FROM confidence WHERE rowid = (SELECT MIN(rowid) FROM confidence)")
         problems = csd.verify(engine, tables, counts)
-        assert any("confidence: 360 rows stored, calendar.json has 361" in p for p in problems)
+        total = counts["confidence"]
+        assert any(f"confidence: {total - 1} rows stored, calendar.json has {total}" in p
+                   for p in problems)
         assert any(p.startswith("confidence: stored rows differ") for p in problems)
 
     def test_an_altered_value_is_reported(self, engine, tables, counts):

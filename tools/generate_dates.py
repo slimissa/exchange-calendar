@@ -316,6 +316,9 @@ def expand_exchange(exchange: dict, start_year: int = None, end_year: int = None
 
             date_str = d.isoformat()
 
+            if date_str < rule.get("effective_from", ""):
+                continue
+
             if clip is not None and not (clip[0] <= date_str <= clip[1]):
                 continue
 

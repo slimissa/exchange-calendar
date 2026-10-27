@@ -212,7 +212,8 @@ class TestYears:
 
 class TestRegistryCoverage:
     def test_year_outside_generation_range_has_no_registry_data(self):
-        res = dv.run_exchange("XNYS", 2024)
+        # XNYS data starts 1990-01-01, so 1989 is outside its generation_range
+        res = dv.run_exchange("XNYS", 1989)
         assert res["total_trading_days"]["registry"].startswith(dv.NO_REGISTRY_DATA)
         assert "registry" in res["sources_unavailable"]
         assert "registry" not in res["sources_compared"]
@@ -228,8 +229,8 @@ class TestRegistryCoverage:
         assert not dv.registry_covers({}, dt.date(2025, 1, 1), dt.date(2025, 12, 31))
 
     @needs_refs
-    def test_2024_compares_libraries_only(self):
-        res = dv.run_exchange("XNYS", 2024)
+    def test_year_before_the_registry_starts_compares_libraries_only(self):
+        res = dv.run_exchange("XNYS", 1989)
         assert res["sources_compared"] == ["exchange_calendars",
                                            "pandas_market_calendars"]
         assert res["disagreements"] == []
@@ -435,3 +436,103 @@ class TestSessionsReport:
         base = {"years": [2026], "libraries": {}, "exchanges": {}}
         assert "Session Times" not in rp.render(base)
         assert "Session Times" in rp.render(base, None, self._sessions())
+
+
+# ---------------------------------------------------------------------------
+# Historical backfill (v2.23.0)
+# ---------------------------------------------------------------------------
+
+class TestHistoricalBackfill:
+    def test_rule_effective_from_blocks_earlier_generation(self):
+        sys.path.insert(0, str(ROOT / "tools"))
+        import generate_dates as gd
+        entry = {"weekend_days": [5, 6], "generation_range": ["1990-01-01", "2026-12-31"],
+                 "holidays": {"explicit": [], "recurrence_rules": [
+                     {"name": "Juneteenth", "rule": "fixed_with_weekend_adjustment",
+                      "month": 6, "day": 19, "status": "closed",
+                      "effective_from": "2022-01-01"}]}}
+        years = {d["date"][:4] for d in gd.expand_exchange(entry)}
+        assert min(years) == "2022"
+
+    def test_registry_has_no_juneteenth_or_mlk_before_they_existed(self):
+        xnys = dv.load_registry_entry("XNYS")
+        closed = dv.registry_closed_dates(xnys)
+        assert dt.date(1990, 6, 19) not in closed   # Juneteenth began 2022
+        assert dt.date(1990, 1, 15) not in closed   # MLK Day began 1998
+        assert dt.date(2001, 9, 11) in closed
+        assert dt.date(2022, 6, 20) in closed
+
+    def test_xnys_early_close_was_2pm_before_1993(self):
+        xnys = dv.load_registry_entry("XNYS")
+        early = dv.registry_early_closes(xnys)
+        assert early[dt.date(1990, 12, 24)] == "14:00"
+        assert early[dt.date(1993, 11, 26)] == "13:00"
+
+    @pytest.mark.parametrize("code,start", [("XNYS", 1990), ("XLON", 1990),
+                                            ("XASX", 1990), ("XHKG", 1990),
+                                            ("XTKS", 1997)])
+    def test_generation_range_starts_where_the_backfill_does(self, code, start):
+        entry = dv.load_registry_entry(code)
+        assert entry["generation_range"][0] == f"{start}-01-01"
+        assert not any(h["date"] < f"{start}-01-01"
+                       for h in entry["holidays"]["explicit"])
+
+    @needs_refs
+    @pytest.mark.parametrize("code", ["XNYS", "XLON", "XASX", "XTKS", "XHKG"])
+    def test_history_trading_days_agree_with_the_libraries(self, code):
+        start = int(dv.load_registry_entry(code)["generation_range"][0][:4])
+        for year in (start, 2000, 2012, 2024):
+            res = dv.run_exchange(code, year)
+            assert res["summary"]["disagreements"] == 0, (code, year)
+
+    @needs_refs
+    def test_exchange_calendars_is_read_for_years_before_its_default_window(self):
+        res = dv.run_exchange("XNYS", 1995)
+        assert "exchange_calendars" in res["sources_compared"]
+
+
+class TestHistoryReport:
+    def test_year_span_compresses_and_keeps_gaps(self):
+        import divergence_report as rp
+        assert rp._year_span(["2025", "2026"]) == "2025-2026"
+        assert rp._year_span(["1990", "1991", "1992", "1995"]) == "1990-1992, 1995"
+        assert rp._year_span(["2024"]) == "2024"
+
+    def test_percentage_rounds_down_so_only_a_perfect_score_reads_100(self):
+        import divergence_report as rp
+        assert rp._pct(2999, 3000) == "99.9%"
+        assert rp._pct(3000, 3000) == "100.0%"
+        assert rp._pct(0, 0) == "n/a"
+
+    def test_long_runs_are_one_note_and_short_ones_list_dates(self):
+        import divergence_report as rp
+        run = [{"date": f"2000-01-{d:02d}", "type": "close_time", "registry": "15:30",
+                "pmc": "15:00", "xc": "15:00"} for d in range(3, 10)]
+        one = [{"date": "2001-02-03", "type": "break", "registry": None,
+                "pmc": "12:00-12:30", "xc": None}]
+        notes = rp._group_notes(run + one)
+        assert notes[0] == ("close 2000-01-03 to 2000-01-09, 7 days "
+                            "(registry 15:30, PMC 15:00, EC 15:00)")
+        assert notes[1] == "2001-02-03 break (registry none, PMC 12:00-12:30, EC none)"
+
+    def test_history_section_counts_backfilled_rows_and_agreement(self):
+        import divergence_report as rp
+        calendar = {"exchanges": [{"code": "XTST", "generation_range": ["1990-01-01", "2029-12-31"],
+                                   "holidays": {"explicit": [
+                                       {"date": "1990-12-25", "status": "closed"},
+                                       {"date": "1990-12-24", "status": "early_close"},
+                                       {"date": "2025-12-25", "status": "closed"}]}}]}
+        year = {"trading_days": {"sources_compared": ["exchange_calendars", "registry"],
+                                 "summary": {"agree_trading": 9, "agree_closed_weekdays": 1,
+                                             "disagreements": 1},
+                                 "disagreements": [{"date": "1990-03-01"}]}}
+        sessions = {"mode": "sessions", "years": [1990], "exchanges": {"XTST": {"years": {"1990": year}}}}
+        text = "\n".join(rp.render_history(sessions, calendar))
+        assert "| XTST | 1990-01-01 | 1 | 1 | 1990 | 90.0% | 1990-03-01 |" in text
+
+    def test_history_section_is_omitted_without_pre_2025_data(self):
+        import divergence_report as rp
+        calendar = {"exchanges": [{"code": "XTST", "generation_range": ["2025-01-01", "2029-12-31"],
+                                   "holidays": {"explicit": []}}]}
+        sessions = {"mode": "sessions", "years": [2026], "exchanges": {"XTST": {"years": {}}}}
+        assert rp.render_history(sessions, calendar) == []
