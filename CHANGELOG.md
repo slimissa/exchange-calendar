@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.0] - 2026-10-28
+
+### Added
+- Extended historical holidays back to 1990 for top exchanges (XNYS, XNAS, XLON, XASX, XHKG; XTKS from 1997, the earliest date exchange_calendars supports for it).
+- Optional `effective_from` date on recurrence rules, so a rule can be limited to the years it was in force; the rules on XNYS, XNAS, XLON and XASX start 2025-01-01.
+- History section in `docs/DIVERGENCE.md`.
+
+### Fixed
+- Divergence engine read `exchange_calendars` only for roughly the last 20 years; it now reads the requested years.
+
 ## [2.22.0] - 2026-10-27
 
 ### Added

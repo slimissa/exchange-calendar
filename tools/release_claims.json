@@ -1054,5 +1054,59 @@
       "file": "README.md",
       "contains": "automated fetchers as of v2.22.0"
     }
+  ],
+  "2.23.0": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.0"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.0] - 2026-10-28"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Extended historical holidays back to 1990 for top exchanges"
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.0-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.0"
+    },
+    {
+      "file": "schema.json",
+      "contains": "\"effective_from\": {"
+    },
+    {
+      "file": "tools/generate_dates.py",
+      "contains": "rule.get(\"effective_from\", \"\")"
+    },
+    {
+      "file": "tools/divergence_test.py",
+      "contains": "def _xc_calendar(code, start, end):"
+    },
+    {
+      "file": "tools/divergence_report.py",
+      "contains": "def render_history(sessions, calendar):"
+    },
+    {
+      "file": "docs/DIVERGENCE.md",
+      "contains": "## History"
+    },
+    {
+      "file": "exchanges/XNYS.json",
+      "contains": "\"generation_range\": [\n    \"1990-01-01\","
+    },
+    {
+      "file": "exchanges/XTKS.json",
+      "contains": "\"generation_range\": [\n    \"1997-01-01\","
+    },
+    {
+      "file": "tests/test_divergence.py",
+      "contains": "class TestHistoricalBackfill:"
+    }
   ]
 }
