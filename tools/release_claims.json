@@ -1008,5 +1008,51 @@
       "file": "README.md",
       "contains": "automated fetchers as of v2.21.4"
     }
+  ],
+  "2.22.0": [
+    {
+      "file": "VERSION",
+      "contains": "2.22.0"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.22.0] - 2026-10-27"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Extended divergence engine to verify session times (open/close/half-days) against reference libraries."
+    },
+    {
+      "file": "tools/divergence_test.py",
+      "contains": "def compare_sessions(sources, start, end, weekend=None):"
+    },
+    {
+      "file": "tools/divergence_test.py",
+      "contains": "choices=MODES, default=\"trading_days\""
+    },
+    {
+      "file": "tools/divergence_report.py",
+      "contains": "## Session Times"
+    },
+    {
+      "file": ".github/workflows/divergence.yml",
+      "contains": "--mode sessions --exchanges XNYS,XLON,XTKS,XASX --year 2024-2026"
+    },
+    {
+      "file": "docs/DIVERGENCE.md",
+      "contains": "## Session Times"
+    },
+    {
+      "file": "tests/test_divergence.py",
+      "contains": "class TestCompareSessions:"
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.22.0-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.22.0"
+    }
   ]
 }

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.22.0] - 2026-10-27
+
+### Added
+- Extended divergence engine to verify session times (open/close/half-days) against reference libraries.
+
 ## [2.21.4] - 2026-10-27
 
 ### Added
