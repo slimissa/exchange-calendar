@@ -286,3 +286,152 @@ class TestCli:
                         "--output", str(out)]) == 0
         report = json.loads(out.read_text())
         assert "error" in report["exchanges"]["ZZZZ"]
+
+
+# ---------------------------------------------------------------------------
+# Session times (--mode sessions)
+# ---------------------------------------------------------------------------
+
+def _day(open_="09:30", close="16:00", brk=None, half=False):
+    return {"open": open_, "close": close, "break": brk, "half_day": half}
+
+
+class TestCompareSessions:
+    D1, D2 = dt.date(2026, 3, 2), dt.date(2026, 3, 3)
+
+    def test_identical_sources_agree_on_every_metric(self):
+        src = {self.D1: _day(), self.D2: _day()}
+        res = dv.compare_sessions(
+            {"registry": src, "pandas_market_calendars": src, "exchange_calendars": src},
+            self.D1, self.D2)
+        assert res["disagreements"] == []
+        assert all(m["agree"] == m["compared"] == 2 for m in res["metrics"].values())
+
+    def test_close_and_half_day_mismatch_use_the_documented_shape(self):
+        registry = {self.D1: _day(close="13:00", half=True), self.D2: _day()}
+        ref = {self.D1: _day(), self.D2: _day()}
+        res = dv.compare_sessions(
+            {"registry": registry, "pandas_market_calendars": ref,
+             "exchange_calendars": ref}, self.D1, self.D2)
+        assert {"date": "2026-03-02", "type": "close_time", "registry": "13:00",
+                "pmc": "16:00", "xc": "16:00"} in res["disagreements"]
+        assert {r["type"] for r in res["disagreements"]} == {"close_time", "half_day"}
+
+    def test_day_missing_from_one_source_is_not_also_a_time_mismatch(self):
+        registry = {self.D1: _day()}
+        ref = {self.D1: _day(), self.D2: _day(close="12:00")}
+        res = dv.compare_sessions(
+            {"registry": registry, "exchange_calendars": ref}, self.D1, self.D2)
+        assert res["trading_days"]["summary"]["disagreements"] == 1
+        assert res["disagreements"] == []
+        assert res["metrics"]["close"]["compared"] == 1
+
+    def test_unavailable_source_is_left_out_of_the_vote(self):
+        ref = {self.D1: _day()}
+        res = dv.compare_sessions(
+            {"registry": "No registry data: x", "exchange_calendars": ref},
+            self.D1, self.D1)
+        assert res["trading_days"]["sources_compared"] == ["exchange_calendars"]
+        assert res["disagreements"] == []
+
+    def test_break_is_one_value_not_two_sessions(self):
+        registry = {self.D1: _day("09:00", "15:30", "11:30-12:30")}
+        ref = {self.D1: _day("09:00", "15:30", "11:30-12:00")}
+        res = dv.compare_sessions(
+            {"registry": registry, "exchange_calendars": ref}, self.D1, self.D1)
+        assert res["trading_days"]["summary"]["agree_trading"] == 1
+        assert [r["type"] for r in res["disagreements"]] == ["break"]
+
+
+class TestSessionNormalisation:
+    def test_utc_converted_to_local_across_the_dst_change(self):
+        import pandas as pd
+        before = pd.Timestamp("2026-03-06 14:30", tz="UTC")  # EST, UTC-5
+        after = pd.Timestamp("2026-03-09 13:30", tz="UTC")   # EDT, UTC-4
+        assert dv._local_hhmm(before, "America/New_York") == "09:30"
+        assert dv._local_hhmm(after, "America/New_York") == "09:30"
+
+    def test_nat_is_none(self):
+        import pandas as pd
+        assert dv._local_hhmm(pd.NaT, "Asia/Tokyo") is None
+
+    def test_registry_applies_early_close_and_lunch_break(self):
+        xnys = dv.load_registry_entry("XNYS")
+        days = dv.registry_sessions(xnys, dt.date(2025, 12, 23), dt.date(2025, 12, 26))
+        assert days[dt.date(2025, 12, 24)]["close"] == "13:00"
+        assert days[dt.date(2025, 12, 24)]["half_day"] is True
+        assert days[dt.date(2025, 12, 23)]["close"] == "16:00"
+        xtks = dv.load_registry_entry("XTKS")
+        day = dv.registry_sessions(xtks, dt.date(2026, 3, 2), dt.date(2026, 3, 2))
+        assert day[dt.date(2026, 3, 2)]["break"] == "11:30-12:30"
+
+    def test_half_days_derived_from_the_usual_close(self):
+        days = {dt.date(2026, 12, 23): _day(), dt.date(2026, 12, 24): _day(close="13:00"),
+                dt.date(2026, 12, 28): _day()}
+        dv._flag_half_days(days)
+        assert [d["half_day"] for d in days.values()] == [False, True, False]
+
+
+@needs_refs
+class TestSessionsAgainstLibraries:
+    def test_xnys_2025_2026_has_no_session_disagreement(self):
+        for year in (2025, 2026):
+            res = dv.run_exchange_sessions("XNYS", year)
+            assert res["disagreements"] == []
+            assert res["metrics"]["open"]["compared"] > 240
+
+    def test_xtks_lunch_break_compared_without_extra_trading_days(self):
+        res = dv.run_exchange_sessions("XTKS", 2026)
+        assert res["metrics"]["break"]["compared"] == res["trading_days"]["summary"]["agree_trading"]
+        assert res["disagreements"] == []
+
+    def test_wrong_registry_open_is_reported(self, tmp_path):
+        data = json.loads((ROOT / "calendar.json").read_text(encoding="utf-8"))
+        for entry in data["exchanges"]:
+            if entry["code"] == "XNYS":
+                for s in entry["sessions"]:
+                    if s["type"] == "regular":
+                        s["open"] = "09:31"
+        path = tmp_path / "calendar.json"
+        path.write_text(json.dumps(data), encoding="utf-8")
+        res = dv.run_exchange_sessions("XNYS", 2026, path)
+        assert res["metrics"]["open"]["agree"] == 0
+        assert res["disagreements"][0]["registry"] == "09:31"
+        assert res["disagreements"][0]["xc"] == "09:30"
+
+    def test_sessions_cli_writes_its_own_file(self, tmp_path):
+        out = tmp_path / "s.json"
+        assert dv.main(["--mode", "sessions", "--exchanges", "XNYS", "--year", "2026",
+                        "--output", str(out)]) == 0
+        report = json.loads(out.read_text(encoding="utf-8"))
+        assert report["mode"] == "sessions"
+        assert "metrics" in report["exchanges"]["XNYS"]["years"]["2026"]
+
+
+class TestSessionsReport:
+    def _sessions(self, extra=None):
+        year = {"timezone": "UTC", "trading_days": {
+                    "sources_compared": ["exchange_calendars", "registry"],
+                    "sources_unavailable": {},
+                    "summary": {"agree_trading": 9, "agree_closed_weekdays": 0,
+                                "disagreements": 1}, "disagreements": []},
+                "metrics": {m: {"compared": 9, "agree": 9} for m in dv.SESSION_METRICS},
+                "disagreements": extra or []}
+        return {"mode": "sessions", "years": [2026], "libraries": {},
+                "exchanges": {"XTST": {"years": {"2026": year}}}}
+
+    def test_section_lists_percentages_and_dates(self):
+        import divergence_report as rp
+        row = {"date": "2026-12-24", "type": "close_time", "registry": "13:00",
+               "pmc": "16:00", "xc": "16:00"}
+        lines = rp.render_sessions(self._sessions([row]))
+        text = "\n".join(lines)
+        assert "## Session Times" in text
+        assert "| XTST | 2026 | 90.0% | 100.0% |" in text
+        assert "2026-12-24 close (registry 13:00, PMC 16:00, EC 16:00)" in text
+
+    def test_report_without_sessions_has_no_section(self):
+        import divergence_report as rp
+        base = {"years": [2026], "libraries": {}, "exchanges": {}}
+        assert "Session Times" not in rp.render(base)
+        assert "Session Times" in rp.render(base, None, self._sessions())

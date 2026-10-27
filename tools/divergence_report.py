@@ -9,8 +9,13 @@ Hand-checked verdicts are read from docs/divergence_triage.json (when it
 exists) and shown next to the dates they cover, so a verified library error is
 not mistaken for an open registry bug.
 
+When a sessions file from `divergence_test.py --mode sessions` exists, a
+"Session Times" section (open, close, half-day and break agreement per
+exchange) is added to the report. Without it the section is left out.
+
 Usage:
     python3 tools/divergence_test.py --exchanges all --year 2024-2026
+    python3 tools/divergence_test.py --mode sessions --exchanges XNYS,XLON,XTKS,XASX
     python3 tools/divergence_report.py
     python3 tools/divergence_report.py --input /tmp/divergence.json \\
         --triage docs/divergence_triage.json --output docs/DIVERGENCE.md
@@ -27,6 +32,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_INPUT = "/tmp/divergence.json"
+DEFAULT_SESSIONS = "/tmp/divergence_sessions.json"
 DEFAULT_OUTPUT = REPO_ROOT / "docs" / "DIVERGENCE.md"
 DEFAULT_TRIAGE = REPO_ROOT / "docs" / "divergence_triage.json"
 
@@ -137,7 +143,110 @@ def _triage_index(triage):
     return index
 
 
-def render(report, triage=None):
+SESSION_COLUMNS = (("open", "Open"), ("close", "Close"), ("half_day", "Half-days"),
+                   ("break", "Break"))
+TYPE_LABEL = {"open_time": "open", "close_time": "close", "half_day": "half-day",
+              "break": "break"}
+
+
+def _pct(agree, compared):
+    return "n/a" if not compared else f"{agree / compared * 100:.1f}%"
+
+
+def summarise_sessions(code, exchange):
+    """One table row for the Session Times section.
+
+    Counted over the years where the registry has data and at least one
+    reference library does; other years have nothing to compare the registry
+    against and are left out.
+    """
+    years = []
+    for y, r in sorted(exchange["years"].items()):
+        compared = set(r["trading_days"]["sources_compared"])
+        if REGISTRY in compared and compared - {REGISTRY}:
+            years.append(y)
+    row = {"code": code, "years": years, "notes": []}
+    days = [exchange["years"][y]["trading_days"]["summary"] for y in years]
+    row["trading_days"] = (sum(d["agree_trading"] for d in days),
+                           sum(d["agree_trading"] + d["disagreements"] for d in days))
+    for metric, _ in SESSION_COLUMNS:
+        row[metric] = (
+            sum(exchange["years"][y]["metrics"][metric]["agree"] for y in years),
+            sum(exchange["years"][y]["metrics"][metric]["compared"] for y in years))
+    for y in years:
+        r = exchange["years"][y]
+        for item in r["trading_days"]["disagreements"]:
+            row["notes"].append(f"{item['date']} trading day")
+        for item in r["disagreements"]:
+            vals = ", ".join(f"{LABEL_BY_KEY[k]} {item[k]}" for k in ("registry", "pmc", "xc"))
+            row["notes"].append(f"{item['date']} {TYPE_LABEL[item['type']]} ({vals})")
+    return row
+
+
+LABEL_BY_KEY = {"registry": "registry", "pmc": "PMC", "xc": "EC"}
+
+
+def render_sessions(sessions):
+    """Markdown lines for the Session Times section."""
+    rows = [summarise_sessions(c, e) for c, e in sorted(sessions["exchanges"].items())
+            if "years" in e]
+    errors = {c: e["error"] for c, e in sorted(sessions["exchanges"].items()) if "error" in e}
+    years = sessions["years"]
+    out = []
+    w = out.append
+    w("## Session Times")
+    w("")
+    w("Open time, close time, half-day status and intraday break, compared "
+      "between the registry and the two reference libraries. Generated from "
+      "`python3 tools/divergence_test.py --mode sessions --exchanges "
+      + ",".join(sorted(sessions["exchanges"])) + f" --year {years[0]}-{years[-1]}`.")
+    w("")
+    w("- Times are exchange-local `HH:MM`. The libraries publish UTC "
+      "timestamps; each is converted with the exchange's IANA timezone, per "
+      "date, so DST changes are handled.")
+    w("- Open, close, half-day and break are compared only on days all sources "
+      "trade. A day one source lacks is a trading-day disagreement, counted in "
+      "the first column and not again in the others.")
+    w("- Registry: the regular session, with `early_close_time` and "
+      "`delayed_open_time` applied on those dates; a half day is a date with "
+      "status `early_close`. Libraries: a half day is a close earlier than that "
+      "library's usual close in the same calendar year.")
+    w("- A break (Tokyo's lunch break) is part of one session. It is compared "
+      "as a single `HH:MM-HH:MM` value and is `none` for exchanges without one.")
+    w("- A half-day mismatch normally appears with a close mismatch on the same "
+      "date, so the two columns are not independent.")
+    w("- Years: the registry only has data inside each exchange's "
+      "`generation_range`, so only years where the registry and a library both "
+      "have data are counted. PMC and EC are not independent for exchanges PMC "
+      "mirrors from EC, so agreement with both is agreement with one reference.")
+    w("")
+    w("| Exchange | Years | Trading days agree | Open agree | Close agree | "
+      "Half-days agree | Break agree | Notes |")
+    w("|---|---|---:|---:|---:|---:|---:|---|")
+    for r in rows:
+        yrs = ", ".join(r["years"]) if r["years"] else "none"
+        cells = [_pct(*r["trading_days"])] + [_pct(*r[m]) for m, _ in SESSION_COLUMNS]
+        note = "; ".join(r["notes"]) if r["notes"] else (
+            "No disagreements" if r["years"] else "No registry data to compare")
+        w(f"| {r['code']} | {yrs} | " + " | ".join(cells) + f" | {note} |")
+    w("")
+    flagged = [r for r in rows if r["notes"]]
+    if flagged:
+        w("Disagreements are not classified until checked by hand against the "
+          "exchange's own publication; record each verdict in "
+          "`docs/divergence_triage.json`.")
+    else:
+        w("No disagreements, so there is nothing to classify as a registry "
+          "error, library error or convention difference.")
+    w("")
+    for code, message in errors.items():
+        w(f"- {code}: {message}")
+    if errors:
+        w("")
+    return out
+
+
+def render(report, triage=None, sessions=None):
     triage_index = _triage_index(triage)
     exchanges = report["exchanges"]
     years = report["years"]
@@ -155,6 +264,10 @@ def render(report, triage=None):
     w("")
     w("```")
     w(f"python3 tools/divergence_test.py --exchanges all --year {years[0]}-{years[-1]}")
+    if sessions is not None:
+        w(f"python3 tools/divergence_test.py --mode sessions --exchanges "
+          f"{','.join(sorted(sessions['exchanges']))} "
+          f"--year {sessions['years'][0]}-{sessions['years'][-1]}")
     w("python3 tools/divergence_report.py")
     w("```")
     w("")
@@ -369,6 +482,9 @@ def render(report, triage=None):
             w("- No disagreement between the two libraries.")
         w("")
 
+    if sessions is not None:
+        out.extend(render_sessions(sessions))
+
     if errors:
         w("## Errors")
         w("")
@@ -383,6 +499,10 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--input", default=DEFAULT_INPUT,
                         help="JSON from tools/divergence_test.py (default: %(default)s)")
+    parser.add_argument("--sessions", default=DEFAULT_SESSIONS,
+                        help="JSON from divergence_test.py --mode sessions; the "
+                             "Session Times section is added when it exists "
+                             "(default: %(default)s)")
     parser.add_argument("--triage", default=str(DEFAULT_TRIAGE),
                         help="Hand-checked verdicts, optional (default: %(default)s)")
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT),
@@ -408,7 +528,18 @@ def main(argv=None):
             print(f"ERROR: cannot read {args.triage}: {exc}", file=sys.stderr)
             return 2
 
-    text = render(report, triage)
+    sessions = None
+    if Path(args.sessions).exists():
+        try:
+            sessions = json.loads(Path(args.sessions).read_text(encoding="utf-8"))
+            if sessions.get("mode") != "sessions" or "years" not in sessions:
+                raise ValueError("not a sessions report (run divergence_test.py "
+                                 "--mode sessions)")
+        except (OSError, ValueError) as exc:
+            print(f"ERROR: cannot read {args.sessions}: {exc}", file=sys.stderr)
+            return 2
+
+    text = render(report, triage, sessions)
     Path(args.output).write_text(text, encoding="utf-8")
     print(f"Wrote {args.output} ({len(text.splitlines())} lines)")
     return 0

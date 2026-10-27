@@ -31,6 +31,15 @@ Usage:
     python3 tools/divergence_test.py
     python3 tools/divergence_test.py --exchanges XNYS,XLON --year 2026
     python3 tools/divergence_test.py --exchanges all --year 2024-2026
+    python3 tools/divergence_test.py --mode sessions --exchanges XNYS,XLON,XTKS,XASX
+
+Modes (--mode):
+    trading_days  (default) which days each source treats as a trading day.
+    sessions      for days every source trades: open time, close time, whether
+                  the day is a half day (early close) and the intraday break
+                  (Tokyo's lunch break), all as exchange-local HH:MM strings.
+                  A break belongs to one session; it is not a second trading
+                  day. Writes /tmp/divergence_sessions.json by default.
 """
 
 import argparse
@@ -45,6 +54,8 @@ DEFAULT_CALENDAR = REPO_ROOT / "calendar.json"
 DEFAULT_EXCHANGES = "XNYS,XLON,XTKS,XASX"
 DEFAULT_YEARS = "2024-2026"
 DEFAULT_OUTPUT = "/tmp/divergence.json"
+DEFAULT_SESSIONS_OUTPUT = "/tmp/divergence_sessions.json"
+MODES = ("trading_days", "sessions")
 
 SOURCES = ("registry", "pandas_market_calendars", "exchange_calendars")
 NO_REFERENCE_DATA = "No reference data"
@@ -250,6 +261,180 @@ def compare_sources(sources, start, end, early_closes=None, weekend=None):
     }
 
 
+# ---------------------------------------------------------------------------
+# Session times. Every loader returns {date: day} where day is
+#   {"open": "HH:MM", "close": "HH:MM", "break": "HH:MM-HH:MM" | None,
+#    "half_day": bool}
+# with times in the exchange's local timezone. Reference libraries publish UTC
+# timestamps; they are converted with the exchange's IANA zone (zoneinfo), so
+# DST changes are handled per date, never with a fixed offset.
+# ---------------------------------------------------------------------------
+
+SESSION_METRICS = ("open", "close", "half_day", "break")
+METRIC_TYPE = {"open": "open_time", "close": "close_time",
+               "half_day": "half_day", "break": "break"}
+SOURCE_KEYS = {"registry": "registry", "pandas_market_calendars": "pmc",
+               "exchange_calendars": "xc"}
+
+
+def _local_hhmm(value, tz):
+    """UTC (or tz-aware) timestamp -> exchange-local 'HH:MM'; NaT/None -> None."""
+    import pandas as pd
+
+    if value is None or pd.isna(value):
+        return None
+    ts = pd.Timestamp(value)
+    ts = ts.tz_localize("UTC") if ts.tzinfo is None else ts
+    return ts.tz_convert(tz).strftime("%H:%M")
+
+
+def _break_text(start, end):
+    return f"{start}-{end}" if start and end else None
+
+
+def _flag_half_days(days):
+    """Mark days that close earlier than the source's usual close that year.
+
+    The reference libraries have no common half-day flag (PMC's
+    early_closes() and EC's special closes are separate mechanisms), so a
+    half day is derived from the data: the close is earlier than the most
+    common close in the same calendar year. The registry does not need this;
+    it flags early_close explicitly.
+    """
+    by_year = {}
+    for day, rec in days.items():
+        by_year.setdefault(day.year, []).append(rec["close"])
+    usual = {y: max(set(c), key=c.count) for y, c in by_year.items()}
+    for day, rec in days.items():
+        rec["half_day"] = rec["close"] < usual[day.year]
+    return days
+
+
+def registry_regular_session(entry):
+    """(open, close, break) the registry uses on a normal day."""
+    sessions = entry.get("sessions", [])
+    regular = (next((s for s in sessions if s.get("type") == "regular"), None)
+               or entry.get("regular_hours") or {})
+    lunch = next((s for s in sessions if s.get("type") == "lunch_break"), None)
+    brk = _break_text(lunch["open"], lunch["close"]) if lunch else None
+    return regular.get("open"), regular.get("close"), brk
+
+
+def registry_sessions(entry, start, end):
+    """Registry session times for every trading day in [start, end].
+
+    A day uses the regular session, with the open replaced by delayed_open_time
+    and the close by early_close_time where the registry says so.
+    """
+    open_, close, brk = registry_regular_session(entry)
+    holidays = entry.get("holidays", {})
+    records = list(holidays.get("explicit", [])) + list(holidays.get("generated", []))
+    records += list(entry.get("ad_hoc_closures", []))
+    special = {dt.date.fromisoformat(r["date"]): r for r in records
+               if r.get("status") in ("early_close", "delayed_open")}
+    out = {}
+    for day in sorted(registry_trading_days(entry, start, end)):
+        rec = special.get(day, {})
+        early = rec.get("status") == "early_close"
+        out[day] = {
+            "open": rec.get("delayed_open_time") or open_,
+            "close": (rec.get("early_close_time") or close) if early else close,
+            "break": brk,
+            "half_day": early,
+        }
+    return out
+
+
+def pmc_sessions(code, start, end, tz):
+    import pandas_market_calendars as pmc
+
+    cal = pmc.get_calendar(code)
+    sched = cal.schedule(start_date=start.isoformat(), end_date=end.isoformat())
+    has_break = {"break_start", "break_end"} <= set(sched.columns)
+    out = {}
+    for ts, row in sched.iterrows():
+        brk = (_break_text(_local_hhmm(row["break_start"], tz),
+                           _local_hhmm(row["break_end"], tz)) if has_break else None)
+        out[_to_date(ts)] = {"open": _local_hhmm(row["market_open"], tz),
+                             "close": _local_hhmm(row["market_close"], tz),
+                             "break": brk}
+    return _flag_half_days(out)
+
+
+def xc_sessions(code, start, end, tz):
+    import exchange_calendars as xc
+
+    cal = xc.get_calendar(code)
+    sched = cal.schedule.loc[start.isoformat():end.isoformat()]
+    has_break = {"break_start", "break_end"} <= set(sched.columns)
+    out = {}
+    for ts, row in sched.iterrows():
+        brk = (_break_text(_local_hhmm(row["break_start"], tz),
+                           _local_hhmm(row["break_end"], tz)) if has_break else None)
+        out[_to_date(ts)] = {"open": _local_hhmm(row["open"], tz),
+                             "close": _local_hhmm(row["close"], tz),
+                             "break": brk}
+    return _flag_half_days(out)
+
+
+def compare_sessions(sources, start, end, weekend=None):
+    """Compare session times between sources.
+
+    sources: {name: {date: day} | str}; a string means the source has no data
+    and is left out of the vote, as in compare_sources(). Trading-day
+    membership is compared first (same rules as compare_sources, weekend days
+    skipped). Open, close, half_day and break are then compared only on days
+    every available source trades, so a day missing from one source is
+    reported once, as a trading-day disagreement, not again as a time mismatch.
+
+    Returns {"trading_days": <compare_sources result>, "metrics": {metric:
+    {"compared": n, "agree": n}}, "disagreements": [{"date", "type",
+    "registry", "pmc", "xc"}, ...]}. A half-day mismatch normally comes with a
+    close-time mismatch on the same date; the metric counters are independent.
+    """
+    available = {k: v for k, v in sources.items() if not isinstance(v, str)}
+    day_sets = {k: (set(v) if k in available else v) for k, v in sources.items()}
+    trading = compare_sources(day_sets, start, end, weekend=weekend)
+    metrics = {m: {"compared": 0, "agree": 0} for m in SESSION_METRICS}
+    rows = []
+    for day_text in trading["all_agree_trading_days"]:
+        day = dt.date.fromisoformat(day_text)
+        recs = {name: days[day] for name, days in available.items()}
+        for metric in SESSION_METRICS:
+            values = {name: rec.get(metric) for name, rec in recs.items()}
+            metrics[metric]["compared"] += 1
+            if len(set(values.values())) <= 1:
+                metrics[metric]["agree"] += 1
+                continue
+            row = {"date": day_text, "type": METRIC_TYPE[metric]}
+            for name, key in SOURCE_KEYS.items():
+                row[key] = values.get(name)
+            rows.append(row)
+    return {"trading_days": trading, "metrics": metrics, "disagreements": rows}
+
+
+def run_exchange_sessions(code, year, calendar_path=DEFAULT_CALENDAR):
+    start, end = year_bounds(year)
+    entry = load_registry_entry(code, calendar_path)
+    tz = entry["timezone"]
+    if registry_covers(entry, start, end):
+        registry = registry_sessions(entry, start, end)
+    else:
+        first, last = entry.get("generation_range", ["?", "?"])
+        registry = (f"{NO_REGISTRY_DATA}: {year} is outside the registry's "
+                    f"generation_range ({first} to {last})")
+    sources = {
+        "registry": registry,
+        "pandas_market_calendars": _guarded(pmc_sessions, code, start, end, tz),
+        "exchange_calendars": _guarded(xc_sessions, code, start, end, tz),
+    }
+    result = compare_sessions(sources, start, end,
+                              weekend=entry.get("weekend_days", [5, 6]))
+    result["timezone"] = tz
+    result["pmc_mirrors_exchange_calendars"] = pmc_is_mirror(code)
+    return result
+
+
 def _guarded(loader, *args):
     try:
         return loader(*args)
@@ -303,8 +488,13 @@ def main(argv=None):
                              "(default: %(default)s)")
     parser.add_argument("--calendar", default=str(DEFAULT_CALENDAR),
                         help="Path to calendar.json (default: repo root)")
-    parser.add_argument("--output", default=DEFAULT_OUTPUT,
-                        help="Output JSON path (default: %(default)s)")
+    parser.add_argument("--mode", choices=MODES, default="trading_days",
+                        help="trading_days: compare which days are trading days; "
+                             "sessions: compare open/close/half-day/break times "
+                             "(default: %(default)s)")
+    parser.add_argument("--output", default=None,
+                        help=f"Output JSON path (default: {DEFAULT_OUTPUT}, or "
+                             f"{DEFAULT_SESSIONS_OUTPUT} with --mode sessions)")
     args = parser.parse_args(argv)
 
     try:
@@ -317,7 +507,12 @@ def main(argv=None):
     else:
         codes = [c.strip().upper() for c in args.exchanges.split(",") if c.strip()]
 
+    sessions = args.mode == "sessions"
+    output = args.output or (DEFAULT_SESSIONS_OUTPUT if sessions else DEFAULT_OUTPUT)
+    runner = run_exchange_sessions if sessions else run_exchange
+
     report = {
+        "mode": args.mode,
         "years": years,
         "libraries": library_versions(),
         "exchanges": {},
@@ -325,23 +520,29 @@ def main(argv=None):
     for code in codes:
         try:
             report["exchanges"][code] = {
-                "years": {str(y): run_exchange(code, y, args.calendar) for y in years}
+                "years": {str(y): runner(code, y, args.calendar) for y in years}
             }
         except KeyError as exc:
             report["exchanges"][code] = {"error": str(exc)}
 
-    Path(args.output).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    Path(output).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 
     for code, res in report["exchanges"].items():
         if "error" in res:
             print(f"{code}: ERROR {res['error']}")
             continue
-        diffs = sum(r["summary"]["disagreements"] for r in res["years"].values())
-        missing = sorted({k for r in res["years"].values()
-                          for k in r["sources_unavailable"]})
+        if sessions:
+            diffs = sum(r["trading_days"]["summary"]["disagreements"]
+                        + len(r["disagreements"]) for r in res["years"].values())
+            missing = sorted({k for r in res["years"].values()
+                              for k in r["trading_days"]["sources_unavailable"]})
+        else:
+            diffs = sum(r["summary"]["disagreements"] for r in res["years"].values())
+            missing = sorted({k for r in res["years"].values()
+                              for k in r["sources_unavailable"]})
         print(f"{code}: disagreements={diffs}"
               + (f" unavailable={','.join(missing)}" if missing else ""))
-    print(f"Wrote {args.output}")
+    print(f"Wrote {output}")
     return 0
 
 
