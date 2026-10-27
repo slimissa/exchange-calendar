@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.21.3] - 2026-10-27
+
+### Fixed
+- Triaged and fixed divergence test disagreements for XBRU, XLIS, XBOM, and XNSE.
+
 ## [2.21.2] - 2026-10-26
 
 ### Fixed
