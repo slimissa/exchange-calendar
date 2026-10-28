@@ -1,30 +1,23 @@
 {
-  "ad_hoc_closures": [],
   "code": "XCOL",
-  "confidence": {
-    "2025": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2026": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2027": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    }
+  "name": "Colombo Stock Exchange",
+  "mic": "XCOL",
+  "timezone": "Asia/Colombo",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "09:30",
+    "close": "14:30"
   },
-  "country": "Sri Lanka",
-  "country_code": "LK",
-  "fetcher_status": "implemented",
-  "generation_range": [
-    "2025-01-01",
-    "2027-12-31"
+  "extended_hours": {},
+  "sessions": [
+    {
+      "close": "14:30",
+      "open": "09:30",
+      "type": "regular"
+    }
   ],
   "holidays": {
     "explicit": [
@@ -133,104 +126,110 @@
       {
         "date": "2026-01-01",
         "name": "CSE Customary Holiday",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-01-15",
         "name": "Tamil Thai Pongal Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-02-04",
         "name": "Independence Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-03-02",
         "name": "Medin Full Moon Poya Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-04-01",
         "name": "Bak Full Moon Poya Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-04-03",
         "name": "Good Friday",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-04-13",
-        "name": "Day Prior to Sinhala and Tamil New Year Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "name": "Day Prior to Sinhala & Tamil New Year Day",
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-04-14",
-        "name": "Sinhala and Tamil New Year",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "name": "Sinhala & Tamil New Year Day",
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
+      },
+      {
+        "date": "2026-04-30",
+        "name": "Additional Half holiday in lieu of Day following / Vesak Full Moon Poya Day falling on Saturday",
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-05-01",
-        "name": "May Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "name": "May Day (International Workers\u2019 Day) / Vesak Full Moon Poya Day",
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-05-28",
         "name": "Id-Ul-Allah (Hadji Festival Day)",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-06-29",
         "name": "Poson Full Moon Poya Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-07-29",
         "name": "Esala Full Moon Poya Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-08-26",
-        "name": "Milad-Un-Nabi (Holy Prophet's Birthday)",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "name": "Milad-Un-Nabi (Holy Prophet\u2019s Birthday)",
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-08-27",
         "name": "Nikini Full Moon Poya Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-11-24",
         "name": "Il Full Moon Poya Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-12-23",
         "name": "Unduwap Full Moon Poya Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2026-12-25",
         "name": "Christmas Day",
-        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://cdn.cse.lk/cmt/upload_report_file/QMEnyQ5BhnLphDgA_22Oct2025113922GMT_1761133162860.pdf"
       },
       {
         "date": "2027-04-14",
@@ -249,22 +248,9 @@
     ],
     "recurrence_rules": []
   },
-  "mic": "XCOL",
-  "name": "Colombo Stock Exchange",
-  "regular_hours": {
-    "close": "14:30",
-    "open": "09:30"
-  },
-  "sessions": [
-    {
-      "close": "14:30",
-      "open": "09:30",
-      "type": "regular"
-    }
-  ],
-  "timezone": "Asia/Colombo",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2027-12-31"
   ]
 }
