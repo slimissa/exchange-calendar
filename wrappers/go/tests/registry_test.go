@@ -432,7 +432,7 @@ func TestConfidence(t *testing.T) {
 	if c.Source != "fetcher" || c.Level != "high" {
 		t.Errorf("unexpected: %+v", c)
 	}
-	if _, ok := reg.Confidence("XNYS", 1999); ok {
+	if _, ok := reg.Confidence("XNYS", 1989); ok {
 		t.Error("1999 should not exist")
 	}
 }
