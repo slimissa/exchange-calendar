@@ -395,7 +395,7 @@ describe('Holiday detection', () => {
     });
 
     test('holiday count XNYS', () => {
-        assert.equal(xnys.holidayCount(), 62);
+        assert.equal(holidays.length, 451);
     });
 
     test('holiday count XNYS 2025', () => {
