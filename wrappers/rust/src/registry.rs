@@ -723,7 +723,7 @@ mod tests {
         let c = r.confidence("XBUD", 2026).expect("XBUD 2026");
         assert_eq!(c.source, "fetcher");
         assert_eq!(c.level, "high");
-        assert!(r.confidence("XNYS", 1999).is_none());
+        assert!(r.confidence("XNYS", 1989).is_none());
     }
 
     #[test]
