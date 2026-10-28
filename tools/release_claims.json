@@ -1108,5 +1108,71 @@
       "file": "tests/test_divergence.py",
       "contains": "class TestHistoricalBackfill:"
     }
+  ],
+  "2.23.1": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.1"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.1] - 2026-10-28"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Added support for date-effective regular_hours and fixed historical session times for XTKS and XHKG."
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.1-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.1"
+    },
+    {
+      "file": "schema.json",
+      "contains": "\"effective_from\": {\n                \"description\": \"First date (inclusive) these hours apply.\""
+    },
+    {
+      "file": "tools/regular_hours.py",
+      "contains": "def on(regular_hours, day: dt.date | str) -> dict:"
+    },
+    {
+      "file": "tools/validate.py",
+      "contains": "regular_hours.problems(regular, start)"
+    },
+    {
+      "file": "exchanges/XTKS.json",
+      "contains": "\"effective_from\": \"2024-11-05\""
+    },
+    {
+      "file": "exchanges/XHKG.json",
+      "contains": "\"effective_from\": \"2011-03-07\""
+    },
+    {
+      "file": "wrappers/python/exchange_calendar/exchange.py",
+      "contains": "def regular_hours_on(self, date_str) -> dict:"
+    },
+    {
+      "file": "wrappers/javascript/src/exchange.js",
+      "contains": "regularHoursOn(date) {"
+    },
+    {
+      "file": "wrappers/go/exchange.go",
+      "contains": "func (e *Exchange) RegularHoursOn(dateStr string) (RegularHours, error) {"
+    },
+    {
+      "file": "wrappers/rust/src/exchange.rs",
+      "contains": "pub fn regular_hours_on(&self, date_str: &str)"
+    },
+    {
+      "file": "tests/test_regular_hours.py",
+      "contains": "class TestSchemaAndValidator:"
+    },
+    {
+      "file": "tests/cross_language_queries.json",
+      "contains": "is_open_xtks_after_old_close"
+    }
   ]
 }

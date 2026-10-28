@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.1] - 2026-10-28
+
+### Fixed
+- Added support for date-effective regular_hours and fixed historical session times for XTKS and XHKG.
+- XHKG 2026 holidays: added 2026-04-07 and 2026-10-19 as closures, removed 2026-09-25, and added the Lunar New Year's Eve half days (2025-01-28, 2026-02-16), from the SEHK holiday circulars.
+- Go, Rust and JavaScript wrapper tests broken by the v2.23.0 backfill (a confidence year with no data, the XNYS holiday count).
+
 ## [2.23.0] - 2026-10-28
 
 ### Added
