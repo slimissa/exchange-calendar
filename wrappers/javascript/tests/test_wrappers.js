@@ -396,7 +396,7 @@ describe('Holiday detection', () => {
     });
 
     test('holiday count XNYS', () => {
-        const holidays = registry.listHolidays('XNYS');
+        const holidays = xnys.listHolidays();
         assert.equal(holidays.length, 451);
     });
 
