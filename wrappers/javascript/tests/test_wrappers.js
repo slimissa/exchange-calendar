@@ -321,12 +321,13 @@ describe('Exchange properties', () => {
 // ──────────────────────────────────────────────────────────────
 
 describe('Holiday detection', () => {
+    let registry;
     let xnys;
     let xlon;
     let xsau;
 
     beforeEach(() => {
-        const registry = new CalendarRegistry(getRegistryPath());
+        registry = new CalendarRegistry(getRegistryPath());
         xnys = registry.get('XNYS');
         xlon = registry.get('XLON');
         xsau = registry.get('XSAU');
@@ -395,6 +396,7 @@ describe('Holiday detection', () => {
     });
 
     test('holiday count XNYS', () => {
+        const holidays = registry.listHolidays('XNYS');
         assert.equal(holidays.length, 451);
     });
 
