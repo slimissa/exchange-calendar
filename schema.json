@@ -439,22 +439,55 @@
       "type": "string"
     },
     "regular_hours": {
-      "additionalProperties": false,
-      "properties": {
-        "close": {
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
-          "type": "string"
+      "description": "Regular trading hours: one object, or a list of objects with effective_from dates when the hours changed over time. The entry in force on a date is the latest one whose effective_from is on or before it; the first effective_from must not be after generation_range[0].",
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "close": {
+              "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+              "type": "string"
+            },
+            "open": {
+              "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "open",
+            "close"
+          ],
+          "type": "object"
         },
-        "open": {
-          "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
-          "type": "string"
+        {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "close": {
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+                "type": "string"
+              },
+              "effective_from": {
+                "description": "First date (inclusive) these hours apply.",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+                "type": "string"
+              },
+              "open": {
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "effective_from",
+              "open",
+              "close"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
         }
-      },
-      "required": [
-        "open",
-        "close"
-      ],
-      "type": "object"
+      ]
     },
     "sessions": {
       "description": "Typed trading sessions. Interval types carry open/close; point types carry at.",

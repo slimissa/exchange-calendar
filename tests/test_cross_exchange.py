@@ -122,8 +122,10 @@ class TestStructure:
     def test_all_have_regular_hours(self, exchange_list):
         """Every exchange has regular_hours with open and close."""
         for exchange in exchange_list:
-            assert "open" in exchange["regular_hours"], f"{exchange['code']}: missing regular_hours.open"
-            assert "close" in exchange["regular_hours"], f"{exchange['code']}: missing regular_hours.close"
+            hours = exchange["regular_hours"]
+            for entry in (hours if isinstance(hours, list) else [hours]):  # object or dated list
+                assert "open" in entry, f"{exchange['code']}: missing regular_hours.open"
+                assert "close" in entry, f"{exchange['code']}: missing regular_hours.close"
 
     def test_all_have_explicit_holidays(self, exchange_list):
         """Every exchange has at least one explicit holiday."""

@@ -151,7 +151,26 @@ impl Registry {
     /// ```
     pub fn from_json_str(json: &str) -> Result<Self, RegistryError> {
         let data: RegistryData = serde_json::from_str(json)?;
-        Self::from_data(data)
+        let mut registry = Self::from_data(data)?;
+
+        // `regular_hours` may be a list of dated objects. ExchangeData keeps
+        // only its latest entry, so the full list is read from the raw JSON.
+        let value: serde_json::Value = serde_json::from_str(json)?;
+        let entries = value.get("exchanges").and_then(|v| v.as_array());
+        for entry in entries.into_iter().flatten() {
+            let (Some(code), Some(hours)) = (
+                entry.get("code").and_then(|v| v.as_str()),
+                entry.get("regular_hours"),
+            ) else {
+                continue;
+            };
+            let history = crate::exchange::parse_regular_hours_history(hours)
+                .map_err(|e| RegistryError::InvalidStructure(format!("{code}: {e}")))?;
+            if let (Some(history), Some(exchange)) = (history, registry.exchanges.get_mut(code)) {
+                exchange.set_regular_hours_history(history);
+            }
+        }
+        Ok(registry)
     }
 
     /// Create a Registry from parsed data.
@@ -292,7 +311,14 @@ impl Registry {
         }
 
         for s in &ex.sessions {
-            if let (Some(o), Some(cl)) = (s.open.as_deref(), s.close.as_deref()) {
+            // The regular session follows the hours in force on this date
+            // (regular_hours may be a dated list).
+            let dated = (s.session_type == "regular").then(|| ex.regular_hours_on(date).ok()).flatten();
+            let (o, cl) = match &dated {
+                Some(h) => (Some(h.open.as_str()), Some(h.close.as_str())),
+                None => (s.open.as_deref(), s.close.as_deref()),
+            };
+            if let (Some(o), Some(cl)) = (o, cl) {
                 if o <= time && time < cl {
                     return true;
                 }
@@ -604,6 +630,85 @@ mod tests {
         assert!(matches!(result, Err(RegistryError::InvalidJson(_))));
     }
 
+    fn dated_registry_json(hours: &str) -> String {
+        format!(
+            r#"{{
+                "meta": {{"version": "1.0.0", "exchange_count": 1}},
+                "exchanges": [{{
+                    "code": "TEST", "name": "Test Exchange", "mic": "TEST",
+                    "timezone": "Asia/Tokyo",
+                    "regular_hours": {hours},
+                    "holidays": {{"explicit": [], "generated": []}}
+                }}]
+            }}"#
+        )
+    }
+
+    const DATED_LIST: &str = r#"[
+        {"effective_from": "2024-11-05", "open": "09:00", "close": "15:30"},
+        {"effective_from": "1997-01-01", "open": "09:00", "close": "15:00"}
+    ]"#;
+
+    #[test]
+    fn test_dated_regular_hours_load_and_pick_by_date() {
+        let registry = Registry::from_json_str(&dated_registry_json(DATED_LIST)).unwrap();
+        let ex = registry.exchange("TEST").unwrap();
+        assert_eq!(ex.regular_hours.close, "15:30"); // latest entry
+        assert_eq!(ex.regular_hours_history.len(), 2);
+        assert_eq!(ex.regular_hours_history[0].effective_from, "1997-01-01");
+        for (date, close) in [
+            ("1980-01-01", "15:00"),
+            ("2020-06-02", "15:00"),
+            ("2024-11-04", "15:00"),
+            ("2024-11-05", "15:30"),
+            ("2026-01-05", "15:30"),
+        ] {
+            assert_eq!(ex.regular_hours_on(date).unwrap().close, close, "{date}");
+        }
+        assert!(ex.regular_hours_on("2024-13-45").is_err());
+    }
+
+    #[test]
+    fn test_status_at_uses_the_hours_of_that_date() {
+        let registry = Registry::from_json_str(&dated_registry_json(DATED_LIST)).unwrap();
+        let ex = registry.exchange("TEST").unwrap();
+        assert_eq!(ex.status_at("2020-06-02", "15:10").unwrap(), crate::SessionStatus::Closed);
+        assert_eq!(ex.status_at("2025-06-03", "15:10").unwrap(), crate::SessionStatus::Open);
+    }
+
+    #[test]
+    fn test_single_regular_hours_object_still_loads() {
+        let registry = Registry::from_json_str(&dated_registry_json(
+            r#"{"open": "09:00", "close": "15:30"}"#,
+        ))
+        .unwrap();
+        let ex = registry.exchange("TEST").unwrap();
+        assert!(ex.regular_hours_history.is_empty());
+        assert_eq!(ex.regular_hours_on("1990-01-02").unwrap().close, "15:30");
+    }
+
+    #[test]
+    fn test_malformed_regular_hours_lists_are_rejected() {
+        assert!(Registry::from_json_str(&dated_registry_json("[]")).is_err());
+        assert!(Registry::from_json_str(&dated_registry_json(
+            r#"[{"open": "09:00", "close": "15:00"}]"#
+        ))
+        .is_err());
+        assert!(Registry::from_json_str(&dated_registry_json(
+            r#"[{"effective_from": "2024-01-01", "open": "16:00", "close": "09:00"}]"#
+        ))
+        .is_err());
+    }
+
+    #[test]
+    fn test_real_registry_dates_xtks_and_xhkg() {
+        let r = load_real_registry();
+        assert_eq!(r.exchange("XTKS").unwrap().regular_hours_on("2020-06-02").unwrap().close, "15:00");
+        assert_eq!(r.exchange("XTKS").unwrap().regular_hours.close, "15:30");
+        assert_eq!(r.exchange("XHKG").unwrap().regular_hours_on("2005-06-01").unwrap().open, "10:00");
+        assert_eq!(r.exchange("XHKG").unwrap().regular_hours_on("2011-03-07").unwrap().open, "09:30");
+    }
+
     #[test]
     fn test_from_str_valid() {
         let json = r#"{
@@ -723,7 +828,7 @@ mod tests {
         let c = r.confidence("XBUD", 2026).expect("XBUD 2026");
         assert_eq!(c.source, "fetcher");
         assert_eq!(c.level, "high");
-        assert!(r.confidence("XNYS", 1989).is_none());
+        assert!(r.confidence("XNYS", 1980).is_none());
     }
 
     #[test]

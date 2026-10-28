@@ -15711,6 +15711,13 @@
             "status": "closed"
           },
           {
+            "date": "2025-01-28",
+            "early_close_time": "12:00",
+            "name": "Lunar New Year's Eve (half-day)",
+            "source_url": "https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2024/ce_SEHK_CT_063_2024.pdf",
+            "status": "early_close"
+          },
+          {
             "date": "2025-01-29",
             "name": "Lunar New Year's Day",
             "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
@@ -15815,6 +15822,13 @@
             "status": "closed"
           },
           {
+            "date": "2026-02-16",
+            "early_close_time": "12:00",
+            "name": "Lunar New Year's Eve (half-day)",
+            "source_url": "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/SEHK_CT_075_2025",
+            "status": "early_close"
+          },
+          {
             "date": "2026-02-17",
             "name": "Lunar New Year's Day",
             "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
@@ -15845,6 +15859,12 @@
             "status": "closed"
           },
           {
+            "date": "2026-04-07",
+            "name": "The day following Easter Monday",
+            "source_url": "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/SEHK_CT_075_2025",
+            "status": "closed"
+          },
+          {
             "date": "2026-05-01",
             "name": "Labour Day",
             "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
@@ -15869,15 +15889,15 @@
             "status": "closed"
           },
           {
-            "date": "2026-09-25",
-            "name": "Day after Mid-Autumn Festival",
+            "date": "2026-10-01",
+            "name": "National Day",
             "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
             "status": "closed"
           },
           {
-            "date": "2026-10-01",
-            "name": "National Day",
-            "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
+            "date": "2026-10-19",
+            "name": "The day following Chung Yeung Festival",
+            "source_url": "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/SEHK_CT_075_2025",
             "status": "closed"
           },
           {
@@ -16173,10 +16193,18 @@
       },
       "mic": "XHKG",
       "name": "Hong Kong Exchange",
-      "regular_hours": {
-        "close": "16:00",
-        "open": "09:30"
-      },
+      "regular_hours": [
+        {
+          "close": "16:00",
+          "effective_from": "1990-01-01",
+          "open": "10:00"
+        },
+        {
+          "close": "16:00",
+          "effective_from": "2011-03-07",
+          "open": "09:30"
+        }
+      ],
       "sessions": [
         {
           "at": "09:20",
@@ -43089,10 +43117,18 @@
       },
       "mic": "XTKS",
       "name": "Tokyo Stock Exchange",
-      "regular_hours": {
-        "close": "15:30",
-        "open": "09:00"
-      },
+      "regular_hours": [
+        {
+          "close": "15:00",
+          "effective_from": "1997-01-01",
+          "open": "09:00"
+        },
+        {
+          "close": "15:30",
+          "effective_from": "2024-11-05",
+          "open": "09:00"
+        }
+      ],
       "sessions": [
         {
           "close": "15:30",

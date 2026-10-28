@@ -49,6 +49,9 @@ import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import regular_hours  # noqa: E402  (tools/regular_hours.py)
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CALENDAR = REPO_ROOT / "calendar.json"
 DEFAULT_EXCHANGES = "XNYS,XLON,XTKS,XASX"
@@ -302,8 +305,18 @@ def _local_hhmm(value, tz):
     return ts.tz_convert(tz).strftime("%H:%M")
 
 
-def _break_text(start, end):
-    return f"{start}-{end}" if start and end else None
+def _break_text(start, end, close=None):
+    """'HH:MM-HH:MM', or None when there is no break.
+
+    A break counts only if the market reopens after it, so one that ends at or
+    after the day's close is no break. On a half day that closes before or
+    during the lunch break, pandas_market_calendars reports a zero-length or
+    clipped break, the registry carries its usual break, and exchange_calendars
+    reports none. The same rule is applied to every source.
+    """
+    if not (start and end) or start >= end or (close and end >= close):
+        return None
+    return f"{start}-{end}"
 
 
 def _flag_half_days(days):
@@ -324,11 +337,20 @@ def _flag_half_days(days):
     return days
 
 
-def registry_regular_session(entry):
-    """(open, close, break) the registry uses on a normal day."""
+def registry_regular_session(entry, day=None):
+    """(open, close, break) the registry uses on a normal day.
+
+    When regular_hours is a dated list, `day` picks the entry in force on that
+    date (the latest entry when omitted); the intraday break is taken from the
+    sessions list as before.
+    """
     sessions = entry.get("sessions", [])
-    regular = (next((s for s in sessions if s.get("type") == "regular"), None)
-               or entry.get("regular_hours") or {})
+    hours = entry.get("regular_hours")
+    if isinstance(hours, list):
+        regular = regular_hours.on(hours, day) if day else regular_hours.current(hours)
+    else:
+        regular = (next((s for s in sessions if s.get("type") == "regular"), None)
+                   or hours or {})
     lunch = next((s for s in sessions if s.get("type") == "lunch_break"), None)
     brk = _break_text(lunch["open"], lunch["close"]) if lunch else None
     return regular.get("open"), regular.get("close"), brk
@@ -340,7 +362,6 @@ def registry_sessions(entry, start, end):
     A day uses the regular session, with the open replaced by delayed_open_time
     and the close by early_close_time where the registry says so.
     """
-    open_, close, brk = registry_regular_session(entry)
     holidays = entry.get("holidays", {})
     records = list(holidays.get("explicit", [])) + list(holidays.get("generated", []))
     records += list(entry.get("ad_hoc_closures", []))
@@ -348,14 +369,14 @@ def registry_sessions(entry, start, end):
                if r.get("status") in ("early_close", "delayed_open")}
     out = {}
     for day in sorted(registry_trading_days(entry, start, end)):
+        open_, close, brk = registry_regular_session(entry, day)
         rec = special.get(day, {})
         early = rec.get("status") == "early_close"
         day_close = (rec.get("early_close_time") or close) if early else close
         out[day] = {
             "open": rec.get("delayed_open_time") or open_,
             "close": day_close,
-            # a half day that closes before the break would end has no break
-            "break": None if brk and day_close <= brk.split("-")[1] else brk,
+            "break": _break_text(*(brk.split("-") if brk else (None, None)), day_close),
             "half_day": early,
         }
     return out
@@ -369,11 +390,11 @@ def pmc_sessions(code, start, end, tz):
     has_break = {"break_start", "break_end"} <= set(sched.columns)
     out = {}
     for ts, row in sched.iterrows():
+        close = _local_hhmm(row["market_close"], tz)
         brk = (_break_text(_local_hhmm(row["break_start"], tz),
-                           _local_hhmm(row["break_end"], tz)) if has_break else None)
+                           _local_hhmm(row["break_end"], tz), close) if has_break else None)
         out[_to_date(ts)] = {"open": _local_hhmm(row["market_open"], tz),
-                             "close": _local_hhmm(row["market_close"], tz),
-                             "break": brk}
+                             "close": close, "break": brk}
     return _flag_half_days(out)
 
 
@@ -383,11 +404,11 @@ def xc_sessions(code, start, end, tz):
     has_break = {"break_start", "break_end"} <= set(sched.columns)
     out = {}
     for ts, row in sched.iterrows():
+        close = _local_hhmm(row["close"], tz)
         brk = (_break_text(_local_hhmm(row["break_start"], tz),
-                           _local_hhmm(row["break_end"], tz)) if has_break else None)
+                           _local_hhmm(row["break_end"], tz), close) if has_break else None)
         out[_to_date(ts)] = {"open": _local_hhmm(row["open"], tz),
-                             "close": _local_hhmm(row["close"], tz),
-                             "break": brk}
+                             "close": close, "break": brk}
     return _flag_half_days(out)
 
 

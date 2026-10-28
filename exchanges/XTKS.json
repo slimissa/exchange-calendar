@@ -3353,10 +3353,18 @@
   },
   "mic": "XTKS",
   "name": "Tokyo Stock Exchange",
-  "regular_hours": {
-    "close": "15:30",
-    "open": "09:00"
-  },
+  "regular_hours": [
+    {
+      "close": "15:00",
+      "effective_from": "1997-01-01",
+      "open": "09:00"
+    },
+    {
+      "close": "15:30",
+      "effective_from": "2024-11-05",
+      "open": "09:00"
+    }
+  ],
   "sessions": [
     {
       "close": "15:30",

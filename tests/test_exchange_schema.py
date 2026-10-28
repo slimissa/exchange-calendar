@@ -25,12 +25,15 @@ def test_every_exchange_has_a_regular_session():
 
 
 def test_regular_hours_matches_first_regular_session():
-    """The scalar `regular_hours` is derived from the first `regular`
-    session. If the two ever disagree, the derivation was skipped."""
+    """The scalar `regular_hours` (the latest entry when it is a dated list) is
+    derived from the first `regular` session. If the two ever disagree, the
+    derivation was skipped."""
     mismatches = []
     for path in _all_exchanges():
         d = json.loads(path.read_text())
         rh = d.get("regular_hours") or {}
+        if isinstance(rh, list):  # dated list: the sessions describe the latest entry
+            rh = max(rh, key=lambda entry: entry["effective_from"])
         regular = next(
             (s for s in (d.get("sessions") or [])
              if s.get("type") == "regular"),

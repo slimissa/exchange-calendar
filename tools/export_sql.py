@@ -46,6 +46,9 @@ from datetime import date as _date
 from pathlib import Path
 from typing import Callable, Optional
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import regular_hours  # noqa: E402  (tools/regular_hours.py)
+
 PROJECT_ROOT: Path = Path(__file__).resolve().parent.parent
 REGISTRY_PATH: Path = PROJECT_ROOT / "calendar.json"
 REPOSITORY_URL: str = "https://github.com/slimissa/exchange-calendar"
@@ -327,7 +330,9 @@ def build_tables(registry: dict) -> dict[str, list[tuple]]:
         code = _need(ex, "code", "exchange")
         where = f"exchange {code}"
         weekend = _need(ex, "weekend_days", where)
-        hours = _need(ex, "regular_hours", where)
+        # regular_hours may be a dated list; the flat export carries the hours
+        # in force now (the latest entry).
+        hours = regular_hours.current(_need(ex, "regular_hours", where))
         gen = _need(ex, "generation_range", where)
         if len(weekend) != 2 or len(gen) != 2:
             raise ExportError(f"{where}: weekend_days and generation_range must have two items")

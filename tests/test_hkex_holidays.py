@@ -57,8 +57,12 @@ class TestXHKGProperties:
         assert xhkg["timezone"] == "Asia/Hong_Kong"
 
     def test_regular_hours(self, xhkg):
-        assert xhkg["regular_hours"]["open"] == "09:30"
-        assert xhkg["regular_hours"]["close"] == "16:00"
+        # Dated list: the open moved from 10:00 to 09:30 on 2011-03-07.
+        assert xhkg["regular_hours"] == [
+            {"effective_from": "1990-01-01", "open": "10:00", "close": "16:00"},
+            {"effective_from": "2011-03-07", "open": "09:30", "close": "16:00"},
+        ]
+        assert xhkg["regular_hours"][-1]["open"] == "09:30"
 
     def test_no_extended_hours(self, xhkg):
         assert "extended_hours" not in xhkg

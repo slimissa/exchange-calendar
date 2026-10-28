@@ -20,6 +20,10 @@
     {"op": "is_holiday", "args": ["XETR", "2027-12-25"], "label": "is_holiday_weekend_no_entry"},
     {"op": "is_holiday", "args": ["XBOM", "2026-11-08"], "label": "is_holiday_weekend_exception"},
     {"op": "is_holiday", "args": ["XCAI", "2025-04-27"], "label": "is_holiday_xcai_sunday_trades"},
-    {"op": "is_holiday", "args": ["XCAI", "2025-04-24"], "label": "is_holiday_xcai_thursday_observed"}
+    {"op": "is_holiday", "args": ["XCAI", "2025-04-24"], "label": "is_holiday_xcai_thursday_observed"},
+    {"op": "is_open", "args": ["XTKS", "2020-06-02", "15:10"], "label": "is_open_xtks_after_old_close"},
+    {"op": "is_open", "args": ["XTKS", "2025-06-03", "15:10"], "label": "is_open_xtks_before_new_close"},
+    {"op": "is_open", "args": ["XHKG", "2005-06-01", "09:45"], "label": "is_open_xhkg_before_old_open"},
+    {"op": "is_open", "args": ["XHKG", "2025-06-03", "09:45"], "label": "is_open_xhkg_after_new_open"}
   ]
 }

@@ -6234,6 +6234,27 @@ class RegistryUpdater:
         # not produce them.
         recurrence_rules = current_holidays.get("recurrence_rules", [])
 
+        def _regular_hours():
+            """The fetched hours, unless the file already dates them.
+
+            A dated list (the hours changed over time) is the maintainer's
+            record and a fetcher only knows today's hours, so the list is
+            kept. If today's hours no longer match its latest entry, say so
+            instead of guessing the date the change took effect.
+            """
+            fetched = {"open": data.regular_open, "close": data.regular_close}
+            existing = (current or {}).get("regular_hours")
+            if isinstance(existing, list) and existing:
+                latest = max(existing, key=lambda e: e["effective_from"])
+                if (latest["open"], latest["close"]) != (fetched["open"], fetched["close"]):
+                    logging.warning(
+                        "%s: fetched regular hours %s-%s differ from the latest dated "
+                        "entry (%s from %s); add a new entry with its effective_from",
+                        data.code, fetched["open"], fetched["close"],
+                        f'{latest["open"]}-{latest["close"]}', latest["effective_from"])
+                return existing
+            return fetched
+
         def _preserved(key: str, default):
             if current and key in current:
                 return current[key]
@@ -6245,10 +6266,7 @@ class RegistryUpdater:
             "mic": data.mic,
             "timezone": data.timezone,
             "weekend_days": _preserved("weekend_days", [5, 6]),
-            "regular_hours": {
-                "open": data.regular_open,
-                "close": data.regular_close,
-            },
+            "regular_hours": _regular_hours(),
             "extended_hours": _preserved("extended_hours", {}),
             "sessions": _preserved("sessions", []),
             "holidays": {

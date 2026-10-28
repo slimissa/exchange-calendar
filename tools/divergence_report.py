@@ -250,8 +250,16 @@ def render_sessions(sessions):
       "`delayed_open_time` applied on those dates; a half day is a date with "
       "status `early_close`. Libraries: a half day is a close earlier than that "
       "library's usual close in the same calendar year.")
-    w("- A break (Tokyo's lunch break) is part of one session. It is compared "
-      "as a single `HH:MM-HH:MM` value and is `none` for exchanges without one.")
+    w("- A break (Tokyo's and Hong Kong's lunch break) is part of one session. "
+      "It is compared as a single `HH:MM-HH:MM` value and is `none` for "
+      "exchanges without one. A break that ends at or after the day's close "
+      "is no break, for every source: on a half day that closes before the "
+      "lunch break ends, `pandas_market_calendars` reports a clipped break "
+      "and `exchange_calendars` reports none.")
+    w("- Regular hours can change over time. The registry stores them as a "
+      "dated list where they did (Tokyo's close moved from 15:00 to 15:30 on "
+      "2024-11-05, Hong Kong's open from 10:00 to 09:30 on 2011-03-07), and "
+      "each date is compared against the hours in force that day.")
     w("- A half-day mismatch normally appears with a close mismatch on the same "
       "date, so the two columns are not independent.")
     w("- Years: the registry only has data inside each exchange's "

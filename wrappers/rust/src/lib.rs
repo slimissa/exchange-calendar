@@ -53,7 +53,7 @@ mod registry;
 mod session;
 
 pub use exchange::{
-    Exchange, ExchangeData, ExchangeError, ExtendedHours, HolidayEntry, HolidaysData,
+    parse_regular_hours_history, DatedRegularHours, Exchange, ExchangeData, ExchangeError, ExtendedHours, HolidayEntry, HolidaysData,
     QueryError, RegularHours, Session,
 };
 pub use registry::{MetaData, Registry, RegistryData, RegistryError};

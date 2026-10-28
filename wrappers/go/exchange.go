@@ -1,6 +1,8 @@
 package exchangecalendar
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"sort"
 	"strings"
@@ -13,6 +15,9 @@ import (
 type RegularHours struct {
 	Open  string `json:"open"`  // HH:MM, e.g., "09:30"
 	Close string `json:"close"` // HH:MM, e.g., "16:00"
+	// EffectiveFrom is the first date (YYYY-MM-DD) these hours apply. It is
+	// set only when the registry stores regular_hours as a dated list.
+	EffectiveFrom string `json:"effective_from,omitempty"`
 }
 
 // ExtendedHours represents pre-market and after-hours trading sessions.
@@ -53,13 +58,54 @@ type ExchangeData struct {
 	MIC           string         `json:"mic"`
 	Timezone      string         `json:"timezone"`
 	WeekendDays   []int          `json:"weekend_days,omitempty"`
+	// RegularHours is the hours in force now. In calendar.json regular_hours is
+	// either one object or a list of objects with effective_from dates; for a
+	// list this holds the latest entry and RegularHoursHistory holds them all.
 	RegularHours  RegularHours   `json:"regular_hours"`
+	// RegularHoursHistory lists every regular_hours entry, oldest first. Empty
+	// means a single, undated RegularHours.
+	RegularHoursHistory []RegularHours `json:"-"`
 	ExtendedHours ExtendedHours  `json:"extended_hours,omitempty"`
 	Sessions      []Session      `json:"sessions,omitempty"`
 	Holidays      HolidaysData   `json:"holidays"`
 	AdHocClosures []HolidayEntry `json:"ad_hoc_closures,omitempty"`
 	GenerationRange []string     `json:"generation_range,omitempty"`
 	Confidence map[string]ConfidenceEntry `json:"confidence"`
+}
+
+// UnmarshalJSON accepts regular_hours as one object or as a list of objects
+// with effective_from dates, so a registry that dates its hours still loads.
+func (d *ExchangeData) UnmarshalJSON(b []byte) error {
+	type plain ExchangeData
+	aux := struct {
+		*plain
+		RegularHours json.RawMessage `json:"regular_hours"`
+	}{plain: (*plain)(d)}
+	if err := json.Unmarshal(b, &aux); err != nil {
+		return err
+	}
+	d.RegularHours, d.RegularHoursHistory = RegularHours{}, nil
+	raw := bytes.TrimSpace(aux.RegularHours)
+	switch {
+	case len(raw) == 0 || bytes.Equal(raw, []byte("null")):
+		// Missing: left empty so validation reports it.
+	case raw[0] == '[':
+		var list []RegularHours
+		if err := json.Unmarshal(raw, &list); err != nil {
+			return fmt.Errorf("exchange: regular_hours: %w", err)
+		}
+		if len(list) == 0 {
+			return fmt.Errorf("exchange: regular_hours must not be an empty list")
+		}
+		sort.SliceStable(list, func(i, j int) bool { return list[i].EffectiveFrom < list[j].EffectiveFrom })
+		d.RegularHoursHistory = list
+		d.RegularHours = list[len(list)-1]
+	default:
+		if err := json.Unmarshal(raw, &d.RegularHours); err != nil {
+			return fmt.Errorf("exchange: regular_hours: %w", err)
+		}
+	}
+	return nil
 }
 
 // HolidaysData holds explicit and generated holiday entries.
@@ -79,6 +125,9 @@ type Exchange struct {
 	Timezone     string
 	WeekendDays  []int
 	RegularHours RegularHours
+	// RegularHoursHistory lists every regular_hours entry, oldest first (empty
+	// when the hours never changed). Use RegularHoursOn for a given date.
+	RegularHoursHistory []RegularHours
 	ExtendedHours ExtendedHours
 	Sessions     []Session
 	Confidence map[string]ConfidenceEntry
@@ -111,6 +160,7 @@ func NewExchange(data ExchangeData) (*Exchange, error) {
 		Timezone:      data.Timezone,
 		WeekendDays:   weekendDaysOrDefault(data.WeekendDays),
 		RegularHours:  data.RegularHours,
+		RegularHoursHistory: data.RegularHoursHistory,
 		ExtendedHours: data.ExtendedHours,
 		Sessions:      data.Sessions,
 
@@ -178,6 +228,21 @@ func validateExchangeData(data ExchangeData) error {
 	if data.RegularHours.Open >= data.RegularHours.Close {
 		return fmt.Errorf("exchange: regular_hours.open (%s) must be before close (%s)",
 			data.RegularHours.Open, data.RegularHours.Close)
+	}
+	for i, h := range data.RegularHoursHistory {
+		if err := validateDateFormat(h.EffectiveFrom); err != nil {
+			return fmt.Errorf("exchange: regular_hours[%d].effective_from: %w", i, err)
+		}
+		if err := validateTimeFormat(h.Open); err != nil {
+			return fmt.Errorf("exchange: regular_hours[%d].open: %w", i, err)
+		}
+		if err := validateTimeFormat(h.Close); err != nil {
+			return fmt.Errorf("exchange: regular_hours[%d].close: %w", i, err)
+		}
+		if h.Open >= h.Close {
+			return fmt.Errorf("exchange: regular_hours[%d].open (%s) must be before close (%s)",
+				i, h.Open, h.Close)
+		}
 	}
 	return nil
 }
@@ -294,6 +359,29 @@ func (e *Exchange) EarlyCloseTime(dateStr string) string {
 // Public API — status
 // ──────────────────────────────────────────────────────────────
 
+// RegularHoursOn returns the regular hours in force on a date (YYYY-MM-DD).
+// A date before the first dated entry gets the first entry; an exchange whose
+// hours never changed returns RegularHours for every date.
+func (e *Exchange) RegularHoursOn(dateStr string) (RegularHours, error) {
+	if err := validateDateFormat(dateStr); err != nil {
+		return RegularHours{}, err
+	}
+	return e.hoursOn(dateStr), nil
+}
+
+func (e *Exchange) hoursOn(dateStr string) RegularHours {
+	if len(e.RegularHoursHistory) == 0 {
+		return e.RegularHours
+	}
+	inForce := e.RegularHoursHistory[0]
+	for _, h := range e.RegularHoursHistory {
+		if h.EffectiveFrom <= dateStr {
+			inForce = h
+		}
+	}
+	return inForce
+}
+
 // StatusAt returns the full session status at a specific date and time.
 //
 // Returns an error if date or time format is invalid.
@@ -349,8 +437,10 @@ func (e *Exchange) StatusAt(dateStr, timeStr string) (SessionStatus, error) {
 		}
 	}
 
+	hours := e.hoursOn(dateStr)
+
 	// 5. Before regular open — only PRE_MARKET if declared.
-	if timeStr < e.RegularHours.Open {
+	if timeStr < hours.Open {
 		if pre := e.ExtendedHours.PreMarket; pre != nil {
 			if pre.Open <= timeStr && timeStr < pre.Close {
 				return StatusPreMarket, nil
@@ -360,7 +450,7 @@ func (e *Exchange) StatusAt(dateStr, timeStr string) (SessionStatus, error) {
 	}
 
 	// 6. After regular close — only AFTER_HOURS if declared.
-	if timeStr >= e.RegularHours.Close {
+	if timeStr >= hours.Close {
 		if after := e.ExtendedHours.AfterHours; after != nil {
 			if after.Open <= timeStr && timeStr < after.Close {
 				return StatusAfterHours, nil

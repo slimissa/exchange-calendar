@@ -33,6 +33,7 @@ from pathlib import Path
 import jsonschema
 
 from generate_checksums import collect_files, sha256_of  # same directory
+import regular_hours  # same directory
 
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = json.loads((ROOT / "schema.json").read_text())
@@ -200,9 +201,11 @@ print("\n== Time and date formats (built calendar.json) ==")
 n_checked = 0
 for e in BUILT:
     c = e["code"]
-    for k in ("open", "close"):
-        check_time_date(f"{c}.regular_hours", {k: e["regular_hours"][k]})
-        n_checked += 1
+    for entry in regular_hours.history(e["regular_hours"]):
+        for k in ("open", "close", "effective_from"):
+            if k in entry:
+                check_time_date(f"{c}.regular_hours", {k: entry[k]})
+                n_checked += 1
     for ek, w in e["extended_hours"].items():
         check_time_date(f"{c}.extended_hours.{ek}", w)
     for i, s in enumerate(e["sessions"]):
@@ -270,7 +273,8 @@ for e in BUILT:
     if types.count("regular") != 1:
         gap(f"{c}: expected exactly one regular session, found {types.count('regular')}")
     reg = next((s for s in e["sessions"] if s["type"] == "regular"), None)
-    if reg and (reg["open"], reg["close"]) != (e["regular_hours"]["open"], e["regular_hours"]["close"]):
+    now = regular_hours.current(e["regular_hours"])
+    if reg and (reg["open"], reg["close"]) != (now["open"], now["close"]):
         gap(f"{c}: regular session differs from regular_hours")
 
 # --- 6. generation_range ----------------------------------------------------

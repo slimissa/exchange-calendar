@@ -69,6 +69,8 @@
     export interface RegularHours {
         open: string;   // HH:MM, e.g., "09:30"
         close: string;  // HH:MM, e.g., "16:00"
+        /** First date these hours apply (YYYY-MM-DD); present on dated hours. */
+        effective_from?: string;
     }
 
     /**
@@ -128,7 +130,7 @@
         name: string;
         mic: string;
         timezone: string;
-        regular_hours: RegularHours;
+        regular_hours: RegularHours | RegularHours[];
         extended_hours?: ExtendedHours;
         sessions?: Session[];
         holidays: Holidays;
@@ -162,9 +164,20 @@
         readonly timezone: string;
 
         /**
-         * Regular trading hours.
+         * Regular trading hours in force now (the latest entry).
          */
         readonly regularHours: RegularHours;
+
+        /**
+         * Every regular_hours entry, oldest first (one entry for an exchange
+         * whose hours never changed).
+         */
+        readonly regularHoursHistory: RegularHours[];
+
+        /**
+         * Regular trading hours in force on a date (ISO string or Date).
+         */
+        regularHoursOn(date: string | Date): RegularHours;
 
         /**
          * Extended trading hours.

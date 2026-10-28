@@ -132,6 +132,13 @@ ALLOWLIST = {
     "https://www.cairo.gov.eg/en/news/news-eng/2026/fda45a85d7f446c1b4cd55e0f8259f4e": "2027-06-01",
     # XMAD.json entry 9 (BME instruction for the 2026 calendar).
     "https://www.bolsasymercados.es/bme-exchange/docs/regula/sbolsas/esp/instrucc/2025/2025-65-IO-CALENDARIO-DE-SESIONES-2026.pdf": "2027-06-01",
+    # XHKG.json entries for 2026-02-16, 2026-04-07 and 2026-10-19: the SEHK
+    # circular CT/075/25 (Hong Kong Securities Market Holiday Schedule for
+    # 2026). Added in v2.23.1. No fetcher reads it (XHKG is ci_unreachable).
+    # Unblock: cite the 2027 schedule circular when entries for 2027 are checked.
+    "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/SEHK_CT_075_2025": "2027-06-01",
+    # XHKG.json entry for 2025-01-28: SEHK circular CT/063/24 (2025 schedule).
+    "https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2024/ce_SEHK_CT_063_2024.pdf": "2027-06-01",
 }
 
 

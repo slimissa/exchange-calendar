@@ -36,7 +36,9 @@ class Exchange {
      * @param {string} data.name — Full exchange name.
      * @param {string} data.mic — ISO 10383 MIC, equal to code.
      * @param {string} data.timezone — IANA timezone (e.g., "America/New_York").
-     * @param {Object} data.regular_hours — { open: "09:30", close: "16:00" }.
+     * @param {Object|Array} data.regular_hours — { open: "09:30", close: "16:00" },
+     *   or a list of such objects each with an `effective_from` date (YYYY-MM-DD)
+     *   when the hours changed over time.
      * @param {Object} [data.extended_hours] — Pre-market and after-hours.
      * @param {Array} [data.sessions] — Auction and lunch break sessions.
      * @param {Object} data.holidays — { explicit: [...], generated: [...] }.
@@ -51,7 +53,9 @@ class Exchange {
         this.mic = data.mic;
         this.timezone = data.timezone;
         this.weekendDays = data.weekend_days || [5, 6];
-        this.regularHours = data.regular_hours;
+        this.regularHoursHistory = Exchange._regularHoursHistory(data.regular_hours);
+        // The hours in force now (the latest entry); one object either way.
+        this.regularHours = this.regularHoursHistory[this.regularHoursHistory.length - 1];
         this.extendedHours = data.extended_hours || {};
         this.sessions = data.sessions || [];
         this.confidence = data.confidence || {};
@@ -87,18 +91,59 @@ class Exchange {
             }
         }
 
-        if (!data.regular_hours.open || !data.regular_hours.close) {
-            throw new Error("Exchange: regular_hours must have 'open' and 'close'");
+        const isList = Array.isArray(data.regular_hours);
+        const entries = isList ? data.regular_hours : [data.regular_hours];
+        if (entries.length === 0) {
+            throw new Error('Exchange: regular_hours must not be an empty list');
         }
-
-        Exchange._validateTimeFormat(data.regular_hours.open);
-        Exchange._validateTimeFormat(data.regular_hours.close);
+        for (const entry of entries) {
+            if (!entry || !entry.open || !entry.close) {
+                throw new Error("Exchange: regular_hours must have 'open' and 'close'");
+            }
+            if (isList) {
+                Exchange._validateDateFormat(entry.effective_from);
+            }
+            Exchange._validateTimeFormat(entry.open);
+            Exchange._validateTimeFormat(entry.close);
+        }
 
         if (data.code !== data.mic) {
             throw new Error(
                 `Exchange: code '${data.code}' must equal mic '${data.mic}'`
             );
         }
+    }
+
+    /**
+     * regular_hours (object or list) -> list of entries, oldest first.
+     * @private
+     */
+    static _regularHoursHistory(regular) {
+        if (Array.isArray(regular)) {
+            return [...regular].sort((a, b) =>
+                a.effective_from < b.effective_from ? -1 : a.effective_from > b.effective_from ? 1 : 0
+            );
+        }
+        return [regular];
+    }
+
+    /**
+     * Regular hours in force on a date.
+     *
+     * @param {string|Date} date — ISO date (YYYY-MM-DD) or a Date (UTC fields).
+     * @returns {{open: string, close: string, effective_from?: string}}
+     *   A date before the first entry gets the first entry.
+     */
+    regularHoursOn(date) {
+        const day = date instanceof Date ? date.toISOString().slice(0, 10) : date;
+        Exchange._validateDateFormat(day);
+        let inForce = this.regularHoursHistory[0];
+        for (const entry of this.regularHoursHistory) {
+            if ((entry.effective_from || '') <= day) {
+                inForce = entry;
+            }
+        }
+        return inForce;
     }
 
     static _validateTimeFormat(timeStr) {
@@ -275,7 +320,8 @@ class Exchange {
         }
 
         // 5. Before regular open — only PRE_MARKET if declared.
-        if (timeStr < this.regularHours.open) {
+        const hours = this.regularHoursOn(dateStr);
+        if (timeStr < hours.open) {
             const pre = this.extendedHours && this.extendedHours.pre_market;
             if (pre && pre.open && pre.close && pre.open <= timeStr && timeStr < pre.close) {
                 return SessionStatus.PRE_MARKET;
@@ -284,7 +330,7 @@ class Exchange {
         }
 
         // 6. After regular close — only AFTER_HOURS if declared.
-        if (timeStr >= this.regularHours.close) {
+        if (timeStr >= hours.close) {
             const after = this.extendedHours && this.extendedHours.after_hours;
             if (after && after.open && after.close && after.open <= timeStr && timeStr < after.close) {
                 return SessionStatus.AFTER_HOURS;

@@ -29,6 +29,9 @@ import sys
 from pathlib import Path
 from typing import Any, Optional
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import regular_hours  # noqa: E402  (tools/regular_hours.py)
+
 
 EXIT_OK = 0
 EXIT_NEEDS = 1
@@ -102,9 +105,10 @@ def _derive_interval_sessions(d: dict, path: Path) -> Optional[list]:
     out: list = []
 
     rh = d.get("regular_hours")
-    if not isinstance(rh, dict):
+    if not isinstance(rh, (dict, list)) or not rh:
         print(f"ERROR: {path}: missing regular_hours", file=sys.stderr)
         return None
+    rh = regular_hours.current(rh)  # a dated list: the hours in force now
     if not (_is_time(rh.get("open")) and _is_time(rh.get("close"))):
         print(f"ERROR: {path}: regular_hours must be HH:MM", file=sys.stderr)
         return None
@@ -218,7 +222,10 @@ def _needs_migration(d: dict) -> bool:
     if "regular_hours" not in derived:
         return True
     for k, v in derived.items():
-        if d.get(k) != v:
+        have = d.get(k)
+        if k == "regular_hours" and isinstance(have, list) and have:
+            have = {x: regular_hours.current(have)[x] for x in ("open", "close")}
+        if have != v:
             return True
     if "extended_hours" in d and "extended_hours" not in derived:
         return True

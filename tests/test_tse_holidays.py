@@ -66,8 +66,12 @@ class TestXTKSProperties:
 
     def test_regular_hours_extended(self, xtks):
         """TSE extended close to 15:30 on November 5, 2024."""
-        assert xtks["regular_hours"]["open"] == "09:00"
-        assert xtks["regular_hours"]["close"] == "15:30"
+        # Dated list: the close was 15:00 until the extension took effect.
+        assert xtks["regular_hours"] == [
+            {"effective_from": "1997-01-01", "open": "09:00", "close": "15:00"},
+            {"effective_from": "2024-11-05", "open": "09:00", "close": "15:30"},
+        ]
+        assert xtks["regular_hours"][-1]["close"] == "15:30"
 
     def test_no_extended_hours(self, xtks):
         """TSE does not have US-style pre-market/after-hours sessions."""

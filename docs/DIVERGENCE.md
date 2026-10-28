@@ -53,7 +53,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XETR | 507 | 507 | 507 | 0 | 100.0% |
 | XGSE | 494 | No reference data | No reference data | n/a | n/a |
 | XHEL | 501 | 501 | 501 | 0 | 100.0% |
-| XHKG | 740 | 739 | 739 | 3 | 99.6% |
+| XHKG | 739 | 739 | 739 | 0 | 100.0% |
 | XICE | 495 | 495 | 495 | 0 | 100.0% |
 | XIST | 510 | 502 | 502 | 8 | 98.4% |
 | XJKT | 492 | No reference data | No reference data | n/a | n/a |
@@ -103,8 +103,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 24 of 50.
-- Trading days on which all available sources agree: 26400 of 26538 (99.5%).
+- Exchanges with no disagreement: 25 of 50.
+- Trading days on which all available sources agree: 26401 of 26536 (99.5%).
 
 ## No reference data
 
@@ -168,11 +168,6 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 
 - registry closed, PMC open, EC open (2): 2025-05-01 Th, 2026-05-01 Fr
 - registry open, PMC closed, EC closed (2): 2025-05-30 Fr, 2026-05-15 Fr
-
-### XHKG (3)
-
-- registry open, PMC closed, EC closed (2): 2026-04-07 Tu, 2026-10-19 Mo
-- registry closed, PMC open, EC open (1): 2026-09-25 Fr
 
 ### XIST (8)
 
@@ -366,17 +361,18 @@ Open time, close time, half-day status and intraday break, compared between the 
 - Times are exchange-local `HH:MM`. The libraries publish UTC timestamps; each is converted with the exchange's IANA timezone, per date, so DST changes are handled.
 - Open, close, half-day and break are compared only on days all sources trade. A day one source lacks is a trading-day disagreement, counted in the first column and not again in the others.
 - Registry: the regular session, with `early_close_time` and `delayed_open_time` applied on those dates; a half day is a date with status `early_close`. Libraries: a half day is a close earlier than that library's usual close in the same calendar year.
-- A break (Tokyo's lunch break) is part of one session. It is compared as a single `HH:MM-HH:MM` value and is `none` for exchanges without one.
+- A break (Tokyo's and Hong Kong's lunch break) is part of one session. It is compared as a single `HH:MM-HH:MM` value and is `none` for exchanges without one. A break that ends at or after the day's close is no break, for every source: on a half day that closes before the lunch break ends, `pandas_market_calendars` reports a clipped break and `exchange_calendars` reports none.
+- Regular hours can change over time. The registry stores them as a dated list where they did (Tokyo's close moved from 15:00 to 15:30 on 2024-11-05, Hong Kong's open from 10:00 to 09:30 on 2011-03-07), and each date is compared against the hours in force that day.
 - A half-day mismatch normally appears with a close mismatch on the same date, so the two columns are not independent.
 - Years: the registry only has data inside each exchange's `generation_range`, so only years where the registry and a library both have data are counted. PMC and EC are not independent for exchanges PMC mirrors from EC, so agreement with both is agreement with one reference.
 
 | Exchange | Years | Trading days agree | Open agree | Close agree | Half-days agree | Break agree | Notes |
 |---|---|---:|---:|---:|---:|---:|---|
 | XASX | 1990-2026 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
-| XHKG | 1990-2026 | 99.9% | 42.6% | 99.9% | 99.9% | 99.2% | 2026-04-07 trading day; 2026-09-25 trading day; 2026-10-19 trading day; open 1990-01-02 to 2011-03-04, 5232 days (registry 09:30, PMC 10:00, EC 10:00); break 1990-12-24 to 2010-12-31, 31 days (registry none, PMC 12:00-12:30, EC none); break 2012-12-24 to 2026-12-31, 31 days (registry none, PMC 12:00-12:00, EC none); 2025-01-28 close (registry 16:00, PMC 12:00, EC 12:00); 2026-02-16 close (registry 16:00, PMC 12:00, EC 12:00); 2025-01-28 half-day (registry False, PMC True, EC True); 2026-02-16 half-day (registry False, PMC True, EC True); 2025-01-28 break (registry 12:00-13:00, PMC 12:00-12:00, EC none); 2026-02-16 break (registry 12:00-13:00, PMC 12:00-12:00, EC none) |
+| XHKG | 1990-2026 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
 | XLON | 1990-2026 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
 | XNAS | 1990-2026 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
 | XNYS | 1990-2026 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
-| XTKS | 1997-2026 | 100.0% | 100.0% | 7.1% | 100.0% | 100.0% | close 1997-01-06 to 2024-11-01, 6824 days (registry 15:30, PMC 15:00, EC 15:00) |
+| XTKS | 1997-2026 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
 
-Disagreements are not classified until checked by hand against the exchange's own publication; record each verdict in `docs/divergence_triage.json`.
+No disagreements, so there is nothing to classify as a registry error, library error or convention difference.

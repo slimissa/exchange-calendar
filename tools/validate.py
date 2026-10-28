@@ -27,6 +27,9 @@ import sys
 from datetime import date
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import regular_hours  # noqa: E402  (tools/regular_hours.py)
+
 try:
     import jsonschema
     HAS_JSONSCHEMA = True
@@ -124,10 +127,9 @@ def validate_business_logic(exchange: dict, filename: str) -> list:
     # regular_hours validation
     regular = exchange.get("regular_hours", {})
     if regular:
-        open_time = regular.get("open", "")
-        close_time = regular.get("close", "")
-        if open_time and close_time and open_time >= close_time:
-            errors.append(f"{filename}: regular_hours open ({open_time}) must be before close ({close_time})")
+        start = (exchange.get("generation_range") or [None])[0]
+        for message in regular_hours.problems(regular, start):
+            errors.append(f"{filename}: {message}")
 
     # extended_hours validation
     extended = exchange.get("extended_hours", {})

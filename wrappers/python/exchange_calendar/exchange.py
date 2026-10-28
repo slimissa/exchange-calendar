@@ -37,7 +37,13 @@ class Exchange:
         name (str): Full exchange name (e.g., "New York Stock Exchange")
         mic (str): ISO 10383 MIC, equal to code
         timezone (str): IANA timezone (e.g., "America/New_York")
-        regular_hours (dict): {"open": "09:30", "close": "16:00"}
+        regular_hours (dict): The hours in force now (the latest entry),
+            {"open": "09:30", "close": "16:00"}. The registry may store
+            regular_hours as one object or as a list of objects with an
+            "effective_from" date; either way this is a single dict.
+        regular_hours_history (list): Every regular_hours entry, oldest first.
+            One entry (no "effective_from") for an exchange whose hours never
+            changed. Use regular_hours_on(date) for a given day.
     """
 
     def __init__(self, data: dict):
@@ -58,7 +64,8 @@ class Exchange:
         self.mic = data["mic"]
         self.timezone = data["timezone"]
         self.weekend_days = data.get("weekend_days", [5, 6])
-        self.regular_hours = data["regular_hours"]
+        self.regular_hours_history = self._regular_hours_history(data["regular_hours"])
+        self.regular_hours = self.regular_hours_history[-1]
         self.extended_hours = data.get("extended_hours", {})
         self.sessions = data.get("sessions", [])
         self.confidence = data.get("confidence", {}) or {}
@@ -94,15 +101,50 @@ class Exchange:
             if field not in data:
                 raise ValueError(f"Missing required field: {field}")
 
-        if "open" not in data["regular_hours"] or "close" not in data["regular_hours"]:
-            raise ValueError("regular_hours must have 'open' and 'close'")
-
-        # Validate time formats
-        for time_str in [data["regular_hours"]["open"], data["regular_hours"]["close"]]:
-            Exchange._validate_time_format(time_str)
+        # regular_hours is one object, or a non-empty list of objects that
+        # each carry an effective_from date.
+        regular = data["regular_hours"]
+        entries = regular if isinstance(regular, list) else [regular]
+        if not entries:
+            raise ValueError("regular_hours must not be an empty list")
+        for entry in entries:
+            if not isinstance(entry, dict) or "open" not in entry or "close" not in entry:
+                raise ValueError("regular_hours must have 'open' and 'close'")
+            if isinstance(regular, list):
+                Exchange._validate_date_format(entry.get("effective_from", ""))
+            # Validate time formats
+            for time_str in [entry["open"], entry["close"]]:
+                Exchange._validate_time_format(time_str)
 
         if data["code"] != data["mic"]:
             raise ValueError(f"code '{data['code']}' must equal mic '{data['mic']}'")
+
+    @staticmethod
+    def _regular_hours_history(regular) -> list:
+        """regular_hours (object or list) -> list of entries, oldest first."""
+        if isinstance(regular, list):
+            return sorted(regular, key=lambda entry: entry["effective_from"])
+        return [regular]
+
+    def regular_hours_on(self, date_str) -> dict:
+        """
+        Return the regular hours in force on a date.
+
+        Args:
+            date_str: ISO date (YYYY-MM-DD) or a datetime.date.
+
+        Returns:
+            dict: {"open": "HH:MM", "close": "HH:MM"} (plus "effective_from"
+            when the registry stores dated hours). A date before the first
+            entry gets the first entry.
+        """
+        day = date_str.isoformat() if isinstance(date_str, date) else date_str
+        self._validate_date_format(day)
+        in_force = self.regular_hours_history[0]
+        for entry in self.regular_hours_history:
+            if entry.get("effective_from", "") <= day:
+                in_force = entry
+        return in_force
 
     @staticmethod
     def _validate_time_format(time_str: str) -> None:
@@ -263,7 +305,8 @@ class Exchange:
         # 5. Before regular open. Only report PRE_MARKET when the
         # exchange declares a pre_market session; otherwise the market is
         # simply closed.
-        if time_str < self.regular_hours["open"]:
+        hours = self.regular_hours_on(date_str)
+        if time_str < hours["open"]:
             pre = self.extended_hours.get("pre_market") if self.extended_hours else None
             if pre and pre.get("open") and pre.get("close"):
                 if pre["open"] <= time_str < pre["close"]:
@@ -271,7 +314,7 @@ class Exchange:
             return SessionStatus.CLOSED
 
         # 6. After regular close. Same rule for after_hours.
-        if time_str >= self.regular_hours["close"]:
+        if time_str >= hours["close"]:
             after = self.extended_hours.get("after_hours") if self.extended_hours else None
             if after and after.get("open") and after.get("close"):
                 if after["open"] <= time_str < after["close"]:

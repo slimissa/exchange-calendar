@@ -321,13 +321,12 @@ describe('Exchange properties', () => {
 // ──────────────────────────────────────────────────────────────
 
 describe('Holiday detection', () => {
-    let registry;
     let xnys;
     let xlon;
     let xsau;
 
     beforeEach(() => {
-        registry = new CalendarRegistry(getRegistryPath());
+        const registry = new CalendarRegistry(getRegistryPath());
         xnys = registry.get('XNYS');
         xlon = registry.get('XLON');
         xsau = registry.get('XSAU');
@@ -396,8 +395,8 @@ describe('Holiday detection', () => {
     });
 
     test('holiday count XNYS', () => {
-        const holidays = xnys.listHolidays();
-        assert.equal(holidays.length, 451);
+        // 62 in 2025-2029 plus 389 backfilled for 1990-2024
+        assert.equal(xnys.holidayCount(), 451);
     });
 
     test('holiday count XNYS 2025', () => {
@@ -808,5 +807,60 @@ describe('Real registry data', () => {
     test('XTKS at noon is lunch break', () => {
         const r = new CalendarRegistry(getRegistryPath());
         assert.equal(r.get('XTKS').statusAt('2025-07-07', '12:00'), SessionStatus.LUNCH_BREAK);
+    });
+});
+
+
+describe('Dated regular_hours', () => {
+    const base = {
+        code: 'XTST', name: 'Test Exchange', mic: 'XTST', timezone: 'Asia/Tokyo',
+        holidays: { explicit: [], generated: [] },
+    };
+    const dated = [
+        { effective_from: '2024-11-05', open: '09:00', close: '15:30' },
+        { effective_from: '1997-01-01', open: '09:00', close: '15:00' },
+    ];
+
+    test('a list loads; regularHours is the latest entry', () => {
+        const ex = new Exchange({ ...base, regular_hours: dated });
+        assert.equal(ex.regularHours.close, '15:30');
+        assert.equal(ex.regularHoursHistory.length, 2);
+        assert.equal(ex.regularHoursHistory[0].effective_from, '1997-01-01');
+    });
+
+    test('regularHoursOn picks the entry in force', () => {
+        const ex = new Exchange({ ...base, regular_hours: dated });
+        assert.equal(ex.regularHoursOn('2020-06-02').close, '15:00');
+        assert.equal(ex.regularHoursOn('2024-11-04').close, '15:00');
+        assert.equal(ex.regularHoursOn('2024-11-05').close, '15:30');
+        assert.equal(ex.regularHoursOn('1980-01-01').close, '15:00');
+    });
+
+    test('statusAt uses the hours of the date asked about', () => {
+        const ex = new Exchange({ ...base, regular_hours: dated });
+        assert.equal(ex.statusAt('2020-06-02', '15:10'), SessionStatus.CLOSED);
+        assert.equal(ex.statusAt('2025-06-03', '15:10'), SessionStatus.OPEN);
+    });
+
+    test('a single object still works', () => {
+        const ex = new Exchange({ ...base, regular_hours: { open: '09:00', close: '15:30' } });
+        assert.equal(ex.regularHoursOn('1990-01-02').close, '15:30');
+        assert.equal(ex.regularHoursHistory.length, 1);
+    });
+
+    test('malformed lists are rejected', () => {
+        assert.throws(() => new Exchange({ ...base, regular_hours: [] }), /empty list/);
+        assert.throws(
+            () => new Exchange({ ...base, regular_hours: [{ open: '09:00', close: '15:00' }] }),
+            /date/i
+        );
+    });
+
+    test('the real registry dates XTKS and XHKG', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        assert.equal(r.get('XTKS').regularHoursOn('2020-06-02').close, '15:00');
+        assert.equal(r.get('XTKS').regularHours.close, '15:30');
+        assert.equal(r.get('XHKG').regularHoursOn('2005-06-01').open, '10:00');
+        assert.equal(r.get('XHKG').regularHoursOn('2011-03-07').open, '09:30');
     });
 });

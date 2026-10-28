@@ -2193,6 +2193,7 @@ XHKG,2024-12-25,Historical Holiday,closed,explicit,1,,,,,https://github.com/gerr
 XHKG,2024-12-26,Historical Holiday,closed,explicit,1,,,,,https://github.com/gerrymanoim/exchange_calendars
 XHKG,2024-12-31,Historical Early Close,early_close,explicit,1,12:00,,,,https://github.com/gerrymanoim/exchange_calendars
 XHKG,2025-01-01,New Year's Day,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG,2025-01-28,Lunar New Year's Eve (half-day),early_close,explicit,1,12:00,,,,https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2024/ce_SEHK_CT_063_2024.pdf
 XHKG,2025-01-29,Lunar New Year's Day,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2025-01-30,Second Day of Lunar New Year,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2025-01-31,Third Day of Lunar New Year,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
@@ -2210,17 +2211,19 @@ XHKG,2025-12-25,Christmas Day,closed,explicit,1,,,,,https://www.hkex.com.hk/News
 XHKG,2025-12-26,Boxing Day,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2025-12-31,New Year's Eve (half-day),early_close,explicit,1,12:00,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2026-01-01,New Year's Day,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG,2026-02-16,Lunar New Year's Eve (half-day),early_close,explicit,1,12:00,,,,https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/SEHK_CT_075_2025
 XHKG,2026-02-17,Lunar New Year's Day,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2026-02-18,Second Day of Lunar New Year,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2026-02-19,Third Day of Lunar New Year,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2026-04-03,Good Friday,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2026-04-06,Easter Monday,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG,2026-04-07,The day following Easter Monday,closed,explicit,1,,,,,https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/SEHK_CT_075_2025
 XHKG,2026-05-01,Labour Day,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2026-05-25,Buddha's Birthday (observed),closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2026-06-19,Tuen Ng Festival (Dragon Boat),closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2026-07-01,HKSAR Establishment Day,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
-XHKG,2026-09-25,Day after Mid-Autumn Festival,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2026-10-01,National Day,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG,2026-10-19,The day following Chung Yeung Festival,closed,explicit,1,,,,,https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/SEHK_CT_075_2025
 XHKG,2026-12-24,Christmas Eve (half-day),early_close,explicit,1,12:00,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2026-12-25,Christmas Day,closed,explicit,1,,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG,2026-12-31,New Year's Eve (half-day),early_close,explicit,1,12:00,,,,https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar

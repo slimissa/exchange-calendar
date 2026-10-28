@@ -367,6 +367,21 @@ Each exchange file follows the JSON Schema in `schema.json`:
 }
 ```
 
+`regular_hours` is one object, or a list of objects with `effective_from` dates
+for an exchange whose hours changed. The entry in force on a date is the latest
+one whose `effective_from` is on or before it:
+
+```json
+"regular_hours": [
+  {"effective_from": "1997-01-01", "open": "09:00", "close": "15:00"},
+  {"effective_from": "2024-11-05", "open": "09:00", "close": "15:30"}
+]
+```
+
+The wrappers read either form (`regular_hours_on(date)` returns the hours for a
+day); `regular_hours` on an exchange is the hours in force now. The SQL, CSV and
+Parquet exports and the `sessions` list carry the hours in force now only.
+
 Every explicit holiday entry must include a `source_url` pointing to the official exchange calendar page.
 
 ---

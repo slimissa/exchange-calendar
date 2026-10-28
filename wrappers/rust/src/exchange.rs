@@ -15,6 +15,85 @@ pub struct RegularHours {
     pub close: String,
 }
 
+/// One entry of a dated `regular_hours` list: hours that apply from
+/// `effective_from` (YYYY-MM-DD) until the next entry takes over.
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct DatedRegularHours {
+    /// First date (YYYY-MM-DD) these hours apply.
+    pub effective_from: String,
+
+    /// Opening time in HH:MM format.
+    pub open: String,
+
+    /// Closing time in HH:MM format.
+    pub close: String,
+}
+
+impl DatedRegularHours {
+    /// The hours without their date.
+    pub fn hours(&self) -> RegularHours {
+        RegularHours { open: self.open.clone(), close: self.close.clone() }
+    }
+}
+
+/// `regular_hours` in calendar.json: one object, or a list of dated objects.
+#[derive(Deserialize)]
+#[serde(untagged)]
+enum RegularHoursField {
+    One(RegularHours),
+    Many(Vec<DatedRegularHours>),
+}
+
+/// Deserialize `regular_hours` from either form. A list yields its latest
+/// entry (the hours in force now); the full list is read by
+/// `parse_regular_hours_history` and attached with
+/// `Exchange::set_regular_hours_history`.
+fn deserialize_regular_hours<'de, D>(deserializer: D) -> Result<RegularHours, D::Error>
+where
+    D: serde::Deserializer<'de>,
+{
+    match RegularHoursField::deserialize(deserializer)? {
+        RegularHoursField::One(hours) => Ok(hours),
+        RegularHoursField::Many(list) => list
+            .iter()
+            .max_by(|a, b| a.effective_from.cmp(&b.effective_from))
+            .map(DatedRegularHours::hours)
+            .ok_or_else(|| serde::de::Error::custom("regular_hours must not be an empty list")),
+    }
+}
+
+/// Read a dated `regular_hours` list from a raw `regular_hours` JSON value.
+///
+/// Returns `Ok(None)` for the single-object form. Entries are validated
+/// (dates, times, open before close) and sorted oldest first.
+pub fn parse_regular_hours_history(
+    value: &serde_json::Value,
+) -> Result<Option<Vec<DatedRegularHours>>, String> {
+    if !value.is_array() {
+        return Ok(None);
+    }
+    let mut list: Vec<DatedRegularHours> =
+        serde_json::from_value(value.clone()).map_err(|e| format!("regular_hours: {e}"))?;
+    if list.is_empty() {
+        return Err("regular_hours must not be an empty list".to_string());
+    }
+    for entry in &list {
+        if NaiveDate::parse_from_str(&entry.effective_from, "%Y-%m-%d").is_err() {
+            return Err(format!("regular_hours.effective_from {:?} is not YYYY-MM-DD", entry.effective_from));
+        }
+        for t in [&entry.open, &entry.close] {
+            if NaiveTime::parse_from_str(t, "%H:%M").is_err() {
+                return Err(format!("regular_hours time {t:?} is not HH:MM"));
+            }
+        }
+        if entry.open >= entry.close {
+            return Err(format!("regular_hours.open ({}) must be before close ({})", entry.open, entry.close));
+        }
+    }
+    list.sort_by(|a, b| a.effective_from.cmp(&b.effective_from));
+    Ok(Some(list))
+}
+
 impl RegularHours {
     /// Parse the open time as a `NaiveTime`.
     ///
@@ -111,7 +190,9 @@ pub struct ExchangeData {
     /// exchange's non-trading weekend days.
     pub weekend_days: Option<Vec<u8>>,
 
-    /// Regular trading hours.
+    /// Regular trading hours. In calendar.json this is one object or a list
+    /// of dated objects; for a list this is the latest entry.
+    #[serde(deserialize_with = "deserialize_regular_hours")]
     pub regular_hours: RegularHours,
 
     /// Extended trading hours.
@@ -235,8 +316,12 @@ pub struct Exchange {
     /// exchange's non-trading weekend days.
     pub weekend_days: Vec<u8>,
 
-    /// Regular trading hours.
+    /// Regular trading hours in force now (the latest entry).
     pub regular_hours: RegularHours,
+
+    /// Every dated `regular_hours` entry, oldest first. Empty when the hours
+    /// never changed. Use `regular_hours_on` for a given date.
+    pub regular_hours_history: Vec<DatedRegularHours>,
 
     /// Extended trading hours.
     pub extended_hours: ExtendedHours,
@@ -267,6 +352,7 @@ impl Exchange {
             timezone: data.timezone.clone(),
             weekend_days: data.weekend_days.clone().unwrap_or_else(|| vec![5, 6]),
             regular_hours: data.regular_hours.clone(),
+            regular_hours_history: Vec::new(),
             extended_hours: data.extended_hours.clone().unwrap_or_default(),
             sessions: data.sessions.clone().unwrap_or_default(),
             holiday_by_date: HashMap::new(),
@@ -385,6 +471,35 @@ impl Exchange {
         self.early_close_time_by_date.contains_key(date_str)
     }
 
+    /// Attach a dated `regular_hours` history (see
+    /// `parse_regular_hours_history`). `Registry` does this when it loads a
+    /// calendar whose `regular_hours` is a list.
+    pub fn set_regular_hours_history(&mut self, mut history: Vec<DatedRegularHours>) {
+        history.sort_by(|a, b| a.effective_from.cmp(&b.effective_from));
+        self.regular_hours_history = history;
+    }
+
+    /// Regular hours in force on a date (YYYY-MM-DD). A date before the first
+    /// dated entry gets the first entry; with no history this is
+    /// `regular_hours` for every date.
+    pub fn regular_hours_on(&self, date_str: &str) -> Result<RegularHours, QueryError> {
+        Self::validate_date_format(date_str)?;
+        Ok(self.hours_on(date_str))
+    }
+
+    fn hours_on(&self, date_str: &str) -> RegularHours {
+        let mut in_force = match self.regular_hours_history.first() {
+            Some(first) => first,
+            None => return self.regular_hours.clone(),
+        };
+        for entry in &self.regular_hours_history {
+            if entry.effective_from.as_str() <= date_str {
+                in_force = entry;
+            }
+        }
+        in_force.hours()
+    }
+
     /// Return the early close time for this date, or None.
     pub fn early_close_time(&self, date_str: &str) -> Option<&str> {
         self.early_close_time_by_date.get(date_str).map(|s| s.as_str())
@@ -448,8 +563,10 @@ impl Exchange {
             }
         }
 
+        let hours = self.hours_on(date_str);
+
         // Before regular open — only PRE_MARKET if declared.
-        if let Some(open_time) = self.regular_hours.open_time() {
+        if let Some(open_time) = hours.open_time() {
             if time < open_time {
                 if let Some(pre) = self.extended_hours.pre_market.as_ref() {
                     if let (Ok(pre_open), Ok(pre_close)) = (
@@ -466,7 +583,7 @@ impl Exchange {
         }
 
         // After regular close — only AFTER_HOURS if declared.
-        if let Some(close_time) = self.regular_hours.close_time() {
+        if let Some(close_time) = hours.close_time() {
             if time >= close_time {
                 if let Some(after) = self.extended_hours.after_hours.as_ref() {
                     if let (Ok(after_open), Ok(after_close)) = (

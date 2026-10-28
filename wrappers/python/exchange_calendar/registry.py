@@ -325,6 +325,12 @@ class CalendarRegistry:
         for s in (getattr(ex, "sessions", None) or []):
             o = s.get("open") if isinstance(s, dict) else getattr(s, "open", None)
             cl = s.get("close") if isinstance(s, dict) else getattr(s, "close", None)
+            stype = s.get("type") if isinstance(s, dict) else getattr(s, "type", None)
+            if stype == "regular" and hasattr(ex, "regular_hours_on"):
+                # The regular session follows the hours in force on this date
+                # (regular_hours may be a dated list).
+                hours = ex.regular_hours_on(date)
+                o, cl = hours["open"], hours["close"]
             if o and cl and o <= time < cl:
                 return True
 
