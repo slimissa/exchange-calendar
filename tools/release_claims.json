@@ -1174,5 +1174,75 @@
       "file": "tests/cross_language_queries.json",
       "contains": "is_open_xtks_after_old_close"
     }
+  ],
+  "2.23.2": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.2"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.2] - 2026-10-28"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Extended divergence verification to 2027-2029 and resolved future rule discrepancies."
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.2-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.2"
+    },
+    {
+      "file": "schema.json",
+      "contains": "\"fixed_with_sunday_observance\","
+    },
+    {
+      "file": "tools/generate_dates.py",
+      "contains": "elif rule_type == \"fixed_with_sunday_observance\":"
+    },
+    {
+      "file": "tools/validate.py",
+      "contains": "\"fixed_with_sunday_observance\""
+    },
+    {
+      "file": "docs/recurrence_rules.md",
+      "contains": "### `fixed_with_sunday_observance`"
+    },
+    {
+      "file": "exchanges/XNYS.json",
+      "contains": "\"rule\": \"fixed_with_sunday_observance\""
+    },
+    {
+      "file": "exchanges/XNAS.json",
+      "contains": "\"rule\": \"fixed_with_sunday_observance\""
+    },
+    {
+      "file": "exchanges/XTKS.json",
+      "contains": "\"date\": \"2027-07-19\""
+    },
+    {
+      "file": "exchanges/XHKG.json",
+      "contains": "\"date\": \"2027-09-16\""
+    },
+    {
+      "file": "tools/divergence_report.py",
+      "contains": "def render_by_year(report):"
+    },
+    {
+      "file": ".github/workflows/divergence.yml",
+      "contains": "--exchanges all --year 2024-2029"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "Future uncertainty, 2028-2029 (added 2.23.2)"
+    },
+    {
+      "file": "tests/test_future_years.py",
+      "contains": "class TestSundayObservanceRule:"
+    }
   ]
 }

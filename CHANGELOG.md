@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.2] - 2026-10-28
+
+### Changed
+- Extended divergence verification to 2027-2029 and resolved future rule discrepancies.
+- The weekly divergence job covers 2024-2029 for every exchange and 1990-2029 for the session-time check; `docs/DIVERGENCE.md` gains a by-year table.
+
+### Added
+- Recurrence rule `fixed_with_sunday_observance` (Sunday to Monday, a Saturday date not observed), used for New Year's Day on XNYS and XNAS.
+
+### Fixed
+- Registry dates for 2027-2029 that the check found wrong: XNYS and XNAS (Christmas observed 2027-12-24, no New Year's Day closure 2027-12-31), XASX and XLON (2028 holidays and half days), XTKS (eight dates) and XHKG (2027 Mid-Autumn, the 2028-2029 festival dates and Lunar New Year's Eve half days), each checked against the exchange's publication or the governing law.
+- Three XHKG 2029 dates stay open until Hong Kong publishes its 2029 holidays; see BLOCKED.md.
+
 ## [2.23.1] - 2026-10-28
 
 ### Fixed
