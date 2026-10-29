@@ -2234,6 +2234,12 @@
         "status": "early_close"
       },
       {
+        "date": "2028-01-03",
+        "name": "New Year's Day (observed)",
+        "source_url": "https://asx.com.au/content/dam/asx/markets/market-resources/t24-trading-calendars/T24-trading-calendar2028.pdf",
+        "status": "closed"
+      },
+      {
         "date": "2028-01-26",
         "name": "Australia Day",
         "source_url": "https://www.asx.com.au/market-data/trading-hours-calendar",
@@ -2264,6 +2270,13 @@
         "status": "closed"
       },
       {
+        "date": "2028-12-22",
+        "early_close_time": "14:10",
+        "name": "Christmas Eve (half-day)",
+        "source_url": "https://www.asx.com.au/market-data/trading-hours-calendar",
+        "status": "early_close"
+      },
+      {
         "date": "2028-12-25",
         "name": "Christmas Day",
         "source_url": "https://www.asx.com.au/market-data/trading-hours-calendar",
@@ -2274,6 +2287,13 @@
         "name": "Boxing Day",
         "source_url": "https://www.asx.com.au/market-data/trading-hours-calendar",
         "status": "closed"
+      },
+      {
+        "date": "2028-12-29",
+        "early_close_time": "14:10",
+        "name": "New Year's Eve (half-day)",
+        "source_url": "https://www.asx.com.au/market-data/trading-hours-calendar",
+        "status": "early_close"
       },
       {
         "date": "2029-01-01",

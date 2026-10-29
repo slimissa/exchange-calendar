@@ -387,13 +387,16 @@ XASX;2027-12-24;Christmas Eve (half-day);early_close;explicit;1;14:10;;;;https:/
 XASX;2027-12-27;Christmas Day (observed);closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
 XASX;2027-12-28;Boxing Day (observed);closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
 XASX;2027-12-31;New Year's Eve (half-day);early_close;explicit;1;14:10;;;;https://www.asx.com.au/market-data/trading-hours-calendar
+XASX;2028-01-03;New Year's Day (observed);closed;explicit;1;;;;;https://asx.com.au/content/dam/asx/markets/market-resources/t24-trading-calendars/T24-trading-calendar2028.pdf
 XASX;2028-01-26;Australia Day;closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
 XASX;2028-04-14;Good Friday;closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
 XASX;2028-04-17;Easter Monday;closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
 XASX;2028-04-25;ANZAC Day;closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
 XASX;2028-06-12;King's Birthday;closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
+XASX;2028-12-22;Christmas Eve (half-day);early_close;explicit;1;14:10;;;;https://www.asx.com.au/market-data/trading-hours-calendar
 XASX;2028-12-25;Christmas Day;closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
 XASX;2028-12-26;Boxing Day;closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
+XASX;2028-12-29;New Year's Eve (half-day);early_close;explicit;1;14:10;;;;https://www.asx.com.au/market-data/trading-hours-calendar
 XASX;2029-01-01;New Year's Day;closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
 XASX;2029-01-26;Australia Day;closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
 XASX;2029-03-30;Good Friday;closed;explicit;1;;;;;https://www.asx.com.au/market-data/trading-hours-calendar
@@ -2228,33 +2231,38 @@ XHKG;2026-12-24;Christmas Eve (half-day);early_close;explicit;1;12:00;;;;https:/
 XHKG;2026-12-25;Christmas Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2026-12-31;New Year's Eve (half-day);early_close;explicit;1;12:00;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2027-01-01;New Year's Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
-XHKG;2027-02-08;Second Day of Lunar New Year;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
-XHKG;2027-02-09;Third Day of Lunar New Year;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG;2027-02-05;Lunar New Year's Eve (half-day);early_close;explicit;1;12:00;;;;https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846
+XHKG;2027-02-08;Third Day of Lunar New Year;closed;explicit;1;;;;;https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846
+XHKG;2027-02-09;Fourth Day of Lunar New Year;closed;explicit;1;;;;;https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846
 XHKG;2027-03-26;Good Friday;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2027-03-29;Easter Monday;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2027-04-05;Ching Ming Festival;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2027-05-13;Buddha's Birthday;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2027-06-09;Tuen Ng Festival (Dragon Boat);closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2027-07-01;HKSAR Establishment Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
-XHKG;2027-09-15;Day after Mid-Autumn Festival;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG;2027-09-16;Day after Mid-Autumn Festival;closed;explicit;1;;;;;https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846
 XHKG;2027-10-01;National Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2027-10-08;Chung Yeung Festival;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2027-12-24;Christmas Eve (half-day);early_close;explicit;1;12:00;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2027-12-27;Boxing Day (observed);closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2027-12-31;New Year's Eve (half-day);early_close;explicit;1;12:00;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG;2028-01-25;Lunar New Year's Eve (half-day);early_close;explicit;1;12:00;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2028-01-26;Lunar New Year's Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2028-01-27;Second Day of Lunar New Year;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2028-01-28;Third Day of Lunar New Year;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG;2028-04-04;Ching Ming Festival;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2028-04-14;Good Friday;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2028-04-17;Easter Monday;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2028-05-01;Labour Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2028-05-02;Buddha's Birthday;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG;2028-05-29;Tuen Ng Festival (observed);closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2028-10-02;National Day (observed);closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
-XHKG;2028-10-03;Day after Mid-Autumn Festival;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG;2028-10-04;Day after Mid-Autumn Festival;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2028-10-26;Chung Yeung Festival;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2028-12-25;Christmas Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2028-12-26;Boxing Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2029-01-01;New Year's Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG;2029-02-12;Lunar New Year's Eve (half-day);early_close;explicit;1;12:00;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2029-02-13;Lunar New Year's Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2029-02-14;Second Day of Lunar New Year;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2029-02-15;Third Day of Lunar New Year;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
@@ -2266,7 +2274,7 @@ XHKG;2029-05-21;Buddha's Birthday (observed);closed;explicit;1;;;;;https://www.h
 XHKG;2029-07-02;HKSAR Establishment Day (observed);closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2029-09-24;Day after Mid-Autumn Festival (observed);closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2029-10-01;National Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
-XHKG;2029-10-15;Chung Yeung Festival;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
+XHKG;2029-10-16;Chung Yeung Festival;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2029-12-24;Christmas Eve (half-day);early_close;explicit;1;12:00;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2029-12-25;Christmas Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
 XHKG;2029-12-26;Boxing Day;closed;explicit;1;;;;;https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar
@@ -3251,8 +3259,10 @@ XLON;2028-04-17;Easter Monday;closed;explicit;1;;;;;https://www.londonstockexcha
 XLON;2028-05-01;Early May Bank Holiday;closed;explicit;1;;;;;https://www.londonstockexchange.com/market-data/trading-services/trading-hours
 XLON;2028-05-29;Spring Bank Holiday;closed;explicit;1;;;;;https://www.londonstockexchange.com/market-data/trading-services/trading-hours
 XLON;2028-08-28;Summer Bank Holiday;closed;explicit;1;;;;;https://www.londonstockexchange.com/market-data/trading-services/trading-hours
+XLON;2028-12-22;Christmas Eve (last working day);early_close;explicit;1;12:30;;;;https://www.londonstockexchange.com/market-data/trading-services/trading-hours
 XLON;2028-12-25;Christmas Day;closed;explicit;1;;;;;https://www.londonstockexchange.com/market-data/trading-services/trading-hours
 XLON;2028-12-26;Boxing Day;closed;explicit;1;;;;;https://www.londonstockexchange.com/market-data/trading-services/trading-hours
+XLON;2028-12-29;New Year's Eve (last working day);early_close;explicit;1;12:30;;;;https://www.londonstockexchange.com/market-data/trading-services/trading-hours
 XLON;2029-01-01;New Year's Day;closed;explicit;1;;;;;https://www.londonstockexchange.com/market-data/trading-services/trading-hours
 XLON;2029-03-30;Good Friday;closed;explicit;1;;;;;https://www.londonstockexchange.com/market-data/trading-services/trading-hours
 XLON;2029-04-02;Easter Monday;closed;explicit;1;;;;;https://www.londonstockexchange.com/market-data/trading-services/trading-hours
@@ -3999,8 +4009,7 @@ XNAS;2027-07-05;Independence Day (observed);closed;explicit;1;;;;;https://www.na
 XNAS;2027-09-06;Labor Day;closed;explicit;1;;;;;https://www.nasdaq.com/market-activity/market-site/holiday-schedule
 XNAS;2027-11-25;Thanksgiving Day;closed;explicit;1;;;;;https://www.nasdaq.com/market-activity/market-site/holiday-schedule
 XNAS;2027-11-26;Day after Thanksgiving;early_close;explicit;1;13:00;;;;https://www.nasdaq.com/market-activity/market-site/holiday-schedule
-XNAS;2027-12-24;Christmas Eve;early_close;explicit;1;13:00;;;;https://www.nasdaq.com/market-activity/market-site/holiday-schedule
-XNAS;2027-12-31;New Year's Day (observed);closed;explicit;1;;;;;https://www.nasdaq.com/market-activity/market-site/holiday-schedule
+XNAS;2027-12-24;Christmas Day (observed);closed;explicit;1;;;;;https://www.nasdaq.com/market-activity/market-site/holiday-schedule
 XNAS;2028-01-17;Martin Luther King Jr. Day;closed;explicit;1;;;;;https://www.nasdaq.com/market-activity/market-site/holiday-schedule
 XNAS;2028-02-21;Presidents Day;closed;explicit;1;;;;;https://www.nasdaq.com/market-activity/market-site/holiday-schedule
 XNAS;2028-04-14;Good Friday;closed;explicit;1;;;;;https://www.nasdaq.com/market-activity/market-site/holiday-schedule
@@ -4565,8 +4574,7 @@ XNYS;2027-07-05;Independence Day (observed);closed;explicit;1;;;;;https://www.ny
 XNYS;2027-09-06;Labor Day;closed;explicit;1;;;;;https://www.nyse.com/markets/hours-calendars
 XNYS;2027-11-25;Thanksgiving Day;closed;explicit;1;;;;;https://www.nyse.com/markets/hours-calendars
 XNYS;2027-11-26;Day after Thanksgiving;early_close;explicit;1;13:00;;;;https://www.nyse.com/markets/hours-calendars
-XNYS;2027-12-24;Christmas Eve;early_close;explicit;1;13:00;;;;https://www.nyse.com/markets/hours-calendars
-XNYS;2027-12-31;New Year's Day;closed;explicit;1;;;;;https://www.nyse.com/markets/hours-calendars
+XNYS;2027-12-24;Christmas Day (observed);closed;explicit;1;;;;;https://www.nyse.com/markets/hours-calendars
 XNYS;2028-01-17;Martin Luther King Jr. Day;closed;explicit;1;;;;;https://www.nyse.com/markets/hours-calendars
 XNYS;2028-02-21;Presidents Day;closed;explicit;1;;;;;https://www.nyse.com/markets/hours-calendars
 XNYS;2028-04-14;Good Friday;closed;explicit;1;;;;;https://www.nyse.com/markets/hours-calendars
@@ -6007,7 +6015,6 @@ XTKS;2026-11-03;Culture Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/
 XTKS;2026-11-23;Labor Thanksgiving Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2026-12-31;New Year's Eve;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2027-01-01;New Year's Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
-XTKS;2027-01-04;New Year's Holiday;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2027-01-11;Coming of Age Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2027-02-11;National Foundation Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2027-02-23;Emperor's Birthday;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
@@ -6016,10 +6023,10 @@ XTKS;2027-04-29;Showa Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/co
 XTKS;2027-05-03;Constitution Memorial Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2027-05-04;Greenery Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2027-05-05;Children's Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
-XTKS;2027-07-20;Marine Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
+XTKS;2027-07-19;Marine Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2027-08-11;Mountain Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2027-09-20;Respect for the Aged Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
-XTKS;2027-09-21;Autumnal Equinox Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
+XTKS;2027-09-23;Autumnal Equinox Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2027-10-11;Sports Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2027-11-03;Culture Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2027-11-23;Labor Thanksgiving Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
@@ -6039,7 +6046,6 @@ XTKS;2028-09-22;Autumnal Equinox Day;closed;explicit;1;;;;;https://www.jpx.co.jp
 XTKS;2028-10-09;Sports Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2028-11-03;Culture Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2028-11-23;Labor Thanksgiving Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
-XTKS;2028-12-29;New Year's Holiday;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2029-01-01;New Year's Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2029-01-02;New Year's Holiday;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2029-01-03;New Year's Holiday;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
@@ -6050,9 +6056,9 @@ XTKS;2029-03-20;Vernal Equinox Day;closed;explicit;1;;;;;https://www.jpx.co.jp/e
 XTKS;2029-04-30;Showa Day (observed);closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2029-05-03;Constitution Memorial Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2029-05-04;Greenery Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
-XTKS;2029-05-07;Children's Day (observed);closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2029-07-16;Marine Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2029-09-17;Respect for the Aged Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
+XTKS;2029-09-24;Autumnal Equinox Day (observed);closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2029-10-08;Sports Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2029-11-23;Labor Thanksgiving Day;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
 XTKS;2029-12-31;New Year's Eve;closed;explicit;1;;;;;https://www.jpx.co.jp/english/corporate/about-jpx/calendar/

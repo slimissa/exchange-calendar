@@ -14,7 +14,7 @@ When a sessions file from `divergence_test.py --mode sessions` exists, a
 exchange) is added to the report. Without it the section is left out.
 
 Usage:
-    python3 tools/divergence_test.py --exchanges all --year 2024-2026
+    python3 tools/divergence_test.py --exchanges all --year 2024-2029
     python3 tools/divergence_test.py --mode sessions --exchanges XNYS,XLON,XTKS,XASX
     python3 tools/divergence_report.py
     python3 tools/divergence_report.py --input /tmp/divergence.json \\
@@ -359,6 +359,41 @@ def render_history(sessions, calendar):
     return out
 
 
+def render_by_year(report):
+    """Markdown lines for the by-year table, or [] when only one year was run.
+
+    One row per exchange with at least one disagreement, one column per year.
+    Future years matter most here: a library is only predicting them, as the
+    registry is, so a disagreement says one of them has the rule wrong.
+    """
+    years = [str(y) for y in report["years"]]
+    if len(years) < 2:
+        return []
+    rows = []
+    for code, e in sorted(report["exchanges"].items()):
+        if "years" not in e:
+            continue
+        counts = {}
+        for y in years:
+            r = e["years"].get(y)
+            if r and REGISTRY in r["sources_compared"] and len(r["sources_compared"]) > 1:
+                counts[y] = r["summary"]["disagreements"]
+        if any(counts.values()):
+            rows.append((code, counts))
+    out = ["## Disagreements by year", ""]
+    if not rows:
+        return out + ["None.", ""]
+    out.append("Trading-day disagreements per year, for the exchanges that have any. "
+               "`-` means the registry has no data to compare that year.")
+    out += ["", "| Exchange | " + " | ".join(years) + " |",
+            "|---|" + "---:|" * len(years)]
+    for code, counts in rows:
+        out.append(f"| {code} | " + " | ".join(str(counts[y]) if y in counts else "-"
+                                              for y in years) + " |")
+    out.append("")
+    return out
+
+
 def render(report, triage=None, sessions=None, calendar=None):
     triage_index = _triage_index(triage)
     exchanges = report["exchanges"]
@@ -471,6 +506,8 @@ def render(report, triage=None, sessions=None, calendar=None):
           f"{total_agree + total_diffs} "
           f"({total_agree / (total_agree + total_diffs) * 100:.1f}%).")
     w("")
+
+    out.extend(render_by_year(report))
 
     # ---- no reference data ------------------------------------------------
     w("## No reference data")

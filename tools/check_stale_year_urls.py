@@ -137,6 +137,10 @@ ALLOWLIST = {
     # 2026). Added in v2.23.1. No fetcher reads it (XHKG is ci_unreachable).
     # Unblock: cite the 2027 schedule circular when entries for 2027 are checked.
     "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/SEHK_CT_075_2025": "2027-06-01",
+    # XHKG.json entries for 2027-02-05, 2027-02-08, 2027-02-09 and 2027-09-16: the
+    # SEHK circular CT/077/26 (Hong Kong Securities Market Holiday Schedule for
+    # 2027). Added in v2.23.2. Unblock: cite the 2028 schedule circular, due mid-2027.
+    "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846": "2027-06-01",
     # XHKG.json entry for 2025-01-28: SEHK circular CT/063/24 (2025 schedule).
     "https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2024/ce_SEHK_CT_063_2024.pdf": "2027-06-01",
 }

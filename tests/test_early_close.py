@@ -174,8 +174,9 @@ class TestWeekdayEarlyCloses:
         dates = [e["date"] for e in data["holidays"]["explicit"] if e["status"] == "early_close"]
         assert "2028-12-24" not in dates
 
-        # 2027-12-24 is Friday — early close exists
-        assert "2027-12-24" in dates
+        # 2027-12-24 is Friday, but Christmas Day (Saturday) is observed on it:
+        # NYSE closes all day (ICE announcement, Dec 2025), so no early close.
+        assert "2027-12-24" not in dates
 
     def test_no_early_close_when_new_years_eve_is_weekend(self):
         """When Dec 31 falls on Saturday/Sunday, no early close entry for LSE."""
@@ -210,7 +211,7 @@ class TestEarlyClosePatterns:
         july_thirds = [e for e in early_closes if "July" in e["name"] or "Independence" in e["name"]]
 
         assert len(black_fridays) >= 4  # 2025, 2026, 2027, 2028, 2029 = 5
-        assert len(christmas_eves) == 4  # 2025, 2026, 2027, 2029 (not 2028 - Sunday)
+        assert len(christmas_eves) == 3  # 2025, 2026, 2029 (not 2027 - Christmas observed; not 2028 - Sunday)
         assert len(july_thirds) == 3  # 2025, 2028, 2029 (not 2026 - observed, not 2027 - weekend)
 
     def test_lse_two_early_close_types(self):
@@ -224,9 +225,10 @@ class TestEarlyClosePatterns:
         christmas_eves = [e for e in early_closes if "Christmas Eve" in e["name"]]
         new_years_eves = [e for e in early_closes if "New Year's Eve" in e["name"]]
 
-        # 2025, 2026, 2027, 2029 = 4 each (2028 both on Sunday)
-        assert len(christmas_eves) == 4
-        assert len(new_years_eves) == 4
+        # 2025, 2026, 2027, 2029 = 4 each, plus 2028: both eves are Sundays, so
+        # the last working days (Dec 22 and Dec 29) close early instead.
+        assert len(christmas_eves) == 5
+        assert len(new_years_eves) == 5
 
     def test_nyse_july_3_early_close_conditional(self):
         """July 3 is early close only when July 4 is Tuesday-Friday."""
@@ -297,8 +299,8 @@ class TestConsistency:
             early_count = sum(1 for e in data["holidays"]["explicit"] if e["status"] == "early_close" and e["date"] >= "2025-01-01")
             counts[code] = early_count
 
-        # XNYS: 5 Black Fridays + 4 Christmas Eves + 3 July 3rds = 12
-        assert counts["XNYS"] == 12, f"XNYS: expected 12 early closes, got {counts['XNYS']}"
+        # XNYS: 5 Black Fridays + 3 Christmas Eves + 3 July 3rds = 11
+        assert counts["XNYS"] == 11, f"XNYS: expected 11 early closes, got {counts['XNYS']}"
 
-        # XLON: 4 Christmas Eves + 4 New Year's Eves = 8
-        assert counts["XLON"] == 8, f"XLON: expected 8 early closes, got {counts['XLON']}"
+        # XLON: 5 Christmas Eves + 5 New Year's Eves (2028: the last working days) = 10
+        assert counts["XLON"] == 10, f"XLON: expected 10 early closes, got {counts['XLON']}"

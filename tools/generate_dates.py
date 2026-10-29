@@ -6,6 +6,9 @@ Expands recurrence rules from an exchange calendar file into explicit dated holi
 
 Rules supported:
     fixed_date                     — Same date every year, no weekend adjustment
+    fixed_with_sunday_observance   — Fixed date; on a Sat/Sun-weekend exchange Sunday -> Monday, and a
+                                     Saturday date is not observed on the Friday (NYSE and Nasdaq:
+                                     New Year's Day on a Saturday leaves the Friday open)
     fixed_with_thursday_observance — Fixed date observed on a Thursday (Egypt, see observe_thursday)
     fixed_with_weekend_adjustment  — Fixed date; on a Sat/Sun-weekend exchange Saturday -> Friday,
                                      Sunday -> Monday; on any other weekend (Fri/Sat) a date on a
@@ -226,6 +229,17 @@ def generate_dates_for_rule(rule: dict, year: int, weekend_days=(5, 6)) -> date:
             raise ValueError(f"fixed_with_weekend_adjustment rule missing month or day: {rule}")
         d = date(year, month, day)
         return adjust_weekend(d, rule_type, weekend_days)
+
+    elif rule_type == "fixed_with_sunday_observance":
+        month = rule.get("month")
+        day = rule.get("day")
+        if month is None or day is None:
+            raise ValueError(f"fixed_with_sunday_observance rule missing month or day: {rule}")
+        d = date(year, month, day)
+        # A Saturday date stays on the Saturday: a weekend day, so nothing is generated.
+        if tuple(sorted(weekend_days)) == (5, 6) and d.weekday() == 6:
+            return d + timedelta(days=1)
+        return d
 
     elif rule_type == "fixed_with_thursday_observance":
         month = rule.get("month")

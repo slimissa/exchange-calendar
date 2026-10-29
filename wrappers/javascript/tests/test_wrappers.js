@@ -395,8 +395,8 @@ describe('Holiday detection', () => {
     });
 
     test('holiday count XNYS', () => {
-        // 62 in 2025-2029 plus 389 backfilled for 1990-2024
-        assert.equal(xnys.holidayCount(), 451);
+        // 61 in 2025-2029 plus 389 backfilled for 1990-2024
+        assert.equal(xnys.holidayCount(), 450);
     });
 
     test('holiday count XNYS 2025', () => {

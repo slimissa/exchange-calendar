@@ -39,7 +39,7 @@ except ImportError:
 
 WEEKDAYS = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}
 VALID_STATUSES = {"closed", "early_close", "delayed_open", "special_session"}
-VALID_RULES = {"fixed_date", "fixed_with_weekend_adjustment", "fixed_with_thursday_observance", "nth_weekday", "last_weekday", "easter_offset"}
+VALID_RULES = {"fixed_date", "fixed_with_weekend_adjustment", "fixed_with_sunday_observance", "fixed_with_thursday_observance", "nth_weekday", "last_weekday", "easter_offset"}
 VALID_TIMEZONE_PREFIXES = {"Africa", "America", "Antarctica", "Arctic", "Asia", "Atlantic", "Australia", "Europe", "Indian", "Pacific", "Etc", "UTC", "GMT"}
 
 
@@ -204,7 +204,7 @@ def validate_business_logic(exchange: dict, filename: str) -> list:
         if status == "early_close" and "early_close_time" not in rule:
             errors.append(f"{filename}: Recurrence rule '{rule.get('name')}' with early_close status missing early_close_time")
 
-        if rule_type == "fixed_date" or rule_type == "fixed_with_weekend_adjustment":
+        if rule_type in ("fixed_date", "fixed_with_weekend_adjustment", "fixed_with_sunday_observance"):
             if "month" not in rule or "day" not in rule:
                 errors.append(f"{filename}: Recurrence rule '{rule.get('name')}' missing month/day")
             else:

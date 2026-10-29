@@ -375,9 +375,9 @@ class TestHolidayDetection:
         assert xlon.is_holiday("2025-04-21") is True
 
     def test_holiday_count_xnys(self, xnys):
-        # 62 in 2025-2029 plus 389 backfilled for 1990-2024
+        # 61 in 2025-2029 plus 389 backfilled for 1990-2024
         count = xnys.holiday_count()
-        assert count == 451
+        assert count == 450
 
     def test_holiday_count_xnys_2025(self, xnys):
         # XNYS.json 2025: 11 full closures + 3 early closes = 14 total

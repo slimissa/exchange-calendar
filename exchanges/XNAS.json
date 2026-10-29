@@ -2857,14 +2857,7 @@
       },
       {
         "date": "2027-12-24",
-        "early_close_time": "13:00",
-        "name": "Christmas Eve",
-        "source_url": "https://www.nasdaq.com/market-activity/market-site/holiday-schedule",
-        "status": "early_close"
-      },
-      {
-        "date": "2027-12-31",
-        "name": "New Year's Day (observed)",
+        "name": "Christmas Day (observed)",
         "source_url": "https://www.nasdaq.com/market-activity/market-site/holiday-schedule",
         "status": "closed"
       },
@@ -3024,7 +3017,7 @@
         "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_with_sunday_observance",
         "source_url": "https://www.nasdaq.com/market-activity/market-site/holiday-schedule",
         "status": "closed"
       },

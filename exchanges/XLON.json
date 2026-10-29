@@ -2653,6 +2653,13 @@
         "status": "closed"
       },
       {
+        "date": "2028-12-22",
+        "early_close_time": "12:30",
+        "name": "Christmas Eve (last working day)",
+        "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
+        "status": "early_close"
+      },
+      {
         "date": "2028-12-25",
         "name": "Christmas Day",
         "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
@@ -2663,6 +2670,13 @@
         "name": "Boxing Day",
         "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
         "status": "closed"
+      },
+      {
+        "date": "2028-12-29",
+        "early_close_time": "12:30",
+        "name": "New Year's Eve (last working day)",
+        "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
+        "status": "early_close"
       },
       {
         "date": "2029-01-01",

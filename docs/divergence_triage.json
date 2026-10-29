@@ -107,6 +107,84 @@
       "dates": ["2025-10-21"],
       "summary": "NSE lists Tuesday 2025-10-21 (Diwali Laxmi Pujan) as a trading holiday and runs only a one-hour Muhurat session (13:45-14:45) on it; the next day is Diwali-Balipratipada. The registry keeps the day closed, like the exchange's list and like BSE (XBOM, where both libraries agree). pandas_market_calendars counts the day as open because of the Muhurat session. Both are defensible; no data change.",
       "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+    },
+    {
+      "exchange": "XNYS",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.2",
+      "dates": [
+        "2027-12-24",
+        "2027-12-31"
+      ],
+      "summary": "NYSE announced Christmas Day 2027 observed on Friday 2027-12-24 (closed all day) and no New Year's Day holiday for 2028, because 1 January 2028 is a Saturday. The registry had a Christmas Eve early close on the 24th and a closure on 2027-12-31. The New Year's Day recurrence rule also generated the 31st; it now uses fixed_with_sunday_observance.",
+      "source_url": "https://ir.theice.com/press/news-details/2025/NYSE-Group-Announces-2026-2027-and-2028-Holiday-and-Early-Closings-Calendar/"
+    },
+    {
+      "exchange": "XNAS",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.2",
+      "dates": [
+        "2027-12-24",
+        "2027-12-31"
+      ],
+      "summary": "NYSE announced Christmas Day 2027 observed on Friday 2027-12-24 (closed all day) and no New Year's Day holiday for 2028, because 1 January 2028 is a Saturday. The registry had a Christmas Eve early close on the 24th and a closure on 2027-12-31. The New Year's Day recurrence rule also generated the 31st; it now uses fixed_with_sunday_observance. Nasdaq follows the NYSE calendar.",
+      "source_url": "https://ir.theice.com/press/news-details/2025/NYSE-Group-Announces-2026-2027-and-2028-Holiday-and-Early-Closings-Calendar/"
+    },
+    {
+      "exchange": "XASX",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.2",
+      "dates": [
+        "2028-01-03"
+      ],
+      "summary": "New Year's Day 2028 is a Saturday, observed on Monday 3 January; the ASX 24 trading calendar for 2028 lists it closed. The registry had it open. The last business days before Christmas and of the year (2028-12-22 and 2028-12-29) close at 14:10 under the ASX rule and were missing as early closes.",
+      "source_url": "https://asx.com.au/content/dam/asx/markets/market-resources/t24-trading-calendars/T24-trading-calendar2028.pdf"
+    },
+    {
+      "exchange": "XLON",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.2",
+      "dates": [
+        "2028-12-22",
+        "2028-12-29"
+      ],
+      "summary": "Christmas Eve and New Year's Eve 2028 are Sundays, so the preceding Fridays close at 12:30, as the LSE did on 22 and 29 December 2000 (Stock Exchange Notice N49/00) and 2023. The registry had them as full days (a half-day mismatch, not a trading-day one).",
+      "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours"
+    },
+    {
+      "exchange": "XTKS",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.2",
+      "dates": [
+        "2027-01-04",
+        "2027-07-19",
+        "2027-07-20",
+        "2027-09-21",
+        "2027-09-23",
+        "2028-12-29",
+        "2029-05-07",
+        "2029-09-24"
+      ],
+      "summary": "JPX closes 31 December and 1-3 January only, so Monday 2027-01-04 and Friday 2028-12-29 trade. Marine Day is the third Monday of July (2027-07-19, not the 20th). The 2027 autumnal equinox is Thursday 23 September (the registry had the 21st). A Saturday national holiday has no substitute under the Act on National Holidays, so 2029-05-07 trades; the 2029 equinox falls on Sunday 23 September, so Monday 2029-09-24 is the substitute (the equinox date is a prediction until the National Astronomical Observatory publishes it).",
+      "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+    },
+    {
+      "exchange": "XHKG",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.2",
+      "dates": [
+        "2027-02-05",
+        "2027-09-15",
+        "2027-09-16"
+      ],
+      "summary": "The SEHK circular for 2027 (CT/077/26) lists the day following the Mid-Autumn Festival as Thursday 16 September (the registry had the 15th, the festival itself) and Friday 5 February, the eve of Lunar New Year, as a half day (missing). It names 8 and 9 February the third and fourth days of Lunar New Year; the registry names are corrected.",
+      "source_url": "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846"
     }
   ]
 }

@@ -329,6 +329,24 @@
               {
                 "if": {
                   "properties": {
+                    "rule": {
+                      "const": "fixed_with_sunday_observance"
+                    }
+                  },
+                  "required": [
+                    "rule"
+                  ]
+                },
+                "then": {
+                  "required": [
+                    "month",
+                    "day"
+                  ]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
                     "status": {
                       "const": "early_close"
                     }
@@ -382,6 +400,7 @@
                 "enum": [
                   "fixed_date",
                   "fixed_with_weekend_adjustment",
+                  "fixed_with_sunday_observance",
             "fixed_with_thursday_observance",
                   "nth_weekday",
                   "last_weekday",

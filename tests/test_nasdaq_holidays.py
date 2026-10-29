@@ -234,17 +234,18 @@ class TestXNAS2027:
         assert explicit_dates["2027-07-05"]["status"] == "closed"
 
     def test_christmas_eve(self, explicit_dates):
+        """Christmas Day (Saturday) is observed Friday Dec 24: closed, not an early close."""
         assert "2027-12-24" in explicit_dates
-        assert explicit_dates["2027-12-24"]["status"] == "early_close"
+        assert explicit_dates["2027-12-24"]["status"] == "closed"
 
     def test_no_christmas_day_saturday(self, explicit_dates):
         """December 25, 2027 is Saturday — no explicit entry."""
         assert "2027-12-25" not in explicit_dates
 
-    def test_new_years_observed(self, explicit_dates):
-        """January 1, 2028 is Saturday — observed Friday December 31, 2027."""
-        assert "2027-12-31" in explicit_dates
-        assert explicit_dates["2027-12-31"]["status"] == "closed"
+    def test_new_years_not_observed_on_the_friday(self, explicit_dates):
+        """January 1, 2028 is Saturday: Nasdaq and NYSE observe no New Year's Day
+        holiday, so Friday December 31, 2027 is a trading day."""
+        assert "2027-12-31" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -324,5 +325,5 @@ class TestXNASStructure:
             assert d.weekday() < 5, f"Weekend date: {date_str} ({d.strftime('%A')})"
 
     def test_holiday_count(self, explicit_dates):
-        # XNYS has 61 explicit dates after weekend removals
-        assert len(explicit_dates) == 62, f"Expected 61 dates, got {len(explicit_dates)}"
+        # 61 explicit dates in 2025-2029 after weekend removals
+        assert len(explicit_dates) == 61, f"Expected 61 dates, got {len(explicit_dates)}"

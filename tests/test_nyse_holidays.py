@@ -216,19 +216,19 @@ class TestXNY2027:
         assert "2027-11-26" in explicit_dates
         assert explicit_dates["2027-11-26"]["status"] == "early_close"
 
-    def test_christmas_eve_early_close(self, explicit_dates):
+    def test_christmas_observed_friday_2027(self, explicit_dates):
+        """Christmas Day 2027 is a Saturday, observed Friday Dec 24: closed all day."""
         assert "2027-12-24" in explicit_dates
-        assert explicit_dates["2027-12-24"]["status"] == "early_close"
+        assert explicit_dates["2027-12-24"]["status"] == "closed"
 
     def test_christmas_day_on_saturday_no_entry(self, explicit_dates):
         """December 25, 2027 is Saturday. No explicit entry — market closed on weekends."""
         assert "2027-12-25" not in explicit_dates
 
-    def test_new_years_eve_observed_for_2028(self, explicit_dates):
-        """January 1, 2028 is Saturday — observed Friday December 31, 2027."""
-        assert "2027-12-31" in explicit_dates
-        assert explicit_dates["2027-12-31"]["status"] == "closed"
-        # Name may or may not include "observed" — date and status are authoritative
+    def test_new_years_2028_not_observed_on_friday(self, explicit_dates):
+        """January 1, 2028 is a Saturday. NYSE announced no New Year's Day holiday
+        for 2028 (ICE press release, 2025-12-23), so Friday Dec 31, 2027 trades."""
+        assert "2027-12-31" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────

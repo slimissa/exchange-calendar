@@ -536,3 +536,27 @@ class TestHistoryReport:
                                    "holidays": {"explicit": []}}]}
         sessions = {"mode": "sessions", "years": [2026], "exchanges": {"XTST": {"years": {}}}}
         assert rp.render_history(sessions, calendar) == []
+
+
+class TestByYearTable:
+    def _report(self, per_year):
+        years = {y: {"sources_compared": ["exchange_calendars", "registry"],
+                     "summary": {"disagreements": n}} for y, n in per_year.items()}
+        return {"years": [int(y) for y in per_year], "exchanges": {"XTST": {"years": years}}}
+
+    def test_lists_exchanges_with_a_disagreement_one_column_per_year(self):
+        import divergence_report as rp
+        text = "\n".join(rp.render_by_year(self._report({"2026": 0, "2027": 2, "2028": 0})))
+        assert "| Exchange | 2026 | 2027 | 2028 |" in text
+        assert "| XTST | 0 | 2 | 0 |" in text
+
+    def test_clean_exchanges_and_single_year_runs_are_left_out(self):
+        import divergence_report as rp
+        assert "XTST" not in "\n".join(rp.render_by_year(self._report({"2026": 0, "2027": 0})))
+        assert rp.render_by_year(self._report({"2026": 3})) == []
+
+    def test_a_year_without_registry_data_shows_a_dash(self):
+        import divergence_report as rp
+        report = self._report({"2026": 1, "2027": 1})
+        report["exchanges"]["XTST"]["years"]["2026"]["sources_compared"] = ["exchange_calendars"]
+        assert "| XTST | - | 1 |" in "\n".join(rp.render_by_year(report))

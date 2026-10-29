@@ -2746,6 +2746,12 @@
             "status": "early_close"
           },
           {
+            "date": "2028-01-03",
+            "name": "New Year's Day (observed)",
+            "source_url": "https://asx.com.au/content/dam/asx/markets/market-resources/t24-trading-calendars/T24-trading-calendar2028.pdf",
+            "status": "closed"
+          },
+          {
             "date": "2028-01-26",
             "name": "Australia Day",
             "source_url": "https://www.asx.com.au/market-data/trading-hours-calendar",
@@ -2776,6 +2782,13 @@
             "status": "closed"
           },
           {
+            "date": "2028-12-22",
+            "early_close_time": "14:10",
+            "name": "Christmas Eve (half-day)",
+            "source_url": "https://www.asx.com.au/market-data/trading-hours-calendar",
+            "status": "early_close"
+          },
+          {
             "date": "2028-12-25",
             "name": "Christmas Day",
             "source_url": "https://www.asx.com.au/market-data/trading-hours-calendar",
@@ -2786,6 +2799,13 @@
             "name": "Boxing Day",
             "source_url": "https://www.asx.com.au/market-data/trading-hours-calendar",
             "status": "closed"
+          },
+          {
+            "date": "2028-12-29",
+            "early_close_time": "14:10",
+            "name": "New Year's Eve (half-day)",
+            "source_url": "https://www.asx.com.au/market-data/trading-hours-calendar",
+            "status": "early_close"
           },
           {
             "date": "2029-01-01",
@@ -15927,15 +15947,22 @@
             "status": "closed"
           },
           {
+            "date": "2027-02-05",
+            "early_close_time": "12:00",
+            "name": "Lunar New Year's Eve (half-day)",
+            "source_url": "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846",
+            "status": "early_close"
+          },
+          {
             "date": "2027-02-08",
-            "name": "Second Day of Lunar New Year",
-            "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
+            "name": "Third Day of Lunar New Year",
+            "source_url": "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846",
             "status": "closed"
           },
           {
             "date": "2027-02-09",
-            "name": "Third Day of Lunar New Year",
-            "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
+            "name": "Fourth Day of Lunar New Year",
+            "source_url": "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846",
             "status": "closed"
           },
           {
@@ -15975,9 +16002,9 @@
             "status": "closed"
           },
           {
-            "date": "2027-09-15",
+            "date": "2027-09-16",
             "name": "Day after Mid-Autumn Festival",
-            "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
+            "source_url": "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846",
             "status": "closed"
           },
           {
@@ -16013,6 +16040,13 @@
             "status": "early_close"
           },
           {
+            "date": "2028-01-25",
+            "early_close_time": "12:00",
+            "name": "Lunar New Year's Eve (half-day)",
+            "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
+            "status": "early_close"
+          },
+          {
             "date": "2028-01-26",
             "name": "Lunar New Year's Day",
             "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
@@ -16027,6 +16061,12 @@
           {
             "date": "2028-01-28",
             "name": "Third Day of Lunar New Year",
+            "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2028-04-04",
+            "name": "Ching Ming Festival",
             "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
             "status": "closed"
           },
@@ -16055,13 +16095,19 @@
             "status": "closed"
           },
           {
+            "date": "2028-05-29",
+            "name": "Tuen Ng Festival (observed)",
+            "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
+            "status": "closed"
+          },
+          {
             "date": "2028-10-02",
             "name": "National Day (observed)",
             "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
             "status": "closed"
           },
           {
-            "date": "2028-10-03",
+            "date": "2028-10-04",
             "name": "Day after Mid-Autumn Festival",
             "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
             "status": "closed"
@@ -16089,6 +16135,13 @@
             "name": "New Year's Day",
             "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
             "status": "closed"
+          },
+          {
+            "date": "2029-02-12",
+            "early_close_time": "12:00",
+            "name": "Lunar New Year's Eve (half-day)",
+            "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
+            "status": "early_close"
           },
           {
             "date": "2029-02-13",
@@ -16157,7 +16210,7 @@
             "status": "closed"
           },
           {
-            "date": "2029-10-15",
+            "date": "2029-10-16",
             "name": "Chung Yeung Festival",
             "source_url": "https://www.hkex.com.hk/News/Market-Communications/Trading-Calendar",
             "status": "closed"
@@ -23315,6 +23368,13 @@
             "status": "closed"
           },
           {
+            "date": "2028-12-22",
+            "early_close_time": "12:30",
+            "name": "Christmas Eve (last working day)",
+            "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
+            "status": "early_close"
+          },
+          {
             "date": "2028-12-25",
             "name": "Christmas Day",
             "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
@@ -23325,6 +23385,13 @@
             "name": "Boxing Day",
             "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
             "status": "closed"
+          },
+          {
+            "date": "2028-12-29",
+            "early_close_time": "12:30",
+            "name": "New Year's Eve (last working day)",
+            "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
+            "status": "early_close"
           },
           {
             "date": "2029-01-01",
@@ -28670,14 +28737,7 @@
           },
           {
             "date": "2027-12-24",
-            "early_close_time": "13:00",
-            "name": "Christmas Eve",
-            "source_url": "https://www.nasdaq.com/market-activity/market-site/holiday-schedule",
-            "status": "early_close"
-          },
-          {
-            "date": "2027-12-31",
-            "name": "New Year's Day (observed)",
+            "name": "Christmas Day (observed)",
             "source_url": "https://www.nasdaq.com/market-activity/market-site/holiday-schedule",
             "status": "closed"
           },
@@ -32570,14 +32630,7 @@
           },
           {
             "date": "2027-12-24",
-            "early_close_time": "13:00",
-            "name": "Christmas Eve",
-            "source_url": "https://www.nyse.com/markets/hours-calendars",
-            "status": "early_close"
-          },
-          {
-            "date": "2027-12-31",
-            "name": "New Year's Day",
+            "name": "Christmas Day (observed)",
             "source_url": "https://www.nyse.com/markets/hours-calendars",
             "status": "closed"
           },
@@ -42819,12 +42872,6 @@
             "status": "closed"
           },
           {
-            "date": "2027-01-04",
-            "name": "New Year's Holiday",
-            "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-            "status": "closed"
-          },
-          {
             "date": "2027-01-11",
             "name": "Coming of Age Day",
             "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
@@ -42873,7 +42920,7 @@
             "status": "closed"
           },
           {
-            "date": "2027-07-20",
+            "date": "2027-07-19",
             "name": "Marine Day",
             "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
             "status": "closed"
@@ -42891,7 +42938,7 @@
             "status": "closed"
           },
           {
-            "date": "2027-09-21",
+            "date": "2027-09-23",
             "name": "Autumnal Equinox Day",
             "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
             "status": "closed"
@@ -43011,12 +43058,6 @@
             "status": "closed"
           },
           {
-            "date": "2028-12-29",
-            "name": "New Year's Holiday",
-            "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-            "status": "closed"
-          },
-          {
             "date": "2029-01-01",
             "name": "New Year's Day",
             "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
@@ -43077,12 +43118,6 @@
             "status": "closed"
           },
           {
-            "date": "2029-05-07",
-            "name": "Children's Day (observed)",
-            "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-            "status": "closed"
-          },
-          {
             "date": "2029-07-16",
             "name": "Marine Day",
             "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
@@ -43091,6 +43126,12 @@
           {
             "date": "2029-09-17",
             "name": "Respect for the Aged Day",
+            "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
+            "status": "closed"
+          },
+          {
+            "date": "2029-09-24",
+            "name": "Autumnal Equinox Day (observed)",
             "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
             "status": "closed"
           },

@@ -42,6 +42,7 @@ range. They are **generation convenience** — never the primary source of truth
 |------|-------------|---------|
 | `fixed_date` | Same date every year, no shift | Dec 25 (Germany) |
 | `fixed_with_weekend_adjustment` | Same date, shifts from weekends | Jan 1 (US) |
+| `fixed_with_sunday_observance` | Same date; Sunday moves to Monday, Saturday is not observed | Jan 1 (NYSE, Nasdaq) |
 | `fixed_with_thursday_observance` | Same date, moved to a Thursday (Egypt) | Revolution Day (Jan 25) |
 | `nth_weekday` | Nth weekday of a month | 3rd Monday Jan (MLK) |
 | `last_weekday` | Last weekday of a month | Last Monday May (Memorial) |
@@ -110,6 +111,31 @@ Same date every year. Saturday→Friday, Sunday→Monday.
 | 2026 | Saturday | Friday July 3 |
 | 2027 | Sunday | Monday July 5 |
 | 2028 | Tuesday | Tuesday July 4 |
+
+---
+
+### `fixed_with_sunday_observance`
+
+NYSE and Nasdaq New Year's Day. Rule 7.2 observes a holiday that falls on a
+Saturday on the preceding Friday, except New Year's Day: when 1 January is a
+Saturday the Friday stays open (NYSE announced no 2028 New Year's Day closure,
+so Friday 2027-12-31 trades). A Sunday date moves to the Monday.
+
+| Date falls on | Observed |
+|---------------|----------|
+| Monday-Friday | the date itself |
+| Saturday | not observed; a weekend day, so nothing is generated |
+| Sunday | following Monday |
+
+```json
+{
+  "rule": "fixed_with_sunday_observance",
+  "month": 1,
+  "day": 1,
+  "name": "New Year's Day",
+  "status": "closed"
+}
+```
 
 ---
 

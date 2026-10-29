@@ -43,7 +43,7 @@ def test_steps_in_order(text):
         "python-version: '3.11'",
         "pip install -r requirements.txt",
         "pip install -r requirements-dev.txt",
-        "python3 tools/divergence_test.py --exchanges all --year 2024-2026",
+        "python3 tools/divergence_test.py --exchanges all --year 2024-2029",
         "python3 tools/divergence_report.py",
         "peter-evans/create-pull-request@v6",
     ]

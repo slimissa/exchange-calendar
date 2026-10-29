@@ -233,7 +233,17 @@ class TestXTKS2027:
 
     def test_new_year_holiday_2027(self, explicit_dates):
         assert "2027-01-01" in explicit_dates
-        assert "2027-01-04" in explicit_dates  # Monday after New Year weekend
+        # JPX closes Dec 31 and Jan 1-3 only; Monday Jan 4 is the first trading day.
+        assert "2027-01-04" not in explicit_dates
+
+    def test_marine_day_is_the_third_monday_of_july(self, explicit_dates):
+        assert explicit_dates["2027-07-19"]["name"] == "Marine Day"
+        assert "2027-07-20" not in explicit_dates
+
+    def test_autumnal_equinox_day_2027(self, explicit_dates):
+        """The 2027 equinox falls on Thursday Sep 23 (Respect for the Aged Day is Sep 20)."""
+        assert explicit_dates["2027-09-23"]["name"] == "Autumnal Equinox Day"
+        assert "2027-09-21" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -243,12 +253,15 @@ class TestXTKS2027:
 class TestXTKS2029:
     def test_childrens_day_observed_2029(self, explicit_dates):
         """
-        May 7, 2029 is Children's Day observed.
-        May 5 (Saturday) falls on weekend; Monday May 7 is observed.
+        Children's Day 2029 falls on Saturday May 5. Japan's Act on National
+        Holidays gives a substitute day only for a Sunday, so Monday May 7 trades.
         """
-        assert "2029-05-07" in explicit_dates
-        assert "Children" in explicit_dates["2029-05-07"]["name"]
-        assert "observed" in explicit_dates["2029-05-07"]["name"].lower()
+        assert "2029-05-07" not in explicit_dates
+
+    def test_autumnal_equinox_substitute_2029(self, explicit_dates):
+        """The 2029 equinox is Sunday Sep 23 (predicted), so Monday Sep 24 is the substitute."""
+        assert "2029-09-24" in explicit_dates
+        assert "observed" in explicit_dates["2029-09-24"]["name"].lower()
 
     def test_showa_day_observed_2029(self, explicit_dates):
         """Showa Day is April 29 (Sunday) — observed Monday April 30."""

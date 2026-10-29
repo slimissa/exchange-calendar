@@ -815,6 +815,28 @@ Reachable from a residential IP but not from CI; not a permanent block. Each of 
   and no dated local re-run after 2026-08-27, so `Last verified` stays at
   that date. A future maintainer seeing a failure here in CI should look
   here before touching `HKEXFetcher`.
+- **Future uncertainty, 2028-2029 (added 2.23.2):** HKEX publishes each
+  year's holiday schedule from the Government's gazette, about seven months
+  ahead (the 2027 circular CT/077/26 is dated 2026-06-01), so no source
+  covers 2028 or 2029 yet. The registry's 2028-2029 dates are computed from
+  the lunisolar calendar and the sun's longitude in Hong Kong time, a method
+  that reproduces every official 2026 and 2027 festival date. Three 2029
+  dates are still open and the registry and the reference libraries differ:
+  - **Ching Ming Festival, 2029:** registry 5 April (Thursday), both
+    libraries 4 April. The sun reaches 15 degrees at about 05:54 on 5 April
+    Hong Kong time, so the registry value is the likelier. Settled when the
+    Government gazettes the 2029 list (about May 2028).
+  - **Day following the Mid-Autumn Festival, 2029:** the festival is Saturday
+    22 September, so the day following is Sunday 23 September. The
+    Employment Ordinance moves it to Monday 24 September, which the registry
+    has closed; both libraries leave the 24th open. Same resolution.
+
+  Until then `docs/DIVERGENCE.md` lists these three dates as disagreements.
+  The 2028 dates the registry now carries (Ching Ming on 4 April, the
+  Tuen Ng Festival observed on Monday 29 May, the day following the
+  Mid-Autumn Festival on Wednesday 4 October, Lunar New Year's Eve a half
+  day on 25 January) agree with both libraries and are expected, not
+  confirmed.
 
 <a id="xnsa"></a>
 ## XNSA — Nigerian Exchange Group (CI-unreachable)
