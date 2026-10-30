@@ -227,16 +227,16 @@ class TestXNZEMatariki:
         assert "2026-07-10" in explicit_dates
 
     def test_matariki_2027(self, explicit_dates):
-        """Matariki 2027 — Jul 2."""
-        assert "2027-07-02" in explicit_dates
+        """Matariki 2027 — Friday 25 June (Matariki Public Holiday Act 2022)."""
+        assert "2027-06-25" in explicit_dates
 
     def test_matariki_2028(self, explicit_dates):
-        """Matariki 2028 — Jun 23."""
-        assert "2028-06-23" in explicit_dates
+        """Matariki 2028 — Friday 14 July."""
+        assert "2028-07-14" in explicit_dates
 
     def test_matariki_2029(self, explicit_dates):
-        """Matariki 2029 — Jun 22."""
-        assert "2029-06-22" in explicit_dates
+        """Matariki 2029 — Friday 6 July."""
+        assert "2029-07-06" in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -340,7 +340,11 @@ class TestXNZEStructure:
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
-            assert "nzx.com" in entry["source_url"]
+            if entry["name"] == "Matariki" and entry["date"] >= "2027":
+                # The dates come from the Matariki Public Holiday Act 2022.
+                assert entry["source_url"].startswith("https://")
+            else:
+                assert "nzx.com" in entry["source_url"]
 
 
 # ──────────────────────────────────────────────────────────────
@@ -371,3 +375,38 @@ class TestXNZESubstitution:
     def test_observed_names(self, explicit_dates):
         observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
         assert observed_count > 5, f"Expected many observed holidays, got {observed_count}"
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.4)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed_weekdays(exchange, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    days = list(exchange["holidays"]["explicit"]) + _gd.expand_exchange(exchange)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+class TestMatarikiFutureYears:
+    """Te Kāhui o Matariki Public Holiday Act 2022 fixes the dates through 2052;
+    the holiday is always a Friday."""
+
+    DATES = {2027: "2027-06-25", 2028: "2028-07-14", 2029: "2029-07-06"}
+
+    @pytest.mark.parametrize("year,day", sorted(DATES.items()))
+    def test_matariki_date(self, explicit_dates, year, day):
+        hits = [d for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["name"] == "Matariki"]
+        assert hits == [day]
+        assert date.fromisoformat(day).weekday() == 4
+
+    @pytest.mark.parametrize("day", ["2027-07-02", "2028-06-23", "2029-06-22"])
+    def test_previous_wrong_dates_are_gone(self, explicit_dates, day):
+        assert day not in explicit_dates

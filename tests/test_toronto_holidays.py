@@ -245,3 +245,43 @@ class TestXTSEStructure:
     def test_holiday_count_reasonable(self, explicit_dates):
         """~53 entries: 10 holidays × 5 years + 4 half-days + shifts."""
         assert 45 <= len(explicit_dates) <= 65
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.4)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed_weekdays(exchange, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    days = list(exchange["holidays"]["explicit"]) + _gd.expand_exchange(exchange)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+class TestFutureYearFixes:
+    """TMX closes on the Monday in lieu of a Saturday holiday (TSX closed
+    Monday 3 Jan 2022 in lieu of Saturday 1 Jan 2022) and stays open on the
+    Friday before it."""
+
+    def test_new_year_2028_is_observed_on_monday_3_jan(self, explicit_dates):
+        assert explicit_dates["2028-01-03"]["status"] == "closed"
+        assert "observed" in explicit_dates["2028-01-03"]["name"]
+
+    @pytest.mark.parametrize("day", ["2027-12-31", "2028-06-30"])
+    def test_friday_before_a_saturday_holiday_is_open(self, xtse, day):
+        assert date.fromisoformat(day).weekday() == 4
+        assert day not in _closed_weekdays(xtse, int(day[:4]))
+
+    def test_canada_day_2028_is_observed_on_monday_3_july(self, xtse):
+        assert "2028-07-03" in _closed_weekdays(xtse, 2028)
+
+    def test_new_year_and_canada_day_rules_do_not_shift_to_friday(self, xtse):
+        rules = {r["name"]: r["rule"] for r in xtse["holidays"]["recurrence_rules"]}
+        assert rules["New Year's Day"] == "fixed_date"
+        assert rules["Canada Day"] == "fixed_date"

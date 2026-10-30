@@ -148,8 +148,10 @@ class TestXHELMidsummer:
         assert "2026-06-19" in explicit_dates
 
     def test_midsummer_2027(self, explicit_dates):
-        """June 18, 2027 is Friday."""
-        assert "2027-06-18" in explicit_dates
+        """Midsummer Day is Saturday 26 June 2027, so Midsummer Eve is
+        Friday 25 June (the Friday between June 19-25), not June 18."""
+        assert "2027-06-25" in explicit_dates
+        assert "2027-06-18" not in explicit_dates
 
     def test_midsummer_2028(self, explicit_dates):
         """June 23, 2028 is Friday."""
@@ -217,3 +219,50 @@ class TestXHELStructure:
     def test_holiday_count_reasonable(self, explicit_dates):
         """~45-55 entries: 11 holidays × 5 years."""
         assert 40 <= len(explicit_dates) <= 60
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.4)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed_weekdays(exchange, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    days = list(exchange["holidays"]["explicit"]) + _gd.expand_exchange(exchange)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+class TestFutureYearFixes:
+    """Finnish Independence Day (6 Dec) is a statutory holiday that Finland does
+    not move off a weekend; Midsummer Eve is the Friday before Midsummer Day
+    (the Saturday between 20 and 26 June)."""
+
+    def test_independence_day_rule(self, xhel):
+        rule = next(r for r in xhel["holidays"]["recurrence_rules"]
+                    if r["name"] == "Independence Day")
+        assert (rule["month"], rule["day"], rule["rule"]) == (12, 6, "fixed_date")
+
+    @pytest.mark.parametrize("day", ["2027-12-06", "2028-12-06", "2029-12-06"])
+    def test_independence_day_is_closed_on_weekdays(self, xhel, day):
+        assert day in _closed_weekdays(xhel, int(day[:4]))
+
+    def test_independence_day_on_a_weekend_adds_no_weekday(self, xhel):
+        assert not {d for d in _closed_weekdays(xhel, 2025) if d.endswith("-12-06")}
+        assert not {d for d in _closed_weekdays(xhel, 2026) if d.endswith("-12-06")}
+
+    def test_midsummer_eve_2027_is_25_june(self, explicit_dates):
+        assert "2027-06-18" not in explicit_dates
+        assert explicit_dates["2027-06-25"]["name"] == "Midsummer Eve"
+
+    @pytest.mark.parametrize("year", [2027, 2028, 2029])
+    def test_midsummer_eve_is_the_friday_between_19_and_25_june(self, explicit_dates, year):
+        eves = [date.fromisoformat(d) for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["name"] == "Midsummer Eve"]
+        assert len(eves) == 1
+        assert eves[0].weekday() == 4 and eves[0].month == 6 and 19 <= eves[0].day <= 25

@@ -213,22 +213,24 @@ class TestXJSERecurrence:
         assert "Day of Goodwill" in names
 
     def test_weekend_adjustment_rules(self, xjse):
-        """South Africa observes Sunday holidays on Monday."""
+        """South Africa observes Sunday holidays on Monday and does not move
+        a Saturday holiday (Public Holidays Act 36 of 1994, s2(1))."""
         rules = xjse["holidays"].get("recurrence_rules", [])
         rule_by_name = {r["name"]: r for r in rules}
 
         for name in ["Human Rights Day", "Freedom Day", "Youth Day",
                       "National Women's Day", "Heritage Day",
                       "Day of Reconciliation", "Day of Goodwill"]:
-            assert rule_by_name[name]["rule"] == "fixed_with_weekend_adjustment", \
-                f"{name} should use fixed_with_weekend_adjustment"
+            assert rule_by_name[name]["rule"] == "fixed_with_sunday_observance", \
+                f"{name} should use fixed_with_sunday_observance"
 
     def test_workers_day_no_shift(self, xjse):
-        """Workers' Day (May 1) does NOT shift in South Africa."""
+        """Workers' Day (May 1) is not moved off a Saturday; like every holiday
+        in the Act, a Sunday 1 May is followed by a Monday holiday."""
         rules = xjse["holidays"].get("recurrence_rules", [])
         workers = [r for r in rules if r["name"] == "Workers' Day"]
         assert len(workers) == 1
-        assert workers[0]["rule"] == "fixed_date"
+        assert workers[0]["rule"] == "fixed_with_sunday_observance"
 
     def test_easter_rules(self, xjse):
         rules = xjse["holidays"].get("recurrence_rules", [])
@@ -265,3 +267,55 @@ class TestXJSEStructure:
     def test_holiday_count_reasonable(self, explicit_dates):
         """~60-70 entries: 12 holidays × 5 years."""
         assert 45 <= len(explicit_dates) <= 65
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.4)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed_weekdays(exchange, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    days = list(exchange["holidays"]["explicit"]) + _gd.expand_exchange(exchange)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+class TestFutureYearFixes:
+    """Public Holidays Act 36 of 1994, s2(1): a public holiday that falls on a
+    Sunday is followed by a public holiday on the Monday. A Saturday holiday is
+    not moved to the Friday or the Monday."""
+
+    SUNDAY_RULE = ["New Year's Day", "Human Rights Day", "Freedom Day", "Workers' Day",
+                   "Youth Day", "National Women's Day", "Heritage Day",
+                   "Day of Reconciliation", "Christmas Day", "Day of Goodwill"]
+
+    def test_fixed_date_holidays_move_only_from_sunday(self, xjse):
+        rules = {r["name"]: r["rule"] for r in xjse["holidays"]["recurrence_rules"]}
+        for name in self.SUNDAY_RULE:
+            assert rules[name] == "fixed_with_sunday_observance", name
+
+    @pytest.mark.parametrize("day", ["2028-12-15", "2029-06-15"])
+    def test_saturday_holidays_do_not_close_the_friday(self, xjse, day):
+        # 16 Dec 2028 and 16 Jun 2029 are Saturdays.
+        assert date.fromisoformat(day).weekday() == 4
+        assert day not in _closed_weekdays(xjse, int(day[:4]))
+
+    @pytest.mark.parametrize("day", ["2028-12-18", "2029-06-18"])
+    def test_saturday_holidays_do_not_close_the_monday(self, xjse, day):
+        assert day not in _closed_weekdays(xjse, int(day[:4]))
+
+    @pytest.mark.parametrize("day", ["2027-03-22", "2027-12-27"])
+    def test_sunday_holidays_still_close_the_monday(self, xjse, day):
+        # 21 Mar 2027 and 26 Dec 2027 are Sundays.
+        assert day in _closed_weekdays(xjse, 2027)
+
+    def test_2028_and_2029_year_end_and_youth_day(self, xjse):
+        assert {"2028-12-25", "2028-12-26"} <= _closed_weekdays(xjse, 2028)
+        assert "2028-12-16" not in _closed_weekdays(xjse, 2028)
+        assert "2029-06-16" not in _closed_weekdays(xjse, 2029)

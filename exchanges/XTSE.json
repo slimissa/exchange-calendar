@@ -252,6 +252,12 @@
         "status": "closed"
       },
       {
+        "date": "2028-01-03",
+        "name": "New Year's Day (observed)",
+        "source_url": "https://www.tsx.com/trading/market-hours",
+        "status": "closed"
+      },
+      {
         "date": "2028-02-21",
         "name": "Family Day",
         "source_url": "https://www.tsx.com/trading/market-hours",
@@ -378,7 +384,7 @@
         "day": 1,
         "month": 1,
         "name": "New Year's Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
@@ -399,7 +405,7 @@
         "day": 1,
         "month": 7,
         "name": "Canada Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {

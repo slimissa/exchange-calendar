@@ -585,6 +585,212 @@
       "recheck_date": "2028-06-30",
       "summary": "DGPA publishes the government calendar for a year by 30 June of the year before (the 2027 one came out on 2026-05-21), and TWSE its own schedule later. The remaining 2029 dates depend on lunar festivals, the Children's Day and Tomb Sweeping adjustment and settlement days, none of which is published. The registry values are predictions.",
       "source_url": "https://www.taiwannews.com.tw/zh/news/6106736"
+    },
+    {
+      "exchange": "XHEL",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.4",
+      "dates": [
+        "2027-06-18",
+        "2027-06-25",
+        "2027-12-06",
+        "2028-12-06",
+        "2029-12-06"
+      ],
+      "summary": "Independence Day (6 December) was missing from the rules, so 6 Dec 2027, 2028 and 2029 (Monday, Wednesday, Thursday) were open. Midsummer Eve 2027 is Friday 25 June, the Friday before Midsummer Day (Saturday 26 June), not 18 June.",
+      "source_url": "https://yle.fi/a/74-20122537"
+    },
+    {
+      "exchange": "XJSE",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.4",
+      "dates": [
+        "2025-08-08",
+        "2026-03-20",
+        "2028-12-15",
+        "2029-06-15"
+      ],
+      "summary": "The Public Holidays Act 36 of 1994, s2(1) moves a holiday that falls on a Sunday to the Monday and does nothing for a Saturday. The rules shifted Saturday holidays to the Friday: 16 Dec 2028 and 16 Jun 2029 (the Fridays 15 Dec and 15 Jun were wrongly closed), and also 9 Aug 2025 and 21 Mar 2026. The ten fixed-date holidays now use fixed_with_sunday_observance.",
+      "source_url": "https://www.polity.org.za/polity/govdocs/legislation/1994/act94-036.html"
+    },
+    {
+      "exchange": "XTSE",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.4",
+      "dates": [
+        "2027-12-31",
+        "2028-01-03",
+        "2028-06-30"
+      ],
+      "summary": "TMX closes on the Monday in lieu of a Saturday holiday and stays open the Friday before (TSX closed Monday 3 January 2022 in lieu of Saturday 1 January 2022). The rules closed Friday 31 Dec 2027 and Friday 30 Jun 2028 and left Monday 3 Jan 2028 open; Canada Day 2028 was already closed on Monday 3 July.",
+      "source_url": "https://tsx.com/news?id=870"
+    },
+    {
+      "exchange": "XNZE",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.4",
+      "dates": [
+        "2027-06-25",
+        "2027-07-02",
+        "2028-06-23",
+        "2028-07-14",
+        "2029-06-22",
+        "2029-07-06"
+      ],
+      "summary": "The Matariki public holiday dates are set in law through 2052: Friday 25 June 2027, Friday 14 July 2028, Friday 6 July 2029. The registry had 2 July 2027, 23 June 2028 and 22 June 2029.",
+      "source_url": "https://www.tepapa.govt.nz/node/4867"
+    },
+    {
+      "exchange": "XKAR",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2027-03-09",
+        "2027-03-10",
+        "2027-05-17",
+        "2027-06-15"
+      ],
+      "recheck_date": "2027-01-15",
+      "summary": "Eid al-Fitr, Eid al-Adha, Ashura and Eid Milad-un-Nabi 2027. Dates depend on moon sighting and an announcement made close to the day, so neither the libraries nor the registry can know them yet. Pakistan's moon-sighting committees decide the day, and the registry labels these dates predicted.",
+      "source_url": "https://www.psx.com.pk/trading-calendar"
+    },
+    {
+      "exchange": "XKAR",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2028-02-28",
+        "2028-05-04",
+        "2028-05-05",
+        "2028-08-04"
+      ],
+      "recheck_date": "2028-01-15",
+      "summary": "Eid al-Fitr, Eid al-Adha, Ashura and Eid Milad-un-Nabi 2028. Dates depend on moon sighting and an announcement made close to the day, so neither the libraries nor the registry can know them yet. Pakistan's moon-sighting committees decide the day, and the registry labels these dates predicted.",
+      "source_url": "https://www.psx.com.pk/trading-calendar"
+    },
+    {
+      "exchange": "XKAR",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2029-02-14",
+        "2029-02-15",
+        "2029-04-24",
+        "2029-04-25",
+        "2029-05-24",
+        "2029-07-24"
+      ],
+      "recheck_date": "2029-01-15",
+      "summary": "Eid al-Fitr, Eid al-Adha, Ashura and Eid Milad-un-Nabi 2029. Dates depend on moon sighting and an announcement made close to the day, so neither the libraries nor the registry can know them yet. Pakistan's moon-sighting committees decide the day, and the registry labels these dates predicted.",
+      "source_url": "https://www.psx.com.pk/trading-calendar"
+    },
+    {
+      "exchange": "XSAU",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2027-03-07",
+        "2027-03-08",
+        "2027-05-19",
+        "2027-05-20",
+        "2027-06-06"
+      ],
+      "recheck_date": "2027-01-15",
+      "summary": "Islamic New Year and the Eid al-Fitr and Eid al-Adha holiday windows 2027. Dates depend on moon sighting and an announcement made close to the day, so neither the libraries nor the registry can know them yet. The Saudi government sets each Eid break by decree, and the registry and the libraries place the window on different days.",
+      "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events"
+    },
+    {
+      "exchange": "XSAU",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2028-02-29",
+        "2028-03-01",
+        "2028-03-02",
+        "2028-05-03",
+        "2028-05-07",
+        "2028-05-08",
+        "2028-05-09"
+      ],
+      "recheck_date": "2028-01-15",
+      "summary": "Islamic New Year and the Eid al-Fitr and Eid al-Adha holiday windows 2028. Dates depend on moon sighting and an announcement made close to the day, so neither the libraries nor the registry can know them yet. The Saudi government sets each Eid break by decree, and the registry and the libraries place the window on different days.",
+      "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events"
+    },
+    {
+      "exchange": "XKLS",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2027-02-09",
+        "2027-03-09",
+        "2027-03-11",
+        "2027-08-16"
+      ],
+      "recheck_date": "2027-01-15",
+      "summary": "Hari Raya Puasa, Maulidur Rasul and Chinese New Year replacement days 2027. The Islamic dates depend on moon sighting and the Malaysian government gazettes the year's holidays and replacement days late in the year before, so neither side can know them yet.",
+      "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+    },
+    {
+      "exchange": "XKLS",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2028-02-29",
+        "2028-08-03",
+        "2028-08-04"
+      ],
+      "recheck_date": "2028-01-15",
+      "summary": "Hari Raya Puasa, Maulidur Rasul and Chinese New Year replacement days 2028. The Islamic dates depend on moon sighting and the Malaysian government gazettes the year's holidays and replacement days late in the year before, so neither side can know them yet.",
+      "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+    },
+    {
+      "exchange": "XKLS",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2029-02-16"
+      ],
+      "recheck_date": "2029-01-15",
+      "summary": "Hari Raya Puasa, Maulidur Rasul and Chinese New Year replacement days 2029. The Islamic dates depend on moon sighting and the Malaysian government gazettes the year's holidays and replacement days late in the year before, so neither side can know them yet.",
+      "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+    },
+    {
+      "exchange": "XPHS",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2027-03-10",
+        "2027-05-17"
+      ],
+      "recheck_date": "2027-01-15",
+      "summary": "Eid al-Fitr, Eid al-Adha and Chinese New Year 2027. The Philippines declares these as national holidays by presidential proclamation issued the year before, after the moon-sighting dates for the Islamic ones are set; the 2027 proclamation does not exist yet.",
+      "source_url": "https://www.pse.com.ph/trading-holidays/"
+    },
+    {
+      "exchange": "XPHS",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2028-01-26"
+      ],
+      "recheck_date": "2028-01-15",
+      "summary": "Eid al-Fitr, Eid al-Adha and Chinese New Year 2028. The Philippines declares these as national holidays by presidential proclamation issued the year before, after the moon-sighting dates for the Islamic ones are set; the 2028 proclamation does not exist yet.",
+      "source_url": "https://www.pse.com.ph/trading-holidays/"
+    },
+    {
+      "exchange": "XPHS",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2029-02-13"
+      ],
+      "recheck_date": "2029-01-15",
+      "summary": "Eid al-Fitr, Eid al-Adha and Chinese New Year 2029. The Philippines declares these as national holidays by presidential proclamation issued the year before, after the moon-sighting dates for the Islamic ones are set; the 2029 proclamation does not exist yet.",
+      "source_url": "https://www.pse.com.ph/trading-holidays/"
     }
   ]
 }

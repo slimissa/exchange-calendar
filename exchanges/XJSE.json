@@ -356,14 +356,14 @@
         "day": 1,
         "month": 1,
         "name": "New Year's Day",
-        "rule": "fixed_date",
+        "rule": "fixed_with_sunday_observance",
         "status": "closed"
       },
       {
         "day": 21,
         "month": 3,
         "name": "Human Rights Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_with_sunday_observance",
         "status": "closed"
       },
       {
@@ -382,56 +382,56 @@
         "day": 27,
         "month": 4,
         "name": "Freedom Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_with_sunday_observance",
         "status": "closed"
       },
       {
         "day": 1,
         "month": 5,
         "name": "Workers' Day",
-        "rule": "fixed_date",
+        "rule": "fixed_with_sunday_observance",
         "status": "closed"
       },
       {
         "day": 16,
         "month": 6,
         "name": "Youth Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_with_sunday_observance",
         "status": "closed"
       },
       {
         "day": 9,
         "month": 8,
         "name": "National Women's Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_with_sunday_observance",
         "status": "closed"
       },
       {
         "day": 24,
         "month": 9,
         "name": "Heritage Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_with_sunday_observance",
         "status": "closed"
       },
       {
         "day": 16,
         "month": 12,
         "name": "Day of Reconciliation",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_with_sunday_observance",
         "status": "closed"
       },
       {
         "day": 25,
         "month": 12,
         "name": "Christmas Day",
-        "rule": "fixed_date",
+        "rule": "fixed_with_sunday_observance",
         "status": "closed"
       },
       {
         "day": 26,
         "month": 12,
         "name": "Day of Goodwill",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_with_sunday_observance",
         "status": "closed"
       }
     ]

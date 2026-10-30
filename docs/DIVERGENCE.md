@@ -51,12 +51,12 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XDUB | 1271 | 1271 | 1271 | 0 | 100.0% |
 | XETR | 1271 | 1271 | 1271 | 0 | 100.0% |
 | XGSE | 1247 | No reference data | No reference data | n/a | n/a |
-| XHEL | 1257 | 1254 | 1254 | 5 | 99.6% |
+| XHEL | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XHKG | 1479 | 1480 | 1480 | 3 | 99.8% |
 | XICE | 1243 | 1243 | 1243 | 0 | 100.0% |
 | XIST | 1278 | 1255 | 1255 | 23 | 98.2% |
 | XJKT | 1249 | No reference data | No reference data | n/a | n/a |
-| XJSE | 1247 | 1252 | 1252 | 5 | 99.6% |
+| XJSE | 1251 | 1252 | 1252 | 1 | 99.9% |
 | XKAR | 1260 | 1270 | 1270 | 24 | 98.1% |
 | XKLS | 1228 | 1232 | 1232 | 16 | 98.7% |
 | XKRX | 1233 | 1224 | 1224 | 19 | 98.5% |
@@ -76,7 +76,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XNSA | 1255 | No reference data | No reference data | n/a | n/a |
 | XNSE | 1239 | 1275 | No reference data | 36 | 97.2% |
 | XNYS | 1506 | 1506 | 1506 | 0 | 100.0% |
-| XNZE | 1249 | 1249 | 1249 | 6 | 99.5% |
+| XNZE | 1249 | 1249 | 1249 | 0 | 100.0% |
 | XOSL | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XPAR | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XPHS | 1239 | 1230 | 1230 | 15 | 98.8% |
@@ -94,7 +94,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XTAI | 1228 | 1221 | 1221 | 23 | 98.1% |
 | XTAL | 1252 | 1255 | 1255 | 15 | 98.8% |
 | XTKS | 1464 | 1464 | 1464 | 0 | 100.0% |
-| XTSE | 1253 | 1254 | 1254 | 3 | 99.8% |
+| XTSE | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XTUN | 1253 | No reference data | No reference data | n/a | n/a |
 | XWAR | 1250 | 1250 | 1250 | 0 | 100.0% |
 | XWBO | 1267 | 1267 | 1267 | 0 | 100.0% |
@@ -102,8 +102,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 18 of 50.
-- Trading days on which all available sources agree: 62348 of 62866 (99.2%).
+- Exchanges with no disagreement: 21 of 50.
+- Trading days on which all available sources agree: 62358 of 62858 (99.2%).
 
 ## Disagreements by year
 
@@ -118,10 +118,9 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XBUD | - | 3 | 4 | 7 | 3 | 5 |
 | XBUE | - | 6 | 3 | 5 | 4 | 2 |
 | XCSE | - | 2 | 2 | 1 | 2 | 2 |
-| XHEL | - | 0 | 0 | 3 | 1 | 1 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
 | XIST | - | 4 | 4 | 5 | 3 | 7 |
-| XJSE | - | 2 | 1 | 0 | 1 | 1 |
+| XJSE | - | 1 | 0 | 0 | 0 | 0 |
 | XKAR | - | 5 | 1 | 7 | 4 | 7 |
 | XKLS | - | 1 | 2 | 5 | 5 | 3 |
 | XKRX | - | 3 | 2 | 3 | 7 | 4 |
@@ -131,7 +130,6 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XMEX | - | 0 | 1 | 1 | 1 | 1 |
 | XMOS | - | 5 | 4 | - | - | - |
 | XNSE | - | 1 | 0 | 8 | 12 | 15 |
-| XNZE | - | 0 | 0 | 2 | 2 | 2 |
 | XPHS | - | 5 | 4 | 3 | 2 | 1 |
 | XPRA | - | 4 | 1 | 6 | 3 | 4 |
 | XRIS | - | 5 | 2 | 5 | 4 | 2 |
@@ -142,17 +140,16 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XSTO | - | 0 | 0 | 2 | 1 | 0 |
 | XTAI | - | 4 | 4 | 1 | 7 | 7 |
 | XTAL | - | 2 | 2 | 5 | 3 | 3 |
-| XTSE | - | 0 | 0 | 1 | 2 | 0 |
 
 Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 77 | 0 | 4 | 1 | 0 | 72 |
-| 2026 | 56 | 0 | 0 | 0 | 0 | 56 |
-| 2027 | 135 | 0 | 8 | 0 | 35 | 92 |
-| 2028 | 130 | 0 | 0 | 0 | 55 | 75 |
-| 2029 | 120 | 0 | 0 | 0 | 62 | 58 |
+| 2025 | 76 | 0 | 4 | 1 | 0 | 71 |
+| 2026 | 55 | 0 | 0 | 0 | 0 | 55 |
+| 2027 | 129 | 0 | 8 | 0 | 50 | 71 |
+| 2028 | 124 | 0 | 0 | 0 | 70 | 54 |
+| 2029 | 116 | 0 | 0 | 0 | 70 | 46 |
 
 ## No reference data
 
@@ -229,11 +226,6 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry open, PMC closed, EC closed (5): 2025-05-30 Fr, 2026-05-15 Fr, 2027-05-07 Fr, 2028-05-26 Fr, 2029-05-11 Fr
 - registry closed, PMC open, EC open (4): 2025-05-01 Th, 2026-05-01 Fr, 2028-05-01 Mo, 2029-05-01 Tu
 
-### XHEL (5)
-
-- registry open, PMC closed, EC closed (4): 2027-06-25 Fr, 2027-12-06 Mo, 2028-12-06 We, 2029-12-06 Th
-- registry closed, PMC open, EC open (1): 2027-06-18 Fr
-
 ### XHKG (3)
 
 - registry closed, PMC open, EC open (2): 2029-04-05 Th, 2029-09-24 Mo
@@ -243,19 +235,19 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 - registry open, PMC closed, EC closed (23): 2025-03-31 Mo, 2025-04-01 Tu, 2025-06-06 Fr, 2025-06-09 Mo, 2026-03-20 Fr, 2026-05-27 We, 2026-05-28 Th, 2026-05-29 Fr, 2027-03-09 Tu, 2027-03-10 We, 2027-03-11 Th, 2027-05-17 Mo, 2027-05-18 Tu, 2028-02-28 Mo, 2028-05-05 Fr, 2028-05-08 Mo, 2029-02-14 We, 2029-02-15 Th, 2029-02-16 Fr, 2029-04-24 Tu, 2029-04-25 We, 2029-04-26 Th, 2029-04-27 Fr
 
-### XJSE (5)
+### XJSE (1)
 
-- registry closed, PMC open, EC open (5): 2025-08-08 Fr, 2025-08-11 Mo, 2026-03-20 Fr, 2028-12-15 Fr, 2029-06-15 Fr
+- registry closed, PMC open, EC open (1): 2025-08-11 Mo
 
 ### XKAR (24)
 
-- registry closed, PMC open, EC open (17): 2025-01-01 We, 2027-03-09 Tu, 2027-03-10 We, 2027-05-03 Mo, 2027-05-17 Mo, 2027-06-15 Tu, 2027-12-27 Mo, 2028-02-28 Mo, 2028-05-04 Th, 2028-05-05 Fr, 2028-08-04 Fr, 2029-02-14 We, 2029-02-15 Th, 2029-04-24 Tu, 2029-04-25 We, 2029-05-24 Th, 2029-07-24 Tu
+- registry closed, PMC open, EC open (17): 2025-01-01 We, 2027-03-09 Tu [unpublished], 2027-03-10 We [unpublished], 2027-05-03 Mo, 2027-05-17 Mo [unpublished], 2027-06-15 Tu [unpublished], 2027-12-27 Mo, 2028-02-28 Mo [unpublished], 2028-05-04 Th [unpublished], 2028-05-05 Fr [unpublished], 2028-08-04 Fr [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-04-24 Tu [unpublished], 2029-04-25 We [unpublished], 2029-05-24 Th [unpublished], 2029-07-24 Tu [unpublished]
 - registry open, PMC closed, EC closed (7): 2025-03-28 Fr, 2025-05-28 We, 2025-06-09 Mo, 2025-09-05 Fr, 2026-05-28 Th, 2027-05-28 Fr, 2029-05-28 Mo
 
 ### XKLS (16)
 
-- registry closed, PMC open, EC open (10): 2026-03-20 Fr, 2026-06-02 Tu, 2027-02-09 Tu, 2027-03-11 Th, 2027-08-16 Mo, 2028-02-29 Tu, 2028-06-05 Mo, 2028-08-04 Fr, 2029-02-16 Fr, 2029-06-04 Mo
-- registry open, PMC closed, EC closed (6): 2025-03-18 Tu, 2027-02-24 We, 2027-03-09 Tu, 2028-02-14 Mo, 2028-08-03 Th, 2029-09-17 Mo
+- registry closed, PMC open, EC open (10): 2026-03-20 Fr, 2026-06-02 Tu, 2027-02-09 Tu [unpublished], 2027-03-11 Th [unpublished], 2027-08-16 Mo [unpublished], 2028-02-29 Tu [unpublished], 2028-06-05 Mo, 2028-08-04 Fr [unpublished], 2029-02-16 Fr [unpublished], 2029-06-04 Mo
+- registry open, PMC closed, EC closed (6): 2025-03-18 Tu, 2027-02-24 We, 2027-03-09 Tu [unpublished], 2028-02-14 Mo, 2028-08-03 Th [unpublished], 2029-09-17 Mo
 
 ### XKRX (19)
 
@@ -288,14 +280,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 - registry closed, PMC open (36): 2025-10-21 Tu [convention difference], 2027-01-26 Tu [unpublished], 2027-03-10 We [unpublished], 2027-03-23 Tu [unpublished], 2027-03-26 Fr [unpublished], 2027-04-14 We [unpublished], 2027-05-17 Mo [unpublished], 2027-06-16 We [unpublished], 2027-10-29 Fr [unpublished], 2028-01-26 We [unpublished], 2028-02-24 Th [unpublished], 2028-04-14 Fr [unpublished], 2028-05-01 Mo [unpublished], 2028-05-05 Fr [unpublished], 2028-08-15 Tu [unpublished], 2028-08-23 We [unpublished], 2028-09-28 Th [unpublished], 2028-10-02 Mo [unpublished], 2028-10-17 Tu [unpublished], 2028-10-18 We [unpublished], 2028-12-25 Mo [unpublished], 2029-01-26 Fr [unpublished], 2029-02-12 Mo [unpublished], 2029-02-15 Th [unpublished], 2029-03-01 Th [unpublished], 2029-03-30 Fr [unpublished], 2029-04-24 Tu [unpublished], 2029-05-01 Tu [unpublished], 2029-05-24 Th [unpublished], 2029-08-15 We [unpublished], 2029-09-12 We [unpublished], 2029-10-02 Tu [unpublished], 2029-10-17 We [unpublished], 2029-11-05 Mo [unpublished], 2029-11-06 Tu [unpublished], 2029-12-25 Tu [unpublished]
 
-### XNZE (6)
-
-- registry closed, PMC open, EC open (3): 2027-07-02 Fr, 2028-06-23 Fr, 2029-06-22 Fr
-- registry open, PMC closed, EC closed (3): 2027-06-25 Fr, 2028-07-14 Fr, 2029-07-06 Fr
-
 ### XPHS (15)
 
-- registry open, PMC closed, EC closed (12): 2025-01-29 We, 2025-04-01 Tu, 2025-05-12 Mo, 2025-06-06 Fr, 2025-10-31 Fr, 2026-02-17 Tu, 2026-03-20 Fr, 2026-05-27 We, 2027-03-10 We, 2027-05-17 Mo, 2028-01-26 We, 2029-02-13 Tu
+- registry open, PMC closed, EC closed (12): 2025-01-29 We, 2025-04-01 Tu, 2025-05-12 Mo, 2025-06-06 Fr, 2025-10-31 Fr, 2026-02-17 Tu, 2026-03-20 Fr, 2026-05-27 We, 2027-03-10 We [unpublished], 2027-05-17 Mo [unpublished], 2028-01-26 We [unpublished], 2029-02-13 Tu [unpublished]
 - registry closed, PMC open, EC open (3): 2026-11-02 Mo, 2027-11-02 Tu, 2028-11-02 Th
 
 ### XPRA (18)
@@ -310,8 +297,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 ### XSAU (17)
 
-- registry open, PMC closed, EC closed (13): 2025-03-27 Th [library error], 2025-06-04 We [library error], 2027-03-07 Su, 2027-03-08 Mo, 2027-05-19 We, 2027-05-20 Th, 2028-02-29 Tu, 2028-03-01 We, 2028-03-02 Th, 2028-05-03 We, 2028-05-07 Su, 2028-05-08 Mo, 2028-05-09 Tu
-- registry closed, PMC open, EC open (4): 2025-02-23 Su [library error], 2025-06-10 Tu [library error], 2027-06-06 Su, 2028-09-24 Su
+- registry open, PMC closed, EC closed (13): 2025-03-27 Th [library error], 2025-06-04 We [library error], 2027-03-07 Su [unpublished], 2027-03-08 Mo [unpublished], 2027-05-19 We [unpublished], 2027-05-20 Th [unpublished], 2028-02-29 Tu [unpublished], 2028-03-01 We [unpublished], 2028-03-02 Th [unpublished], 2028-05-03 We [unpublished], 2028-05-07 Su [unpublished], 2028-05-08 Mo [unpublished], 2028-05-09 Tu [unpublished]
+- registry closed, PMC open, EC open (4): 2025-02-23 Su [library error], 2025-06-10 Tu [library error], 2027-06-06 Su [unpublished], 2028-09-24 Su
 
 ### XSES (30)
 
@@ -343,16 +330,11 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open, EC open (9): 2025-12-25 Th, 2026-12-25 Fr, 2027-05-03 Mo, 2027-12-27 Mo, 2027-12-28 Tu, 2028-01-03 Mo, 2028-12-25 Mo, 2029-02-26 Mo, 2029-12-25 Tu
 - registry open, PMC closed, EC closed (6): 2025-05-29 Th, 2026-05-14 Th, 2027-05-06 Th, 2027-12-31 Fr, 2028-05-25 Th, 2029-05-10 Th
 
-### XTSE (3)
-
-- registry closed, PMC open, EC open (2): 2027-12-31 Fr, 2028-06-30 Fr
-- registry open, PMC closed, EC closed (1): 2028-01-03 Mo
-
 ## Triage
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 13 dates; Registry error: 147 dates; Unpublished: 152 dates.
+- Convention difference: 1 dates; Library error: 13 dates; Registry error: 165 dates; Unpublished: 190 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -410,6 +392,14 @@ Dates: 2025-04-18, 2025-05-29, 2025-06-09, 2025-07-21, 2025-08-15, 2025-11-11, 2
 
 Source: https://live.euronext.com/en/resources/trading-hours-holidays
 
+### XHEL: Registry error (5, fixed in 2.23.4)
+
+Independence Day (6 December) was missing from the rules, so 6 Dec 2027, 2028 and 2029 (Monday, Wednesday, Thursday) were open. Midsummer Eve 2027 is Friday 25 June, the Friday before Midsummer Day (Saturday 26 June), not 18 June.
+
+Dates: 2027-06-18, 2027-06-25, 2027-12-06, 2028-12-06, 2029-12-06.
+
+Source: https://yle.fi/a/74-20122537
+
 ### XHKG: Registry error (3, fixed in 2.23.2)
 
 The SEHK circular for 2027 (CT/077/26) lists the day following the Mid-Autumn Festival as Thursday 16 September (the registry had the 15th, the festival itself) and Friday 5 February, the eve of Lunar New Year, as a half day (missing). It names 8 and 9 February the third and fourth days of Lunar New Year; the registry names are corrected.
@@ -417,6 +407,62 @@ The SEHK circular for 2027 (CT/077/26) lists the day following the Mid-Autumn Fe
 Dates: 2027-02-05, 2027-09-15, 2027-09-16.
 
 Source: https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846
+
+### XJSE: Registry error (4, fixed in 2.23.4)
+
+The Public Holidays Act 36 of 1994, s2(1) moves a holiday that falls on a Sunday to the Monday and does nothing for a Saturday. The rules shifted Saturday holidays to the Friday: 16 Dec 2028 and 16 Jun 2029 (the Fridays 15 Dec and 15 Jun were wrongly closed), and also 9 Aug 2025 and 21 Mar 2026. The ten fixed-date holidays now use fixed_with_sunday_observance.
+
+Dates: 2025-08-08, 2026-03-20, 2028-12-15, 2029-06-15.
+
+Source: https://www.polity.org.za/polity/govdocs/legislation/1994/act94-036.html
+
+### XKAR: Unpublished (4, calendar not yet published, registry value is a prediction, recheck 2027-01-15)
+
+Eid al-Fitr, Eid al-Adha, Ashura and Eid Milad-un-Nabi 2027. Dates depend on moon sighting and an announcement made close to the day, so neither the libraries nor the registry can know them yet. Pakistan's moon-sighting committees decide the day, and the registry labels these dates predicted.
+
+Dates: 2027-03-09, 2027-03-10, 2027-05-17, 2027-06-15.
+
+Source: https://www.psx.com.pk/trading-calendar
+
+### XKAR: Unpublished (4, calendar not yet published, registry value is a prediction, recheck 2028-01-15)
+
+Eid al-Fitr, Eid al-Adha, Ashura and Eid Milad-un-Nabi 2028. Dates depend on moon sighting and an announcement made close to the day, so neither the libraries nor the registry can know them yet. Pakistan's moon-sighting committees decide the day, and the registry labels these dates predicted.
+
+Dates: 2028-02-28, 2028-05-04, 2028-05-05, 2028-08-04.
+
+Source: https://www.psx.com.pk/trading-calendar
+
+### XKAR: Unpublished (6, calendar not yet published, registry value is a prediction, recheck 2029-01-15)
+
+Eid al-Fitr, Eid al-Adha, Ashura and Eid Milad-un-Nabi 2029. Dates depend on moon sighting and an announcement made close to the day, so neither the libraries nor the registry can know them yet. Pakistan's moon-sighting committees decide the day, and the registry labels these dates predicted.
+
+Dates: 2029-02-14, 2029-02-15, 2029-04-24, 2029-04-25, 2029-05-24, 2029-07-24.
+
+Source: https://www.psx.com.pk/trading-calendar
+
+### XKLS: Unpublished (4, calendar not yet published, registry value is a prediction, recheck 2027-01-15)
+
+Hari Raya Puasa, Maulidur Rasul and Chinese New Year replacement days 2027. The Islamic dates depend on moon sighting and the Malaysian government gazettes the year's holidays and replacement days late in the year before, so neither side can know them yet.
+
+Dates: 2027-02-09, 2027-03-09, 2027-03-11, 2027-08-16.
+
+Source: https://www.bursamalaysia.com/market_information/market_holidays
+
+### XKLS: Unpublished (3, calendar not yet published, registry value is a prediction, recheck 2028-01-15)
+
+Hari Raya Puasa, Maulidur Rasul and Chinese New Year replacement days 2028. The Islamic dates depend on moon sighting and the Malaysian government gazettes the year's holidays and replacement days late in the year before, so neither side can know them yet.
+
+Dates: 2028-02-29, 2028-08-03, 2028-08-04.
+
+Source: https://www.bursamalaysia.com/market_information/market_holidays
+
+### XKLS: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2029-01-15)
+
+Hari Raya Puasa, Maulidur Rasul and Chinese New Year replacement days 2029. The Islamic dates depend on moon sighting and the Malaysian government gazettes the year's holidays and replacement days late in the year before, so neither side can know them yet.
+
+Dates: 2029-02-16.
+
+Source: https://www.bursamalaysia.com/market_information/market_holidays
 
 ### XLIS: Registry error (12, fixed in 2.21.3)
 
@@ -490,6 +536,38 @@ Dates: 2027-12-24, 2027-12-31.
 
 Source: https://ir.theice.com/press/news-details/2025/NYSE-Group-Announces-2026-2027-and-2028-Holiday-and-Early-Closings-Calendar/
 
+### XNZE: Registry error (6, fixed in 2.23.4)
+
+The Matariki public holiday dates are set in law through 2052: Friday 25 June 2027, Friday 14 July 2028, Friday 6 July 2029. The registry had 2 July 2027, 23 June 2028 and 22 June 2029.
+
+Dates: 2027-06-25, 2027-07-02, 2028-06-23, 2028-07-14, 2029-06-22, 2029-07-06.
+
+Source: https://www.tepapa.govt.nz/node/4867
+
+### XPHS: Unpublished (2, calendar not yet published, registry value is a prediction, recheck 2027-01-15)
+
+Eid al-Fitr, Eid al-Adha and Chinese New Year 2027. The Philippines declares these as national holidays by presidential proclamation issued the year before, after the moon-sighting dates for the Islamic ones are set; the 2027 proclamation does not exist yet.
+
+Dates: 2027-03-10, 2027-05-17.
+
+Source: https://www.pse.com.ph/trading-holidays/
+
+### XPHS: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2028-01-15)
+
+Eid al-Fitr, Eid al-Adha and Chinese New Year 2028. The Philippines declares these as national holidays by presidential proclamation issued the year before, after the moon-sighting dates for the Islamic ones are set; the 2028 proclamation does not exist yet.
+
+Dates: 2028-01-26.
+
+Source: https://www.pse.com.ph/trading-holidays/
+
+### XPHS: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2029-01-15)
+
+Eid al-Fitr, Eid al-Adha and Chinese New Year 2029. The Philippines declares these as national holidays by presidential proclamation issued the year before, after the moon-sighting dates for the Islamic ones are set; the 2029 proclamation does not exist yet.
+
+Dates: 2029-02-13.
+
+Source: https://www.pse.com.ph/trading-holidays/
+
 ### XSAU: Library error (4, registry verified, no change)
 
 The Saudi Exchange lists Founding Day as Sunday 2025-02-23 (closed), says trading discontinues at the END of 2025-03-27 and 2025-06-04 (both are trading days), and resumes on 2025-04-03 and 2025-06-11, which makes 2025-06-10 a closed day. Both libraries are wrong on all four. This is not a Hijri approximation: they carry the 2026 Eid spans exactly, but start both 2025 spans on the last trading day (2025-03-27, 2025-06-04) and end the 2025 Adha span a day early.
@@ -503,6 +581,22 @@ Source: https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchan
 The Saudi Exchange announced the 2025 and 2026 Eid holidays by the last trading day and the resumption day. The registry was missing 14 closed weekdays inside those spans, and 2025-06-10 as well (the libraries are also open on it, so it appears below as a library error).
 
 Dates: 2025-04-02, 2025-06-05, 2025-06-08, 2025-06-09, 2026-03-17, 2026-03-18, 2026-03-19, 2026-03-22, 2026-03-23, 2026-05-24, 2026-05-25, 2026-05-26, 2026-05-27, 2026-05-28.
+
+Source: https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+
+### XSAU: Unpublished (5, calendar not yet published, registry value is a prediction, recheck 2027-01-15)
+
+Islamic New Year and the Eid al-Fitr and Eid al-Adha holiday windows 2027. Dates depend on moon sighting and an announcement made close to the day, so neither the libraries nor the registry can know them yet. The Saudi government sets each Eid break by decree, and the registry and the libraries place the window on different days.
+
+Dates: 2027-03-07, 2027-03-08, 2027-05-19, 2027-05-20, 2027-06-06.
+
+Source: https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+
+### XSAU: Unpublished (7, calendar not yet published, registry value is a prediction, recheck 2028-01-15)
+
+Islamic New Year and the Eid al-Fitr and Eid al-Adha holiday windows 2028. Dates depend on moon sighting and an announcement made close to the day, so neither the libraries nor the registry can know them yet. The Saudi government sets each Eid break by decree, and the registry and the libraries place the window on different days.
+
+Dates: 2028-02-29, 2028-03-01, 2028-03-02, 2028-05-03, 2028-05-07, 2028-05-08, 2028-05-09.
 
 Source: https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
 
@@ -625,6 +719,14 @@ JPX closes 31 December and 1-3 January only, so Monday 2027-01-04 and Friday 202
 Dates: 2027-01-04, 2027-07-19, 2027-07-20, 2027-09-21, 2027-09-23, 2028-12-29, 2029-05-07, 2029-09-24.
 
 Source: https://www.jpx.co.jp/english/corporate/about-jpx/calendar/
+
+### XTSE: Registry error (3, fixed in 2.23.4)
+
+TMX closes on the Monday in lieu of a Saturday holiday and stays open the Friday before (TSX closed Monday 3 January 2022 in lieu of Saturday 1 January 2022). The rules closed Friday 31 Dec 2027 and Friday 30 Jun 2028 and left Monday 3 Jan 2028 open; Canada Day 2028 was already closed on Monday 3 July.
+
+Dates: 2027-12-31, 2028-01-03, 2028-06-30.
+
+Source: https://tsx.com/news?id=870
 
 ### XWBO: Registry error (17, fixed in 2.21.2)
 

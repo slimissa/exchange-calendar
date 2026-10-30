@@ -207,9 +207,9 @@
         "status": "closed"
       },
       {
-        "date": "2027-06-18",
+        "date": "2027-06-25",
         "name": "Midsummer Eve",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
+        "source_url": "https://yle.fi/a/74-20122537",
         "status": "closed"
       },
       {
@@ -392,6 +392,13 @@
         "day": 31,
         "month": 12,
         "name": "New Year's Eve",
+        "rule": "fixed_date",
+        "status": "closed"
+      },
+      {
+        "day": 6,
+        "month": 12,
+        "name": "Independence Day",
         "rule": "fixed_date",
         "status": "closed"
       }
