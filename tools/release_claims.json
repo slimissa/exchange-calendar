@@ -1306,5 +1306,63 @@
       "file": "docs/divergence_triage.json",
       "contains": "\"verdict\": \"unpublished\""
     }
+  ],
+  "2.23.4": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.4"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.4] - 2026-10-31"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Fixed future-year holiday rules for XHEL, XJSE, XTSE, and XNZE based on exchange laws, and marked unpublishable lunar dates as 'unpublished'."
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.4-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.4"
+    },
+    {
+      "file": "exchanges/XHEL.json",
+      "contains": "\"name\": \"Independence Day\""
+    },
+    {
+      "file": "exchanges/XJSE.json",
+      "contains": "fixed_with_sunday_observance"
+    },
+    {
+      "file": "exchanges/XTSE.json",
+      "contains": "\"date\": \"2028-01-03\""
+    },
+    {
+      "file": "exchanges/XNZE.json",
+      "contains": "\"date\": \"2028-07-14\""
+    },
+    {
+      "file": "tests/test_helsinki_holidays.py",
+      "contains": "class TestFutureYearFixes:"
+    },
+    {
+      "file": "tests/test_johannesburg_holidays.py",
+      "contains": "class TestFutureYearFixes:"
+    },
+    {
+      "file": "tests/test_toronto_holidays.py",
+      "contains": "class TestFutureYearFixes:"
+    },
+    {
+      "file": "tests/test_new_zealand_holidays.py",
+      "contains": "class TestMatarikiFutureYears:"
+    },
+    {
+      "file": "docs/divergence_triage.json",
+      "contains": "\"recheck_date\": \"2027-01-15\""
+    }
   ]
 }

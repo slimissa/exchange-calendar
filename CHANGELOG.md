@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.4] - 2026-10-31
+
+### Fixed
+- Fixed future-year holiday rules for XHEL, XJSE, XTSE, and XNZE based on exchange laws, and marked unpublishable lunar dates as 'unpublished'.
+- XHEL 2027-2029: Independence Day (6 December) is closed, and Midsummer Eve 2027 is Friday 25 June.
+- XJSE: a Saturday holiday is no longer moved to the Friday (Public Holidays Act 36 of 1994, s2(1)); 15 December 2028 and 15 June 2029 are open.
+- XTSE: Friday 31 December 2027 and Friday 30 June 2028 are open; Monday 3 January 2028 is closed in lieu of New Year's Day.
+- XNZE: Matariki is 25 June 2027, 14 July 2028 and 6 July 2029 (Matariki Public Holiday Act 2022).
+- 38 Islamic and lunar disagreements for XKAR, XSAU, XKLS and XPHS are marked `unpublished` with a recheck date. 171 disagreements for 2027-2029 are still unclassified, including XIST, XKRX, XBKK and XMEX, where the dates are already known and need a source check.
+
 ## [2.23.3] - 2026-10-30
 
 ### Added
