@@ -35820,9 +35820,9 @@
             "status": "closed"
           },
           {
-            "date": "2027-03-09",
+            "date": "2027-03-10",
             "name": "Hari Raya Puasa",
-            "source_url": "https://www.sgx.com/trading/trading-hours",
+            "source_url": "https://www.mom.gov.sg/newsroom/press-releases/2026/0618-public-holidays-for-2027",
             "status": "closed"
           },
           {
@@ -36315,9 +36315,15 @@
             "status": "closed"
           },
           {
-            "date": "2027-10-12",
-            "name": "Columbus Day",
-            "source_url": "https://www.bolsadesantiago.com/horarios",
+            "date": "2027-09-17",
+            "name": "Fiestas Patrias additional holiday (Ley 20.983)",
+            "source_url": "https://www.latercera.com/servicios/noticia/fiestas-patrias-2027-caeran-en-fin-de-semana-el-18-sera-sabado-y-el-19-domingo/",
+            "status": "closed"
+          },
+          {
+            "date": "2027-10-11",
+            "name": "Columbus Day (observed, Ley 19.668)",
+            "source_url": "https://tramitacion.senado.cl/senado/site/docs/20150430/20150430113807/feriados_en_chile_bcn.pdf",
             "status": "closed"
           },
           {
@@ -36334,23 +36340,11 @@
             "status": "early_close"
           },
           {
-            "date": "2027-12-27",
-            "name": "Christmas Day (observed)",
-            "source_url": "https://www.bolsadesantiago.com/horarios",
-            "status": "closed"
-          },
-          {
             "date": "2027-12-31",
             "early_close_time": "13:00",
             "name": "New Year's Eve",
             "source_url": "https://www.bolsadesantiago.com/horarios",
             "status": "early_close"
-          },
-          {
-            "date": "2028-01-03",
-            "name": "New Year's Day (observed)",
-            "source_url": "https://www.bolsadesantiago.com/horarios",
-            "status": "closed"
           },
           {
             "date": "2028-04-14",
@@ -36365,21 +36359,15 @@
             "status": "closed"
           },
           {
-            "date": "2028-05-22",
-            "name": "Navy Day (observed)",
-            "source_url": "https://www.bolsadesantiago.com/horarios",
-            "status": "closed"
-          },
-          {
             "date": "2028-06-20",
             "name": "National Indigenous Peoples Day",
             "source_url": "https://www.bolsadesantiago.com/horarios",
             "status": "closed"
           },
           {
-            "date": "2028-06-29",
-            "name": "Saint Peter and Saint Paul",
-            "source_url": "https://www.bolsadesantiago.com/horarios",
+            "date": "2028-06-26",
+            "name": "Saint Peter and Saint Paul (observed, Ley 19.668)",
+            "source_url": "https://tramitacion.senado.cl/senado/site/docs/20150430/20150430113807/feriados_en_chile_bcn.pdf",
             "status": "closed"
           },
           {
@@ -36401,15 +36389,15 @@
             "status": "closed"
           },
           {
-            "date": "2028-10-12",
-            "name": "Columbus Day",
-            "source_url": "https://www.bolsadesantiago.com/horarios",
+            "date": "2028-10-09",
+            "name": "Columbus Day (observed, Ley 19.668)",
+            "source_url": "https://tramitacion.senado.cl/senado/site/docs/20150430/20150430113807/feriados_en_chile_bcn.pdf",
             "status": "closed"
           },
           {
-            "date": "2028-10-31",
-            "name": "Reformation Day",
-            "source_url": "https://www.bolsadesantiago.com/horarios",
+            "date": "2028-10-27",
+            "name": "Reformation Day (observed, Ley 20.299)",
+            "source_url": "https://tramitacion.senado.cl/senado/site/docs/20150430/20150430113807/feriados_en_chile_bcn.pdf",
             "status": "closed"
           },
           {
@@ -36455,9 +36443,9 @@
             "status": "closed"
           },
           {
-            "date": "2029-06-29",
-            "name": "Saint Peter and Saint Paul",
-            "source_url": "https://www.bolsadesantiago.com/horarios",
+            "date": "2029-07-02",
+            "name": "Saint Peter and Saint Paul (observed, Ley 19.668)",
+            "source_url": "https://tramitacion.senado.cl/senado/site/docs/20150430/20150430113807/feriados_en_chile_bcn.pdf",
             "status": "closed"
           },
           {
@@ -36473,6 +36461,12 @@
             "status": "closed"
           },
           {
+            "date": "2029-09-17",
+            "name": "Fiestas Patrias additional holiday (Ley 20.215)",
+            "source_url": "https://www.elmostrador.cl/datos-utiles/2026/09/21/fiestas-patrias-2027-tendran-tres-dias-de-celebracion-cuando-sera-el-proximo-18-xl/",
+            "status": "closed"
+          },
+          {
             "date": "2029-09-18",
             "name": "Independence Day",
             "source_url": "https://www.bolsadesantiago.com/horarios",
@@ -36485,15 +36479,15 @@
             "status": "closed"
           },
           {
-            "date": "2029-10-12",
-            "name": "Columbus Day",
-            "source_url": "https://www.bolsadesantiago.com/horarios",
+            "date": "2029-10-15",
+            "name": "Columbus Day (observed, Ley 19.668)",
+            "source_url": "https://tramitacion.senado.cl/senado/site/docs/20150430/20150430113807/feriados_en_chile_bcn.pdf",
             "status": "closed"
           },
           {
-            "date": "2029-10-31",
-            "name": "Reformation Day",
-            "source_url": "https://www.bolsadesantiago.com/horarios",
+            "date": "2029-11-02",
+            "name": "Reformation Day (observed, Ley 20.299)",
+            "source_url": "https://tramitacion.senado.cl/senado/site/docs/20150430/20150430113807/feriados_en_chile_bcn.pdf",
             "status": "closed"
           },
           {
@@ -36524,53 +36518,18 @@
             "status": "closed"
           },
           {
-            "date": "2026-08-14",
-            "name": "Assumption Day",
-            "status": "closed"
-          },
-          {
-            "date": "2026-10-30",
-            "name": "Reformation Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-04-30",
-            "name": "Labour Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-06-29",
-            "name": "Saint Peter and Saint Paul",
-            "status": "closed"
-          },
-          {
-            "date": "2027-08-16",
-            "name": "Assumption Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-09-17",
-            "name": "Independence Day",
-            "status": "closed"
-          },
-          {
-            "date": "2027-09-20",
-            "name": "Army Day",
-            "status": "closed"
-          },
-          {
             "date": "2027-11-01",
-            "name": "Reformation Day",
+            "name": "All Saints' Day",
             "status": "closed"
           },
           {
-            "date": "2028-07-17",
-            "name": "Our Lady of Mount Carmel",
+            "date": "2028-11-01",
+            "name": "All Saints' Day",
             "status": "closed"
           },
           {
-            "date": "2029-12-07",
-            "name": "Immaculate Conception",
+            "date": "2029-11-01",
+            "name": "All Saints' Day",
             "status": "closed"
           }
         ]
@@ -39220,21 +39179,21 @@
             "status": "closed"
           },
           {
-            "date": "2027-02-11",
-            "name": "Chinese New Year Holiday",
-            "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
-            "status": "closed"
-          },
-          {
-            "date": "2027-02-26",
+            "date": "2027-03-01",
             "name": "Peace Memorial Day (observed)",
-            "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "source_url": "https://wantrich.chinatimes.com/news/20260522900066-420501",
             "status": "closed"
           },
           {
             "date": "2027-04-05",
             "name": "Tomb Sweeping Day",
             "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
+            "date": "2027-04-30",
+            "name": "Labour Day (observed)",
+            "source_url": "https://wantrich.chinatimes.com/news/20260522900066-420501",
             "status": "closed"
           },
           {
@@ -39247,6 +39206,30 @@
             "date": "2027-09-15",
             "name": "Mid-Autumn Festival",
             "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
+            "date": "2027-09-28",
+            "name": "Teachers' Day",
+            "source_url": "https://www.storm.mg/lifestyle/11171331",
+            "status": "closed"
+          },
+          {
+            "date": "2027-10-11",
+            "name": "National Day (observed)",
+            "source_url": "https://wantrich.chinatimes.com/news/20260522900066-420501",
+            "status": "closed"
+          },
+          {
+            "date": "2027-10-25",
+            "name": "Taiwan Retrocession Day",
+            "source_url": "https://wantrich.chinatimes.com/news/20260522900066-420501",
+            "status": "closed"
+          },
+          {
+            "date": "2027-12-31",
+            "name": "Republic Day (observed for 2028-01-01)",
+            "source_url": "https://wantrich.chinatimes.com/news/20260522900066-420501",
             "status": "closed"
           },
           {
@@ -39322,9 +39305,27 @@
             "status": "closed"
           },
           {
+            "date": "2028-09-28",
+            "name": "Teachers' Day",
+            "source_url": "https://www.taiwannews.com.tw/zh/news/6106736",
+            "status": "closed"
+          },
+          {
             "date": "2028-10-10",
             "name": "National Day",
             "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
+            "date": "2028-10-25",
+            "name": "Taiwan Retrocession Day",
+            "source_url": "https://www.taiwannews.com.tw/zh/news/6106736",
+            "status": "closed"
+          },
+          {
+            "date": "2028-12-25",
+            "name": "Constitution Day",
+            "source_url": "https://www.taiwannews.com.tw/zh/news/6106736",
             "status": "closed"
           },
           {
@@ -39400,9 +39401,27 @@
             "status": "closed"
           },
           {
+            "date": "2029-09-28",
+            "name": "Teachers' Day",
+            "source_url": "https://www.taiwannews.com.tw/zh/news/6106736",
+            "status": "closed"
+          },
+          {
             "date": "2029-10-10",
             "name": "National Day",
             "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
+            "date": "2029-10-25",
+            "name": "Taiwan Retrocession Day",
+            "source_url": "https://www.taiwannews.com.tw/zh/news/6106736",
+            "status": "closed"
+          },
+          {
+            "date": "2029-12-25",
+            "name": "Constitution Day",
+            "source_url": "https://www.taiwannews.com.tw/zh/news/6106736",
             "status": "closed"
           }
         ],

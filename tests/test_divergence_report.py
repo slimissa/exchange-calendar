@@ -182,3 +182,58 @@ class TestTriage:
         src.write_text(_json.dumps(_report()))
         assert dr.main(["--input", str(src), "--triage", str(tmp_path / "none.json"),
                         "--output", str(tmp_path / "o.md")]) == 0
+
+
+def _unpublished_triage():
+    return {"entries": [
+        {"exchange": "XAAA", "verdict": "unpublished", "status": "registry_verified",
+         "dates": ["2026-04-24"], "recheck_date": "2026-12-31",
+         "summary": "The 2026 calendar is not published yet.",
+         "source_url": "https://example.com/calendar"},
+    ]}
+
+
+class TestUnpublishedVerdict:
+    def test_verdict_has_label_and_tag(self):
+        assert dr.VERDICT_LABEL["unpublished"] == "Unpublished"
+        assert dr.VERDICT_TAG["unpublished"] == "unpublished"
+        assert set(dr.VERDICT_LABEL) == set(dr.VERDICT_TAG)
+
+    def test_date_is_tagged_unpublished(self):
+        text = dr.render(_report(), _unpublished_triage())
+        assert "2026-04-24 Fr [unpublished]" in text
+
+    def test_triage_heading_shows_recheck_date(self):
+        text = dr.render(_report(), _unpublished_triage())
+        assert ("### XAAA: Unpublished (1, calendar not yet published, registry "
+                "value is a prediction, recheck 2026-12-31)") in text
+
+    def test_recheck_date_is_optional(self):
+        triage = _unpublished_triage()
+        del triage["entries"][0]["recheck_date"]
+        text = dr.render(_report(), triage)
+        assert "registry value is a prediction)" in text
+
+    def test_main_accepts_unpublished_verdict(self, tmp_path):
+        src, tri, dst = tmp_path / "in.json", tmp_path / "t.json", tmp_path / "o.md"
+        src.write_text(json.dumps(_report()))
+        tri.write_text(json.dumps(_unpublished_triage()))
+        assert dr.main(["--input", str(src), "--triage", str(tri),
+                        "--output", str(dst)]) == 0
+        assert "[unpublished]" in dst.read_text()
+
+
+class TestTriageCoverage:
+    def test_coverage_table_counts_classified_and_unclassified(self):
+        text = dr.render(_report(), _unpublished_triage())
+        assert "Triage coverage" in text
+        assert "| 2026 | 1 | 0 | 0 | 0 | 1 | 0 |" in text
+
+    def test_no_coverage_table_without_triage(self):
+        assert "Triage coverage" not in dr.render(_report())
+
+    def test_unclassified_count_when_nothing_matches(self):
+        triage = _unpublished_triage()
+        triage["entries"][0]["dates"] = ["2026-01-02"]
+        text = dr.render(_report(), triage)
+        assert "| 2026 | 1 | 0 | 0 | 0 | 0 | 1 |" in text

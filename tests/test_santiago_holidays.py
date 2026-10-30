@@ -99,11 +99,11 @@ class TestXSGOFixedHolidays:
         assert "2025-01-01" in explicit_dates
         assert explicit_dates["2025-01-01"]["name"] == "New Year's Day"
 
-    def test_new_year_2028_substitute(self, explicit_dates):
-        """Jan 1, 2028 is Saturday — substitute to Monday Jan 3."""
+    def test_new_year_2028_saturday_is_not_moved(self, explicit_dates):
+        """Jan 1, 2028 is Saturday. Ley 20.983 moves New Year only from a
+        Sunday to Monday, so nothing is closed on Monday Jan 3."""
         assert "2028-01-01" not in explicit_dates
-        assert "2028-01-03" in explicit_dates
-        assert "New Year's Day" in explicit_dates["2028-01-03"]["name"]
+        assert "2028-01-03" not in explicit_dates
 
     def test_labour_day_2025(self, explicit_dates):
         """May 1, 2025 is Thursday — no substitution."""
@@ -115,11 +115,10 @@ class TestXSGOFixedHolidays:
         assert "2025-05-21" in explicit_dates
         assert explicit_dates["2025-05-21"]["name"] == "Navy Day"
 
-    def test_navy_day_2028_substitute(self, explicit_dates):
-        """May 21, 2028 is Sunday — substitute to Monday May 22."""
+    def test_navy_day_2028_sunday_is_not_moved(self, explicit_dates):
+        """May 21, 2028 is Sunday. Ley 2.977 does not move it to Monday."""
         assert "2028-05-21" not in explicit_dates
-        assert "2028-05-22" in explicit_dates
-        assert "Navy Day" in explicit_dates["2028-05-22"]["name"]
+        assert "2028-05-22" not in explicit_dates
 
     def test_indigenous_peoples_2025(self, explicit_dates):
         """Jun 20, 2025 is Friday — no substitution."""
@@ -202,11 +201,10 @@ class TestXSGOChristmas:
         assert "2025-12-25" in explicit_dates
         assert explicit_dates["2025-12-25"]["name"] == "Christmas Day"
 
-    def test_christmas_day_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27."""
+    def test_christmas_day_2027_saturday_is_not_moved(self, explicit_dates):
+        """Dec 25, 2027 is Saturday. Chile does not observe it on Monday."""
         assert "2027-12-25" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
-        assert "Christmas Day" in explicit_dates["2027-12-27"]["name"]
+        assert "2027-12-27" not in explicit_dates
 
     def test_new_years_eve_2025(self, explicit_dates):
         """Dec 31, 2025 is Wednesday — early close at 13:00."""
@@ -285,27 +283,37 @@ class TestXSGORecurrence:
             "Labour Day",
             "Navy Day",
             "National Indigenous Peoples Day",
-            "Saint Peter and Saint Paul",
             "Our Lady of Mount Carmel",
             "Assumption Day",
             "Independence Day",
             "Army Day",
-            "Columbus Day",
-            "Reformation Day",
+            "All Saints' Day",
             "Immaculate Conception",
             "Christmas Day",
         }
         for name in expected:
             assert name in names, f"Missing recurrence rule: {name}"
 
-    def test_weekend_adjustment_rules(self, recurrence_rules):
-        for name in ["New Year's Day", "Labour Day", "Navy Day",
-                     "National Indigenous Peoples Day", "Saint Peter and Saint Paul",
-                     "Our Lady of Mount Carmel", "Assumption Day",
-                     "Independence Day", "Army Day", "Columbus Day",
-                     "Reformation Day", "Immaculate Conception", "Christmas Day"]:
-            rule = recurrence_rules[name]
-            assert rule["rule"] == "fixed_with_weekend_adjustment"
+    def test_moved_holidays_have_no_rule(self, recurrence_rules):
+        """Ley 19.668 and Ley 20.299 move these to a Monday or Friday that no
+        rule type can express; they are explicit dates instead."""
+        for name in ("Saint Peter and Saint Paul", "Columbus Day", "Reformation Day"):
+            assert name not in recurrence_rules
+
+    def test_fixed_date_rules_do_not_shift(self, recurrence_rules):
+        """Ley 2.977 holidays stay on their date, weekend or not."""
+        for name in ["Labour Day", "Navy Day", "Our Lady of Mount Carmel",
+                     "Assumption Day", "Independence Day", "Army Day",
+                     "All Saints' Day", "Immaculate Conception", "Christmas Day"]:
+            assert recurrence_rules[name]["rule"] == "fixed_date", name
+
+    def test_new_year_moves_only_from_sunday(self, recurrence_rules):
+        assert recurrence_rules["New Year's Day"]["rule"] == "fixed_with_sunday_observance"
+
+    def test_indigenous_peoples_day_rule_is_unchanged(self, recurrence_rules):
+        # The day follows the winter solstice (20 or 21 June), which no rule
+        # type expresses; the rule is a placeholder for years without explicit data.
+        assert recurrence_rules["National Indigenous Peoples Day"]["rule"] == "fixed_with_weekend_adjustment"
 
     def test_easter_rule(self, recurrence_rules):
         rule = recurrence_rules["Good Friday"]
@@ -360,7 +368,9 @@ class TestXSGOStructure:
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
-            assert "bolsadesantiago.com" in entry["source_url"]
+            assert entry["source_url"].startswith("https://")
+            if entry["date"] <= "2026-12-31":
+                assert "bolsadesantiago.com" in entry["source_url"]
 
 
 # ──────────────────────────────────────────────────────────────

@@ -1,5 +1,5 @@
 {
-  "_comment": "Hand-checked verdicts for disagreements listed by tools/divergence_test.py. Read by tools/divergence_report.py to annotate docs/DIVERGENCE.md. verdict: registry_error (registry was wrong, status fixed), library_error (registry verified against the exchange, the reference libraries are wrong) or convention_difference (both defensible, sources use different conventions). Every entry must cite the exchange's own publication.",
+  "_comment": "Hand-checked verdicts for disagreements listed by tools/divergence_test.py. Read by tools/divergence_report.py to annotate docs/DIVERGENCE.md. verdict: registry_error (registry was wrong, status fixed), library_error (registry verified against the exchange, the reference libraries are wrong) convention_difference (both defensible, sources use different conventions) or unpublished (the exchange or its government has not published that year, so the registry value is a prediction; recheck_date says when to look again). Every entry must cite the exchange's own publication, or for an unpublished year the page where it will appear.",
   "entries": [
     {
       "exchange": "XAMS",
@@ -185,6 +185,406 @@
       ],
       "summary": "The SEHK circular for 2027 (CT/077/26) lists the day following the Mid-Autumn Festival as Thursday 16 September (the registry had the 15th, the festival itself) and Friday 5 February, the eve of Lunar New Year, as a half day (missing). It names 8 and 9 February the third and fourth days of Lunar New Year; the registry names are corrected.",
       "source_url": "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846"
+    },
+    {
+      "exchange": "XSHG",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2027-01-01",
+        "2027-02-05",
+        "2027-02-08",
+        "2027-02-09",
+        "2027-02-10",
+        "2027-02-11",
+        "2027-02-12",
+        "2027-04-05",
+        "2027-05-03",
+        "2027-06-09",
+        "2027-09-15",
+        "2027-10-01",
+        "2027-10-04",
+        "2027-10-05",
+        "2027-10-06",
+        "2027-10-07"
+      ],
+      "recheck_date": "2026-12-31",
+      "summary": "Both libraries stop at 2026 (exchange_calendars holds no 2027 holidays), so the 16 2027 disagreements are an empty reference, not a different date. The SSE publishes its holiday notice for a year in the last weeks of the year before (the newest notice on its list covers 2026), after the State Council sets the public-holiday arrangement. The registry values for 2027 are predictions (confidence note: predicted) and stay as they are until the exchange publishes 2027.",
+      "source_url": "https://www.sse.com.cn/disclosure/dealinstruc/closed/list/"
+    },
+    {
+      "exchange": "XSHG",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2028-01-03",
+        "2028-01-26",
+        "2028-01-27",
+        "2028-01-28",
+        "2028-01-31",
+        "2028-02-01",
+        "2028-04-04",
+        "2028-05-01",
+        "2028-06-19",
+        "2028-10-02",
+        "2028-10-03",
+        "2028-10-04",
+        "2028-10-05",
+        "2028-10-06"
+      ],
+      "recheck_date": "2027-12-31",
+      "summary": "Both libraries stop at 2026 (exchange_calendars holds no 2028 holidays), so the 14 2028 disagreements are an empty reference, not a different date. The SSE publishes its holiday notice for a year in the last weeks of the year before (the newest notice on its list covers 2026), after the State Council sets the public-holiday arrangement. The registry values for 2028 are predictions (confidence note: predicted) and stay as they are until the exchange publishes 2028.",
+      "source_url": "https://www.sse.com.cn/disclosure/dealinstruc/closed/list/"
+    },
+    {
+      "exchange": "XSHG",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2029-01-01",
+        "2029-02-13",
+        "2029-02-14",
+        "2029-02-15",
+        "2029-02-16",
+        "2029-02-19",
+        "2029-04-05",
+        "2029-05-01",
+        "2029-10-01",
+        "2029-10-02",
+        "2029-10-03",
+        "2029-10-04",
+        "2029-10-05"
+      ],
+      "recheck_date": "2028-12-31",
+      "summary": "Both libraries stop at 2026 (exchange_calendars holds no 2029 holidays), so the 13 2029 disagreements are an empty reference, not a different date. The SSE publishes its holiday notice for a year in the last weeks of the year before (the newest notice on its list covers 2026), after the State Council sets the public-holiday arrangement. The registry values for 2029 are predictions (confidence note: predicted) and stay as they are until the exchange publishes 2029.",
+      "source_url": "https://www.sse.com.cn/disclosure/dealinstruc/closed/list/"
+    },
+    {
+      "exchange": "XBOM",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2027-01-26",
+        "2027-03-10",
+        "2027-03-23",
+        "2027-03-26",
+        "2027-04-14",
+        "2027-05-17",
+        "2027-06-16",
+        "2027-10-29"
+      ],
+      "recheck_date": "2026-12-31",
+      "summary": "Both libraries stop at 2026 (exchange_calendars holds no 2027 holidays), so the 8 2027 disagreements are an empty reference, not a different date. BSE publishes its trading-holiday list for a year in December of the year before (expected, not yet confirmed for 2027). The registry values for 2027 are predictions (confidence note: predicted) and stay as they are until the exchange publishes 2027.",
+      "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.aspx"
+    },
+    {
+      "exchange": "XBOM",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2028-01-26",
+        "2028-02-24",
+        "2028-04-14",
+        "2028-05-01",
+        "2028-05-05",
+        "2028-08-15",
+        "2028-08-23",
+        "2028-09-28",
+        "2028-10-02",
+        "2028-10-17",
+        "2028-10-18",
+        "2028-12-25"
+      ],
+      "recheck_date": "2027-12-31",
+      "summary": "Both libraries stop at 2026 (exchange_calendars holds no 2028 holidays), so the 12 2028 disagreements are an empty reference, not a different date. BSE publishes its trading-holiday list for a year in December of the year before (expected, not yet confirmed for 2027). The registry values for 2028 are predictions (confidence note: predicted) and stay as they are until the exchange publishes 2028.",
+      "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.aspx"
+    },
+    {
+      "exchange": "XBOM",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2029-01-26",
+        "2029-02-12",
+        "2029-02-15",
+        "2029-03-01",
+        "2029-03-30",
+        "2029-04-24",
+        "2029-05-01",
+        "2029-05-24",
+        "2029-08-15",
+        "2029-09-12",
+        "2029-10-02",
+        "2029-10-17",
+        "2029-11-05",
+        "2029-11-06",
+        "2029-12-25"
+      ],
+      "recheck_date": "2028-12-31",
+      "summary": "Both libraries stop at 2026 (exchange_calendars holds no 2029 holidays), so the 15 2029 disagreements are an empty reference, not a different date. BSE publishes its trading-holiday list for a year in December of the year before (expected, not yet confirmed for 2027). The registry values for 2029 are predictions (confidence note: predicted) and stay as they are until the exchange publishes 2029.",
+      "source_url": "https://www.bseindia.com/markets/marketinfo/market_holidays.aspx"
+    },
+    {
+      "exchange": "XNSE",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2027-01-26",
+        "2027-03-10",
+        "2027-03-23",
+        "2027-03-26",
+        "2027-04-14",
+        "2027-05-17",
+        "2027-06-16",
+        "2027-10-29"
+      ],
+      "recheck_date": "2026-12-31",
+      "summary": "Both libraries stop at 2026 (pandas_market_calendars holds no 2027 holidays), so the 8 2027 disagreements are an empty reference, not a different date. NSE publishes its trading-holiday list for a year in December of the year before (expected, not yet confirmed for 2027). The registry values for 2027 are predictions (confidence note: predicted) and stay as they are until the exchange publishes 2027.",
+      "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+    },
+    {
+      "exchange": "XNSE",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2028-01-26",
+        "2028-02-24",
+        "2028-04-14",
+        "2028-05-01",
+        "2028-05-05",
+        "2028-08-15",
+        "2028-08-23",
+        "2028-09-28",
+        "2028-10-02",
+        "2028-10-17",
+        "2028-10-18",
+        "2028-12-25"
+      ],
+      "recheck_date": "2027-12-31",
+      "summary": "Both libraries stop at 2026 (pandas_market_calendars holds no 2028 holidays), so the 12 2028 disagreements are an empty reference, not a different date. NSE publishes its trading-holiday list for a year in December of the year before (expected, not yet confirmed for 2027). The registry values for 2028 are predictions (confidence note: predicted) and stay as they are until the exchange publishes 2028.",
+      "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+    },
+    {
+      "exchange": "XNSE",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2029-01-26",
+        "2029-02-12",
+        "2029-02-15",
+        "2029-03-01",
+        "2029-03-30",
+        "2029-04-24",
+        "2029-05-01",
+        "2029-05-24",
+        "2029-08-15",
+        "2029-09-12",
+        "2029-10-02",
+        "2029-10-17",
+        "2029-11-05",
+        "2029-11-06",
+        "2029-12-25"
+      ],
+      "recheck_date": "2028-12-31",
+      "summary": "Both libraries stop at 2026 (pandas_market_calendars holds no 2029 holidays), so the 15 2029 disagreements are an empty reference, not a different date. NSE publishes its trading-holiday list for a year in December of the year before (expected, not yet confirmed for 2027). The registry values for 2029 are predictions (confidence note: predicted) and stay as they are until the exchange publishes 2029.",
+      "source_url": "https://www.nseindia.com/resources/exchange-communication-holidays"
+    },
+    {
+      "exchange": "XSES",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.3",
+      "dates": [
+        "2027-03-09"
+      ],
+      "summary": "MOM gazetted Hari Raya Puasa 2027 on Wednesday 10 March. The registry had Tuesday 9 March; it now closes 10 March (which appears below as a library error, because the library has no 2027 data).",
+      "source_url": "https://www.mom.gov.sg/newsroom/press-releases/2026/0618-public-holidays-for-2027"
+    },
+    {
+      "exchange": "XSES",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2027-01-01",
+        "2027-02-08",
+        "2027-03-10",
+        "2027-03-26",
+        "2027-05-17",
+        "2027-05-20",
+        "2027-08-09",
+        "2027-10-28"
+      ],
+      "summary": "MOM published the 11 gazetted 2027 public holidays on 2026-06-18: 1 Jan, 6-8 Feb (Chinese New Year; 6 Feb is a Saturday and 7 Feb a Sunday, so Monday 8 Feb is the holiday), 10 Mar, 26 Mar, 1 May (Saturday), 17 May, 20 May, 9 Aug, 28 Oct, 25 Dec (Saturday). The eight weekday closures match the registry exactly. pandas_market_calendars has no 2027 holidays (data ends 2026), so it shows these days open.",
+      "source_url": "https://www.mom.gov.sg/newsroom/press-releases/2026/0618-public-holidays-for-2027"
+    },
+    {
+      "exchange": "XSES",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2028-01-26",
+        "2028-01-27",
+        "2028-03-28",
+        "2028-04-14",
+        "2028-05-01",
+        "2028-05-05",
+        "2028-05-09",
+        "2028-08-09",
+        "2028-10-17",
+        "2028-12-25"
+      ],
+      "recheck_date": "2027-06-30",
+      "summary": "MOM has not gazetted the 2028 public holidays (it published 2027 on 2026-06-18), and pandas_market_calendars holds no 2028 data. The registry values are predictions, including the Hari Raya and Deepavali dates, which MOM may move.",
+      "source_url": "https://www.mom.gov.sg/newsroom/press-releases/2026/0618-public-holidays-for-2027"
+    },
+    {
+      "exchange": "XSES",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2029-01-01",
+        "2029-02-13",
+        "2029-02-14",
+        "2029-03-16",
+        "2029-03-30",
+        "2029-05-01",
+        "2029-05-25",
+        "2029-05-28",
+        "2029-08-09",
+        "2029-11-05",
+        "2029-12-25"
+      ],
+      "recheck_date": "2028-06-30",
+      "summary": "MOM has not gazetted the 2029 public holidays (it published 2027 on 2026-06-18), and pandas_market_calendars holds no 2029 data. The registry values are predictions, including the Hari Raya and Deepavali dates, which MOM may move.",
+      "source_url": "https://www.mom.gov.sg/newsroom/press-releases/2026/0618-public-holidays-for-2027"
+    },
+    {
+      "exchange": "XSGO",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.3",
+      "dates": [
+        "2027-04-30",
+        "2027-06-29",
+        "2027-08-16",
+        "2027-09-20",
+        "2027-10-11",
+        "2027-10-12",
+        "2027-12-27",
+        "2028-01-03",
+        "2028-05-22",
+        "2028-06-26",
+        "2028-06-29",
+        "2028-07-17",
+        "2028-10-09",
+        "2028-10-12",
+        "2028-10-27",
+        "2028-10-31",
+        "2028-11-01",
+        "2029-06-29",
+        "2029-07-02",
+        "2029-09-17",
+        "2029-10-12",
+        "2029-10-15",
+        "2029-10-31",
+        "2029-11-01",
+        "2029-11-02",
+        "2029-12-07"
+      ],
+      "summary": "The Chilean holiday laws are fixed in advance. Holidays that land on a weekend are not moved (Ley 2.977): 1 May 2027, 15 Aug 2027, 19 Sep 2027, 25 Dec 2027, 1 Jan 2028, 21 May 2028, 16 Jul 2028 and 8 Dec 2029 were wrongly shifted by a generic weekend rule. San Pedro y San Pablo and 12 Oct move to a Monday (Ley 19.668) and 31 Oct to a Friday (Ley 20.299): 28 Jun and 11 Oct 2027, 26 Jun, 9 Oct and 27 Oct 2028, 2 Jul, 15 Oct and 2 Nov 2029. Ley 20.215 adds Monday 17 Sep 2029. All Saints (1 Nov) was missing from the rules, so 1 Nov 2028 and 2029 were open. The three movable holidays are now explicit dates; the rest use fixed_date.",
+      "source_url": "https://tramitacion.senado.cl/senado/site/docs/20150430/20150430113807/feriados_en_chile_bcn.pdf"
+    },
+    {
+      "exchange": "XSGO",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2027-09-17"
+      ],
+      "summary": "Ley 20.983 makes Friday 17 September a holiday when the 18th and 19th fall on Saturday and Sunday, as in 2027. The registry closes the day; exchange_calendars shows it open.",
+      "source_url": "https://www.latercera.com/servicios/noticia/fiestas-patrias-2027-caeran-en-fin-de-semana-el-18-sera-sabado-y-el-19-domingo/"
+    },
+    {
+      "exchange": "XSGO",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2027-09-17",
+        "2027-12-31",
+        "2029-12-31"
+      ],
+      "recheck_date": "2026-12-31",
+      "summary": "Bolsa de Santiago has not published its 2027 and 2029 trading schedules. The registry carries the 31 December early close (13:00) it publishes for 2025 and 2026; exchange_calendars closes the day. Neither can be checked until the Bolsa lists the year.",
+      "source_url": "https://www.bolsadesantiago.com/horarios"
+    },
+    {
+      "exchange": "XTAI",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.3",
+      "dates": [
+        "2027-02-11",
+        "2027-02-26",
+        "2027-03-01",
+        "2027-04-30",
+        "2027-09-28",
+        "2027-10-11",
+        "2027-10-25",
+        "2027-12-31",
+        "2028-09-28",
+        "2028-10-25",
+        "2028-12-25",
+        "2029-09-28",
+        "2029-10-25",
+        "2029-12-25"
+      ],
+      "summary": "DGPA's 2027 government calendar (published 2026-05-21) observes a Saturday holiday on the previous working day and a Sunday one on the next: Peace Memorial Day (Sunday 28 Feb) is Monday 1 Mar, not Friday 26 Feb; Labour Day (Saturday 1 May) is Friday 30 Apr; National Day (Sunday 10 Oct) is Monday 11 Oct; Taiwan Retrocession Day is Monday 25 Oct; New Year's Day 2028 (Saturday) is observed Friday 31 Dec 2027. The Spring Festival holiday ends Wednesday 10 Feb, so Thursday 11 Feb is a working day. The 2025 Commemoration and Holidays Act made 28 Sep, 25 Oct and 25 Dec national holidays; the registry lacked them from 2027, including the 2028 and 2029 dates, which fall on weekdays.",
+      "source_url": "https://wantrich.chinatimes.com/news/20260522900066-420501"
+    },
+    {
+      "exchange": "XTAI",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2027-02-03"
+      ],
+      "recheck_date": "2026-12-31",
+      "summary": "2027-02-03 is the registry's pre-Chinese-New-Year settlement day. DGPA's calendar starts the holiday on 4 Feb; whether TWSE and the depository also close on the 3rd is announced in TWSE's own yearly schedule, which is not out yet.",
+      "source_url": "https://www.taiwannews.com.tw/zh/news/6106736"
+    },
+    {
+      "exchange": "XTAI",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2028-01-31",
+        "2028-02-01",
+        "2028-04-03",
+        "2028-04-05",
+        "2028-05-29",
+        "2028-09-25",
+        "2028-10-03"
+      ],
+      "recheck_date": "2027-06-30",
+      "summary": "DGPA publishes the government calendar for a year by 30 June of the year before (the 2027 one came out on 2026-05-21), and TWSE its own schedule later. The remaining 2028 dates depend on lunar festivals, the Children's Day and Tomb Sweeping adjustment and settlement days, none of which is published. The registry values are predictions.",
+      "source_url": "https://www.taiwannews.com.tw/zh/news/6106736"
+    },
+    {
+      "exchange": "XTAI",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2029-02-08",
+        "2029-02-16",
+        "2029-04-03",
+        "2029-06-15",
+        "2029-06-18",
+        "2029-09-21",
+        "2029-12-31"
+      ],
+      "recheck_date": "2028-06-30",
+      "summary": "DGPA publishes the government calendar for a year by 30 June of the year before (the 2027 one came out on 2026-05-21), and TWSE its own schedule later. The remaining 2029 dates depend on lunar festivals, the Children's Day and Tomb Sweeping adjustment and settlement days, none of which is published. The registry values are predictions.",
+      "source_url": "https://www.taiwannews.com.tw/zh/news/6106736"
     }
   ]
 }

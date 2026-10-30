@@ -162,8 +162,10 @@ class TestXTAIObserved:
         assert "National" in explicit_dates["2026-10-09"]["name"]
 
     def test_peace_memorial_2027_observed(self, explicit_dates):
-        """Feb 28, 2027 is Sunday — observed Friday Feb 26."""
-        assert "2027-02-26" in explicit_dates
+        """Feb 28, 2027 is Sunday — observed Monday Mar 1 (DGPA: a Sunday
+        holiday is observed the next working day)."""
+        assert "2027-03-01" in explicit_dates
+        assert "2027-02-26" not in explicit_dates
 
     def test_dragon_boat_2029(self, explicit_dates):
         """Dragon Boat June 18, 2029 is Monday — no shift needed."""

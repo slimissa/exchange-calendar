@@ -41,11 +41,13 @@ VERDICT_LABEL = {
     "registry_error": "Registry error",
     "library_error": "Library error",
     "convention_difference": "Convention difference",
+    "unpublished": "Unpublished",
 }
 VERDICT_TAG = {
     "registry_error": "registry error",
     "library_error": "library error",
     "convention_difference": "convention difference",
+    "unpublished": "unpublished",
 }
 
 REGISTRY = "registry"
@@ -359,7 +361,7 @@ def render_history(sessions, calendar):
     return out
 
 
-def render_by_year(report):
+def render_by_year(report, triage_index=None):
     """Markdown lines for the by-year table, or [] when only one year was run.
 
     One row per exchange with at least one disagreement, one column per year.
@@ -390,6 +392,43 @@ def render_by_year(report):
     for code, counts in rows:
         out.append(f"| {code} | " + " | ".join(str(counts[y]) if y in counts else "-"
                                               for y in years) + " |")
+    out.append("")
+    if triage_index:
+        out += _triage_coverage(report, years, triage_index)
+    return out
+
+
+def _triage_coverage(report, years, triage_index):
+    """Lines saying how many of the by-year disagreements a triage entry covers."""
+    total = {y: 0 for y in years}
+    by_verdict = {}
+    for code, e in sorted(report["exchanges"].items()):
+        if "years" not in e:
+            continue
+        for y in years:
+            r = e["years"].get(y)
+            if not r or REGISTRY not in r["sources_compared"] \
+                    or len(r["sources_compared"]) < 2:
+                continue
+            for item in r.get("disagreements", []):
+                total[y] += 1
+                verdict = triage_index.get((code, item["date"]))
+                if verdict:
+                    by_verdict.setdefault(y, {}).setdefault(verdict, 0)
+                    by_verdict[y][verdict] += 1
+    out = ["Triage coverage (disagreements with a verdict in "
+           "`docs/divergence_triage.json`):", "",
+           "| Year | Disagreements | " + " | ".join(
+               VERDICT_LABEL[v] for v in VERDICT_LABEL) + " | Unclassified |",
+           "|---|---:|" + "---:|" * (len(VERDICT_LABEL) + 1)]
+    for y in years:
+        if not total[y]:
+            continue
+        counts = by_verdict.get(y, {})
+        covered = sum(counts.values())
+        out.append(f"| {y} | {total[y]} | "
+                   + " | ".join(str(counts.get(v, 0)) for v in VERDICT_LABEL)
+                   + f" | {total[y] - covered} |")
     out.append("")
     return out
 
@@ -507,7 +546,7 @@ def render(report, triage=None, sessions=None, calendar=None):
           f"({total_agree / (total_agree + total_diffs) * 100:.1f}%).")
     w("")
 
-    out.extend(render_by_year(report))
+    out.extend(render_by_year(report, triage_index))
 
     # ---- no reference data ------------------------------------------------
     w("## No reference data")
@@ -579,7 +618,10 @@ def render(report, triage=None, sessions=None, calendar=None):
         w("Verdicts checked by hand against each exchange's own publication. "
           "Dates marked in the list above are the ones still disagreeing; "
           "\"fixed\" entries are already corrected in the registry, so their "
-          "dates no longer appear there.")
+          "dates no longer appear there. \"Unpublished\" entries are "
+          "disagreements that cannot be checked yet because the exchange or "
+          "its government has not published that year; the registry value is "
+          "a prediction, and each entry carries a recheck date.")
         w("")
         counts = {}
         for e in entries:
@@ -588,8 +630,14 @@ def render(report, triage=None, sessions=None, calendar=None):
                            for v, n in sorted(counts.items())) + ".")
         w("")
         for e in sorted(entries, key=lambda e: (e["exchange"], e["verdict"])):
-            state = (f"fixed in {e['fixed_in']}" if e.get("status") == "fixed"
-                     else "registry verified, no change")
+            if e.get("status") == "fixed":
+                state = f"fixed in {e['fixed_in']}"
+            elif e["verdict"] == "unpublished":
+                state = "calendar not yet published, registry value is a prediction"
+                if e.get("recheck_date"):
+                    state += f", recheck {e['recheck_date']}"
+            else:
+                state = "registry verified, no change"
             w(f"### {e['exchange']}: {VERDICT_LABEL[e['verdict']]} ({len(e['dates'])}, {state})")
             w("")
             w(e["summary"])

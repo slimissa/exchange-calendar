@@ -141,6 +141,116 @@ class TestXhkg:
         assert days["2029-09-24"]["status"] == "closed"
 
 
+def closed(code, year):
+    """Closed weekdays the registry generates for one year (explicit plus rules)."""
+    e = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    days = list(e["holidays"]["explicit"]) + gd.expand_exchange(e)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and dt.date.fromisoformat(d["date"]).weekday() < 5}
+
+
+class TestXsgoChileanLaw:
+    """Bolsa de Santiago follows the Chilean legal holidays. Ley 2.977 fixes the
+    dates and does not move a holiday that lands on a weekend; Ley 19.668 moves
+    San Pedro y San Pablo (29 Jun) and 12 Oct to a Monday, Ley 20.299 moves
+    31 Oct to a Friday, Ley 20.215 and Ley 20.983 add 17 and 20 September
+    around the 18th and 19th, and 1 January moves to Monday only from a Sunday."""
+
+    def test_2027(self):
+        assert closed("XSGO", 2027) == {
+            "2027-01-01", "2027-03-26", "2027-05-21", "2027-06-21", "2027-06-28",
+            "2027-07-16", "2027-09-17", "2027-10-11", "2027-11-01", "2027-12-08"}
+
+    def test_2028(self):
+        assert closed("XSGO", 2028) == {
+            "2028-04-14", "2028-05-01", "2028-06-20", "2028-06-26", "2028-08-15",
+            "2028-09-18", "2028-09-19", "2028-10-09", "2028-10-27", "2028-11-01",
+            "2028-12-08", "2028-12-25"}
+
+    def test_2029(self):
+        assert closed("XSGO", 2029) == {
+            "2029-01-01", "2029-03-30", "2029-05-01", "2029-05-21", "2029-06-20",
+            "2029-07-02", "2029-07-16", "2029-08-15", "2029-09-17", "2029-09-18",
+            "2029-09-19", "2029-10-15", "2029-11-01", "2029-11-02", "2029-12-25"}
+
+    @pytest.mark.parametrize("day", [
+        "2027-04-30",   # 1 May is a Saturday: not moved to Friday
+        "2027-08-16",   # 15 Aug is a Sunday: not moved to Monday
+        "2027-09-20",   # 19 Sep is a Sunday: not moved to Monday
+        "2027-12-27",   # 25 Dec is a Saturday: not moved
+        "2028-01-03",   # 1 Jan is a Saturday: not moved
+        "2028-05-22",   # 21 May is a Sunday: not moved
+        "2028-07-17",   # 16 Jul is a Sunday: not moved
+        "2029-12-07",   # 8 Dec is a Saturday: not moved to Friday
+    ])
+    def test_weekend_holidays_are_not_moved(self, day):
+        assert day not in closed("XSGO", int(day[:4]))
+
+    def test_all_saints_is_a_holiday(self):
+        rule = next(r for r in json.loads((ROOT / "exchanges" / "XSGO.json")
+                    .read_text(encoding="utf-8"))["holidays"]["recurrence_rules"]
+                    if r["name"] == "All Saints' Day")
+        assert (rule["month"], rule["day"], rule["rule"]) == (11, 1, "fixed_date")
+
+    def test_sunday_new_year_moves_to_monday(self):
+        rule = next(r for r in json.loads((ROOT / "exchanges" / "XSGO.json")
+                    .read_text(encoding="utf-8"))["holidays"]["recurrence_rules"]
+                    if r["name"] == "New Year's Day")
+        assert rule["rule"] == "fixed_with_sunday_observance"
+        assert gd.generate_dates_for_rule(rule, 2023) == dt.date(2023, 1, 2)
+        assert gd.generate_dates_for_rule(rule, 2028) == dt.date(2028, 1, 1)
+
+    @pytest.mark.parametrize("day", ["2027-10-12", "2028-06-29", "2028-10-12",
+                                     "2028-10-31", "2029-06-29", "2029-10-12",
+                                     "2029-10-31"])
+    def test_moved_holidays_leave_their_calendar_date(self, day):
+        assert day not in closed("XSGO", int(day[:4]))
+
+    def test_replaced_entries_cite_a_legal_source(self):
+        for day in ("2027-09-17", "2027-10-11", "2028-06-26", "2028-10-09",
+                    "2028-10-27", "2029-07-02", "2029-09-17", "2029-10-15",
+                    "2029-11-02"):
+            assert explicit("XSGO")[day]["source_url"].startswith("https://")
+
+
+class TestXtai2027:
+    """DGPA 116年政府行政機關辦公日曆表 (published 2026-05-21): a holiday on a
+    Saturday is observed the working day before, on a Sunday the working day
+    after. Spring Festival holiday runs 2027-02-04 to 02-10."""
+
+    @pytest.mark.parametrize("day", ["2027-03-01", "2027-04-30", "2027-09-28",
+                                     "2027-10-11", "2027-10-25", "2027-12-31"])
+    def test_closed(self, day):
+        assert explicit("XTAI")[day]["status"] == "closed"
+
+    @pytest.mark.parametrize("day", ["2027-02-11", "2027-02-26"])
+    def test_not_closed(self, day):
+        assert day not in explicit("XTAI")
+
+    def test_2028_and_2029_statutory_holidays(self):
+        # 紀念日及節日實施條例 (2025): 28 Sep, 25 Oct and 25 Dec are national holidays.
+        for day in ("2028-09-28", "2028-10-25", "2028-12-25",
+                    "2029-09-28", "2029-10-25", "2029-12-25"):
+            assert explicit("XTAI")[day]["status"] == "closed"
+
+
+class TestXses2027:
+    """MOM gazetted the 2027 public holidays on 2026-06-18: Hari Raya Puasa is
+    Wednesday 10 March, not the 9th."""
+
+    def test_hari_raya_puasa(self):
+        days = explicit("XSES")
+        assert "2027-03-09" not in days
+        assert days["2027-03-10"]["name"] == "Hari Raya Puasa"
+        assert days["2027-03-10"]["source_url"].endswith("0618-public-holidays-for-2027")
+
+    def test_2027_closed_weekdays_match_the_mom_list(self):
+        assert closed("XSES", 2027) == {
+            "2027-01-01", "2027-02-08", "2027-03-10", "2027-03-26", "2027-05-17",
+            "2027-05-20", "2027-08-09", "2027-10-28"}
+
+
 @needs_refs
 class TestAgainstTheLibraries:
     OPEN_XHKG_2029 = {"2029-04-04", "2029-04-05", "2029-09-24"}
