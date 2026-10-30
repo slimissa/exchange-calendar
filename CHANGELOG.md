@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.3] - 2026-10-30
+
+### Added
+- Added 'unpublished' verdict to divergence triage for future years where the exchange calendar is not yet public.
+- `docs/DIVERGENCE.md` gains a "Triage coverage" table that counts each year's disagreements by verdict, including the ones still unclassified.
+
+### Fixed
+- XSGO 2027-2029: holidays that fall on a weekend are no longer moved (Ley 2.977), San Pedro y San Pablo and 12 October move to a Monday and 31 October to a Friday (Ley 19.668, Ley 20.299), 17 September follows Ley 20.215 and Ley 20.983, and All Saints (1 November) is a holiday. 26 dates corrected.
+- XTAI 2027-2029: observed Peace Memorial, Labour and National Days, Taiwan Retrocession Day, 31 December 2027 and 11 February 2027 follow DGPA's 2027 calendar; Teachers' Day, Retrocession Day and Constitution Day are closed in 2028 and 2029. 14 dates corrected.
+- XSES 2027: Hari Raya Puasa is Wednesday 10 March (MOM), not 9 March.
+- XSHG, XBOM, XNSE, XSES (2028-2029) and the remaining XTAI and XSGO dates are marked `unpublished` with a recheck date. 2027-2029 disagreements for the other 25 exchanges are not triaged yet.
+
 ## [2.23.2] - 2026-10-28
 
 ### Changed

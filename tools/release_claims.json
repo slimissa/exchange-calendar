@@ -1244,5 +1244,67 @@
       "file": "tests/test_future_years.py",
       "contains": "class TestSundayObservanceRule:"
     }
+  ],
+  "2.23.3": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.3"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.3] - 2026-10-30"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Added 'unpublished' verdict to divergence triage for future years where the exchange calendar is not yet public."
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.3-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.3"
+    },
+    {
+      "file": "tools/divergence_report.py",
+      "contains": "\"unpublished\": \"Unpublished\""
+    },
+    {
+      "file": "tools/divergence_report.py",
+      "contains": "def _triage_coverage(report, years, triage_index):"
+    },
+    {
+      "file": "tests/test_divergence_report.py",
+      "contains": "class TestUnpublishedVerdict:"
+    },
+    {
+      "file": "tests/test_future_years.py",
+      "contains": "class TestXsgoChileanLaw:"
+    },
+    {
+      "file": "tests/test_future_years.py",
+      "contains": "class TestXtai2027:"
+    },
+    {
+      "file": "tests/test_future_years.py",
+      "contains": "class TestXses2027:"
+    },
+    {
+      "file": "exchanges/XSES.json",
+      "contains": "\"date\": \"2027-03-10\""
+    },
+    {
+      "file": "exchanges/XSGO.json",
+      "contains": "\"name\": \"All Saints' Day\""
+    },
+    {
+      "file": "exchanges/XTAI.json",
+      "contains": "\"date\": \"2027-03-01\""
+    },
+    {
+      "file": "docs/divergence_triage.json",
+      "contains": "\"verdict\": \"unpublished\""
+    }
   ]
 }
