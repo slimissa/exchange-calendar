@@ -1,11 +1,43 @@
 {
   "fetches": {
+    "XASX": {
+      "bytes": 147311,
+      "fetched_at": "2026-11-01T05:02:46Z",
+      "max_age_days": 400,
+      "sha256": "13f3d05dc8c87dfb5adc534b968b8300e4926d2f88cfa53b3d70dfca7712b581",
+      "source_url": "https://www.asx.com.au/markets/market-resources/trading-hours-calendar/cash-market-trading-hours/trading-calendar",
+      "status": "ok"
+    },
+    "XBRU": {
+      "bytes": 542899,
+      "fetched_at": "2026-11-01T05:03:00Z",
+      "max_age_days": 400,
+      "sha256": "19c1d991303a62f3e62a11a3c74ddfe8fe2719f922325cb5dd25e7f1d1af1761",
+      "source_url": "https://www.euronext.com/en/trading/trading-hours-holidays",
+      "status": "ok"
+    },
+    "XBSP": {
+      "bytes": 328179,
+      "fetched_at": "2026-11-01T05:03:15Z",
+      "max_age_days": 400,
+      "sha256": "692516a00d30a3edfa5e058e99928f9e8adb3f49bb6408329edee9d76979041d",
+      "source_url": "https://b3.com.br/en_us/solutions/platforms/puma-trading-system/for-members-and-traders/trading-calendar/holidays/",
+      "status": "ok"
+    },
     "XBUD": {
       "bytes": 152441,
       "fetched_at": "2026-10-03T22:26:37Z",
       "max_age_days": 400,
       "sha256": "da70f62ae88ae6f4c20187fa7e7ebe772eb6a8fbc46ff94b417452f7b017ab78",
       "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
+      "status": "ok"
+    },
+    "XCSE": {
+      "bytes": 190580,
+      "fetched_at": "2026-11-01T05:03:14Z",
+      "max_age_days": 400,
+      "sha256": "78b2030579e18d678f58d1bcb65893ac7f0d2addea80073d2ee5fc60e3ab414f",
+      "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
       "status": "ok"
     },
     "XDFM": {
@@ -16,12 +48,172 @@
       "source_url": "https://assets.dfm.ae/docs/default-source/circulars/circular-12-2025-trading-and-settlementholidays-for-the-calendar-year-2026-for-securities-market-excluding-derivatives-contracts-english.pdf?sfvrsn=cffc8981_0",
       "status": "ok"
     },
+    "XDUB": {
+      "bytes": 542899,
+      "fetched_at": "2026-11-01T05:03:00Z",
+      "max_age_days": 400,
+      "sha256": "19c1d991303a62f3e62a11a3c74ddfe8fe2719f922325cb5dd25e7f1d1af1761",
+      "source_url": "https://www.euronext.com/en/trading/trading-hours-holidays",
+      "status": "ok"
+    },
+    "XETR": {
+      "bytes": 129885,
+      "fetched_at": "2026-11-01T05:02:47Z",
+      "max_age_days": 400,
+      "sha256": "b15849aabaf6ad075b0bc4b63efda91ff19c51983fac2f79da2e2d780ef71dbd",
+      "source_url": "https://www.cashmarket.deutsche-boerse.com/cash-en/trading/trading-calendar-and-trading-hours",
+      "status": "ok"
+    },
+    "XHKG": {
+      "bytes": 5674,
+      "fetched_at": "2026-11-01T05:02:48Z",
+      "max_age_days": 400,
+      "sha256": "b7b608bea647788ef05bd2843cdbeca718fb1a7742ec3ae0127d903dfcf5b403",
+      "source_url": "https://www.hkex.com.hk/-/media/HKEX-Market/Mutual-Market/Stock-Connect/Reference-Materials/Trading-Hour,-Trading-and-Settlement-Calendar/2026-Calendar_csv_e.csv",
+      "status": "ok"
+    },
+    "XICE": {
+      "bytes": 190580,
+      "fetched_at": "2026-11-01T05:03:14Z",
+      "max_age_days": 400,
+      "sha256": "8540b6ed2ff04cb3ead7c522846b5531f4498635d78ed55f6d2604f97a94f12b",
+      "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+      "status": "ok"
+    },
     "XIST": {
       "bytes": 162092,
       "fetched_at": "2026-10-01T19:00:26Z",
       "max_age_days": 400,
       "sha256": "3a1b39913abc188788da533c5e25000b6bb0a9f94057d21a61f068ef17efe85d",
       "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf",
+      "status": "ok"
+    },
+    "XLIS": {
+      "bytes": 542899,
+      "fetched_at": "2026-11-01T05:03:01Z",
+      "max_age_days": 400,
+      "sha256": "19c1d991303a62f3e62a11a3c74ddfe8fe2719f922325cb5dd25e7f1d1af1761",
+      "source_url": "https://www.euronext.com/en/trading/trading-hours-holidays",
+      "status": "ok"
+    },
+    "XLIT": {
+      "bytes": 72160,
+      "fetched_at": "2026-11-01T05:03:15Z",
+      "max_age_days": 400,
+      "sha256": "ab9a3cf67997bf3e2f818182da4cbb8952e7ab9b4ae5cc7933aafe770decac85",
+      "source_url": "https://nasdaqbaltic.com/statistics/en/calendar?holidays=1",
+      "status": "ok"
+    },
+    "XLON": {
+      "bytes": 22207,
+      "fetched_at": "2026-11-01T05:02:46Z",
+      "max_age_days": 400,
+      "sha256": "538b3482c28b85ecd2db606a0d5ae6ad17248900b6498700ce0a48d26a3ecde6",
+      "source_url": "https://www.gov.uk/bank-holidays.json",
+      "status": "ok"
+    },
+    "XMAD": {
+      "bytes": 183093,
+      "fetched_at": "2026-11-01T05:02:49Z",
+      "max_age_days": 400,
+      "sha256": "9f9713f40197d2620629faab404669da6d732fcd6ebe0f7414b4de3897d001b5",
+      "source_url": "https://www.bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html",
+      "status": "ok"
+    },
+    "XMOS": {
+      "bytes": 61024,
+      "fetched_at": "2026-11-01T05:02:57Z",
+      "max_age_days": 400,
+      "sha256": "5254d6d1e97cffc078d8ea6425cf1a70c5196c8f5207a4515daa80ff65e7c5d7",
+      "source_url": "https://www.moex.com/n94207",
+      "status": "ok"
+    },
+    "XNAS": {
+      "bytes": 76782,
+      "fetched_at": "2026-11-01T05:02:46Z",
+      "max_age_days": 400,
+      "sha256": "c1e5d65d5f268441af4e5bc18e0e68d5201bcb16b37ed69504af51065b237e9e",
+      "source_url": "https://ir.theice.com/press/news-details/2025/NYSE-Group-Announces-2026-2027-and-2028-Holiday-and-Early-Closings-Calendar/default.aspx",
+      "status": "ok"
+    },
+    "XOSL": {
+      "bytes": 542899,
+      "fetched_at": "2026-11-01T05:03:01Z",
+      "max_age_days": 400,
+      "sha256": "19c1d991303a62f3e62a11a3c74ddfe8fe2719f922325cb5dd25e7f1d1af1761",
+      "source_url": "https://www.euronext.com/en/trading/trading-hours-holidays",
+      "status": "ok"
+    },
+    "XPAR": {
+      "bytes": 542899,
+      "fetched_at": "2026-11-01T05:02:46Z",
+      "max_age_days": 400,
+      "sha256": "19c1d991303a62f3e62a11a3c74ddfe8fe2719f922325cb5dd25e7f1d1af1761",
+      "source_url": "https://www.euronext.com/en/trading/trading-hours-holidays",
+      "status": "ok"
+    },
+    "XPRA": {
+      "bytes": 39061,
+      "fetched_at": "2026-11-01T05:03:01Z",
+      "max_age_days": 400,
+      "sha256": "b2d1bc82dd0b7c987aed781c632d02e36b90ca03e5647879b05efda6267e68d9",
+      "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar",
+      "status": "ok"
+    },
+    "XRIS": {
+      "bytes": 72160,
+      "fetched_at": "2026-11-01T05:03:14Z",
+      "max_age_days": 400,
+      "sha256": "7933b1057557eaf09b4ac28d5afd007df8bc1f4dde5b92d132b01ff4792daee6",
+      "source_url": "https://nasdaqbaltic.com/statistics/en/calendar?holidays=1",
+      "status": "ok"
+    },
+    "XSHE": {
+      "bytes": 47153,
+      "fetched_at": "2026-11-01T05:02:51Z",
+      "max_age_days": 400,
+      "sha256": "f8b2b687dc55fbd41dc8cdd562e7f7988dda8e022b0ba83cb27516d5c35a2bc1",
+      "source_url": "https://www.szse.cn/English/services/trading/calendar/index.html",
+      "status": "ok"
+    },
+    "XSHG": {
+      "bytes": 73210,
+      "fetched_at": "2026-11-01T05:02:49Z",
+      "max_age_days": 400,
+      "sha256": "04d2fd1faf8cc722b647201cafd8b7e891343f04e8f67a0dcd7ed18db6fb7ada",
+      "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+      "status": "ok"
+    },
+    "XSTO": {
+      "bytes": 190580,
+      "fetched_at": "2026-11-01T05:03:13Z",
+      "max_age_days": 400,
+      "sha256": "ea0ad6a668149426d03df2065ebd10d10e4a7dfb5119d6c5bd6812cd458947df",
+      "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+      "status": "ok"
+    },
+    "XTKS": {
+      "bytes": 32993,
+      "fetched_at": "2026-11-01T05:02:47Z",
+      "max_age_days": 400,
+      "sha256": "b4badc0361257c07b326f9fc9f5da3f13d883140813e528fdadc745320fbd4f1",
+      "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html",
+      "status": "ok"
+    },
+    "XTSE": {
+      "bytes": 65216,
+      "fetched_at": "2026-11-01T05:02:48Z",
+      "max_age_days": 400,
+      "sha256": "a7dffaf3afc316dde026eff80bc7028eb727a4bcee916f3f36ff0fa9646f51c9",
+      "source_url": "https://www.tsx.com/en/trading/calendars-and-trading-hours/calendar",
+      "status": "ok"
+    },
+    "XWAR": {
+      "bytes": 85258,
+      "fetched_at": "2026-11-01T05:03:00Z",
+      "max_age_days": 400,
+      "sha256": "f9962befa9ef9b1a49f9cc2e6637a1dbfcbe7c8374aa595e3c1f4c1a53fcd1ac",
+      "source_url": "https://www.gpw.pl/session-details",
       "status": "ok"
     },
     "XWBO": {
@@ -36,4 +228,6 @@
   "meta": {
     "schema_version": "1.0.0"
   }
+}
+}
 }

@@ -1,38 +1,16 @@
 {
-  "ad_hoc_closures": [],
   "code": "XHEL",
-  "confidence": {
-    "2025": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2026": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2027": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2028": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2029": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    }
+  "name": "Nasdaq Helsinki",
+  "mic": "XHEL",
+  "timezone": "Europe/Helsinki",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "10:00",
+    "close": "18:30"
   },
-  "country": "Finland",
-  "country_code": "FI",
   "extended_hours": {
     "after_hours": {
       "close": "18:45",
@@ -43,180 +21,332 @@
       "open": "08:00"
     }
   },
-  "fetcher_status": "implemented",
-  "generation_range": [
-    "2025-01-01",
-    "2029-12-31"
+  "sessions": [
+    {
+      "close": "09:00",
+      "open": "08:00",
+      "type": "pre_market"
+    },
+    {
+      "close": "18:30",
+      "open": "09:00",
+      "type": "regular"
+    },
+    {
+      "close": "18:45",
+      "open": "18:30",
+      "type": "post_market"
+    }
   ],
   "holidays": {
     "explicit": [
       {
+        "date": "2024-01-01",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-03-28",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-03-29",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-04-01",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-04-25",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-05-01",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-05-09",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-05-20",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-06-17",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-08-05",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-12-24",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-12-25",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-12-26",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2024-12-31",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
         "date": "2025-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2025-01-06",
-        "name": "Epiphany",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2025-04-18",
-        "name": "Good Friday",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2025-04-21",
-        "name": "Easter Monday",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2025-05-01",
-        "name": "May Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2025-05-29",
-        "name": "Ascension Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2025-06-20",
-        "name": "Midsummer Eve",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2025-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2025-12-25",
-        "name": "Christmas Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2025-12-26",
-        "name": "Boxing Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2025-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2026-01-06",
-        "name": "Epiphany",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2026-04-03",
-        "name": "Good Friday",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2026-04-06",
-        "name": "Easter Monday",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2026-05-01",
-        "name": "May Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2026-05-14",
-        "name": "Ascension Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2026-06-19",
-        "name": "Midsummer Eve",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2026-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2026-12-25",
-        "name": "Christmas Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2026-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2027-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2027-01-06",
-        "name": "Epiphany",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2027-03-26",
-        "name": "Good Friday",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2027-03-29",
-        "name": "Easter Monday",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2027-05-06",
-        "name": "Ascension Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2027-06-25",
-        "name": "Midsummer Eve",
-        "source_url": "https://yle.fi/a/74-20122537",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2027-12-06",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2027-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
-        "status": "closed"
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "Helsinki Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "note": "Source gives a combined closure-date list per market, not individually named holidays"
       },
       {
         "date": "2028-01-06",
@@ -404,32 +534,9 @@
       }
     ]
   },
-  "mic": "XHEL",
-  "name": "Nasdaq Helsinki",
-  "regular_hours": {
-    "close": "18:30",
-    "open": "09:00"
-  },
-  "sessions": [
-    {
-      "close": "09:00",
-      "open": "08:00",
-      "type": "pre_market"
-    },
-    {
-      "close": "18:30",
-      "open": "09:00",
-      "type": "regular"
-    },
-    {
-      "close": "18:45",
-      "open": "18:30",
-      "type": "post_market"
-    }
-  ],
-  "timezone": "Europe/Helsinki",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2029-12-31"
   ]
 }
