@@ -791,6 +791,265 @@
       "recheck_date": "2029-01-15",
       "summary": "Eid al-Fitr, Eid al-Adha and Chinese New Year 2029. The Philippines declares these as national holidays by presidential proclamation issued the year before, after the moon-sighting dates for the Islamic ones are set; the 2029 proclamation does not exist yet.",
       "source_url": "https://www.pse.com.ph/trading-holidays/"
+    },
+    {
+      "exchange": "XLUX",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.5",
+      "dates": [
+        "2027-05-03",
+        "2027-05-06",
+        "2027-05-10",
+        "2027-05-17",
+        "2027-06-23",
+        "2027-11-01",
+        "2027-12-24",
+        "2027-12-27",
+        "2027-12-28",
+        "2028-01-03",
+        "2028-05-09",
+        "2028-05-25",
+        "2028-06-05",
+        "2028-06-23",
+        "2028-08-15",
+        "2028-11-01",
+        "2029-05-09",
+        "2029-05-10",
+        "2029-05-21",
+        "2029-08-15",
+        "2029-11-01",
+        "2029-12-24"
+      ],
+      "summary": "LuxSE's own page lists the closing days (for 2026 only Christmas Day was still ahead) and says it will not be closed on public holidays such as National Day (23 June). It trades on Europe Day, Ascension, Whit Monday, Assumption and All Saints, follows the Euronext/T2 closing days (New Year, Good Friday, Easter Monday, 1 May, Christmas, Boxing Day) and closes early at 14:05 on 24 and 31 December. The registry closed the Luxembourg public holidays, closed Christmas Eve all day and moved weekend holidays to a Monday. 22 dates fixed for 2027-2029; the same extra closures remain in the 2025 and 2026 entries.",
+      "source_url": "https://www.luxse.com/trading/opening-hours-and-closing-days"
+    },
+    {
+      "exchange": "XBUD",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.5",
+      "dates": [
+        "2027-04-30",
+        "2027-05-03",
+        "2027-10-22",
+        "2027-10-25",
+        "2027-11-01",
+        "2027-12-27",
+        "2027-12-28",
+        "2028-01-03",
+        "2028-08-21",
+        "2028-11-01",
+        "2029-11-01"
+      ],
+      "summary": "The Labour Code lists eleven holidays and gives no substitute day for one on a weekend: 1 May, 23 October, 25 and 26 December 2027 fall on weekends and nothing replaces them. The registry shifted them (and Friday 30 Apr, Friday 22 Oct) and left out All Saints (1 November), which is a holiday and a BSE closing day.",
+      "source_url": "https://www.penzcentrum.hu/karrier/20260921/munkaido-naptar-2027-hosszu-hetvegek-munkaszuneti-napok-es-unnepnapok-1205722"
+    },
+    {
+      "exchange": "XRIS",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.5",
+      "dates": [
+        "2027-05-03",
+        "2027-05-06",
+        "2027-12-27",
+        "2027-12-28",
+        "2027-12-31",
+        "2028-01-03",
+        "2028-05-25",
+        "2029-05-10"
+      ],
+      "summary": "Nasdaq Baltic does not move a weekend holiday to a weekday, so the 2027 and 2028 Monday and Tuesday 'observed' entries are removed (the Latvian Proclamation Day carry-over of 18 November stays: both libraries have it). 31 December and Ascension Day are Nasdaq Baltic trading holidays in the 2026 list for all three Baltic markets; the registry only had them for 2026, so they are added for 2027-2029 as predicted dates.",
+      "source_url": "https://www.nasdaqbaltic.com/trading-calendar"
+    },
+    {
+      "exchange": "XLIT",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.5",
+      "dates": [
+        "2027-05-03",
+        "2027-05-06",
+        "2027-12-27",
+        "2027-12-28",
+        "2027-12-31",
+        "2028-01-03",
+        "2028-05-25",
+        "2029-05-10",
+        "2029-12-31"
+      ],
+      "summary": "Nasdaq Baltic does not move a weekend holiday to a weekday, so the 2027 and 2028 Monday and Tuesday 'observed' entries are removed (the Latvian Proclamation Day carry-over of 18 November stays: both libraries have it). 31 December and Ascension Day are Nasdaq Baltic trading holidays in the 2026 list for all three Baltic markets; the registry only had them for 2026, so they are added for 2027-2029 as predicted dates.",
+      "source_url": "https://www.nasdaqbaltic.com/trading-calendar"
+    },
+    {
+      "exchange": "XTAL",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.5",
+      "dates": [
+        "2027-05-03",
+        "2027-05-06",
+        "2027-12-27",
+        "2027-12-28",
+        "2027-12-31",
+        "2028-01-03",
+        "2028-05-25",
+        "2029-02-26",
+        "2029-05-10"
+      ],
+      "summary": "Nasdaq Baltic does not move a weekend holiday to a weekday, so the 2027 and 2028 Monday and Tuesday 'observed' entries are removed (the Latvian Proclamation Day carry-over of 18 November stays: both libraries have it). 31 December and Ascension Day are Nasdaq Baltic trading holidays in the 2026 list for all three Baltic markets; the registry only had them for 2026, so they are added for 2027-2029 as predicted dates.",
+      "source_url": "https://www.nasdaqbaltic.com/trading-calendar"
+    },
+    {
+      "exchange": "XPRA",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.5",
+      "dates": [
+        "2027-04-30",
+        "2027-05-03",
+        "2027-05-07",
+        "2027-05-10",
+        "2027-12-27",
+        "2027-12-28",
+        "2028-01-03",
+        "2028-10-27",
+        "2028-10-30",
+        "2029-10-29",
+        "2029-11-16",
+        "2029-11-19",
+        "2029-12-31"
+      ],
+      "summary": "Czech state holidays stay on their date (Act 245/2000), so a Saturday or Sunday holiday gives no weekday closure: the Fridays 30 Apr, 7 May 2027, 27 Oct 2028, 16 Nov 2029 and the Mondays and Tuesdays after were wrongly closed. The Prague Stock Exchange calendar lists 31 December as a non-trading day; it is added for 2027 and 2029.",
+      "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
+    },
+    {
+      "exchange": "XLIM",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.5",
+      "dates": [
+        "2027-05-03",
+        "2027-12-27",
+        "2028-01-03"
+      ],
+      "summary": "1 May and 25 December 2027 and 1 January 2028 are Saturdays. Neither the law nor the MEF's announced Monday scheme moves a holiday that falls on a Saturday, so the Monday closures are removed.",
+      "source_url": "https://www.infobae.com/peru/2026/08/28/gobierno-confirma-formula-para-traslado-de-feriados-al-lunes-para-2027/"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.5",
+      "dates": [
+        "2027-05-03",
+        "2027-12-27",
+        "2028-01-03",
+        "2028-04-03",
+        "2028-07-10",
+        "2029-03-26"
+      ],
+      "summary": "Ley 27.399, art. 1 makes 1 January, 24 March, 2 April, 1 May, 9 July and 25 December inamovible: they are never moved. The registry moved the ones that fall on a weekend to a Monday: 3 May and 27 December 2027, 3 January, 3 April and 10 July 2028, 26 March 2029.",
+      "source_url": "https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto"
+    },
+    {
+      "exchange": "XSTO",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.5",
+      "dates": [
+        "2027-06-18",
+        "2027-06-25",
+        "2028-12-29"
+      ],
+      "summary": "Midsummer Eve is the Friday before Midsummer Day (the Saturday from 20 to 26 June): Friday 25 June 2027, not 18 June. 31 December 2028 is a Sunday, so Friday 29 December is open.",
+      "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2027-06-17",
+        "2027-06-21"
+      ],
+      "summary": "Ley 27.399, art. 6 moves a trasladable holiday that falls on a Thursday to the next Monday. 17 June 2027 (Güemes) is a Thursday, so the holiday is Monday 21 June, which the registry closes. The libraries close Thursday 17 June and trade on the 21st.",
+      "source_url": "https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto"
+    },
+    {
+      "exchange": "XRIS",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2028-12-25",
+        "2029-12-25"
+      ],
+      "summary": "Nasdaq CSD's 2026 calendar for Estonia, Latvia and Lithuania lists 25 December (Christmas Day) as a T2S/T2 closing day. The registry closes it; the exchange_calendars calendar for this market has no Christmas Day entry and shows the day open.",
+      "source_url": "https://nasdaqcsd.com/latvia/en/calendar-working-hours/"
+    },
+    {
+      "exchange": "XLIT",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2028-12-25",
+        "2029-12-25"
+      ],
+      "summary": "Nasdaq CSD's 2026 calendar for Estonia, Latvia and Lithuania lists 25 December (Christmas Day) as a T2S/T2 closing day. The registry closes it; the exchange_calendars calendar for this market has no Christmas Day entry and shows the day open.",
+      "source_url": "https://nasdaqcsd.com/latvia/en/calendar-working-hours/"
+    },
+    {
+      "exchange": "XTAL",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2028-12-25",
+        "2029-12-25"
+      ],
+      "summary": "Nasdaq CSD's 2026 calendar for Estonia, Latvia and Lithuania lists 25 December (Christmas Day) as a T2S/T2 closing day. The registry closes it; the exchange_calendars calendar for this market has no Christmas Day entry and shows the day open.",
+      "source_url": "https://nasdaqcsd.com/latvia/en/calendar-working-hours/"
+    },
+    {
+      "exchange": "XBUD",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2029-03-16",
+        "2029-04-30",
+        "2029-10-22",
+        "2029-11-02"
+      ],
+      "recheck_date": "2028-06-30",
+      "summary": "These are bridge days (Friday after a Thursday holiday, Monday before a Tuesday one) that the libraries predict. Hungary sets them each year by a ministerial decree on the working schedule, published the year before (the 2027 decree is not out yet, as of 2026-10), so neither the registry nor the libraries can know the 2029 ones.",
+      "source_url": "https://adozona.hu/jogtar/495662_10_2025_IV_30_NGM_rendelet_2026"
+    },
+    {
+      "exchange": "XLIM",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2027-06-28",
+        "2027-06-29",
+        "2027-12-09",
+        "2028-07-24",
+        "2028-08-07",
+        "2028-10-09"
+      ],
+      "recheck_date": "2027-01-15",
+      "summary": "In August 2026 the MEF announced that Peruvian holidays falling midweek will move to a Monday from 2027 (28 June, 26 July, 9 August and 11 October 2027 are named), with the 8 and 9 December case left open. The registry applies a Monday scheme; the libraries apply the current law. The binding norm and the detail are not published yet.",
+      "source_url": "https://www.infobae.com/peru/2026/08/28/gobierno-confirma-formula-para-traslado-de-feriados-al-lunes-para-2027/"
+    },
+    {
+      "exchange": "XRIS",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2028-07-10"
+      ],
+      "recheck_date": "2028-01-15",
+      "summary": "Exchange_calendars carries 10 July 2028 as a day off for the Latvian Song and Dance Festival, as in 2018 and 2023. A day off needs an amendment adopted close to the festival; none exists for 2028.",
+      "source_url": "https://www.nasdaqbaltic.com/trading-calendar"
     }
   ]
 }

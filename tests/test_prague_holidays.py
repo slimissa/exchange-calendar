@@ -105,33 +105,28 @@ class TestXPRAFixedHolidays:
         assert "2025-01-01" in explicit_dates
         assert explicit_dates["2025-01-01"]["name"] == "New Year's Day"
 
-    def test_new_year_2028_substitute(self, explicit_dates):
-        """Jan 1, 2028 is Saturday — substitute to Monday Jan 3."""
+    def test_new_year_2028_saturday_is_not_moved(self, explicit_dates):
+        """Jan 1, 2028 is Saturday: Czech law gives no substitute day."""
         assert "2028-01-01" not in explicit_dates
-        assert "2028-01-03" in explicit_dates
-        assert "New Year's Day" in explicit_dates["2028-01-03"]["name"]
+        assert "2028-01-03" not in explicit_dates
 
     def test_labour_day_2025(self, explicit_dates):
         """May 1, 2025 is Thursday — no substitution."""
         assert "2025-05-01" in explicit_dates
         assert explicit_dates["2025-05-01"]["name"] == "Labour Day"
 
-    def test_labour_day_2027_substitute(self, explicit_dates):
-        """May 1, 2027 is Saturday — substitute to Monday May 3."""
-        assert "2027-05-01" not in explicit_dates
-        assert "2027-05-03" in explicit_dates
-        assert "Labour Day" in explicit_dates["2027-05-03"]["name"]
+    def test_labour_day_2027_saturday_is_not_moved(self, explicit_dates):
+        """May 1, 2027 is Saturday: no substitute day."""
+        assert "2027-05-03" not in explicit_dates
 
     def test_victory_day_2025(self, explicit_dates):
         """May 8, 2025 is Thursday — no substitution."""
         assert "2025-05-08" in explicit_dates
         assert explicit_dates["2025-05-08"]["name"] == "Victory Day"
 
-    def test_victory_day_2027_substitute(self, explicit_dates):
-        """May 8, 2027 is Saturday — substitute to Monday May 10."""
-        assert "2027-05-08" not in explicit_dates
-        assert "2027-05-10" in explicit_dates
-        assert "Victory Day" in explicit_dates["2027-05-10"]["name"]
+    def test_victory_day_2027_saturday_is_not_moved(self, explicit_dates):
+        """May 8, 2027 is Saturday: no substitute day."""
+        assert "2027-05-10" not in explicit_dates
 
     def test_cyril_methodius_2025_substitute(self, explicit_dates):
         """Jul 5, 2025 is Saturday — substitute to Monday Jul 7."""
@@ -163,21 +158,17 @@ class TestXPRAFixedHolidays:
         """Sep 28, 2026 is Monday — no substitution."""
         assert "2026-09-28" in explicit_dates
 
-    def test_independent_czechoslovak_2028_substitute(self, explicit_dates):
-        """Oct 28, 2028 is Saturday — substitute to Monday Oct 30."""
-        assert "2028-10-28" not in explicit_dates
-        assert "2028-10-30" in explicit_dates
+    def test_independent_czechoslovak_2028_saturday_is_not_moved(self, explicit_dates):
+        """Oct 28, 2028 is Saturday: no substitute day."""
+        assert "2028-10-30" not in explicit_dates
 
-    def test_independent_czechoslovak_2029_substitute(self, explicit_dates):
-        """Oct 28, 2029 is Sunday — substitute to Monday Oct 29."""
-        assert "2029-10-28" not in explicit_dates
-        assert "2029-10-29" in explicit_dates
+    def test_independent_czechoslovak_2029_sunday_is_not_moved(self, explicit_dates):
+        """Oct 28, 2029 is Sunday: no substitute day."""
+        assert "2029-10-29" not in explicit_dates
 
-    def test_struggle_freedom_2029_substitute(self, explicit_dates):
-        """Nov 17, 2029 is Saturday — substitute to Monday Nov 19."""
-        assert "2029-11-17" not in explicit_dates
-        assert "2029-11-19" in explicit_dates
-        assert "Struggle" in explicit_dates["2029-11-19"]["name"]
+    def test_struggle_freedom_2029_saturday_is_not_moved(self, explicit_dates):
+        """Nov 17, 2029 is Saturday: no substitute day."""
+        assert "2029-11-19" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -200,23 +191,18 @@ class TestXPRAChristmas:
         assert "2025-12-25" in explicit_dates
         assert explicit_dates["2025-12-25"]["name"] == "Christmas Day"
 
-    def test_christmas_day_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27."""
-        assert "2027-12-25" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
-        assert "Christmas Day" in explicit_dates["2027-12-27"]["name"]
+    def test_christmas_day_2027_saturday_is_not_moved(self, explicit_dates):
+        """Dec 25, 2027 is Saturday: no substitute day."""
+        assert "2027-12-27" not in explicit_dates
 
     def test_st_stephens_2025(self, explicit_dates):
         """Dec 26, 2025 is Friday."""
         assert "2025-12-26" in explicit_dates
         assert explicit_dates["2025-12-26"]["name"] == "St. Stephen's Day"
 
-    def test_st_stephens_2027_substitute(self, explicit_dates):
-        """Dec 26, 2027 is Sunday — substitute to Tuesday Dec 28.
-           (Monday Dec 27 is already Christmas Day substitute)."""
-        assert "2027-12-26" not in explicit_dates
-        assert "2027-12-28" in explicit_dates
-        assert "St. Stephen" in explicit_dates["2027-12-28"]["name"]
+    def test_st_stephens_2027_sunday_is_not_moved(self, explicit_dates):
+        """Dec 26, 2027 is Sunday: no substitute day."""
+        assert "2027-12-28" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -293,14 +279,13 @@ class TestXPRARecurrence:
             assert name in names, f"Missing recurrence rule: {name}"
 
     def test_weekend_adjustment_rules(self, recurrence_rules):
-        """Czech Republic uses weekend substitution for all fixed holidays."""
+        """Czech state holidays (Act 245/2000) are never moved off a weekend."""
         for name in ["New Year's Day", "Labour Day", "Victory Day",
                      "Saints Cyril and Methodius Day", "Jan Hus Day",
                      "Czech Statehood Day", "Independent Czechoslovak State Day",
                      "Struggle for Freedom and Democracy Day",
                      "Christmas Eve", "Christmas Day", "St. Stephen's Day"]:
-            rule = recurrence_rules[name]
-            assert rule["rule"] == "fixed_with_weekend_adjustment", f"{name} should use weekend adjustment"
+            assert recurrence_rules[name]["rule"] == "fixed_date", f"{name} should not shift"
 
     def test_easter_rules(self, recurrence_rules):
         assert recurrence_rules["Good Friday"]["rule"] == "easter_offset"
@@ -444,16 +429,50 @@ class TestXPRASubstitution:
             if "observed" in name:
                 assert "observed" in name
 
-    def test_weekend_holidays_have_substitutes(self, explicit_dates):
-        """Verify weekend holidays have substitute days."""
-        # 2028-01-01 (Saturday) → 2028-01-03 (Monday)
-        assert "2028-01-01" not in explicit_dates
-        assert "2028-01-03" in explicit_dates
+    def test_weekend_holidays_have_no_substitutes(self, explicit_dates):
+        """A weekend holiday is lost, not moved (2027 onwards)."""
+        assert "2028-01-03" not in explicit_dates
+        assert "2027-05-10" not in explicit_dates
 
-        # 2027-05-08 (Saturday) → 2027-05-10 (Monday)
-        assert "2027-05-08" not in explicit_dates
-        assert "2027-05-10" in explicit_dates
 
-        # 2025-07-05 (Saturday) → 2025-07-07 (Monday)
-        assert "2025-07-05" not in explicit_dates
-        assert "2025-07-07" in explicit_dates
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.5)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed(code, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    days = list(e["holidays"]["explicit"]) + _gd.expand_exchange(e)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+def _early(code, year):
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    return {d["date"]: d["early_close_time"] for d in e["holidays"]["explicit"]
+            if d["date"].startswith(str(year)) and d["status"] == "early_close"}
+
+
+class TestFutureYearFixes:
+    """Czech state holidays stay on their date (Act 245/2000); the Prague Stock
+    Exchange calendar lists 31 December as a non-trading day."""
+
+    def test_2027(self):
+        assert _closed("XPRA", 2027) == {
+            "2027-01-01", "2027-03-26", "2027-03-29", "2027-07-05",
+            "2027-07-06", "2027-09-28", "2027-10-28", "2027-11-17", "2027-12-24",
+            "2027-12-31"}
+
+    @pytest.mark.parametrize("day", ["2027-04-30", "2027-05-10", "2028-10-27", "2029-11-16"])
+    def test_friday_before_a_saturday_holiday_is_open(self, day):
+        assert day not in _closed("XPRA", int(day[:4]))
+
+    @pytest.mark.parametrize("day", ["2027-12-31", "2029-12-31"])
+    def test_new_years_eve_is_closed(self, day):
+        assert day in _closed("XPRA", int(day[:4]))

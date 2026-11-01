@@ -209,8 +209,8 @@
         "status": "closed"
       },
       {
-        "date": "2027-05-03",
-        "name": "Labour Day (observed)",
+        "date": "2027-05-06",
+        "name": "Ascension Day",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
         "status": "closed"
       },
@@ -245,20 +245,8 @@
         "status": "closed"
       },
       {
-        "date": "2027-12-27",
-        "name": "Christmas Day (observed)",
-        "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-12-28",
-        "name": "Boxing Day (observed)",
-        "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-01-03",
-        "name": "New Year's Day (observed)",
+        "date": "2027-12-31",
+        "name": "New Year's Eve",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
         "status": "closed"
       },
@@ -283,6 +271,12 @@
       {
         "date": "2028-05-01",
         "name": "Labour Day",
+        "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2028-05-25",
+        "name": "Ascension Day",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
         "status": "closed"
       },
@@ -353,6 +347,12 @@
         "status": "closed"
       },
       {
+        "date": "2029-05-10",
+        "name": "Ascension Day",
+        "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
+        "status": "closed"
+      },
+      {
         "date": "2029-07-06",
         "name": "Statehood Day",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
@@ -391,6 +391,12 @@
       {
         "date": "2029-12-26",
         "name": "Boxing Day",
+        "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "New Year's Eve",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
         "status": "closed"
       }

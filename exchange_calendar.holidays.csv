@@ -964,24 +964,18 @@ XBUD,2027-01-01,New Year's Day,closed,explicit,1,,,,,https://www.bse.hu/trading-
 XBUD,2027-03-15,National Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2027-03-29,Easter Monday,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
-XBUD,2027-04-30,Labour Day,closed,generated,1,,,,,
-XBUD,2027-05-03,Labour Day (observed),closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2027-05-17,Whit Monday,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2027-08-20,St. Stephen's Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
-XBUD,2027-10-22,Republic Day,closed,generated,1,,,,,
-XBUD,2027-10-25,Republic Day (observed),closed,explicit,1,,,,,https://www.bse.hu/trading-hours
+XBUD,2027-11-01,All Saints' Day,closed,generated,1,,,,,
 XBUD,2027-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
-XBUD,2027-12-27,Christmas Day (substitute),closed,explicit,1,,,,,https://www.bse.hu/trading-hours
-XBUD,2027-12-28,Boxing Day (substitute),closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2027-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
-XBUD,2028-01-03,New Year's Day (substitute),closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2028-03-15,National Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2028-04-14,Good Friday,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2028-04-17,Easter Monday,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2028-05-01,Labour Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2028-06-05,Whit Monday,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
-XBUD,2028-08-21,St. Stephen's Day (observed),closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2028-10-23,Republic Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
+XBUD,2028-11-01,All Saints' Day,closed,generated,1,,,,,
 XBUD,2028-12-25,Christmas Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2028-12-26,Boxing Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2029-01-01,New Year's Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
@@ -992,6 +986,7 @@ XBUD,2029-05-01,Labour Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hour
 XBUD,2029-05-21,Whit Monday,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2029-08-20,St. Stephen's Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2029-10-23,Republic Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
+XBUD,2029-11-01,All Saints' Day,closed,generated,1,,,,,
 XBUD,2029-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2029-12-25,Christmas Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
 XBUD,2029-12-26,Boxing Day,closed,explicit,1,,,,,https://www.bse.hu/trading-hours
@@ -1032,27 +1027,22 @@ XBUE,2027-02-09,Carnival Tuesday,closed,explicit,1,,,,,https://www.byma.com.ar/c
 XBUE,2027-03-24,Day of Remembrance for Truth and Justice,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2027-04-02,Malvinas Day,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
-XBUE,2027-05-03,Labour Day (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2027-05-25,May Revolution Day,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
-XBUE,2027-06-21,National Flag Day (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
+XBUE,2027-06-21,Paso a la Inmortalidad del General Güemes (moved from Thursday 17 June),closed,explicit,1,,,,,https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto
 XBUE,2027-07-09,Independence Day,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2027-08-16,Anniversary of San Martín's Death (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2027-10-11,Day of Respect for Cultural Diversity (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2027-11-22,National Sovereignty Day (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2027-12-08,Immaculate Conception,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2027-12-24,Christmas Eve,early_close,explicit,1,13:00,,,,https://www.byma.com.ar/calendario
-XBUE,2027-12-27,Christmas Day (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2027-12-31,New Year's Eve,early_close,explicit,1,13:00,,,,https://www.byma.com.ar/calendario
-XBUE,2028-01-03,New Year's Day (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2028-02-28,Carnival Monday,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2028-02-29,Carnival Tuesday,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2028-03-24,Day of Remembrance for Truth and Justice,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
-XBUE,2028-04-03,Malvinas Day (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2028-04-14,Good Friday,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2028-05-01,Labour Day,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2028-05-25,May Revolution Day,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2028-06-20,National Flag Day,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
-XBUE,2028-07-10,Independence Day (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2028-08-21,Anniversary of San Martín's Death (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2028-10-16,Day of Respect for Cultural Diversity (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2028-11-20,National Sovereignty Day (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
@@ -1061,7 +1051,6 @@ XBUE,2028-12-25,Christmas Day,closed,explicit,1,,,,,https://www.byma.com.ar/cale
 XBUE,2029-01-01,New Year's Day,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2029-02-12,Carnival Monday,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2029-02-13,Carnival Tuesday,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
-XBUE,2029-03-26,Day of Remembrance for Truth and Justice (observed),closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2029-03-30,Good Friday,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2029-04-02,Malvinas Day,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
 XBUE,2029-05-01,Labour Day,closed,explicit,1,,,,,https://www.byma.com.ar/calendario
@@ -2740,7 +2729,6 @@ XLIM,2026-12-31,New Year's Eve,early_close,explicit,1,11:30,,,,https://www.bvl.c
 XLIM,2027-01-01,New Year's Day,closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
 XLIM,2027-03-25,Maundy Thursday,closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
 XLIM,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
-XLIM,2027-05-03,Labour Day (observed),closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
 XLIM,2027-06-07,Battle of Arica (observed),closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
 XLIM,2027-06-28,Saint Peter and Saint Paul (observed),closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
 XLIM,2027-07-23,Air Force Day (observed),closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
@@ -2752,9 +2740,7 @@ XLIM,2027-10-08,Battle of Angamos (observed),closed,explicit,1,,,,,https://www.b
 XLIM,2027-11-01,All Saints' Day,closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
 XLIM,2027-12-08,Immaculate Conception,closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
 XLIM,2027-12-24,Christmas Eve,early_close,explicit,1,11:30,,,,https://www.bvl.com.pe/calendario
-XLIM,2027-12-27,Christmas Day (observed),closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
 XLIM,2027-12-31,New Year's Eve,early_close,explicit,1,11:30,,,,https://www.bvl.com.pe/calendario
-XLIM,2028-01-03,New Year's Day (observed),closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
 XLIM,2028-04-13,Maundy Thursday,closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
 XLIM,2028-04-14,Good Friday,closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
 XLIM,2028-05-01,Labour Day,closed,explicit,1,,,,,https://www.bvl.com.pe/calendario
@@ -2835,19 +2821,18 @@ XLIT,2027-02-16,Restoration of State Day,closed,explicit,1,,,,,https://www.nasda
 XLIT,2027-03-11,Restoration of Independence Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2027-03-29,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XLIT,2027-05-03,Labour Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XLIT,2027-05-06,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2027-06-24,St. John's Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2027-07-06,Statehood Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2027-11-01,All Saints' Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2027-11-02,All Souls' Day,closed,explicit,1,,,,,https://nasdaqbaltic.com/statistics/en/calendar?holidays=1
 XLIT,2027-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XLIT,2027-12-27,Christmas Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XLIT,2027-12-28,Boxing Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XLIT,2028-01-03,New Year's Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XLIT,2027-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2028-02-16,Restoration of State Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2028-04-14,Good Friday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2028-04-17,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2028-05-01,Labour Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XLIT,2028-05-25,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2028-07-06,Statehood Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2028-08-15,Assumption Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2028-11-01,All Saints' Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
@@ -2859,6 +2844,7 @@ XLIT,2029-02-16,Restoration of State Day,closed,explicit,1,,,,,https://www.nasda
 XLIT,2029-03-30,Good Friday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2029-04-02,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2029-05-01,Labour Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XLIT,2029-05-10,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2029-07-06,Statehood Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2029-08-15,Assumption Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2029-11-01,All Saints' Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
@@ -2866,6 +2852,7 @@ XLIT,2029-11-02,All Souls' Day,closed,explicit,1,,,,,https://nasdaqbaltic.com/st
 XLIT,2029-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2029-12-25,Christmas Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLIT,2029-12-26,Boxing Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XLIT,2029-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XLON,1990-01-01,Historical Holiday,closed,explicit,1,,,,,https://github.com/gerrymanoim/exchange_calendars
 XLON,1990-04-13,Historical Holiday,closed,explicit,1,,,,,https://github.com/gerrymanoim/exchange_calendars
 XLON,1990-04-16,Historical Holiday,closed,explicit,1,,,,,https://github.com/gerrymanoim/exchange_calendars
@@ -3297,39 +3284,21 @@ XLUX,2026-12-28,Boxing Day (substitute),closed,explicit,1,,,,,https://www.bourse
 XLUX,2027-01-01,New Year's Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
 XLUX,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
 XLUX,2027-03-29,Easter Monday,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2027-05-03,Labour Day (observed),closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2027-05-06,Ascension Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2027-05-10,Europe Day (observed),closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2027-05-17,Whit Monday,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2027-06-23,National Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2027-11-01,All Saints' Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2027-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2027-12-27,Christmas Day (substitute),closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2027-12-28,Boxing Day (substitute),closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2028-01-03,New Year's Day (substitute),closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
+XLUX,2027-12-24,Christmas Eve (early close),early_close,explicit,1,14:05,,,,https://www.luxse.com/trading/opening-hours-and-closing-days
+XLUX,2027-12-31,New Year's Eve (early close),early_close,explicit,1,14:05,,,,https://www.luxse.com/trading/opening-hours-and-closing-days
 XLUX,2028-04-14,Good Friday,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
 XLUX,2028-04-17,Easter Monday,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
 XLUX,2028-05-01,Labour Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2028-05-09,Europe Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2028-05-25,Ascension Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2028-06-05,Whit Monday,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2028-06-23,National Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2028-08-15,Assumption Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2028-11-01,All Saints' Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
 XLUX,2028-12-25,Christmas Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
 XLUX,2028-12-26,Boxing Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
 XLUX,2029-01-01,New Year's Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
 XLUX,2029-03-30,Good Friday,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
 XLUX,2029-04-02,Easter Monday,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
 XLUX,2029-05-01,Labour Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2029-05-09,Europe Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2029-05-10,Ascension Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2029-05-21,Whit Monday,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2029-08-15,Assumption Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2029-11-01,All Saints' Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
-XLUX,2029-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
+XLUX,2029-12-24,Christmas Eve (early close),early_close,explicit,1,14:05,,,,https://www.luxse.com/trading/opening-hours-and-closing-days
 XLUX,2029-12-25,Christmas Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
 XLUX,2029-12-26,Boxing Day,closed,explicit,1,,,,,https://www.bourse.lu/trading-calendar
+XLUX,2029-12-31,New Year's Eve (early close),early_close,explicit,1,14:05,,,,https://www.luxse.com/trading/opening-hours-and-closing-days
 XMAD,2025-01-01,New Year's Day,closed,explicit,1,,,,,https://www.bolsasymercados.es/en/trading-calendar
 XMAD,2025-04-18,Good Friday,closed,explicit,1,,,,,https://www.bolsasymercados.es/en/trading-calendar
 XMAD,2025-04-21,Easter Monday,closed,generated,1,,,,,
@@ -4806,7 +4775,6 @@ XPRA,2025-04-18,Good Friday,closed,explicit,1,,,,,https://www.pse.cz/en/trading/
 XPRA,2025-04-21,Easter Monday,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2025-05-01,Labour Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2025-05-08,Victory Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
-XPRA,2025-07-04,Saints Cyril and Methodius Day,closed,generated,1,,,,,
 XPRA,2025-07-07,Saints Cyril and Methodius Day (observed),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2025-09-29,Czech Statehood Day (observed),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2025-10-28,Independent Czechoslovak State Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
@@ -4828,20 +4796,13 @@ XPRA,2026-12-25,Christmas Day,closed,explicit,1,,,,,https://www.pse.cz/en/tradin
 XPRA,2027-01-01,New Year's Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2027-03-29,Easter Monday,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
-XPRA,2027-04-30,Labour Day,closed,generated,1,,,,,
-XPRA,2027-05-03,Labour Day (observed),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
-XPRA,2027-05-07,Victory Day,closed,generated,1,,,,,
-XPRA,2027-05-10,Victory Day (observed),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2027-07-05,Saints Cyril and Methodius Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2027-07-06,Jan Hus Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2027-09-28,Czech Statehood Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2027-10-28,Independent Czechoslovak State Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2027-11-17,Struggle for Freedom and Democracy Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2027-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
-XPRA,2027-12-27,Christmas Day (observed),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
-XPRA,2027-12-28,St. Stephen's Day (observed),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
-XPRA,2027-12-31,New Year's Day,closed,generated,1,,,,,
-XPRA,2028-01-03,New Year's Day (observed),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
+XPRA,2027-12-31,New Year's Eve (non-trading day),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-information/trading-calendar
 XPRA,2028-04-14,Good Friday,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2028-04-17,Easter Monday,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2028-05-01,Labour Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
@@ -4849,8 +4810,6 @@ XPRA,2028-05-08,Victory Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/
 XPRA,2028-07-05,Saints Cyril and Methodius Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2028-07-06,Jan Hus Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2028-09-28,Czech Statehood Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
-XPRA,2028-10-27,Independent Czechoslovak State Day,closed,generated,1,,,,,
-XPRA,2028-10-30,Independent Czechoslovak State Day (observed),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2028-11-17,Struggle for Freedom and Democracy Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2028-12-25,Christmas Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2028-12-26,St. Stephen's Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
@@ -4862,12 +4821,10 @@ XPRA,2029-05-08,Victory Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/
 XPRA,2029-07-05,Saints Cyril and Methodius Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2029-07-06,Jan Hus Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2029-09-28,Czech Statehood Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
-XPRA,2029-10-29,Independent Czechoslovak State Day (observed),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
-XPRA,2029-11-16,Struggle for Freedom and Democracy Day,closed,generated,1,,,,,
-XPRA,2029-11-19,Struggle for Freedom and Democracy Day (observed),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2029-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2029-12-25,Christmas Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
 XPRA,2029-12-26,St. Stephen's Day,closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-calendar
+XPRA,2029-12-31,New Year's Eve (non-trading day),closed,explicit,1,,,,,https://www.pse.cz/en/trading/trading-information/trading-calendar
 XRIS,2025-01-01,New Year's Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2025-04-18,Good Friday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2025-04-21,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
@@ -4893,19 +4850,18 @@ XRIS,2026-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.co
 XRIS,2027-01-01,New Year's Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2027-03-29,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XRIS,2027-05-03,Labour Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2027-05-04,Restoration of Independence Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XRIS,2027-05-06,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2027-06-23,Midsummer Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2027-06-24,Midsummer Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2027-11-18,Republic Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2027-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XRIS,2027-12-27,Christmas Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XRIS,2027-12-28,Boxing Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XRIS,2028-01-03,New Year's Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XRIS,2027-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2028-04-14,Good Friday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2028-04-17,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2028-05-01,Labour Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2028-05-04,Restoration of Independence Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XRIS,2028-05-25,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2028-06-23,Midsummer Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2028-11-20,Republic Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2028-12-25,Christmas Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
@@ -4915,6 +4871,7 @@ XRIS,2029-03-30,Good Friday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/t
 XRIS,2029-04-02,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2029-05-01,Labour Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2029-05-04,Restoration of Independence Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XRIS,2029-05-10,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2029-11-19,Republic Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2029-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2029-12-25,Christmas Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
@@ -5304,7 +5261,7 @@ XSTO,2027-01-06,Epiphany,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/t
 XSTO,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2027-03-29,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2027-05-06,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
-XSTO,2027-06-18,Midsummer Eve,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
+XSTO,2027-06-25,Midsummer Eve,closed,explicit,1,,,,,https://www.nasdaq.com/european-market-activity/trading-hours
 XSTO,2027-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2027-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2028-01-06,Epiphany,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
@@ -5316,7 +5273,6 @@ XSTO,2028-06-06,Swedish National Day,closed,explicit,1,,,,,https://www.nasdaqomx
 XSTO,2028-06-23,Midsummer Eve,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2028-12-25,Christmas Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2028-12-26,Boxing Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
-XSTO,2028-12-29,New Year's Eve (observed),closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2029-01-01,New Year's Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2029-03-30,Good Friday,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2029-04-02,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
@@ -5512,26 +5468,25 @@ XTAL,2027-01-01,New Year's Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.co
 XTAL,2027-02-24,Independence Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2027-03-29,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XTAL,2027-05-03,Labour Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XTAL,2027-05-06,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2027-06-23,Victory Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2027-06-24,Midsummer Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2027-08-20,Restoration of Independence Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2027-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XTAL,2027-12-27,Christmas Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XTAL,2027-12-28,Boxing Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XTAL,2028-01-03,New Year's Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XTAL,2027-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2028-02-24,Independence Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2028-04-14,Good Friday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2028-04-17,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2028-05-01,Labour Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XTAL,2028-05-25,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2028-06-23,Victory Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2028-12-25,Christmas Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2028-12-26,Boxing Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2029-01-01,New Year's Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
-XTAL,2029-02-26,Independence Day (observed),closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2029-03-30,Good Friday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2029-04-02,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2029-05-01,Labour Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XTAL,2029-05-10,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2029-08-20,Restoration of Independence Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2029-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XTAL,2029-12-25,Christmas Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar

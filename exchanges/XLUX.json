@@ -191,64 +191,18 @@
         "status": "closed"
       },
       {
-        "date": "2027-05-03",
-        "name": "Labour Day (observed)",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-05-10",
-        "name": "Europe Day (observed)",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-05-06",
-        "name": "Ascension Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-05-17",
-        "name": "Whit Monday",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-06-23",
-        "name": "National Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-11-01",
-        "name": "All Saints' Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
         "date": "2027-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
+        "early_close_time": "14:05",
+        "name": "Christmas Eve (early close)",
+        "source_url": "https://www.luxse.com/trading/opening-hours-and-closing-days",
+        "status": "early_close"
       },
       {
-        "date": "2027-12-27",
-        "name": "Christmas Day (substitute)",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-12-28",
-        "name": "Boxing Day (substitute)",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-01-03",
-        "name": "New Year's Day (substitute)",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
+        "date": "2027-12-31",
+        "early_close_time": "14:05",
+        "name": "New Year's Eve (early close)",
+        "source_url": "https://www.luxse.com/trading/opening-hours-and-closing-days",
+        "status": "early_close"
       },
       {
         "date": "2028-04-14",
@@ -265,42 +219,6 @@
       {
         "date": "2028-05-01",
         "name": "Labour Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-05-09",
-        "name": "Europe Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-05-25",
-        "name": "Ascension Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-06-05",
-        "name": "Whit Monday",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-06-23",
-        "name": "National Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-08-15",
-        "name": "Assumption Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-11-01",
-        "name": "All Saints' Day",
         "source_url": "https://www.bourse.lu/trading-calendar",
         "status": "closed"
       },
@@ -341,40 +259,11 @@
         "status": "closed"
       },
       {
-        "date": "2029-05-09",
-        "name": "Europe Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2029-05-10",
-        "name": "Ascension Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2029-05-21",
-        "name": "Whit Monday",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2029-08-15",
-        "name": "Assumption Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2029-11-01",
-        "name": "All Saints' Day",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
-      },
-      {
         "date": "2029-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.bourse.lu/trading-calendar",
-        "status": "closed"
+        "early_close_time": "14:05",
+        "name": "Christmas Eve (early close)",
+        "source_url": "https://www.luxse.com/trading/opening-hours-and-closing-days",
+        "status": "early_close"
       },
       {
         "date": "2029-12-25",
@@ -387,6 +276,13 @@
         "name": "Boxing Day",
         "source_url": "https://www.bourse.lu/trading-calendar",
         "status": "closed"
+      },
+      {
+        "date": "2029-12-31",
+        "early_close_time": "14:05",
+        "name": "New Year's Eve (early close)",
+        "source_url": "https://www.luxse.com/trading/opening-hours-and-closing-days",
+        "status": "early_close"
       }
     ],
     "recurrence_rules": []

@@ -14,7 +14,7 @@
 | [Closed API / Requires Auth](#closed-api) | 0 | none |
 | [Dead Source / No First-Party Page](#dead-source) | 5 | [DSMD](#dsmd), [XBEY](#xbey), [XCAI](#xcai), [XNAI](#xnai), [XTAI](#xtai) |
 
-Not blocked, tracked here: [CI-unreachable](#ci-unreachable) ([XHKG](#xhkg), [XNSA](#xnsa), [XSHG](#xshg)); [resolved](#resolved) ([XIST](#xist)); [built, with tracking notes](#built-tracking) ([XBUD](#xbud), [XCOL](#xcol), [XDFM](#xdfm), [XDUB](#xdub), [XETR](#xetr), [XGSE](#xgse), [XICE](#xice), [XLIT](#xlit), [XMAD](#xmad), [XNAS](#xnas), [XNYS](#xnys), [XPAR](#xpar), [XSTC](#xstc), [XZAG](#xzag)). Reference: [How to read this file](#how-to-read-this-file), [Summary of all 74 exchanges](#summary-of-all-74-exchanges), [Round summaries](#round-summaries).
+Not blocked, tracked here: [CI-unreachable](#ci-unreachable) ([XHKG](#xhkg), [XNSA](#xnsa), [XSHG](#xshg)); [resolved](#resolved) ([XIST](#xist)); [built, with tracking notes](#built-tracking) ([XBUD](#xbud), [XBUE](#xbue), [XCOL](#xcol), [XDFM](#xdfm), [XDUB](#xdub), [XETR](#xetr), [XGSE](#xgse), [XICE](#xice), [XLIT](#xlit), [XMAD](#xmad), [XNAS](#xnas), [XNYS](#xnys), [XPAR](#xpar), [XSTC](#xstc), [XZAG](#xzag)). Reference: [How to read this file](#how-to-read-this-file), [Summary of all 74 exchanges](#summary-of-all-74-exchanges), [Round summaries](#round-summaries).
 
 <a id="js-spa"></a>
 # JS SPA / Client-Rendered
@@ -934,8 +934,20 @@ A calendar exists and no unresolved block is recorded. These entries are kept be
 <a id="xbud"></a>
 ## XBUD — Budapest Stock Exchange
 
-**Last verified:** 2026-10-03
+**Last verified:** 2026-10-31
 
+- **Finding (2026-10-31), corrects the 2026-10-03 reading below for 2027 onwards:**
+  the Labour Code lists eleven public holidays and gives no substitute day for one
+  that falls on a weekend; only the yearly ministerial decree on the working
+  schedule moves days. A Pénzcentrum article of 2026-09-21 counts four of 2027's
+  eleven (1 May, 23 October, 25 and 26 December) as lost to the weekend. 2027 to
+  2029 now have no substitute days, and All Saints (1 November), which was missing,
+  is a fixed rule. The 2027 decree is not published yet, so the bridge days the
+  libraries predict for 2029 are `unpublished` in the divergence triage.
+- **Still to check:** the BSE resolution for 2026 omits 2026-03-16 and
+  2026-12-28, exactly the days the 2026-10-03 note calls "automatic". Both are
+  still in the file as 2026 entries; the resolution and the reading above say the
+  exchange trades on them.
 - **Finding (2026-10-03):** the BSE PDF resolution lists 12 trading
   holidays for 2026 but omits 2026-03-16 (National Day observed) and
   2026-12-28 (Boxing Day substitute). The current file carries both
@@ -947,6 +959,21 @@ A calendar exists and no unresolved block is recorded. These entries are kept be
 - **Status:** fetcher present but incomplete. Resolution requires
   adding Hungarian observed-day logic to the parser. IMPLEMENTED
   at v2.9.3 (`BudapestFetcher._observed_substitutes`).
+
+<a id="xbue"></a>
+## XBUE — Buenos Aires Stock Exchange (BYMA)
+
+**Last verified:** 2026-10-31
+
+- **Finding (2026-10-31):** Ley 27.399 makes Jueves Santo a *día no laborable*,
+  optional for the employer, not a holiday. The registry has it open; the
+  exchange_calendars calendar closes it, giving three open disagreements for
+  2027-03-25, 2028-04-13 and 2029-03-29. BYMA's calendar page
+  (`byma.com.ar/mercado/calendario-bursatil`) lists only the days still ahead of the
+  current date, so it could not settle whether the market trades on a Holy Thursday.
+- **Source needed:** a BYMA notice or calendar for a past Holy Thursday (2025-04-17).
+- **Also settled the same day:** the inamovible holidays of Ley 27.399 are never
+  moved, and Thursday 17 June 2027 (Güemes) moves to Monday 21 June under art. 6.
 
 <a id="xcol"></a>
 ## XCOL — Colombo Stock Exchange (built; 2026 corrected 2026-10-07; 2027 corrected 2026-10-11)
@@ -1292,7 +1319,7 @@ file as if they were known. Each gap and what it needs:
 <a id="xlit"></a>
 ## XLIT — Nasdaq Vilnius (three closures added 2026-10-07)
 
-**Last verified:** 2026-10-07
+**Last verified:** 2026-10-31
 
 - **Tier 1:** Nasdaq Baltic's "Trading holidays" page (`nasdaqbaltic.com/statistics/en/calendar?holidays=1`)
   lists, for the Vilnius market in 2026: 1 Jan, 16 Feb, 11 Mar, 3 Apr, 6 Apr, 1 May,
@@ -1305,6 +1332,11 @@ file as if they were known. Each gap and what it needs:
 - **Open:** whether Ascension Day and 31 December are Nasdaq Baltic trading holidays in
   other years. **Source needed:** the same page for 2025, and for 2027 onward when
   published. The page shows only the current year.
+- **Update (2026-10-31):** Ascension Day and 31 December are now entered as predicted
+  closures for 2027 to 2029 in XLIT, XRIS and XTAL, on the strength of the 2026 list
+  (all three Baltic markets) and of exchange_calendars, which carries both as yearly
+  holidays. Recheck against the page once it lists 2027. Latvia's 10 July 2028 song
+  festival day off, which exchange_calendars carries, is not entered.
 
 <a id="xmad"></a>
 ## XMAD — BME Spanish Exchanges (built; non-closures recorded 2026-10-07)

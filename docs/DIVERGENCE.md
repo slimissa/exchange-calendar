@@ -38,8 +38,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XBRU | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
 | XBSP | 1241 | No reference data | No reference data | n/a | n/a |
-| XBUD | 1244 | 1244 | 1244 | 22 | 98.2% |
-| XBUE | 1234 | 1232 | 1232 | 20 | 98.4% |
+| XBUD | 1249 | 1244 | 1244 | 11 | 99.1% |
+| XBUE | 1240 | 1232 | 1232 | 14 | 98.9% |
 | XBUL | 1251 | No reference data | No reference data | n/a | n/a |
 | XCAI | 1001 | No reference data | No reference data | n/a | n/a |
 | XCAS | 1253 | No reference data | No reference data | n/a | n/a |
@@ -61,11 +61,11 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XKLS | 1228 | 1232 | 1232 | 16 | 98.7% |
 | XKRX | 1233 | 1224 | 1224 | 19 | 98.5% |
 | XKUW | 1017 | No reference data | No reference data | n/a | n/a |
-| XLIM | 1237 | 1243 | 1243 | 14 | 98.9% |
+| XLIM | 1240 | 1243 | 1243 | 11 | 99.1% |
 | XLIS | 1279 | 1279 | 1279 | 0 | 100.0% |
-| XLIT | 1245 | 1246 | 1246 | 15 | 98.8% |
+| XLIT | 1244 | 1246 | 1246 | 6 | 99.5% |
 | XLON | 1518 | 1518 | 1518 | 0 | 100.0% |
-| XLUX | 1246 | 1279 | 1279 | 33 | 97.4% |
+| XLUX | 1268 | 1279 | 1279 | 11 | 99.1% |
 | XMAD | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XMAL | 1242 | No reference data | No reference data | n/a | n/a |
 | XMEX | 1261 | 1257 | 1257 | 4 | 99.7% |
@@ -80,19 +80,19 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XOSL | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XPAR | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XPHS | 1239 | 1230 | 1230 | 15 | 98.8% |
-| XPRA | 1237 | 1249 | 1249 | 18 | 98.6% |
-| XRIS | 1252 | 1250 | 1250 | 18 | 98.6% |
+| XPRA | 1249 | 1249 | 1249 | 4 | 99.7% |
+| XRIS | 1252 | 1250 | 1250 | 10 | 99.2% |
 | XSAU | 1007 | 998 | 998 | 17 | 98.3% |
 | XSES | 1255 | 1285 | 503* | 30 | 97.7% |
 | XSGO | 1242 | No reference data | 1242 | 8 | 99.4% |
 | XSHE | 727 | No reference data | No reference data | n/a | n/a |
 | XSHG | 1225 | 1267 | 485* | 44 | 96.5% |
 | XSTC | 1006 | No reference data | No reference data | n/a | n/a |
-| XSTO | 1253 | 1254 | 1254 | 3 | 99.8% |
+| XSTO | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XSWX | 1255 | 1255 | 1255 | 0 | 100.0% |
 | XTAD | 1272 | No reference data | No reference data | n/a | n/a |
 | XTAI | 1228 | 1221 | 1221 | 23 | 98.1% |
-| XTAL | 1252 | 1255 | 1255 | 15 | 98.8% |
+| XTAL | 1253 | 1255 | 1255 | 6 | 99.5% |
 | XTKS | 1464 | 1464 | 1464 | 0 | 100.0% |
 | XTSE | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XTUN | 1253 | No reference data | No reference data | n/a | n/a |
@@ -102,8 +102,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 21 of 50.
-- Trading days on which all available sources agree: 62358 of 62858 (99.2%).
+- Exchanges with no disagreement: 22 of 50.
+- Trading days on which all available sources agree: 62425 of 62840 (99.3%).
 
 ## Disagreements by year
 
@@ -115,8 +115,8 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XBKK | - | 6 | 4 | 6 | - | - |
 | XBOG | - | 2 | 1 | 1 | 1 | 1 |
 | XBOM | - | 0 | 0 | 8 | 12 | 15 |
-| XBUD | - | 3 | 4 | 7 | 3 | 5 |
-| XBUE | - | 6 | 3 | 5 | 4 | 2 |
+| XBUD | - | 3 | 4 | 0 | 0 | 4 |
+| XBUE | - | 6 | 3 | 3 | 1 | 1 |
 | XCSE | - | 2 | 2 | 1 | 2 | 2 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
 | XIST | - | 4 | 4 | 5 | 3 | 7 |
@@ -124,32 +124,31 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XKAR | - | 5 | 1 | 7 | 4 | 7 |
 | XKLS | - | 1 | 2 | 5 | 5 | 3 |
 | XKRX | - | 3 | 2 | 3 | 7 | 4 |
-| XLIM | - | 1 | 4 | 5 | 4 | 0 |
-| XLIT | - | 3 | 1 | 5 | 3 | 3 |
-| XLUX | - | 6 | 5 | 9 | 7 | 6 |
+| XLIM | - | 1 | 4 | 3 | 3 | 0 |
+| XLIT | - | 3 | 1 | 0 | 1 | 1 |
+| XLUX | - | 6 | 5 | 0 | 0 | 0 |
 | XMEX | - | 0 | 1 | 1 | 1 | 1 |
 | XMOS | - | 5 | 4 | - | - | - |
 | XNSE | - | 1 | 0 | 8 | 12 | 15 |
 | XPHS | - | 5 | 4 | 3 | 2 | 1 |
-| XPRA | - | 4 | 1 | 6 | 3 | 4 |
-| XRIS | - | 5 | 2 | 5 | 4 | 2 |
+| XPRA | - | 3 | 1 | 0 | 0 | 0 |
+| XRIS | - | 5 | 2 | 0 | 2 | 1 |
 | XSAU | - | 4 | 0 | 5 | 8 | - |
 | XSES | - | 0 | 1 | 8 | 10 | 11 |
 | XSGO | - | 3 | 2 | 2 | 0 | 1 |
 | XSHG | - | 0 | 1 | 16 | 14 | 13 |
-| XSTO | - | 0 | 0 | 2 | 1 | 0 |
 | XTAI | - | 4 | 4 | 1 | 7 | 7 |
-| XTAL | - | 2 | 2 | 5 | 3 | 3 |
+| XTAL | - | 2 | 2 | 0 | 1 | 1 |
 
 Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 76 | 0 | 4 | 1 | 0 | 71 |
+| 2025 | 75 | 0 | 4 | 1 | 0 | 70 |
 | 2026 | 55 | 0 | 0 | 0 | 0 | 55 |
-| 2027 | 129 | 0 | 8 | 0 | 50 | 71 |
-| 2028 | 124 | 0 | 0 | 0 | 70 | 54 |
-| 2029 | 116 | 0 | 0 | 0 | 70 | 46 |
+| 2027 | 86 | 0 | 10 | 0 | 53 | 23 |
+| 2028 | 100 | 0 | 3 | 0 | 74 | 23 |
+| 2029 | 99 | 0 | 3 | 0 | 74 | 22 |
 
 ## No reference data
 
@@ -211,15 +210,15 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 - registry closed, PMC open (35): 2027-01-26 Tu [unpublished], 2027-03-10 We [unpublished], 2027-03-23 Tu [unpublished], 2027-03-26 Fr [unpublished], 2027-04-14 We [unpublished], 2027-05-17 Mo [unpublished], 2027-06-16 We [unpublished], 2027-10-29 Fr [unpublished], 2028-01-26 We [unpublished], 2028-02-24 Th [unpublished], 2028-04-14 Fr [unpublished], 2028-05-01 Mo [unpublished], 2028-05-05 Fr [unpublished], 2028-08-15 Tu [unpublished], 2028-08-23 We [unpublished], 2028-09-28 Th [unpublished], 2028-10-02 Mo [unpublished], 2028-10-17 Tu [unpublished], 2028-10-18 We [unpublished], 2028-12-25 Mo [unpublished], 2029-01-26 Fr [unpublished], 2029-02-12 Mo [unpublished], 2029-02-15 Th [unpublished], 2029-03-01 Th [unpublished], 2029-03-30 Fr [unpublished], 2029-04-24 Tu [unpublished], 2029-05-01 Tu [unpublished], 2029-05-24 Th [unpublished], 2029-08-15 We [unpublished], 2029-09-12 We [unpublished], 2029-10-02 Tu [unpublished], 2029-10-17 We [unpublished], 2029-11-05 Mo [unpublished], 2029-11-06 Tu [unpublished], 2029-12-25 Tu [unpublished]
 
-### XBUD (22)
+### XBUD (11)
 
-- registry closed, PMC open, EC open (11): 2025-03-14 Fr, 2026-03-16 Mo, 2026-12-28 Mo, 2027-04-30 Fr, 2027-05-03 Mo, 2027-10-22 Fr, 2027-10-25 Mo, 2027-12-27 Mo, 2027-12-28 Tu, 2028-01-03 Mo, 2028-08-21 Mo
-- registry open, PMC closed, EC closed (11): 2025-05-02 Fr, 2025-10-24 Fr, 2026-01-02 Fr, 2026-08-21 Fr, 2027-11-01 Mo, 2028-11-01 We, 2029-03-16 Fr, 2029-04-30 Mo, 2029-10-22 Mo, 2029-11-01 Th, 2029-11-02 Fr
+- registry open, PMC closed, EC closed (8): 2025-05-02 Fr, 2025-10-24 Fr, 2026-01-02 Fr, 2026-08-21 Fr, 2029-03-16 Fr [unpublished], 2029-04-30 Mo [unpublished], 2029-10-22 Mo [unpublished], 2029-11-02 Fr [unpublished]
+- registry closed, PMC open, EC open (3): 2025-03-14 Fr, 2026-03-16 Mo, 2026-12-28 Mo
 
-### XBUE (20)
+### XBUE (14)
 
-- registry open, PMC closed, EC closed (11): 2025-04-17 Th, 2025-06-17 Tu, 2025-08-18 Mo, 2025-10-13 Mo, 2025-11-17 Mo, 2026-06-17 We, 2026-11-23 Mo, 2027-03-25 Th, 2027-06-17 Th, 2028-04-13 Th, 2029-03-29 Th
-- registry closed, PMC open, EC open (9): 2025-11-20 Th, 2026-11-20 Fr, 2027-05-03 Mo, 2027-06-21 Mo, 2027-12-27 Mo, 2028-01-03 Mo, 2028-04-03 Mo, 2028-07-10 Mo, 2029-03-26 Mo
+- registry open, PMC closed, EC closed (11): 2025-04-17 Th, 2025-06-17 Tu, 2025-08-18 Mo, 2025-10-13 Mo, 2025-11-17 Mo, 2026-06-17 We, 2026-11-23 Mo, 2027-03-25 Th, 2027-06-17 Th [library error], 2028-04-13 Th, 2029-03-29 Th
+- registry closed, PMC open, EC open (3): 2025-11-20 Th, 2026-11-20 Fr, 2027-06-21 Mo [library error]
 
 ### XCSE (9)
 
@@ -254,19 +253,19 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry open, PMC closed, EC closed (14): 2025-01-27 Mo, 2025-06-03 Tu, 2025-10-03 Fr, 2026-05-01 Fr, 2027-09-16 Th, 2028-01-28 Fr, 2028-03-01 We, 2028-05-01 Mo, 2028-10-02 Mo, 2028-10-05 Th, 2029-05-01 Tu, 2029-05-07 Mo, 2029-09-21 Fr, 2029-10-03 We
 - registry closed, PMC open, EC open (5): 2026-06-08 Mo, 2027-02-05 Fr, 2027-06-07 Mo, 2028-01-03 Mo, 2028-02-28 Mo
 
-### XLIM (14)
+### XLIM (11)
 
-- registry closed, PMC open, EC open (10): 2026-06-08 Mo, 2026-08-31 Mo, 2026-11-02 Mo, 2027-05-03 Mo, 2027-06-28 Mo, 2027-12-27 Mo, 2028-01-03 Mo, 2028-07-24 Mo, 2028-08-07 Mo, 2028-10-09 Mo
-- registry open, PMC closed, EC closed (4): 2025-12-09 Tu, 2026-12-09 We, 2027-06-29 Tu, 2027-12-09 Th
+- registry closed, PMC open, EC open (7): 2026-06-08 Mo, 2026-08-31 Mo, 2026-11-02 Mo, 2027-06-28 Mo [unpublished], 2028-07-24 Mo [unpublished], 2028-08-07 Mo [unpublished], 2028-10-09 Mo [unpublished]
+- registry open, PMC closed, EC closed (4): 2025-12-09 Tu, 2026-12-09 We, 2027-06-29 Tu [unpublished], 2027-12-09 Th [unpublished]
 
-### XLIT (15)
+### XLIT (6)
 
-- registry closed, PMC open, EC open (8): 2025-12-25 Th, 2026-12-25 Fr, 2027-05-03 Mo, 2027-12-27 Mo, 2027-12-28 Tu, 2028-01-03 Mo, 2028-12-25 Mo, 2029-12-25 Tu
-- registry open, PMC closed, EC closed (7): 2025-05-29 Th, 2025-12-31 We, 2027-05-06 Th, 2027-12-31 Fr, 2028-05-25 Th, 2029-05-10 Th, 2029-12-31 Mo
+- registry closed, PMC open, EC open (4): 2025-12-25 Th, 2026-12-25 Fr, 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
+- registry open, PMC closed, EC closed (2): 2025-05-29 Th, 2025-12-31 We
 
-### XLUX (33)
+### XLUX (11)
 
-- registry closed, PMC open, EC open (33): 2025-05-09 Fr, 2025-05-29 Th, 2025-06-09 Mo, 2025-06-23 Mo, 2025-08-15 Fr, 2025-12-24 We, 2026-05-14 Th, 2026-05-25 Mo, 2026-06-23 Tu, 2026-12-24 Th, 2026-12-28 Mo, 2027-05-03 Mo, 2027-05-06 Th, 2027-05-10 Mo, 2027-05-17 Mo, 2027-06-23 We, 2027-11-01 Mo, 2027-12-24 Fr, 2027-12-27 Mo, 2027-12-28 Tu, 2028-01-03 Mo, 2028-05-09 Tu, 2028-05-25 Th, 2028-06-05 Mo, 2028-06-23 Fr, 2028-08-15 Tu, 2028-11-01 We, 2029-05-09 We, 2029-05-10 Th, 2029-05-21 Mo, 2029-08-15 We, 2029-11-01 Th, 2029-12-24 Mo
+- registry closed, PMC open, EC open (11): 2025-05-09 Fr, 2025-05-29 Th, 2025-06-09 Mo, 2025-06-23 Mo, 2025-08-15 Fr, 2025-12-24 We, 2026-05-14 Th, 2026-05-25 Mo, 2026-06-23 Tu, 2026-12-24 Th, 2026-12-28 Mo
 
 ### XMEX (4)
 
@@ -285,15 +284,15 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry open, PMC closed, EC closed (12): 2025-01-29 We, 2025-04-01 Tu, 2025-05-12 Mo, 2025-06-06 Fr, 2025-10-31 Fr, 2026-02-17 Tu, 2026-03-20 Fr, 2026-05-27 We, 2027-03-10 We [unpublished], 2027-05-17 Mo [unpublished], 2028-01-26 We [unpublished], 2029-02-13 Tu [unpublished]
 - registry closed, PMC open, EC open (3): 2026-11-02 Mo, 2027-11-02 Tu, 2028-11-02 Th
 
-### XPRA (18)
+### XPRA (4)
 
-- registry closed, PMC open, EC open (15): 2025-07-04 Fr, 2025-07-07 Mo, 2025-09-29 Mo, 2027-04-30 Fr, 2027-05-03 Mo, 2027-05-07 Fr, 2027-05-10 Mo, 2027-12-27 Mo, 2027-12-28 Tu, 2028-01-03 Mo, 2028-10-27 Fr, 2028-10-30 Mo, 2029-10-29 Mo, 2029-11-16 Fr, 2029-11-19 Mo
-- registry open, PMC closed, EC closed (3): 2025-12-31 We, 2026-12-31 Th, 2029-12-31 Mo
+- registry closed, PMC open, EC open (2): 2025-07-07 Mo, 2025-09-29 Mo
+- registry open, PMC closed, EC closed (2): 2025-12-31 We, 2026-12-31 Th
 
-### XRIS (18)
+### XRIS (10)
 
-- registry open, PMC closed, EC closed (10): 2025-05-02 Fr, 2025-05-05 Mo, 2025-05-29 Th, 2025-11-17 Mo, 2026-05-14 Th, 2027-05-06 Th, 2027-12-31 Fr, 2028-05-25 Th, 2028-07-10 Mo, 2029-05-10 Th
-- registry closed, PMC open, EC open (8): 2025-12-25 Th, 2026-12-25 Fr, 2027-05-03 Mo, 2027-12-27 Mo, 2027-12-28 Tu, 2028-01-03 Mo, 2028-12-25 Mo, 2029-12-25 Tu
+- registry open, PMC closed, EC closed (6): 2025-05-02 Fr, 2025-05-05 Mo, 2025-05-29 Th, 2025-11-17 Mo, 2026-05-14 Th, 2028-07-10 Mo [unpublished]
+- registry closed, PMC open, EC open (4): 2025-12-25 Th, 2026-12-25 Fr, 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
 
 ### XSAU (17)
 
@@ -315,26 +314,21 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open (43): 2027-01-01 Fr [unpublished], 2027-02-05 Fr [unpublished], 2027-02-08 Mo [unpublished], 2027-02-09 Tu [unpublished], 2027-02-10 We [unpublished], 2027-02-11 Th [unpublished], 2027-02-12 Fr [unpublished], 2027-04-05 Mo [unpublished], 2027-05-03 Mo [unpublished], 2027-06-09 We [unpublished], 2027-09-15 We [unpublished], 2027-10-01 Fr [unpublished], 2027-10-04 Mo [unpublished], 2027-10-05 Tu [unpublished], 2027-10-06 We [unpublished], 2027-10-07 Th [unpublished], 2028-01-03 Mo [unpublished], 2028-01-26 We [unpublished], 2028-01-27 Th [unpublished], 2028-01-28 Fr [unpublished], 2028-01-31 Mo [unpublished], 2028-02-01 Tu [unpublished], 2028-04-04 Tu [unpublished], 2028-05-01 Mo [unpublished], 2028-06-19 Mo [unpublished], 2028-10-02 Mo [unpublished], 2028-10-03 Tu [unpublished], 2028-10-04 We [unpublished], 2028-10-05 Th [unpublished], 2028-10-06 Fr [unpublished], 2029-01-01 Mo [unpublished], 2029-02-13 Tu [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-02-16 Fr [unpublished], 2029-02-19 Mo [unpublished], 2029-04-05 Th [unpublished], 2029-05-01 Tu [unpublished], 2029-10-01 Mo [unpublished], 2029-10-02 Tu [unpublished], 2029-10-03 We [unpublished], 2029-10-04 Th [unpublished], 2029-10-05 Fr [unpublished]
 - registry open, PMC closed, EC closed (1): 2026-01-02 Fr
 
-### XSTO (3)
-
-- registry closed, PMC open, EC open (2): 2027-06-18 Fr, 2028-12-29 Fr
-- registry open, PMC closed, EC closed (1): 2027-06-25 Fr
-
 ### XTAI (23)
 
 - registry open, PMC closed, EC closed (15): 2025-01-27 Mo, 2025-09-29 Mo, 2025-10-24 Fr, 2025-12-25 Th, 2026-04-06 Mo, 2026-09-28 Mo, 2026-10-26 Mo, 2026-12-25 Fr, 2028-04-03 Mo [unpublished], 2028-05-29 Mo [unpublished], 2028-10-03 Tu [unpublished], 2029-04-03 Tu [unpublished], 2029-06-15 Fr [unpublished], 2029-09-21 Fr [unpublished], 2029-12-31 Mo [unpublished]
 - registry closed, PMC open, EC open (8): 2027-02-03 We [unpublished], 2028-01-31 Mo [unpublished], 2028-02-01 Tu [unpublished], 2028-04-05 We [unpublished], 2028-09-25 Mo [unpublished], 2029-02-08 Th [unpublished], 2029-02-16 Fr [unpublished], 2029-06-18 Mo [unpublished]
 
-### XTAL (15)
+### XTAL (6)
 
-- registry closed, PMC open, EC open (9): 2025-12-25 Th, 2026-12-25 Fr, 2027-05-03 Mo, 2027-12-27 Mo, 2027-12-28 Tu, 2028-01-03 Mo, 2028-12-25 Mo, 2029-02-26 Mo, 2029-12-25 Tu
-- registry open, PMC closed, EC closed (6): 2025-05-29 Th, 2026-05-14 Th, 2027-05-06 Th, 2027-12-31 Fr, 2028-05-25 Th, 2029-05-10 Th
+- registry closed, PMC open, EC open (4): 2025-12-25 Th, 2026-12-25 Fr, 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
+- registry open, PMC closed, EC closed (2): 2025-05-29 Th, 2026-05-14 Th
 
 ## Triage
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 13 dates; Registry error: 165 dates; Unpublished: 190 dates.
+- Convention difference: 1 dates; Library error: 21 dates; Registry error: 249 dates; Unpublished: 201 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -391,6 +385,38 @@ Euronext's calendars for 2025 and 2026 close Brussels on Good Friday, Easter Mon
 Dates: 2025-04-18, 2025-05-29, 2025-06-09, 2025-07-21, 2025-08-15, 2025-11-11, 2026-04-03, 2026-05-14, 2026-05-25, 2026-07-21, 2026-11-11, 2026-12-28.
 
 Source: https://live.euronext.com/en/resources/trading-hours-holidays
+
+### XBUD: Registry error (11, fixed in 2.23.5)
+
+The Labour Code lists eleven holidays and gives no substitute day for one on a weekend: 1 May, 23 October, 25 and 26 December 2027 fall on weekends and nothing replaces them. The registry shifted them (and Friday 30 Apr, Friday 22 Oct) and left out All Saints (1 November), which is a holiday and a BSE closing day.
+
+Dates: 2027-04-30, 2027-05-03, 2027-10-22, 2027-10-25, 2027-11-01, 2027-12-27, 2027-12-28, 2028-01-03, 2028-08-21, 2028-11-01, 2029-11-01.
+
+Source: https://www.penzcentrum.hu/karrier/20260921/munkaido-naptar-2027-hosszu-hetvegek-munkaszuneti-napok-es-unnepnapok-1205722
+
+### XBUD: Unpublished (4, calendar not yet published, registry value is a prediction, recheck 2028-06-30)
+
+These are bridge days (Friday after a Thursday holiday, Monday before a Tuesday one) that the libraries predict. Hungary sets them each year by a ministerial decree on the working schedule, published the year before (the 2027 decree is not out yet, as of 2026-10), so neither the registry nor the libraries can know the 2029 ones.
+
+Dates: 2029-03-16, 2029-04-30, 2029-10-22, 2029-11-02.
+
+Source: https://adozona.hu/jogtar/495662_10_2025_IV_30_NGM_rendelet_2026
+
+### XBUE: Library error (2, registry verified, no change)
+
+Ley 27.399, art. 6 moves a trasladable holiday that falls on a Thursday to the next Monday. 17 June 2027 (Güemes) is a Thursday, so the holiday is Monday 21 June, which the registry closes. The libraries close Thursday 17 June and trade on the 21st.
+
+Dates: 2027-06-17, 2027-06-21.
+
+Source: https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto
+
+### XBUE: Registry error (6, fixed in 2.23.5)
+
+Ley 27.399, art. 1 makes 1 January, 24 March, 2 April, 1 May, 9 July and 25 December inamovible: they are never moved. The registry moved the ones that fall on a weekend to a Monday: 3 May and 27 December 2027, 3 January, 3 April and 10 July 2028, 26 March 2029.
+
+Dates: 2027-05-03, 2027-12-27, 2028-01-03, 2028-04-03, 2028-07-10, 2029-03-26.
+
+Source: https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto
 
 ### XHEL: Registry error (5, fixed in 2.23.4)
 
@@ -464,6 +490,22 @@ Dates: 2029-02-16.
 
 Source: https://www.bursamalaysia.com/market_information/market_holidays
 
+### XLIM: Registry error (3, fixed in 2.23.5)
+
+1 May and 25 December 2027 and 1 January 2028 are Saturdays. Neither the law nor the MEF's announced Monday scheme moves a holiday that falls on a Saturday, so the Monday closures are removed.
+
+Dates: 2027-05-03, 2027-12-27, 2028-01-03.
+
+Source: https://www.infobae.com/peru/2026/08/28/gobierno-confirma-formula-para-traslado-de-feriados-al-lunes-para-2027/
+
+### XLIM: Unpublished (6, calendar not yet published, registry value is a prediction, recheck 2027-01-15)
+
+In August 2026 the MEF announced that Peruvian holidays falling midweek will move to a Monday from 2027 (28 June, 26 July, 9 August and 11 October 2027 are named), with the 8 and 9 December case left open. The registry applies a Monday scheme; the libraries apply the current law. The binding norm and the detail are not published yet.
+
+Dates: 2027-06-28, 2027-06-29, 2027-12-09, 2028-07-24, 2028-08-07, 2028-10-09.
+
+Source: https://www.infobae.com/peru/2026/08/28/gobierno-confirma-formula-para-traslado-de-feriados-al-lunes-para-2027/
+
 ### XLIS: Registry error (12, fixed in 2.21.3)
 
 Euronext's calendars for 2025 and 2026 close Lisbon only on the common Euronext closures; Freedom Day, Portugal Day, Corpus Christi, Assumption Day, Republic Day, Restoration of Independence and Immaculate Conception are full trading days. The registry closed those eleven and was missing Boxing Day on Friday 2025-12-26.
@@ -472,6 +514,22 @@ Dates: 2025-04-25, 2025-06-10, 2025-06-19, 2025-08-15, 2025-12-01, 2025-12-08, 2
 
 Source: https://live.euronext.com/en/resources/trading-hours-holidays
 
+### XLIT: Library error (2, registry verified, no change)
+
+Nasdaq CSD's 2026 calendar for Estonia, Latvia and Lithuania lists 25 December (Christmas Day) as a T2S/T2 closing day. The registry closes it; the exchange_calendars calendar for this market has no Christmas Day entry and shows the day open.
+
+Dates: 2028-12-25, 2029-12-25.
+
+Source: https://nasdaqcsd.com/latvia/en/calendar-working-hours/
+
+### XLIT: Registry error (9, fixed in 2.23.5)
+
+Nasdaq Baltic does not move a weekend holiday to a weekday, so the 2027 and 2028 Monday and Tuesday 'observed' entries are removed (the Latvian Proclamation Day carry-over of 18 November stays: both libraries have it). 31 December and Ascension Day are Nasdaq Baltic trading holidays in the 2026 list for all three Baltic markets; the registry only had them for 2026, so they are added for 2027-2029 as predicted dates.
+
+Dates: 2027-05-03, 2027-05-06, 2027-12-27, 2027-12-28, 2027-12-31, 2028-01-03, 2028-05-25, 2029-05-10, 2029-12-31.
+
+Source: https://www.nasdaqbaltic.com/trading-calendar
+
 ### XLON: Registry error (2, fixed in 2.23.2)
 
 Christmas Eve and New Year's Eve 2028 are Sundays, so the preceding Fridays close at 12:30, as the LSE did on 22 and 29 December 2000 (Stock Exchange Notice N49/00) and 2023. The registry had them as full days (a half-day mismatch, not a trading-day one).
@@ -479,6 +537,14 @@ Christmas Eve and New Year's Eve 2028 are Sundays, so the preceding Fridays clos
 Dates: 2028-12-22, 2028-12-29.
 
 Source: https://www.londonstockexchange.com/market-data/trading-services/trading-hours
+
+### XLUX: Registry error (22, fixed in 2.23.5)
+
+LuxSE's own page lists the closing days (for 2026 only Christmas Day was still ahead) and says it will not be closed on public holidays such as National Day (23 June). It trades on Europe Day, Ascension, Whit Monday, Assumption and All Saints, follows the Euronext/T2 closing days (New Year, Good Friday, Easter Monday, 1 May, Christmas, Boxing Day) and closes early at 14:05 on 24 and 31 December. The registry closed the Luxembourg public holidays, closed Christmas Eve all day and moved weekend holidays to a Monday. 22 dates fixed for 2027-2029; the same extra closures remain in the 2025 and 2026 entries.
+
+Dates: 2027-05-03, 2027-05-06, 2027-05-10, 2027-05-17, 2027-06-23, 2027-11-01, 2027-12-24, 2027-12-27, 2027-12-28, 2028-01-03, 2028-05-09, 2028-05-25, 2028-06-05, 2028-06-23, 2028-08-15, 2028-11-01, 2029-05-09, 2029-05-10, 2029-05-21, 2029-08-15, 2029-11-01, 2029-12-24.
+
+Source: https://www.luxse.com/trading/opening-hours-and-closing-days
 
 ### XNAS: Registry error (2, fixed in 2.23.2)
 
@@ -567,6 +633,38 @@ Eid al-Fitr, Eid al-Adha and Chinese New Year 2029. The Philippines declares the
 Dates: 2029-02-13.
 
 Source: https://www.pse.com.ph/trading-holidays/
+
+### XPRA: Registry error (13, fixed in 2.23.5)
+
+Czech state holidays stay on their date (Act 245/2000), so a Saturday or Sunday holiday gives no weekday closure: the Fridays 30 Apr, 7 May 2027, 27 Oct 2028, 16 Nov 2029 and the Mondays and Tuesdays after were wrongly closed. The Prague Stock Exchange calendar lists 31 December as a non-trading day; it is added for 2027 and 2029.
+
+Dates: 2027-04-30, 2027-05-03, 2027-05-07, 2027-05-10, 2027-12-27, 2027-12-28, 2028-01-03, 2028-10-27, 2028-10-30, 2029-10-29, 2029-11-16, 2029-11-19, 2029-12-31.
+
+Source: https://www.pse.cz/en/trading/trading-information/trading-calendar
+
+### XRIS: Library error (2, registry verified, no change)
+
+Nasdaq CSD's 2026 calendar for Estonia, Latvia and Lithuania lists 25 December (Christmas Day) as a T2S/T2 closing day. The registry closes it; the exchange_calendars calendar for this market has no Christmas Day entry and shows the day open.
+
+Dates: 2028-12-25, 2029-12-25.
+
+Source: https://nasdaqcsd.com/latvia/en/calendar-working-hours/
+
+### XRIS: Registry error (8, fixed in 2.23.5)
+
+Nasdaq Baltic does not move a weekend holiday to a weekday, so the 2027 and 2028 Monday and Tuesday 'observed' entries are removed (the Latvian Proclamation Day carry-over of 18 November stays: both libraries have it). 31 December and Ascension Day are Nasdaq Baltic trading holidays in the 2026 list for all three Baltic markets; the registry only had them for 2026, so they are added for 2027-2029 as predicted dates.
+
+Dates: 2027-05-03, 2027-05-06, 2027-12-27, 2027-12-28, 2027-12-31, 2028-01-03, 2028-05-25, 2029-05-10.
+
+Source: https://www.nasdaqbaltic.com/trading-calendar
+
+### XRIS: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2028-01-15)
+
+Exchange_calendars carries 10 July 2028 as a day off for the Latvian Song and Dance Festival, as in 2018 and 2023. A day off needs an amendment adopted close to the festival; none exists for 2028.
+
+Dates: 2028-07-10.
+
+Source: https://www.nasdaqbaltic.com/trading-calendar
 
 ### XSAU: Library error (4, registry verified, no change)
 
@@ -680,6 +778,14 @@ Dates: 2029-01-01, 2029-02-13, 2029-02-14, 2029-02-15, 2029-02-16, 2029-02-19, 2
 
 Source: https://www.sse.com.cn/disclosure/dealinstruc/closed/list/
 
+### XSTO: Registry error (3, fixed in 2.23.5)
+
+Midsummer Eve is the Friday before Midsummer Day (the Saturday from 20 to 26 June): Friday 25 June 2027, not 18 June. 31 December 2028 is a Sunday, so Friday 29 December is open.
+
+Dates: 2027-06-18, 2027-06-25, 2028-12-29.
+
+Source: https://www.nasdaq.com/european-market-activity/trading-hours
+
 ### XTAI: Registry error (14, fixed in 2.23.3)
 
 DGPA's 2027 government calendar (published 2026-05-21) observes a Saturday holiday on the previous working day and a Sunday one on the next: Peace Memorial Day (Sunday 28 Feb) is Monday 1 Mar, not Friday 26 Feb; Labour Day (Saturday 1 May) is Friday 30 Apr; National Day (Sunday 10 Oct) is Monday 11 Oct; Taiwan Retrocession Day is Monday 25 Oct; New Year's Day 2028 (Saturday) is observed Friday 31 Dec 2027. The Spring Festival holiday ends Wednesday 10 Feb, so Thursday 11 Feb is a working day. The 2025 Commemoration and Holidays Act made 28 Sep, 25 Oct and 25 Dec national holidays; the registry lacked them from 2027, including the 2028 and 2029 dates, which fall on weekdays.
@@ -711,6 +817,22 @@ DGPA publishes the government calendar for a year by 30 June of the year before 
 Dates: 2029-02-08, 2029-02-16, 2029-04-03, 2029-06-15, 2029-06-18, 2029-09-21, 2029-12-31.
 
 Source: https://www.taiwannews.com.tw/zh/news/6106736
+
+### XTAL: Library error (2, registry verified, no change)
+
+Nasdaq CSD's 2026 calendar for Estonia, Latvia and Lithuania lists 25 December (Christmas Day) as a T2S/T2 closing day. The registry closes it; the exchange_calendars calendar for this market has no Christmas Day entry and shows the day open.
+
+Dates: 2028-12-25, 2029-12-25.
+
+Source: https://nasdaqcsd.com/latvia/en/calendar-working-hours/
+
+### XTAL: Registry error (9, fixed in 2.23.5)
+
+Nasdaq Baltic does not move a weekend holiday to a weekday, so the 2027 and 2028 Monday and Tuesday 'observed' entries are removed (the Latvian Proclamation Day carry-over of 18 November stays: both libraries have it). 31 December and Ascension Day are Nasdaq Baltic trading holidays in the 2026 list for all three Baltic markets; the registry only had them for 2026, so they are added for 2027-2029 as predicted dates.
+
+Dates: 2027-05-03, 2027-05-06, 2027-12-27, 2027-12-28, 2027-12-31, 2028-01-03, 2028-05-25, 2029-02-26, 2029-05-10.
+
+Source: https://www.nasdaqbaltic.com/trading-calendar
 
 ### XTKS: Registry error (8, fixed in 2.23.2)
 

@@ -96,40 +96,39 @@ class TestXBUEFixedHolidays:
         assert "2025-01-01" in explicit_dates
         assert explicit_dates["2025-01-01"]["name"] == "New Year's Day"
 
-    def test_new_year_2028_substitute(self, explicit_dates):
-        """Jan 1, 2028 is Saturday — substitute to Monday Jan 3."""
+    def test_new_year_2028_saturday_is_not_moved(self, explicit_dates):
+        """Jan 1 is inamovible (Ley 27.399, art. 1); 2028-01-01 is Saturday."""
         assert "2028-01-01" not in explicit_dates
-        assert "2028-01-03" in explicit_dates
+        assert "2028-01-03" not in explicit_dates
 
     def test_remembrance_day_2025(self, explicit_dates):
         """Mar 24, 2025 is Monday."""
         assert "2025-03-24" in explicit_dates
         assert "Remembrance" in explicit_dates["2025-03-24"]["name"]
 
-    def test_remembrance_day_2029_substitute(self, explicit_dates):
-        """Mar 24, 2029 is Saturday — substitute to Monday Mar 26."""
+    def test_remembrance_day_2029_saturday_is_not_moved(self, explicit_dates):
+        """Mar 24 is inamovible; 2029-03-24 is Saturday."""
         assert "2029-03-24" not in explicit_dates
-        assert "2029-03-26" in explicit_dates
+        assert "2029-03-26" not in explicit_dates
 
     def test_malvinas_day_2025(self, explicit_dates):
         """Apr 2, 2025 is Wednesday."""
         assert "2025-04-02" in explicit_dates
         assert "Malvinas" in explicit_dates["2025-04-02"]["name"]
 
-    def test_malvinas_day_2028_substitute(self, explicit_dates):
-        """Apr 2, 2028 is Sunday — substitute to Monday Apr 3."""
+    def test_malvinas_day_2028_sunday_is_not_moved(self, explicit_dates):
+        """Apr 2 is inamovible; 2028-04-02 is Sunday."""
         assert "2028-04-02" not in explicit_dates
-        assert "2028-04-03" in explicit_dates
+        assert "2028-04-03" not in explicit_dates
 
     def test_labour_day_2025(self, explicit_dates):
         """May 1, 2025 is Thursday."""
         assert "2025-05-01" in explicit_dates
         assert explicit_dates["2025-05-01"]["name"] == "Labour Day"
 
-    def test_labour_day_2027_substitute(self, explicit_dates):
-        """May 1, 2027 is Saturday — substitute to Monday May 3."""
-        assert "2027-05-01" not in explicit_dates
-        assert "2027-05-03" in explicit_dates
+    def test_labour_day_2027_saturday_is_not_moved(self, explicit_dates):
+        """May 1 is inamovible; 2027-05-01 is Saturday."""
+        assert "2027-05-03" not in explicit_dates
 
     def test_may_revolution_2025(self, explicit_dates):
         """May 25, 2025 is Sunday (weekend) — no explicit entry."""
@@ -153,10 +152,10 @@ class TestXBUEFixedHolidays:
         assert "2025-07-09" in explicit_dates
         assert "Independence" in explicit_dates["2025-07-09"]["name"]
 
-    def test_independence_2028_substitute(self, explicit_dates):
-        """Jul 9, 2028 is Sunday — substitute to Monday Jul 10."""
+    def test_independence_2028_sunday_is_not_moved(self, explicit_dates):
+        """Jul 9 is inamovible; 2028-07-09 is Sunday."""
         assert "2028-07-09" not in explicit_dates
-        assert "2028-07-10" in explicit_dates
+        assert "2028-07-10" not in explicit_dates
 
     def test_san_martin_2025(self, explicit_dates):
         """Aug 17, 2025 is Sunday (weekend) — no explicit entry."""
@@ -261,10 +260,9 @@ class TestXBUEChristmas:
         assert "2025-12-25" in explicit_dates
         assert explicit_dates["2025-12-25"]["name"] == "Christmas Day"
 
-    def test_christmas_day_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27."""
-        assert "2027-12-25" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
+    def test_christmas_day_2027_saturday_is_not_moved(self, explicit_dates):
+        """Dec 25 is inamovible; 2027-12-25 is Saturday."""
+        assert "2027-12-27" not in explicit_dates
 
     def test_new_years_eve_2025(self, explicit_dates):
         """Dec 31, 2025 is Wednesday — early close at 13:00."""
@@ -346,7 +344,7 @@ class TestXBUEStructure:
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
-            assert "byma.com.ar" in entry["source_url"]
+            assert "byma.com.ar" in entry["source_url"] or "argentina.gob.ar" in entry["source_url"]
 
 
 # ──────────────────────────────────────────────────────────────
@@ -380,5 +378,50 @@ class TestXBUESubstitution:
         assert "2027-12-25" not in explicit_dates  # Saturday
 
     def test_observed_names(self, explicit_dates):
+        # Only trasladable holidays (Ley 27.399, art. 6) move to a Monday.
         observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
-        assert observed_count > 20, f"Expected many observed holidays, got {observed_count}"
+        assert observed_count >= 10, f"Expected the moved holidays, got {observed_count}"
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.5)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed(code, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    days = list(e["holidays"]["explicit"]) + _gd.expand_exchange(e)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+def _early(code, year):
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    return {d["date"]: d["early_close_time"] for d in e["holidays"]["explicit"]
+            if d["date"].startswith(str(year)) and d["status"] == "early_close"}
+
+
+class TestFutureYearFixes:
+    """Ley 27.399: inamovible holidays never move; trasladables (17 Jun, 17 Aug,
+    12 Oct, 20 Nov) falling on Tue/Wed go to the Monday before, on Thu/Fri to
+    the Monday after (art. 6)."""
+
+    @pytest.mark.parametrize("day", ["2027-05-03", "2027-12-27", "2028-01-03",
+                                     "2028-04-03", "2028-07-10", "2029-03-26"])
+    def test_inamovible_weekend_holidays_are_not_moved(self, day):
+        assert day not in _closed("XBUE", int(day[:4]))
+
+    def test_guemes_2027_moves_from_thursday_to_monday(self):
+        closed = _closed("XBUE", 2027)
+        assert "2027-06-21" in closed and "2027-06-17" not in closed
+
+    @pytest.mark.parametrize("day", ["2027-08-16", "2027-10-11", "2028-08-21", "2028-10-16",
+                                     "2029-08-20", "2029-10-15"])
+    def test_other_trasladables_move_to_monday(self, day):
+        assert day in _closed("XBUE", int(day[:4]))

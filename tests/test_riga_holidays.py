@@ -96,10 +96,9 @@ class TestXRISFixedHolidays:
         assert "2025-01-01" in explicit_dates
         assert explicit_dates["2025-01-01"]["name"] == "New Year's Day"
 
-    def test_new_year_2028_substitute(self, explicit_dates):
-        """Jan 1, 2028 is Saturday — substitute to Monday Jan 3."""
-        assert "2028-01-01" not in explicit_dates
-        assert "2028-01-03" in explicit_dates
+    def test_new_year_2028_saturday_is_not_moved(self, explicit_dates):
+        """Jan 1, 2028 is Saturday: Nasdaq Baltic does not move it to Monday."""
+        assert "2028-01-03" not in explicit_dates
 
     def test_labour_day_2025(self, explicit_dates):
         """May 1, 2025 is Thursday."""
@@ -179,15 +178,13 @@ class TestXRISChristmas:
         assert "2025-12-31" in explicit_dates
         assert explicit_dates["2025-12-31"]["name"] == "New Year's Eve"
 
-    def test_christmas_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27."""
-        assert "2027-12-25" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
+    def test_christmas_2027_saturday_is_not_moved(self, explicit_dates):
+        """Dec 25, 2027 is Saturday: no Monday substitute."""
+        assert "2027-12-27" not in explicit_dates
 
-    def test_boxing_day_2027_substitute(self, explicit_dates):
-        """Dec 26, 2027 is Sunday — substitute to Tuesday Dec 28."""
-        assert "2027-12-26" not in explicit_dates
-        assert "2027-12-28" in explicit_dates
+    def test_boxing_day_2027_sunday_is_not_moved(self, explicit_dates):
+        """Dec 26, 2027 is Sunday: no Tuesday substitute."""
+        assert "2027-12-28" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -261,8 +258,8 @@ class TestXRISStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~50-60 entries."""
-        assert 50 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
+        """~45-60 entries."""
+        assert 44 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
@@ -296,4 +293,77 @@ class TestXRISSubstitution:
 
     def test_observed_names(self, explicit_dates):
         observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
-        assert observed_count >= 4, f"Expected some observed holidays, got {observed_count}"
+        assert observed_count >= 2, f"Unexpected observed count: {observed_count}"
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.5)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed(code, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    days = list(e["holidays"]["explicit"]) + _gd.expand_exchange(e)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+def _early(code, year):
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    return {d["date"]: d["early_close_time"] for d in e["holidays"]["explicit"]
+            if d["date"].startswith(str(year)) and d["status"] == "early_close"}
+
+
+class TestFutureYearFixes:
+    """Nasdaq Baltic does not move a weekend holiday to a weekday and is closed on
+    31 December."""
+
+    @pytest.mark.parametrize("day", ["2027-05-03", "2027-12-27", "2027-12-28", "2028-01-03"])
+    def test_weekend_holidays_leave_no_weekday_closure(self, day):
+        assert day not in _closed("XRIS", int(day[:4]))
+
+    def test_new_years_eve_2027_is_closed(self):
+        assert "2027-12-31" in _closed("XRIS", 2027)
+
+    @pytest.mark.parametrize("day", ["2028-12-25", "2029-12-25"])
+    def test_christmas_day_is_closed(self, day):
+        # Nasdaq CSD lists 25 December as a T2S/T2 closing day for the Baltics.
+        assert day in _closed("XRIS", int(day[:4]))
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.5)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed(code, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    days = list(e["holidays"]["explicit"]) + _gd.expand_exchange(e)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+def _early(code, year):
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    return {d["date"]: d["early_close_time"] for d in e["holidays"]["explicit"]
+            if d["date"].startswith(str(year)) and d["status"] == "early_close"}
+
+
+class TestLatvianProclamationDayCarryOver:
+    """Latvia's Proclamation Day (18 November) on a weekend carries to Monday."""
+
+    @pytest.mark.parametrize("day", ["2028-11-20", "2029-11-19"])
+    def test_monday_after_a_weekend_18_november(self, day):
+        assert day in _closed("XRIS", int(day[:4]))

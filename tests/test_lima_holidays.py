@@ -98,20 +98,18 @@ class TestXLIMFixedHolidays:
         assert "2025-01-01" in explicit_dates
         assert explicit_dates["2025-01-01"]["name"] == "New Year's Day"
 
-    def test_new_year_2028_substitute(self, explicit_dates):
-        """Jan 1, 2028 is Saturday — substitute to Monday Jan 3."""
-        assert "2028-01-01" not in explicit_dates
-        assert "2028-01-03" in explicit_dates
+    def test_new_year_2028_saturday_is_not_moved(self, explicit_dates):
+        """Jan 1, 2028 is Saturday: not moved, also under the 2027 MEF Monday scheme."""
+        assert "2028-01-03" not in explicit_dates
 
     def test_labour_day_2025(self, explicit_dates):
         """May 1, 2025 is Thursday."""
         assert "2025-05-01" in explicit_dates
         assert explicit_dates["2025-05-01"]["name"] == "Labour Day"
 
-    def test_labour_day_2027_substitute(self, explicit_dates):
-        """May 1, 2027 is Saturday — substitute to Monday May 3."""
-        assert "2027-05-01" not in explicit_dates
-        assert "2027-05-03" in explicit_dates
+    def test_labour_day_2027_saturday_is_not_moved(self, explicit_dates):
+        """May 1, 2027 is Saturday: the MEF scheme leaves it where it is."""
+        assert "2027-05-03" not in explicit_dates
 
     def test_all_saints_2025(self, explicit_dates):
         """Nov 1, 2025 is Saturday (weekend) — no explicit entry."""
@@ -266,10 +264,9 @@ class TestXLIMChristmas:
         assert "2025-12-25" in explicit_dates
         assert explicit_dates["2025-12-25"]["name"] == "Christmas Day"
 
-    def test_christmas_day_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27."""
-        assert "2027-12-25" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
+    def test_christmas_day_2027_saturday_is_not_moved(self, explicit_dates):
+        """Dec 25, 2027 is Saturday: the MEF scheme leaves it where it is."""
+        assert "2027-12-27" not in explicit_dates
 
     def test_new_years_eve_2025(self, explicit_dates):
         """Dec 31, 2025 is Wednesday — early close at 11:30."""

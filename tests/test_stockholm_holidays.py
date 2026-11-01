@@ -143,12 +143,12 @@ class TestXSTOMidsummer:
         assert "2026-06-19" in explicit_dates
 
     def test_midsummer_2027(self, explicit_dates):
-        """June 18, 2027 is Friday."""
-        assert "2027-06-18" in explicit_dates
+        """Midsummer Day is Saturday 26 June 2027, so the Eve is Friday 25 June."""
+        assert "2027-06-25" in explicit_dates
 
     def test_no_wrong_midsummer_2027(self, explicit_dates):
-        """June 25, 2027 is NOT Midsummer Eve."""
-        assert "2027-06-25" not in explicit_dates
+        """June 18, 2027 is NOT Midsummer Eve (the Friday must fall on 19-25 June)."""
+        assert "2027-06-18" not in explicit_dates
 
     def test_midsummer_2028(self, explicit_dates):
         """June 23, 2028 is Friday."""
@@ -219,3 +219,36 @@ class TestXSTOStructure:
     def test_holiday_count_reasonable(self, explicit_dates):
         """~55-65 entries: 12 holidays × 5 years."""
         assert 50 <= len(explicit_dates) <= 75
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.5)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed(code, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    days = list(e["holidays"]["explicit"]) + _gd.expand_exchange(e)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+def _early(code, year):
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    return {d["date"]: d["early_close_time"] for d in e["holidays"]["explicit"]
+            if d["date"].startswith(str(year)) and d["status"] == "early_close"}
+
+
+class TestFutureYearFixes:
+    def test_midsummer_eve_2027_is_friday_25_june(self):
+        assert "2027-06-25" in _closed("XSTO", 2027)
+        assert "2027-06-18" not in _closed("XSTO", 2027)
+
+    def test_new_years_eve_2028_is_a_sunday_and_closes_no_friday(self):
+        assert "2028-12-29" not in _closed("XSTO", 2028)

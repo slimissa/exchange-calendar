@@ -261,12 +261,6 @@
         "status": "closed"
       },
       {
-        "date": "2027-05-03",
-        "name": "Labour Day (observed)",
-        "source_url": "https://www.byma.com.ar/calendario",
-        "status": "closed"
-      },
-      {
         "date": "2027-05-25",
         "name": "May Revolution Day",
         "source_url": "https://www.byma.com.ar/calendario",
@@ -274,8 +268,8 @@
       },
       {
         "date": "2027-06-21",
-        "name": "National Flag Day (observed)",
-        "source_url": "https://www.byma.com.ar/calendario",
+        "name": "Paso a la Inmortalidad del General Güemes (moved from Thursday 17 June)",
+        "source_url": "https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto",
         "status": "closed"
       },
       {
@@ -316,23 +310,11 @@
         "status": "early_close"
       },
       {
-        "date": "2027-12-27",
-        "name": "Christmas Day (observed)",
-        "source_url": "https://www.byma.com.ar/calendario",
-        "status": "closed"
-      },
-      {
         "date": "2027-12-31",
         "early_close_time": "13:00",
         "name": "New Year's Eve",
         "source_url": "https://www.byma.com.ar/calendario",
         "status": "early_close"
-      },
-      {
-        "date": "2028-01-03",
-        "name": "New Year's Day (observed)",
-        "source_url": "https://www.byma.com.ar/calendario",
-        "status": "closed"
       },
       {
         "date": "2028-02-28",
@@ -349,12 +331,6 @@
       {
         "date": "2028-03-24",
         "name": "Day of Remembrance for Truth and Justice",
-        "source_url": "https://www.byma.com.ar/calendario",
-        "status": "closed"
-      },
-      {
-        "date": "2028-04-03",
-        "name": "Malvinas Day (observed)",
         "source_url": "https://www.byma.com.ar/calendario",
         "status": "closed"
       },
@@ -379,12 +355,6 @@
       {
         "date": "2028-06-20",
         "name": "National Flag Day",
-        "source_url": "https://www.byma.com.ar/calendario",
-        "status": "closed"
-      },
-      {
-        "date": "2028-07-10",
-        "name": "Independence Day (observed)",
         "source_url": "https://www.byma.com.ar/calendario",
         "status": "closed"
       },
@@ -433,12 +403,6 @@
       {
         "date": "2029-02-13",
         "name": "Carnival Tuesday",
-        "source_url": "https://www.byma.com.ar/calendario",
-        "status": "closed"
-      },
-      {
-        "date": "2029-03-26",
-        "name": "Day of Remembrance for Truth and Justice (observed)",
         "source_url": "https://www.byma.com.ar/calendario",
         "status": "closed"
       },

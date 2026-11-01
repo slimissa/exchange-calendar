@@ -197,18 +197,6 @@
         "status": "closed"
       },
       {
-        "date": "2027-05-03",
-        "name": "Labour Day (observed)",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-05-10",
-        "name": "Victory Day (observed)",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
-      },
-      {
         "date": "2027-07-05",
         "name": "Saints Cyril and Methodius Day",
         "source_url": "https://www.pse.cz/en/trading/trading-calendar",
@@ -245,21 +233,9 @@
         "status": "closed"
       },
       {
-        "date": "2027-12-27",
-        "name": "Christmas Day (observed)",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-12-28",
-        "name": "St. Stephen's Day (observed)",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-01-03",
-        "name": "New Year's Day (observed)",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
+        "date": "2027-12-31",
+        "name": "New Year's Eve (non-trading day)",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar",
         "status": "closed"
       },
       {
@@ -301,12 +277,6 @@
       {
         "date": "2028-09-28",
         "name": "Czech Statehood Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2028-10-30",
-        "name": "Independent Czechoslovak State Day (observed)",
         "source_url": "https://www.pse.cz/en/trading/trading-calendar",
         "status": "closed"
       },
@@ -377,18 +347,6 @@
         "status": "closed"
       },
       {
-        "date": "2029-10-29",
-        "name": "Independent Czechoslovak State Day (observed)",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2029-11-19",
-        "name": "Struggle for Freedom and Democracy Day (observed)",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
-      },
-      {
         "date": "2029-12-24",
         "name": "Christmas Eve",
         "source_url": "https://www.pse.cz/en/trading/trading-calendar",
@@ -405,6 +363,12 @@
         "name": "St. Stephen's Day",
         "source_url": "https://www.pse.cz/en/trading/trading-calendar",
         "status": "closed"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "New Year's Eve (non-trading day)",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar",
+        "status": "closed"
       }
     ],
     "recurrence_rules": [
@@ -412,7 +376,7 @@
         "day": 1,
         "month": 1,
         "name": "New Year's Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
@@ -431,70 +395,70 @@
         "day": 1,
         "month": 5,
         "name": "Labour Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
         "day": 8,
         "month": 5,
         "name": "Victory Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
         "day": 5,
         "month": 7,
         "name": "Saints Cyril and Methodius Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
         "day": 6,
         "month": 7,
         "name": "Jan Hus Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
         "day": 28,
         "month": 9,
         "name": "Czech Statehood Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
         "day": 28,
         "month": 10,
         "name": "Independent Czechoslovak State Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
         "day": 17,
         "month": 11,
         "name": "Struggle for Freedom and Democracy Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
         "day": 24,
         "month": 12,
         "name": "Christmas Eve",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
         "day": 25,
         "month": 12,
         "name": "Christmas Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       },
       {
         "day": 26,
         "month": 12,
         "name": "St. Stephen's Day",
-        "rule": "fixed_with_weekend_adjustment",
+        "rule": "fixed_date",
         "status": "closed"
       }
     ]
