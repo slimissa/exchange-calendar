@@ -1364,5 +1364,67 @@
       "file": "docs/divergence_triage.json",
       "contains": "\"recheck_date\": \"2027-01-15\""
     }
+  ],
+  "2.23.5": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.5"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.5] - 2026-11-01"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Fixed European \"observed\" holiday rules for XBUE, XLIM, XLIT, XRIS, XTAL, XPRA, XBUD, XLUX, and fixed XSTO Midsummer dates."
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.5-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.5"
+    },
+    {
+      "file": "exchanges/XLUX.json",
+      "contains": "\"early_close_time\": \"14:05\""
+    },
+    {
+      "file": "exchanges/XBUD.json",
+      "contains": "\"name\": \"All Saints' Day\""
+    },
+    {
+      "file": "exchanges/XPRA.json",
+      "contains": "New Year's Eve (non-trading day)"
+    },
+    {
+      "file": "exchanges/XSTO.json",
+      "contains": "\"date\": \"2027-06-25\""
+    },
+    {
+      "file": "exchanges/XBUE.json",
+      "contains": "General G\u00fcemes (moved from Thursday 17 June)"
+    },
+    {
+      "file": "tests/test_luxembourg_holidays.py",
+      "contains": "class TestFutureYearClosingDays:"
+    },
+    {
+      "file": "tests/test_prague_holidays.py",
+      "contains": "class TestFutureYearFixes:"
+    },
+    {
+      "file": "tests/test_budapest_holidays.py",
+      "contains": "class TestFutureYearFixes:"
+    },
+    {
+      "file": "tests/test_buenos_aires_holidays.py",
+      "contains": "class TestFutureYearFixes:"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "<a id=\"xbue\"></a>"
+    }
   ]
 }

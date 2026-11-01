@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.5] - 2026-11-01
+
+### Fixed
+- Fixed European "observed" holiday rules for XBUE, XLIM, XLIT, XRIS, XTAL, XPRA, XBUD, XLUX, and fixed XSTO Midsummer dates.
+- XLUX 2027-2029: LuxSE closes only the Euronext/T2 days and closes early at 14:05 on 24 and 31 December; it trades on Luxembourg-only public holidays.
+- XPRA, XBUD, XRIS, XLIT, XTAL, XBUE, XLIM: a holiday that falls on a weekend is no longer moved to a weekday, as the local law or exchange calendar provides. XBUD gains All Saints; XPRA closes on 31 December; XRIS, XLIT and XTAL close on 31 December and Ascension Day.
+- XBUE: Guemes 2027 is Monday 21 June (Ley 27.399, art. 6).
+- XSTO: Midsummer Eve 2027 is 25 June.
+
+### Changed
+- 2027-2029 disagreements left unclassified: 171 to 68. `docs/divergence_triage.json` marks 11 more dates `unpublished` (XBUD 2029 bridge days, XLIM's announced Monday scheme, XRIS 2028 song festival) and 8 `library_error` (XBUE Guemes, Christmas Day in XRIS, XLIT and XTAL). The rest, mainly XIST, XKRX, XBKK, XCSE, XKLS, XBDA, XKAR, XBOG, XHKG, XMEX, XPHS and XSAU, awaits a source check; the Buenos Aires Holy Thursday question is in BLOCKED.md.
+
 ## [2.23.4] - 2026-10-31
 
 ### Fixed
