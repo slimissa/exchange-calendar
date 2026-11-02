@@ -1050,6 +1050,135 @@
       "recheck_date": "2028-01-15",
       "summary": "Exchange_calendars carries 10 July 2028 as a day off for the Latvian Song and Dance Festival, as in 2018 and 2023. A day off needs an amendment adopted close to the festival; none exists for 2028.",
       "source_url": "https://www.nasdaqbaltic.com/trading-calendar"
+    },
+    {
+      "exchange": "XIST",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.6",
+      "dates": [
+        "2027-03-09",
+        "2027-03-10",
+        "2027-03-11",
+        "2027-05-17",
+        "2027-05-18",
+        "2028-02-28",
+        "2028-05-05",
+        "2028-05-08",
+        "2029-02-14",
+        "2029-02-15",
+        "2029-02-16",
+        "2029-04-24",
+        "2029-04-25",
+        "2029-04-26",
+        "2029-04-27"
+      ],
+      "summary": "Ramazan Bayrami and Kurban Bayrami were missing from the registry for 2027-2029. Diyanet's 2027 calendar has Ramazan Bayrami on 9-11 March (eve Monday 8 March) and Kurban Bayrami on 16-19 May (eve Saturday 15 May); 2028 and 2029 follow the same calculation (26-28 February and 5-8 May 2028; 14-16 February and 24-27 April 2029). Closures and half-day eves are added.",
+      "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415"
+    },
+    {
+      "exchange": "XKRX",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.6",
+      "dates": [
+        "2027-02-05",
+        "2027-06-07",
+        "2027-09-16",
+        "2028-01-03",
+        "2028-01-28",
+        "2028-02-28",
+        "2028-03-01",
+        "2028-05-01",
+        "2028-10-02",
+        "2028-10-05",
+        "2029-05-01",
+        "2029-05-07",
+        "2029-09-21",
+        "2029-10-03"
+      ],
+      "summary": "The registry shifted Seollal 2027 eve to Friday 5 February (it falls on Saturday), gave Memorial Day (Sunday 6 June 2027) and New Year's Day (Saturday 1 January 2028) a Monday substitute that the law does not give them, moved Independence Movement Day 2028 to Monday 28 February, took Seollal 2028 as 26-27 January (the new moon is at 00:12 KST on the 27th, so it is 26-28 January), and lacked 1 May, the Chuseok and Foundation Day substitute days and 16 September 2027. KRX's own 2027 list (16 days) now matches; 2028-2029 apply the same rules to the KASI lunar dates.",
+      "source_url": "https://www.khan.co.kr/article/202606292116005"
+    },
+    {
+      "exchange": "XBKK",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.6",
+      "dates": [
+        "2027-01-04",
+        "2027-02-22",
+        "2027-03-22",
+        "2027-05-13",
+        "2027-05-20",
+        "2027-07-28"
+      ],
+      "summary": "The Bank of Thailand's announcement 37/2569 (Royal Gazette, 25 August 2026) sets the 2027 bank holidays: Makha Bucha is Sunday 21 February (Monday 22 February in lieu), Visakha Bucha is Thursday 20 May, 28 July is a holiday, and there is no New Year substitute on 4 January. The registry had Makha Bucha on 22 March, Visakha Bucha on 13 May and the 4 January substitute.",
+      "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2569/ThaiPDF/25690175.pdf"
+    },
+    {
+      "exchange": "XCSE",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.6",
+      "dates": [
+        "2027-05-07",
+        "2028-05-01",
+        "2028-05-26",
+        "2029-05-01",
+        "2029-05-11"
+      ],
+      "summary": "Nasdaq Copenhagen closes on the Friday after Ascension Day (15 May in 2026) and, from its 2026 list, does not close on 1 May. The registry had the opposite for 2027-2029. The 2025 and 2026 Labour Day entries remain.",
+      "source_url": "https://www.tradinghours.com/exchanges/omxc-copenhagen/contact"
+    },
+    {
+      "exchange": "XMEX",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.6",
+      "dates": [
+        "2027-11-02",
+        "2028-11-02",
+        "2029-11-02"
+      ],
+      "summary": "2 November (Day of the Dead) is a CNBV non-business day, in the calendar published in the DOF on 10 December 2025, and a BMV closing day. The rules lacked it, so 2026, 2027, 2028 and 2029 were open.",
+      "source_url": "https://www.rankia.mx/acciones/indice-precios-cotizaciones-ipc/blog/2607981-calendario-bolsa-mexicana-valores"
+    },
+    {
+      "exchange": "XKRX",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2027-05-03",
+        "2027-07-19",
+        "2028-07-17",
+        "2029-07-17"
+      ],
+      "summary": "Labour Day (1 May) and Constitution Day (17 July) became public holidays in 2026, with substitute holidays; KRX closed on 17 July 2026. The 2027 Calendar Essentials list 3 May and 19 July as substitute days. exchange_calendars has the May 1 closure only and no Constitution Day.",
+      "source_url": "https://www.newspim.com/news/view/20260520000433"
+    },
+    {
+      "exchange": "XPHS",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2027-11-02",
+        "2028-11-02"
+      ],
+      "recheck_date": "2026-12-31",
+      "summary": "All Souls' Day is a special non-working day by presidential proclamation each year, and the proclamation for 2027 is not out yet; exchange_calendars does not carry it.",
+      "source_url": "https://www.pse.com.ph/trading-holidays/"
+    },
+    {
+      "exchange": "XSAU",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "dates": [
+        "2028-09-24"
+      ],
+      "recheck_date": "2028-08-15",
+      "summary": "Saudi National Day is Saturday 23 September 2028. Whether a Sunday substitute is granted depends on a royal decree issued close to the date.",
+      "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events"
     }
   ]
 }

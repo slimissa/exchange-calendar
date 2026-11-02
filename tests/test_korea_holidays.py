@@ -175,9 +175,11 @@ class TestXKRXSeollal:
         assert "2026-02-18" in explicit_dates  # Day 2
 
     def test_seollal_2027(self, explicit_dates):
-        assert "2027-02-05" in explicit_dates  # Eve
-        assert "2027-02-08" in explicit_dates  # Day 1 (Monday)
-        assert "2027-02-09" in explicit_dates  # Day 2
+        """Seollal 2027 is Sunday 7 February: eve and day fall on the weekend, the
+        Monday is the third day and Tuesday 9 February the substitute holiday."""
+        assert "2027-02-05" not in explicit_dates
+        assert "2027-02-08" in explicit_dates  # Day after Seollal (Monday)
+        assert "2027-02-09" in explicit_dates  # Substitute holiday
 
     def test_seollal_2028(self, explicit_dates):
         assert "2028-01-26" in explicit_dates  # Eve
@@ -242,3 +244,70 @@ class TestXKRXStructure:
     def test_holiday_count_reasonable(self, explicit_dates):
         """~71 entries: 12 holidays × 5 years + substitutes."""
         assert 60 <= len(explicit_dates) <= 85
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.6)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed(code, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    days = list(e["holidays"]["explicit"]) + _gd.expand_exchange(e)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+def _early(code, year):
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    return {d["date"]: d["early_close_time"] for d in e["holidays"]["explicit"]
+            if d["date"].startswith(str(year)) and d["status"] == "early_close"}
+
+
+class TestFutureYearLawDates:
+    """Closures follow the Regulation on Public Holidays of Government Offices:
+    Labour Day (1 May) and Constitution Day (17 July) are public holidays from
+    2026, with substitute holidays; Memorial Day and New Year's Day get none; a
+    Seollal or Chuseok that meets a Sunday or another holiday earns one substitute
+    day; KRX also closes on the last weekday of the year. 2027 equals KRX's
+    published list; 2028-2029 apply the same rules to the KASI lunar dates."""
+
+    def test_2027_equals_the_krx_published_list(self):
+        assert _closed("XKRX", 2027) == {
+            "2027-01-01", "2027-02-08", "2027-02-09", "2027-03-01", "2027-05-03",
+            "2027-05-05", "2027-05-13", "2027-07-19", "2027-08-16", "2027-09-14",
+            "2027-09-15", "2027-09-16", "2027-10-04", "2027-10-11", "2027-12-27",
+            "2027-12-31"}
+
+    def test_2028(self):
+        assert _closed("XKRX", 2028) == {
+            "2028-01-26", "2028-01-27", "2028-01-28", "2028-03-01", "2028-05-01",
+            "2028-05-02", "2028-05-05", "2028-06-06", "2028-07-17", "2028-08-15",
+            "2028-10-02", "2028-10-03", "2028-10-04", "2028-10-05", "2028-10-09",
+            "2028-12-25", "2028-12-29"}
+
+    def test_2029(self):
+        assert _closed("XKRX", 2029) == {
+            "2029-01-01", "2029-02-12", "2029-02-13", "2029-02-14", "2029-03-01",
+            "2029-05-01", "2029-05-07", "2029-05-21", "2029-06-06", "2029-07-17",
+            "2029-08-15", "2029-09-21", "2029-09-24", "2029-10-03", "2029-10-09",
+            "2029-12-25", "2029-12-31"}
+
+    @pytest.mark.parametrize("day", ["2027-02-05", "2027-06-07", "2028-01-03", "2028-02-28"])
+    def test_days_without_a_holiday_are_open(self, day):
+        # Memorial Day (6 Jun 2027) and New Year (1 Jan 2028) have no substitute day.
+        assert day not in _closed("XKRX", int(day[:4]))
+
+    def test_seollal_2028_follows_the_korean_new_moon(self):
+        # The new moon is at 00:12 KST on 27 January, so Seollal is Thursday 27 January.
+        assert {"2028-01-26", "2028-01-27", "2028-01-28"} <= _closed("XKRX", 2028)
+
+    def test_chuseok_2028_overlaps_foundation_day_with_one_substitute(self):
+        closed = _closed("XKRX", 2028)
+        assert "2028-10-05" in closed and "2028-10-06" not in closed

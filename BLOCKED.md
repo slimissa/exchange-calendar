@@ -14,7 +14,7 @@
 | [Closed API / Requires Auth](#closed-api) | 0 | none |
 | [Dead Source / No First-Party Page](#dead-source) | 5 | [DSMD](#dsmd), [XBEY](#xbey), [XCAI](#xcai), [XNAI](#xnai), [XTAI](#xtai) |
 
-Not blocked, tracked here: [CI-unreachable](#ci-unreachable) ([XHKG](#xhkg), [XNSA](#xnsa), [XSHG](#xshg)); [resolved](#resolved) ([XIST](#xist)); [built, with tracking notes](#built-tracking) ([XBUD](#xbud), [XBUE](#xbue), [XCOL](#xcol), [XDFM](#xdfm), [XDUB](#xdub), [XETR](#xetr), [XGSE](#xgse), [XICE](#xice), [XLIT](#xlit), [XMAD](#xmad), [XNAS](#xnas), [XNYS](#xnys), [XPAR](#xpar), [XSTC](#xstc), [XZAG](#xzag)). Reference: [How to read this file](#how-to-read-this-file), [Summary of all 74 exchanges](#summary-of-all-74-exchanges), [Round summaries](#round-summaries).
+Not blocked, tracked here: [CI-unreachable](#ci-unreachable) ([XHKG](#xhkg), [XNSA](#xnsa), [XSHG](#xshg)); [resolved](#resolved) ([XIST](#xist)); [built, with tracking notes](#built-tracking) ([XBDA](#xbda), [XBUD](#xbud), [XBUE](#xbue), [XCOL](#xcol), [XDFM](#xdfm), [XDUB](#xdub), [XETR](#xetr), [XGSE](#xgse), [XICE](#xice), [XLIT](#xlit), [XMAD](#xmad), [XNAS](#xnas), [XNYS](#xnys), [XPAR](#xpar), [XSTC](#xstc), [XZAG](#xzag)). Reference: [How to read this file](#how-to-read-this-file), [Summary of all 74 exchanges](#summary-of-all-74-exchanges), [Round summaries](#round-summaries).
 
 <a id="js-spa"></a>
 # JS SPA / Client-Rendered
@@ -94,6 +94,15 @@ The page is real, but the holiday data is not in the HTML a plain request receiv
   in the future should read the Task 0 doc first; several of its findings
   (the fixed-vs-movable distinction, the 2025 collision rule) are easy to
   get wrong again from scratch.
+
+- **Open disagreements (2026-11-01), three for 2027-2029:** exchange_calendars closes
+  2027-12-31, 2028-12-29 (the last weekday of a year whose 31 December is a Sunday)
+  and 2029-12-31. The registry has no year-end closure at all, by the 2026-09-17
+  audit above. A BVC notice reported by Valora
+  Analitik says the exchange gave no service on 31 December 2024, and a 2012 forum
+  post says the same for 2012, but nothing shows a rule for later years or for a
+  Sunday 31 December. Left unclassified. **Source needed:** a BVC notice for the
+  last trading day of 2023 or 2025.
 
 <a id="xbul"></a>
 ## XBUL — Bulgarian Stock Exchange
@@ -337,6 +346,15 @@ The source answers plain and headless-browser requests with a challenge or an HT
   detection)" on direct fetch.
 - **Verdict:** BLOCKED.
 
+- **Open disagreements (2026-11-01), five for 2027-2029:** 2027-02-24 and 2028-02-14
+  (exchange_calendars closes, registry open; the holiday behind them is not
+  identified), Agong's Birthday on 2028-06-05 and 2029-06-04 (registry closes the
+  first Monday of June; exchange_calendars is open) and Malaysia Day 2029-09-17
+  (Sunday 16 September: exchange_calendars closes the Monday as the replacement
+  day, the registry has no replacement). Left unclassified. **Source needed:**
+  Bursa Malaysia's holiday list for a year with the same weekday pattern, or the
+  government gazette for each year.
+
 <a id="xkrx"></a>
 ## XKRX — Korea Exchange (KRX)
 
@@ -579,6 +597,14 @@ The calendar exists only as a PDF whose holidays are carried by layout or cell c
   fundamental category as XSWX/XATH's visual-grid PDFs even though the
   failure mode looked different at the fetch-tool level.
 - **Verdict:** BLOCKED.
+
+- **Open disagreements (2026-11-01), four for 2027-2029:** Labour Day observed on
+  2027-05-03 and Quaid-e-Azam Day observed on 2027-12-27 (the registry moves a
+  Saturday holiday to Monday; exchange_calendars does not), and Youm-e-Takbeer on
+  2027-05-28 and 2029-05-28 (exchange_calendars closes, registry open). Pakistan
+  declares these holidays by notification. Left unclassified. **Source needed:** a
+  PSX notice for a past year in which the date fell on a Saturday, and one for
+  Youm-e-Takbeer.
 
 <a id="xswx"></a>
 ## XSWX — SIX Swiss Exchange
@@ -838,6 +864,13 @@ Reachable from a residential IP but not from CI; not a permanent block. Each of 
   day on 25 January) agree with both libraries and are expected, not
   confirmed.
 
+- **Open disagreements (2026-11-01), three for 2029:** Ching Ming Festival is
+  Wednesday 4 April in exchange_calendars and Thursday 5 April in the registry,
+  and the registry closes Monday 24 September 2029 as the day after a Sunday
+  holiday, which exchange_calendars does not. The Hong Kong government has not
+  published 2029. Left unclassified. **Source needed:** the 2029 general holidays
+  list once published, or the Hong Kong Observatory's Qingming time for 2029.
+
 <a id="xnsa"></a>
 ## XNSA — Nigerian Exchange Group (CI-unreachable)
 
@@ -959,6 +992,18 @@ A calendar exists and no unresolved block is recorded. These entries are kept be
 - **Status:** fetcher present but incomplete. Resolution requires
   adding Hungarian observed-day logic to the parser. IMPLEMENTED
   at v2.9.3 (`BudapestFetcher._observed_substitutes`).
+
+<a id="xbda"></a>
+## XBDA — Bermuda Stock Exchange
+
+**Last verified:** 2026-11-01
+
+- **Open disagreement (2026-11-01), four for 2028:** the registry closes the Cup Match
+  Thursday and Friday on 27-28 July 2028; exchange_calendars closes 3-4 August.
+  Emancipation Day and Somers' Day are set by the Public Holidays Act with a rule
+  tied to the first Monday of August, and the 2022 dates do not obviously fit the
+  rule as the registry reads it. Left unclassified. **Source needed:** the Bermuda
+  government's published dates for 2022 and 2028, or the Public Holidays Act text.
 
 <a id="xbue"></a>
 ## XBUE — Buenos Aires Stock Exchange (BYMA)

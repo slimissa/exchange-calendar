@@ -4651,15 +4651,9 @@
             "status": "closed"
           },
           {
-            "date": "2027-01-04",
-            "name": "New Year Holiday (substitute)",
-            "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2027-03-22",
-            "name": "Makha Bucha Day",
-            "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
+            "date": "2027-02-22",
+            "name": "Makha Bucha Day (substitute)",
+            "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2569/ThaiPDF/25690175.pdf",
             "status": "closed"
           },
           {
@@ -4694,14 +4688,14 @@
           },
           {
             "date": "2027-05-04",
-            "name": "Coronation Day (substitute)",
+            "name": "Coronation Day",
             "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
             "status": "closed"
           },
           {
-            "date": "2027-05-13",
+            "date": "2027-05-20",
             "name": "Visakha Bucha Day",
-            "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
+            "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2569/ThaiPDF/25690175.pdf",
             "status": "closed"
           },
           {
@@ -4712,8 +4706,14 @@
           },
           {
             "date": "2027-07-19",
-            "name": "Buddhist Lent Day",
+            "name": "Asarnha Bucha Day (substitute)",
             "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2027-07-28",
+            "name": "King's Birthday",
+            "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2569/ThaiPDF/25690175.pdf",
             "status": "closed"
           },
           {
@@ -9824,6 +9824,12 @@
             "status": "closed"
           },
           {
+            "date": "2027-05-07",
+            "name": "Day after Ascension Day",
+            "source_url": "https://www.tradinghours.com/exchanges/omxc-copenhagen/contact",
+            "status": "closed"
+          },
+          {
             "date": "2027-05-17",
             "name": "Whit Monday",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
@@ -9854,15 +9860,15 @@
             "status": "closed"
           },
           {
-            "date": "2028-05-01",
-            "name": "Labour Day",
+            "date": "2028-05-25",
+            "name": "Ascension Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
             "status": "closed"
           },
           {
-            "date": "2028-05-25",
-            "name": "Ascension Day",
-            "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
+            "date": "2028-05-26",
+            "name": "Day after Ascension Day",
+            "source_url": "https://www.tradinghours.com/exchanges/omxc-copenhagen/contact",
             "status": "closed"
           },
           {
@@ -9908,15 +9914,15 @@
             "status": "closed"
           },
           {
-            "date": "2029-05-01",
-            "name": "Labour Day",
+            "date": "2029-05-10",
+            "name": "Ascension Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
             "status": "closed"
           },
           {
-            "date": "2029-05-10",
-            "name": "Ascension Day",
-            "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
+            "date": "2029-05-11",
+            "name": "Day after Ascension Day",
+            "source_url": "https://www.tradinghours.com/exchanges/omxc-copenhagen/contact",
             "status": "closed"
           },
           {
@@ -16827,9 +16833,46 @@
             "status": "closed"
           },
           {
+            "date": "2027-03-08",
+            "early_close_time": "13:00",
+            "name": "Ramazan Bayramı Eve (Arefe)",
+            "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
+            "status": "early_close"
+          },
+          {
+            "date": "2027-03-09",
+            "name": "Ramazan Bayramı (Eid al-Fitr) - Day 1",
+            "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
+            "status": "closed"
+          },
+          {
+            "date": "2027-03-10",
+            "name": "Ramazan Bayramı (Eid al-Fitr) - Day 2",
+            "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
+            "status": "closed"
+          },
+          {
+            "date": "2027-03-11",
+            "name": "Ramazan Bayramı (Eid al-Fitr) - Day 3",
+            "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
+            "status": "closed"
+          },
+          {
             "date": "2027-04-23",
             "name": "National Sovereignty and Children's Day",
             "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2027-05-17",
+            "name": "Kurban Bayramı (Eid al-Adha) - Day 2",
+            "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
+            "status": "closed"
+          },
+          {
+            "date": "2027-05-18",
+            "name": "Kurban Bayramı (Eid al-Adha) - Day 3",
+            "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
             "status": "closed"
           },
           {
@@ -16858,8 +16901,40 @@
             "status": "closed"
           },
           {
+            "date": "2028-02-25",
+            "early_close_time": "13:00",
+            "name": "Ramazan Bayramı Eve (Arefe)",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "early_close"
+          },
+          {
+            "date": "2028-02-28",
+            "name": "Ramazan Bayramı (Eid al-Fitr) - Day 3",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "closed"
+          },
+          {
             "date": "2028-05-01",
             "name": "Labour Day",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2028-05-04",
+            "early_close_time": "13:00",
+            "name": "Kurban Bayramı Eve (Arefe)",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "early_close"
+          },
+          {
+            "date": "2028-05-05",
+            "name": "Kurban Bayramı (Eid al-Adha) - Day 2",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2028-05-08",
+            "name": "Kurban Bayramı (Eid al-Adha) - Day 5",
             "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
             "status": "closed"
           },
@@ -16889,8 +16964,57 @@
             "status": "closed"
           },
           {
+            "date": "2029-02-13",
+            "early_close_time": "13:00",
+            "name": "Ramazan Bayramı Eve (Arefe)",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "early_close"
+          },
+          {
+            "date": "2029-02-14",
+            "name": "Ramazan Bayramı (Eid al-Fitr) - Day 1",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2029-02-15",
+            "name": "Ramazan Bayramı (Eid al-Fitr) - Day 2",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2029-02-16",
+            "name": "Ramazan Bayramı (Eid al-Fitr) - Day 3",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "closed"
+          },
+          {
             "date": "2029-04-23",
             "name": "National Sovereignty and Children's Day",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2029-04-24",
+            "name": "Kurban Bayramı (Eid al-Adha) - Day 1",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2029-04-25",
+            "name": "Kurban Bayramı (Eid al-Adha) - Day 2",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2029-04-26",
+            "name": "Kurban Bayramı (Eid al-Adha) - Day 3",
+            "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2029-04-27",
+            "name": "Kurban Bayramı (Eid al-Adha) - Day 4",
             "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
             "status": "closed"
           },
@@ -18912,12 +19036,6 @@
             "status": "closed"
           },
           {
-            "date": "2027-02-05",
-            "name": "Seollal (Lunar New Year) Eve",
-            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
-            "status": "closed"
-          },
-          {
             "date": "2027-02-08",
             "name": "Seollal (Lunar New Year)",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
@@ -18936,6 +19054,12 @@
             "status": "closed"
           },
           {
+            "date": "2027-05-03",
+            "name": "Labour Day (observed)",
+            "source_url": "https://www.khan.co.kr/article/202606292116005",
+            "status": "closed"
+          },
+          {
             "date": "2027-05-05",
             "name": "Children's Day",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
@@ -18948,9 +19072,9 @@
             "status": "closed"
           },
           {
-            "date": "2027-06-07",
-            "name": "Memorial Day (observed)",
-            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "date": "2027-07-19",
+            "name": "Constitution Day (observed)",
+            "source_url": "https://www.khan.co.kr/article/202606292116005",
             "status": "closed"
           },
           {
@@ -18969,6 +19093,12 @@
             "date": "2027-09-15",
             "name": "Chuseok (Korean Thanksgiving)",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
+            "date": "2027-09-16",
+            "name": "Chuseok (Korean Thanksgiving)",
+            "source_url": "https://www.khan.co.kr/article/202606292116005",
             "status": "closed"
           },
           {
@@ -18996,12 +19126,6 @@
             "status": "closed"
           },
           {
-            "date": "2028-01-03",
-            "name": "New Year's Day (observed)",
-            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
-            "status": "closed"
-          },
-          {
             "date": "2028-01-26",
             "name": "Seollal (Lunar New Year) Eve",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
@@ -19014,9 +19138,21 @@
             "status": "closed"
           },
           {
-            "date": "2028-02-28",
-            "name": "Independence Movement Day (observed)",
+            "date": "2028-01-28",
+            "name": "Seollal (Lunar New Year)",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
+            "date": "2028-03-01",
+            "name": "Independence Movement Day",
+            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
+            "date": "2028-05-01",
+            "name": "Labour Day",
+            "source_url": "https://www.newspim.com/news/view/20260520000433",
             "status": "closed"
           },
           {
@@ -19038,8 +19174,20 @@
             "status": "closed"
           },
           {
+            "date": "2028-07-17",
+            "name": "Constitution Day",
+            "source_url": "https://www.newspim.com/news/view/20260520000433",
+            "status": "closed"
+          },
+          {
             "date": "2028-08-15",
             "name": "Liberation Day",
+            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
+            "date": "2028-10-02",
+            "name": "Chuseok (Korean Thanksgiving)",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
             "status": "closed"
           },
@@ -19052,6 +19200,12 @@
           {
             "date": "2028-10-04",
             "name": "Chuseok Holiday",
+            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
+            "date": "2028-10-05",
+            "name": "Chuseok (Korean Thanksgiving) (observed)",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
             "status": "closed"
           },
@@ -19104,6 +19258,18 @@
             "status": "closed"
           },
           {
+            "date": "2029-05-01",
+            "name": "Labour Day",
+            "source_url": "https://www.newspim.com/news/view/20260520000433",
+            "status": "closed"
+          },
+          {
+            "date": "2029-05-07",
+            "name": "Children's Day (observed)",
+            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
             "date": "2029-05-21",
             "name": "Buddha's Birthday (observed)",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
@@ -19116,14 +19282,32 @@
             "status": "closed"
           },
           {
+            "date": "2029-07-17",
+            "name": "Constitution Day",
+            "source_url": "https://www.newspim.com/news/view/20260520000433",
+            "status": "closed"
+          },
+          {
             "date": "2029-08-15",
             "name": "Liberation Day",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
             "status": "closed"
           },
           {
+            "date": "2029-09-21",
+            "name": "Chuseok (Korean Thanksgiving)",
+            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
             "date": "2029-09-24",
             "name": "Chuseok (Korean Thanksgiving)",
+            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
+            "date": "2029-10-03",
+            "name": "National Foundation Day",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
             "status": "closed"
           },
@@ -24763,7 +24947,28 @@
             "status": "closed"
           }
         ],
-        "generated": []
+        "generated": [
+          {
+            "date": "2026-11-02",
+            "name": "Day of the Dead",
+            "status": "closed"
+          },
+          {
+            "date": "2027-11-02",
+            "name": "Day of the Dead",
+            "status": "closed"
+          },
+          {
+            "date": "2028-11-02",
+            "name": "Day of the Dead",
+            "status": "closed"
+          },
+          {
+            "date": "2029-11-02",
+            "name": "Day of the Dead",
+            "status": "closed"
+          }
+        ]
       },
       "mic": "XMEX",
       "name": "Mexican Stock Exchange",

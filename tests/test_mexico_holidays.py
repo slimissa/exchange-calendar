@@ -280,3 +280,36 @@ class TestXMEXStructure:
     def test_holiday_count_reasonable(self, explicit_dates):
         """~48 entries: 10 holidays × 5 years, minus weekend overlaps."""
         assert 40 <= len(explicit_dates) <= 60
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.6)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed(code, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    days = list(e["holidays"]["explicit"]) + _gd.expand_exchange(e)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+def _early(code, year):
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    return {d["date"]: d["early_close_time"] for d in e["holidays"]["explicit"]
+            if d["date"].startswith(str(year)) and d["status"] == "early_close"}
+
+
+class TestDayOfTheDead:
+    """2 November is a CNBV non-business day (the 2026 calendar was published in the
+    DOF on 10 December 2025) and a BMV closing day."""
+
+    @pytest.mark.parametrize("day", ["2026-11-02", "2027-11-02", "2028-11-02", "2029-11-02"])
+    def test_2_november_is_closed(self, day):
+        assert day in _closed("XMEX", int(day[:4]))

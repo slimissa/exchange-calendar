@@ -143,9 +143,46 @@
         "status": "closed"
       },
       {
+        "date": "2027-03-08",
+        "early_close_time": "13:00",
+        "name": "Ramazan Bayramı Eve (Arefe)",
+        "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
+        "status": "early_close"
+      },
+      {
+        "date": "2027-03-09",
+        "name": "Ramazan Bayramı (Eid al-Fitr) - Day 1",
+        "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
+        "status": "closed"
+      },
+      {
+        "date": "2027-03-10",
+        "name": "Ramazan Bayramı (Eid al-Fitr) - Day 2",
+        "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
+        "status": "closed"
+      },
+      {
+        "date": "2027-03-11",
+        "name": "Ramazan Bayramı (Eid al-Fitr) - Day 3",
+        "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
+        "status": "closed"
+      },
+      {
         "date": "2027-04-23",
         "name": "National Sovereignty and Children's Day",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2027-05-17",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 2",
+        "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
+        "status": "closed"
+      },
+      {
+        "date": "2027-05-18",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 3",
+        "source_url": "https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415",
         "status": "closed"
       },
       {
@@ -174,8 +211,40 @@
         "status": "closed"
       },
       {
+        "date": "2028-02-25",
+        "early_close_time": "13:00",
+        "name": "Ramazan Bayramı Eve (Arefe)",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "early_close"
+      },
+      {
+        "date": "2028-02-28",
+        "name": "Ramazan Bayramı (Eid al-Fitr) - Day 3",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
         "date": "2028-05-01",
         "name": "Labour Day",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2028-05-04",
+        "early_close_time": "13:00",
+        "name": "Kurban Bayramı Eve (Arefe)",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "early_close"
+      },
+      {
+        "date": "2028-05-05",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 2",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2028-05-08",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 5",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
         "status": "closed"
       },
@@ -205,8 +274,57 @@
         "status": "closed"
       },
       {
+        "date": "2029-02-13",
+        "early_close_time": "13:00",
+        "name": "Ramazan Bayramı Eve (Arefe)",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "early_close"
+      },
+      {
+        "date": "2029-02-14",
+        "name": "Ramazan Bayramı (Eid al-Fitr) - Day 1",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2029-02-15",
+        "name": "Ramazan Bayramı (Eid al-Fitr) - Day 2",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2029-02-16",
+        "name": "Ramazan Bayramı (Eid al-Fitr) - Day 3",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
         "date": "2029-04-23",
         "name": "National Sovereignty and Children's Day",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2029-04-24",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 1",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2029-04-25",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 2",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2029-04-26",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 3",
+        "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2029-04-27",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 4",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
         "status": "closed"
       },

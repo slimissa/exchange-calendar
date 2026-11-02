@@ -263,15 +263,9 @@
         "status": "closed"
       },
       {
-        "date": "2027-01-04",
-        "name": "New Year Holiday (substitute)",
-        "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-03-22",
-        "name": "Makha Bucha Day",
-        "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
+        "date": "2027-02-22",
+        "name": "Makha Bucha Day (substitute)",
+        "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2569/ThaiPDF/25690175.pdf",
         "status": "closed"
       },
       {
@@ -306,14 +300,14 @@
       },
       {
         "date": "2027-05-04",
-        "name": "Coronation Day (substitute)",
+        "name": "Coronation Day",
         "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
         "status": "closed"
       },
       {
-        "date": "2027-05-13",
+        "date": "2027-05-20",
         "name": "Visakha Bucha Day",
-        "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
+        "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2569/ThaiPDF/25690175.pdf",
         "status": "closed"
       },
       {
@@ -324,8 +318,14 @@
       },
       {
         "date": "2027-07-19",
-        "name": "Buddhist Lent Day",
+        "name": "Asarnha Bucha Day (substitute)",
         "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2027-07-28",
+        "name": "King's Birthday",
+        "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2569/ThaiPDF/25690175.pdf",
         "status": "closed"
       },
       {

@@ -103,10 +103,9 @@ class TestXBKKNewYear:
         assert "2025-01-02" in explicit_dates
         assert "New Year Holiday" in explicit_dates["2025-01-02"]["name"]
 
-    def test_new_year_holiday_2027_substitute(self, explicit_dates):
-        """Jan 2, 2027 is Saturday — substitute to Monday Jan 4."""
-        assert "2027-01-02" not in explicit_dates
-        assert "2027-01-04" in explicit_dates
+    def test_no_new_year_substitute_in_2027(self, explicit_dates):
+        """BoT announcement 37/2569 lists only 1 January for New Year 2027."""
+        assert "2027-01-04" not in explicit_dates
 
     def test_new_year_eve_2025(self, explicit_dates):
         """Dec 31, 2025 is Wednesday."""
@@ -154,8 +153,9 @@ class TestXBKKBuddhist:
         assert "2026-03-03" in explicit_dates
 
     def test_makha_bucha_2027(self, explicit_dates):
-        """Makha Bucha 2027 — Mar 22."""
-        assert "2027-03-22" in explicit_dates
+        """Makha Bucha 2027 is Sunday 21 February; the bank holiday is Monday 22 February."""
+        assert "2027-02-22" in explicit_dates
+        assert "2027-03-22" not in explicit_dates
 
     def test_visakha_bucha_2025(self, explicit_dates):
         """Visakha Bucha 2025 — May 12."""
@@ -167,8 +167,9 @@ class TestXBKKBuddhist:
         assert "2026-05-25" in explicit_dates
 
     def test_visakha_bucha_2027(self, explicit_dates):
-        """Visakha Bucha 2027 — May 13."""
-        assert "2027-05-13" in explicit_dates
+        """Visakha Bucha 2027 is Thursday 20 May."""
+        assert "2027-05-20" in explicit_dates
+        assert "2027-05-13" not in explicit_dates
 
     def test_asahna_bucha_2025(self, explicit_dates):
         """Asahna Bucha 2025 — Jul 10."""
@@ -323,7 +324,7 @@ class TestXBKKStructure:
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
-            assert "set.or.th" in entry["source_url"]
+            assert "set.or.th" in entry["source_url"] or "bot.or.th" in entry["source_url"]
 
 
 # ──────────────────────────────────────────────────────────────
@@ -356,3 +357,42 @@ class TestXBKKSubstitution:
             name = entry["name"].lower()
             if "substitute" in name:
                 assert "substitute" in name
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.6)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed(code, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    days = list(e["holidays"]["explicit"]) + _gd.expand_exchange(e)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+def _early(code, year):
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    return {d["date"]: d["early_close_time"] for d in e["holidays"]["explicit"]
+            if d["date"].startswith(str(year)) and d["status"] == "early_close"}
+
+
+class TestBotAnnouncement2027:
+    """Bank of Thailand announcement 37/2569 (Royal Gazette, 25 August 2026)."""
+
+    def test_2027_closed_weekdays(self):
+        assert _closed("XBKK", 2027) == {
+            "2027-01-01", "2027-02-22", "2027-04-06", "2027-04-13", "2027-04-14",
+            "2027-04-15", "2027-05-03", "2027-05-04", "2027-05-20", "2027-06-03",
+            "2027-07-19", "2027-07-28", "2027-08-12", "2027-10-13", "2027-10-25",
+            "2027-12-06", "2027-12-10", "2027-12-31"}
+
+    @pytest.mark.parametrize("day", ["2027-01-04", "2027-03-22", "2027-05-13"])
+    def test_removed_days_are_open(self, day):
+        assert day not in _closed("XBKK", 2027)

@@ -380,6 +380,13 @@
         "name": "Christmas Day",
         "rule": "fixed_date",
         "status": "closed"
+      },
+      {
+        "day": 2,
+        "month": 11,
+        "name": "Day of the Dead",
+        "rule": "fixed_date",
+        "status": "closed"
       }
     ]
   },

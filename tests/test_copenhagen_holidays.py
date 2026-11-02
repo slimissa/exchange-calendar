@@ -166,7 +166,8 @@ class TestXCSERecurrence:
         rules = xcse["holidays"].get("recurrence_rules", [])
         names = {r["name"] for r in rules}
         assert "New Year's Day" in names
-        assert "Labour Day" in names
+        # Nasdaq Copenhagen trades on 1 May: no Labour Day rule (explicit 2025-2026 entries remain).
+        assert "Labour Day" not in names
         assert "Constitution Day" in names
         assert "Christmas Eve" in names
         assert "Christmas Day" in names
@@ -210,3 +211,40 @@ class TestXCSEStructure:
     def test_holiday_count_reasonable(self, explicit_dates):
         """~50-60 entries: 12 holidays × 5 years."""
         assert 45 <= len(explicit_dates) <= 65
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.6)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed(code, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    days = list(e["holidays"]["explicit"]) + _gd.expand_exchange(e)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+def _early(code, year):
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    return {d["date"]: d["early_close_time"] for d in e["holidays"]["explicit"]
+            if d["date"].startswith(str(year)) and d["status"] == "early_close"}
+
+
+class TestFutureYearFixes:
+    """Nasdaq Copenhagen's 2026 list closes the Friday after Ascension Day and
+    does not close on 1 May."""
+
+    @pytest.mark.parametrize("day", ["2027-05-07", "2028-05-26", "2029-05-11"])
+    def test_day_after_ascension_is_closed(self, day):
+        assert day in _closed("XCSE", int(day[:4]))
+
+    @pytest.mark.parametrize("day", ["2028-05-01", "2029-05-01"])
+    def test_labour_day_is_a_trading_day(self, day):
+        assert day not in _closed("XCSE", int(day[:4]))

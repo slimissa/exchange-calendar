@@ -292,5 +292,51 @@ class TestXISTStructure:
                 assert entry["early_close_time"] == "13:00"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~33 entries: 7 fixed holidays × 5 years minus weekends + eves."""
-        assert 25 <= len(explicit_dates) <= 45
+        """~50 entries: the national days plus the Bayram closures and eves for 2027-2029."""
+        assert 35 <= len(explicit_dates) <= 65
+
+
+# ──────────────────────────────────────────────────────────────
+# Future-year fixes (v2.23.6)
+# ──────────────────────────────────────────────────────────────
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
+import generate_dates as _gd
+
+
+def _closed(code, year):
+    """Closed weekdays the registry produces for one year (explicit plus rules)."""
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    days = list(e["holidays"]["explicit"]) + _gd.expand_exchange(e)
+    return {d["date"] for d in days
+            if d["date"].startswith(str(year)) and d["status"] == "closed"
+            and date.fromisoformat(d["date"]).weekday() < 5}
+
+
+def _early(code, year):
+    e = json.loads((Path(__file__).parent.parent / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+    return {d["date"]: d["early_close_time"] for d in e["holidays"]["explicit"]
+            if d["date"].startswith(str(year)) and d["status"] == "early_close"}
+
+
+class TestBayramClosures:
+    """Diyanet's 2027 religious days calendar: Ramazan Bayrami 9-11 March (eve
+    Monday 8 March, half day), Kurban Bayrami 16-19 May (eve Saturday 15 May).
+    2028-2029 follow the same astronomical calculation."""
+
+    @pytest.mark.parametrize("day", ["2027-03-09", "2027-03-10", "2027-03-11",
+                                     "2027-05-17", "2027-05-18", "2027-05-19",
+                                     "2028-02-28", "2028-05-05", "2028-05-08",
+                                     "2029-02-14", "2029-02-15", "2029-02-16",
+                                     "2029-04-24", "2029-04-25", "2029-04-26", "2029-04-27"])
+    def test_bayram_days_are_closed(self, day):
+        assert day in _closed("XIST", int(day[:4]))
+
+    @pytest.mark.parametrize("year,days", [
+        (2027, {"2027-03-08": "13:00", "2027-10-28": "13:00"}),
+        (2028, {"2028-02-25": "13:00", "2028-05-04": "13:00", "2028-10-27": "13:00"}),
+        (2029, {"2029-02-13": "13:00", "2029-10-26": "13:00"}),
+    ])
+    def test_eves_are_half_days(self, year, days):
+        assert _early("XIST", year) == days
