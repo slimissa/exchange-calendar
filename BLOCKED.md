@@ -95,10 +95,9 @@ The page is real, but the holiday data is not in the HTML a plain request receiv
   (the fixed-vs-movable distinction, the 2025 collision rule) are easy to
   get wrong again from scratch.
 
-- **Open disagreements (2026-11-01), three for 2027-2029:** exchange_calendars closes
-  2027-12-31, 2028-12-29 (the last weekday of a year whose 31 December is a Sunday)
-  and 2029-12-31. The registry has no year-end closure at all, by the 2026-09-17
-  audit above. A BVC notice reported by Valora
+- **Open disagreement (2026-11-01):** exchange_calendars closes 2028-12-29 (the last
+  weekday of a year whose 31 December is a Sunday). The registry has no year-end
+  closure at all, by the 2026-09-17 audit above. A BVC notice reported by Valora
   Analitik says the exchange gave no service on 31 December 2024, and a 2012 forum
   post says the same for 2012, but nothing shows a rule for later years or for a
   Sunday 31 December. Left unclassified. **Source needed:** a BVC notice for the

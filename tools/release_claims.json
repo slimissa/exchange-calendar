@@ -1426,5 +1426,63 @@
       "file": "BLOCKED.md",
       "contains": "<a id=\"xbue\"></a>"
     }
+  ],
+  "2.23.6": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.6"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.6] - 2026-11-02"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Fixed lunar holiday dates for XIST, XKRX, and XBKK for 2027-2029."
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.6-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.6"
+    },
+    {
+      "file": "exchanges/XIST.json",
+      "contains": "Ramazan Bayram\u0131 (Eid al-Fitr) - Day 1"
+    },
+    {
+      "file": "exchanges/XKRX.json",
+      "contains": "\"date\": \"2027-07-19\""
+    },
+    {
+      "file": "exchanges/XBKK.json",
+      "contains": "\"date\": \"2027-02-22\""
+    },
+    {
+      "file": "exchanges/XCSE.json",
+      "contains": "Day after Ascension Day"
+    },
+    {
+      "file": "exchanges/XMEX.json",
+      "contains": "\"name\": \"Day of the Dead\""
+    },
+    {
+      "file": "tests/test_korea_holidays.py",
+      "contains": "class TestFutureYearLawDates:"
+    },
+    {
+      "file": "tests/test_istanbul_holidays.py",
+      "contains": "class TestBayramClosures:"
+    },
+    {
+      "file": "tests/test_bangkok_holidays.py",
+      "contains": "class TestBotAnnouncement2027:"
+    },
+    {
+      "file": "BLOCKED.md",
+      "contains": "<a id=\"xbda\"></a>"
+    }
   ]
 }

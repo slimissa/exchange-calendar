@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.6] - 2026-11-02
+
+### Fixed
+- Fixed lunar holiday dates for XIST, XKRX, and XBKK for 2027-2029.
+- XIST: Ramazan Bayrami and Kurban Bayrami closures and half-day eves are added (Diyanet's 2027 calendar; 2028-2029 by the same calculation).
+- XKRX: Labour Day and Constitution Day are closed with their substitute days, Memorial Day and New Year get none, and Seollal and Chuseok follow the Korean lunar calendar. The 2027 closures equal KRX's published list.
+- XBKK 2027: Makha Bucha is 22 February, Visakha Bucha 20 May and 28 July is a holiday (Bank of Thailand announcement 37/2569).
+- XCSE: the Friday after Ascension Day is closed and 1 May is a trading day. XMEX: 2 November is closed.
+
+### Changed
+- 2027-2029 disagreements left unclassified: 68 to 22. `docs/divergence_triage.json` adds 4 `library_error` dates (XKRX) and 3 `unpublished` dates (XPHS, XSAU). The 22 left (XBDA, XBOG, XBUE, XHKG, XKAR, XKLS) have no source that settles them and are recorded in `BLOCKED.md`.
+
 ## [2.23.5] - 2026-11-01
 
 ### Fixed
