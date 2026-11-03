@@ -7,7 +7,7 @@
 -- the setting is per connection and a no-op inside a transaction.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 166, holidays 6319, ad_hoc_closures 0, confidence 564
+-- Rows: exchanges 74, sessions 166, holidays 6306, ad_hoc_closures 0, confidence 564
 
 PRAGMA foreign_keys=ON;
 
@@ -3836,30 +3836,17 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMEX', '2029-12-25', 'Christmas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bmv.com.mx/en/market-data/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-01-01', 'New Year''s Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-01-02', 'New Year Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-01-03', 'New Year Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-01-06', 'New Year Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-01-07', 'Orthodox Christmas', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-01-08', 'New Year Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-02-24', 'Defender of the Fatherland Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-03-10', 'International Women''s Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-05-02', 'Labour Day Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-05-09', 'Victory Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-06-12', 'Russia Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-06-13', 'Russia Day Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-11-04', 'National Unity Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2025-12-31', 'New Year''s Eve', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-01-01', 'New Year''s Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-01-02', 'New Year Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-01-05', 'New Year Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-01-06', 'New Year Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-01-07', 'Orthodox Christmas', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-01-08', 'New Year Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-02-23', 'Defender of the Fatherland Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-03-09', 'International Women''s Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-05-04', 'Labour Day Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-05-11', 'Victory Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-06-12', 'Russia Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-11-04', 'National Unity Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XMOS', '2026-12-31', 'New Year''s Eve', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.moex.com/trading-calendar');
@@ -7241,6 +7228,6 @@ COMMIT;
 -- Row counts
 --   exchanges: 74
 --   sessions: 166
---   holidays: 6319
+--   holidays: 6306
 --   ad_hoc_closures: 0
 --   confidence: 564

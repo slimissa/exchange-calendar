@@ -107,11 +107,18 @@ class TestXMOSNewYear:
         assert explicit_dates["2025-01-01"]["name"] == "New Year's Day"
 
     def test_new_year_holidays_2025(self, explicit_dates):
-        """New Year holidays 2025 — Jan 1-8."""
-        dates = ["2025-01-01", "2025-01-02", "2025-01-03", "2025-01-06",
-                 "2025-01-07", "2025-01-08"]
-        for d in dates:
+        """MOEX closes on 1, 2 and 7 January 2025 and trades on 3, 6 and 8 January."""
+        for d in ["2025-01-01", "2025-01-02", "2025-01-07"]:
             assert d in explicit_dates, f"Missing New Year holiday: {d}"
+        for d in ["2025-01-03", "2025-01-06", "2025-01-08"]:
+            assert d not in explicit_dates, f"MOEX trades on {d}"
+
+    def test_new_year_holidays_2026(self, explicit_dates):
+        """MOEX closes on 1, 2 and 7 January 2026 and trades on 5, 6, 8 and 9 January."""
+        for d in ["2026-01-01", "2026-01-02", "2026-01-07"]:
+            assert d in explicit_dates, f"Missing New Year holiday: {d}"
+        for d in ["2026-01-05", "2026-01-06", "2026-01-08", "2026-01-09"]:
+            assert d not in explicit_dates, f"MOEX trades on {d}"
 
     def test_orthodox_christmas_2025(self, explicit_dates):
         """Orthodox Christmas — Jan 7, 2025."""
@@ -130,9 +137,9 @@ class TestXMOSNewYear:
 
 class TestXMOSFixedHolidays:
     def test_defender_day_2025(self, explicit_dates):
-        """Feb 23, 2025 is Sunday — observed Monday Feb 24."""
+        """Feb 23, 2025 is Sunday — MOEX does not close on Monday Feb 24."""
         assert "2025-02-23" not in explicit_dates
-        assert "2025-02-24" in explicit_dates
+        assert "2025-02-24" not in explicit_dates
 
     def test_defender_day_2026(self, explicit_dates):
         """Feb 23, 2026 is Monday."""
@@ -140,14 +147,14 @@ class TestXMOSFixedHolidays:
         assert "Defender" in explicit_dates["2026-02-23"]["name"]
 
     def test_womens_day_2025(self, explicit_dates):
-        """Mar 8, 2025 is Saturday — observed Monday Mar 10."""
+        """Mar 8, 2025 is Saturday — MOEX does not close on Monday Mar 10."""
         assert "2025-03-08" not in explicit_dates
-        assert "2025-03-10" in explicit_dates
+        assert "2025-03-10" not in explicit_dates
 
     def test_womens_day_2026(self, explicit_dates):
-        """Mar 8, 2026 is Sunday — observed Monday Mar 9."""
+        """Mar 8, 2026 is Sunday — MOEX lists Monday Mar 9 as a trading day."""
         assert "2026-03-08" not in explicit_dates
-        assert "2026-03-09" in explicit_dates
+        assert "2026-03-09" not in explicit_dates
 
     def test_labour_day_2025(self, explicit_dates):
         """May 1, 2025 is Thursday."""
@@ -160,9 +167,9 @@ class TestXMOSFixedHolidays:
         assert "Victory" in explicit_dates["2025-05-09"]["name"]
 
     def test_victory_day_2026_substitute(self, explicit_dates):
-        """May 9, 2026 is Saturday — observed Monday May 11."""
+        """May 9, 2026 is Saturday — MOEX lists Monday May 11 as a trading day."""
         assert "2026-05-09" not in explicit_dates
-        assert "2026-05-11" in explicit_dates
+        assert "2026-05-11" not in explicit_dates
 
     def test_russia_day_2025(self, explicit_dates):
         """Jun 12, 2025 is Thursday."""
@@ -218,8 +225,8 @@ class TestXMOSStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~30-40 entries (Russia has long New Year break)."""
-        assert 25 <= len(explicit_dates) <= 45, f"Unexpected count: {len(explicit_dates)}"
+        """~16 entries: MOEX closes on the state holidays only (8 weekdays a year)."""
+        assert 12 <= len(explicit_dates) <= 25, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
@@ -251,9 +258,10 @@ class TestXMOSSubstitution:
         assert "2025-02-23" not in explicit_dates  # Sunday
         assert "2025-03-08" not in explicit_dates  # Saturday
 
-    def test_observed_names(self, explicit_dates):
-        observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
-        assert observed_count >= 3, f"Expected some observed holidays, got {observed_count}"
+    def test_no_observed_holidays(self, explicit_dates):
+        """MOEX only closes on the state holiday itself, never on a carried-over Monday."""
+        observed = [e for e in explicit_dates.values() if "observed" in e["name"].lower()]
+        assert observed == []
 
 
 # ──────────────────────────────────────────────────────────────
@@ -265,3 +273,38 @@ class TestXMOSSanctionsNote:
         """Moscow Exchange is included for completeness despite sanctions."""
         assert xmos["code"] == "XMOS"
         assert xmos["name"] == "Moscow Exchange"
+
+
+# ──────────────────────────────────────────────────────────────
+# MOEX trading regulations for state holidays, 2025 and 2026
+# ──────────────────────────────────────────────────────────────
+
+class TestMoexHolidayRegulation2025And2026:
+    """moex.com/n73701 (2025) and moex.com/n94172 (2026): MOEX trades on
+    official days off 3, 6, 8 January, 2 and 8 May, 13 June and 3 November 2025
+    and 5-6, 8-9 January, 9 March and 11 May 2026, and is closed only on the
+    state holidays themselves. It does not carry a weekend holiday to Monday
+    (24 February and 10 March 2025 are ordinary days)."""
+
+    @staticmethod
+    def _closed_set(explicit_dates, year):
+        return {d for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["status"] == "closed"}
+
+    def test_2025_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2025) == {
+            "2025-01-01", "2025-01-02", "2025-01-07", "2025-05-01", "2025-05-09",
+            "2025-06-12", "2025-11-04", "2025-12-31"}
+
+    def test_2026_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2026) == {
+            "2026-01-01", "2026-01-02", "2026-01-07", "2026-02-23", "2026-05-01",
+            "2026-06-12", "2026-11-04", "2026-12-31"}
+
+    @pytest.mark.parametrize("day", [
+        "2025-01-03", "2025-01-06", "2025-01-08", "2025-02-24", "2025-03-10",
+        "2025-05-02", "2025-05-08", "2025-06-13", "2025-11-03",
+        "2026-01-05", "2026-01-06", "2026-01-08", "2026-01-09", "2026-03-09",
+        "2026-05-04", "2026-05-11"])
+    def test_trading_days(self, explicit_dates, day):
+        assert day not in explicit_dates

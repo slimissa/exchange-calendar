@@ -25098,50 +25098,14 @@
             "status": "closed"
           },
           {
-            "date": "2025-01-03",
-            "name": "New Year Holiday",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2025-01-06",
-            "name": "New Year Holiday",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2025-01-07",
             "name": "Orthodox Christmas",
             "source_url": "https://www.moex.com/trading-calendar",
             "status": "closed"
           },
           {
-            "date": "2025-01-08",
-            "name": "New Year Holiday",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2025-02-24",
-            "name": "Defender of the Fatherland Day (observed)",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2025-03-10",
-            "name": "International Women's Day (observed)",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2025-05-01",
             "name": "Labour Day",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2025-05-02",
-            "name": "Labour Day Holiday",
             "source_url": "https://www.moex.com/trading-calendar",
             "status": "closed"
           },
@@ -25154,12 +25118,6 @@
           {
             "date": "2025-06-12",
             "name": "Russia Day",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2025-06-13",
-            "name": "Russia Day Holiday",
             "source_url": "https://www.moex.com/trading-calendar",
             "status": "closed"
           },
@@ -25188,26 +25146,8 @@
             "status": "closed"
           },
           {
-            "date": "2026-01-05",
-            "name": "New Year Holiday",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2026-01-06",
-            "name": "New Year Holiday",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2026-01-07",
             "name": "Orthodox Christmas",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2026-01-08",
-            "name": "New Year Holiday",
             "source_url": "https://www.moex.com/trading-calendar",
             "status": "closed"
           },
@@ -25218,26 +25158,8 @@
             "status": "closed"
           },
           {
-            "date": "2026-03-09",
-            "name": "International Women's Day",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2026-05-01",
             "name": "Labour Day",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2026-05-04",
-            "name": "Labour Day Holiday",
-            "source_url": "https://www.moex.com/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2026-05-11",
-            "name": "Victory Day (observed)",
             "source_url": "https://www.moex.com/trading-calendar",
             "status": "closed"
           },

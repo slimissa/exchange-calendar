@@ -69,7 +69,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XMAD | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XMAL | 1242 | No reference data | No reference data | n/a | n/a |
 | XMEX | 1257 | 1257 | 1257 | 0 | 100.0% |
-| XMOS | 493 | 502 | 502 | 9 | 98.2% |
+| XMOS | 506 | 502 | 502 | 4 | 99.2% |
 | XMUS | 1265 | No reference data | No reference data | n/a | n/a |
 | XNAI | 1257 | No reference data | No reference data | n/a | n/a |
 | XNAS | 1506 | No reference data | 1506 | 0 | 100.0% |
@@ -103,7 +103,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 27 of 50.
-- Trading days on which all available sources agree: 62444 of 62789 (99.5%).
+- Trading days on which all available sources agree: 62453 of 62793 (99.5%).
 
 ## Disagreements by year
 
@@ -123,7 +123,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XKRX | - | 3 | 2 | 2 | 2 | 1 |
 | XLIM | - | 1 | 4 | 3 | 3 | 0 |
 | XLIT | - | 3 | 1 | 0 | 1 | 1 |
-| XMOS | - | 5 | 4 | - | - | - |
+| XMOS | - | 2 | 2 | - | - | - |
 | XNSE | - | 1 | 0 | 8 | 12 | 15 |
 | XPHS | - | 5 | 4 | 3 | 2 | 1 |
 | XPRA | - | 3 | 1 | 0 | 0 | 0 |
@@ -139,8 +139,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 58 | 0 | 10 | 1 | 1 | 46 |
-| 2026 | 40 | 0 | 4 | 0 | 0 | 36 |
+| 2025 | 55 | 0 | 12 | 1 | 1 | 41 |
+| 2026 | 38 | 0 | 6 | 0 | 0 | 32 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -244,9 +244,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open, EC open (4): 2025-12-25 Th, 2026-12-25 Fr, 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
 - registry open, PMC closed, EC closed (2): 2025-05-29 Th, 2025-12-31 We
 
-### XMOS (9)
+### XMOS (4)
 
-- registry closed, PMC open, EC open (9): 2025-01-03 Fr, 2025-01-06 Mo, 2025-01-08 We, 2025-05-02 Fr, 2025-06-13 Fr, 2026-01-05 Mo, 2026-01-06 Tu, 2026-01-08 Th, 2026-05-04 Mo
+- registry open, PMC closed, EC closed (4): 2025-02-24 Mo [library error], 2025-03-10 Mo [library error], 2026-03-09 Mo [library error], 2026-05-11 Mo [library error]
 
 ### XNSE (36)
 
@@ -301,7 +301,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 36 dates; Registry error: 328 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 40 dates; Registry error: 337 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -638,6 +638,22 @@ Source: https://www.euronext.com/en/trading/trading-hours-holidays
 Dates: 2027-11-02, 2028-11-02, 2029-11-02.
 
 Source: https://www.rankia.mx/acciones/indice-precios-cotizaciones-ipc/blog/2607981-calendario-bolsa-mexicana-valores
+
+### XMOS: Library error (4, registry verified, no change)
+
+Moscow Exchange does not carry a weekend state holiday to the next Monday. Its 2026 regulation states that it trades on Monday 9 March and Monday 11 May 2026, and its 2025 regulation lists no closure on Monday 24 February or 10 March 2025 (it trades 'to the standard schedule' on all days it does not list). exchange_calendars and pandas_market_calendars close all four days. The registry's closures of these four days were removed in 2.23.9.
+
+Dates: 2025-02-24, 2025-03-10, 2026-03-09, 2026-05-11.
+
+Source: https://fs.moex.com/f/23333/dec-25-jan-26-rus-eng.pdf
+
+### XMOS: Registry error (9, fixed in 2.23.9)
+
+Moscow Exchange's holiday regulations (moex.com/n73701 for 2025, moex.com/n94172 for 2026) say it trades on the official days off 3, 6 and 8 January, 2 and 8 May, 13 June and 3 November 2025 and 5-6 and 8-9 January, 9 March and 11 May 2026, and is closed only on the state holidays themselves (2025: 1-2 and 7 January, 1 and 9 May, 12 June, 4 November, 31 December; 2026: 1-4 and 7 January, 23 February, 1 and 9 May, 12 June, 4 November, 31 December). The registry closed the whole New Year break and the days around May and June holidays. 4 May 2026 is not on MOEX's list of closed days either, so it trades. 9 dates fixed; 24 February and 10 March 2025 and 9 March and 11 May 2026 (a carried-over Monday) were closed in the registry too and are classified below.
+
+Dates: 2025-01-03, 2025-01-06, 2025-01-08, 2025-05-02, 2025-06-13, 2026-01-05, 2026-01-06, 2026-01-08, 2026-05-04.
+
+Source: https://fs.moex.com/f/23333/dec-25-jan-26-rus-eng.pdf
 
 ### XNAS: Registry error (2, fixed in 2.23.2)
 
