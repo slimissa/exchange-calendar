@@ -1262,6 +1262,58 @@
       ],
       "summary": "SET and TFEX holidays follow the Bank of Thailand's announcements (tfex.co.th holiday page). BoT FPG. 5/2567 (2025) and 31/2568 (2026) are the closing lists, with the additional holidays of 2 June and 11 August 2025 from BoT 15/2567. The registry wrongly closed 2 January 2025, 16 April 2025 (the Cabinet's Songkran substitute, a government holiday only), 11 July 2025 and 30 July 2026 (Khao Phansa, public sector only) and Visakha Bucha on 25 May 2026 (it falls on Sunday 31 May; BoT gives Monday 1 June). It missed 2 June, 28 July and 11 August 2025, and 1 June and 28 July 2026. 10 dates fixed. Daily SET market reports show the exchange trading on 30 July 2026 and not on 28 or 29 July. Not applied: Friday 16 October 2026, a BoT special holiday for financial institutions in Bangkok only (BoT 26/2569); whether SET closed that day was not verified.",
       "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25680162.pdf"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.9",
+      "dates": [
+        "2025-11-20",
+        "2026-11-20",
+        "2026-11-23"
+      ],
+      "summary": "Ley 27.399 art. 6 moves a trasladable holiday that falls on a Thursday or Friday to the next Monday. National Sovereignty Day (20 November) is Thursday in 2025 and Friday in 2026, so the holidays are Monday 24 November 2025 (BCRA's 2025 list) and Monday 23 November 2026 (BYMA's 2026 trading calendar). The registry closed 20 November in both years, an old rule that moved nothing. The 24 November 2025 closure is fixed with the same change; the other days it touches are classified below.",
+      "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2026-06-15",
+        "2026-06-17",
+        "2026-11-09",
+        "2026-11-10"
+      ],
+      "summary": "BYMA's 2026 trading calendar lists Monday 15 June (Guemes, moved back from Wednesday 17 June by Ley 27.399 art. 6) and Monday 9 and Tuesday 10 November (papal visit, Decree 1103/26) as days without trading, and does not list 17 June. exchange_calendars and pandas_market_calendars close 17 June and trade on 15 June, 9 and 10 November. The registry follows BYMA (15 June, 9 and 10 November closed; 17 June open). The registry's closures of 15 June, 9 and 10 November 2026 were added in 2.23.9.",
+      "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2025-06-16",
+        "2025-06-17",
+        "2025-08-18",
+        "2025-10-13",
+        "2025-11-17",
+        "2025-11-24"
+      ],
+      "summary": "Ley 27.399 art. 6 moves Guemes (Tuesday 17 June 2025) back to Monday 16 June and Sovereignty Day (Thursday 20 November 2025) forward to Monday 24 November; the BCRA's 2025 list gives 16 June and 24 November. San Martin (17 August) and Respect for Cultural Diversity (12 October) fall on a Sunday in 2025 and are not moved, so 18 August and 13 October are trading days. Both libraries instead close 17 June, 18 August, 13 October and 17 November and trade on 16 June and 24 November. The registry's 16 June and 24 November 2025 closures were added in 2.23.9. BYMA's own 2025 page could not be retrieved; the rule and the BCRA list are the sources.",
+      "source_url": "https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "recheck_date": "2026-12-31",
+      "dates": [
+        "2025-04-17"
+      ],
+      "summary": "Holy Thursday 2025 is a non-working day (the BCRA's 2025 list marks banks closed). Both libraries close it and the registry trades. BYMA's page for 2025 could not be retrieved, and BYMA has treated other non-working days as trading days without settlement (6 and 21 November 2025, Comunicado 18859). A flat Merval quote on 17 April 2025 in a market-data history suggests no session, but that is not a BYMA publication. The registry value is not confirmed; check BYMA's 2025 trading calendar or the Semana Santa communique.",
+      "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
     }
   ]
 }

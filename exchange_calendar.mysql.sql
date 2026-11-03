@@ -7,7 +7,7 @@
 -- after the CREATE statements and wraps the INSERT block.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 166, holidays 6315, ad_hoc_closures 0, confidence 564
+-- Rows: exchanges 74, sessions 166, holidays 6319, ad_hoc_closures 0, confidence 564
 
 DROP TABLE IF EXISTS confidence;
 DROP TABLE IF EXISTS ad_hoc_closures;
@@ -1345,9 +1345,10 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2025-04-02', 'Malvinas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2025-04-18', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2025-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2025-06-16', 'Paso a la Inmortalidad del General Güemes (moved from Tuesday 17 June)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bcra.gob.ar/archivos/Pdfs/comytexord/C99321.pdf');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2025-06-20', 'National Flag Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2025-07-09', 'Independence Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2025-11-20', 'National Sovereignty Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2025-11-24', 'National Sovereignty Day (moved from Thursday 20 November)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bcra.gob.ar/archivos/Pdfs/comytexord/C99321.pdf');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2025-12-08', 'Immaculate Conception', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2025-12-24', 'Christmas Eve', 'early_close', 'explicit', 1, '13:00', NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2025-12-25', 'Christmas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
@@ -1360,10 +1361,13 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-04-03', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-05-25', 'May Revolution Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-06-15', 'Paso a la Inmortalidad del General Güemes (moved from Wednesday 17 June)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/mercado/calendario-bursatil');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-07-09', 'Independence Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-08-17', 'Anniversary of San Martín''s Death (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-10-12', 'Day of Respect for Cultural Diversity (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-11-20', 'National Sovereignty Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-11-09', 'Papal visit (no trading or settlement)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/mercado/calendario-bursatil');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-11-10', 'Papal visit (no trading or settlement)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/mercado/calendario-bursatil');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-11-23', 'National Sovereignty Day (moved from Friday 20 November)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/mercado/calendario-bursatil');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-12-08', 'Immaculate Conception', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-12-24', 'Christmas Eve', 'early_close', 'explicit', 1, '13:00', NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBUE', '2026-12-25', 'Christmas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.byma.com.ar/calendario');
@@ -7230,6 +7234,6 @@ COMMIT;
 -- Row counts
 --   exchanges: 74
 --   sessions: 166
---   holidays: 6315
+--   holidays: 6319
 --   ad_hoc_closures: 0
 --   confidence: 564

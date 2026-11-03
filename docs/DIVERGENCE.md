@@ -39,7 +39,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
 | XBSP | 1241 | No reference data | No reference data | n/a | n/a |
 | XBUD | 1249 | 1244 | 1244 | 11 | 99.1% |
-| XBUE | 1240 | 1232 | 1232 | 14 | 98.9% |
+| XBUE | 1236 | 1232 | 1232 | 16 | 98.7% |
 | XBUL | 1251 | No reference data | No reference data | n/a | n/a |
 | XCAI | 1001 | No reference data | No reference data | n/a | n/a |
 | XCAS | 1253 | No reference data | No reference data | n/a | n/a |
@@ -103,7 +103,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 27 of 50.
-- Trading days on which all available sources agree: 62447 of 62790 (99.5%).
+- Trading days on which all available sources agree: 62444 of 62789 (99.5%).
 
 ## Disagreements by year
 
@@ -115,7 +115,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XBOG | - | 2 | 1 | 1 | 1 | 1 |
 | XBOM | - | 0 | 0 | 8 | 12 | 15 |
 | XBUD | - | 3 | 4 | 0 | 0 | 4 |
-| XBUE | - | 6 | 3 | 3 | 1 | 1 |
+| XBUE | - | 7 | 4 | 3 | 1 | 1 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
 | XJSE | - | 1 | 0 | 0 | 0 | 0 |
 | XKAR | - | 5 | 1 | 7 | 4 | 7 |
@@ -139,8 +139,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 57 | 0 | 4 | 1 | 0 | 52 |
-| 2026 | 39 | 0 | 0 | 0 | 0 | 39 |
+| 2025 | 58 | 0 | 10 | 1 | 1 | 46 |
+| 2026 | 40 | 0 | 4 | 0 | 0 | 36 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -205,10 +205,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry open, PMC closed, EC closed (8): 2025-05-02 Fr, 2025-10-24 Fr, 2026-01-02 Fr, 2026-08-21 Fr, 2029-03-16 Fr [unpublished], 2029-04-30 Mo [unpublished], 2029-10-22 Mo [unpublished], 2029-11-02 Fr [unpublished]
 - registry closed, PMC open, EC open (3): 2025-03-14 Fr, 2026-03-16 Mo, 2026-12-28 Mo
 
-### XBUE (14)
+### XBUE (16)
 
-- registry open, PMC closed, EC closed (11): 2025-04-17 Th, 2025-06-17 Tu, 2025-08-18 Mo, 2025-10-13 Mo, 2025-11-17 Mo, 2026-06-17 We, 2026-11-23 Mo, 2027-03-25 Th, 2027-06-17 Th [library error], 2028-04-13 Th, 2029-03-29 Th
-- registry closed, PMC open, EC open (3): 2025-11-20 Th, 2026-11-20 Fr, 2027-06-21 Mo [library error]
+- registry open, PMC closed, EC closed (10): 2025-04-17 Th [unpublished], 2025-06-17 Tu [library error], 2025-08-18 Mo [library error], 2025-10-13 Mo [library error], 2025-11-17 Mo [library error], 2026-06-17 We [library error], 2027-03-25 Th, 2027-06-17 Th [library error], 2028-04-13 Th, 2029-03-29 Th
+- registry closed, PMC open, EC open (6): 2025-06-16 Mo [library error], 2025-11-24 Mo [library error], 2026-06-15 Mo [library error], 2026-11-09 Mo [library error], 2026-11-10 Tu [library error], 2027-06-21 Mo [library error]
 
 ### XHKG (3)
 
@@ -301,7 +301,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 26 dates; Registry error: 325 dates; Unpublished: 204 dates.
+- Convention difference: 1 dates; Library error: 36 dates; Registry error: 328 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -399,6 +399,22 @@ Dates: 2027-06-17, 2027-06-21.
 
 Source: https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto
 
+### XBUE: Library error (4, registry verified, no change)
+
+BYMA's 2026 trading calendar lists Monday 15 June (Guemes, moved back from Wednesday 17 June by Ley 27.399 art. 6) and Monday 9 and Tuesday 10 November (papal visit, Decree 1103/26) as days without trading, and does not list 17 June. exchange_calendars and pandas_market_calendars close 17 June and trade on 15 June, 9 and 10 November. The registry follows BYMA (15 June, 9 and 10 November closed; 17 June open). The registry's closures of 15 June, 9 and 10 November 2026 were added in 2.23.9.
+
+Dates: 2026-06-15, 2026-06-17, 2026-11-09, 2026-11-10.
+
+Source: https://www.byma.com.ar/mercado/calendario-bursatil
+
+### XBUE: Library error (6, registry verified, no change)
+
+Ley 27.399 art. 6 moves Guemes (Tuesday 17 June 2025) back to Monday 16 June and Sovereignty Day (Thursday 20 November 2025) forward to Monday 24 November; the BCRA's 2025 list gives 16 June and 24 November. San Martin (17 August) and Respect for Cultural Diversity (12 October) fall on a Sunday in 2025 and are not moved, so 18 August and 13 October are trading days. Both libraries instead close 17 June, 18 August, 13 October and 17 November and trade on 16 June and 24 November. The registry's 16 June and 24 November 2025 closures were added in 2.23.9. BYMA's own 2025 page could not be retrieved; the rule and the BCRA list are the sources.
+
+Dates: 2025-06-16, 2025-06-17, 2025-08-18, 2025-10-13, 2025-11-17, 2025-11-24.
+
+Source: https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto
+
 ### XBUE: Registry error (6, fixed in 2.23.5)
 
 Ley 27.399, art. 1 makes 1 January, 24 March, 2 April, 1 May, 9 July and 25 December inamovible: they are never moved. The registry moved the ones that fall on a weekend to a Monday: 3 May and 27 December 2027, 3 January, 3 April and 10 July 2028, 26 March 2029.
@@ -406,6 +422,22 @@ Ley 27.399, art. 1 makes 1 January, 24 March, 2 April, 1 May, 9 July and 25 Dece
 Dates: 2027-05-03, 2027-12-27, 2028-01-03, 2028-04-03, 2028-07-10, 2029-03-26.
 
 Source: https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto
+
+### XBUE: Registry error (3, fixed in 2.23.9)
+
+Ley 27.399 art. 6 moves a trasladable holiday that falls on a Thursday or Friday to the next Monday. National Sovereignty Day (20 November) is Thursday in 2025 and Friday in 2026, so the holidays are Monday 24 November 2025 (BCRA's 2025 list) and Monday 23 November 2026 (BYMA's 2026 trading calendar). The registry closed 20 November in both years, an old rule that moved nothing. The 24 November 2025 closure is fixed with the same change; the other days it touches are classified below.
+
+Dates: 2025-11-20, 2026-11-20, 2026-11-23.
+
+Source: https://www.byma.com.ar/mercado/calendario-bursatil
+
+### XBUE: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2026-12-31)
+
+Holy Thursday 2025 is a non-working day (the BCRA's 2025 list marks banks closed). Both libraries close it and the registry trades. BYMA's page for 2025 could not be retrieved, and BYMA has treated other non-working days as trading days without settlement (6 and 21 November 2025, Comunicado 18859). A flat Merval quote on 17 April 2025 in a market-data history suggests no session, but that is not a BYMA publication. The registry value is not confirmed; check BYMA's 2025 trading calendar or the Semana Santa communique.
+
+Dates: 2025-04-17.
+
+Source: https://www.byma.com.ar/mercado/calendario-bursatil
 
 ### XCSE: Registry error (5, fixed in 2.23.6)
 

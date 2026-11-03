@@ -165,10 +165,15 @@ class TestXBUEFixedHolidays:
         """Oct 12, 2025 is Sunday (weekend) — no explicit entry."""
         assert "2025-10-12" not in explicit_dates
 
-    def test_sovereignty_2025(self, explicit_dates):
-        """Nov 20, 2025 is Thursday."""
-        assert "2025-11-20" in explicit_dates
-        assert "Sovereignty" in explicit_dates["2025-11-20"]["name"]
+    def test_sovereignty_2025_moves_to_monday(self, explicit_dates):
+        """Nov 20, 2025 is a Thursday: Ley 27.399 art. 6 moves it to Monday 24 November."""
+        assert "2025-11-20" not in explicit_dates
+        assert "Sovereignty" in explicit_dates["2025-11-24"]["name"]
+
+    def test_guemes_2025_moves_to_monday(self, explicit_dates):
+        """Jun 17, 2025 is a Tuesday: the holiday moves to Monday 16 June (BCRA)."""
+        assert "2025-06-17" not in explicit_dates
+        assert "Güemes" in explicit_dates["2025-06-16"]["name"]
 
     def test_immaculate_conception_2025(self, explicit_dates):
         """Dec 8, 2025 is Monday."""
@@ -344,7 +349,8 @@ class TestXBUEStructure:
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
-            assert "byma.com.ar" in entry["source_url"] or "argentina.gob.ar" in entry["source_url"]
+            assert any(host in entry["source_url"]
+                       for host in ("byma.com.ar", "argentina.gob.ar", "bcra.gob.ar"))
 
 
 # ──────────────────────────────────────────────────────────────
@@ -425,3 +431,42 @@ class TestFutureYearFixes:
                                      "2029-08-20", "2029-10-15"])
     def test_other_trasladables_move_to_monday(self, day):
         assert day in _closed("XBUE", int(day[:4]))
+
+
+class TestBymaCalendar2025And2026:
+    """Argentina moves a trasladable holiday to the nearest Monday (Ley 27.399
+    art. 6: Tuesday and Wednesday back, Thursday and Friday forward), and not at
+    all when it falls on a weekend. BYMA's 2026 trading calendar lists Monday
+    15 June (Guemes), Monday 23 November (Sovereignty Day) and the two days of
+    the papal visit (Decree 1103/26). The 2025 weekday moves are the same rule
+    and match the BCRA's 2025 holiday list."""
+
+    @staticmethod
+    def _closed_set(explicit_dates, year):
+        return {d for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["status"] == "closed"}
+
+    def test_2026_moved_holidays(self, explicit_dates):
+        for day in ("2026-06-15", "2026-11-09", "2026-11-10", "2026-11-23"):
+            assert explicit_dates[day]["status"] == "closed"
+        for day in ("2026-06-17", "2026-11-20"):
+            assert day not in explicit_dates
+
+    def test_2025_moved_holidays(self, explicit_dates):
+        for day in ("2025-06-16", "2025-11-24"):
+            assert explicit_dates[day]["status"] == "closed"
+        for day in ("2025-06-17", "2025-11-20", "2025-08-18", "2025-10-13", "2025-11-17"):
+            assert day not in explicit_dates
+
+    def test_2026_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2026) == {
+            "2026-01-01", "2026-02-16", "2026-02-17", "2026-03-24", "2026-04-02",
+            "2026-04-03", "2026-05-01", "2026-05-25", "2026-06-15", "2026-07-09",
+            "2026-08-17", "2026-10-12", "2026-11-09", "2026-11-10", "2026-11-23",
+            "2026-12-08", "2026-12-25"}
+
+    def test_2025_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2025) == {
+            "2025-01-01", "2025-03-03", "2025-03-04", "2025-03-24", "2025-04-02",
+            "2025-04-18", "2025-05-01", "2025-06-16", "2025-06-20", "2025-07-09",
+            "2025-11-24", "2025-12-08", "2025-12-25"}
