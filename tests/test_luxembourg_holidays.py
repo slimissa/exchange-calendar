@@ -6,10 +6,12 @@ Key facts verified:
     - Regular hours: 09:00-17:30 (single session)
     - No lunch break
     - Weekend is Saturday-Sunday (Western weekend)
-    - Europe Day (May 9) — unique to Luxembourg
-    - National Day (Jun 23)
-    - Christmas Eve (Dec 24) — full closure
-    - Luxembourg uses substitution for weekend holidays
+    - LuxSE closes only the Euronext/T2 days (New Year, Good Friday, Easter
+      Monday, Labour Day, Christmas, Boxing Day)
+    - Europe Day, Ascension, Whit Monday, National Day and Assumption are
+      Luxembourg public holidays on which LuxSE stays open
+    - 24 and 31 December are early closes at 14:05
+    - No substitute day for a weekend holiday
     - No recurrence rules — all dates explicit
 
 If any test fails, either:
@@ -109,25 +111,26 @@ class TestXLUXFixedHolidays:
         """May 1, 2027 is Saturday: LuxSE stays open on Monday 3 May."""
         assert "2027-05-03" not in explicit_dates
 
-    def test_europe_day_2025(self, explicit_dates):
-        """May 9, 2025 is Friday."""
-        assert "2025-05-09" in explicit_dates
-        assert "Europe" in explicit_dates["2025-05-09"]["name"]
+    def test_europe_day_2025_is_open(self, explicit_dates):
+        """May 9, 2025 is Friday: LuxSE trades on Europe Day."""
+        assert "2025-05-09" not in explicit_dates
 
     def test_europe_day_2027_is_open(self, explicit_dates):
         """LuxSE trades on Europe Day; it is not a closing day."""
         assert "2027-05-09" not in explicit_dates
         assert "2027-05-10" not in explicit_dates
 
-    def test_national_day_2025(self, explicit_dates):
-        """Jun 23, 2025 is Monday."""
-        assert "2025-06-23" in explicit_dates
-        assert "National" in explicit_dates["2025-06-23"]["name"]
+    def test_national_day_2025_is_open(self, explicit_dates):
+        """Jun 23, 2025 is Monday: LuxSE stays open on National Day."""
+        assert "2025-06-23" not in explicit_dates
 
-    def test_assumption_2025(self, explicit_dates):
-        """Aug 15, 2025 is Friday."""
-        assert "2025-08-15" in explicit_dates
-        assert "Assumption" in explicit_dates["2025-08-15"]["name"]
+    def test_national_day_2026_is_open(self, explicit_dates):
+        """Jun 23, 2026 is Tuesday: LuxSE lists it as a day it is not closed."""
+        assert "2026-06-23" not in explicit_dates
+
+    def test_assumption_2025_is_open(self, explicit_dates):
+        """Aug 15, 2025 is Friday: Euronext's 2025 calendar has it as a full trading day."""
+        assert "2025-08-15" not in explicit_dates
 
     def test_all_saints_2025(self, explicit_dates):
         """Nov 1, 2025 is Saturday (weekend) — no explicit entry."""
@@ -139,10 +142,15 @@ class TestXLUXFixedHolidays:
 # ──────────────────────────────────────────────────────────────
 
 class TestXLUXChristmas:
-    def test_christmas_eve_2025(self, explicit_dates):
-        """Dec 24, 2025 is Wednesday — full closure."""
-        assert "2025-12-24" in explicit_dates
-        assert explicit_dates["2025-12-24"]["status"] == "closed"
+    def test_christmas_eve_2025_is_early_close(self, explicit_dates):
+        """Dec 24, 2025 is Wednesday: a half trading day, not a closure."""
+        assert explicit_dates["2025-12-24"]["status"] == "early_close"
+        assert explicit_dates["2025-12-24"]["early_close_time"] == "14:05"
+
+    def test_christmas_eve_2026_is_early_close(self, explicit_dates):
+        """LuxSE: sessions close at 14h05 on Thursday 24 December 2026."""
+        assert explicit_dates["2026-12-24"]["status"] == "early_close"
+        assert explicit_dates["2026-12-24"]["early_close_time"] == "14:05"
 
     def test_christmas_day_2025(self, explicit_dates):
         """Dec 25, 2025 is Thursday."""
@@ -159,10 +167,11 @@ class TestXLUXChristmas:
         assert "2027-12-25" not in explicit_dates
         assert "2027-12-27" not in explicit_dates
 
-    def test_boxing_day_2026_substitute(self, explicit_dates):
-        """Dec 26, 2026 is Saturday — substitute to Monday Dec 28."""
+    def test_boxing_day_2026_saturday_is_not_moved(self, explicit_dates):
+        """Dec 26, 2026 is Saturday. Euronext's Monday 28 December substitute
+        applies to Dublin only: LuxSE is open."""
         assert "2026-12-26" not in explicit_dates
-        assert "2026-12-28" in explicit_dates
+        assert "2026-12-28" not in explicit_dates
 
     def test_boxing_day_2027_sunday_is_not_moved(self, explicit_dates):
         """Dec 26, 2027 is Sunday: no Tuesday substitute."""
@@ -193,15 +202,15 @@ class TestXLUXEaster:
         """Easter + 1 day — March 29, 2027."""
         assert "2027-03-29" in explicit_dates
 
-    def test_ascension_2025(self, explicit_dates):
-        """Easter + 39 days — May 29, 2025."""
-        assert "2025-05-29" in explicit_dates
-        assert "Ascension" in explicit_dates["2025-05-29"]["name"]
+    def test_ascension_is_open(self, explicit_dates):
+        """Ascension Day is a full trading day on Euronext and LuxSE."""
+        assert "2025-05-29" not in explicit_dates
+        assert "2026-05-14" not in explicit_dates
 
-    def test_whit_monday_2025(self, explicit_dates):
-        """Easter + 50 days — June 9, 2025."""
-        assert "2025-06-09" in explicit_dates
-        assert "Whit" in explicit_dates["2025-06-09"]["name"]
+    def test_whit_monday_is_open(self, explicit_dates):
+        """Whit Monday is a full trading day on Euronext and LuxSE."""
+        assert "2025-06-09" not in explicit_dates
+        assert "2026-05-25" not in explicit_dates
 
     def test_whit_monday_2028_is_open(self, explicit_dates):
         """Whit Monday (5 June 2028) is a Luxembourg public holiday on which LuxSE does not close."""
@@ -239,7 +248,7 @@ class TestXLUXStructure:
             assert entry["status"] in ["closed", "early_close"]
 
     def test_all_statuses_closed(self, explicit_dates):
-        """Only Christmas Eve and New Year's Eve (from 2027) are early closes."""
+        """Only Christmas Eve and New Year's Eve are early closes."""
         for day, entry in explicit_dates.items():
             if entry["status"] == "early_close":
                 assert day[5:] in ("12-24", "12-31")
@@ -255,12 +264,13 @@ class TestXLUXStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~35-45 entries: 2025 and 2026 plus the closing days for 2027-2029."""
-        assert 30 <= len(explicit_dates) <= 50, f"Unexpected count: {len(explicit_dates)}"
+        """~30-40 entries: closing days and early closes for 2025-2029."""
+        assert 28 <= len(explicit_dates) <= 45, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
-            assert "bourse.lu" in entry["source_url"] or "luxse.com" in entry["source_url"]
+            assert any(host in entry["source_url"]
+                       for host in ("bourse.lu", "luxse.com", "euronext.com"))
 
 
 # ──────────────────────────────────────────────────────────────
@@ -347,4 +357,41 @@ class TestFutureYearClosingDays:
     @pytest.mark.parametrize("day", ["2027-06-23", "2028-06-23", "2027-05-06", "2029-11-01",
                                      "2028-08-15", "2029-05-09", "2027-06-23"])
     def test_luxembourg_public_holidays_are_trading_days(self, day):
+        assert day not in _closed("XLUX", int(day[:4]))
+
+
+# ──────────────────────────────────────────────────────────────
+# 2025-2026 closing days (v2.23.8)
+# ──────────────────────────────────────────────────────────────
+
+class TestHistoricalYearClosingDays:
+    """2025 and 2026 follow the same rule as 2027-2029. Euronext's holiday
+    calendars (euronext.com/en/trading/trading-hours-holidays) close
+    Amsterdam, Brussels, Lisbon and Paris only on New Year, Good Friday,
+    Easter Monday, 1 May, Christmas Day and (2025) Boxing Day, and list
+    Ascension, Whit Monday and 15 August as full trading days. LuxSE's own
+    page says it stays open on 23 June and closes at 14h05 on 24 and 31
+    December 2026."""
+
+    def test_2025(self):
+        assert _closed("XLUX", 2025) == {"2025-01-01", "2025-04-18", "2025-04-21",
+                                         "2025-05-01", "2025-12-25", "2025-12-26"}
+
+    def test_2026(self):
+        assert _closed("XLUX", 2026) == {"2026-01-01", "2026-04-03", "2026-04-06",
+                                         "2026-05-01", "2026-12-25"}
+
+    @pytest.mark.parametrize("year,days", [
+        (2025, {"2025-12-24": "14:05", "2025-12-31": "14:05"}),
+        (2026, {"2026-12-24": "14:05", "2026-12-31": "14:05"}),
+    ])
+    def test_early_closes(self, year, days):
+        assert _early("XLUX", year) == days
+
+    @pytest.mark.parametrize("day", [
+        "2025-05-09", "2025-05-29", "2025-06-09", "2025-06-23", "2025-08-15",
+        "2025-12-24", "2026-05-14", "2026-05-25", "2026-06-23", "2026-12-24",
+        "2026-12-28",
+    ])
+    def test_former_false_closures_are_trading_days(self, day):
         assert day not in _closed("XLUX", int(day[:4]))

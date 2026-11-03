@@ -9,7 +9,7 @@ python3 tools/divergence_report.py
 
 This file is regenerated automatically every Monday at 08:00 UTC by the Divergence workflow (`.github/workflows/divergence.yml`), which opens a pull request when it changes. Manual edits will be overwritten; record verdicts in `docs/divergence_triage.json` instead.
 
-Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.0. PMC is `pandas_market_calendars`, EC is `exchange_calendars`.
+Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.0. PMC is `pandas_market_calendars`, EC is `exchange_calendars`.
 
 ## How to read this
 
@@ -65,7 +65,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XLIS | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XLIT | 1244 | 1246 | 1246 | 6 | 99.5% |
 | XLON | 1518 | 1518 | 1518 | 0 | 100.0% |
-| XLUX | 1268 | 1279 | 1279 | 11 | 99.1% |
+| XLUX | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XMAD | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XMAL | 1242 | No reference data | No reference data | n/a | n/a |
 | XMEX | 1257 | 1257 | 1257 | 0 | 100.0% |
@@ -102,8 +102,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 25 of 50.
-- Trading days on which all available sources agree: 62431 of 62795 (99.4%).
+- Exchanges with no disagreement: 26 of 50.
+- Trading days on which all available sources agree: 62442 of 62795 (99.4%).
 
 ## Disagreements by year
 
@@ -124,7 +124,6 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XKRX | - | 3 | 2 | 2 | 2 | 1 |
 | XLIM | - | 1 | 4 | 3 | 3 | 0 |
 | XLIT | - | 3 | 1 | 0 | 1 | 1 |
-| XLUX | - | 6 | 5 | 0 | 0 | 0 |
 | XMOS | - | 5 | 4 | - | - | - |
 | XNSE | - | 1 | 0 | 8 | 12 | 15 |
 | XPHS | - | 5 | 4 | 3 | 2 | 1 |
@@ -141,8 +140,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 69 | 0 | 4 | 1 | 0 | 64 |
-| 2026 | 48 | 0 | 0 | 0 | 0 | 48 |
+| 2025 | 63 | 0 | 4 | 1 | 0 | 58 |
+| 2026 | 43 | 0 | 0 | 0 | 0 | 43 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -251,10 +250,6 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open, EC open (4): 2025-12-25 Th, 2026-12-25 Fr, 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
 - registry open, PMC closed, EC closed (2): 2025-05-29 Th, 2025-12-31 We
 
-### XLUX (11)
-
-- registry closed, PMC open, EC open (11): 2025-05-09 Fr, 2025-05-29 Th, 2025-06-09 Mo, 2025-06-23 Mo, 2025-08-15 Fr, 2025-12-24 We, 2026-05-14 Th, 2026-05-25 Mo, 2026-06-23 Tu, 2026-12-24 Th, 2026-12-28 Mo
-
 ### XMOS (9)
 
 - registry closed, PMC open, EC open (9): 2025-01-03 Fr, 2025-01-06 Mo, 2025-01-08 We, 2025-05-02 Fr, 2025-06-13 Fr, 2026-01-05 Mo, 2026-01-06 Tu, 2026-01-08 Th, 2026-05-04 Mo
@@ -312,7 +307,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 26 dates; Registry error: 304 dates; Unpublished: 204 dates.
+- Convention difference: 1 dates; Library error: 26 dates; Registry error: 315 dates; Unpublished: 204 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -588,11 +583,19 @@ Source: https://www.londonstockexchange.com/market-data/trading-services/trading
 
 ### XLUX: Registry error (22, fixed in 2.23.5)
 
-LuxSE's own page lists the closing days (for 2026 only Christmas Day was still ahead) and says it will not be closed on public holidays such as National Day (23 June). It trades on Europe Day, Ascension, Whit Monday, Assumption and All Saints, follows the Euronext/T2 closing days (New Year, Good Friday, Easter Monday, 1 May, Christmas, Boxing Day) and closes early at 14:05 on 24 and 31 December. The registry closed the Luxembourg public holidays, closed Christmas Eve all day and moved weekend holidays to a Monday. 22 dates fixed for 2027-2029; the same extra closures remain in the 2025 and 2026 entries.
+LuxSE's own page lists the closing days (for 2026 only Christmas Day was still ahead) and says it will not be closed on public holidays such as National Day (23 June). It trades on Europe Day, Ascension, Whit Monday, Assumption and All Saints, follows the Euronext/T2 closing days (New Year, Good Friday, Easter Monday, 1 May, Christmas, Boxing Day) and closes early at 14:05 on 24 and 31 December. The registry closed the Luxembourg public holidays, closed Christmas Eve all day and moved weekend holidays to a Monday. 22 dates fixed for 2027-2029 (the 2025 and 2026 entries were fixed in 2.23.8).
 
 Dates: 2027-05-03, 2027-05-06, 2027-05-10, 2027-05-17, 2027-06-23, 2027-11-01, 2027-12-24, 2027-12-27, 2027-12-28, 2028-01-03, 2028-05-09, 2028-05-25, 2028-06-05, 2028-06-23, 2028-08-15, 2028-11-01, 2029-05-09, 2029-05-10, 2029-05-21, 2029-08-15, 2029-11-01, 2029-12-24.
 
 Source: https://www.luxse.com/trading/opening-hours-and-closing-days
+
+### XLUX: Registry error (11, fixed in 2.23.8)
+
+Euronext's 2025 and 2026 holiday calendars close Amsterdam, Brussels, Lisbon and Paris only on New Year, Good Friday, Easter Monday, 1 May, Christmas Day and (2025) Boxing Day. They list Ascension, Whit Monday and 15 August 2025 as full trading days, 24 and 31 December as half days, and Monday 28 December 2026 (substitute for Boxing Day) as a closure for Dublin only. LuxSE trades on the same Optiq system; its own page lists only 25 December among the 2026 closing days, says it stays open on National Day (23 June) and closes at 14h05 on 24 and 31 December 2026. The registry still closed Europe Day, Ascension, Whit Monday, National Day, Assumption and Christmas Eve, and added a 28 December 2026 substitute. 11 dates fixed; 24 and 31 December now early closes at 14:05. The 14:05 time for 2025 follows the same end-of-year pattern: Euronext's 2025 end-of-year appendix and a LuxSE page for 2025 were not read, so 2025 Europe Day and National Day rest on the Euronext closing list and LuxSE's 2026 statement.
+
+Dates: 2025-05-09, 2025-05-29, 2025-06-09, 2025-06-23, 2025-08-15, 2025-12-24, 2026-05-14, 2026-05-25, 2026-06-23, 2026-12-24, 2026-12-28.
+
+Source: https://www.euronext.com/en/trading/trading-hours-holidays
 
 ### XMEX: Registry error (3, fixed in 2.23.6)
 

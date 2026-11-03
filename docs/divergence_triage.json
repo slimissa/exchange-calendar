@@ -821,7 +821,7 @@
         "2029-11-01",
         "2029-12-24"
       ],
-      "summary": "LuxSE's own page lists the closing days (for 2026 only Christmas Day was still ahead) and says it will not be closed on public holidays such as National Day (23 June). It trades on Europe Day, Ascension, Whit Monday, Assumption and All Saints, follows the Euronext/T2 closing days (New Year, Good Friday, Easter Monday, 1 May, Christmas, Boxing Day) and closes early at 14:05 on 24 and 31 December. The registry closed the Luxembourg public holidays, closed Christmas Eve all day and moved weekend holidays to a Monday. 22 dates fixed for 2027-2029; the same extra closures remain in the 2025 and 2026 entries.",
+      "summary": "LuxSE's own page lists the closing days (for 2026 only Christmas Day was still ahead) and says it will not be closed on public holidays such as National Day (23 June). It trades on Europe Day, Ascension, Whit Monday, Assumption and All Saints, follows the Euronext/T2 closing days (New Year, Good Friday, Easter Monday, 1 May, Christmas, Boxing Day) and closes early at 14:05 on 24 and 31 December. The registry closed the Luxembourg public holidays, closed Christmas Eve all day and moved weekend holidays to a Monday. 22 dates fixed for 2027-2029 (the 2025 and 2026 entries were fixed in 2.23.8).",
       "source_url": "https://www.luxse.com/trading/opening-hours-and-closing-days"
     },
     {
@@ -1221,6 +1221,27 @@
       ],
       "summary": "The 23rd National Assembly election is Wednesday 12 April 2028 (the first Wednesday on or after the 50th day before the 22nd Assembly's term ends on 29 May 2028). Election day is a public holiday and KRX closes, as it did on 3 June 2026. exchange_calendars has no election days.",
       "source_url": "https://www.segye.com/newsView/20260603508359"
+    },
+    {
+      "exchange": "XLUX",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.8",
+      "dates": [
+        "2025-05-09",
+        "2025-05-29",
+        "2025-06-09",
+        "2025-06-23",
+        "2025-08-15",
+        "2025-12-24",
+        "2026-05-14",
+        "2026-05-25",
+        "2026-06-23",
+        "2026-12-24",
+        "2026-12-28"
+      ],
+      "summary": "Euronext's 2025 and 2026 holiday calendars close Amsterdam, Brussels, Lisbon and Paris only on New Year, Good Friday, Easter Monday, 1 May, Christmas Day and (2025) Boxing Day. They list Ascension, Whit Monday and 15 August 2025 as full trading days, 24 and 31 December as half days, and Monday 28 December 2026 (substitute for Boxing Day) as a closure for Dublin only. LuxSE trades on the same Optiq system; its own page lists only 25 December among the 2026 closing days, says it stays open on National Day (23 June) and closes at 14h05 on 24 and 31 December 2026. The registry still closed Europe Day, Ascension, Whit Monday, National Day, Assumption and Christmas Eve, and added a 28 December 2026 substitute. 11 dates fixed; 24 and 31 December now early closes at 14:05. The 14:05 time for 2025 follows the same end-of-year pattern: Euronext's 2025 end-of-year appendix and a LuxSE page for 2025 were not read, so 2025 Europe Day and National Day rest on the Euronext closing list and LuxSE's 2026 statement.",
+      "source_url": "https://www.euronext.com/en/trading/trading-hours-holidays"
     }
   ]
 }
