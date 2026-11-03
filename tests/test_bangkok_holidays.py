@@ -98,10 +98,14 @@ class TestXBKKNewYear:
         assert "2025-01-01" in explicit_dates
         assert explicit_dates["2025-01-01"]["name"] == "New Year's Day"
 
-    def test_new_year_holiday_2025(self, explicit_dates):
-        """Jan 2, 2025 is Thursday."""
-        assert "2025-01-02" in explicit_dates
-        assert "New Year Holiday" in explicit_dates["2025-01-02"]["name"]
+    def test_jan_2_2025_is_open(self, explicit_dates):
+        """Jan 2, 2025 is Thursday. BoT FPG. 5/2567 lists only 1 January; the
+        additional 2 January holiday is for 2026."""
+        assert "2025-01-02" not in explicit_dates
+
+    def test_jan_2_2026_additional_holiday(self, explicit_dates):
+        """BoT 31/2568 and 15/2567: Friday 2 January 2026 is an additional special holiday."""
+        assert "2026-01-02" in explicit_dates
 
     def test_no_new_year_substitute_in_2027(self, explicit_dates):
         """BoT announcement 37/2569 lists only 1 January for New Year 2027."""
@@ -119,11 +123,12 @@ class TestXBKKNewYear:
 
 class TestXBKKSongkran:
     def test_songkran_2025(self, explicit_dates):
-        """Songkran 2025 — Apr 14-16."""
+        """Songkran 2025 — Apr 14-15 for banks and SET. The Cabinet's Wednesday
+        16 April substitute is a government holiday, not a BoT holiday."""
         assert "2025-04-14" in explicit_dates
         assert "Songkran" in explicit_dates["2025-04-14"]["name"]
         assert "2025-04-15" in explicit_dates
-        assert "2025-04-16" in explicit_dates
+        assert "2025-04-16" not in explicit_dates
 
     def test_songkran_2026(self, explicit_dates):
         """Songkran 2026 — Apr 13-15."""
@@ -163,8 +168,10 @@ class TestXBKKBuddhist:
         assert "Visakha" in explicit_dates["2025-05-12"]["name"]
 
     def test_visakha_bucha_2026(self, explicit_dates):
-        """Visakha Bucha 2026 — May 25."""
-        assert "2026-05-25" in explicit_dates
+        """Visakha Bucha 2026 falls on Sunday 31 May; BoT 31/2568 gives Monday 1 June."""
+        assert "2026-05-25" not in explicit_dates
+        assert "2026-06-01" in explicit_dates
+        assert "Visakha" in explicit_dates["2026-06-01"]["name"]
 
     def test_visakha_bucha_2027(self, explicit_dates):
         """Visakha Bucha 2027 is Thursday 20 May."""
@@ -186,14 +193,18 @@ class TestXBKKBuddhist:
         assert "2027-07-18" not in explicit_dates
         assert "2027-07-19" in explicit_dates
 
-    def test_buddhist_lent_2025(self, explicit_dates):
-        """Buddhist Lent 2025 — Jul 11."""
-        assert "2025-07-11" in explicit_dates
-        assert "Lent" in explicit_dates["2025-07-11"]["name"]
+    def test_buddhist_lent_2025_is_open(self, explicit_dates):
+        """Khao Phansa (11 July 2025) is a public-sector holiday only: not on the BoT list."""
+        assert "2025-07-11" not in explicit_dates
 
-    def test_buddhist_lent_2026(self, explicit_dates):
-        """Buddhist Lent 2026 — Jul 30."""
-        assert "2026-07-30" in explicit_dates
+    def test_buddhist_lent_2026_is_open(self, explicit_dates):
+        """Khao Phansa (30 July 2026) is not on BoT notification 31/2568."""
+        assert "2026-07-30" not in explicit_dates
+
+    def test_kings_birthday_2025_and_2026(self, explicit_dates):
+        """H.M. the King's Birthday, 28 July, is a BoT holiday (Monday in 2025, Tuesday in 2026)."""
+        assert "King" in explicit_dates["2025-07-28"]["name"]
+        assert "King" in explicit_dates["2026-07-28"]["name"]
 
     def test_buddhist_lent_2027(self, explicit_dates):
         """Buddhist Lent 2027 — Jul 19."""
@@ -396,3 +407,35 @@ class TestBotAnnouncement2027:
     @pytest.mark.parametrize("day", ["2027-01-04", "2027-03-22", "2027-05-13"])
     def test_removed_days_are_open(self, day):
         assert day not in _closed("XBKK", 2027)
+
+
+class TestBotAnnouncements2025And2026:
+    """SET and TFEX holidays follow the Bank of Thailand's announcements
+    (tfex.co.th/en/about/holiday). 2025: BoT FPG. 5/2567 plus the additional
+    holidays of 2 June and 11 August (BoT 15/2567). 2026: BoT 31/2568, which
+    already includes Friday 2 January. The Bangkok-only holiday of Friday
+    16 October 2026 (BoT 26/2569) is not applied here."""
+
+    def test_2025_closed_weekdays(self):
+        assert _closed("XBKK", 2025) == {
+            "2025-01-01", "2025-02-12", "2025-04-07", "2025-04-14", "2025-04-15",
+            "2025-05-01", "2025-05-05", "2025-05-12", "2025-06-02", "2025-06-03",
+            "2025-07-10", "2025-07-28", "2025-08-11", "2025-08-12", "2025-10-13",
+            "2025-10-23", "2025-12-05", "2025-12-10", "2025-12-31"}
+
+    def test_2026_closed_weekdays(self):
+        assert _closed("XBKK", 2026) == {
+            "2026-01-01", "2026-01-02", "2026-03-03", "2026-04-06", "2026-04-13",
+            "2026-04-14", "2026-04-15", "2026-05-01", "2026-05-04", "2026-06-01",
+            "2026-06-03", "2026-07-28", "2026-07-29", "2026-08-12", "2026-10-13",
+            "2026-10-23", "2026-12-07", "2026-12-10", "2026-12-31"}
+
+    @pytest.mark.parametrize("day", [
+        "2025-01-02", "2025-04-16", "2025-07-11", "2026-05-25", "2026-07-30"])
+    def test_former_false_closures_are_trading_days(self, day):
+        assert day not in _closed("XBKK", int(day[:4]))
+
+    @pytest.mark.parametrize("day", [
+        "2025-06-02", "2025-07-28", "2025-08-11", "2026-06-01", "2026-07-28"])
+    def test_former_missing_closures_are_closed(self, day):
+        assert day in _closed("XBKK", int(day[:4]))

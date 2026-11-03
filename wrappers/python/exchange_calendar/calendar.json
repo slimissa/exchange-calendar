@@ -4423,12 +4423,6 @@
             "status": "closed"
           },
           {
-            "date": "2025-01-02",
-            "name": "New Year Holiday",
-            "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2025-02-12",
             "name": "Makha Bucha Day",
             "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
@@ -4453,12 +4447,6 @@
             "status": "closed"
           },
           {
-            "date": "2025-04-16",
-            "name": "Songkran Festival",
-            "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2025-05-01",
             "name": "Labour Day",
             "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
@@ -4477,6 +4465,12 @@
             "status": "closed"
           },
           {
+            "date": "2025-06-02",
+            "name": "Additional special holiday",
+            "source_url": "https://www.bot.or.th/en/news-and-media/news/news-20241127.html",
+            "status": "closed"
+          },
+          {
             "date": "2025-06-03",
             "name": "Queen's Birthday (substitute)",
             "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
@@ -4489,9 +4483,15 @@
             "status": "closed"
           },
           {
-            "date": "2025-07-11",
-            "name": "Buddhist Lent Day",
-            "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
+            "date": "2025-07-28",
+            "name": "King's Birthday",
+            "source_url": "https://www.bot.or.th/content/dam/bot/content-fragments/holiday-calendar/en/bot-notification-holiday/BOT-Notification-Holiday-Calendar-2025-EN.pdf",
+            "status": "closed"
+          },
+          {
+            "date": "2025-08-11",
+            "name": "Additional special holiday",
+            "source_url": "https://www.bot.or.th/en/news-and-media/news/news-20241127.html",
             "status": "closed"
           },
           {
@@ -4585,9 +4585,9 @@
             "status": "closed"
           },
           {
-            "date": "2026-05-25",
-            "name": "Visakha Bucha Day",
-            "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
+            "date": "2026-06-01",
+            "name": "Visakha Bucha Day (substitute)",
+            "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25680162.pdf",
             "status": "closed"
           },
           {
@@ -4597,14 +4597,14 @@
             "status": "closed"
           },
           {
-            "date": "2026-07-29",
-            "name": "Asahna Bucha Day",
-            "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
+            "date": "2026-07-28",
+            "name": "King's Birthday",
+            "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25680162.pdf",
             "status": "closed"
           },
           {
-            "date": "2026-07-30",
-            "name": "Buddhist Lent Day",
+            "date": "2026-07-29",
+            "name": "Asahna Bucha Day",
             "source_url": "https://www.set.or.th/en/market/information/trading-calendar",
             "status": "closed"
           },

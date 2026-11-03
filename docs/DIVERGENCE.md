@@ -32,7 +32,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XBAH | 1262 | No reference data | No reference data | n/a | n/a |
 | XBDA | 1254 | 1254 | 1254 | 4 | 99.7% |
 | XBEY | 1265 | No reference data | No reference data | n/a | n/a |
-| XBKK | 727 | 727 | 727 | 10 | 98.6% |
+| XBKK | 727 | 727 | 727 | 0 | 100.0% |
 | XBOG | 1220 | 1216 | 1216 | 6 | 99.5% |
 | XBOM | 1239 | 1274 | 493* | 35 | 97.3% |
 | XBRU | 1279 | 1279 | 1279 | 0 | 100.0% |
@@ -102,8 +102,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 26 of 50.
-- Trading days on which all available sources agree: 62442 of 62795 (99.4%).
+- Exchanges with no disagreement: 27 of 50.
+- Trading days on which all available sources agree: 62447 of 62790 (99.5%).
 
 ## Disagreements by year
 
@@ -112,7 +112,6 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | Exchange | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 |
 |---|---:|---:|---:|---:|---:|---:|
 | XBDA | - | 0 | 0 | 0 | 4 | 0 |
-| XBKK | - | 6 | 4 | 0 | - | - |
 | XBOG | - | 2 | 1 | 1 | 1 | 1 |
 | XBOM | - | 0 | 0 | 8 | 12 | 15 |
 | XBUD | - | 3 | 4 | 0 | 0 | 4 |
@@ -140,8 +139,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 63 | 0 | 4 | 1 | 0 | 58 |
-| 2026 | 43 | 0 | 0 | 0 | 0 | 43 |
+| 2025 | 57 | 0 | 4 | 1 | 0 | 52 |
+| 2026 | 39 | 0 | 0 | 0 | 0 | 39 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -191,11 +190,6 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 - registry closed, PMC open, EC open (2): 2028-07-27 Th, 2028-07-28 Fr
 - registry open, PMC closed, EC closed (2): 2028-08-03 Th, 2028-08-04 Fr
-
-### XBKK (10)
-
-- registry closed, PMC open, EC open (5): 2025-01-02 Th, 2025-04-16 We, 2025-07-11 Fr, 2026-05-25 Mo, 2026-07-30 Th
-- registry open, PMC closed, EC closed (5): 2025-06-02 Mo, 2025-07-28 Mo, 2025-08-11 Mo, 2026-06-01 Mo, 2026-07-28 Tu
 
 ### XBOG (6)
 
@@ -307,7 +301,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 26 dates; Registry error: 315 dates; Unpublished: 204 dates.
+- Convention difference: 1 dates; Library error: 26 dates; Registry error: 325 dates; Unpublished: 204 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -332,6 +326,14 @@ The Bank of Thailand's announcement 37/2569 (Royal Gazette, 25 August 2026) sets
 Dates: 2027-01-04, 2027-02-22, 2027-03-22, 2027-05-13, 2027-05-20, 2027-07-28.
 
 Source: https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2569/ThaiPDF/25690175.pdf
+
+### XBKK: Registry error (10, fixed in 2.23.8)
+
+SET and TFEX holidays follow the Bank of Thailand's announcements (tfex.co.th holiday page). BoT FPG. 5/2567 (2025) and 31/2568 (2026) are the closing lists, with the additional holidays of 2 June and 11 August 2025 from BoT 15/2567. The registry wrongly closed 2 January 2025, 16 April 2025 (the Cabinet's Songkran substitute, a government holiday only), 11 July 2025 and 30 July 2026 (Khao Phansa, public sector only) and Visakha Bucha on 25 May 2026 (it falls on Sunday 31 May; BoT gives Monday 1 June). It missed 2 June, 28 July and 11 August 2025, and 1 June and 28 July 2026. 10 dates fixed. Daily SET market reports show the exchange trading on 30 July 2026 and not on 28 or 29 July. Not applied: Friday 16 October 2026, a BoT special holiday for financial institutions in Bangkok only (BoT 26/2569); whether SET closed that day was not verified.
+
+Dates: 2025-01-02, 2025-04-16, 2025-06-02, 2025-07-11, 2025-07-28, 2025-08-11, 2026-05-25, 2026-06-01, 2026-07-28, 2026-07-30.
+
+Source: https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25680162.pdf
 
 ### XBOM: Registry error (12, fixed in 2.21.3)
 

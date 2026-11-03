@@ -1242,6 +1242,26 @@
       ],
       "summary": "Euronext's 2025 and 2026 holiday calendars close Amsterdam, Brussels, Lisbon and Paris only on New Year, Good Friday, Easter Monday, 1 May, Christmas Day and (2025) Boxing Day. They list Ascension, Whit Monday and 15 August 2025 as full trading days, 24 and 31 December as half days, and Monday 28 December 2026 (substitute for Boxing Day) as a closure for Dublin only. LuxSE trades on the same Optiq system; its own page lists only 25 December among the 2026 closing days, says it stays open on National Day (23 June) and closes at 14h05 on 24 and 31 December 2026. The registry still closed Europe Day, Ascension, Whit Monday, National Day, Assumption and Christmas Eve, and added a 28 December 2026 substitute. 11 dates fixed; 24 and 31 December now early closes at 14:05. The 14:05 time for 2025 follows the same end-of-year pattern: Euronext's 2025 end-of-year appendix and a LuxSE page for 2025 were not read, so 2025 Europe Day and National Day rest on the Euronext closing list and LuxSE's 2026 statement.",
       "source_url": "https://www.euronext.com/en/trading/trading-hours-holidays"
+    },
+    {
+      "exchange": "XBKK",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.8",
+      "dates": [
+        "2025-01-02",
+        "2025-04-16",
+        "2025-06-02",
+        "2025-07-11",
+        "2025-07-28",
+        "2025-08-11",
+        "2026-05-25",
+        "2026-06-01",
+        "2026-07-28",
+        "2026-07-30"
+      ],
+      "summary": "SET and TFEX holidays follow the Bank of Thailand's announcements (tfex.co.th holiday page). BoT FPG. 5/2567 (2025) and 31/2568 (2026) are the closing lists, with the additional holidays of 2 June and 11 August 2025 from BoT 15/2567. The registry wrongly closed 2 January 2025, 16 April 2025 (the Cabinet's Songkran substitute, a government holiday only), 11 July 2025 and 30 July 2026 (Khao Phansa, public sector only) and Visakha Bucha on 25 May 2026 (it falls on Sunday 31 May; BoT gives Monday 1 June). It missed 2 June, 28 July and 11 August 2025, and 1 June and 28 July 2026. 10 dates fixed. Daily SET market reports show the exchange trading on 30 July 2026 and not on 28 or 29 July. Not applied: Friday 16 October 2026, a BoT special holiday for financial institutions in Bangkok only (BoT 26/2569); whether SET closed that day was not verified.",
+      "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25680162.pdf"
     }
   ]
 }
