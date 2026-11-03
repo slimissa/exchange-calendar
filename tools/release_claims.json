@@ -1484,5 +1484,51 @@
       "file": "BLOCKED.md",
       "contains": "<a id=\"xbda\"></a>"
     }
+  ],
+  "2.23.7": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.7"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.7] - 2026-11-03"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Fixed known bugs in XKRX (election day), XIST (missing 2025-2026 Bayram), and XCSE (false May 1st closure)."
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.7-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.7"
+    },
+    {
+      "file": "exchanges/XKRX.json",
+      "contains": "National Assembly Election Day"
+    },
+    {
+      "file": "exchanges/XIST.json",
+      "contains": "\"date\": \"2026-05-27\""
+    },
+    {
+      "file": "exchanges/XCSE.json",
+      "contains": "\"date\": \"2026-05-15\""
+    },
+    {
+      "file": "tests/test_korea_holidays.py",
+      "contains": "class TestElectionDay:"
+    },
+    {
+      "file": "tests/test_istanbul_holidays.py",
+      "contains": "class TestBayram2025And2026:"
+    },
+    {
+      "file": "tests/test_copenhagen_holidays.py",
+      "contains": "class TestMayFirstIsATradingDay:"
+    }
   ]
 }

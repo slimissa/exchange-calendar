@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.7] - 2026-11-03
+
+### Fixed
+- Fixed known bugs in XKRX (election day), XIST (missing 2025-2026 Bayram), and XCSE (false May 1st closure).
+- XKRX: 12 April 2028, the 23rd National Assembly election day, is a closing day.
+- XIST: Ramazan Bayrami and Kurban Bayrami are closed in 2025 and 2026 (31 March, 1 April, 6 and 9 June 2025; 20 March, 27 to 29 May 2026), with half-day eves.
+- XCSE: 1 May 2025 and 1 May 2026 are trading days, and the Friday after Ascension Day (30 May 2025, 15 May 2026) is closed.
+
+### Changed
+- 2025-2026 disagreements: 129 to 117. No new unclassified disagreement; the XKRX election day is a `library_error` in `docs/divergence_triage.json`. 22 unclassified disagreements remain for 2027-2029.
+
 ## [2.23.6] - 2026-11-02
 
 ### Fixed
