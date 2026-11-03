@@ -75,15 +75,15 @@
         "status": "closed"
       },
       {
-        "date": "2025-05-01",
-        "name": "Labour Day",
+        "date": "2025-05-29",
+        "name": "Ascension Day",
         "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
         "status": "closed"
       },
       {
-        "date": "2025-05-29",
-        "name": "Ascension Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
+        "date": "2025-05-30",
+        "name": "Day after Ascension Day",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
         "status": "closed"
       },
       {
@@ -147,15 +147,15 @@
         "status": "closed"
       },
       {
-        "date": "2026-05-01",
-        "name": "Labour Day",
+        "date": "2026-05-14",
+        "name": "Ascension Day",
         "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
         "status": "closed"
       },
       {
-        "date": "2026-05-14",
-        "name": "Ascension Day",
-        "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
+        "date": "2026-05-15",
+        "name": "Day after Ascension Day",
+        "source_url": "https://www.tradinghours.com/exchanges/omxc-copenhagen/contact",
         "status": "closed"
       },
       {

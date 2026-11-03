@@ -81,8 +81,9 @@ class TestXCSEFixedHolidays:
         assert "2025-01-01" in explicit_dates
         assert explicit_dates["2025-01-01"]["status"] == "closed"
 
-    def test_labour_day_2025(self, explicit_dates):
-        assert "2025-05-01" in explicit_dates
+    def test_labour_day_2025_is_not_a_closing_day(self, explicit_dates):
+        """Nasdaq's 2025 schedule for Copenhagen has no 1 May closure."""
+        assert "2025-05-01" not in explicit_dates
 
     def test_constitution_day_2025(self, explicit_dates):
         assert "2025-06-05" in explicit_dates
@@ -248,3 +249,16 @@ class TestFutureYearFixes:
     @pytest.mark.parametrize("day", ["2028-05-01", "2029-05-01"])
     def test_labour_day_is_a_trading_day(self, day):
         assert day not in _closed("XCSE", int(day[:4]))
+
+
+class TestMayFirstIsATradingDay:
+    """Nasdaq's holiday schedule lists no 1 May closure for Copenhagen in 2025 or
+    2026, and closes the Friday after Ascension Day."""
+
+    @pytest.mark.parametrize("day", ["2025-05-01", "2026-05-01", "2028-05-01", "2029-05-01"])
+    def test_may_first_is_a_trading_day(self, day):
+        assert day not in _closed("XCSE", int(day[:4]))
+
+    @pytest.mark.parametrize("day", ["2025-05-30", "2026-05-15"])
+    def test_day_after_ascension_is_closed(self, day):
+        assert day in _closed("XCSE", int(day[:4]))

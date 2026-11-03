@@ -287,7 +287,7 @@ class TestFutureYearLawDates:
 
     def test_2028(self):
         assert _closed("XKRX", 2028) == {
-            "2028-01-26", "2028-01-27", "2028-01-28", "2028-03-01", "2028-05-01",
+            "2028-01-26", "2028-01-27", "2028-01-28", "2028-03-01", "2028-04-12", "2028-05-01",
             "2028-05-02", "2028-05-05", "2028-06-06", "2028-07-17", "2028-08-15",
             "2028-10-02", "2028-10-03", "2028-10-04", "2028-10-05", "2028-10-09",
             "2028-12-25", "2028-12-29"}
@@ -311,3 +311,21 @@ class TestFutureYearLawDates:
     def test_chuseok_2028_overlaps_foundation_day_with_one_substitute(self):
         closed = _closed("XKRX", 2028)
         assert "2028-10-05" in closed and "2028-10-06" not in closed
+
+
+class TestElectionDay:
+    """The National Assembly election day is a public holiday under the Public
+    Official Election Act and the Regulation on Public Holidays, and KRX closes
+    (it closed on 3 June 2026, the local election day). The term of the 22nd
+    Assembly ends on 29 May 2028, so the election is the first Wednesday on or
+    after the 50th day before it: Wednesday 12 April 2028. By-elections are not
+    holidays, and no other term-expiry election falls in 2027-2029."""
+
+    def test_2028_04_12_is_closed(self):
+        assert "2028-04-12" in _closed("XKRX", 2028)
+        assert date(2028, 4, 12).weekday() == 2
+
+    def test_no_other_election_closure_2027_2029(self):
+        # No nationwide election is scheduled in 2027 or 2029; April and June are open.
+        for year in (2027, 2029):
+            assert not [d for d in _closed("XKRX", year) if d[5:7] in ("04", "06") and d[5:] != "06-06"]

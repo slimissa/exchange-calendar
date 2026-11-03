@@ -905,7 +905,7 @@ Was blocked, no longer is. Kept as the history of the verdict change.
 <a id="xist"></a>
 ## XIST — Borsa Istanbul
 
-**Last verified:** 2026-10-01
+**Last verified:** 2026-11-02
 
 - **Checked:** the real 2026 holiday-schedule PDF, linked from
   borsaistanbul.com's official-holidays page — fetched successfully (not
@@ -957,6 +957,13 @@ Was blocked, no longer is. Kept as the history of the verdict change.
   carries its fetch. The 2026 confidence entry is `source: fetcher`,
   `level: high`, `last_verified: 2026-10-01`. The notes above are kept
   as history; the permanent deferral in the last bullet no longer holds.
+
+- **Update (2026-11-02):** the registry had the national days but none of the
+  religious closures. Borsa Istanbul's own holiday tables (announcements 31449
+  for 2025 and 41625 for 2026) list them, and exchange_calendars agreed, so
+  Ramazan Bayrami and Kurban Bayrami are now entered for 2025 and 2026, with the
+  half-day eves ending at 13:00. The same closures were added for 2027-2029 on
+  2026-11-01 (Diyanet for 2027, the same calculation after that).
 
 <a id="built-tracking"></a>
 # Not blocked: built, with tracking notes

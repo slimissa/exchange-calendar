@@ -45,7 +45,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XCAS | 1253 | No reference data | No reference data | n/a | n/a |
 | XCAY | 1249 | No reference data | No reference data | n/a | n/a |
 | XCOL | 747 | No reference data | No reference data | n/a | n/a |
-| XCSE | 1252 | 1252 | 1252 | 4 | 99.7% |
+| XCSE | 1252 | 1252 | 1252 | 0 | 100.0% |
 | XDFM | 1264 | No reference data | No reference data | n/a | n/a |
 | XDHA | 1262 | No reference data | No reference data | n/a | n/a |
 | XDUB | 1271 | 1271 | 1271 | 0 | 100.0% |
@@ -54,12 +54,12 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XHEL | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XHKG | 1479 | 1480 | 1480 | 3 | 99.8% |
 | XICE | 1243 | 1243 | 1243 | 0 | 100.0% |
-| XIST | 1263 | 1255 | 1255 | 8 | 99.4% |
+| XIST | 1255 | 1255 | 1255 | 0 | 100.0% |
 | XJKT | 1249 | No reference data | No reference data | n/a | n/a |
 | XJSE | 1251 | 1252 | 1252 | 1 | 99.9% |
 | XKAR | 1260 | 1270 | 1270 | 24 | 98.1% |
 | XKLS | 1228 | 1232 | 1232 | 16 | 98.7% |
-| XKRX | 1223 | 1224 | 1224 | 9 | 99.3% |
+| XKRX | 1222 | 1224 | 1224 | 10 | 99.2% |
 | XKUW | 1017 | No reference data | No reference data | n/a | n/a |
 | XLIM | 1240 | 1243 | 1243 | 11 | 99.1% |
 | XLIS | 1279 | 1279 | 1279 | 0 | 100.0% |
@@ -102,8 +102,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 23 of 50.
-- Trading days on which all available sources agree: 62430 of 62805 (99.4%).
+- Exchanges with no disagreement: 25 of 50.
+- Trading days on which all available sources agree: 62431 of 62795 (99.4%).
 
 ## Disagreements by year
 
@@ -117,13 +117,11 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XBOM | - | 0 | 0 | 8 | 12 | 15 |
 | XBUD | - | 3 | 4 | 0 | 0 | 4 |
 | XBUE | - | 6 | 3 | 3 | 1 | 1 |
-| XCSE | - | 2 | 2 | 0 | 0 | 0 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
-| XIST | - | 4 | 4 | 0 | 0 | 0 |
 | XJSE | - | 1 | 0 | 0 | 0 | 0 |
 | XKAR | - | 5 | 1 | 7 | 4 | 7 |
 | XKLS | - | 1 | 2 | 5 | 5 | 3 |
-| XKRX | - | 3 | 2 | 2 | 1 | 1 |
+| XKRX | - | 3 | 2 | 2 | 2 | 1 |
 | XLIM | - | 1 | 4 | 3 | 3 | 0 |
 | XLIT | - | 3 | 1 | 0 | 1 | 1 |
 | XLUX | - | 6 | 5 | 0 | 0 | 0 |
@@ -143,10 +141,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 75 | 0 | 4 | 1 | 0 | 70 |
-| 2026 | 54 | 0 | 0 | 0 | 0 | 54 |
+| 2025 | 69 | 0 | 4 | 1 | 0 | 64 |
+| 2026 | 48 | 0 | 0 | 0 | 0 | 48 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
-| 2028 | 88 | 0 | 4 | 0 | 76 | 8 |
+| 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
 
 ## No reference data
@@ -219,19 +217,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry open, PMC closed, EC closed (11): 2025-04-17 Th, 2025-06-17 Tu, 2025-08-18 Mo, 2025-10-13 Mo, 2025-11-17 Mo, 2026-06-17 We, 2026-11-23 Mo, 2027-03-25 Th, 2027-06-17 Th [library error], 2028-04-13 Th, 2029-03-29 Th
 - registry closed, PMC open, EC open (3): 2025-11-20 Th, 2026-11-20 Fr, 2027-06-21 Mo [library error]
 
-### XCSE (4)
-
-- registry closed, PMC open, EC open (2): 2025-05-01 Th, 2026-05-01 Fr
-- registry open, PMC closed, EC closed (2): 2025-05-30 Fr, 2026-05-15 Fr
-
 ### XHKG (3)
 
 - registry closed, PMC open, EC open (2): 2029-04-05 Th, 2029-09-24 Mo
 - registry open, PMC closed, EC closed (1): 2029-04-04 We
-
-### XIST (8)
-
-- registry open, PMC closed, EC closed (8): 2025-03-31 Mo, 2025-04-01 Tu, 2025-06-06 Fr, 2025-06-09 Mo, 2026-03-20 Fr, 2026-05-27 We, 2026-05-28 Th, 2026-05-29 Fr
 
 ### XJSE (1)
 
@@ -247,9 +236,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open, EC open (10): 2026-03-20 Fr, 2026-06-02 Tu, 2027-02-09 Tu [unpublished], 2027-03-11 Th [unpublished], 2027-08-16 Mo [unpublished], 2028-02-29 Tu [unpublished], 2028-06-05 Mo, 2028-08-04 Fr [unpublished], 2029-02-16 Fr [unpublished], 2029-06-04 Mo
 - registry open, PMC closed, EC closed (6): 2025-03-18 Tu, 2027-02-24 We, 2027-03-09 Tu [unpublished], 2028-02-14 Mo, 2028-08-03 Th [unpublished], 2029-09-17 Mo
 
-### XKRX (9)
+### XKRX (10)
 
-- registry closed, PMC open, EC open (5): 2026-06-08 Mo, 2027-05-03 Mo [library error], 2027-07-19 Mo [library error], 2028-07-17 Mo [library error], 2029-07-17 Tu [library error]
+- registry closed, PMC open, EC open (6): 2026-06-08 Mo, 2027-05-03 Mo [library error], 2027-07-19 Mo [library error], 2028-04-12 We [library error], 2028-07-17 Mo [library error], 2029-07-17 Tu [library error]
 - registry open, PMC closed, EC closed (4): 2025-01-27 Mo, 2025-06-03 Tu, 2025-10-03 Fr, 2026-05-01 Fr
 
 ### XLIM (11)
@@ -323,7 +312,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 25 dates; Registry error: 292 dates; Unpublished: 204 dates.
+- Convention difference: 1 dates; Library error: 26 dates; Registry error: 304 dates; Unpublished: 204 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -429,6 +418,14 @@ Dates: 2027-05-07, 2028-05-01, 2028-05-26, 2029-05-01, 2029-05-11.
 
 Source: https://www.tradinghours.com/exchanges/omxc-copenhagen/contact
 
+### XCSE: Registry error (4, fixed in 2.23.7)
+
+Nasdaq's holiday schedule for Copenhagen has no 1 May closure in 2025 (closed days: 1 Jan, 17, 18 and 21 April, 29 and 30 May, 5 and 9 June, 24, 25, 26 and 31 December) and tradinghours' 2026 list agrees. The registry closed 1 May and left the Friday after Ascension Day (30 May 2025, 15 May 2026) open.
+
+Dates: 2025-05-01, 2025-05-30, 2026-05-01, 2026-05-15.
+
+Source: https://www.nasdaq.com/european-market-activity/trading-hours
+
 ### XHEL: Registry error (5, fixed in 2.23.4)
 
 Independence Day (6 December) was missing from the rules, so 6 Dec 2027, 2028 and 2029 (Monday, Wednesday, Thursday) were open. Midsummer Eve 2027 is Friday 25 June, the Friday before Midsummer Day (Saturday 26 June), not 18 June.
@@ -452,6 +449,14 @@ Ramazan Bayrami and Kurban Bayrami were missing from the registry for 2027-2029.
 Dates: 2027-03-09, 2027-03-10, 2027-03-11, 2027-05-17, 2027-05-18, 2028-02-28, 2028-05-05, 2028-05-08, 2029-02-14, 2029-02-15, 2029-02-16, 2029-04-24, 2029-04-25, 2029-04-26, 2029-04-27.
 
 Source: https://www.cnnturk.com/turkiye/2027-resmi-tatiller-takvimi-dini-bayramlar-resmi-tatil-gunler-ne-zaman-2027-ramazan-ve-kurban-bayrami-tarihleri-3447415
+
+### XIST: Registry error (8, fixed in 2.23.7)
+
+Borsa Istanbul's own holiday tables close the exchange for Ramazan Bayrami and Kurban Bayrami: 2025 on 30 March-1 April and 6-9 June (eves 29 March, a Saturday, and 5 June, a half day), 2026 on 20-22 March and 27-30 May (eves 19 March and 26 May, half days to 13:00). The registry had none of them for 2025 and 2026.
+
+Dates: 2025-03-31, 2025-04-01, 2025-06-06, 2025-06-09, 2026-03-20, 2026-05-27, 2026-05-28, 2026-05-29.
+
+Source: https://borsaistanbul.com/files/Duyuru-31449.pdf
 
 ### XJSE: Registry error (4, fixed in 2.23.4)
 
@@ -516,6 +521,14 @@ Labour Day (1 May) and Constitution Day (17 July) became public holidays in 2026
 Dates: 2027-05-03, 2027-07-19, 2028-07-17, 2029-07-17.
 
 Source: https://www.newspim.com/news/view/20260520000433
+
+### XKRX: Library error (1, registry verified, no change)
+
+The 23rd National Assembly election is Wednesday 12 April 2028 (the first Wednesday on or after the 50th day before the 22nd Assembly's term ends on 29 May 2028). Election day is a public holiday and KRX closes, as it did on 3 June 2026. exchange_calendars has no election days.
+
+Dates: 2028-04-12.
+
+Source: https://www.segye.com/newsView/20260603508359
 
 ### XKRX: Registry error (14, fixed in 2.23.6)
 

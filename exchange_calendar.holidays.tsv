@@ -1322,8 +1322,8 @@ XCSE	2025-01-01	New Year's Day	closed	explicit	1					https://www.nasdaqomxnordic
 XCSE	2025-04-17	Maundy Thursday	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XCSE	2025-04-18	Good Friday	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XCSE	2025-04-21	Easter Monday	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
-XCSE	2025-05-01	Labour Day	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XCSE	2025-05-29	Ascension Day	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
+XCSE	2025-05-30	Day after Ascension Day	closed	explicit	1					https://www.nasdaq.com/european-market-activity/trading-hours
 XCSE	2025-06-05	Constitution Day	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XCSE	2025-06-09	Whit Monday	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XCSE	2025-12-24	Christmas Eve	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
@@ -1334,8 +1334,8 @@ XCSE	2026-01-01	New Year's Day	closed	explicit	1					https://www.nasdaqomxnordic
 XCSE	2026-04-02	Maundy Thursday	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XCSE	2026-04-03	Good Friday	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XCSE	2026-04-06	Easter Monday	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
-XCSE	2026-05-01	Labour Day	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XCSE	2026-05-14	Ascension Day	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
+XCSE	2026-05-15	Day after Ascension Day	closed	explicit	1					https://www.tradinghours.com/exchanges/omxc-copenhagen/contact
 XCSE	2026-05-25	Whit Monday	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XCSE	2026-06-05	Constitution Day	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XCSE	2026-12-24	Christmas Eve	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
@@ -2334,16 +2334,27 @@ XICE	2029-12-25	Christmas Day	closed	explicit	1					https://www.nasdaqomxnordic.
 XICE	2029-12-26	Boxing Day	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XICE	2029-12-31	New Year's Eve	closed	explicit	1					https://www.nasdaqomxnordic.com/trading-hours
 XIST	2025-01-01	New Year's Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
+XIST	2025-03-31	Ramazan Bayramı (Eid al-Fitr) - Day 2	closed	explicit	1					https://borsaistanbul.com/files/Duyuru-31449.pdf
+XIST	2025-04-01	Ramazan Bayramı (Eid al-Fitr) - Day 3	closed	explicit	1					https://borsaistanbul.com/files/Duyuru-31449.pdf
 XIST	2025-04-23	National Sovereignty and Children's Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
 XIST	2025-05-01	Labour Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
 XIST	2025-05-19	Commemoration of Atatürk, Youth and Sports Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
+XIST	2025-06-05	Kurban Bayramı Eve (Arefe)	early_close	explicit	1	13:00				https://borsaistanbul.com/files/Duyuru-31449.pdf
+XIST	2025-06-06	Kurban Bayramı (Eid al-Adha) - Day 1	closed	explicit	1					https://borsaistanbul.com/files/Duyuru-31449.pdf
+XIST	2025-06-09	Kurban Bayramı (Eid al-Adha) - Day 4	closed	explicit	1					https://borsaistanbul.com/files/Duyuru-31449.pdf
 XIST	2025-07-15	Democracy and National Unity Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
 XIST	2025-10-28	Republic Day Eve	early_close	explicit	1	13:00				https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
 XIST	2025-10-29	Republic Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
 XIST	2026-01-01	New Year's Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
+XIST	2026-03-19	Ramazan Bayramı Eve (Arefe)	early_close	explicit	1	13:00				https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf
+XIST	2026-03-20	Ramazan Bayramı (Eid al-Fitr) - Day 1	closed	explicit	1					https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf
 XIST	2026-04-23	National Sovereignty and Children's Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
 XIST	2026-05-01	Labour Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
 XIST	2026-05-19	Commemoration of Atatürk, Youth and Sports Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
+XIST	2026-05-26	Kurban Bayramı Eve (Arefe)	early_close	explicit	1	13:00				https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf
+XIST	2026-05-27	Kurban Bayramı (Eid al-Adha) - Day 1	closed	explicit	1					https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf
+XIST	2026-05-28	Kurban Bayramı (Eid al-Adha) - Day 2	closed	explicit	1					https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf
+XIST	2026-05-29	Kurban Bayramı (Eid al-Adha) - Day 3	closed	explicit	1					https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf
 XIST	2026-07-15	Democracy and National Unity Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
 XIST	2026-10-28	Republic Day Eve	early_close	explicit	1	13:00				https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
 XIST	2026-10-29	Republic Day	closed	explicit	1					https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar
@@ -2662,6 +2673,7 @@ XKRX	2028-01-26	Seollal (Lunar New Year) Eve	closed	explicit	1					https://globa
 XKRX	2028-01-27	Seollal (Lunar New Year)	closed	explicit	1					https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp
 XKRX	2028-01-28	Seollal (Lunar New Year)	closed	explicit	1					https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp
 XKRX	2028-03-01	Independence Movement Day	closed	explicit	1					https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp
+XKRX	2028-04-12	National Assembly Election Day	closed	explicit	1					https://www.segye.com/newsView/20260603508359
 XKRX	2028-05-01	Labour Day	closed	explicit	1					https://www.newspim.com/news/view/20260520000433
 XKRX	2028-05-02	Buddha's Birthday	closed	explicit	1					https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp
 XKRX	2028-05-05	Children's Day	closed	explicit	1					https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp

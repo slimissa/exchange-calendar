@@ -340,3 +340,24 @@ class TestBayramClosures:
     ])
     def test_eves_are_half_days(self, year, days):
         assert _early("XIST", year) == days
+
+
+class TestBayram2025And2026:
+    """Borsa Istanbul's own holiday tables: 2025 Ramazan Bayrami 30 March - 1 April
+    (eve Saturday 29 March), Kurban Bayrami 6-9 June (eve Thursday 5 June, half
+    day); 2026 Ramazan Bayrami 20-22 March (eve Thursday 19 March, half day),
+    Kurban Bayrami 27-30 May (eve Tuesday 26 May, half day to 13:00)."""
+
+    @pytest.mark.parametrize("day", ["2025-03-31", "2025-04-01", "2025-06-06", "2025-06-09",
+                                     "2026-03-20", "2026-05-27", "2026-05-28", "2026-05-29"])
+    def test_bayram_weekdays_are_closed(self, day):
+        assert day in _closed("XIST", int(day[:4]))
+
+    def test_half_days(self):
+        assert _early("XIST", 2025)["2025-06-05"] == "13:00"
+        assert _early("XIST", 2026)["2026-03-19"] == "13:00"
+        assert _early("XIST", 2026)["2026-05-26"] == "13:00"
+
+    @pytest.mark.parametrize("day", ["2025-03-28", "2025-06-04", "2026-03-18", "2026-05-25"])
+    def test_days_before_the_eve_are_trading_days(self, day):
+        assert day not in _closed("XIST", int(day[:4]))

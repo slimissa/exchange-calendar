@@ -1179,6 +1179,48 @@
       "recheck_date": "2028-08-15",
       "summary": "Saudi National Day is Saturday 23 September 2028. Whether a Sunday substitute is granted depends on a royal decree issued close to the date.",
       "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events"
+    },
+    {
+      "exchange": "XIST",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.7",
+      "dates": [
+        "2025-03-31",
+        "2025-04-01",
+        "2025-06-06",
+        "2025-06-09",
+        "2026-03-20",
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29"
+      ],
+      "summary": "Borsa Istanbul's own holiday tables close the exchange for Ramazan Bayrami and Kurban Bayrami: 2025 on 30 March-1 April and 6-9 June (eves 29 March, a Saturday, and 5 June, a half day), 2026 on 20-22 March and 27-30 May (eves 19 March and 26 May, half days to 13:00). The registry had none of them for 2025 and 2026.",
+      "source_url": "https://borsaistanbul.com/files/Duyuru-31449.pdf"
+    },
+    {
+      "exchange": "XCSE",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.7",
+      "dates": [
+        "2025-05-01",
+        "2025-05-30",
+        "2026-05-01",
+        "2026-05-15"
+      ],
+      "summary": "Nasdaq's holiday schedule for Copenhagen has no 1 May closure in 2025 (closed days: 1 Jan, 17, 18 and 21 April, 29 and 30 May, 5 and 9 June, 24, 25, 26 and 31 December) and tradinghours' 2026 list agrees. The registry closed 1 May and left the Friday after Ascension Day (30 May 2025, 15 May 2026) open.",
+      "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours"
+    },
+    {
+      "exchange": "XKRX",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2028-04-12"
+      ],
+      "summary": "The 23rd National Assembly election is Wednesday 12 April 2028 (the first Wednesday on or after the 50th day before the 22nd Assembly's term ends on 29 May 2028). Election day is a public holiday and KRX closes, as it did on 3 June 2026. exchange_calendars has no election days.",
+      "source_url": "https://www.segye.com/newsView/20260603508359"
     }
   ]
 }

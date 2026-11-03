@@ -57,6 +57,18 @@
         "status": "closed"
       },
       {
+        "date": "2025-03-31",
+        "name": "Ramazan Bayramı (Eid al-Fitr) - Day 2",
+        "source_url": "https://borsaistanbul.com/files/Duyuru-31449.pdf",
+        "status": "closed"
+      },
+      {
+        "date": "2025-04-01",
+        "name": "Ramazan Bayramı (Eid al-Fitr) - Day 3",
+        "source_url": "https://borsaistanbul.com/files/Duyuru-31449.pdf",
+        "status": "closed"
+      },
+      {
         "date": "2025-04-23",
         "name": "National Sovereignty and Children's Day",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
@@ -72,6 +84,25 @@
         "date": "2025-05-19",
         "name": "Commemoration of Atatürk, Youth and Sports Day",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2025-06-05",
+        "early_close_time": "13:00",
+        "name": "Kurban Bayramı Eve (Arefe)",
+        "source_url": "https://borsaistanbul.com/files/Duyuru-31449.pdf",
+        "status": "early_close"
+      },
+      {
+        "date": "2025-06-06",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 1",
+        "source_url": "https://borsaistanbul.com/files/Duyuru-31449.pdf",
+        "status": "closed"
+      },
+      {
+        "date": "2025-06-09",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 4",
+        "source_url": "https://borsaistanbul.com/files/Duyuru-31449.pdf",
         "status": "closed"
       },
       {
@@ -100,6 +131,19 @@
         "status": "closed"
       },
       {
+        "date": "2026-03-19",
+        "early_close_time": "13:00",
+        "name": "Ramazan Bayramı Eve (Arefe)",
+        "source_url": "https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf",
+        "status": "early_close"
+      },
+      {
+        "date": "2026-03-20",
+        "name": "Ramazan Bayramı (Eid al-Fitr) - Day 1",
+        "source_url": "https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf",
+        "status": "closed"
+      },
+      {
         "date": "2026-04-23",
         "name": "National Sovereignty and Children's Day",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
@@ -115,6 +159,31 @@
         "date": "2026-05-19",
         "name": "Commemoration of Atatürk, Youth and Sports Day",
         "source_url": "https://www.borsaistanbul.com/en/sayfa/2501/trading-hours-and-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2026-05-26",
+        "early_close_time": "13:00",
+        "name": "Kurban Bayramı Eve (Arefe)",
+        "source_url": "https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf",
+        "status": "early_close"
+      },
+      {
+        "date": "2026-05-27",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 1",
+        "source_url": "https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf",
+        "status": "closed"
+      },
+      {
+        "date": "2026-05-28",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 2",
+        "source_url": "https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf",
+        "status": "closed"
+      },
+      {
+        "date": "2026-05-29",
+        "name": "Kurban Bayramı (Eid al-Adha) - Day 3",
+        "source_url": "https://borsaistanbul.com/files/41625-sayili-duyurumuz-hk.-turkce-04122025.pdf",
         "status": "closed"
       },
       {
