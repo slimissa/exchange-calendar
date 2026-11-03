@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.8] - 2026-11-03
+
+### Fixed
+- Triaged and resolved unclassified disagreements for XLUX and XBKK using exchange sources.
+- XLUX: Europe Day, Ascension, Whit Monday, National Day and Assumption (2025), Ascension, Whit Monday and National Day (2026) and the 28 December 2026 substitute are trading days. Christmas Eve and New Year's Eve are early closes at 14:05 (LuxSE page and Euronext calendars).
+- XBKK: 2 January, 16 April and 11 July 2025 and 30 July 2026 are trading days, and Visakha Bucha 2026 is Monday 1 June. 2 June, 28 July and 11 August 2025 and 28 July 2026 are closed (Bank of Thailand announcements).
+
+### Changed
+- 2025-2026 unclassified disagreements: 112 to 91 (XLUX 11, XBKK 10, all registry errors). 91 remain: this is a partial triage, not a final one.
+
 ## [2.23.7] - 2026-11-03
 
 ### Fixed

@@ -1530,5 +1530,43 @@
       "file": "tests/test_copenhagen_holidays.py",
       "contains": "class TestMayFirstIsATradingDay:"
     }
+  ],
+  "2.23.8": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.8"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.8] - 2026-11-03"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Triaged and resolved unclassified disagreements for XLUX and XBKK using exchange sources."
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.8-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.8"
+    },
+    {
+      "file": "exchanges/XLUX.json",
+      "contains": "\"date\": \"2026-12-31\""
+    },
+    {
+      "file": "exchanges/XBKK.json",
+      "contains": "\"date\": \"2026-06-01\""
+    },
+    {
+      "file": "tests/test_luxembourg_holidays.py",
+      "contains": "class TestHistoricalYearClosingDays:"
+    },
+    {
+      "file": "tests/test_bangkok_holidays.py",
+      "contains": "class TestBotAnnouncements2025And2026:"
+    }
   ]
 }
