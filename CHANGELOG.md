@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.9] - 2026-11-04
+
+### Fixed
+- Triaged and resolved unclassified disagreements for XBUE, XMOS, and XPHS using exchange sources.
+- XBUE: Guemes and National Sovereignty Day follow Ley 27.399 art. 6 (Monday 16 June and 24 November 2025; Monday 15 June and 23 November 2026), and the papal visit closes BYMA on 9 and 10 November 2026. The old 20 November closures are removed. Holy Thursday 2025 is recorded as unpublished.
+- XMOS: Moscow Exchange trades on 3, 6 and 8 January, 2 May and 13 June 2025 and 5, 6 and 8 January and 4 May 2026, and does not carry weekend holidays to Monday (24 February and 10 March 2025, 9 March and 11 May 2026).
+- XPHS: PSE closes on Chinese New Year, Eid'l Fitr and Eid'l Adha (29 January, 1 April and 6 June 2025; 17 February, 20 March and 27 May 2026), 12 May 2025 (elections) and 31 October 2025.
+
+### Changed
+- 2025-2026 unclassified disagreements: 91 to 64 (XBUE 9, XMOS 9, XPHS 9). 64 remain: this is a partial triage, not a final one.
+
 ## [2.23.8] - 2026-11-03
 
 ### Fixed
