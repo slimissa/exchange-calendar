@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.10] - 2026-11-04
+
+### Fixed
+- Triaged and resolved unclassified disagreements for XTAI, XBUD, XRIS, and XKAR using exchange sources.
+- XTAI: Lunar New Year adjusted day (27 January 2025), Teachers' Day and Restoration Day adjusted days (29 September and 24 October 2025), Constitution Day (25 December 2025 and 2026), Tomb Sweeping Day observed (6 April 2026), Teachers' Day (28 September 2026) and Restoration Day observed (26 October 2026) are closed.
+- XBUD: the weekend-holiday substitutes (14 March 2025, 16 March and 28 December 2026) are removed; the rest days 2 May and 24 October 2025 and 2 January and 21 August 2026 are closed (BSE resolution 311/2024 for 2025).
+- XRIS: 5 and 29 May 2025 and Ascension Day 14 May 2026 are closed; 2 May and 17 November 2025 trade (Nasdaq trading-day counts).
+- XKAR: 1 January 2025 trades; Juma-tul-Wida (28 March 2025, 20 March 2026), Youm-e-Takbeer (28 May 2025) and the Eid-ul-Azha days (6 and 9 June 2025, 26-28 May 2026) are closed.
+
+### Changed
+- 2025-2026 unclassified disagreements: 64 to 36 (XTAI 8, XBUD 7, XRIS 7, XKAR 6). 36 remain: this is a partial triage, not a final one.
+
 ## [2.23.9] - 2026-11-04
 
 ### Fixed

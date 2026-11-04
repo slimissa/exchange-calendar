@@ -1610,5 +1610,59 @@
       "file": "tests/test_philippines_holidays.py",
       "contains": "class TestXPHSProclaimedDays2025And2026:"
     }
+  ],
+  "2.23.10": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.10"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.10] - 2026-11-04"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Triaged and resolved unclassified disagreements for XTAI, XBUD, XRIS, and XKAR using exchange sources."
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.10-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.10"
+    },
+    {
+      "file": "exchanges/XTAI.json",
+      "contains": "\"date\": \"2026-10-26\""
+    },
+    {
+      "file": "exchanges/XBUD.json",
+      "contains": "\"date\": \"2026-08-21\""
+    },
+    {
+      "file": "exchanges/XRIS.json",
+      "contains": "\"date\": \"2026-05-14\""
+    },
+    {
+      "file": "exchanges/XKAR.json",
+      "contains": "\"date\": \"2026-05-26\""
+    },
+    {
+      "file": "tests/test_taiwan_holidays.py",
+      "contains": "class TestXTAITwseCalendar2025And2026:"
+    },
+    {
+      "file": "tests/test_budapest_holidays.py",
+      "contains": "class TestBseHolidays2025And2026:"
+    },
+    {
+      "file": "tests/test_riga_holidays.py",
+      "contains": "class TestXRISTradingDays2025And2026:"
+    },
+    {
+      "file": "tests/test_karachi_holidays.py",
+      "contains": "class TestXKARPsxNotices2025And2026:"
+    }
   ]
 }
