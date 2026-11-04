@@ -7,7 +7,7 @@
 -- the setting is per connection and a no-op inside a transaction.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 166, holidays 6323, ad_hoc_closures 0, confidence 564
+-- Rows: exchanges 74, sessions 166, holidays 6326, ad_hoc_closures 0, confidence 564
 
 PRAGMA foreign_keys=ON;
 
@@ -5222,6 +5222,8 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2025-04-18', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2025-04-21', 'Easter Monday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2025-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2025-05-05', 'Restoration of Independence Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2025-05-29', 'Ascension Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2025-06-23', 'Midsummer Eve', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2025-06-24', 'Midsummer Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2025-11-18', 'Republic Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
@@ -5234,6 +5236,7 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2026-04-06', 'Easter Monday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2026-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2026-05-04', 'Restoration of Independence Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2026-05-14', 'Ascension Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2026-06-23', 'Midsummer Eve', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2026-06-24', 'Midsummer Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XRIS', '2026-11-18', 'Republic Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
@@ -7245,6 +7248,6 @@ COMMIT;
 -- Row counts
 --   exchanges: 74
 --   sessions: 166
---   holidays: 6323
+--   holidays: 6326
 --   ad_hoc_closures: 0
 --   confidence: 564

@@ -106,8 +106,9 @@ class TestXRISFixedHolidays:
         assert explicit_dates["2025-05-01"]["name"] == "Labour Day"
 
     def test_restoration_independence_2025(self, explicit_dates):
-        """May 4, 2025 is Sunday (weekend) — no explicit entry."""
+        """May 4, 2025 is Sunday: Latvia gives Monday 5 May off."""
         assert "2025-05-04" not in explicit_dates
+        assert "Restoration" in explicit_dates["2025-05-05"]["name"]
 
     def test_restoration_independence_2026(self, explicit_dates):
         """May 4, 2026 is Monday."""
@@ -367,3 +368,36 @@ class TestLatvianProclamationDayCarryOver:
     @pytest.mark.parametrize("day", ["2028-11-20", "2029-11-19"])
     def test_monday_after_a_weekend_18_november(self, day):
         assert day in _closed("XRIS", int(day[:4]))
+
+
+# ──────────────────────────────────────────────────────────────
+# Nasdaq Riga trading days, 2025 and 2026
+# ──────────────────────────────────────────────────────────────
+
+class TestXRISTradingDays2025And2026:
+    """Nasdaq's monthly statistics give Riga's trading days: 19 in May 2025
+    (Riga closed 1, 5 and 29 May: Labour Day, the Monday after Restoration of
+    Independence Day, and Ascension Day, which every Baltic exchange observes),
+    19 in November 2025 (Riga closed on 18 November only) and 19 in December
+    2025 (24, 25, 26 and 31 December)."""
+
+    @staticmethod
+    def _closed_set(explicit_dates, year):
+        return {d for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["status"] == "closed"}
+
+    def test_2025_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2025) == {
+            "2025-01-01", "2025-04-18", "2025-04-21", "2025-05-01", "2025-05-05",
+            "2025-05-29", "2025-06-23", "2025-06-24", "2025-11-18", "2025-12-24",
+            "2025-12-25", "2025-12-26", "2025-12-31"}
+
+    def test_2026_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2026) == {
+            "2026-01-01", "2026-04-03", "2026-04-06", "2026-05-01", "2026-05-04",
+            "2026-05-14", "2026-06-23", "2026-06-24", "2026-11-18", "2026-12-24",
+            "2026-12-25", "2026-12-31"}
+
+    @pytest.mark.parametrize("day", ["2025-05-02", "2025-11-17"])
+    def test_trading_days(self, explicit_dates, day):
+        assert day not in explicit_dates

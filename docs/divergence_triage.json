@@ -1409,6 +1409,32 @@
       ],
       "summary": "BSE resolution 311/2024 (the 2025 trading holidays) lists Friday 2 May and Friday 24 October as rest days and no closure on Friday 14 March: the Labour Code gives no substitute day for a holiday on a weekend, so 15 March 2025 (Saturday) is not moved. The same holds for 15 March 2026 (Sunday) and 26 December 2026 (Saturday): Monday 16 March and Monday 28 December are trading days. For 2026 BSE's notices to its members (relayed by UniCredit Hungary) give a trading holiday on 20 and 21 August and on Saturday 10 January (working day for the Friday 2 January rest day); the 2026 rest days are 2 January, 21 August and 24 December. The registry closed the three false substitutes and traded on the four bridge days; the libraries had it right. 7 dates fixed. BSE's own 2026 resolution was not retrieved: 2 January 2026 rests on the working-Saturday arrangement and trade press. The Budapest fetcher still computes weekend substitutes (BudapestFetcher._observed_substitutes) and needs the same fix.",
       "source_url": "https://www.bse.hu/trading-hours"
+    },
+    {
+      "exchange": "XRIS",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.10",
+      "dates": [
+        "2025-05-05",
+        "2025-05-29",
+        "2026-05-14"
+      ],
+      "summary": "Nasdaq's May 2025 statistics report give Riga 19 trading days against 22 weekdays, and Tallinn and Vilnius 20: the two Baltic exchanges with no May holiday but Labour Day were closed on 1 May and on Ascension Day (29 May), so every Baltic exchange observes Ascension. Riga's third closure is Monday 5 May, the day Latvia gives off when 4 May (Restoration of Independence) falls on a Sunday. The registry traded on both days and, for the same reason, on Ascension Day 14 May 2026 (the registry already closes Ascension in 2027-2029). 3 dates fixed. The May 2026 report was not read: 14 May 2026 rests on the pattern of 2024 and 2025.",
+      "source_url": "https://attachment.news.eu.nasdaq.com/aab5896ed129b436acc32b21a545fcddf"
+    },
+    {
+      "exchange": "XRIS",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2025-05-02",
+        "2025-11-17",
+        "2025-12-25",
+        "2026-12-25"
+      ],
+      "summary": "Nasdaq's statistics reports give Riga 19 trading days in May 2025 (closed 1, 5 and 29 May, so 2 May traded), 19 in November 2025 against 20 for every other exchange (only 18 November closed, so 17 November traded) and 19 in December 2025 as for every exchange (24, 25, 26 and 31 December closed). exchange_calendars and pandas_market_calendars close 2 May and 17 November 2025 and trade on 25 December 2025 and 2026. The registry is right on all four. The 25 December 2026 closure rests on the 2025 count and Nasdaq Baltic's yearly pattern; no 2026 statistics exist yet.",
+      "source_url": "https://attachment.news.eu.nasdaq.com/a73c2732fa3004542058f223e2e1b83f1"
     }
   ]
 }

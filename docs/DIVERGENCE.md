@@ -81,7 +81,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XPAR | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XPHS | 1231 | 1230 | 1230 | 7 | 99.4% |
 | XPRA | 1249 | 1249 | 1249 | 4 | 99.7% |
-| XRIS | 1252 | 1250 | 1250 | 10 | 99.2% |
+| XRIS | 1249 | 1250 | 1250 | 7 | 99.4% |
 | XSAU | 1007 | 998 | 998 | 17 | 98.3% |
 | XSES | 1255 | 1285 | 503* | 30 | 97.7% |
 | XSGO | 1242 | No reference data | 1242 | 8 | 99.4% |
@@ -103,7 +103,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 27 of 50.
-- Trading days on which all available sources agree: 62456 of 62773 (99.5%).
+- Trading days on which all available sources agree: 62456 of 62770 (99.5%).
 
 ## Disagreements by year
 
@@ -127,7 +127,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XNSE | - | 1 | 0 | 8 | 12 | 15 |
 | XPHS | - | 0 | 1 | 3 | 2 | 1 |
 | XPRA | - | 3 | 1 | 0 | 0 | 0 |
-| XRIS | - | 5 | 2 | 0 | 2 | 1 |
+| XRIS | - | 3 | 1 | 0 | 2 | 1 |
 | XSAU | - | 4 | 0 | 5 | 8 | - |
 | XSES | - | 0 | 1 | 8 | 10 | 11 |
 | XSGO | - | 3 | 2 | 2 | 0 | 1 |
@@ -139,8 +139,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 43 | 0 | 12 | 1 | 1 | 29 |
-| 2026 | 27 | 0 | 7 | 0 | 0 | 20 |
+| 2025 | 41 | 0 | 15 | 1 | 1 | 24 |
+| 2026 | 26 | 0 | 8 | 0 | 0 | 18 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -261,10 +261,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open, EC open (2): 2025-07-07 Mo, 2025-09-29 Mo
 - registry open, PMC closed, EC closed (2): 2025-12-31 We, 2026-12-31 Th
 
-### XRIS (10)
+### XRIS (7)
 
-- registry open, PMC closed, EC closed (6): 2025-05-02 Fr, 2025-05-05 Mo, 2025-05-29 Th, 2025-11-17 Mo, 2026-05-14 Th, 2028-07-10 Mo [unpublished]
-- registry closed, PMC open, EC open (4): 2025-12-25 Th, 2026-12-25 Fr, 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
+- registry closed, PMC open, EC open (4): 2025-12-25 Th [library error], 2026-12-25 Fr [library error], 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
+- registry open, PMC closed, EC closed (3): 2025-05-02 Fr [library error], 2025-11-17 Mo [library error], 2028-07-10 Mo [unpublished]
 
 ### XSAU (17)
 
@@ -300,7 +300,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 41 dates; Registry error: 360 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 45 dates; Registry error: 363 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -790,6 +790,14 @@ Dates: 2028-12-25, 2029-12-25.
 
 Source: https://nasdaqcsd.com/latvia/en/calendar-working-hours/
 
+### XRIS: Library error (4, registry verified, no change)
+
+Nasdaq's statistics reports give Riga 19 trading days in May 2025 (closed 1, 5 and 29 May, so 2 May traded), 19 in November 2025 against 20 for every other exchange (only 18 November closed, so 17 November traded) and 19 in December 2025 as for every exchange (24, 25, 26 and 31 December closed). exchange_calendars and pandas_market_calendars close 2 May and 17 November 2025 and trade on 25 December 2025 and 2026. The registry is right on all four. The 25 December 2026 closure rests on the 2025 count and Nasdaq Baltic's yearly pattern; no 2026 statistics exist yet.
+
+Dates: 2025-05-02, 2025-11-17, 2025-12-25, 2026-12-25.
+
+Source: https://attachment.news.eu.nasdaq.com/a73c2732fa3004542058f223e2e1b83f1
+
 ### XRIS: Registry error (8, fixed in 2.23.5)
 
 Nasdaq Baltic does not move a weekend holiday to a weekday, so the 2027 and 2028 Monday and Tuesday 'observed' entries are removed (the Latvian Proclamation Day carry-over of 18 November stays: both libraries have it). 31 December and Ascension Day are Nasdaq Baltic trading holidays in the 2026 list for all three Baltic markets; the registry only had them for 2026, so they are added for 2027-2029 as predicted dates.
@@ -797,6 +805,14 @@ Nasdaq Baltic does not move a weekend holiday to a weekday, so the 2027 and 2028
 Dates: 2027-05-03, 2027-05-06, 2027-12-27, 2027-12-28, 2027-12-31, 2028-01-03, 2028-05-25, 2029-05-10.
 
 Source: https://www.nasdaqbaltic.com/trading-calendar
+
+### XRIS: Registry error (3, fixed in 2.23.10)
+
+Nasdaq's May 2025 statistics report give Riga 19 trading days against 22 weekdays, and Tallinn and Vilnius 20: the two Baltic exchanges with no May holiday but Labour Day were closed on 1 May and on Ascension Day (29 May), so every Baltic exchange observes Ascension. Riga's third closure is Monday 5 May, the day Latvia gives off when 4 May (Restoration of Independence) falls on a Sunday. The registry traded on both days and, for the same reason, on Ascension Day 14 May 2026 (the registry already closes Ascension in 2027-2029). 3 dates fixed. The May 2026 report was not read: 14 May 2026 rests on the pattern of 2024 and 2025.
+
+Dates: 2025-05-05, 2025-05-29, 2026-05-14.
+
+Source: https://attachment.news.eu.nasdaq.com/aab5896ed129b436acc32b21a545fcddf
 
 ### XRIS: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2028-01-15)
 
