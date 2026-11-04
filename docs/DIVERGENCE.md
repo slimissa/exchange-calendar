@@ -91,7 +91,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XSTO | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XSWX | 1255 | 1255 | 1255 | 0 | 100.0% |
 | XTAD | 1272 | No reference data | No reference data | n/a | n/a |
-| XTAI | 1228 | 1221 | 1221 | 23 | 98.1% |
+| XTAI | 1220 | 1221 | 1221 | 15 | 98.8% |
 | XTAL | 1253 | 1255 | 1255 | 6 | 99.5% |
 | XTKS | 1464 | 1464 | 1464 | 0 | 100.0% |
 | XTSE | 1254 | 1254 | 1254 | 0 | 100.0% |
@@ -103,7 +103,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 27 of 50.
-- Trading days on which all available sources agree: 62453 of 62785 (99.5%).
+- Trading days on which all available sources agree: 62453 of 62777 (99.5%).
 
 ## Disagreements by year
 
@@ -132,15 +132,15 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XSES | - | 0 | 1 | 8 | 10 | 11 |
 | XSGO | - | 3 | 2 | 2 | 0 | 1 |
 | XSHG | - | 0 | 1 | 16 | 14 | 13 |
-| XTAI | - | 4 | 4 | 1 | 7 | 7 |
+| XTAI | - | 0 | 0 | 1 | 7 | 7 |
 | XTAL | - | 2 | 2 | 0 | 1 | 1 |
 
 Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 50 | 0 | 12 | 1 | 1 | 36 |
-| 2026 | 35 | 0 | 7 | 0 | 0 | 28 |
+| 2025 | 46 | 0 | 12 | 1 | 1 | 32 |
+| 2026 | 31 | 0 | 7 | 0 | 0 | 24 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -287,10 +287,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open (43): 2027-01-01 Fr [unpublished], 2027-02-05 Fr [unpublished], 2027-02-08 Mo [unpublished], 2027-02-09 Tu [unpublished], 2027-02-10 We [unpublished], 2027-02-11 Th [unpublished], 2027-02-12 Fr [unpublished], 2027-04-05 Mo [unpublished], 2027-05-03 Mo [unpublished], 2027-06-09 We [unpublished], 2027-09-15 We [unpublished], 2027-10-01 Fr [unpublished], 2027-10-04 Mo [unpublished], 2027-10-05 Tu [unpublished], 2027-10-06 We [unpublished], 2027-10-07 Th [unpublished], 2028-01-03 Mo [unpublished], 2028-01-26 We [unpublished], 2028-01-27 Th [unpublished], 2028-01-28 Fr [unpublished], 2028-01-31 Mo [unpublished], 2028-02-01 Tu [unpublished], 2028-04-04 Tu [unpublished], 2028-05-01 Mo [unpublished], 2028-06-19 Mo [unpublished], 2028-10-02 Mo [unpublished], 2028-10-03 Tu [unpublished], 2028-10-04 We [unpublished], 2028-10-05 Th [unpublished], 2028-10-06 Fr [unpublished], 2029-01-01 Mo [unpublished], 2029-02-13 Tu [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-02-16 Fr [unpublished], 2029-02-19 Mo [unpublished], 2029-04-05 Th [unpublished], 2029-05-01 Tu [unpublished], 2029-10-01 Mo [unpublished], 2029-10-02 Tu [unpublished], 2029-10-03 We [unpublished], 2029-10-04 Th [unpublished], 2029-10-05 Fr [unpublished]
 - registry open, PMC closed, EC closed (1): 2026-01-02 Fr
 
-### XTAI (23)
+### XTAI (15)
 
-- registry open, PMC closed, EC closed (15): 2025-01-27 Mo, 2025-09-29 Mo, 2025-10-24 Fr, 2025-12-25 Th, 2026-04-06 Mo, 2026-09-28 Mo, 2026-10-26 Mo, 2026-12-25 Fr, 2028-04-03 Mo [unpublished], 2028-05-29 Mo [unpublished], 2028-10-03 Tu [unpublished], 2029-04-03 Tu [unpublished], 2029-06-15 Fr [unpublished], 2029-09-21 Fr [unpublished], 2029-12-31 Mo [unpublished]
 - registry closed, PMC open, EC open (8): 2027-02-03 We [unpublished], 2028-01-31 Mo [unpublished], 2028-02-01 Tu [unpublished], 2028-04-05 We [unpublished], 2028-09-25 Mo [unpublished], 2029-02-08 Th [unpublished], 2029-02-16 Fr [unpublished], 2029-06-18 Mo [unpublished]
+- registry open, PMC closed, EC closed (7): 2028-04-03 Mo [unpublished], 2028-05-29 Mo [unpublished], 2028-10-03 Tu [unpublished], 2029-04-03 Tu [unpublished], 2029-06-15 Fr [unpublished], 2029-09-21 Fr [unpublished], 2029-12-31 Mo [unpublished]
 
 ### XTAL (6)
 
@@ -301,7 +301,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 41 dates; Registry error: 345 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 41 dates; Registry error: 353 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -934,6 +934,14 @@ DGPA's 2027 government calendar (published 2026-05-21) observes a Saturday holid
 Dates: 2027-02-11, 2027-02-26, 2027-03-01, 2027-04-30, 2027-09-28, 2027-10-11, 2027-10-25, 2027-12-31, 2028-09-28, 2028-10-25, 2028-12-25, 2029-09-28, 2029-10-25, 2029-12-25.
 
 Source: https://wantrich.chinatimes.com/news/20260522900066-420501
+
+### XTAI: Registry error (8, fixed in 2.23.10)
+
+TWSE's open/closed calendars follow the government calendar. The TAIFEX notice for September-December 2025 (TWSE and TAIFEX share the holiday schedule) lists Monday 29 September (Teachers' Day adjusted holiday), Friday 24 October (Restoration Day adjusted holiday) and Thursday 25 December (Constitution Day, a holiday again from 2025). TWSE's 2025 calendar closes Monday 27 January for the Lunar New Year (make-up day Saturday 8 February, not a trading day). TWSE's 2026 calendar (announced 29 June 2025, udn and ETtoday coverage and the calendar table) lists Monday 6 April (Tomb Sweeping Day observed), Monday 28 September (Teachers' Day), Monday 26 October (Restoration Day observed) and Friday 25 December (Constitution Day). The registry traded on all eight; both libraries closed them. 8 dates fixed. TWSE's own 2025 page was not retrieved: the 2025 dates rest on the TAIFEX notice and a TWSE-sourced calendar summary.
+
+Dates: 2025-01-27, 2025-09-29, 2025-10-24, 2025-12-25, 2026-04-06, 2026-09-28, 2026-10-26, 2026-12-25.
+
+Source: https://www.twse.com.tw/en/page/trading/exchange.html
 
 ### XTAI: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2026-12-31)
 

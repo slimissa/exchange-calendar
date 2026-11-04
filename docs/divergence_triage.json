@@ -1374,6 +1374,24 @@
       ],
       "summary": "Proclamation 1006 declares Monday 2 November 2026 (All Souls' Day) an additional special non-working day, like the additional days PSE already closed for (CN-2025-0038 for 31 October 2025, Proclamation 727; CN-2026-0027 applies Proclamation 1006 to 12 June 2026). exchange_calendars and pandas_market_calendars trade on 2 November 2026. The registry closes it. A PSE circular for the day itself was not retrieved.",
       "source_url": "https://documents.pse.com.ph/CircularOPSPDF/CN-2026-0027.pdf"
+    },
+    {
+      "exchange": "XTAI",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.10",
+      "dates": [
+        "2025-01-27",
+        "2025-09-29",
+        "2025-10-24",
+        "2025-12-25",
+        "2026-04-06",
+        "2026-09-28",
+        "2026-10-26",
+        "2026-12-25"
+      ],
+      "summary": "TWSE's open/closed calendars follow the government calendar. The TAIFEX notice for September-December 2025 (TWSE and TAIFEX share the holiday schedule) lists Monday 29 September (Teachers' Day adjusted holiday), Friday 24 October (Restoration Day adjusted holiday) and Thursday 25 December (Constitution Day, a holiday again from 2025). TWSE's 2025 calendar closes Monday 27 January for the Lunar New Year (make-up day Saturday 8 February, not a trading day). TWSE's 2026 calendar (announced 29 June 2025, udn and ETtoday coverage and the calendar table) lists Monday 6 April (Tomb Sweeping Day observed), Monday 28 September (Teachers' Day), Monday 26 October (Restoration Day observed) and Friday 25 December (Constitution Day). The registry traded on all eight; both libraries closed them. 8 dates fixed. TWSE's own 2025 page was not retrieved: the 2025 dates rest on the TAIFEX notice and a TWSE-sourced calendar summary.",
+      "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html"
     }
   ]
 }

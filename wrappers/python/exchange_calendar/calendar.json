@@ -38962,6 +38962,12 @@
             "status": "closed"
           },
           {
+            "date": "2025-01-27",
+            "name": "Lunar New Year Adjusted Holiday",
+            "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
             "date": "2025-01-28",
             "name": "Chinese New Year's Eve",
             "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
@@ -39016,6 +39022,12 @@
             "status": "closed"
           },
           {
+            "date": "2025-09-29",
+            "name": "Teachers' Day (observed)",
+            "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
             "date": "2025-10-06",
             "name": "Mid-Autumn Festival",
             "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
@@ -39024,6 +39036,18 @@
           {
             "date": "2025-10-10",
             "name": "National Day",
+            "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
+            "date": "2025-10-24",
+            "name": "Taiwan Restoration Day (observed)",
+            "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
+            "date": "2025-12-25",
+            "name": "Constitution Day",
             "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
             "status": "closed"
           },
@@ -39088,6 +39112,12 @@
             "status": "closed"
           },
           {
+            "date": "2026-04-06",
+            "name": "Tomb Sweeping Day (observed)",
+            "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
             "date": "2026-05-01",
             "name": "Labour Day",
             "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
@@ -39106,8 +39136,26 @@
             "status": "closed"
           },
           {
+            "date": "2026-09-28",
+            "name": "Teachers' Day",
+            "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
             "date": "2026-10-09",
             "name": "National Day (observed)",
+            "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
+            "date": "2026-10-26",
+            "name": "Taiwan Restoration Day (observed)",
+            "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+            "status": "closed"
+          },
+          {
+            "date": "2026-12-25",
+            "name": "Constitution Day",
             "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
             "status": "closed"
           },

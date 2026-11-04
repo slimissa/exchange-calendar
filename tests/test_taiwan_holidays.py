@@ -250,5 +250,42 @@ class TestXTAIStructure:
             assert entry["status"] == "closed"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~62 entries: multiple holidays per year + settlement days."""
-        assert 50 <= len(explicit_dates) <= 80
+        """~84 entries: multiple holidays per year + settlement days."""
+        assert 60 <= len(explicit_dates) <= 100
+
+
+# ──────────────────────────────────────────────────────────────
+# TWSE market calendar, 2025 and 2026
+# ──────────────────────────────────────────────────────────────
+
+class TestXTAITwseCalendar2025And2026:
+    """TWSE's published open/closed calendars (and the TAIFEX notice for
+    September-December 2025) add the Lunar New Year adjusted day, the two
+    Monday/Friday compensation days for Teachers' Day and Restoration Day, the
+    observed Tomb Sweeping Day and Constitution Day, which is a holiday again
+    from 2025."""
+
+    @staticmethod
+    def _closed_set(explicit_dates, year):
+        return {d for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["status"] == "closed"}
+
+    def test_2025_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2025) == {
+            "2025-01-01", "2025-01-23", "2025-01-24", "2025-01-27", "2025-01-28",
+            "2025-01-29", "2025-01-30", "2025-01-31", "2025-02-28", "2025-04-03",
+            "2025-04-04", "2025-05-01", "2025-05-30", "2025-09-29", "2025-10-06",
+            "2025-10-10", "2025-10-24", "2025-12-25"}
+
+    def test_2026_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2026) == {
+            "2026-01-01", "2026-02-12", "2026-02-13", "2026-02-16", "2026-02-17",
+            "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-27", "2026-04-03",
+            "2026-04-06", "2026-05-01", "2026-06-19", "2026-09-25", "2026-09-28",
+            "2026-10-09", "2026-10-26", "2026-12-25"}
+
+    @pytest.mark.parametrize("day", [
+        "2025-01-27", "2025-09-29", "2025-10-24", "2025-12-25",
+        "2026-04-06", "2026-09-28", "2026-10-26", "2026-12-25"])
+    def test_added_closures(self, explicit_dates, day):
+        assert explicit_dates[day]["status"] == "closed"
