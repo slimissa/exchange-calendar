@@ -33950,6 +33950,18 @@
             "status": "closed"
           },
           {
+            "date": "2025-01-29",
+            "name": "Chinese New Year",
+            "source_url": "https://www.pse.com.ph/trading-holidays/",
+            "status": "closed"
+          },
+          {
+            "date": "2025-04-01",
+            "name": "Eid'l Fitr (Feast of Ramadhan)",
+            "source_url": "https://www.pse.com.ph/trading-holidays/",
+            "status": "closed"
+          },
+          {
             "date": "2025-04-09",
             "name": "Araw ng Kagitingan (Day of Valor)",
             "source_url": "https://www.pse.com.ph/trading-holidays/",
@@ -33974,6 +33986,18 @@
             "status": "closed"
           },
           {
+            "date": "2025-05-12",
+            "name": "National and Local Elections",
+            "source_url": "https://www.pse.com.ph/trading-holidays/",
+            "status": "closed"
+          },
+          {
+            "date": "2025-06-06",
+            "name": "Eid'l Adha (Feast of Sacrifice)",
+            "source_url": "https://www.pse.com.ph/trading-holidays/",
+            "status": "closed"
+          },
+          {
             "date": "2025-06-12",
             "name": "Independence Day",
             "source_url": "https://www.pse.com.ph/trading-holidays/",
@@ -33988,6 +34012,12 @@
           {
             "date": "2025-08-25",
             "name": "National Heroes Day",
+            "source_url": "https://www.pse.com.ph/trading-holidays/",
+            "status": "closed"
+          },
+          {
+            "date": "2025-10-31",
+            "name": "All Saints' Day Eve",
             "source_url": "https://www.pse.com.ph/trading-holidays/",
             "status": "closed"
           },
@@ -34028,6 +34058,18 @@
             "status": "closed"
           },
           {
+            "date": "2026-02-17",
+            "name": "Chinese New Year",
+            "source_url": "https://www.pse.com.ph/trading-holidays/",
+            "status": "closed"
+          },
+          {
+            "date": "2026-03-20",
+            "name": "Eid'l Fitr (Feast of Ramadhan)",
+            "source_url": "https://www.pse.com.ph/trading-holidays/",
+            "status": "closed"
+          },
+          {
             "date": "2026-04-02",
             "name": "Maundy Thursday",
             "source_url": "https://www.pse.com.ph/trading-holidays/",
@@ -34048,6 +34090,12 @@
           {
             "date": "2026-05-01",
             "name": "Labour Day",
+            "source_url": "https://www.pse.com.ph/trading-holidays/",
+            "status": "closed"
+          },
+          {
+            "date": "2026-05-27",
+            "name": "Eid'l Adha (Feast of Sacrifice)",
             "source_url": "https://www.pse.com.ph/trading-holidays/",
             "status": "closed"
           },

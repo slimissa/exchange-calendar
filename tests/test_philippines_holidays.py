@@ -226,3 +226,41 @@ class TestXPHSStructure:
     def test_holiday_count_reasonable(self, explicit_dates):
         """~65-85 entries: 15+ holidays × 5 years."""
         assert 60 <= len(explicit_dates) <= 90
+
+
+# ──────────────────────────────────────────────────────────────
+# Proclaimed holidays that PSE closes for, 2025 and 2026
+# ──────────────────────────────────────────────────────────────
+
+class TestXPHSProclaimedDays2025And2026:
+    """PSE circulars (CN-2025-0010, -0020, -0038, CN-2026-0010) and the
+    proclamations they cite (727, 839, 878, 1006, 1189, 1264): the exchange
+    does not trade on the Chinese New Year special non-working days, the Eid'l
+    Fitr and Eid'l Adha holidays, the 12 May 2025 elections or 31 October 2025.
+    All Souls' Day (2 November 2026) is an additional special non-working day
+    under Proclamation 1006."""
+
+    @staticmethod
+    def _closed_set(explicit_dates, year):
+        return {d for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["status"] == "closed"}
+
+    def test_2025_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2025) == {
+            "2025-01-01", "2025-01-29", "2025-04-01", "2025-04-09", "2025-04-17",
+            "2025-04-18", "2025-05-01", "2025-05-12", "2025-06-06", "2025-06-12",
+            "2025-08-21", "2025-08-25", "2025-10-31", "2025-12-08", "2025-12-24",
+            "2025-12-25", "2025-12-30", "2025-12-31"}
+
+    def test_2026_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2026) == {
+            "2026-01-01", "2026-02-17", "2026-03-20", "2026-04-02", "2026-04-03",
+            "2026-04-09", "2026-05-01", "2026-05-27", "2026-06-12", "2026-08-21",
+            "2026-08-31", "2026-11-02", "2026-11-30", "2026-12-08", "2026-12-24",
+            "2026-12-25", "2026-12-30", "2026-12-31"}
+
+    @pytest.mark.parametrize("day", [
+        "2025-01-29", "2025-04-01", "2025-05-12", "2025-06-06", "2025-10-31",
+        "2026-02-17", "2026-03-20", "2026-05-27", "2026-11-02"])
+    def test_proclaimed_days_are_closed(self, explicit_dates, day):
+        assert explicit_dates[day]["status"] == "closed"

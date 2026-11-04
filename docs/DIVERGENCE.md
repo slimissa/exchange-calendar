@@ -79,7 +79,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XNZE | 1249 | 1249 | 1249 | 0 | 100.0% |
 | XOSL | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XPAR | 1279 | 1279 | 1279 | 0 | 100.0% |
-| XPHS | 1239 | 1230 | 1230 | 15 | 98.8% |
+| XPHS | 1231 | 1230 | 1230 | 7 | 99.4% |
 | XPRA | 1249 | 1249 | 1249 | 4 | 99.7% |
 | XRIS | 1252 | 1250 | 1250 | 10 | 99.2% |
 | XSAU | 1007 | 998 | 998 | 17 | 98.3% |
@@ -103,7 +103,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 27 of 50.
-- Trading days on which all available sources agree: 62453 of 62793 (99.5%).
+- Trading days on which all available sources agree: 62453 of 62785 (99.5%).
 
 ## Disagreements by year
 
@@ -125,7 +125,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XLIT | - | 3 | 1 | 0 | 1 | 1 |
 | XMOS | - | 2 | 2 | - | - | - |
 | XNSE | - | 1 | 0 | 8 | 12 | 15 |
-| XPHS | - | 5 | 4 | 3 | 2 | 1 |
+| XPHS | - | 0 | 1 | 3 | 2 | 1 |
 | XPRA | - | 3 | 1 | 0 | 0 | 0 |
 | XRIS | - | 5 | 2 | 0 | 2 | 1 |
 | XSAU | - | 4 | 0 | 5 | 8 | - |
@@ -139,8 +139,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 55 | 0 | 12 | 1 | 1 | 41 |
-| 2026 | 38 | 0 | 6 | 0 | 0 | 32 |
+| 2025 | 50 | 0 | 12 | 1 | 1 | 36 |
+| 2026 | 35 | 0 | 7 | 0 | 0 | 28 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -252,10 +252,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 - registry closed, PMC open (36): 2025-10-21 Tu [convention difference], 2027-01-26 Tu [unpublished], 2027-03-10 We [unpublished], 2027-03-23 Tu [unpublished], 2027-03-26 Fr [unpublished], 2027-04-14 We [unpublished], 2027-05-17 Mo [unpublished], 2027-06-16 We [unpublished], 2027-10-29 Fr [unpublished], 2028-01-26 We [unpublished], 2028-02-24 Th [unpublished], 2028-04-14 Fr [unpublished], 2028-05-01 Mo [unpublished], 2028-05-05 Fr [unpublished], 2028-08-15 Tu [unpublished], 2028-08-23 We [unpublished], 2028-09-28 Th [unpublished], 2028-10-02 Mo [unpublished], 2028-10-17 Tu [unpublished], 2028-10-18 We [unpublished], 2028-12-25 Mo [unpublished], 2029-01-26 Fr [unpublished], 2029-02-12 Mo [unpublished], 2029-02-15 Th [unpublished], 2029-03-01 Th [unpublished], 2029-03-30 Fr [unpublished], 2029-04-24 Tu [unpublished], 2029-05-01 Tu [unpublished], 2029-05-24 Th [unpublished], 2029-08-15 We [unpublished], 2029-09-12 We [unpublished], 2029-10-02 Tu [unpublished], 2029-10-17 We [unpublished], 2029-11-05 Mo [unpublished], 2029-11-06 Tu [unpublished], 2029-12-25 Tu [unpublished]
 
-### XPHS (15)
+### XPHS (7)
 
-- registry open, PMC closed, EC closed (12): 2025-01-29 We, 2025-04-01 Tu, 2025-05-12 Mo, 2025-06-06 Fr, 2025-10-31 Fr, 2026-02-17 Tu, 2026-03-20 Fr, 2026-05-27 We, 2027-03-10 We [unpublished], 2027-05-17 Mo [unpublished], 2028-01-26 We [unpublished], 2029-02-13 Tu [unpublished]
-- registry closed, PMC open, EC open (3): 2026-11-02 Mo, 2027-11-02 Tu [unpublished], 2028-11-02 Th [unpublished]
+- registry open, PMC closed, EC closed (4): 2027-03-10 We [unpublished], 2027-05-17 Mo [unpublished], 2028-01-26 We [unpublished], 2029-02-13 Tu [unpublished]
+- registry closed, PMC open, EC open (3): 2026-11-02 Mo [library error], 2027-11-02 Tu [unpublished], 2028-11-02 Th [unpublished]
 
 ### XPRA (4)
 
@@ -301,7 +301,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 40 dates; Registry error: 337 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 41 dates; Registry error: 345 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -718,6 +718,22 @@ The Matariki public holiday dates are set in law through 2052: Friday 25 June 20
 Dates: 2027-06-25, 2027-07-02, 2028-06-23, 2028-07-14, 2029-06-22, 2029-07-06.
 
 Source: https://www.tepapa.govt.nz/node/4867
+
+### XPHS: Library error (1, registry verified, no change)
+
+Proclamation 1006 declares Monday 2 November 2026 (All Souls' Day) an additional special non-working day, like the additional days PSE already closed for (CN-2025-0038 for 31 October 2025, Proclamation 727; CN-2026-0027 applies Proclamation 1006 to 12 June 2026). exchange_calendars and pandas_market_calendars trade on 2 November 2026. The registry closes it. A PSE circular for the day itself was not retrieved.
+
+Dates: 2026-11-02.
+
+Source: https://documents.pse.com.ph/CircularOPSPDF/CN-2026-0027.pdf
+
+### XPHS: Registry error (8, fixed in 2.23.9)
+
+PSE does not trade on proclaimed special non-working days or on the Islamic holidays. Its circulars give no trading on Tuesday 1 April 2025 (Eid'l Fitr, CN-2025-0010, Proclamations 727 and 839), Monday 12 May 2025 (elections, CN-2025-0020, Proclamation 878), Friday 31 October 2025 (All Saints' Day Eve, CN-2025-0038, Proclamation 727) and Friday 20 March 2026 (Eid'l Fitr, CN-2026-0010, Proclamation 1189). Proclamation 727 also declares Chinese New Year on Wednesday 29 January 2025 and Eid'l Adha on Friday 6 June 2025; Proclamation 1006 declares Chinese New Year on Tuesday 17 February 2026; Proclamation 1264 declares Eid'l Adha on Wednesday 27 May 2026. The registry traded on all eight. The 29 January 2025, 6 June 2025, 17 February 2026 and 27 May 2026 closures rest on the proclamations and on PSE's practice in the circulars above; their own PSE circulars were not retrieved.
+
+Dates: 2025-01-29, 2025-04-01, 2025-05-12, 2025-06-06, 2025-10-31, 2026-02-17, 2026-03-20, 2026-05-27.
+
+Source: https://documents.pse.com.ph/CircularOPSPDF/CN-2025-0010.pdf
 
 ### XPHS: Unpublished (2, calendar not yet published, registry value is a prediction, recheck 2027-01-15)
 

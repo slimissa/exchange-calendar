@@ -4736,23 +4736,31 @@ XPAR;2029-12-25;Christmas Day;closed;explicit;1;;;;;https://www.euronext.com/en/
 XPAR;2029-12-26;Boxing Day;closed;generated;1;;;;;
 XPAR;2029-12-31;New Year's Eve (half-day);early_close;explicit;1;14:05;;;;https://www.euronext.com/en/trading-calendar
 XPHS;2025-01-01;New Year's Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
+XPHS;2025-01-29;Chinese New Year;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
+XPHS;2025-04-01;Eid'l Fitr (Feast of Ramadhan);closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-04-09;Araw ng Kagitingan (Day of Valor);closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-04-17;Maundy Thursday;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-04-18;Good Friday;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-05-01;Labour Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
+XPHS;2025-05-12;National and Local Elections;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
+XPHS;2025-06-06;Eid'l Adha (Feast of Sacrifice);closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-06-12;Independence Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-08-21;Ninoy Aquino Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-08-25;National Heroes Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
+XPHS;2025-10-31;All Saints' Day Eve;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-12-08;Feast of the Immaculate Conception;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-12-24;Christmas Eve;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-12-25;Christmas Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-12-30;Rizal Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2025-12-31;New Year's Eve;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2026-01-01;New Year's Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
+XPHS;2026-02-17;Chinese New Year;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
+XPHS;2026-03-20;Eid'l Fitr (Feast of Ramadhan);closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2026-04-02;Maundy Thursday;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2026-04-03;Good Friday;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2026-04-09;Araw ng Kagitingan (Day of Valor);closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2026-05-01;Labour Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
+XPHS;2026-05-27;Eid'l Adha (Feast of Sacrifice);closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2026-06-12;Independence Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2026-08-21;Ninoy Aquino Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/
 XPHS;2026-08-31;National Heroes Day;closed;explicit;1;;;;;https://www.pse.com.ph/trading-holidays/

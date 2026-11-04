@@ -1346,6 +1346,34 @@
       ],
       "summary": "Moscow Exchange does not carry a weekend state holiday to the next Monday. Its 2026 regulation states that it trades on Monday 9 March and Monday 11 May 2026, and its 2025 regulation lists no closure on Monday 24 February or 10 March 2025 (it trades 'to the standard schedule' on all days it does not list). exchange_calendars and pandas_market_calendars close all four days. The registry's closures of these four days were removed in 2.23.9.",
       "source_url": "https://fs.moex.com/f/23333/dec-25-jan-26-rus-eng.pdf"
+    },
+    {
+      "exchange": "XPHS",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.9",
+      "dates": [
+        "2025-01-29",
+        "2025-04-01",
+        "2025-05-12",
+        "2025-06-06",
+        "2025-10-31",
+        "2026-02-17",
+        "2026-03-20",
+        "2026-05-27"
+      ],
+      "summary": "PSE does not trade on proclaimed special non-working days or on the Islamic holidays. Its circulars give no trading on Tuesday 1 April 2025 (Eid'l Fitr, CN-2025-0010, Proclamations 727 and 839), Monday 12 May 2025 (elections, CN-2025-0020, Proclamation 878), Friday 31 October 2025 (All Saints' Day Eve, CN-2025-0038, Proclamation 727) and Friday 20 March 2026 (Eid'l Fitr, CN-2026-0010, Proclamation 1189). Proclamation 727 also declares Chinese New Year on Wednesday 29 January 2025 and Eid'l Adha on Friday 6 June 2025; Proclamation 1006 declares Chinese New Year on Tuesday 17 February 2026; Proclamation 1264 declares Eid'l Adha on Wednesday 27 May 2026. The registry traded on all eight. The 29 January 2025, 6 June 2025, 17 February 2026 and 27 May 2026 closures rest on the proclamations and on PSE's practice in the circulars above; their own PSE circulars were not retrieved.",
+      "source_url": "https://documents.pse.com.ph/CircularOPSPDF/CN-2025-0010.pdf"
+    },
+    {
+      "exchange": "XPHS",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2026-11-02"
+      ],
+      "summary": "Proclamation 1006 declares Monday 2 November 2026 (All Souls' Day) an additional special non-working day, like the additional days PSE already closed for (CN-2025-0038 for 31 October 2025, Proclamation 727; CN-2026-0027 applies Proclamation 1006 to 12 June 2026). exchange_calendars and pandas_market_calendars trade on 2 November 2026. The registry closes it. A PSE circular for the day itself was not retrieved.",
+      "source_url": "https://documents.pse.com.ph/CircularOPSPDF/CN-2026-0027.pdf"
     }
   ]
 }
