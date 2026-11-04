@@ -108,15 +108,14 @@ class TestXBUDFixedHolidays:
         assert "2028-01-03" not in explicit_dates
 
     def test_national_day_2025(self, explicit_dates):
-        """Mar 15, 2025 is Saturday — substitute to Friday Mar 14."""
+        """Mar 15, 2025 is Saturday: BSE resolution 311/2024 lists no closure on Friday 14 March."""
         assert "2025-03-15" not in explicit_dates
-        assert "2025-03-14" in explicit_dates
-        assert "National Day" in explicit_dates["2025-03-14"]["name"]
+        assert "2025-03-14" not in explicit_dates
 
     def test_national_day_2026(self, explicit_dates):
-        """Mar 15, 2026 is Sunday — substitute to Monday Mar 16."""
+        """Mar 15, 2026 is Sunday: the Labour Code gives no Monday substitute."""
         assert "2026-03-15" not in explicit_dates
-        assert "2026-03-16" in explicit_dates
+        assert "2026-03-16" not in explicit_dates
 
     def test_national_day_2027(self, explicit_dates):
         """Mar 15, 2027 is Monday — no substitution."""
@@ -190,11 +189,10 @@ class TestXBUDChristmas:
         assert "2025-12-26" in explicit_dates
         assert explicit_dates["2025-12-26"]["name"] == "Boxing Day"
 
-    def test_boxing_day_2026_substitute(self, explicit_dates):
-        """Dec 26, 2026 is Saturday — substitute to Monday Dec 28."""
+    def test_boxing_day_2026_saturday_is_not_moved(self, explicit_dates):
+        """Dec 26, 2026 is Saturday: no Monday substitute."""
         assert "2026-12-26" not in explicit_dates
-        assert "2026-12-28" in explicit_dates
-        assert "Boxing Day" in explicit_dates["2026-12-28"]["name"]
+        assert "2026-12-28" not in explicit_dates
 
     def test_boxing_day_2027_sunday_is_not_moved(self, explicit_dates):
         """Dec 26, 2027 is Sunday. Hungary gives no substitute day."""
@@ -536,3 +534,31 @@ class TestFutureYearFixes:
         assert _closed("XBUD", 2027) == {
             "2027-01-01", "2027-03-15", "2027-03-26", "2027-03-29", "2027-05-17",
             "2027-08-20", "2027-11-01", "2027-12-24", "2027-12-31"}
+
+
+# ──────────────────────────────────────────────────────────────
+# BSE trading holidays, 2025 and 2026 (v2.23.10)
+# ──────────────────────────────────────────────────────────────
+
+class TestBseHolidays2025And2026:
+    """BSE resolution 311/2024 fixes the 2025 trading holidays: the public
+    holidays plus the rest days 2 May, 24 October and 24 December, and no
+    weekend holiday is moved to a weekday. For 2026 BSE closes on the rest
+    days 2 January and 21 August (working Saturdays 10 January and 8 August)
+    and on 24 December."""
+
+    def test_2025_closed_weekdays(self):
+        assert _closed("XBUD", 2025) == {
+            "2025-01-01", "2025-04-18", "2025-04-21", "2025-05-01", "2025-05-02",
+            "2025-06-09", "2025-08-20", "2025-10-23", "2025-10-24", "2025-12-24",
+            "2025-12-25", "2025-12-26", "2025-12-31"}
+
+    def test_2026_closed_weekdays(self):
+        assert _closed("XBUD", 2026) == {
+            "2026-01-01", "2026-01-02", "2026-04-03", "2026-04-06", "2026-05-01",
+            "2026-05-25", "2026-08-20", "2026-08-21", "2026-10-23", "2026-12-24",
+            "2026-12-25", "2026-12-31"}
+
+    @pytest.mark.parametrize("day", ["2025-03-14", "2026-03-16", "2026-12-28"])
+    def test_former_substitutes_are_trading_days(self, day):
+        assert day not in _closed("XBUD", int(day[:4]))

@@ -38,7 +38,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XBRU | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
 | XBSP | 1241 | No reference data | No reference data | n/a | n/a |
-| XBUD | 1249 | 1244 | 1244 | 11 | 99.1% |
+| XBUD | 1248 | 1244 | 1244 | 4 | 99.7% |
 | XBUE | 1236 | 1232 | 1232 | 16 | 98.7% |
 | XBUL | 1251 | No reference data | No reference data | n/a | n/a |
 | XCAI | 1001 | No reference data | No reference data | n/a | n/a |
@@ -103,7 +103,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 27 of 50.
-- Trading days on which all available sources agree: 62453 of 62777 (99.5%).
+- Trading days on which all available sources agree: 62456 of 62773 (99.5%).
 
 ## Disagreements by year
 
@@ -114,7 +114,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XBDA | - | 0 | 0 | 0 | 4 | 0 |
 | XBOG | - | 2 | 1 | 1 | 1 | 1 |
 | XBOM | - | 0 | 0 | 8 | 12 | 15 |
-| XBUD | - | 3 | 4 | 0 | 0 | 4 |
+| XBUD | - | 0 | 0 | 0 | 0 | 4 |
 | XBUE | - | 7 | 4 | 3 | 1 | 1 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
 | XJSE | - | 1 | 0 | 0 | 0 | 0 |
@@ -139,8 +139,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 46 | 0 | 12 | 1 | 1 | 32 |
-| 2026 | 31 | 0 | 7 | 0 | 0 | 24 |
+| 2025 | 43 | 0 | 12 | 1 | 1 | 29 |
+| 2026 | 27 | 0 | 7 | 0 | 0 | 20 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -200,10 +200,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 - registry closed, PMC open (35): 2027-01-26 Tu [unpublished], 2027-03-10 We [unpublished], 2027-03-23 Tu [unpublished], 2027-03-26 Fr [unpublished], 2027-04-14 We [unpublished], 2027-05-17 Mo [unpublished], 2027-06-16 We [unpublished], 2027-10-29 Fr [unpublished], 2028-01-26 We [unpublished], 2028-02-24 Th [unpublished], 2028-04-14 Fr [unpublished], 2028-05-01 Mo [unpublished], 2028-05-05 Fr [unpublished], 2028-08-15 Tu [unpublished], 2028-08-23 We [unpublished], 2028-09-28 Th [unpublished], 2028-10-02 Mo [unpublished], 2028-10-17 Tu [unpublished], 2028-10-18 We [unpublished], 2028-12-25 Mo [unpublished], 2029-01-26 Fr [unpublished], 2029-02-12 Mo [unpublished], 2029-02-15 Th [unpublished], 2029-03-01 Th [unpublished], 2029-03-30 Fr [unpublished], 2029-04-24 Tu [unpublished], 2029-05-01 Tu [unpublished], 2029-05-24 Th [unpublished], 2029-08-15 We [unpublished], 2029-09-12 We [unpublished], 2029-10-02 Tu [unpublished], 2029-10-17 We [unpublished], 2029-11-05 Mo [unpublished], 2029-11-06 Tu [unpublished], 2029-12-25 Tu [unpublished]
 
-### XBUD (11)
+### XBUD (4)
 
-- registry open, PMC closed, EC closed (8): 2025-05-02 Fr, 2025-10-24 Fr, 2026-01-02 Fr, 2026-08-21 Fr, 2029-03-16 Fr [unpublished], 2029-04-30 Mo [unpublished], 2029-10-22 Mo [unpublished], 2029-11-02 Fr [unpublished]
-- registry closed, PMC open, EC open (3): 2025-03-14 Fr, 2026-03-16 Mo, 2026-12-28 Mo
+- registry open, PMC closed, EC closed (4): 2029-03-16 Fr [unpublished], 2029-04-30 Mo [unpublished], 2029-10-22 Mo [unpublished], 2029-11-02 Fr [unpublished]
 
 ### XBUE (16)
 
@@ -301,7 +300,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 41 dates; Registry error: 353 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 41 dates; Registry error: 360 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -382,6 +381,14 @@ The Labour Code lists eleven holidays and gives no substitute day for one on a w
 Dates: 2027-04-30, 2027-05-03, 2027-10-22, 2027-10-25, 2027-11-01, 2027-12-27, 2027-12-28, 2028-01-03, 2028-08-21, 2028-11-01, 2029-11-01.
 
 Source: https://www.penzcentrum.hu/karrier/20260921/munkaido-naptar-2027-hosszu-hetvegek-munkaszuneti-napok-es-unnepnapok-1205722
+
+### XBUD: Registry error (7, fixed in 2.23.10)
+
+BSE resolution 311/2024 (the 2025 trading holidays) lists Friday 2 May and Friday 24 October as rest days and no closure on Friday 14 March: the Labour Code gives no substitute day for a holiday on a weekend, so 15 March 2025 (Saturday) is not moved. The same holds for 15 March 2026 (Sunday) and 26 December 2026 (Saturday): Monday 16 March and Monday 28 December are trading days. For 2026 BSE's notices to its members (relayed by UniCredit Hungary) give a trading holiday on 20 and 21 August and on Saturday 10 January (working day for the Friday 2 January rest day); the 2026 rest days are 2 January, 21 August and 24 December. The registry closed the three false substitutes and traded on the four bridge days; the libraries had it right. 7 dates fixed. BSE's own 2026 resolution was not retrieved: 2 January 2026 rests on the working-Saturday arrangement and trade press. The Budapest fetcher still computes weekend substitutes (BudapestFetcher._observed_substitutes) and needs the same fix.
+
+Dates: 2025-03-14, 2025-05-02, 2025-10-24, 2026-01-02, 2026-03-16, 2026-08-21, 2026-12-28.
+
+Source: https://www.bse.hu/trading-hours
 
 ### XBUD: Unpublished (4, calendar not yet published, registry value is a prediction, recheck 2028-06-30)
 

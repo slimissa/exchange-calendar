@@ -1392,6 +1392,23 @@
       ],
       "summary": "TWSE's open/closed calendars follow the government calendar. The TAIFEX notice for September-December 2025 (TWSE and TAIFEX share the holiday schedule) lists Monday 29 September (Teachers' Day adjusted holiday), Friday 24 October (Restoration Day adjusted holiday) and Thursday 25 December (Constitution Day, a holiday again from 2025). TWSE's 2025 calendar closes Monday 27 January for the Lunar New Year (make-up day Saturday 8 February, not a trading day). TWSE's 2026 calendar (announced 29 June 2025, udn and ETtoday coverage and the calendar table) lists Monday 6 April (Tomb Sweeping Day observed), Monday 28 September (Teachers' Day), Monday 26 October (Restoration Day observed) and Friday 25 December (Constitution Day). The registry traded on all eight; both libraries closed them. 8 dates fixed. TWSE's own 2025 page was not retrieved: the 2025 dates rest on the TAIFEX notice and a TWSE-sourced calendar summary.",
       "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html"
+    },
+    {
+      "exchange": "XBUD",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.10",
+      "dates": [
+        "2025-03-14",
+        "2025-05-02",
+        "2025-10-24",
+        "2026-01-02",
+        "2026-03-16",
+        "2026-08-21",
+        "2026-12-28"
+      ],
+      "summary": "BSE resolution 311/2024 (the 2025 trading holidays) lists Friday 2 May and Friday 24 October as rest days and no closure on Friday 14 March: the Labour Code gives no substitute day for a holiday on a weekend, so 15 March 2025 (Saturday) is not moved. The same holds for 15 March 2026 (Sunday) and 26 December 2026 (Saturday): Monday 16 March and Monday 28 December are trading days. For 2026 BSE's notices to its members (relayed by UniCredit Hungary) give a trading holiday on 20 and 21 August and on Saturday 10 January (working day for the Friday 2 January rest day); the 2026 rest days are 2 January, 21 August and 24 December. The registry closed the three false substitutes and traded on the four bridge days; the libraries had it right. 7 dates fixed. BSE's own 2026 resolution was not retrieved: 2 January 2026 rests on the working-Saturday arrangement and trade press. The Budapest fetcher still computes weekend substitutes (BudapestFetcher._observed_substitutes) and needs the same fix.",
+      "source_url": "https://www.bse.hu/trading-hours"
     }
   ]
 }
