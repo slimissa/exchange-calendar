@@ -1473,6 +1473,29 @@
       ],
       "summary": "The federal government declared Saturday 6 September 2025 the public holiday for Eid Milad-un-Nabi (Cabinet Division notification of 2 September; the State Bank closed on 6 September only, BPRD Circular Letter 19). PSX's 2025 calendar gave 'Friday or Saturday, 5th or 6th September'. Only the Sindh government declared 5 September a provincial holiday. Both libraries close Friday 5 September; the registry trades. No PSX notice for 5 September was found, so this rests on the federal declaration and PSX's calendar rather than a PSX closure notice for the day.",
       "source_url": "https://www.psx.com.pk/psx/exchange/general/calendar-holidays"
+    },
+    {
+      "exchange": "XLIT",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.11",
+      "dates": [
+        "2025-05-29",
+        "2025-12-31"
+      ],
+      "summary": "Nasdaq's May 2025 statistics report give Vilnius 20 trading days against 22 weekdays: 1 May and Ascension Day (29 May), which every Baltic exchange observes. Its December 2025 report gives all exchanges 19 trading days against 23 weekdays: 24, 25, 26 and 31 December. The registry traded on 29 May and on 31 December 2025. Nasdaq Baltic's own trading-holidays page already lists both for 2026 and the registry has them for that year. 2 dates fixed.",
+      "source_url": "https://attachment.news.eu.nasdaq.com/aab5896ed129b436acc32b21a545fcddf"
+    },
+    {
+      "exchange": "XLIT",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2025-12-25",
+        "2026-12-25"
+      ],
+      "summary": "Nasdaq's December 2025 statistics report give every exchange 19 trading days, which needs 25 December closed (with 24, 26 and 31 December). exchange_calendars and pandas_market_calendars trade on 25 December 2025 and 2026. The registry is right. The 25 December 2026 closure rests on the 2025 count and Nasdaq Baltic's yearly pattern; no 2026 statistics exist yet.",
+      "source_url": "https://attachment.news.eu.nasdaq.com/a73c2732fa3004542058f223e2e1b83f1"
     }
   ]
 }

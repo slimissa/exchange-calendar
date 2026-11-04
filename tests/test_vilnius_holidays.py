@@ -345,3 +345,27 @@ class TestFutureYearFixes:
     def test_christmas_day_is_closed(self, day):
         # Nasdaq CSD lists 25 December as a T2S/T2 closing day for the Baltics.
         assert day in _closed("XLIT", int(day[:4]))
+
+
+class TestXLITTradingDays2025:
+    """Nasdaq's monthly statistics give Vilnius's trading days: 20 in May 2025
+    (22 weekdays: 1 May and Ascension Day, 29 May, closed), 20 in June 2025
+    (24 June only), 20 in November 2025 and 19 in December 2025 (24, 25, 26
+    and 31 December)."""
+
+    @staticmethod
+    def _closed_set(explicit_dates, year):
+        return {d for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["status"] == "closed"}
+
+    def test_2025_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2025) == {
+            "2025-01-01", "2025-03-11", "2025-04-18", "2025-04-21", "2025-05-01",
+            "2025-05-29", "2025-06-24", "2025-08-15", "2025-12-24", "2025-12-25",
+            "2025-12-26", "2025-12-31"}
+
+    def test_2026_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2026) == {
+            "2026-01-01", "2026-02-16", "2026-03-11", "2026-04-03", "2026-04-06",
+            "2026-05-01", "2026-05-14", "2026-06-24", "2026-07-06", "2026-11-02",
+            "2026-12-24", "2026-12-25", "2026-12-31"}

@@ -5,7 +5,7 @@
 -- Dialect: ANSI SQL-92 baseline. No transaction wrapper.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 166, holidays 6333, ad_hoc_closures 0, confidence 564
+-- Rows: exchanges 74, sessions 166, holidays 6335, ad_hoc_closures 0, confidence 564
 
 DROP TABLE IF EXISTS confidence;
 DROP TABLE IF EXISTS ad_hoc_closures;
@@ -3196,11 +3196,13 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2025-04-18', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2025-04-21', 'Easter Monday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2025-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2025-05-29', 'Ascension Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2025-06-24', 'St. John''s Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2025-08-15', 'Assumption Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2025-12-24', 'Christmas Eve', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2025-12-25', 'Christmas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2025-12-26', 'Boxing Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2025-12-31', 'New Year''s Eve', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2026-01-01', 'New Year''s Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2026-02-16', 'Restoration of State Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIT', '2026-03-11', 'Restoration of Independence Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.nasdaqbaltic.com/trading-calendar');
@@ -7244,6 +7246,6 @@ INSERT INTO confidence (exchange_code, year, level, source, last_verified, note)
 -- Row counts
 --   exchanges: 74
 --   sessions: 166
---   holidays: 6333
+--   holidays: 6335
 --   ad_hoc_closures: 0
 --   confidence: 564
