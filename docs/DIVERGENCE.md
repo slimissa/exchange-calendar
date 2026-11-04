@@ -57,7 +57,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XIST | 1255 | 1255 | 1255 | 0 | 100.0% |
 | XJKT | 1249 | No reference data | No reference data | n/a | n/a |
 | XJSE | 1251 | 1252 | 1252 | 1 | 99.9% |
-| XKAR | 1260 | 1270 | 1270 | 24 | 98.1% |
+| XKAR | 1253 | 1270 | 1270 | 23 | 98.2% |
 | XKLS | 1228 | 1232 | 1232 | 16 | 98.7% |
 | XKRX | 1222 | 1224 | 1224 | 10 | 99.2% |
 | XKUW | 1017 | No reference data | No reference data | n/a | n/a |
@@ -103,7 +103,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 27 of 50.
-- Trading days on which all available sources agree: 62456 of 62770 (99.5%).
+- Trading days on which all available sources agree: 62453 of 62766 (99.5%).
 
 ## Disagreements by year
 
@@ -118,7 +118,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XBUE | - | 7 | 4 | 3 | 1 | 1 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
 | XJSE | - | 1 | 0 | 0 | 0 | 0 |
-| XKAR | - | 5 | 1 | 7 | 4 | 7 |
+| XKAR | - | 2 | 3 | 7 | 4 | 7 |
 | XKLS | - | 1 | 2 | 5 | 5 | 3 |
 | XKRX | - | 3 | 2 | 2 | 2 | 1 |
 | XLIM | - | 1 | 4 | 3 | 3 | 0 |
@@ -139,8 +139,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 41 | 0 | 15 | 1 | 1 | 24 |
-| 2026 | 26 | 0 | 8 | 0 | 0 | 18 |
+| 2025 | 38 | 0 | 17 | 1 | 1 | 19 |
+| 2026 | 28 | 0 | 11 | 0 | 0 | 17 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -218,10 +218,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 - registry closed, PMC open, EC open (1): 2025-08-11 Mo
 
-### XKAR (24)
+### XKAR (23)
 
-- registry closed, PMC open, EC open (17): 2025-01-01 We, 2027-03-09 Tu [unpublished], 2027-03-10 We [unpublished], 2027-05-03 Mo, 2027-05-17 Mo [unpublished], 2027-06-15 Tu [unpublished], 2027-12-27 Mo, 2028-02-28 Mo [unpublished], 2028-05-04 Th [unpublished], 2028-05-05 Fr [unpublished], 2028-08-04 Fr [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-04-24 Tu [unpublished], 2029-04-25 We [unpublished], 2029-05-24 Th [unpublished], 2029-07-24 Tu [unpublished]
-- registry open, PMC closed, EC closed (7): 2025-03-28 Fr, 2025-05-28 We, 2025-06-09 Mo, 2025-09-05 Fr, 2026-05-28 Th, 2027-05-28 Fr, 2029-05-28 Mo
+- registry closed, PMC open, EC open (20): 2025-06-06 Fr [library error], 2026-03-20 Fr [library error], 2026-05-26 Tu [library error], 2026-05-27 We [library error], 2027-03-09 Tu [unpublished], 2027-03-10 We [unpublished], 2027-05-03 Mo, 2027-05-17 Mo [unpublished], 2027-06-15 Tu [unpublished], 2027-12-27 Mo, 2028-02-28 Mo [unpublished], 2028-05-04 Th [unpublished], 2028-05-05 Fr [unpublished], 2028-08-04 Fr [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-04-24 Tu [unpublished], 2029-04-25 We [unpublished], 2029-05-24 Th [unpublished], 2029-07-24 Tu [unpublished]
+- registry open, PMC closed, EC closed (3): 2025-09-05 Fr [library error], 2027-05-28 Fr, 2029-05-28 Mo
 
 ### XKLS (16)
 
@@ -300,7 +300,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 45 dates; Registry error: 363 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 50 dates; Registry error: 368 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -501,6 +501,30 @@ The Public Holidays Act 36 of 1994, s2(1) moves a holiday that falls on a Sunday
 Dates: 2025-08-08, 2026-03-20, 2028-12-15, 2029-06-15.
 
 Source: https://www.polity.org.za/polity/govdocs/legislation/1994/act94-036.html
+
+### XKAR: Library error (4, registry verified, no change)
+
+PSX closed from Friday 6 to Monday 9 June 2025 ('from Friday, June 6, 2025, to Monday, June 9, 2025, on account of Eid-ul-Azha'), and Public Notice PSX/N-89 lists Juma-tul-Wida on Friday 20 March 2026; PSX declared itself closed from Tuesday 26 to Thursday 28 May 2026 for Eid-ul-Azha. exchange_calendars and pandas_market_calendars close only 9 June 2025 and 28 May 2026 and trade on the four days listed here. The registry's closures of these four days were added in 2.23.10. The 20 March and 26-27 May 2026 closures rest on PSX's calendar and a trade-press report of its closure notice, not on a retrieved PSX notice for each day.
+
+Dates: 2025-06-06, 2026-03-20, 2026-05-26, 2026-05-27.
+
+Source: https://dps.psx.com.pk/download/attachment/268947-1.pdf
+
+### XKAR: Library error (1, registry verified, no change)
+
+The federal government declared Saturday 6 September 2025 the public holiday for Eid Milad-un-Nabi (Cabinet Division notification of 2 September; the State Bank closed on 6 September only, BPRD Circular Letter 19). PSX's 2025 calendar gave 'Friday or Saturday, 5th or 6th September'. Only the Sindh government declared 5 September a provincial holiday. Both libraries close Friday 5 September; the registry trades. No PSX notice for 5 September was found, so this rests on the federal declaration and PSX's calendar rather than a PSX closure notice for the day.
+
+Dates: 2025-09-05.
+
+Source: https://www.psx.com.pk/psx/exchange/general/calendar-holidays
+
+### XKAR: Registry error (5, fixed in 2.23.10)
+
+PSX's holiday calendar for 2025 does not list 1 January, so the exchange trades (the registry closed it as a 'bank holiday'). It lists Juma-tul-Wida on Friday 28 March and Youm-e-Takbeer on Wednesday 28 May, and PSX's own notices closed it on both days (28 March: 'on account of Jumua-tul-Wida'; 28 May: 'being public holiday declared by the Government of Pakistan') and from Friday 6 to Monday 9 June 2025 for Eid-ul-Azha. For 2026 PSX Public Notice PSX/N-89 lists Youm-e-Takbeer on Thursday 28 May and Eid-ul-Azha on 27-29 May, and PSX declared itself closed from Tuesday 26 to Thursday 28 May 2026. The registry traded on all of these days except those it closed correctly. 5 dates fixed. Companion closures added with them are classified below.
+
+Dates: 2025-01-01, 2025-03-28, 2025-05-28, 2025-06-09, 2026-05-28.
+
+Source: https://dps.psx.com.pk/download/attachment/268947-1.pdf
 
 ### XKAR: Unpublished (4, calendar not yet published, registry value is a prediction, recheck 2027-01-15)
 

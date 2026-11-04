@@ -7,7 +7,7 @@
 -- after the CREATE statements and wraps the INSERT block.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 166, holidays 6326, ad_hoc_closures 0, confidence 564
+-- Rows: exchanges 74, sessions 166, holidays 6333, ad_hoc_closures 0, confidence 564
 
 DROP TABLE IF EXISTS confidence;
 DROP TABLE IF EXISTS ad_hoc_closures;
@@ -2854,17 +2854,24 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XJSE', '2029-12-17', 'Day of Reconciliation', 'closed', 'generated', 1, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XJSE', '2029-12-25', 'Christmas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.jse.co.za/market-data/trading-hours');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XJSE', '2029-12-26', 'Day of Goodwill', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.jse.co.za/market-data/trading-hours');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-01-01', 'New Year''s Day (bank holiday)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-02-05', 'Kashmir Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-03-28', 'Juma-tul-Wida', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-03-31', 'Eid al-Fitr', 'closed', 'explicit', 1, NULL, NULL, 0, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-04-01', 'Eid al-Fitr Holiday', 'closed', 'explicit', 1, NULL, NULL, 0, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-04-02', 'Eid al-Fitr Holiday', 'closed', 'explicit', 1, NULL, NULL, 0, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-05-28', 'Youm-e-Takbeer', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-06-06', 'Eid-ul-Azha Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-06-09', 'Eid-ul-Azha Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-08-14', 'Independence Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2025-12-25', 'Quaid-e-Azam Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2026-02-05', 'Kashmir Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2026-03-20', 'Juma-tul-Wida', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2026-03-23', 'Pakistan Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2026-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2026-05-26', 'Eid-ul-Azha Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2026-05-27', 'Eid-ul-Azha Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2026-05-28', 'Youm-e-Takbeer and Eid-ul-Azha Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2026-08-14', 'Independence Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2026-11-09', 'Iqbal Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XKAR', '2026-12-25', 'Quaid-e-Azam Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.psx.com.pk/trading-calendar');
@@ -7241,6 +7248,6 @@ COMMIT;
 -- Row counts
 --   exchanges: 74
 --   sessions: 166
---   holidays: 6326
+--   holidays: 6333
 --   ad_hoc_closures: 0
 --   confidence: 564

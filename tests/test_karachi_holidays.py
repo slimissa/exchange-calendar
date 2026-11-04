@@ -183,8 +183,11 @@ class TestXKAREidAlFitr:
 
 class TestXKAREidAlAdha:
     def test_eid_al_adha_2025(self, explicit_dates):
-        """Eid al-Adha 2025 — June 7 (Saturday, weekend) — not in explicit."""
+        """Eid-ul-Azha 2025: Saturday 7 June is a weekend day; PSX closed
+        from Friday 6 June to Monday 9 June."""
         assert "2025-06-07" not in explicit_dates
+        assert "2025-06-06" in explicit_dates
+        assert "2025-06-09" in explicit_dates
 
     def test_eid_al_adha_2027(self, explicit_dates):
         """Eid al-Adha 2027 — May 16 (Sunday, weekend) — not in explicit."""
@@ -329,3 +332,35 @@ class TestXKARSubstitution:
     def test_observed_names(self, explicit_dates):
         observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
         assert observed_count >= 2, f"Expected some observed holidays, got {observed_count}"
+
+
+# ──────────────────────────────────────────────────────────────
+# PSX holiday notices, 2025 and 2026
+# ──────────────────────────────────────────────────────────────
+
+class TestXKARPsxNotices2025And2026:
+    """PSX's holiday calendar for 2025 and Public Notice PSX/N-89 (20 January
+    2026), plus its closure notices: the exchange trades on 1 January and on
+    Friday 5 September 2025 (the federal Eid Milad-un-Nabi holiday is
+    Saturday 6 September), and closes for Juma-tul-Wida, Youm-e-Takbeer and
+    the Eid-ul-Azha days."""
+
+    @staticmethod
+    def _closed_set(explicit_dates, year):
+        return {d for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["status"] == "closed"}
+
+    def test_2025_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2025) == {
+            "2025-02-05", "2025-03-28", "2025-03-31", "2025-04-01", "2025-04-02",
+            "2025-05-01", "2025-05-28", "2025-06-06", "2025-06-09", "2025-08-14",
+            "2025-12-25"}
+
+    def test_2026_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2026) == {
+            "2026-02-05", "2026-03-20", "2026-03-23", "2026-05-01", "2026-05-26",
+            "2026-05-27", "2026-05-28", "2026-08-14", "2026-11-09", "2026-12-25"}
+
+    @pytest.mark.parametrize("day", ["2025-01-01", "2025-09-05"])
+    def test_trading_days(self, explicit_dates, day):
+        assert day not in explicit_dates

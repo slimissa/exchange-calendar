@@ -1435,6 +1435,44 @@
       ],
       "summary": "Nasdaq's statistics reports give Riga 19 trading days in May 2025 (closed 1, 5 and 29 May, so 2 May traded), 19 in November 2025 against 20 for every other exchange (only 18 November closed, so 17 November traded) and 19 in December 2025 as for every exchange (24, 25, 26 and 31 December closed). exchange_calendars and pandas_market_calendars close 2 May and 17 November 2025 and trade on 25 December 2025 and 2026. The registry is right on all four. The 25 December 2026 closure rests on the 2025 count and Nasdaq Baltic's yearly pattern; no 2026 statistics exist yet.",
       "source_url": "https://attachment.news.eu.nasdaq.com/a73c2732fa3004542058f223e2e1b83f1"
+    },
+    {
+      "exchange": "XKAR",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.10",
+      "dates": [
+        "2025-01-01",
+        "2025-03-28",
+        "2025-05-28",
+        "2025-06-09",
+        "2026-05-28"
+      ],
+      "summary": "PSX's holiday calendar for 2025 does not list 1 January, so the exchange trades (the registry closed it as a 'bank holiday'). It lists Juma-tul-Wida on Friday 28 March and Youm-e-Takbeer on Wednesday 28 May, and PSX's own notices closed it on both days (28 March: 'on account of Jumua-tul-Wida'; 28 May: 'being public holiday declared by the Government of Pakistan') and from Friday 6 to Monday 9 June 2025 for Eid-ul-Azha. For 2026 PSX Public Notice PSX/N-89 lists Youm-e-Takbeer on Thursday 28 May and Eid-ul-Azha on 27-29 May, and PSX declared itself closed from Tuesday 26 to Thursday 28 May 2026. The registry traded on all of these days except those it closed correctly. 5 dates fixed. Companion closures added with them are classified below.",
+      "source_url": "https://dps.psx.com.pk/download/attachment/268947-1.pdf"
+    },
+    {
+      "exchange": "XKAR",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2025-06-06",
+        "2026-03-20",
+        "2026-05-26",
+        "2026-05-27"
+      ],
+      "summary": "PSX closed from Friday 6 to Monday 9 June 2025 ('from Friday, June 6, 2025, to Monday, June 9, 2025, on account of Eid-ul-Azha'), and Public Notice PSX/N-89 lists Juma-tul-Wida on Friday 20 March 2026; PSX declared itself closed from Tuesday 26 to Thursday 28 May 2026 for Eid-ul-Azha. exchange_calendars and pandas_market_calendars close only 9 June 2025 and 28 May 2026 and trade on the four days listed here. The registry's closures of these four days were added in 2.23.10. The 20 March and 26-27 May 2026 closures rest on PSX's calendar and a trade-press report of its closure notice, not on a retrieved PSX notice for each day.",
+      "source_url": "https://dps.psx.com.pk/download/attachment/268947-1.pdf"
+    },
+    {
+      "exchange": "XKAR",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2025-09-05"
+      ],
+      "summary": "The federal government declared Saturday 6 September 2025 the public holiday for Eid Milad-un-Nabi (Cabinet Division notification of 2 September; the State Bank closed on 6 September only, BPRD Circular Letter 19). PSX's 2025 calendar gave 'Friday or Saturday, 5th or 6th September'. Only the Sindh government declared 5 September a provincial holiday. Both libraries close Friday 5 September; the registry trades. No PSX notice for 5 September was found, so this rests on the federal declaration and PSX's calendar rather than a PSX closure notice for the day.",
+      "source_url": "https://www.psx.com.pk/psx/exchange/general/calendar-holidays"
     }
   ]
 }
