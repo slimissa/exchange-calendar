@@ -61,7 +61,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XKLS | 1228 | 1232 | 1232 | 16 | 98.7% |
 | XKRX | 1217 | 1224 | 1224 | 7 | 99.4% |
 | XKUW | 1017 | No reference data | No reference data | n/a | n/a |
-| XLIM | 1240 | 1243 | 1243 | 11 | 99.1% |
+| XLIM | 1241 | 1243 | 1243 | 6 | 99.5% |
 | XLIS | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XLIT | 1242 | 1246 | 1246 | 4 | 99.7% |
 | XLON | 1518 | 1518 | 1518 | 0 | 100.0% |
@@ -103,7 +103,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 27 of 50.
-- Trading days on which all available sources agree: 62452 of 62760 (99.5%).
+- Trading days on which all available sources agree: 62455 of 62758 (99.5%).
 
 ## Disagreements by year
 
@@ -121,7 +121,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XKAR | - | 2 | 3 | 7 | 4 | 7 |
 | XKLS | - | 1 | 2 | 5 | 5 | 3 |
 | XKRX | - | 0 | 2 | 2 | 2 | 1 |
-| XLIM | - | 1 | 4 | 3 | 3 | 0 |
+| XLIM | - | 0 | 0 | 3 | 3 | 0 |
 | XLIT | - | 1 | 1 | 0 | 1 | 1 |
 | XMOS | - | 2 | 2 | - | - | - |
 | XNSE | - | 1 | 0 | 8 | 12 | 15 |
@@ -139,8 +139,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 33 | 0 | 18 | 1 | 1 | 13 |
-| 2026 | 28 | 0 | 14 | 0 | 0 | 14 |
+| 2025 | 32 | 0 | 18 | 1 | 1 | 12 |
+| 2026 | 24 | 0 | 14 | 0 | 0 | 10 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -232,10 +232,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 - registry closed, PMC open, EC open (7): 2026-06-03 We [library error], 2026-07-17 Fr [library error], 2027-05-03 Mo [library error], 2027-07-19 Mo [library error], 2028-04-12 We [library error], 2028-07-17 Mo [library error], 2029-07-17 Tu [library error]
 
-### XLIM (11)
+### XLIM (6)
 
-- registry closed, PMC open, EC open (7): 2026-06-08 Mo, 2026-08-31 Mo, 2026-11-02 Mo, 2027-06-28 Mo [unpublished], 2028-07-24 Mo [unpublished], 2028-08-07 Mo [unpublished], 2028-10-09 Mo [unpublished]
-- registry open, PMC closed, EC closed (4): 2025-12-09 Tu, 2026-12-09 We, 2027-06-29 Tu [unpublished], 2027-12-09 Th [unpublished]
+- registry closed, PMC open, EC open (4): 2027-06-28 Mo [unpublished], 2028-07-24 Mo [unpublished], 2028-08-07 Mo [unpublished], 2028-10-09 Mo [unpublished]
+- registry open, PMC closed, EC closed (2): 2027-06-29 Tu [unpublished], 2027-12-09 Th [unpublished]
 
 ### XLIT (4)
 
@@ -298,7 +298,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 54 dates; Registry error: 375 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 54 dates; Registry error: 380 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -619,6 +619,14 @@ Source: https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.j
 Dates: 2027-05-03, 2027-12-27, 2028-01-03.
 
 Source: https://www.infobae.com/peru/2026/08/28/gobierno-confirma-formula-para-traslado-de-feriados-al-lunes-para-2027/
+
+### XLIM: Registry error (5, fixed in 2.23.11)
+
+Peru's holiday law lists the Battle of Ayacucho (9 December) among the national holidays: the Lima Chamber of Commerce's 2025 list and the press lists of the 16 national holidays of 2026 both include it, and the registry traded on both days. Peruvian law moves no holiday that falls on a weekend to Monday in 2025 or 2026: La Republica (27 August 2026) states that Saturday 29 and Monday 31 August are neither holidays nor non-working days around Santa Rosa de Lima (Sunday 30 August). The registry's Monday closures on 8 June (Battle of Arica, Sunday 7 June), 31 August and 2 November (All Saints' Day, Sunday 1 November) 2026 are removed. The Monday-transfer scheme announced in August 2026 starts in 2027 (see the 2027-2028 entries). 5 dates fixed. BVL's own calendar page was not retrieved: the fix rests on the law and the government calendars, as BVL follows national holidays.
+
+Dates: 2025-12-09, 2026-06-08, 2026-08-31, 2026-11-02, 2026-12-09.
+
+Source: https://www.bvl.com.pe/calendario
 
 ### XLIM: Unpublished (6, calendar not yet published, registry value is a prediction, recheck 2027-01-15)
 

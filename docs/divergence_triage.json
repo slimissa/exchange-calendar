@@ -1522,6 +1522,21 @@
       ],
       "summary": "KRX announced on 20 May 2026 that its securities, derivatives and general commodities markets close on Wednesday 3 June 2026 (local election day) and on Friday 17 July 2026 (Constitution Day, a legal public holiday again from 2026). exchange_calendars and pandas_market_calendars trade on both days. The registry's closures of these two days were added in 2.23.11.",
       "source_url": "https://en.sedaily.com/finance/2026/05/20/korea-exchange-to-close-on-local-election-day-constitution"
+    },
+    {
+      "exchange": "XLIM",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.11",
+      "dates": [
+        "2025-12-09",
+        "2026-06-08",
+        "2026-08-31",
+        "2026-11-02",
+        "2026-12-09"
+      ],
+      "summary": "Peru's holiday law lists the Battle of Ayacucho (9 December) among the national holidays: the Lima Chamber of Commerce's 2025 list and the press lists of the 16 national holidays of 2026 both include it, and the registry traded on both days. Peruvian law moves no holiday that falls on a weekend to Monday in 2025 or 2026: La Republica (27 August 2026) states that Saturday 29 and Monday 31 August are neither holidays nor non-working days around Santa Rosa de Lima (Sunday 30 August). The registry's Monday closures on 8 June (Battle of Arica, Sunday 7 June), 31 August and 2 November (All Saints' Day, Sunday 1 November) 2026 are removed. The Monday-transfer scheme announced in August 2026 starts in 2027 (see the 2027-2028 entries). 5 dates fixed. BVL's own calendar page was not retrieved: the fix rests on the law and the government calendars, as BVL follows national holidays.",
+      "source_url": "https://www.bvl.com.pe/calendario"
     }
   ]
 }

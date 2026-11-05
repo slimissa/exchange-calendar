@@ -5,7 +5,7 @@
 -- Dialect: ANSI SQL-92 baseline. No transaction wrapper.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 166, holidays 6340, ad_hoc_closures 0, confidence 564
+-- Rows: exchanges 74, sessions 166, holidays 6339, ad_hoc_closures 0, confidence 564
 
 DROP TABLE IF EXISTS confidence;
 DROP TABLE IF EXISTS ad_hoc_closures;
@@ -3109,6 +3109,7 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2025-08-06', 'Battle of Junín (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2025-10-08', 'Battle of Angamos (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2025-12-08', 'Immaculate Conception', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2025-12-09', 'Battle of Ayacucho', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2025-12-24', 'Christmas Eve', 'early_close', 'explicit', 1, '11:30', NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2025-12-25', 'Christmas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2025-12-31', 'New Year''s Eve', 'early_close', 'explicit', 1, '11:30', NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
@@ -3116,16 +3117,14 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-04-02', 'Maundy Thursday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-04-03', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-06-08', 'Battle of Arica (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-06-29', 'Saint Peter and Saint Paul (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-07-23', 'Air Force Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-07-28', 'Independence Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-07-29', 'Independence Day (second day)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-08-06', 'Battle of Junín (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-08-31', 'Saint Rose of Lima (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-10-08', 'Battle of Angamos (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-11-02', 'All Saints'' Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-12-08', 'Immaculate Conception', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-12-09', 'Battle of Ayacucho', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-12-24', 'Christmas Eve', 'early_close', 'explicit', 1, '11:30', NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-12-25', 'Christmas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XLIM', '2026-12-31', 'New Year''s Eve', 'early_close', 'explicit', 1, '11:30', NULL, NULL, NULL, 'https://www.bvl.com.pe/calendario');
@@ -7251,6 +7250,6 @@ INSERT INTO confidence (exchange_code, year, level, source, last_verified, note)
 -- Row counts
 --   exchanges: 74
 --   sessions: 166
---   holidays: 6340
+--   holidays: 6339
 --   ad_hoc_closures: 0
 --   confidence: 564

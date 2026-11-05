@@ -116,9 +116,9 @@ class TestXLIMFixedHolidays:
         assert "2025-11-01" not in explicit_dates
 
     def test_all_saints_2026(self, explicit_dates):
-        """Nov 1, 2026 is Sunday — substitute to Monday Nov 2."""
+        """Nov 1, 2026 is Sunday: Peruvian law moves no holiday to Monday in 2026."""
         assert "2026-11-01" not in explicit_dates
-        assert "2026-11-02" in explicit_dates
+        assert "2026-11-02" not in explicit_dates
 
     def test_immaculate_conception_2025(self, explicit_dates):
         """Dec 8, 2025 is Monday."""
@@ -204,8 +204,8 @@ class TestXLIMObservedHolidays:
         assert "2025-06-07" not in explicit_dates
 
     def test_battle_arica_2026(self, explicit_dates):
-        """Jun 7, 2026 is Sunday — observed Monday Jun 8."""
-        assert "2026-06-08" in explicit_dates
+        """Jun 7, 2026 is Sunday: no Monday substitute in 2026."""
+        assert "2026-06-08" not in explicit_dates
 
     def test_saint_peter_paul_2025(self, explicit_dates):
         """Jun 29, 2025 is Sunday (weekend) — no explicit entry."""
@@ -383,4 +383,28 @@ class TestXLIMSubstitution:
 
     def test_observed_names(self, explicit_dates):
         observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
-        assert observed_count > 25, f"Expected many observed holidays, got {observed_count}"
+        assert observed_count >= 20, f"Expected many observed holidays, got {observed_count}"
+
+
+class TestXLIMHolidays2025And2026:
+    """Peru's holiday law (Battle of Ayacucho, 9 December, is a national holiday)
+    and the government's 2026 calendar: a holiday on a weekend is not moved, so
+    Santa Rosa de Lima (Sunday 30 August 2026) leaves Monday 31 August open;
+    the Monday-transfer scheme announced in August 2026 starts in 2027."""
+
+    @staticmethod
+    def _closed_set(explicit_dates, year):
+        return {d for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["status"] == "closed"}
+
+    def test_2025_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2025) == {
+            "2025-01-01", "2025-04-17", "2025-04-18", "2025-05-01", "2025-07-23",
+            "2025-07-28", "2025-07-29", "2025-08-06", "2025-10-08", "2025-12-08",
+            "2025-12-09", "2025-12-25"}
+
+    def test_2026_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2026) == {
+            "2026-01-01", "2026-04-02", "2026-04-03", "2026-05-01", "2026-06-29",
+            "2026-07-23", "2026-07-28", "2026-07-29", "2026-08-06", "2026-10-08",
+            "2026-12-08", "2026-12-09", "2026-12-25"}
