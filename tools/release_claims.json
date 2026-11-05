@@ -1664,5 +1664,59 @@
       "file": "tests/test_karachi_holidays.py",
       "contains": "class TestXKARPsxNotices2025And2026:"
     }
+  ],
+  "2.23.11": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.11"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.11] - 2026-11-05"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Triaged and resolved unclassified disagreements for XLIM, XKRX, XSGO, and XLIT."
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.11-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.11"
+    },
+    {
+      "file": "exchanges/XLIM.json",
+      "contains": "\"date\": \"2026-12-09\""
+    },
+    {
+      "file": "exchanges/XKRX.json",
+      "contains": "\"date\": \"2026-07-17\""
+    },
+    {
+      "file": "exchanges/XSGO.json",
+      "contains": "\"date\": \"2025-12-30\""
+    },
+    {
+      "file": "exchanges/XLIT.json",
+      "contains": "\"date\": \"2025-05-29\""
+    },
+    {
+      "file": "tests/test_lima_holidays.py",
+      "contains": "class TestXLIMHolidays2025And2026:"
+    },
+    {
+      "file": "tests/test_korea_holidays.py",
+      "contains": "class TestKrxClosures2025And2026:"
+    },
+    {
+      "file": "tests/test_santiago_holidays.py",
+      "contains": "class TestXSGOClosures2025And2026:"
+    },
+    {
+      "file": "tests/test_vilnius_holidays.py",
+      "contains": "class TestXLITTradingDays2025:"
+    }
   ]
 }

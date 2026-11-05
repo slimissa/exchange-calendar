@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.11] - 2026-11-05
+
+### Fixed
+- Triaged and resolved unclassified disagreements for XLIM, XKRX, XSGO, and XLIT.
+- XLIM: the Battle of Ayacucho (9 December 2025 and 2026) is closed; the Monday substitutes on 8 June, 31 August and 2 November 2026 are removed (Peruvian law moves no weekend holiday in 2026).
+- XKRX: 27 January, 3 June and 3 October 2025 and 1 May, 3 June and 17 July 2026 are closed; 8 June 2026 trades (no substitute for the Saturday Memorial Day).
+- XSGO: 30 June and 13 October 2025 and 19 June 2026 trade (Ley 19.668 and Ley 21.357); 31 December 2025 and 2026 are closed for the bank holiday (Ley 21.791), with 30 December 2025 an early close.
+- XLIT: Ascension Day (29 May 2025) and 31 December 2025 are closed (Nasdaq trading-day counts).
+
+### Changed
+- 2025-2026 unclassified disagreements: 36 to 17 (XLIM 5, XKRX 5, XSGO 5, XLIT 4). 17 remain: this is a partial triage, not a final one.
+
 ## [2.23.10] - 2026-11-04
 
 ### Fixed
