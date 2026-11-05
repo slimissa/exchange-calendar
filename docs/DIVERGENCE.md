@@ -59,7 +59,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XJSE | 1251 | 1252 | 1252 | 1 | 99.9% |
 | XKAR | 1253 | 1270 | 1270 | 23 | 98.2% |
 | XKLS | 1228 | 1232 | 1232 | 16 | 98.7% |
-| XKRX | 1222 | 1224 | 1224 | 10 | 99.2% |
+| XKRX | 1217 | 1224 | 1224 | 7 | 99.4% |
 | XKUW | 1017 | No reference data | No reference data | n/a | n/a |
 | XLIM | 1240 | 1243 | 1243 | 11 | 99.1% |
 | XLIS | 1279 | 1279 | 1279 | 0 | 100.0% |
@@ -103,7 +103,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 27 of 50.
-- Trading days on which all available sources agree: 62453 of 62764 (99.5%).
+- Trading days on which all available sources agree: 62452 of 62760 (99.5%).
 
 ## Disagreements by year
 
@@ -120,7 +120,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XJSE | - | 1 | 0 | 0 | 0 | 0 |
 | XKAR | - | 2 | 3 | 7 | 4 | 7 |
 | XKLS | - | 1 | 2 | 5 | 5 | 3 |
-| XKRX | - | 3 | 2 | 2 | 2 | 1 |
+| XKRX | - | 0 | 2 | 2 | 2 | 1 |
 | XLIM | - | 1 | 4 | 3 | 3 | 0 |
 | XLIT | - | 1 | 1 | 0 | 1 | 1 |
 | XMOS | - | 2 | 2 | - | - | - |
@@ -139,8 +139,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 36 | 0 | 18 | 1 | 1 | 16 |
-| 2026 | 28 | 0 | 12 | 0 | 0 | 16 |
+| 2025 | 33 | 0 | 18 | 1 | 1 | 13 |
+| 2026 | 28 | 0 | 14 | 0 | 0 | 14 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -228,10 +228,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open, EC open (10): 2026-03-20 Fr, 2026-06-02 Tu, 2027-02-09 Tu [unpublished], 2027-03-11 Th [unpublished], 2027-08-16 Mo [unpublished], 2028-02-29 Tu [unpublished], 2028-06-05 Mo, 2028-08-04 Fr [unpublished], 2029-02-16 Fr [unpublished], 2029-06-04 Mo
 - registry open, PMC closed, EC closed (6): 2025-03-18 Tu, 2027-02-24 We, 2027-03-09 Tu [unpublished], 2028-02-14 Mo, 2028-08-03 Th [unpublished], 2029-09-17 Mo
 
-### XKRX (10)
+### XKRX (7)
 
-- registry closed, PMC open, EC open (6): 2026-06-08 Mo, 2027-05-03 Mo [library error], 2027-07-19 Mo [library error], 2028-04-12 We [library error], 2028-07-17 Mo [library error], 2029-07-17 Tu [library error]
-- registry open, PMC closed, EC closed (4): 2025-01-27 Mo, 2025-06-03 Tu, 2025-10-03 Fr, 2026-05-01 Fr
+- registry closed, PMC open, EC open (7): 2026-06-03 We [library error], 2026-07-17 Fr [library error], 2027-05-03 Mo [library error], 2027-07-19 Mo [library error], 2028-04-12 We [library error], 2028-07-17 Mo [library error], 2029-07-17 Tu [library error]
 
 ### XLIM (11)
 
@@ -299,7 +298,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 52 dates; Registry error: 370 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 54 dates; Registry error: 375 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -589,6 +588,14 @@ Dates: 2028-04-12.
 
 Source: https://www.segye.com/newsView/20260603508359
 
+### XKRX: Library error (2, registry verified, no change)
+
+KRX announced on 20 May 2026 that its securities, derivatives and general commodities markets close on Wednesday 3 June 2026 (local election day) and on Friday 17 July 2026 (Constitution Day, a legal public holiday again from 2026). exchange_calendars and pandas_market_calendars trade on both days. The registry's closures of these two days were added in 2.23.11.
+
+Dates: 2026-06-03, 2026-07-17.
+
+Source: https://en.sedaily.com/finance/2026/05/20/korea-exchange-to-close-on-local-election-day-constitution
+
 ### XKRX: Registry error (14, fixed in 2.23.6)
 
 The registry shifted Seollal 2027 eve to Friday 5 February (it falls on Saturday), gave Memorial Day (Sunday 6 June 2027) and New Year's Day (Saturday 1 January 2028) a Monday substitute that the law does not give them, moved Independence Movement Day 2028 to Monday 28 February, took Seollal 2028 as 26-27 January (the new moon is at 00:12 KST on the 27th, so it is 26-28 January), and lacked 1 May, the Chuseok and Foundation Day substitute days and 16 September 2027. KRX's own 2027 list (16 days) now matches; 2028-2029 apply the same rules to the KASI lunar dates.
@@ -596,6 +603,14 @@ The registry shifted Seollal 2027 eve to Friday 5 February (it falls on Saturday
 Dates: 2027-02-05, 2027-06-07, 2027-09-16, 2028-01-03, 2028-01-28, 2028-02-28, 2028-03-01, 2028-05-01, 2028-10-02, 2028-10-05, 2029-05-01, 2029-05-07, 2029-09-21, 2029-10-03.
 
 Source: https://www.khan.co.kr/article/202606292116005
+
+### XKRX: Registry error (5, fixed in 2.23.11)
+
+KRX closes on government holidays (including election days), on Labour Day (1 May) and on days it announces. Eurex circulars quote KRX's Market Closing Announcements for Monday 27 January 2025 (a temporary holiday before Seollal) and Tuesday 3 June 2025 (presidential election); 3 October 2025 is the National Foundation Day public holiday; 1 May 2026 is Labour Day under KRX's trading rules. Memorial Day (6 June 2026) falls on a Saturday and gets no substitute day, so Monday 8 June 2026 trades. The registry traded on the first four and closed on the last. 5 dates fixed. The two 2026 election and Constitution Day closures are classified below.
+
+Dates: 2025-01-27, 2025-06-03, 2025-10-03, 2026-05-01, 2026-06-08.
+
+Source: https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp
 
 ### XLIM: Registry error (3, fixed in 2.23.5)
 

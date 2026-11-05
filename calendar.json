@@ -18991,6 +18991,12 @@
             "status": "closed"
           },
           {
+            "date": "2025-01-27",
+            "name": "Temporary Holiday (Seollal)",
+            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
             "date": "2025-01-28",
             "name": "Seollal (Lunar New Year) Eve",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
@@ -19033,6 +19039,12 @@
             "status": "closed"
           },
           {
+            "date": "2025-06-03",
+            "name": "Presidential Election Day",
+            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
             "date": "2025-06-06",
             "name": "Memorial Day",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
@@ -19041,6 +19053,12 @@
           {
             "date": "2025-08-15",
             "name": "Liberation Day",
+            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
+            "date": "2025-10-03",
+            "name": "National Foundation Day",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
             "status": "closed"
           },
@@ -19111,6 +19129,12 @@
             "status": "closed"
           },
           {
+            "date": "2026-05-01",
+            "name": "Labour Day",
+            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
             "date": "2026-05-05",
             "name": "Children's Day",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
@@ -19123,8 +19147,14 @@
             "status": "closed"
           },
           {
-            "date": "2026-06-08",
-            "name": "Memorial Day (observed)",
+            "date": "2026-06-03",
+            "name": "Local Election Day",
+            "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
+            "status": "closed"
+          },
+          {
+            "date": "2026-07-17",
+            "name": "Constitution Day",
             "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp",
             "status": "closed"
           },

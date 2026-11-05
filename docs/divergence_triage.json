@@ -1496,6 +1496,32 @@
       ],
       "summary": "Nasdaq's December 2025 statistics report give every exchange 19 trading days, which needs 25 December closed (with 24, 26 and 31 December). exchange_calendars and pandas_market_calendars trade on 25 December 2025 and 2026. The registry is right. The 25 December 2026 closure rests on the 2025 count and Nasdaq Baltic's yearly pattern; no 2026 statistics exist yet.",
       "source_url": "https://attachment.news.eu.nasdaq.com/a73c2732fa3004542058f223e2e1b83f1"
+    },
+    {
+      "exchange": "XKRX",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.11",
+      "dates": [
+        "2025-01-27",
+        "2025-06-03",
+        "2025-10-03",
+        "2026-05-01",
+        "2026-06-08"
+      ],
+      "summary": "KRX closes on government holidays (including election days), on Labour Day (1 May) and on days it announces. Eurex circulars quote KRX's Market Closing Announcements for Monday 27 January 2025 (a temporary holiday before Seollal) and Tuesday 3 June 2025 (presidential election); 3 October 2025 is the National Foundation Day public holiday; 1 May 2026 is Labour Day under KRX's trading rules. Memorial Day (6 June 2026) falls on a Saturday and gets no substitute day, so Monday 8 June 2026 trades. The registry traded on the first four and closed on the last. 5 dates fixed. The two 2026 election and Constitution Day closures are classified below.",
+      "source_url": "https://global.krx.co.kr/contents/GLB/05/0501/0501110000/GLB0501110000.jsp"
+    },
+    {
+      "exchange": "XKRX",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2026-06-03",
+        "2026-07-17"
+      ],
+      "summary": "KRX announced on 20 May 2026 that its securities, derivatives and general commodities markets close on Wednesday 3 June 2026 (local election day) and on Friday 17 July 2026 (Constitution Day, a legal public holiday again from 2026). exchange_calendars and pandas_market_calendars trade on both days. The registry's closures of these two days were added in 2.23.11.",
+      "source_url": "https://en.sedaily.com/finance/2026/05/20/korea-exchange-to-close-on-local-election-day-constitution"
     }
   ]
 }

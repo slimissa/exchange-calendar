@@ -242,8 +242,8 @@ class TestXKRXStructure:
                 f"Unexpected status: {entry['date']}: {entry['status']}"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~71 entries: 12 holidays × 5 years + substitutes."""
-        assert 60 <= len(explicit_dates) <= 85
+        """~87 entries: 12 holidays × 5 years + substitutes + election days."""
+        assert 60 <= len(explicit_dates) <= 95
 
 
 # ──────────────────────────────────────────────────────────────
@@ -329,3 +329,28 @@ class TestElectionDay:
         # No nationwide election is scheduled in 2027 or 2029; April and June are open.
         for year in (2027, 2029):
             assert not [d for d in _closed("XKRX", year) if d[5:7] in ("04", "06") and d[5:] != "06-06"]
+
+
+class TestKrxClosures2025And2026:
+    """KRX's market-closing announcements and trading rules: closed on Labour
+    Day (1 May), on temporary holidays (27 January and 3 June 2025), on the
+    2026 local election day (3 June) and on Constitution Day, a public holiday
+    again from 2026 (17 July). A Saturday holiday gets no substitute day
+    (Memorial Day, 6 June 2026)."""
+
+    def test_2025_closed_set(self):
+        assert _closed("XKRX", 2025) == {
+            "2025-01-01", "2025-01-27", "2025-01-28", "2025-01-29", "2025-01-30",
+            "2025-03-03", "2025-05-01", "2025-05-05", "2025-05-06", "2025-06-03",
+            "2025-06-06", "2025-08-15", "2025-10-03", "2025-10-06", "2025-10-07",
+            "2025-10-08", "2025-10-09", "2025-12-25", "2025-12-31"}
+
+    def test_2026_closed_set(self):
+        assert _closed("XKRX", 2026) == {
+            "2026-01-01", "2026-02-16", "2026-02-17", "2026-02-18", "2026-03-02",
+            "2026-05-01", "2026-05-05", "2026-05-25", "2026-06-03", "2026-07-17",
+            "2026-08-17", "2026-09-24", "2026-09-25", "2026-10-05", "2026-10-09",
+            "2026-12-25", "2026-12-31"}
+
+    def test_memorial_day_2026_has_no_substitute(self):
+        assert "2026-06-08" not in _closed("XKRX", 2026)
