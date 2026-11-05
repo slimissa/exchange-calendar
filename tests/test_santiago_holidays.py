@@ -131,10 +131,10 @@ class TestXSGOFixedHolidays:
         assert "2027-06-21" in explicit_dates
 
     def test_saint_peter_paul_2025(self, explicit_dates):
-        """Jun 29, 2025 is Sunday — substitute to Monday Jun 30."""
+        """Jun 29, 2025 is Sunday: Chilean law (Ley 19.668) leaves it there, so
+        Monday 30 June is a trading day."""
         assert "2025-06-29" not in explicit_dates
-        assert "2025-06-30" in explicit_dates
-        assert "Saint Peter" in explicit_dates["2025-06-30"]["name"]
+        assert "2025-06-30" not in explicit_dates
 
     def test_saint_peter_paul_2026(self, explicit_dates):
         """Jun 29, 2026 is Monday — no substitution."""
@@ -161,10 +161,9 @@ class TestXSGOFixedHolidays:
         assert explicit_dates["2025-09-19"]["name"] == "Army Day"
 
     def test_columbus_day_2025_substitute(self, explicit_dates):
-        """Oct 12, 2025 is Sunday — substitute to Monday Oct 13."""
+        """Oct 12, 2025 is Sunday: no move to Monday, 13 October is a trading day."""
         assert "2025-10-12" not in explicit_dates
-        assert "2025-10-13" in explicit_dates
-        assert "Columbus" in explicit_dates["2025-10-13"]["name"]
+        assert "2025-10-13" not in explicit_dates
 
     def test_reformation_2025(self, explicit_dates):
         """Oct 31, 2025 is Friday — no substitution."""
@@ -207,11 +206,16 @@ class TestXSGOChristmas:
         assert "2027-12-27" not in explicit_dates
 
     def test_new_years_eve_2025(self, explicit_dates):
-        """Dec 31, 2025 is Wednesday — early close at 13:00."""
-        entry = explicit_dates.get("2025-12-31")
-        assert entry is not None
+        """Dec 31, 2025: the bank holiday is restored (Ley 21.791) and BCS
+        stays closed; Tuesday 30 December is the last trading day and closes
+        at 13:00."""
+        assert explicit_dates["2025-12-31"]["status"] == "closed"
+        entry = explicit_dates["2025-12-30"]
         assert entry["status"] == "early_close"
         assert entry["early_close_time"] == "13:00"
+
+    def test_new_years_eve_2026_closed(self, explicit_dates):
+        assert explicit_dates["2026-12-31"]["status"] == "closed"
 
     def test_new_years_eve_2029(self, explicit_dates):
         """Dec 31, 2029 is Monday — early close at 13:00."""
@@ -229,7 +233,8 @@ class TestXSGOEarlyCloses:
         """Only Christmas Eve and New Year's Eve are early closes."""
         early_closes = [e for e in explicit_dates.values() if e.get("status") == "early_close"]
         early_close_names = {e["name"] for e in early_closes}
-        assert early_close_names == {"Christmas Eve", "New Year's Eve"}
+        assert early_close_names == {"Christmas Eve", "New Year's Eve",
+                                     "Last Trading Day of the Year (early close)"}
 
     def test_all_early_closes_have_early_close_time(self, explicit_dates):
         for entry in explicit_dates.values():
@@ -310,10 +315,13 @@ class TestXSGORecurrence:
     def test_new_year_moves_only_from_sunday(self, recurrence_rules):
         assert recurrence_rules["New Year's Day"]["rule"] == "fixed_with_sunday_observance"
 
-    def test_indigenous_peoples_day_rule_is_unchanged(self, recurrence_rules):
+    def test_indigenous_peoples_day_rule_has_no_weekend_adjustment(self, recurrence_rules):
         # The day follows the winter solstice (20 or 21 June), which no rule
-        # type expresses; the rule is a placeholder for years without explicit data.
-        assert recurrence_rules["National Indigenous Peoples Day"]["rule"] == "fixed_with_weekend_adjustment"
+        # type expresses; the rule is a placeholder for years without explicit
+        # data. Chile never moves it: a weekend date (Saturday 20 June 2026
+        # and the Sunday 21 June it really falls on) is not a holiday on
+        # a weekday, so the Saturday-to-Friday adjustment is removed.
+        assert recurrence_rules["National Indigenous Peoples Day"]["rule"] == "fixed_date"
 
     def test_easter_rule(self, recurrence_rules):
         rule = recurrence_rules["Good Friday"]
@@ -408,3 +416,29 @@ class TestXSGOSubstitution:
             name = entry["name"].lower()
             if "observed" in name or "substitute" in name:
                 assert "observed" in name or "substitute" in name
+
+
+class TestXSGOClosures2025And2026:
+    """Chilean law leaves Saint Peter and Saint Paul (29 June) and Columbus Day
+    (12 October) where they fall on a weekend, and National Indigenous Peoples
+    Day follows the winter solstice (Sunday 21 June 2026), so none of
+    30 June 2025, 13 October 2025 and 19 June 2026 is a holiday. The
+    Bolsa de Santiago closes on 31 December (Ley 21.791 restored the bank
+    holiday)."""
+
+    @staticmethod
+    def _closed_set(explicit_dates, year):
+        return {d for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["status"] == "closed"}
+
+    def test_2025_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2025) == {
+            "2025-01-01", "2025-04-18", "2025-05-01", "2025-05-21", "2025-06-20",
+            "2025-07-16", "2025-08-15", "2025-09-18", "2025-09-19", "2025-10-31",
+            "2025-12-08", "2025-12-25", "2025-12-31"}
+
+    def test_2026_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2026) == {
+            "2026-01-01", "2026-04-03", "2026-05-01", "2026-05-21", "2026-06-29",
+            "2026-07-16", "2026-09-18", "2026-10-12", "2026-12-08", "2026-12-25",
+            "2026-12-31"}

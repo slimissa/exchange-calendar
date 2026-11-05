@@ -84,7 +84,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XRIS | 1249 | 1250 | 1250 | 7 | 99.4% |
 | XSAU | 1007 | 998 | 998 | 17 | 98.3% |
 | XSES | 1255 | 1285 | 503* | 30 | 97.7% |
-| XSGO | 1242 | No reference data | 1242 | 8 | 99.4% |
+| XSGO | 1243 | No reference data | 1242 | 3 | 99.8% |
 | XSHE | 727 | No reference data | No reference data | n/a | n/a |
 | XSHG | 1225 | 1267 | 485* | 44 | 96.5% |
 | XSTC | 1006 | No reference data | No reference data | n/a | n/a |
@@ -103,7 +103,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 27 of 50.
-- Trading days on which all available sources agree: 62455 of 62758 (99.5%).
+- Trading days on which all available sources agree: 62458 of 62756 (99.5%).
 
 ## Disagreements by year
 
@@ -130,7 +130,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XRIS | - | 3 | 1 | 0 | 2 | 1 |
 | XSAU | - | 4 | 0 | 5 | 8 | - |
 | XSES | - | 0 | 1 | 8 | 10 | 11 |
-| XSGO | - | 3 | 2 | 2 | 0 | 1 |
+| XSGO | - | 0 | 0 | 2 | 0 | 1 |
 | XSHG | - | 0 | 1 | 16 | 14 | 13 |
 | XTAI | - | 0 | 0 | 1 | 7 | 7 |
 | XTAL | - | 2 | 2 | 0 | 1 | 1 |
@@ -139,8 +139,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 32 | 0 | 18 | 1 | 1 | 12 |
-| 2026 | 24 | 0 | 14 | 0 | 0 | 10 |
+| 2025 | 29 | 0 | 18 | 1 | 1 | 9 |
+| 2026 | 22 | 0 | 14 | 0 | 0 | 8 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -274,10 +274,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open (29): 2027-01-01 Fr [library error], 2027-02-08 Mo [library error], 2027-03-10 We [library error], 2027-03-26 Fr [library error], 2027-05-17 Mo [library error], 2027-05-20 Th [library error], 2027-08-09 Mo [library error], 2027-10-28 Th [library error], 2028-01-26 We [unpublished], 2028-01-27 Th [unpublished], 2028-03-28 Tu [unpublished], 2028-04-14 Fr [unpublished], 2028-05-01 Mo [unpublished], 2028-05-05 Fr [unpublished], 2028-05-09 Tu [unpublished], 2028-08-09 We [unpublished], 2028-10-17 Tu [unpublished], 2028-12-25 Mo [unpublished], 2029-01-01 Mo [unpublished], 2029-02-13 Tu [unpublished], 2029-02-14 We [unpublished], 2029-03-16 Fr [unpublished], 2029-03-30 Fr [unpublished], 2029-05-01 Tu [unpublished], 2029-05-25 Fr [unpublished], 2029-05-28 Mo [unpublished], 2029-08-09 Th [unpublished], 2029-11-05 Mo [unpublished], 2029-12-25 Tu [unpublished]
 - registry closed, PMC open, EC open (1): 2026-03-20 Fr
 
-### XSGO (8)
+### XSGO (3)
 
-- registry closed, EC open (4): 2025-06-30 Mo, 2025-10-13 Mo, 2026-06-19 Fr, 2027-09-17 Fr [unpublished]
-- registry open, EC closed (4): 2025-12-31 We, 2026-12-31 Th, 2027-12-31 Fr [unpublished], 2029-12-31 Mo [unpublished]
+- registry open, EC closed (2): 2027-12-31 Fr [unpublished], 2029-12-31 Mo [unpublished]
+- registry closed, EC open (1): 2027-09-17 Fr [unpublished]
 
 ### XSHG (44)
 
@@ -298,7 +298,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 54 dates; Registry error: 380 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 54 dates; Registry error: 385 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -971,6 +971,14 @@ The Chilean holiday laws are fixed in advance. Holidays that land on a weekend a
 Dates: 2027-04-30, 2027-06-29, 2027-08-16, 2027-09-20, 2027-10-11, 2027-10-12, 2027-12-27, 2028-01-03, 2028-05-22, 2028-06-26, 2028-06-29, 2028-07-17, 2028-10-09, 2028-10-12, 2028-10-27, 2028-10-31, 2028-11-01, 2029-06-29, 2029-07-02, 2029-09-17, 2029-10-12, 2029-10-15, 2029-10-31, 2029-11-01, 2029-11-02, 2029-12-07.
 
 Source: https://tramitacion.senado.cl/senado/site/docs/20150430/20150430113807/feriados_en_chile_bcn.pdf
+
+### XSGO: Registry error (5, fixed in 2.23.11)
+
+Chilean law (Ley 19.668) moves Saint Peter and Saint Paul and Columbus Day to a Monday only when they fall on a Tuesday to Friday: 29 June and 12 October 2025 are Sundays and stay there, so Monday 30 June and Monday 13 October 2025 are trading days (the 2025 national holiday lists give Sunday for both). National Indigenous Peoples Day follows the winter solstice (Ley 21.357): Sunday 21 June 2026, so Friday 19 June 2026, where the registry's weekend-adjustment rule put it, is a trading day; the rule is now a plain fixed date, which changes no other year. The Bolsa de Comercio de Santiago announced that on Wednesday 31 December 2025 the market stays closed for the bank holiday restored by Ley 21.791 (30 December, the last trading day, closed at 13:00), and the law keeps the bank holiday on 31 December every year, so 31 December 2026 is closed too. The registry traded on both 31 December days with an early close. 5 dates fixed. The 31 December 2026 closure rests on the law, not on a 2026 BCS notice; 31 December 2027 and 2029 still carry an early close in the registry and need the same review.
+
+Dates: 2025-06-30, 2025-10-13, 2025-12-31, 2026-06-19, 2026-12-31.
+
+Source: https://www.bolsadesantiago.com/horarios
 
 ### XSGO: Unpublished (3, calendar not yet published, registry value is a prediction, recheck 2026-12-31)
 
