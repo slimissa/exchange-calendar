@@ -39,7 +39,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
 | XBSP | 1241 | No reference data | No reference data | n/a | n/a |
 | XBUD | 1248 | 1244 | 1244 | 4 | 99.7% |
-| XBUE | 1236 | 1232 | 1232 | 16 | 98.7% |
+| XBUE | 1234 | 1232 | 1232 | 18 | 98.6% |
 | XBUL | 1251 | No reference data | No reference data | n/a | n/a |
 | XCAI | 1001 | No reference data | No reference data | n/a | n/a |
 | XCAS | 1253 | No reference data | No reference data | n/a | n/a |
@@ -84,7 +84,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XRIS | 1249 | 1250 | 1250 | 7 | 99.4% |
 | XSAU | 1007 | 998 | 998 | 17 | 98.3% |
 | XSES | 1256 | 1285 | 503* | 29 | 97.7% |
-| XSGO | 1243 | No reference data | 1242 | 3 | 99.8% |
+| XSGO | 1241 | No reference data | 1242 | 1 | 99.9% |
 | XSHE | 727 | No reference data | No reference data | n/a | n/a |
 | XSHG | 1224 | 1267 | 485* | 43 | 96.6% |
 | XSTC | 1006 | No reference data | No reference data | n/a | n/a |
@@ -103,7 +103,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 29 of 50.
-- Trading days on which all available sources agree: 62463 of 62748 (99.5%).
+- Trading days on which all available sources agree: 62461 of 62746 (99.5%).
 
 ## Disagreements by year
 
@@ -115,7 +115,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XBOG | - | 0 | 0 | 1 | 1 | 1 |
 | XBOM | - | 0 | 0 | 8 | 12 | 15 |
 | XBUD | - | 0 | 0 | 0 | 0 | 4 |
-| XBUE | - | 7 | 4 | 3 | 1 | 1 |
+| XBUE | - | 8 | 5 | 3 | 1 | 1 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
 | XKAR | - | 2 | 3 | 7 | 4 | 7 |
 | XKLS | - | 0 | 2 | 5 | 5 | 3 |
@@ -128,7 +128,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XRIS | - | 3 | 1 | 0 | 2 | 1 |
 | XSAU | - | 4 | 0 | 5 | 8 | - |
 | XSES | - | 0 | 0 | 8 | 10 | 11 |
-| XSGO | - | 0 | 0 | 2 | 0 | 1 |
+| XSGO | - | 0 | 0 | 1 | 0 | 0 |
 | XSHG | - | 0 | 0 | 16 | 14 | 13 |
 | XTAI | - | 0 | 0 | 1 | 7 | 7 |
 | XTAL | - | 1 | 1 | 0 | 1 | 1 |
@@ -137,11 +137,11 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 21 | 0 | 19 | 1 | 1 | 0 |
-| 2026 | 17 | 0 | 17 | 0 | 0 | 0 |
-| 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
+| 2025 | 22 | 0 | 20 | 1 | 1 | 0 |
+| 2026 | 18 | 0 | 18 | 0 | 0 | 0 |
+| 2027 | 71 | 0 | 12 | 0 | 53 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
-| 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
+| 2029 | 85 | 0 | 4 | 0 | 73 | 8 |
 
 ## No reference data
 
@@ -201,10 +201,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 - registry open, PMC closed, EC closed (4): 2029-03-16 Fr [unpublished], 2029-04-30 Mo [unpublished], 2029-10-22 Mo [unpublished], 2029-11-02 Fr [unpublished]
 
-### XBUE (16)
+### XBUE (18)
 
 - registry open, PMC closed, EC closed (10): 2025-04-17 Th [unpublished], 2025-06-17 Tu [library error], 2025-08-18 Mo [library error], 2025-10-13 Mo [library error], 2025-11-17 Mo [library error], 2026-06-17 We [library error], 2027-03-25 Th, 2027-06-17 Th [library error], 2028-04-13 Th, 2029-03-29 Th
-- registry closed, PMC open, EC open (6): 2025-06-16 Mo [library error], 2025-11-24 Mo [library error], 2026-06-15 Mo [library error], 2026-11-09 Mo [library error], 2026-11-10 Tu [library error], 2027-06-21 Mo [library error]
+- registry closed, PMC open, EC open (8): 2025-06-16 Mo [library error], 2025-11-24 Mo [library error], 2025-12-31 We [library error], 2026-06-15 Mo [library error], 2026-11-09 Mo [library error], 2026-11-10 Tu [library error], 2026-12-31 Th [library error], 2027-06-21 Mo [library error]
 
 ### XHKG (3)
 
@@ -261,9 +261,8 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 - registry closed, PMC open (29): 2027-01-01 Fr [library error], 2027-02-08 Mo [library error], 2027-03-10 We [library error], 2027-03-26 Fr [library error], 2027-05-17 Mo [library error], 2027-05-20 Th [library error], 2027-08-09 Mo [library error], 2027-10-28 Th [library error], 2028-01-26 We [unpublished], 2028-01-27 Th [unpublished], 2028-03-28 Tu [unpublished], 2028-04-14 Fr [unpublished], 2028-05-01 Mo [unpublished], 2028-05-05 Fr [unpublished], 2028-05-09 Tu [unpublished], 2028-08-09 We [unpublished], 2028-10-17 Tu [unpublished], 2028-12-25 Mo [unpublished], 2029-01-01 Mo [unpublished], 2029-02-13 Tu [unpublished], 2029-02-14 We [unpublished], 2029-03-16 Fr [unpublished], 2029-03-30 Fr [unpublished], 2029-05-01 Tu [unpublished], 2029-05-25 Fr [unpublished], 2029-05-28 Mo [unpublished], 2029-08-09 Th [unpublished], 2029-11-05 Mo [unpublished], 2029-12-25 Tu [unpublished]
 
-### XSGO (3)
+### XSGO (1)
 
-- registry open, EC closed (2): 2027-12-31 Fr [unpublished], 2029-12-31 Mo [unpublished]
 - registry closed, EC open (1): 2027-09-17 Fr [unpublished]
 
 ### XSHG (43)
@@ -283,7 +282,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 58 dates; Registry error: 398 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 60 dates; Registry error: 398 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -375,7 +374,7 @@ Source: https://www.penzcentrum.hu/karrier/20260921/munkaido-naptar-2027-hosszu-
 
 ### XBUD: Registry error (7, fixed in 2.23.10)
 
-BSE resolution 311/2024 (the 2025 trading holidays) lists Friday 2 May and Friday 24 October as rest days and no closure on Friday 14 March: the Labour Code gives no substitute day for a holiday on a weekend, so 15 March 2025 (Saturday) is not moved. The same holds for 15 March 2026 (Sunday) and 26 December 2026 (Saturday): Monday 16 March and Monday 28 December are trading days. For 2026 BSE's notices to its members (relayed by UniCredit Hungary) give a trading holiday on 20 and 21 August and on Saturday 10 January (working day for the Friday 2 January rest day); the 2026 rest days are 2 January, 21 August and 24 December. The registry closed the three false substitutes and traded on the four bridge days; the libraries had it right. 7 dates fixed. BSE's own 2026 resolution was not retrieved: 2 January 2026 rests on the working-Saturday arrangement and trade press. The Budapest fetcher still computes weekend substitutes (BudapestFetcher._observed_substitutes) and needs the same fix.
+BSE resolution 311/2024 (the 2025 trading holidays) lists Friday 2 May and Friday 24 October as rest days and no closure on Friday 14 March: the Labour Code gives no substitute day for a holiday on a weekend, so 15 March 2025 (Saturday) is not moved. The same holds for 15 March 2026 (Sunday) and 26 December 2026 (Saturday): Monday 16 March and Monday 28 December are trading days. For 2026 BSE's notices to its members (relayed by UniCredit Hungary) give a trading holiday on 20 and 21 August and on Saturday 10 January (working day for the Friday 2 January rest day); the 2026 rest days are 2 January, 21 August and 24 December. The registry closed the three false substitutes and traded on the four bridge days; the libraries had it right. 7 dates fixed. BSE's own 2026 resolution was not retrieved: 2 January 2026 rests on the working-Saturday arrangement and trade press. The Budapest fetcher's weekend substitutes were removed in 2.23.13.
 
 Dates: 2025-03-14, 2025-05-02, 2025-10-24, 2026-01-02, 2026-03-16, 2026-08-21, 2026-12-28.
 
@@ -412,6 +411,14 @@ Ley 27.399 art. 6 moves Guemes (Tuesday 17 June 2025) back to Monday 16 June and
 Dates: 2025-06-16, 2025-06-17, 2025-08-18, 2025-10-13, 2025-11-17, 2025-11-24.
 
 Source: https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto
+
+### XBUE: Library error (2, registry verified, no change)
+
+BYMA's 2026 trading calendar lists Thursday 31 December 2026 as a day without trading or settlement, and BYMA's communique for the end of 2025 (reported by iProUP and Bloomberg Linea) says the market does not operate on Wednesday 31 December 2025. The registry had a 13:00 early close on both days and now closes them (2.23.13). exchange_calendars and pandas_market_calendars trade on both days. The registry is right. The 31 December 2027 and 2029 early closes were not reviewed in this phase.
+
+Dates: 2025-12-31, 2026-12-31.
+
+Source: https://www.byma.com.ar/mercado/calendario-bursatil
 
 ### XBUE: Registry error (6, fixed in 2.23.5)
 
@@ -1007,7 +1014,7 @@ Source: https://tramitacion.senado.cl/senado/site/docs/20150430/20150430113807/f
 
 ### XSGO: Registry error (5, fixed in 2.23.11)
 
-Chilean law (Ley 19.668) moves Saint Peter and Saint Paul and Columbus Day to a Monday only when they fall on a Tuesday to Friday: 29 June and 12 October 2025 are Sundays and stay there, so Monday 30 June and Monday 13 October 2025 are trading days (the 2025 national holiday lists give Sunday for both). National Indigenous Peoples Day follows the winter solstice (Ley 21.357): Sunday 21 June 2026, so Friday 19 June 2026, where the registry's weekend-adjustment rule put it, is a trading day; the rule is now a plain fixed date, which changes no other year. The Bolsa de Comercio de Santiago announced that on Wednesday 31 December 2025 the market stays closed for the bank holiday restored by Ley 21.791 (30 December, the last trading day, closed at 13:00), and the law keeps the bank holiday on 31 December every year, so 31 December 2026 is closed too. The registry traded on both 31 December days with an early close. 5 dates fixed. The 31 December 2026 closure rests on the law, not on a 2026 BCS notice; 31 December 2027 and 2029 still carry an early close in the registry and need the same review.
+Chilean law (Ley 19.668) moves Saint Peter and Saint Paul and Columbus Day to a Monday only when they fall on a Tuesday to Friday: 29 June and 12 October 2025 are Sundays and stay there, so Monday 30 June and Monday 13 October 2025 are trading days (the 2025 national holiday lists give Sunday for both). National Indigenous Peoples Day follows the winter solstice (Ley 21.357): Sunday 21 June 2026, so Friday 19 June 2026, where the registry's weekend-adjustment rule put it, is a trading day; the rule is now a plain fixed date, which changes no other year. The Bolsa de Comercio de Santiago announced that on Wednesday 31 December 2025 the market stays closed for the bank holiday restored by Ley 21.791 (30 December, the last trading day, closed at 13:00), and the law keeps the bank holiday on 31 December every year, so 31 December 2026 is closed too. The registry traded on both 31 December days with an early close. 5 dates fixed. The 31 December 2026 closure rests on the law, not on a 2026 BCS notice; 31 December 2027 and 2029 were fixed in 2.23.13.
 
 Dates: 2025-06-30, 2025-10-13, 2025-12-31, 2026-06-19, 2026-12-31.
 

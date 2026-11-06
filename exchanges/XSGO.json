@@ -268,10 +268,9 @@
       },
       {
         "date": "2027-12-31",
-        "early_close_time": "13:00",
-        "name": "New Year's Eve",
+        "name": "Bank Holiday (market closed)",
         "source_url": "https://www.bolsadesantiago.com/horarios",
-        "status": "early_close"
+        "status": "closed"
       },
       {
         "date": "2028-04-14",
@@ -432,10 +431,9 @@
       },
       {
         "date": "2029-12-31",
-        "early_close_time": "13:00",
-        "name": "New Year's Eve",
+        "name": "Bank Holiday (market closed)",
         "source_url": "https://www.bolsadesantiago.com/horarios",
-        "status": "early_close"
+        "status": "closed"
       }
     ],
     "recurrence_rules": [

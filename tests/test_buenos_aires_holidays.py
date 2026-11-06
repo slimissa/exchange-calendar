@@ -269,12 +269,13 @@ class TestXBUEChristmas:
         """Dec 25 is inamovible; 2027-12-25 is Saturday."""
         assert "2027-12-27" not in explicit_dates
 
-    def test_new_years_eve_2025(self, explicit_dates):
-        """Dec 31, 2025 is Wednesday — early close at 13:00."""
-        entry = explicit_dates.get("2025-12-31")
-        assert entry is not None
-        assert entry["status"] == "early_close"
-        assert entry["early_close_time"] == "13:00"
+    def test_year_end_2025_and_2026_are_closed(self, explicit_dates):
+        """BYMA lists 31 December as a day without trading or settlement
+        (2025 communique, 2026 trading calendar): a closure, not an early close."""
+        for day in ("2025-12-31", "2026-12-31"):
+            entry = explicit_dates[day]
+            assert entry["status"] == "closed"
+            assert "early_close_time" not in entry
 
     def test_new_years_eve_2029(self, explicit_dates):
         """Dec 31, 2029 is Monday — early close at 13:00."""
@@ -463,10 +464,10 @@ class TestBymaCalendar2025And2026:
             "2026-01-01", "2026-02-16", "2026-02-17", "2026-03-24", "2026-04-02",
             "2026-04-03", "2026-05-01", "2026-05-25", "2026-06-15", "2026-07-09",
             "2026-08-17", "2026-10-12", "2026-11-09", "2026-11-10", "2026-11-23",
-            "2026-12-08", "2026-12-25"}
+            "2026-12-08", "2026-12-25", "2026-12-31"}
 
     def test_2025_closed_set(self, explicit_dates):
         assert self._closed_set(explicit_dates, 2025) == {
             "2025-01-01", "2025-03-03", "2025-03-04", "2025-03-24", "2025-04-02",
             "2025-04-18", "2025-05-01", "2025-06-16", "2025-06-20", "2025-07-09",
-            "2025-11-24", "2025-12-08", "2025-12-25"}
+            "2025-11-24", "2025-12-08", "2025-12-25", "2025-12-31"}

@@ -2532,34 +2532,26 @@ class BudapestFetcher(PDFFetcher):
                 source_url=self.source_url
             ))
 
-        # v2.9.3: append Monday substitutes for weekend state holidays.
-        # The BSE resolution doesn't list them; Hungarian labour law
-        # requires them. Rendered as ordinary closures so downstream
-        # consumers see the exchange's actual closed days.
+        # v2.9.3 appended Monday substitutes for weekend state holidays,
+        # on the belief that Hungarian labour law grants them. It does not
+        # (v2.23.13): the Labour Code gives no substitute day for a holiday
+        # on a weekend, and BSE's resolution is the complete list of its
+        # trading holidays. _observed_substitutes now returns nothing.
         holidays.extend(self._observed_substitutes(year))
 
         return holidays
 
 
-    # Hungarian state holidays whose weekend occurrences are granted
-    # a Monday substitute by labour law. BSE's resolution lists only
-    # the exchange-declared closures and omits the automatic
-    # substitutes, so the parser computes them.
-    #
-    # Only 3-15 and 12-26 are handled. If another Hungarian holiday
-    # (5-1, 8-20, 10-23, 11-1) ever appears as a weekend substitute
-    # in a future file, add it here — do not generalize the rule
-    # without a source that says BSE treats them the same way.
-    _WEEKEND_SUBSTITUTES = [
-        (3, 15, "National Day (observed)"),
-        (12, 26, "Boxing Day (substitute)"),
-    ]
+    # Hungarian state holidays that fall on a weekend are not moved:
+    # the Labour Code gives no substitute day, and BSE's resolution lists
+    # every trading holiday (v2.23.13; 14 March 2025, 16 March 2026 and
+    # 28 December 2026 are trading days). Empty on purpose, kept so the
+    # method and its tests keep their v2.9.3 names.
+    _WEEKEND_SUBSTITUTES: List[tuple] = []
 
     def _observed_substitutes(self, year: int) -> List[HolidayEntry]:
-        """Monday substitutes for state holidays that fall on a
-        weekend. Hungarian law grants the next working day as a
-        rest day; BSE follows it, but the resolution does not
-        enumerate the substitutes."""
+        """No substitutes: Hungarian law gives none for a weekend holiday
+        and BSE's resolution already enumerates every closed day."""
         out: List[HolidayEntry] = []
         for month, day, name in self._WEEKEND_SUBSTITUTES:
             try:
@@ -2575,8 +2567,6 @@ class BudapestFetcher(PDFFetcher):
                 name=name,
                 status="closed",
                 source_url=self.source_url,
-                note="Hungarian labour law substitute for a weekend "
-                     "state holiday; BSE resolution omits it.",
             ))
         return out
 

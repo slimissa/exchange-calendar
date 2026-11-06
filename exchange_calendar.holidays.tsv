@@ -1007,7 +1007,7 @@ XBUE	2025-11-24	National Sovereignty Day (moved from Thursday 20 November)	close
 XBUE	2025-12-08	Immaculate Conception	closed	explicit	1					https://www.byma.com.ar/calendario
 XBUE	2025-12-24	Christmas Eve	early_close	explicit	1	13:00				https://www.byma.com.ar/calendario
 XBUE	2025-12-25	Christmas Day	closed	explicit	1					https://www.byma.com.ar/calendario
-XBUE	2025-12-31	New Year's Eve	early_close	explicit	1	13:00				https://www.byma.com.ar/calendario
+XBUE	2025-12-31	Year-end (no trading or settlement)	closed	explicit	1					https://www.byma.com.ar/mercado/calendario-bursatil
 XBUE	2026-01-01	New Year's Day	closed	explicit	1					https://www.byma.com.ar/calendario
 XBUE	2026-02-16	Carnival Monday	closed	explicit	1					https://www.byma.com.ar/calendario
 XBUE	2026-02-17	Carnival Tuesday	closed	explicit	1					https://www.byma.com.ar/calendario
@@ -1026,7 +1026,7 @@ XBUE	2026-11-23	National Sovereignty Day (moved from Friday 20 November)	closed	
 XBUE	2026-12-08	Immaculate Conception	closed	explicit	1					https://www.byma.com.ar/calendario
 XBUE	2026-12-24	Christmas Eve	early_close	explicit	1	13:00				https://www.byma.com.ar/calendario
 XBUE	2026-12-25	Christmas Day	closed	explicit	1					https://www.byma.com.ar/calendario
-XBUE	2026-12-31	New Year's Eve	early_close	explicit	1	13:00				https://www.byma.com.ar/calendario
+XBUE	2026-12-31	Year-end (no trading or settlement)	closed	explicit	1					https://www.byma.com.ar/mercado/calendario-bursatil
 XBUE	2027-01-01	New Year's Day	closed	explicit	1					https://www.byma.com.ar/calendario
 XBUE	2027-02-08	Carnival Monday	closed	explicit	1					https://www.byma.com.ar/calendario
 XBUE	2027-02-09	Carnival Tuesday	closed	explicit	1					https://www.byma.com.ar/calendario
@@ -5076,7 +5076,7 @@ XSGO	2027-10-11	Columbus Day (observed, Ley 19.668)	closed	explicit	1					https:
 XSGO	2027-11-01	All Saints' Day	closed	generated	1					
 XSGO	2027-12-08	Immaculate Conception	closed	explicit	1					https://www.bolsadesantiago.com/horarios
 XSGO	2027-12-24	Christmas Eve	early_close	explicit	1	13:00				https://www.bolsadesantiago.com/horarios
-XSGO	2027-12-31	New Year's Eve	early_close	explicit	1	13:00				https://www.bolsadesantiago.com/horarios
+XSGO	2027-12-31	Bank Holiday (market closed)	closed	explicit	1					https://www.bolsadesantiago.com/horarios
 XSGO	2028-04-14	Good Friday	closed	explicit	1					https://www.bolsadesantiago.com/horarios
 XSGO	2028-05-01	Labour Day	closed	explicit	1					https://www.bolsadesantiago.com/horarios
 XSGO	2028-06-20	National Indigenous Peoples Day	closed	explicit	1					https://www.bolsadesantiago.com/horarios
@@ -5105,7 +5105,7 @@ XSGO	2029-11-01	All Saints' Day	closed	generated	1
 XSGO	2029-11-02	Reformation Day (observed, Ley 20.299)	closed	explicit	1					https://tramitacion.senado.cl/senado/site/docs/20150430/20150430113807/feriados_en_chile_bcn.pdf
 XSGO	2029-12-24	Christmas Eve	early_close	explicit	1	13:00				https://www.bolsadesantiago.com/horarios
 XSGO	2029-12-25	Christmas Day	closed	explicit	1					https://www.bolsadesantiago.com/horarios
-XSGO	2029-12-31	New Year's Eve	early_close	explicit	1	13:00				https://www.bolsadesantiago.com/horarios
+XSGO	2029-12-31	Bank Holiday (market closed)	closed	explicit	1					https://www.bolsadesantiago.com/horarios
 XSHE	2025-01-01	New Year's Day	closed	explicit	1					http://www.szse.cn/trading-calendar
 XSHE	2025-01-28	Spring Festival	closed	explicit	1					http://www.szse.cn/trading-calendar
 XSHE	2025-01-29	Spring Festival	closed	explicit	1					http://www.szse.cn/trading-calendar

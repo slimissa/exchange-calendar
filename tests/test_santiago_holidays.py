@@ -217,11 +217,13 @@ class TestXSGOChristmas:
     def test_new_years_eve_2026_closed(self, explicit_dates):
         assert explicit_dates["2026-12-31"]["status"] == "closed"
 
-    def test_new_years_eve_2029(self, explicit_dates):
-        """Dec 31, 2029 is Monday — early close at 13:00."""
-        entry = explicit_dates.get("2029-12-31")
-        assert entry is not None
-        assert entry["status"] == "early_close"
+    def test_new_years_eve_2027_and_2029_are_closed(self, explicit_dates):
+        """Dec 31 is the restored bank holiday (Ley 21.791) every year: the
+        Bolsa de Santiago stays closed on 31 December 2027 and 2029 too."""
+        for day in ("2027-12-31", "2029-12-31"):
+            entry = explicit_dates[day]
+            assert entry["status"] == "closed"
+            assert "early_close_time" not in entry
 
 
 # ──────────────────────────────────────────────────────────────
@@ -230,10 +232,11 @@ class TestXSGOChristmas:
 
 class TestXSGOEarlyCloses:
     def test_no_other_early_closes(self, explicit_dates):
-        """Only Christmas Eve and New Year's Eve are early closes."""
+        """Only Christmas Eve and the last trading day of 2025 are early closes
+        (31 December is a closure)."""
         early_closes = [e for e in explicit_dates.values() if e.get("status") == "early_close"]
         early_close_names = {e["name"] for e in early_closes}
-        assert early_close_names == {"Christmas Eve", "New Year's Eve",
+        assert early_close_names == {"Christmas Eve",
                                      "Last Trading Day of the Year (early close)"}
 
     def test_all_early_closes_have_early_close_time(self, explicit_dates):

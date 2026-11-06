@@ -1407,7 +1407,7 @@
         "2026-08-21",
         "2026-12-28"
       ],
-      "summary": "BSE resolution 311/2024 (the 2025 trading holidays) lists Friday 2 May and Friday 24 October as rest days and no closure on Friday 14 March: the Labour Code gives no substitute day for a holiday on a weekend, so 15 March 2025 (Saturday) is not moved. The same holds for 15 March 2026 (Sunday) and 26 December 2026 (Saturday): Monday 16 March and Monday 28 December are trading days. For 2026 BSE's notices to its members (relayed by UniCredit Hungary) give a trading holiday on 20 and 21 August and on Saturday 10 January (working day for the Friday 2 January rest day); the 2026 rest days are 2 January, 21 August and 24 December. The registry closed the three false substitutes and traded on the four bridge days; the libraries had it right. 7 dates fixed. BSE's own 2026 resolution was not retrieved: 2 January 2026 rests on the working-Saturday arrangement and trade press. The Budapest fetcher still computes weekend substitutes (BudapestFetcher._observed_substitutes) and needs the same fix.",
+      "summary": "BSE resolution 311/2024 (the 2025 trading holidays) lists Friday 2 May and Friday 24 October as rest days and no closure on Friday 14 March: the Labour Code gives no substitute day for a holiday on a weekend, so 15 March 2025 (Saturday) is not moved. The same holds for 15 March 2026 (Sunday) and 26 December 2026 (Saturday): Monday 16 March and Monday 28 December are trading days. For 2026 BSE's notices to its members (relayed by UniCredit Hungary) give a trading holiday on 20 and 21 August and on Saturday 10 January (working day for the Friday 2 January rest day); the 2026 rest days are 2 January, 21 August and 24 December. The registry closed the three false substitutes and traded on the four bridge days; the libraries had it right. 7 dates fixed. BSE's own 2026 resolution was not retrieved: 2 January 2026 rests on the working-Saturday arrangement and trade press. The Budapest fetcher's weekend substitutes were removed in 2.23.13.",
       "source_url": "https://www.bse.hu/trading-hours"
     },
     {
@@ -1550,7 +1550,7 @@
         "2026-06-19",
         "2026-12-31"
       ],
-      "summary": "Chilean law (Ley 19.668) moves Saint Peter and Saint Paul and Columbus Day to a Monday only when they fall on a Tuesday to Friday: 29 June and 12 October 2025 are Sundays and stay there, so Monday 30 June and Monday 13 October 2025 are trading days (the 2025 national holiday lists give Sunday for both). National Indigenous Peoples Day follows the winter solstice (Ley 21.357): Sunday 21 June 2026, so Friday 19 June 2026, where the registry's weekend-adjustment rule put it, is a trading day; the rule is now a plain fixed date, which changes no other year. The Bolsa de Comercio de Santiago announced that on Wednesday 31 December 2025 the market stays closed for the bank holiday restored by Ley 21.791 (30 December, the last trading day, closed at 13:00), and the law keeps the bank holiday on 31 December every year, so 31 December 2026 is closed too. The registry traded on both 31 December days with an early close. 5 dates fixed. The 31 December 2026 closure rests on the law, not on a 2026 BCS notice; 31 December 2027 and 2029 still carry an early close in the registry and need the same review.",
+      "summary": "Chilean law (Ley 19.668) moves Saint Peter and Saint Paul and Columbus Day to a Monday only when they fall on a Tuesday to Friday: 29 June and 12 October 2025 are Sundays and stay there, so Monday 30 June and Monday 13 October 2025 are trading days (the 2025 national holiday lists give Sunday for both). National Indigenous Peoples Day follows the winter solstice (Ley 21.357): Sunday 21 June 2026, so Friday 19 June 2026, where the registry's weekend-adjustment rule put it, is a trading day; the rule is now a plain fixed date, which changes no other year. The Bolsa de Comercio de Santiago announced that on Wednesday 31 December 2025 the market stays closed for the bank holiday restored by Ley 21.791 (30 December, the last trading day, closed at 13:00), and the law keeps the bank holiday on 31 December every year, so 31 December 2026 is closed too. The registry traded on both 31 December days with an early close. 5 dates fixed. The 31 December 2026 closure rests on the law, not on a 2026 BCS notice; 31 December 2027 and 2029 were fixed in 2.23.13.",
       "source_url": "https://www.bolsadesantiago.com/horarios"
     },
     {
@@ -1657,6 +1657,17 @@
       ],
       "summary": "Bursa Malaysia's circular of 18 March 2026 closes it on Friday 20 and Monday 23 March 2026 whichever day Hari Raya Aidilfitri fell on, and resumes on Tuesday 24 March; its notice of 20 May 2026 closes it on Monday 1 and Tuesday 2 June 2026 for the Agong's Birthday and the Wesak Day replacement holiday, and Bernama confirmed both closures on 3 June. exchange_calendars and pandas_market_calendars trade on 20 March and 2 June 2026. The registry is right.",
       "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2025-12-31",
+        "2026-12-31"
+      ],
+      "summary": "BYMA's 2026 trading calendar lists Thursday 31 December 2026 as a day without trading or settlement, and BYMA's communique for the end of 2025 (reported by iProUP and Bloomberg Linea) says the market does not operate on Wednesday 31 December 2025. The registry had a 13:00 early close on both days and now closes them (2.23.13). exchange_calendars and pandas_market_calendars trade on both days. The registry is right. The 31 December 2027 and 2029 early closes were not reviewed in this phase.",
+      "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
     }
   ]
 }
