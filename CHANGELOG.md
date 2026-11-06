@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.12] - 2026-11-06
+
+### Fixed
+- Resolved the final 17 unclassified disagreements across 7 exchanges, completing Phase 4a.
+- XPRA: 7 July and 29 September 2025 trade; 31 December 2025 and 2026 are closed (the Prague Stock Exchange's 250 trading days in 2025).
+- XTAL: Ascension Day (29 May 2025, 14 May 2026) is closed.
+- XBOG: 31 December 2025 and 2026 are non-trading days; 1 July 2025 trades.
+- XKLS: Nuzul Al-Quran (18 March 2025) is closed.
+- XJSE: 11 August 2025 trades. XSES: 20 March 2026 trades. XSHG: 2 January 2026 is closed.
+
+### Changed
+- 2025-2026 unclassified disagreements: 17 to 0; one documented unpublished entry remains (XBUE, 17 April 2025). 2027-2029 still list 22 unclassified disagreements, outside this phase.
+
 ## [2.23.11] - 2026-11-05
 
 ### Fixed
