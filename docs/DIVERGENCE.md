@@ -30,10 +30,10 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XASX | 1520 | 1520 | 1520 | 0 | 100.0% |
 | XATH | 1257 | No reference data | No reference data | n/a | n/a |
 | XBAH | 1262 | No reference data | No reference data | n/a | n/a |
-| XBDA | 1254 | 1254 | 1254 | 4 | 99.7% |
+| XBDA | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XBEY | 1265 | No reference data | No reference data | n/a | n/a |
 | XBKK | 727 | 727 | 727 | 0 | 100.0% |
-| XBOG | 1219 | 1216 | 1216 | 3 | 99.8% |
+| XBOG | 1217 | 1216 | 1216 | 1 | 99.9% |
 | XBOM | 1239 | 1274 | 493* | 35 | 97.3% |
 | XBRU | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
@@ -57,8 +57,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XIST | 1255 | 1255 | 1255 | 0 | 100.0% |
 | XJKT | 1249 | No reference data | No reference data | n/a | n/a |
 | XJSE | 1252 | 1252 | 1252 | 0 | 100.0% |
-| XKAR | 1253 | 1270 | 1270 | 23 | 98.2% |
-| XKLS | 1227 | 1232 | 1232 | 15 | 98.8% |
+| XKAR | 1253 | 1270 | 1270 | 19 | 98.5% |
+| XKLS | 1225 | 1232 | 1232 | 13 | 98.9% |
 | XKRX | 1217 | 1224 | 1224 | 7 | 99.4% |
 | XKUW | 1017 | No reference data | No reference data | n/a | n/a |
 | XLIM | 1241 | 1243 | 1243 | 6 | 99.5% |
@@ -102,8 +102,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 29 of 50.
-- Trading days on which all available sources agree: 62461 of 62746 (99.5%).
+- Exchanges with no disagreement: 30 of 50.
+- Trading days on which all available sources agree: 62465 of 62738 (99.6%).
 
 ## Disagreements by year
 
@@ -111,14 +111,13 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 
 | Exchange | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 |
 |---|---:|---:|---:|---:|---:|---:|
-| XBDA | - | 0 | 0 | 0 | 4 | 0 |
-| XBOG | - | 0 | 0 | 1 | 1 | 1 |
+| XBOG | - | 0 | 0 | 0 | 1 | 0 |
 | XBOM | - | 0 | 0 | 8 | 12 | 15 |
 | XBUD | - | 0 | 0 | 0 | 0 | 4 |
 | XBUE | - | 8 | 5 | 3 | 1 | 1 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
-| XKAR | - | 2 | 3 | 7 | 4 | 7 |
-| XKLS | - | 0 | 2 | 5 | 5 | 3 |
+| XKAR | - | 2 | 3 | 4 | 4 | 6 |
+| XKLS | - | 0 | 2 | 4 | 5 | 2 |
 | XKRX | - | 0 | 2 | 2 | 2 | 1 |
 | XLIM | - | 0 | 0 | 3 | 3 | 0 |
 | XLIT | - | 1 | 1 | 0 | 1 | 1 |
@@ -139,9 +138,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 |---|---:|---:|---:|---:|---:|---:|
 | 2025 | 22 | 0 | 20 | 1 | 1 | 0 |
 | 2026 | 18 | 0 | 18 | 0 | 0 | 0 |
-| 2027 | 71 | 0 | 12 | 0 | 53 | 6 |
-| 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
-| 2029 | 85 | 0 | 4 | 0 | 73 | 8 |
+| 2027 | 66 | 0 | 12 | 0 | 54 | 0 |
+| 2028 | 85 | 0 | 6 | 0 | 79 | 0 |
+| 2029 | 82 | 0 | 5 | 0 | 77 | 0 |
 
 ## No reference data
 
@@ -184,14 +183,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 ## Disagreements
 
-### XBDA (4)
+### XBOG (1)
 
-- registry closed, PMC open, EC open (2): 2028-07-27 Th, 2028-07-28 Fr
-- registry open, PMC closed, EC closed (2): 2028-08-03 Th, 2028-08-04 Fr
-
-### XBOG (3)
-
-- registry open, PMC closed, EC closed (3): 2027-12-31 Fr, 2028-12-29 Fr, 2029-12-31 Mo
+- registry open, PMC closed, EC closed (1): 2028-12-29 Fr [unpublished]
 
 ### XBOM (35)
 
@@ -203,23 +197,23 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 ### XBUE (18)
 
-- registry open, PMC closed, EC closed (10): 2025-04-17 Th [unpublished], 2025-06-17 Tu [library error], 2025-08-18 Mo [library error], 2025-10-13 Mo [library error], 2025-11-17 Mo [library error], 2026-06-17 We [library error], 2027-03-25 Th, 2027-06-17 Th [library error], 2028-04-13 Th, 2029-03-29 Th
+- registry open, PMC closed, EC closed (10): 2025-04-17 Th [unpublished], 2025-06-17 Tu [library error], 2025-08-18 Mo [library error], 2025-10-13 Mo [library error], 2025-11-17 Mo [library error], 2026-06-17 We [library error], 2027-03-25 Th [unpublished], 2027-06-17 Th [library error], 2028-04-13 Th [unpublished], 2029-03-29 Th [unpublished]
 - registry closed, PMC open, EC open (8): 2025-06-16 Mo [library error], 2025-11-24 Mo [library error], 2025-12-31 We [library error], 2026-06-15 Mo [library error], 2026-11-09 Mo [library error], 2026-11-10 Tu [library error], 2026-12-31 Th [library error], 2027-06-21 Mo [library error]
 
 ### XHKG (3)
 
-- registry closed, PMC open, EC open (2): 2029-04-05 Th, 2029-09-24 Mo
-- registry open, PMC closed, EC closed (1): 2029-04-04 We
+- registry closed, PMC open, EC open (2): 2029-04-05 Th [unpublished], 2029-09-24 Mo [unpublished]
+- registry open, PMC closed, EC closed (1): 2029-04-04 We [unpublished]
 
-### XKAR (23)
+### XKAR (19)
 
-- registry closed, PMC open, EC open (20): 2025-06-06 Fr [library error], 2026-03-20 Fr [library error], 2026-05-26 Tu [library error], 2026-05-27 We [library error], 2027-03-09 Tu [unpublished], 2027-03-10 We [unpublished], 2027-05-03 Mo, 2027-05-17 Mo [unpublished], 2027-06-15 Tu [unpublished], 2027-12-27 Mo, 2028-02-28 Mo [unpublished], 2028-05-04 Th [unpublished], 2028-05-05 Fr [unpublished], 2028-08-04 Fr [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-04-24 Tu [unpublished], 2029-04-25 We [unpublished], 2029-05-24 Th [unpublished], 2029-07-24 Tu [unpublished]
-- registry open, PMC closed, EC closed (3): 2025-09-05 Fr [library error], 2027-05-28 Fr, 2029-05-28 Mo
+- registry closed, PMC open, EC open (18): 2025-06-06 Fr [library error], 2026-03-20 Fr [library error], 2026-05-26 Tu [library error], 2026-05-27 We [library error], 2027-03-09 Tu [unpublished], 2027-03-10 We [unpublished], 2027-05-17 Mo [unpublished], 2027-06-15 Tu [unpublished], 2028-02-28 Mo [unpublished], 2028-05-04 Th [unpublished], 2028-05-05 Fr [unpublished], 2028-08-04 Fr [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-04-24 Tu [unpublished], 2029-04-25 We [unpublished], 2029-05-24 Th [unpublished], 2029-07-24 Tu [unpublished]
+- registry open, PMC closed, EC closed (1): 2025-09-05 Fr [library error]
 
-### XKLS (15)
+### XKLS (13)
 
-- registry closed, PMC open, EC open (10): 2026-03-20 Fr [library error], 2026-06-02 Tu [library error], 2027-02-09 Tu [unpublished], 2027-03-11 Th [unpublished], 2027-08-16 Mo [unpublished], 2028-02-29 Tu [unpublished], 2028-06-05 Mo, 2028-08-04 Fr [unpublished], 2029-02-16 Fr [unpublished], 2029-06-04 Mo
-- registry open, PMC closed, EC closed (5): 2027-02-24 We, 2027-03-09 Tu [unpublished], 2028-02-14 Mo, 2028-08-03 Th [unpublished], 2029-09-17 Mo
+- registry closed, PMC open, EC open (10): 2026-03-20 Fr [library error], 2026-06-02 Tu [library error], 2027-02-09 Tu [unpublished], 2027-03-11 Th [unpublished], 2027-08-16 Mo [unpublished], 2028-02-29 Tu [unpublished], 2028-06-05 Mo [library error], 2028-08-04 Fr [unpublished], 2029-02-16 Fr [unpublished], 2029-06-04 Mo [library error]
+- registry open, PMC closed, EC closed (3): 2027-03-09 Tu [unpublished], 2028-02-14 Mo [unpublished], 2028-08-03 Th [unpublished]
 
 ### XKRX (7)
 
@@ -282,7 +276,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 60 dates; Registry error: 398 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 62 dates; Registry error: 410 dates; Unpublished: 213 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -299,6 +293,14 @@ New Year's Day 2028 is a Saturday, observed on Monday 3 January; the ASX 24 trad
 Dates: 2028-01-03.
 
 Source: https://asx.com.au/content/dam/asx/markets/market-resources/t24-trading-calendars/T24-trading-calendar2028.pdf
+
+### XBDA: Registry error (4, fixed in 2.23.13)
+
+Bermuda's Public Holidays Act sets Emancipation Day on the Thursday before the first Monday in August and Somers' Day (Mary Prince Day) on the Friday after it. 1 August 2028 is a Tuesday, so the first Monday is 7 August and Cup Match is Thursday 3 and Friday 4 August 2028 (the pattern of 2022, 2023, 2025-2027 and 2029 in the registry). The registry had 27 and 28 July 2028. 4 dates fixed (two removed, two added); the libraries were right.
+
+Dates: 2028-07-27, 2028-07-28, 2028-08-03, 2028-08-04.
+
+Source: https://www.gov.bm/print/html/node/504821
 
 ### XBKK: Registry error (6, fixed in 2.23.6)
 
@@ -321,6 +323,22 @@ Source: https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25
 The Bolsa de Valores de Colombia announced that it does not provide services on 31 December 2024 and, in its notice of December 2025, that it 'no prestara sus servicios el 31 de diciembre de 2025, fecha que sera considerada dia no bursatil para todos los efectos'; the registry traded on both year ends, and 31 December 2026 follows the same practice. In 2025 Sacred Heart and Saint Peter and Saint Paul both compute to Monday 30 June; the Colombian holiday lists show a single 30 June holiday and no holiday on 1 July, where the registry added a one-day shift that no source supports. 3 dates fixed. Both libraries were right. The 2026 closure rests on the 2024 and 2025 notices; BVC's own 2025 calendar page was not reachable.
 
 Dates: 2025-07-01, 2025-12-31, 2026-12-31.
+
+Source: https://www.bvc.com.co/calendario
+
+### XBOG: Registry error (2, fixed in 2.23.13)
+
+The Bolsa de Valores de Colombia treated 31 December as a non-trading day in 2024 and 2025 (its notices) and the registry closes 2026. Friday 31 December 2027 and Monday 31 December 2029 follow the same practice; the libraries close both. 2 dates fixed. They rest on the 2024 and 2025 notices, not on notices for those years, which the BVC publishes each December.
+
+Dates: 2027-12-31, 2029-12-31.
+
+Source: https://www.bvc.com.co/calendario
+
+### XBOG: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2028-12-31)
+
+31 December 2028 is a Sunday. The libraries close Friday 29 December 2028, the last business day; whether the BVC closes that Friday, or trades it, is not published: its 2024 and 2025 notices only name 31 December. The registry trades on 29 December. Check the BVC's year-end notice for 2028.
+
+Dates: 2028-12-29.
 
 Source: https://www.bvc.com.co/calendario
 
@@ -444,6 +462,30 @@ Dates: 2025-04-17.
 
 Source: https://www.byma.com.ar/mercado/calendario-bursatil
 
+### XBUE: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2027-01-31)
+
+Holy Thursday 2027 is an Argentine non-working day (like 17 April 2025, see above). The libraries close it and the registry trades. BYMA publishes its trading calendar each year and has not published 2027; its 2026 calendar closes 2 April only because Malvinas Day falls on the same Thursday. Check BYMA's 2027 calendar.
+
+Dates: 2027-03-25.
+
+Source: https://www.byma.com.ar/mercado/calendario-bursatil
+
+### XBUE: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2028-01-31)
+
+Holy Thursday 2028 is an Argentine non-working day. The libraries close it and the registry trades. BYMA has not published 2028. Check BYMA's 2028 calendar.
+
+Dates: 2028-04-13.
+
+Source: https://www.byma.com.ar/mercado/calendario-bursatil
+
+### XBUE: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2029-01-31)
+
+Holy Thursday 2029 is an Argentine non-working day. The libraries close it and the registry trades. BYMA has not published 2029. Check BYMA's 2029 calendar.
+
+Dates: 2029-03-29.
+
+Source: https://www.byma.com.ar/mercado/calendario-bursatil
+
 ### XCSE: Registry error (5, fixed in 2.23.6)
 
 Nasdaq Copenhagen closes on the Friday after Ascension Day (15 May in 2026) and, from its 2026 list, does not close on 1 May. The registry had the opposite for 2027-2029. The 2025 and 2026 Labour Day entries remain.
@@ -475,6 +517,14 @@ The SEHK circular for 2027 (CT/077/26) lists the day following the Mid-Autumn Fe
 Dates: 2027-02-05, 2027-09-15, 2027-09-16.
 
 Source: https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846
+
+### XHKG: Unpublished (3, calendar not yet published, registry value is a prediction, recheck 2028-12-31)
+
+The Hong Kong Government has gazetted its general holidays up to 2027 but not for 2029. Ching Ming Festival 2029 falls on 4 or 5 April depending on the solar term in Hong Kong time (the registry closes 5 April, the libraries 4 April), and the day after the Mid-Autumn Festival is Monday 24 September 2029 in the registry only. The registry is unchanged. Check the Hong Kong Observatory's solar-term table and the 2029 gazette.
+
+Dates: 2029-04-04, 2029-04-05, 2029-09-24.
+
+Source: https://www.1823.gov.hk/en/facilities-and-services/holidays
 
 ### XIST: Registry error (15, fixed in 2.23.6)
 
@@ -532,6 +582,14 @@ Dates: 2025-01-01, 2025-03-28, 2025-05-28, 2025-06-09, 2026-05-28.
 
 Source: https://dps.psx.com.pk/download/attachment/268947-1.pdf
 
+### XKAR: Registry error (4, fixed in 2.23.13)
+
+PSX does not move a holiday that falls on a weekend: its 2025 calendar lists Pakistan Day and Iqbal Day on a Sunday with no replacement day. Labour Day (Saturday 1 May 2027) and Quaid-e-Azam Day / Christmas (Saturday 25 December 2027) therefore leave Monday 3 May and Monday 27 December 2027 as trading days; the registry had closed both as 'observed'. Youm-e-Takbeer, 28 May, is a standing public holiday that PSX closed for in 2025 and 2026 (notices of 2025 and 2026): Friday 28 May 2027 and Monday 28 May 2029 are closed. 4 dates fixed. The libraries were right on all four. The 2027 and 2029 PSX holiday calendars are not published yet.
+
+Dates: 2027-05-03, 2027-05-28, 2027-12-27, 2029-05-28.
+
+Source: https://www.psx.com.pk/trading-calendar
+
 ### XKAR: Unpublished (4, calendar not yet published, registry value is a prediction, recheck 2027-01-15)
 
 Eid al-Fitr, Eid al-Adha, Ashura and Eid Milad-un-Nabi 2027. Dates depend on moon sighting and an announcement made close to the day, so neither the libraries nor the registry can know them yet. Pakistan's moon-sighting committees decide the day, and the registry labels these dates predicted.
@@ -564,11 +622,27 @@ Dates: 2026-03-20, 2026-06-02.
 
 Source: https://www.bursamalaysia.com/market_information/market_holidays
 
+### XKLS: Library error (2, registry verified, no change)
+
+The official birthday of the Yang di-Pertuan Agong is celebrated on the first Monday of June: Bursa Malaysia closed on 2 June 2025 and 1 June 2026 and the 2027 schedule gives 7 June. exchange_calendars and pandas_market_calendars trade on 5 June 2028 and 4 June 2029. The registry follows the standing rule. The 2028 and 2029 holiday schedules are not published yet.
+
+Dates: 2028-06-05, 2029-06-04.
+
+Source: https://www.bursamalaysia.com/market_information/market_holidays
+
 ### XKLS: Registry error (1, fixed in 2.23.12)
 
 Bursa Malaysia announced on 14 March 2025 that it would be closed on Tuesday 18 March 2025 for Nuzul Al-Quran, observed in several states and federal territories, and Bernama confirmed the closure on 17 and 19 March. The registry traded. 1 date fixed. Both libraries were right.
 
 Dates: 2025-03-18.
+
+Source: https://www.bursamalaysia.com/market_information/market_holidays
+
+### XKLS: Registry error (2, fixed in 2.23.13)
+
+Malaysia's Cabinet schedule of 2027 federal and state public holidays gives Nuzul Al-Quran on Wednesday 24 February 2027 for Kuala Lumpur and Selangor, and Bursa Malaysia closed for it on 18 March 2025. Malaysia Day is Sunday 16 September 2029 and the Holidays Act gives a Monday replacement holiday, as Bursa observed for Merdeka Day on 1 September 2025. The registry traded on both days; the libraries close both. 2 dates fixed. Bursa's own 2027 and 2029 notices are not issued yet.
+
+Dates: 2027-02-24, 2029-09-17.
 
 Source: https://www.bursamalaysia.com/market_information/market_holidays
 
@@ -593,6 +667,14 @@ Source: https://www.bursamalaysia.com/market_information/market_holidays
 Hari Raya Puasa, Maulidur Rasul and Chinese New Year replacement days 2029. The Islamic dates depend on moon sighting and the Malaysian government gazettes the year's holidays and replacement days late in the year before, so neither side can know them yet.
 
 Dates: 2029-02-16.
+
+Source: https://www.bursamalaysia.com/market_information/market_holidays
+
+### XKLS: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2027-12-31)
+
+Both libraries close Monday 14 February 2028, probably a replacement day for Nuzul Al-Quran (about 13 February 2028, a Sunday, depending on the moon). Malaysia's 2028 holiday schedule is not published, and Nuzul Al-Quran is not a replacement-day holiday in every state. The registry trades. Check Cabinet's 2028 schedule.
+
+Dates: 2028-02-14.
 
 Source: https://www.bursamalaysia.com/market_information/market_holidays
 

@@ -306,3 +306,23 @@ class TestXKLSBursaNotices2025And2026:
             "2026-03-23", "2026-05-01", "2026-05-27", "2026-06-01", "2026-06-02",
             "2026-06-17", "2026-08-25", "2026-08-31", "2026-09-16", "2026-11-09",
             "2026-12-25"}
+
+
+class TestXKLSFutureYears2027To2029:
+    """Cabinet's 2027 federal and state holiday schedule gives Nuzul Al-Quran
+    on Wednesday 24 February 2027 for Kuala Lumpur and Selangor, where Bursa
+    Malaysia closed for it in 2025. Malaysia Day (Sunday 16 September 2029)
+    gets a Monday replacement holiday, as Merdeka Day did in 2025."""
+
+    def test_nuzul_al_quran_2027(self, explicit_dates):
+        assert explicit_dates["2027-02-24"]["status"] == "closed"
+        assert "Nuzul" in explicit_dates["2027-02-24"]["name"]
+
+    def test_malaysia_day_2029_replacement(self, explicit_dates):
+        assert "2029-09-16" not in explicit_dates
+        assert explicit_dates["2029-09-17"]["status"] == "closed"
+        assert "Malaysia Day" in explicit_dates["2029-09-17"]["name"]
+
+    def test_agong_birthday_is_the_first_monday_of_june(self, explicit_dates):
+        for day in ("2027-06-07", "2028-06-05", "2029-06-04"):
+            assert "Agong" in explicit_dates[day]["name"]

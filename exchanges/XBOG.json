@@ -347,6 +347,12 @@
         "status": "closed"
       },
       {
+        "date": "2027-12-31",
+        "name": "Non-trading day (year end)",
+        "source_url": "https://www.bvc.com.co/calendario",
+        "status": "closed"
+      },
+      {
         "date": "2028-01-10",
         "name": "Epiphany (observed)",
         "source_url": "https://www.bvc.com.co/calendario",
@@ -547,6 +553,12 @@
       {
         "date": "2029-12-25",
         "name": "Christmas Day",
+        "source_url": "https://www.bvc.com.co/calendario",
+        "status": "closed"
+      },
+      {
+        "date": "2029-12-31",
+        "name": "Non-trading day (year end)",
         "source_url": "https://www.bvc.com.co/calendario",
         "status": "closed"
       }

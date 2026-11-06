@@ -196,15 +196,15 @@
         "status": "closed"
       },
       {
-        "date": "2027-05-03",
-        "name": "Labour Day (observed)",
+        "date": "2027-05-17",
+        "name": "Eid al-Adha Holiday (predicted)",
+        "predicted": true,
         "source_url": "https://www.psx.com.pk/trading-calendar",
         "status": "closed"
       },
       {
-        "date": "2027-05-17",
-        "name": "Eid al-Adha Holiday (predicted)",
-        "predicted": true,
+        "date": "2027-05-28",
+        "name": "Youm-e-Takbeer",
         "source_url": "https://www.psx.com.pk/trading-calendar",
         "status": "closed"
       },
@@ -218,12 +218,6 @@
       {
         "date": "2027-11-09",
         "name": "Iqbal Day",
-        "source_url": "https://www.psx.com.pk/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2027-12-27",
-        "name": "Quaid-e-Azam Day (observed)",
         "source_url": "https://www.psx.com.pk/trading-calendar",
         "status": "closed"
       },
@@ -335,6 +329,12 @@
         "date": "2029-05-24",
         "name": "Ashura (predicted)",
         "predicted": true,
+        "source_url": "https://www.psx.com.pk/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2029-05-28",
+        "name": "Youm-e-Takbeer",
         "source_url": "https://www.psx.com.pk/trading-calendar",
         "status": "closed"
       },

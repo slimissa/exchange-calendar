@@ -1668,6 +1668,137 @@
       ],
       "summary": "BYMA's 2026 trading calendar lists Thursday 31 December 2026 as a day without trading or settlement, and BYMA's communique for the end of 2025 (reported by iProUP and Bloomberg Linea) says the market does not operate on Wednesday 31 December 2025. The registry had a 13:00 early close on both days and now closes them (2.23.13). exchange_calendars and pandas_market_calendars trade on both days. The registry is right. The 31 December 2027 and 2029 early closes were not reviewed in this phase.",
       "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
+    },
+    {
+      "exchange": "XBDA",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.13",
+      "dates": [
+        "2028-07-27",
+        "2028-07-28",
+        "2028-08-03",
+        "2028-08-04"
+      ],
+      "summary": "Bermuda's Public Holidays Act sets Emancipation Day on the Thursday before the first Monday in August and Somers' Day (Mary Prince Day) on the Friday after it. 1 August 2028 is a Tuesday, so the first Monday is 7 August and Cup Match is Thursday 3 and Friday 4 August 2028 (the pattern of 2022, 2023, 2025-2027 and 2029 in the registry). The registry had 27 and 28 July 2028. 4 dates fixed (two removed, two added); the libraries were right.",
+      "source_url": "https://www.gov.bm/print/html/node/504821"
+    },
+    {
+      "exchange": "XBOG",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.13",
+      "dates": [
+        "2027-12-31",
+        "2029-12-31"
+      ],
+      "summary": "The Bolsa de Valores de Colombia treated 31 December as a non-trading day in 2024 and 2025 (its notices) and the registry closes 2026. Friday 31 December 2027 and Monday 31 December 2029 follow the same practice; the libraries close both. 2 dates fixed. They rest on the 2024 and 2025 notices, not on notices for those years, which the BVC publishes each December.",
+      "source_url": "https://www.bvc.com.co/calendario"
+    },
+    {
+      "exchange": "XBOG",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "recheck_date": "2028-12-31",
+      "dates": [
+        "2028-12-29"
+      ],
+      "summary": "31 December 2028 is a Sunday. The libraries close Friday 29 December 2028, the last business day; whether the BVC closes that Friday, or trades it, is not published: its 2024 and 2025 notices only name 31 December. The registry trades on 29 December. Check the BVC's year-end notice for 2028.",
+      "source_url": "https://www.bvc.com.co/calendario"
+    },
+    {
+      "exchange": "XKAR",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.13",
+      "dates": [
+        "2027-05-03",
+        "2027-05-28",
+        "2027-12-27",
+        "2029-05-28"
+      ],
+      "summary": "PSX does not move a holiday that falls on a weekend: its 2025 calendar lists Pakistan Day and Iqbal Day on a Sunday with no replacement day. Labour Day (Saturday 1 May 2027) and Quaid-e-Azam Day / Christmas (Saturday 25 December 2027) therefore leave Monday 3 May and Monday 27 December 2027 as trading days; the registry had closed both as 'observed'. Youm-e-Takbeer, 28 May, is a standing public holiday that PSX closed for in 2025 and 2026 (notices of 2025 and 2026): Friday 28 May 2027 and Monday 28 May 2029 are closed. 4 dates fixed. The libraries were right on all four. The 2027 and 2029 PSX holiday calendars are not published yet.",
+      "source_url": "https://www.psx.com.pk/trading-calendar"
+    },
+    {
+      "exchange": "XKLS",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.13",
+      "dates": [
+        "2027-02-24",
+        "2029-09-17"
+      ],
+      "summary": "Malaysia's Cabinet schedule of 2027 federal and state public holidays gives Nuzul Al-Quran on Wednesday 24 February 2027 for Kuala Lumpur and Selangor, and Bursa Malaysia closed for it on 18 March 2025. Malaysia Day is Sunday 16 September 2029 and the Holidays Act gives a Monday replacement holiday, as Bursa observed for Merdeka Day on 1 September 2025. The registry traded on both days; the libraries close both. 2 dates fixed. Bursa's own 2027 and 2029 notices are not issued yet.",
+      "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+    },
+    {
+      "exchange": "XKLS",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2028-06-05",
+        "2029-06-04"
+      ],
+      "summary": "The official birthday of the Yang di-Pertuan Agong is celebrated on the first Monday of June: Bursa Malaysia closed on 2 June 2025 and 1 June 2026 and the 2027 schedule gives 7 June. exchange_calendars and pandas_market_calendars trade on 5 June 2028 and 4 June 2029. The registry follows the standing rule. The 2028 and 2029 holiday schedules are not published yet.",
+      "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+    },
+    {
+      "exchange": "XKLS",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "recheck_date": "2027-12-31",
+      "dates": [
+        "2028-02-14"
+      ],
+      "summary": "Both libraries close Monday 14 February 2028, probably a replacement day for Nuzul Al-Quran (about 13 February 2028, a Sunday, depending on the moon). Malaysia's 2028 holiday schedule is not published, and Nuzul Al-Quran is not a replacement-day holiday in every state. The registry trades. Check Cabinet's 2028 schedule.",
+      "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+    },
+    {
+      "exchange": "XHKG",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "recheck_date": "2028-12-31",
+      "dates": [
+        "2029-04-04",
+        "2029-04-05",
+        "2029-09-24"
+      ],
+      "summary": "The Hong Kong Government has gazetted its general holidays up to 2027 but not for 2029. Ching Ming Festival 2029 falls on 4 or 5 April depending on the solar term in Hong Kong time (the registry closes 5 April, the libraries 4 April), and the day after the Mid-Autumn Festival is Monday 24 September 2029 in the registry only. The registry is unchanged. Check the Hong Kong Observatory's solar-term table and the 2029 gazette.",
+      "source_url": "https://www.1823.gov.hk/en/facilities-and-services/holidays"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "recheck_date": "2027-01-31",
+      "dates": [
+        "2027-03-25"
+      ],
+      "summary": "Holy Thursday 2027 is an Argentine non-working day (like 17 April 2025, see above). The libraries close it and the registry trades. BYMA publishes its trading calendar each year and has not published 2027; its 2026 calendar closes 2 April only because Malvinas Day falls on the same Thursday. Check BYMA's 2027 calendar.",
+      "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "recheck_date": "2028-01-31",
+      "dates": [
+        "2028-04-13"
+      ],
+      "summary": "Holy Thursday 2028 is an Argentine non-working day. The libraries close it and the registry trades. BYMA has not published 2028. Check BYMA's 2028 calendar.",
+      "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "recheck_date": "2029-01-31",
+      "dates": [
+        "2029-03-29"
+      ],
+      "summary": "Holy Thursday 2029 is an Argentine non-working day. The libraries close it and the registry trades. BYMA has not published 2029. Check BYMA's 2029 calendar.",
+      "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
     }
   ]
 }

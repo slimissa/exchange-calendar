@@ -116,9 +116,11 @@ class TestXKARFixedHolidays:
         assert explicit_dates["2025-05-01"]["name"] == "Labour Day"
 
     def test_labour_day_2027_substitute(self, explicit_dates):
-        """May 1, 2027 is Saturday — substitute to Monday May 3."""
+        """May 1, 2027 is Saturday: PSX does not move a weekend holiday to
+        Monday (its calendars list Pakistan Day and Iqbal Day on a Sunday with
+        no replacement), so Monday 3 May trades."""
         assert "2027-05-01" not in explicit_dates
-        assert "2027-05-03" in explicit_dates
+        assert "2027-05-03" not in explicit_dates
 
     def test_independence_2025(self, explicit_dates):
         """Aug 14, 2025 is Thursday."""
@@ -135,9 +137,9 @@ class TestXKARFixedHolidays:
         assert "Quaid" in explicit_dates["2025-12-25"]["name"]
 
     def test_quaid_day_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27."""
+        """Dec 25, 2027 is Saturday: no Monday substitute, 27 December trades."""
         assert "2027-12-25" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
+        assert "2027-12-27" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -329,9 +331,17 @@ class TestXKARSubstitution:
         assert "2027-05-01" not in explicit_dates  # Saturday
         assert "2027-12-25" not in explicit_dates  # Saturday
 
-    def test_observed_names(self, explicit_dates):
-        observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
-        assert observed_count >= 2, f"Expected some observed holidays, got {observed_count}"
+    def test_no_observed_substitutes(self, explicit_dates):
+        """PSX never moves a weekend holiday to a weekday."""
+        observed = [e for e in explicit_dates.values() if "observed" in e["name"].lower()]
+        assert observed == []
+
+    def test_youm_e_takbeer_is_a_fixed_date_holiday(self, explicit_dates):
+        """28 May is a standing public holiday that PSX closes for (2025 and
+        2026 notices): Friday 28 May 2027 and Monday 28 May 2029 too."""
+        for day in ("2027-05-28", "2029-05-28"):
+            assert explicit_dates[day]["status"] == "closed"
+            assert "Takbeer" in explicit_dates[day]["name"]
 
 
 # ──────────────────────────────────────────────────────────────

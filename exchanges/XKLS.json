@@ -273,6 +273,12 @@
         "status": "closed"
       },
       {
+        "date": "2027-02-24",
+        "name": "Nuzul Al-Quran",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
+        "status": "closed"
+      },
+      {
         "date": "2027-03-10",
         "name": "Hari Raya Puasa",
         "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
@@ -497,6 +503,12 @@
       {
         "date": "2029-08-31",
         "name": "National Day",
+        "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
+        "status": "closed"
+      },
+      {
+        "date": "2029-09-17",
+        "name": "Malaysia Day (observed)",
         "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
         "status": "closed"
       },

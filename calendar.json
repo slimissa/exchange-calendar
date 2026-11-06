@@ -3938,13 +3938,13 @@
             "status": "closed"
           },
           {
-            "date": "2028-07-27",
+            "date": "2028-08-03",
             "name": "Cup Match (Day 1)",
             "source_url": "https://www.bsx.com/trading-calendar",
             "status": "closed"
           },
           {
-            "date": "2028-07-28",
+            "date": "2028-08-04",
             "name": "Cup Match (Day 2)",
             "source_url": "https://www.bsx.com/trading-calendar",
             "status": "closed"
@@ -5129,6 +5129,12 @@
             "status": "closed"
           },
           {
+            "date": "2027-12-31",
+            "name": "Non-trading day (year end)",
+            "source_url": "https://www.bvc.com.co/calendario",
+            "status": "closed"
+          },
+          {
             "date": "2028-01-10",
             "name": "Epiphany (observed)",
             "source_url": "https://www.bvc.com.co/calendario",
@@ -5329,6 +5335,12 @@
           {
             "date": "2029-12-25",
             "name": "Christmas Day",
+            "source_url": "https://www.bvc.com.co/calendario",
+            "status": "closed"
+          },
+          {
+            "date": "2029-12-31",
+            "name": "Non-trading day (year end)",
             "source_url": "https://www.bvc.com.co/calendario",
             "status": "closed"
           }
@@ -18196,15 +18208,15 @@
             "status": "closed"
           },
           {
-            "date": "2027-05-03",
-            "name": "Labour Day (observed)",
+            "date": "2027-05-17",
+            "name": "Eid al-Adha Holiday (predicted)",
+            "predicted": true,
             "source_url": "https://www.psx.com.pk/trading-calendar",
             "status": "closed"
           },
           {
-            "date": "2027-05-17",
-            "name": "Eid al-Adha Holiday (predicted)",
-            "predicted": true,
+            "date": "2027-05-28",
+            "name": "Youm-e-Takbeer",
             "source_url": "https://www.psx.com.pk/trading-calendar",
             "status": "closed"
           },
@@ -18218,12 +18230,6 @@
           {
             "date": "2027-11-09",
             "name": "Iqbal Day",
-            "source_url": "https://www.psx.com.pk/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2027-12-27",
-            "name": "Quaid-e-Azam Day (observed)",
             "source_url": "https://www.psx.com.pk/trading-calendar",
             "status": "closed"
           },
@@ -18335,6 +18341,12 @@
             "date": "2029-05-24",
             "name": "Ashura (predicted)",
             "predicted": true,
+            "source_url": "https://www.psx.com.pk/trading-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2029-05-28",
+            "name": "Youm-e-Takbeer",
             "source_url": "https://www.psx.com.pk/trading-calendar",
             "status": "closed"
           },
@@ -18660,6 +18672,12 @@
             "status": "closed"
           },
           {
+            "date": "2027-02-24",
+            "name": "Nuzul Al-Quran",
+            "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
+            "status": "closed"
+          },
+          {
             "date": "2027-03-10",
             "name": "Hari Raya Puasa",
             "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
@@ -18884,6 +18902,12 @@
           {
             "date": "2029-08-31",
             "name": "National Day",
+            "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
+            "status": "closed"
+          },
+          {
+            "date": "2029-09-17",
+            "name": "Malaysia Day (observed)",
             "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
             "status": "closed"
           },

@@ -437,3 +437,17 @@ class TestXBOGTradingDays2025And2026:
             "2026-05-01", "2026-05-18", "2026-06-08", "2026-06-15", "2026-06-29",
             "2026-07-20", "2026-08-07", "2026-08-17", "2026-10-12", "2026-11-02",
             "2026-11-16", "2026-12-08", "2026-12-25", "2026-12-31"}
+
+
+class TestXBOGYearEnd2027To2029:
+    """The BVC has treated 31 December as a non-trading day in 2024 and 2025
+    (and the registry closes 2026): Friday 31 December 2027 and Monday
+    31 December 2029 follow. 31 December 2028 is a Sunday; whether the BVC
+    then closes the Friday 29 December is not published and stays open."""
+
+    def test_year_end_2027_and_2029_closed(self, explicit_dates):
+        for day in ("2027-12-31", "2029-12-31"):
+            assert explicit_dates[day]["status"] == "closed"
+
+    def test_friday_29_december_2028_is_not_claimed(self, explicit_dates):
+        assert "2028-12-29" not in explicit_dates

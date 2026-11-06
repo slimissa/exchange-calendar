@@ -208,9 +208,12 @@ class TestXBDACupMatch:
         assert "2027-07-30" in explicit_dates
 
     def test_cup_match_2028(self, explicit_dates):
-        """Cup Match 2028 — Jul 27-28."""
-        assert "2028-07-27" in explicit_dates
-        assert "2028-07-28" in explicit_dates
+        """Cup Match 2028 — Aug 3-4: the Thursday and Friday before the first
+        Monday in August (7 August 2028; 1 August is a Tuesday)."""
+        assert "2028-08-03" in explicit_dates
+        assert "2028-08-04" in explicit_dates
+        assert "2028-07-27" not in explicit_dates
+        assert "2028-07-28" not in explicit_dates
 
     def test_cup_match_2029(self, explicit_dates):
         """Cup Match 2029 — Aug 2-3."""
