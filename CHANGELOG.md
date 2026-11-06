@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.23.13] - 2026-11-06
+
+### Fixed
+- Fixed known fetcher and early-close bugs, and triaged the final 22 unclassified disagreements for 2027-2029.
+- BudapestFetcher no longer generates weekend substitutes (Hungarian law gives none). XSGO 31 December 2027 and 2029 and XBUE 31 December 2025 and 2026 are closures, not early closes.
+- XBDA: Cup Match 2028 is 3 and 4 August. XBOG: 31 December 2027 and 2029 are closed. XKAR: no Monday substitute for Saturday holidays; Youm-e-Takbeer (28 May 2027 and 2029) is closed. XKLS: Nuzul Al-Quran (24 February 2027) and the Malaysia Day replacement (17 September 2029) are closed.
+
+### Changed
+- Unclassified disagreements are 0 for every year 2025-2029. Eight more dates are recorded as unpublished with a recheck date (XBUE, XHKG, XKLS, XBOG).
+
 ## [2.23.12] - 2026-11-06
 
 ### Fixed

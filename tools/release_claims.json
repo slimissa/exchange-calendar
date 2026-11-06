@@ -1772,5 +1772,55 @@
       "file": "tests/test_malaysia_holidays.py",
       "contains": "class TestXKLSBursaNotices2025And2026:"
     }
+  ],
+  "2.23.13": [
+    {
+      "file": "VERSION",
+      "contains": "2.23.13"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "## [2.23.13] - 2026-11-06"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "contains": "Fixed known fetcher and early-close bugs, and triaged the final 22 unclassified disagreements for 2027-2029."
+    },
+    {
+      "file": "README.md",
+      "contains": "registry-2.23.13-orange"
+    },
+    {
+      "file": "README.md",
+      "contains": "automated fetchers as of v2.23.13"
+    },
+    {
+      "file": "exchanges/XBDA.json",
+      "contains": "\"date\": \"2028-08-04\""
+    },
+    {
+      "file": "exchanges/XKAR.json",
+      "contains": "\"date\": \"2029-05-28\""
+    },
+    {
+      "file": "exchanges/XKLS.json",
+      "contains": "\"date\": \"2029-09-17\""
+    },
+    {
+      "file": "exchanges/XBOG.json",
+      "contains": "\"date\": \"2029-12-31\""
+    },
+    {
+      "file": "tools/update_from_exchange.py",
+      "contains": "_WEEKEND_SUBSTITUTES: List[tuple] = []"
+    },
+    {
+      "file": "tests/test_bogota_holidays.py",
+      "contains": "class TestXBOGYearEnd2027To2029:"
+    },
+    {
+      "file": "tests/test_malaysia_holidays.py",
+      "contains": "class TestXKLSFutureYears2027To2029:"
+    }
   ]
 }
