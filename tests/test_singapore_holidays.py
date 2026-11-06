@@ -153,6 +153,25 @@ class TestXSESObserved:
         assert "observed" in explicit_dates["2027-02-08"]["name"].lower()
 
 
+class TestXSESHariRayaPuasa2026:
+    """MOM's gazette for 2026 sets Hari Raya Puasa on Saturday 21 March, and
+    Singapore moves a Sunday holiday to Monday but never a Saturday one."""
+
+    def test_friday_20_march_2026_trades(self, explicit_dates):
+        assert "2026-03-20" not in explicit_dates
+        assert "2026-03-21" not in explicit_dates
+
+    def test_monday_23_march_2026_trades(self, explicit_dates):
+        assert "2026-03-23" not in explicit_dates
+
+    def test_2026_closed_weekdays(self, explicit_dates):
+        closed = {d for d, e in explicit_dates.items()
+                  if d.startswith("2026") and e["status"] == "closed"}
+        assert closed == {
+            "2026-01-01", "2026-02-17", "2026-02-18", "2026-04-03", "2026-05-01",
+            "2026-05-27", "2026-06-01", "2026-08-10", "2026-11-09", "2026-12-25"}
+
+
 # ──────────────────────────────────────────────────────────────
 # Structural checks
 # ──────────────────────────────────────────────────────────────

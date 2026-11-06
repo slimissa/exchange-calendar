@@ -71,18 +71,6 @@
         "status": "closed"
       },
       {
-        "date": "2025-07-07",
-        "name": "Saints Cyril and Methodius Day (observed)",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
-      },
-      {
-        "date": "2025-09-29",
-        "name": "Czech Statehood Day (observed)",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
-      },
-      {
         "date": "2025-10-28",
         "name": "Independent Czechoslovak State Day",
         "source_url": "https://www.pse.cz/en/trading/trading-calendar",
@@ -109,6 +97,12 @@
       {
         "date": "2025-12-26",
         "name": "St. Stephen's Day",
+        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2025-12-31",
+        "name": "New Year's Eve (non-trading day)",
         "source_url": "https://www.pse.cz/en/trading/trading-calendar",
         "status": "closed"
       },
@@ -175,6 +169,12 @@
       {
         "date": "2026-12-25",
         "name": "Christmas Day",
+        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2026-12-31",
+        "name": "New Year's Eve (non-trading day)",
         "source_url": "https://www.pse.cz/en/trading/trading-calendar",
         "status": "closed"
       },

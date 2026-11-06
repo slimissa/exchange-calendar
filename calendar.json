@@ -4877,12 +4877,6 @@
             "status": "closed"
           },
           {
-            "date": "2025-07-01",
-            "name": "Saint Peter and Saint Paul (observed)",
-            "source_url": "https://www.bvc.com.co/calendario",
-            "status": "closed"
-          },
-          {
             "date": "2025-08-07",
             "name": "Battle of Boyacá",
             "source_url": "https://www.bvc.com.co/calendario",
@@ -4921,6 +4915,12 @@
           {
             "date": "2025-12-25",
             "name": "Christmas Day",
+            "source_url": "https://www.bvc.com.co/calendario",
+            "status": "closed"
+          },
+          {
+            "date": "2025-12-31",
+            "name": "Non-trading day (year end)",
             "source_url": "https://www.bvc.com.co/calendario",
             "status": "closed"
           },
@@ -5029,6 +5029,12 @@
           {
             "date": "2026-12-25",
             "name": "Christmas Day",
+            "source_url": "https://www.bvc.com.co/calendario",
+            "status": "closed"
+          },
+          {
+            "date": "2026-12-31",
+            "name": "Non-trading day (year end)",
             "source_url": "https://www.bvc.com.co/calendario",
             "status": "closed"
           },
@@ -17694,12 +17700,6 @@
             "status": "closed"
           },
           {
-            "date": "2025-08-11",
-            "name": "National Women's Day (observed)",
-            "source_url": "https://www.jse.co.za/market-data/trading-hours",
-            "status": "closed"
-          },
-          {
             "date": "2025-09-24",
             "name": "Heritage Day",
             "source_url": "https://www.jse.co.za/market-data/trading-hours",
@@ -18460,6 +18460,12 @@
           {
             "date": "2025-02-11",
             "name": "Thaipusam",
+            "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
+            "status": "closed"
+          },
+          {
+            "date": "2025-03-18",
+            "name": "Nuzul Al-Quran",
             "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
             "status": "closed"
           },
@@ -34571,18 +34577,6 @@
             "status": "closed"
           },
           {
-            "date": "2025-07-07",
-            "name": "Saints Cyril and Methodius Day (observed)",
-            "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-            "status": "closed"
-          },
-          {
-            "date": "2025-09-29",
-            "name": "Czech Statehood Day (observed)",
-            "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-            "status": "closed"
-          },
-          {
             "date": "2025-10-28",
             "name": "Independent Czechoslovak State Day",
             "source_url": "https://www.pse.cz/en/trading/trading-calendar",
@@ -34609,6 +34603,12 @@
           {
             "date": "2025-12-26",
             "name": "St. Stephen's Day",
+            "source_url": "https://www.pse.cz/en/trading/trading-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2025-12-31",
+            "name": "New Year's Eve (non-trading day)",
             "source_url": "https://www.pse.cz/en/trading/trading-calendar",
             "status": "closed"
           },
@@ -34675,6 +34675,12 @@
           {
             "date": "2026-12-25",
             "name": "Christmas Day",
+            "source_url": "https://www.pse.cz/en/trading/trading-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2026-12-31",
+            "name": "New Year's Eve (non-trading day)",
             "source_url": "https://www.pse.cz/en/trading/trading-calendar",
             "status": "closed"
           },
@@ -35818,12 +35824,6 @@
           {
             "date": "2026-02-18",
             "name": "Chinese New Year Holiday",
-            "source_url": "https://www.sgx.com/trading/trading-hours",
-            "status": "closed"
-          },
-          {
-            "date": "2026-03-20",
-            "name": "Hari Raya Puasa",
             "source_url": "https://www.sgx.com/trading/trading-hours",
             "status": "closed"
           },
@@ -37186,6 +37186,12 @@
           {
             "date": "2026-01-01",
             "name": "New Year's Day",
+            "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
+            "status": "closed"
+          },
+          {
+            "date": "2026-01-02",
+            "name": "New Year's Day Holiday",
             "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
             "status": "closed"
           },
@@ -39643,6 +39649,12 @@
             "status": "closed"
           },
           {
+            "date": "2025-05-29",
+            "name": "Ascension Day",
+            "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
+            "status": "closed"
+          },
+          {
             "date": "2025-06-23",
             "name": "Victory Day",
             "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
@@ -39711,6 +39723,12 @@
           {
             "date": "2026-05-01",
             "name": "Labour Day",
+            "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
+            "status": "closed"
+          },
+          {
+            "date": "2026-05-14",
+            "name": "Ascension Day",
             "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
             "status": "closed"
           },

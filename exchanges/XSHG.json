@@ -165,6 +165,12 @@
         "status": "closed"
       },
       {
+        "date": "2026-01-02",
+        "name": "New Year's Day Holiday",
+        "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",
+        "status": "closed"
+      },
+      {
         "date": "2026-02-16",
         "name": "Spring Festival Eve",
         "source_url": "https://www.sse.com.cn/marketservices/tradingcalendar/",

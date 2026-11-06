@@ -125,6 +125,13 @@ class TestXSHG2025:
 # ──────────────────────────────────────────────────────────────
 
 class TestXSHG2026:
+    def test_new_year_holiday_runs_to_friday_2_january(self, explicit_dates):
+        """SSE notice 2025-45: closed Thursday 1 to Saturday 3 January 2026 and
+        open again on Monday 5 January; Sunday 4 January is a weekend closure."""
+        assert "2026-01-01" in explicit_dates
+        assert "2026-01-02" in explicit_dates
+        assert "2026-01-05" not in explicit_dates
+
     def test_spring_festival(self, explicit_dates):
         assert "2026-02-16" in explicit_dates  # Eve
         assert "2026-02-17" in explicit_dates  # Day 1

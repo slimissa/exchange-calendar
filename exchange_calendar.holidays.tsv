@@ -666,7 +666,6 @@ XBOG	2025-05-01	Labour Day	closed	explicit	1					https://www.bvc.com.co/calendar
 XBOG	2025-06-02	Ascension Day (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2025-06-23	Corpus Christi (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2025-06-30	Sacred Heart (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
-XBOG	2025-07-01	Saint Peter and Saint Paul (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2025-08-07	Battle of Boyacá	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2025-08-18	Assumption Day (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2025-10-13	Columbus Day (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
@@ -674,6 +673,7 @@ XBOG	2025-11-03	All Saints' Day (observed)	closed	explicit	1					https://www.bvc
 XBOG	2025-11-17	Independence of Cartagena (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2025-12-08	Immaculate Conception	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2025-12-25	Christmas Day	closed	explicit	1					https://www.bvc.com.co/calendario
+XBOG	2025-12-31	Non-trading day (year end)	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2026-01-01	New Year's Day	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2026-01-12	Epiphany (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2026-03-23	Saint Joseph's Day (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
@@ -692,6 +692,7 @@ XBOG	2026-11-02	All Saints' Day (observed)	closed	explicit	1					https://www.bvc
 XBOG	2026-11-16	Independence of Cartagena (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2026-12-08	Immaculate Conception	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2026-12-25	Christmas Day	closed	explicit	1					https://www.bvc.com.co/calendario
+XBOG	2026-12-31	Non-trading day (year end)	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2027-01-01	New Year's Day	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2027-01-11	Epiphany (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
 XBOG	2027-03-22	Saint Joseph's Day (observed)	closed	explicit	1					https://www.bvc.com.co/calendario
@@ -2461,7 +2462,6 @@ XJSE	2025-04-21	Family Day (Easter Monday)	closed	explicit	1					https://www.jse
 XJSE	2025-04-28	Freedom Day (observed)	closed	explicit	1					https://www.jse.co.za/market-data/trading-hours
 XJSE	2025-05-01	Workers' Day	closed	explicit	1					https://www.jse.co.za/market-data/trading-hours
 XJSE	2025-06-16	Youth Day	closed	explicit	1					https://www.jse.co.za/market-data/trading-hours
-XJSE	2025-08-11	National Women's Day (observed)	closed	explicit	1					https://www.jse.co.za/market-data/trading-hours
 XJSE	2025-09-24	Heritage Day	closed	explicit	1					https://www.jse.co.za/market-data/trading-hours
 XJSE	2025-12-16	Day of Reconciliation	closed	explicit	1					https://www.jse.co.za/market-data/trading-hours
 XJSE	2025-12-25	Christmas Day	closed	explicit	1					https://www.jse.co.za/market-data/trading-hours
@@ -2562,6 +2562,7 @@ XKLS	2025-01-01	New Year's Day	closed	explicit	1					https://www.bursamalaysia.c
 XKLS	2025-01-29	Chinese New Year	closed	explicit	1					https://www.bursamalaysia.com/market_information/market_holidays
 XKLS	2025-01-30	Chinese New Year Holiday	closed	explicit	1					https://www.bursamalaysia.com/market_information/market_holidays
 XKLS	2025-02-11	Thaipusam	closed	explicit	1					https://www.bursamalaysia.com/market_information/market_holidays
+XKLS	2025-03-18	Nuzul Al-Quran	closed	explicit	1					https://www.bursamalaysia.com/market_information/market_holidays
 XKLS	2025-03-31	Hari Raya Puasa	closed	explicit	1					https://www.bursamalaysia.com/market_information/market_holidays
 XKLS	2025-04-01	Hari Raya Puasa Day 2	closed	explicit	1					https://www.bursamalaysia.com/market_information/market_holidays
 XKLS	2025-05-01	Labour Day	closed	explicit	1					https://www.bursamalaysia.com/market_information/market_holidays
@@ -4827,13 +4828,12 @@ XPRA	2025-04-18	Good Friday	closed	explicit	1					https://www.pse.cz/en/trading/
 XPRA	2025-04-21	Easter Monday	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2025-05-01	Labour Day	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2025-05-08	Victory Day	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
-XPRA	2025-07-07	Saints Cyril and Methodius Day (observed)	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
-XPRA	2025-09-29	Czech Statehood Day (observed)	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2025-10-28	Independent Czechoslovak State Day	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2025-11-17	Struggle for Freedom and Democracy Day	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2025-12-24	Christmas Eve	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2025-12-25	Christmas Day	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2025-12-26	St. Stephen's Day	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
+XPRA	2025-12-31	New Year's Eve (non-trading day)	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2026-01-01	New Year's Day	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2026-04-03	Good Friday	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2026-04-06	Easter Monday	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
@@ -4845,6 +4845,7 @@ XPRA	2026-10-28	Independent Czechoslovak State Day	closed	explicit	1					https:/
 XPRA	2026-11-17	Struggle for Freedom and Democracy Day	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2026-12-24	Christmas Eve	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2026-12-25	Christmas Day	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
+XPRA	2026-12-31	New Year's Eve (non-trading day)	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2027-01-01	New Year's Day	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2027-03-26	Good Friday	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
 XPRA	2027-03-29	Easter Monday	closed	explicit	1					https://www.pse.cz/en/trading/trading-calendar
@@ -4992,7 +4993,6 @@ XSES	2026-01-01	New Year's Day	closed	explicit	1					https://www.sgx.com/trading
 XSES	2026-02-16	Chinese New Year Eve	early_close	explicit	1	12:30				https://www.sgx.com/trading/trading-hours
 XSES	2026-02-17	Chinese New Year	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2026-02-18	Chinese New Year Holiday	closed	explicit	1					https://www.sgx.com/trading/trading-hours
-XSES	2026-03-20	Hari Raya Puasa	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2026-04-03	Good Friday	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2026-05-01	Labour Day	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2026-05-27	Hari Raya Haji	closed	explicit	1					https://www.sgx.com/trading/trading-hours
@@ -5181,6 +5181,7 @@ XSHG	2025-10-06	National Day Holiday	closed	explicit	1					https://www.sse.com.c
 XSHG	2025-10-07	National Day Holiday	closed	explicit	1					https://www.sse.com.cn/marketservices/tradingcalendar/
 XSHG	2025-10-08	National Day Holiday	closed	explicit	1					https://www.sse.com.cn/marketservices/tradingcalendar/
 XSHG	2026-01-01	New Year's Day	closed	explicit	1					https://www.sse.com.cn/marketservices/tradingcalendar/
+XSHG	2026-01-02	New Year's Day Holiday	closed	explicit	1					https://www.sse.com.cn/marketservices/tradingcalendar/
 XSHG	2026-02-16	Spring Festival Eve	closed	explicit	1					https://www.sse.com.cn/marketservices/tradingcalendar/
 XSHG	2026-02-17	Spring Festival	closed	explicit	1					https://www.sse.com.cn/marketservices/tradingcalendar/
 XSHG	2026-02-18	Spring Festival	closed	explicit	1					https://www.sse.com.cn/marketservices/tradingcalendar/
@@ -5507,6 +5508,7 @@ XTAL	2025-02-24	Independence Day	closed	explicit	1					https://www.nasdaqbaltic.
 XTAL	2025-04-18	Good Friday	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
 XTAL	2025-04-21	Easter Monday	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
 XTAL	2025-05-01	Labour Day	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
+XTAL	2025-05-29	Ascension Day	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
 XTAL	2025-06-23	Victory Day	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
 XTAL	2025-06-24	Midsummer Day	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
 XTAL	2025-08-20	Restoration of Independence Day	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
@@ -5519,6 +5521,7 @@ XTAL	2026-02-24	Independence Day	closed	explicit	1					https://www.nasdaqbaltic.
 XTAL	2026-04-03	Good Friday	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
 XTAL	2026-04-06	Easter Monday	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
 XTAL	2026-05-01	Labour Day	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
+XTAL	2026-05-14	Ascension Day	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
 XTAL	2026-06-23	Victory Day	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
 XTAL	2026-06-24	Midsummer Day	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar
 XTAL	2026-08-20	Restoration of Independence Day	closed	explicit	1					https://www.nasdaqbaltic.com/trading-calendar

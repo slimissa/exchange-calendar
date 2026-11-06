@@ -33,7 +33,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XBDA | 1254 | 1254 | 1254 | 4 | 99.7% |
 | XBEY | 1265 | No reference data | No reference data | n/a | n/a |
 | XBKK | 727 | 727 | 727 | 0 | 100.0% |
-| XBOG | 1220 | 1216 | 1216 | 6 | 99.5% |
+| XBOG | 1219 | 1216 | 1216 | 3 | 99.8% |
 | XBOM | 1239 | 1274 | 493* | 35 | 97.3% |
 | XBRU | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
@@ -56,9 +56,9 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XICE | 1243 | 1243 | 1243 | 0 | 100.0% |
 | XIST | 1255 | 1255 | 1255 | 0 | 100.0% |
 | XJKT | 1249 | No reference data | No reference data | n/a | n/a |
-| XJSE | 1251 | 1252 | 1252 | 1 | 99.9% |
+| XJSE | 1252 | 1252 | 1252 | 0 | 100.0% |
 | XKAR | 1253 | 1270 | 1270 | 23 | 98.2% |
-| XKLS | 1228 | 1232 | 1232 | 16 | 98.7% |
+| XKLS | 1227 | 1232 | 1232 | 15 | 98.8% |
 | XKRX | 1217 | 1224 | 1224 | 7 | 99.4% |
 | XKUW | 1017 | No reference data | No reference data | n/a | n/a |
 | XLIM | 1241 | 1243 | 1243 | 6 | 99.5% |
@@ -80,19 +80,19 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XOSL | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XPAR | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XPHS | 1231 | 1230 | 1230 | 7 | 99.4% |
-| XPRA | 1249 | 1249 | 1249 | 4 | 99.7% |
+| XPRA | 1249 | 1249 | 1249 | 0 | 100.0% |
 | XRIS | 1249 | 1250 | 1250 | 7 | 99.4% |
 | XSAU | 1007 | 998 | 998 | 17 | 98.3% |
-| XSES | 1255 | 1285 | 503* | 30 | 97.7% |
+| XSES | 1256 | 1285 | 503* | 29 | 97.7% |
 | XSGO | 1243 | No reference data | 1242 | 3 | 99.8% |
 | XSHE | 727 | No reference data | No reference data | n/a | n/a |
-| XSHG | 1225 | 1267 | 485* | 44 | 96.5% |
+| XSHG | 1224 | 1267 | 485* | 43 | 96.6% |
 | XSTC | 1006 | No reference data | No reference data | n/a | n/a |
 | XSTO | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XSWX | 1255 | 1255 | 1255 | 0 | 100.0% |
 | XTAD | 1272 | No reference data | No reference data | n/a | n/a |
 | XTAI | 1220 | 1221 | 1221 | 15 | 98.8% |
-| XTAL | 1253 | 1255 | 1255 | 6 | 99.5% |
+| XTAL | 1251 | 1255 | 1255 | 4 | 99.7% |
 | XTKS | 1464 | 1464 | 1464 | 0 | 100.0% |
 | XTSE | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XTUN | 1253 | No reference data | No reference data | n/a | n/a |
@@ -102,8 +102,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 27 of 50.
-- Trading days on which all available sources agree: 62458 of 62756 (99.5%).
+- Exchanges with no disagreement: 29 of 50.
+- Trading days on which all available sources agree: 62463 of 62748 (99.5%).
 
 ## Disagreements by year
 
@@ -112,35 +112,33 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | Exchange | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 |
 |---|---:|---:|---:|---:|---:|---:|
 | XBDA | - | 0 | 0 | 0 | 4 | 0 |
-| XBOG | - | 2 | 1 | 1 | 1 | 1 |
+| XBOG | - | 0 | 0 | 1 | 1 | 1 |
 | XBOM | - | 0 | 0 | 8 | 12 | 15 |
 | XBUD | - | 0 | 0 | 0 | 0 | 4 |
 | XBUE | - | 7 | 4 | 3 | 1 | 1 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
-| XJSE | - | 1 | 0 | 0 | 0 | 0 |
 | XKAR | - | 2 | 3 | 7 | 4 | 7 |
-| XKLS | - | 1 | 2 | 5 | 5 | 3 |
+| XKLS | - | 0 | 2 | 5 | 5 | 3 |
 | XKRX | - | 0 | 2 | 2 | 2 | 1 |
 | XLIM | - | 0 | 0 | 3 | 3 | 0 |
 | XLIT | - | 1 | 1 | 0 | 1 | 1 |
 | XMOS | - | 2 | 2 | - | - | - |
 | XNSE | - | 1 | 0 | 8 | 12 | 15 |
 | XPHS | - | 0 | 1 | 3 | 2 | 1 |
-| XPRA | - | 3 | 1 | 0 | 0 | 0 |
 | XRIS | - | 3 | 1 | 0 | 2 | 1 |
 | XSAU | - | 4 | 0 | 5 | 8 | - |
-| XSES | - | 0 | 1 | 8 | 10 | 11 |
+| XSES | - | 0 | 0 | 8 | 10 | 11 |
 | XSGO | - | 0 | 0 | 2 | 0 | 1 |
-| XSHG | - | 0 | 1 | 16 | 14 | 13 |
+| XSHG | - | 0 | 0 | 16 | 14 | 13 |
 | XTAI | - | 0 | 0 | 1 | 7 | 7 |
-| XTAL | - | 2 | 2 | 0 | 1 | 1 |
+| XTAL | - | 1 | 1 | 0 | 1 | 1 |
 
 Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2025 | 29 | 0 | 18 | 1 | 1 | 9 |
-| 2026 | 22 | 0 | 14 | 0 | 0 | 8 |
+| 2025 | 21 | 0 | 19 | 1 | 1 | 0 |
+| 2026 | 17 | 0 | 17 | 0 | 0 | 0 |
 | 2027 | 72 | 0 | 12 | 0 | 54 | 6 |
 | 2028 | 89 | 0 | 5 | 0 | 76 | 8 |
 | 2029 | 86 | 0 | 4 | 0 | 74 | 8 |
@@ -191,10 +189,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open, EC open (2): 2028-07-27 Th, 2028-07-28 Fr
 - registry open, PMC closed, EC closed (2): 2028-08-03 Th, 2028-08-04 Fr
 
-### XBOG (6)
+### XBOG (3)
 
-- registry open, PMC closed, EC closed (5): 2025-12-31 We, 2026-12-31 Th, 2027-12-31 Fr, 2028-12-29 Fr, 2029-12-31 Mo
-- registry closed, PMC open, EC open (1): 2025-07-01 Tu
+- registry open, PMC closed, EC closed (3): 2027-12-31 Fr, 2028-12-29 Fr, 2029-12-31 Mo
 
 ### XBOM (35)
 
@@ -214,19 +211,15 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open, EC open (2): 2029-04-05 Th, 2029-09-24 Mo
 - registry open, PMC closed, EC closed (1): 2029-04-04 We
 
-### XJSE (1)
-
-- registry closed, PMC open, EC open (1): 2025-08-11 Mo
-
 ### XKAR (23)
 
 - registry closed, PMC open, EC open (20): 2025-06-06 Fr [library error], 2026-03-20 Fr [library error], 2026-05-26 Tu [library error], 2026-05-27 We [library error], 2027-03-09 Tu [unpublished], 2027-03-10 We [unpublished], 2027-05-03 Mo, 2027-05-17 Mo [unpublished], 2027-06-15 Tu [unpublished], 2027-12-27 Mo, 2028-02-28 Mo [unpublished], 2028-05-04 Th [unpublished], 2028-05-05 Fr [unpublished], 2028-08-04 Fr [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-04-24 Tu [unpublished], 2029-04-25 We [unpublished], 2029-05-24 Th [unpublished], 2029-07-24 Tu [unpublished]
 - registry open, PMC closed, EC closed (3): 2025-09-05 Fr [library error], 2027-05-28 Fr, 2029-05-28 Mo
 
-### XKLS (16)
+### XKLS (15)
 
-- registry closed, PMC open, EC open (10): 2026-03-20 Fr, 2026-06-02 Tu, 2027-02-09 Tu [unpublished], 2027-03-11 Th [unpublished], 2027-08-16 Mo [unpublished], 2028-02-29 Tu [unpublished], 2028-06-05 Mo, 2028-08-04 Fr [unpublished], 2029-02-16 Fr [unpublished], 2029-06-04 Mo
-- registry open, PMC closed, EC closed (6): 2025-03-18 Tu, 2027-02-24 We, 2027-03-09 Tu [unpublished], 2028-02-14 Mo, 2028-08-03 Th [unpublished], 2029-09-17 Mo
+- registry closed, PMC open, EC open (10): 2026-03-20 Fr [library error], 2026-06-02 Tu [library error], 2027-02-09 Tu [unpublished], 2027-03-11 Th [unpublished], 2027-08-16 Mo [unpublished], 2028-02-29 Tu [unpublished], 2028-06-05 Mo, 2028-08-04 Fr [unpublished], 2029-02-16 Fr [unpublished], 2029-06-04 Mo
+- registry open, PMC closed, EC closed (5): 2027-02-24 We, 2027-03-09 Tu [unpublished], 2028-02-14 Mo, 2028-08-03 Th [unpublished], 2029-09-17 Mo
 
 ### XKRX (7)
 
@@ -254,11 +247,6 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry open, PMC closed, EC closed (4): 2027-03-10 We [unpublished], 2027-05-17 Mo [unpublished], 2028-01-26 We [unpublished], 2029-02-13 Tu [unpublished]
 - registry closed, PMC open, EC open (3): 2026-11-02 Mo [library error], 2027-11-02 Tu [unpublished], 2028-11-02 Th [unpublished]
 
-### XPRA (4)
-
-- registry closed, PMC open, EC open (2): 2025-07-07 Mo, 2025-09-29 Mo
-- registry open, PMC closed, EC closed (2): 2025-12-31 We, 2026-12-31 Th
-
 ### XRIS (7)
 
 - registry closed, PMC open, EC open (4): 2025-12-25 Th [library error], 2026-12-25 Fr [library error], 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
@@ -269,36 +257,33 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry open, PMC closed, EC closed (13): 2025-03-27 Th [library error], 2025-06-04 We [library error], 2027-03-07 Su [unpublished], 2027-03-08 Mo [unpublished], 2027-05-19 We [unpublished], 2027-05-20 Th [unpublished], 2028-02-29 Tu [unpublished], 2028-03-01 We [unpublished], 2028-03-02 Th [unpublished], 2028-05-03 We [unpublished], 2028-05-07 Su [unpublished], 2028-05-08 Mo [unpublished], 2028-05-09 Tu [unpublished]
 - registry closed, PMC open, EC open (4): 2025-02-23 Su [library error], 2025-06-10 Tu [library error], 2027-06-06 Su [unpublished], 2028-09-24 Su [unpublished]
 
-### XSES (30)
+### XSES (29)
 
 - registry closed, PMC open (29): 2027-01-01 Fr [library error], 2027-02-08 Mo [library error], 2027-03-10 We [library error], 2027-03-26 Fr [library error], 2027-05-17 Mo [library error], 2027-05-20 Th [library error], 2027-08-09 Mo [library error], 2027-10-28 Th [library error], 2028-01-26 We [unpublished], 2028-01-27 Th [unpublished], 2028-03-28 Tu [unpublished], 2028-04-14 Fr [unpublished], 2028-05-01 Mo [unpublished], 2028-05-05 Fr [unpublished], 2028-05-09 Tu [unpublished], 2028-08-09 We [unpublished], 2028-10-17 Tu [unpublished], 2028-12-25 Mo [unpublished], 2029-01-01 Mo [unpublished], 2029-02-13 Tu [unpublished], 2029-02-14 We [unpublished], 2029-03-16 Fr [unpublished], 2029-03-30 Fr [unpublished], 2029-05-01 Tu [unpublished], 2029-05-25 Fr [unpublished], 2029-05-28 Mo [unpublished], 2029-08-09 Th [unpublished], 2029-11-05 Mo [unpublished], 2029-12-25 Tu [unpublished]
-- registry closed, PMC open, EC open (1): 2026-03-20 Fr
 
 ### XSGO (3)
 
 - registry open, EC closed (2): 2027-12-31 Fr [unpublished], 2029-12-31 Mo [unpublished]
 - registry closed, EC open (1): 2027-09-17 Fr [unpublished]
 
-### XSHG (44)
+### XSHG (43)
 
 - registry closed, PMC open (43): 2027-01-01 Fr [unpublished], 2027-02-05 Fr [unpublished], 2027-02-08 Mo [unpublished], 2027-02-09 Tu [unpublished], 2027-02-10 We [unpublished], 2027-02-11 Th [unpublished], 2027-02-12 Fr [unpublished], 2027-04-05 Mo [unpublished], 2027-05-03 Mo [unpublished], 2027-06-09 We [unpublished], 2027-09-15 We [unpublished], 2027-10-01 Fr [unpublished], 2027-10-04 Mo [unpublished], 2027-10-05 Tu [unpublished], 2027-10-06 We [unpublished], 2027-10-07 Th [unpublished], 2028-01-03 Mo [unpublished], 2028-01-26 We [unpublished], 2028-01-27 Th [unpublished], 2028-01-28 Fr [unpublished], 2028-01-31 Mo [unpublished], 2028-02-01 Tu [unpublished], 2028-04-04 Tu [unpublished], 2028-05-01 Mo [unpublished], 2028-06-19 Mo [unpublished], 2028-10-02 Mo [unpublished], 2028-10-03 Tu [unpublished], 2028-10-04 We [unpublished], 2028-10-05 Th [unpublished], 2028-10-06 Fr [unpublished], 2029-01-01 Mo [unpublished], 2029-02-13 Tu [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-02-16 Fr [unpublished], 2029-02-19 Mo [unpublished], 2029-04-05 Th [unpublished], 2029-05-01 Tu [unpublished], 2029-10-01 Mo [unpublished], 2029-10-02 Tu [unpublished], 2029-10-03 We [unpublished], 2029-10-04 Th [unpublished], 2029-10-05 Fr [unpublished]
-- registry open, PMC closed, EC closed (1): 2026-01-02 Fr
 
 ### XTAI (15)
 
 - registry closed, PMC open, EC open (8): 2027-02-03 We [unpublished], 2028-01-31 Mo [unpublished], 2028-02-01 Tu [unpublished], 2028-04-05 We [unpublished], 2028-09-25 Mo [unpublished], 2029-02-08 Th [unpublished], 2029-02-16 Fr [unpublished], 2029-06-18 Mo [unpublished]
 - registry open, PMC closed, EC closed (7): 2028-04-03 Mo [unpublished], 2028-05-29 Mo [unpublished], 2028-10-03 Tu [unpublished], 2029-04-03 Tu [unpublished], 2029-06-15 Fr [unpublished], 2029-09-21 Fr [unpublished], 2029-12-31 Mo [unpublished]
 
-### XTAL (6)
+### XTAL (4)
 
-- registry closed, PMC open, EC open (4): 2025-12-25 Th, 2026-12-25 Fr, 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
-- registry open, PMC closed, EC closed (2): 2025-05-29 Th, 2026-05-14 Th
+- registry closed, PMC open, EC open (4): 2025-12-25 Th [library error], 2026-12-25 Fr [library error], 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
 
 ## Triage
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 54 dates; Registry error: 385 dates; Unpublished: 205 dates.
+- Convention difference: 1 dates; Library error: 58 dates; Registry error: 398 dates; Unpublished: 205 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -331,6 +316,14 @@ SET and TFEX holidays follow the Bank of Thailand's announcements (tfex.co.th ho
 Dates: 2025-01-02, 2025-04-16, 2025-06-02, 2025-07-11, 2025-07-28, 2025-08-11, 2026-05-25, 2026-06-01, 2026-07-28, 2026-07-30.
 
 Source: https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25680162.pdf
+
+### XBOG: Registry error (3, fixed in 2.23.12)
+
+The Bolsa de Valores de Colombia announced that it does not provide services on 31 December 2024 and, in its notice of December 2025, that it 'no prestara sus servicios el 31 de diciembre de 2025, fecha que sera considerada dia no bursatil para todos los efectos'; the registry traded on both year ends, and 31 December 2026 follows the same practice. In 2025 Sacred Heart and Saint Peter and Saint Paul both compute to Monday 30 June; the Colombian holiday lists show a single 30 June holiday and no holiday on 1 July, where the registry added a one-day shift that no source supports. 3 dates fixed. Both libraries were right. The 2026 closure rests on the 2024 and 2025 notices; BVC's own 2025 calendar page was not reachable.
+
+Dates: 2025-07-01, 2025-12-31, 2026-12-31.
+
+Source: https://www.bvc.com.co/calendario
 
 ### XBOM: Registry error (12, fixed in 2.21.3)
 
@@ -500,6 +493,14 @@ Dates: 2025-08-08, 2026-03-20, 2028-12-15, 2029-06-15.
 
 Source: https://www.polity.org.za/polity/govdocs/legislation/1994/act94-036.html
 
+### XJSE: Registry error (1, fixed in 2.23.12)
+
+The Public Holidays Act 36 of 1994 moves a public holiday that falls on a Sunday to the Monday and says nothing about a Saturday. National Women's Day was Saturday 9 August 2025, and the South African press (BusinessTech, Daily Investor) states that no weekday off followed. The registry closed Monday 11 August 2025; both libraries trade. 1 date fixed. The JSE's own 2025 market calendar (Market Notice 30524) could not be retrieved (robots.txt), so this rests on the Act and the national holiday lists.
+
+Dates: 2025-08-11.
+
+Source: https://www.jse.co.za/market-data/trading-hours
+
 ### XKAR: Library error (4, registry verified, no change)
 
 PSX closed from Friday 6 to Monday 9 June 2025 ('from Friday, June 6, 2025, to Monday, June 9, 2025, on account of Eid-ul-Azha'), and Public Notice PSX/N-89 lists Juma-tul-Wida on Friday 20 March 2026; PSX declared itself closed from Tuesday 26 to Thursday 28 May 2026 for Eid-ul-Azha. exchange_calendars and pandas_market_calendars close only 9 June 2025 and 28 May 2026 and trade on the four days listed here. The registry's closures of these four days were added in 2.23.10. The 20 March and 26-27 May 2026 closures rest on PSX's calendar and a trade-press report of its closure notice, not on a retrieved PSX notice for each day.
@@ -547,6 +548,22 @@ Eid al-Fitr, Eid al-Adha, Ashura and Eid Milad-un-Nabi 2029. Dates depend on moo
 Dates: 2029-02-14, 2029-02-15, 2029-04-24, 2029-04-25, 2029-05-24, 2029-07-24.
 
 Source: https://www.psx.com.pk/trading-calendar
+
+### XKLS: Library error (2, registry verified, no change)
+
+Bursa Malaysia's circular of 18 March 2026 closes it on Friday 20 and Monday 23 March 2026 whichever day Hari Raya Aidilfitri fell on, and resumes on Tuesday 24 March; its notice of 20 May 2026 closes it on Monday 1 and Tuesday 2 June 2026 for the Agong's Birthday and the Wesak Day replacement holiday, and Bernama confirmed both closures on 3 June. exchange_calendars and pandas_market_calendars trade on 20 March and 2 June 2026. The registry is right.
+
+Dates: 2026-03-20, 2026-06-02.
+
+Source: https://www.bursamalaysia.com/market_information/market_holidays
+
+### XKLS: Registry error (1, fixed in 2.23.12)
+
+Bursa Malaysia announced on 14 March 2025 that it would be closed on Tuesday 18 March 2025 for Nuzul Al-Quran, observed in several states and federal territories, and Bernama confirmed the closure on 17 and 19 March. The registry traded. 1 date fixed. Both libraries were right.
+
+Dates: 2025-03-18.
+
+Source: https://www.bursamalaysia.com/market_information/market_holidays
 
 ### XKLS: Unpublished (4, calendar not yet published, registry value is a prediction, recheck 2027-01-15)
 
@@ -844,6 +861,14 @@ Dates: 2027-04-30, 2027-05-03, 2027-05-07, 2027-05-10, 2027-12-27, 2027-12-28, 2
 
 Source: https://www.pse.cz/en/trading/trading-information/trading-calendar
 
+### XPRA: Registry error (4, fixed in 2.23.12)
+
+The Prague Stock Exchange's annual reports give 251 trading days in 2024 and 250 in 2025. 2025 has 261 weekdays and ten weekday state holidays (1 January, 18 and 21 April, 1 and 8 May, 28 October, 17 November, 24, 25 and 26 December), which leaves 251: the 250th requires 31 December closed and leaves no room for a closure on Monday 7 July or Monday 29 September 2025, the days after the Saturday and Sunday holidays that the registry had closed. 2024 gives the same result (262 - 10 - 31 December = 251). Czech law gives no substitute day for a weekend holiday. 31 December 2026 follows the same rule; the registry already closes it from 2027. 4 dates fixed. Both libraries were right on all four. The 2026 closure rests on the 2024 and 2025 counts, not on a 2026 PSE notice.
+
+Dates: 2025-07-07, 2025-09-29, 2025-12-31, 2026-12-31.
+
+Source: https://www.pse.cz/en/trading/trading-calendar
+
 ### XRIS: Library error (2, registry verified, no change)
 
 Nasdaq CSD's 2026 calendar for Estonia, Latvia and Lithuania lists 25 December (Christmas Day) as a T2S/T2 closing day. The registry closes it; the exchange_calendars calendar for this market has no Christmas Day entry and shows the day open.
@@ -940,6 +965,14 @@ Dates: 2027-03-09.
 
 Source: https://www.mom.gov.sg/newsroom/press-releases/2026/0618-public-holidays-for-2027
 
+### XSES: Registry error (1, fixed in 2.23.12)
+
+MOM's gazette of public holidays for 2026 sets Hari Raya Puasa on Saturday 21 March, and Singapore moves a Sunday holiday to Monday but never a Saturday one, so Friday 20 March 2026, where the registry had put it, and Monday 23 March are trading days. The registry closed Friday 20 March. 1 date fixed. Both libraries were right. SGX's own 2026 calendar was not read; this rests on MOM's gazette and the holiday rule.
+
+Dates: 2026-03-20.
+
+Source: https://www.sgx.com/trading/trading-hours
+
 ### XSES: Unpublished (10, calendar not yet published, registry value is a prediction, recheck 2027-06-30)
 
 MOM has not gazetted the 2028 public holidays (it published 2027 on 2026-06-18), and pandas_market_calendars holds no 2028 data. The registry values are predictions, including the Hari Raya and Deepavali dates, which MOM may move.
@@ -987,6 +1020,14 @@ Bolsa de Santiago has not published its 2027 and 2029 trading schedules. The reg
 Dates: 2027-09-17, 2027-12-31, 2029-12-31.
 
 Source: https://www.bolsadesantiago.com/horarios
+
+### XSHG: Registry error (1, fixed in 2.23.12)
+
+The Shanghai Stock Exchange's notice on its 2026 holiday closures (SSE announcement 2025-45, 22 December 2025) closes Thursday 1 to Saturday 3 January 2026 and reopens on Monday 5 January; Sunday 4 January is a weekend closure. The registry closed only 1 January. 1 date fixed. Both libraries were right.
+
+Dates: 2026-01-02.
+
+Source: https://www.sse.com.cn/services/hkexsc/disclo/announ/c/c_20251222_10802519.shtml
 
 ### XSHG: Unpublished (16, calendar not yet published, registry value is a prediction, recheck 2026-12-31)
 
@@ -1068,6 +1109,14 @@ Dates: 2028-12-25, 2029-12-25.
 
 Source: https://nasdaqcsd.com/latvia/en/calendar-working-hours/
 
+### XTAL: Library error (2, registry verified, no change)
+
+Nasdaq's December 2025 statistics report give every exchange 19 trading days, which needs 25 December closed (with 24, 26 and 31 December). exchange_calendars and pandas_market_calendars trade on Christmas Day 2025 and 2026. The registry is right. The 2026 closure rests on the 2025 count; no 2026 statistics exist yet.
+
+Dates: 2025-12-25, 2026-12-25.
+
+Source: https://attachment.news.eu.nasdaq.com/a73c2732fa3004542058f223e2e1b83f1
+
 ### XTAL: Registry error (9, fixed in 2.23.5)
 
 Nasdaq Baltic does not move a weekend holiday to a weekday, so the 2027 and 2028 Monday and Tuesday 'observed' entries are removed (the Latvian Proclamation Day carry-over of 18 November stays: both libraries have it). 31 December and Ascension Day are Nasdaq Baltic trading holidays in the 2026 list for all three Baltic markets; the registry only had them for 2026, so they are added for 2027-2029 as predicted dates.
@@ -1075,6 +1124,14 @@ Nasdaq Baltic does not move a weekend holiday to a weekday, so the 2027 and 2028
 Dates: 2027-05-03, 2027-05-06, 2027-12-27, 2027-12-28, 2027-12-31, 2028-01-03, 2028-05-25, 2029-02-26, 2029-05-10.
 
 Source: https://www.nasdaqbaltic.com/trading-calendar
+
+### XTAL: Registry error (2, fixed in 2.23.12)
+
+Nasdaq's May 2025 statistics report give Tallinn 20 trading days against 22 weekdays: 1 May and Ascension Day (29 May), which every Baltic exchange observes; Estonia has no other May holiday. Its June 2025 report gives 19 (23 and 24 June) and its December 2025 report 19 (24, 25, 26 and 31 December). The registry traded on Ascension Day 2025 and 2026 (it closes it in 2027-2029). 2 dates fixed. The May 2026 report was not read: 14 May 2026 rests on the 2025 pattern.
+
+Dates: 2025-05-29, 2026-05-14.
+
+Source: https://attachment.news.eu.nasdaq.com/aab5896ed129b436acc32b21a545fcddf
 
 ### XTKS: Registry error (8, fixed in 2.23.2)
 

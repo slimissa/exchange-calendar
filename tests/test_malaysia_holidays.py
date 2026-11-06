@@ -280,3 +280,29 @@ class TestXKLSStructure:
         """~70-90 entries: multiple holidays × 5 years."""
         assert 60 <= len(explicit_dates) <= 100
         
+
+
+class TestXKLSBursaNotices2025And2026:
+    """Bursa Malaysia's closure notices: closed on Tuesday 18 March 2025 for
+    Nuzul Al-Quran (14 March 2025 notice); closed on Friday 20 and Monday
+    23 March 2026 for Hari Raya Aidilfitri whichever day the moon fixed
+    (18 March 2026 circular); closed on Monday 1 and Tuesday 2 June 2026 for the
+    Agong's Birthday and the Wesak Day replacement (20 May 2026 notice)."""
+
+    @pytest.mark.parametrize("day", [
+        "2025-03-18", "2026-03-20", "2026-03-23", "2026-06-01", "2026-06-02"])
+    def test_closed_days(self, explicit_dates, day):
+        assert explicit_dates[day]["status"] == "closed"
+
+    def test_nuzul_al_quran_2025(self, explicit_dates):
+        assert "Nuzul" in explicit_dates["2025-03-18"]["name"]
+        assert "2025-03-17" not in explicit_dates
+
+    def test_2026_closed_set(self, explicit_dates):
+        closed = {d for d, e in explicit_dates.items()
+                  if d.startswith("2026") and e["status"] == "closed"}
+        assert closed == {
+            "2026-01-01", "2026-02-02", "2026-02-17", "2026-02-18", "2026-03-20",
+            "2026-03-23", "2026-05-01", "2026-05-27", "2026-06-01", "2026-06-02",
+            "2026-06-17", "2026-08-25", "2026-08-31", "2026-09-16", "2026-11-09",
+            "2026-12-25"}

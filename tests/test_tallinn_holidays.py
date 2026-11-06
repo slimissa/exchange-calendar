@@ -332,3 +332,22 @@ class TestFutureYearFixes:
     def test_christmas_day_is_closed(self, day):
         # Nasdaq CSD lists 25 December as a T2S/T2 closing day for the Baltics.
         assert day in _closed("XTAL", int(day[:4]))
+
+
+class TestXTALTradingDays2025And2026:
+    """Nasdaq's monthly statistics give Tallinn's trading days: 20 in May 2025
+    (22 weekdays: 1 May and Ascension Day, 29 May, closed), 19 in June 2025
+    (23 and 24 June) and 19 in December 2025 (24, 25, 26 and 31 December).
+    Every Baltic exchange observes Ascension Day."""
+
+    def test_2025_closed_weekdays(self):
+        assert _closed("XTAL", 2025) == {
+            "2025-01-01", "2025-02-24", "2025-04-18", "2025-04-21", "2025-05-01",
+            "2025-05-29", "2025-06-23", "2025-06-24", "2025-08-20", "2025-12-24",
+            "2025-12-25", "2025-12-26", "2025-12-31"}
+
+    def test_2026_closed_weekdays(self):
+        assert _closed("XTAL", 2026) == {
+            "2026-01-01", "2026-02-24", "2026-04-03", "2026-04-06", "2026-05-01",
+            "2026-05-14", "2026-06-23", "2026-06-24", "2026-08-20", "2026-12-24",
+            "2026-12-25", "2026-12-31"}

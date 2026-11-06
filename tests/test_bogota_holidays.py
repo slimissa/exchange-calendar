@@ -19,10 +19,9 @@ Key facts verified:
       these -- 2027 Labour Day, 2027 Christmas, 2028 New Year -- as if they
       were Emiliani-movable; corrected 2026-09-17, see
       docs/verifications/2026-09-17_xbog_task0.md.)
-    - When a movable holiday's observed Monday would collide with another
-      movable holiday's observed Monday, the later-based one shifts one more
-      day forward (2025: Sacred Heart and Saint Peter & Paul both compute to
-      Jun 30, so Saint Peter & Paul moves to Jul 1).
+    - When two movable holidays compute to the same Monday they share it
+      (2025: Sacred Heart and Saint Peter & Paul both land on Jun 30; there
+      is no holiday on Jul 1).
     - 18 national holidays/year, one of the most in the world.
     - Dec 24 / Dec 31 early closes were removed 2026-09-17: no reachable
       source could confirm the previously-claimed 11:30 time, and the one
@@ -188,8 +187,9 @@ class TestXBOGEmilianiLaw:
         assert "Sacred Heart" in explicit_dates["2025-06-30"]["name"]
 
     def test_saint_peter_paul_2025(self, explicit_dates):
-        """Saint Peter and Paul — observed Monday Jul 1, 2025."""
-        assert "2025-07-01" in explicit_dates
+        """Saint Peter and Paul (29 June 2025, a Sunday) moves to Monday 30 June,
+        the same day as Sacred Heart: Colombia has no further shift to 1 July."""
+        assert "2025-07-01" not in explicit_dates
 
     def test_assumption_2025(self, explicit_dates):
         """Assumption — observed Monday Aug 18, 2025."""
@@ -233,13 +233,12 @@ class TestXBOGEmilianiLaw:
         assert "Sacred Heart" in explicit_dates["2028-06-26"]["name"]
 
     def test_sacred_heart_peter_paul_collision_2025(self, explicit_dates):
-        """Sacred Heart's and Saint Peter & Paul's literal-to-Monday dates
-        both land on Jun 30, 2025 -- a genuine collision. Saint Peter & Paul,
-        as the later-based feast, shifts one further day to Jul 1."""
+        """Sacred Heart's and Saint Peter & Paul's move-to-Monday dates both
+        land on Jun 30, 2025. The two feasts share that day: the press lists
+        a single 30 June holiday and both reference libraries trade on 1 July."""
         assert "2025-06-30" in explicit_dates
         assert "Sacred Heart" in explicit_dates["2025-06-30"]["name"]
-        assert "2025-07-01" in explicit_dates
-        assert "Peter" in explicit_dates["2025-07-01"]["name"]
+        assert "2025-07-01" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -295,11 +294,18 @@ class TestXBOGChristmas:
         assert "2027-12-25" not in explicit_dates
         assert "2027-12-27" not in explicit_dates
 
-    def test_new_years_eve_not_claimed(self, explicit_dates):
+    def test_new_years_eve_not_claimed_as_early_close(self, explicit_dates):
         """Dec 31 early closes were removed 2026-09-17 for the same reason as
         Dec 24 -- see docs/verifications/2026-09-17_xbog_task0.md."""
         for year in range(2025, 2030):
-            assert f"{year}-12-31" not in explicit_dates
+            entry = explicit_dates.get(f"{year}-12-31")
+            assert entry is None or entry["status"] == "closed"
+
+    def test_new_years_eve_2025_and_2026_are_non_trading_days(self, explicit_dates):
+        """The BVC announced that it does not provide services on 31 December
+        and treats it as a non-trading day (2024 and 2025 notices)."""
+        for day in ("2025-12-31", "2026-12-31"):
+            assert explicit_dates[day]["status"] == "closed"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -406,3 +412,28 @@ class TestXBOGSubstitution:
         """Many Colombian holidays use 'observed' in name."""
         observed_count = sum(1 for e in explicit_dates.values() if "observed" in e["name"].lower())
         assert observed_count > 30, f"Expected many observed holidays, got {observed_count}"
+
+
+class TestXBOGTradingDays2025And2026:
+    """Colombia's 2025 June holidays are 2 June (Ascension), 23 June (Corpus
+    Christi) and 30 June (Sacred Heart together with Saint Peter and Saint
+    Paul); the BVC treats 31 December as a non-trading day."""
+
+    @staticmethod
+    def _closed_set(explicit_dates, year):
+        return {d for d, e in explicit_dates.items()
+                if d.startswith(str(year)) and e["status"] == "closed"}
+
+    def test_2025_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2025) == {
+            "2025-01-01", "2025-01-06", "2025-03-24", "2025-04-17", "2025-04-18",
+            "2025-05-01", "2025-06-02", "2025-06-23", "2025-06-30", "2025-08-07",
+            "2025-08-18", "2025-10-13", "2025-11-03", "2025-11-17", "2025-12-08",
+            "2025-12-25", "2025-12-31"}
+
+    def test_2026_closed_set(self, explicit_dates):
+        assert self._closed_set(explicit_dates, 2026) == {
+            "2026-01-01", "2026-01-12", "2026-03-23", "2026-04-02", "2026-04-03",
+            "2026-05-01", "2026-05-18", "2026-06-08", "2026-06-15", "2026-06-29",
+            "2026-07-20", "2026-08-07", "2026-08-17", "2026-10-12", "2026-11-02",
+            "2026-11-16", "2026-12-08", "2026-12-25", "2026-12-31"}

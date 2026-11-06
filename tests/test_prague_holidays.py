@@ -129,10 +129,10 @@ class TestXPRAFixedHolidays:
         assert "2027-05-10" not in explicit_dates
 
     def test_cyril_methodius_2025_substitute(self, explicit_dates):
-        """Jul 5, 2025 is Saturday — substitute to Monday Jul 7."""
+        """Jul 5, 2025 is Saturday: Czech law gives no substitute day, so
+        Monday 7 July is a trading day (250 trading days in 2025)."""
         assert "2025-07-05" not in explicit_dates
-        assert "2025-07-07" in explicit_dates
-        assert "Cyril and Methodius" in explicit_dates["2025-07-07"]["name"]
+        assert "2025-07-07" not in explicit_dates
 
     def test_cyril_methodius_2026_substitute(self, explicit_dates):
         """Jul 5, 2026 is Sunday — substitute to Monday Jul 6."""
@@ -149,10 +149,9 @@ class TestXPRAFixedHolidays:
         assert explicit_dates["2027-07-06"]["name"] == "Jan Hus Day"
 
     def test_czech_statehood_2025_substitute(self, explicit_dates):
-        """Sep 28, 2025 is Sunday — substitute to Monday Sep 29."""
+        """Sep 28, 2025 is Sunday: no substitute day, Monday 29 September trades."""
         assert "2025-09-28" not in explicit_dates
-        assert "2025-09-29" in explicit_dates
-        assert "Czech Statehood" in explicit_dates["2025-09-29"]["name"]
+        assert "2025-09-29" not in explicit_dates
 
     def test_czech_statehood_2026(self, explicit_dates):
         """Sep 28, 2026 is Monday — no substitution."""
@@ -347,7 +346,7 @@ class TestXPRAStructure:
             assert start <= d <= end, f"Date outside range: {date_str}"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~55-65 entries: 13 holidays × 5 years (minus weekends, plus substitutes)."""
+        """~55-65 entries: 13 holidays × 5 years (minus weekends)."""
         assert 55 <= len(explicit_dates) <= 70, f"Unexpected count: {len(explicit_dates)}"
 
     def test_source_url_consistency(self, explicit_dates):
@@ -476,3 +475,36 @@ class TestFutureYearFixes:
     @pytest.mark.parametrize("day", ["2027-12-31", "2029-12-31"])
     def test_new_years_eve_is_closed(self, day):
         assert day in _closed("XPRA", int(day[:4]))
+
+
+class TestXPRATradingDays2025And2026:
+    """The Prague Stock Exchange's annual reports give 251 trading days in 2024
+    and 250 in 2025. 261 weekdays minus the ten weekday state holidays of 2025
+    minus 31 December leaves exactly 250, which leaves no room for the
+    Monday after a weekend holiday (7 July and 29 September 2025), and 262
+    weekdays minus the ten of 2024 minus 31 December leaves 251."""
+
+    def test_2025_has_250_trading_days(self):
+        weekdays = sum(1 for m in range(1, 13) for d in range(1, 32)
+                       if _is_weekday(2025, m, d))
+        assert weekdays - len(_closed("XPRA", 2025)) == 250
+
+    def test_2025_closed_weekdays(self):
+        assert _closed("XPRA", 2025) == {
+            "2025-01-01", "2025-04-18", "2025-04-21", "2025-05-01", "2025-05-08",
+            "2025-10-28", "2025-11-17", "2025-12-24", "2025-12-25", "2025-12-26",
+            "2025-12-31"}
+
+    def test_2026_closed_weekdays(self):
+        assert _closed("XPRA", 2026) == {
+            "2026-01-01", "2026-04-03", "2026-04-06", "2026-05-01", "2026-05-08",
+            "2026-07-06", "2026-09-28", "2026-10-28", "2026-11-17", "2026-12-24",
+            "2026-12-25", "2026-12-31"}
+
+
+def _is_weekday(year, month, day):
+    import datetime
+    try:
+        return datetime.date(year, month, day).weekday() < 5
+    except ValueError:
+        return False

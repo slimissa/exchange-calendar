@@ -71,6 +71,12 @@
         "status": "closed"
       },
       {
+        "date": "2025-05-29",
+        "name": "Ascension Day",
+        "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
+        "status": "closed"
+      },
+      {
         "date": "2025-06-23",
         "name": "Victory Day",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
@@ -139,6 +145,12 @@
       {
         "date": "2026-05-01",
         "name": "Labour Day",
+        "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2026-05-14",
+        "name": "Ascension Day",
         "source_url": "https://www.nasdaqbaltic.com/trading-calendar",
         "status": "closed"
       },

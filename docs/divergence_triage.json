@@ -1552,6 +1552,111 @@
       ],
       "summary": "Chilean law (Ley 19.668) moves Saint Peter and Saint Paul and Columbus Day to a Monday only when they fall on a Tuesday to Friday: 29 June and 12 October 2025 are Sundays and stay there, so Monday 30 June and Monday 13 October 2025 are trading days (the 2025 national holiday lists give Sunday for both). National Indigenous Peoples Day follows the winter solstice (Ley 21.357): Sunday 21 June 2026, so Friday 19 June 2026, where the registry's weekend-adjustment rule put it, is a trading day; the rule is now a plain fixed date, which changes no other year. The Bolsa de Comercio de Santiago announced that on Wednesday 31 December 2025 the market stays closed for the bank holiday restored by Ley 21.791 (30 December, the last trading day, closed at 13:00), and the law keeps the bank holiday on 31 December every year, so 31 December 2026 is closed too. The registry traded on both 31 December days with an early close. 5 dates fixed. The 31 December 2026 closure rests on the law, not on a 2026 BCS notice; 31 December 2027 and 2029 still carry an early close in the registry and need the same review.",
       "source_url": "https://www.bolsadesantiago.com/horarios"
+    },
+    {
+      "exchange": "XTAL",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.12",
+      "dates": [
+        "2025-05-29",
+        "2026-05-14"
+      ],
+      "summary": "Nasdaq's May 2025 statistics report give Tallinn 20 trading days against 22 weekdays: 1 May and Ascension Day (29 May), which every Baltic exchange observes; Estonia has no other May holiday. Its June 2025 report gives 19 (23 and 24 June) and its December 2025 report 19 (24, 25, 26 and 31 December). The registry traded on Ascension Day 2025 and 2026 (it closes it in 2027-2029). 2 dates fixed. The May 2026 report was not read: 14 May 2026 rests on the 2025 pattern.",
+      "source_url": "https://attachment.news.eu.nasdaq.com/aab5896ed129b436acc32b21a545fcddf"
+    },
+    {
+      "exchange": "XTAL",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2025-12-25",
+        "2026-12-25"
+      ],
+      "summary": "Nasdaq's December 2025 statistics report give every exchange 19 trading days, which needs 25 December closed (with 24, 26 and 31 December). exchange_calendars and pandas_market_calendars trade on Christmas Day 2025 and 2026. The registry is right. The 2026 closure rests on the 2025 count; no 2026 statistics exist yet.",
+      "source_url": "https://attachment.news.eu.nasdaq.com/a73c2732fa3004542058f223e2e1b83f1"
+    },
+    {
+      "exchange": "XPRA",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.12",
+      "dates": [
+        "2025-07-07",
+        "2025-09-29",
+        "2025-12-31",
+        "2026-12-31"
+      ],
+      "summary": "The Prague Stock Exchange's annual reports give 251 trading days in 2024 and 250 in 2025. 2025 has 261 weekdays and ten weekday state holidays (1 January, 18 and 21 April, 1 and 8 May, 28 October, 17 November, 24, 25 and 26 December), which leaves 251: the 250th requires 31 December closed and leaves no room for a closure on Monday 7 July or Monday 29 September 2025, the days after the Saturday and Sunday holidays that the registry had closed. 2024 gives the same result (262 - 10 - 31 December = 251). Czech law gives no substitute day for a weekend holiday. 31 December 2026 follows the same rule; the registry already closes it from 2027. 4 dates fixed. Both libraries were right on all four. The 2026 closure rests on the 2024 and 2025 counts, not on a 2026 PSE notice.",
+      "source_url": "https://www.pse.cz/en/trading/trading-calendar"
+    },
+    {
+      "exchange": "XJSE",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.12",
+      "dates": [
+        "2025-08-11"
+      ],
+      "summary": "The Public Holidays Act 36 of 1994 moves a public holiday that falls on a Sunday to the Monday and says nothing about a Saturday. National Women's Day was Saturday 9 August 2025, and the South African press (BusinessTech, Daily Investor) states that no weekday off followed. The registry closed Monday 11 August 2025; both libraries trade. 1 date fixed. The JSE's own 2025 market calendar (Market Notice 30524) could not be retrieved (robots.txt), so this rests on the Act and the national holiday lists.",
+      "source_url": "https://www.jse.co.za/market-data/trading-hours"
+    },
+    {
+      "exchange": "XSHG",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.12",
+      "dates": [
+        "2026-01-02"
+      ],
+      "summary": "The Shanghai Stock Exchange's notice on its 2026 holiday closures (SSE announcement 2025-45, 22 December 2025) closes Thursday 1 to Saturday 3 January 2026 and reopens on Monday 5 January; Sunday 4 January is a weekend closure. The registry closed only 1 January. 1 date fixed. Both libraries were right.",
+      "source_url": "https://www.sse.com.cn/services/hkexsc/disclo/announ/c/c_20251222_10802519.shtml"
+    },
+    {
+      "exchange": "XSES",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.12",
+      "dates": [
+        "2026-03-20"
+      ],
+      "summary": "MOM's gazette of public holidays for 2026 sets Hari Raya Puasa on Saturday 21 March, and Singapore moves a Sunday holiday to Monday but never a Saturday one, so Friday 20 March 2026, where the registry had put it, and Monday 23 March are trading days. The registry closed Friday 20 March. 1 date fixed. Both libraries were right. SGX's own 2026 calendar was not read; this rests on MOM's gazette and the holiday rule.",
+      "source_url": "https://www.sgx.com/trading/trading-hours"
+    },
+    {
+      "exchange": "XBOG",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.12",
+      "dates": [
+        "2025-07-01",
+        "2025-12-31",
+        "2026-12-31"
+      ],
+      "summary": "The Bolsa de Valores de Colombia announced that it does not provide services on 31 December 2024 and, in its notice of December 2025, that it 'no prestara sus servicios el 31 de diciembre de 2025, fecha que sera considerada dia no bursatil para todos los efectos'; the registry traded on both year ends, and 31 December 2026 follows the same practice. In 2025 Sacred Heart and Saint Peter and Saint Paul both compute to Monday 30 June; the Colombian holiday lists show a single 30 June holiday and no holiday on 1 July, where the registry added a one-day shift that no source supports. 3 dates fixed. Both libraries were right. The 2026 closure rests on the 2024 and 2025 notices; BVC's own 2025 calendar page was not reachable.",
+      "source_url": "https://www.bvc.com.co/calendario"
+    },
+    {
+      "exchange": "XKLS",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "2.23.12",
+      "dates": [
+        "2025-03-18"
+      ],
+      "summary": "Bursa Malaysia announced on 14 March 2025 that it would be closed on Tuesday 18 March 2025 for Nuzul Al-Quran, observed in several states and federal territories, and Bernama confirmed the closure on 17 and 19 March. The registry traded. 1 date fixed. Both libraries were right.",
+      "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
+    },
+    {
+      "exchange": "XKLS",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2026-03-20",
+        "2026-06-02"
+      ],
+      "summary": "Bursa Malaysia's circular of 18 March 2026 closes it on Friday 20 and Monday 23 March 2026 whichever day Hari Raya Aidilfitri fell on, and resumes on Tuesday 24 March; its notice of 20 May 2026 closes it on Monday 1 and Tuesday 2 June 2026 for the Agong's Birthday and the Wesak Day replacement holiday, and Bernama confirmed both closures on 3 June. exchange_calendars and pandas_market_calendars trade on 20 March and 2 June 2026. The registry is right.",
+      "source_url": "https://www.bursamalaysia.com/market_information/market_holidays"
     }
   ]
 }

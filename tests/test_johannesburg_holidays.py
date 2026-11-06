@@ -107,10 +107,10 @@ class TestXJSE2025:
         assert "2025-06-16" in explicit_dates
 
     def test_womens_day_observed(self, explicit_dates):
-        """Aug 9, 2025 is Saturday — observed Monday Aug 11."""
-        assert "2025-08-11" in explicit_dates
-        assert "Women" in explicit_dates["2025-08-11"]["name"]
-        assert "observed" in explicit_dates["2025-08-11"]["name"].lower()
+        """Aug 9, 2025 is Saturday: the Public Holidays Act moves a Sunday holiday
+        to Monday but says nothing about a Saturday, so Monday 11 August trades."""
+        assert "2025-08-09" not in explicit_dates
+        assert "2025-08-11" not in explicit_dates
 
     def test_heritage_day(self, explicit_dates):
         assert "2025-09-24" in explicit_dates
@@ -319,3 +319,18 @@ class TestFutureYearFixes:
         assert {"2028-12-25", "2028-12-26"} <= _closed_weekdays(xjse, 2028)
         assert "2028-12-16" not in _closed_weekdays(xjse, 2028)
         assert "2029-06-16" not in _closed_weekdays(xjse, 2029)
+
+
+class TestXJSEWomensDay2025:
+    """The Public Holidays Act moves a holiday that falls on a Sunday to the
+    Monday, never one that falls on a Saturday: Women's Day (Saturday 9 August
+    2025) leaves no weekday closure."""
+
+    def test_2025_closed_weekdays(self, xjse):
+        assert _closed_weekdays(xjse, 2025) == {
+            "2025-01-01", "2025-03-21", "2025-04-18", "2025-04-21", "2025-04-28",
+            "2025-05-01", "2025-06-16", "2025-09-24", "2025-12-16", "2025-12-25",
+            "2025-12-26"}
+
+    def test_monday_after_saturday_womens_day_trades(self, xjse):
+        assert "2025-08-11" not in _closed_weekdays(xjse, 2025)
