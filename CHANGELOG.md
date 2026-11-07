@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.24.0] - 2026-11-07
+
+- Add tools/fetch_render.py with Playwright, OCR, and BLOCKED fallback. Does not yet wire into update_from_exchange.py; that is Session 2.
+
 ## [2.23.13] - 2026-11-06
 
 ### Fixed
