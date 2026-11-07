@@ -475,7 +475,7 @@ One row per exchange, from `exchanges/*.json`. The icon is `fetcher_status`: ✅
 | Shanghai Stock Exchange | XSHG | ⚠️ | english.sse.com.cn | [#xshg](docs/FETCHERS.md#xshg), [BLOCKED.md#xshg](BLOCKED.md#xshg) |
 | Ho Chi Minh Stock Exchange | XSTC | ✅ | staticfile.hsx.vn | [#xstc](docs/FETCHERS.md#xstc) |
 | Nasdaq Stockholm | XSTO | ✅ | nasdaq.com | [#xsto](docs/FETCHERS.md#xsto) |
-| SIX Swiss Exchange | XSWX | ⚠️ | six-group.com | [#xswx](docs/FETCHERS.md#xswx), [BLOCKED.md#xswx](BLOCKED.md#xswx) |
+| SIX Swiss Exchange | XSWX | ✅ | six-group.com | [#xswx](docs/FETCHERS.md#xswx) |
 | Abu Dhabi Securities Exchange | XTAD | ⛔ | adx.ae | [BLOCKED.md#xtad](BLOCKED.md#xtad) |
 | Taiwan Stock Exchange | XTAI | ⛔ | twse.com.tw | [BLOCKED.md#xtai](BLOCKED.md#xtai) |
 | Nasdaq Tallinn | XTAL | ✅ | nasdaqbaltic.com | [#xtal](docs/FETCHERS.md#xtal) |
