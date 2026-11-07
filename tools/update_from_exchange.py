@@ -6033,7 +6033,7 @@ class XSWXFetcher(ExchangeFetcher):
         self.rate_limiter.wait_if_needed(self.mic)
         fr = self._fetch_render_module()
         try:
-            html = fr.render_js(self.source_url, self.WAIT_SELECTOR, timeout=30)
+            html = fr.render_js(self.source_url, self.WAIT_SELECTOR, timeout=90)
         except fr.RenderTimeout as e:
             self._render_error = str(e)
             logger.error(f"{self.mic}: {e}")
