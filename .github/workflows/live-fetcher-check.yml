@@ -91,7 +91,7 @@ jobs:
           pip install -r tools/requirements.txt
       - name: Run live fetcher check (stable set)
         run: |
-          python tools/live_fetcher_check.py --exclude XHKG,XSHG,XNSA,XKUW,XSAU
+          python tools/live_fetcher_check.py --exclude XHKG,XSHG,XNSA,XKUW,XSAU,XSWX
 
   live-check-ci-unreachable:
     name: Live check — CI-unreachable (informational)
@@ -106,14 +106,18 @@ jobs:
       - run: |
           python -m pip install --upgrade pip
           pip install -r tools/requirements.txt
-      - name: Run live fetcher check (XHKG, XSHG, XNSA)
+      - name: Install Playwright Chromium (XSWX renders its page)
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Run live fetcher check (XHKG, XSHG, XNSA, XSWX)
         continue-on-error: true
         run: |
           set +e
-          python tools/live_fetcher_check.py --only XHKG,XSHG,XNSA
+          python tools/live_fetcher_check.py --only XHKG,XSHG,XNSA,XSWX
           rc=$?
           if [ $rc -ne 0 ]; then
-            echo "::warning::CI-unreachable fetchers failed (expected from GitHub runners): XHKG, XSHG, XNSA"
+            echo "::warning::CI-unreachable fetchers failed (expected from GitHub runners, or XSWX not yet verified from CI): XHKG, XSHG, XNSA, XSWX"
           fi
           exit 0
 
