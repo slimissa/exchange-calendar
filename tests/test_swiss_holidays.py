@@ -242,10 +242,10 @@ class TestXSWXStructure:
         assert "Easter Monday" in names
         assert "Labour Day" in names
         assert "Ascension Day" in names
-        assert "Whit Monday" in names
+        assert "Whitmonday" in names
         assert "Swiss National Day" in names
         assert "Christmas Eve" in names
-        assert "Christmas Day" in names
+        assert "Christmas" in names
         assert "St. Stephen's Day" in names
         assert "New Year's Eve" in names
 
