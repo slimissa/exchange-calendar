@@ -24,6 +24,14 @@
       "source_url": "https://www.borsaistanbul.com/files/equity-market-2026-holiday-schedule.pdf",
       "status": "ok"
     },
+    "XSWX": {
+      "bytes": 350322,
+      "fetched_at": "2026-11-07T22:45:52Z",
+      "max_age_days": 400,
+      "sha256": "996867a865eea4b1ad34303c6b872c054d51f86606a2885839b6015720a38c67",
+      "source_url": "https://www.six-group.com/en/market-data/news-tools/trading-currency-holiday-calendar.html",
+      "status": "ok"
+    },
     "XWBO": {
       "bytes": 98460,
       "fetched_at": "2026-10-03T22:26:17Z",
