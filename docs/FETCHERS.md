@@ -6,7 +6,7 @@
 
 ## Per-exchange notes
 
-Per-exchange notes for the 46 fetchers registered in `tools/update_from_exchange.py`, moved out of `README.md` in Phase 1a. The 29 sections that existed as README notes were copied from there; in Session 4 the ones that disagreed with `BLOCKED.md`, the README table or the data files were corrected, and each correction names its date and source. Five fetchers had no README note (XETR, XASX, XTKS, XPRA, XIST) and have a short stub, placed after the notes. The 28 exchanges that are blocked and have no fetcher are not here; they are in [`BLOCKED.md`](../BLOCKED.md). Status per exchange is in the exchange table in [`README.md`](../README.md).
+Per-exchange notes for the 47 fetchers registered in `tools/update_from_exchange.py`, moved out of `README.md` in Phase 1a. The 29 sections that existed as README notes were copied from there; in Session 4 the ones that disagreed with `BLOCKED.md`, the README table or the data files were corrected, and each correction names its date and source. Five fetchers had no README note (XETR, XASX, XTKS, XPRA, XIST) and have a short stub, placed after the notes. The 27 exchanges that are blocked and have no fetcher are not here; they are in [`BLOCKED.md`](../BLOCKED.md). Status per exchange is in the exchange table in [`README.md`](../README.md).
 
 **Anchors.** Every MIC has an anchor in lowercase, placed above its section: link to `FETCHERS.md#xpar`, not to a heading. Heading text may change; the MIC anchors are the stable reference. Three families also have a name anchor: `#euronext-family`, `#nasdaq-nordic`, `#nasdaq-baltic`.
 
@@ -460,6 +460,16 @@ at that page.
 - Source: <https://www.pse.cz/en/trading/trading-information/trading-calendar>
 - Source column (README tier table at `9b75ff2`): pse.cz
 - Verified live 2026-08-31 (per the docstring): static HTML with real holiday names, grouped under `YYYY Non-business days` headings, with 2025 and 2026 both present at verification time.
+
+<a id="xswx"></a>
+## SIX Swiss Exchange (XSWX)
+
+- Status: `ci_unreachable` (registered; the live-fetcher CI jobs install no Chromium, so CI does not verify it)
+- Fetcher: `XSWXFetcher`, rendered with `tools/fetch_render.py` (`render_js`, selector `[class*=calendar]`)
+- Source: <https://www.six-group.com/en/market-data/news-tools/trading-currency-holiday-calendar.html>, default tab "Trading Holiday Calendar" (h3 "Market Holidays of the Swiss Stock Exchange", ReactTable of weekday, DD.MM.YYYY, name). The "Currency Holiday Calendar" tab and the PDF are not read.
+- Calibration (2026-11-07): calibrated against the reconnaissance extract of the page, not against a live fetch from CI. The fixture and the fetcher share the same source, so this detects parsing errors, not source errors. Result: 10 of 10 rows for 2026, 0 missing, 0 extra, 0 name mismatches.
+- Known limits: the year selector (2026, 2027) is client-side and `render_js` does not expose the page, so only 2026 is read; the fetcher records the gap in `last_note`. A row with a missing cell, a bad date or a weekday that disagrees with its date is skipped and counted. A page that cannot be read raises an error starting `BLOCKED:`.
+- Against `exchanges/XSWX.json`, the dry run keeps all 10 dates and would change 3 names to the page's spelling: Berchtoldstag to Berchtholdstag, Whit Monday to Whitmonday, Christmas Day to Christmas.
 
 <a id="xist"></a>
 ## Borsa Istanbul (XIST)

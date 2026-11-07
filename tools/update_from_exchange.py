@@ -6253,6 +6253,7 @@ class ExchangeFetcherRegistry:
         # (JSON endpoints) — XPHS resolved via PSE admin-ajax.
         # pdfplumber.extract_tables(). See BLOCKED.md.
         self.register(XISTFetcher())
+        self.register(XSWXFetcher())
 
     def register(self, fetcher: ExchangeFetcher):
         """Register a fetcher"""

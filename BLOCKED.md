@@ -4,17 +4,17 @@
 
 # Index
 
-30 exchanges are blocked. Each blocked exchange is filed under the class its own final verdict names. Where the verdict names none, the class comes from the entry's own finding. Entries that record a second obstacle (for example XNSE: a JS-built table behind an Akamai 403) are filed under the one the verdict states.
+29 exchanges are blocked. Each blocked exchange is filed under the class its own final verdict names. Where the verdict names none, the class comes from the entry's own finding. Entries that record a second obstacle (for example XNSE: a JS-built table behind an Akamai 403) are filed under the one the verdict states.
 
 | Class | Count | Exchanges |
 |---|---:|---|
 | [JS SPA / Client-Rendered](#js-spa) | 8 | [XBAH](#xbah), [XBOG](#xbog), [XBUL](#xbul), [XLIM](#xlim), [XMUS](#xmus), [XNZE](#xnze), [XTAD](#xtad), [XTUN](#xtun) |
 | [Bot-Walled / WAF](#bot-wall) | 13 | [XBOM](#xbom), [XCAS](#xcas), [XDHA](#xdha), [XJKT](#xjkt), [XJSE](#xjse), [XKLS](#xkls), [XKRX](#xkrx), [XKUW](#xkuw), [XNSE](#xnse), [XPHS](#xphs), [XSAU](#xsau), [XSES](#xses), [XSGO](#xsgo) |
-| [PDF Visual Grid / OCR](#pdf-grid) | 4 | [XATH](#xath), [XBKK](#xbkk), [XKAR](#xkar), [XSWX](#xswx) |
+| [PDF Visual Grid / OCR](#pdf-grid) | 3 | [XATH](#xath), [XBKK](#xbkk), [XKAR](#xkar) |
 | [Closed API / Requires Auth](#closed-api) | 0 | none |
 | [Dead Source / No First-Party Page](#dead-source) | 5 | [DSMD](#dsmd), [XBEY](#xbey), [XCAI](#xcai), [XNAI](#xnai), [XTAI](#xtai) |
 
-Not blocked, tracked here: [CI-unreachable](#ci-unreachable) ([XHKG](#xhkg), [XNSA](#xnsa), [XSHG](#xshg)); [resolved](#resolved) ([XIST](#xist)); [built, with tracking notes](#built-tracking) ([XBDA](#xbda), [XBUD](#xbud), [XBUE](#xbue), [XCOL](#xcol), [XDFM](#xdfm), [XDUB](#xdub), [XETR](#xetr), [XGSE](#xgse), [XICE](#xice), [XLIT](#xlit), [XMAD](#xmad), [XNAS](#xnas), [XNYS](#xnys), [XPAR](#xpar), [XSTC](#xstc), [XZAG](#xzag)). Reference: [How to read this file](#how-to-read-this-file), [Summary of all 74 exchanges](#summary-of-all-74-exchanges), [Round summaries](#round-summaries).
+Not blocked, tracked here: [CI-unreachable](#ci-unreachable) ([XHKG](#xhkg), [XNSA](#xnsa), [XSHG](#xshg)); [resolved](#resolved) ([XIST](#xist), [XSWX](#xswx)); [built, with tracking notes](#built-tracking) ([XBDA](#xbda), [XBUD](#xbud), [XBUE](#xbue), [XCOL](#xcol), [XDFM](#xdfm), [XDUB](#xdub), [XETR](#xetr), [XGSE](#xgse), [XICE](#xice), [XLIT](#xlit), [XMAD](#xmad), [XNAS](#xnas), [XNYS](#xnys), [XPAR](#xpar), [XSTC](#xstc), [XZAG](#xzag)). Reference: [How to read this file](#how-to-read-this-file), [Summary of all 74 exchanges](#summary-of-all-74-exchanges), [Round summaries](#round-summaries).
 
 <a id="js-spa"></a>
 # JS SPA / Client-Rendered
@@ -605,24 +605,10 @@ The calendar exists only as a PDF whose holidays are carried by layout or cell c
   PSX notice for a past year in which the date fell on a Saturday, and one for
   Youm-e-Takbeer.
 
-<a id="xswx"></a>
-## XSWX — SIX Swiss Exchange
-
-**Last verified:** 2026-08-27
-
-- **Checked:** six-group.com/en/market-data/news-tools/trading-currency-holiday-calendar.html
-- **Finding:** the page itself is real and static, but its only calendar
-  data is a PDF -- a visual calendar grid with no per-day text labels
-  identifying which holiday falls on which greyed-out date. Parsing this
-  reliably would require either OCR or a pixel-level heuristic against
-  cell shading, neither of which this project's text-based framework does
-  (or should attempt to guess at).
-- **Verdict:** BLOCKED.
-
 <a id="closed-api"></a>
 # Closed API / Requires Auth
 
-The data is only reachable through an interface that needs a key, a login or a licence. No exchange is filed here today: none of the 30 blocked entries records a credential requirement.
+The data is only reachable through an interface that needs a key, a login or a licence. No exchange is filed here today: none of the 29 blocked entries records a credential requirement.
 
 <a id="dead-source"></a>
 # Dead Source / No First-Party Page
@@ -964,6 +950,27 @@ Was blocked, no longer is. Kept as the history of the verdict change.
   Ramazan Bayrami and Kurban Bayrami are now entered for 2025 and 2026, with the
   half-day eves ending at 13:00. The same closures were added for 2027-2029 on
   2026-11-01 (Diyanet for 2027, the same calculation after that).
+
+<a id="xswx"></a>
+## XSWX — SIX Swiss Exchange
+
+**Last verified:** 2026-11-07
+
+- **Resolved 2026-11-07:** Trading Holiday Calendar readable via Playwright; fetcher added.
+- **Earlier verdict (2026-08-27):** BLOCKED — the only calendar data found was
+  the PDF, a visual grid with no per-day text labels. That PDF is still not
+  read.
+- **Finding (2026-11-07):** the page renders a React component with two tabs.
+  The default tab, "Trading Holiday Calendar", holds an h3 "Market Holidays of
+  the Swiss Stock Exchange" and a table of weekday, date (DD.MM.YYYY) and name.
+  The other tab, "Currency Holiday Calendar", is national-bank holidays per
+  currency and is not read. `XSWXFetcher` reads the default tab through
+  `tools/fetch_render.py`.
+- **Limits:** calibrated against a reconnaissance extract of the page (10 rows
+  for 2026), not a live fetch; the year selector offers 2027 but is
+  client-side and is not loaded. `fetcher_status` is `ci_unreachable` because
+  the live-fetcher CI jobs install no Chromium, not because the page was shown
+  to refuse GitHub runners.
 
 <a id="built-tracking"></a>
 # Not blocked: built, with tracking notes
@@ -1610,7 +1617,7 @@ marked `built`.
 | XSHG | Shanghai Stock Exchange | CI-unreachable |
 | XSTC | Ho Chi Minh Stock Exchange | built |
 | XSTO | Nasdaq Stockholm | built |
-| XSWX | SIX Swiss Exchange | blocked |
+| XSWX | SIX Swiss Exchange | resolved |
 | XTAD | Abu Dhabi Securities Exchange | blocked |
 | XTAI | Taiwan Stock Exchange | blocked |
 | XTAL | Nasdaq Tallinn | built |

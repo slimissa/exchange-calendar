@@ -475,7 +475,7 @@ One row per exchange, from `exchanges/*.json`. The icon is `fetcher_status`: ✅
 | Shanghai Stock Exchange | XSHG | ⚠️ | english.sse.com.cn | [#xshg](docs/FETCHERS.md#xshg), [BLOCKED.md#xshg](BLOCKED.md#xshg) |
 | Ho Chi Minh Stock Exchange | XSTC | ✅ | staticfile.hsx.vn | [#xstc](docs/FETCHERS.md#xstc) |
 | Nasdaq Stockholm | XSTO | ✅ | nasdaq.com | [#xsto](docs/FETCHERS.md#xsto) |
-| SIX Swiss Exchange | XSWX | ⛔ | six-group.com | [BLOCKED.md#xswx](BLOCKED.md#xswx) |
+| SIX Swiss Exchange | XSWX | ⚠️ | six-group.com | [#xswx](docs/FETCHERS.md#xswx), [BLOCKED.md#xswx](BLOCKED.md#xswx) |
 | Abu Dhabi Securities Exchange | XTAD | ⛔ | adx.ae | [BLOCKED.md#xtad](BLOCKED.md#xtad) |
 | Taiwan Stock Exchange | XTAI | ⛔ | twse.com.tw | [BLOCKED.md#xtai](BLOCKED.md#xtai) |
 | Nasdaq Tallinn | XTAL | ✅ | nasdaqbaltic.com | [#xtal](docs/FETCHERS.md#xtal) |
@@ -486,7 +486,7 @@ One row per exchange, from `exchanges/*.json`. The icon is `fetcher_status`: ✅
 | Vienna Stock Exchange | XWBO | ✅ | wienerborse.at | [#xwbo](docs/FETCHERS.md#xwbo) |
 | Zagreb Stock Exchange | XZAG | ✅ | zse.hr | [#xzag](docs/FETCHERS.md#xzag) |
 
-**46 of 74 registry exchanges have automated fetchers as of v2.23.13** — 41 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 28 have no fetcher and are documented as blocked sources (30 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange. Per-exchange fetcher notes are in [`docs/FETCHERS.md`](./docs/FETCHERS.md).
+**47 of 74 registry exchanges have automated fetchers as of v2.23.13** — 41 verified against live sources from CI on every run, plus 6 documented as CI-unreachable (XHKG, XSHG, XNSA, XSWX) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 27 have no fetcher and are documented as blocked sources (29 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange. Per-exchange fetcher notes are in [`docs/FETCHERS.md`](./docs/FETCHERS.md).
 
 ---
 
@@ -1071,7 +1071,7 @@ Stated plainly, because a calendar is a claim and a claim needs its edges drawn.
 - **`generation_range` does not cover the past for most exchanges.** 68 exchanges start 2025-01-01; the registry does not answer for 2024 or earlier for them, and `generation_range` ends 2029-12-31 for 66 exchanges, shorter for 8.
 - **The registry is a snapshot, not a history.** Holidays are not versioned per release; replaying a past state means checking out a tag.
 - **5 fetchers do not run in CI as reliable checks:** XHKG, XNSA and XSHG are CI-unreachable; XKUW and XSAU are blocked (HTTP 403 on 2026-09-17).
-- **30 exchanges are blocked** or have no fetcher ([`BLOCKED.md`](./BLOCKED.md)): 8 JS-rendered, 13 bot-walled, 4 PDF-grid, 5 dead-source, none behind a closed API. Findings are dated snapshots, not permanent facts.
+- **29 exchanges are blocked** or have no fetcher ([`BLOCKED.md`](./BLOCKED.md)): 8 JS-rendered, 13 bot-walled, 3 PDF-grid, 5 dead-source, none behind a closed API. Findings are dated snapshots, not permanent facts.
 - **Predicted Islamic and lunar dates.** 226 explicit entries are flagged `predicted`. Umm al-Qura dates (XSAU) can move by a day when the moon is sighted; `tools/verify_predicted_dates.py` tracks the pending ones.
 - **Source URLs expire.** Several sources are year-stamped; `docs/FETCHERS.md` lists them, and the first expiries are 2027-03-31 (XWBO, XBUD, XZAG) and 2027-06-01 (XDFM, XCAI, XMAD URLs).
 - **Only four fetchers have a freshness entry** in `fetcher_manifest.json` (XBUD, XDFM, XIST, XWBO).
