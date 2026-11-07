@@ -1822,5 +1822,13 @@
       "file": "tests/test_malaysia_holidays.py",
       "contains": "class TestXKLSFutureYears2027To2029:"
     }
-  ]
+  ],
+  "2.24.0": [
+    {"file": "tools/fetch_render.py",
+     "contains": "render_pdf_ocr"},
+    {"file": "tools/update_from_exchange.py", 
+    "contains": "XSWXFetcher"},
+    {"file": "tests/test_xswx_fetcher.py",
+    "contains": "test_xswx_fetcher_parses_holidays"}
+]
 }
