@@ -38356,9 +38356,9 @@
           "source": "manual"
         },
         "2026": {
-          "last_verified": null,
-          "level": "medium",
-          "source": "manual"
+          "last_verified": "2026-11-07",
+          "level": "high",
+          "source": "fetcher"
         },
         "2027": {
           "last_verified": null,

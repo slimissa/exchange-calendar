@@ -50,7 +50,7 @@ def test_xswx_fetcher_parses_holidays():
         "2026-01-01", "2026-01-02", "2026-04-03", "2026-04-06", "2026-05-01",
         "2026-05-14", "2026-05-25", "2026-12-24", "2026-12-25", "2026-12-31",
     ]
-    render.assert_called_once_with(PAGE_URL, "[class*=calendar]", timeout=30)
+    render.assert_called_once_with(PAGE_URL, "[class*=calendar]", timeout=90)
 
 
 def test_xswx_fetcher_shape():

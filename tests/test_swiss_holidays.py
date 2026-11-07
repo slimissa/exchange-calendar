@@ -237,7 +237,7 @@ class TestXSWXStructure:
         rules = xswx["holidays"].get("recurrence_rules", [])
         names = {r["name"] for r in rules}
         assert "New Year's Day" in names
-        assert "Berchtoldstag" in names
+        assert "Berchtholdstag" in names
         assert "Good Friday" in names
         assert "Easter Monday" in names
         assert "Labour Day" in names
