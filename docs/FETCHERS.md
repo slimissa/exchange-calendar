@@ -1,5 +1,11 @@
 # Fetcher notes
 
+## Render fetcher (Phase 3)
+
+`tools/fetch_render.py` is a fetcher for pages that the HTTP and PDF-text fetchers cannot read. It has three modes: `js` (headless Chromium via Playwright, for JavaScript single-page applications), `pdf` (Tesseract OCR on rasterized PDF pages) and `auto` (js, then pdf, then blocked). It is not yet wired into `update_from_exchange.py`; wiring is Session 2, after calibration. A page that cannot be read returns `BLOCKED` with a reason; it never returns an empty holiday list.
+
+## Per-exchange notes
+
 Per-exchange notes for the 46 fetchers registered in `tools/update_from_exchange.py`, moved out of `README.md` in Phase 1a. The 29 sections that existed as README notes were copied from there; in Session 4 the ones that disagreed with `BLOCKED.md`, the README table or the data files were corrected, and each correction names its date and source. Five fetchers had no README note (XETR, XASX, XTKS, XPRA, XIST) and have a short stub, placed after the notes. The 28 exchanges that are blocked and have no fetcher are not here; they are in [`BLOCKED.md`](../BLOCKED.md). Status per exchange is in the exchange table in [`README.md`](../README.md).
 
 **Anchors.** Every MIC has an anchor in lowercase, placed above its section: link to `FETCHERS.md#xpar`, not to a heading. Heading text may change; the MIC anchors are the stable reference. Three families also have a name anchor: `#euronext-family`, `#nasdaq-nordic`, `#nasdaq-baltic`.

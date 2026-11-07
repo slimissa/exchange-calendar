@@ -2,3 +2,8 @@ psycopg2-binary>=2.9
 PyMySQL[rsa]>=1.1
 pandas_market_calendars
 exchange_calendars
+# Render fetcher (tools/fetch_render.py). See ADR 0010.
+playwright>=1.40
+pytesseract>=0.3.10
+Pillow>=10.0
+PyMuPDF>=1.23
