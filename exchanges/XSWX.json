@@ -58,7 +58,7 @@
       },
       {
         "date": "2025-01-02",
-        "name": "Berchtoldstag",
+        "name": "Berchtholdstag",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -88,7 +88,7 @@
       },
       {
         "date": "2025-06-09",
-        "name": "Whit Monday",
+        "name": "Whitmonday",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -106,7 +106,7 @@
       },
       {
         "date": "2025-12-25",
-        "name": "Christmas Day",
+        "name": "Christmas",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -130,7 +130,7 @@
       },
       {
         "date": "2026-01-02",
-        "name": "Berchtoldstag",
+        "name": "Berchtholdstag",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -160,7 +160,7 @@
       },
       {
         "date": "2026-05-25",
-        "name": "Whit Monday",
+        "name": "Whitmonday",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -172,7 +172,7 @@
       },
       {
         "date": "2026-12-25",
-        "name": "Christmas Day",
+        "name": "Christmas",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -208,7 +208,7 @@
       },
       {
         "date": "2027-05-17",
-        "name": "Whit Monday",
+        "name": "Whitmonday",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -250,7 +250,7 @@
       },
       {
         "date": "2028-06-05",
-        "name": "Whit Monday",
+        "name": "Whitmonday",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -262,7 +262,7 @@
       },
       {
         "date": "2028-12-25",
-        "name": "Christmas Day",
+        "name": "Christmas",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -280,7 +280,7 @@
       },
       {
         "date": "2029-01-02",
-        "name": "Berchtoldstag",
+        "name": "Berchtholdstag",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -310,7 +310,7 @@
       },
       {
         "date": "2029-05-21",
-        "name": "Whit Monday",
+        "name": "Whitmonday",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -328,7 +328,7 @@
       },
       {
         "date": "2029-12-25",
-        "name": "Christmas Day",
+        "name": "Christmas",
         "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/market-data/trading-calendar.html",
         "status": "closed"
       },
@@ -356,7 +356,7 @@
       {
         "day": 2,
         "month": 1,
-        "name": "Berchtoldstag",
+        "name": "Berchtholdstag",
         "rule": "fixed_date",
         "status": "closed"
       },
@@ -386,7 +386,7 @@
         "status": "closed"
       },
       {
-        "name": "Whit Monday",
+        "name": "Whitmonday",
         "offset_days": 50,
         "rule": "easter_offset",
         "status": "closed"
@@ -408,7 +408,7 @@
       {
         "day": 25,
         "month": 12,
-        "name": "Christmas Day",
+        "name": "Christmas",
         "rule": "fixed_date",
         "status": "closed"
       },
