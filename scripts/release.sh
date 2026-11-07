@@ -542,8 +542,12 @@ PYEOF
 # Tag using the file
 git tag -a "v$VERSION" -F "$TAG_MESSAGE_FILE"
 
-# Verify git recorded exactly what is in the file
-if ! diff -q <(git for-each-ref "refs/tags/v$VERSION" --format='%(contents)') "$TAG_MESSAGE_FILE" > /dev/null; then
+# Verify git recorded the same message. Compare after stripping trailing
+# newlines: `git for-each-ref` appends one newline to its output, and the
+# tag message may add another. Bash's $(...) strips them, so the two
+# strings are equal when the messages are equal.
+if [ "$(git for-each-ref "refs/tags/v$VERSION" --format='%(contents)')" != \
+     "$(cat "$TAG_MESSAGE_FILE")" ]; then
     die "tag message in git does not match the file; delete the tag and retry"
 fi
 
