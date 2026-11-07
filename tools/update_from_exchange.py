@@ -5965,6 +5965,200 @@ class XISTFetcher(PDFFetcher):
         return data
 
 
+class XSWXFetcher(ExchangeFetcher):
+    """
+    Fetcher for SIX Swiss Exchange (XSWX) trading holidays, read from the
+    rendered DOM (tools/fetch_render.py, Playwright), not from the PDF.
+
+    Source: the "Trading Holiday Calendar" tab (the default tab) of
+    six-group.com's trading-currency-holiday-calendar page. A React
+    component renders an h3 "Market Holidays of the Swiss Stock Exchange"
+    followed by a ReactTable; each div.rt-tr row holds three div.rt-td
+    cells: weekday, date (DD.MM.YYYY), holiday name. The page also has a
+    "Currency Holiday Calendar" tab (national-bank holidays per currency);
+    that tab is never read and never merged.
+
+    Contract (ADR 0010 / fetch_render.py): if the page cannot be read the
+    fetcher raises ParseError/FetchError with a reason that starts with
+    "BLOCKED:". It never returns an empty or guessed holiday list. A row
+    with a missing cell, an unparseable date, or a weekday that disagrees
+    with its date is skipped and counted in ``last_note``.
+
+    Known limit: the year selector (2026, 2027) is client-side, and
+    render_js() does not expose the Playwright page, so only the default
+    year is read. The gap is recorded in ``last_note``.
+
+    Source of the DOM structure: reconnaissance extract of 2026-11-07
+    (tests/fixtures/xswx_calendar.html). Not yet verified from CI.
+    """
+
+    # The page lists the current and the next year; assumed to change about
+    # once a year (not measured).
+    MAX_AGE_DAYS = 400
+
+    TRADING_H3 = "Market Holidays of the Swiss Stock Exchange"
+    TRADING_TAB = "Trading Holiday Calendar"
+    WAIT_SELECTOR = "[class*=calendar]"
+    DATE_RE = re.compile(r"^(\d{2})\.(\d{2})\.(\d{4})$")
+    WEEKDAYS = ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+
+    def __init__(self):
+        super().__init__(
+            mic="XSWX",
+            name="SIX Swiss Exchange",
+            source_url=("https://www.six-group.com/en/market-data/news-tools/"
+                        "trading-currency-holiday-calendar.html"),
+            rate_limit=2.0
+        )
+        self.last_note: str = ""
+        self._render_error: str = ""
+
+    @staticmethod
+    def _fetch_render_module():
+        try:
+            import fetch_render
+        except ImportError:
+            sys.path.insert(0, str(Path(__file__).resolve().parent))
+            import fetch_render
+        return fetch_render
+
+    def _make_request(self) -> Optional[str]:
+        """Render the page with Playwright (render_js), honoring robots.txt
+        and the rate limiter like the other transports."""
+        if not self._check_robots_allowed():
+            self._render_error = "robots.txt disallows the page"
+            logger.error(f"robots.txt disallows fetching {self.source_url} for {self.mic}")
+            return None
+
+        self.rate_limiter.wait_if_needed(self.mic)
+        fr = self._fetch_render_module()
+        try:
+            html = fr.render_js(self.source_url, self.WAIT_SELECTOR, timeout=30)
+        except fr.RenderTimeout as e:
+            self._render_error = str(e)
+            logger.error(f"{self.mic}: {e}")
+            return None
+        except Exception as e:  # Playwright missing, browser crash, network
+            self._render_error = f"{type(e).__name__}: {e}"
+            logger.error(f"{self.mic}: render failed: {self._render_error}")
+            return None
+
+        self.rate_limiter.mark_request(self.mic)
+        self._record_manifest(html.encode("utf-8"), status="ok")
+        return html
+
+    def parse_html(self, html: str) -> List[HolidayEntry]:
+        self.last_note = ""
+        if not html or not html.strip():
+            raise ParseError("BLOCKED: rendered page is empty")
+
+        soup = BeautifulSoup(html, "html.parser")
+        component = soup.select_one("div.six-dynamic__trading-and-settlement-calendar")
+        if component is None:
+            raise ParseError(
+                "BLOCKED: the trading-and-settlement-calendar component is not "
+                "in the rendered page; the page may have been restructured.")
+
+        # The default tab must be the trading tab.
+        checked = component.select_one("input[name=routing][checked]")
+        if checked is not None and checked.parent is not None:
+            tab = checked.parent.get_text(" ", strip=True)
+            if tab != self.TRADING_TAB:
+                raise ParseError(
+                    f"BLOCKED: the default tab is {tab!r}, not "
+                    f"{self.TRADING_TAB!r}; the page may have been restructured.")
+
+        h3 = next((h for h in component.find_all("h3")
+                   if h.get_text(" ", strip=True) == self.TRADING_H3), None)
+        if h3 is None:
+            raise ParseError(
+                "BLOCKED: the Trading Holiday Calendar tab is not the default; "
+                "the page may have been restructured.")
+
+        container = h3.parent
+        table = container.select_one("div.ReactTable") if container else None
+        if table is None:
+            raise ParseError("BLOCKED: no ReactTable follows the trading h3.")
+
+        holidays: List[HolidayEntry] = []
+        skipped = 0
+        for row in table.select("div.rt-tbody div.rt-tr"):
+            cells = row.find_all("div", class_="rt-td", recursive=False)
+            if len(cells) < 3:
+                skipped += 1
+                continue
+            weekday, date_text, name = (c.get_text(" ", strip=True) for c in cells[:3])
+            m = self.DATE_RE.match(date_text)
+            if not m or not name:
+                skipped += 1
+                continue
+            day, month, year = (int(g) for g in m.groups())
+            try:
+                d = datetime(year, month, day)
+            except ValueError:
+                skipped += 1
+                continue
+            if self.WEEKDAYS[d.weekday()] != weekday:
+                skipped += 1
+                continue
+            holidays.append(HolidayEntry(
+                date=d.strftime("%Y-%m-%d"),
+                name=name,
+                status="closed",
+                source_url=self.source_url
+            ))
+
+        if not holidays:
+            raise ParseError("BLOCKED: the trading table has no readable rows.")
+
+        notes = []
+        if skipped:
+            notes.append(f"{skipped} row(s) skipped (missing cell, bad date, or weekday mismatch)")
+        loaded = {h.date[:4] for h in holidays}
+        offered = [o.get("value", "").strip()
+                   for o in component.select("select[name=Dropdown] option")]
+        missing = sorted(y for y in offered if y and y not in loaded)
+        if missing:
+            notes.append(
+                f"year(s) {', '.join(missing)} offered by the year selector but "
+                f"not loaded: the selector is client-side and render_js() does "
+                f"not expose the page")
+        self.last_note = "; ".join(notes)
+        return holidays
+
+    def fetch(self) -> Optional[ExchangeData]:
+        """Render and parse the XSWX Trading Holiday Calendar"""
+        html = self._make_request()
+        if not html:
+            raise FetchError(
+                f"BLOCKED: could not render the XSWX page"
+                f"{': ' + self._render_error if self._render_error else ''}")
+
+        holidays = self.parse_html(html)
+        if self.last_note:
+            logger.warning(f"XSWX: {self.last_note}")
+
+        data = ExchangeData(
+            code="XSWX",
+            mic="XSWX",
+            name=self.name,
+            timezone="Europe/Zurich",
+            regular_open="09:00",
+            regular_close="17:30",
+            holidays=holidays,
+            source_urls=[self.source_url],
+            currency="CHF",
+            country="Switzerland",
+            city="Zurich"
+        )
+
+        errors = data.validate()
+        if errors:
+            raise ValidationError(f"Invalid data: {', '.join(errors)}")
+
+        return data
+
+
 class ExchangeFetcherRegistry:
     """Registry of available exchange fetchers"""
     
