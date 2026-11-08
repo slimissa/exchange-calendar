@@ -1830,5 +1830,11 @@
     "contains": "XSWXFetcher"},
     {"file": "tests/test_xswx_fetcher.py",
     "contains": "test_xswx_fetcher_parses_holidays"}
-]
+],
+  "2.25.0": [
+    {"file": "tools/update_from_exchange.py", "contains": "XBULFetcher"},
+    {"file": "tests/test_xbul_fetcher.py", "contains": "test_xbul_parses_holidays"},
+    {"file": "BLOCKED.md", "contains": "robots.txt"},
+    {"file": "docs/FETCHERS.md", "contains": "XBUL"}
+  ]
 }
