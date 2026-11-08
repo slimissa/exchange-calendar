@@ -104,6 +104,7 @@ def build_registry(exchanges_dir: Path) -> dict:
             "sessions": exchange.get("sessions", []),
             "confidence": exchange.get("confidence", {}),
             "fetcher_status": exchange.get("fetcher_status"),
+            "verification": exchange.get("verification"),
             "holidays": merged_holidays,
             "ad_hoc_closures": exchange.get("ad_hoc_closures", []),
             "generation_range": exchange.get("generation_range", []),
