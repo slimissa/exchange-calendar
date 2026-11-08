@@ -67,6 +67,7 @@ Every exchange file is a JSON object with this shape:
 | `country_code` | string | ISO 3166-1 alpha-2, 2 uppercase letters. |
 | `sessions` | array | Typed trading sessions, at least one; see [`sessions`](#sessions-required) |
 | `fetcher_status` | string | State of the exchange's automated fetcher; see [`fetcher_status`](#fetcher_status-required) |
+| `verification` | object | How the calendar is verified, derived; see [`verification`](#verification-required) |
 
 ---
 
@@ -371,6 +372,41 @@ authored (`tools/derive_confidence.py`).
 - `level`: `high`, `medium` or `low` (`low` is reserved, unused).
 - `last_verified` is `YYYY-MM-DD` or `null`. The schema does not
   require the key; the built file always writes it.
+
+---
+
+### `verification` (Required)
+
+How the exchange's calendar is verified. Derived, not authored
+(`tools/derive_verification.py`; `tools/check_verification.py` checks it).
+
+```json
+"verification": {
+  "class": "reference_verified",
+  "basis": "divergence_report",
+  "last_checked": "2026-11-08",
+  "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
+}
+```
+
+The class comes from `fetcher_status` and from whether `docs/DIVERGENCE.md`
+lists a reference library for the exchange (the 50 with at least one):
+
+| `fetcher_status` | Reference library | `class` | `basis` |
+|---|---|---|---|
+| `implemented` | yes | `reference_verified` | `divergence_report` |
+| `implemented` | no | `source_verified` | `fetcher:implemented` |
+| `ci_unreachable` | any | `ci_unreachable` | `ci_network` |
+| `blocked` or `none` | yes | `reference_verified` | `divergence_report` |
+| `blocked` or `none` | no | `single_source` | `BLOCKED.md` |
+
+- `reference_verified` means a reference library covers the exchange and the
+  registry is compared with it; it does not mean the two agree (see
+  `docs/DIVERGENCE.md` for the disagreements) and it is not a check against the
+  exchange's own calendar. The two libraries are not independent.
+- `last_checked` is `YYYY-MM-DD`, the date the class was derived.
+- `reference_note` is a sentence naming the input: the reference libraries, or
+  the `BLOCKED.md` verdict, or the fetcher.
 
 ---
 

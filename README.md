@@ -8,7 +8,7 @@ One JSON file per exchange is the source of truth. Everything else — `calendar
 [![Update](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml)
 [![Divergence](https://github.com/slimissa/exchange-calendar/actions/workflows/divergence.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/divergence.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Schema Version](https://img.shields.io/badge/schema-2.1.1-green.svg)](./schema.json)
+[![Schema Version](https://img.shields.io/badge/schema-2.2.0-green.svg)](./schema.json)
 [![Registry Version](https://img.shields.io/badge/registry-2.26.0-orange.svg)](./CHANGELOG.md)
 [![Tests](https://img.shields.io/badge/tests-5625-green.svg)](./tests/)
 [![Exchanges](https://img.shields.io/badge/exchanges-74-blue.svg)](./exchanges/)
@@ -68,7 +68,7 @@ Every number below comes from a one-line command in the audit that accompanies t
 | **Wrappers** | 4: Python, JavaScript, Go, Rust. One shared fixture of 24 queries. |
 | **Tests** | 5,625 in the root suite (includes the 95 Python wrapper tests); JavaScript 100 more; Go 86 and Rust 83 declarations, counted statically |
 | **Release gate** | 18 local checks in `scripts/release.sh`, plus 3 static preflight checks |
-| **Version** | 2.23.13 (schema 2.1.1) |
+| **Version** | 2.23.13 (schema 2.2.0) |
 | **Sources** | Many: each exchange's own publication, one primary per exchange. This is a many-source registry, not a one-source registry like the ISO family. |
 | **Runtime dependencies** | None. The JSON is the contract. Tool time: `jsonschema`, `pyarrow`, `sqlglot`, and the fetchers' own libraries. |
 | **License** | Apache 2.0 |
@@ -356,7 +356,7 @@ Counts are over the 74 exchange files. No top-level field is `null` in any file.
 
 **`confidence[year].level`**: `medium` (560) and `high` (4). **`.source`**: `manual` (560) and `fetcher` (4).
 
-The field-level schema is [`schema.json`](./schema.json) (schema 2.1.1), documented in [`docs/exchange_schema.md`](./docs/exchange_schema.md). Design decisions are in [`docs/decisions/`](./docs/decisions).
+The field-level schema is [`schema.json`](./schema.json) (schema 2.2.0), documented in [`docs/exchange_schema.md`](./docs/exchange_schema.md). Design decisions are in [`docs/decisions/`](./docs/decisions).
 
 ---
 
@@ -908,7 +908,7 @@ One registry version, the Semantic Versioning of the **data** and tooling togeth
 
 That is eight kinds of site, thirteen files. **There is no single consistency script**: the CI `version-consistency` job checks `VERSION` against the CHANGELOG, the README badge and `build.py` output; the others are checked by the tool that writes them. The wrapper package versions (`wrappers/javascript/package.json` is `1.0.0`) do **not** track the registry version. Go has no version site; the version is the git tag.
 
-**Schema axis:** `schema.json` `version` (2.1.1), shown in the schema badge. It moves separately: a schema change bumps it without moving the registry axis alone, and CI and tooling changes do not bump the registry version by rule 8 of [`RELEASE_PATTERN.md`](./RELEASE_PATTERN.md).
+**Schema axis:** `schema.json` `version` (2.2.0), shown in the schema badge. It moves separately: a schema change bumps it without moving the registry axis alone, and CI and tooling changes do not bump the registry version by rule 8 of [`RELEASE_PATTERN.md`](./RELEASE_PATTERN.md).
 
 **Semantic Versioning:** major for breaking schema changes, minor for new exchanges, new optional fields or new exports, patch for data corrections. Release notes are in [`CHANGELOG.md`](./CHANGELOG.md).
 

@@ -650,6 +650,43 @@
           }
         }
       }
+    },
+    "verification": {
+      "additionalProperties": false,
+      "description": "How this exchange's calendar is verified. Derived, not authored: tools/derive_verification.py computes it from fetcher_status and from docs/DIVERGENCE.md. class: reference_verified (exchange_calendars or pandas_market_calendars covers the exchange and docs/DIVERGENCE.md compares the registry with it; this is not a check against the exchange's own calendar), source_verified (fetcher_status implemented, no reference library), ci_unreachable (a fetcher is registered but CI cannot reach the source), single_source (fetcher_status blocked or none, no reference library). basis names the input the class rests on. last_checked is the date the class was derived.",
+      "properties": {
+        "basis": {
+          "enum": [
+            "divergence_report",
+            "fetcher:implemented",
+            "ci_network",
+            "BLOCKED.md"
+          ]
+        },
+        "class": {
+          "enum": [
+            "reference_verified",
+            "source_verified",
+            "single_source",
+            "ci_unreachable"
+          ]
+        },
+        "last_checked": {
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "type": "string"
+        },
+        "reference_note": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "class",
+        "basis",
+        "last_checked",
+        "reference_note"
+      ],
+      "type": "object"
     }
   },
   "required": [
@@ -664,9 +701,10 @@
     "country",
     "country_code",
     "sessions",
-    "fetcher_status"
+    "fetcher_status",
+    "verification"
   ],
   "title": "Exchange Calendar Entry",
   "type": "object",
-  "version": "2.1.1"
+  "version": "2.2.0"
 }
