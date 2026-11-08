@@ -16,7 +16,7 @@
     "exchanges/XBSP.json": "fc9d4e172b8b2b0e27d9d4d9eccc3df5d68f202cf046b2cbb507dab9be43f15c",
     "exchanges/XBUD.json": "cd4e8194c945182bc935d8d829cee905c459cc80732e6f5e3ec61aa7216c3257",
     "exchanges/XBUE.json": "f36303010da09929a7e0a736e997b87bc2263364f9cd48ec29fd8c3ceb12c272",
-    "exchanges/XBUL.json": "2cdb6ec70c6d1c9a562914879d10c336cd666646fbec41d2d313dffcfe384ff6",
+    "exchanges/XBUL.json": "ff7dac31772d859bff6ad45daf967861c84367fc7c5cb5c898cbf2ed4cd834f3",
     "exchanges/XCAI.json": "bd2832151cc2fd4c138f1b7eae19d12c0a7ce935e7410b6a63fd26cad3598a03",
     "exchanges/XCAS.json": "55cb74082ff10eac1157787b45893a163a2118cdd330b40db8d29d9bdaffcae2",
     "exchanges/XCAY.json": "63a14cfa87fe1c11d411719971581a25b237c22807924c992ca4c6efe09599f0",
@@ -108,7 +108,7 @@
     "tools/schema_audit.py": "8917e67fb81a5a167888e1aac17bfa6240391f5dc0fd4608192ff83ea30b7bc7",
     "tools/summarize_blocked.py": "f254a99299359c380398b5debe714f77747d967a3543cc39dd6eca0d8a4f6c26",
     "tools/update_facts.py": "82ee79de524539ccef6602c0771c0ca01ac1fe33df0e52c031230806de163ab0",
-    "tools/update_from_exchange.py": "1300c23bf21c15e8a7e581e50df61bd594285b8813a3bec82ea41e8e5a88c2ae",
+    "tools/update_from_exchange.py": "157b6b7b2d7b95db0d52508d7b5d1f0c09a4b9c403d2e2b0d0b73eb71007e4f2",
     "tools/validate.py": "3bc1d011ec97686ad5aaf91d6cf624190ee85de7d12ba287865dd499ba475c96",
     "tools/verify_checksums.py": "ce94243ab814f1f44cb9c35a3aee998a14ced75aaaaf08d8c037d87440beb78d",
     "tools/verify_predicted_dates.py": "a3f0f12f5f6d05ba89cd7b8c8aee7ab96dad867ad5e4bb69d778df214b4d709a"
