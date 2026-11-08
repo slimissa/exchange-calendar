@@ -464,12 +464,11 @@ at that page.
 <a id="xbul"></a>
 ## Bulgarian Stock Exchange (XBUL)
 
-- Status: `ci_unreachable` (registered; CI has not run it, and the live-fetcher jobs only run it in the informational job)
-- Fetcher: `XBULFetcher`, rendered with `tools/fetch_render.py` (`render_js`, wait selector `#calendar_container table`, timeout 90 s)
-- Source: <https://www.bse-sofia.bg/en/trading-calendar>, `div.calendar`: year in `#div_year_header`, twelve month tables, cells marked `holiday`, name in the cell's `title` when present.
-- Reading rules: weekend cells are not recorded (the page marks every Saturday and Sunday); a weekday holiday cell without a title is recorded as "Holiday"; a titled cell not marked as a holiday, a row without 7 cells, months out of order or a missing year raise `BLOCKED:`.
-- Verification: read from a reconnaissance extract of the page, not a live fetch from CI. Only the year shown on the page is read.
-- Against `exchanges/XBUL.json` (2026), the dry run adds 6 dates (2026-01-02, 04-03, 04-06, 05-25, 09-07, 12-31) and would change 3 names: Good Friday (Orthodox) to Good Friday, Easter Monday (Orthodox) to Easter Monday, Boxing Day (substitute) to Holiday. The last three lose information the registry already has.
+- Status: BLOCKED by robots.txt. `XBULFetcher` is registered and tested but returns `BLOCKED:` because the site disallows automated access; the data is curated by hand from the page. `fetcher_status` is still `ci_unreachable` (set before the robots.txt finding; `blocked` would match).
+- robots.txt (2026-11-08): <https://www.bse-sofia.bg/robots.txt> is `User-agent: *` / `Disallow: /`, which disallows every path on the domain.
+- Page: <https://www.bse-sofia.bg/en/trading-calendar> renders a `div.calendar` with 12 monthly tables (year in `#div_year_header`; holiday cells carry the class `holiday`, and a `title` with the name when the page gives one). The /bg/ version is reported to render the same structure in Bulgarian (not checked here).
+- Fetcher: `XBULFetcher`, rendered with `tools/fetch_render.py` (wait selector `#calendar_container table`, timeout 90 s). The page marks every Saturday and Sunday as a holiday, so weekend cells are not recorded; a weekday holiday cell without a title is recorded as "Holiday". A page that cannot be read, or whose structure is ambiguous, raises `BLOCKED:`.
+- Tests: `tests/test_xbul_fetcher.py` (8 cases, fixture and mocks only, no network). The fixture is a reconstruction from a terminal capture of the reconnaissance extract, not a live fetch.
 
 <a id="xswx"></a>
 ## SIX Swiss Exchange (XSWX)
