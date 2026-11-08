@@ -388,7 +388,7 @@
   "timezone": "Asia/Bangkok",
   "verification": {
     "basis": "divergence_report",
-    "class": "reference_verified",
+    "class": "reference_compared",
     "last_checked": "2026-11-08",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

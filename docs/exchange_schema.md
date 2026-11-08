@@ -382,7 +382,7 @@ How the exchange's calendar is verified. Derived, not authored
 
 ```json
 "verification": {
-  "class": "reference_verified",
+  "class": "reference_compared",
   "basis": "divergence_report",
   "last_checked": "2026-11-08",
   "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
@@ -394,13 +394,13 @@ lists a reference library for the exchange (the 50 with at least one):
 
 | `fetcher_status` | Reference library | `class` | `basis` |
 |---|---|---|---|
-| `implemented` | yes | `reference_verified` | `divergence_report` |
+| `implemented` | yes | `reference_compared` | `divergence_report` |
 | `implemented` | no | `source_verified` | `fetcher:implemented` |
 | `ci_unreachable` | any | `ci_unreachable` | `ci_network` |
-| `blocked` or `none` | yes | `reference_verified` | `divergence_report` |
+| `blocked` or `none` | yes | `reference_compared` | `divergence_report` |
 | `blocked` or `none` | no | `single_source` | `BLOCKED.md` |
 
-- `reference_verified` means a reference library covers the exchange and the
+- `reference_compared` means a reference library covers the exchange and the
   registry is compared with it; it does not mean the two agree (see
   `docs/DIVERGENCE.md` for the disagreements) and it is not a check against the
   exchange's own calendar. The two libraries are not independent.

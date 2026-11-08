@@ -653,7 +653,7 @@
     },
     "verification": {
       "additionalProperties": false,
-      "description": "How this exchange's calendar is verified. Derived, not authored: tools/derive_verification.py computes it from fetcher_status and from docs/DIVERGENCE.md. class: reference_verified (exchange_calendars or pandas_market_calendars covers the exchange and docs/DIVERGENCE.md compares the registry with it; this is not a check against the exchange's own calendar), source_verified (fetcher_status implemented, no reference library), ci_unreachable (a fetcher is registered but CI cannot reach the source), single_source (fetcher_status blocked or none, no reference library). basis names the input the class rests on. last_checked is the date the class was derived.",
+      "description": "How this exchange's calendar is verified. Derived, not authored: tools/derive_verification.py computes it from fetcher_status and from docs/DIVERGENCE.md. class: reference_compared (exchange_calendars or pandas_market_calendars covers the exchange and docs/DIVERGENCE.md compares the registry with it; this is not a check against the exchange's own calendar), source_verified (fetcher_status implemented, no reference library), ci_unreachable (a fetcher is registered but CI cannot reach the source), single_source (fetcher_status blocked or none, no reference library). basis names the input the class rests on. last_checked is the date the class was derived.",
       "properties": {
         "basis": {
           "enum": [
@@ -665,7 +665,7 @@
         },
         "class": {
           "enum": [
-            "reference_verified",
+            "reference_compared",
             "source_verified",
             "single_source",
             "ci_unreachable"

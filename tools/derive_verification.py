@@ -7,10 +7,10 @@ Derive the ``verification`` object on every exchange from its
 least one reference library). Derived, not authored.
 
     fetcher_status   reference library   class               basis
-    implemented      yes                 reference_verified  divergence_report
+    implemented      yes                 reference_compared  divergence_report
     implemented      no                  source_verified     fetcher:implemented
     ci_unreachable   any                 ci_unreachable      ci_network
-    blocked / none   yes                 reference_verified  divergence_report
+    blocked / none   yes                 reference_compared  divergence_report
     blocked / none   no                  single_source       BLOCKED.md
 
 "Reference library" means the exchange's row in the Summary table of
@@ -20,12 +20,12 @@ docs/DIVERGENCE.md has a number under PMC (pandas_market_calendars) or EC
 from the table, or the tool stops: that is the guard against the table
 changing shape.
 
-reference_verified says a reference library covers the exchange and the
+reference_compared says a reference library covers the exchange and the
 registry is compared with it. It does not say the two agree, and it is not a
 check against the exchange's own calendar.
 
 reference_note
-    reference_verified: the libraries that cover the exchange, as a sentence
+    reference_compared: the libraries that cover the exchange, as a sentence
     (no numbers: the report is regenerated every week).
     ci_unreachable, single_source: the Verdict line of the exchange's entry in
     BLOCKED.md (its first sentence, at most 300 characters). The tool stops if the entry or its verdict is missing.
@@ -138,7 +138,7 @@ def derive(code: str, status: str, refs: dict[str, tuple[str, ...]],
         cls, basis = "ci_unreachable", "ci_network"
         note = verdicts.get(code)
     elif code in refs:
-        cls, basis = "reference_verified", "divergence_report"
+        cls, basis = "reference_compared", "divergence_report"
         note = "Compared in docs/DIVERGENCE.md with " + " and ".join(refs[code]) + "."
     elif status == "implemented":
         cls, basis = "source_verified", "fetcher:implemented"

@@ -513,7 +513,7 @@
       "timezone": "Europe/Amsterdam",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -2918,7 +2918,7 @@
       "timezone": "Australia/Sydney",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -4096,7 +4096,7 @@
       "timezone": "Atlantic/Bermuda",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -4818,7 +4818,7 @@
       "timezone": "Asia/Bangkok",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -5411,7 +5411,7 @@
       "timezone": "America/Bogota",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -5898,7 +5898,7 @@
       "timezone": "Asia/Kolkata",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -6119,7 +6119,7 @@
       "timezone": "Europe/Brussels",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -7314,7 +7314,7 @@
       "timezone": "Europe/Budapest",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -7847,7 +7847,7 @@
       "timezone": "America/Argentina/Buenos_Aires",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -10162,7 +10162,7 @@
       "timezone": "Europe/Copenhagen",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -11175,7 +11175,7 @@
       "timezone": "Europe/Dublin",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -11471,7 +11471,7 @@
       "timezone": "Europe/Berlin",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -12271,7 +12271,7 @@
       "timezone": "Europe/Helsinki",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -16899,7 +16899,7 @@
       "timezone": "Atlantic/Reykjavik",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -17367,7 +17367,7 @@
       "timezone": "Europe/Istanbul",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -18192,7 +18192,7 @@
       "timezone": "Africa/Johannesburg",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -18586,7 +18586,7 @@
       "timezone": "Asia/Karachi",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -19155,7 +19155,7 @@
       "timezone": "Asia/Kuala_Lumpur",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -19775,7 +19775,7 @@
       "timezone": "Asia/Seoul",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -20585,7 +20585,7 @@
       "timezone": "America/Lima",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -20806,7 +20806,7 @@
       "timezone": "Europe/Lisbon",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -21249,7 +21249,7 @@
       "timezone": "Europe/Vilnius",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -24037,7 +24037,7 @@
       "timezone": "Europe/London",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -24314,7 +24314,7 @@
       "timezone": "Europe/Luxembourg",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -24615,7 +24615,7 @@
       "timezone": "Europe/Madrid",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -25427,7 +25427,7 @@
       "timezone": "America/Mexico_City",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -25576,7 +25576,7 @@
       "timezone": "Europe/Moscow",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -29313,7 +29313,7 @@
       "timezone": "America/New_York",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars."
       },
@@ -30174,7 +30174,7 @@
       "timezone": "Asia/Kolkata",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with pandas_market_calendars."
       },
@@ -33224,7 +33224,7 @@
       "timezone": "America/New_York",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -33625,7 +33625,7 @@
       "timezone": "Pacific/Auckland",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -34015,7 +34015,7 @@
       "timezone": "Europe/Oslo",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -34318,7 +34318,7 @@
       "timezone": "Europe/Paris",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -34846,7 +34846,7 @@
       "timezone": "Asia/Manila",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -35247,7 +35247,7 @@
       "timezone": "Europe/Prague",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -35648,7 +35648,7 @@
       "timezone": "Europe/Riga",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -36036,7 +36036,7 @@
       "timezone": "Asia/Riyadh",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -36513,7 +36513,7 @@
       "timezone": "Asia/Singapore",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -37000,7 +37000,7 @@
       "timezone": "America/Santiago",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars."
       },
@@ -38721,7 +38721,7 @@
       "timezone": "Europe/Stockholm",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -39113,7 +39113,7 @@
       "timezone": "Europe/Zurich",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -39988,7 +39988,7 @@
       "timezone": "Asia/Taipei",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -40377,7 +40377,7 @@
       "timezone": "Europe/Tallinn",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -43757,7 +43757,7 @@
       "timezone": "Asia/Tokyo",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -44183,7 +44183,7 @@
       "timezone": "America/Toronto",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -44992,7 +44992,7 @@
       "timezone": "Europe/Warsaw",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -45281,7 +45281,7 @@
       "timezone": "Europe/Vienna",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -45722,7 +45722,7 @@
       "timezone": "Europe/Zagreb",
       "verification": {
         "basis": "divergence_report",
-        "class": "reference_verified",
+        "class": "reference_compared",
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

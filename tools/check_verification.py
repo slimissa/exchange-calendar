@@ -42,14 +42,14 @@ import derive_verification as dv  # noqa: E402
 # (fetcher_status, has reference library) -> (class, basis); None matches any
 EXPECTED = (
     ("ci_unreachable", None, "ci_unreachable", "ci_network"),
-    ("implemented", True, "reference_verified", "divergence_report"),
+    ("implemented", True, "reference_compared", "divergence_report"),
     ("implemented", False, "source_verified", "fetcher:implemented"),
-    ("blocked", True, "reference_verified", "divergence_report"),
+    ("blocked", True, "reference_compared", "divergence_report"),
     ("blocked", False, "single_source", "BLOCKED.md"),
-    ("none", True, "reference_verified", "divergence_report"),
+    ("none", True, "reference_compared", "divergence_report"),
     ("none", False, "single_source", "BLOCKED.md"),
 )
-CLASSES = ("reference_verified", "source_verified", "single_source", "ci_unreachable")
+CLASSES = ("reference_compared", "source_verified", "single_source", "ci_unreachable")
 
 
 def expected(status: str, has_reference: bool):
