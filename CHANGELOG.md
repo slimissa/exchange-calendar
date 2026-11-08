@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.25.0] - 2026-11-08
+
+### Added
+- `XBULFetcher` (Bulgarian Stock Exchange) via Playwright DOM. The page renders a `div.calendar` with 12 monthly tables; the fetcher reads the cells marked `holiday` on weekdays (the title is the name, "Holiday" when there is none) and skips weekends. 8 test cases pass.
+
+### Fixed
+- `BLOCKED.md` and `docs/FETCHERS.md` now document that XBUL's `robots.txt` is `Disallow: /`: `XBULFetcher` respects it and returns `BLOCKED`, and the data stays curated by hand. The page is readable in a browser; it is not automatable under the site's own policy.
+
 ## [2.24.0] - 2026-11-07
 
 - Add tools/fetch_render.py with Playwright, OCR, and BLOCKED fallback. Does not yet wire into update_from_exchange.py; that is Session 2.
