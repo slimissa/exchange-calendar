@@ -486,7 +486,7 @@ One row per exchange, from `exchanges/*.json`. The icon is `fetcher_status`: ✅
 | Vienna Stock Exchange | XWBO | ✅ | wienerborse.at | [#xwbo](docs/FETCHERS.md#xwbo) |
 | Zagreb Stock Exchange | XZAG | ✅ | zse.hr | [#xzag](docs/FETCHERS.md#xzag) |
 
-**48 of 74 registry exchanges have automated fetchers as of v2.25.0** — 42 verified against live sources from CI on every run, plus 6 documented as CI-unreachable (XHKG, XSHG, XNSA, XBUL) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 26 have no fetcher and are documented as blocked sources (29 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange. Per-exchange fetcher notes are in [`docs/FETCHERS.md`](./docs/FETCHERS.md).
+**48 of 74 registry exchanges have automated fetchers as of v2.26.0** — 42 verified against live sources from CI on every run, plus 6 documented as CI-unreachable (XHKG, XSHG, XNSA, XBUL) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 26 have no fetcher and are documented as blocked sources (29 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange. Per-exchange fetcher notes are in [`docs/FETCHERS.md`](./docs/FETCHERS.md).
 
 ---
 
@@ -878,7 +878,7 @@ The dry run is an environment variable, not a flag. Steps:
 
 0. **Static preflight (3 checks):** no orphan variables (`$CONSTANT` expanded but never assigned), every workflow that fires on a push to `main` is in `POLLED_WORKFLOWS`, and `tools/release_claims.json` has an entry for the version.
 1. **Preconditions:** on `main`, clean tree, `HEAD` equals `origin/main`, `VERSION` differs from the target, `CHANGELOG.md` has a `## [<version>]` section.
-2. **Version bump:** `VERSION`, the README badge, the README sentence "automated fetchers as of v2.25.0…", and the CHANGELOG top-entry check.
+2. **Version bump:** `VERSION`, the README badge, the README sentence "automated fetchers as of v2.26.0…", and the CHANGELOG top-entry check.
 3. **Rebuild:** `tools/build.py`, `tools/export_sql.py`, `tools/export_parquet.py`, `make package`; both `calendar.json` copies are checked for `meta.version`.
 4. **Local gate: 18 checks**, in order: `validate.py`, `check_country_codes.py`, `check_release_claims.py`, `check_mojibake.py`, `check_mic_codes.py`, `check_snapshot_freshness.py`, `check_stale_verifications.py`, `check_stale_year_urls.py`, `check_doc_links.py`, `check_wrapper_snapshot.py`, `check_cross_language.sh`, `migrate_sessions.py --check`, `derive_confidence.py --check`, `check_fetcher_freshness.py`, `pytest tests/`, the JavaScript suite (`npm ci && npm test`), `go test ./...`, `cargo test`.
 5. **Commit and push** `Release v<version>`; on any failure after the bump, a trap restores the mutable files, and reverts a pushed release commit.
@@ -900,7 +900,7 @@ One registry version, the Semantic Versioning of the **data** and tooling togeth
 | `VERSION` | Source of truth; written by `release.sh` |
 | `CHANGELOG.md` top released heading | Written by hand before the release; the CI job and `release.sh` check it |
 | README badge `registry-<version>-orange` | `release.sh` rewrites it; CI checks it |
-| README "automated fetchers as of v2.25.0<version>" | `release.sh` rewrites it; `check_doc_facts.py` compares it with `VERSION` |
+| README "automated fetchers as of v2.26.0<version>" | `release.sh` rewrites it; `check_doc_facts.py` compares it with `VERSION` |
 | `calendar.json` `meta.version` | `tools/build.py`; CI checks `build.py` output |
 | `wrappers/python/exchange_calendar/calendar.json` | `make package`; `check_wrapper_snapshot.py` |
 | Four SQL file headers | `export_sql.py`; `--check` fails if stale |

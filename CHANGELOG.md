@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.26.0] - 2026-11-08
+
+### Fixed
+- `exchanges/XBUL.json`: `fetcher_status` is `blocked` (was `ci_unreachable`).
+  `robots.txt` is `Disallow: /`, which is a policy block, not a CI-network
+  block. The `v2.25.0` release shipped the wrong state; this fixes it.
+- `BLOCKED.md`: XBUL moved from "resolved" to the "Bot-Walled" class, with
+  the index and the summary agreeing.
+- `README.md`: XBUL's icon is ⛔ (was ⚠️), the counts are
+  `42 implemented, 3 ci_unreachable, 3 blocked, 26 none`, and the
+  `ci_unreachable` list is `(XHKG, XSHG, XNSA)`.
+- `docs/FETCHERS.md`: XBUL's status line says `blocked`.
+
 ## [2.25.0] - 2026-11-08
 
 ### Added
