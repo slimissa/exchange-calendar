@@ -1,24 +1,23 @@
 {
-  "ad_hoc_closures": [],
   "code": "XMOS",
-  "confidence": {
-    "2025": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2026": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    }
+  "name": "Moscow Exchange",
+  "mic": "XMOS",
+  "timezone": "Europe/Moscow",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "10:00",
+    "close": "18:40"
   },
-  "country": "Russian Federation",
-  "country_code": "RU",
-  "fetcher_status": "implemented",
-  "generation_range": [
-    "2025-01-01",
-    "2026-12-31"
+  "extended_hours": {},
+  "sessions": [
+    {
+      "close": "18:45",
+      "open": "10:00",
+      "type": "regular"
+    }
   ],
   "holidays": {
     "explicit": [
@@ -72,71 +71,94 @@
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-01-02",
-        "name": "New Year Holiday",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
+      },
+      {
+        "date": "2026-01-03",
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
+      },
+      {
+        "date": "2026-01-04",
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-01-07",
-        "name": "Orthodox Christmas",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-02-23",
-        "name": "Defender of the Fatherland Day",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
+      },
+      {
+        "date": "2026-03-08",
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
+      },
+      {
+        "date": "2026-05-09",
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-06-12",
-        "name": "Russia Day",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-11-04",
-        "name": "National Unity Day",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       }
     ],
     "recurrence_rules": []
   },
-  "mic": "XMOS",
-  "name": "Moscow Exchange",
-  "regular_hours": {
-    "close": "18:45",
-    "open": "10:00"
-  },
-  "sessions": [
-    {
-      "close": "18:45",
-      "open": "10:00",
-      "type": "regular"
-    }
-  ],
-  "timezone": "Europe/Moscow",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2025-01-01",
+    "2026-12-31"
   ]
 }

@@ -1,182 +1,36 @@
 {
-  "ad_hoc_closures": [],
   "code": "XTKS",
-  "confidence": {
-    "1997": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
+  "name": "Tokyo Stock Exchange",
+  "mic": "XTKS",
+  "timezone": "Asia/Tokyo",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": [
+    {
+      "close": "15:00",
+      "effective_from": "1997-01-01",
+      "open": "09:00"
     },
-    "1998": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "1999": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2000": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2001": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2002": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2003": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2004": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2005": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2006": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2007": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2008": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2009": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2010": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2011": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2012": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2013": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2014": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2015": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2016": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2017": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2018": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2019": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2020": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2021": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2022": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2023": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2024": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2025": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2026": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2027": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2028": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2029": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
+    {
+      "close": "15:30",
+      "effective_from": "2024-11-05",
+      "open": "09:00"
     }
-  },
-  "country": "Japan",
-  "country_code": "JP",
-  "fetcher_status": "implemented",
-  "generation_range": [
-    "1997-01-01",
-    "2029-12-31"
+  ],
+  "extended_hours": {},
+  "sessions": [
+    {
+      "close": "15:30",
+      "open": "09:00",
+      "type": "regular"
+    },
+    {
+      "close": "12:30",
+      "open": "11:30",
+      "type": "lunch_break"
+    }
   ],
   "holidays": {
     "explicit": [
@@ -2937,218 +2791,248 @@
       {
         "date": "2026-01-01",
         "name": "New Year's Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-01-02",
-        "name": "New Year's Holiday",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "name": "Market Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
+      },
+      {
+        "date": "2026-01-03",
+        "name": "Market Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-01-12",
         "name": "Coming of Age Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-02-11",
         "name": "National Foundation Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-02-23",
         "name": "Emperor's Birthday",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-03-20",
-        "name": "Vernal Equinox Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "name": "Vernal Equinox",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-04-29",
         "name": "Showa Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
+      },
+      {
+        "date": "2026-05-03",
+        "name": "Constitution Memorial Day",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-05-04",
         "name": "Greenery Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-05-05",
         "name": "Children's Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-05-06",
-        "name": "Constitution Memorial Day (observed)",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "name": "Constitution Memorial Day (May 3) observed",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-07-20",
         "name": "Marine Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-08-11",
         "name": "Mountain Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-09-21",
         "name": "Respect for the Aged Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-09-22",
-        "name": "Citizens' Holiday",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "name": "Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-09-23",
-        "name": "Autumnal Equinox Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "name": "Autumnal Equinox",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-10-12",
         "name": "Sports Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-11-03",
         "name": "Culture Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-11-23",
         "name": "Labor Thanksgiving Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2026-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "name": "Market Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-01-01",
         "name": "New Year's Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
+      },
+      {
+        "date": "2027-01-02",
+        "name": "Market Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
+      },
+      {
+        "date": "2027-01-03",
+        "name": "Market Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-01-11",
         "name": "Coming of Age Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-02-11",
         "name": "National Foundation Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-02-23",
         "name": "Emperor's Birthday",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
+      },
+      {
+        "date": "2027-03-21",
+        "name": "Vernal Equinox",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-03-22",
-        "name": "Vernal Equinox Day (observed)",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "name": "Vernal Equinox (Mar. 21) observed",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-04-29",
         "name": "Showa Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-05-03",
         "name": "Constitution Memorial Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-05-04",
         "name": "Greenery Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-05-05",
         "name": "Children's Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-07-19",
         "name": "Marine Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-08-11",
         "name": "Mountain Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-09-20",
         "name": "Respect for the Aged Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-09-23",
-        "name": "Autumnal Equinox Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "name": "Autumnal Equinox",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-10-11",
         "name": "Sports Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-11-03",
         "name": "Culture Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-11-23",
         "name": "Labor Thanksgiving Day",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2027-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/",
-        "status": "closed"
+        "name": "Market Holiday",
+        "status": "closed",
+        "source_url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html"
       },
       {
         "date": "2028-01-03",
@@ -3339,35 +3223,9 @@
     ],
     "recurrence_rules": []
   },
-  "mic": "XTKS",
-  "name": "Tokyo Stock Exchange",
-  "regular_hours": [
-    {
-      "close": "15:00",
-      "effective_from": "1997-01-01",
-      "open": "09:00"
-    },
-    {
-      "close": "15:30",
-      "effective_from": "2024-11-05",
-      "open": "09:00"
-    }
-  ],
-  "sessions": [
-    {
-      "close": "15:30",
-      "open": "09:00",
-      "type": "regular"
-    },
-    {
-      "close": "12:30",
-      "open": "11:30",
-      "type": "lunch_break"
-    }
-  ],
-  "timezone": "Asia/Tokyo",
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "1997-01-01",
+    "2029-12-31"
   ]
 }
