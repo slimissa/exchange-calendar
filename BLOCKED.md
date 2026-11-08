@@ -9,7 +9,7 @@
 | Class | Count | Exchanges |
 |---|---:|---|
 | [JS SPA / Client-Rendered](#js-spa) | 7 | [XBAH](#xbah), [XBOG](#xbog), [XLIM](#xlim), [XMUS](#xmus), [XNZE](#xnze), [XTAD](#xtad), [XTUN](#xtun) |
-| [Bot-Walled / WAF](#bot-wall) | 13 | [XBOM](#xbom), [XCAS](#xcas), [XDHA](#xdha), [XJKT](#xjkt), [XJSE](#xjse), [XKLS](#xkls), [XKRX](#xkrx), [XKUW](#xkuw), [XNSE](#xnse), [XPHS](#xphs), [XSAU](#xsau), [XSES](#xses), [XSGO](#xsgo) |
+| [Bot-Walled / WAF](#bot-wall) | 14 | [XBOM](#xbom), [XCAS](#xcas), [XDHA](#xdha), [XJKT](#xjkt), [XJSE](#xjse), [XKLS](#xkls), [XKRX](#xkrx), [XKUW](#xkuw), [XBUL](#xbul), [XNSE](#xnse), [XPHS](#xphs), [XSAU](#xsau), [XSES](#xses), [XSGO](#xsgo) |
 | [PDF Visual Grid / OCR](#pdf-grid) | 3 | [XATH](#xath), [XBKK](#xbkk), [XKAR](#xkar) |
 | [Closed API / Requires Auth](#closed-api) | 0 | none |
 | [Dead Source / No First-Party Page](#dead-source) | 5 | [DSMD](#dsmd), [XBEY](#xbey), [XCAI](#xcai), [XNAI](#xnai), [XTAI](#xtai) |
