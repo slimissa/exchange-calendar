@@ -6463,6 +6463,7 @@ class ExchangeFetcherRegistry:
         # pdfplumber.extract_tables(). See BLOCKED.md.
         self.register(XISTFetcher())
         self.register(XSWXFetcher())
+        self.register(XBULFetcher())
 
     def register(self, fetcher: ExchangeFetcher):
         """Register a fetcher"""

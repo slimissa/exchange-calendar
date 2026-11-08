@@ -6,7 +6,7 @@
 
 ## Per-exchange notes
 
-Per-exchange notes for the 47 fetchers registered in `tools/update_from_exchange.py`, moved out of `README.md` in Phase 1a. The 29 sections that existed as README notes were copied from there; in Session 4 the ones that disagreed with `BLOCKED.md`, the README table or the data files were corrected, and each correction names its date and source. Five fetchers had no README note (XETR, XASX, XTKS, XPRA, XIST) and have a short stub, placed after the notes. The 27 exchanges that are blocked and have no fetcher are not here; they are in [`BLOCKED.md`](../BLOCKED.md). Status per exchange is in the exchange table in [`README.md`](../README.md).
+Per-exchange notes for the 48 fetchers registered in `tools/update_from_exchange.py`, moved out of `README.md` in Phase 1a. The 29 sections that existed as README notes were copied from there; in Session 4 the ones that disagreed with `BLOCKED.md`, the README table or the data files were corrected, and each correction names its date and source. Five fetchers had no README note (XETR, XASX, XTKS, XPRA, XIST) and have a short stub, placed after the notes. The 26 exchanges that are blocked and have no fetcher are not here; they are in [`BLOCKED.md`](../BLOCKED.md). Status per exchange is in the exchange table in [`README.md`](../README.md).
 
 **Anchors.** Every MIC has an anchor in lowercase, placed above its section: link to `FETCHERS.md#xpar`, not to a heading. Heading text may change; the MIC anchors are the stable reference. Three families also have a name anchor: `#euronext-family`, `#nasdaq-nordic`, `#nasdaq-baltic`.
 
@@ -460,6 +460,16 @@ at that page.
 - Source: <https://www.pse.cz/en/trading/trading-information/trading-calendar>
 - Source column (README tier table at `9b75ff2`): pse.cz
 - Verified live 2026-08-31 (per the docstring): static HTML with real holiday names, grouped under `YYYY Non-business days` headings, with 2025 and 2026 both present at verification time.
+
+<a id="xbul"></a>
+## Bulgarian Stock Exchange (XBUL)
+
+- Status: `ci_unreachable` (registered; CI has not run it, and the live-fetcher jobs only run it in the informational job)
+- Fetcher: `XBULFetcher`, rendered with `tools/fetch_render.py` (`render_js`, wait selector `#calendar_container table`, timeout 90 s)
+- Source: <https://www.bse-sofia.bg/en/trading-calendar>, `div.calendar`: year in `#div_year_header`, twelve month tables, cells marked `holiday`, name in the cell's `title` when present.
+- Reading rules: weekend cells are not recorded (the page marks every Saturday and Sunday); a weekday holiday cell without a title is recorded as "Holiday"; a titled cell not marked as a holiday, a row without 7 cells, months out of order or a missing year raise `BLOCKED:`.
+- Verification: read from a reconnaissance extract of the page, not a live fetch from CI. Only the year shown on the page is read.
+- Against `exchanges/XBUL.json` (2026), the dry run adds 6 dates (2026-01-02, 04-03, 04-06, 05-25, 09-07, 12-31) and would change 3 names: Good Friday (Orthodox) to Good Friday, Easter Monday (Orthodox) to Easter Monday, Boxing Day (substitute) to Holiday. The last three lose information the registry already has.
 
 <a id="xswx"></a>
 ## SIX Swiss Exchange (XSWX)

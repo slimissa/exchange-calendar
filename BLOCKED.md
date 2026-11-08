@@ -4,17 +4,17 @@
 
 # Index
 
-29 exchanges are blocked. Each blocked exchange is filed under the class its own final verdict names. Where the verdict names none, the class comes from the entry's own finding. Entries that record a second obstacle (for example XNSE: a JS-built table behind an Akamai 403) are filed under the one the verdict states.
+28 exchanges are blocked. Each blocked exchange is filed under the class its own final verdict names. Where the verdict names none, the class comes from the entry's own finding. Entries that record a second obstacle (for example XNSE: a JS-built table behind an Akamai 403) are filed under the one the verdict states.
 
 | Class | Count | Exchanges |
 |---|---:|---|
-| [JS SPA / Client-Rendered](#js-spa) | 8 | [XBAH](#xbah), [XBOG](#xbog), [XBUL](#xbul), [XLIM](#xlim), [XMUS](#xmus), [XNZE](#xnze), [XTAD](#xtad), [XTUN](#xtun) |
+| [JS SPA / Client-Rendered](#js-spa) | 7 | [XBAH](#xbah), [XBOG](#xbog), [XLIM](#xlim), [XMUS](#xmus), [XNZE](#xnze), [XTAD](#xtad), [XTUN](#xtun) |
 | [Bot-Walled / WAF](#bot-wall) | 13 | [XBOM](#xbom), [XCAS](#xcas), [XDHA](#xdha), [XJKT](#xjkt), [XJSE](#xjse), [XKLS](#xkls), [XKRX](#xkrx), [XKUW](#xkuw), [XNSE](#xnse), [XPHS](#xphs), [XSAU](#xsau), [XSES](#xses), [XSGO](#xsgo) |
 | [PDF Visual Grid / OCR](#pdf-grid) | 3 | [XATH](#xath), [XBKK](#xbkk), [XKAR](#xkar) |
 | [Closed API / Requires Auth](#closed-api) | 0 | none |
 | [Dead Source / No First-Party Page](#dead-source) | 5 | [DSMD](#dsmd), [XBEY](#xbey), [XCAI](#xcai), [XNAI](#xnai), [XTAI](#xtai) |
 
-Not blocked, tracked here: [CI-unreachable](#ci-unreachable) ([XHKG](#xhkg), [XNSA](#xnsa), [XSHG](#xshg)); [resolved](#resolved) ([XIST](#xist), [XSWX](#xswx)); [built, with tracking notes](#built-tracking) ([XBDA](#xbda), [XBUD](#xbud), [XBUE](#xbue), [XCOL](#xcol), [XDFM](#xdfm), [XDUB](#xdub), [XETR](#xetr), [XGSE](#xgse), [XICE](#xice), [XLIT](#xlit), [XMAD](#xmad), [XNAS](#xnas), [XNYS](#xnys), [XPAR](#xpar), [XSTC](#xstc), [XZAG](#xzag)). Reference: [How to read this file](#how-to-read-this-file), [Summary of all 74 exchanges](#summary-of-all-74-exchanges), [Round summaries](#round-summaries).
+Not blocked, tracked here: [CI-unreachable](#ci-unreachable) ([XHKG](#xhkg), [XNSA](#xnsa), [XSHG](#xshg)); [resolved](#resolved) ([XIST](#xist), [XSWX](#xswx), [XBUL](#xbul)); [built, with tracking notes](#built-tracking) ([XBDA](#xbda), [XBUD](#xbud), [XBUE](#xbue), [XCOL](#xcol), [XDFM](#xdfm), [XDUB](#xdub), [XETR](#xetr), [XGSE](#xgse), [XICE](#xice), [XLIT](#xlit), [XMAD](#xmad), [XNAS](#xnas), [XNYS](#xnys), [XPAR](#xpar), [XSTC](#xstc), [XZAG](#xzag)). Reference: [How to read this file](#how-to-read-this-file), [Summary of all 74 exchanges](#summary-of-all-74-exchanges), [Round summaries](#round-summaries).
 
 <a id="js-spa"></a>
 # JS SPA / Client-Rendered
@@ -102,22 +102,6 @@ The page is real, but the holiday data is not in the HTML a plain request receiv
   post says the same for 2012, but nothing shows a rule for later years or for a
   Sunday 31 December. Left unclassified. **Source needed:** a BVC notice for the
   last trading day of 2023 or 2025.
-
-<a id="xbul"></a>
-## XBUL — Bulgarian Stock Exchange
-
-**Last verified:** 2026-09-06
-
-- **Checked:** bse-sofia.bg's trading-calendar page directly (found via a
-  targeted search after an initial generic search failed on an unrelated
-  "BSE" naming collision)
-- **Finding:** the page itself is real (a genuine dashboard with live
-  market-data widgets, navigation, and rules links all present in the raw
-  HTML), but the actual holiday calendar content was not present anywhere
-  in the response -- only the surrounding page chrome and unrelated
-  market-data widgets. This suggests the specific calendar widget is loaded
-  dynamically within an otherwise mostly-static page.
-- **Verdict:** BLOCKED.
 
 <a id="xlim"></a>
 ## XLIM — Bolsa de Valores de Lima (BVL)
@@ -608,7 +592,7 @@ The calendar exists only as a PDF whose holidays are carried by layout or cell c
 <a id="closed-api"></a>
 # Closed API / Requires Auth
 
-The data is only reachable through an interface that needs a key, a login or a licence. No exchange is filed here today: none of the 29 blocked entries records a credential requirement.
+The data is only reachable through an interface that needs a key, a login or a licence. No exchange is filed here today: none of the 28 blocked entries records a credential requirement.
 
 <a id="dead-source"></a>
 # Dead Source / No First-Party Page
@@ -971,6 +955,26 @@ Was blocked, no longer is. Kept as the history of the verdict change.
   client-side and is not loaded. `fetcher_status` is `ci_unreachable` because
   the live-fetcher CI jobs install no Chromium, not because the page was shown
   to refuse GitHub runners.
+
+<a id="xbul"></a>
+## XBUL — Bulgarian Stock Exchange
+
+**Last verified:** 2026-11-08
+
+- **Resolved 2026-11-08:** the trading calendar is readable via Playwright; fetcher added.
+- **Earlier verdict (2026-09-06):** BLOCKED — the raw HTML had no calendar
+  content, which suggested a dynamically loaded widget.
+- **Finding (2026-11-08):** the rendered page has a `div.calendar` with the year
+  in `#div_year_header` and twelve month tables. The page marks every Saturday
+  and Sunday as a holiday; a holiday cell may carry a `title` with the name.
+  `XBULFetcher` (`tools/fetch_render.py`) records weekday holidays only: titled
+  ones with their title, untitled ones as "Holiday". Titled weekend holidays are
+  not recorded.
+- **Limits:** read from a reconnaissance extract, not a live fetch, and only the
+  year shown on the page. Six 2026 weekday holidays have no title on the page
+  (2026-04-03, 04-06, 05-25, 09-07, 12-28, 12-31); the legend that might name
+  them was not in the extract. `fetcher_status` is `ci_unreachable` because CI
+  has not run it, not because GitHub runners were shown to be refused.
 
 <a id="built-tracking"></a>
 # Not blocked: built, with tracking notes
@@ -1568,7 +1572,7 @@ marked `built`.
 | XBSP | B3 (São Paulo Stock Exchange) | built |
 | XBUD | Budapest Stock Exchange | built |
 | XBUE | Buenos Aires Stock Exchange | built |
-| XBUL | Bulgarian Stock Exchange | blocked |
+| XBUL | Bulgarian Stock Exchange | resolved |
 | XCAI | Egyptian Exchange | blocked |
 | XCAS | Casablanca Stock Exchange | blocked |
 | XCAY | Cayman Islands Stock Exchange | built |

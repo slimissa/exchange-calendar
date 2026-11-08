@@ -386,7 +386,7 @@ There is **no `verification_class` field**, and no field says "this exchange has
 
 - **9 have a fetcher that runs in CI** against the exchange's own page: XBRV, XBSP, XCAY, XCOL, XDFM, XGSE, XMAL, XSHE, XSTC. For these the fetcher is the only independent check.
 - **2 have a fetcher that cannot run in CI**: XNSA (`ci_unreachable`) and XKUW (`blocked`).
-- **13 have no fetcher and no reference**: DSMD, XATH, XBAH, XBEY, XBUL, XCAI, XCAS, XDHA, XJKT, XMUS, XNAI, XTAD, XTUN. Their dates rest on manual curation against the sources `BLOCKED.md` records. Nothing re-reads them.
+- **12 have no fetcher and no reference**: DSMD, XATH, XBAH, XBEY, XCAI, XCAS, XDHA, XJKT, XMUS, XNAI, XTAD, XTUN. Their dates rest on manual curation against the sources `BLOCKED.md` records. Nothing re-reads them.
 
 So "24 single-source" is true in one sense (no reference library), but only 9 of the 24 have a live check against the exchange. The other 15 have none that runs.
 
@@ -426,7 +426,7 @@ One row per exchange, from `exchanges/*.json`. The icon is `fetcher_status`: ✅
 | B3 (Brazil) | XBSP | ✅ | b3.com.br | [#xbsp](docs/FETCHERS.md#xbsp) |
 | Budapest Stock Exchange | XBUD | ✅ | bse.hu | [#xbud](docs/FETCHERS.md#xbud) |
 | Bolsas y Mercados Argentinos | XBUE | ✅ | byma.com.ar | [#xbue](docs/FETCHERS.md#xbue) |
-| Bulgarian Stock Exchange | XBUL | ⛔ | bse-sofia.bg | [BLOCKED.md#xbul](BLOCKED.md#xbul) |
+| Bulgarian Stock Exchange | XBUL | ⚠️ | bse-sofia.bg | [#xbul](docs/FETCHERS.md#xbul), [BLOCKED.md#xbul](BLOCKED.md#xbul) |
 | Egyptian Exchange | XCAI | ⛔ | egx.com.eg | [BLOCKED.md#xcai](BLOCKED.md#xcai) |
 | Bourse de Casablanca | XCAS | ⛔ | casablanca-bourse.com | [BLOCKED.md#xcas](BLOCKED.md#xcas) |
 | Cayman Islands Stock Exchange | XCAY | ✅ | csx.ky | [#xcay](docs/FETCHERS.md#xcay) |
@@ -486,7 +486,7 @@ One row per exchange, from `exchanges/*.json`. The icon is `fetcher_status`: ✅
 | Vienna Stock Exchange | XWBO | ✅ | wienerborse.at | [#xwbo](docs/FETCHERS.md#xwbo) |
 | Zagreb Stock Exchange | XZAG | ✅ | zse.hr | [#xzag](docs/FETCHERS.md#xzag) |
 
-**47 of 74 registry exchanges have automated fetchers as of v2.24.0** — 42 verified against live sources from CI on every run, plus 5 documented as CI-unreachable (XHKG, XSHG, XNSA) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 27 have no fetcher and are documented as blocked sources (29 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange. Per-exchange fetcher notes are in [`docs/FETCHERS.md`](./docs/FETCHERS.md).
+**48 of 74 registry exchanges have automated fetchers as of v2.24.0** — 42 verified against live sources from CI on every run, plus 6 documented as CI-unreachable (XHKG, XSHG, XNSA, XBUL) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 26 have no fetcher and are documented as blocked sources (28 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange. Per-exchange fetcher notes are in [`docs/FETCHERS.md`](./docs/FETCHERS.md).
 
 ---
 
@@ -1071,7 +1071,7 @@ Stated plainly, because a calendar is a claim and a claim needs its edges drawn.
 - **`generation_range` does not cover the past for most exchanges.** 68 exchanges start 2025-01-01; the registry does not answer for 2024 or earlier for them, and `generation_range` ends 2029-12-31 for 66 exchanges, shorter for 8.
 - **The registry is a snapshot, not a history.** Holidays are not versioned per release; replaying a past state means checking out a tag.
 - **5 fetchers do not run in CI as reliable checks:** XHKG, XNSA and XSHG are CI-unreachable; XKUW and XSAU are blocked (HTTP 403 on 2026-09-17).
-- **29 exchanges are blocked** or have no fetcher ([`BLOCKED.md`](./BLOCKED.md)): 8 JS-rendered, 13 bot-walled, 3 PDF-grid, 5 dead-source, none behind a closed API. Findings are dated snapshots, not permanent facts.
+- **28 exchanges are blocked** or have no fetcher ([`BLOCKED.md`](./BLOCKED.md)): 7 JS-rendered, 13 bot-walled, 3 PDF-grid, 5 dead-source, none behind a closed API. Findings are dated snapshots, not permanent facts.
 - **Predicted Islamic and lunar dates.** 226 explicit entries are flagged `predicted`. Umm al-Qura dates (XSAU) can move by a day when the moon is sighted; `tools/verify_predicted_dates.py` tracks the pending ones.
 - **Source URLs expire.** Several sources are year-stamped; `docs/FETCHERS.md` lists them, and the first expiries are 2027-03-31 (XWBO, XBUD, XZAG) and 2027-06-01 (XDFM, XCAI, XMAD URLs).
 - **Only four fetchers have a freshness entry** in `fetcher_manifest.json` (XBUD, XDFM, XIST, XWBO).
