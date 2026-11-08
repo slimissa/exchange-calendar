@@ -464,7 +464,7 @@ at that page.
 <a id="xbul"></a>
 ## Bulgarian Stock Exchange (XBUL)
 
-- Status: BLOCKED by robots.txt. `XBULFetcher` is registered and tested but returns `BLOCKED:` because the site disallows automated access; the data is curated by hand from the page. `fetcher_status` is still `ci_unreachable` (set before the robots.txt finding; `blocked` would match).
+- Status: BLOCKED by robots.txt. `XBULFetcher` is registered and tested but returns `BLOCKED:` because the site disallows automated access; the data is curated by hand from the page. `fetcher_status` is `blocked`.
 - robots.txt (2026-11-08): <https://www.bse-sofia.bg/robots.txt> is `User-agent: *` / `Disallow: /`, which disallows every path on the domain.
 - Page: <https://www.bse-sofia.bg/en/trading-calendar> renders a `div.calendar` with 12 monthly tables (year in `#div_year_header`; holiday cells carry the class `holiday`, and a `title` with the name when the page gives one). The /bg/ version is reported to render the same structure in Bulgarian (not checked here).
 - Fetcher: `XBULFetcher`, rendered with `tools/fetch_render.py` (wait selector `#calendar_container table`, timeout 90 s). The page marks every Saturday and Sunday as a holiday, so weekend cells are not recorded; a weekday holiday cell without a title is recorded as "Holiday". A page that cannot be read, or whose structure is ambiguous, raises `BLOCKED:`.

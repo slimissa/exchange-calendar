@@ -4,7 +4,7 @@
 
 # Index
 
-28 exchanges are blocked. Each blocked exchange is filed under the class its own final verdict names. Where the verdict names none, the class comes from the entry's own finding. Entries that record a second obstacle (for example XNSE: a JS-built table behind an Akamai 403) are filed under the one the verdict states.
+29 exchanges are blocked. Each blocked exchange is filed under the class its own final verdict names. Where the verdict names none, the class comes from the entry's own finding. Entries that record a second obstacle (for example XNSE: a JS-built table behind an Akamai 403) are filed under the one the verdict states.
 
 | Class | Count | Exchanges |
 |---|---:|---|
@@ -592,7 +592,7 @@ The calendar exists only as a PDF whose holidays are carried by layout or cell c
 <a id="closed-api"></a>
 # Closed API / Requires Auth
 
-The data is only reachable through an interface that needs a key, a login or a licence. No exchange is filed here today: none of the 28 blocked entries records a credential requirement.
+The data is only reachable through an interface that needs a key, a login or a licence. No exchange is filed here today: none of the 29 blocked entries records a credential requirement.
 
 <a id="dead-source"></a>
 # Dead Source / No First-Party Page
@@ -1577,7 +1577,7 @@ marked `built`.
 | XBSP | B3 (São Paulo Stock Exchange) | built |
 | XBUD | Budapest Stock Exchange | built |
 | XBUE | Buenos Aires Stock Exchange | built |
-| XBUL | Bulgarian Stock Exchange | resolved |
+| XBUL | Bulgarian Stock Exchange | blocked |
 | XCAI | Egyptian Exchange | blocked |
 | XCAS | Casablanca Stock Exchange | blocked |
 | XCAY | Cayman Islands Stock Exchange | built |
