@@ -28,9 +28,9 @@ reference_note
     reference_verified: the libraries that cover the exchange, as a sentence
     (no numbers: the report is regenerated every week).
     ci_unreachable, single_source: the Verdict line of the exchange's entry in
-    BLOCKED.md. The tool stops if the entry or its verdict is missing.
-    source_verified: the BLOCKED.md verdict if the exchange has one, else a
-    fixed sentence about the fetcher.
+    BLOCKED.md (its first sentence, at most 300 characters). The tool stops if the entry or its verdict is missing.
+    source_verified: a fixed sentence about the fetcher (an exchange that has a
+    fetcher may still have an old, superseded verdict in BLOCKED.md; it is not used).
 
 last_checked is the date the class was derived (--date, default today). It is
 not part of --check: a stale date alone is not drift.
@@ -55,6 +55,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 NO_REFERENCE = "No reference data"
 LIBRARIES = (("exchange_calendars", 3), ("pandas_market_calendars", 2))  # (name, column)
 VERDICT_MAX = 300
+
+SUPERSEDED_NOTE = "The Verdict in BLOCKED.md is marked superseded; see the entry for the current finding."
 
 SOURCE_VERIFIED_NOTE = (
     "fetcher_status is implemented: CI checks the registry against the "
@@ -96,26 +98,37 @@ def reference_libraries(text: str, expected_codes: set[str]) -> dict[str, tuple[
 
 
 def blocked_verdicts(text: str) -> dict[str, str]:
-    """MIC -> Verdict text of its BLOCKED.md entry (entries that have one)."""
+    """MIC -> Verdict text of its BLOCKED.md entry (entries that have one).
+
+    A verdict marked "superseded" is history, not a verdict: an entry whose only
+    verdicts are superseded gets SUPERSEDED_NOTE instead of the old text.
+    """
     verdicts: dict[str, str] = {}
     sections = re.split(r"(?m)^## ([A-Z0-9]{4}) — .*$", text)
     for code, body in zip(sections[1::2], sections[2::2]):
         lines = body.splitlines()
         for i, line in enumerate(lines):
-            if line.startswith("- **Verdict"):
-                chunk = [line]
-                for nxt in lines[i + 1:]:
-                    if not nxt.strip() or nxt.startswith(("- ", "<a ", "#")):
-                        break
-                    chunk.append(nxt.strip())
-                verdict = " ".join(chunk)
-                verdict = re.sub(r"^- \*\*Verdict:?\s*", "", verdict)
-                verdict = verdict.replace("**", "").strip()
-                verdict = re.sub(r"\s+", " ", verdict).lstrip("— ").strip()
-                if len(verdict) > VERDICT_MAX:
-                    verdict = verdict[:VERDICT_MAX].rsplit(" ", 1)[0].rstrip(" ,;:") + "…"
-                verdicts[code] = verdict
-                break
+            if not line.startswith("- **Verdict"):
+                continue
+            if re.match(r"- \*\*Verdict[^*]*superseded", line, re.IGNORECASE):
+                verdicts.setdefault(code, SUPERSEDED_NOTE)
+                continue
+            chunk = [line]
+            for nxt in lines[i + 1:]:
+                if not nxt.strip() or nxt.startswith(("- ", "<a ", "#")):
+                    break
+                chunk.append(nxt.strip())
+            verdict = " ".join(chunk)
+            verdict = re.sub(r"^- \*\*Verdict:?\s*", "", verdict)
+            verdict = verdict.replace("**", "").strip()
+            verdict = re.sub(r"\s+", " ", verdict).lstrip("— ").strip()
+            first = re.split(r"(?<=[.!?])\s", verdict, maxsplit=1)[0]
+            if len(first) >= 20:
+                verdict = first  # the verdict's first sentence
+            if len(verdict) > VERDICT_MAX:
+                verdict = verdict[:VERDICT_MAX].rsplit(" ", 1)[0].rstrip(" ,;:") + "…"
+            verdicts[code] = verdict
+            break
     return verdicts
 
 
@@ -129,7 +142,7 @@ def derive(code: str, status: str, refs: dict[str, tuple[str, ...]],
         note = "Compared in docs/DIVERGENCE.md with " + " and ".join(refs[code]) + "."
     elif status == "implemented":
         cls, basis = "source_verified", "fetcher:implemented"
-        note = verdicts.get(code, SOURCE_VERIFIED_NOTE)
+        note = SOURCE_VERIFIED_NOTE  # an old BLOCKED.md verdict here is history
     elif status in ("blocked", "none"):
         cls, basis = "single_source", "BLOCKED.md"
         note = verdicts.get(code)
