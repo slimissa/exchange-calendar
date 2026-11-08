@@ -47,7 +47,7 @@ def tree(tmp_path, readme, facts=FACTS):
 
 
 def run(root, capsys, *files):
-    code = cdf.main(["--root", str(root), "--files", *(files or ("README.md",))])
+    code = cdf.main(["--root", str(root), "--skip-partition", "--files", *(files or ("README.md",))])
     out = capsys.readouterr()
     return code, out.out, out.err
 

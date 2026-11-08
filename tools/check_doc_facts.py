@@ -27,6 +27,17 @@ README also says "67 exchanges" for the Saturday-Sunday week, which is a
 different number. Add a pattern to CLAIMS when you write a new kind of
 countable sentence.
 
+Partition check
+---------------
+Every exchange has exactly one fetcher_status, so implemented + ci_unreachable
++ blocked + none must equal the number of exchanges/*.json files. The check
+counts the statuses in exchanges/ itself (not in calendar.json) and requires
+that (1) the tree's counts add up to the number of files, (2) that number is
+facts.json's exchanges_total, (3) facts.json's own four counts add up to
+exchanges_total, and (4) each of facts.json's four counts equals the tree's.
+(4) is what catches a facts.json that is stale relative to exchanges/. It runs
+by default; --skip-partition turns it off for a tree that has no exchanges/.
+
 Silent failure
 --------------
 Every scanned file must contain at least one claim. If rewording removes all
@@ -52,6 +63,7 @@ import argparse
 import json
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -171,10 +183,62 @@ def scan(text: str, facts: dict, version: str | None = None) -> tuple[list[dict]
     return wrong, found
 
 
+PARTITION = (
+    ("implemented", "fetchers_implemented"),
+    ("ci_unreachable", "fetchers_ci_unreachable"),
+    ("blocked", "fetchers_blocked"),
+    ("none", "exchanges_no_fetcher"),
+)
+
+
+def check_partition(root: Path, facts: dict) -> tuple[list[str], str]:
+    """Compare fetcher_status counts in exchanges/*.json with facts.json.
+
+    Returns (problems, summary); problems is empty when the partition holds.
+    Raises ReadProblem if exchanges/ cannot be read.
+    """
+    files = sorted((root / "exchanges").glob("*.json"))
+    if not files:
+        raise ReadProblem("exchanges/: no *.json files to count")
+    names = [status for status, _ in PARTITION]
+    counts: Counter = Counter()
+    problems: list[str] = []
+    for f in files:
+        try:
+            status = json.loads(f.read_text(encoding="utf-8")).get("fetcher_status")
+        except (OSError, ValueError, AttributeError) as exc:
+            raise ReadProblem(f"cannot read exchanges/{f.name}: {exc}") from None
+        if status in names:
+            counts[status] += 1
+        else:
+            problems.append(f"exchanges/{f.name}: fetcher_status {status!r} is not one of "
+                            f"{', '.join(names)}")
+    n = len(files)
+    total = sum(counts[name] for name in names)
+    summary = " + ".join(str(counts[name]) for name in names) + f" = {total}"
+    if total != n:
+        problems.append(f"partition: {summary} (expected {n})")
+    if facts.get("exchanges_total") != n:
+        problems.append(f"exchanges_total: tree has {n} file(s), docs/facts.json has "
+                        f"{facts.get('exchanges_total')}")
+    facts_counts = [facts.get(key) for _, key in PARTITION]
+    if all(isinstance(v, int) for v in facts_counts) and sum(facts_counts) != facts.get("exchanges_total"):
+        problems.append("partition in docs/facts.json: "
+                        + " + ".join(str(v) for v in facts_counts)
+                        + f" = {sum(facts_counts)} (expected {facts.get('exchanges_total')})")
+    for status, key in PARTITION:
+        if counts[status] != facts.get(key):
+            problems.append(f"{key}: exchanges/ has {counts[status]} with fetcher_status "
+                            f"{status!r}, docs/facts.json has {facts.get(key)}")
+    return problems, summary
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     p.add_argument("--root", type=Path, default=REPO_ROOT, help="repository root")
     p.add_argument("--files", nargs="+", help="files to scan, relative to the root")
+    p.add_argument("--skip-partition", action="store_true",
+                   help="do not check fetcher_status counts in exchanges/ against facts.json")
     args = p.parse_args(argv)
     root = args.root
     try:
@@ -209,14 +273,25 @@ def main(argv: list[str] | None = None) -> int:
                 source = "VERSION" if w["fact"] == "VERSION" else "facts.json"
                 print(f"{rel}:{w['line']}: says {w['actual']} but {source} has {w['expected']} "
                       f"for {w['fact']}: \"{w['text']}\"")
+        partition_problems, partition_summary = (
+            ([], "") if args.skip_partition else check_partition(root, facts))
     except ReadProblem as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     if bad:
         print(f"\n{bad} claim(s) disagree with docs/facts.json or VERSION. Fix the prose; "
               "if the tree changed, run tools/update_facts.py first.")
+    if partition_problems:
+        print("\nfetcher_status partition does not hold:")
+        for problem in partition_problems:
+            print(f"  {problem}")
+        print("Run tools/build.py then tools/update_facts.py if exchanges/ changed; otherwise "
+              "fix the fetcher_status in exchanges/.")
+    if bad or partition_problems:
         return 1
     print(f"OK: {total} claim(s) in {len(args.files or DEFAULT_FILES)} file(s) match docs/facts.json")
+    if not args.skip_partition:
+        print(f"OK: fetcher_status partition {partition_summary} matches exchanges/ and docs/facts.json")
     return 0
 
 
