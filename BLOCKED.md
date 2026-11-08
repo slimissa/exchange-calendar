@@ -961,20 +961,25 @@ Was blocked, no longer is. Kept as the history of the verdict change.
 
 **Last verified:** 2026-11-08
 
-- **Resolved 2026-11-08:** the trading calendar is readable via Playwright; fetcher added.
-- **Earlier verdict (2026-09-06):** BLOCKED — the raw HTML had no calendar
-  content, which suggested a dynamically loaded widget.
-- **Finding (2026-11-08):** the rendered page has a `div.calendar` with the year
-  in `#div_year_header` and twelve month tables. The page marks every Saturday
-  and Sunday as a holiday; a holiday cell may carry a `title` with the name.
-  `XBULFetcher` (`tools/fetch_render.py`) records weekday holidays only: titled
-  ones with their title, untitled ones as "Holiday". Titled weekend holidays are
-  not recorded.
-- **Limits:** read from a reconnaissance extract, not a live fetch, and only the
-  year shown on the page. Six 2026 weekday holidays have no title on the page
-  (2026-04-03, 04-06, 05-25, 09-07, 12-28, 12-31); the legend that might name
-  them was not in the extract. `fetcher_status` is `ci_unreachable` because CI
-  has not run it, not because GitHub runners were shown to be refused.
+- **Checked:** bse-sofia.bg's trading-calendar page, rendered in a browser
+  (reconnaissance extract of 2026-11-08); an earlier check on 2026-09-06 found
+  no calendar content in the raw HTML because the widget is rendered client-side.
+- **robots.txt (2026-11-08):** https://www.bse-sofia.bg/robots.txt is
+  `User-agent: *` / `Disallow: /`, which disallows every path on the domain for
+  all automated clients. The page renders a `div.calendar` with 12 monthly
+  tables (a different layout from XSWX, which is one table of rows); the /bg/
+  version is reported to render the same structure in Bulgarian (not checked
+  here). Neither is allowed by robots.txt. The fetcher (`XBULFetcher`) is built
+  and tested (8 test cases pass) but respects robots.txt and returns BLOCKED.
+  The data is curated by hand from the page.
+- **Reading rules, if robots.txt ever allows it:** the page marks every
+  Saturday and Sunday as a holiday, so weekend cells are not recorded; a
+  weekday holiday cell without a title is recorded as "Holiday". Six 2026
+  weekday holidays have no title (2026-04-03, 04-06, 05-25, 09-07, 12-28,
+  12-31); the legend that might name them was not in the extract.
+- **Verdict:** BLOCKED (robots.txt disallows all paths; the fetcher respects it).
+- **Registry status:** `fetcher_status` is still `ci_unreachable`, set before
+  the robots.txt finding; `blocked` would match this verdict.
 
 <a id="built-tracking"></a>
 # Not blocked: built, with tracking notes
