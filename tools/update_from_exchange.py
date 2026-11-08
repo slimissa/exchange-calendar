@@ -6159,6 +6159,215 @@ class XSWXFetcher(ExchangeFetcher):
         return data
 
 
+class XBULFetcher(ExchangeFetcher):
+    """
+    Fetcher for the Bulgarian Stock Exchange (XBUL) non-trading days, read
+    from the rendered DOM (tools/fetch_render.py, Playwright).
+
+    Source: bse-sofia.bg/en/trading-calendar. A client-side component builds
+    div.calendar: div#div_year_header holds the year; inside
+    div#calendar_container, twelve div.months blocks each hold a div.name
+    (the month) and a table whose tbody has 6 rows of 7 td cells, Monday
+    first. A td whose class includes "holiday" is a non-trading day; its
+    title attribute, when present, is the holiday name.
+
+    Reading rules (the page marks every Saturday and Sunday "holiday"):
+    - weekend cells are not recorded (weekends are already non-trading days;
+      the registry has weekend_days [5, 6]); titled weekend holidays are
+      listed in ``last_note``;
+    - a weekday holiday cell without a title is recorded with the name
+      "Holiday" (the source gives no name);
+    - a titled cell that is not marked "holiday" is ambiguous and raises
+      BLOCKED, as does anything that breaks the layout: no calendar div, no
+      year, months not January to December in order, a row without 7 cells,
+      a day that is not a date of that month, or a column that disagrees
+      with the date's weekday.
+
+    Only the year shown on the page is read. Not yet verified from CI; the
+    DOM structure comes from the reconnaissance extract of 2026-11-08
+    (tests/fixtures/xbul_calendar.html).
+    """
+
+    # The page shows a single year; assumed to change about once a year.
+    MAX_AGE_DAYS = 400
+
+    # Not "[class*=calendar]": that also matches the nav icon
+    # <i class="icon-trading-calendar">, which is there before the calendar
+    # renders, so the wait could return too early.
+    WAIT_SELECTOR = "#calendar_container table"
+    RENDER_TIMEOUT = 90
+    MONTHS = ("January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December")
+
+    def __init__(self):
+        super().__init__(
+            mic="XBUL",
+            name="Bulgarian Stock Exchange",
+            source_url="https://www.bse-sofia.bg/en/trading-calendar",
+            rate_limit=2.0
+        )
+        self.last_note: str = ""
+        self._render_error: str = ""
+
+    @staticmethod
+    def _fetch_render_module():
+        try:
+            import fetch_render
+        except ImportError:
+            sys.path.insert(0, str(Path(__file__).resolve().parent))
+            import fetch_render
+        return fetch_render
+
+    def _make_request(self) -> Optional[str]:
+        """Render the page with Playwright (render_js), honoring robots.txt
+        and the rate limiter like the other transports."""
+        if not self._check_robots_allowed():
+            self._render_error = "robots.txt disallows the page"
+            logger.error(f"robots.txt disallows fetching {self.source_url} for {self.mic}")
+            return None
+
+        self.rate_limiter.wait_if_needed(self.mic)
+        fr = self._fetch_render_module()
+        try:
+            html = fr.render_js(self.source_url, self.WAIT_SELECTOR,
+                                timeout=self.RENDER_TIMEOUT)
+        except fr.RenderTimeout as e:
+            self._render_error = str(e)
+            logger.error(f"{self.mic}: {e}")
+            return None
+        except Exception as e:  # Playwright missing, browser crash, network
+            self._render_error = f"{type(e).__name__}: {e}"
+            logger.error(f"{self.mic}: render failed: {self._render_error}")
+            return None
+
+        self.rate_limiter.mark_request(self.mic)
+        self._record_manifest(html.encode("utf-8"), status="ok")
+        return html
+
+    def parse_html(self, html: str) -> List[HolidayEntry]:
+        self.last_note = ""
+        if not html or not html.strip():
+            raise ParseError("BLOCKED: rendered page is empty")
+
+        soup = BeautifulSoup(html, "html.parser")
+        calendar_div = soup.select_one("div.calendar")
+        if calendar_div is None:
+            raise ParseError("BLOCKED: div.calendar is not in the rendered page; "
+                             "the page may have been restructured.")
+
+        header = calendar_div.select_one("#div_year_header")
+        year_text = header.get_text(strip=True) if header is not None else ""
+        if not re.fullmatch(r"\d{4}", year_text):
+            raise ParseError(f"BLOCKED: the year header is missing or not a year "
+                             f"({year_text!r}).")
+        year = int(year_text)
+
+        blocks = calendar_div.select("#calendar_container div.months")
+        names = []
+        for block in blocks:
+            name_div = block.select_one("div.name")
+            names.append(name_div.get_text(strip=True) if name_div is not None else "")
+        if names != list(self.MONTHS):
+            raise ParseError(f"BLOCKED: months are not January to December in "
+                             f"order (got {names}).")
+
+        holidays: List[HolidayEntry] = []
+        weekend_titled: List[str] = []
+        weekend_cells = 0
+        untitled = 0
+        for month, block in enumerate(blocks, start=1):
+            table = block.find("table")
+            rows = table.select("tbody tr") if table is not None else []
+            if not rows:
+                raise ParseError(f"BLOCKED: no table rows for {self.MONTHS[month - 1]}.")
+            for row in rows:
+                cells = row.find_all("td", recursive=False)
+                if len(cells) != 7:
+                    raise ParseError(f"BLOCKED: a {self.MONTHS[month - 1]} row has "
+                                     f"{len(cells)} cells, not 7.")
+                for column, cell in enumerate(cells):
+                    text = cell.get_text(strip=True)
+                    if not text:
+                        continue
+                    if not text.isdigit():
+                        raise ParseError(f"BLOCKED: cell text {text!r} in "
+                                         f"{self.MONTHS[month - 1]} is not a day.")
+                    try:
+                        day = datetime(year, month, int(text))
+                    except ValueError:
+                        raise ParseError(f"BLOCKED: {year}-{month:02d}-{text} is not a date.")
+                    if day.weekday() != column:
+                        raise ParseError(f"BLOCKED: {day:%Y-%m-%d} sits in column {column} "
+                                         f"but is weekday {day.weekday()}.")
+
+                    title = (cell.get("title") or "").strip()
+                    is_holiday = "holiday" in (cell.get("class") or [])
+                    if title and not is_holiday:
+                        raise ParseError(f"BLOCKED: {day:%Y-%m-%d} has a title "
+                                         f"({title!r}) but is not marked as a holiday.")
+                    if not is_holiday:
+                        continue
+                    if day.weekday() >= 5:
+                        weekend_cells += 1
+                        if title:
+                            weekend_titled.append(f"{day:%Y-%m-%d} {title}")
+                        continue
+                    if not title:
+                        untitled += 1
+                    holidays.append(HolidayEntry(
+                        date=day.strftime("%Y-%m-%d"),
+                        name=title or "Holiday",
+                        status="closed",
+                        source_url=self.source_url
+                    ))
+
+        if not holidays:
+            raise ParseError("BLOCKED: the calendar has no weekday holidays.")
+
+        notes = [f"only {year}, the year shown on the page, is read"]
+        if untitled:
+            notes.append(f"{untitled} weekday holiday cell(s) have no title and are "
+                         f"recorded as 'Holiday'")
+        if weekend_cells:
+            notes.append(f"{weekend_cells} weekend cell(s) not recorded (weekends are "
+                         f"already non-trading days)")
+        if weekend_titled:
+            notes.append("titled weekend holidays not recorded: " + "; ".join(weekend_titled))
+        self.last_note = "; ".join(notes)
+        return holidays
+
+    def fetch(self) -> Optional[ExchangeData]:
+        """Render and parse the XBUL trading calendar"""
+        html = self._make_request()
+        if not html:
+            raise FetchError(
+                f"BLOCKED: could not render the XBUL page"
+                f"{': ' + self._render_error if self._render_error else ''}")
+
+        holidays = self.parse_html(html)
+        logger.warning(f"XBUL: {self.last_note}")
+
+        data = ExchangeData(
+            code="XBUL",
+            mic="XBUL",
+            name=self.name,
+            timezone="Europe/Sofia",
+            regular_open="09:30",
+            regular_close="14:00",
+            holidays=holidays,
+            source_urls=[self.source_url],
+            currency="EUR",
+            country="Bulgaria",
+            city="Sofia"
+        )
+
+        errors = data.validate()
+        if errors:
+            raise ValidationError(f"Invalid data: {', '.join(errors)}")
+
+        return data
+
+
 class ExchangeFetcherRegistry:
     """Registry of available exchange fetchers"""
     
