@@ -540,7 +540,7 @@ print(m.group(1).strip())
 PYEOF
 
 # Tag using the file
-git tag -a "v$VERSION" -F "$TAG_MESSAGE_FILE"
+git tag -a "v$VERSION" -F "$TAG_MESSAGE_FILE" --cleanup=verbatim --cleanup=verbatim
 
 # Verify git recorded the same message. Compare after stripping trailing
 # newlines: `git for-each-ref` appends one newline to its output, and the
