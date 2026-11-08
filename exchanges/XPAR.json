@@ -320,6 +320,12 @@
     }
   ],
   "timezone": "Europe/Paris",
+  "verification": {
+    "basis": "divergence_report",
+    "class": "reference_verified",
+    "last_checked": "2026-11-08",
+    "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
+  },
   "weekend_days": [
     5,
     6

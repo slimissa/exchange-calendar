@@ -106,8 +106,8 @@
       {
         "date": "2026-10-20",
         "name": "Durga Puja",
-        "status": "closed",
-        "source_url": "https://www.dsebd.org/trading-calendar"
+        "source_url": "https://www.dsebd.org/trading-calendar",
+        "status": "closed"
       },
       {
         "date": "2026-12-16",
@@ -328,6 +328,12 @@
     }
   ],
   "timezone": "Asia/Dhaka",
+  "verification": {
+    "basis": "BLOCKED.md",
+    "class": "single_source",
+    "last_checked": "2026-11-08",
+    "reference_note": "BLOCKED (by design, not by inability)."
+  },
   "weekend_days": [
     4,
     5

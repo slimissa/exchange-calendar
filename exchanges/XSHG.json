@@ -566,6 +566,12 @@
     }
   ],
   "timezone": "Asia/Shanghai",
+  "verification": {
+    "basis": "ci_network",
+    "class": "ci_unreachable",
+    "last_checked": "2026-11-08",
+    "reference_note": "CI-UNREACHABLE (not permanently blocked)."
+  },
   "weekend_days": [
     5,
     6

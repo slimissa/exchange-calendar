@@ -303,6 +303,12 @@
     }
   ],
   "timezone": "Asia/Qatar",
+  "verification": {
+    "basis": "BLOCKED.md",
+    "class": "single_source",
+    "last_checked": "2026-11-08",
+    "reference_note": "BLOCKED (dead URL: HTTP 404; site reachable)."
+  },
   "weekend_days": [
     4,
     5

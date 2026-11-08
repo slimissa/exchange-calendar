@@ -4158,6 +4158,12 @@
     }
   ],
   "timezone": "Asia/Hong_Kong",
+  "verification": {
+    "basis": "ci_network",
+    "class": "ci_unreachable",
+    "last_checked": "2026-11-08",
+    "reference_note": "CI-UNREACHABLE (not a block on the source)."
+  },
   "weekend_days": [
     5,
     6

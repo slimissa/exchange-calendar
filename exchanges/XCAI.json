@@ -361,6 +361,12 @@
     }
   ],
   "timezone": "Africa/Cairo",
+  "verification": {
+    "basis": "BLOCKED.md",
+    "class": "single_source",
+    "last_checked": "2026-11-08",
+    "reference_note": "BLOCKED (data staleness, not inaccessibility)."
+  },
   "weekend_days": [
     4,
     5

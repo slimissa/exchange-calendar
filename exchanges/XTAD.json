@@ -267,6 +267,12 @@
     }
   ],
   "timezone": "Asia/Dubai",
+  "verification": {
+    "basis": "BLOCKED.md",
+    "class": "single_source",
+    "last_checked": "2026-11-08",
+    "reference_note": "BLOCKED (no holiday endpoint: _next/data files have no holiday keys)."
+  },
   "weekend_days": [
     5,
     6

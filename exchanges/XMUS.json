@@ -331,6 +331,12 @@
     }
   ],
   "timezone": "Asia/Muscat",
+  "verification": {
+    "basis": "BLOCKED.md",
+    "class": "single_source",
+    "last_checked": "2026-11-08",
+    "reference_note": "The Verdict in BLOCKED.md is marked superseded; see the entry for the current finding."
+  },
   "weekend_days": [
     4,
     5

@@ -360,6 +360,12 @@
     }
   ],
   "timezone": "Africa/Lagos",
+  "verification": {
+    "basis": "ci_network",
+    "class": "ci_unreachable",
+    "last_checked": "2026-11-08",
+    "reference_note": "CI-UNREACHABLE (not a parser bug, not permanently blocked)."
+  },
   "weekend_days": [
     5,
     6

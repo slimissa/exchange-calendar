@@ -302,6 +302,12 @@
     }
   ],
   "timezone": "Asia/Kuwait",
+  "verification": {
+    "basis": "BLOCKED.md",
+    "class": "single_source",
+    "last_checked": "2026-11-08",
+    "reference_note": "BLOCKED (HTTP 403 on 2026-09-17)."
+  },
   "weekend_days": [
     4,
     5

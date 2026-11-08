@@ -443,6 +443,12 @@
     }
   ],
   "timezone": "America/Cayman",
+  "verification": {
+    "basis": "fetcher:implemented",
+    "class": "source_verified",
+    "last_checked": "2026-11-08",
+    "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
+  },
   "weekend_days": [
     5,
     6
