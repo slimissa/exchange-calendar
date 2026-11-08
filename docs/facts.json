@@ -1,10 +1,10 @@
 {
   "csv_tsv_files": 20,
-  "exchanges_blocked_total": 28,
+  "exchanges_blocked_total": 29,
   "exchanges_no_fetcher": 26,
   "exchanges_total": 74,
-  "fetchers_blocked": 2,
-  "fetchers_ci_unreachable": 4,
+  "fetchers_blocked": 3,
+  "fetchers_ci_unreachable": 3,
   "fetchers_implemented": 42,
   "fetchers_registered": 48,
   "parquet_files": 5,
