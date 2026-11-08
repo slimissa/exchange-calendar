@@ -30,6 +30,12 @@
     "open": "09:00"
   },
   "timezone": "Europe/London",
+  "verification": {
+    "basis": "BLOCKED.md",
+    "class": "single_source",
+    "last_checked": "2026-11-08",
+    "reference_note": "BLOCKED (test fixture)."
+  },
   "weekend_days": [
     5,
     6

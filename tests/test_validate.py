@@ -44,6 +44,12 @@ def make_valid_exchange(code="TEST", mic="TEST"):
         "country": "United States of America",
         "country_code": "US",
         "fetcher_status": "none",
+        "verification": {
+            "class": "single_source",
+            "basis": "BLOCKED.md",
+            "last_checked": "2026-11-08",
+            "reference_note": "BLOCKED (test fixture).",
+        },
 
         "code": code,
         "name": f"Test Exchange {code}",
