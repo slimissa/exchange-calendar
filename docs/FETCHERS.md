@@ -473,6 +473,10 @@ at that page.
 
 <a id="xswx"></a>
 ## SIX Swiss Exchange (XSWX)
+\n- Status: `implemented`.
+
+\n- Status: `implemented`.
+
 
 - Status: `ci_unreachable` (registered; the live-fetcher CI jobs install no Chromium, so CI does not verify it)
 - Fetcher: `XSWXFetcher`, rendered with `tools/fetch_render.py` (`render_js`, selector `[class*=calendar]`)
