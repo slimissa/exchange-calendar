@@ -327,6 +327,16 @@ impl Registry {
         false
     }
 
+    /// Return the verification object for `mic`, or `None` if the MIC is
+    /// unknown (or the calendar.json predates schema 2.2.0).
+    ///
+    /// Case-insensitive. `reference_compared` means a reference library
+    /// covers the exchange and the registry is compared with it, not that the
+    /// two agree.
+    pub fn verification(&self, mic: &str) -> Option<&crate::exchange::Verification> {
+        self.exchange(mic).and_then(|ex| ex.verification.as_ref())
+    }
+
     pub fn confidence(&self, code: &str, year: i32) -> Option<&crate::exchange::ConfidenceEntry> {
         self.exchange(code)
             .and_then(|ex| ex.confidence.get(&year.to_string()))
@@ -449,6 +459,7 @@ mod tests {
             ad_hoc_closures: None,
             generation_range: None,
             confidence: Default::default(),
+            verification: None,
         }
     }
 
@@ -841,5 +852,23 @@ mod tests {
         let conf_b = b.get("confidence").unwrap().as_object().unwrap();
         assert!(conf_b.contains_key("2026"));
         assert_eq!(a.get("_as_of").unwrap().as_str().unwrap(), "2026-01-01");
+    }
+
+    #[test]
+    fn test_verification_known_mic() {
+        let r = load_real_registry();
+        let v = r.verification("XSWX").expect("XSWX has a verification object");
+        assert!(["reference_compared", "source_verified", "single_source", "ci_unreachable"]
+            .contains(&v.class.as_str()));
+        assert!(!v.basis.is_empty() && !v.reference_note.is_empty());
+        assert_eq!(v.last_checked.len(), 10);
+        // case-insensitive, like exchange()
+        assert_eq!(r.verification("xswx"), r.verification("XSWX"));
+    }
+
+    #[test]
+    fn test_verification_unknown_mic() {
+        let r = load_real_registry();
+        assert!(r.verification("XXXX").is_none());
     }
 }

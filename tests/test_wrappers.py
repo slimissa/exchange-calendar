@@ -296,6 +296,25 @@ class TestExchangeProperties:
         assert c["source"] == "fetcher"
         assert c["level"] == "high"
 
+    def test_verification_known_mic(self):
+        from exchange_calendar import CalendarRegistry
+        r = CalendarRegistry()
+        v = r.verification("XSWX")
+        assert v is not None
+        assert set(v) == {"class", "basis", "last_checked", "reference_note"}
+        assert v["class"] in {"reference_compared", "source_verified",
+                              "single_source", "ci_unreachable"}
+        # the copy is detached from the registry
+        v["class"] = "changed"
+        assert r.verification("XSWX")["class"] != "changed"
+        # case-insensitive, like exchange()
+        assert r.verification("xswx")["class"] == r.verification("XSWX")["class"]
+
+    def test_verification_unknown_mic(self):
+        from exchange_calendar import CalendarRegistry
+        r = CalendarRegistry()
+        assert r.verification("XXXX") is None
+
     def test_confidence_unknown_year(self):
         from exchange_calendar import CalendarRegistry
         r = CalendarRegistry()

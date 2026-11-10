@@ -59,6 +59,7 @@ class Exchange {
         this.extendedHours = data.extended_hours || {};
         this.sessions = data.sessions || [];
         this.confidence = data.confidence || {};
+        this.verification = data.verification || null;
 
         const holidays = data.holidays || {};
         const explicit = holidays.explicit || [];

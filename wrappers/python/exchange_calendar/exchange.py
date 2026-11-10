@@ -69,6 +69,7 @@ class Exchange:
         self.extended_hours = data.get("extended_hours", {})
         self.sessions = data.get("sessions", [])
         self.confidence = data.get("confidence", {}) or {}
+        self.verification = data.get("verification")
 
         holidays = data.get("holidays", {})
         self._explicit = holidays.get("explicit", [])

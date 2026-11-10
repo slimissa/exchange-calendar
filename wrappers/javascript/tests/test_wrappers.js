@@ -864,3 +864,23 @@ describe('Dated regular_hours', () => {
         assert.equal(r.get('XHKG').regularHoursOn('2011-03-07').open, '09:30');
     });
 });
+
+describe('verification(mic)', () => {
+    test('returns the verification object for a known MIC', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        const v = r.verification('XSWX');
+        assert.deepEqual(Object.keys(v).sort(), ['basis', 'class', 'last_checked', 'reference_note']);
+        assert.ok(['reference_compared', 'source_verified', 'single_source', 'ci_unreachable']
+            .includes(v.class));
+        // a copy: changing it does not change the registry
+        v.class = 'changed';
+        assert.notEqual(r.verification('XSWX').class, 'changed');
+        // case-insensitive, like exchange()
+        assert.equal(r.verification('xswx').class, r.verification('XSWX').class);
+    });
+
+    test('returns null for an unknown MIC', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        assert.equal(r.verification('XXXX'), null);
+    });
+});

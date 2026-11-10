@@ -71,6 +71,9 @@ type ExchangeData struct {
 	AdHocClosures []HolidayEntry `json:"ad_hoc_closures,omitempty"`
 	GenerationRange []string     `json:"generation_range,omitempty"`
 	Confidence map[string]ConfidenceEntry `json:"confidence"`
+	// Verification is the schema 2.2.0 verification object; nil when the
+	// calendar.json predates it.
+	Verification *Verification `json:"verification,omitempty"`
 }
 
 // UnmarshalJSON accepts regular_hours as one object or as a list of objects
@@ -131,11 +134,25 @@ type Exchange struct {
 	ExtendedHours ExtendedHours
 	Sessions     []Session
 	Confidence map[string]ConfidenceEntry
+	// Verification is nil when the calendar.json has no verification object.
+	Verification *Verification
 
 	// Unexported lookup maps for O(1) queries
 	holidayByDate       map[string]HolidayEntry
 	statusByDate        map[string]string
 	earlyCloseTimeByDate map[string]string
+}
+
+// Verification says how an exchange's calendar is verified (schema 2.2.0,
+// derived). Class is one of reference_compared, source_verified,
+// single_source, ci_unreachable. reference_compared means a reference library
+// covers the exchange and the registry is compared with it, not that the two
+// agree (see docs/DIVERGENCE.md).
+type Verification struct {
+	Class         string `json:"class"`
+	Basis         string `json:"basis"`
+	LastChecked   string `json:"last_checked"`
+	ReferenceNote string `json:"reference_note"`
 }
 
 type ConfidenceEntry struct {
@@ -168,6 +185,7 @@ func NewExchange(data ExchangeData) (*Exchange, error) {
 		statusByDate:         make(map[string]string),
 		earlyCloseTimeByDate: make(map[string]string),
 		Confidence:    confidenceOrEmpty(data.Confidence),
+		Verification:  copyVerification(data.Verification),
 	}
 
 	// Index all holidays
@@ -598,6 +616,25 @@ func (e *Exchange) ListHolidays(year ...int) []HolidayEntry {
 	})
 
 	return entries
+}
+
+// Verification returns a copy of the verification object for mic, or nil if
+// the MIC is unknown or the calendar.json has no verification object.
+// Case-insensitive, like Exchange.
+func (r *Registry) Verification(mic string) *Verification {
+	ex := r.Exchange(mic)
+	if ex == nil {
+		return nil
+	}
+	return copyVerification(ex.Verification)
+}
+
+func copyVerification(v *Verification) *Verification {
+	if v == nil {
+		return nil
+	}
+	c := *v
+	return &c
 }
 
 func (r *Registry) Confidence(mic string, year int) (ConfidenceEntry, bool) {

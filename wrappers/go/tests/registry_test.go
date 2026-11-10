@@ -437,6 +437,44 @@ func TestConfidence(t *testing.T) {
 	}
 }
 
+func TestVerificationKnownMIC(t *testing.T) {
+	reg, err := exchangecalendar.LoadRegistry("../../../calendar.json")
+	if err != nil {
+		t.Fatalf("load: %v", err)
+	}
+	v := reg.Verification("XSWX")
+	if v == nil {
+		t.Fatal("XSWX has no verification object")
+	}
+	switch v.Class {
+	case "reference_compared", "source_verified", "single_source", "ci_unreachable":
+	default:
+		t.Errorf("unexpected class %q", v.Class)
+	}
+	if v.Basis == "" || v.ReferenceNote == "" || len(v.LastChecked) != 10 {
+		t.Errorf("incomplete verification: %+v", v)
+	}
+	// a copy: changing it does not change the registry
+	v.Class = "changed"
+	if reg.Verification("XSWX").Class == "changed" {
+		t.Error("Verification returned the registry's own object")
+	}
+	// case-insensitive, like Exchange
+	if lower := reg.Verification("xswx"); lower == nil || lower.Class != reg.Verification("XSWX").Class {
+		t.Errorf("lower-case lookup differs: %+v", lower)
+	}
+}
+
+func TestVerificationUnknownMIC(t *testing.T) {
+	reg, err := exchangecalendar.LoadRegistry("../../../calendar.json")
+	if err != nil {
+		t.Fatalf("load: %v", err)
+	}
+	if v := reg.Verification("XXXX"); v != nil {
+		t.Errorf("unknown MIC should give nil, got %+v", v)
+	}
+}
+
 func TestAsOf(t *testing.T) {
 	reg, err := exchangecalendar.LoadRegistry("../../../calendar.json")
 	if err != nil {

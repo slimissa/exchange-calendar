@@ -212,6 +212,10 @@ pub struct ExchangeData {
 
     #[serde(default)]
     pub confidence: std::collections::HashMap<String, ConfidenceEntry>,
+
+    /// Verification class (schema 2.2.0); absent in older calendar.json files.
+    #[serde(default)]
+    pub verification: Option<Verification>,
 }
 
 /// Holiday data container.
@@ -247,6 +251,20 @@ pub struct ConfidenceEntry {
     pub level: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub note: Option<String>,
+}
+
+/// How an exchange's calendar is verified (schema 2.2.0, derived).
+///
+/// `class` is one of `reference_compared`, `source_verified`,
+/// `single_source`, `ci_unreachable`. `reference_compared` means a reference
+/// library covers the exchange and the registry is compared with it, not that
+/// the two agree (see docs/DIVERGENCE.md).
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
+pub struct Verification {
+    pub class: String,
+    pub basis: String,
+    pub last_checked: String,
+    pub reference_note: String,
 }
 
 impl std::fmt::Display for ExchangeError {
@@ -331,6 +349,7 @@ pub struct Exchange {
 
 
     pub confidence: std::collections::HashMap<String, ConfidenceEntry>,
+    pub verification: Option<Verification>,
 
     // Private lookup maps
     holiday_by_date: HashMap<String, HolidayEntry>,
@@ -359,6 +378,7 @@ impl Exchange {
             status_by_date: HashMap::new(),
             early_close_time_by_date: HashMap::new(),
             confidence: data.confidence.clone(),
+            verification: data.verification.clone(),
         };
 
         // Index all holidays
@@ -770,6 +790,7 @@ mod tests {
             ad_hoc_closures: None,
             generation_range: None,
             confidence: Default::default(),
+            verification: None,
         };
 
         Exchange::new(data).unwrap()
@@ -801,6 +822,7 @@ mod tests {
             ad_hoc_closures: None,
             generation_range: None,
             confidence: Default::default(),
+            verification: None,
         };
         assert!(matches!(Exchange::new(data), Err(ExchangeError::MissingField("code"))));
     }
@@ -820,6 +842,7 @@ mod tests {
             ad_hoc_closures: None,
             generation_range: None,
             confidence: Default::default(),
+            verification: None,
         };
         assert!(matches!(Exchange::new(data), Err(ExchangeError::CodeMismatch { .. })));
     }
@@ -839,6 +862,7 @@ mod tests {
             ad_hoc_closures: None,
             generation_range: None,
             confidence: Default::default(),
+            verification: None,
         };
         assert!(matches!(Exchange::new(data), Err(ExchangeError::InvalidTimeFormat(_))));
     }
@@ -858,6 +882,7 @@ mod tests {
             ad_hoc_closures: None,
             generation_range: None,
             confidence: Default::default(),
+            verification: None,
         };
         assert!(matches!(Exchange::new(data), Err(ExchangeError::OpenAfterClose { .. })));
     }
@@ -1020,6 +1045,7 @@ mod tests {
             ad_hoc_closures: None,
             generation_range: None,
             confidence: Default::default(),
+            verification: None,
         };
         Exchange::new(data).unwrap()
     }
@@ -1089,6 +1115,7 @@ mod tests {
             ad_hoc_closures: None,
             generation_range: None,
             confidence: Default::default(),
+            verification: None,
         };
         let xhk = Exchange::new(xhk_data).unwrap();
         assert_eq!(
@@ -1126,6 +1153,7 @@ mod tests {
             ad_hoc_closures: None,
             generation_range: None,
             confidence: Default::default(),
+            verification: None,
         };
         let xnys = Exchange::new(ny_data).unwrap();
         assert_eq!(

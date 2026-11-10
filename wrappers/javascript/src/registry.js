@@ -314,6 +314,17 @@ class CalendarRegistry {
         const ex = this.get(mic);
         return ex.isOpen(date, time);
     }
+    /**
+     * Return the verification object for `mic`, or null if the MIC is unknown.
+     * `class` says what the calendar was checked against; `reference_compared`
+     * means a reference library covers the exchange and the registry is compared
+     * with it, not that the two agree.
+     */
+    verification(mic) {
+        const ex = this.exchange(mic);
+        return ex && ex.verification ? { ...ex.verification } : null;
+    }
+
     confidence(mic, year) {
         const ex = this.get(mic);
         const conf = (ex && ex.confidence) || {};

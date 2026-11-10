@@ -91,6 +91,13 @@
         at?: string;     // Required for auction
     }
 
+    export interface Verification {
+        class: 'reference_compared' | 'source_verified' | 'single_source' | 'ci_unreachable';
+        basis: 'divergence_report' | 'fetcher:implemented' | 'ci_network' | 'BLOCKED.md';
+        last_checked: string;
+        reference_note: string;
+    }
+
     export interface ConfidenceEntry {
         source: 'fetcher' | 'manual' | 'predicted';
         last_verified: string | null;
@@ -325,6 +332,7 @@
          */
         toString(): string;
         
+        verification(mic: string): Verification | null;
         confidence(mic: string, year: number): ConfidenceEntry | null;
         asOf(mic: string, date: string): Record<string, unknown>;
         

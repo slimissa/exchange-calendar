@@ -297,6 +297,18 @@ class CalendarRegistry:
             return None
         return conf.get(str(year))
 
+    def verification(self, mic: str) -> dict | None:
+        """Return the verification object for `mic`, or None if the MIC is unknown.
+
+        Keys: class, basis, last_checked, reference_note. `class` says what
+        the calendar was checked against; `reference_compared` means a
+        reference library covers the exchange and the registry is compared
+        with it, not that the two agree (see docs/DIVERGENCE.md).
+        """
+        ex = self.exchange(mic)
+        v = getattr(ex, "verification", None) if ex is not None else None
+        return dict(v) if isinstance(v, dict) else None
+
     def is_open(self, mic: str, date: str, time: str) -> bool:
         """True if the exchange is in any interval session at the given
         local time on the given date. Includes pre_market and post_market
