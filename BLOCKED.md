@@ -24,10 +24,12 @@ The page is real, but the holiday data is not in the HTML a plain request receiv
 <a id="xbah"></a>
 ## XBAH — Bahrain Bourse
 
-**Last verified:** 2026-08-29
+**Last verified:** 2026-11-10
 
 - **Checked:** bahrainbourse.com's "Official Holidays" page (real SharePoint
   site, not JS-rendered overall)
+- **render_fetcher_attempted (2026-11-10):** not_viable — the page times
+  out; the SharePoint webpart does not render.
 - **Finding:** the site itself is real and static, but this specific page's
   content area is empty in the raw HTML — populated by a client-side
   SharePoint webpart. Bahrain Bourse otherwise only announces holidays
@@ -160,11 +162,13 @@ The page is real, but the holiday data is not in the HTML a plain request receiv
 <a id="xnze"></a>
 ## XNZE — New Zealand Exchange (NZX)
 
-**Last verified:** 2026-09-06
+**Last verified:** 2026-11-10
 
 - **Checked:** the official NZX Market Holidays announcement page
   (nzx.com/announcements/443000), the PDF it references, and the
   trading-hours page mentioned in that PDF's own memo text
+- **render_fetcher_attempted (2026-11-10):** not_viable — the calendar is in
+  a linked PDF; the page has no `[class*=calendar]`.
 - **Finding:** all three failed differently. The announcement page's
   holiday content is a JS-loaded "Updating..." placeholder for an embedded
   attachment. The directly-referenced PDF URL 404'd. The trading-hours page
@@ -177,9 +181,11 @@ The page is real, but the holiday data is not in the HTML a plain request receiv
 <a id="xtad"></a>
 ## XTAD — Abu Dhabi Securities Exchange (ADX)
 
-**Last verified:** 2026-09-19
+**Last verified:** 2026-11-10
 
 - **Checked:** adx.ae/about-adx/media/adx-events-calendar
+- **render_fetcher_attempted (2026-11-10):** not_viable — `<main>` is a
+  stock ticker; the calendar is not in the DOM.
 - **Finding:** confirmed Next.js JS-rendered SPA — the raw HTML contains
   only "Loading component..." placeholders, no static holiday data.
 - **Finding (2026-09-19):** adx.ae/about-adx/media/adx-events-calendar returns
@@ -219,11 +225,14 @@ The source answers plain and headless-browser requests with a challenge or an HT
 <a id="xbom"></a>
 ## XBOM — BSE India (Bombay Stock Exchange)
 
-**Last verified:** 2026-09-19
+**Last verified:** 2026-11-10
 
 - **Checked:** bseindia.com/static/markets/marketinfo/listholi.aspx (the
   page referenced by other open-source market-calendar projects, e.g.
   `pandas_market_calendars`)
+- **render_fetcher_attempted (2026-11-10):** blocked — WAF (Akamai); the
+  fetcher returns `BLOCKED`. The render fetcher cannot bypass this; the next
+  mechanism is a WAF-bypass ADR or nothing.
 - **Finding:** the page is real and known to have a parseable structure
   historically, but direct `web_fetch` access returned "Site blocked the
   request (bot detection)" on both the `www.` and `beta.` subdomains.
@@ -341,9 +350,12 @@ The source answers plain and headless-browser requests with a challenge or an HT
 <a id="xkrx"></a>
 ## XKRX — Korea Exchange (KRX)
 
-**Last verified:** 2026-09-19
+**Last verified:** 2026-11-10
 
 - **Checked:** global.krx.co.kr's "Market Closing(Holiday)" page
+- **render_fetcher_attempted (2026-11-10):** blocked — WAF (Akamai); the
+  fetcher returns `BLOCKED`. The render fetcher cannot bypass this; the next
+  mechanism is a WAF-bypass ADR or nothing.
 - **Finding:** confirmed JS/AJAX-driven data grid — a year dropdown
   (2016-2026) and a "Search"/"Download" button, but zero holiday rows in
   the raw HTML. No underlying public API endpoint was found within the time
@@ -482,9 +494,12 @@ The source answers plain and headless-browser requests with a challenge or an HT
 <a id="xses"></a>
 ## XSES — Singapore Exchange (SGX)
 
-**Last verified:** 2026-09-19
+**Last verified:** 2026-11-10
 
 - **Checked:** sgx.com/trading and related pages
+- **render_fetcher_attempted (2026-11-10):** blocked — WAF (Akamai); the
+  fetcher returns `BLOCKED`. The render fetcher cannot bypass this; the next
+  mechanism is a WAF-bypass ADR or nothing.
 - **Finding:** JS-rendered shell. No first-party equities holiday HTML or
   CSV/JSON found — only a derivatives-specific trading circular PDF (a
   different market segment than the equities calendar this registry needs)
@@ -959,11 +974,13 @@ Was blocked, no longer is. Kept as the history of the verdict change.
 <a id="xbul"></a>
 ## XBUL — Bulgarian Stock Exchange
 
-**Last verified:** 2026-11-08
+**Last verified:** 2026-11-10
 
 - **Checked:** bse-sofia.bg's trading-calendar page, rendered in a browser
   (reconnaissance extract of 2026-11-08); an earlier check on 2026-09-06 found
   no calendar content in the raw HTML because the widget is rendered client-side.
+- **render_fetcher_attempted (2026-11-10):** blocked — robots.txt is
+  `Disallow: /`; the render fetcher exists but respects the policy.
 - **robots.txt (2026-11-08):** https://www.bse-sofia.bg/robots.txt is
   `User-agent: *` / `Disallow: /`, which disallows every path on the domain for
   all automated clients. The page renders a `div.calendar` with 12 monthly
