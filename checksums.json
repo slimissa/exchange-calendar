@@ -101,6 +101,7 @@
     "tools/export_parquet.py": "dd74e29de9d45eeeee50bc4fe2193de480593983e6fbfba438f2270069003e40",
     "tools/export_sql.py": "750acbf939c719a8c5d6783673c1295f53380e406c19562bd769b9a0b7586a09",
     "tools/fetch_render.py": "ac57492bde99fd1abcd67396961f0c33272a45d58a1ed817324879f9cda134eb",
+    "tools/gen_readme_table.py": "51a022bcf8311b49ac301370c241077517f188b932898dde808f4098533dfe8e",
     "tools/generate_checksums.py": "99e53706305fabf92ce4e6960d2f1a32c1c06d5a5939ffeb2cc8facb5a631565",
     "tools/generate_dates.py": "277ee77d69011e6be00ba2995f11085c05a870aa58974bcae680460687a4124f",
     "tools/inspect_dom_calendar.py": "c8341f216b53361faa501b59e5ba0f88cd0fa41f24886f35bb78bddabf8634c6",

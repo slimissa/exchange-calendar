@@ -1848,5 +1848,18 @@
     "contains": "XBUL"},
     {"file": "README.md", 
     "contains": "XBUL | ⛔"}
+  ],
+  "2.27.0": [
+    {"file": "tools/check_doc_facts.py", "contains": "def check_partition"},
+    {"file": "tools/check_verification.py", "contains": "EXPECTED"},
+    {"file": "tools/derive_verification.py", "contains": "reference_compared"},
+    {"file": "schema.json", "contains": "reference_compared"},
+    {"file": "wrappers/python/exchange_calendar/registry.py", "contains": "def verification"},
+    {"file": "wrappers/javascript/src/registry.js", "contains": "verification(mic)"},
+    {"file": "wrappers/rust/src/registry.rs", "contains": "pub fn verification"},
+    {"file": "wrappers/go/exchange.go", "contains": "func (r *Registry) Verification"},
+    {"file": "tools/gen_readme_table.py", "contains": "def generate"},
+    {"file": "scripts/release.sh", "contains": "gen_readme_table.py --check"},
+    {"file": "README.md", "contains": "| reference_compared |"}
   ]
 }
