@@ -465,6 +465,7 @@ at that page.
 ## Bulgarian Stock Exchange (XBUL)
 
 - Status: BLOCKED by robots.txt. `XBULFetcher` is registered and tested but returns `BLOCKED:` because the site disallows automated access; the data is curated by hand from the page. `fetcher_status` is `blocked`.
+- **render_fetcher:** blocked by `robots.txt`; the fetcher exists but respects the policy.
 - robots.txt (2026-11-08): <https://www.bse-sofia.bg/robots.txt> is `User-agent: *` / `Disallow: /`, which disallows every path on the domain.
 - Page: <https://www.bse-sofia.bg/en/trading-calendar> renders a `div.calendar` with 12 monthly tables (year in `#div_year_header`; holiday cells carry the class `holiday`, and a `title` with the name when the page gives one). The /bg/ version is reported to render the same structure in Bulgarian (not checked here).
 - Fetcher: `XBULFetcher`, rendered with `tools/fetch_render.py` (wait selector `#calendar_container table`, timeout 90 s). The page marks every Saturday and Sunday as a holiday, so weekend cells are not recorded; a weekday holiday cell without a title is recorded as "Holiday". A page that cannot be read, or whose structure is ambiguous, raises `BLOCKED:`.
@@ -475,6 +476,7 @@ at that page.
 
 - Status: `ci_unreachable` (registered; the live-fetcher CI jobs install no Chromium, so CI does not verify it)
 - Fetcher: `XSWXFetcher`, rendered with `tools/fetch_render.py` (`render_js`, selector `[class*=calendar]`)
+- **render_fetcher:** the reference implementation. The page renders a React table of weekday, `DD.MM.YYYY` date and name (10 holiday rows for 2026) on the default "Trading Holiday Calendar" tab; the fetcher reads those rows through `render_js` with selector `[class*=calendar]`.
 - Source: <https://www.six-group.com/en/market-data/news-tools/trading-currency-holiday-calendar.html>, default tab "Trading Holiday Calendar" (h3 "Market Holidays of the Swiss Stock Exchange", ReactTable of weekday, DD.MM.YYYY, name). The "Currency Holiday Calendar" tab and the PDF are not read.
 - Calibration (2026-11-07): calibrated against the reconnaissance extract of the page, not against a live fetch from CI. The fixture and the fetcher share the same source, so this detects parsing errors, not source errors. Result: 10 of 10 rows for 2026, 0 missing, 0 extra, 0 name mismatches.
 - Known limits: the year selector (2026, 2027) is client-side and `render_js` does not expose the page, so only 2026 is read; the fetcher records the gap in `last_note`. A row with a missing cell, a bad date or a weekday that disagrees with its date is skipped and counted. A page that cannot be read raises an error starting `BLOCKED:`.
