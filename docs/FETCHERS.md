@@ -473,12 +473,10 @@ at that page.
 
 <a id="xswx"></a>
 ## SIX Swiss Exchange (XSWX)
-\n- Status: `implemented`.
-
-\n- Status: `implemented`.
 
 
-- Status: `ci_unreachable` (registered; the live-fetcher CI jobs install no Chromium, so CI does not verify it)
+
+- Status: `implemented` (a fetcher in CI reads the source; the live dry-run confirms 10 of 10 dates).
 - Fetcher: `XSWXFetcher`, rendered with `tools/fetch_render.py` (`render_js`, selector `[class*=calendar]`)
 - **render_fetcher:** the reference implementation. The page renders a React table of weekday, `DD.MM.YYYY` date and name (10 holiday rows for 2026) on the default "Trading Holiday Calendar" tab; the fetcher reads those rows through `render_js` with selector `[class*=calendar]`.
 - Source: <https://www.six-group.com/en/market-data/news-tools/trading-currency-holiday-calendar.html>, default tab "Trading Holiday Calendar" (h3 "Market Holidays of the Swiss Stock Exchange", ReactTable of weekday, DD.MM.YYYY, name). The "Currency Holiday Calendar" tab and the PDF are not read.
