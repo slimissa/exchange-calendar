@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [2.27.0] - 2026-11-08
+## [2.27.0] - 2026-11-10
 
 ### Added
 - `verification` object on every exchange (schema 2.2.0, required): `class`, `basis`, `last_checked`, `reference_note`. The class is derived from `fetcher_status` and from `docs/DIVERGENCE.md` by `tools/derive_verification.py` and checked by `tools/check_verification.py`: `reference_compared` 48, `source_verified` 9, `single_source` 14, `ci_unreachable` 3. `reference_compared` means a reference library covers the exchange and the registry is compared with it; it does not mean the two agree (20 of the 48 have disagreements in `docs/DIVERGENCE.md`) and it is not a check against the exchange's own calendar.
