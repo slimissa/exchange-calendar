@@ -409,82 +409,84 @@ A consumer querying a date can read the exchange's `fetcher_status` and the year
 
 One row per exchange, from `exchanges/*.json`. The icon is `fetcher_status`: ✅ `implemented`, ⚠️ `ci_unreachable`, ⛔ `blocked` or `none`. `tools/check_doc_links.py` fails CI if this table disagrees with the JSON or with `BLOCKED.md`.
 
-| Exchange | MIC | Status | Source | Notes |
-|----------|-----|:------:|--------|-------|
-| Qatar Exchange | DSMD | ⛔ | qe.com.qa | [BLOCKED.md#dsmd](BLOCKED.md#dsmd) |
-| Euronext Amsterdam | XAMS | ✅ | euronext.com | [#xams](docs/FETCHERS.md#xams) |
-| Australian Securities Exchange | XASX | ✅ | asx.com.au | [#xasx](docs/FETCHERS.md#xasx) |
-| Athens Exchange | XATH | ⛔ | athens.euronext.com | [BLOCKED.md#xath](BLOCKED.md#xath) |
-| Bahrain Bourse | XBAH | ⛔ | bahrainbourse.com | [BLOCKED.md#xbah](BLOCKED.md#xbah) |
-| Bermuda Stock Exchange | XBDA | ✅ | bsx.com | [#xbda](docs/FETCHERS.md#xbda) |
-| Beirut Stock Exchange | XBEY | ⛔ | bse.com.lb | [BLOCKED.md#xbey](BLOCKED.md#xbey) |
-| Stock Exchange of Thailand | XBKK | ⛔ | set.or.th | [BLOCKED.md#xbkk](BLOCKED.md#xbkk) |
-| Bolsa de Valores de Colombia | XBOG | ⛔ | bvc.com.co | [BLOCKED.md#xbog](BLOCKED.md#xbog) |
-| BSE India | XBOM | ⛔ | bseindia.com | [BLOCKED.md#xbom](BLOCKED.md#xbom) |
-| Euronext Brussels | XBRU | ✅ | euronext.com | [#xbru](docs/FETCHERS.md#xbru) |
-| BRVM (8 UEMOA countries) | XBRV | ✅ | brvm.org | [#xbrv](docs/FETCHERS.md#xbrv) |
-| B3 (Brazil) | XBSP | ✅ | b3.com.br | [#xbsp](docs/FETCHERS.md#xbsp) |
-| Budapest Stock Exchange | XBUD | ✅ | bse.hu | [#xbud](docs/FETCHERS.md#xbud) |
-| Bolsas y Mercados Argentinos | XBUE | ✅ | byma.com.ar | [#xbue](docs/FETCHERS.md#xbue) |
-| Bulgarian Stock Exchange | XBUL | ⛔ | bse-sofia.bg | [#xbul](docs/FETCHERS.md#xbul), [BLOCKED.md#xbul](BLOCKED.md#xbul) |
-| Egyptian Exchange | XCAI | ⛔ | egx.com.eg | [BLOCKED.md#xcai](BLOCKED.md#xcai) |
-| Bourse de Casablanca | XCAS | ⛔ | casablanca-bourse.com | [BLOCKED.md#xcas](BLOCKED.md#xcas) |
-| Cayman Islands Stock Exchange | XCAY | ✅ | csx.ky | [#xcay](docs/FETCHERS.md#xcay) |
-| Colombo Stock Exchange | XCOL | ✅ | cdn.cse.lk | [#xcol](docs/FETCHERS.md#xcol) |
-| Nasdaq Copenhagen | XCSE | ✅ | nasdaq.com | [#xcse](docs/FETCHERS.md#xcse) |
-| Dubai Financial Market | XDFM | ✅ | assets.dfm.ae | [#xdfm](docs/FETCHERS.md#xdfm) |
-| Dhaka Stock Exchange | XDHA | ⛔ | dsebd.org | [BLOCKED.md#xdha](BLOCKED.md#xdha) |
-| Euronext Dublin | XDUB | ✅ | euronext.com | [#xdub](docs/FETCHERS.md#xdub) |
-| Deutsche Boerse Xetra | XETR | ✅ | cashmarket.deutsche-boerse.com | [#xetr](docs/FETCHERS.md#xetr) |
-| Ghana Stock Exchange | XGSE | ✅ | gse.com.gh | [#xgse](docs/FETCHERS.md#xgse) |
-| Nasdaq Helsinki | XHEL | ✅ | nasdaq.com | [#xhel](docs/FETCHERS.md#xhel) |
-| Hong Kong Exchange | XHKG | ⚠️ | hkex.com.hk | [#xhkg](docs/FETCHERS.md#xhkg), [BLOCKED.md#xhkg](BLOCKED.md#xhkg) |
-| Nasdaq Iceland | XICE | ✅ | nasdaq.com | [#xice](docs/FETCHERS.md#xice) |
-| Borsa Istanbul | XIST | ✅ | borsaistanbul.com | [#xist](docs/FETCHERS.md#xist) |
-| Indonesia Stock Exchange | XJKT | ⛔ | idx.co.id | [BLOCKED.md#xjkt](BLOCKED.md#xjkt) |
-| Johannesburg Stock Exchange | XJSE | ⛔ | jse.co.za | [BLOCKED.md#xjse](BLOCKED.md#xjse) |
-| Pakistan Stock Exchange | XKAR | ⛔ | psx.com.pk | [BLOCKED.md#xkar](BLOCKED.md#xkar) |
-| Bursa Malaysia | XKLS | ⛔ | bursamalaysia.com | [BLOCKED.md#xkls](BLOCKED.md#xkls) |
-| Korea Exchange | XKRX | ⛔ | global.krx.co.kr | [BLOCKED.md#xkrx](BLOCKED.md#xkrx) |
-| Boursa Kuwait | XKUW | ⛔ | boursakuwait.com.kw | [#xkuw](docs/FETCHERS.md#xkuw), [BLOCKED.md#xkuw](BLOCKED.md#xkuw) |
-| Bolsa de Valores de Lima | XLIM | ⛔ | bvl.com.pe | [BLOCKED.md#xlim](BLOCKED.md#xlim) |
-| Euronext Lisbon | XLIS | ✅ | euronext.com | [#xlis](docs/FETCHERS.md#xlis) |
-| Nasdaq Vilnius | XLIT | ✅ | nasdaqbaltic.com | [#xlit](docs/FETCHERS.md#xlit) |
-| London Stock Exchange | XLON | ✅ | gov.uk | [#xlon](docs/FETCHERS.md#xlon) |
-| Luxembourg Stock Exchange | XLUX | ✅ | luxse.com | [#xlux](docs/FETCHERS.md#xlux) |
-| BME (Bolsa de Madrid) | XMAD | ✅ | bolsasymercados.es | [#xmad](docs/FETCHERS.md#xmad) |
-| Malta Stock Exchange | XMAL | ✅ | borzamalta.com.mt | [#xmal](docs/FETCHERS.md#xmal) |
-| Bolsa Mexicana de Valores | XMEX | ✅ | bmv.com.mx | [#xmex](docs/FETCHERS.md#xmex) |
-| Moscow Exchange | XMOS | ✅ | moex.com | [#xmos](docs/FETCHERS.md#xmos) |
-| Muscat Securities Market | XMUS | ⛔ | msx.om | [BLOCKED.md#xmus](BLOCKED.md#xmus) |
-| Nairobi Securities Exchange | XNAI | ⛔ | nse.co.ke | [BLOCKED.md#xnai](BLOCKED.md#xnai) |
-| NASDAQ | XNAS | ✅ | ir.theice.com | [#xnas](docs/FETCHERS.md#xnas) |
-| Nigerian Exchange Group | XNSA | ⚠️ | ngxgroup.com | [#xnsa](docs/FETCHERS.md#xnsa), [BLOCKED.md#xnsa](BLOCKED.md#xnsa) |
-| NSE India | XNSE | ⛔ | nseindia.com | [BLOCKED.md#xnse](BLOCKED.md#xnse) |
-| New York Stock Exchange | XNYS | ✅ | ir.theice.com | [#xnys](docs/FETCHERS.md#xnys) |
-| New Zealand Exchange | XNZE | ⛔ | nzx.com | [BLOCKED.md#xnze](BLOCKED.md#xnze) |
-| Oslo Bors (Euronext Oslo) | XOSL | ✅ | euronext.com | [#xosl](docs/FETCHERS.md#xosl) |
-| Euronext Paris | XPAR | ✅ | euronext.com | [#xpar](docs/FETCHERS.md#xpar) |
-| Philippine Stock Exchange | XPHS | ⛔ | pse.com.ph | [BLOCKED.md#xphs](BLOCKED.md#xphs) |
-| Prague Stock Exchange | XPRA | ✅ | pse.cz | [#xpra](docs/FETCHERS.md#xpra) |
-| Nasdaq Riga | XRIS | ✅ | nasdaqbaltic.com | [#xris](docs/FETCHERS.md#xris) |
-| Saudi Exchange (Tadawul) | XSAU | ⛔ | saudiexchange.sa | [#xsau](docs/FETCHERS.md#xsau), [BLOCKED.md#xsau](BLOCKED.md#xsau) |
-| Singapore Exchange | XSES | ⛔ | sgx.com | [BLOCKED.md#xses](BLOCKED.md#xses) |
-| Santiago Stock Exchange | XSGO | ⛔ | bolsadesantiago.com | [BLOCKED.md#xsgo](BLOCKED.md#xsgo) |
-| Shenzhen Stock Exchange | XSHE | ✅ | szse.cn | [#xshe](docs/FETCHERS.md#xshe) |
-| Shanghai Stock Exchange | XSHG | ⚠️ | english.sse.com.cn | [#xshg](docs/FETCHERS.md#xshg), [BLOCKED.md#xshg](BLOCKED.md#xshg) |
-| Ho Chi Minh Stock Exchange | XSTC | ✅ | staticfile.hsx.vn | [#xstc](docs/FETCHERS.md#xstc) |
-| Nasdaq Stockholm | XSTO | ✅ | nasdaq.com | [#xsto](docs/FETCHERS.md#xsto) |
-| SIX Swiss Exchange | XSWX | ✅ | six-group.com | [#xswx](docs/FETCHERS.md#xswx) |
-| Abu Dhabi Securities Exchange | XTAD | ⛔ | adx.ae | [BLOCKED.md#xtad](BLOCKED.md#xtad) |
-| Taiwan Stock Exchange | XTAI | ⛔ | twse.com.tw | [BLOCKED.md#xtai](BLOCKED.md#xtai) |
-| Nasdaq Tallinn | XTAL | ✅ | nasdaqbaltic.com | [#xtal](docs/FETCHERS.md#xtal) |
-| Tokyo Stock Exchange | XTKS | ✅ | jpx.co.jp | [#xtks](docs/FETCHERS.md#xtks) |
-| Toronto Stock Exchange | XTSE | ✅ | tsx.com | [#xtse](docs/FETCHERS.md#xtse) |
-| Bourse de Tunis | XTUN | ⛔ | bvmt.com.tn | [BLOCKED.md#xtun](BLOCKED.md#xtun) |
-| Warsaw Stock Exchange | XWAR | ✅ | gpw.pl | [#xwar](docs/FETCHERS.md#xwar) |
-| Vienna Stock Exchange | XWBO | ✅ | wienerborse.at | [#xwbo](docs/FETCHERS.md#xwbo) |
-| Zagreb Stock Exchange | XZAG | ✅ | zse.hr | [#xzag](docs/FETCHERS.md#xzag) |
+The table is generated by `tools/gen_readme_table.py` (`--check` is in the release gate); the Exchange and Source cells are the only hand-written ones. **Verification** is `verification.class` from the exchange file. `reference_compared` means a reference library covers the exchange and the registry is compared with it, not that the two agree and not that the exchange's own calendar was checked. **Disagreements** is the count in the `docs/DIVERGENCE.md` Summary table for that exchange, so read the two columns together; `n/a` means no reference library covers it, which is not the same as 0.
+
+| Exchange | MIC | Status | Source | Notes | Verification | Disagreements |
+|----------|-----|:------:|--------|-------|--------------|--------------:|
+| Qatar Exchange | DSMD | ⛔ | qe.com.qa | [BLOCKED.md#dsmd](BLOCKED.md#dsmd) | single_source | n/a |
+| Euronext Amsterdam | XAMS | ✅ | euronext.com | [#xams](docs/FETCHERS.md#xams) | reference_compared | 0 |
+| Australian Securities Exchange | XASX | ✅ | asx.com.au | [#xasx](docs/FETCHERS.md#xasx) | reference_compared | 0 |
+| Athens Exchange | XATH | ⛔ | athens.euronext.com | [BLOCKED.md#xath](BLOCKED.md#xath) | single_source | n/a |
+| Bahrain Bourse | XBAH | ⛔ | bahrainbourse.com | [BLOCKED.md#xbah](BLOCKED.md#xbah) | single_source | n/a |
+| Bermuda Stock Exchange | XBDA | ✅ | bsx.com | [#xbda](docs/FETCHERS.md#xbda) | reference_compared | 0 |
+| Beirut Stock Exchange | XBEY | ⛔ | bse.com.lb | [BLOCKED.md#xbey](BLOCKED.md#xbey) | single_source | n/a |
+| Stock Exchange of Thailand | XBKK | ⛔ | set.or.th | [BLOCKED.md#xbkk](BLOCKED.md#xbkk) | reference_compared | 0 |
+| Bolsa de Valores de Colombia | XBOG | ⛔ | bvc.com.co | [BLOCKED.md#xbog](BLOCKED.md#xbog) | reference_compared | 1 |
+| BSE India | XBOM | ⛔ | bseindia.com | [BLOCKED.md#xbom](BLOCKED.md#xbom) | reference_compared | 35 |
+| Euronext Brussels | XBRU | ✅ | euronext.com | [#xbru](docs/FETCHERS.md#xbru) | reference_compared | 0 |
+| BRVM (8 UEMOA countries) | XBRV | ✅ | brvm.org | [#xbrv](docs/FETCHERS.md#xbrv) | source_verified | n/a |
+| B3 (Brazil) | XBSP | ✅ | b3.com.br | [#xbsp](docs/FETCHERS.md#xbsp) | source_verified | n/a |
+| Budapest Stock Exchange | XBUD | ✅ | bse.hu | [#xbud](docs/FETCHERS.md#xbud) | reference_compared | 4 |
+| Bolsas y Mercados Argentinos | XBUE | ✅ | byma.com.ar | [#xbue](docs/FETCHERS.md#xbue) | reference_compared | 18 |
+| Bulgarian Stock Exchange | XBUL | ⛔ | bse-sofia.bg | [#xbul](docs/FETCHERS.md#xbul), [BLOCKED.md#xbul](BLOCKED.md#xbul) | single_source | n/a |
+| Egyptian Exchange | XCAI | ⛔ | egx.com.eg | [BLOCKED.md#xcai](BLOCKED.md#xcai) | single_source | n/a |
+| Bourse de Casablanca | XCAS | ⛔ | casablanca-bourse.com | [BLOCKED.md#xcas](BLOCKED.md#xcas) | single_source | n/a |
+| Cayman Islands Stock Exchange | XCAY | ✅ | csx.ky | [#xcay](docs/FETCHERS.md#xcay) | source_verified | n/a |
+| Colombo Stock Exchange | XCOL | ✅ | cdn.cse.lk | [#xcol](docs/FETCHERS.md#xcol) | source_verified | n/a |
+| Nasdaq Copenhagen | XCSE | ✅ | nasdaq.com | [#xcse](docs/FETCHERS.md#xcse) | reference_compared | 0 |
+| Dubai Financial Market | XDFM | ✅ | assets.dfm.ae | [#xdfm](docs/FETCHERS.md#xdfm) | source_verified | n/a |
+| Dhaka Stock Exchange | XDHA | ⛔ | dsebd.org | [BLOCKED.md#xdha](BLOCKED.md#xdha) | single_source | n/a |
+| Euronext Dublin | XDUB | ✅ | euronext.com | [#xdub](docs/FETCHERS.md#xdub) | reference_compared | 0 |
+| Deutsche Boerse Xetra | XETR | ✅ | cashmarket.deutsche-boerse.com | [#xetr](docs/FETCHERS.md#xetr) | reference_compared | 0 |
+| Ghana Stock Exchange | XGSE | ✅ | gse.com.gh | [#xgse](docs/FETCHERS.md#xgse) | source_verified | n/a |
+| Nasdaq Helsinki | XHEL | ✅ | nasdaq.com | [#xhel](docs/FETCHERS.md#xhel) | reference_compared | 0 |
+| Hong Kong Exchange | XHKG | ⚠️ | hkex.com.hk | [#xhkg](docs/FETCHERS.md#xhkg), [BLOCKED.md#xhkg](BLOCKED.md#xhkg) | ci_unreachable | 3 |
+| Nasdaq Iceland | XICE | ✅ | nasdaq.com | [#xice](docs/FETCHERS.md#xice) | reference_compared | 0 |
+| Borsa Istanbul | XIST | ✅ | borsaistanbul.com | [#xist](docs/FETCHERS.md#xist) | reference_compared | 0 |
+| Indonesia Stock Exchange | XJKT | ⛔ | idx.co.id | [BLOCKED.md#xjkt](BLOCKED.md#xjkt) | single_source | n/a |
+| Johannesburg Stock Exchange | XJSE | ⛔ | jse.co.za | [BLOCKED.md#xjse](BLOCKED.md#xjse) | reference_compared | 0 |
+| Pakistan Stock Exchange | XKAR | ⛔ | psx.com.pk | [BLOCKED.md#xkar](BLOCKED.md#xkar) | reference_compared | 19 |
+| Bursa Malaysia | XKLS | ⛔ | bursamalaysia.com | [BLOCKED.md#xkls](BLOCKED.md#xkls) | reference_compared | 13 |
+| Korea Exchange | XKRX | ⛔ | global.krx.co.kr | [BLOCKED.md#xkrx](BLOCKED.md#xkrx) | reference_compared | 7 |
+| Boursa Kuwait | XKUW | ⛔ | boursakuwait.com.kw | [#xkuw](docs/FETCHERS.md#xkuw), [BLOCKED.md#xkuw](BLOCKED.md#xkuw) | single_source | n/a |
+| Bolsa de Valores de Lima | XLIM | ⛔ | bvl.com.pe | [BLOCKED.md#xlim](BLOCKED.md#xlim) | reference_compared | 6 |
+| Euronext Lisbon | XLIS | ✅ | euronext.com | [#xlis](docs/FETCHERS.md#xlis) | reference_compared | 0 |
+| Nasdaq Vilnius | XLIT | ✅ | nasdaqbaltic.com | [#xlit](docs/FETCHERS.md#xlit) | reference_compared | 4 |
+| London Stock Exchange | XLON | ✅ | gov.uk | [#xlon](docs/FETCHERS.md#xlon) | reference_compared | 0 |
+| Luxembourg Stock Exchange | XLUX | ✅ | luxse.com | [#xlux](docs/FETCHERS.md#xlux) | reference_compared | 0 |
+| BME (Bolsa de Madrid) | XMAD | ✅ | bolsasymercados.es | [#xmad](docs/FETCHERS.md#xmad) | reference_compared | 0 |
+| Malta Stock Exchange | XMAL | ✅ | borzamalta.com.mt | [#xmal](docs/FETCHERS.md#xmal) | source_verified | n/a |
+| Bolsa Mexicana de Valores | XMEX | ✅ | bmv.com.mx | [#xmex](docs/FETCHERS.md#xmex) | reference_compared | 0 |
+| Moscow Exchange | XMOS | ✅ | moex.com | [#xmos](docs/FETCHERS.md#xmos) | reference_compared | 4 |
+| Muscat Securities Market | XMUS | ⛔ | msx.om | [BLOCKED.md#xmus](BLOCKED.md#xmus) | single_source | n/a |
+| Nairobi Securities Exchange | XNAI | ⛔ | nse.co.ke | [BLOCKED.md#xnai](BLOCKED.md#xnai) | single_source | n/a |
+| NASDAQ | XNAS | ✅ | ir.theice.com | [#xnas](docs/FETCHERS.md#xnas) | reference_compared | 0 |
+| Nigerian Exchange Group | XNSA | ⚠️ | ngxgroup.com | [#xnsa](docs/FETCHERS.md#xnsa), [BLOCKED.md#xnsa](BLOCKED.md#xnsa) | ci_unreachable | n/a |
+| NSE India | XNSE | ⛔ | nseindia.com | [BLOCKED.md#xnse](BLOCKED.md#xnse) | reference_compared | 36 |
+| New York Stock Exchange | XNYS | ✅ | ir.theice.com | [#xnys](docs/FETCHERS.md#xnys) | reference_compared | 0 |
+| New Zealand Exchange | XNZE | ⛔ | nzx.com | [BLOCKED.md#xnze](BLOCKED.md#xnze) | reference_compared | 0 |
+| Oslo Bors (Euronext Oslo) | XOSL | ✅ | euronext.com | [#xosl](docs/FETCHERS.md#xosl) | reference_compared | 0 |
+| Euronext Paris | XPAR | ✅ | euronext.com | [#xpar](docs/FETCHERS.md#xpar) | reference_compared | 0 |
+| Philippine Stock Exchange | XPHS | ⛔ | pse.com.ph | [BLOCKED.md#xphs](BLOCKED.md#xphs) | reference_compared | 7 |
+| Prague Stock Exchange | XPRA | ✅ | pse.cz | [#xpra](docs/FETCHERS.md#xpra) | reference_compared | 0 |
+| Nasdaq Riga | XRIS | ✅ | nasdaqbaltic.com | [#xris](docs/FETCHERS.md#xris) | reference_compared | 7 |
+| Saudi Exchange (Tadawul) | XSAU | ⛔ | saudiexchange.sa | [#xsau](docs/FETCHERS.md#xsau), [BLOCKED.md#xsau](BLOCKED.md#xsau) | reference_compared | 17 |
+| Singapore Exchange | XSES | ⛔ | sgx.com | [BLOCKED.md#xses](BLOCKED.md#xses) | reference_compared | 29 |
+| Santiago Stock Exchange | XSGO | ⛔ | bolsadesantiago.com | [BLOCKED.md#xsgo](BLOCKED.md#xsgo) | reference_compared | 1 |
+| Shenzhen Stock Exchange | XSHE | ✅ | szse.cn | [#xshe](docs/FETCHERS.md#xshe) | source_verified | n/a |
+| Shanghai Stock Exchange | XSHG | ⚠️ | english.sse.com.cn | [#xshg](docs/FETCHERS.md#xshg), [BLOCKED.md#xshg](BLOCKED.md#xshg) | ci_unreachable | 43 |
+| Ho Chi Minh Stock Exchange | XSTC | ✅ | staticfile.hsx.vn | [#xstc](docs/FETCHERS.md#xstc) | source_verified | n/a |
+| Nasdaq Stockholm | XSTO | ✅ | nasdaq.com | [#xsto](docs/FETCHERS.md#xsto) | reference_compared | 0 |
+| SIX Swiss Exchange | XSWX | ✅ | six-group.com | [#xswx](docs/FETCHERS.md#xswx) | reference_compared | 0 |
+| Abu Dhabi Securities Exchange | XTAD | ⛔ | adx.ae | [BLOCKED.md#xtad](BLOCKED.md#xtad) | single_source | n/a |
+| Taiwan Stock Exchange | XTAI | ⛔ | twse.com.tw | [BLOCKED.md#xtai](BLOCKED.md#xtai) | reference_compared | 15 |
+| Nasdaq Tallinn | XTAL | ✅ | nasdaqbaltic.com | [#xtal](docs/FETCHERS.md#xtal) | reference_compared | 4 |
+| Tokyo Stock Exchange | XTKS | ✅ | jpx.co.jp | [#xtks](docs/FETCHERS.md#xtks) | reference_compared | 0 |
+| Toronto Stock Exchange | XTSE | ✅ | tsx.com | [#xtse](docs/FETCHERS.md#xtse) | reference_compared | 0 |
+| Bourse de Tunis | XTUN | ⛔ | bvmt.com.tn | [BLOCKED.md#xtun](BLOCKED.md#xtun) | single_source | n/a |
+| Warsaw Stock Exchange | XWAR | ✅ | gpw.pl | [#xwar](docs/FETCHERS.md#xwar) | reference_compared | 0 |
+| Vienna Stock Exchange | XWBO | ✅ | wienerborse.at | [#xwbo](docs/FETCHERS.md#xwbo) | reference_compared | 0 |
+| Zagreb Stock Exchange | XZAG | ✅ | zse.hr | [#xzag](docs/FETCHERS.md#xzag) | reference_compared | 0 |
 
 **48 of 74 registry exchanges have automated fetchers as of v2.26.0** — 42 verified against live sources from CI on every run, plus 6 documented as CI-unreachable (XHKG, XSHG, XNSA, XBUL) or blocked, HTTP 403 on 2026-09-17 (XKUW, XSAU). The remaining 26 have no fetcher and are documented as blocked sources (29 exchanges are blocked in total, counting XKUW and XSAU) in [`BLOCKED.md`](./BLOCKED.md), with the reasoning for each verdict recorded per exchange. Per-exchange fetcher notes are in [`docs/FETCHERS.md`](./docs/FETCHERS.md).
 
