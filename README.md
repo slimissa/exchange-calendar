@@ -57,7 +57,7 @@ Every number below comes from a one-line command in the audit that accompanies t
 | **Fetcher status** (`fetcher_status`) | 41 `implemented`, 3 `ci_unreachable`, 2 `blocked`, 28 `none`. 46 have a registered fetcher; 30 are listed in [`BLOCKED.md`](./BLOCKED.md) (the 28 with no fetcher plus the 2 `blocked`). |
 | **Independent reference** | 50 exchanges are compared against at least one reference library; 24 have none ([`docs/DIVERGENCE.md`](./docs/DIVERGENCE.md)) |
 | **The reference is thinner than it looks** | `pandas_market_calendars` serves 46 of the exchanges both libraries cover straight from `exchange_calendars`. For those, "two references" is one reference counted twice. |
-| **Verification class as a field** | None. The registry has no `verification_class` field; the 50 / 24 split is derived from the divergence report, and [Section 7](#7-the-coverage-boundary) says how |
+| **Verification class as a field** | The field is `verification.class` (schema 2.2.0); see [`docs/VERIFICATION_CONTRACT.md`](./docs/VERIFICATION_CONTRACT.md) for the class definitions. The 50 / 24 split is a separate reading of the divergence report; [Section 7](#7-the-coverage-boundary) says how |
 | **Per-year confidence** | 564 exchange-year rows: 560 `medium` (source `manual`), 4 `high` (source `fetcher`: XBUD, XDFM, XIST, XWBO for 2026) |
 | **Divergence** | 62,738 trading days compared, 2024-2029; all available sources agree on 62,465 (99.6%). 273 disagreeing days remain, every one classified: 213 unpublished, 62 library error, 1 convention difference. Unclassified: 0. |
 | **What 99.6% is not** | Agreement with a library is not agreement with the exchange. 213 of the 273 are future dates (2027-2029) the exchange has not published; the registry value there is a prediction. |
@@ -141,7 +141,7 @@ print(reg.confidence("XNYS", 2026))            # {'last_verified': None, 'level'
 print(reg.confidence("XNYS", 2028)["note"])    # predicted
 ```
 
-`confidence(mic, year)` is the verification signal the wrappers expose: a level, a source, a `last_verified` date and, for future years, a `note` of `predicted`. **No wrapper exposes the 50 / 24 reference split or the divergence verdict**, because neither is a field in the data ([Section 7](#7-the-coverage-boundary)).
+`confidence(mic, year)` is the verification signal the wrappers expose: a level, a source, a `last_verified` date and, for future years, a `note` of `predicted`. The field is `verification.class` (schema 2.2.0); see [`docs/VERIFICATION_CONTRACT.md`](./docs/VERIFICATION_CONTRACT.md) for the class definitions. Every wrapper returns it through `verification(mic)`. **No wrapper exposes the 50 / 24 reference split or the divergence verdict**, because neither is a field in the data ([Section 7](#7-the-coverage-boundary)).
 
 ### JavaScript (Node)
 
@@ -1067,7 +1067,7 @@ Stated plainly, because a calendar is a claim and a claim needs its edges drawn.
 - **The two references are largely one.** PMC serves 46 of the exchanges both libraries cover from `exchange_calendars`; only XBOM and XNSE are PMC-native.
 - **A reference is not the exchange.** The 99.6% agreement is agreement with libraries. `library_error` verdicts are hand checks against published pages.
 - **213 disagreeing days are predictions** (2027-2029), recorded `unpublished` with a recheck date. They are not errors found; they are claims not yet checkable.
-- **No verification-class field.** The 50 / 24 split exists in the divergence report and cannot be queried from the data or any wrapper.
+- **The class is not the 50 / 24 split.** The field is `verification.class` (schema 2.2.0); see [`docs/VERIFICATION_CONTRACT.md`](./docs/VERIFICATION_CONTRACT.md) for the class definitions. The split itself exists only in the divergence report and cannot be queried from the data or any wrapper.
 - **`confidence` is coarse.** 560 of 564 rows are `medium` / `manual` with `last_verified` null; 4 are `high` / `fetcher`. It does not say which dates are verified.
 - **The 1990-2023 backfill is unverified.** XNYS, XNAS, XLON, XASX, XHKG and XTKS carry 2,128 `Historical Holiday` entries copied from `exchange_calendars`; the divergence engine compares 2024-2029 only, and a library compared with itself proves nothing.
 - **`generation_range` does not cover the past for most exchanges.** 68 exchanges start 2025-01-01; the registry does not answer for 2024 or earlier for them, and `generation_range` ends 2029-12-31 for 66 exchanges, shorter for 8.
@@ -1114,7 +1114,6 @@ Nothing is scheduled. Each item starts when its trigger fires.
 
 | Deferred item | Trigger to start |
 |---------------|------------------|
-| **A `verification_class` field**, or an equivalent the wrappers can return, so a consumer can read the class of an answer | A consumer needs it in code rather than in the report; it then needs a schema bump |
 | **A second check for the 15 exchanges with neither a reference nor a running fetcher** | A fetcher becomes buildable for one of them (a source leaves a bot wall, or a page becomes static); `BLOCKED.md` records the dates of the last check |
 | **The 30 blocked exchanges** | A browser-rendering fetcher is accepted for CI ([ADR 0009](./docs/decisions/0009-playwright-fetcher-category.md), [ADR 0010](./docs/decisions/0010-render-mode.md)) or an exchange publishes a machine-readable calendar |
 | **Compare the 1990-2023 backfill with a source that is not `exchange_calendars`** | A primary source (an exchange archive) is found for any of the six exchanges |
