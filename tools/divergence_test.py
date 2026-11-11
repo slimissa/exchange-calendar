@@ -55,7 +55,7 @@ import regular_hours  # noqa: E402  (tools/regular_hours.py)
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CALENDAR = REPO_ROOT / "calendar.json"
 DEFAULT_EXCHANGES = "XNYS,XLON,XTKS,XASX"
-DEFAULT_YEARS = "2024-2026"
+DEFAULT_YEARS = "2010-2029"
 DEFAULT_OUTPUT = "/tmp/divergence.json"
 DEFAULT_SESSIONS_OUTPUT = "/tmp/divergence_sessions.json"
 MODES = ("trading_days", "sessions")

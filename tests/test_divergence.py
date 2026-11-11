@@ -206,8 +206,12 @@ class TestYears:
         with pytest.raises(ValueError):
             dv.parse_years(bad)
 
-    def test_default_covers_2024_to_2026(self):
-        assert dv.parse_years(dv.DEFAULT_YEARS) == [2024, 2025, 2026]
+    def test_default_covers_2010_to_2029(self):
+        assert dv.parse_years(dv.DEFAULT_YEARS) == list(range(2010, 2030))
+
+    def test_narrower_range_still_selectable(self):
+        # The weekly workflow passes --year 2024-2029 for every exchange.
+        assert dv.parse_years("2024-2029") == [2024, 2025, 2026, 2027, 2028, 2029]
 
 
 class TestRegistryCoverage:
