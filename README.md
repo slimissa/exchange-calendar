@@ -372,7 +372,7 @@ This section is what the ISO registries do not need. They reproduce one source. 
 
 ### What does not exist in the data
 
-There is **no `verification_class` field**, and no field says "this exchange has an independent reference". The split below is derived from `docs/DIVERGENCE.md` ("Exchanges with at least one reference library: 50; with none: 24") joined to `fetcher_status`. It is a reading of the report, not something a wrapper can return.
+Each exchange carries a derived `verification.class`, which every wrapper returns through `verification(mic)`; [`docs/VERIFICATION_CONTRACT.md`](docs/VERIFICATION_CONTRACT.md) says what each class does and does not mean. The 50 / 24 split below is a different reading: it is derived from `docs/DIVERGENCE.md` ("Exchanges with at least one reference library: 50; with none: 24") joined to `fetcher_status`, and the class is not the same split (a `ci_unreachable` exchange can have a reference library).
 
 ### The 50 and the 24
 

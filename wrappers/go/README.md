@@ -233,6 +233,7 @@ Apache 2.0 — see [LICENSE](../../LICENSE).
 
 - [Registry repository](https://github.com/slimissa/exchange-calendar)
 - [Bug reports](https://github.com/slimissa/exchange-calendar/issues)
+- [Verification contract](../../docs/VERIFICATION_CONTRACT.md)
 - [Python wrapper](../python/)
 - [JavaScript wrapper](../javascript/)
 ```
