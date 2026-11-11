@@ -2931,3 +2931,7 @@ Patch releases 2.1.1 through 2.1.10 are documented in the sections above; the ta
 Each exchange calendar file has its own `generation_range` and source URLs.
 Data corrections are tracked per-exchange in commit history.
 ```
+## [2.28.0] - 2026-11-11
+
+### Test
+- Test the prep-commit CI state.
