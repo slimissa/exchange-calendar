@@ -282,10 +282,20 @@ jobs:
           # First dated [X.Y.Z] heading, not [Unreleased]
           match = re.search(r'^## \[(\d+\.\d+\.\d+)\]', changelog, re.MULTILINE)
           assert match, "No dated version heading found in CHANGELOG.md"
-          assert match.group(1) == version, (
-              f"VERSION is {version}, CHANGELOG top entry is {match.group(1)}"
-          )
-          print(f"OK: VERSION={version} matches CHANGELOG")
+          changelog_version = match.group(1)
+          if changelog_version == version:
+              print(f"OK: VERSION={version} matches CHANGELOG")
+          else:
+              # Prep-commit state: CHANGELOG is exactly one release ahead of VERSION
+              v = tuple(map(int, version.split(".")))
+              c = tuple(map(int, changelog_version.split(".")))
+              prep = c[0] == v[0] and (
+                  c[1] == v[1] + 1 or (c[1] == v[1] and c[2] == v[2] + 1)
+              )
+              assert prep, (
+                  f"VERSION is {version}, CHANGELOG top entry is {changelog_version}"
+              )
+              print(f"OK: VERSION={version}, CHANGELOG={changelog_version} (prep commit, one ahead)")
           EOF
 
       - name: Check README badge matches VERSION
