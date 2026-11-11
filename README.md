@@ -54,7 +54,7 @@ Every number below comes from a one-line command in the audit that accompanies t
 | | |
 |---|---|
 | **Exchanges** | 74, across 6 continents, one JSON file each in [`exchanges/`](./exchanges) |
-| **Fetcher status** (`fetcher_status`) | 41 `implemented`, 3 `ci_unreachable`, 2 `blocked`, 28 `none`. 46 have a registered fetcher; 30 are listed in [`BLOCKED.md`](./BLOCKED.md) (the 28 with no fetcher plus the 2 `blocked`). |
+| **Fetcher status** (`fetcher_status`) | 42 `implemented`, 3 `ci_unreachable`, 3 `blocked`, 26 `none`. 48 have a registered fetcher; 29 are listed in [`BLOCKED.md`](./BLOCKED.md) (the 26 with no fetcher plus the 3 `blocked`). |
 | **Independent reference** | 50 exchanges are compared against at least one reference library; 24 have none ([`docs/DIVERGENCE.md`](./docs/DIVERGENCE.md)) |
 | **The reference is thinner than it looks** | `pandas_market_calendars` serves 46 of the exchanges both libraries cover straight from `exchange_calendars`. For those, "two references" is one reference counted twice. |
 | **Verification class as a field** | The field is `verification.class` (schema 2.2.0); see [`docs/VERIFICATION_CONTRACT.md`](./docs/VERIFICATION_CONTRACT.md) for the class definitions. The 50 / 24 split is a separate reading of the divergence report; [Section 7](#7-the-coverage-boundary) says how |
@@ -378,19 +378,19 @@ Each exchange carries a derived `verification.class`, which every wrapper return
 
 | | `implemented` | `ci_unreachable` | `blocked` | `none` | Total |
 |---|---:|---:|---:|---:|---:|
-| **Has a reference library** | 32 | 2 | 1 | 15 | **50** |
-| **No reference library** | 9 | 1 | 1 | 13 | **24** |
-| Total | 41 | 3 | 2 | 28 | 74 |
+| **Has a reference library** | 33 | 2 | 1 | 14 | **50** |
+| **No reference library** | 9 | 1 | 2 | 12 | **24** |
+| Total | 42 | 3 | 3 | 26 | 74 |
 
 **The 24 with no reference library** (the report names them all): DSMD, XATH, XBAH, XBEY, XBRV, XBSP, XBUL, XCAI, XCAS, XCAY, XCOL, XDFM, XDHA, XGSE, XJKT, XKUW, XMAL, XMUS, XNAI, XNSA, XSHE, XSTC, XTAD, XTUN.
 
 - **9 have a fetcher that runs in CI** against the exchange's own page: XBRV, XBSP, XCAY, XCOL, XDFM, XGSE, XMAL, XSHE, XSTC. For these the fetcher is the only independent check.
-- **2 have a fetcher that cannot run in CI**: XNSA (`ci_unreachable`) and XKUW (`blocked`).
+- **3 have a fetcher that cannot run in CI**: XNSA (`ci_unreachable`), XKUW and XBUL (`blocked`).
 - **12 have no fetcher and no reference**: DSMD, XATH, XBAH, XBEY, XCAI, XCAS, XDHA, XJKT, XMUS, XNAI, XTAD, XTUN. Their dates rest on manual curation against the sources `BLOCKED.md` records. Nothing re-reads them.
 
 So "24 single-source" is true in one sense (no reference library), but only 9 of the 24 have a live check against the exchange. The other 15 have none that runs.
 
-**The 50 with a reference library** are the rest: most of Europe, the Americas, and Asia-Pacific that `exchange_calendars` covers, plus XBOM, XNSE, XSES and XSHG (covered by `pandas_market_calendars` only) and XNAS and XSGO (covered by `exchange_calendars` only). Of the 50, 30 show no disagreement for 2024-2029 and 20 do. 15 of the 50 have no fetcher, so for them the reference library is the only independent check.
+**The 50 with a reference library** are the rest: most of Europe, the Americas, and Asia-Pacific that `exchange_calendars` covers, plus XBOM, XNSE, XSES and XSHG (covered by `pandas_market_calendars` only) and XNAS and XSGO (covered by `exchange_calendars` only). Of the 50, 30 show no disagreement for 2024-2029 and 20 do. 14 of the 50 have no fetcher, so for them the reference library is the only independent check.
 
 ### What a reference match means
 
@@ -1063,7 +1063,7 @@ CI and tooling changes never bump the version alone ([`RELEASE_PATTERN.md`](./RE
 
 Stated plainly, because a calendar is a claim and a claim needs its edges drawn.
 
-- **24 of 74 exchanges have no reference library.** For 15 of them nothing independent re-reads the dates: XATH, XBAH, XBEY, XBUL, XCAI, XCAS, XDHA, XJKT, XMUS, XNAI, XTAD, XTUN, DSMD (no fetcher), plus XNSA and XKUW (a fetcher that cannot run in CI).
+- **24 of 74 exchanges have no reference library.** For 15 of them nothing independent re-reads the dates: XATH, XBAH, XBEY, XCAI, XCAS, XDHA, XJKT, XMUS, XNAI, XTAD, XTUN, DSMD (no fetcher), plus XNSA, XKUW and XBUL (a fetcher that cannot run in CI).
 - **The two references are largely one.** PMC serves 46 of the exchanges both libraries cover from `exchange_calendars`; only XBOM and XNSE are PMC-native.
 - **A reference is not the exchange.** The 99.6% agreement is agreement with libraries. `library_error` verdicts are hand checks against published pages.
 - **213 disagreeing days are predictions** (2027-2029), recorded `unpublished` with a recheck date. They are not errors found; they are claims not yet checkable.
