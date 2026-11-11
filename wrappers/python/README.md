@@ -202,12 +202,12 @@ mypy exchange_calendar/
 
 ## License
 
-Apache 2.0 — see [LICENSE](../LICENSE).
+Apache 2.0 — see [LICENSE](../../LICENSE).
 
 ## Links
 
 - [Registry repository](https://github.com/slimissa/exchange-calendar)
 - [Bug reports](https://github.com/slimissa/exchange-calendar/issues)
-- [Contributing guide](../CONTRIBUTING.md)
+- [Contributing guide](../../CONTRIBUTING.md)
 - [Verification contract](../../docs/VERIFICATION_CONTRACT.md)
 ```
