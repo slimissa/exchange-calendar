@@ -2,7 +2,9 @@ name: Divergence
 
 # Weekly check of the registry against pandas_market_calendars and
 # exchange_calendars. Opens a PR when docs/DIVERGENCE.md (or the triage file)
-# changes, for example when a reference library drifts.
+# changes, for example when a reference library drifts. The README exchange
+# table takes its Disagreements column from DIVERGENCE.md, so it is regenerated
+# after the report and goes into the same PR.
 
 on:
   schedule:
@@ -39,6 +41,9 @@ jobs:
       - name: Generate divergence report
         run: python3 tools/divergence_report.py
 
+      - name: Regenerate the README table
+        run: python3 tools/gen_readme_table.py
+
       - name: Open pull request if the report changed
         uses: peter-evans/create-pull-request@v6
         with:
@@ -46,6 +51,7 @@ jobs:
           add-paths: |
             docs/DIVERGENCE.md
             docs/divergence_triage.json
+            README.md
           branch: automated/divergence-report
           delete-branch: true
           commit-message: "Update divergence report"
