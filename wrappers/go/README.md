@@ -236,4 +236,3 @@ Apache 2.0 — see [LICENSE](../../LICENSE).
 - [Verification contract](../../docs/VERIFICATION_CONTRACT.md)
 - [Python wrapper](../python/)
 - [JavaScript wrapper](../javascript/)
-```

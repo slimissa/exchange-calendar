@@ -210,4 +210,3 @@ Apache 2.0 — see [LICENSE](../../LICENSE).
 - [Bug reports](https://github.com/slimissa/exchange-calendar/issues)
 - [Contributing guide](../../CONTRIBUTING.md)
 - [Verification contract](../../docs/VERIFICATION_CONTRACT.md)
-```
