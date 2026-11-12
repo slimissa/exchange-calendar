@@ -196,6 +196,9 @@ def main(argv: list[str] | None = None) -> int:
                 continue
             drift.append(d["code"])
             if not args.check:
+                if isinstance(old, dict) and "coverage" in old:
+                    # coverage is authored, not derived: keep it on rewrite.
+                    new = {**new, "coverage": old["coverage"]}
                 d["verification"] = new
                 f.write_text(json.dumps(d, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
                              encoding="utf-8")

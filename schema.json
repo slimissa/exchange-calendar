@@ -457,6 +457,10 @@
       "minLength": 3,
       "type": "string"
     },
+    "note": {
+      "description": "Free-form note about how this exchange's data was assembled or what it does not cover. Optional. Not copied into calendar.json.",
+      "type": "string"
+    },
     "regular_hours": {
       "description": "Regular trading hours: one object, or a list of objects with effective_from dates when the hours changed over time. The entry in force on a date is the latest one whose effective_from is on or before it; the first effective_from must not be after generation_range[0].",
       "oneOf": [
@@ -670,6 +674,10 @@
             "single_source",
             "ci_unreachable"
           ]
+        },
+        "coverage": {
+          "description": "Which sources back which date ranges for this exchange (free-form object; a strict shape is a later schema change). Optional and authored, not derived: tools/derive_verification.py keeps it when it rewrites the other verification fields. Suggested keys: from, to, ranges, sources (a list of {from, to, source, sampled}).",
+          "type": "object"
         },
         "last_checked": {
           "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
