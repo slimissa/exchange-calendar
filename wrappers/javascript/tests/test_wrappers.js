@@ -869,7 +869,9 @@ describe('verification(mic)', () => {
     test('returns the verification object for a known MIC', () => {
         const r = new CalendarRegistry(getRegistryPath());
         const v = r.verification('XSWX');
-        assert.deepEqual(Object.keys(v).sort(), ['basis', 'class', 'last_checked', 'reference_note']);
+        // coverage is optional (authored on backfilled exchanges, not derived)
+        assert.deepEqual(Object.keys(v).filter((k) => k !== 'coverage').sort(),
+            ['basis', 'class', 'last_checked', 'reference_note']);
         assert.ok(['reference_compared', 'source_verified', 'single_source', 'ci_unreachable']
             .includes(v.class));
         // a copy: changing it does not change the registry

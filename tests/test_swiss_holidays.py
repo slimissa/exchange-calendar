@@ -250,5 +250,10 @@ class TestXSWXStructure:
         assert "New Year's Eve" in names
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~49 entries: 12 closures × 5 years, minus weekend occurrences."""
-        assert 45 <= len(explicit_dates) <= 55
+        """~49 entries in 2025-2029: 12 closures × 5 years, minus weekend occurrences.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 45 <= len(window) <= 55

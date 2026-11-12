@@ -301,7 +301,8 @@ class TestExchangeProperties:
         r = CalendarRegistry()
         v = r.verification("XSWX")
         assert v is not None
-        assert set(v) == {"class", "basis", "last_checked", "reference_note"}
+        # coverage is optional (authored on backfilled exchanges, not derived)
+        assert set(v) - {"coverage"} == {"class", "basis", "last_checked", "reference_note"}
         assert v["class"] in {"reference_compared", "source_verified",
                               "single_source", "ci_unreachable"}
         # the copy is detached from the registry
