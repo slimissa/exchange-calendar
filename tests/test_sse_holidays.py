@@ -224,5 +224,10 @@ class TestXSHGStructure:
                 f"Unexpected status: {entry['date']}: {entry['status']}"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~80 entries: Chinese holidays across 5 years."""
-        assert 75 <= len(explicit_dates) <= 90
+        """~80 entries in 2025-2029: Chinese holidays across 5 years.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 75 <= len(window) <= 90
