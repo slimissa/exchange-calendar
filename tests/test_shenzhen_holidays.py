@@ -80,7 +80,9 @@ class TestXSHEProperties:
         assert "generation_range" in xshe
         # Shortened from 2029-12-31 per C4: XSHE's data only covers
         # through 2027 (Spring Festival etc. aren't rule-generatable).
-        assert xshe["generation_range"] == ["2025-01-01", "2027-12-31"]
+        # The start moved to 2010 with the backfill inferred from XSHG
+        # (exchange_calendars has no XSHE); the end stays at 2027.
+        assert xshe["generation_range"] == ["2010-01-01", "2027-12-31"]
 
     def test_ad_hoc_closures_empty(self, xshe):
         assert xshe.get("ad_hoc_closures", []) == []
@@ -264,7 +266,11 @@ class TestXSHEStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
-            assert entry["source_url"].startswith("http")
+            if date_str >= "2025-01-01":
+                assert entry["source_url"].startswith("http")
+            else:
+                # 2010-2024 is inferred from XSHG, not read from an exchange page.
+                assert entry["source_url"] == "inferred from XSHG"
 
     def test_all_entries_have_name(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
@@ -289,12 +295,21 @@ class TestXSHEStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~50-60 entries."""
-        assert 50 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
+        """~50-60 entries in 2025-2027 (2010-2024 is the inferred backfill)."""
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 50 <= len(window) <= 65, f"Unexpected count: {len(window)}"
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
-            assert "szse.cn" in entry["source_url"]
+        for date_str, entry in explicit_dates.items():
+            if date_str >= "2025-01-01":
+                assert "szse.cn" in entry["source_url"]
+
+    def test_backfill_is_labelled_as_inferred(self, explicit_dates):
+        """2010-2024 is copied from XSHG's closures, and says so."""
+        backfill = [e for d, e in explicit_dates.items() if d < "2025-01-01"]
+        assert backfill, "no backfilled entries"
+        assert all(e["name"] == "Historical Holiday" for e in backfill)
+        assert all(e["source_url"] == "inferred from XSHG" for e in backfill)
 
 
 # ──────────────────────────────────────────────────────────────
