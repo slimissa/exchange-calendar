@@ -265,6 +265,36 @@ pub struct Verification {
     pub basis: String,
     pub last_checked: String,
     pub reference_note: String,
+    /// Which years the registry covers and where each span came from
+    /// (schema 2.2.1). `None` when the exchange has no `coverage` object.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub coverage: Option<Coverage>,
+}
+
+/// Coverage of one exchange: the overall span and the source of each part.
+///
+/// Mirrors `verification.coverage` in calendar.json. The shape is free-form
+/// in schema 2.2.x, so `ranges` is kept as plain strings.
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
+pub struct Coverage {
+    pub from: String,
+    pub to: String,
+    #[serde(default)]
+    pub ranges: Vec<String>,
+    #[serde(default)]
+    pub sources: Vec<CoverageSource>,
+}
+
+/// One span of a [`Coverage`] and the source it came from.
+///
+/// `sampled` is `None` when the key is absent or `null` (not sampled yet).
+#[derive(Debug, Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize)]
+pub struct CoverageSource {
+    pub from: String,
+    pub to: String,
+    pub source: String,
+    #[serde(default)]
+    pub sampled: Option<serde_json::Value>,
 }
 
 impl std::fmt::Display for ExchangeError {

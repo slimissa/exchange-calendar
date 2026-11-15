@@ -475,6 +475,49 @@ func TestVerificationUnknownMIC(t *testing.T) {
 	}
 }
 
+func TestCoverageKnownMIC(t *testing.T) {
+	reg, err := exchangecalendar.LoadRegistry("../../../calendar.json")
+	if err != nil {
+		t.Fatalf("load: %v", err)
+	}
+	c := reg.Coverage("XKRX")
+	if c == nil {
+		t.Fatal("XKRX has no coverage object")
+	}
+	if c.From != "2010-01-01" || c.To != "2029-12-31" {
+		t.Errorf("unexpected span %s..%s", c.From, c.To)
+	}
+	if len(c.Ranges) == 0 || len(c.Sources) == 0 {
+		t.Fatalf("incomplete coverage: %+v", c)
+	}
+	first := c.Sources[0]
+	if first.Source != "exchange_calendars" || first.From != "2010-01-01" || first.To != "2024-12-31" {
+		t.Errorf("unexpected first source: %+v", first)
+	}
+	if first.Sampled != nil {
+		t.Errorf("sampled should be nil until Phase 4d, got %v", *first.Sampled)
+	}
+	// a copy: changing it does not change the registry
+	c.Sources[0].Source = "changed"
+	if reg.Coverage("XKRX").Sources[0].Source == "changed" {
+		t.Error("Coverage returned the registry's own object")
+	}
+	// case-insensitive, like Exchange
+	if reg.Coverage("xkrx") == nil {
+		t.Error("lowercase MIC should find coverage")
+	}
+}
+
+func TestCoverageUnknownMIC(t *testing.T) {
+	reg, err := exchangecalendar.LoadRegistry("../../../calendar.json")
+	if err != nil {
+		t.Fatalf("load: %v", err)
+	}
+	if c := reg.Coverage("XXXX"); c != nil {
+		t.Errorf("unknown MIC should give nil, got %+v", c)
+	}
+}
+
 func TestAsOf(t *testing.T) {
 	reg, err := exchangecalendar.LoadRegistry("../../../calendar.json")
 	if err != nil {

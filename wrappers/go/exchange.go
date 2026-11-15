@@ -153,6 +153,27 @@ type Verification struct {
 	Basis         string `json:"basis"`
 	LastChecked   string `json:"last_checked"`
 	ReferenceNote string `json:"reference_note"`
+	// Coverage is the schema 2.2.1 coverage object; nil when absent.
+	Coverage *Coverage `json:"coverage,omitempty"`
+}
+
+// Coverage says which years the registry covers for an exchange and where
+// each span came from. It mirrors verification.coverage in calendar.json.
+// The shape is free-form in schema 2.2.x.
+type Coverage struct {
+	From    string           `json:"from"`
+	To      string           `json:"to"`
+	Ranges  []string         `json:"ranges"`
+	Sources []CoverageSource `json:"sources"`
+}
+
+// CoverageSource is one span of a Coverage and the source it came from.
+// Sampled is nil when the key is absent or null (not sampled yet).
+type CoverageSource struct {
+	From    string       `json:"from"`
+	To      string       `json:"to"`
+	Source  string       `json:"source"`
+	Sampled *interface{} `json:"sampled,omitempty"`
 }
 
 type ConfidenceEntry struct {
@@ -629,11 +650,33 @@ func (r *Registry) Verification(mic string) *Verification {
 	return copyVerification(ex.Verification)
 }
 
+// Coverage returns a copy of the coverage object for mic, or nil if the MIC
+// is unknown or its verification object has no coverage (schema 2.2.1).
+// Case-insensitive, like Exchange.
+func (r *Registry) Coverage(mic string) *Coverage {
+	ex := r.Exchange(mic)
+	if ex == nil || ex.Verification == nil {
+		return nil
+	}
+	return copyCoverage(ex.Verification.Coverage)
+}
+
+func copyCoverage(c *Coverage) *Coverage {
+	if c == nil {
+		return nil
+	}
+	out := *c
+	out.Ranges = append([]string(nil), c.Ranges...)
+	out.Sources = append([]CoverageSource(nil), c.Sources...)
+	return &out
+}
+
 func copyVerification(v *Verification) *Verification {
 	if v == nil {
 		return nil
 	}
 	c := *v
+	c.Coverage = copyCoverage(v.Coverage)
 	return &c
 }
 

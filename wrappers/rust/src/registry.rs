@@ -337,6 +337,14 @@ impl Registry {
         self.exchange(mic).and_then(|ex| ex.verification.as_ref())
     }
 
+    /// Return the coverage object for `mic`, or `None` if the MIC is unknown
+    /// or its verification object carries no `coverage` (schema 2.2.1).
+    ///
+    /// Case-insensitive, like `exchange()`.
+    pub fn coverage(&self, mic: &str) -> Option<&crate::exchange::Coverage> {
+        self.verification(mic).and_then(|v| v.coverage.as_ref())
+    }
+
     pub fn confidence(&self, code: &str, year: i32) -> Option<&crate::exchange::ConfidenceEntry> {
         self.exchange(code)
             .and_then(|ex| ex.confidence.get(&year.to_string()))
@@ -870,5 +878,28 @@ mod tests {
     fn test_verification_unknown_mic() {
         let r = load_real_registry();
         assert!(r.verification("XXXX").is_none());
+    }
+
+    #[test]
+    fn test_coverage_known_mic() {
+        let r = load_real_registry();
+        let c = r.coverage("XKRX").expect("XKRX has a coverage object");
+        assert_eq!(c.from, "2010-01-01");
+        assert_eq!(c.to, "2029-12-31");
+        assert!(!c.ranges.is_empty());
+        assert!(!c.sources.is_empty());
+        let first = &c.sources[0];
+        assert_eq!(first.source, "exchange_calendars");
+        assert_eq!(first.from, "2010-01-01");
+        assert_eq!(first.to, "2024-12-31");
+        assert!(first.sampled.is_none(), "sampled is null until Phase 4d");
+        // case-insensitive, like exchange()
+        assert_eq!(r.coverage("xkrx"), r.coverage("XKRX"));
+    }
+
+    #[test]
+    fn test_coverage_unknown_mic() {
+        let r = load_real_registry();
+        assert!(r.coverage("XXXX").is_none());
     }
 }
