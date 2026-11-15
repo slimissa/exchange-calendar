@@ -9,8 +9,20 @@ fetcher's live parser still working today", since a page's HTML structure
 can drift at any time regardless of how well-tested the fetcher's fixtures
 are.
 
-Exit code is 1 if any fetcher fails, 0 if all pass -- suitable for use as a
-CI gate that surfaces drift without silently ignoring it.
+Statuses:
+    PASS   the fetcher returned holidays
+    WARN   FetchError (or RateLimitError) after the fetcher's own retries: the
+           source was unreliable today (network, WAF or error page, not a
+           PDF). The job still passes; the warning is printed.
+    FAIL   ParseError / ValidationError (the page changed and the parser
+           needs a fix), no holidays, or an unexpected exception.
+    SKIP   no fetcher registered
+
+ParseError and ValidationError subclass FetchError, so they are tested first.
+
+Exit code is 1 if any fetcher FAILs, 0 otherwise (WARN does not fail the job)
+-- suitable for use as a CI gate that surfaces drift without silently
+ignoring it.
 
 Usage:
     python3 tools/live_fetcher_check.py [--mic MIC ...]
@@ -42,8 +54,13 @@ def check_fetcher(mic: str, fetcher) -> dict:
                 sample_date=data.holidays[0].date if data.holidays else None,
                 elapsed=elapsed,
             )
-    except (FetchError, ParseError, ValidationError) as e:
+    except (ParseError, ValidationError) as e:
+        # Subclasses of FetchError: the source answered but the content is not
+        # what the parser expects. Must be caught before FetchError.
         result.update(status="FAIL", reason=f"{type(e).__name__}: {e}", elapsed=time.monotonic() - start)
+    except FetchError as e:
+        # The fetcher already retried; the source is flaky today.
+        result.update(status="WARN", reason=f"{type(e).__name__}: {e}", elapsed=time.monotonic() - start)
     except Exception as e:  # noqa: BLE001 -- deliberately broad: this is a health check,
         # an unexpected exception is itself a signal the live page changed shape
         result.update(status="FAIL", reason=f"Unexpected {type(e).__name__}: {e}", elapsed=time.monotonic() - start)
@@ -86,18 +103,25 @@ def main():
     print("\n" + "=" * 70)
     print(f"{'MIC':<8}{'STATUS':<8}{'DETAIL'}")
     print("=" * 70)
-    failures = 0
+    failures = warnings = 0
     for r in results:
         if r["status"] == "PASS":
             detail = f"{r.get('holiday_count', '?')} holidays, first={r.get('sample_date', '?')}"
         elif r["status"] == "SKIP":
             detail = r.get("reason", "")
+        elif r["status"] == "WARN":
+            detail = r.get("reason", "source unreliable")
+            warnings += 1
         else:
             detail = r.get("reason", "unknown failure")
             failures += 1
         print(f"{r['mic']:<8}{r['status']:<8}{detail}")
     print("=" * 70)
-    print(f"\n{len(results) - failures}/{len(results)} fetchers passed")
+    passed = sum(1 for r in results if r["status"] == "PASS")
+    print(f"\n{passed}/{len(results)} fetchers passed, {warnings} warned, {failures} failed")
+    if warnings:
+        print("WARN: " + ", ".join(r["mic"] for r in results if r["status"] == "WARN")
+              + " -- source unreliable today; does not fail the job")
 
     return 1 if failures else 0
 
