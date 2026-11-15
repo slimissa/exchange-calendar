@@ -110,6 +110,11 @@ def build_registry(exchanges_dir: Path) -> dict:
             "generation_range": exchange.get("generation_range", []),
         }
 
+        # `note` is optional and free-form: carry it only where authored, so
+        # exchanges without one do not gain a null key.
+        if "note" in exchange:
+            output_exchange["note"] = exchange["note"]
+
         exchanges.append(output_exchange)
 
     if errors > 0:

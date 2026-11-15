@@ -458,7 +458,7 @@
       "type": "string"
     },
     "note": {
-      "description": "Free-form note about how this exchange's data was assembled or what it does not cover. Optional. Not copied into calendar.json.",
+      "description": "Free-form note about how this exchange's data was assembled or what it does not cover. Optional. Copied into calendar.json when present.",
       "type": "string"
     },
     "regular_hours": {

@@ -144,6 +144,18 @@ class TestBuildRegistry:
 
         assert result["regular_hours"] == {"open": "08:00", "close": "16:30"}
 
+    def test_build_carries_note_when_present(self, tmp_path):
+        with_note = make_exchange("AAAA")
+        with_note["note"] = "2010-2024 backfilled; not independently verified."
+        write_exchange(tmp_path, with_note)
+        write_exchange(tmp_path, make_exchange("BBBB"))
+
+        registry = builder.build_registry(tmp_path)
+        by_code = {e["code"]: e for e in registry["exchanges"]}
+
+        assert by_code["AAAA"]["note"] == with_note["note"]
+        assert "note" not in by_code["BBBB"]
+
     def test_build_preserves_sessions(self, tmp_path):
         exchange = make_exchange("TEST")
         exchange["sessions"] = [

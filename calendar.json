@@ -21129,6 +21129,7 @@
       },
       "mic": "XKRX",
       "name": "Korea Exchange",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars (no exchange publications). No fetcher.",
       "regular_hours": [
         {
           "close": "15:00",
@@ -40505,6 +40506,7 @@
       },
       "mic": "XSHE",
       "name": "Shenzhen Stock Exchange",
+      "note": "2010-2024 inferred from XSHG's exchange_calendars sessions (exchange_calendars has no XSHE); not independently verified. 2025-2027: the exchange's own page (szse.cn trading calendar), checked by the fetcher in CI. 2028-2029 not covered: generation_range ends 2027.",
       "regular_hours": {
         "close": "11:30",
         "open": "09:30"
@@ -42805,6 +42807,7 @@
       },
       "mic": "XSHG",
       "name": "Shanghai Stock Exchange",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2026: exchange_calendars (no exchange publications). 2027-2029: not covered by exchange_calendars, which records XSHG holidays to 2026 only. CI cannot reach the exchange's own page.",
       "regular_hours": {
         "close": "15:00",
         "open": "09:30"
@@ -44907,6 +44910,7 @@
       },
       "mic": "XSWX",
       "name": "SIX Swiss Exchange",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
       "regular_hours": {
         "close": "17:30",
         "open": "09:00"
@@ -51057,6 +51061,7 @@
       },
       "mic": "XTSE",
       "name": "Toronto Stock Exchange",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
       "regular_hours": {
         "close": "16:00",
         "open": "09:30"
