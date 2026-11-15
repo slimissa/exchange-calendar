@@ -5939,6 +5939,17 @@ class XISTFetcher(PDFFetcher):
         if not pdf_bytes:
             raise FetchError("Failed to fetch Borsa Istanbul equity PDF")
 
+        # borsaistanbul.com sometimes answers 200 with something that is not
+        # a PDF (a challenge or error page). Without this check the parser
+        # swallowed that as "no text" and the run died with a ParseError
+        # ("No holidays found"), which reads as a changed page. A response
+        # that is not a PDF is a flaky source, not a parser problem.
+        if not pdf_bytes.startswith(b"%PDF-"):
+            raise FetchError(
+                f"not a PDF (bytes={len(pdf_bytes)}, "
+                f"first_bytes={pdf_bytes[:20]!r})"
+            )
+
         text = self._extract_pdf_text(pdf_bytes)
         holidays = self.parse_html(text)
         if not holidays:
