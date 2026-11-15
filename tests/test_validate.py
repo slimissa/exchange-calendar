@@ -192,6 +192,25 @@ class TestBusinessLogic:
         errors = validator.validate_business_logic(exchange, "TEST.json")
         assert any("pre_market" in e for e in errors)
 
+    def test_dated_regular_hours_with_extended_hours(self):
+        # Regression: a dated regular_hours list used to crash the
+        # extended_hours check (XKRX was the first to have both).
+        exchange = make_valid_exchange()
+        exchange["regular_hours"] = [
+            {"open": "09:00", "close": "16:30", "effective_from": "2000-01-01"},
+            {"open": "09:00", "close": "17:00", "effective_from": "2016-08-01"},
+        ]
+        exchange["extended_hours"] = {
+            "pre_market": {"open": "08:00", "close": "09:00"},
+            "after_hours": {"open": "17:00", "close": "18:00"},
+        }
+        errors = validator.validate_business_logic(exchange, "TEST.json")
+        assert not any("pre_market" in e or "after_hours" in e for e in errors)
+        # the check compares against the latest entry
+        exchange["extended_hours"]["after_hours"]["open"] = "16:30"
+        errors = validator.validate_business_logic(exchange, "TEST.json")
+        assert any("after_hours" in e for e in errors)
+
     def test_duplicate_explicit_dates(self):
         exchange = make_valid_exchange()
         exchange["holidays"]["explicit"].append({

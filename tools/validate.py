@@ -134,12 +134,15 @@ def validate_business_logic(exchange: dict, filename: str) -> list:
     # extended_hours validation
     extended = exchange.get("extended_hours", {})
     if extended:
+        # regular_hours may be a dated list; extended_hours describes the
+        # hours in force now, so compare against the latest entry.
+        current_regular = regular_hours.current(regular) if regular else {}
         pre = extended.get("pre_market", {})
         after = extended.get("after_hours", {})
-        if pre and pre.get("close", "") != regular.get("open", ""):
-            errors.append(f"{filename}: pre_market close ({pre.get('close')}) should equal regular open ({regular.get('open')})")
-        if after and after.get("open", "") != regular.get("close", ""):
-            errors.append(f"{filename}: after_hours open ({after.get('open')}) should equal regular close ({regular.get('close')})")
+        if pre and pre.get("close", "") != current_regular.get("open", ""):
+            errors.append(f"{filename}: pre_market close ({pre.get('close')}) should equal regular open ({current_regular.get('open')})")
+        if after and after.get("open", "") != current_regular.get("close", ""):
+            errors.append(f"{filename}: after_hours open ({after.get('open')}) should equal regular close ({current_regular.get('close')})")
 
     # sessions validation
     sessions = exchange.get("sessions", [])

@@ -1949,10 +1949,18 @@
   "mic": "XKRX",
   "name": "Korea Exchange",
   "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars (no exchange publications). No fetcher.",
-  "regular_hours": {
-    "close": "15:30",
-    "open": "09:00"
-  },
+  "regular_hours": [
+    {
+      "close": "15:00",
+      "effective_from": "2000-05-22",
+      "open": "09:00"
+    },
+    {
+      "close": "15:30",
+      "effective_from": "2016-08-01",
+      "open": "09:00"
+    }
+  ],
   "sessions": [
     {
       "close": "09:00",

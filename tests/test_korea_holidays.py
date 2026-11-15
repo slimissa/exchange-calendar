@@ -61,8 +61,15 @@ class TestXKRXProperties:
         assert xkrx["timezone"] == "Asia/Seoul"
 
     def test_regular_hours(self, xkrx):
-        assert xkrx["regular_hours"]["open"] == "09:00"
-        assert xkrx["regular_hours"]["close"] == "15:30"
+        """Dated history: close 15:00 until 2016-07-29, 15:30 from 2016-08-01."""
+        hours = sorted(xkrx["regular_hours"], key=lambda e: e["effective_from"])
+        assert [(h["effective_from"], h["open"], h["close"]) for h in hours] == [
+            ("2000-05-22", "09:00", "15:00"),
+            ("2016-08-01", "09:00", "15:30"),
+        ]
+        # sessions[] and extended_hours describe the hours in force now
+        regular = [s for s in xkrx["sessions"] if s["type"] == "regular"]
+        assert [(s["open"], s["close"]) for s in regular] == [("09:00", "15:30")]
 
     def test_no_lunch_break(self, xkrx):
         """KRX is continuous trading — NO lunch break."""
