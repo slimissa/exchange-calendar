@@ -19170,77 +19170,92 @@
       "confidence": {
         "2010": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2011": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2012": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2013": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2014": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2015": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2016": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2017": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2018": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2019": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2020": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2021": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2022": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2023": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2024": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2025": {
@@ -21114,10 +21129,18 @@
       },
       "mic": "XKRX",
       "name": "Korea Exchange",
-      "regular_hours": {
-        "close": "15:30",
-        "open": "09:00"
-      },
+      "regular_hours": [
+        {
+          "close": "15:00",
+          "effective_from": "2000-05-22",
+          "open": "09:00"
+        },
+        {
+          "close": "15:30",
+          "effective_from": "2016-08-01",
+          "open": "09:00"
+        }
+      ],
       "sessions": [
         {
           "close": "09:00",
@@ -38406,77 +38429,92 @@
       "confidence": {
         "2010": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2011": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2012": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2013": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2014": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2015": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2016": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2017": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2018": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2019": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2020": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2021": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2022": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2023": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2024": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled (inferred from XSHG); not independently verified",
           "source": "manual"
         },
         "2025": {
@@ -40526,77 +40564,92 @@
       "confidence": {
         "2010": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2011": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2012": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2013": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2014": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2015": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2016": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2017": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2018": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2019": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2020": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2021": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2022": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2023": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2024": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2025": {
@@ -43567,77 +43620,92 @@
       "confidence": {
         "2010": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2011": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2012": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2013": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2014": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2015": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2016": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2017": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2018": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2019": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2020": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2021": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2022": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2023": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2024": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2025": {
@@ -49550,77 +49618,92 @@
       "confidence": {
         "2010": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2011": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2012": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2013": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2014": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2015": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2016": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2017": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2018": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2019": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2020": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2021": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2022": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2023": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2024": {
           "last_verified": null,
-          "level": "medium",
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
           "source": "manual"
         },
         "2025": {

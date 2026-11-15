@@ -235,21 +235,21 @@ XKLS	2026	medium	manual
 XKLS	2027	medium	manual		predicted
 XKLS	2028	medium	manual		predicted
 XKLS	2029	medium	manual		predicted
-XKRX	2010	medium	manual		
-XKRX	2011	medium	manual		
-XKRX	2012	medium	manual		
-XKRX	2013	medium	manual		
-XKRX	2014	medium	manual		
-XKRX	2015	medium	manual		
-XKRX	2016	medium	manual		
-XKRX	2017	medium	manual		
-XKRX	2018	medium	manual		
-XKRX	2019	medium	manual		
-XKRX	2020	medium	manual		
-XKRX	2021	medium	manual		
-XKRX	2022	medium	manual		
-XKRX	2023	medium	manual		
-XKRX	2024	medium	manual		
+XKRX	2010	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2011	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2012	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2013	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2014	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2015	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2016	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2017	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2018	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2019	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2020	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2021	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2022	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2023	low	manual		backfilled from exchange_calendars; not independently verified
+XKRX	2024	low	manual		backfilled from exchange_calendars; not independently verified
 XKRX	2025	medium	manual		
 XKRX	2026	medium	manual		
 XKRX	2027	medium	manual		predicted
@@ -482,39 +482,39 @@ XSGO	2026	medium	manual
 XSGO	2027	medium	manual		predicted
 XSGO	2028	medium	manual		predicted
 XSGO	2029	medium	manual		predicted
-XSHE	2010	medium	manual		
-XSHE	2011	medium	manual		
-XSHE	2012	medium	manual		
-XSHE	2013	medium	manual		
-XSHE	2014	medium	manual		
-XSHE	2015	medium	manual		
-XSHE	2016	medium	manual		
-XSHE	2017	medium	manual		
-XSHE	2018	medium	manual		
-XSHE	2019	medium	manual		
-XSHE	2020	medium	manual		
-XSHE	2021	medium	manual		
-XSHE	2022	medium	manual		
-XSHE	2023	medium	manual		
-XSHE	2024	medium	manual		
+XSHE	2010	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2011	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2012	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2013	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2014	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2015	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2016	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2017	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2018	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2019	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2020	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2021	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2022	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2023	low	manual		backfilled (inferred from XSHG); not independently verified
+XSHE	2024	low	manual		backfilled (inferred from XSHG); not independently verified
 XSHE	2025	medium	manual		
 XSHE	2026	medium	manual		
 XSHE	2027	medium	manual		predicted
-XSHG	2010	medium	manual		
-XSHG	2011	medium	manual		
-XSHG	2012	medium	manual		
-XSHG	2013	medium	manual		
-XSHG	2014	medium	manual		
-XSHG	2015	medium	manual		
-XSHG	2016	medium	manual		
-XSHG	2017	medium	manual		
-XSHG	2018	medium	manual		
-XSHG	2019	medium	manual		
-XSHG	2020	medium	manual		
-XSHG	2021	medium	manual		
-XSHG	2022	medium	manual		
-XSHG	2023	medium	manual		
-XSHG	2024	medium	manual		
+XSHG	2010	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2011	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2012	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2013	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2014	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2015	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2016	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2017	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2018	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2019	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2020	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2021	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2022	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2023	low	manual		backfilled from exchange_calendars; not independently verified
+XSHG	2024	low	manual		backfilled from exchange_calendars; not independently verified
 XSHG	2025	medium	manual		
 XSHG	2026	medium	manual		
 XSHG	2027	medium	manual		predicted
@@ -530,21 +530,21 @@ XSTO	2026	medium	manual
 XSTO	2027	medium	manual		predicted
 XSTO	2028	medium	manual		predicted
 XSTO	2029	medium	manual		predicted
-XSWX	2010	medium	manual		
-XSWX	2011	medium	manual		
-XSWX	2012	medium	manual		
-XSWX	2013	medium	manual		
-XSWX	2014	medium	manual		
-XSWX	2015	medium	manual		
-XSWX	2016	medium	manual		
-XSWX	2017	medium	manual		
-XSWX	2018	medium	manual		
-XSWX	2019	medium	manual		
-XSWX	2020	medium	manual		
-XSWX	2021	medium	manual		
-XSWX	2022	medium	manual		
-XSWX	2023	medium	manual		
-XSWX	2024	medium	manual		
+XSWX	2010	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2011	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2012	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2013	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2014	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2015	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2016	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2017	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2018	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2019	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2020	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2021	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2022	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2023	low	manual		backfilled from exchange_calendars; not independently verified
+XSWX	2024	low	manual		backfilled from exchange_calendars; not independently verified
 XSWX	2025	medium	manual		
 XSWX	2026	high	fetcher	2026-11-07	
 XSWX	2027	medium	manual		predicted
@@ -598,21 +598,21 @@ XTKS	2026	medium	manual
 XTKS	2027	medium	manual		predicted
 XTKS	2028	medium	manual		predicted
 XTKS	2029	medium	manual		predicted
-XTSE	2010	medium	manual		
-XTSE	2011	medium	manual		
-XTSE	2012	medium	manual		
-XTSE	2013	medium	manual		
-XTSE	2014	medium	manual		
-XTSE	2015	medium	manual		
-XTSE	2016	medium	manual		
-XTSE	2017	medium	manual		
-XTSE	2018	medium	manual		
-XTSE	2019	medium	manual		
-XTSE	2020	medium	manual		
-XTSE	2021	medium	manual		
-XTSE	2022	medium	manual		
-XTSE	2023	medium	manual		
-XTSE	2024	medium	manual		
+XTSE	2010	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2011	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2012	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2013	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2014	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2015	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2016	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2017	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2018	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2019	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2020	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2021	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2022	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2023	low	manual		backfilled from exchange_calendars; not independently verified
+XTSE	2024	low	manual		backfilled from exchange_calendars; not independently verified
 XTSE	2025	medium	manual		
 XTSE	2026	medium	manual		
 XTSE	2027	medium	manual		predicted

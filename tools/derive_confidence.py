@@ -13,11 +13,21 @@ Rule (for each year Y appearing in an exchange's explicit holidays):
         level          = "high"  if fetch is within max_age_days
                        = "low"   otherwise (note explains the staleness)
 
+    Else, if the exchange's verification.coverage has a backfilled span for Y
+    (a coverage source carrying a `sampled` key; null = not yet sampled):
+        source         = "manual"
+        last_verified  = null
+        level          = "low"
+        note           = "backfilled from <source>; not independently verified"
+
     Otherwise:
         source         = "manual"
         last_verified  = null
         level          = "medium"
         note           = "predicted"  if Y > current year
+
+The schema's confidence.source enum is fetcher | manual | predicted, so a
+backfilled year stays source "manual" and says what it is in `note`.
 
 Idempotent. ``--check`` exits 1 if any file's confidence is out of
 sync with what the rule would produce today.
@@ -109,10 +119,39 @@ def _fetch_date(fetched_at: Any) -> Optional[date]:
         return None
 
 
+def _backfill_source(ex: dict, year: str) -> Optional[str]:
+    """The source label of the backfilled coverage span containing `year`.
+
+    A span is backfilled when its coverage source has a `sampled` key (null
+    until Phase 4d samples it); spans for years the registry was authored
+    for carry no such key. Returns None when no backfilled span covers it.
+    """
+    ver = ex.get("verification")
+    cov = ver.get("coverage") if isinstance(ver, dict) else None
+    sources = cov.get("sources") if isinstance(cov, dict) else None
+    if not isinstance(sources, list):
+        return None
+    for span in sources:
+        if not isinstance(span, dict) or "sampled" not in span:
+            continue
+        start, end = str(span.get("from", ""))[:4], str(span.get("to", ""))[:4]
+        if start.isdigit() and end.isdigit() and int(start) <= int(year) <= int(end):
+            label = span.get("source")
+            return label if isinstance(label, str) and label else "unknown source"
+    return None
+
+
+def _backfill_note(label: str) -> str:
+    if label == "exchange_calendars":
+        return "backfilled from exchange_calendars; not independently verified"
+    return f"backfilled ({label}); not independently verified"
+
+
 def _derive_entry_for_year(
     year: str,
     manifest_entry: Optional[dict],
     today: date,
+    ex: Optional[dict] = None,
 ) -> dict:
     """Build a single confidence entry for one year."""
     yi = int(year)
@@ -142,7 +181,17 @@ def _derive_entry_for_year(
                 entry["level"] = "high"
             return entry
 
-    # Path 2: no fetch covers this year; treat as manual.
+    # Path 2: backfilled from a reference library; never independently checked.
+    backfill = _backfill_source(ex, year) if ex is not None else None
+    if backfill is not None:
+        return {
+            "source": "manual",
+            "last_verified": None,
+            "level": "low",
+            "note": _backfill_note(backfill),
+        }
+
+    # Path 3: no fetch covers this year; treat as manual.
     entry = {
         "source": "manual",
         "last_verified": None,
@@ -160,7 +209,7 @@ def derive_confidence(
 ) -> dict:
     """Return the full confidence map for an exchange."""
     return {
-        y: _derive_entry_for_year(y, manifest_entry, today)
+        y: _derive_entry_for_year(y, manifest_entry, today, ex)
         for y in _years_in(ex)
     }
 
