@@ -200,10 +200,18 @@ class TestXOSLStructure:
             assert "source_url" in entry, f"Missing source: {date_str}"
 
     def test_all_statuses_closed(self, explicit_dates):
-        """Oslo Børs has no early closes — all holidays are full closures."""
-        for entry in explicit_dates.values():
-            assert entry["status"] == "closed"
+        """Oslo Børs has no early closes in 2025-2029 — all holidays are full
+        closures. 2010-2024 is a backfill from exchange_calendars, which
+        carries 13:00 early closes."""
+        for date_, entry in explicit_dates.items():
+            if date_ >= "2025-01-01":
+                assert entry["status"] == "closed"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~49 entries: 12 holidays × 5 years, minus weekend overlaps."""
-        assert 40 <= len(explicit_dates) <= 60
+        """~49 entries in 2025-2029: 12 holidays × 5 years, minus weekend overlaps.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 40 <= len(window) <= 60
