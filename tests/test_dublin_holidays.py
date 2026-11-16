@@ -91,7 +91,7 @@ class TestXDUBProperties:
 
     def test_generation_range(self, xdub):
         assert "generation_range" in xdub
-        assert xdub["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xdub["generation_range"] == ["2010-01-01", "2029-12-31"]
 
     def test_ad_hoc_closures_empty(self, xdub):
         assert xdub.get("ad_hoc_closures", []) == []
@@ -207,8 +207,11 @@ class TestXDUBEarlyCloses:
         assert entry["early_close_time"] == "12:30"
 
     def test_no_other_early_closes(self, explicit_dates):
-        """Only Christmas Eve and New Year's Eve are early closes."""
-        early_closes = [e for e in explicit_dates.values() if e.get("status") == "early_close"]
+        """Only Christmas Eve and New Year's Eve are early closes in 2025-2029.
+        2010-2024 is a backfill from exchange_calendars, whose early closes
+        carry generic names."""
+        early_closes = [e for d, e in explicit_dates.items()
+                        if d >= "2025-01-01" and e.get("status") == "early_close"]
         early_close_names = {e["name"] for e in early_closes}
         assert early_close_names == {"Christmas Eve", "New Year's Eve"}
 
@@ -359,13 +362,21 @@ class TestXDUBStructure:
             assert start <= d <= end, f"Date outside range: {date_str}"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~35-50 entries: 7 closure types × 5 years + early closes + substitutes."""
-        assert 35 <= len(explicit_dates) <= 50, f"Unexpected count: {len(explicit_dates)}"
+        """~35-50 entries: 7 closure types × 5 years + early closes + substitutes.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 35 <= len(window) <= 50, f"Unexpected count: {len(window)}"
 
     def test_source_url_consistency(self, explicit_dates):
         """All source URLs should be from euronext.com."""
-        for entry in explicit_dates.values():
-            assert "euronext.com" in entry["source_url"], f"Unexpected source: {entry['source_url']}"
+        for date_, entry in explicit_dates.items():
+            if date_ >= "2025-01-01":
+                assert "euronext.com" in entry["source_url"]
+            else:  # 2010-2024 backfill
+                assert "exchange_calendars" in entry["source_url"], f"Unexpected source: {entry['source_url']}"
 
 
 # ──────────────────────────────────────────────────────────────
