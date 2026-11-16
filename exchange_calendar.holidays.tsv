@@ -3449,6 +3449,97 @@ XLIM	2029-11-01	All Saints' Day	closed	explicit	1					https://www.bvl.com.pe/cal
 XLIM	2029-12-24	Christmas Eve	early_close	explicit	1	11:30				https://www.bvl.com.pe/calendario
 XLIM	2029-12-25	Christmas Day	closed	explicit	1					https://www.bvl.com.pe/calendario
 XLIM	2029-12-31	New Year's Eve	early_close	explicit	1	11:30				https://www.bvl.com.pe/calendario
+XLIS	2010-01-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2010-04-02	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2010-04-05	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2010-12-24	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2010-12-31	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2011-04-22	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2011-04-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2011-12-26	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2012-04-06	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2012-04-09	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2012-05-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2012-12-24	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2012-12-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2012-12-26	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2012-12-31	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2013-01-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2013-03-29	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2013-04-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2013-05-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2013-12-24	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2013-12-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2013-12-26	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2013-12-31	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2014-01-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2014-04-18	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2014-04-21	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2014-05-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2014-12-24	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2014-12-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2014-12-26	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2014-12-31	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2015-01-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2015-04-03	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2015-04-06	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2015-05-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2015-12-24	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2015-12-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2015-12-31	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2016-01-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2016-03-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2016-03-28	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2016-12-26	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2017-04-14	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2017-04-17	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2017-05-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2017-12-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2017-12-26	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2018-01-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2018-03-30	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2018-04-02	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2018-05-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2018-12-24	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2018-12-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2018-12-26	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2018-12-31	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2019-01-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2019-04-19	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2019-04-22	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2019-05-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2019-12-24	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2019-12-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2019-12-26	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2019-12-31	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2020-01-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2020-04-10	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2020-04-13	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2020-05-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2020-12-24	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2020-12-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2020-12-31	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2021-01-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2021-04-02	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2021-04-05	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2021-12-24	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2021-12-31	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2022-04-15	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2022-04-18	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2022-12-26	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2023-04-07	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2023-04-10	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2023-05-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2023-12-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2023-12-26	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2024-01-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2024-03-29	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2024-04-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2024-05-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2024-12-24	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
+XLIS	2024-12-25	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2024-12-26	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
+XLIS	2024-12-31	Historical Early Close	early_close	explicit	1	13:05				https://github.com/gerrymanoim/exchange_calendars
 XLIS	2025-01-01	New Year's Day	closed	explicit	1					https://www.euronext.com/en/trading-calendar
 XLIS	2025-04-18	Good Friday	closed	explicit	1					https://www.euronext.com/en/trading-calendar
 XLIS	2025-04-21	Easter Monday	closed	explicit	1					https://www.euronext.com/en/trading-calendar
