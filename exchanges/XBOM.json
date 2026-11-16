@@ -1887,7 +1887,7 @@
   },
   "mic": "XBOM",
   "name": "Bombay Stock Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_publications (manually transcribed from bseindia.com; no fetcher).",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_publications (manually transcribed from bseindia.com; no fetcher). The 8 disputed days in contradicted_by are exchange_calendars-sourced and contradicted by pandas_market_calendars. The BSE notices for those days are the primary source; the sampling (Phase 4d) resolves them.",
   "regular_hours": {
     "close": "15:30",
     "open": "09:15"
@@ -1920,6 +1920,16 @@
       ],
       "sources": [
         {
+          "contradicted_by": [
+            "2013-11-14",
+            "2013-11-15",
+            "2014-10-23",
+            "2015-11-11",
+            "2017-10-19",
+            "2018-11-07",
+            "2020-05-25",
+            "2020-07-31"
+          ],
           "from": "2010-01-01",
           "sampled": null,
           "source": "exchange_calendars",
