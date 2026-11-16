@@ -234,12 +234,17 @@ class TestXAMSStructure:
             assert "status" in entry, f"Missing status: {date_str}"
             assert entry["status"] in ["closed", "early_close"]
 
-    def test_all_statuses_closed(self, explicit_dates):
-        """Netherlands has no early closes in 2025-2029 — all holidays are
-        full closures. 2010-2024 is a backfill from exchange_calendars,
-        which carries Dec 24/31 early closes."""
+    def test_all_statuses_closed_except_year_end_half_days(self, explicit_dates):
+        """In 2025-2029 every holiday is a full closure except the Dec 24/31
+        half days Euronext lists for 2025 and 2026 (close 14:05). 2010-2024 is
+        a backfill from exchange_calendars, which carries its own early
+        closes."""
+        half_days = {"2025-12-24", "2025-12-31", "2026-12-24", "2026-12-31"}
         for date_, entry in explicit_dates.items():
-            if date_ >= "2025-01-01":
+            if date_ in half_days:
+                assert entry["status"] == "early_close"
+                assert entry["early_close_time"] == "14:05"
+            elif date_ >= "2025-01-01":
                 assert entry["status"] == "closed"
 
     def test_dates_within_generation_range(self, xams, explicit_dates):
@@ -321,10 +326,22 @@ class TestXAMSDivergenceRegression:
         assert explicit_dates["2026-05-01"]["status"] == "closed"
 
     def test_closures_match_euronext_2025(self, explicit_dates):
-        assert {d for d in explicit_dates if d.startswith("2025")} == OFFICIAL_CLOSED_2025
+        closed = {d for d, e in explicit_dates.items()
+                  if d.startswith("2025") and e["status"] == "closed"}
+        assert closed == OFFICIAL_CLOSED_2025
 
     def test_closures_match_euronext_2026(self, explicit_dates):
-        assert {d for d in explicit_dates if d.startswith("2026")} == OFFICIAL_CLOSED_2026
+        closed = {d for d, e in explicit_dates.items()
+                  if d.startswith("2026") and e["status"] == "closed"}
+        assert closed == OFFICIAL_CLOSED_2026
+
+    def test_year_end_half_days_match_euronext(self, explicit_dates):
+        """Euronext lists Dec 24 and 31 as half trading days in 2025 and 2026;
+        Amsterdam closes at 14:05 CET (13:05 GMT in the ICE Futures Europe
+        schedule)."""
+        early = {d for d, e in explicit_dates.items() if e["status"] == "early_close"
+                 and d >= "2025-01-01"}
+        assert early == {"2025-12-24", "2025-12-31", "2026-12-24", "2026-12-31"}
 
     @pytest.mark.parametrize("day", [
         "2025-05-05",  # Liberation Day
