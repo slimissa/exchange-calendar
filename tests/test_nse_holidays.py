@@ -57,26 +57,18 @@ class TestXNSEProperties:
 
 
 class TestXNSEMatchesXBOM:
-    """NSE and BSE close on the same days. Compared over 2025-2029, the
-    window authored from exchange publications; XNSE's 2010-2024 backfill
-    is covered in the XNSE backfill (exchange_calendars has no XNSE)."""
-
-    @staticmethod
-    def _window(ex):
-        return [e for e in ex["holidays"]["explicit"] if e["date"] >= "2025-01-01"]
-
     def test_same_explicit_dates(self, xnse, xbom):
-        xnse_dates = {e["date"] for e in self._window(xnse)}
-        xbom_dates = {e["date"] for e in self._window(xbom)}
+        xnse_dates = {e["date"] for e in xnse["holidays"]["explicit"]}
+        xbom_dates = {e["date"] for e in xbom["holidays"]["explicit"]}
         assert xnse_dates == xbom_dates
 
     def test_same_statuses(self, xnse, xbom):
-        xnse_status = {e["date"]: e["status"] for e in self._window(xnse)}
-        xbom_status = {e["date"]: e["status"] for e in self._window(xbom)}
+        xnse_status = {e["date"]: e["status"] for e in xnse["holidays"]["explicit"]}
+        xbom_status = {e["date"]: e["status"] for e in xbom["holidays"]["explicit"]}
         assert xnse_status == xbom_status
 
     def test_same_holiday_count(self, xnse, xbom):
-        assert len(self._window(xnse)) == len(self._window(xbom))
+        assert len(xnse["holidays"]["explicit"]) == len(xbom["holidays"]["explicit"])
 
     def test_same_recurrence_rules(self, xnse, xbom):
         xnse_rules = xnse["holidays"].get("recurrence_rules", [])
