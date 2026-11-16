@@ -51,3 +51,46 @@ def test_pdf_with_no_holidays_is_still_a_parse_error():
     ), mock.patch.object(f, "_extract_pdf_text", return_value=""):
         with pytest.raises(ufe.ParseError):
             f.fetch()
+
+
+class _Resp:
+    def __init__(self, status, content=b""):
+        self.status_code, self.content = status, content
+
+    def raise_for_status(self):
+        import requests
+        if self.status_code >= 400:
+            raise requests.exceptions.HTTPError(f"{self.status_code}", response=self)
+
+
+def _fetch_with_http(status):
+    f = ufe.XISTFetcher()
+    f.rate_limiter = mock.Mock()
+    with mock.patch.object(f, "_check_robots_allowed", return_value=True), \
+            mock.patch.object(f, "_record_manifest"), \
+            mock.patch("requests.get", return_value=_Resp(status)) as get:
+        try:
+            f.fetch()
+        except Exception as e:  # noqa: BLE001
+            return e, get.call_count
+    return None, get.call_count
+
+
+def test_404_on_the_year_specific_url_is_source_missing_and_not_retried():
+    err, calls = _fetch_with_http(404)
+    assert isinstance(err, ufe.SourceMissingError) and "HTTP 404" in str(err)
+    assert calls == 1
+
+
+def test_robots_disallow_is_source_missing():
+    f = ufe.XISTFetcher()
+    with mock.patch.object(f, "_check_robots_allowed", return_value=False):
+        with pytest.raises(ufe.SourceMissingError) as exc:
+            f.fetch()
+    assert "robots.txt" in str(exc.value)
+
+
+def test_503_is_flaky_and_retried():
+    err, calls = _fetch_with_http(503)
+    assert type(err) is ufe.FetchError
+    assert calls == 3

@@ -108,6 +108,15 @@ class RateLimitError(FetchError):
     pass
 
 
+class SourceMissingError(FetchError):
+    """The source is gone (HTTP 404/410, robots.txt), not flaky.
+
+    A FetchError subclass, so existing `except FetchError` code still works,
+    but it is never retried and live_fetcher_check reports it as FAIL.
+    """
+    pass
+
+
 class FetchStatus(Enum):
     """Status of a fetch operation"""
     SUCCESS = "success"
@@ -216,6 +225,8 @@ def retry(max_attempts: int = 3, delay: float = 2.0, backoff: float = 2.0,
             while attempts < max_attempts:
                 try:
                     return func(*args, **kwargs)
+                except SourceMissingError:
+                    raise  # gone, not flaky: retrying cannot help
                 except exceptions as e:
                     attempts += 1
                     if attempts == max_attempts:
@@ -537,10 +548,12 @@ class ExchangeFetcher(ABC):
             return self._make_request_playwright(binary=True)
         import requests
 
+        self._missing_reason = None
         if not self._check_robots_allowed():
             logger.error(
                 f"robots.txt disallows fetching {self.source_url} for {self.mic}"
             )
+            self._missing_reason = "robots.txt disallows fetching"
             return None
 
         self.rate_limiter.wait_if_needed(self.mic)
@@ -565,11 +578,20 @@ class ExchangeFetcher(ABC):
             return None
         except requests.exceptions.HTTPError as e:
             logger.error(f"HTTP error fetching {self.mic}: {e}")
+            status = getattr(e.response, "status_code", None)
+            if status in (404, 410):
+                self._missing_reason = f"HTTP {status}"
+            
             return None
         except requests.exceptions.RequestException as e:
             logger.error(f"Request error fetching {self.mic}: {e}")
             return None
     
+    def _source_missing_reason(self) -> Optional[str]:
+        """Why the last _make_binary_request() found the source gone (HTTP
+        404/410 or robots.txt), or None if it failed for another reason."""
+        return getattr(self, "_missing_reason", None)
+
     def _make_request_playwright(self, binary: bool):
         """Headless-Chromium fetch, used only by fetchers with
         self.use_playwright = True. Same robots/rate-limit/manifest
@@ -5937,6 +5959,13 @@ class XISTFetcher(PDFFetcher):
     def fetch(self) -> Optional[ExchangeData]:
         pdf_bytes = self._make_binary_request()
         if not pdf_bytes:
+            gone = self._source_missing_reason()
+            if gone:
+                # The URL is year-specific: a 404 here means the PDF moved
+                # or was renamed, which needs a code change, not a retry.
+                raise SourceMissingError(
+                    f"Borsa Istanbul equity PDF is gone ({gone}): {self.source_url}"
+                )
             raise FetchError("Failed to fetch Borsa Istanbul equity PDF")
 
         # borsaistanbul.com sometimes answers 200 with something that is not

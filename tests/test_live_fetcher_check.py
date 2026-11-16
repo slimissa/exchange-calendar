@@ -7,7 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
 
 import live_fetcher_check as lfc  # noqa: E402
 from update_from_exchange import (  # noqa: E402
-    FetchError, ParseError, RateLimitError, ValidationError,
+    FetchError, ParseError, RateLimitError, SourceMissingError, ValidationError,
 )
 
 
@@ -41,6 +41,16 @@ def test_parse_error_is_fail_although_it_subclasses_fetch_error():
     assert issubclass(ParseError, FetchError)
     r = lfc.check_fetcher("XIST", Fake(ParseError("No holidays found")))
     assert r["status"] == "FAIL" and "ParseError" in r["reason"]
+
+
+def test_source_missing_error_is_fail_although_it_subclasses_fetch_error():
+    assert issubclass(SourceMissingError, FetchError)
+    r = lfc.check_fetcher("XIST", Fake(SourceMissingError("HTTP 404")))
+    assert r["status"] == "FAIL" and "SourceMissingError" in r["reason"]
+
+
+def test_plain_fetch_error_stays_warn():
+    assert lfc.check_fetcher("XIST", Fake(FetchError("timeout")))["status"] == "WARN"
 
 
 def test_validation_error_is_fail():

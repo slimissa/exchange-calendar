@@ -15,10 +15,12 @@ Statuses:
            source was unreliable today (network, WAF or error page, not a
            PDF). The job still passes; the warning is printed.
     FAIL   ParseError / ValidationError (the page changed and the parser
-           needs a fix), no holidays, or an unexpected exception.
+           needs a fix), SourceMissingError (the source is gone: 404,
+           robots.txt), no holidays, or an unexpected exception.
     SKIP   no fetcher registered
 
-ParseError and ValidationError subclass FetchError, so they are tested first.
+ParseError, ValidationError and SourceMissingError subclass FetchError, so
+they are tested first.
 
 Exit code is 1 if any fetcher FAILs, 0 otherwise (WARN does not fail the job)
 -- suitable for use as a CI gate that surfaces drift without silently
@@ -34,7 +36,9 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from update_from_exchange import ExchangeFetcherRegistry, FetchError, ParseError, ValidationError
+from update_from_exchange import (
+    ExchangeFetcherRegistry, FetchError, ParseError, SourceMissingError, ValidationError,
+)
 
 
 def check_fetcher(mic: str, fetcher) -> dict:
@@ -54,9 +58,10 @@ def check_fetcher(mic: str, fetcher) -> dict:
                 sample_date=data.holidays[0].date if data.holidays else None,
                 elapsed=elapsed,
             )
-    except (ParseError, ValidationError) as e:
-        # Subclasses of FetchError: the source answered but the content is not
-        # what the parser expects. Must be caught before FetchError.
+    except (ParseError, ValidationError, SourceMissingError) as e:
+        # Subclasses of FetchError, caught before it. ParseError/ValidationError:
+        # the source answered but the content is not what the parser expects.
+        # SourceMissingError: the source is gone (404, robots.txt).
         result.update(status="FAIL", reason=f"{type(e).__name__}: {e}", elapsed=time.monotonic() - start)
     except FetchError as e:
         # The fetcher already retried; the source is flaky today.
