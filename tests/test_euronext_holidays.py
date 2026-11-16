@@ -241,5 +241,10 @@ class TestXPARStructure:
         assert "Boxing Day" in names
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """Should have ~30 entries: 6 closures × 5 years + 8 half-days."""
-        assert 25 <= len(explicit_dates) <= 40
+        """Should have ~30 entries in 2025-2029: 6 closures × 5 years + 8 half-days.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 25 <= len(window) <= 40
