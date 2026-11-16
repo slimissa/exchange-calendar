@@ -347,8 +347,13 @@ class TestXBOMStructure:
             assert entry["status"] == "closed"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~63 entries: ~13 holidays × 5 years."""
-        assert 55 <= len(explicit_dates) <= 75
+        """~63 entries in 2025-2029: ~13 holidays × 5 years.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 55 <= len(window) <= 75
 
 
 # ──────────────────────────────────────────────────────────────
