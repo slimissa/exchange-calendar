@@ -39988,11 +39988,19 @@
       },
       "mic": "XOSL",
       "name": "Oslo Børs",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
-      "regular_hours": {
-        "close": "16:30",
-        "open": "09:00"
-      },
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. regular_hours: close 17:30 before 2012-08-06, 16:30 after. Oslo Børs cut trading hours by one hour on 2012-08-06; 16:30 includes the closing auction (continuous trading ends 16:20, which is the single close exchange_calendars has for 2000-2026, so its pre-2012-08-06 hours are wrong). The 17:30 close before the cut is inferred from the one-hour reduction and is dated from the start of the registry, not from a notice.",
+      "regular_hours": [
+        {
+          "close": "17:30",
+          "effective_from": "2010-01-01",
+          "open": "09:00"
+        },
+        {
+          "close": "16:30",
+          "effective_from": "2012-08-06",
+          "open": "09:00"
+        }
+      ],
       "sessions": [
         {
           "close": "09:00",

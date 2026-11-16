@@ -60,8 +60,16 @@ class TestXOSLProperties:
         assert xosl["timezone"] == "Europe/Oslo"
 
     def test_regular_hours(self, xosl):
-        assert xosl["regular_hours"]["open"] == "09:00"
-        assert xosl["regular_hours"]["close"] == "16:30"
+        """Dated history: close 17:30 until 2012-08-03, 16:30 from 2012-08-06
+        (Oslo Børs cut trading hours by one hour; 16:30 includes the closing
+        auction)."""
+        hours = sorted(xosl["regular_hours"], key=lambda e: e["effective_from"])
+        assert [(h["effective_from"], h["open"], h["close"]) for h in hours] == [
+            ("2010-01-01", "09:00", "17:30"),
+            ("2012-08-06", "09:00", "16:30"),
+        ]
+        regular = [s for s in xosl["sessions"] if s["type"] == "regular"]
+        assert [(s["open"], s["close"]) for s in regular] == [("09:00", "16:30")]
 
     def test_no_lunch_break(self, xosl):
         lunch = [s for s in xosl.get("sessions", []) if s["type"] == "lunch_break"]
