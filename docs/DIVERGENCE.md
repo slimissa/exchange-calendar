@@ -10,7 +10,7 @@ python3 tools/divergence_report.py
 
 This file is regenerated automatically every Monday at 08:00 UTC by the Divergence workflow (`.github/workflows/divergence.yml`), which opens a pull request when it changes. Manual edits will be overwritten; record verdicts in `docs/divergence_triage.json` instead.
 
-Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.0. PMC is `pandas_market_calendars`, EC is `exchange_calendars`.
+Reference libraries: `exchange_calendars` 4.13.3, `pandas_market_calendars` 5.6.1. PMC is `pandas_market_calendars`, EC is `exchange_calendars`.
 
 ## How to read this
 
@@ -19,7 +19,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Only regular working days are compared. A date on the exchange's `weekend_days` is skipped for all three sources, because the libraries model one-off weekend sessions (Budget Day, Muhurat, make-up Saturdays) that the registry does not and that differ between library versions.
 - Registry, PMC and EC columns are trading days summed over the registry years above. `n/a` means the registry has no data; `No reference data` means that library does not know the exchange. A trailing `*` means the library was missing in some of those years.
 - Agreement is trading days on which every available source agrees, divided by that count plus the disagreeing days. Days all sources agree are closed (weekends, shared holidays) are not counted. It is `n/a` when neither library has data.
-- PMC and EC are not independent. PMC serves 46 of the exchanges that both libraries cover straight from `exchange_calendars` (its mirror calendars), so for those the PMC and EC columns are one source counted twice. PMC has its own implementation for XBOM, XNSE. Effectively the registry is being compared against one reference for the rest.
+- PMC and EC are not independent. PMC serves 47 of the exchanges that both libraries cover straight from `exchange_calendars` (its mirror calendars), so for those the PMC and EC columns are one source counted twice. PMC has its own implementation for XBOM, XNSE. Effectively the registry is being compared against one reference for the rest.
 - A disagreement says nothing about which source is right. Nothing below has been checked against the exchange's own calendar unless stated.
 
 ## Summary
@@ -35,7 +35,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XBEY | 1265 | No reference data | No reference data | n/a | n/a |
 | XBKK | 727 | 727 | 727 | 0 | 100.0% |
 | XBOG | 1217 | 1216 | 1216 | 1 | 99.9% |
-| XBOM | 1484 | 1519 | 739* | 35 | 97.7% |
+| XBOM | 1484 | 1519 | 737* | 35 | 97.7% |
 | XBRU | 1279 | 1279 | 1279 | 0 | 100.0% |
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
 | XBSP | 1241 | No reference data | No reference data | n/a | n/a |
@@ -47,7 +47,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XCAY | 1249 | No reference data | No reference data | n/a | n/a |
 | XCOL | 747 | No reference data | No reference data | n/a | n/a |
 | XCSE | 1252 | 1252 | 1252 | 0 | 100.0% |
-| XDFM | 1264 | No reference data | No reference data | n/a | n/a |
+| XDFM | 1264 | 1279 | 502* | 31 | 97.6% |
 | XDHA | 1262 | No reference data | No reference data | n/a | n/a |
 | XDUB | 1271 | 1271 | 1271 | 0 | 100.0% |
 | XETR | 1271 | 1271 | 1271 | 0 | 100.0% |
@@ -60,7 +60,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XJSE | 1252 | 1252 | 1252 | 0 | 100.0% |
 | XKAR | 1253 | 1270 | 1270 | 19 | 98.5% |
 | XKLS | 1225 | 1232 | 1232 | 13 | 98.9% |
-| XKRX | 1461 | 1468 | 1468 | 7 | 99.5% |
+| XKRX | 1461 | 1466 | 1466 | 5 | 99.7% |
 | XKUW | 1017 | No reference data | No reference data | n/a | n/a |
 | XLIM | 1241 | 1243 | 1243 | 6 | 99.5% |
 | XLIS | 1279 | 1279 | 1279 | 0 | 100.0% |
@@ -102,9 +102,9 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XZAG | 1243 | 1243 | 1243 | 0 | 100.0% |
 
 - Exchanges in the registry: 74.
-- Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 30 of 50.
-- Trading days on which all available sources agree: 64705 of 64979 (99.6%).
+- Exchanges with at least one reference library: 51; with none: 23.
+- Exchanges with no disagreement: 30 of 51.
+- Trading days on which all available sources agree: 65961 of 66264 (99.5%).
 
 ## Disagreements by year
 
@@ -116,10 +116,11 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XBOM | 0 | 0 | 0 | 8 | 12 | 15 |
 | XBUD | - | 0 | 0 | 0 | 0 | 4 |
 | XBUE | - | 8 | 5 | 3 | 1 | 1 |
+| XDFM | - | 7 | 4 | 6 | 6 | 8 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
 | XKAR | - | 2 | 3 | 4 | 4 | 6 |
 | XKLS | - | 0 | 2 | 4 | 5 | 2 |
-| XKRX | 0 | 0 | 2 | 2 | 2 | 1 |
+| XKRX | 0 | 0 | 1 | 1 | 2 | 1 |
 | XLIM | - | 0 | 0 | 3 | 3 | 0 |
 | XLIT | - | 1 | 1 | 0 | 1 | 1 |
 | XMOS | - | 2 | 2 | - | - | - |
@@ -138,17 +139,17 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
 | 2024 | 1 | 0 | 0 | 0 | 0 | 1 |
-| 2025 | 22 | 0 | 20 | 1 | 1 | 0 |
-| 2026 | 18 | 0 | 18 | 0 | 0 | 0 |
-| 2027 | 66 | 0 | 12 | 0 | 54 | 0 |
-| 2028 | 85 | 0 | 6 | 0 | 79 | 0 |
-| 2029 | 82 | 0 | 5 | 0 | 77 | 0 |
+| 2025 | 29 | 0 | 20 | 1 | 1 | 7 |
+| 2026 | 21 | 0 | 17 | 0 | 0 | 4 |
+| 2027 | 71 | 0 | 11 | 0 | 54 | 6 |
+| 2028 | 91 | 0 | 6 | 0 | 79 | 6 |
+| 2029 | 90 | 0 | 5 | 0 | 77 | 8 |
 
 ## No reference data
 
-- Neither library (24): DSMD, XATH, XBAH, XBEY, XBRV, XBSP, XBUL, XCAI, XCAS, XCAY, XCOL, XDFM, XDHA, XGSE, XJKT, XKUW, XMAL, XMUS, XNAI, XNSA, XSHE, XSTC, XTAD, XTUN
+- Neither library (23): DSMD, XATH, XBAH, XBEY, XBRV, XBSP, XBUL, XCAI, XCAS, XCAY, XCOL, XDHA, XGSE, XJKT, XKUW, XMAL, XMUS, XNAI, XNSA, XSHE, XSTC, XTAD, XTUN
 - Only PMC missing, EC has it (2): XNAS, XSGO
-- Only EC missing, PMC has it (4): XBOM, XNSE, XSES, XSHG
+- Only EC missing, PMC has it (5): XBOM, XDFM, XNSE, XSES, XSHG
 
 | Exchange | PMC | EC |
 |---|---|---|
@@ -164,7 +165,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 | XCAS | RuntimeError: Class XCAS is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XCAS, does not... |
 | XCAY | RuntimeError: Class XCAY is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XCAY, does not... |
 | XCOL | RuntimeError: Class XCOL is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XCOL, does not... |
-| XDFM | RuntimeError: Class XDFM is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XDFM, does not... |
+| XDFM | available | ValueError: The latest date to which calendar XDFM can be evaluated... |
 | XDHA | RuntimeError: Class XDHA is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XDHA, does not... |
 | XGSE | RuntimeError: Class XGSE is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XGSE, does not... |
 | XJKT | RuntimeError: Class XJKT is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XJKT, does not... |
@@ -202,6 +203,12 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry open, PMC closed, EC closed (10): 2025-04-17 Th [unpublished], 2025-06-17 Tu [library error], 2025-08-18 Mo [library error], 2025-10-13 Mo [library error], 2025-11-17 Mo [library error], 2026-06-17 We [library error], 2027-03-25 Th [unpublished], 2027-06-17 Th [library error], 2028-04-13 Th [unpublished], 2029-03-29 Th [unpublished]
 - registry closed, PMC open, EC open (8): 2025-06-16 Mo [library error], 2025-11-24 Mo [library error], 2025-12-31 We [library error], 2026-06-15 Mo [library error], 2026-11-09 Mo [library error], 2026-11-10 Tu [library error], 2026-12-31 Th [library error], 2027-06-21 Mo [library error]
 
+### XDFM (31)
+
+- registry closed, PMC open (20): 2027-03-09 Tu, 2027-03-10 We, 2027-03-11 Th, 2027-05-17 Mo, 2027-05-18 Tu, 2027-12-01 We, 2028-02-28 Mo, 2028-05-04 Th, 2028-05-05 Fr, 2028-05-26 Fr, 2028-08-04 Fr, 2028-12-01 Fr, 2029-02-14 We, 2029-02-15 Th, 2029-02-16 Fr, 2029-04-24 Tu, 2029-04-25 We, 2029-04-26 Th, 2029-05-14 Mo, 2029-07-24 Tu
+- registry open, PMC closed, EC closed (8): 2025-03-31 Mo, 2025-04-01 Tu, 2025-06-05 Th, 2025-06-06 Fr, 2025-09-04 Th, 2026-03-19 Th, 2026-05-26 Tu, 2026-06-16 Tu
+- registry closed, PMC open, EC open (3): 2025-09-05 Fr, 2025-12-01 Mo, 2026-12-01 Tu
+
 ### XHKG (3)
 
 - registry closed, PMC open, EC open (2): 2029-04-05 Th [unpublished], 2029-09-24 Mo [unpublished]
@@ -217,9 +224,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open, EC open (10): 2026-03-20 Fr [library error], 2026-06-02 Tu [library error], 2027-02-09 Tu [unpublished], 2027-03-11 Th [unpublished], 2027-08-16 Mo [unpublished], 2028-02-29 Tu [unpublished], 2028-06-05 Mo [library error], 2028-08-04 Fr [unpublished], 2029-02-16 Fr [unpublished], 2029-06-04 Mo [library error]
 - registry open, PMC closed, EC closed (3): 2027-03-09 Tu [unpublished], 2028-02-14 Mo [unpublished], 2028-08-03 Th [unpublished]
 
-### XKRX (7)
+### XKRX (5)
 
-- registry closed, PMC open, EC open (7): 2026-06-03 We [library error], 2026-07-17 Fr [library error], 2027-05-03 Mo [library error], 2027-07-19 Mo [library error], 2028-04-12 We [library error], 2028-07-17 Mo [library error], 2029-07-17 Tu [library error]
+- registry closed, PMC open, EC open (5): 2026-07-17 Fr [library error], 2027-07-19 Mo [library error], 2028-04-12 We [library error], 2028-07-17 Mo [library error], 2029-07-17 Tu [library error]
 
 ### XLIM (6)
 
@@ -1258,7 +1265,7 @@ Registry data before 2025, backfilled from `exchange_calendars` (entries named `
 | Exchange | Registry starts | Closed days added | Early closes added | Years compared | Trading days agree | Notes |
 |---|---|---:|---:|---|---:|---|
 | XASX | 1990-01-01 | 273 | 28 | 1990-2024 | 100.0% | No disagreements |
-| XHKG | 1990-01-01 | 497 | 58 | 1990-2024 | 100.0% | No disagreements |
+| XHKG | 1990-01-01 | 497 | 58 | 1990-2024 | 99.9% | 2023-09-01, 2023-09-08 |
 | XLON | 1990-01-01 | 287 | 69 | 1990-2024 | 100.0% | No disagreements |
 | XNAS | 1990-01-01 | 315 | 74 | 1990-2024 | 100.0% | No disagreements |
 | XNYS | 1990-01-01 | 315 | 74 | 1990-2024 | 100.0% | No disagreements |
@@ -1279,7 +1286,7 @@ Open time, close time, half-day status and intraday break, compared between the 
 | Exchange | Years | Trading days agree | Open agree | Close agree | Half-days agree | Break agree | Notes |
 |---|---|---:|---:|---:|---:|---:|---|
 | XASX | 1990-2029 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
-| XHKG | 1990-2029 | 99.9% | 100.0% | 100.0% | 100.0% | 100.0% | 2029-04-04 trading day; 2029-04-05 trading day; 2029-09-24 trading day |
+| XHKG | 1990-2029 | 99.9% | 100.0% | 100.0% | 100.0% | 100.0% | 2023-09-01 trading day; 2023-09-08 trading day; 2029-04-04 trading day; 2029-04-05 trading day; 2029-09-24 trading day |
 | XLON | 1990-2029 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
 | XNAS | 1990-2029 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
 | XNYS | 1990-2029 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
