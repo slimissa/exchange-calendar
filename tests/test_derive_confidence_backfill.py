@@ -67,8 +67,14 @@ def test_registry_backfilled_years_are_low_and_2025_on_is_not():
                 assert entry["level"] != "low", (mic, y)
 
 
-def test_high_years_of_other_exchanges_are_untouched():
+def test_high_years_are_never_backfilled_years():
+    """XBUD was backfilled in 4c6; its high (fetcher) years stay high and only
+    the 2010-2024 years are backfilled."""
     for mic in ["XBUD", "XDFM", "XIST", "XWBO"]:
         conf = json.loads((ROOT / "exchanges" / f"{mic}.json").read_text())["confidence"]
-        assert any(e["level"] == "high" for e in conf.values()), mic
-        assert not any(e.get("note", "").startswith("backfilled") for e in conf.values()), mic
+        highs = [y for y, e in conf.items() if e["level"] == "high"]
+        assert highs, mic
+        for y, e in conf.items():
+            if e.get("note", "").startswith("backfilled"):
+                assert int(y) <= 2024 and e["level"] == "low", (mic, y)
+        assert all(int(y) >= 2025 for y in highs), mic

@@ -85,7 +85,7 @@ class TestXBUDProperties:
 
     def test_generation_range(self, xbud):
         assert "generation_range" in xbud
-        assert xbud["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xbud["generation_range"] == ["2010-01-01", "2029-12-31"]
 
     def test_ad_hoc_closures_empty(self, xbud):
         assert xbud.get("ad_hoc_closures", []) == []
@@ -357,9 +357,11 @@ class TestXBUDStructure:
             assert entry["status"] in ["closed", "early_close"], f"Invalid status: {date_str}"
 
     def test_all_statuses_closed(self, explicit_dates):
-        """Hungary has no early closes — all holidays are full closures."""
-        for entry in explicit_dates.values():
-            assert entry["status"] == "closed", f"Unexpected status: {entry['date']}"
+        """Hungary has no early closes — all holidays are full closures in 2025-2029.
+        2010-2024 is a backfill from exchange_calendars, which carries early closes."""
+        for date_, entry in explicit_dates.items():
+            if date_ >= "2025-01-01":
+                assert entry["status"] == "closed", f"Unexpected status: {entry['date']}"
 
     def test_dates_within_generation_range(self, xbud, explicit_dates):
         start = date.fromisoformat(xbud["generation_range"][0])
@@ -369,13 +371,21 @@ class TestXBUDStructure:
             assert start <= d <= end, f"Date outside range: {date_str}"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~50-60 entries: 12 holidays × 5 years (minus weekends, plus substitutes)."""
-        assert 50 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
+        """~50-60 entries: 12 holidays × 5 years (minus weekends, plus substitutes) in 2025-2029.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 50 <= len(window) <= 65, f"Unexpected count: {len(window)}"
 
     def test_source_url_consistency(self, explicit_dates):
         """All source URLs should be from bse.hu."""
-        for entry in explicit_dates.values():
-            assert "bse.hu" in entry["source_url"], f"Unexpected source: {entry['source_url']}"
+        for date_, entry in explicit_dates.items():
+            if date_ >= "2025-01-01":
+                assert "bse.hu" in entry["source_url"], f"Unexpected source: {entry['source_url']}"
+            else:  # 2010-2024 backfill
+                assert "exchange_calendars" in entry["source_url"]
 
 
 # ──────────────────────────────────────────────────────────────

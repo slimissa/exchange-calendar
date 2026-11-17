@@ -142,6 +142,21 @@ XBSP;2026;medium;manual;;
 XBSP;2027;medium;manual;;predicted
 XBSP;2028;medium;manual;;predicted
 XBSP;2029;medium;manual;;predicted
+XBUD;2010;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2011;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2012;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2013;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2014;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2015;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2016;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2017;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2018;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2019;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2020;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2021;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2022;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2023;low;manual;;"backfilled from exchange_calendars; not independently verified"
+XBUD;2024;low;manual;;"backfilled from exchange_calendars; not independently verified"
 XBUD;2025;medium;manual;;
 XBUD;2026;high;fetcher;2026-10-03;
 XBUD;2027;medium;manual;;predicted
