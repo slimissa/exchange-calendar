@@ -528,6 +528,7 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_date",
@@ -535,6 +536,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -542,6 +544,7 @@
       },
       {
         "day": 31,
+        "effective_from": "2025-01-01",
         "month": 8,
         "name": "National Day (Merdeka Day)",
         "rule": "fixed_date",
@@ -549,6 +552,7 @@
       },
       {
         "day": 16,
+        "effective_from": "2025-01-01",
         "month": 9,
         "name": "Malaysia Day",
         "rule": "fixed_date",
@@ -556,6 +560,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Day",
         "rule": "fixed_date",

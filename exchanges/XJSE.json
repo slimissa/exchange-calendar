@@ -348,6 +348,7 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_with_sunday_observance",
@@ -355,18 +356,21 @@
       },
       {
         "day": 21,
+        "effective_from": "2025-01-01",
         "month": 3,
         "name": "Human Rights Day",
         "rule": "fixed_with_sunday_observance",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Good Friday",
         "offset_days": -2,
         "rule": "easter_offset",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Family Day (Easter Monday)",
         "offset_days": 1,
         "rule": "easter_offset",
@@ -374,6 +378,7 @@
       },
       {
         "day": 27,
+        "effective_from": "2025-01-01",
         "month": 4,
         "name": "Freedom Day",
         "rule": "fixed_with_sunday_observance",
@@ -381,6 +386,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Workers' Day",
         "rule": "fixed_with_sunday_observance",
@@ -388,6 +394,7 @@
       },
       {
         "day": 16,
+        "effective_from": "2025-01-01",
         "month": 6,
         "name": "Youth Day",
         "rule": "fixed_with_sunday_observance",
@@ -395,6 +402,7 @@
       },
       {
         "day": 9,
+        "effective_from": "2025-01-01",
         "month": 8,
         "name": "National Women's Day",
         "rule": "fixed_with_sunday_observance",
@@ -402,6 +410,7 @@
       },
       {
         "day": 24,
+        "effective_from": "2025-01-01",
         "month": 9,
         "name": "Heritage Day",
         "rule": "fixed_with_sunday_observance",
@@ -409,6 +418,7 @@
       },
       {
         "day": 16,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Day of Reconciliation",
         "rule": "fixed_with_sunday_observance",
@@ -416,6 +426,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Day",
         "rule": "fixed_with_sunday_observance",
@@ -423,6 +434,7 @@
       },
       {
         "day": 26,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Day of Goodwill",
         "rule": "fixed_with_sunday_observance",

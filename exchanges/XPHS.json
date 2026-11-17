@@ -492,6 +492,7 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_date",
@@ -499,18 +500,21 @@
       },
       {
         "day": 9,
+        "effective_from": "2025-01-01",
         "month": 4,
         "name": "Araw ng Kagitingan (Day of Valor)",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Maundy Thursday",
         "offset_days": -3,
         "rule": "easter_offset",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Good Friday",
         "offset_days": -2,
         "rule": "easter_offset",
@@ -518,6 +522,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -525,12 +530,14 @@
       },
       {
         "day": 12,
+        "effective_from": "2025-01-01",
         "month": 6,
         "name": "Independence Day",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "month": 8,
         "name": "National Heroes Day",
         "rule": "last_weekday",
@@ -539,6 +546,7 @@
       },
       {
         "day": 30,
+        "effective_from": "2025-01-01",
         "month": 11,
         "name": "Bonifacio Day",
         "rule": "fixed_date",
@@ -546,6 +554,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Day",
         "rule": "fixed_date",
@@ -553,6 +562,7 @@
       },
       {
         "day": 30,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Rizal Day",
         "rule": "fixed_date",

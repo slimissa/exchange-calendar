@@ -439,12 +439,14 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_with_sunday_observance",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Good Friday",
         "offset_days": -2,
         "rule": "easter_offset",
@@ -452,6 +454,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -459,6 +462,7 @@
       },
       {
         "day": 21,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Navy Day",
         "rule": "fixed_date",
@@ -466,6 +470,7 @@
       },
       {
         "day": 20,
+        "effective_from": "2025-01-01",
         "month": 6,
         "name": "National Indigenous Peoples Day",
         "rule": "fixed_date",
@@ -473,6 +478,7 @@
       },
       {
         "day": 16,
+        "effective_from": "2025-01-01",
         "month": 7,
         "name": "Our Lady of Mount Carmel",
         "rule": "fixed_date",
@@ -480,6 +486,7 @@
       },
       {
         "day": 15,
+        "effective_from": "2025-01-01",
         "month": 8,
         "name": "Assumption Day",
         "rule": "fixed_date",
@@ -487,6 +494,7 @@
       },
       {
         "day": 18,
+        "effective_from": "2025-01-01",
         "month": 9,
         "name": "Independence Day",
         "rule": "fixed_date",
@@ -494,6 +502,7 @@
       },
       {
         "day": 19,
+        "effective_from": "2025-01-01",
         "month": 9,
         "name": "Army Day",
         "rule": "fixed_date",
@@ -501,6 +510,7 @@
       },
       {
         "day": 8,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Immaculate Conception",
         "rule": "fixed_date",
@@ -508,6 +518,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Day",
         "rule": "fixed_date",
@@ -515,6 +526,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 11,
         "name": "All Saints' Day",
         "rule": "fixed_date",

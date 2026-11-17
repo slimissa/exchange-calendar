@@ -467,6 +467,7 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_date",
@@ -474,6 +475,7 @@
       },
       {
         "day": 21,
+        "effective_from": "2025-01-01",
         "month": 4,
         "name": "Tiradentes",
         "rule": "fixed_date",
@@ -481,6 +483,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -488,6 +491,7 @@
       },
       {
         "day": 7,
+        "effective_from": "2025-01-01",
         "month": 9,
         "name": "Independence Day",
         "rule": "fixed_date",
@@ -495,6 +499,7 @@
       },
       {
         "day": 12,
+        "effective_from": "2025-01-01",
         "month": 10,
         "name": "Nossa Senhora Aparecida",
         "rule": "fixed_date",
@@ -502,6 +507,7 @@
       },
       {
         "day": 2,
+        "effective_from": "2025-01-01",
         "month": 11,
         "name": "All Souls' Day",
         "rule": "fixed_date",
@@ -509,6 +515,7 @@
       },
       {
         "day": 15,
+        "effective_from": "2025-01-01",
         "month": 11,
         "name": "Republic Proclamation Day",
         "rule": "fixed_date",
@@ -516,6 +523,7 @@
       },
       {
         "day": 20,
+        "effective_from": "2025-01-01",
         "month": 11,
         "name": "Black Consciousness Day",
         "rule": "fixed_date",
@@ -523,6 +531,7 @@
       },
       {
         "day": 24,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Eve",
         "rule": "fixed_date",
@@ -530,6 +539,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Day",
         "rule": "fixed_date",
@@ -537,30 +547,35 @@
       },
       {
         "day": 31,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "New Year's Eve",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Good Friday",
         "offset_days": -2,
         "rule": "easter_offset",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Carnival Monday",
         "offset_days": -48,
         "rule": "easter_offset",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Carnival Tuesday",
         "offset_days": -47,
         "rule": "easter_offset",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Corpus Christi",
         "offset_days": 60,
         "rule": "easter_offset",

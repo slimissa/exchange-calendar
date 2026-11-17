@@ -367,6 +367,7 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_date",
@@ -374,6 +375,7 @@
       },
       {
         "day": 11,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "Independence Manifesto Day",
         "rule": "fixed_date",
@@ -381,6 +383,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -388,6 +391,7 @@
       },
       {
         "day": 30,
+        "effective_from": "2025-01-01",
         "month": 7,
         "name": "Throne Day",
         "rule": "fixed_date",
@@ -395,6 +399,7 @@
       },
       {
         "day": 14,
+        "effective_from": "2025-01-01",
         "month": 8,
         "name": "Oued Ed-Dahab Day",
         "rule": "fixed_date",
@@ -402,6 +407,7 @@
       },
       {
         "day": 20,
+        "effective_from": "2025-01-01",
         "month": 8,
         "name": "Revolution Day",
         "rule": "fixed_date",
@@ -409,6 +415,7 @@
       },
       {
         "day": 21,
+        "effective_from": "2025-01-01",
         "month": 8,
         "name": "Youth Day",
         "rule": "fixed_date",
@@ -416,6 +423,7 @@
       },
       {
         "day": 6,
+        "effective_from": "2025-01-01",
         "month": 11,
         "name": "Green March Day",
         "rule": "fixed_date",
@@ -423,6 +431,7 @@
       },
       {
         "day": 18,
+        "effective_from": "2025-01-01",
         "month": 11,
         "name": "Independence Day",
         "rule": "fixed_date",

@@ -1418,24 +1418,28 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Maundy Thursday",
         "offset_days": -3,
         "rule": "easter_offset",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Good Friday",
         "offset_days": -2,
         "rule": "easter_offset",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Easter Monday",
         "offset_days": 1,
         "rule": "easter_offset",
@@ -1443,6 +1447,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -1450,18 +1455,21 @@
       },
       {
         "day": 17,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Constitution Day",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Ascension Day",
         "offset_days": 39,
         "rule": "easter_offset",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Whit Monday",
         "offset_days": 50,
         "rule": "easter_offset",
@@ -1469,6 +1477,7 @@
       },
       {
         "day": 24,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Eve",
         "rule": "fixed_date",
@@ -1476,6 +1485,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Day",
         "rule": "fixed_date",
@@ -1483,6 +1493,7 @@
       },
       {
         "day": 26,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Boxing Day",
         "rule": "fixed_date",
@@ -1490,6 +1501,7 @@
       },
       {
         "day": 31,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "New Year's Eve",
         "rule": "fixed_date",

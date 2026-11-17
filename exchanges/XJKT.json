@@ -384,6 +384,7 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_date",
@@ -391,6 +392,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -398,6 +400,7 @@
       },
       {
         "day": 17,
+        "effective_from": "2025-01-01",
         "month": 8,
         "name": "Independence Day",
         "rule": "fixed_date",
@@ -405,6 +408,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Day",
         "rule": "fixed_date",

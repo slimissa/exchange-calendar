@@ -294,6 +294,7 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_with_weekend_adjustment",
@@ -301,6 +302,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_with_weekend_adjustment",
@@ -308,6 +310,7 @@
       },
       {
         "day": 16,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "National Day",
         "rule": "fixed_with_weekend_adjustment",
@@ -315,6 +318,7 @@
       },
       {
         "day": 17,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Accession Day",
         "rule": "fixed_with_weekend_adjustment",

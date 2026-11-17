@@ -1442,12 +1442,14 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "month": 2,
         "n": 3,
         "name": "Family Day",
@@ -1456,6 +1458,7 @@
         "weekday": "monday"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Good Friday",
         "offset_days": -2,
         "rule": "easter_offset",
@@ -1463,12 +1466,14 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 7,
         "name": "Canada Day",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "month": 8,
         "n": 1,
         "name": "Civic Holiday",
@@ -1477,6 +1482,7 @@
         "weekday": "monday"
       },
       {
+        "effective_from": "2025-01-01",
         "month": 9,
         "n": 1,
         "name": "Labour Day",
@@ -1485,6 +1491,7 @@
         "weekday": "monday"
       },
       {
+        "effective_from": "2025-01-01",
         "month": 10,
         "n": 2,
         "name": "Thanksgiving Day",
@@ -1494,6 +1501,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Day",
         "rule": "fixed_with_weekend_adjustment",
@@ -1501,6 +1509,7 @@
       },
       {
         "day": 26,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Boxing Day",
         "rule": "fixed_with_weekend_adjustment",

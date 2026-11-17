@@ -374,18 +374,21 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Good Friday",
         "offset_days": -2,
         "rule": "easter_offset",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Easter Monday",
         "offset_days": 1,
         "rule": "easter_offset",
@@ -393,6 +396,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -400,6 +404,7 @@
       },
       {
         "day": 8,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Victory Day",
         "rule": "fixed_date",
@@ -407,6 +412,7 @@
       },
       {
         "day": 5,
+        "effective_from": "2025-01-01",
         "month": 7,
         "name": "Saints Cyril and Methodius Day",
         "rule": "fixed_date",
@@ -414,6 +420,7 @@
       },
       {
         "day": 6,
+        "effective_from": "2025-01-01",
         "month": 7,
         "name": "Jan Hus Day",
         "rule": "fixed_date",
@@ -421,6 +428,7 @@
       },
       {
         "day": 28,
+        "effective_from": "2025-01-01",
         "month": 9,
         "name": "Czech Statehood Day",
         "rule": "fixed_date",
@@ -428,6 +436,7 @@
       },
       {
         "day": 28,
+        "effective_from": "2025-01-01",
         "month": 10,
         "name": "Independent Czechoslovak State Day",
         "rule": "fixed_date",
@@ -435,6 +444,7 @@
       },
       {
         "day": 17,
+        "effective_from": "2025-01-01",
         "month": 11,
         "name": "Struggle for Freedom and Democracy Day",
         "rule": "fixed_date",
@@ -442,6 +452,7 @@
       },
       {
         "day": 24,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Eve",
         "rule": "fixed_date",
@@ -449,6 +460,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Day",
         "rule": "fixed_date",
@@ -456,6 +468,7 @@
       },
       {
         "day": 26,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "St. Stephen's Day",
         "rule": "fixed_date",

@@ -298,6 +298,7 @@
     "recurrence_rules": [
       {
         "day": 7,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "Coptic Christmas",
         "rule": "fixed_date",
@@ -305,6 +306,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "Revolution Day (Jan 25)",
         "rule": "fixed_with_thursday_observance",
@@ -312,6 +314,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 4,
         "name": "Sinai Liberation Day",
         "rule": "fixed_with_thursday_observance",
@@ -319,6 +322,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -326,6 +330,7 @@
       },
       {
         "day": 30,
+        "effective_from": "2025-01-01",
         "month": 6,
         "name": "Revolution Day (Jun 30)",
         "rule": "fixed_with_thursday_observance",
@@ -333,6 +338,7 @@
       },
       {
         "day": 23,
+        "effective_from": "2025-01-01",
         "month": 7,
         "name": "Revolution Day (Jul 23)",
         "rule": "fixed_with_thursday_observance",
@@ -340,6 +346,7 @@
       },
       {
         "day": 6,
+        "effective_from": "2025-01-01",
         "month": 10,
         "name": "Armed Forces Day",
         "rule": "fixed_with_thursday_observance",

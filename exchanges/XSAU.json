@@ -352,6 +352,7 @@
     "recurrence_rules": [
       {
         "day": 22,
+        "effective_from": "2025-01-01",
         "month": 2,
         "name": "Saudi Founding Day",
         "rule": "fixed_date",
@@ -359,6 +360,7 @@
       },
       {
         "day": 23,
+        "effective_from": "2025-01-01",
         "month": 9,
         "name": "Saudi National Day",
         "rule": "fixed_date",

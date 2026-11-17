@@ -1837,6 +1837,7 @@
     "recurrence_rules": [
       {
         "day": 26,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "Republic Day",
         "rule": "fixed_date",
@@ -1844,6 +1845,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Maharashtra Day",
         "rule": "fixed_date",
@@ -1851,6 +1853,7 @@
       },
       {
         "day": 15,
+        "effective_from": "2025-01-01",
         "month": 8,
         "name": "Independence Day",
         "rule": "fixed_date",
@@ -1858,12 +1861,14 @@
       },
       {
         "day": 2,
+        "effective_from": "2025-01-01",
         "month": 10,
         "name": "Gandhi Jayanti",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Good Friday",
         "offset_days": -2,
         "rule": "easter_offset",
@@ -1871,6 +1876,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas",
         "rule": "fixed_date",
@@ -1878,6 +1884,7 @@
       },
       {
         "day": 14,
+        "effective_from": "2025-01-01",
         "month": 4,
         "name": "Dr. Ambedkar Jayanti",
         "rule": "fixed_date",

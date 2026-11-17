@@ -372,6 +372,7 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_date",
@@ -379,18 +380,21 @@
       },
       {
         "day": 6,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "Epiphany",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Good Friday",
         "offset_days": -2,
         "rule": "easter_offset",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Easter Monday",
         "offset_days": 1,
         "rule": "easter_offset",
@@ -398,6 +402,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -405,12 +410,14 @@
       },
       {
         "day": 3,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Constitution Day",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Corpus Christi",
         "offset_days": 60,
         "rule": "easter_offset",
@@ -418,6 +425,7 @@
       },
       {
         "day": 15,
+        "effective_from": "2025-01-01",
         "month": 8,
         "name": "Assumption Day",
         "rule": "fixed_date",
@@ -425,6 +433,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 11,
         "name": "All Saints' Day",
         "rule": "fixed_date",
@@ -432,6 +441,7 @@
       },
       {
         "day": 11,
+        "effective_from": "2025-01-01",
         "month": 11,
         "name": "Independence Day",
         "rule": "fixed_date",
@@ -439,6 +449,7 @@
       },
       {
         "day": 24,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Eve",
         "rule": "fixed_date",
@@ -446,6 +457,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Day",
         "rule": "fixed_date",
@@ -453,6 +465,7 @@
       },
       {
         "day": 26,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Boxing Day",
         "rule": "fixed_date",
@@ -460,6 +473,7 @@
       },
       {
         "day": 31,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "New Year's Eve",
         "rule": "fixed_date",

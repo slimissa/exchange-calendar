@@ -312,12 +312,14 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "month": 2,
         "n": 1,
         "name": "Constitution Day",
@@ -326,6 +328,7 @@
         "weekday": "monday"
       },
       {
+        "effective_from": "2025-01-01",
         "month": 3,
         "n": 3,
         "name": "Benito Juárez Day",
@@ -334,12 +337,14 @@
         "weekday": "monday"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Holy Thursday",
         "offset_days": -3,
         "rule": "easter_offset",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "name": "Good Friday",
         "offset_days": -2,
         "rule": "easter_offset",
@@ -347,6 +352,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -354,12 +360,14 @@
       },
       {
         "day": 16,
+        "effective_from": "2025-01-01",
         "month": 9,
         "name": "Independence Day",
         "rule": "fixed_date",
         "status": "closed"
       },
       {
+        "effective_from": "2025-01-01",
         "month": 11,
         "n": 3,
         "name": "Revolution Day",
@@ -369,6 +377,7 @@
       },
       {
         "day": 12,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Day of the Virgin of Guadalupe",
         "rule": "fixed_date",
@@ -376,6 +385,7 @@
       },
       {
         "day": 25,
+        "effective_from": "2025-01-01",
         "month": 12,
         "name": "Christmas Day",
         "rule": "fixed_date",
@@ -383,6 +393,7 @@
       },
       {
         "day": 2,
+        "effective_from": "2025-01-01",
         "month": 11,
         "name": "Day of the Dead",
         "rule": "fixed_date",

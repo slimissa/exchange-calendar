@@ -426,6 +426,7 @@
     "recurrence_rules": [
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 1,
         "name": "New Year's Day",
         "rule": "fixed_date",
@@ -433,6 +434,7 @@
       },
       {
         "day": 23,
+        "effective_from": "2025-01-01",
         "month": 4,
         "name": "National Sovereignty and Children's Day",
         "rule": "fixed_date",
@@ -440,6 +442,7 @@
       },
       {
         "day": 1,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Labour Day",
         "rule": "fixed_date",
@@ -447,6 +450,7 @@
       },
       {
         "day": 19,
+        "effective_from": "2025-01-01",
         "month": 5,
         "name": "Commemoration of Atatürk, Youth and Sports Day",
         "rule": "fixed_date",
@@ -454,6 +458,7 @@
       },
       {
         "day": 15,
+        "effective_from": "2025-01-01",
         "month": 7,
         "name": "Democracy and National Unity Day",
         "rule": "fixed_date",
@@ -461,6 +466,7 @@
       },
       {
         "day": 30,
+        "effective_from": "2025-01-01",
         "month": 8,
         "name": "Victory Day",
         "rule": "fixed_date",
@@ -468,6 +474,7 @@
       },
       {
         "day": 29,
+        "effective_from": "2025-01-01",
         "month": 10,
         "name": "Republic Day",
         "rule": "fixed_date",
