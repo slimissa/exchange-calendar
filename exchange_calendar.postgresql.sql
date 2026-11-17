@@ -5,7 +5,7 @@
 -- Dialect: PostgreSQL. The INSERT block runs in one transaction.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 166, holidays 8865, ad_hoc_closures 0, confidence 789
+-- Rows: exchanges 74, sessions 166, holidays 8867, ad_hoc_closures 0, confidence 789
 
 DROP TABLE IF EXISTS confidence;
 DROP TABLE IF EXISTS ad_hoc_closures;
@@ -495,6 +495,8 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2027-01-01', 'New Year''s Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2027-03-26', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2027-03-29', 'Easter Monday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2027-12-24', 'Christmas Eve (half-day)', 'early_close', 'explicit', 1, '14:05', NULL, NULL, NULL, 'https://www.euronext.com/en/media/16439/download');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2027-12-31', 'New Year''s Eve (half-day)', 'early_close', 'explicit', 1, '14:05', NULL, NULL, NULL, 'https://www.euronext.com/en/media/16439/download');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2028-04-14', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2028-04-17', 'Easter Monday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2028-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
@@ -10011,6 +10013,6 @@ COMMIT;
 -- Row counts
 --   exchanges: 74
 --   sessions: 166
---   holidays: 8865
+--   holidays: 8867
 --   ad_hoc_closures: 0
 --   confidence: 789

@@ -1113,6 +1113,20 @@
             "status": "closed"
           },
           {
+            "date": "2027-12-24",
+            "early_close_time": "14:05",
+            "name": "Christmas Eve (half-day)",
+            "source_url": "https://www.euronext.com/en/media/16439/download",
+            "status": "early_close"
+          },
+          {
+            "date": "2027-12-31",
+            "early_close_time": "14:05",
+            "name": "New Year's Eve (half-day)",
+            "source_url": "https://www.euronext.com/en/media/16439/download",
+            "status": "early_close"
+          },
+          {
             "date": "2028-04-14",
             "name": "Good Friday",
             "source_url": "https://www.euronext.com/en/trading-calendar",
