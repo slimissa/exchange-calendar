@@ -76,7 +76,7 @@ XKUW,lunch_break,1,12:30,13:00,
 XKUW,regular,1,09:00,12:30,
 XLIM,lunch_break,1,13:30,14:30,
 XLIM,regular,1,09:00,13:30,
-XLIS,regular,1,09:00,17:30,
+XLIS,regular,1,08:00,16:30,
 XLIT,regular,1,10:00,16:00,
 XLON,auction,1,,,08:00
 XLON,auction,2,,,16:35

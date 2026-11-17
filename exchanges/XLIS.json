@@ -879,15 +879,15 @@
   },
   "mic": "XLIS",
   "name": "Euronext Lisbon",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. regular_hours are Lisbon local time (timezone Europe/Lisbon): 08:00-16:30. Euronext publishes its cash-market hours in CET (09:00-17:30; its Trading Procedures Annexe One says all hours are CET), and Lisbon is one hour behind CET. The registry had 09:00-17:30 under Europe/Lisbon, which is one hour late; exchange_calendars (08:00-16:30), tradinghours.com (08:00-16:30 WET) and the ICE Futures Europe year-end schedule (Euronext Lisbon stops 13:05 GMT on the half days) agree with the corrected value. Half-day early_close_time values are Lisbon local (13:05 = 14:05 CET).",
   "regular_hours": {
-    "close": "17:30",
-    "open": "09:00"
+    "close": "16:30",
+    "open": "08:00"
   },
   "sessions": [
     {
-      "close": "17:30",
-      "open": "09:00",
+      "close": "16:30",
+      "open": "08:00",
       "type": "regular"
     }
   ],

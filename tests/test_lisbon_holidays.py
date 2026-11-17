@@ -3,7 +3,7 @@
 test_lisbon_holidays.py — Ground truth tests for XLIS (Euronext Lisbon).
 
 Key facts verified:
-    - Regular hours: 09:00-17:30 (Euronext standard)
+    - Regular hours: 08:00-16:30 Lisbon time (09:00-17:30 CET, Euronext standard)
     - No lunch break
     - Weekend is Saturday-Sunday (Western weekend)
     - Euronext Lisbon closes only on New Year's Day, Good Friday, Easter
@@ -68,8 +68,8 @@ class TestXLISProperties:
         assert xlis["timezone"] == "Europe/Lisbon"
 
     def test_regular_hours(self, xlis):
-        assert xlis["regular_hours"]["open"] == "09:00"
-        assert xlis["regular_hours"]["close"] == "17:30"
+        assert xlis["regular_hours"]["open"] == "08:00"
+        assert xlis["regular_hours"]["close"] == "16:30"
 
     def test_no_lunch_break(self, xlis):
         lunch = [s for s in xlis.get("sessions", []) if s.get("type") == "lunch_break"]
