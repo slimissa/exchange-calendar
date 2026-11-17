@@ -175,6 +175,21 @@ XCAY,2029,medium,manual,,predicted
 XCOL,2025,medium,manual,,
 XCOL,2026,medium,manual,,
 XCOL,2027,medium,manual,,predicted
+XCSE,2010,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2011,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2012,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2013,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2014,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2015,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2016,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2017,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2018,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2019,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2020,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2021,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2022,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2023,low,manual,,backfilled from exchange_calendars; not independently verified
+XCSE,2024,low,manual,,backfilled from exchange_calendars; not independently verified
 XCSE,2025,medium,manual,,
 XCSE,2026,medium,manual,,
 XCSE,2027,medium,manual,,predicted
