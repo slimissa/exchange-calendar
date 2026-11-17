@@ -36,7 +36,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XBKK | 727 | 727 | 727 | 0 | 100.0% |
 | XBOG | 1217 | 1216 | 1216 | 1 | 99.9% |
 | XBOM | 1484 | 1519 | 739* | 35 | 97.7% |
-| XBRU | 1279 | 1279 | 1279 | 0 | 100.0% |
+| XBRU | 1535 | 1535 | 1535 | 0 | 100.0% |
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
 | XBSP | 1241 | No reference data | No reference data | n/a | n/a |
 | XBUD | 1248 | 1244 | 1244 | 4 | 99.7% |
@@ -49,10 +49,10 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XCSE | 1252 | 1252 | 1252 | 0 | 100.0% |
 | XDFM | 1264 | No reference data | No reference data | n/a | n/a |
 | XDHA | 1262 | No reference data | No reference data | n/a | n/a |
-| XDUB | 1271 | 1271 | 1271 | 0 | 100.0% |
+| XDUB | 1526 | 1526 | 1526 | 0 | 100.0% |
 | XETR | 1271 | 1271 | 1271 | 0 | 100.0% |
 | XGSE | 1247 | No reference data | No reference data | n/a | n/a |
-| XHEL | 1254 | 1254 | 1254 | 0 | 100.0% |
+| XHEL | 1505 | 1505 | 1505 | 0 | 100.0% |
 | XHKG | 1479 | 1480 | 1480 | 3 | 99.8% |
 | XICE | 1243 | 1243 | 1243 | 0 | 100.0% |
 | XIST | 1255 | 1255 | 1255 | 0 | 100.0% |
@@ -63,7 +63,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XKRX | 1461 | 1468 | 1468 | 7 | 99.5% |
 | XKUW | 1017 | No reference data | No reference data | n/a | n/a |
 | XLIM | 1241 | 1243 | 1243 | 6 | 99.5% |
-| XLIS | 1279 | 1279 | 1279 | 0 | 100.0% |
+| XLIS | 1535 | 1535 | 1535 | 0 | 100.0% |
 | XLIT | 1242 | 1246 | 1246 | 4 | 99.7% |
 | XLON | 1518 | 1518 | 1518 | 0 | 100.0% |
 | XLUX | 1279 | 1279 | 1279 | 0 | 100.0% |
@@ -89,7 +89,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XSHE | 969 | No reference data | No reference data | n/a | n/a |
 | XSHG | 1466 | 1509 | 727* | 43 | 97.2% |
 | XSTC | 1006 | No reference data | No reference data | n/a | n/a |
-| XSTO | 1254 | 1254 | 1254 | 0 | 100.0% |
+| XSTO | 1505 | 1505 | 1505 | 0 | 100.0% |
 | XSWX | 1505 | 1505 | 1505 | 0 | 100.0% |
 | XTAD | 1272 | No reference data | No reference data | n/a | n/a |
 | XTAI | 1220 | 1221 | 1221 | 15 | 98.8% |
@@ -104,7 +104,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 30 of 50.
-- Trading days on which all available sources agree: 64705 of 64979 (99.6%).
+- Trading days on which all available sources agree: 65974 of 66248 (99.6%).
 
 ## Disagreements by year
 
