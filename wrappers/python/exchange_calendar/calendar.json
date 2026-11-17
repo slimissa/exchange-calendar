@@ -14915,7 +14915,7 @@
       },
       "mic": "XDUB",
       "name": "Euronext Dublin",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. Close-time convention: the registry uses 16:30 (full days) and 12:30 (half days) for 2025-2029, while exchange_calendars uses 16:28 and 12:28 and so do the backfilled 2010-2024 half days (12:28). This is not rounding in the library: Euronext's half-day notice gives Dublin equities a close between 13:28 and 13:30 CET (12:28-12:30 Dublin time), a two-minute window, so the registry holds the end of the window and the library its start.",
       "regular_hours": {
         "close": "16:30",
         "open": "08:00"
