@@ -1216,13 +1216,17 @@ XBRU,2025-01-01,New Year's Day,closed,explicit,1,,,,,https://www.euronext.com/en
 XBRU,2025-04-18,Good Friday,closed,explicit,1,,,,,https://live.euronext.com/en/resources/trading-hours-holidays
 XBRU,2025-04-21,Easter Monday,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XBRU,2025-05-01,Labour Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
+XBRU,2025-12-24,Christmas Eve (half-day),early_close,explicit,1,14:05,,,,https://live.euronext.com/en/resources/trading-hours-holidays
 XBRU,2025-12-25,Christmas Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XBRU,2025-12-26,Boxing Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
+XBRU,2025-12-31,New Year's Eve (half-day),early_close,explicit,1,14:05,,,,https://live.euronext.com/en/resources/trading-hours-holidays
 XBRU,2026-01-01,New Year's Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XBRU,2026-04-03,Good Friday,closed,explicit,1,,,,,https://live.euronext.com/en/resources/trading-hours-holidays
 XBRU,2026-04-06,Easter Monday,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XBRU,2026-05-01,Labour Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
+XBRU,2026-12-24,Christmas Eve (half-day),early_close,explicit,1,14:05,,,,https://live.euronext.com/en/resources/trading-hours-holidays
 XBRU,2026-12-25,Christmas Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
+XBRU,2026-12-31,New Year's Eve (half-day),early_close,explicit,1,14:05,,,,https://live.euronext.com/en/resources/trading-hours-holidays
 XBRU,2027-01-01,New Year's Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XBRU,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XBRU,2027-03-29,Easter Monday,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
@@ -3820,13 +3824,17 @@ XLIS,2025-01-01,New Year's Day,closed,explicit,1,,,,,https://www.euronext.com/en
 XLIS,2025-04-18,Good Friday,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XLIS,2025-04-21,Easter Monday,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XLIS,2025-05-01,Labour Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
+XLIS,2025-12-24,Christmas Eve (half-day),early_close,explicit,1,13:05,,,,https://live.euronext.com/en/resources/trading-hours-holidays
 XLIS,2025-12-25,Christmas Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XLIS,2025-12-26,Boxing Day,closed,explicit,1,,,,,https://live.euronext.com/en/resources/trading-hours-holidays
+XLIS,2025-12-31,New Year's Eve (half-day),early_close,explicit,1,13:05,,,,https://live.euronext.com/en/resources/trading-hours-holidays
 XLIS,2026-01-01,New Year's Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XLIS,2026-04-03,Good Friday,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XLIS,2026-04-06,Easter Monday,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XLIS,2026-05-01,Labour Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
+XLIS,2026-12-24,Christmas Eve (half-day),early_close,explicit,1,13:05,,,,https://live.euronext.com/en/resources/trading-hours-holidays
 XLIS,2026-12-25,Christmas Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
+XLIS,2026-12-31,New Year's Eve (half-day),early_close,explicit,1,13:05,,,,https://live.euronext.com/en/resources/trading-hours-holidays
 XLIS,2027-01-01,New Year's Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XLIS,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XLIS,2027-03-29,Easter Monday,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
