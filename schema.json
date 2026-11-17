@@ -435,7 +435,8 @@
             "required": [
               "rule",
               "name",
-              "status"
+              "status",
+              "effective_from"
             ],
             "type": "object"
           },

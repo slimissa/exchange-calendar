@@ -109,6 +109,20 @@ class TestSchemaValidation:
         errors = validator.validate_schema(exchange, schema, "TEST.json")
         assert any("fetcher_status" in e for e in errors)
 
+    def test_recurrence_rule_requires_effective_from(self):
+        """A rule without effective_from can generate closures for years
+        before it was authored (the XDUB-class bug), so it is required."""
+        schema = json.loads((Path(__file__).parent.parent / "schema.json").read_text())
+        rule = {"rule": "fixed_date", "name": "Labour Day", "status": "closed",
+                "month": 5, "day": 1}
+        exchange = make_valid_exchange()
+        exchange["holidays"]["recurrence_rules"] = [dict(rule)]
+        errors = validator.validate_schema(exchange, schema, "TEST.json")
+        assert any("effective_from" in e for e in errors)
+
+        exchange["holidays"]["recurrence_rules"] = [dict(rule, effective_from="2025-01-01")]
+        assert validator.validate_schema(exchange, schema, "TEST.json") == []
+
     @pytest.mark.parametrize("value", ["implemented", "ci_unreachable", "blocked", "none"])
     def test_fetcher_status_accepts_each_allowed_value(self, value):
         exchange = make_valid_exchange()
