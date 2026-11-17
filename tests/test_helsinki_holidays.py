@@ -3,8 +3,8 @@
 test_helsinki_holidays.py — Ground truth tests for XHEL (Nasdaq Helsinki).
 
 Key facts verified:
-    - Regular hours: 09:00-18:30 (Nordic standard)
-    - Pre-market: 08:00-09:00, After-hours: 18:30-18:45
+    - Regular hours: 10:00-18:30 EET (Nasdaq Helsinki)
+    - Pre-market: 09:00-10:00, After-hours: 18:30-18:45
     - Epiphany (Jan 6) is a Finnish statutory holiday
     - May Day (May 1) is a Finnish statutory holiday
     - Midsummer Eve is Friday between June 19-25 (explicit-only)
@@ -61,7 +61,7 @@ class TestXHELProperties:
         assert xhel["timezone"] == "Europe/Helsinki"
 
     def test_regular_hours(self, xhel):
-        assert xhel["regular_hours"]["open"] == "09:00"
+        assert xhel["regular_hours"]["open"] == "10:00"
         assert xhel["regular_hours"]["close"] == "18:30"
 
     def test_no_lunch_break(self, xhel):
@@ -69,7 +69,7 @@ class TestXHELProperties:
         assert lunch == []
 
     def test_extended_hours(self, xhel):
-        assert xhel["extended_hours"]["pre_market"]["open"] == "08:00"
+        assert xhel["extended_hours"]["pre_market"]["open"] == "09:00"
         assert xhel["extended_hours"]["after_hours"]["close"] == "18:45"
 
 
