@@ -197,6 +197,12 @@ class TestXSTORecurrence:
 # Structural checks
 # ──────────────────────────────────────────────────────────────
 
+NASDAQ_HALF_DAYS = {
+    "2025-04-17", "2025-04-30", "2025-05-28", "2025-10-31",
+    "2026-01-05", "2026-04-02", "2026-04-30", "2026-05-13", "2026-10-30",
+}
+
+
 class TestXSTOStructure:
     def test_no_weekend_dates(self, explicit_dates):
         for date_str in explicit_dates:
@@ -211,12 +217,25 @@ class TestXSTOStructure:
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source: {date_str}"
 
-    def test_all_statuses_closed(self, explicit_dates):
-        """Nasdaq Stockholm has no early closes — all holidays are full closures in 2025-2029.
-        2010-2024 is a backfill from exchange_calendars, which carries early closes."""
+    def test_all_statuses_closed_except_half_days(self, explicit_dates):
+        """In 2025-2029 holidays are full closures except the 13:00 half days
+        Nasdaq lists for 2025 and 2026. 2010-2024 is a backfill from
+        exchange_calendars, which carries its own early closes."""
         for date_, entry in explicit_dates.items():
-            if date_ >= "2025-01-01":
+            if date_ in NASDAQ_HALF_DAYS:
+                assert entry["status"] == "early_close"
+                assert entry["early_close_time"] == "13:00"
+            elif date_ >= "2025-01-01":
                 assert entry["status"] == "closed"
+
+    def test_half_days_match_nasdaq(self, explicit_dates):
+        """Nasdaq's holiday schedule: Dec 24 and 31 are full closures, the
+        half days are the eves of Maundy Thursday-adjacent holidays."""
+        early = {d for d, e in explicit_dates.items()
+                 if e["status"] == "early_close" and d >= "2025-01-01"}
+        assert early == NASDAQ_HALF_DAYS
+        for day in ("2025-12-24", "2025-12-31", "2026-12-24", "2026-12-31"):
+            assert day not in explicit_dates or explicit_dates[day]["status"] == "closed"
 
     def test_holiday_count_reasonable(self, explicit_dates):
         """~55-65 entries in 2025-2029: 12 holidays × 5 years.

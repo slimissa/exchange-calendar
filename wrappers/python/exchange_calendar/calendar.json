@@ -53337,6 +53337,13 @@
             "status": "closed"
           },
           {
+            "date": "2025-04-17",
+            "early_close_time": "13:00",
+            "name": "Maundy Thursday (half-day)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "early_close"
+          },
+          {
             "date": "2025-04-18",
             "name": "Good Friday",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
@@ -53349,10 +53356,24 @@
             "status": "closed"
           },
           {
+            "date": "2025-04-30",
+            "early_close_time": "13:00",
+            "name": "May Day Eve (half-day)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "early_close"
+          },
+          {
             "date": "2025-05-01",
             "name": "May Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
             "status": "closed"
+          },
+          {
+            "date": "2025-05-28",
+            "early_close_time": "13:00",
+            "name": "Ascension Day Eve (half-day)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "early_close"
           },
           {
             "date": "2025-05-29",
@@ -53371,6 +53392,13 @@
             "name": "Midsummer Eve",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
             "status": "closed"
+          },
+          {
+            "date": "2025-10-31",
+            "early_close_time": "13:00",
+            "name": "All Saints' Day Eve (half-day)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "early_close"
           },
           {
             "date": "2025-12-24",
@@ -53403,10 +53431,24 @@
             "status": "closed"
           },
           {
+            "date": "2026-01-05",
+            "early_close_time": "13:00",
+            "name": "Epiphany Eve (half-day)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "early_close"
+          },
+          {
             "date": "2026-01-06",
             "name": "Epiphany",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
             "status": "closed"
+          },
+          {
+            "date": "2026-04-02",
+            "early_close_time": "13:00",
+            "name": "Maundy Thursday (half-day)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "early_close"
           },
           {
             "date": "2026-04-03",
@@ -53421,10 +53463,24 @@
             "status": "closed"
           },
           {
+            "date": "2026-04-30",
+            "early_close_time": "13:00",
+            "name": "May Day Eve (half-day)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "early_close"
+          },
+          {
             "date": "2026-05-01",
             "name": "May Day",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
             "status": "closed"
+          },
+          {
+            "date": "2026-05-13",
+            "early_close_time": "13:00",
+            "name": "Ascension Day Eve (half-day)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "early_close"
           },
           {
             "date": "2026-05-14",
@@ -53437,6 +53493,13 @@
             "name": "Midsummer Eve",
             "source_url": "https://www.nasdaqomxnordic.com/trading-hours",
             "status": "closed"
+          },
+          {
+            "date": "2026-10-30",
+            "early_close_time": "13:00",
+            "name": "All Saints' Day Eve (half-day)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "early_close"
           },
           {
             "date": "2026-12-24",

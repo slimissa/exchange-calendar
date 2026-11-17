@@ -7504,23 +7504,32 @@ XSTO,2024-12-26,Historical Holiday,closed,explicit,1,,,,,https://github.com/gerr
 XSTO,2024-12-31,Historical Holiday,closed,explicit,1,,,,,https://github.com/gerrymanoim/exchange_calendars
 XSTO,2025-01-01,New Year's Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2025-01-06,Epiphany,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
+XSTO,2025-04-17,Maundy Thursday (half-day),early_close,explicit,1,13:00,,,,https://www.nasdaq.com/european-market-activity/trading-hours
 XSTO,2025-04-18,Good Friday,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2025-04-21,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
+XSTO,2025-04-30,May Day Eve (half-day),early_close,explicit,1,13:00,,,,https://www.nasdaq.com/european-market-activity/trading-hours
 XSTO,2025-05-01,May Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
+XSTO,2025-05-28,Ascension Day Eve (half-day),early_close,explicit,1,13:00,,,,https://www.nasdaq.com/european-market-activity/trading-hours
 XSTO,2025-05-29,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2025-06-06,Swedish National Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2025-06-20,Midsummer Eve,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
+XSTO,2025-10-31,All Saints' Day Eve (half-day),early_close,explicit,1,13:00,,,,https://www.nasdaq.com/european-market-activity/trading-hours
 XSTO,2025-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2025-12-25,Christmas Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2025-12-26,Boxing Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2025-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2026-01-01,New Year's Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
+XSTO,2026-01-05,Epiphany Eve (half-day),early_close,explicit,1,13:00,,,,https://www.nasdaq.com/european-market-activity/trading-hours
 XSTO,2026-01-06,Epiphany,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
+XSTO,2026-04-02,Maundy Thursday (half-day),early_close,explicit,1,13:00,,,,https://www.nasdaq.com/european-market-activity/trading-hours
 XSTO,2026-04-03,Good Friday,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2026-04-06,Easter Monday,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
+XSTO,2026-04-30,May Day Eve (half-day),early_close,explicit,1,13:00,,,,https://www.nasdaq.com/european-market-activity/trading-hours
 XSTO,2026-05-01,May Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
+XSTO,2026-05-13,Ascension Day Eve (half-day),early_close,explicit,1,13:00,,,,https://www.nasdaq.com/european-market-activity/trading-hours
 XSTO,2026-05-14,Ascension Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2026-06-19,Midsummer Eve,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
+XSTO,2026-10-30,All Saints' Day Eve (half-day),early_close,explicit,1,13:00,,,,https://www.nasdaq.com/european-market-activity/trading-hours
 XSTO,2026-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2026-12-25,Christmas Day,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
 XSTO,2026-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.nasdaqomxnordic.com/trading-hours
