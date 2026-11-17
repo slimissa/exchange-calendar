@@ -214,10 +214,17 @@ class TestXWARStructure:
             assert "source_url" in entry, f"Missing source: {date_str}"
 
     def test_all_statuses_closed(self, explicit_dates):
-        """GPW has no early closes — all holidays are full closures."""
-        for entry in explicit_dates.values():
-            assert entry["status"] == "closed"
+        """GPW has no early closes — all holidays are full closures in 2025-2029.
+        2010-2024 is a backfill from exchange_calendars, which carries early closes."""
+        for date_, entry in explicit_dates.items():
+            if date_ >= "2025-01-01":
+                assert entry["status"] == "closed"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~55-70 entries: 14 holidays × 5 years."""
-        assert 50 <= len(explicit_dates) <= 75
+        """~55-70 entries: 14 holidays × 5 years in 2025-2029.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 50 <= len(window) <= 75, f"Unexpected count: {len(window)}"
