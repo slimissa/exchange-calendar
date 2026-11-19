@@ -1799,6 +1799,16 @@
       ],
       "summary": "Holy Thursday 2029 is an Argentine non-working day. The libraries close it and the registry trades. BYMA has not published 2029. Check BYMA's 2029 calendar.",
       "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
+    },
+    {
+      "exchange": "XDUB",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2027-12-28"
+      ],
+      "summary": "Euronext's 2027 holiday calendar closes Dublin on Monday 27 December 2027 only and lists no 28 December row, and the calendar opens every weekday it does not list, so Tuesday 28 December 2027 trades. Both libraries close it as Ireland's St Stephen's Day substitute. Caveat: in 2021 (same weekday layout) Euronext closed both 27 and 28 December, so recheck against Euronext's end-of-2027 notice.",
+      "source_url": "https://www.euronext.com/en/media/16439/download"
     }
   ]
 }
