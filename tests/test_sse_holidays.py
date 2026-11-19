@@ -231,3 +231,32 @@ class TestXSHGStructure:
         """
         window = [d for d in explicit_dates if d >= "2025-01-01"]
         assert 75 <= len(window) <= 90
+
+# The State Council's 2027 holiday notice (国办发明电〔2026〕10号, 2026-11-05):
+# weekday closures for mainland exchanges. Weekend make-up working days are
+# not trading days, so they do not appear.
+STATE_COUNCIL_2027 = [
+    "2027-01-01",
+    "2027-02-05", "2027-02-08", "2027-02-09", "2027-02-10", "2027-02-11", "2027-02-12",
+    "2027-04-05",
+    "2027-05-03", "2027-05-04", "2027-05-05",
+    "2027-06-09",
+    "2027-09-15",
+    "2027-10-01", "2027-10-04", "2027-10-05", "2027-10-06", "2027-10-07",
+]
+
+
+class TestXSHG2027StateCouncilNotice:
+    def test_2027_closures_match_the_notice(self, explicit_dates):
+        got = sorted(d for d in explicit_dates if d.startswith("2027"))
+        assert got == STATE_COUNCIL_2027
+
+    def test_2027_entries_cite_the_notice(self, explicit_dates):
+        for d, entry in explicit_dates.items():
+            if d.startswith("2027"):
+                assert "xinhuanet.com" in entry["source_url"], d
+
+    def test_2027_coverage_span(self, xshg):
+        spans = {s["from"]: s for s in xshg["verification"]["coverage"]["sources"]}
+        assert "国办发明电〔2026〕10号" in spans["2027-01-01"]["source"]
+        assert spans["2027-01-01"]["contradicted_by"] == STATE_COUNCIL_2027
