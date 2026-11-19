@@ -1213,14 +1213,14 @@
       },
       "mic": "XAMS",
       "name": "Euronext Amsterdam",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Euronext's holiday calendar, published to 2027). 2028-2029: predicted from exchange_calendars and Euronext's unchanged holiday pattern; Euronext has not published those years, although the entries cite its calendar page. Rechecked 2026-11-19 (4c-R2) against Euronext's trading-hours-and-holidays page: 2025-2027 closures and the Dec 24/31 half days (close by 14:05 CET) match. Added 2029-12-24 and 2029-12-31 as predicted half days (predicted: true, citing exchange_calendars): exchange_calendars and XPAR already had them, and Euronext has run Dec 24/31 as half days every year since at least 2010. Hours 09:00-17:30 throughout; the only 2027 change Euronext announces is Trading After Hours availability, not the regular session. No COVID-19 or other one-off closure in 2010-2024. XAMS has no recurrence rules.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Euronext's holiday calendar, published to 2027). 2028-2029: predicted from exchange_calendars and Euronext's unchanged holiday pattern; Euronext has not published those years, although the entries cite its calendar page. Rechecked 2026-11-19 (4c-R2) against Euronext's trading-hours-and-holidays page: 2025-2027 closures and the Dec 24/31 half days (close by 14:05 CET) match. Added 2029-12-24 and 2029-12-31 as predicted half days (predicted: true, citing exchange_calendars): exchange_calendars and XPAR already had them, and Euronext has run Dec 24/31 as half days every year since at least 2010. Hours 09:00-17:30 throughout; the only 2027 change Euronext announces is Trading After Hours availability, not the regular session. No COVID-19 or other one-off closure in 2010-2024. XAMS has no recurrence rules. Close convention (ADR 0013, 4c-R3.5): regular_hours close is the end of the closing auction, 17:35 CET, for 2010-2029 (was 17:30, the end of continuous trading). Source: Euronext's announcement of 2007-02-16 (effective 2007-02-19), reproduced by Mondo Visione: continuous trading 09:00-17:30 CET, pre-closing 17:30-17:35, closing auction at 17:35 CET; FESE trading-hours tables for 2024 and 2026 give the same (pre-closing 17:30-17:35, closing auction 17:35, Trading at Last 17:35-17:40). Half days close by 14:05 CET, also the auction end. exchange_calendars and pandas_market_calendars use the end of continuous trading, so session-time comparisons are a convention_difference.",
       "regular_hours": {
-        "close": "17:30",
+        "close": "17:35",
         "open": "09:00"
       },
       "sessions": [
         {
-          "close": "17:30",
+          "close": "17:35",
           "open": "09:00",
           "type": "regular"
         }
@@ -8989,14 +8989,14 @@
       },
       "mic": "XBRU",
       "name": "Euronext Brussels",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (the exchange's calendar, published to 2027). 2028-2029: predicted from exchange_calendars and the exchange's unchanged pattern; not yet published, although most entries cite the calendar page. Rechecked 2026-11-19 (4c-R3) against Euronext's trading-hours-and-holidays page and its 2027 holiday calendar. Fixed: 2027-12-24 and 2027-12-31 are published half trading days and were missing; 2029-12-24 and 2029-12-31 added as predicted half days (exchange_calendars, XAMS, XPAR and XDUB have them). 2025-2027 closures match. Hours 09:00-17:30 CET throughout; the only 2027 change Euronext announces is Trading After Hours availability. No COVID-19 or other one-off closure in 2010-2024. Half-day time convention (4c-R3 decision: close = end of the closing auction): the half-day close 14:05 is the end of the half-day closing auction (Euronext: all instruments close by 14:05 CET), so it follows the convention. The full-day close 17:30 does not: since 2007-02-19 Euronext's continuous trading ends at 17:30 CET with the closing auction at 17:35 CET, so by the same convention the full-day close would be 17:35. Left unchanged here so that all Euronext core venues (XAMS, XPAR, XBRU, XLIS) change together; flagged for that change.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (the exchange's calendar, published to 2027). 2028-2029: predicted from exchange_calendars and the exchange's unchanged pattern; not yet published, although most entries cite the calendar page. Rechecked 2026-11-19 (4c-R3) against Euronext's trading-hours-and-holidays page and its 2027 holiday calendar. Fixed: 2027-12-24 and 2027-12-31 are published half trading days and were missing; 2029-12-24 and 2029-12-31 added as predicted half days (exchange_calendars, XAMS, XPAR and XDUB have them). 2025-2027 closures match. Hours 09:00-17:30 CET throughout; the only 2027 change Euronext announces is Trading After Hours availability. No COVID-19 or other one-off closure in 2010-2024. Half-day time convention (4c-R3 decision: close = end of the closing auction): the half-day close 14:05 is the end of the half-day closing auction (Euronext: all instruments close by 14:05 CET), so it follows the convention. The full-day close 17:30 does not: since 2007-02-19 Euronext's continuous trading ends at 17:30 CET with the closing auction at 17:35 CET, so by the same convention the full-day close would be 17:35. Left unchanged here so that all Euronext core venues (XAMS, XPAR, XBRU, XLIS) change together; flagged for that change. Close convention (ADR 0013, 4c-R3.5): regular_hours close is the end of the closing auction, 17:35 CET, for 2010-2029 (was 17:30, the end of continuous trading). Source: Euronext's announcement of 2007-02-16 (effective 2007-02-19), reproduced by Mondo Visione: continuous trading 09:00-17:30 CET, pre-closing 17:30-17:35, closing auction at 17:35 CET; FESE trading-hours tables for 2024 and 2026 give the same (pre-closing 17:30-17:35, closing auction 17:35, Trading at Last 17:35-17:40). Half days close by 14:05 CET, also the auction end. exchange_calendars and pandas_market_calendars use the end of continuous trading, so session-time comparisons are a convention_difference.",
       "regular_hours": {
-        "close": "17:30",
+        "close": "17:35",
         "open": "09:00"
       },
       "sessions": [
         {
-          "close": "17:30",
+          "close": "17:35",
           "open": "09:00",
           "type": "regular"
         }
@@ -18281,9 +18281,9 @@
           },
           {
             "date": "2019-12-24",
-            "early_close_time": "12:28",
+            "early_close_time": "13:05",
             "name": "Historical Early Close",
-            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "source_url": "https://www.euronext.com/news/euronext-announces-2019-holiday-calendar-its-cash-and-derivatives-markets",
             "status": "early_close"
           },
           {
@@ -18300,9 +18300,9 @@
           },
           {
             "date": "2019-12-31",
-            "early_close_time": "12:28",
+            "early_close_time": "13:05",
             "name": "Historical Early Close",
-            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "source_url": "https://www.euronext.com/news/euronext-announces-2019-holiday-calendar-its-cash-and-derivatives-markets",
             "status": "early_close"
           },
           {
@@ -18331,9 +18331,9 @@
           },
           {
             "date": "2020-12-24",
-            "early_close_time": "12:28",
+            "early_close_time": "12:30",
             "name": "Historical Early Close",
-            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "source_url": "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2020-holiday-calendar-its-cash-and",
             "status": "early_close"
           },
           {
@@ -18350,9 +18350,9 @@
           },
           {
             "date": "2020-12-31",
-            "early_close_time": "12:28",
+            "early_close_time": "12:30",
             "name": "Historical Early Close",
-            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "source_url": "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2020-holiday-calendar-its-cash-and",
             "status": "early_close"
           },
           {
@@ -18381,9 +18381,9 @@
           },
           {
             "date": "2021-12-24",
-            "early_close_time": "12:28",
+            "early_close_time": "12:30",
             "name": "Historical Early Close",
-            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "source_url": "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2021-holiday-calendar-for-its-cash-and",
             "status": "early_close"
           },
           {
@@ -18400,9 +18400,9 @@
           },
           {
             "date": "2021-12-31",
-            "early_close_time": "12:28",
+            "early_close_time": "12:30",
             "name": "Historical Early Close",
-            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "source_url": "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2021-holiday-calendar-for-its-cash-and",
             "status": "early_close"
           },
           {
@@ -18831,7 +18831,7 @@
       },
       "mic": "XDUB",
       "name": "Euronext Dublin",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (the exchange's calendar, published to 2027). 2028-2029: predicted from exchange_calendars and the exchange's unchanged pattern; not yet published, although most entries cite the calendar page. Close-time convention: the registry uses 16:30 (full days) and 12:30 (half days) for 2025-2029, while exchange_calendars uses 16:28 and 12:28 and so do the backfilled 2010-2024 half days (12:28). This is not rounding in the library: Euronext's half-day notice gives Dublin equities a close between 13:28 and 13:30 CET (12:28-12:30 Dublin time), a two-minute window, so the registry holds the end of the window and the library its start. Rechecked 2026-11-19 (4c-R3) against Euronext's trading-hours-and-holidays page and its 2027 holiday calendar. Fixed: (1) 2027-12-28 was closed; Euronext's 2027 calendar closes Dublin on Mon 27 December 2027 only, and the calendar opens every weekday it does not list, so Tue 28 December 2027 is a trading day. exchange_calendars and pandas_market_calendars close it (Irish St Stephen's Day substitute), hence contradicted_by. In 2021 (same weekday layout) Euronext closed both 27 and 28 December, so 2027 is either a change of practice or an omission in Euronext's calendar; the registry follows the published calendar and this date should be re-checked against Euronext's end-of-2027 notice. (2) When Dec 24 or Dec 31 falls on a weekend, Euronext Dublin holds the half day on the preceding Friday (2022-12-23, 2022-12-30, 2023-12-22, 2023-12-29 in Euronext's tables); 2028-12-22 and 2028-12-29 added as predicted half days, as exchange_calendars has them. (3) Half-day time convention (4c-R3 decision: close = end of the closing auction): Euronext states Dublin equities close between 12:28 and 12:30 Dublin time on half days (random end), so the close is 12:30, as the 2025+ entries already had; the 2022-2024 half days (12:28 from exchange_calendars) are now 12:30, citing Euronext, whose statement covers those years. 2010-2021 half days keep exchange_calendars' 12:28: Euronext Dublin ran on the Xetra-based ISE platform before 2021, and no half-day schedule for those years was found. The full-day 16:30 is likewise the end of the 16:28-16:30 closing window. Checked, no change: Irish May Bank Holiday closures (2025-05-05, 2026-05-04, 2027-05-03), 2026-12-28 and 2027-12-27 match Euronext; no COVID-19 closure; hours 08:00-16:30 Dublin throughout.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (the exchange's calendar, published to 2027). 2028-2029: predicted from exchange_calendars and the exchange's unchanged pattern; not yet published, although most entries cite the calendar page. Close-time convention: the registry uses 16:30 (full days) and 12:30 (half days) for 2025-2029, while exchange_calendars uses 16:28 and 12:28 and so do the backfilled 2010-2024 half days (12:28). This is not rounding in the library: Euronext's half-day notice gives Dublin equities a close between 13:28 and 13:30 CET (12:28-12:30 Dublin time), a two-minute window, so the registry holds the end of the window and the library its start. Rechecked 2026-11-19 (4c-R3) against Euronext's trading-hours-and-holidays page and its 2027 holiday calendar. Fixed: (1) 2027-12-28 was closed; Euronext's 2027 calendar closes Dublin on Mon 27 December 2027 only, and the calendar opens every weekday it does not list, so Tue 28 December 2027 is a trading day. exchange_calendars and pandas_market_calendars close it (Irish St Stephen's Day substitute), hence contradicted_by. In 2021 (same weekday layout) Euronext closed both 27 and 28 December, so 2027 is either a change of practice or an omission in Euronext's calendar; the registry follows the published calendar and this date should be re-checked against Euronext's end-of-2027 notice. (2) When Dec 24 or Dec 31 falls on a weekend, Euronext Dublin holds the half day on the preceding Friday (2022-12-23, 2022-12-30, 2023-12-22, 2023-12-29 in Euronext's tables); 2028-12-22 and 2028-12-29 added as predicted half days, as exchange_calendars has them. (3) Half-day time convention (4c-R3 decision: close = end of the closing auction): Euronext states Dublin equities close between 12:28 and 12:30 Dublin time on half days (random end), so the close is 12:30, as the 2025+ entries already had; the 2022-2024 half days (12:28 from exchange_calendars) are now 12:30, citing Euronext, whose statement covers those years. Earlier half days: see the 4c-R3.5 close-convention sentence below (2019 13:05, 2020-2021 12:30, 2010-2018 12:28). The full-day 16:30 is likewise the end of the 16:28-16:30 closing window. Checked, no change: Irish May Bank Holiday closures (2025-05-05, 2026-05-04, 2027-05-03), 2026-12-28 and 2027-12-27 match Euronext; no COVID-19 closure; hours 08:00-16:30 Dublin throughout. Close convention (ADR 0013, 4c-R3.5): half-day close = end of the closing auction. Euronext Dublin moved from the ISE's Xetra (Deutsche Börse) platform to Euronext's after trading day 2019-02-01 (Eurex Clearing circular of 2019-02-05), not in 2021 as the 4c-R3 note said. Euronext's own holiday-calendar releases cover the half days since: 2019 (24 and 31 Dec): all cash instruments including Euronext Dublin close by 14:05 CET = 13:05 Dublin, so 13:05; 2020 and 2021: Dublin equities close between 12:28 and 12:30 Dublin time (random end), so 12:30, as for 2022+. 2010-2018 half days keep exchange_calendars' 12:28: the ISE Xetra era, for which no half-day schedule was found.",
       "regular_hours": {
         "close": "16:30",
         "open": "08:00"
@@ -33990,14 +33990,14 @@
       },
       "mic": "XLIS",
       "name": "Euronext Lisbon",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (the exchange's calendar, published to 2027). 2028-2029: predicted from exchange_calendars and the exchange's unchanged pattern; not yet published, although most entries cite the calendar page. regular_hours are Lisbon local time (timezone Europe/Lisbon): 08:00-16:30. Euronext publishes its cash-market hours in CET (09:00-17:30; its Trading Procedures Annexe One says all hours are CET), and Lisbon is one hour behind CET. The registry had 09:00-17:30 under Europe/Lisbon, which is one hour late; exchange_calendars (08:00-16:30), tradinghours.com (08:00-16:30 WET) and the ICE Futures Europe year-end schedule (Euronext Lisbon stops 13:05 GMT on the half days) agree with the corrected value. Half-day early_close_time values are Lisbon local (13:05 = 14:05 CET). Rechecked 2026-11-19 (4c-R3) against Euronext's trading-hours-and-holidays page and its 2027 holiday calendar. Fixed: 2027-12-24 and 2027-12-31 are published half trading days and were missing; 2029-12-24 and 2029-12-31 added as predicted half days (exchange_calendars, XAMS, XPAR and XDUB have them). 2025-2027 closures match. Hours 09:00-17:30 CET throughout; the only 2027 change Euronext announces is Trading After Hours availability. No COVID-19 or other one-off closure in 2010-2024. Half-day time convention (4c-R3 decision: close = end of the closing auction): the half-day close 13:05 Lisbon (14:05 CET) is the end of the half-day closing auction (Euronext: all instruments close by 14:05 CET), so it follows the convention. The full-day close 16:30 Lisbon does not: since 2007-02-19 Euronext's continuous trading ends at 17:30 CET with the closing auction at 17:35 CET, so by the same convention the full-day close would be 16:35 Lisbon. Left unchanged here so that all Euronext core venues (XAMS, XPAR, XBRU, XLIS) change together; flagged for that change.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (the exchange's calendar, published to 2027). 2028-2029: predicted from exchange_calendars and the exchange's unchanged pattern; not yet published, although most entries cite the calendar page. regular_hours are Lisbon local time (timezone Europe/Lisbon): 08:00-16:30. Euronext publishes its cash-market hours in CET (09:00-17:30; its Trading Procedures Annexe One says all hours are CET), and Lisbon is one hour behind CET. The registry had 09:00-17:30 under Europe/Lisbon, which is one hour late; exchange_calendars (08:00-16:30), tradinghours.com (08:00-16:30 WET) and the ICE Futures Europe year-end schedule (Euronext Lisbon stops 13:05 GMT on the half days) agree with the corrected value. Half-day early_close_time values are Lisbon local (13:05 = 14:05 CET). Rechecked 2026-11-19 (4c-R3) against Euronext's trading-hours-and-holidays page and its 2027 holiday calendar. Fixed: 2027-12-24 and 2027-12-31 are published half trading days and were missing; 2029-12-24 and 2029-12-31 added as predicted half days (exchange_calendars, XAMS, XPAR and XDUB have them). 2025-2027 closures match. Hours 09:00-17:30 CET throughout; the only 2027 change Euronext announces is Trading After Hours availability. No COVID-19 or other one-off closure in 2010-2024. Half-day time convention (4c-R3 decision: close = end of the closing auction): the half-day close 13:05 Lisbon (14:05 CET) is the end of the half-day closing auction (Euronext: all instruments close by 14:05 CET), so it follows the convention. The full-day close 16:30 Lisbon does not: since 2007-02-19 Euronext's continuous trading ends at 17:30 CET with the closing auction at 17:35 CET, so by the same convention the full-day close would be 16:35 Lisbon. Left unchanged here so that all Euronext core venues (XAMS, XPAR, XBRU, XLIS) change together; flagged for that change. Close convention (ADR 0013, 4c-R3.5): regular_hours close is the end of the closing auction, 16:35 Lisbon (17:35 CET), for 2010-2029 (was 16:30, the end of continuous trading). Source: Euronext's announcement of 2007-02-16 (effective 2007-02-19), reproduced by Mondo Visione: continuous trading 09:00-17:30 CET, pre-closing 17:30-17:35, closing auction at 17:35 CET; FESE trading-hours tables for 2024 and 2026 give the same (pre-closing 17:30-17:35, closing auction 17:35, Trading at Last 17:35-17:40). Half days close by 14:05 CET, also the auction end. exchange_calendars and pandas_market_calendars use the end of continuous trading, so session-time comparisons are a convention_difference.",
       "regular_hours": {
-        "close": "16:30",
+        "close": "16:35",
         "open": "08:00"
       },
       "sessions": [
         {
-          "close": "16:30",
+          "close": "16:35",
           "open": "08:00",
           "type": "regular"
         }
@@ -52510,7 +52510,7 @@
       },
       "mic": "XOSL",
       "name": "Oslo Børs",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Euronext's holiday calendar, published to 2027). 2028-2029: predicted from exchange_calendars and Euronext's unchanged holiday pattern; Euronext has not published those years, although the entries cite its calendar page. regular_hours: close 17:30 before 2012-08-06, 16:30 after. Oslo Børs cut trading hours by one hour on 2012-08-06; 16:30 includes the closing auction (continuous trading ends 16:20, which is the single close exchange_calendars has for 2000-2026, so its pre-2012-08-06 hours are wrong). The 17:30 close before the cut is inferred from the one-hour reduction and is dated from the start of the registry, not from a notice. Rechecked 2026-11-19 (4c-R2) against Euronext's trading-hours-and-holidays page. Fixed: the Wednesday before Easter is an Oslo half trading day every year (Euronext lists 2025-04-16, 2026-04-01 and 2027-03-24 as half trading days for Oslo only); exchange_calendars and the 2011-2024 backfill had it, but 2025-2029 did not. Added the three published dates and an easter_offset -4 early_close rule (effective_from 2025-01-01) that also generates 2028-04-12 and 2029-03-28. Half-day time 13:00 is the end of continuous trading, as in exchange_calendars and the 2011-2024 entries; Euronext's 2024 half-day schedule has a closing call 13:00-13:05 and Trading At Last to 13:10 (closed 13:10), so 13:00 is earlier than the 16:30 full-day convention, which includes the closing auction. The 2025-2027 schedules' times were not readable here. Dec 24/31 are full closures (rules), as Euronext lists. Hours: no change after 2012-08-06 was found (continuous 09:00-16:20, closing at 16:20 per the 2020 Optiq migration guidelines); no 2020 COVID-19 closure.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Euronext's holiday calendar, published to 2027). 2028-2029: predicted from exchange_calendars and Euronext's unchanged holiday pattern; Euronext has not published those years, although the entries cite its calendar page. regular_hours: close 17:30 before 2012-08-06, 16:30 after. Oslo Børs cut trading hours by one hour on 2012-08-06; 16:30 includes the closing auction (continuous trading ends 16:20, which is the single close exchange_calendars has for 2000-2026, so its pre-2012-08-06 hours are wrong). The 17:30 close before the cut is inferred from the one-hour reduction and is dated from the start of the registry, not from a notice. Rechecked 2026-11-19 (4c-R2) against Euronext's trading-hours-and-holidays page. Fixed: the Wednesday before Easter is an Oslo half trading day every year (Euronext lists 2025-04-16, 2026-04-01 and 2027-03-24 as half trading days for Oslo only); exchange_calendars and the 2011-2024 backfill had it, but 2025-2029 did not. Added the three published dates and an easter_offset -4 early_close rule (effective_from 2025-01-01) that also generates 2028-04-12 and 2029-03-28. Half-day time 13:00 is the end of continuous trading, as in exchange_calendars and the 2011-2024 entries; Euronext's 2024 half-day schedule has a closing call 13:00-13:05 and Trading At Last to 13:10 (closed 13:10), so 13:00 is earlier than the 16:30 full-day convention, which includes the closing auction. The 2025-2027 schedules' times were not readable here. Dec 24/31 are full closures (rules), as Euronext lists. Hours: no change after 2012-08-06 was found (continuous 09:00-16:20, closing at 16:20 per the 2020 Optiq migration guidelines); no 2020 COVID-19 closure. Close convention (ADR 0013, 4c-R3.5): close = end of the closing auction. XOSL is left as an exception: the full-day 16:30 is the end of Trading at Last (secondary sources, e.g. FESE and brokers, give continuous to 16:20, closing auction 16:20-16:25, Trading at Last 16:25-16:30, so the auction end would be 16:25), and the half-day 13:00 is the end of continuous trading (Euronext's 2024 half-day schedule uncrosses at 13:05). Neither is changed until Euronext's own trading-hours documents for the relevant years can be read; the rule is to change only on the exchange's own document.",
       "regular_hours": [
         {
           "close": "17:30",
@@ -52704,8 +52704,8 @@
       "country_code": "FR",
       "extended_hours": {
         "after_hours": {
-          "close": "17:35",
-          "open": "17:30"
+          "close": "17:40",
+          "open": "17:35"
         },
         "pre_market": {
           "close": "09:00",
@@ -53495,9 +53495,9 @@
       },
       "mic": "XPAR",
       "name": "Euronext Paris",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Euronext's holiday calendar, published to 2027). 2028-2029: predicted from exchange_calendars and Euronext's unchanged holiday pattern; Euronext has not published those years, although the entries cite its calendar page. Rechecked 2026-11-19 (4c-R2) against Euronext's trading-hours-and-holidays page: 2025-2027 closures and the Dec 24/31 half days (close by 14:05 CET) match. The 2029 Dec 24/31 half days are predictions like the rest of 2028-2029. Hours 09:00-17:30 throughout; the only 2027 change Euronext announces is Trading After Hours availability, not the regular session. No COVID-19 or other one-off closure in 2010-2024. The recurrence rules (effective_from 2025-01-01) agree with both libraries for 2025-2029.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Euronext's holiday calendar, published to 2027). 2028-2029: predicted from exchange_calendars and Euronext's unchanged holiday pattern; Euronext has not published those years, although the entries cite its calendar page. Rechecked 2026-11-19 (4c-R2) against Euronext's trading-hours-and-holidays page: 2025-2027 closures and the Dec 24/31 half days (close by 14:05 CET) match. The 2029 Dec 24/31 half days are predictions like the rest of 2028-2029. Hours 09:00-17:30 throughout; the only 2027 change Euronext announces is Trading After Hours availability, not the regular session. No COVID-19 or other one-off closure in 2010-2024. The recurrence rules (effective_from 2025-01-01) agree with both libraries for 2025-2029. Close convention (ADR 0013, 4c-R3.5): regular_hours close is the end of the closing auction, 17:35 CET, for 2010-2029 (was 17:30, the end of continuous trading). Source: Euronext's announcement of 2007-02-16 (effective 2007-02-19), reproduced by Mondo Visione: continuous trading 09:00-17:30 CET, pre-closing 17:30-17:35, closing auction at 17:35 CET; FESE trading-hours tables for 2024 and 2026 give the same (pre-closing 17:30-17:35, closing auction 17:35, Trading at Last 17:35-17:40). Half days close by 14:05 CET, also the auction end. exchange_calendars and pandas_market_calendars use the end of continuous trading, so session-time comparisons are a convention_difference. post_market (Trading at Last) is 17:35-17:40 and the closing auction uncrosses at 17:35; the old 17:30-17:35 post_market window was the pre-close call, now inside the regular session.",
       "regular_hours": {
-        "close": "17:30",
+        "close": "17:35",
         "open": "09:00"
       },
       "sessions": [
@@ -53507,7 +53507,7 @@
           "type": "pre_market"
         },
         {
-          "close": "17:30",
+          "close": "17:35",
           "open": "09:00",
           "type": "regular"
         },
@@ -53516,12 +53516,12 @@
           "type": "auction"
         },
         {
-          "close": "17:35",
-          "open": "17:30",
+          "close": "17:40",
+          "open": "17:35",
           "type": "post_market"
         },
         {
-          "at": "17:30",
+          "at": "17:35",
           "type": "auction"
         }
       ],

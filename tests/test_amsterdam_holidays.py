@@ -3,7 +3,7 @@
 test_amsterdam_holidays.py — Ground truth tests for XAMS (Euronext Amsterdam).
 
 Key facts verified:
-    - Regular hours: 09:00-17:30 (Euronext standard)
+    - Regular hours: 09:00-17:35 (closing auction 17:35 CET; ADR 0013)
     - No lunch break
     - Weekend is Saturday-Sunday (Western weekend)
     - Euronext Amsterdam closes only on New Year's Day, Good Friday, Easter
@@ -67,7 +67,8 @@ class TestXAMSProperties:
 
     def test_regular_hours(self, xams):
         assert xams["regular_hours"]["open"] == "09:00"
-        assert xams["regular_hours"]["close"] == "17:30"
+        # ADR 0013: close = end of the closing auction (uncross 17:35 CET since 2007).
+        assert xams["regular_hours"]["close"] == "17:35"
 
     def test_no_lunch_break(self, xams):
         lunch = [s for s in xams.get("sessions", []) if s.get("type") == "lunch_break"]

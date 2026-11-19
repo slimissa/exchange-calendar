@@ -61,7 +61,8 @@ class TestXPARProperties:
 
     def test_regular_hours(self, xpar):
         assert xpar["regular_hours"]["open"] == "09:00"
-        assert xpar["regular_hours"]["close"] == "17:30"
+        # ADR 0013: close = end of the closing auction (uncross 17:35 CET since 2007).
+        assert xpar["regular_hours"]["close"] == "17:35"
 
     def test_no_lunch_break(self, xpar):
         lunch = [s for s in xpar.get("sessions", []) if s["type"] == "lunch_break"]
@@ -71,8 +72,9 @@ class TestXPARProperties:
         auctions = [s for s in xpar.get("sessions", []) if s["type"] == "auction"]
         assert len(auctions) == 2
         times = [a["at"] for a in auctions]
-        assert "09:00" in times
-        assert "17:30" in times
+        assert sorted(times) == ["09:00", "17:35"]  # closing uncross at 17:35 (ADR 0013)
+        post = [s for s in xpar["sessions"] if s["type"] == "post_market"]
+        assert post == [{"type": "post_market", "open": "17:35", "close": "17:40"}]  # Trading at Last
 
     def test_has_extended_hours(self, xpar):
         assert "extended_hours" in xpar

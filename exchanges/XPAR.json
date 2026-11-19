@@ -125,8 +125,8 @@
   "country_code": "FR",
   "extended_hours": {
     "after_hours": {
-      "close": "17:35",
-      "open": "17:30"
+      "close": "17:40",
+      "open": "17:35"
     },
     "pre_market": {
       "close": "09:00",
@@ -952,9 +952,9 @@
   },
   "mic": "XPAR",
   "name": "Euronext Paris",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Euronext's holiday calendar, published to 2027). 2028-2029: predicted from exchange_calendars and Euronext's unchanged holiday pattern; Euronext has not published those years, although the entries cite its calendar page. Rechecked 2026-11-19 (4c-R2) against Euronext's trading-hours-and-holidays page: 2025-2027 closures and the Dec 24/31 half days (close by 14:05 CET) match. The 2029 Dec 24/31 half days are predictions like the rest of 2028-2029. Hours 09:00-17:30 throughout; the only 2027 change Euronext announces is Trading After Hours availability, not the regular session. No COVID-19 or other one-off closure in 2010-2024. The recurrence rules (effective_from 2025-01-01) agree with both libraries for 2025-2029.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Euronext's holiday calendar, published to 2027). 2028-2029: predicted from exchange_calendars and Euronext's unchanged holiday pattern; Euronext has not published those years, although the entries cite its calendar page. Rechecked 2026-11-19 (4c-R2) against Euronext's trading-hours-and-holidays page: 2025-2027 closures and the Dec 24/31 half days (close by 14:05 CET) match. The 2029 Dec 24/31 half days are predictions like the rest of 2028-2029. Hours 09:00-17:30 throughout; the only 2027 change Euronext announces is Trading After Hours availability, not the regular session. No COVID-19 or other one-off closure in 2010-2024. The recurrence rules (effective_from 2025-01-01) agree with both libraries for 2025-2029. Close convention (ADR 0013, 4c-R3.5): regular_hours close is the end of the closing auction, 17:35 CET, for 2010-2029 (was 17:30, the end of continuous trading). Source: Euronext's announcement of 2007-02-16 (effective 2007-02-19), reproduced by Mondo Visione: continuous trading 09:00-17:30 CET, pre-closing 17:30-17:35, closing auction at 17:35 CET; FESE trading-hours tables for 2024 and 2026 give the same (pre-closing 17:30-17:35, closing auction 17:35, Trading at Last 17:35-17:40). Half days close by 14:05 CET, also the auction end. exchange_calendars and pandas_market_calendars use the end of continuous trading, so session-time comparisons are a convention_difference. post_market (Trading at Last) is 17:35-17:40 and the closing auction uncrosses at 17:35; the old 17:30-17:35 post_market window was the pre-close call, now inside the regular session.",
   "regular_hours": {
-    "close": "17:30",
+    "close": "17:35",
     "open": "09:00"
   },
   "sessions": [
@@ -964,7 +964,7 @@
       "type": "pre_market"
     },
     {
-      "close": "17:30",
+      "close": "17:35",
       "open": "09:00",
       "type": "regular"
     },
@@ -973,12 +973,12 @@
       "type": "auction"
     },
     {
-      "close": "17:35",
-      "open": "17:30",
+      "close": "17:40",
+      "open": "17:35",
       "type": "post_market"
     },
     {
-      "at": "17:30",
+      "at": "17:35",
       "type": "auction"
     }
   ],

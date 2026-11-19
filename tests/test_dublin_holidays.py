@@ -222,12 +222,23 @@ class TestXDUBEarlyCloses:
                      if e.get("status") == "early_close" and e.get("predicted")}
         assert predicted == {"2028-12-22", "2028-12-29"}
 
-    def test_half_days_close_at_1230_from_2022(self, explicit_dates):
-        """Euronext: Dublin equities close between 12:28 and 12:30 on half
-        days (random end); the registry holds the end (4c-R3 convention)."""
+    def test_half_day_close_times_by_era(self, explicit_dates):
+        """Half-day close = end of the closing auction (ADR 0013), by era:
+        2010-2018 ISE Xetra (no source; exchange_calendars' 12:28), 2019 13:05
+        (Euronext: all cash instruments by 14:05 CET), 2020+ 12:30 (the end of
+        the 12:28-12:30 Dublin window Euronext states)."""
         for d, e in explicit_dates.items():
             if e.get("status") == "early_close":
-                assert e["early_close_time"] == ("12:30" if d >= "2022-01-01" else "12:28"), d
+                # Euronext's releases: 2019 all cash instruments incl. Dublin by
+                # 14:05 CET (13:05 Dublin); 2020+ Dublin equities 12:28-12:30, held
+                # as 12:30. 2010-2018 (ISE Xetra era) keep exchange_calendars' 12:28.
+                if d >= "2020-01-01":
+                    expected = "12:30"
+                elif d >= "2019-01-01":
+                    expected = "13:05"
+                else:
+                    expected = "12:28"
+                assert e["early_close_time"] == expected, d
 
 
 # ──────────────────────────────────────────────────────────────
@@ -390,7 +401,7 @@ class TestXDUBStructure:
             if entry.get("predicted"):  # predicted: the pattern's source, or exchange_calendars
                 assert ("exchange_calendars" in entry["source_url"]
                         or "euronext.com" in entry["source_url"]), date_
-            elif date_ >= "2025-01-01" or (date_ >= "2022-01-01" and entry["status"] == "early_close"):
+            elif date_ >= "2025-01-01" or (date_ >= "2019-01-01" and entry["status"] == "early_close"):
                 assert "euronext.com" in entry["source_url"]
             else:  # 2010-2024 backfill
                 assert "exchange_calendars" in entry["source_url"], f"Unexpected source: {entry['source_url']}"

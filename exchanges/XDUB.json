@@ -673,9 +673,9 @@
       },
       {
         "date": "2019-12-24",
-        "early_close_time": "12:28",
+        "early_close_time": "13:05",
         "name": "Historical Early Close",
-        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "source_url": "https://www.euronext.com/news/euronext-announces-2019-holiday-calendar-its-cash-and-derivatives-markets",
         "status": "early_close"
       },
       {
@@ -692,9 +692,9 @@
       },
       {
         "date": "2019-12-31",
-        "early_close_time": "12:28",
+        "early_close_time": "13:05",
         "name": "Historical Early Close",
-        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "source_url": "https://www.euronext.com/news/euronext-announces-2019-holiday-calendar-its-cash-and-derivatives-markets",
         "status": "early_close"
       },
       {
@@ -723,9 +723,9 @@
       },
       {
         "date": "2020-12-24",
-        "early_close_time": "12:28",
+        "early_close_time": "12:30",
         "name": "Historical Early Close",
-        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "source_url": "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2020-holiday-calendar-its-cash-and",
         "status": "early_close"
       },
       {
@@ -742,9 +742,9 @@
       },
       {
         "date": "2020-12-31",
-        "early_close_time": "12:28",
+        "early_close_time": "12:30",
         "name": "Historical Early Close",
-        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "source_url": "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2020-holiday-calendar-its-cash-and",
         "status": "early_close"
       },
       {
@@ -773,9 +773,9 @@
       },
       {
         "date": "2021-12-24",
-        "early_close_time": "12:28",
+        "early_close_time": "12:30",
         "name": "Historical Early Close",
-        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "source_url": "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2021-holiday-calendar-for-its-cash-and",
         "status": "early_close"
       },
       {
@@ -792,9 +792,9 @@
       },
       {
         "date": "2021-12-31",
-        "early_close_time": "12:28",
+        "early_close_time": "12:30",
         "name": "Historical Early Close",
-        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "source_url": "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2021-holiday-calendar-for-its-cash-and",
         "status": "early_close"
       },
       {
@@ -1279,7 +1279,7 @@
   },
   "mic": "XDUB",
   "name": "Euronext Dublin",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (the exchange's calendar, published to 2027). 2028-2029: predicted from exchange_calendars and the exchange's unchanged pattern; not yet published, although most entries cite the calendar page. Close-time convention: the registry uses 16:30 (full days) and 12:30 (half days) for 2025-2029, while exchange_calendars uses 16:28 and 12:28 and so do the backfilled 2010-2024 half days (12:28). This is not rounding in the library: Euronext's half-day notice gives Dublin equities a close between 13:28 and 13:30 CET (12:28-12:30 Dublin time), a two-minute window, so the registry holds the end of the window and the library its start. Rechecked 2026-11-19 (4c-R3) against Euronext's trading-hours-and-holidays page and its 2027 holiday calendar. Fixed: (1) 2027-12-28 was closed; Euronext's 2027 calendar closes Dublin on Mon 27 December 2027 only, and the calendar opens every weekday it does not list, so Tue 28 December 2027 is a trading day. exchange_calendars and pandas_market_calendars close it (Irish St Stephen's Day substitute), hence contradicted_by. In 2021 (same weekday layout) Euronext closed both 27 and 28 December, so 2027 is either a change of practice or an omission in Euronext's calendar; the registry follows the published calendar and this date should be re-checked against Euronext's end-of-2027 notice. (2) When Dec 24 or Dec 31 falls on a weekend, Euronext Dublin holds the half day on the preceding Friday (2022-12-23, 2022-12-30, 2023-12-22, 2023-12-29 in Euronext's tables); 2028-12-22 and 2028-12-29 added as predicted half days, as exchange_calendars has them. (3) Half-day time convention (4c-R3 decision: close = end of the closing auction): Euronext states Dublin equities close between 12:28 and 12:30 Dublin time on half days (random end), so the close is 12:30, as the 2025+ entries already had; the 2022-2024 half days (12:28 from exchange_calendars) are now 12:30, citing Euronext, whose statement covers those years. 2010-2021 half days keep exchange_calendars' 12:28: Euronext Dublin ran on the Xetra-based ISE platform before 2021, and no half-day schedule for those years was found. The full-day 16:30 is likewise the end of the 16:28-16:30 closing window. Checked, no change: Irish May Bank Holiday closures (2025-05-05, 2026-05-04, 2027-05-03), 2026-12-28 and 2027-12-27 match Euronext; no COVID-19 closure; hours 08:00-16:30 Dublin throughout.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (the exchange's calendar, published to 2027). 2028-2029: predicted from exchange_calendars and the exchange's unchanged pattern; not yet published, although most entries cite the calendar page. Close-time convention: the registry uses 16:30 (full days) and 12:30 (half days) for 2025-2029, while exchange_calendars uses 16:28 and 12:28 and so do the backfilled 2010-2024 half days (12:28). This is not rounding in the library: Euronext's half-day notice gives Dublin equities a close between 13:28 and 13:30 CET (12:28-12:30 Dublin time), a two-minute window, so the registry holds the end of the window and the library its start. Rechecked 2026-11-19 (4c-R3) against Euronext's trading-hours-and-holidays page and its 2027 holiday calendar. Fixed: (1) 2027-12-28 was closed; Euronext's 2027 calendar closes Dublin on Mon 27 December 2027 only, and the calendar opens every weekday it does not list, so Tue 28 December 2027 is a trading day. exchange_calendars and pandas_market_calendars close it (Irish St Stephen's Day substitute), hence contradicted_by. In 2021 (same weekday layout) Euronext closed both 27 and 28 December, so 2027 is either a change of practice or an omission in Euronext's calendar; the registry follows the published calendar and this date should be re-checked against Euronext's end-of-2027 notice. (2) When Dec 24 or Dec 31 falls on a weekend, Euronext Dublin holds the half day on the preceding Friday (2022-12-23, 2022-12-30, 2023-12-22, 2023-12-29 in Euronext's tables); 2028-12-22 and 2028-12-29 added as predicted half days, as exchange_calendars has them. (3) Half-day time convention (4c-R3 decision: close = end of the closing auction): Euronext states Dublin equities close between 12:28 and 12:30 Dublin time on half days (random end), so the close is 12:30, as the 2025+ entries already had; the 2022-2024 half days (12:28 from exchange_calendars) are now 12:30, citing Euronext, whose statement covers those years. Earlier half days: see the 4c-R3.5 close-convention sentence below (2019 13:05, 2020-2021 12:30, 2010-2018 12:28). The full-day 16:30 is likewise the end of the 16:28-16:30 closing window. Checked, no change: Irish May Bank Holiday closures (2025-05-05, 2026-05-04, 2027-05-03), 2026-12-28 and 2027-12-27 match Euronext; no COVID-19 closure; hours 08:00-16:30 Dublin throughout. Close convention (ADR 0013, 4c-R3.5): half-day close = end of the closing auction. Euronext Dublin moved from the ISE's Xetra (Deutsche Börse) platform to Euronext's after trading day 2019-02-01 (Eurex Clearing circular of 2019-02-05), not in 2021 as the 4c-R3 note said. Euronext's own holiday-calendar releases cover the half days since: 2019 (24 and 31 Dec): all cash instruments including Euronext Dublin close by 14:05 CET = 13:05 Dublin, so 13:05; 2020 and 2021: Dublin equities close between 12:28 and 12:30 Dublin time (random end), so 12:30, as for 2022+. 2010-2018 half days keep exchange_calendars' 12:28: the ISE Xetra era, for which no half-day schedule was found.",
   "regular_hours": {
     "close": "16:30",
     "open": "08:00"

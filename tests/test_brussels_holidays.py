@@ -3,7 +3,7 @@
 test_brussels_holidays.py — Ground truth tests for XBRU (Euronext Brussels).
 
 Key facts verified:
-    - Regular hours: 09:00-17:30 (Euronext standard)
+    - Regular hours: 09:00-17:35 (closing auction 17:35 CET; ADR 0013)
     - No lunch break
     - Weekend is Saturday-Sunday (Western weekend)
     - Euronext Brussels closes only on New Year's Day, Good Friday, Easter
@@ -68,7 +68,8 @@ class TestXBRUProperties:
 
     def test_regular_hours(self, xbru):
         assert xbru["regular_hours"]["open"] == "09:00"
-        assert xbru["regular_hours"]["close"] == "17:30"
+        # ADR 0013: close = end of the closing auction (uncross 17:35 CET since 2007).
+        assert xbru["regular_hours"]["close"] == "17:35"
 
     def test_no_lunch_break(self, xbru):
         lunch = [s for s in xbru.get("sessions", []) if s.get("type") == "lunch_break"]
