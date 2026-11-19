@@ -65078,7 +65078,7 @@
       },
       "mic": "XSWX",
       "name": "SIX Swiss Exchange",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. Rechecked 2026-11-19 (4c-R1). Dec 24 and Dec 31 are full closures, not half days: SIX Exfeed notices (e.g. 2019-14, 2020-39) list both as no-trading days, and every weekday Dec 24/31 in 2010-2024 is closed here. regular_hours close 17:30 is the end of the closing auction (continuous trading 09:00-17:20, closing auction 17:20-17:30 with a random end, per the SIX Trading Parameters guideline of 2022-06-01 and the current trading-hours guide), the XOSL convention. Unconfirmed: whether those hours held for all of 2010-2024. SIX's current documents give no history, and no dated change was found, so 17:30 is carried back from the current schedule. The post_market session (Trading-At-Last to 17:40) dates from SIX's 2020 launch of TAL and does not apply to earlier years. No COVID-19 or other one-off closure was found.",
       "regular_hours": {
         "close": "17:30",
         "open": "09:00"
