@@ -8000,11 +8000,24 @@
       },
       "mic": "XBOM",
       "name": "Bombay Stock Exchange",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_publications (manually transcribed from bseindia.com; no fetcher). The 8 disputed days in contradicted_by are exchange_calendars-sourced and contradicted by pandas_market_calendars. The BSE notices for those days are the primary source; the sampling (Phase 4d) resolves them.",
-      "regular_hours": {
-        "close": "15:30",
-        "open": "09:15"
-      },
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_publications (manually transcribed from bseindia.com; no fetcher). The 8 disputed days in contradicted_by are exchange_calendars-sourced and contradicted by pandas_market_calendars. The BSE notices for those days are the primary source; the sampling (Phase 4d) resolves them. Rechecked 2026-11-19 (4c-R2). Fixed: regular_hours history. NSE and BSE jointly moved the market open from 09:55 to 09:00 effective 2010-01-04 (BSE/NSE announcement of 2009-12-17), and from 2010-10-18 the 09:00-09:15 pre-open call auction (SEBI circulars of 2010) moved the normal-market open to 09:15; close 15:30 throughout. exchange_calendars has 09:15-15:30 for every year. Checked, no change: the 2026 entries match the 16 published weekday trading holidays, including the 2026-01-15 Maharashtra municipal election closure declared by a separate circular; one-off closures in 2010-2024 (e.g. 2014-04-24, 2014-10-15, 2019-04-29, 2019-10-21, 2024-01-22, 2024-05-20, 2024-11-20) are present; no COVID-19 closure. Not modelled: the one-hour Muhurat trading session on Diwali Laxmi Pujan, a trading holiday with a special evening session whose time is set each year; the schema cannot give a special_session a time, so those days stay closed. No fetcher exists for this exchange; 2025-2029 is a manual transcription from bseindia.com. XNSE and XBOM have identical closures for 2010-2029.",
+      "regular_hours": [
+        {
+          "close": "15:30",
+          "effective_from": "2010-01-01",
+          "open": "09:55"
+        },
+        {
+          "close": "15:30",
+          "effective_from": "2010-01-04",
+          "open": "09:00"
+        },
+        {
+          "close": "15:30",
+          "effective_from": "2010-10-18",
+          "open": "09:15"
+        }
+      ],
       "sessions": [
         {
           "close": "09:15",

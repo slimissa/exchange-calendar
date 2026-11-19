@@ -63,8 +63,15 @@ class TestXBOMProperties:
         assert xbom["timezone"] == "Asia/Kolkata"
 
     def test_regular_hours(self, xbom):
-        assert xbom["regular_hours"]["open"] == "09:15"
-        assert xbom["regular_hours"]["close"] == "15:30"
+        # 2010 history (4c-R2): 09:55 open until 2010-01-03, 09:00 from
+        # 2010-01-04, 09:15 from 2010-10-18 (pre-open call auction).
+        assert [(h["effective_from"], h["open"], h["close"]) for h in xbom["regular_hours"]] == [
+            ("2010-01-01", "09:55", "15:30"),
+            ("2010-01-04", "09:00", "15:30"),
+            ("2010-10-18", "09:15", "15:30"),
+        ]
+        regular = [s for s in xbom["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "09:15", "close": "15:30"}]
 
     def test_no_lunch_break(self, xbom):
         lunch = [s for s in xbom.get("sessions", []) if s["type"] == "lunch_break"]
