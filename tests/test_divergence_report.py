@@ -24,6 +24,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
 
 import divergence_report as dr  # noqa: E402
+import divergence_pins  # noqa: E402
 
 REG, PMC, EC = "registry", "pandas_market_calendars", "exchange_calendars"
 NO_REF = "No reference data: RuntimeError: unknown"
@@ -48,7 +49,8 @@ def _report():
             "says": {REG: "closed", PMC: "open", EC: "open"}}
     return {
         "years": [2024, 2026],
-        "libraries": {"exchange_calendars": "1.0", "pandas_market_calendars": "2.0"},
+        # Recorded with the pinned versions: main() refuses any other (4c-R3.5).
+        "libraries": divergence_pins.read_pins(),
         "exchanges": {
             "XAAA": {"years": {
                 "2024": _year({REG: "No registry data: out of range", PMC: 250, EC: 250},

@@ -1,7 +1,10 @@
 psycopg2-binary>=2.9
 PyMySQL[rsa]>=1.1
-pandas_market_calendars
-exchange_calendars
+# Reference libraries for tools/divergence_test.py and divergence_report.py.
+# Pinned: docs/DIVERGENCE.md depends on these exact versions, and the tools
+# refuse to run on any other (tools/divergence_pins.py reads these lines).
+pandas_market_calendars==5.6.0
+exchange_calendars==4.13.2
 # Render fetcher (tools/fetch_render.py). See ADR 0010.
 playwright>=1.40
 pytesseract>=0.3.10

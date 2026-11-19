@@ -31,6 +31,9 @@ import math
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import divergence_pins  # noqa: E402  (tools/divergence_pins.py)
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_INPUT = "/tmp/divergence.json"
 DEFAULT_SESSIONS = "/tmp/divergence_sessions.json"
@@ -712,6 +715,11 @@ def main(argv=None):
                         help="Markdown file to write (default: %(default)s)")
     args = parser.parse_args(argv)
 
+    # Refuse to run with unpinned reference libraries (requirements-dev.txt).
+    rc = divergence_pins.check()
+    if rc:
+        return rc
+
     try:
         report = json.loads(Path(args.input).read_text(encoding="utf-8"))
         if not isinstance(report.get("exchanges"), dict) or "years" not in report:
@@ -719,6 +727,12 @@ def main(argv=None):
     except (OSError, ValueError) as exc:
         print(f"ERROR: cannot read {args.input}: {exc}", file=sys.stderr)
         return 2
+    # The input must also have been produced with the pinned versions: a stale
+    # JSON from other versions is how DIVERGENCE.md drifted in 09ab215.
+    rc = divergence_pins.check(found=report.get("libraries") or {},
+                               what=f"recorded in {Path(args.input).name}")
+    if rc:
+        return rc
 
     triage = None
     if Path(args.triage).exists():

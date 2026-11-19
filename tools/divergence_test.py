@@ -51,6 +51,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import regular_hours  # noqa: E402  (tools/regular_hours.py)
+import divergence_pins  # noqa: E402  (tools/divergence_pins.py)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CALENDAR = REPO_ROOT / "calendar.json"
@@ -531,6 +532,11 @@ def main(argv=None):
                         help=f"Output JSON path (default: {DEFAULT_OUTPUT}, or "
                              f"{DEFAULT_SESSIONS_OUTPUT} with --mode sessions)")
     args = parser.parse_args(argv)
+
+    # Refuse to compare against unpinned reference libraries (requirements-dev.txt).
+    rc = divergence_pins.check()
+    if rc:
+        return rc
 
     try:
         years = parse_years(args.year)
