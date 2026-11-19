@@ -3,8 +3,8 @@
 test_shenzhen_holidays.py — Ground truth tests for XSHE (Shenzhen Stock Exchange).
 
 Key facts verified:
-    - Regular hours: 09:30-11:30 (morning), 13:00-15:00 (afternoon)
-    - Lunch break: 11:30-13:00
+    - Regular hours: 09:30-15:00 (09:30-11:30 morning, 13:00-15:00 afternoon)
+    - Lunch break: 11:30-13:00 (a lunch_break session inside regular hours)
     - Weekend is Saturday-Sunday (Western weekend)
     - Spring Festival (7 days)
     - Qingming Festival
@@ -65,7 +65,10 @@ class TestXSHEProperties:
 
     def test_regular_hours(self, xshe):
         assert xshe["regular_hours"]["open"] == "09:30"
-        assert xshe["regular_hours"]["close"] == "11:30"
+        # 15:00, not 11:30: the lunch break is a separate session (4c-R1).
+        assert xshe["regular_hours"]["close"] == "15:00"
+        regular = [s for s in xshe["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "09:30", "close": "15:00"}]
 
     def test_lunch_break(self, xshe):
         lunch = [s for s in xshe.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -234,18 +237,35 @@ class TestXSHENationalDay:
             assert d in explicit_dates, f"Missing National Day: {d}"
 
     def test_national_day_2026(self, explicit_dates):
-        """National Day 2026 — Oct 1-8 (6 weekdays)."""
+        """National Day 2026 — Oct 1-7 (5 weekdays); SZSE resumes trading Oct 8."""
         dates = ["2026-10-01", "2026-10-02", "2026-10-05", "2026-10-06",
-                 "2026-10-07", "2026-10-08"]
+                 "2026-10-07"]
         for d in dates:
             assert d in explicit_dates, f"Missing National Day: {d}"
+        assert "2026-10-08" not in explicit_dates
 
     def test_national_day_2027(self, explicit_dates):
-        """National Day 2027 — Oct 1-8 (6 weekdays)."""
+        """National Day 2027 — Oct 1-7 (5 weekdays) per the State Council notice;
+        Oct 8 (Fri) trades, Oct 9 (Sat) is a make-up working day."""
         dates = ["2027-10-01", "2027-10-04", "2027-10-05", "2027-10-06",
-                 "2027-10-07", "2027-10-08"]
+                 "2027-10-07"]
         for d in dates:
             assert d in explicit_dates, f"Missing National Day: {d}"
+        assert "2027-10-08" not in explicit_dates
+
+    def test_new_year_2026_is_two_days(self, explicit_dates):
+        """SZSE 2026: closed Jan 1-2, resumes Jan 5."""
+        assert "2026-01-01" in explicit_dates
+        assert "2026-01-02" in explicit_dates
+
+    def test_matches_xshg_2010_2027(self, explicit_dates):
+        """Both mainland exchanges close on the same State Council holidays."""
+        import json
+        from pathlib import Path
+        xshg = json.loads((Path(__file__).parent.parent / "exchanges" / "XSHG.json").read_text())
+        g = {h["date"] for h in xshg["holidays"]["explicit"] if h["date"] < "2028-01-01"}
+        e = {d for d in explicit_dates if d < "2028-01-01"}
+        assert g == e
 
 
 # ──────────────────────────────────────────────────────────────
@@ -301,8 +321,10 @@ class TestXSHEStructure:
 
     def test_source_url_consistency(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
-            if date_str >= "2025-01-01":
-                assert "szse.cn" in entry["source_url"]
+            if "2025-01-01" <= date_str < "2027-01-01":
+                assert "szse.cn" in entry["source_url"], date_str
+            elif date_str >= "2027-01-01":  # State Council 2027 notice
+                assert "xinhuanet.com" in entry["source_url"], date_str
 
     def test_backfill_is_labelled_as_inferred(self, explicit_dates):
         """2010-2024 is copied from XSHG's closures, and says so."""
@@ -343,4 +365,5 @@ class TestXSHESubstitution:
         spring_festival = sum(1 for e in explicit_dates.values() if "Spring Festival" in e["name"])
         national_day = sum(1 for e in explicit_dates.values() if "National Day" in e["name"])
         assert spring_festival >= 18, f"Expected many Spring Festival days, got {spring_festival}"
-        assert national_day >= 18, f"Expected many National Day days, got {national_day}"
+        # 2025: 6 weekdays (Oct 1-8); 2026 and 2027: 5 each (Oct 1-7).
+        assert national_day >= 16, f"Expected many National Day days, got {national_day}"

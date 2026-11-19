@@ -131,7 +131,7 @@ XSES;regular;1;09:00;17:00;
 XSGO;lunch_break;1;12:00;12:30;
 XSGO;regular;1;09:30;16:00;
 XSHE;lunch_break;1;11:30;13:00;
-XSHE;regular;1;09:30;11:30;
+XSHE;regular;1;09:30;15:00;
 XSHG;auction;1;;;09:25
 XSHG;lunch_break;1;11:30;13:00;
 XSHG;post_market;1;15:00;15:30;
