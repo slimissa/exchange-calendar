@@ -75,7 +75,8 @@ class TestXBUEProperties:
 
     def test_generation_range(self, xbue):
         assert "generation_range" in xbue
-        assert xbue["generation_range"] == ["2025-01-01", "2029-12-31"]
+        # 2010-2024 is a backfill from exchange_calendars (Session 4c7).
+        assert xbue["generation_range"] == ["2010-01-01", "2029-12-31"]
 
     def test_ad_hoc_closures_empty(self, xbue):
         assert xbue.get("ad_hoc_closures", []) == []
@@ -290,8 +291,10 @@ class TestXBUEChristmas:
 
 class TestXBUEarlyCloses:
     def test_no_other_early_closes(self, explicit_dates):
-        """Only Christmas Eve and New Year's Eve are early closes."""
-        early_closes = [e for e in explicit_dates.values() if e.get("status") == "early_close"]
+        """Only Christmas Eve and New Year's Eve are early closes in 2025-2029.
+        2010-2024 is a backfill whose half days are "Historical Early Close"."""
+        early_closes = [e for d, e in explicit_dates.items()
+                        if e.get("status") == "early_close" and d >= "2025-01-01"]
         early_close_names = {e["name"] for e in early_closes}
         assert early_close_names == {"Christmas Eve", "New Year's Eve"}
 
@@ -345,11 +348,19 @@ class TestXBUEStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~75-90 entries: 17 holidays × 5 years."""
-        assert 70 <= len(explicit_dates) <= 95, f"Unexpected count: {len(explicit_dates)}"
+        """~75-90 entries: 17 holidays × 5 years in 2025-2029.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 70 <= len(window) <= 95, f"Unexpected count: {len(window)}"
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
+        for date_, entry in explicit_dates.items():
+            if date_ < "2025-01-01":  # 2010-2024 backfill
+                assert "exchange_calendars" in entry["source_url"], date_
+                continue
             assert any(host in entry["source_url"]
                        for host in ("byma.com.ar", "argentina.gob.ar", "bcra.gob.ar"))
 
