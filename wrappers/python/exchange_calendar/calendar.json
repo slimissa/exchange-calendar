@@ -11263,7 +11263,7 @@
       },
       "mic": "XBUD",
       "name": "Budapest Stock Exchange",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. The 4 disputed days in contradicted_by (2029-03-16, 2029-04-30, 2029-10-22, 2029-11-02) are bridge days: each sits between a Tuesday or Thursday holiday (15 Mar, 1 May, 23 Oct, 1 Nov 2029) and the weekend. exchange_calendars and pandas_market_calendars close them by rule; the registry keeps them open because a bridge day exists only once the government's annual work-schedule decree names it, and the 2029 decree is not yet published (the 2025 and 2026 bridge days in the registry come from published decrees via bse.hu). bse.hu does not cover 2029 either, so neither side is confirmed. Re-check when the 2029 decree appears (expected during 2028).",
       "regular_hours": {
         "close": "17:00",
         "open": "09:00"
@@ -11292,6 +11292,12 @@
               "to": "2024-12-31"
             },
             {
+              "contradicted_by": [
+                "2029-03-16",
+                "2029-04-30",
+                "2029-10-22",
+                "2029-11-02"
+              ],
               "from": "2025-01-01",
               "source": "exchange_calendars + exchange_publications",
               "to": "2029-12-31"
