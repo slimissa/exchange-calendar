@@ -311,7 +311,8 @@ class TestTypesAndNulls:
         holidays = _read("holidays")
         generated = sum(len(e["holidays"].get("generated", [])) for e in registry["exchanges"])
         urls = holidays.column("source_url").to_pylist()
-        assert urls.count(None) == generated and generated == 54
+        # 56: +2 from the XOSL Wednesday-before-Easter rule (2028, 2029; 4c-R2).
+        assert urls.count(None) == generated and generated == 56
         assert "" not in urls
         early = holidays.column("early_close_time").to_pylist()
         assert None in early and "" not in early

@@ -208,12 +208,28 @@ class TestXOSLStructure:
             assert "source_url" in entry, f"Missing source: {date_str}"
 
     def test_all_statuses_closed(self, explicit_dates):
-        """Oslo Børs has no early closes in 2025-2029 — all holidays are full
-        closures. 2010-2024 is a backfill from exchange_calendars, which
-        carries 13:00 early closes."""
+        """In 2025-2029 every holiday is a full closure except the Wednesday
+        before Easter, which Euronext lists as an Oslo half trading day
+        (2025-04-16, 2026-04-01, 2027-03-24; 4c-R2). The old version of this
+        test asserted there were none."""
+        half_days = {"2025-04-16", "2026-04-01", "2027-03-24"}
         for date_, entry in explicit_dates.items():
-            if date_ >= "2025-01-01":
-                assert entry["status"] == "closed"
+            if date_ in half_days:
+                assert entry["status"] == "early_close", date_
+                assert entry["early_close_time"] == "13:00", date_
+            elif date_ >= "2025-01-01":
+                assert entry["status"] == "closed", date_
+
+    def test_wednesday_before_easter_rule(self, xosl):
+        """2028-2029 come from an early_close rule, Easter - 4 days."""
+        rules = [r for r in xosl["holidays"]["recurrence_rules"]
+                 if r.get("status") == "early_close"]
+        assert rules == [{
+            "early_close_time": "13:00", "effective_from": "2025-01-01",
+            "name": "Wednesday before Easter (half trading day)",
+            "offset_days": -4, "rule": "easter_offset",
+            "status": "early_close",
+        }]
 
     def test_holiday_count_reasonable(self, explicit_dates):
         """~49 entries in 2025-2029: 12 holidays × 5 years, minus weekend overlaps.
