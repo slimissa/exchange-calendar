@@ -32106,7 +32106,7 @@
       },
       "mic": "XKRX",
       "name": "Korea Exchange",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars (no exchange publications). No fetcher.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars (no exchange publications). No fetcher. Rechecked 2026-11-19 (4c-R1). Hours: the regular_hours cut at 2016-08-01 (15:00 -> 15:30) is confirmed by KRX's announcement (reported 2016-05-24 and 2016-07-31); open stays 09:00. Dec 31 is a full year-end closure, not an early close; every weekday Dec 31 in 2010-2024 is closed here. Election days (2017-05-09, 2018-06-13, 2020-04-15, 2022-03-09, 2022-06-01, 2024-04-10) and the temporary holidays 2017-10-02, 2023-10-02 and 2024-10-01 are closed. Known gap, not encoded: KRX shifts its regular session on two kinds of day every year. On the first trading day of the year the market opens at 10:00 (closing at the normal time) for the opening ceremony, and on the college entrance exam (CSAT) day it runs 10:00-16:30 (KRX notices reported e.g. for 2021-11-18, 2022-11-17, 2023-11-16, 2024-11-14, 2025-11-13, 2026-11-19). Neither the registry nor exchange_calendars 4.13.2 has these days; the schema can express the first-day 10:00 open (delayed_open) but not the CSAT day's later close, and the per-year dates for 2010-2024 have not been sourced.",
       "regular_hours": [
         {
           "close": "15:00",
