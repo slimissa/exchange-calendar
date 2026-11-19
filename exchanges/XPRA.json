@@ -1486,14 +1486,22 @@
   },
   "mic": "XPRA",
   "name": "Prague Stock Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
-  "regular_hours": {
-    "close": "16:30",
-    "open": "09:00"
-  },
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. regular_hours: close is the end of the closing auction (the XOSL convention). PSE's equity schedule until 2027-01-03: opening auction 08:50-09:00, continuous 09:00-16:10, closing auction 16:10-16:15, trading at close 16:15-16:25 (pse.cz instrument pages: trading hours 08:50-16:25, closing auction 16:10, trade at close 16:15). From 2027-01-04 (PSE announcement of 2026-07-31, reported by Kurzy.cz, Fio and others): continuous 09:00-16:45, closing auction 16:45-16:55, trading at close 16:55-17:00. The registry had 16:30 (the end of the trading day as press reports round it); exchange_calendars has 16:20, the continuous-trading end at the 2012 Xetra launch, which PSE later moved to 16:10 on an undated change. The 16:15 entry is therefore dated from the start of the registry, not from a notice, and 2010-2012 pre-Xetra hours are not encoded.",
+  "regular_hours": [
+    {
+      "close": "16:15",
+      "effective_from": "2010-01-01",
+      "open": "09:00"
+    },
+    {
+      "close": "16:55",
+      "effective_from": "2027-01-04",
+      "open": "09:00"
+    }
+  ],
   "sessions": [
     {
-      "close": "16:30",
+      "close": "16:55",
       "open": "09:00",
       "type": "regular"
     }

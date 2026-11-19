@@ -3,7 +3,8 @@
 test_prague_holidays.py — Ground truth tests for XPRA (Prague Stock Exchange).
 
 Key facts verified:
-    - Regular hours: 09:00-16:30
+    - Regular hours: 09:00-16:15 until 2027-01-03, 09:00-16:55 from 2027-01-04
+      (close = end of the closing auction)
     - No lunch break (continuous trading)
     - No extended hours sessions
     - Czech Republic uses weekend substitution (Sat→Mon, Sun→Mon)
@@ -77,8 +78,13 @@ class TestXPRAProperties:
         assert xpra["timezone"] == "Europe/Prague"
 
     def test_regular_hours(self, xpra):
-        assert xpra["regular_hours"]["open"] == "09:00"
-        assert xpra["regular_hours"]["close"] == "16:30"
+        hours = xpra["regular_hours"]
+        assert [(h["effective_from"], h["open"], h["close"]) for h in hours] == [
+            ("2010-01-01", "09:00", "16:15"),
+            ("2027-01-04", "09:00", "16:55"),
+        ]
+        regular = [s for s in xpra["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "09:00", "close": "16:55"}]
 
     def test_no_lunch_break(self, xpra):
         lunch = [s for s in xpra.get("sessions", []) if s.get("type") == "lunch_break"]

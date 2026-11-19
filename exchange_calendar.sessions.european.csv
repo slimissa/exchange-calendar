@@ -118,7 +118,7 @@ XPAR;regular;1;09:00;17:30;
 XPHS;post_market;1;15:00;15:10;
 XPHS;pre_market;1;09:00;09:30;
 XPHS;regular;1;09:30;15:00;
-XPRA;regular;1;09:00;16:30;
+XPRA;regular;1;09:00;16:55;
 XRIS;regular;1;10:00;16:00;
 XSAU;post_market;1;15:00;15:20;
 XSAU;pre_market;1;09:30;10:00;
