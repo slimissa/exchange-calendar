@@ -7,7 +7,7 @@
 -- the setting is per connection and a no-op inside a transaction.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 166, holidays 10527, ad_hoc_closures 0, confidence 939
+-- Rows: exchanges 74, sessions 166, holidays 10531, ad_hoc_closures 0, confidence 939
 
 PRAGMA foreign_keys=ON;
 
@@ -1588,6 +1588,8 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2027-01-01', 'New Year''s Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2027-03-26', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2027-03-29', 'Easter Monday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2027-12-24', 'Christmas Eve (half-day)', 'early_close', 'explicit', 1, '14:05', NULL, NULL, NULL, 'https://live.euronext.com/en/resources/trading-hours-holidays');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2027-12-31', 'New Year''s Eve (half-day)', 'early_close', 'explicit', 1, '14:05', NULL, NULL, NULL, 'https://live.euronext.com/en/resources/trading-hours-holidays');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2028-04-14', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2028-04-17', 'Easter Monday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2028-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
@@ -1597,8 +1599,10 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2029-03-30', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2029-04-02', 'Easter Monday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2029-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2029-12-24', 'Christmas Eve (half-day) (predicted)', 'early_close', 'explicit', 1, '14:05', NULL, 1, NULL, 'https://github.com/gerrymanoim/exchange_calendars');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2029-12-25', 'Christmas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2029-12-26', 'Boxing Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRU', '2029-12-31', 'New Year''s Eve (half-day) (predicted)', 'early_close', 'explicit', 1, '14:05', NULL, 1, NULL, 'https://github.com/gerrymanoim/exchange_calendars');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRV', '2025-01-01', 'New Year''s Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.brvm.org/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRV', '2025-04-21', 'Easter Monday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.brvm.org/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XBRV', '2025-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.brvm.org/trading-calendar');
@@ -11824,6 +11828,6 @@ COMMIT;
 -- Row counts
 --   exchanges: 74
 --   sessions: 166
---   holidays: 10527
+--   holidays: 10531
 --   ad_hoc_closures: 0
 --   confidence: 939
