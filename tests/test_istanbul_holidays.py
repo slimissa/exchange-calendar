@@ -287,13 +287,28 @@ class TestXISTStructure:
             assert "source_url" in entry, f"Missing source: {date_str}"
 
     def test_early_close_time_1300(self, explicit_dates):
-        for entry in explicit_dates.values():
+        """2025-2029 half days close at 13:00. 2010-2024 is a backfill from
+        exchange_calendars, whose half days close at 12:30."""
+        for date_, entry in explicit_dates.items():
             if entry["status"] == "early_close":
-                assert entry["early_close_time"] == "13:00"
+                expected = "13:00" if date_ >= "2025-01-01" else "12:30"
+                assert entry["early_close_time"] == expected, date_
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~50 entries: the national days plus the Bayram closures and eves for 2027-2029."""
-        assert 35 <= len(explicit_dates) <= 65
+        """~50 entries: the national days plus the Bayram closures and eves for 2027-2029.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 35 <= len(window) <= 65
+
+    def test_backfill_entries_cite_exchange_calendars(self, xist, explicit_dates):
+        assert xist["generation_range"] == ["2010-01-01", "2029-12-31"]
+        for date_, entry in explicit_dates.items():
+            if date_ < "2025-01-01":
+                assert "exchange_calendars" in entry["source_url"], date_
+                assert entry["name"].startswith("Historical"), date_
 
 
 # ──────────────────────────────────────────────────────────────
