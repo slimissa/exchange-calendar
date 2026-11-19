@@ -275,5 +275,17 @@ class TestXMADStructure:
         assert "Boxing Day" in names
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~27 entries: 5 closures × 5 years + 8 half-days."""
-        assert 25 <= len(explicit_dates) <= 35
+        """~27 entries: 5 closures × 5 years + 8 half-days in 2025-2029.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 25 <= len(window) <= 35
+
+    def test_backfill_entries_cite_exchange_calendars(self, explicit_dates):
+        for date_, entry in explicit_dates.items():
+            if date_ < "2025-01-01":
+                assert "exchange_calendars" in entry["source_url"], date_
+                if entry["status"] == "early_close":
+                    assert entry["early_close_time"] == "14:00", date_
