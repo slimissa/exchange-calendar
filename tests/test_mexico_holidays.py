@@ -278,8 +278,19 @@ class TestXMEXStructure:
             assert entry["status"] == "closed"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~48 entries: 10 holidays × 5 years, minus weekend overlaps."""
-        assert 40 <= len(explicit_dates) <= 60
+        """~48 entries: 10 holidays × 5 years, minus weekend overlaps, in 2025-2029.
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 40 <= len(window) <= 60
+
+    def test_backfill_entries_cite_exchange_calendars(self, explicit_dates):
+        for date_, entry in explicit_dates.items():
+            if date_ < "2025-01-01":
+                assert "exchange_calendars" in entry["source_url"], date_
+                assert entry["status"] == "closed", date_
 
 
 # ──────────────────────────────────────────────────────────────
