@@ -7,7 +7,7 @@
 -- the setting is per connection and a no-op inside a transaction.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 166, holidays 10550, ad_hoc_closures 0, confidence 939
+-- Rows: exchanges 74, sessions 166, holidays 10551, ad_hoc_closures 0, confidence 939
 
 PRAGMA foreign_keys=ON;
 
@@ -2964,6 +2964,7 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XDUB', '2027-05-03', 'May Bank Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XDUB', '2027-12-24', 'Christmas Eve', 'early_close', 'explicit', 1, '12:30', NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XDUB', '2027-12-27', 'Christmas Day (substitute)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XDUB', '2027-12-28', 'St. Stephen''s Day (substitute)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2021-holiday-calendar-for-its-cash-and');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XDUB', '2027-12-31', 'New Year''s Eve', 'early_close', 'explicit', 1, '12:30', NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XDUB', '2028-01-03', 'New Year''s Day (substitute)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XDUB', '2028-04-14', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
@@ -11847,6 +11848,6 @@ COMMIT;
 -- Row counts
 --   exchanges: 74
 --   sessions: 166
---   holidays: 10550
+--   holidays: 10551
 --   ad_hoc_closures: 0
 --   confidence: 939

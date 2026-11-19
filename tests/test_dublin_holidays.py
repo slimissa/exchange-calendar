@@ -124,13 +124,13 @@ class TestXDUBFixedHolidays:
         assert explicit_dates["2025-12-25"]["name"] == "Christmas Day"
 
     def test_christmas_day_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday and Dec 26 Sunday. Euronext's 2027 calendar
-           closes Dublin on Monday Dec 27 only; Tuesday Dec 28 is not listed,
-           so it trades (4c-R3; the libraries close it: contradicted_by)."""
+        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27.
+           Dec 26, 2027 is Sunday — substitute to Tuesday Dec 28, closed but
+           unconfirmed: Euronext's 2027 calendar lists only Dec 27 (4c-R3.5)."""
         assert "2027-12-25" not in explicit_dates
         assert "2027-12-26" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
-        assert "2027-12-28" not in explicit_dates
+        assert explicit_dates["2027-12-27"]["status"] == "closed"
+        assert explicit_dates["2027-12-28"]["status"] == "closed"
 
     def test_st_stephens_day_2025(self, explicit_dates):
         """Dec 26, 2025 is Friday — no substitution."""
@@ -418,11 +418,18 @@ class TestXDUBSubstitution:
         assert "2026-12-28" in explicit_dates
 
     def test_sunday_substitutes_to_monday(self, explicit_dates):
-        """Dec 26, 2027 is Sunday. Euronext's 2027 calendar closes Monday
-           Dec 27 only (4c-R3), unlike Ireland's two substitute days."""
+        """Dec 26, 2027 is Sunday — substitute is Tuesday Dec 28 (Monday Dec 27
+           is already the Christmas Day substitute). Closed pending Euronext's
+           notice (maintainer decision, 4c-R3.5)."""
         assert "2027-12-26" not in explicit_dates
-        assert "2027-12-27" in explicit_dates
-        assert "2027-12-28" not in explicit_dates
+        assert explicit_dates["2027-12-28"]["status"] == "closed"
+
+    def test_2027_12_28_is_marked_unconfirmed(self, xdub):
+        span = [s for s in xdub["verification"]["coverage"]["sources"]
+                if s["from"] == "2025-01-01"][0]
+        assert span["unconfirmed"] == ["2027-12-28"]
+        assert span["recheck_date"] == "2027-11-30"
+        assert "contradicted_by" not in span
 
     def test_substitute_names_contain_substitute(self, explicit_dates):
         """All substitute holidays should have 'substitute' in name."""
