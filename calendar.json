@@ -36944,6 +36944,96 @@
       "ad_hoc_closures": [],
       "code": "XMOS",
       "confidence": {
+        "2010": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2011": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2012": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2013": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2014": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2015": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2016": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2017": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2018": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2019": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2020": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2021": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2022": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2023": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2024": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
         "2025": {
           "last_verified": null,
           "level": "medium",
@@ -36960,11 +37050,1025 @@
       "extended_hours": {},
       "fetcher_status": "implemented",
       "generation_range": [
-        "2025-01-01",
+        "2010-01-01",
         "2026-12-31"
       ],
       "holidays": {
         "explicit": [
+          {
+            "date": "2010-01-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-01-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-01-05",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-01-06",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-01-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-01-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-02-22",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-02-23",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-05-03",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-05-10",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-06-14",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-11-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-11-05",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-31",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-01-03",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-01-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-01-05",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-01-06",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-01-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-01-10",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-02-23",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-03-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-05-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-05-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-06-13",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-11-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-01-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-02-23",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-03-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-30",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-05-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-05-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-06-11",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-06-12",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-11-05",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-31",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-03",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-05-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-05-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-06-12",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-11-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-31",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-03",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-03-10",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-06-12",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-06-13",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-11-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-31",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-01-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-01-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-01-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-02-23",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-03-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-11",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-06-12",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-11-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-31",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-01-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-01-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-01-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-02-23",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-05-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-05-03",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-05-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-06-13",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-11-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-01-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-02-23",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-05-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-05-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-05-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-06-12",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-11-06",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-01-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-01-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-01-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-02-23",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-06-12",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-11-05",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-31",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-01-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-01-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-01-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-06-12",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-11-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-31",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-01-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-01-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-01-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-02-24",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-03-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-11",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-06-12",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-06-24",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-07-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-11-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-31",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-01-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-01-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-02-23",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-05-03",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-11-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-12-31",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-01-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-02-23",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-02-28",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n43337",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-01",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n43882",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-02",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-03",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-04",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-07",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-09",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-10",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-11",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-14",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-15",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-16",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-17",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-18",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-21",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-22",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-23",
+            "name": "Equity market closed by Bank of Russia decision (2022 suspension)",
+            "source_url": "https://www.moex.com/n45535",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-03",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-10",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-06-13",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-11-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-01-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-02-23",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-05-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-05-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-06-12",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-01-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-01-02",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-02-23",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-03-08",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-01",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-09",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-06-12",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-11-04",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-31",
+            "name": "Historical Holiday",
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
           {
             "date": "2025-01-01",
             "name": "New Year's Day",
@@ -37066,6 +38170,7 @@
       },
       "mic": "XMOS",
       "name": "Moscow Exchange",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2026: exchange_calendars + exchange_publications. Weekend sessions are not modelled: exchange_calendars has 16 Russian make-up Saturdays in 2010-2024 (e.g. 2012-04-28, 2018-12-29, 2024-12-28) that the registry leaves out, as for every exchange (divergence_test skips weekend_days). 2022 equity-market suspension: the library treats 2022-02-28 to 2022-03-23 as normal sessions, but the Moscow Exchange equity market was closed by Bank of Russia decision from 28 February and resumed on 24 March 2022 (33 MOEX Russia Index stocks, 09:50-14:00; not encoded). The 16 closed weekdays are in holidays.explicit (as one-off closures are elsewhere, e.g. XNYS 2025-01-09), citing moex.com notices n43337 (28 Feb), n43882 (1 Mar) and n45535 (resumption on 24 Mar), and are listed in contradicted_by on the exchange_calendars span.",
       "regular_hours": {
         "close": "18:45",
         "open": "10:00"
@@ -37081,6 +38186,44 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
+        "coverage": {
+          "from": "2010-01-01",
+          "ranges": [
+            "trading_days"
+          ],
+          "sources": [
+            {
+              "contradicted_by": [
+                "2022-02-28",
+                "2022-03-01",
+                "2022-03-02",
+                "2022-03-03",
+                "2022-03-04",
+                "2022-03-09",
+                "2022-03-10",
+                "2022-03-11",
+                "2022-03-14",
+                "2022-03-15",
+                "2022-03-16",
+                "2022-03-17",
+                "2022-03-18",
+                "2022-03-21",
+                "2022-03-22",
+                "2022-03-23"
+              ],
+              "from": "2010-01-01",
+              "sampled": null,
+              "source": "exchange_calendars",
+              "to": "2024-12-31"
+            },
+            {
+              "from": "2025-01-01",
+              "source": "exchange_calendars + exchange_publications",
+              "to": "2026-12-31"
+            }
+          ],
+          "to": "2026-12-31"
+        },
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

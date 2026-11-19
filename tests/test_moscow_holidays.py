@@ -85,7 +85,8 @@ class TestXMOSProperties:
         # through 2026. Note: unlike the other 4 exchanges in C4, XMOS's
         # holidays are all fixed-date (no lunar/lunisolar dependency) —
         # this is a plain data-entry gap, not a rule-engine limitation.
-        assert xmos["generation_range"] == ["2025-01-01", "2026-12-31"]
+        # 2010-2024 is a backfill from exchange_calendars (Session 4c7).
+        assert xmos["generation_range"] == ["2010-01-01", "2026-12-31"]
 
     def test_ad_hoc_closures_empty(self, xmos):
         assert xmos.get("ad_hoc_closures", []) == []
@@ -225,12 +226,36 @@ class TestXMOSStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~16 entries: MOEX closes on the state holidays only (8 weekdays a year)."""
-        assert 12 <= len(explicit_dates) <= 25, f"Unexpected count: {len(explicit_dates)}"
+        """~16 entries: MOEX closes on the state holidays only (8 weekdays a year).
+
+        Scoped to the original window: 2010-2024 is a backfill from
+        exchange_calendars and has its own entries.
+        """
+        window = [d for d in explicit_dates if d >= "2025-01-01"]
+        assert 12 <= len(window) <= 25, f"Unexpected count: {len(window)}"
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
-            assert "moex.com" in entry["source_url"]
+        """2025+ cites moex.com. 2010-2024 cites exchange_calendars, except the
+        2022 equity-market suspension, which cites MOEX's own notices."""
+        for date_, entry in explicit_dates.items():
+            if date_ >= "2025-01-01" or entry["name"].startswith("Equity market closed"):
+                assert "moex.com" in entry["source_url"], date_
+            else:
+                assert "exchange_calendars" in entry["source_url"], date_
+
+    def test_2022_equity_suspension_is_closed(self, xmos, explicit_dates):
+        """exchange_calendars has these 16 weekdays as sessions; MOEX's equity
+        market was closed from 2022-02-28 and reopened on 2022-03-24."""
+        suspension = sorted(
+            d for d, e in explicit_dates.items()
+            if e["name"].startswith("Equity market closed")
+        )
+        assert len(suspension) == 16
+        assert suspension[0] == "2022-02-28" and suspension[-1] == "2022-03-23"
+        assert "2022-03-24" not in explicit_dates
+        ec_span = xmos["verification"]["coverage"]["sources"][0]
+        assert ec_span["source"] == "exchange_calendars"
+        assert ec_span["contradicted_by"] == suspension
 
 
 # ──────────────────────────────────────────────────────────────
