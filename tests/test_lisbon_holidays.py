@@ -233,10 +233,12 @@ class TestXLISStructure:
 
     def test_all_statuses_closed_except_year_end_half_days(self, explicit_dates):
         """In 2025-2029 every holiday is a full closure except the Dec 24/31
-        half days Euronext lists for 2025 and 2026 (13:05 Lisbon time (14:05 CET)).
+        half days Euronext lists for 2025-2027 (and the predicted 2029 ones) (13:05 Lisbon time (14:05 CET)).
         2010-2024 is a backfill from exchange_calendars, which carries its
         own early closes."""
-        half_days = {"2025-12-24", "2025-12-31", "2026-12-24", "2026-12-31"}
+        half_days = {"2025-12-24", "2025-12-31", "2026-12-24", "2026-12-31",
+                     "2027-12-24", "2027-12-31",  # published (4c-R3)
+                     "2029-12-24", "2029-12-31"}  # predicted (4c-R3)
         for date_, entry in explicit_dates.items():
             if date_ in half_days:
                 assert entry["status"] == "early_close"
@@ -258,11 +260,14 @@ class TestXLISStructure:
         exchange_calendars and has its own entries.
         """
         window = [d for d in explicit_dates if d >= "2025-01-01"]
-        assert 20 <= len(window) <= 30, f"Unexpected count: {len(window)}"
+        # 25 closures + 8 Dec 24/31 half days (2025-2027 published, 2029 predicted)
+        assert 25 <= len(window) <= 35, f"Unexpected count: {len(window)}"
 
     def test_source_url_consistency(self, explicit_dates):
         for date_, entry in explicit_dates.items():
-            if date_ >= "2025-01-01":
+            if entry.get("predicted"):  # predicted from exchange_calendars
+                assert "exchange_calendars" in entry["source_url"]
+            elif date_ >= "2025-01-01":
                 assert "euronext.com" in entry["source_url"]
             else:  # 2010-2024 backfill
                 assert "exchange_calendars" in entry["source_url"]
@@ -335,10 +340,15 @@ WRONGLY_OPEN = [
 
 class TestXLISDivergenceRegression:
     def test_year_end_half_days_match_euronext(self, explicit_dates):
-        """Euronext lists Dec 24 and 31 as half trading days in 2025 and 2026."""
+        """Euronext lists Dec 24 and 31 as half trading days in 2025, 2026 and 2027
+        (2027 calendar); 2029 is predicted."""
         early = {d for d, e in explicit_dates.items() if e["status"] == "early_close"
-                 and d >= "2025-01-01"}
-        assert early == {"2025-12-24", "2025-12-31", "2026-12-24", "2026-12-31"}
+                 and d >= "2025-01-01" and not e.get("predicted")}
+        assert early == {"2025-12-24", "2025-12-31", "2026-12-24", "2026-12-31",
+                         "2027-12-24", "2027-12-31"}
+        predicted = {d for d, e in explicit_dates.items() if e["status"] == "early_close"
+                     and e.get("predicted")}
+        assert predicted == {"2029-12-24", "2029-12-31"}
 
     def test_closures_match_euronext_2025(self, explicit_dates):
         closed = {d for d, e in explicit_dates.items()

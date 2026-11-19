@@ -4782,6 +4782,8 @@ XLIS;2026-12-31;New Year's Eve (half-day);early_close;explicit;1;13:05;;;;https:
 XLIS;2027-01-01;New Year's Day;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
 XLIS;2027-03-26;Good Friday;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
 XLIS;2027-03-29;Easter Monday;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
+XLIS;2027-12-24;Christmas Eve (half-day);early_close;explicit;1;13:05;;;;https://live.euronext.com/en/resources/trading-hours-holidays
+XLIS;2027-12-31;New Year's Eve (half-day);early_close;explicit;1;13:05;;;;https://live.euronext.com/en/resources/trading-hours-holidays
 XLIS;2028-04-14;Good Friday;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
 XLIS;2028-04-17;Easter Monday;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
 XLIS;2028-05-01;Labour Day;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
@@ -4791,8 +4793,10 @@ XLIS;2029-01-01;New Year's Day;closed;explicit;1;;;;;https://www.euronext.com/en
 XLIS;2029-03-30;Good Friday;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
 XLIS;2029-04-02;Easter Monday;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
 XLIS;2029-05-01;Labour Day;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
+XLIS;2029-12-24;Christmas Eve (half-day) (predicted);early_close;explicit;1;13:05;;true;;https://github.com/gerrymanoim/exchange_calendars
 XLIS;2029-12-25;Christmas Day;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
 XLIS;2029-12-26;Boxing Day;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
+XLIS;2029-12-31;New Year's Eve (half-day) (predicted);early_close;explicit;1;13:05;;true;;https://github.com/gerrymanoim/exchange_calendars
 XLIT;2025-01-01;New Year's Day;closed;explicit;1;;;;;https://www.nasdaqbaltic.com/trading-calendar
 XLIT;2025-03-11;Restoration of Independence Day;closed;explicit;1;;;;;https://www.nasdaqbaltic.com/trading-calendar
 XLIT;2025-04-18;Good Friday;closed;explicit;1;;;;;https://www.nasdaqbaltic.com/trading-calendar
