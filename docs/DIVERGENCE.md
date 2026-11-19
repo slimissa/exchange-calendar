@@ -40,7 +40,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
 | XBSP | 1241 | No reference data | No reference data | n/a | n/a |
 | XBUD | 1495 | 1491 | 1491 | 4 | 99.7% |
-| XBUE | 1234 | 1232 | 1232 | 18 | 98.6% |
+| XBUE | 1482 | 1480 | 1480 | 18 | 98.8% |
 | XBUL | 1251 | No reference data | No reference data | n/a | n/a |
 | XCAI | 1001 | No reference data | No reference data | n/a | n/a |
 | XCAS | 1253 | No reference data | No reference data | n/a | n/a |
@@ -55,7 +55,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XHEL | 1505 | 1505 | 1505 | 0 | 100.0% |
 | XHKG | 1479 | 1480 | 1480 | 3 | 99.8% |
 | XICE | 1491 | 1491 | 1491 | 0 | 100.0% |
-| XIST | 1255 | 1255 | 1255 | 0 | 100.0% |
+| XIST | 1505 | 1505 | 1505 | 0 | 100.0% |
 | XJKT | 1249 | No reference data | No reference data | n/a | n/a |
 | XJSE | 1252 | 1252 | 1252 | 0 | 100.0% |
 | XKAR | 1253 | 1270 | 1270 | 19 | 98.5% |
@@ -67,10 +67,10 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XLIT | 1242 | 1246 | 1246 | 4 | 99.7% |
 | XLON | 1518 | 1518 | 1518 | 0 | 100.0% |
 | XLUX | 1279 | 1279 | 1279 | 0 | 100.0% |
-| XMAD | 1279 | 1279 | 1279 | 0 | 100.0% |
+| XMAD | 1535 | 1535 | 1535 | 0 | 100.0% |
 | XMAL | 1242 | No reference data | No reference data | n/a | n/a |
-| XMEX | 1257 | 1257 | 1257 | 0 | 100.0% |
-| XMOS | 506 | 502 | 502 | 4 | 99.2% |
+| XMEX | 1509 | 1509 | 1509 | 0 | 100.0% |
+| XMOS | 759 | 755 | 758 | 4 | 99.5% |
 | XMUS | 1265 | No reference data | No reference data | n/a | n/a |
 | XNAI | 1257 | No reference data | No reference data | n/a | n/a |
 | XNAS | 1506 | No reference data | 1506 | 0 | 100.0% |
@@ -104,7 +104,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 30 of 50.
-- Trading days on which all available sources agree: 67219 of 67493 (99.6%).
+- Trading days on which all available sources agree: 68478 of 68752 (99.6%).
 
 ## Disagreements by year
 
@@ -115,14 +115,14 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XBOG | - | 0 | 0 | 0 | 1 | 0 |
 | XBOM | 0 | 0 | 0 | 8 | 12 | 15 |
 | XBUD | 0 | 0 | 0 | 0 | 0 | 4 |
-| XBUE | - | 8 | 5 | 3 | 1 | 1 |
+| XBUE | 0 | 8 | 5 | 3 | 1 | 1 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
 | XKAR | - | 2 | 3 | 4 | 4 | 6 |
 | XKLS | - | 0 | 2 | 4 | 5 | 2 |
 | XKRX | 0 | 0 | 2 | 2 | 2 | 1 |
 | XLIM | - | 0 | 0 | 3 | 3 | 0 |
 | XLIT | - | 1 | 1 | 0 | 1 | 1 |
-| XMOS | - | 2 | 2 | - | - | - |
+| XMOS | 0 | 2 | 2 | - | - | - |
 | XNSE | 1 | 1 | 0 | 8 | 12 | 15 |
 | XPHS | - | 0 | 1 | 3 | 2 | 1 |
 | XRIS | - | 3 | 1 | 0 | 2 | 1 |
