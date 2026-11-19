@@ -1371,7 +1371,7 @@
   },
   "mic": "XHEL",
   "name": "Nasdaq Helsinki",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. regular_hours opens at 10:00 EET: Nasdaq's European trading-hours page gives Helsinki equities 10:00-18:30 EET and exchange_calendars agrees; the registry had 09:00 (Stockholm's CET open). The pre_market session moves with it (09:00-10:00, the Stockholm 08:00-09:00 CET window shifted by the one-hour time difference; the pre-open start itself is not from a Nasdaq notice).",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (the exchange's calendar, published to 2027). 2028-2029: predicted from exchange_calendars and the exchange's unchanged pattern; not yet published, although most entries cite the calendar page. regular_hours opens at 10:00 EET: Nasdaq's European trading-hours page gives Helsinki equities 10:00-18:30 EET and exchange_calendars agrees; the registry had 09:00 (Stockholm's CET open). The pre_market session moves with it (09:00-10:00, the Stockholm 08:00-09:00 CET window shifted by the one-hour time difference; the pre-open start itself is not from a Nasdaq notice). Rechecked 2026-11-19 (4c-R3) against Nasdaq's European Markets Trading Hours page (Helsinki calendar for 2025-2027). No data change. Nasdaq Helsinki has no half trading days: the page lists none for 2025-2027 in either the equity or fixed-income schedule, and Dec 24 and Dec 31 are full closures (rules), as exchange_calendars also has. 2025-2027 closures match, including 2027-12-06 (Independence Day). Hours: 10:00-18:30 EET (09:00-17:30 CET) since the 2004 Stockholm/Helsinki harmonisation, closing call in the last five minutes; no close-time change in 2010-2024. The full-day 18:30 is the end of the closing call, so it follows the 4c-R3 convention (close = end of the closing auction). No COVID-19 closure. The Nasdaq Nordic fetcher cannot reach nasdaq.com from this sandbox; the page was read by hand.",
   "regular_hours": {
     "close": "18:30",
     "open": "10:00"
@@ -1412,6 +1412,11 @@
         {
           "from": "2025-01-01",
           "source": "exchange_calendars + exchange_publications",
+          "to": "2027-12-31"
+        },
+        {
+          "from": "2028-01-01",
+          "source": "exchange_calendars + standing Nasdaq Helsinki holiday pattern (Nasdaq has published only to 2027)",
           "to": "2029-12-31"
         }
       ],
