@@ -124,12 +124,13 @@ class TestXDUBFixedHolidays:
         assert explicit_dates["2025-12-25"]["name"] == "Christmas Day"
 
     def test_christmas_day_2027_substitute(self, explicit_dates):
-        """Dec 25, 2027 is Saturday — substitute to Monday Dec 27.
-           Dec 26, 2027 is Sunday — substitute to Tuesday Dec 28."""
+        """Dec 25, 2027 is Saturday and Dec 26 Sunday. Euronext's 2027 calendar
+           closes Dublin on Monday Dec 27 only; Tuesday Dec 28 is not listed,
+           so it trades (4c-R3; the libraries close it: contradicted_by)."""
         assert "2027-12-25" not in explicit_dates
         assert "2027-12-26" not in explicit_dates
         assert "2027-12-27" in explicit_dates
-        assert "2027-12-28" in explicit_dates
+        assert "2027-12-28" not in explicit_dates
 
     def test_st_stephens_day_2025(self, explicit_dates):
         """Dec 26, 2025 is Friday — no substitution."""
@@ -211,9 +212,22 @@ class TestXDUBEarlyCloses:
         2010-2024 is a backfill from exchange_calendars, whose early closes
         carry generic names."""
         early_closes = [e for d, e in explicit_dates.items()
-                        if d >= "2025-01-01" and e.get("status") == "early_close"]
+                        if d >= "2025-01-01" and e.get("status") == "early_close"
+                        and not e.get("predicted")]
         early_close_names = {e["name"] for e in early_closes}
         assert early_close_names == {"Christmas Eve", "New Year's Eve"}
+        # 2028: Dec 24/31 are Sundays, so the half days move to the preceding
+        # Fridays, as Euronext did in 2022 and 2023 (predicted; 4c-R3).
+        predicted = {d for d, e in explicit_dates.items()
+                     if e.get("status") == "early_close" and e.get("predicted")}
+        assert predicted == {"2028-12-22", "2028-12-29"}
+
+    def test_half_days_close_at_1230_from_2022(self, explicit_dates):
+        """Euronext: Dublin equities close between 12:28 and 12:30 on half
+        days (random end); the registry holds the end (4c-R3 convention)."""
+        for d, e in explicit_dates.items():
+            if e.get("status") == "early_close":
+                assert e["early_close_time"] == ("12:30" if d >= "2022-01-01" else "12:28"), d
 
 
 # ──────────────────────────────────────────────────────────────
@@ -373,7 +387,10 @@ class TestXDUBStructure:
     def test_source_url_consistency(self, explicit_dates):
         """All source URLs should be from euronext.com."""
         for date_, entry in explicit_dates.items():
-            if date_ >= "2025-01-01":
+            if entry.get("predicted"):  # predicted: the pattern's source, or exchange_calendars
+                assert ("exchange_calendars" in entry["source_url"]
+                        or "euronext.com" in entry["source_url"]), date_
+            elif date_ >= "2025-01-01" or (date_ >= "2022-01-01" and entry["status"] == "early_close"):
                 assert "euronext.com" in entry["source_url"]
             else:  # 2010-2024 backfill
                 assert "exchange_calendars" in entry["source_url"], f"Unexpected source: {entry['source_url']}"
@@ -390,10 +407,11 @@ class TestXDUBSubstitution:
         assert "2026-12-28" in explicit_dates
 
     def test_sunday_substitutes_to_monday(self, explicit_dates):
-        """Dec 26, 2027 is Sunday — substitute should be Tuesday Dec 28.
-           (Monday Dec 27 is already Christmas Day substitute)."""
+        """Dec 26, 2027 is Sunday. Euronext's 2027 calendar closes Monday
+           Dec 27 only (4c-R3), unlike Ireland's two substitute days."""
         assert "2027-12-26" not in explicit_dates
-        assert "2027-12-28" in explicit_dates
+        assert "2027-12-27" in explicit_dates
+        assert "2027-12-28" not in explicit_dates
 
     def test_substitute_names_contain_substitute(self, explicit_dates):
         """All substitute holidays should have 'substitute' in name."""
