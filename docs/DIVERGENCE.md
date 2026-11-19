@@ -10,7 +10,7 @@ python3 tools/divergence_report.py
 
 This file is regenerated automatically every Monday at 08:00 UTC by the Divergence workflow (`.github/workflows/divergence.yml`), which opens a pull request when it changes. Manual edits will be overwritten; record verdicts in `docs/divergence_triage.json` instead.
 
-Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.0. PMC is `pandas_market_calendars`, EC is `exchange_calendars`.
+Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.0. PMC is `pandas_market_calendars`, EC is `exchange_calendars`.
 
 ## How to read this
 
@@ -35,7 +35,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XBEY | 1265 | No reference data | No reference data | n/a | n/a |
 | XBKK | 727 | 727 | 727 | 0 | 100.0% |
 | XBOG | 1217 | 1216 | 1216 | 1 | 99.9% |
-| XBOM | 1484 | 1519 | 737* | 35 | 97.7% |
+| XBOM | 1484 | 1519 | 739* | 35 | 97.7% |
 | XBRU | 1535 | 1535 | 1535 | 0 | 100.0% |
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
 | XBSP | 1241 | No reference data | No reference data | n/a | n/a |
@@ -70,7 +70,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.5.
 | XMAD | 1535 | 1535 | 1535 | 0 | 100.0% |
 | XMAL | 1242 | No reference data | No reference data | n/a | n/a |
 | XMEX | 1509 | 1509 | 1509 | 0 | 100.0% |
-| XMOS | 759 | 755 | 755 | 4 | 99.5% |
+| XMOS | 759 | 755 | 758 | 4 | 99.5% |
 | XMUS | 1265 | No reference data | No reference data | n/a | n/a |
 | XNAI | 1257 | No reference data | No reference data | n/a | n/a |
 | XNAS | 1506 | No reference data | 1506 | 0 | 100.0% |
