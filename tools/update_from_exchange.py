@@ -5856,9 +5856,24 @@ class XISTFetcher(PDFFetcher):
     observation was about the combined-document hypothesis, not the
     actual equity file.
 
-    KNOWN LIMITATION: single-year PDF, URL is year-specific, same
-    annual-update pattern as XDFM/XWBO/XBUD.
+    Year-specific URL: one PDF per year, named
+    equity-market-{year}-holiday-schedule.pdf since 2023 (2023, 2024 and
+    2026 checked 2026-11-19; 2021 used EquityMarket2021HolidaySchedule.pdf).
+    fetch() tries the current year, then the next (the HKEX pattern):
+    Borsa Istanbul announces the next year's schedule in December (the
+    2026 set came with announcement 41625 of 2025-12-04), so in January the
+    current-year file exists and in December both may. Holidays from every
+    PDF found are merged. SourceMissingError (FAIL) is raised only when
+    every candidate URL is gone (404/410 or robots.txt); a flaky response on
+    any candidate with no PDF found is a FetchError and is retried. If the
+    naming changes, every candidate 404s and the run FAILs, which is the
+    signal to update URL_TEMPLATE.
     """
+
+    URL_TEMPLATE = (
+        "https://www.borsaistanbul.com/files/"
+        "equity-market-{year}-holiday-schedule.pdf"
+    )
 
     # Matches "1 January 2026 Wednesday" and "January 1, 2026" shapes.
     _LINE_RE = re.compile(
@@ -5877,12 +5892,18 @@ class XISTFetcher(PDFFetcher):
         super().__init__(
             mic="XIST",
             name="Borsa Istanbul",
-            source_url=(
-                "https://www.borsaistanbul.com/files/"
-                "equity-market-2026-holiday-schedule.pdf"
-            ),
+            source_url=self.URL_TEMPLATE.format(year=self._current_year()),
             rate_limit=2.0,
         )
+
+    @staticmethod
+    def _current_year() -> int:
+        return datetime.now().year
+
+    def candidate_urls(self) -> List[str]:
+        """The current year's PDF URL, then the next year's."""
+        year = self._current_year()
+        return [self.URL_TEMPLATE.format(year=y) for y in (year, year + 1)]
 
     def _extract_year(self, text: str) -> Optional[int]:
         """The equity PDF's own year comes from the heading
@@ -5957,30 +5978,54 @@ class XISTFetcher(PDFFetcher):
 
     @retry(max_attempts=3, delay=2.0, backoff=2.0, exceptions=(FetchError,))
     def fetch(self) -> Optional[ExchangeData]:
-        pdf_bytes = self._make_binary_request()
-        if not pdf_bytes:
-            gone = self._source_missing_reason()
-            if gone:
-                # The URL is year-specific: a 404 here means the PDF moved
-                # or was renamed, which needs a code change, not a retry.
-                raise SourceMissingError(
-                    f"Borsa Istanbul equity PDF is gone ({gone}): {self.source_url}"
+        urls = self.candidate_urls()
+        found: List[str] = []
+        gone: List[str] = []
+        flaky: List[str] = []
+        holidays: List[HolidayEntry] = []
+        for url in urls:
+            self.source_url = url
+            pdf_bytes = self._make_binary_request()
+            if not pdf_bytes:
+                reason = self._source_missing_reason()
+                if reason:
+                    gone.append(f"{url} ({reason})")
+                else:
+                    flaky.append(f"{url} (request failed)")
+                continue
+            # borsaistanbul.com sometimes answers 200 with something that is
+            # not a PDF (a challenge or error page). Without this check the
+            # parser swallowed that as "no text" and the run died with a
+            # ParseError ("No holidays found"), which reads as a changed
+            # page. A response that is not a PDF is a flaky source, not a
+            # parser problem.
+            if not pdf_bytes.startswith(b"%PDF-"):
+                flaky.append(
+                    f"{url} (not a PDF (bytes={len(pdf_bytes)}, "
+                    f"first_bytes={pdf_bytes[:20]!r}))"
                 )
-            raise FetchError("Failed to fetch Borsa Istanbul equity PDF")
+                continue
+            found.append(url)
+            holidays.extend(self.parse_html(self._extract_pdf_text(pdf_bytes)))
 
-        # borsaistanbul.com sometimes answers 200 with something that is not
-        # a PDF (a challenge or error page). Without this check the parser
-        # swallowed that as "no text" and the run died with a ParseError
-        # ("No holidays found"), which reads as a changed page. A response
-        # that is not a PDF is a flaky source, not a parser problem.
-        if not pdf_bytes.startswith(b"%PDF-"):
-            raise FetchError(
-                f"not a PDF (bytes={len(pdf_bytes)}, "
-                f"first_bytes={pdf_bytes[:20]!r})"
+        if not found:
+            if flaky:
+                raise FetchError(
+                    "Failed to fetch Borsa Istanbul equity PDF: "
+                    + "; ".join(flaky + gone)
+                )
+            # Every candidate is gone: the naming changed or the PDFs moved,
+            # which needs a code change, not a retry.
+            raise SourceMissingError(
+                "Borsa Istanbul equity PDF is gone for every candidate year: "
+                + "; ".join(gone)
             )
 
-        text = self._extract_pdf_text(pdf_bytes)
-        holidays = self.parse_html(text)
+        self.source_url = found[0]
+        by_date = {}
+        for h in holidays:
+            by_date.setdefault(h.date, h)
+        holidays = [by_date[d] for d in sorted(by_date)]
         if not holidays:
             raise ParseError("No holidays found for XIST")
 
@@ -5992,7 +6037,7 @@ class XISTFetcher(PDFFetcher):
             regular_open="09:30",
             regular_close="18:00",
             holidays=holidays,
-            source_urls=[self.source_url],
+            source_urls=found,
             currency="TRY",
             country="Turkey",
             city="Istanbul",
