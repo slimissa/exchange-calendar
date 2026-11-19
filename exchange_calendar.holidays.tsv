@@ -153,8 +153,10 @@ XAMS	2029-01-01	New Year's Day	closed	explicit	1					https://www.euronext.com/en
 XAMS	2029-03-30	Good Friday	closed	explicit	1					https://www.euronext.com/en/trading-calendar
 XAMS	2029-04-02	Easter Monday	closed	explicit	1					https://www.euronext.com/en/trading-calendar
 XAMS	2029-05-01	Labour Day	closed	explicit	1					https://www.euronext.com/en/trading-calendar
+XAMS	2029-12-24	Christmas Eve (half-day) (predicted)	early_close	explicit	1	14:05		true		https://github.com/gerrymanoim/exchange_calendars
 XAMS	2029-12-25	Christmas Day	closed	explicit	1					https://www.euronext.com/en/trading-calendar
 XAMS	2029-12-26	Boxing Day	closed	explicit	1					https://www.euronext.com/en/trading-calendar
+XAMS	2029-12-31	New Year's Eve (half-day) (predicted)	early_close	explicit	1	14:05		true		https://github.com/gerrymanoim/exchange_calendars
 XASX	1990-01-01	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
 XASX	1990-01-29	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars
 XASX	1990-04-13	Historical Holiday	closed	explicit	1					https://github.com/gerrymanoim/exchange_calendars

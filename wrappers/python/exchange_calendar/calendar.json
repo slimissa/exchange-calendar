@@ -1181,6 +1181,14 @@
             "status": "closed"
           },
           {
+            "date": "2029-12-24",
+            "early_close_time": "14:05",
+            "name": "Christmas Eve (half-day) (predicted)",
+            "predicted": true,
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
             "date": "2029-12-25",
             "name": "Christmas Day",
             "source_url": "https://www.euronext.com/en/trading-calendar",
@@ -1191,13 +1199,21 @@
             "name": "Boxing Day",
             "source_url": "https://www.euronext.com/en/trading-calendar",
             "status": "closed"
+          },
+          {
+            "date": "2029-12-31",
+            "early_close_time": "14:05",
+            "name": "New Year's Eve (half-day) (predicted)",
+            "predicted": true,
+            "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
           }
         ],
         "generated": []
       },
       "mic": "XAMS",
       "name": "Euronext Amsterdam",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Euronext's holiday calendar, published to 2027). 2028-2029: predicted from exchange_calendars and Euronext's unchanged holiday pattern; Euronext has not published those years, although the entries cite its calendar page. Rechecked 2026-11-19 (4c-R2) against Euronext's trading-hours-and-holidays page: 2025-2027 closures and the Dec 24/31 half days (close by 14:05 CET) match. Added 2029-12-24 and 2029-12-31 as predicted half days (predicted: true, citing exchange_calendars): exchange_calendars and XPAR already had them, and Euronext has run Dec 24/31 as half days every year since at least 2010. Hours 09:00-17:30 throughout; the only 2027 change Euronext announces is Trading After Hours availability, not the regular session. No COVID-19 or other one-off closure in 2010-2024. XAMS has no recurrence rules.",
       "regular_hours": {
         "close": "17:30",
         "open": "09:00"
@@ -1228,6 +1244,11 @@
             {
               "from": "2025-01-01",
               "source": "exchange_calendars + exchange_publications",
+              "to": "2027-12-31"
+            },
+            {
+              "from": "2028-01-01",
+              "source": "exchange_calendars + standing Euronext holiday pattern (Euronext has published only to 2027)",
               "to": "2029-12-31"
             }
           ],

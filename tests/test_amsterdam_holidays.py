@@ -240,7 +240,9 @@ class TestXAMSStructure:
         a backfill from exchange_calendars, which carries its own early
         closes."""
         half_days = {"2025-12-24", "2025-12-31", "2026-12-24", "2026-12-31",
-                     "2027-12-24", "2027-12-31"}
+                     "2027-12-24", "2027-12-31",
+                     # 2029: predicted (Euronext has published only to 2027)
+                     "2029-12-24", "2029-12-31"}
         for date_, entry in explicit_dates.items():
             if date_ in half_days:
                 assert entry["status"] == "early_close"
@@ -266,8 +268,10 @@ class TestXAMSStructure:
 
     def test_source_url_consistency(self, explicit_dates):
         for date_, entry in explicit_dates.items():
-            if date_ >= "2025-01-01":
+            if date_ >= "2025-01-01" and not entry.get("predicted"):
                 assert "euronext.com" in entry["source_url"]
+            elif entry.get("predicted"):  # predicted from exchange_calendars
+                assert "exchange_calendars" in entry["source_url"]
             else:  # 2010-2024 backfill
                 assert "exchange_calendars" in entry["source_url"]
 
@@ -341,9 +345,14 @@ class TestXAMSDivergenceRegression:
         Amsterdam closes at 14:05 CET (13:05 GMT in the ICE Futures Europe
         schedule)."""
         early = {d for d, e in explicit_dates.items() if e["status"] == "early_close"
-                 and d >= "2025-01-01"}
+                 and d >= "2025-01-01" and not e.get("predicted")}
         assert early == {"2025-12-24", "2025-12-31", "2026-12-24", "2026-12-31",
                          "2027-12-24", "2027-12-31"}
+        # 2029 Dec 24/31 are weekdays and predicted half days, as in XPAR and
+        # exchange_calendars; 2028 Dec 24/31 fall on Sundays.
+        predicted = {d for d, e in explicit_dates.items() if e["status"] == "early_close"
+                     and e.get("predicted")}
+        assert predicted == {"2029-12-24", "2029-12-31"}
 
     @pytest.mark.parametrize("day", [
         "2025-05-05",  # Liberation Day

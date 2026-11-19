@@ -7,7 +7,7 @@
 -- after the CREATE statements and wraps the INSERT block.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 166, holidays 10520, ad_hoc_closures 0, confidence 939
+-- Rows: exchanges 74, sessions 166, holidays 10522, ad_hoc_closures 0, confidence 939
 
 DROP TABLE IF EXISTS confidence;
 DROP TABLE IF EXISTS ad_hoc_closures;
@@ -500,8 +500,10 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2029-03-30', 'Good Friday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2029-04-02', 'Easter Monday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2029-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2029-12-24', 'Christmas Eve (half-day) (predicted)', 'early_close', 'explicit', 1, '14:05', NULL, 1, NULL, 'https://github.com/gerrymanoim/exchange_calendars');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2029-12-25', 'Christmas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2029-12-26', 'Boxing Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.euronext.com/en/trading-calendar');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XAMS', '2029-12-31', 'New Year''s Eve (half-day) (predicted)', 'early_close', 'explicit', 1, '14:05', NULL, 1, NULL, 'https://github.com/gerrymanoim/exchange_calendars');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XASX', '1990-01-01', 'Historical Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://github.com/gerrymanoim/exchange_calendars');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XASX', '1990-01-29', 'Historical Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://github.com/gerrymanoim/exchange_calendars');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XASX', '1990-04-13', 'Historical Holiday', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://github.com/gerrymanoim/exchange_calendars');
@@ -11810,6 +11812,6 @@ COMMIT;
 -- Row counts
 --   exchanges: 74
 --   sessions: 166
---   holidays: 10520
+--   holidays: 10522
 --   ad_hoc_closures: 0
 --   confidence: 939
