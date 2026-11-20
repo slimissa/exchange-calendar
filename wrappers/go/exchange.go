@@ -394,6 +394,15 @@ func (e *Exchange) EarlyCloseTime(dateStr string) string {
 	return e.earlyCloseTimeByDate[dateStr]
 }
 
+// DelayedOpenTime returns the delayed open time (HH:MM) if this date is a
+// delayed_open day, or empty string.
+func (e *Exchange) DelayedOpenTime(dateStr string) string {
+	if h, ok := e.holidayByDate[dateStr]; ok && h.Status == "delayed_open" {
+		return h.DelayedOpenTime
+	}
+	return ""
+}
+
 // ──────────────────────────────────────────────────────────────
 // Public API — status
 // ──────────────────────────────────────────────────────────────
@@ -430,7 +439,7 @@ func (e *Exchange) hoursOn(dateStr string) RegularHours {
 //  2. Full holiday → closed
 //  3. Early close day and time >= early_close_time → closed
 //  4. Lunch break → lunch_break
-//  5. Before regular open → pre_market
+//  5. Before the open (delayed_open_time on a delayed_open day) → pre_market
 //  6. After regular close → after_hours
 //  7. Otherwise → open (or early_close on early close day)
 //
@@ -478,8 +487,15 @@ func (e *Exchange) StatusAt(dateStr, timeStr string) (SessionStatus, error) {
 
 	hours := e.hoursOn(dateStr)
 
-	// 5. Before regular open — only PRE_MARKET if declared.
-	if timeStr < hours.Open {
+	// On a delayed_open day the market opens at DelayedOpenTime instead
+	// of the regular open (the data is authoritative).
+	openTime := hours.Open
+	if t := e.DelayedOpenTime(dateStr); t != "" {
+		openTime = t
+	}
+
+	// 5. Before the open — only PRE_MARKET if declared.
+	if timeStr < openTime {
 		if pre := e.ExtendedHours.PreMarket; pre != nil {
 			if pre.Open <= timeStr && timeStr < pre.Close {
 				return StatusPreMarket, nil

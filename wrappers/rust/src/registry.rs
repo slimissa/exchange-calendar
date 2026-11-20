@@ -808,6 +808,19 @@ mod tests {
         let xsau = r.get("XSAU").unwrap();
         assert!(xsau.is_holiday("2025-08-22"), "XSAU Friday should be a weekend");
 
+        // 4c12: a delayed_open day opens at delayed_open_time.
+        let xbsp = r.get("XBSP").unwrap();
+        assert_eq!(xbsp.delayed_open_time("2026-02-18"), Some("13:00"));
+        assert!(!xbsp.is_open("2026-02-18", Some("11:00")));
+        assert!(!xbsp.is_open("2026-02-18", Some("12:59")));
+        assert!(xbsp.is_open("2026-02-18", Some("13:00")));
+        assert!(xbsp.is_open("2026-02-18", Some("14:00")));
+        let xbda = r.get("XBDA").unwrap();
+        assert!(!xbda.is_open("2025-10-02", Some("10:00")));
+        assert!(!xbda.is_open("2025-10-02", Some("12:14")));
+        assert!(xbda.is_open("2025-10-02", Some("12:15")));
+        assert!(xbda.is_open("2025-10-02", Some("13:00")));
+
         let xtks = r.get("XTKS").unwrap();
         assert_eq!(
             xtks.status_at("2025-07-07", "12:00").unwrap(),

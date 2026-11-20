@@ -555,6 +555,15 @@ impl Exchange {
         self.early_close_time_by_date.get(date_str).map(|s| s.as_str())
     }
 
+    /// Return the delayed open time (HH:MM) if this date is a
+    /// `delayed_open` day, else None.
+    pub fn delayed_open_time(&self, date_str: &str) -> Option<&str> {
+        self.holiday_by_date
+            .get(date_str)
+            .filter(|h| h.status == "delayed_open")
+            .and_then(|h| h.delayed_open_time.as_deref())
+    }
+
     // ──────────────────────────────────────────────────────────
     // Public API — status
     // ──────────────────────────────────────────────────────────
@@ -615,8 +624,15 @@ impl Exchange {
 
         let hours = self.hours_on(date_str);
 
-        // Before regular open — only PRE_MARKET if declared.
-        if let Some(open_time) = hours.open_time() {
+        // On a delayed_open day the market opens at delayed_open_time
+        // instead of the regular open (the data is authoritative).
+        let open_time = self
+            .delayed_open_time(date_str)
+            .and_then(|t| NaiveTime::parse_from_str(t, "%H:%M").ok())
+            .or_else(|| hours.open_time());
+
+        // Before the open — only PRE_MARKET if declared.
+        if let Some(open_time) = open_time {
             if time < open_time {
                 if let Some(pre) = self.extended_hours.pre_market.as_ref() {
                     if let (Ok(pre_open), Ok(pre_close)) = (

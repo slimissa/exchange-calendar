@@ -534,3 +534,31 @@ func TestAsOf(t *testing.T) {
 		t.Error("2026 should be present on/after fetch date")
 	}
 }
+// 4c12: a delayed_open day opens at delayed_open_time (shipped calendar.json).
+func TestRealRegistryDelayedOpen(t *testing.T) {
+	r, err := exchangecalendar.LoadRegistry(filepath.Join("..", "..", "..", "calendar.json"))
+	if err != nil {
+		t.Fatalf("load calendar.json: %v", err)
+	}
+	cases := []struct {
+		mic, date, at string
+		open          bool
+	}{
+		{"XBSP", "2026-02-18", "11:00", false},
+		{"XBSP", "2026-02-18", "12:59", false},
+		{"XBSP", "2026-02-18", "13:00", true},
+		{"XBSP", "2026-02-18", "14:00", true},
+		{"XBDA", "2025-10-02", "10:00", false},
+		{"XBDA", "2025-10-02", "12:14", false},
+		{"XBDA", "2025-10-02", "12:15", true},
+		{"XBDA", "2025-10-02", "13:00", true},
+	}
+	for _, c := range cases {
+		if got := r.IsOpen(c.mic, c.date, c.at); got != c.open {
+			t.Errorf("%s %s %s: IsOpen = %v, want %v", c.mic, c.date, c.at, got, c.open)
+		}
+	}
+	if got := r.Get("XBSP").DelayedOpenTime("2026-02-18"); got != "13:00" {
+		t.Errorf("XBSP DelayedOpenTime = %q, want 13:00", got)
+	}
+}
