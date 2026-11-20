@@ -1127,6 +1127,7 @@ Nothing is scheduled. Each item starts when its trigger fires.
 | **A single version-consistency script covering every site** | A fourth implementation of the release pattern, or a drift the CI job misses |
 | **Per-release verification reports** | Adopting the ISO family's `docs/v<version>-verification.md` |
 | **Publication to PyPI, npm, crates.io and a Go proxy** | A downstream consumer needs a package-registry install rather than a clone |
+| **Phase 4d: the schema and data items from the 4c rechecks** ([`docs/phase-4d-backlog.md`](./docs/phase-4d-backlog.md)): dated sessions, unconfirmed hours, continuous close, timed special sessions, and data leads | The backfill batches (4c8-4c12) finish, or a consumer needs one of the fields |
 
 See [`CHANGELOG.md`](./CHANGELOG.md) for release history and [`docs/decisions/`](./docs/decisions) for locked decisions.
 
