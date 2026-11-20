@@ -677,7 +677,52 @@
           ]
         },
         "coverage": {
-          "description": "Which sources back which date ranges for this exchange (free-form object; a strict shape is a later schema change). Optional and authored, not derived: tools/derive_verification.py keeps it when it rewrites the other verification fields. Suggested keys: from, to, ranges, sources (a list of {from, to, source, sampled}).",
+          "description": "Which sources back which date ranges for this exchange. Optional and authored, not derived: tools/derive_verification.py keeps it when it rewrites the other verification fields. from and to are required, and so are from, to and source on every sources item: the Rust wrapper's Coverage and CoverageSource structs require them (schema 2.2.3). Other keys stay free-form (ranges, sampled, unconfirmed, recheck_date, contradicted_by).",
+          "properties": {
+            "from": {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "type": "string"
+            },
+            "ranges": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "sources": {
+              "items": {
+                "properties": {
+                  "from": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "type": "string"
+                  },
+                  "source": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "to": {
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "from",
+                  "to",
+                  "source"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "to": {
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "from",
+            "to"
+          ],
           "type": "object"
         },
         "last_checked": {
@@ -715,5 +760,5 @@
   ],
   "title": "Exchange Calendar Entry",
   "type": "object",
-  "version": "2.2.2"
+  "version": "2.2.3"
 }

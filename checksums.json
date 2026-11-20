@@ -75,7 +75,7 @@
     "exchanges/XWAR.json": "ec1b58a4a9d0e9d0d1ae5337eda75663071c9f5a92d48e2b460fe199a44c700f",
     "exchanges/XWBO.json": "868324d87d520cbb2cfc5b5b77de5b3aca5da9267ab555068a36be539954ea92",
     "exchanges/XZAG.json": "00f3d5fc6ea2e2652e22f4015b6926e2166cd0d668f6983466933f26a79d1427",
-    "schema.json": "35556c04c83678fa9165cd0436467ca14777353fb0207f9ab8f1f03ebd99a2b6",
+    "schema.json": "abf8fbebc0c1c3b366925e913a84db808e8c34878e5d432ace4a0125c94ef5b4",
     "tools/build.py": "d1be6d026737d77779bb13f482369f670bc9185dbc0a52cdaf406a18ee724a1f",
     "tools/check_country_codes.py": "3ab402d13e9d94a804ab899e86ed217aa1a65b29fc215d2fae0d9c0d91dd68d1",
     "tools/check_doc_facts.py": "9c02ba6581c0b8dde7a34bf10f6895136dd51ccc5c0756cf0ec10df3c25801c1",
