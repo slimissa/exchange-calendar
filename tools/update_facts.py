@@ -28,10 +28,16 @@ Derived facts
     test_files_count         files matching tests/test_*_holidays.py
     tests_total
 
-calendar.json must be current: run tools/build.py first. tests_total depends
-on collecting the whole suite, which needs the dev dependencies installed and
-moves on every added test, so `--check` leaves it out unless `--with-tests` is
-given. Regenerate it with a plain run before a release.
+calendar.json must be current: run tools/build.py first. tests_total comes
+from collecting the whole suite (`pytest --collect-only`, about two seconds),
+which needs the dependencies the tests import.
+
+`--check` compares every fact, tests_total included. Until session 4c-R5 it
+skipped tests_total unless `--with-tests` was given, and CI ran the bare
+`--check`, so a stale count (5718 recorded, 5720 in the tree) passed with
+"OK ... (11 facts)". `--no-tests` still skips it where the suite cannot be
+collected; the result line then says that tests_total was not compared.
+`--with-tests` is kept as a no-op alias for older scripts.
 
 Exit codes
 ----------
@@ -42,8 +48,8 @@ Exit codes
 Usage
 -----
     python3 tools/update_facts.py               # write docs/facts.json
-    python3 tools/update_facts.py --check       # fail if it is out of date
-    python3 tools/update_facts.py --check --with-tests
+    python3 tools/update_facts.py --check       # fail if any fact is out of date
+    python3 tools/update_facts.py --check --no-tests   # skip tests_total (says so)
 """
 
 from __future__ import annotations
@@ -119,7 +125,10 @@ def render(facts: dict) -> str:
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     p.add_argument("--check", action="store_true", help="compare facts.json with the tree")
-    p.add_argument("--with-tests", action="store_true", help="with --check, also compare tests_total")
+    p.add_argument("--no-tests", action="store_true",
+                   help="with --check, do not collect the suite or compare tests_total")
+    p.add_argument("--with-tests", action="store_true",
+                   help="no-op alias kept for older scripts: --check compares tests_total by default")
     p.add_argument("--root", type=Path, default=REPO_ROOT, help="repository root (for tests)")
     args = p.parse_args(argv)
     path = args.root / "docs" / "facts.json"
@@ -128,15 +137,19 @@ def main(argv: list[str] | None = None) -> int:
             path.write_text(render(derive(args.root)), encoding="utf-8")
             print(f"Wrote {path.relative_to(args.root)}")
             return 0
-        facts = derive(args.root, with_tests=args.with_tests)
+        # calendar.json errors first, then facts.json, then the (slower)
+        # collection, so each failure reports its own cause.
+        facts = derive(args.root, with_tests=False)
         try:
             recorded = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, ValueError) as exc:
             raise FactsError(f"cannot read {path.name}: {exc}") from None
+        if not args.no_tests:
+            facts = dict(sorted({**facts, "tests_total": count_tests(args.root)}.items()))
     except FactsError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
-    if not args.with_tests:
+    if args.no_tests:
         recorded = {k: v for k, v in recorded.items() if k != "tests_total"}
     diffs = [
         f"{k}: facts.json has {recorded.get(k)!r}, the tree has {facts.get(k)!r}"
@@ -148,7 +161,8 @@ def main(argv: list[str] | None = None) -> int:
     if diffs:
         print("\ndocs/facts.json is out of date. Run: python3 tools/update_facts.py")
         return 1
-    print(f"OK: docs/facts.json matches the tree ({len(facts)} facts)")
+    skipped = " (tests_total not compared: --no-tests)" if args.no_tests else ""
+    print(f"OK: docs/facts.json matches the tree ({len(facts)} facts){skipped}")
     return 0
 
 

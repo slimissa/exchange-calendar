@@ -8,7 +8,8 @@ Tests that the facts generator:
     3. Counts export files by extension at the repository root only
     4. Writes sorted, stable JSON, and --check passes right after a write
     5. --check exits 1 and names the fact when the tree has moved on
-    6. --check ignores tests_total unless --with-tests is given
+    6. --check compares tests_total by default and catches a stale count;
+       --no-tests skips it and says so (4c-R5)
     7. Exits 2 for an unreadable calendar.json, an unknown status, a missing
        facts.json, and a failed test collection
     8. The real docs/facts.json matches the real tree
@@ -77,14 +78,22 @@ class TestDerive:
 
 
 class TestCheck:
+    COLLECTED = 7  # stand-in for `pytest --collect-only` in a tmp tree
+
+    @pytest.fixture(autouse=True)
+    def fake_collection(self, monkeypatch):
+        monkeypatch.setattr(uf, "count_tests", lambda root: self.COLLECTED)
+
     def write(self, root):
-        assert uf.main(["--root", str(root)]) == 2  # no tests/ dir: collection must fail loudly
-        (root / "docs" / "facts.json").write_text(uf.render(uf.derive(root, with_tests=False)))
+        assert uf.main(["--root", str(root)]) == 0
+        assert json.loads((root / "docs" / "facts.json").read_text())["tests_total"] == self.COLLECTED
 
     def test_passes_right_after_write(self, tmp_path, capsys):
         root = make_tree(tmp_path)
         self.write(root)
         assert uf.main(["--root", str(root), "--check"]) == 0
+        out = capsys.readouterr().out
+        assert "(12 facts)" in out and "not compared" not in out
 
     def test_fails_when_tree_moves(self, tmp_path, capsys):
         root = make_tree(tmp_path)
@@ -101,17 +110,39 @@ class TestCheck:
         assert uf.main(["--root", str(root), "--check"]) == 1
         assert "exchanges_total" in capsys.readouterr().out
 
-    def test_tests_total_is_ignored_without_flag(self, tmp_path):
+    def test_stale_tests_total_is_caught(self, tmp_path, capsys):
+        """The 4c-R4 miss: facts.json said 5718, the tree had 5720, and the
+        bare --check passed. It must now fail and name the fact."""
+        root = make_tree(tmp_path)
+        self.write(root)
+        p = root / "docs" / "facts.json"
+        d = json.loads(p.read_text()); d["tests_total"] = self.COLLECTED - 2; p.write_text(json.dumps(d))
+        assert uf.main(["--root", str(root), "--check"]) == 1
+        out = capsys.readouterr().out
+        assert f"DIFF  tests_total: facts.json has {self.COLLECTED - 2}, the tree has {self.COLLECTED}" in out
+
+    def test_no_tests_skips_tests_total_and_says_so(self, tmp_path, capsys):
         root = make_tree(tmp_path)
         self.write(root)
         p = root / "docs" / "facts.json"
         d = json.loads(p.read_text()); d["tests_total"] = 1; p.write_text(json.dumps(d))
-        assert uf.main(["--root", str(root), "--check"]) == 0
+        assert uf.main(["--root", str(root), "--check", "--no-tests"]) == 0
+        assert "(11 facts) (tests_total not compared: --no-tests)" in capsys.readouterr().out
 
-    def test_with_tests_flag_collects(self, tmp_path, capsys):
+    def test_with_tests_is_a_no_op_alias(self, tmp_path):
         root = make_tree(tmp_path)
         self.write(root)
-        assert uf.main(["--root", str(root), "--check", "--with-tests"]) == 2  # nothing to collect here
+        p = root / "docs" / "facts.json"
+        d = json.loads(p.read_text()); d["tests_total"] = 1; p.write_text(json.dumps(d))
+        assert uf.main(["--root", str(root), "--check", "--with-tests"]) == 1
+
+
+class TestCollection:
+    def test_failed_collection_exits_2(self, tmp_path, capsys):
+        root = make_tree(tmp_path)  # no tests/ directory: collection must fail loudly
+        (root / "docs" / "facts.json").write_text(uf.render(uf.derive(root, with_tests=False)))
+        assert uf.main(["--root", str(root), "--check"]) == 2
+        assert "pytest --collect-only failed" in capsys.readouterr().err
 
 
 class TestExitTwo:
