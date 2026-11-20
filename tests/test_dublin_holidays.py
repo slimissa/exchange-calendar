@@ -428,15 +428,16 @@ class TestXDUBSubstitution:
         assert span["recheck_date"] == "2027-11-30"
         assert "contradicted_by" not in span
 
-    def test_close_window_convention_is_marked_unconfirmed(self, xdub):
-        """4c-R5: whether Euronext schedules Dublin's uncross at the start of
-        its 12:28-12:30 / 16:28-16:30 window (random period after) could not
-        be read; the window ends are kept and the Optiq start is flagged."""
+    def test_close_is_the_scheduled_uncross_per_euronext_appendix(self, xdub):
+        """4c8: Euronext's Appendix to Instructions 4-01/4-03 gives Dublin
+        equities continuous to 17:28 CET and the closing uncross at
+        '17:30 Random' (17:30:00-17:30:30 CET), i.e. 16:30 Dublin. The 4c-R5
+        unconfirmed marker on the Optiq start is removed."""
         span = [s for s in xdub["verification"]["coverage"]["sources"]
                 if s["from"] == "2010-01-01"][0]
-        assert span["unconfirmed"] == ["2019-02-04"]
-        assert "recheck_date" not in span
+        assert "unconfirmed" not in span
         assert xdub["regular_hours"]["close"] == "16:30"
+        assert "appendix%20to%20Euronext%20Instructions" in xdub["note"]
 
     def test_substitute_names_contain_substitute(self, explicit_dates):
         """All substitute holidays should have 'substitute' in name."""
