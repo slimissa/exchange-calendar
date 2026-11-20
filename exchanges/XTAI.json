@@ -1785,6 +1785,12 @@
         "status": "closed"
       },
       {
+        "date": "2026-07-10",
+        "name": "Typhoon Bavi (Taipei work suspension)",
+        "source_url": "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB",
+        "status": "closed"
+      },
+      {
         "date": "2026-09-25",
         "name": "Mid-Autumn Festival",
         "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
@@ -1800,6 +1806,12 @@
         "date": "2026-10-09",
         "name": "National Day (observed)",
         "source_url": "https://www.twse.com.tw/en/page/trading/exchange.html",
+        "status": "closed"
+      },
+      {
+        "date": "2026-10-23",
+        "name": "Typhoon Champi (Taipei work suspension)",
+        "source_url": "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB",
         "status": "closed"
       },
       {
@@ -2166,7 +2178,7 @@
   },
   "mic": "XTAI",
   "name": "Taiwan Stock Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified): 243 closures (79 with exchange_calendars' names, 164 'Historical Holiday'), no early closes; exchange_calendars has 09:00-13:30 on every session. 2025-2027: exchange_calendars + exchange_publications. 2028-2029: standing pattern; TWSE has not published them. Checked 2026-11-20 (4c8). Last published year: TWSE's holiday-schedule open data (https://www.twse.com.tw/holidaySchedule/holidaySchedule?response=open_data, which serves the current schedule, read as ROC 116 = 2027) lists the 2027 closures. Fixed against it: 2027-02-02 and 2027-02-03 are the two no-trading settlement-only days (the registry had 02-03 and 02-04); 2027-02-04 is part of the Lunar New Year holiday (Feb 4-10); 2027-04-06 (Children's Day observed) and 2027-12-24 (Constitution Day observed) were missing. Every 2027 entry now cites the open data; six had cited press pages (chinatimes, storm.mg). One-off closure not added: TWSE announced by press release on 2026-07-09 that the market was closed all day on 2026-07-10 (Typhoon Bavi). The release was reported by the press but TWSE's own page could not be read (twse.com.tw returns a security error to this sandbox), so the date is not in the registry and is marked unconfirmed on the 2025-2027 span. Close (ADR 0013): TWSE's trading-system page (https://www.twse.com.tw/zh/products/system/trading.html) gives matching 9:00-13:30 with a closing call auction 13:25-13:30 and the closing match at 13:30; only securities that hit the closing-delay threshold close at 13:33, which ADR 0013 ignores. regular_hours.close stays 13:30, now as one dated entry from 2010-01-01 (unconfirmed on the 2010-2024 span: no earlier TWSE schedule was read; exchange_calendars agrees for 2010-2024). No early closes exist.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified): 243 closures (79 with exchange_calendars' names, 164 'Historical Holiday'), no early closes; exchange_calendars has 09:00-13:30 on every session. 2025-2027: exchange_calendars + exchange_publications. 2028-2029: standing pattern; TWSE has not published them. Checked 2026-11-20 (4c8). Last published year: TWSE's holiday-schedule open data (https://www.twse.com.tw/holidaySchedule/holidaySchedule?response=open_data, which serves the current schedule, read as ROC 116 = 2027) lists the 2027 closures. Fixed against it: 2027-02-02 and 2027-02-03 are the two no-trading settlement-only days (the registry had 02-03 and 02-04); 2027-02-04 is part of the Lunar New Year holiday (Feb 4-10); 2027-04-06 (Children's Day observed) and 2027-12-24 (Constitution Day observed) were missing. Every 2027 entry now cites the open data; six had cited press pages (chinatimes, storm.mg). One-off closures (4c9): 2026-07-10 (Typhoon Bavi) and 2026-10-23 (Typhoon Champi) are closures in holidays.explicit (like the 2010-2024 typhoon days from the backfill; ad_hoc_closures stays empty). TWSE's rule (trading-system page, https://www.twse.com.tw/zh/products/system/trading.html) is that in a natural disaster the centralized market closes according to whether the Mayor of Taipei announces a work suspension for Taipei's public agencies that day. The Taipei City Government Department of Personnel's list of natural-disaster work suspensions (https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB) records 'stop work and classes' for 10 July 2026 (Bavi) and 23 October 2026 (Champi); both are weekdays. TWSE's own closure notices for the two days could not be read (twse.com.tw and investoredu.twse.com.tw return a security error or a CDN error page to this sandbox), so both dates are marked unconfirmed on the 2025-2027 span until a TWSE URL is cited. Close (ADR 0013): TWSE's trading-system page (https://www.twse.com.tw/zh/products/system/trading.html) gives matching 9:00-13:30 with a closing call auction 13:25-13:30 and the closing match at 13:30; only securities that hit the closing-delay threshold close at 13:33, which ADR 0013 ignores. regular_hours.close stays 13:30, now as one dated entry from 2010-01-01 (unconfirmed on the 2010-2024 span: no earlier TWSE schedule was read; exchange_calendars agrees for 2010-2024). No early closes exist.",
   "regular_hours": [
     {
       "close": "13:30",
@@ -2215,7 +2227,8 @@
           "source": "exchange_calendars + exchange_publications (TWSE holiday schedule; 2027 = ROC 116 open data)",
           "to": "2027-12-31",
           "unconfirmed": [
-            "2026-07-10"
+            "2026-07-10",
+            "2026-10-23"
           ]
         },
         {

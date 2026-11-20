@@ -7,7 +7,7 @@
 -- after the CREATE statements and wraps the INSERT block.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 167, holidays 11426, ad_hoc_closures 0, confidence 1014
+-- Rows: exchanges 74, sessions 167, holidays 11428, ad_hoc_closures 0, confidence 1014
 
 DROP TABLE IF EXISTS confidence;
 DROP TABLE IF EXISTS ad_hoc_closures;
@@ -10383,9 +10383,11 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-04-06', 'Tomb Sweeping Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-06-19', 'Dragon Boat Festival', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-07-10', 'Typhoon Bavi (Taipei work suspension)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-09-25', 'Mid-Autumn Festival', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-09-28', 'Teachers'' Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-10-09', 'National Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
+INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-10-23', 'Typhoon Champi (Taipei work suspension)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-10-26', 'Taiwan Restoration Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-12-25', 'Constitution Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2027-01-01', 'Republic Day (New Year''s Day)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/holidaySchedule/holidaySchedule?response=open_data');
@@ -12792,6 +12794,6 @@ COMMIT;
 -- Row counts
 --   exchanges: 74
 --   sessions: 167
---   holidays: 11426
+--   holidays: 11428
 --   ad_hoc_closures: 0
 --   confidence: 1014

@@ -258,9 +258,10 @@ class TestXTAIStructure:
 
     def test_holiday_count_reasonable(self, explicit_dates):
         """Scoped to 2025-2029 (the 4c8 backfill adds 2010-2024): 87 entries
-        (84 before 4c8, plus 2027-02-02, 2027-04-06 and 2027-12-24)."""
+        (84 before 4c8, plus 2027-02-02, 2027-04-06 and 2027-12-24), plus
+        the 2026-07-10 and 2026-10-23 typhoon closures from 4c9 = 89."""
         window = [d for d in explicit_dates if "2025" <= d[:4] <= "2029"]
-        assert len(window) == 87
+        assert len(window) == 89
 
     def test_backfill_2010_2024(self, xtai, explicit_dates):
         """4c8: 243 closures from exchange_calendars 4.13.2, no early closes."""
@@ -298,7 +299,8 @@ class TestXTAITwseCalendar2025And2026:
             "2026-01-01", "2026-02-12", "2026-02-13", "2026-02-16", "2026-02-17",
             "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-27", "2026-04-03",
             "2026-04-06", "2026-05-01", "2026-06-19", "2026-09-25", "2026-09-28",
-            "2026-10-09", "2026-10-26", "2026-12-25"}
+            "2026-10-09", "2026-10-26", "2026-12-25",
+            "2026-07-10", "2026-10-23"}  # typhoon closures (4c9)
 
     @pytest.mark.parametrize("day", [
         "2025-01-27", "2025-09-29", "2025-10-24", "2025-12-25",
@@ -319,3 +321,23 @@ class TestXTAITwseCalendar2025And2026:
         for d, e in explicit_dates.items():
             if d.startswith("2027"):
                 assert e["source_url"].startswith("https://www.twse.com.tw/"), d
+
+
+class TestXTAITyphoonClosures2026:
+    """4c9: TWSE closes the centralized market when Taipei suspends work
+    (TWSE trading-system page). Taipei City's Department of Personnel
+    lists suspensions on 2026-07-10 (Bavi) and 2026-10-23 (Champi). TWSE's
+    own notices were not readable, so both are unconfirmed."""
+
+    def test_typhoon_closures(self, xtai, explicit_dates):
+        """Stored in holidays.explicit, like the backfilled 2010-2024
+        typhoon days; ad_hoc_closures stays empty."""
+        assert xtai["ad_hoc_closures"] == []
+        for d in ("2026-07-10", "2026-10-23"):
+            assert explicit_dates[d]["status"] == "closed"
+            assert explicit_dates[d]["source_url"] == "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"
+
+    def test_marked_unconfirmed(self, xtai):
+        span = xtai["verification"]["coverage"]["sources"][1]
+        assert span["from"] == "2025-01-01"
+        assert {"2026-07-10", "2026-10-23"} <= set(span["unconfirmed"])
