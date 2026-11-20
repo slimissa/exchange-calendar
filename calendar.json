@@ -5171,6 +5171,96 @@
       "ad_hoc_closures": [],
       "code": "XBKK",
       "confidence": {
+        "2010": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2011": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2012": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2013": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2014": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2015": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2016": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2017": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2018": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2019": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2020": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2021": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2022": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2023": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2024": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
         "2025": {
           "last_verified": null,
           "level": "medium",
@@ -5193,11 +5283,1583 @@
       "extended_hours": {},
       "fetcher_status": "none",
       "generation_range": [
-        "2025-01-01",
+        "2010-01-01",
         "2027-12-31"
       ],
       "holidays": {
         "explicit": [
+          {
+            "date": "2010-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-03-01",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-06",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-13",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-14",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-15",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-05-03",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-05-05",
+            "name": "Coronation Day For King #9",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-05-20",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-05-21",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-05-28",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-07-01",
+            "name": "Half Year Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-07-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-08-12",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-08-13",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-10-25",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-06",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-10",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-31",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-01-03",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-02-18",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-04-06",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-04-13",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-04-14",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-04-15",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-05-02",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-05-05",
+            "name": "Coronation Day For King #9",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-05-16",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-05-17",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-07-01",
+            "name": "Half Year Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-07-15",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-08-12",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-10-24",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-12-05",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-12-12",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-01-02",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-01-03",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-03-07",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-06",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-09",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-13",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-16",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-05-07",
+            "name": "Coronation Day For King #9",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-06-04",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-08-02",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-08-13",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-10-23",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-05",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-10",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-31",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-02-25",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-04-08",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-04-15",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-04-16",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-05-06",
+            "name": "Coronation Day For King #9",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-05-24",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-07-01",
+            "name": "Half Year Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-07-22",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-08-12",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-10-23",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-05",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-10",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-30",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-31",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-02-14",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-04-07",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-04-14",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-04-15",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-05",
+            "name": "Coronation Day For King #9",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-13",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-07-01",
+            "name": "Half Year Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-07-11",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-08-11",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-08-12",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-10-23",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-05",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-10",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-31",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-01-02",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-03-04",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-06",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-13",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-14",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-15",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-04",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-05",
+            "name": "Coronation Day For King #9",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-06-01",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-07-01",
+            "name": "Half Year Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-07-30",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-08-12",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-10-23",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-07",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-10",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-31",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-02-22",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-04-06",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-04-13",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-04-14",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-04-15",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-05-02",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-05-05",
+            "name": "Coronation Day For King #9",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-05-06",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-05-20",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-07-01",
+            "name": "Half Year Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-07-18",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-07-19",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-08-12",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-10-24",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-12-05",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-12-12",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-01-02",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-01-03",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-02-13",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-06",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-13",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-14",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-05-10",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-07-10",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-07-28",
+            "name": "His Majesty The King's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-08-14",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-10-13",
+            "name": "The Passing of King Bhumibol",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-10-23",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-10-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-05",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-11",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-01-01",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-01-02",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-03-01",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-04-06",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-04-13",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-04-16",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-29",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-07-27",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-07-30",
+            "name": "His Majesty The King's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-08-13",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-10-15",
+            "name": "The Passing of King Bhumibol",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-10-23",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-05",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-10",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-31",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-02-19",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-04-08",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-04-15",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-04-16",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-06",
+            "name": "Coronation Day For King #10",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-20",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-06-03",
+            "name": "Her Majesty The Queen's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-07-16",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-07-29",
+            "name": "His Majesty The King's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-08-12",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-10-14",
+            "name": "The Passing of King Bhumibol",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-10-23",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-05",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-10",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-31",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-02-10",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-06",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-13",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-14",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-15",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-04",
+            "name": "Coronation Day For King #10",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-06",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-06-03",
+            "name": "Her Majesty The Queen's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-07-06",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-07-28",
+            "name": "His Majesty The King's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-08-12",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-10-13",
+            "name": "The Passing of King Bhumibol",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-10-23",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-07",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-10",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-31",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-02-12",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-02-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-06",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-13",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-14",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-15",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-05-03",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-05-04",
+            "name": "Coronation Day For King #10",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-05-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-06-03",
+            "name": "Her Majesty The Queen's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-07-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-07-28",
+            "name": "His Majesty The King's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-08-12",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-09-24",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-10-13",
+            "name": "The Passing of King Bhumibol",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-10-22",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-10-25",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-12-06",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-12-10",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-12-31",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-01-03",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-02-16",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-06",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-13",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-14",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-15",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-02",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-04",
+            "name": "Coronation Day For King #10",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-16",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-06-03",
+            "name": "Her Majesty The Queen's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-07-13",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-07-28",
+            "name": "His Majesty The King's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-07-29",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-08-12",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-10-13",
+            "name": "The Passing of King Bhumibol",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-10-14",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-10-24",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-12-05",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-12-12",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-01-02",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-01-03",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-03-06",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-06",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-13",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-14",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-05-04",
+            "name": "Coronation Day For King #10",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-05-05",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-06-05",
+            "name": "Her Majesty The Queen's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-07-28",
+            "name": "His Majesty The King's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-08-01",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-08-14",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-10-13",
+            "name": "The Passing of King Bhumibol",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-10-23",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-05",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-11",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-29",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-01-01",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-01-02",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-02-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-04-08",
+            "name": "Chakri Memorial Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-04-12",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-04-15",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-04-16",
+            "name": "Songkran Festival",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-06",
+            "name": "Coronation Day For King #10",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-22",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-06-03",
+            "name": "Her Majesty The Queen's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-07-22",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-07-29",
+            "name": "His Majesty The King's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-08-12",
+            "name": "Her Majesty The Queen Mother's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-10-14",
+            "name": "The Passing of King Bhumibol",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-10-23",
+            "name": "Chulalongkorn Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-05",
+            "name": "King Bhumibol's Birthday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-10",
+            "name": "Thailand Constitution Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-31",
+            "name": "New Year's Eve",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
           {
             "date": "2025-01-01",
             "name": "New Year's Day",
@@ -5539,13 +7201,17 @@
       },
       "mic": "XBKK",
       "name": "Stock Exchange of Thailand",
-      "regular_hours": {
-        "close": "16:30",
-        "open": "10:00"
-      },
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified): 262 closures (198 with exchange_calendars' names), no early closes. 2025-2027: exchange_calendars + exchange_publications; generation_range ends 2027. Checked 2026-11-20 (4c9). Last published year: SET's holiday page could not be located and read from this sandbox, so 2027 was not compared against it. Leads not acted on: the Bank of Thailand announced 16 December 2026 as an additional special holiday for financial institutions (BOT news no. 46/2026, https://www.bot.or.th/content/dam/bot/documents/en/news-and-media/news/2026/news-20261117.pdf), and TFEX's holiday page says SET/TFEX holiday changes follow BOT and SEC announcements, but no SET announcement for 16 December 2026 was read, so it is not added; press reports SET kept normal trading on the 28 September 2026 flood holiday. Close (ADR 0013): SET's opening/closing price page (https://www.set.or.th/en/market/information/trading-procedure/opening-closing-price-calculation) says the pre-close runs from 16:30 and the trading system 'will randomly select a closing time between 16:35 - 16:40 hours'. ADR 0013 ignores the random window, so the scheduled close is 16:35 (was 16:30, the end of continuous trading; exchange_calendars has 16:30), one dated entry from 2010-01-01 (unconfirmed: no earlier SET schedule was read). The off-hour session (trade reports from the closing time to 17:00, https://www.set.or.th/en/market/information/trading-procedure/off-hour-trading) is not modelled. Hours history not dated: the afternoon session moved 30 minutes earlier on 2024-03-25 (pre-open II 13:30-14:00, trading II 14:00-16:30; before, 14:00-14:30 and 14:30-16:30), read only through a republished SET release (aseanexchanges.org), so the lunch break (12:30-14:00 in the undated sessions, the current schedule) is not dated; the open and close did not change.",
+      "regular_hours": [
+        {
+          "close": "16:35",
+          "effective_from": "2010-01-01",
+          "open": "10:00"
+        }
+      ],
       "sessions": [
         {
-          "close": "16:30",
+          "close": "16:35",
           "open": "10:00",
           "type": "regular"
         },
@@ -5559,6 +7225,29 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
+        "coverage": {
+          "from": "2010-01-01",
+          "ranges": [
+            "trading_days"
+          ],
+          "sources": [
+            {
+              "from": "2010-01-01",
+              "sampled": null,
+              "source": "exchange_calendars",
+              "to": "2024-12-31",
+              "unconfirmed": [
+                "2010-01-01"
+              ]
+            },
+            {
+              "from": "2025-01-01",
+              "source": "exchange_calendars + exchange_publications (SET trading-procedure pages)",
+              "to": "2027-12-31"
+            }
+          ],
+          "to": "2027-12-31"
+        },
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

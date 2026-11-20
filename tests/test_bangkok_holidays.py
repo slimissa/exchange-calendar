@@ -61,8 +61,11 @@ class TestXBKKProperties:
         assert xbkk["timezone"] == "Asia/Bangkok"
 
     def test_regular_hours(self, xbkk):
-        assert xbkk["regular_hours"]["open"] == "10:00"
-        assert xbkk["regular_hours"]["close"] == "16:30"
+        """4c9, ADR 0013: SET randomly selects the closing time between
+        16:35 and 16:40 after a pre-close from 16:30; the random window is
+        ignored, so the scheduled close is 16:35."""
+        assert xbkk["regular_hours"] == [
+            {"close": "16:35", "effective_from": "2010-01-01", "open": "10:00"}]
 
     def test_lunch_break(self, xbkk):
         lunch = [s for s in xbkk.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -77,7 +80,8 @@ class TestXBKKProperties:
         assert "generation_range" in xbkk
         # Shortened from 2029-12-31 per C4: XBKK's data only covers
         # through 2027 (Buddhist/lunar holidays aren't rule-generatable).
-        assert xbkk["generation_range"] == ["2025-01-01", "2027-12-31"]
+        # 4c9: backfilled from 2010-01-01; the end stays 2027-12-31.
+        assert xbkk["generation_range"] == ["2010-01-01", "2027-12-31"]
 
     def test_ad_hoc_closures_empty(self, xbkk):
         assert xbkk.get("ad_hoc_closures", []) == []
@@ -305,6 +309,9 @@ class TestXBKKStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if date_str < "2025":  # 4c9 backfill cites exchange_calendars
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -330,11 +337,17 @@ class TestXBKKStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~50-60 entries."""
-        assert 50 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
+        """Scoped to 2025-2027: 56 (unchanged by 4c9). 2010-2024 backfill:
+        262 closures, no early closes."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 56
+        old = [d for d in explicit_dates if d < "2025"]
+        assert len(old) == 262
+        assert all(explicit_dates[d]["status"] == "closed" for d in old)
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
+        for d, entry in explicit_dates.items():
+            if d < "2025":
+                continue  # 4c9 backfill cites exchange_calendars
             assert "set.or.th" in entry["source_url"] or "bot.or.th" in entry["source_url"]
 
 
