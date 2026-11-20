@@ -886,3 +886,24 @@ describe('verification(mic)', () => {
         assert.equal(r.verification('XXXX'), null);
     });
 });
+
+describe('delayed_open (4c12)', () => {
+    test('a delayed_open day opens at delayed_open_time', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        assert.equal(r.get('XBSP').delayedOpenTime('2026-02-18'), '13:00');
+        assert.equal(r.get('XBSP').delayedOpenTime('2026-02-19'), null);
+        const cases = [
+            ['XBSP', '2026-02-18', '11:00', false],
+            ['XBSP', '2026-02-18', '12:59', false],
+            ['XBSP', '2026-02-18', '13:00', true],
+            ['XBSP', '2026-02-18', '14:00', true],
+            ['XBDA', '2025-10-02', '10:00', false],
+            ['XBDA', '2025-10-02', '12:14', false],
+            ['XBDA', '2025-10-02', '12:15', true],
+            ['XBDA', '2025-10-02', '13:00', true],
+        ];
+        for (const [mic, date, at, open] of cases) {
+            assert.equal(r.isOpen(mic, date, at), open, `${mic} ${date} ${at}`);
+        }
+    });
+});

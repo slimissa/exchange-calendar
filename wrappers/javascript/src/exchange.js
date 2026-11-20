@@ -259,6 +259,21 @@ class Exchange {
         return this._earlyCloseTimeByDate.get(dateStr) || null;
     }
 
+    /**
+     * Return the delayed open time for this date, or null if it is not a
+     * delayed_open day.
+     *
+     * @param {string} dateStr — ISO date (YYYY-MM-DD).
+     * @returns {string|null} Delayed open time as HH:MM, or null.
+     */
+    delayedOpenTime(dateStr) {
+        const entry = this._holidayByDate.get(dateStr);
+        if (entry && entry.status === 'delayed_open' && entry.delayed_open_time) {
+            return entry.delayed_open_time;
+        }
+        return null;
+    }
+
     // ──────────────────────────────────────────────────────────
     // Public API — status
     // ──────────────────────────────────────────────────────────
@@ -271,7 +286,7 @@ class Exchange {
      *   2. Full holiday → CLOSED
      *   3. Early close day and time >= early_close_time → CLOSED
      *   4. Lunch break (if configured) → LUNCH_BREAK
-     *   5. Before regular open → PRE_MARKET
+     *   5. Before the open (delayed_open_time on a delayed_open day) → PRE_MARKET
      *   6. After regular close → AFTER_HOURS
      *   7. Otherwise → OPEN (or EARLY_CLOSE on early close day)
      *
@@ -320,9 +335,12 @@ class Exchange {
             }
         }
 
-        // 5. Before regular open — only PRE_MARKET if declared.
+        // 5. Before the open — only PRE_MARKET if declared. On a
+        //    delayed_open day the market opens at delayed_open_time
+        //    instead of the regular open (the data is authoritative).
         const hours = this.regularHoursOn(dateStr);
-        if (timeStr < hours.open) {
+        const openTime = this.delayedOpenTime(dateStr) || hours.open;
+        if (timeStr < openTime) {
             const pre = this.extendedHours && this.extendedHours.pre_market;
             if (pre && pre.open && pre.close && pre.open <= timeStr && timeStr < pre.close) {
                 return SessionStatus.PRE_MARKET;

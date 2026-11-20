@@ -219,6 +219,12 @@
         earlyCloseTime(dateStr: string): string | null;
 
         /**
+         * Return the delayed open time (HH:MM), or null if not a delayed_open day.
+         * On that day the market opens at this time.
+         */
+        delayedOpenTime(dateStr: string): string | null;
+
+        /**
          * Return the full session status at a specific date and time.
          */
         statusAt(dateStr: string, timeStr: string): SessionStatusValue;
