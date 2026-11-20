@@ -1264,6 +1264,17 @@
       "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25680162.pdf"
     },
     {
+      "exchange": "XBKK",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2026-10-16",
+        "2026-12-16"
+      ],
+      "summary": "SET's own holiday page (2026 tab; read in 4c11 from the maintainer's copy printed on 2026-11-20) lists Friday 16 October 2026 and Wednesday 16 December 2026 as 'Additional special holiday', amended by SET's notifications of 16 June 2026 and 19 November 2026. The registry closes both (ad_hoc_closures); exchange_calendars and pandas_market_calendars show them open.",
+      "source_url": "https://www.set.or.th/en/about/event-calendar/holiday"
+    },
+    {
       "exchange": "XBUE",
       "verdict": "registry_error",
       "status": "fixed",
