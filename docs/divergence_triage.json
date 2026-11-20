@@ -1849,6 +1849,31 @@
       ],
       "summary": "Holy Thursday 2029 is an Argentine non-working day. The libraries close it and the registry trades. BYMA has not published 2029. Check BYMA's 2029 calendar.",
       "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
+    },
+    {
+      "exchange": "XKAR",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2026-06-25",
+        "2026-06-26",
+        "2026-08-26"
+      ],
+      "summary": "PSX/N-732 (16 June 2026) gives 25 and 26 June 2026 as non-trading days for Ashura (N-89 had listed 24 and 25 June). PSX/N-89 makes 12th Rabi-ul-Awwal (Eid Milad-un-Nabi) a PSX holiday, and the State Bank of Pakistan's circular of 24 August 2026 fixes it as Wednesday 26 August 2026. Both libraries trade on all three days; the registry closes them (4c13).",
+      "source_url": "https://dps.psx.com.pk/download/attachment/278691-1.pdf"
+    },
+    {
+      "exchange": "XSAU",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2024-04-14",
+        "2024-04-15",
+        "2024-06-13",
+        "2024-06-23"
+      ],
+      "summary": "Saudi Exchange's holiday events page: Eid Al Fiter 2024, 'Trading will resume after the holiday on 14/04/2024'; Eid Al Adha 2024, 'Trading will discontinue at the end of trading day 13/06/2024' and 'Trading will resume after the holiday on 23/06/2024'. exchange_calendars closes all four (and pandas_market_calendars agrees); the registry trades on them (4c13). The 2021-2023 corrections of the same backfill lie outside the 2024-2029 report window.",
+      "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events"
     }
   ]
 }

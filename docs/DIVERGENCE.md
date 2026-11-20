@@ -67,7 +67,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XIST | 1505 | 1505 | 1505 | 0 | 100.0% |
 | XJKT | 1249 | No reference data | No reference data | n/a | n/a |
 | XJSE | 1501 | 1503 | 1503 | 2 | 99.9% |
-| XKAR | 1253 | 1270 | 1270 | 19 | 98.5% |
+| XKAR | 1496 | 1516 | 1516 | 22 | 98.5% |
 | XKLS | 1472 | 1479 | 1479 | 13 | 99.1% |
 | XKRX | 1461 | 1468 | 1468 | 7 | 99.5% |
 | XKUW | 1017 | No reference data | No reference data | n/a | n/a |
@@ -91,8 +91,8 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XPAR | 1535 | 1535 | 1535 | 0 | 100.0% |
 | XPHS | 1477 | 1476 | 1476 | 7 | 99.5% |
 | XPRA | 1500 | 1500 | 1500 | 0 | 100.0% |
-| XRIS | 1493 | 1499 | 1499 | 8 | 99.5% |
-| XSAU | 1007 | 998 | 998 | 17 | 98.3% |
+| XRIS | 1494 | 1499 | 1499 | 7 | 99.5% |
+| XSAU | 1257 | 1244 | 1244 | 21 | 98.3% |
 | XSES | 1508 | 1537 | 755* | 29 | 98.1% |
 | XSGO | 1489 | No reference data | 1490 | 1 | 99.9% |
 | XSHE | 970 | No reference data | No reference data | n/a | n/a |
@@ -113,7 +113,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 28 of 50.
-- Trading days on which all available sources agree: 72952 of 73239 (99.6%).
+- Trading days on which all available sources agree: 73442 of 73735 (99.6%).
 
 ## Disagreements by year
 
@@ -128,7 +128,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XBUE | 0 | 8 | 5 | 3 | 1 | 1 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
 | XJSE | 1 | 0 | 1 | 0 | 0 | 0 |
-| XKAR | - | 2 | 3 | 4 | 4 | 6 |
+| XKAR | 0 | 2 | 6 | 4 | 4 | 6 |
 | XKLS | 0 | 0 | 2 | 4 | 5 | 2 |
 | XKRX | 0 | 0 | 2 | 2 | 2 | 1 |
 | XLIM | 0 | 0 | 0 | 3 | 3 | 0 |
@@ -136,8 +136,8 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XMOS | 0 | 2 | 2 | - | - | - |
 | XNSE | 1 | 1 | 0 | 8 | 12 | 15 |
 | XPHS | 0 | 0 | 1 | 3 | 2 | 1 |
-| XRIS | 1 | 1 | 3 | 0 | 2 | 1 |
-| XSAU | - | 4 | 0 | 5 | 8 | - |
+| XRIS | 1 | 1 | 2 | 0 | 2 | 1 |
+| XSAU | 4 | 4 | 0 | 5 | 8 | - |
 | XSES | 0 | 0 | 0 | 8 | 10 | 11 |
 | XSGO | 0 | 0 | 0 | 1 | 0 | 0 |
 | XSHG | 0 | 0 | 0 | 18 | 14 | 13 |
@@ -148,9 +148,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2024 | 4 | 0 | 2 | 0 | 0 | 2 |
+| 2024 | 8 | 0 | 6 | 0 | 0 | 2 |
 | 2025 | 20 | 0 | 18 | 1 | 1 | 0 |
-| 2026 | 25 | 0 | 21 | 0 | 1 | 3 |
+| 2026 | 27 | 0 | 24 | 0 | 0 | 3 |
 | 2027 | 71 | 0 | 12 | 0 | 54 | 5 |
 | 2028 | 85 | 0 | 6 | 0 | 79 | 0 |
 | 2029 | 82 | 0 | 5 | 0 | 77 | 0 |
@@ -226,9 +226,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 - registry closed, PMC open, EC open (2): 2024-05-29 We, 2026-11-04 We
 
-### XKAR (19)
+### XKAR (22)
 
-- registry closed, PMC open, EC open (18): 2025-06-06 Fr [library error], 2026-03-20 Fr [library error], 2026-05-26 Tu [library error], 2026-05-27 We [library error], 2027-03-09 Tu [unpublished], 2027-03-10 We [unpublished], 2027-05-17 Mo [unpublished], 2027-06-15 Tu [unpublished], 2028-02-28 Mo [unpublished], 2028-05-04 Th [unpublished], 2028-05-05 Fr [unpublished], 2028-08-04 Fr [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-04-24 Tu [unpublished], 2029-04-25 We [unpublished], 2029-05-24 Th [unpublished], 2029-07-24 Tu [unpublished]
+- registry closed, PMC open, EC open (21): 2025-06-06 Fr [library error], 2026-03-20 Fr [library error], 2026-05-26 Tu [library error], 2026-05-27 We [library error], 2026-06-25 Th [library error], 2026-06-26 Fr [library error], 2026-08-26 We [library error], 2027-03-09 Tu [unpublished], 2027-03-10 We [unpublished], 2027-05-17 Mo [unpublished], 2027-06-15 Tu [unpublished], 2028-02-28 Mo [unpublished], 2028-05-04 Th [unpublished], 2028-05-05 Fr [unpublished], 2028-08-04 Fr [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-04-24 Tu [unpublished], 2029-04-25 We [unpublished], 2029-05-24 Th [unpublished], 2029-07-24 Tu [unpublished]
 - registry open, PMC closed, EC closed (1): 2025-09-05 Fr [library error]
 
 ### XKLS (13)
@@ -262,14 +262,14 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry open, PMC closed, EC closed (4): 2027-03-10 We [unpublished], 2027-05-17 Mo [unpublished], 2028-01-26 We [unpublished], 2029-02-13 Tu [unpublished]
 - registry closed, PMC open, EC open (3): 2026-11-02 Mo [library error], 2027-11-02 Tu [unpublished], 2028-11-02 Th [unpublished]
 
-### XRIS (8)
+### XRIS (7)
 
-- registry closed, PMC open, EC open (7): 2024-12-25 We [library error], 2025-12-25 Th [library error], 2026-01-02 Fr [unpublished], 2026-06-22 Mo [library error], 2026-12-25 Fr [library error], 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
+- registry closed, PMC open, EC open (6): 2024-12-25 We [library error], 2025-12-25 Th [library error], 2026-06-22 Mo [library error], 2026-12-25 Fr [library error], 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
 - registry open, PMC closed, EC closed (1): 2028-07-10 Mo [unpublished]
 
-### XSAU (17)
+### XSAU (21)
 
-- registry open, PMC closed, EC closed (13): 2025-03-27 Th [library error], 2025-06-04 We [library error], 2027-03-07 Su [unpublished], 2027-03-08 Mo [unpublished], 2027-05-19 We [unpublished], 2027-05-20 Th [unpublished], 2028-02-29 Tu [unpublished], 2028-03-01 We [unpublished], 2028-03-02 Th [unpublished], 2028-05-03 We [unpublished], 2028-05-07 Su [unpublished], 2028-05-08 Mo [unpublished], 2028-05-09 Tu [unpublished]
+- registry open, PMC closed, EC closed (17): 2024-04-14 Su [library error], 2024-04-15 Mo [library error], 2024-06-13 Th [library error], 2024-06-23 Su [library error], 2025-03-27 Th [library error], 2025-06-04 We [library error], 2027-03-07 Su [unpublished], 2027-03-08 Mo [unpublished], 2027-05-19 We [unpublished], 2027-05-20 Th [unpublished], 2028-02-29 Tu [unpublished], 2028-03-01 We [unpublished], 2028-03-02 Th [unpublished], 2028-05-03 We [unpublished], 2028-05-07 Su [unpublished], 2028-05-08 Mo [unpublished], 2028-05-09 Tu [unpublished]
 - registry closed, PMC open, EC open (4): 2025-02-23 Su [library error], 2025-06-10 Tu [library error], 2027-06-06 Su [unpublished], 2028-09-24 Su [unpublished]
 
 ### XSES (29)
@@ -297,7 +297,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 65 dates; Registry error: 410 dates; Unpublished: 214 dates.
+- Convention difference: 1 dates; Library error: 72 dates; Registry error: 411 dates; Unpublished: 213 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -602,6 +602,14 @@ The federal government declared Saturday 6 September 2025 the public holiday for
 Dates: 2025-09-05.
 
 Source: https://www.psx.com.pk/psx/exchange/general/calendar-holidays
+
+### XKAR: Library error (3, registry verified, no change)
+
+PSX/N-732 (16 June 2026) gives 25 and 26 June 2026 as non-trading days for Ashura (N-89 had listed 24 and 25 June). PSX/N-89 makes 12th Rabi-ul-Awwal (Eid Milad-un-Nabi) a PSX holiday, and the State Bank of Pakistan's circular of 24 August 2026 fixes it as Wednesday 26 August 2026. Both libraries trade on all three days; the registry closes them (4c13).
+
+Dates: 2026-06-25, 2026-06-26, 2026-08-26.
+
+Source: https://dps.psx.com.pk/download/attachment/278691-1.pdf
 
 ### XKAR: Registry error (5, fixed in 2.23.10)
 
@@ -1035,6 +1043,14 @@ Dates: 2025-05-05, 2025-05-29, 2026-05-14.
 
 Source: https://attachment.news.eu.nasdaq.com/aab5896ed129b436acc32b21a545fcddf
 
+### XRIS: Registry error (1, fixed in 4c13 (unreleased))
+
+Nasdaq Baltic's trading-holiday calendar listed Friday 2 January 2026 as a trading holiday for RIG and 4c12 closed it, unconfirmed. Nasdaq Baltic's January 2026 bulletin (maintainer's saved copy) gives Riga 21 equities trading days = 22 weekdays - 1 January, as for Tallinn and Vilnius, so the day traded. The registry now trades, as both libraries do. 1 date fixed.
+
+Dates: 2026-01-02.
+
+Source: https://nasdaqbaltic.com/statistics/en/bulletins?bbid=451
+
 ### XRIS: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2028-01-15)
 
 Exchange_calendars carries 10 July 2028 as a day off for the Latvian Song and Dance Festival, as in 2018 and 2023. A day off needs an amendment adopted close to the festival; none exists for 2028.
@@ -1043,14 +1059,6 @@ Dates: 2028-07-10.
 
 Source: https://www.nasdaqbaltic.com/trading-calendar
 
-### XRIS: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2027-01-31)
-
-Cabinet transfer day. Nasdaq Baltic's trading-holiday calendar lists Friday 2 January 2026 as a trading holiday for RIG, and Riga closed on the transfer days counted in the May 2025, November 2025 and June 2026 bulletins; the registry closes it, unconfirmed (4c12). The libraries trade. Check the January 2026 bulletin's Riga trading-day count (21 if closed, 22 if open).
-
-Dates: 2026-01-02.
-
-Source: https://nasdaqbaltic.com/statistics/en/calendar?holidays=1
-
 ### XSAU: Library error (4, registry verified, no change)
 
 The Saudi Exchange lists Founding Day as Sunday 2025-02-23 (closed), says trading discontinues at the END of 2025-03-27 and 2025-06-04 (both are trading days), and resumes on 2025-04-03 and 2025-06-11, which makes 2025-06-10 a closed day. Both libraries are wrong on all four. This is not a Hijri approximation: they carry the 2026 Eid spans exactly, but start both 2025 spans on the last trading day (2025-03-27, 2025-06-04) and end the 2025 Adha span a day early.
@@ -1058,6 +1066,14 @@ The Saudi Exchange lists Founding Day as Sunday 2025-02-23 (closed), says tradin
 Dates: 2025-02-23, 2025-03-27, 2025-06-04, 2025-06-10.
 
 Source: https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/saudi-exchange-holiday-calendar
+
+### XSAU: Library error (4, registry verified, no change)
+
+Saudi Exchange's holiday events page: Eid Al Fiter 2024, 'Trading will resume after the holiday on 14/04/2024'; Eid Al Adha 2024, 'Trading will discontinue at the end of trading day 13/06/2024' and 'Trading will resume after the holiday on 23/06/2024'. exchange_calendars closes all four (and pandas_market_calendars agrees); the registry trades on them (4c13). The 2021-2023 corrections of the same backfill lie outside the 2024-2029 report window.
+
+Dates: 2024-04-14, 2024-04-15, 2024-06-13, 2024-06-23.
+
+Source: https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
 
 ### XSAU: Registry error (14, fixed in 2.21.2)
 
