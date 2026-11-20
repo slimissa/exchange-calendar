@@ -224,18 +224,15 @@ class TestXDUBEarlyCloses:
 
     def test_half_day_close_times_by_era(self, explicit_dates):
         """Half-day close = end of the closing auction (ADR 0013), by era:
-        2010-2018 ISE Xetra (no source; exchange_calendars' 12:28), 2019 13:05
-        (Euronext: all cash instruments by 14:05 CET), 2020+ 12:30 (the end of
-        the 12:28-12:30 Dublin window Euronext states)."""
+        2010-2018 ISE Xetra (no source; exchange_calendars' 12:28), 2019+ 12:30
+        (the end of the 12:28-12:30 Dublin window Euronext states; 2019 was
+        13:05 until 4c-R4 read Euronext's 2019 business-day calendar)."""
         for d, e in explicit_dates.items():
             if e.get("status") == "early_close":
-                # Euronext's releases: 2019 all cash instruments incl. Dublin by
-                # 14:05 CET (13:05 Dublin); 2020+ Dublin equities 12:28-12:30, held
-                # as 12:30. 2010-2018 (ISE Xetra era) keep exchange_calendars' 12:28.
-                if d >= "2020-01-01":
+                # Euronext: Dublin equities 12:28-12:30 Dublin time on half days
+                # from 2019 (Optiq), held as 12:30. 2010-2018 keep 12:28.
+                if d >= "2019-01-01":
                     expected = "12:30"
-                elif d >= "2019-01-01":
-                    expected = "13:05"
                 else:
                     expected = "12:28"
                 assert e["early_close_time"] == expected, d

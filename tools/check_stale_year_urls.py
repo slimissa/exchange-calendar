@@ -143,13 +143,13 @@ ALLOWLIST = {
     "https://www.hkex.com.hk/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2026/SEHK_CT_077_2026Jun01162846": "2027-06-01",
     # XHKG.json entry for 2025-01-28: SEHK circular CT/063/24 (2025 schedule).
     "https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2024/ce_SEHK_CT_063_2024.pdf": "2027-06-01",
-    # XDUB.json half days 2019-12-24/31, 2020-12-24/31, 2021-12-24/31: Euronext's
+    # XDUB.json half days 2020-12-24/31 and 2021-12-24/31: Euronext's
     # holiday-calendar releases for those years, the primary source for their
     # close times (ADR 0013, 4c-R3.5). Historical citations, not stale sources:
     # this checker cannot tell the two apart (it compares the URL year with
     # today, not with the entry's date). Unblock: teach the checker to accept a
-    # URL year >= the entry's year, then delete these three entries.
-    "https://www.euronext.com/news/euronext-announces-2019-holiday-calendar-its-cash-and-derivatives-markets": "2027-06-01",
+    # URL year >= the entry's year, then delete these entries. (The 2019 entry
+    # went in 4c-R4, when 2019 was re-cited to live.euronext.com.)
     "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2020-holiday-calendar-its-cash-and": "2027-06-01",
     "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2021-holiday-calendar-for-its-cash-and": "2027-06-01",
     # XWAR 2027 and 2028 entries (4c-R4): GPW resolutions listing each year's
