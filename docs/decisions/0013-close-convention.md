@@ -101,6 +101,8 @@ so the scheduled close is 16:00).
 | XWBO last trading day 2017-2024 | 14:15 (exchange_calendars) | 4c8 backfill; the start of the shortened closing auction. The Wiener Börse notices actually seen cover 2018-2024 (corrected in 4c10; this row said 2017-2024) and give the same 14:15 start, so ADR 0013 would give 14:20; 2017 rests on exchange_calendars alone. Not changed. |
 | XNZE abbreviated days 2011-2024 | 12:45 (exchange_calendars) | 4c9 backfill; the end of continuous trading. ADR 0013 would give 13:00 (the convention applied from 2025). exchange_calendars has no 2010 abbreviated days. |
 | XKLS half days 2010-2024 | 12:30 (exchange_calendars) | 4c9 backfill; the end of Trading at Last. Bursa's own half-day notices (e.g. Chinese New Year 2015) give Closing 12:20, so ADR 0013 would give 12:20. |
+| XPHS full day | 15:00 (continuous) | 14:50 Manila from 2022-03-01 (4c13); 2010 entry unchanged, unconfirmed | PSE CN-2022-0009 (effective 1 March 2022): pre-close 14:45-14:50, run-off/trading at last 14:50-15:00 (post_market), recess 12:00-13:00 |
+| XSAU full day | 15:00 | 15:10 Riyadh (4c13), from 2021-01-01, unconfirmed before 2026-11-20 | Saudi Exchange trading cycle and times page (read 2026-11-20; no effective date): market open 10:00-15:00, closing auction 15:00-15:10, trade at last 15:10-15:20 (post_market); close randomised within 30 seconds after 15:10, ignored |
 
 Each exception is also in the exchange's `note`. Exchanges not yet
 rechecked (4c-R4, 4c-R5 and the non-backfilled exchanges) are brought to

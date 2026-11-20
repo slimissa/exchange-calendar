@@ -71,8 +71,19 @@ class TestXSAUProperties:
         assert xsau["timezone"] == "Asia/Riyadh"
 
     def test_regular_hours(self, xsau):
-        assert xsau["regular_hours"]["open"] == "10:00"
-        assert xsau["regular_hours"]["close"] == "15:00"
+        """4c13, ADR 0013: closing auction 15:00-15:10 (Saudi Exchange
+        trading cycle and times page), so the close is 15:10; one dated
+        entry from 2021-01-01, unconfirmed (the page gives no effective
+        date)."""
+        assert xsau["regular_hours"] == [
+            {"close": "15:10", "effective_from": "2021-01-01", "open": "10:00"}]
+        assert "2021-01-01" in xsau["verification"]["coverage"]["sources"][0]["unconfirmed"]
+
+    def test_sessions(self, xsau):
+        assert xsau["sessions"] == [
+            {"close": "10:00", "open": "09:30", "type": "pre_market"},
+            {"close": "15:10", "open": "10:00", "type": "regular"},
+            {"close": "15:20", "open": "15:10", "type": "post_market"}]
 
     def test_no_lunch_break(self, xsau):
         lunch = [s for s in xsau.get("sessions", []) if s["type"] == "lunch_break"]
@@ -80,7 +91,7 @@ class TestXSAUProperties:
 
     def test_extended_hours(self, xsau):
         assert xsau["extended_hours"]["pre_market"]["open"] == "09:30"
-        assert xsau["extended_hours"]["after_hours"]["close"] == "15:20"
+        assert xsau["extended_hours"]["after_hours"] == {"close": "15:20", "open": "15:10"}  # trade at last
 
 
 # ──────────────────────────────────────────────────────────────

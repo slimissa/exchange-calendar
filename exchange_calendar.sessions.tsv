@@ -121,9 +121,9 @@ XPHS	pre_market	1	09:00	09:30
 XPHS	regular	1	09:30	14:50	
 XPRA	regular	1	09:00	16:55	
 XRIS	regular	1	10:00	16:00	
-XSAU	post_market	1	15:00	15:20	
+XSAU	post_market	1	15:10	15:20	
 XSAU	pre_market	1	09:30	10:00	
-XSAU	regular	1	10:00	15:00	
+XSAU	regular	1	10:00	15:10	
 XSES	auction	1			09:00
 XSES	auction	2			17:06
 XSES	lunch_break	1	12:00	13:00	

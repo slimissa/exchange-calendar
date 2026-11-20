@@ -60,7 +60,7 @@
   "extended_hours": {
     "after_hours": {
       "close": "15:20",
-      "open": "15:00"
+      "open": "15:10"
     },
     "pre_market": {
       "close": "10:00",
@@ -664,11 +664,14 @@
   },
   "mic": "XSAU",
   "name": "Saudi Stock Exchange (Tadawul)",
-  "note": "2021-2024 sourced from exchange_calendars 4.13.2, which starts XSAU on 2021-01-03 (backfill; not independently verified): 49 closures (6 named), no early closes, then 12 corrections from Saudi Exchange's own holiday events page (https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events, read in full 2026-11-20) and the Royal Order on Founding Day; 12 is over the session limit of 10 by maintainer decision, every one being cited to the exchange's own page. Removed (exchange_calendars closes them; the exchange traded): 2021-02-22: the Royal Order creating Founding Day (22 February, an official holiday) was issued on 27 January 2022 (Saudi Press Agency, https://sp.spa.gov.sa/viewfullstory.php?lang=en&amp=&newsid=2324647), so exchange_calendars backdates it; the exchange's page lists Founding Day from 22/02/2022. 2022-07-13: Eid Al Adha 2022, 'Trading will resume after the holiday on 13/7/2022'. 2023-04-25: Eid Al Fiter 2023, 'Trading will resume after the holiday on 25-04-2023'. 2023-07-02: Eid Al Adha 2023, 'Trading will resume after the holiday on Sunday 02-07-2023'. 2024-04-14 and 2024-04-15: Eid Al Fiter 2024, 'Trading will resume after the holiday on 14/04/2024'. 2024-06-13 and 2024-06-23: Eid Al Adha 2024, 'Trading will discontinue at the end of trading day 13/06/2024' and 'Trading will resume after the holiday on 23/06/2024'. Added (the exchange closed; exchange_calendars trades): 2022-09-22: 'National Day of Saudi Arabia is on 22/9/2022'. 2023-06-25 and 2023-06-26: Eid Al Adha 2023, 'Trading will discontinue at the end of trading day Thursday 22-06-2023'. 2023-09-24: National Day 2023, 'Trading will discontinue at the end of trading day 21-09-2023' and 'Trading will resume after the holiday on 25-09-2023'. All 12 are contradicted_by on the 2021-2024 span. 2010-2020: out of scope (exchange_calendars has no XSAU before 2021; Phase 4h); generation_range and coverage start 2021-01-01. Weekend: the Thursday-Friday to Friday-Saturday change of 2013 is outside the 2021-2029 window; weekend_days has no dated form (Phase 4d backlog item if 2010-2020 is ever backfilled). 2025-2026: exchange_calendars + exchange_publications. Checked 2026-11-20 (4c13). Last published year: the exchange's events page publishes Eid holidays through 2029 'According to the UMM AL-QURA calendar' (Eid Al Fiter 2027: discontinue end of 04/03/2027, resume 14/03/2027; Eid Al Adha 2027: discontinue end of 13/05/2027, resume 23/05/2027; and 2028-2029). The file's 2027-2029 predicted entries differ from that schedule and include 'Islamic New Year' days the exchange does not list; aligning them is left for a later session (beyond this session's approved corrections).",
-  "regular_hours": {
-    "close": "15:00",
-    "open": "10:00"
-  },
+  "note": "2021-2024 sourced from exchange_calendars 4.13.2, which starts XSAU on 2021-01-03 (backfill; not independently verified): 49 closures (6 named), no early closes, then 12 corrections from Saudi Exchange's own holiday events page (https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events, read in full 2026-11-20) and the Royal Order on Founding Day; 12 is over the session limit of 10 by maintainer decision, every one being cited to the exchange's own page. Removed (exchange_calendars closes them; the exchange traded): 2021-02-22: the Royal Order creating Founding Day (22 February, an official holiday) was issued on 27 January 2022 (Saudi Press Agency, https://sp.spa.gov.sa/viewfullstory.php?lang=en&amp=&newsid=2324647), so exchange_calendars backdates it; the exchange's page lists Founding Day from 22/02/2022. 2022-07-13: Eid Al Adha 2022, 'Trading will resume after the holiday on 13/7/2022'. 2023-04-25: Eid Al Fiter 2023, 'Trading will resume after the holiday on 25-04-2023'. 2023-07-02: Eid Al Adha 2023, 'Trading will resume after the holiday on Sunday 02-07-2023'. 2024-04-14 and 2024-04-15: Eid Al Fiter 2024, 'Trading will resume after the holiday on 14/04/2024'. 2024-06-13 and 2024-06-23: Eid Al Adha 2024, 'Trading will discontinue at the end of trading day 13/06/2024' and 'Trading will resume after the holiday on 23/06/2024'. Added (the exchange closed; exchange_calendars trades): 2022-09-22: 'National Day of Saudi Arabia is on 22/9/2022'. 2023-06-25 and 2023-06-26: Eid Al Adha 2023, 'Trading will discontinue at the end of trading day Thursday 22-06-2023'. 2023-09-24: National Day 2023, 'Trading will discontinue at the end of trading day 21-09-2023' and 'Trading will resume after the holiday on 25-09-2023'. All 12 are contradicted_by on the 2021-2024 span. 2010-2020: out of scope (exchange_calendars has no XSAU before 2021; Phase 4h); generation_range and coverage start 2021-01-01. Weekend: the Thursday-Friday to Friday-Saturday change of 2013 is outside the 2021-2029 window; weekend_days has no dated form (Phase 4d backlog item if 2010-2020 is ever backfilled). 2025-2026: exchange_calendars + exchange_publications. Checked 2026-11-20 (4c13). Last published year: the exchange's events page publishes Eid holidays through 2029 'According to the UMM AL-QURA calendar' (Eid Al Fiter 2027: discontinue end of 04/03/2027, resume 14/03/2027; Eid Al Adha 2027: discontinue end of 13/05/2027, resume 23/05/2027; and 2028-2029). The file's 2027-2029 predicted entries differ from that schedule and include 'Islamic New Year' days the exchange does not list; aligning them is left for a later session (beyond this session's approved corrections). Hours (ADR 0013, 4c13): Saudi Exchange's trading cycle and times page (https://www.saudiexchange.sa/wps/portal/saudiexchange/rules-guidance/capital-market-overview/trading-cycle-and-times, read 2026-11-20) gives opening auction 09:30-10:00, market open 10:00-15:00, closing auction 15:00-15:10, trade at last 15:10-15:20 and negotiated deals 15:20-16:00 for equities; 'the market opens and closes on a variable basis within 30 seconds after 10:00 AM and after 3:10 PM' (ADR 0013 ignores the random window). The close is 15:10, the end of the closing auction; trade at last 15:10-15:20 is post_market; the opening auction 09:30-10:00 is pre_market. The page gives no effective date, so the earliest date it supports is the read date: the single regular_hours entry runs from 2021-01-01 and is unconfirmed (2021-01-01 in the 2021-2024 span's unconfirmed list) up to 2026-11-20. The exchange's Trading and Membership Procedures (Table 1) and its Ramadan trading-hours notices carry the same sessions but could not be fetched (client error); they are leads for the effective date.",
+  "regular_hours": [
+    {
+      "close": "15:10",
+      "effective_from": "2021-01-01",
+      "open": "10:00"
+    }
+  ],
   "sessions": [
     {
       "close": "10:00",
@@ -676,13 +679,13 @@
       "type": "pre_market"
     },
     {
-      "close": "15:00",
+      "close": "15:10",
       "open": "10:00",
       "type": "regular"
     },
     {
       "close": "15:20",
-      "open": "15:00",
+      "open": "15:10",
       "type": "post_market"
     }
   ],
