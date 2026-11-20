@@ -684,3 +684,43 @@ class TestRealRegistryData:
     def test_xtks_noon_is_lunch_break(self, registry):
         xtks = registry.get("XTKS")
         assert xtks.status_at("2025-07-07", "12:00") == SessionStatus.LUNCH_BREAK
+
+
+class TestDelayedOpen:
+    """4c12: a delayed_open day opens at delayed_open_time (maintainer
+    decision: the data is authoritative). XBSP 2026-02-18 (Ash Wednesday)
+    opens at 13:00; XBDA 2025-10-02 (Hurricane Imelda) trades from 12:15."""
+
+    def test_delayed_open_time(self, registry):
+        assert registry.get("XBSP").delayed_open_time("2026-02-18") == "13:00"
+        assert registry.get("XBSP").delayed_open_time("2026-02-19") is None
+
+    @pytest.mark.parametrize("mic,day,at,expected", [
+        ("XBSP", "2026-02-18", "11:00", False),
+        ("XBSP", "2026-02-18", "12:59", False),
+        ("XBSP", "2026-02-18", "13:00", True),
+        ("XBSP", "2026-02-18", "14:00", True),
+        ("XBDA", "2025-10-02", "10:00", False),
+        ("XBDA", "2025-10-02", "12:14", False),
+        ("XBDA", "2025-10-02", "12:15", True),
+        ("XBDA", "2025-10-02", "13:00", True),
+    ])
+    def test_is_open_around_delayed_open(self, registry, mic, day, at, expected):
+        assert registry.get(mic).is_open(day, at) is expected
+
+    @pytest.mark.parametrize("mic,day,at,expected", [
+        ("XBSP", "2026-02-18", "11:00", False),
+        ("XBSP", "2026-02-18", "13:00", True),
+        ("XBDA", "2025-10-02", "12:14", False),
+        ("XBDA", "2025-10-02", "12:15", True),
+    ])
+    def test_registry_is_open_around_delayed_open(self, registry, mic, day, at, expected):
+        assert registry.is_open(mic, day, at) is expected
+
+    def test_cross_language_fixture_probes_delayed_open(self):
+        q = json.loads((Path(__file__).parent / "cross_language_queries.json").read_text())
+        labels = {x["label"]: x["args"] for x in q["queries"]}
+        assert labels["is_open_xbsp_before_delayed_open"] == ["XBSP", "2026-02-18", "11:00"]
+        assert labels["is_open_xbsp_after_delayed_open"] == ["XBSP", "2026-02-18", "14:00"]
+        assert labels["is_open_xbda_before_delayed_open"] == ["XBDA", "2025-10-02", "10:00"]
+        assert labels["is_open_xbda_at_delayed_open"] == ["XBDA", "2025-10-02", "12:15"]

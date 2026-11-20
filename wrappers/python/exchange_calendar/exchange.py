@@ -249,6 +249,22 @@ class Exchange:
         """
         return self._early_close_time_by_date.get(date_str)
 
+    def delayed_open_time(self, date_str: str) -> Optional[str]:
+        """
+        Return the delayed open time for this date, or None if it is not a
+        delayed_open day. On that day the market opens at this time.
+
+        Args:
+            date_str: ISO date (YYYY-MM-DD)
+
+        Returns:
+            Optional[str]: Delayed open time as HH:MM, or None.
+        """
+        entry = self._holiday_by_date.get(date_str)
+        if entry and entry.get("status") == "delayed_open":
+            return entry.get("delayed_open_time")
+        return None
+
     def status_at(self, date_str: str, time_str: str) -> SessionStatus:
         """
         Return the full session status at a specific date and time.
@@ -258,7 +274,7 @@ class Exchange:
             2. Holiday → CLOSED
             3. Early close day and time >= early_close_time → CLOSED
             4. Lunch break (if configured) → LUNCH_BREAK
-            5. Before regular open → PRE_MARKET
+            5. Before the open (delayed_open_time on a delayed_open day) → PRE_MARKET
             6. After regular close → AFTER_HOURS
             7. Otherwise → OPEN (or EARLY_CLOSE if before early close on early close day)
 
@@ -306,8 +322,11 @@ class Exchange:
         # 5. Before regular open. Only report PRE_MARKET when the
         # exchange declares a pre_market session; otherwise the market is
         # simply closed.
+        # On a delayed_open day the market opens at delayed_open_time
+        # instead of the regular open (the data is authoritative).
         hours = self.regular_hours_on(date_str)
-        if time_str < hours["open"]:
+        open_time = self.delayed_open_time(date_str) or hours["open"]
+        if time_str < open_time:
             pre = self.extended_hours.get("pre_market") if self.extended_hours else None
             if pre and pre.get("open") and pre.get("close"):
                 if pre["open"] <= time_str < pre["close"]:

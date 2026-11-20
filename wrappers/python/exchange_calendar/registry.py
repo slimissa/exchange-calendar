@@ -343,6 +343,10 @@ class CalendarRegistry:
                 # (regular_hours may be a dated list).
                 hours = ex.regular_hours_on(date)
                 o, cl = hours["open"], hours["close"]
+            if stype == "regular" and hasattr(ex, "delayed_open_time"):
+                # On a delayed_open day the regular session opens at
+                # delayed_open_time (the data is authoritative).
+                o = ex.delayed_open_time(date) or o
             if o and cl and o <= time < cl:
                 return True
 
