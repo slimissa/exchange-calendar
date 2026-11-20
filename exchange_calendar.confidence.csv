@@ -988,6 +988,21 @@ XWAR,2026,medium,manual,,
 XWAR,2027,medium,manual,,predicted
 XWAR,2028,medium,manual,,predicted
 XWAR,2029,medium,manual,,predicted
+XWBO,2010,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2011,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2012,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2013,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2014,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2015,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2016,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2017,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2018,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2019,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2020,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2021,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2022,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2023,low,manual,,backfilled from exchange_calendars; not independently verified
+XWBO,2024,low,manual,,backfilled from exchange_calendars; not independently verified
 XWBO,2025,medium,manual,,
 XWBO,2026,high,fetcher,2026-10-03,
 XWBO,2027,medium,manual,,predicted

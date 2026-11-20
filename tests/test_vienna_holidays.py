@@ -84,8 +84,10 @@ class TestXWBOProperties:
         assert xwbo["timezone"] == "Europe/Vienna"
 
     def test_regular_hours(self, xwbo):
-        assert xwbo["regular_hours"]["open"] == "09:00"
-        assert xwbo["regular_hours"]["close"] == "17:30"
+        """4c8, ADR 0013: closing auction 17:30-17:35 (earliest end) per
+        Wiener Börse's trading-hours page. One dated entry."""
+        assert xwbo["regular_hours"] == [
+            {"close": "17:35", "effective_from": "2010-01-01", "open": "09:00"}]
 
     def test_no_lunch_break(self, xwbo):
         lunch = [s for s in xwbo.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -97,7 +99,7 @@ class TestXWBOProperties:
 
     def test_generation_range(self, xwbo):
         assert "generation_range" in xwbo
-        assert xwbo["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xwbo["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c8 backfill
 
     def test_ad_hoc_closures_empty(self, xwbo):
         assert xwbo.get("ad_hoc_closures", []) == []
@@ -209,8 +211,19 @@ class TestXWBOEveClosures:
         assert entry["status"] == "closed"
         assert "early_close_time" not in entry
 
-    def test_no_early_closes(self, explicit_dates, recurrence_rules):
-        assert not [e for e in explicit_dates.values() if e["status"] == "early_close"]
+    def test_last_trading_day_early_closes(self, explicit_dates, recurrence_rules):
+        """Corrected in 4c8: the last trading day of the year is shortened
+        (Wiener Börse news, 30 December 2025: closing auction from 14:15,
+        so 14:20 under ADR 0013). The old test asserted no early closes.
+        2017-2024 keep exchange_calendars' 14:15."""
+        early = {d: e for d, e in explicit_dates.items() if e["status"] == "early_close"}
+        assert {d: e["early_close_time"] for d, e in early.items() if d >= "2025"} == {
+            "2025-12-30": "14:20", "2026-12-30": "14:20", "2027-12-30": "14:20",
+            "2028-12-29": "14:20", "2029-12-28": "14:20"}
+        assert {d for d, e in early.items() if e.get("predicted")} == {
+            "2027-12-30", "2028-12-29", "2029-12-28"}
+        assert {e["early_close_time"] for d, e in early.items() if d < "2025"} == {"14:15"}
+        assert len([d for d in early if d < "2025"]) == 8
         assert not [r for r in recurrence_rules.values() if r["status"] == "early_close"]
 
 
@@ -339,7 +352,12 @@ class TestXWBOStructure:
         assert len(dates) == len(set(dates)), "Duplicate dates found"
 
     def test_all_entries_have_source(self, explicit_dates):
+        # Scoped to 2025-2029: the 4c8 backfill cites exchange_calendars
+        # without a scheme (repository convention for backfill entries).
         for date_str, entry in explicit_dates.items():
+            if date_str < "2025":
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert "source_url" in entry, f"Missing source_url: {date_str}"
             assert entry["source_url"].startswith("http"), f"Invalid source_url: {date_str}"
 
@@ -371,12 +389,17 @@ class TestXWBOStructure:
             assert start <= d <= end, f"Date outside range: {date_str}"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~30-45 entries: 9 closures × 5 years (minus weekends)."""
-        assert 25 <= len(explicit_dates) <= 45, f"Unexpected count: {len(explicit_dates)}"
+        """Scoped to 2025-2029: 32 before 4c8 plus five last-trading-day
+        early closes = 37. 2010-2024: 161 closures + 8 early closes."""
+        window = [d for d in explicit_dates if "2025" <= d[:4] <= "2029"]
+        assert len(window) == 37
+        assert len([d for d in explicit_dates if d[:4] <= "2024"]) == 169
 
     def test_source_url_consistency(self, explicit_dates):
         """All source URLs should be from wienerborse.at."""
-        for entry in explicit_dates.values():
+        for d, entry in explicit_dates.items():
+            if d < "2025":
+                continue  # 4c8 backfill cites exchange_calendars
             assert "wienerborse.at" in entry["source_url"], f"Unexpected source: {entry['source_url']}"
 
 
