@@ -4,7 +4,7 @@ test_singapore_holidays.py — Ground truth tests for XSES (Singapore Exchange).
 
 Key facts verified:
     - SGX has NO lunch break (continuous trading 09:00-17:00 SGT)
-    - Half-day sessions (early close 12:30) on:
+    - Half-day sessions (early close 12:06, 4c8/4c9) on:
       - Chinese New Year Eve
       - Christmas Eve (when weekday)
       - New Year's Eve (when weekday)
@@ -92,7 +92,7 @@ class TestXSESProperties:
 
 
 # ──────────────────────────────────────────────────────────────
-# Half-day sessions (early close 12:30)
+# Half-day sessions (early close 12:06)
 # ──────────────────────────────────────────────────────────────
 
 class TestXSESHalfDays:
@@ -204,17 +204,20 @@ class TestXSESStructure:
             assert "source_url" in entry, f"Missing source: {date_str}"
 
     def test_early_close_time_1206(self, explicit_dates):
-        """4c8: half days close at 12:06, the end of the half-day Closing
-        Routine (SGX-ST Regulatory Notice 8.2.1). Corrected for 2025-2027;
-        2028-2029 still read 12:30 under the 4c8 stop rule and are marked
-        unconfirmed, so this test pins exactly that split."""
+        """Half days close at 12:06, the fixed end of the half-day Closing
+        Routine (SGX-ST Regulatory Notice 8.2.1, para 3.6(a)): 2025-2027
+        corrected in 4c8, 2028-2029 moved from 12:30 and predicted in 4c9."""
         times = {d: e["early_close_time"] for d, e in explicit_dates.items()
                  if e["status"] == "early_close"}
-        assert {d for d, t in times.items() if t == "12:06"} == {
+        assert set(times.values()) == {"12:06"}
+        assert set(times) == {
             "2025-01-28", "2025-12-24", "2025-12-31", "2026-02-16", "2026-12-24",
-            "2026-12-31", "2027-02-05", "2027-12-24", "2027-12-31"}
-        assert {d for d, t in times.items() if t == "12:30"} == {
+            "2026-12-31", "2027-02-05", "2027-12-24", "2027-12-31",
             "2028-01-25", "2029-02-12", "2029-12-24", "2029-12-31"}
+        predicted = {d for d, e in explicit_dates.items()
+                     if e["status"] == "early_close" and e.get("predicted")}
+        assert predicted == {"2028-01-25", "2029-02-12", "2029-12-24", "2029-12-31"}
+        assert all(explicit_dates[d]["name"].endswith(" (predicted)") for d in predicted)
 
     def test_holiday_count_reasonable(self, explicit_dates):
         """Scoped to 2025-2029 (the 4c8 backfill adds 2010-2024)."""

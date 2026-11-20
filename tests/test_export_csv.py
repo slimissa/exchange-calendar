@@ -233,7 +233,9 @@ class TestFormatting:
         # shortened last trading days (4c8).
         # 250: 246 + XJSE's predicted 2027/2029 Dec 24/31 early closes (4c8)
         # 253: + XWBO's predicted 2027-2029 last-trading-day early closes (4c8)
-        assert predicted["true"] == 253 and predicted["false"] == 73
+        # 289: + XTAI's 32 predicted 2028-2029 entries and XSES's 4 predicted
+        # 2028-2029 half days (4c9)
+        assert predicted["true"] == 289 and predicted["false"] == 73
 
     def test_dates_times_and_integers_are_plain_text(self):
         checks = {

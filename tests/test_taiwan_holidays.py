@@ -341,3 +341,20 @@ class TestXTAITyphoonClosures2026:
         span = xtai["verification"]["coverage"]["sources"][1]
         assert span["from"] == "2025-01-01"
         assert {"2026-07-10", "2026-10-23"} <= set(span["unconfirmed"])
+
+
+class TestXTAIPredictedYears:
+    """4c9 (lesson 5): TWSE has published only to 2027 (ROC 116), so every
+    2028-2029 explicit entry is predicted and carries the suffix."""
+
+    def test_2028_2029_all_predicted(self, explicit_dates):
+        later = {d: e for d, e in explicit_dates.items() if d[:4] in ("2028", "2029")}
+        assert len(later) == 32
+        for d, e in later.items():
+            assert e.get("predicted") is True, d
+            assert e["name"].endswith(" (predicted)"), d
+            assert e["source_url"].startswith("https://www.twse.com.tw/"), d
+
+    def test_published_years_not_predicted(self, explicit_dates):
+        assert not [d for d, e in explicit_dates.items()
+                    if d[:4] <= "2027" and e.get("predicted")]
