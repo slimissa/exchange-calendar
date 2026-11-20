@@ -124,10 +124,11 @@ XSAU;post_market;1;15:00;15:20;
 XSAU;pre_market;1;09:30;10:00;
 XSAU;regular;1;10:00;15:00;
 XSES;auction;1;;;09:00
-XSES;auction;2;;;17:00
-XSES;post_market;1;17:00;17:06;
+XSES;auction;2;;;17:06
+XSES;lunch_break;1;12:00;13:00;
+XSES;post_market;1;17:06;17:16;
 XSES;pre_market;1;08:30;09:00;
-XSES;regular;1;09:00;17:00;
+XSES;regular;1;09:00;17:06;
 XSGO;lunch_break;1;12:00;12:30;
 XSGO;regular;1;09:30;16:00;
 XSHE;lunch_break;1;11:30;13:00;

@@ -8074,8 +8074,158 @@ XSAU	2029-04-25	Eid al-Adha Holiday (predicted)	closed	explicit	1			true		https:
 XSAU	2029-04-26	Eid al-Adha Holiday (predicted)	closed	explicit	1			true		https://www.ummulqura.org.sa/
 XSAU	2029-05-14	Islamic New Year (predicted)	closed	explicit	1			true		https://www.ummulqura.org.sa/
 XSAU	2029-09-23	Saudi National Day	closed	explicit	1					https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar
+XSES	2010-01-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2010-02-15	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2010-02-16	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2010-04-02	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2010-05-28	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2010-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2010-09-10	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2010-11-05	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2010-11-17	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2011-02-03	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2011-02-04	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2011-04-22	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2011-05-02	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2011-05-17	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2011-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2011-08-30	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2011-10-26	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2011-11-07	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2011-12-26	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2012-01-02	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2012-01-23	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2012-01-24	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2012-04-06	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2012-05-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2012-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2012-08-20	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2012-10-26	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2012-11-13	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2012-12-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2013-01-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2013-02-11	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2013-02-12	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2013-03-29	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2013-05-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2013-05-24	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2013-08-08	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2013-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2013-10-15	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2013-12-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2014-01-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2014-01-31	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2014-04-18	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2014-05-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2014-05-13	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2014-07-28	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2014-10-06	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2014-10-22	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2014-12-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-01-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-02-19	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-02-20	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-04-03	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-05-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-06-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-07-17	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-08-07	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-08-10	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-09-11	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-09-24	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-11-10	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2015-12-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2016-01-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2016-02-08	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2016-02-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2016-03-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2016-05-02	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2016-07-06	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2016-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2016-09-12	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2016-12-26	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2017-01-02	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2017-01-30	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2017-04-14	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2017-05-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2017-05-10	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2017-06-26	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2017-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2017-09-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2017-10-18	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2017-12-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2018-01-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2018-02-16	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2018-03-30	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2018-05-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2018-05-29	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2018-06-15	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2018-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2018-08-22	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2018-11-06	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2018-12-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2019-01-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2019-02-05	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2019-02-06	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2019-04-19	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2019-05-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2019-05-20	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2019-06-05	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2019-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2019-08-12	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2019-10-28	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2019-12-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2020-01-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2020-01-27	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2020-04-10	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2020-05-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2020-05-07	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2020-05-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2020-07-10	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2020-07-31	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2020-08-10	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2020-12-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2021-01-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2021-02-12	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2021-04-02	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2021-05-13	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2021-05-26	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2021-07-20	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2021-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2021-11-04	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2022-02-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2022-02-02	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2022-04-15	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2022-05-02	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2022-05-03	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2022-05-16	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2022-07-11	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2022-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2022-10-24	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2022-12-26	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2023-01-02	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2023-01-23	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2023-01-24	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2023-04-07	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2023-05-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2023-06-02	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2023-06-29	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2023-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2023-09-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2023-11-13	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2023-12-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2024-01-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2024-02-12	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2024-03-29	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2024-04-10	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2024-05-01	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2024-05-22	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2024-06-17	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2024-08-09	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2024-10-31	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSES	2024-12-25	Historical Holiday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
 XSES	2025-01-01	New Year's Day	closed	explicit	1					https://www.sgx.com/trading/trading-hours
-XSES	2025-01-28	Chinese New Year Eve	early_close	explicit	1	12:30				https://www.sgx.com/trading/trading-hours
+XSES	2025-01-28	Chinese New Year Eve	early_close	explicit	1	12:06				https://www.sgx.com/trading/trading-hours
 XSES	2025-01-29	Chinese New Year	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2025-01-30	Chinese New Year Holiday	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2025-03-31	Hari Raya Puasa	closed	explicit	1					https://www.sgx.com/trading/trading-hours
@@ -8083,11 +8233,11 @@ XSES	2025-04-18	Good Friday	closed	explicit	1					https://www.sgx.com/trading/tr
 XSES	2025-05-01	Labour Day	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2025-05-12	Vesak Day	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2025-10-20	Deepavali	closed	explicit	1					https://www.sgx.com/trading/trading-hours
-XSES	2025-12-24	Christmas Eve	early_close	explicit	1	12:30				https://www.sgx.com/trading/trading-hours
+XSES	2025-12-24	Christmas Eve	early_close	explicit	1	12:06				https://www.sgx.com/trading/trading-hours
 XSES	2025-12-25	Christmas Day	closed	explicit	1					https://www.sgx.com/trading/trading-hours
-XSES	2025-12-31	New Year's Eve	early_close	explicit	1	12:30				https://www.sgx.com/trading/trading-hours
+XSES	2025-12-31	New Year's Eve	early_close	explicit	1	12:06				https://www.sgx.com/trading/trading-hours
 XSES	2026-01-01	New Year's Day	closed	explicit	1					https://www.sgx.com/trading/trading-hours
-XSES	2026-02-16	Chinese New Year Eve	early_close	explicit	1	12:30				https://www.sgx.com/trading/trading-hours
+XSES	2026-02-16	Chinese New Year Eve	early_close	explicit	1	12:06				https://www.sgx.com/trading/trading-hours
 XSES	2026-02-17	Chinese New Year	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2026-02-18	Chinese New Year Holiday	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2026-04-03	Good Friday	closed	explicit	1					https://www.sgx.com/trading/trading-hours
@@ -8096,11 +8246,11 @@ XSES	2026-05-27	Hari Raya Haji	closed	explicit	1					https://www.sgx.com/trading
 XSES	2026-06-01	Vesak Day (observed)	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2026-08-10	National Day (observed)	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2026-11-09	Deepavali (observed)	closed	explicit	1					https://www.sgx.com/trading/trading-hours
-XSES	2026-12-24	Christmas Eve	early_close	explicit	1	12:30				https://www.sgx.com/trading/trading-hours
+XSES	2026-12-24	Christmas Eve	early_close	explicit	1	12:06				https://www.sgx.com/trading/trading-hours
 XSES	2026-12-25	Christmas Day	closed	explicit	1					https://www.sgx.com/trading/trading-hours
-XSES	2026-12-31	New Year's Eve	early_close	explicit	1	12:30				https://www.sgx.com/trading/trading-hours
+XSES	2026-12-31	New Year's Eve	early_close	explicit	1	12:06				https://www.sgx.com/trading/trading-hours
 XSES	2027-01-01	New Year's Day	closed	explicit	1					https://www.sgx.com/trading/trading-hours
-XSES	2027-02-05	Chinese New Year Eve	early_close	explicit	1	12:30				https://www.sgx.com/trading/trading-hours
+XSES	2027-02-05	Chinese New Year Eve	early_close	explicit	1	12:06				https://www.sgx.com/trading/trading-hours
 XSES	2027-02-08	Chinese New Year (observed)	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2027-03-10	Hari Raya Puasa	closed	explicit	1					https://www.mom.gov.sg/newsroom/press-releases/2026/0618-public-holidays-for-2027
 XSES	2027-03-26	Good Friday	closed	explicit	1					https://www.sgx.com/trading/trading-hours
@@ -8108,8 +8258,8 @@ XSES	2027-05-17	Hari Raya Haji	closed	explicit	1					https://www.sgx.com/trading
 XSES	2027-05-20	Vesak Day	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2027-08-09	National Day	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2027-10-28	Deepavali	closed	explicit	1					https://www.sgx.com/trading/trading-hours
-XSES	2027-12-24	Christmas Eve	early_close	explicit	1	12:30				https://www.sgx.com/trading/trading-hours
-XSES	2027-12-31	New Year's Eve	early_close	explicit	1	12:30				https://www.sgx.com/trading/trading-hours
+XSES	2027-12-24	Christmas Eve	early_close	explicit	1	12:06				https://www.sgx.com/trading/trading-hours
+XSES	2027-12-31	New Year's Eve	early_close	explicit	1	12:06				https://www.sgx.com/trading/trading-hours
 XSES	2028-01-25	Chinese New Year Eve	early_close	explicit	1	12:30				https://www.sgx.com/trading/trading-hours
 XSES	2028-01-26	Chinese New Year	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2028-01-27	Chinese New Year Holiday	closed	explicit	1					https://www.sgx.com/trading/trading-hours

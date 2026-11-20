@@ -62,13 +62,26 @@ class TestXSESProperties:
         assert xses["timezone"] == "Asia/Singapore"
 
     def test_regular_hours(self, xses):
-        assert xses["regular_hours"]["open"] == "09:00"
-        assert xses["regular_hours"]["close"] == "17:00"
+        """4c8, ADR 0013: SGX-ST Regulatory Notice 8.2.1 sets the closing
+        price at the end of the Closing Routine, 17:06. Dated entries mark
+        2011-08-01 (continuous all-day trading) and 2017-11-13 (Mid-Day
+        Break)."""
+        assert xses["regular_hours"] == [
+            {"close": "17:06", "effective_from": e, "open": "09:00"}
+            for e in ("2010-01-01", "2011-08-01", "2017-11-13")]
 
-    def test_no_lunch_break(self, xses):
-        """SGX is continuous trading since November 2017."""
+    def test_mid_day_break(self, xses):
+        """Corrected in 4c8: SGX-ST Regulatory Notice 8.2.1 has a 60-minute
+        Mid-Day Break 12:00-13:00, introduced on 13 November 2017 (SGX traded
+        continuously from 1 August 2011 until then). The earlier docstring
+        had the dates reversed."""
         lunch = [s for s in xses.get("sessions", []) if s["type"] == "lunch_break"]
-        assert lunch == []
+        assert lunch == [{"close": "13:00", "open": "12:00", "type": "lunch_break"}]
+
+    def test_trade_at_close(self, xses):
+        post = [s for s in xses["sessions"] if s["type"] == "post_market"]
+        assert post == [{"close": "17:16", "open": "17:06", "type": "post_market"}]
+        assert xses["extended_hours"]["after_hours"] == {"close": "17:16", "open": "17:06"}
 
     def test_auction_sessions(self, xses):
         auctions = [s for s in xses.get("sessions", []) if s["type"] == "auction"]
@@ -87,7 +100,7 @@ class TestXSESHalfDays:
         """Jan 28, 2025 — CNY Eve half-day."""
         assert "2025-01-28" in explicit_dates
         assert explicit_dates["2025-01-28"]["status"] == "early_close"
-        assert explicit_dates["2025-01-28"]["early_close_time"] == "12:30"
+        assert explicit_dates["2025-01-28"]["early_close_time"] == "12:06"
 
     def test_cny_eve_2026(self, explicit_dates):
         assert "2026-02-16" in explicit_dates
@@ -108,7 +121,7 @@ class TestXSESHalfDays:
     def test_christmas_eve_2025(self, explicit_dates):
         assert "2025-12-24" in explicit_dates
         assert explicit_dates["2025-12-24"]["status"] == "early_close"
-        assert explicit_dates["2025-12-24"]["early_close_time"] == "12:30"
+        assert explicit_dates["2025-12-24"]["early_close_time"] == "12:06"
 
     def test_new_years_eve_2025(self, explicit_dates):
         assert "2025-12-31" in explicit_dates
@@ -190,11 +203,27 @@ class TestXSESStructure:
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source: {date_str}"
 
-    def test_early_close_time_1230(self, explicit_dates):
-        for entry in explicit_dates.values():
-            if entry["status"] == "early_close":
-                assert entry["early_close_time"] == "12:30"
+    def test_early_close_time_1206(self, explicit_dates):
+        """4c8: half days close at 12:06, the end of the half-day Closing
+        Routine (SGX-ST Regulatory Notice 8.2.1). Corrected for 2025-2027;
+        2028-2029 still read 12:30 under the 4c8 stop rule and are marked
+        unconfirmed, so this test pins exactly that split."""
+        times = {d: e["early_close_time"] for d, e in explicit_dates.items()
+                 if e["status"] == "early_close"}
+        assert {d for d, t in times.items() if t == "12:06"} == {
+            "2025-01-28", "2025-12-24", "2025-12-31", "2026-02-16", "2026-12-24",
+            "2026-12-31", "2027-02-05", "2027-12-24", "2027-12-31"}
+        assert {d for d, t in times.items() if t == "12:30"} == {
+            "2028-01-25", "2029-02-12", "2029-12-24", "2029-12-31"}
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~60 entries: 11 holidays × 5 years + half-days + observed."""
-        assert 55 <= len(explicit_dates) <= 75
+        """Scoped to 2025-2029 (the 4c8 backfill adds 2010-2024)."""
+        window = [d for d in explicit_dates if "2025" <= d[:4] <= "2029"]
+        assert len(window) == 61  # unchanged by 4c8 (no 2025-2029 dates added)
+
+    def test_backfill_2010_2024(self, xses, explicit_dates):
+        """4c8: 150 closures from exchange_calendars 4.13.2, no early closes."""
+        old = [d for d, e in explicit_dates.items() if d[:4] <= "2024"]
+        assert len(old) == 150
+        assert all(explicit_dates[d]["status"] == "closed" for d in old)
+        assert xses["generation_range"][0] == "2010-01-01"
