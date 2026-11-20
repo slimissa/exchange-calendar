@@ -40,9 +40,9 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XASX | 1520 | 1520 | 1520 | 0 | 100.0% |
 | XATH | 1257 | No reference data | No reference data | n/a | n/a |
 | XBAH | 1262 | No reference data | No reference data | n/a | n/a |
-| XBDA | 1254 | 1254 | 1254 | 0 | 100.0% |
+| XBDA | 1506 | 1506 | 1506 | 0 | 100.0% |
 | XBEY | 1265 | No reference data | No reference data | n/a | n/a |
-| XBKK | 970 | 970 | 970 | 0 | 100.0% |
+| XBKK | 968 | 970 | 970 | 2 | 99.8% |
 | XBOG | 1462 | 1461 | 1461 | 1 | 99.9% |
 | XBOM | 1484 | 1519 | 737* | 35 | 97.7% |
 | XBRU | 1535 | 1535 | 1535 | 0 | 100.0% |
@@ -108,12 +108,12 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XTUN | 1253 | No reference data | No reference data | n/a | n/a |
 | XWAR | 1499 | 1499 | 1499 | 0 | 100.0% |
 | XWBO | 1521 | 1521 | 1521 | 0 | 100.0% |
-| XZAG | 1243 | 1243 | 1243 | 0 | 100.0% |
+| XZAG | 1491 | 1491 | 1491 | 0 | 100.0% |
 
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
-- Exchanges with no disagreement: 29 of 50.
-- Trading days on which all available sources agree: 71962 of 72246 (99.6%).
+- Exchanges with no disagreement: 28 of 50.
+- Trading days on which all available sources agree: 72460 of 72746 (99.6%).
 
 ## Disagreements by year
 
@@ -121,6 +121,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 
 | Exchange | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 |
 |---|---:|---:|---:|---:|---:|---:|
+| XBKK | 0 | 0 | 2 | 0 | - | - |
 | XBOG | 0 | 0 | 0 | 0 | 1 | 0 |
 | XBOM | 0 | 0 | 0 | 8 | 12 | 15 |
 | XBUD | 0 | 0 | 0 | 0 | 0 | 4 |
@@ -147,9 +148,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2024 | 3 | 0 | 0 | 0 | 0 | 3 |
+| 2024 | 3 | 0 | 1 | 0 | 0 | 2 |
 | 2025 | 22 | 0 | 20 | 1 | 1 | 0 |
-| 2026 | 21 | 0 | 18 | 0 | 0 | 3 |
+| 2026 | 23 | 0 | 18 | 0 | 0 | 5 |
 | 2027 | 71 | 0 | 12 | 0 | 54 | 5 |
 | 2028 | 85 | 0 | 6 | 0 | 79 | 0 |
 | 2029 | 82 | 0 | 5 | 0 | 77 | 0 |
@@ -194,6 +195,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 | XTUN | RuntimeError: Class XTUN is not one of the registered classes: dict... | InvalidCalendarName: The requested ExchangeCalendar, XTUN, does not... |
 
 ## Disagreements
+
+### XBKK (2)
+
+- registry closed, PMC open, EC open (2): 2026-10-16 Fr, 2026-12-16 We
 
 ### XBOG (1)
 
@@ -286,13 +291,13 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 ### XTAL (5)
 
-- registry closed, PMC open, EC open (5): 2024-12-25 We, 2025-12-25 Th [library error], 2026-12-25 Fr [library error], 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
+- registry closed, PMC open, EC open (5): 2024-12-25 We [library error], 2025-12-25 Th [library error], 2026-12-25 Fr [library error], 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
 
 ## Triage
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 62 dates; Registry error: 410 dates; Unpublished: 213 dates.
+- Convention difference: 1 dates; Library error: 63 dates; Registry error: 410 dates; Unpublished: 213 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -1221,6 +1226,14 @@ Nasdaq's December 2025 statistics report give every exchange 19 trading days, wh
 Dates: 2025-12-25, 2026-12-25.
 
 Source: https://attachment.news.eu.nasdaq.com/a73c2732fa3004542058f223e2e1b83f1
+
+### XTAL: Library error (1, registry verified, no change)
+
+Nasdaq Tallinn's investor calendar for week 52/2024 lists 24-26 December 2024 as trading holidays for TLN, RIG and VLN. The registry closes 25 December 2024 (4c10 backfill correction); exchange_calendars and pandas_market_calendars have no Christmas Day for this market and show it open.
+
+Dates: 2024-12-25.
+
+Source: https://view.news.eu.nasdaq.com/view?id=b8c140bf1e1581552fce9817b148ea449&lang=en
 
 ### XTAL: Registry error (9, fixed in 2.23.5)
 
