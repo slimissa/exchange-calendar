@@ -212,13 +212,34 @@ class TestXOSLStructure:
         before Easter, which Euronext lists as an Oslo half trading day
         (2025-04-16, 2026-04-01, 2027-03-24; 4c-R2). The old version of this
         test asserted there were none."""
-        half_days = {"2025-04-16", "2026-04-01", "2027-03-24"}
+        # 4c-R5 (ADR 0013): 2026 closes at the 13:05 uncross per Euronext's
+        # schedule; 2025 and 2027 schedules are unreadable images -> 13:00.
+        half_days = {"2025-04-16": "13:00", "2026-04-01": "13:05", "2027-03-24": "13:00"}
         for date_, entry in explicit_dates.items():
             if date_ in half_days:
                 assert entry["status"] == "early_close", date_
-                assert entry["early_close_time"] == "13:00", date_
+                assert entry["early_close_time"] == half_days[date_], date_
             elif date_ >= "2025-01-01":
                 assert entry["status"] == "closed", date_
+
+    def test_half_days_follow_euronext_schedules(self, xosl, explicit_dates):
+        """ADR 0013, 4c-R5: Euronext's Oslo half-day schedules (2023, 2024,
+        2026) give call 13:00-13:05 and the uncross at 13:05, so those days
+        close at 13:05 and cite the schedule. Every other half day keeps
+        13:00 and is listed as unconfirmed on its coverage span."""
+        schedules = {"2023-04-05": "7620", "2024-03-27": "10309", "2026-04-01": "14571"}
+        halves = {d: e for d, e in explicit_dates.items() if e["status"] == "early_close"}
+        for d, e in halves.items():
+            if d in schedules:
+                assert e["early_close_time"] == "13:05", d
+                assert e["source_url"] == f"https://www.euronext.com/en/media/{schedules[d]}/download"
+            else:
+                assert e["early_close_time"] == "13:00", d
+        spans = xosl["verification"]["coverage"]["sources"]
+        unconfirmed = [u for s in spans for u in s.get("unconfirmed", [])]
+        expected = sorted([d for d in halves if d not in schedules] + ["2028-04-12", "2029-03-28"])
+        assert sorted(unconfirmed) == expected
+        assert spans[1]["recheck_date"] == "2027-03-01"
 
     def test_wednesday_before_easter_rule(self, xosl):
         """2028-2029 come from an early_close rule, Easter - 4 days."""

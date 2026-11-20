@@ -55,6 +55,7 @@ time the exchange's own documents give as the close of the trading day.
 | XPAR sessions | auction at 17:30, post_market 17:30-17:35 | auction at 17:35, post_market (Trading at Last) 17:35-17:40 | as above |
 | XDUB half days 2019 | 12:28 | 12:30 Dublin (4c-R4; 4c-R3.5 had 13:05) | Euronext's trading hours & holidays page, "Calendar of business days 2019": Dublin equities close between 12:28 and 12:30 Dublin time. The October 2018 release's "by 14:05 CET" is an upper bound, not an auction end. |
 | XDUB half days 2020-2021 | 12:28 | 12:30 Dublin | Euronext's 2020 and 2021 holiday calendars: Dublin equities close between 12:28 and 12:30 Dublin time |
+| XOSL half days 2023, 2024, 2026 | 13:00 | 13:05 Oslo (4c-R5) | Euronext's Oslo Børs half-day schedules (euronext.com media 7620, 10309, 14571): call 13:00-13:05, uncrossing 13:05, Trading At Last 13:05-13:10 |
 
 Already conforming: XSTO (17:30 / 13:00), XHEL (18:30), XDUB full day
 (16:30) and half days 2022+ (12:30), Euronext core half days (14:05 CET),
@@ -64,8 +65,8 @@ XPRA (16:15, then 16:55 from 2027-01-04), XSWX (17:30).
 
 | Exchange | Value kept | Why |
 |----------|------------|-----|
-| XOSL full day | 16:30 | Secondary sources (FESE, brokers) give continuous to 16:20, closing auction 16:20-16:25, Trading at Last 16:25-16:30, which would make the auction end 16:25. Euronext's own cash trading-hours document (euronext.com media 1927) could not be read in 4c-R3.5. Rule: change only on the exchange's own document. |
-| XOSL half days | 13:00 | Euronext's own 2024 half-day schedule gives the uncross at 13:05 (closed 13:10), but only for 2024; the 2025-2027 schedule PDFs could not be read and 2011-2023 have none. Changing one year would split the series. |
+| XOSL full day | 16:30 | Secondary sources (FESE, brokers) give continuous to 16:20, closing auction 16:20-16:25, Trading at Last 16:25-16:30, which would make the auction end 16:25. Euronext's own cash trading-hours document (euronext.com media 1927) could not be read in 4c-R3.5 or 4c-R5. Rule: change only on the exchange's own document. |
+| XOSL half days without a readable schedule | 13:00 (unconfirmed) | 2011-2022 (no Euronext schedule; 2022's PDF is binary), 2025 and 2027 (schedule tables are images) and the rule-generated 2028-2029. Narrowed in 4c-R5: 2023, 2024 and 2026 moved to 13:05 (see the applied table). |
 | XDUB half days 2010-2018 | 12:28 | ISE Xetra (Deutsche Börse) era, before Euronext Dublin moved to Euronext's Optiq on 2019-02-04 (Euronext press release of that date); no half-day schedule found. |
 
 Each exception is also in the exchange's `note`. Exchanges not yet

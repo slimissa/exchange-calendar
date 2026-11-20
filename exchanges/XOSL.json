@@ -982,9 +982,9 @@
       },
       {
         "date": "2023-04-05",
-        "early_close_time": "13:00",
-        "name": "Historical Early Close",
-        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "early_close_time": "13:05",
+        "name": "Wednesday before Easter (half trading day)",
+        "source_url": "https://www.euronext.com/en/media/7620/download",
         "status": "early_close"
       },
       {
@@ -1049,9 +1049,9 @@
       },
       {
         "date": "2024-03-27",
-        "early_close_time": "13:00",
-        "name": "Historical Early Close",
-        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "early_close_time": "13:05",
+        "name": "Wednesday before Easter (half trading day)",
+        "source_url": "https://www.euronext.com/en/media/10309/download",
         "status": "early_close"
       },
       {
@@ -1201,9 +1201,9 @@
       },
       {
         "date": "2026-04-01",
-        "early_close_time": "13:00",
+        "early_close_time": "13:05",
         "name": "Wednesday before Easter (half trading day)",
-        "source_url": "https://live.euronext.com/en/resources/trading-hours-holidays",
+        "source_url": "https://www.euronext.com/en/media/14571/download",
         "status": "early_close"
       },
       {
@@ -1540,7 +1540,7 @@
   },
   "mic": "XOSL",
   "name": "Oslo Børs",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Euronext's holiday calendar, published to 2027). 2028-2029: predicted from exchange_calendars and Euronext's unchanged holiday pattern; Euronext has not published those years, although the entries cite its calendar page. regular_hours: close 17:30 before 2012-08-06, 16:30 after. Oslo Børs cut trading hours by one hour on 2012-08-06; 16:30 includes the closing auction (continuous trading ends 16:20, which is the single close exchange_calendars has for 2000-2026, so its pre-2012-08-06 hours are wrong). The 17:30 close before the cut is inferred from the one-hour reduction and is dated from the start of the registry, not from a notice. Rechecked 2026-11-19 (4c-R2) against Euronext's trading-hours-and-holidays page. Fixed: the Wednesday before Easter is an Oslo half trading day every year (Euronext lists 2025-04-16, 2026-04-01 and 2027-03-24 as half trading days for Oslo only); exchange_calendars and the 2011-2024 backfill had it, but 2025-2029 did not. Added the three published dates and an easter_offset -4 early_close rule (effective_from 2025-01-01) that also generates 2028-04-12 and 2029-03-28. Half-day time 13:00 is the end of continuous trading, as in exchange_calendars and the 2011-2024 entries; Euronext's 2024 half-day schedule has a closing call 13:00-13:05 and Trading At Last to 13:10 (closed 13:10), so 13:00 is earlier than the 16:30 full-day convention, which includes the closing auction. The 2025-2027 schedules' times were not readable here. Dec 24/31 are full closures (rules), as Euronext lists. Hours: no change after 2012-08-06 was found (continuous 09:00-16:20, closing at 16:20 per the 2020 Optiq migration guidelines); no 2020 COVID-19 closure. Close convention (ADR 0013, 4c-R3.5): close = end of the closing auction. XOSL is left as an exception: the full-day 16:30 is the end of Trading at Last (secondary sources, e.g. FESE and brokers, give continuous to 16:20, closing auction 16:20-16:25, Trading at Last 16:25-16:30, so the auction end would be 16:25), and the half-day 13:00 is the end of continuous trading (Euronext's 2024 half-day schedule uncrosses at 13:05). Neither is changed until Euronext's own trading-hours documents for the relevant years can be read; the rule is to change only on the exchange's own document.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Euronext's holiday calendar, published to 2027). 2028-2029: predicted from exchange_calendars and Euronext's unchanged holiday pattern; Euronext has not published those years, although the entries cite its calendar page. regular_hours: close 17:30 before 2012-08-06, 16:30 after. Oslo Børs cut trading hours by one hour on 2012-08-06; 16:30 includes the closing auction (continuous trading ends 16:20, which is the single close exchange_calendars has for 2000-2026, so its pre-2012-08-06 hours are wrong). The 17:30 close before the cut is inferred from the one-hour reduction and is dated from the start of the registry, not from a notice. Rechecked 2026-11-19 (4c-R2) against Euronext's trading-hours-and-holidays page. Fixed: the Wednesday before Easter is an Oslo half trading day every year (Euronext lists 2025-04-16, 2026-04-01 and 2027-03-24 as half trading days for Oslo only); exchange_calendars and the 2011-2024 backfill had it, but 2025-2029 did not. Added the three published dates and an easter_offset -4 early_close rule (effective_from 2025-01-01) that also generates 2028-04-12 and 2029-03-28. Half days (ADR 0013, 4c-R5): close = the scheduled closing uncross. Euronext's own Oslo Børs half-day schedules give, for cash equities, continuous 09:00-13:00, call 13:00-13:05, uncrossing 13:05, Trading At Last 13:05-13:10, closed 13:10: 2023-04-05 (https://www.euronext.com/en/media/7620/download), 2024-03-27 (https://www.euronext.com/en/media/10309/download) and 2026-04-01 (https://www.euronext.com/en/media/14571/download; the production PDF's table is an image, read from a copy of the same document supplied with the 4c-R4 brief). Those three days are 13:05. Every other half day keeps 13:00, the end of continuous trading (exchange_calendars' value), and is marked unconfirmed on its coverage span: 2011-2022 (no Euronext schedule; Oslo joined Euronext in 2019 and the 2022 schedule, https://www.euronext.com/en/media/4701/download, could not be read), 2025-04-16 and 2027-03-24 (schedules https://www.euronext.com/en/media/12510/download and https://www.euronext.com/en/media/16430/download exist, but their tables are images that could not be read; recheck_date 2027-03-01) and the rule-generated 2028-04-12 and 2029-03-28 (no schedule yet). The easter_offset rule keeps 13:00 for that reason. Euronext's trading hours & holidays page (https://live.euronext.com/en/resources/trading-hours-holidays) links one schedule per year 2022-2027. Dec 24/31 are full closures (rules), as Euronext lists. Hours: no change after 2012-08-06 was found (continuous 09:00-16:20, closing at 16:20 per the 2020 Optiq migration guidelines); no 2020 COVID-19 closure. Close convention (ADR 0013, 4c-R3.5): close = end of the closing auction. The full-day close stays an ADR 0013 exception: 16:30 is the end of Trading at Last according to secondary sources (FESE, brokers: continuous to 16:20, closing auction 16:20-16:25, Trading at Last 16:25-16:30, so the auction end would be 16:25), and Euronext's own cash trading-hours document (https://www.euronext.com/en/media/1927/download) came back as binary again in 4c-R5. It is not changed until an exchange document can be read; the rule is to change only on the exchange's own document.",
   "regular_hours": [
     {
       "close": "17:30",
@@ -1584,17 +1584,40 @@
           "from": "2010-01-01",
           "sampled": null,
           "source": "exchange_calendars",
-          "to": "2024-12-31"
+          "to": "2024-12-31",
+          "unconfirmed": [
+            "2011-04-20",
+            "2012-04-04",
+            "2013-03-27",
+            "2014-04-16",
+            "2015-04-01",
+            "2016-03-23",
+            "2017-04-12",
+            "2018-03-28",
+            "2019-04-17",
+            "2020-04-08",
+            "2021-03-31",
+            "2022-04-13"
+          ]
         },
         {
           "from": "2025-01-01",
+          "recheck_date": "2027-03-01",
           "source": "exchange_calendars + exchange_publications",
-          "to": "2027-12-31"
+          "to": "2027-12-31",
+          "unconfirmed": [
+            "2025-04-16",
+            "2027-03-24"
+          ]
         },
         {
           "from": "2028-01-01",
           "source": "exchange_calendars + standing Euronext holiday pattern (Euronext has published only to 2027)",
-          "to": "2029-12-31"
+          "to": "2029-12-31",
+          "unconfirmed": [
+            "2028-04-12",
+            "2029-03-28"
+          ]
         }
       ],
       "to": "2029-12-31"

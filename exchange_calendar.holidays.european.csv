@@ -7368,7 +7368,7 @@ XOSL;2022-05-17;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerr
 XOSL;2022-05-26;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
 XOSL;2022-06-06;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
 XOSL;2022-12-26;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
-XOSL;2023-04-05;Historical Early Close;early_close;explicit;1;13:00;;;;https://github.com/gerrymanoim/exchange_calendars
+XOSL;2023-04-05;Wednesday before Easter (half trading day);early_close;explicit;1;13:05;;;;https://www.euronext.com/en/media/7620/download
 XOSL;2023-04-06;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
 XOSL;2023-04-07;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
 XOSL;2023-04-10;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
@@ -7379,7 +7379,7 @@ XOSL;2023-05-29;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerr
 XOSL;2023-12-25;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
 XOSL;2023-12-26;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
 XOSL;2024-01-01;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
-XOSL;2024-03-27;Historical Early Close;early_close;explicit;1;13:00;;;;https://github.com/gerrymanoim/exchange_calendars
+XOSL;2024-03-27;Wednesday before Easter (half trading day);early_close;explicit;1;13:05;;;;https://www.euronext.com/en/media/10309/download
 XOSL;2024-03-28;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
 XOSL;2024-03-29;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
 XOSL;2024-04-01;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
@@ -7404,7 +7404,7 @@ XOSL;2025-12-25;Christmas Day;closed;explicit;1;;;;;https://www.euronext.com/en/
 XOSL;2025-12-26;Boxing Day;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
 XOSL;2025-12-31;New Year's Eve;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
 XOSL;2026-01-01;New Year's Day;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
-XOSL;2026-04-01;Wednesday before Easter (half trading day);early_close;explicit;1;13:00;;;;https://live.euronext.com/en/resources/trading-hours-holidays
+XOSL;2026-04-01;Wednesday before Easter (half trading day);early_close;explicit;1;13:05;;;;https://www.euronext.com/en/media/14571/download
 XOSL;2026-04-02;Maundy Thursday;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
 XOSL;2026-04-03;Good Friday;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
 XOSL;2026-04-06;Easter Monday;closed;explicit;1;;;;;https://www.euronext.com/en/trading-calendar
