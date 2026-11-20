@@ -2,6 +2,96 @@
   "ad_hoc_closures": [],
   "code": "XKAR",
   "confidence": {
+    "2010": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2011": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2012": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2013": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2014": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2015": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2016": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2017": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2018": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2019": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2020": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2021": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2022": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2023": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2024": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
     "2025": {
       "last_verified": null,
       "level": "medium",
@@ -35,11 +125,1193 @@
   "country_code": "PK",
   "fetcher_status": "none",
   "generation_range": [
-    "2025-01-01",
+    "2010-01-01",
     "2029-12-31"
   ],
   "holidays": {
     "explicit": [
+      {
+        "date": "2010-01-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-02-05",
+        "name": "Kashmir Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-03-23",
+        "name": "Pakistan Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-09-10",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-09-13",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-11-09",
+        "name": "Iqbal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-11-17",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-11-18",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-11-19",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-12-16",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-12-17",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-02-16",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-03-23",
+        "name": "Pakistan Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-08-26",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-08-31",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-09-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-09-02",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-10-24",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-11-07",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-11-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-11-09",
+        "name": "Iqbal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-11-11",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-12-05",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-12-06",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-03-23",
+        "name": "Pakistan Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-08-14",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-08-17",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-08-20",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-08-21",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-08-22",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-09-21",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-10-26",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-10-29",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-11-09",
+        "name": "Iqbal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-12-25",
+        "name": "Birthday of Quaid-e-Azam & Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-01-25",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-02-05",
+        "name": "Kashmir Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-08-02",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-08-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-08-09",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-08-14",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-10-15",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-10-16",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-10-17",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-10-18",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-11-14",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-11-15",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-12-25",
+        "name": "Birthday of Quaid-e-Azam & Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-01-14",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-02-05",
+        "name": "Kashmir Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-07-25",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-07-29",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-07-30",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-07-31",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-08-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-08-14",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-10-06",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-10-07",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-10-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-11-03",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-11-04",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-12-25",
+        "name": "Birthday of Quaid-e-Azam & Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-02-05",
+        "name": "Kashmir Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-03-23",
+        "name": "Pakistan Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-07-17",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-07-20",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-07-21",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-08-14",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-09-24",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-09-25",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-10-23",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-12-24",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-12-25",
+        "name": "Birthday of Quaid-e-Azam & Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-02-05",
+        "name": "Kashmir Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-03-23",
+        "name": "Pakistan Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-07-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-07-05",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-07-06",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-07-07",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-07-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-09-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-09-13",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-09-14",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-10-11",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-10-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-12-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-03-23",
+        "name": "Pakistan Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-06-23",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-06-26",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-06-27",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-06-28",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-08-14",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-09-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-09-04",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-12-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-12-25",
+        "name": "Birthday of Quaid-e-Azam & Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-02-05",
+        "name": "Kashmir Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-03-23",
+        "name": "Pakistan Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-06-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-06-15",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-06-18",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-07-25",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-08-14",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-08-21",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-08-22",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-08-23",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-09-20",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-09-21",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-11-21",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-12-25",
+        "name": "Birthday of Quaid-e-Azam & Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-02-05",
+        "name": "Kashmir Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-05-31",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-06-04",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-06-05",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-06-06",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-06-07",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-08-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-08-13",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-08-14",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-08-15",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-09-09",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-09-10",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-12-25",
+        "name": "Birthday of Quaid-e-Azam & Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-02-05",
+        "name": "Kashmir Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-03-23",
+        "name": "Pakistan Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-05-22",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-05-25",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-05-26",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-05-27",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-07-31",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-08-14",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-10-30",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-12-25",
+        "name": "Birthday of Quaid-e-Azam & Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-02-05",
+        "name": "Kashmir Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-03-23",
+        "name": "Pakistan Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-05-07",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-05-10",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-05-11",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-05-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-05-13",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-05-14",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-07-20",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-07-21",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-07-22",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-08-18",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-08-19",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-10-19",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-03-23",
+        "name": "Pakistan Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-04-29",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-02",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-03",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-04",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-05",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-07-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-07-11",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-07-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-08-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-08-09",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-11-09",
+        "name": "Iqbal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-03-23",
+        "name": "Pakistan Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-14",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-21",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-24",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-25",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-06-28",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-06-29",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-06-30",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-07-28",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-08-14",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-09-29",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-11-09",
+        "name": "Iqbal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-12-25",
+        "name": "Birthday of Quaid-e-Azam & Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-02-05",
+        "name": "Kashmir Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-02-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-04-05",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-04-10",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-04-11",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-04-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-05-28",
+        "name": "Youm-e-Takbeer",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-06-17",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-06-18",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-06-19",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-07-16",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-07-17",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-08-14",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-09-17",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-12-25",
+        "name": "Birthday of Quaid-e-Azam & Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
       {
         "date": "2025-02-05",
         "name": "Kashmir Day",
@@ -152,9 +1424,27 @@
         "status": "closed"
       },
       {
+        "date": "2026-06-25",
+        "name": "Ashura (9th Muharram)",
+        "source_url": "https://dps.psx.com.pk/download/attachment/278691-1.pdf",
+        "status": "closed"
+      },
+      {
+        "date": "2026-06-26",
+        "name": "Ashura (10th Muharram)",
+        "source_url": "https://dps.psx.com.pk/download/attachment/278691-1.pdf",
+        "status": "closed"
+      },
+      {
         "date": "2026-08-14",
         "name": "Independence Day",
         "source_url": "https://www.psx.com.pk/trading-calendar",
+        "status": "closed"
+      },
+      {
+        "date": "2026-08-26",
+        "name": "Eid Milad-un-Nabi (12th Rabi-ul-Awwal)",
+        "source_url": "https://dps.psx.com.pk/download/attachment/268947-1.pdf",
         "status": "closed"
       },
       {
@@ -368,10 +1658,14 @@
   },
   "mic": "XKAR",
   "name": "Pakistan Stock Exchange",
-  "regular_hours": {
-    "close": "15:30",
-    "open": "09:30"
-  },
+  "note": "2010-2024 sourced from exchange_calendars 4.13.2 (backfill; not independently verified): 197 closures (57 named; the 140 unnamed are exchange_calendars' Islamic holidays, which it lists ad hoc by year: Eid-ul-Fitr, Eid-ul-Azha, Ashura, Eid Milad-un-Nabi, plus 2010-01-01) and no early closes. None is moved to ad_hoc_closures: they are scheduled moon-dated holidays, not unscheduled closures. No 2010-2024 corrections. Iqbal Day: exchange_calendars closes 9 November 2010-2012 and from 2022, matching its removal from the federal list in 2015 and restoration in 2022 (lead; the notifications were not read); 9 November 2013 and 2014 were weekends. Checked 2026-11-20 (4c13). Last published year: PSX Public Notice PSX/N-89 of 20 January 2026 (https://dps.psx.com.pk/download/attachment/268947-1.pdf), 'Holiday Calendar - 2026', 17 days, the Islamic ones subject to the moon. Corrections (3; both libraries and the pre-4c13 file trade on them): Ashura 2026 is Thursday 25 and Friday 26 June per PSX/N-732 of 16 June 2026 (https://dps.psx.com.pk/download/attachment/278691-1.pdf: 'Ashura holidays on June 25 and June 26, 2026', non-trading days; N-89 had listed 24 and 25 June); Eid Milad-un-Nabi 2026 (12th Rabi-ul-Awwal, a PSX holiday in N-89, listed for 25 August subject to the moon) fell on Wednesday 26 August per the State Bank of Pakistan's circular of 24 August 2026 (https://www.sbp.org.pk/circulars/bprd-circular-letter-no-18-of-2026: 26 August 2026 'i.e. 12th Rabi-ul-Awwal, 1448 A.H.'). Eid-ul-Azha 2026 is 26-28 May per PSX/N-628 of 20 May 2026 (https://dps.psx.com.pk/download/attachment/277567-1.pdf), as the file already had. No 2027 calendar is published; 2027-2029 is the standing pattern with predicted Islamic dates. Hours (ADR 0013): PSX's trading-hours page (https://psx.com.pk/psx/exchange/general/trading-hours; no effective date) gives Monday to Thursday pre-open 09:15-09:30, order matching and confirmation 09:30-09:32, open 09:32-15:30, close 15:30, post-close session 15:35-15:50; it describes no closing auction, so the close is the end of continuous trading, 15:30, as in the file. The registry keeps open 09:30 (the end of the pre-open; continuous trading starts 09:32). Friday runs two sessions (09:17-12:00 and 14:32-16:30, post-close 16:35-16:50) and Ramadan has its own schedule each year (PSX notices); the schema has no weekday-specific or seasonal sessions, so neither is modelled (Phase 4d). The single regular_hours entry from 2010-01-01 is unconfirmed: PSX's schedule changed with the new trading system on 25 October 2021 and at other dates (leads, not read; PSX/N-413 of 2020 and its successor for the 2020 COVID hours).",
+  "regular_hours": [
+    {
+      "close": "15:30",
+      "effective_from": "2010-01-01",
+      "open": "09:30"
+    }
+  ],
   "sessions": [
     {
       "close": "15:30",
@@ -383,7 +1677,40 @@
   "verification": {
     "basis": "divergence_report",
     "class": "reference_compared",
-    "last_checked": "2026-11-08",
+    "coverage": {
+      "from": "2010-01-01",
+      "ranges": [
+        "trading_days"
+      ],
+      "sources": [
+        {
+          "from": "2010-01-01",
+          "sampled": null,
+          "source": "exchange_calendars",
+          "to": "2024-12-31",
+          "unconfirmed": [
+            "2010-01-01"
+          ]
+        },
+        {
+          "contradicted_by": [
+            "2026-06-25",
+            "2026-06-26",
+            "2026-08-26"
+          ],
+          "from": "2025-01-01",
+          "source": "exchange_calendars + exchange_publications (PSX holiday calendar 2025; Public Notice PSX/N-89 for 2026; PSX closure notices)",
+          "to": "2026-12-31"
+        },
+        {
+          "from": "2027-01-01",
+          "source": "exchange_calendars + standing Pakistani holiday pattern (PSX's 2027 calendar not yet published; Islamic holidays predicted)",
+          "to": "2029-12-31"
+        }
+      ],
+      "to": "2029-12-31"
+    },
+    "last_checked": "2026-11-20",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },
   "weekend_days": [

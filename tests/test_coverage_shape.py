@@ -89,8 +89,8 @@ def test_some_exchanges_have_coverage():
     # 31: + XNZE (4c9). 32: + XKLS (4c9). 33: + XBKK (4c9). 34: + XLUX (4c9). 35: + XLIT (4c9).
     # 36: + XTAL (4c10). 37: + XBOG (4c10). 38: + XLIM (4c10).
     # 39: + XSGO (4c10). 40: + XZAG (4c11).
-    # 41: + XBDA (4c11). 42: + XRIS, 43: + XPHS (4c12).
-    assert len(with_cov) == 43
+    # 41: + XBDA (4c11). 42: + XRIS, 43: + XPHS (4c12). 44: + XKAR (4c13).
+    assert len(with_cov) == 44
 
 
 def _xetr_without_bounds():

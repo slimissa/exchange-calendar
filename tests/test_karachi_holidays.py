@@ -65,8 +65,12 @@ class TestXKARProperties:
         assert xkar["timezone"] == "Asia/Karachi"
 
     def test_regular_hours(self, xkar):
-        assert xkar["regular_hours"]["open"] == "09:30"
-        assert xkar["regular_hours"]["close"] == "15:30"
+        """4c13, ADR 0013: PSX's trading-hours page gives Monday-Thursday
+        continuous trading to 15:30 and no closing auction; one dated entry
+        from 2010-01-01, unconfirmed."""
+        assert xkar["regular_hours"] == [
+            {"close": "15:30", "effective_from": "2010-01-01", "open": "09:30"}]
+        assert xkar["verification"]["coverage"]["sources"][0]["unconfirmed"] == ["2010-01-01"]
 
     def test_no_lunch_break(self, xkar):
         lunch = [s for s in xkar.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -77,7 +81,7 @@ class TestXKARProperties:
 
     def test_generation_range(self, xkar):
         assert "generation_range" in xkar
-        assert xkar["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xkar["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c13 backfill
 
     def test_ad_hoc_closures_empty(self, xkar):
         assert xkar.get("ad_hoc_closures", []) == []
@@ -277,6 +281,9 @@ class TestXKARStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if entry["source_url"] == "github.com/gerrymanoim/exchange_calendars":
+                assert date_str < "2025"  # 4c13 backfill (repository convention)
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -302,8 +309,16 @@ class TestXKARStructure:
             assert start <= d <= end
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
+        for d, entry in explicit_dates.items():
+            if d < "2025":  # 4c13 backfill cites exchange_calendars
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert "psx.com.pk" in entry["source_url"]
+
+    def test_backfill_count(self, explicit_dates):
+        """4c13: 197 exchange_calendars closures 2010-2024; 54 entries 2025-2029."""
+        assert len([d for d in explicit_dates if d < "2025"]) == 197
+        assert len([d for d in explicit_dates if d >= "2025"]) == 54
 
 
 # ──────────────────────────────────────────────────────────────
@@ -367,9 +382,18 @@ class TestXKARPsxNotices2025And2026:
             "2025-12-25"}
 
     def test_2026_closed_set(self, explicit_dates):
+        """4c13: + Ashura 25 and 26 June (PSX/N-732) and Eid Milad-un-Nabi 26
+        August (12th Rabi-ul-Awwal per SBP's circular of 24 August 2026; a PSX
+        holiday in N-89)."""
         assert self._closed_set(explicit_dates, 2026) == {
             "2026-02-05", "2026-03-20", "2026-03-23", "2026-05-01", "2026-05-26",
-            "2026-05-27", "2026-05-28", "2026-08-14", "2026-11-09", "2026-12-25"}
+            "2026-05-27", "2026-05-28", "2026-06-25", "2026-06-26", "2026-08-14",
+            "2026-08-26", "2026-11-09", "2026-12-25"}
+
+    def test_2026_corrections_are_contradicted_by(self, xkar):
+        span = xkar["verification"]["coverage"]["sources"][1]
+        assert (span["from"], span["to"]) == ("2025-01-01", "2026-12-31")
+        assert span["contradicted_by"] == ["2026-06-25", "2026-06-26", "2026-08-26"]
 
     @pytest.mark.parametrize("day", ["2025-01-01", "2025-09-05"])
     def test_trading_days(self, explicit_dates, day):
