@@ -421,3 +421,43 @@ class TestXSAUDivergenceRegression:
         for days in EID_CLOSURES.values():
             assert set(days) <= closed
         assert "2025-03-27" not in closed and "2025-06-04" not in closed
+
+
+# ──────────────────────────────────────────────────────────────
+# 2021-2024 backfill (4c13)
+# ──────────────────────────────────────────────────────────────
+
+class TestXSAUBackfill2021To2024:
+    """4c13: exchange_calendars from 2021 (its XSAU start), 49 closures, then
+    12 corrections from Saudi Exchange's holiday events page and the Royal
+    Order of 27 January 2022 creating Founding Day."""
+
+    REMOVED = ["2021-02-22", "2022-07-13", "2023-04-25", "2023-07-02",
+               "2024-04-14", "2024-04-15", "2024-06-13", "2024-06-23"]
+    ADDED = ["2022-09-22", "2023-06-25", "2023-06-26", "2023-09-24"]
+
+    def test_generation_range_starts_2021(self, xsau):
+        assert xsau["generation_range"][0] == "2021-01-01"
+
+    def test_count(self, explicit_dates):
+        assert len([d for d in explicit_dates if d < "2025"]) == 49 - 8 + 4
+
+    @pytest.mark.parametrize("day", REMOVED)
+    def test_removed_are_trading_days(self, explicit_dates, day):
+        assert day not in explicit_dates
+
+    @pytest.mark.parametrize("day", ADDED)
+    def test_added_are_closed_and_cite_the_exchange(self, explicit_dates, day):
+        e = explicit_dates[day]
+        assert e["status"] == "closed"
+        assert e["source_url"] == ("https://www.saudiexchange.sa/wps/portal/saudiexchange/"
+                                   "about-saudi-exchange/exchange-media-centre/events")
+
+    def test_contradicted_by(self, xsau):
+        span = xsau["verification"]["coverage"]["sources"][0]
+        assert (span["from"], span["to"]) == ("2021-01-01", "2024-12-31")
+        assert span["contradicted_by"] == sorted(self.REMOVED + self.ADDED)
+
+    def test_founding_day_starts_2022(self, explicit_dates):
+        founding = sorted(d for d in explicit_dates if d < "2025" and d.endswith("-02-22"))
+        assert founding == ["2022-02-22", "2023-02-22", "2024-02-22"]

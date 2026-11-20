@@ -932,6 +932,10 @@ XRIS	2026	medium	manual
 XRIS	2027	medium	manual		predicted
 XRIS	2028	medium	manual		predicted
 XRIS	2029	medium	manual		predicted
+XSAU	2021	low	manual		backfilled (exchange_calendars (+ Saudi Exchange holiday events page for 2021-2024; Royal Order of 27 January 2022 for Founding Day)); not independently verified
+XSAU	2022	low	manual		backfilled (exchange_calendars (+ Saudi Exchange holiday events page for 2021-2024; Royal Order of 27 January 2022 for Founding Day)); not independently verified
+XSAU	2023	low	manual		backfilled (exchange_calendars (+ Saudi Exchange holiday events page for 2021-2024; Royal Order of 27 January 2022 for Founding Day)); not independently verified
+XSAU	2024	low	manual		backfilled (exchange_calendars (+ Saudi Exchange holiday events page for 2021-2024; Royal Order of 27 January 2022 for Founding Day)); not independently verified
 XSAU	2025	medium	manual		
 XSAU	2026	medium	manual		
 XSAU	2027	medium	manual		predicted

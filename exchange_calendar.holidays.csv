@@ -10323,6 +10323,51 @@ XRIS,2029-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com
 XRIS,2029-12-25,Christmas Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2029-12-26,Boxing Day,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
 XRIS,2029-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.nasdaqbaltic.com/trading-calendar
+XSAU,2021-05-13,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2021-05-16,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2021-07-18,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2021-07-19,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2021-07-20,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2021-07-21,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2021-07-22,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2021-09-23,National Day of Saudi Arabia,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-02-22,Saudi Founding Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-04-28,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-05-01,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-05-02,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-05-03,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-05-04,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-05-05,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-05-08,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-07-07,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-07-10,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-07-11,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-07-12,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2022-09-22,National Day of Saudi Arabia (Saudi Exchange: 'is on 22/9/2022'),closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2023-02-22,Saudi Founding Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2023-04-18,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2023-04-19,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2023-04-20,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2023-04-23,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2023-04-24,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2023-06-25,"Eid Al Adha Holiday (Saudi Exchange: trading discontinues at the end of trading day Thursday 22-06-2023, resumes Sunday 02-07-2023)",closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2023-06-26,"Eid Al Adha Holiday (Saudi Exchange: trading discontinues at the end of trading day Thursday 22-06-2023, resumes Sunday 02-07-2023)",closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2023-06-27,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2023-06-28,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2023-06-29,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2023-09-24,"National Day holiday (Saudi Exchange: trading discontinues at the end of trading day 21-09-2023, resumes 25-09-2023)",closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2024-02-22,Saudi Founding Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2024-04-07,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2024-04-08,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2024-04-09,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2024-04-10,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2024-04-11,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2024-06-16,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2024-06-17,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2024-06-18,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2024-06-19,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2024-06-20,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XSAU,2024-09-23,National Day of Saudi Arabia,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
 XSAU,2025-02-23,Saudi Founding Day (observed),closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar
 XSAU,2025-03-30,Eid al-Fitr,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
 XSAU,2025-03-31,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events

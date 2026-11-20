@@ -2,6 +2,30 @@
   "ad_hoc_closures": [],
   "code": "XSAU",
   "confidence": {
+    "2021": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled (exchange_calendars (+ Saudi Exchange holiday events page for 2021-2024; Royal Order of 27 January 2022 for Founding Day)); not independently verified",
+      "source": "manual"
+    },
+    "2022": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled (exchange_calendars (+ Saudi Exchange holiday events page for 2021-2024; Royal Order of 27 January 2022 for Founding Day)); not independently verified",
+      "source": "manual"
+    },
+    "2023": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled (exchange_calendars (+ Saudi Exchange holiday events page for 2021-2024; Royal Order of 27 January 2022 for Founding Day)); not independently verified",
+      "source": "manual"
+    },
+    "2024": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled (exchange_calendars (+ Saudi Exchange holiday events page for 2021-2024; Royal Order of 27 January 2022 for Founding Day)); not independently verified",
+      "source": "manual"
+    },
     "2025": {
       "last_verified": null,
       "level": "medium",
@@ -45,11 +69,281 @@
   },
   "fetcher_status": "blocked",
   "generation_range": [
-    "2025-01-01",
+    "2021-01-01",
     "2029-09-23"
   ],
   "holidays": {
     "explicit": [
+      {
+        "date": "2021-05-13",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-05-16",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-07-18",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-07-19",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-07-20",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-07-21",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-07-22",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-09-23",
+        "name": "National Day of Saudi Arabia",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-02-22",
+        "name": "Saudi Founding Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-04-28",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-02",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-03",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-04",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-05",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-07-07",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-07-10",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-07-11",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-07-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-09-22",
+        "name": "National Day of Saudi Arabia (Saudi Exchange: 'is on 22/9/2022')",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2023-02-22",
+        "name": "Saudi Founding Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-18",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-19",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-20",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-23",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-24",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-06-25",
+        "name": "Eid Al Adha Holiday (Saudi Exchange: trading discontinues at the end of trading day Thursday 22-06-2023, resumes Sunday 02-07-2023)",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2023-06-26",
+        "name": "Eid Al Adha Holiday (Saudi Exchange: trading discontinues at the end of trading day Thursday 22-06-2023, resumes Sunday 02-07-2023)",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2023-06-27",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-06-28",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-06-29",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-09-24",
+        "name": "National Day holiday (Saudi Exchange: trading discontinues at the end of trading day 21-09-2023, resumes 25-09-2023)",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events",
+        "status": "closed"
+      },
+      {
+        "date": "2024-02-22",
+        "name": "Saudi Founding Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-04-07",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-04-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-04-09",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-04-10",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-04-11",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-06-16",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-06-17",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-06-18",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-06-19",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-06-20",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-09-23",
+        "name": "National Day of Saudi Arabia",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
       {
         "date": "2025-02-23",
         "name": "Saudi Founding Day (observed)",
@@ -370,6 +664,7 @@
   },
   "mic": "XSAU",
   "name": "Saudi Stock Exchange (Tadawul)",
+  "note": "2021-2024 sourced from exchange_calendars 4.13.2, which starts XSAU on 2021-01-03 (backfill; not independently verified): 49 closures (6 named), no early closes, then 12 corrections from Saudi Exchange's own holiday events page (https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events, read in full 2026-11-20) and the Royal Order on Founding Day; 12 is over the session limit of 10 by maintainer decision, every one being cited to the exchange's own page. Removed (exchange_calendars closes them; the exchange traded): 2021-02-22: the Royal Order creating Founding Day (22 February, an official holiday) was issued on 27 January 2022 (Saudi Press Agency, https://sp.spa.gov.sa/viewfullstory.php?lang=en&amp=&newsid=2324647), so exchange_calendars backdates it; the exchange's page lists Founding Day from 22/02/2022. 2022-07-13: Eid Al Adha 2022, 'Trading will resume after the holiday on 13/7/2022'. 2023-04-25: Eid Al Fiter 2023, 'Trading will resume after the holiday on 25-04-2023'. 2023-07-02: Eid Al Adha 2023, 'Trading will resume after the holiday on Sunday 02-07-2023'. 2024-04-14 and 2024-04-15: Eid Al Fiter 2024, 'Trading will resume after the holiday on 14/04/2024'. 2024-06-13 and 2024-06-23: Eid Al Adha 2024, 'Trading will discontinue at the end of trading day 13/06/2024' and 'Trading will resume after the holiday on 23/06/2024'. Added (the exchange closed; exchange_calendars trades): 2022-09-22: 'National Day of Saudi Arabia is on 22/9/2022'. 2023-06-25 and 2023-06-26: Eid Al Adha 2023, 'Trading will discontinue at the end of trading day Thursday 22-06-2023'. 2023-09-24: National Day 2023, 'Trading will discontinue at the end of trading day 21-09-2023' and 'Trading will resume after the holiday on 25-09-2023'. All 12 are contradicted_by on the 2021-2024 span. 2010-2020: out of scope (exchange_calendars has no XSAU before 2021; Phase 4h); generation_range and coverage start 2021-01-01. Weekend: the Thursday-Friday to Friday-Saturday change of 2013 is outside the 2021-2029 window; weekend_days has no dated form (Phase 4d backlog item if 2010-2020 is ever backfilled). 2025-2026: exchange_calendars + exchange_publications. Checked 2026-11-20 (4c13). Last published year: the exchange's events page publishes Eid holidays through 2029 'According to the UMM AL-QURA calendar' (Eid Al Fiter 2027: discontinue end of 04/03/2027, resume 14/03/2027; Eid Al Adha 2027: discontinue end of 13/05/2027, resume 23/05/2027; and 2028-2029). The file's 2027-2029 predicted entries differ from that schedule and include 'Islamic New Year' days the exchange does not list; aligning them is left for a later session (beyond this session's approved corrections).",
   "regular_hours": {
     "close": "15:00",
     "open": "10:00"
@@ -395,7 +690,49 @@
   "verification": {
     "basis": "divergence_report",
     "class": "reference_compared",
-    "last_checked": "2026-11-08",
+    "coverage": {
+      "from": "2021-01-01",
+      "ranges": [
+        "trading_days"
+      ],
+      "sources": [
+        {
+          "contradicted_by": [
+            "2021-02-22",
+            "2022-07-13",
+            "2022-09-22",
+            "2023-04-25",
+            "2023-06-25",
+            "2023-06-26",
+            "2023-07-02",
+            "2023-09-24",
+            "2024-04-14",
+            "2024-04-15",
+            "2024-06-13",
+            "2024-06-23"
+          ],
+          "from": "2021-01-01",
+          "sampled": null,
+          "source": "exchange_calendars (+ Saudi Exchange holiday events page for 2021-2024; Royal Order of 27 January 2022 for Founding Day)",
+          "to": "2024-12-31",
+          "unconfirmed": [
+            "2021-01-01"
+          ]
+        },
+        {
+          "from": "2025-01-01",
+          "source": "exchange_calendars + exchange_publications (Saudi Exchange holiday announcements)",
+          "to": "2026-12-31"
+        },
+        {
+          "from": "2027-01-01",
+          "source": "exchange_calendars + Umm al-Qura predictions (Saudi Exchange's published 2027-2029 Eid schedule not yet applied; see note)",
+          "to": "2029-12-31"
+        }
+      ],
+      "to": "2029-12-31"
+    },
+    "last_checked": "2026-11-20",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },
   "weekend_days": [
