@@ -60,16 +60,22 @@ class TestXOSLProperties:
         assert xosl["timezone"] == "Europe/Oslo"
 
     def test_regular_hours(self, xosl):
-        """Dated history: close 17:30 until 2012-08-03, 16:30 from 2012-08-06
-        (Oslo Børs cut trading hours by one hour; 16:30 includes the closing
-        auction)."""
+        """Dated history: close 17:30 until 2012-08-03; from 2012-08-06 the
+        close is the 16:25 closing uncross (ADR 0013, 4c8: Euronext Appendix,
+        continuous to 16:20, uncross '16:25 Random', TAL 16:25-16:30; was
+        16:30). 2026-08-03 is the Appendix's effective date; 2012-08-06 is
+        marked unconfirmed."""
         hours = sorted(xosl["regular_hours"], key=lambda e: e["effective_from"])
         assert [(h["effective_from"], h["open"], h["close"]) for h in hours] == [
             ("2010-01-01", "09:00", "17:30"),
-            ("2012-08-06", "09:00", "16:30"),
+            ("2012-08-06", "09:00", "16:25"),
+            ("2026-08-03", "09:00", "16:25"),
         ]
         regular = [s for s in xosl["sessions"] if s["type"] == "regular"]
-        assert [(s["open"], s["close"]) for s in regular] == [("09:00", "16:30")]
+        assert [(s["open"], s["close"]) for s in regular] == [("09:00", "16:25")]
+        assert xosl["extended_hours"]["after_hours"] == {"open": "16:25", "close": "16:45"}
+        span = xosl["verification"]["coverage"]["sources"][0]
+        assert "2012-08-06" in span["unconfirmed"]
 
     def test_no_lunch_break(self, xosl):
         lunch = [s for s in xosl.get("sessions", []) if s["type"] == "lunch_break"]
@@ -214,7 +220,7 @@ class TestXOSLStructure:
         test asserted there were none."""
         # 4c-R5 (ADR 0013): 2026 closes at the 13:05 uncross per Euronext's
         # schedule; 2025 and 2027 schedules are unreadable images -> 13:00.
-        half_days = {"2025-04-16": "13:00", "2026-04-01": "13:05", "2027-03-24": "13:00"}
+        half_days = {"2025-04-16": "13:05", "2026-04-01": "13:05", "2027-03-24": "13:05"}
         for date_, entry in explicit_dates.items():
             if date_ in half_days:
                 assert entry["status"] == "early_close", date_
@@ -223,11 +229,12 @@ class TestXOSLStructure:
                 assert entry["status"] == "closed", date_
 
     def test_half_days_follow_euronext_schedules(self, xosl, explicit_dates):
-        """ADR 0013, 4c-R5: Euronext's Oslo half-day schedules (2023, 2024,
-        2026) give call 13:00-13:05 and the uncross at 13:05, so those days
-        close at 13:05 and cite the schedule. Every other half day keeps
-        13:00 and is listed as unconfirmed on its coverage span."""
-        schedules = {"2023-04-05": "7620", "2024-03-27": "10309", "2026-04-01": "14571"}
+        """ADR 0013: Euronext's Oslo half-day schedules (2023, 2024, 2026 in
+        4c-R5; 2025, 2027 in 4c8) give call 13:00-13:05 and the uncross at
+        13:05, so those days close at 13:05 and cite the schedule. 2011-2022
+        keep 13:00 and are listed as unconfirmed; no recheck date remains."""
+        schedules = {"2023-04-05": "7620", "2024-03-27": "10309", "2025-04-16": "12510",
+                     "2026-04-01": "14571", "2027-03-24": "16430"}
         halves = {d: e for d, e in explicit_dates.items() if e["status"] == "early_close"}
         for d, e in halves.items():
             if d in schedules:
@@ -237,16 +244,18 @@ class TestXOSLStructure:
                 assert e["early_close_time"] == "13:00", d
         spans = xosl["verification"]["coverage"]["sources"]
         unconfirmed = [u for s in spans for u in s.get("unconfirmed", [])]
-        expected = sorted([d for d in halves if d not in schedules] + ["2028-04-12", "2029-03-28"])
+        expected = sorted([d for d in halves if d not in schedules] + ["2012-08-06"])
         assert sorted(unconfirmed) == expected
-        assert spans[1]["recheck_date"] == "2027-03-01"
+        assert all(d < "2023" for d in expected)
+        assert not any("recheck_date" in s for s in spans)
 
     def test_wednesday_before_easter_rule(self, xosl):
-        """2028-2029 come from an early_close rule, Easter - 4 days."""
+        """2028-2029 come from an early_close rule, Easter - 4 days, at the
+        13:05 uncross of the 2023-2027 schedules (predicted; 4c8, was 13:00)."""
         rules = [r for r in xosl["holidays"]["recurrence_rules"]
                  if r.get("status") == "early_close"]
         assert rules == [{
-            "early_close_time": "13:00", "effective_from": "2025-01-01",
+            "early_close_time": "13:05", "effective_from": "2025-01-01",
             "name": "Wednesday before Easter (half trading day)",
             "offset_days": -4, "rule": "easter_offset",
             "status": "early_close",

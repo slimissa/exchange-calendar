@@ -107,9 +107,9 @@ XNYS	post_market	1	16:00	20:00
 XNYS	pre_market	1	04:00	09:30	
 XNYS	regular	1	09:30	16:00	
 XNZE	regular	1	10:00	16:45	
-XOSL	post_market	1	16:30	16:45	
+XOSL	post_market	1	16:25	16:45	
 XOSL	pre_market	1	08:15	09:00	
-XOSL	regular	1	09:00	16:30	
+XOSL	regular	1	09:00	16:25	
 XPAR	auction	1			09:00
 XPAR	auction	2			17:35
 XPAR	post_market	1	17:35	17:40	

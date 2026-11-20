@@ -69,10 +69,10 @@ def test_one_past_among_several(tmp_path):
 
 
 def test_registry_dates_today():
-    """The registry's own recheck dates (XPRA 2027-01-04, XDUB 2027-11-30,
-    XOSL 2027-03-01 from 4c-R5) are found, and none had passed on
-    2026-11-20."""
+    """The registry's own recheck dates (XPRA 2027-01-04, XDUB 2027-11-30)
+    are found, and none had passed on 2026-11-20. XOSL's 2027-03-01 (4c-R5)
+    was removed in 4c8 when the 2025 and 2027 schedules were read."""
     found = {(r.mic, r.recheck.isoformat()) for r in crd.collect()}
-    assert found == {("XPRA", "2027-01-04"), ("XDUB", "2027-11-30"), ("XOSL", "2027-03-01")}
+    assert found == {("XPRA", "2027-01-04"), ("XDUB", "2027-11-30")}
     assert crd.main(["--today", "2026-11-20"]) == 0
     assert crd.main(["--today", "2027-01-05"]) == 1
