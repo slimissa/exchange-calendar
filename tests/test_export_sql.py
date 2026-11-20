@@ -273,12 +273,22 @@ class TestSqliteLoad:
 class TestAdHocClosures:
     """Empty today (0 rows). A synthetic insert covers its PK, FK and CHECKs."""
 
-    def test_table_is_empty_in_live_data(self, sqlite_base):
-        assert sqlite_base.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == 0
+    def test_table_holds_exactly_the_live_rows(self, sqlite_base):
+        """Live since 4c10 (was empty): XTAI's two 2026 typhoon closures."""
+        rows = sqlite_base.execute(
+            "SELECT exchange_code, date, seq, name, status, early_close_time, source_url "
+            "FROM ad_hoc_closures ORDER BY exchange_code, date").fetchall()
+        assert rows == [
+            ("XTAI", "2026-07-10", 1, "Typhoon Bavi (Taipei work suspension)", "closed", None,
+             "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"),
+            ("XTAI", "2026-10-23", 1, "Typhoon Champi (Taipei work suspension)", "closed", None,
+             "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"),
+        ]
 
     def test_valid_row_accepted(self, db):
         db.execute(AD_HOC_SQL, AD_HOC_OK)
-        assert db.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == 1
+        # 4c10: 2 live XTAI rows + the 1 inserted here.
+        assert db.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == 3
 
     def test_primary_key_rejects_duplicate_and_allows_next_seq(self, db):
         db.execute(AD_HOC_SQL, AD_HOC_OK)
@@ -388,10 +398,15 @@ class TestCrossDialect:
             )
             assert from_ast[table] == executed, f"{name}: {table}"
 
-    def test_ad_hoc_closures_is_compared_even_when_empty(self, parsed, sqlite_base):
+    def test_ad_hoc_closures_is_compared_across_dialects(self, parsed, sqlite_base):
+        """Live since 4c10 (was empty): every dialect inserts the same two
+        XTAI rows, and SQLite stores exactly two."""
+        first = _insert_rows(parsed[next(iter(PARSE_DIALECTS))])["ad_hoc_closures"]
+        assert sum(first.values()) == 2
+        assert sorted(v[1] for (cols, v) in first) == ["2026-07-10", "2026-10-23"]
         for name in PARSE_DIALECTS:
-            assert _insert_rows(parsed[name])["ad_hoc_closures"] == Counter()
-        assert sqlite_base.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == 0
+            assert _insert_rows(parsed[name])["ad_hoc_closures"] == first, name
+        assert sqlite_base.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == 2
 
 
 def export_sql_cols(table):
@@ -727,4 +742,6 @@ class TestGuards:
         first = _exchange(registry, "XNYS")["holidays"]["explicit"][0]["date"]
         seqs = sorted(r[5] for r in tables["holidays"] if r[0] == "XNYS" and r[1] == first and r[4] == "explicit")
         assert seqs == [1, 2]
-        assert [r[2] for r in tables["ad_hoc_closures"]] == [1, 2]
+        # 4c10: XTAI's two live rows (seq 1 each) follow the XNYS duplicates.
+        assert [(r[0], r[2]) for r in tables["ad_hoc_closures"]] == [
+            ("XNYS", 1), ("XNYS", 2), ("XTAI", 1), ("XTAI", 1)]

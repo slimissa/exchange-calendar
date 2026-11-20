@@ -7,7 +7,7 @@
 -- after the CREATE statements and wraps the INSERT block.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 167, holidays 12383, ad_hoc_closures 0, confidence 1089
+-- Rows: exchanges 74, sessions 167, holidays 12381, ad_hoc_closures 2, confidence 1089
 
 DROP TABLE IF EXISTS confidence;
 DROP TABLE IF EXISTS ad_hoc_closures;
@@ -11338,11 +11338,9 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-04-06', 'Tomb Sweeping Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-05-01', 'Labour Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-06-19', 'Dragon Boat Festival', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-07-10', 'Typhoon Bavi (Taipei work suspension)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-09-25', 'Mid-Autumn Festival', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-09-28', 'Teachers'' Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-10-09', 'National Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
-INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-10-23', 'Typhoon Champi (Taipei work suspension)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-10-26', 'Taiwan Restoration Day (observed)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2026-12-25', 'Constitution Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/en/page/trading/exchange.html');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XTAI', '2027-01-01', 'Republic Day (New Year''s Day)', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://www.twse.com.tw/holidaySchedule/holidaySchedule?response=open_data');
@@ -12730,6 +12728,8 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XZAG', '2029-12-25', 'Christmas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://zse.hr/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XZAG', '2029-12-26', 'St. Stephen''s Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://zse.hr/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XZAG', '2029-12-31', 'New Year''s Eve (predicted)', 'closed', 'explicit', 1, NULL, NULL, 1, NULL, 'https://zse.hr/en/non-trading-days/110');
+INSERT INTO ad_hoc_closures (exchange_code, date, seq, name, status, early_close_time, source_url) VALUES ('XTAI', '2026-07-10', 1, 'Typhoon Bavi (Taipei work suspension)', 'closed', NULL, 'https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB');
+INSERT INTO ad_hoc_closures (exchange_code, date, seq, name, status, early_close_time, source_url) VALUES ('XTAI', '2026-10-23', 1, 'Typhoon Champi (Taipei work suspension)', 'closed', NULL, 'https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB');
 INSERT INTO confidence (exchange_code, year, level, source, last_verified, note) VALUES ('DSMD', 2025, 'medium', 'manual', NULL, NULL);
 INSERT INTO confidence (exchange_code, year, level, source, last_verified, note) VALUES ('DSMD', 2026, 'medium', 'manual', NULL, NULL);
 INSERT INTO confidence (exchange_code, year, level, source, last_verified, note) VALUES ('DSMD', 2027, 'medium', 'manual', NULL, 'predicted');
@@ -13824,6 +13824,6 @@ COMMIT;
 -- Row counts
 --   exchanges: 74
 --   sessions: 167
---   holidays: 12383
---   ad_hoc_closures: 0
+--   holidays: 12381
+--   ad_hoc_closures: 2
 --   confidence: 1089

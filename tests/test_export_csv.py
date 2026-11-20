@@ -197,12 +197,19 @@ class TestRoundTrip:
             want.append([export_csv.render_cell(table, c, v) for c, v in zip(cols, row)])
         assert _parse(table, "rfc")[1:] == want
 
-    def test_ad_hoc_closures_files_are_a_header_and_nothing_else(self):
+    def test_ad_hoc_closures_files_are_a_header_and_the_live_rows(self):
+        """ad_hoc_closures is live since 4c10: exactly XTAI's two 2026 typhoon
+        closures follow the header (was header-only)."""
         header = _adr_columns()["ad_hoc_closures"]
+        rows = [
+            ["XTAI", "2026-07-10", "1", "Typhoon Bavi (Taipei work suspension)", "closed", "", "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"],
+            ["XTAI", "2026-10-23", "1", "Typhoon Champi (Taipei work suspension)", "closed", "", "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"],
+        ]
         for d in DIALECTS:
             data = _path("ad_hoc_closures", d).read_bytes()
             body = data[3:] if _bom(d) else data
-            assert body == (_delim(d).join(header) + "\n").encode("utf-8")
+            expected = "".join(_delim(d).join(r) + "\n" for r in [header] + rows)
+            assert body == expected.encode("utf-8")
 
     def test_non_ascii_names_survive_every_dialect(self):
         for d in DIALECTS:

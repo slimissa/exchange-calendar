@@ -244,10 +244,20 @@ class TestRoundTrip:
         for table in TABLES:
             assert _read(table).equals(expected[table], check_metadata=True), table
 
-    def test_ad_hoc_closures_ships_with_zero_rows_and_its_schema(self):
+    def test_ad_hoc_closures_ships_the_live_rows_and_its_schema(self):
+        """ad_hoc_closures is live since 4c10 (was zero rows): XTAI's two
+        2026 typhoon closures."""
         parquet = _read("ad_hoc_closures")
-        assert parquet.num_rows == 0
+        assert parquet.num_rows == 2
         assert parquet.schema.names == _adr_columns()["ad_hoc_closures"]
+        assert parquet.to_pylist() == [
+            {"exchange_code": "XTAI", "date": datetime.date(2026, 7, 10), "seq": 1,
+             "name": "Typhoon Bavi (Taipei work suspension)", "status": "closed",
+             "early_close_time": None, "source_url": "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"},
+            {"exchange_code": "XTAI", "date": datetime.date(2026, 10, 23), "seq": 1,
+             "name": "Typhoon Champi (Taipei work suspension)", "status": "closed",
+             "early_close_time": None, "source_url": "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"},
+        ]
 
     def test_a_non_empty_ad_hoc_closures_table_round_trips(self, tmp_path, registry):
         data = _mutated(registry, lambda d: _exchange(d, "XNYS")["ad_hoc_closures"].append(
@@ -256,11 +266,19 @@ class TestRoundTrip:
         reg = _write_registry(tmp_path, data)
         tables, files = export_parquet.generate(reg)
         back = pq.read_table(io.BytesIO(files["exchange_calendar.ad_hoc_closures.parquet"]))
+        # 4c10: the injected XNYS row sorts before XTAI's two live rows.
         assert back.to_pylist() == [{
             "exchange_code": "XNYS", "date": datetime.date(2099, 6, 1), "seq": 1,
             "name": "Test closure", "status": "closed", "early_close_time": None,
             "source_url": "https://e.org/x",
-        }]
+        }] + [
+            {"exchange_code": "XTAI", "date": datetime.date(2026, 7, 10), "seq": 1,
+             "name": "Typhoon Bavi (Taipei work suspension)", "status": "closed",
+             "early_close_time": None, "source_url": "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"},
+            {"exchange_code": "XTAI", "date": datetime.date(2026, 10, 23), "seq": 1,
+             "name": "Typhoon Champi (Taipei work suspension)", "status": "closed",
+             "early_close_time": None, "source_url": "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"},
+        ]
 
 
 # ---------------------------------------------------------------------------

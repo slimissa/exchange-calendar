@@ -225,7 +225,9 @@ def test_normalise_turns_dates_into_iso_strings():
 
 def test_expected_counts_match_the_exporters_rows(counts, tables):
     assert counts == {t: len(rows) for t, rows in tables.items()}
-    assert counts["ad_hoc_closures"] == 0
+    # ad_hoc_closures is live since 4c10: XTAI's two 2026 typhoon closures
+    # (2026-07-10, 2026-10-23), the first rows in the table.
+    assert counts["ad_hoc_closures"] == 2
 
 
 # ---------------------------------------------------------------------------
@@ -258,7 +260,9 @@ class TestVerify:
         engine.conn.execute("INSERT INTO ad_hoc_closures (exchange_code, date, seq, name, status, source_url) "
                             "VALUES ('XNYS', '2099-01-01', 1, 'x', 'closed', 'u')")
         problems = csd.verify(engine, tables, counts)
-        assert any("ad_hoc_closures: 1 rows stored, calendar.json has 0" in p for p in problems)
+        # 4c10: the live table holds XTAI's two typhoon closures, so one
+        # extra row makes 3 stored against 2.
+        assert any("ad_hoc_closures: 3 rows stored, calendar.json has 2" in p for p in problems)
 
     def test_unenforced_foreign_keys_are_detected(self, engine, tables, counts):
         engine.conn.execute("PRAGMA foreign_keys=OFF")
