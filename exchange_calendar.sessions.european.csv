@@ -37,10 +37,10 @@ XDFM;regular;1;10:00;15:00;
 XDHA;regular;1;10:00;14:30;
 XDUB;regular;1;08:00;16:30;
 XETR;auction;1;;;09:00
-XETR;auction;2;;;17:30
-XETR;post_market;1;17:30;20:00;
+XETR;auction;2;;;17:35
+XETR;post_market;1;17:35;20:00;
 XETR;pre_market;1;08:00;09:00;
-XETR;regular;1;09:00;17:30;
+XETR;regular;1;09:00;17:35;
 XGSE;regular;1;10:00;15:00;
 XHEL;post_market;1;18:30;18:45;
 XHEL;pre_market;1;09:00;10:00;

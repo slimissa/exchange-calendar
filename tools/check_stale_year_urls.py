@@ -160,6 +160,9 @@ ALLOWLIST = {
     # XBUD 2025 entries (4c-R4): BSE Resolution 311/2024, the 2025
     # trading-holiday list. A historical citation; the year has passed.
     "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf": "2027-06-01",
+    # XETR 2025-12-30 (4c8): Deutsche Börse's announcement for the final
+    # trading session of 2025. A historical citation once the year passed.
+    "https://www.cashmarket.deutsche-boerse.com/resource/blob/4580834/14d7f01321cb1d949020067efd2ee174/data/Final%20trading%20session%202025.pdf": "2027-06-01",
 }
 
 

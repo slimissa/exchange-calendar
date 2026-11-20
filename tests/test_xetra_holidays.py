@@ -62,8 +62,14 @@ class TestXETRProperties:
         assert xetr["timezone"] == "Europe/Berlin"
 
     def test_regular_hours(self, xetr):
-        assert xetr["regular_hours"]["open"] == "09:00"
-        assert xetr["regular_hours"]["close"] == "17:30"
+        # ADR 0013 (4c8): close = 17:35 closing auction price (Xetra trading
+        # parameters, 1 Dec 2025); dated split marks where the evidence starts.
+        assert xetr["regular_hours"] == [
+            {"close": "17:35", "effective_from": "2010-01-01", "open": "09:00"},
+            {"close": "17:35", "effective_from": "2025-12-01", "open": "09:00"},
+        ]
+        regular = [s for s in xetr["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "09:00", "close": "17:35"}]
 
     def test_no_lunch_break(self, xetr):
         lunch = [s for s in xetr.get("sessions", []) if s["type"] == "lunch_break"]
@@ -217,10 +223,22 @@ class TestXETRStructure:
             assert "source_url" in entry, f"Missing source: {date_str}"
 
     def test_all_statuses_closed(self, explicit_dates):
-        """Xetra has no early closes — all holidays are full closures."""
-        for entry in explicit_dates.values():
-            assert entry["status"] == "closed", \
-                f"Unexpected status: {entry['date']}: {entry['status']}"
+        """2025-2029: every holiday is a full closure except the shortened last
+        trading day of each year (14:05, ADR 0013; 2027-2029 predicted).
+        2010-2024 is the exchange_calendars backfill (14:00 early closes)."""
+        early = {"2025-12-30": False, "2026-12-30": False, "2027-12-30": True,
+                 "2028-12-29": True, "2029-12-28": True}
+        for date_, entry in explicit_dates.items():
+            if date_ < "2025-01-01":
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                assert entry.get("early_close_time") in (None, "14:00")
+            elif date_ in early:
+                assert entry["status"] == "early_close", date_
+                assert entry["early_close_time"] == "14:05", date_
+                assert entry.get("predicted", False) is early[date_], date_
+            else:
+                assert entry["status"] == "closed", \
+                    f"Unexpected status: {entry['date']}: {entry['status']}"
 
     def test_recurrence_rules_exist(self, xetr):
         rules = xetr["holidays"].get("recurrence_rules", [])
@@ -247,5 +265,8 @@ class TestXETRStructure:
         assert "New Year's Eve" in names
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~33 entries: 8 closures × 5 years, minus weekend occurrences."""
-        assert 30 <= len(explicit_dates) <= 40
+        """~33 closures in 2025-2029: 8 closures x 5 years, minus weekend
+        occurrences, plus the 5 shortened last trading days (4c8). Scoped to
+        2025-2029; 2010-2024 is the exchange_calendars backfill."""
+        window = [d for d, e in explicit_dates.items() if d >= "2025-01-01" and e["status"] == "closed"]
+        assert 30 <= len(window) <= 40

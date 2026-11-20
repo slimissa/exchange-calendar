@@ -2630,6 +2630,125 @@ XDUB,2029-12-24,Christmas Eve,early_close,explicit,1,12:30,,,,https://www.eurone
 XDUB,2029-12-25,Christmas Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XDUB,2029-12-26,St. Stephen's Day,closed,explicit,1,,,,,https://www.euronext.com/en/trading-calendar
 XDUB,2029-12-31,New Year's Eve,early_close,explicit,1,12:30,,,,https://www.euronext.com/en/trading-calendar
+XETR,2010-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2010-04-02,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2010-04-05,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2010-12-24,Christmas Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2010-12-30,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2010-12-31,New Year's Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2011-04-22,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2011-04-25,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2011-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2011-12-30,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2012-04-06,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2012-04-09,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2012-05-01,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2012-12-24,Christmas Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2012-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2012-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2012-12-28,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2012-12-31,New Year's Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2013-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2013-03-29,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2013-04-01,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2013-05-01,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2013-12-24,Christmas Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2013-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2013-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2013-12-30,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2013-12-31,New Year's Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2014-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2014-04-18,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2014-04-21,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2014-05-01,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2014-10-03,Day of German Unity,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2014-12-24,Christmas Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2014-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2014-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2014-12-30,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2014-12-31,New Year's Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2015-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2015-04-03,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2015-04-06,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2015-05-01,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2015-05-25,Whit Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2015-12-24,Christmas Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2015-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2015-12-30,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2015-12-31,New Year's Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2016-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2016-03-25,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2016-03-28,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2016-05-16,Whit Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2016-10-03,Day of German Unity,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2016-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2016-12-30,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2017-04-14,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2017-04-17,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2017-05-01,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2017-06-05,Whit Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2017-10-03,Day of German Unity,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2017-10-31,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2017-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2017-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2017-12-29,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2018-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2018-03-30,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2018-04-02,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2018-05-01,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2018-05-21,Whit Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2018-10-03,Day of German Unity,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2018-12-24,Christmas Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2018-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2018-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2018-12-28,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2018-12-31,New Year's Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2019-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2019-04-19,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2019-04-22,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2019-05-01,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2019-06-10,Whit Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2019-10-03,Day of German Unity,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2019-12-24,Christmas Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2019-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2019-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2019-12-30,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2019-12-31,New Year's Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2020-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2020-04-10,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2020-04-13,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2020-05-01,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2020-06-01,Whit Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2020-12-24,Christmas Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2020-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2020-12-30,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2020-12-31,New Year's Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2021-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2021-04-02,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2021-04-05,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2021-05-24,Whit Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2021-12-24,Christmas Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2021-12-30,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2021-12-31,New Year's Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2022-04-15,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2022-04-18,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2022-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2022-12-30,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2023-04-07,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2023-04-10,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2023-05-01,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2023-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2023-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2023-12-29,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2024-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2024-03-29,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2024-04-01,Easter Monday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2024-05-01,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2024-12-24,Christmas Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2024-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2024-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2024-12-30,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XETR,2024-12-31,New Year's Eve,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
 XETR,2025-01-01,New Year's Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2025-04-18,Good Friday,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2025-04-21,Easter Monday,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
@@ -2637,6 +2756,7 @@ XETR,2025-05-01,Labour Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com
 XETR,2025-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2025-12-25,Christmas Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2025-12-26,Boxing Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
+XETR,2025-12-30,Last trading day of the year (shortened),early_close,explicit,1,14:05,,,,https://www.cashmarket.deutsche-boerse.com/resource/blob/4580834/14d7f01321cb1d949020067efd2ee174/data/Final%20trading%20session%202025.pdf
 XETR,2025-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2026-01-01,New Year's Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2026-04-03,Good Friday,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
@@ -2644,17 +2764,20 @@ XETR,2026-04-06,Easter Monday,closed,explicit,1,,,,,https://www.deutsche-boerse.
 XETR,2026-05-01,Labour Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2026-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2026-12-25,Christmas Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
+XETR,2026-12-30,Last trading day of the year (shortened),early_close,explicit,1,14:05,,,,https://cashmarket.deutsche-boerse.com/cash-en/trading/trading-calendar-and-trading-hours
 XETR,2026-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2027-01-01,New Year's Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2027-03-29,Easter Monday,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2027-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
+XETR,2027-12-30,Last trading day of the year (shortened) (predicted),early_close,explicit,1,14:05,,true,,https://cashmarket.deutsche-boerse.com/cash-en/trading/trading-calendar-and-trading-hours
 XETR,2027-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2028-04-14,Good Friday,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2028-04-17,Easter Monday,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2028-05-01,Labour Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2028-12-25,Christmas Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2028-12-26,Boxing Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
+XETR,2028-12-29,Last trading day of the year (shortened) (predicted),early_close,explicit,1,14:05,,true,,https://cashmarket.deutsche-boerse.com/cash-en/trading/trading-calendar-and-trading-hours
 XETR,2029-01-01,New Year's Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2029-03-30,Good Friday,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2029-04-02,Easter Monday,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
@@ -2662,6 +2785,7 @@ XETR,2029-05-01,Labour Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com
 XETR,2029-12-24,Christmas Eve,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2029-12-25,Christmas Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XETR,2029-12-26,Boxing Day,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
+XETR,2029-12-28,Last trading day of the year (shortened) (predicted),early_close,explicit,1,14:05,,true,,https://cashmarket.deutsche-boerse.com/cash-en/trading/trading-calendar-and-trading-hours
 XETR,2029-12-31,New Year's Eve,closed,explicit,1,,,,,https://www.deutsche-boerse.com/en/trading-calendar
 XGSE,2025-01-01,New Year's Day,closed,explicit,1,,,,,https://gse.com.gh/trading-calendar
 XGSE,2025-01-07,Constitution Day,closed,explicit,1,,,,,https://gse.com.gh/trading-calendar

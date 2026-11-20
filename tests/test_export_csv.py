@@ -229,8 +229,9 @@ class TestFormatting:
             values = Counter(r[header.index(column)] for r in rows)
             assert set(values) <= {"true", "false", ""}, values
         predicted = Counter(r[header.index("predicted")] for r in rows)
-        # 243: predicted rows after XSTO (4c-R2/4c-R3 additions).
-        assert predicted["true"] == 243 and predicted["false"] == 73
+        # 246: 243 after XSTO (4c-R2/4c-R3) + XETR's predicted 2027-2029
+        # shortened last trading days (4c8).
+        assert predicted["true"] == 246 and predicted["false"] == 73
 
     def test_dates_times_and_integers_are_plain_text(self):
         checks = {
