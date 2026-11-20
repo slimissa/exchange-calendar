@@ -81,8 +81,11 @@ class TestXBOGProperties:
         assert xbog["timezone"] == "America/Bogota"
 
     def test_regular_hours(self, xbog):
-        assert xbog["regular_hours"]["open"] == "09:30"
-        assert xbog["regular_hours"]["close"] == "15:00"
+        """4c10: kept as one dated entry, unconfirmed (BVC's hours follow New
+        York daylight saving time; no BVC document was read; see the note)."""
+        assert xbog["regular_hours"] == [
+            {"close": "15:00", "effective_from": "2010-01-01", "open": "09:30"}]
+        assert "2010-01-01" in xbog["verification"]["coverage"]["sources"][0]["unconfirmed"]
 
     def test_no_lunch_break(self, xbog):
         lunch = [s for s in xbog.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -93,7 +96,7 @@ class TestXBOGProperties:
 
     def test_generation_range(self, xbog):
         assert "generation_range" in xbog
-        assert xbog["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xbog["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c10 backfill
 
     def test_ad_hoc_closures_empty(self, xbog):
         assert xbog.get("ad_hoc_closures", []) == []
@@ -349,6 +352,9 @@ class TestXBOGStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if date_str < "2025":  # 4c10 backfill cites exchange_calendars
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -374,7 +380,9 @@ class TestXBOGStructure:
         explicit entry), minus the removed, unverifiable early closes.
         84 is the corrected true count for 2025-2029; kept as a range in
         case future years shift this by one or two."""
-        assert 78 <= len(explicit_dates) <= 90, f"Unexpected count: {len(explicit_dates)}"
+        assert len([d for d in explicit_dates if d >= "2025"]) == 87
+        # 4c10 backfill: 253 exchange_calendars closures 2010-2024.
+        assert len([d for d in explicit_dates if d < "2025"]) == 253
 
 
 # ──────────────────────────────────────────────────────────────
