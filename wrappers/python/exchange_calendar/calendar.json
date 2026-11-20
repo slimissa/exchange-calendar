@@ -39684,9 +39684,148 @@
       ]
     },
     {
-      "ad_hoc_closures": [],
+      "ad_hoc_closures": [
+        {
+          "date": "2012-10-01",
+          "name": "ASPA Summit (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        },
+        {
+          "date": "2012-10-02",
+          "name": "ASPA Summit (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        },
+        {
+          "date": "2015-01-02",
+          "name": "National non-working day (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        },
+        {
+          "date": "2015-07-27",
+          "name": "Exchange holiday (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        },
+        {
+          "date": "2015-10-09",
+          "name": "Exchange holiday (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        },
+        {
+          "date": "2016-11-17",
+          "name": "APEC Summit (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        },
+        {
+          "date": "2016-11-18",
+          "name": "APEC Summit (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        },
+        {
+          "date": "2018-04-13",
+          "name": "Eighth Summit of the Americas (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        }
+      ],
       "code": "XLIM",
       "confidence": {
+        "2010": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2011": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2012": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2013": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2014": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2015": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2016": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2017": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2018": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2019": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2020": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2021": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2022": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2023": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2024": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
         "2025": {
           "last_verified": null,
           "level": "medium",
@@ -39721,11 +39860,857 @@
       "extended_hours": {},
       "fetcher_status": "none",
       "generation_range": [
-        "2025-01-01",
+        "2010-01-01",
         "2029-12-31"
       ],
       "holidays": {
         "explicit": [
+          {
+            "date": "2010-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-01",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-02",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-06-29",
+            "name": "Saint Peter and Saint Paul Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-07-28",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-07-29",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-10-08",
+            "name": "Battle of Angamos",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-08",
+            "name": "Immaculate Conception",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-04-21",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-04-22",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-06-29",
+            "name": "Saint Peter and Saint Paul Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-07-28",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-07-29",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-12-08",
+            "name": "Immaculate Conception",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-05",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-06",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-06-29",
+            "name": "Saint Peter and Saint Paul Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-10-08",
+            "name": "Battle of Angamos",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-03-28",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-03-29",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-07-29",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-10-08",
+            "name": "Battle of Angamos",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-04-17",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-04-18",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-07-28",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-07-29",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-10-08",
+            "name": "Battle of Angamos",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-08",
+            "name": "Immaculate Conception",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-02",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-03",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-06-29",
+            "name": "Saint Peter and Saint Paul Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-07-28",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-07-29",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-10-08",
+            "name": "Battle of Angamos",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-08",
+            "name": "Immaculate Conception",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-03-24",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-03-25",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-06-29",
+            "name": "Saint Peter and Saint Paul Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-07-28",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-07-29",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-12-08",
+            "name": "Immaculate Conception",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-13",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-14",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-06-29",
+            "name": "Saint Peter and Saint Paul Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-07-28",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-08",
+            "name": "Immaculate Conception",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-03-29",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-03-30",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-06-29",
+            "name": "Saint Peter and Saint Paul Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-10-08",
+            "name": "Battle of Angamos",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-04-18",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-04-19",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-07-29",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-10-08",
+            "name": "Battle of Angamos",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-09",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-10",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-06-29",
+            "name": "Saint Peter and Saint Paul Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-07-28",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-07-29",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-10-08",
+            "name": "Battle of Angamos",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-08",
+            "name": "Immaculate Conception",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-01",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-02",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-06-29",
+            "name": "Saint Peter and Saint Paul Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-07-28",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-07-29",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-10-08",
+            "name": "Battle of Angamos",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-12-08",
+            "name": "Immaculate Conception",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-14",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-15",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-06-29",
+            "name": "Saint Peter and Saint Paul Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-07-28",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-07-29",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-12-08",
+            "name": "Immaculate Conception",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-12-09",
+            "name": "Battle of Ayacucho",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-06",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-07",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-06-29",
+            "name": "Saint Peter and Saint Paul Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-07-28",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-08",
+            "name": "Immaculate Conception",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-03-28",
+            "name": "Maundy Thursday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-03-29",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-06-07",
+            "name": "Battle of Arica and Flag Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-07-23",
+            "name": "Peruvian Air Force Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-07-29",
+            "name": "Independence Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-08-06",
+            "name": "Battle of Junín",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-08-30",
+            "name": "Santa Rosa",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-10-08",
+            "name": "Battle of Angamos",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-11-01",
+            "name": "All Saints Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-09",
+            "name": "Battle of Ayacucho",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
           {
             "date": "2025-01-01",
             "name": "New Year's Day",
@@ -40165,10 +41150,14 @@
       },
       "mic": "XLIM",
       "name": "Lima Stock Exchange",
-      "regular_hours": {
-        "close": "13:30",
-        "open": "09:00"
-      },
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified): 141 recurring closures (all named), no early closes, and 8 one-off closures moved to ad_hoc_closures (lesson 13): 1-2 October 2012 (ASPA summit), 2 January 2015 (national non-working day), 27 July 2015 and 9 October 2015 (exchange holidays), 17-18 November 2016 (APEC summit) and 13 April 2018 (Eighth Summit of the Americas), named from exchange_calendars' source comments and marked unconfirmed (no BVL notice was read). Holiday creation dates checked against the laws: Battle of Ayacucho (9 December) by Law 31381, published 31 December 2021 (https://leyes.congreso.gob.pe/Documentos/2021_2026/ADLP/Texto_Consolidado/31381-TXM.pdf), first applied 2022; Battle of Arica and Flag Day (7 June) by Law 31788, published 15 June 2023 (https://leyes.congreso.gob.pe/Documentos/2021_2026/ADLP/Texto_Consolidado/31788-TXM.pdf, which also lists the current art. 6 holidays incl. Battle of Junín, 6 August, from Law 31530 of 26 July 2022), first applied 2024. exchange_calendars starts each of them at or after its law (Junín and Flag Day first fall on a weekday in 2024; the 23 July Air Force day first falls on a weekday in 2024 too), so nothing is removed. Corrections: 0. 2025-2026: exchange_calendars + exchange_publications. 2027-2029: standing pattern. Checked 2026-11-20 (4c10). Last published year: BVL's own calendar (https://www.bvl.com.pe/calendario) and trading-hours pages could not be fetched from this sandbox (searches return only press and aggregators), so the 2025-2026 entries were not compared again and the span's first day is marked unconfirmed. Hours (lead, not changed): the registry has 09:00-13:30 with a 13:30-14:30 lunch_break session, while exchange_calendars has 09:00-16:00 (America/Lima) with no break; press (Gestión, March 2025) reports a nuam proposal to change BVL's schedule. No BVL document was read, so the close (ADR 0013) is not established: regular_hours is kept as one dated entry from 2010-01-01, unconfirmed.",
+      "regular_hours": [
+        {
+          "close": "13:30",
+          "effective_from": "2010-01-01",
+          "open": "09:00"
+        }
+      ],
       "sessions": [
         {
           "close": "13:30",
@@ -40185,6 +41174,45 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
+        "coverage": {
+          "from": "2010-01-01",
+          "ranges": [
+            "trading_days"
+          ],
+          "sources": [
+            {
+              "from": "2010-01-01",
+              "sampled": null,
+              "source": "exchange_calendars",
+              "to": "2024-12-31",
+              "unconfirmed": [
+                "2010-01-01",
+                "2012-10-01",
+                "2012-10-02",
+                "2015-01-02",
+                "2015-07-27",
+                "2015-10-09",
+                "2016-11-17",
+                "2016-11-18",
+                "2018-04-13"
+              ]
+            },
+            {
+              "from": "2025-01-01",
+              "source": "exchange_calendars + exchange_publications (BVL calendar page, not re-read in 4c10)",
+              "to": "2026-12-31",
+              "unconfirmed": [
+                "2025-01-01"
+              ]
+            },
+            {
+              "from": "2027-01-01",
+              "source": "exchange_calendars + standing Peruvian holiday pattern (Legislative Decree 713, art. 6)",
+              "to": "2029-12-31"
+            }
+          ],
+          "to": "2029-12-31"
+        },
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

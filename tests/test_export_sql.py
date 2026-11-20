@@ -274,11 +274,28 @@ class TestAdHocClosures:
     """Empty today (0 rows). A synthetic insert covers its PK, FK and CHECKs."""
 
     def test_table_holds_exactly_the_live_rows(self, sqlite_base):
-        """Live since 4c10 (was empty): XTAI's two 2026 typhoon closures."""
+        """Live since 4c10 (was empty): XLIM's eight 2012-2018 one-off
+        closures (backfill) and XTAI's two 2026 typhoon closures."""
         rows = sqlite_base.execute(
             "SELECT exchange_code, date, seq, name, status, early_close_time, source_url "
             "FROM ad_hoc_closures ORDER BY exchange_code, date").fetchall()
         assert rows == [
+            ("XLIM", "2012-10-01", 1, "ASPA Summit (exchange_calendars ad hoc)", "closed", None,
+             "https://github.com/gerrymanoim/exchange_calendars"),
+            ("XLIM", "2012-10-02", 1, "ASPA Summit (exchange_calendars ad hoc)", "closed", None,
+             "https://github.com/gerrymanoim/exchange_calendars"),
+            ("XLIM", "2015-01-02", 1, "National non-working day (exchange_calendars ad hoc)", "closed", None,
+             "https://github.com/gerrymanoim/exchange_calendars"),
+            ("XLIM", "2015-07-27", 1, "Exchange holiday (exchange_calendars ad hoc)", "closed", None,
+             "https://github.com/gerrymanoim/exchange_calendars"),
+            ("XLIM", "2015-10-09", 1, "Exchange holiday (exchange_calendars ad hoc)", "closed", None,
+             "https://github.com/gerrymanoim/exchange_calendars"),
+            ("XLIM", "2016-11-17", 1, "APEC Summit (exchange_calendars ad hoc)", "closed", None,
+             "https://github.com/gerrymanoim/exchange_calendars"),
+            ("XLIM", "2016-11-18", 1, "APEC Summit (exchange_calendars ad hoc)", "closed", None,
+             "https://github.com/gerrymanoim/exchange_calendars"),
+            ("XLIM", "2018-04-13", 1, "Eighth Summit of the Americas (exchange_calendars ad hoc)", "closed", None,
+             "https://github.com/gerrymanoim/exchange_calendars"),
             ("XTAI", "2026-07-10", 1, "Typhoon Bavi (Taipei work suspension)", "closed", None,
              "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"),
             ("XTAI", "2026-10-23", 1, "Typhoon Champi (Taipei work suspension)", "closed", None,
@@ -287,8 +304,8 @@ class TestAdHocClosures:
 
     def test_valid_row_accepted(self, db):
         db.execute(AD_HOC_SQL, AD_HOC_OK)
-        # 4c10: 2 live XTAI rows + the 1 inserted here.
-        assert db.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == 3
+        # 4c10: 10 live rows (XLIM 8, XTAI 2) + the 1 inserted here.
+        assert db.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == 11
 
     def test_primary_key_rejects_duplicate_and_allows_next_seq(self, db):
         db.execute(AD_HOC_SQL, AD_HOC_OK)
@@ -399,14 +416,15 @@ class TestCrossDialect:
             assert from_ast[table] == executed, f"{name}: {table}"
 
     def test_ad_hoc_closures_is_compared_across_dialects(self, parsed, sqlite_base):
-        """Live since 4c10 (was empty): every dialect inserts the same two
-        XTAI rows, and SQLite stores exactly two."""
+        """Live since 4c10 (was empty): every dialect inserts the same ten
+        rows (XLIM 8, XTAI 2), and SQLite stores exactly ten."""
         first = _insert_rows(parsed[next(iter(PARSE_DIALECTS))])["ad_hoc_closures"]
-        assert sum(first.values()) == 2
-        assert sorted(v[1] for (cols, v) in first) == ["2026-07-10", "2026-10-23"]
+        assert sum(first.values()) == 10
+        assert sorted(v[1] for (cols, v) in first) == ["2012-10-01", "2012-10-02", "2015-01-02", "2015-07-27", "2015-10-09", "2016-11-17", "2016-11-18", "2018-04-13",
+                                                       "2026-07-10", "2026-10-23"]
         for name in PARSE_DIALECTS:
             assert _insert_rows(parsed[name])["ad_hoc_closures"] == first, name
-        assert sqlite_base.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == 2
+        assert sqlite_base.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == 10
 
 
 def export_sql_cols(table):
@@ -742,6 +760,7 @@ class TestGuards:
         first = _exchange(registry, "XNYS")["holidays"]["explicit"][0]["date"]
         seqs = sorted(r[5] for r in tables["holidays"] if r[0] == "XNYS" and r[1] == first and r[4] == "explicit")
         assert seqs == [1, 2]
-        # 4c10: XTAI's two live rows (seq 1 each) follow the XNYS duplicates.
-        assert [(r[0], r[2]) for r in tables["ad_hoc_closures"]] == [
+        # 4c10: XLIM's eight live rows (seq 1 each) precede the XNYS
+        # duplicates, and XTAI's two live rows (seq 1 each) follow them.
+        assert [(r[0], r[2]) for r in tables["ad_hoc_closures"]] == [("XLIM", 1)] * 8 + [
             ("XNYS", 1), ("XNYS", 2), ("XTAI", 1), ("XTAI", 1)]

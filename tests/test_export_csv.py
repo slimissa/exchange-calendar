@@ -198,10 +198,19 @@ class TestRoundTrip:
         assert _parse(table, "rfc")[1:] == want
 
     def test_ad_hoc_closures_files_are_a_header_and_the_live_rows(self):
-        """ad_hoc_closures is live since 4c10: exactly XTAI's two 2026 typhoon
-        closures follow the header (was header-only)."""
+        """ad_hoc_closures is live since 4c10: exactly XLIM's eight 2012-2018
+        one-off closures (backfill) and XTAI's two 2026 typhoon closures follow
+        the header (was header-only)."""
         header = _adr_columns()["ad_hoc_closures"]
         rows = [
+            ["XLIM", "2012-10-01", "1", "ASPA Summit (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
+            ["XLIM", "2012-10-02", "1", "ASPA Summit (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
+            ["XLIM", "2015-01-02", "1", "National non-working day (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
+            ["XLIM", "2015-07-27", "1", "Exchange holiday (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
+            ["XLIM", "2015-10-09", "1", "Exchange holiday (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
+            ["XLIM", "2016-11-17", "1", "APEC Summit (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
+            ["XLIM", "2016-11-18", "1", "APEC Summit (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
+            ["XLIM", "2018-04-13", "1", "Eighth Summit of the Americas (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
             ["XTAI", "2026-07-10", "1", "Typhoon Bavi (Taipei work suspension)", "closed", "", "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"],
             ["XTAI", "2026-10-23", "1", "Typhoon Champi (Taipei work suspension)", "closed", "", "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"],
         ]

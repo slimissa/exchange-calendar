@@ -1,3 +1,11 @@
 exchange_code	date	seq	name	status	early_close_time	source_url
+XLIM	2012-10-01	1	ASPA Summit (exchange_calendars ad hoc)	closed		https://github.com/gerrymanoim/exchange_calendars
+XLIM	2012-10-02	1	ASPA Summit (exchange_calendars ad hoc)	closed		https://github.com/gerrymanoim/exchange_calendars
+XLIM	2015-01-02	1	National non-working day (exchange_calendars ad hoc)	closed		https://github.com/gerrymanoim/exchange_calendars
+XLIM	2015-07-27	1	Exchange holiday (exchange_calendars ad hoc)	closed		https://github.com/gerrymanoim/exchange_calendars
+XLIM	2015-10-09	1	Exchange holiday (exchange_calendars ad hoc)	closed		https://github.com/gerrymanoim/exchange_calendars
+XLIM	2016-11-17	1	APEC Summit (exchange_calendars ad hoc)	closed		https://github.com/gerrymanoim/exchange_calendars
+XLIM	2016-11-18	1	APEC Summit (exchange_calendars ad hoc)	closed		https://github.com/gerrymanoim/exchange_calendars
+XLIM	2018-04-13	1	Eighth Summit of the Americas (exchange_calendars ad hoc)	closed		https://github.com/gerrymanoim/exchange_calendars
 XTAI	2026-07-10	1	Typhoon Bavi (Taipei work suspension)	closed		https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB
 XTAI	2026-10-23	1	Typhoon Champi (Taipei work suspension)	closed		https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB

@@ -63,8 +63,11 @@ class TestXLIMProperties:
         assert xlim["timezone"] == "America/Lima"
 
     def test_regular_hours(self, xlim):
-        assert xlim["regular_hours"]["open"] == "09:00"
-        assert xlim["regular_hours"]["close"] == "13:30"
+        """4c10: kept as one dated entry, unconfirmed (exchange_calendars has
+        09:00-16:00 with no break; no BVL document was read; see the note)."""
+        assert xlim["regular_hours"] == [
+            {"close": "13:30", "effective_from": "2010-01-01", "open": "09:00"}]
+        assert "2010-01-01" in xlim["verification"]["coverage"]["sources"][0]["unconfirmed"]
 
     def test_lunch_break(self, xlim):
         lunch = [s for s in xlim.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -77,10 +80,17 @@ class TestXLIMProperties:
 
     def test_generation_range(self, xlim):
         assert "generation_range" in xlim
-        assert xlim["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xlim["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c10 backfill
 
-    def test_ad_hoc_closures_empty(self, xlim):
-        assert xlim.get("ad_hoc_closures", []) == []
+    def test_ad_hoc_closures_are_the_backfill_one_offs(self, xlim):
+        """4c10: exchange_calendars' eight 2012-2018 one-off closures (summits,
+        exchange holidays, a national non-working day), each unconfirmed."""
+        dates = [c["date"] for c in xlim["ad_hoc_closures"]]
+        assert dates == ["2012-10-01", "2012-10-02", "2015-01-02", "2015-07-27",
+                         "2015-10-09", "2016-11-17", "2016-11-18", "2018-04-13"]
+        assert {c["status"] for c in xlim["ad_hoc_closures"]} == {"closed"}
+        unconfirmed = set(xlim["verification"]["coverage"]["sources"][0]["unconfirmed"])
+        assert set(dates) <= unconfirmed
 
     def test_no_recurrence_rules(self, xlim):
         """Peru uses explicit dates only."""
@@ -323,6 +333,9 @@ class TestXLIMStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if date_str < "2025":  # 4c10 backfill cites exchange_calendars
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -343,11 +356,16 @@ class TestXLIMStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~75-90 entries: 17 holidays × 5 years."""
-        assert 70 <= len(explicit_dates) <= 95, f"Unexpected count: {len(explicit_dates)}"
+        """Scoped to 2025-2029: 71 (unchanged by 4c10). 2010-2024 backfill:
+        149 exchange_calendars closures less the 8 one-offs moved to
+        ad_hoc_closures = 141."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 71
+        assert len([d for d in explicit_dates if d < "2025"]) == 141
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
+        for d, entry in explicit_dates.items():
+            if d < "2025":
+                continue  # 4c10 backfill cites exchange_calendars
             assert "bvl.com.pe" in entry["source_url"]
 
 
