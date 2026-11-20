@@ -64,8 +64,10 @@ class TestXLUXProperties:
         assert xlux["timezone"] == "Europe/Luxembourg"
 
     def test_regular_hours(self, xlux):
-        assert xlux["regular_hours"]["open"] == "09:00"
-        assert xlux["regular_hours"]["close"] == "17:30"
+        """4c9, ADR 0013: LuxSE's closing call is 17:30-17:35 (then trading
+        at last 17:35-17:40), so the close is 17:35."""
+        assert xlux["regular_hours"] == [
+            {"close": "17:35", "effective_from": "2010-01-01", "open": "09:00"}]
 
     def test_no_lunch_break(self, xlux):
         lunch = [s for s in xlux.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -76,7 +78,7 @@ class TestXLUXProperties:
 
     def test_generation_range(self, xlux):
         assert "generation_range" in xlux
-        assert xlux["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xlux["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c9 backfill
 
     def test_ad_hoc_closures_empty(self, xlux):
         assert xlux.get("ad_hoc_closures", []) == []
@@ -235,6 +237,9 @@ class TestXLUXStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if date_str < "2025":  # 4c9 backfill cites exchange_calendars
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -264,11 +269,17 @@ class TestXLUXStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~30-40 entries: closing days and early closes for 2025-2029."""
-        assert 28 <= len(explicit_dates) <= 45, f"Unexpected count: {len(explicit_dates)}"
+        """Scoped to 2025-2029: 33 (unchanged by 4c9). 2010-2024 backfill:
+        71 closures + 20 early closes at 14:05 = 91."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 33
+        old = {d: e for d, e in explicit_dates.items() if d < "2025"}
+        assert len(old) == 91
+        assert {e["early_close_time"] for e in old.values() if e["status"] == "early_close"} == {"14:05"}
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
+        for d, entry in explicit_dates.items():
+            if d < "2025":
+                continue  # 4c9 backfill cites exchange_calendars
             assert any(host in entry["source_url"]
                        for host in ("bourse.lu", "luxse.com", "euronext.com"))
 

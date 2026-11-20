@@ -42746,6 +42746,96 @@
       "ad_hoc_closures": [],
       "code": "XLUX",
       "confidence": {
+        "2010": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2011": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2012": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2013": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2014": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2015": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2016": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2017": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2018": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2019": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2020": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2021": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2022": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2023": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2024": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
         "2025": {
           "last_verified": null,
           "level": "medium",
@@ -42780,11 +42870,577 @@
       "extended_hours": {},
       "fetcher_status": "implemented",
       "generation_range": [
-        "2025-01-01",
+        "2010-01-01",
         "2029-12-31"
       ],
       "holidays": {
         "explicit": [
+          {
+            "date": "2010-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-02",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-05",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-24",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2010-12-31",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2011-04-22",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-04-25",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-06",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-09",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-24",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2012-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-31",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2013-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-03-29",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-04-01",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-24",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2013-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-31",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2014-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-04-18",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-04-21",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-24",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2014-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-31",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2015-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-03",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-06",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-24",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2015-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-31",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2016-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-03-25",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-03-28",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-14",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-17",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-03-30",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-04-02",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-24",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2018-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-31",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2019-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-04-19",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-04-22",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-24",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2019-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-31",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2020-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-10",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-13",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-24",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2020-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-31",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2021-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-02",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-05",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-12-24",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2021-12-31",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2022-04-15",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-18",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-07",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-10",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-03-29",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-04-01",
+            "name": "Easter Monday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-24",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2024-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-31",
+            "early_close_time": "14:05",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
           {
             "date": "2025-01-01",
             "name": "New Year's Day",
@@ -42863,20 +43519,20 @@
             "date": "2026-12-24",
             "early_close_time": "14:05",
             "name": "Christmas Eve (early close)",
-            "source_url": "https://www.luxse.com/trading/opening-hours-and-closing-days",
+            "source_url": "https://luxse.com/trading/opening-hours-and-closing-days",
             "status": "early_close"
           },
           {
             "date": "2026-12-25",
             "name": "Christmas Day",
-            "source_url": "https://www.bourse.lu/trading-calendar",
+            "source_url": "https://luxse.com/trading/opening-hours-and-closing-days",
             "status": "closed"
           },
           {
             "date": "2026-12-31",
             "early_close_time": "14:05",
             "name": "New Year's Eve (early close)",
-            "source_url": "https://www.luxse.com/trading/opening-hours-and-closing-days",
+            "source_url": "https://luxse.com/trading/opening-hours-and-closing-days",
             "status": "early_close"
           },
           {
@@ -42996,13 +43652,17 @@
       },
       "mic": "XLUX",
       "name": "Luxembourg Stock Exchange",
-      "regular_hours": {
-        "close": "17:30",
-        "open": "09:00"
-      },
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified): 71 closures (all named) and 20 early closes at 14:05 on 24 and 31 December (exchange_calendars' value, the same as LuxSE's stated early close). 2025-2026: exchange_calendars + exchange_publications. 2027-2029: standing pattern. Checked 2026-11-20 (4c9). Last published year: LuxSE's 'Opening hours, closing days and market status' page (https://luxse.com/trading/opening-hours-and-closing-days) shows only 2026: closing day Friday 25 December; Tuesday 23 June (National Day) open with duty teams; 24 and 31 December 2026 'the trading sessions will close at 14h05 CET'. The registry matches (the three entries now cite the page). 2027 is not yet published by LuxSE, so 2027 joins the standing-pattern span. Close (ADR 0013): the same page gives pre-opening (call) 07:30-09:00, continuous trading 09:00-17:30, closing phase (call) 17:30-17:35, trading at last 17:35-17:40 and an after-market call 17:40-18:00. The close is the end of the closing call, 17:35 (was 17:30, the end of continuous trading; exchange_calendars has 17:40, the end of trading at last), as one dated entry from 2010-01-01 (unconfirmed: no earlier LuxSE schedule was read). Trading at last and the after-market phase are not modelled. Early closes: 14:05 on 24 and 31 December (when weekdays) is LuxSE's own stated time for 2026 and exchange_calendars' value for 2010-2024; no change.",
+      "regular_hours": [
+        {
+          "close": "17:35",
+          "effective_from": "2010-01-01",
+          "open": "09:00"
+        }
+      ],
       "sessions": [
         {
-          "close": "17:30",
+          "close": "17:35",
           "open": "09:00",
           "type": "regular"
         }
@@ -43011,6 +43671,34 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
+        "coverage": {
+          "from": "2010-01-01",
+          "ranges": [
+            "trading_days"
+          ],
+          "sources": [
+            {
+              "from": "2010-01-01",
+              "sampled": null,
+              "source": "exchange_calendars",
+              "to": "2024-12-31",
+              "unconfirmed": [
+                "2010-01-01"
+              ]
+            },
+            {
+              "from": "2025-01-01",
+              "source": "exchange_calendars + exchange_publications (LuxSE opening hours and closing days page)",
+              "to": "2026-12-31"
+            },
+            {
+              "from": "2027-01-01",
+              "source": "exchange_calendars + standing LuxSE pattern (LuxSE's page shows 2026 only)",
+              "to": "2029-12-31"
+            }
+          ],
+          "to": "2029-12-31"
+        },
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
