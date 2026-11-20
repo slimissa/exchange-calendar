@@ -246,10 +246,10 @@ class TestRoundTrip:
 
     def test_ad_hoc_closures_ships_the_live_rows_and_its_schema(self):
         """ad_hoc_closures is live since 4c10 (was zero rows): XLIM's eight
-        2012-2018 one-off closures (backfill) and XTAI's two 2026 typhoon
-        closures."""
+        and XSGO's six one-off closures (backfill) and XTAI's two 2026
+        typhoon closures."""
         parquet = _read("ad_hoc_closures")
-        assert parquet.num_rows == 10
+        assert parquet.num_rows == 16
         assert parquet.schema.names == _adr_columns()["ad_hoc_closures"]
         assert parquet.to_pylist() == [
             {"exchange_code": "XLIM", "date": datetime.date(2012, 10, 1), "seq": 1,
@@ -276,6 +276,24 @@ class TestRoundTrip:
             {"exchange_code": "XLIM", "date": datetime.date(2018, 4, 13), "seq": 1,
              "name": "Eighth Summit of the Americas (exchange_calendars ad hoc)", "status": "closed",
              "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
+            {"exchange_code": "XSGO", "date": datetime.date(2010, 9, 17), "seq": 1,
+             "name": "Bicentennial celebration (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
+            {"exchange_code": "XSGO", "date": datetime.date(2010, 9, 20), "seq": 1,
+             "name": "Bicentennial celebration (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
+            {"exchange_code": "XSGO", "date": datetime.date(2017, 1, 2), "seq": 1,
+             "name": "New Year's Day observed (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
+            {"exchange_code": "XSGO", "date": datetime.date(2017, 4, 19), "seq": 1,
+             "name": "Census Day (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
+            {"exchange_code": "XSGO", "date": datetime.date(2018, 1, 16), "seq": 1,
+             "name": "Papal visit (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
+            {"exchange_code": "XSGO", "date": datetime.date(2022, 9, 16), "seq": 1,
+             "name": "National Day bridge holiday (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
             {"exchange_code": "XTAI", "date": datetime.date(2026, 7, 10), "seq": 1,
              "name": "Typhoon Bavi (Taipei work suspension)", "status": "closed",
              "early_close_time": None, "source_url": "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"},
@@ -292,7 +310,7 @@ class TestRoundTrip:
         tables, files = export_parquet.generate(reg)
         back = pq.read_table(io.BytesIO(files["exchange_calendar.ad_hoc_closures.parquet"]))
         # 4c10: rows sort by exchange code: XLIM's eight live rows, the
-        # injected XNYS row, then XTAI's two live rows.
+        # injected XNYS row, XSGO's six, then XTAI's two live rows.
         assert back.to_pylist() == [
             {"exchange_code": "XLIM", "date": datetime.date(2012, 10, 1), "seq": 1,
              "name": "ASPA Summit (exchange_calendars ad hoc)", "status": "closed",
@@ -323,6 +341,24 @@ class TestRoundTrip:
             "name": "Test closure", "status": "closed", "early_close_time": None,
             "source_url": "https://e.org/x",
         }] + [
+            {"exchange_code": "XSGO", "date": datetime.date(2010, 9, 17), "seq": 1,
+             "name": "Bicentennial celebration (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
+            {"exchange_code": "XSGO", "date": datetime.date(2010, 9, 20), "seq": 1,
+             "name": "Bicentennial celebration (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
+            {"exchange_code": "XSGO", "date": datetime.date(2017, 1, 2), "seq": 1,
+             "name": "New Year's Day observed (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
+            {"exchange_code": "XSGO", "date": datetime.date(2017, 4, 19), "seq": 1,
+             "name": "Census Day (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
+            {"exchange_code": "XSGO", "date": datetime.date(2018, 1, 16), "seq": 1,
+             "name": "Papal visit (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
+            {"exchange_code": "XSGO", "date": datetime.date(2022, 9, 16), "seq": 1,
+             "name": "National Day bridge holiday (exchange_calendars ad hoc)", "status": "closed",
+             "early_close_time": None, "source_url": "https://github.com/gerrymanoim/exchange_calendars"},
             {"exchange_code": "XTAI", "date": datetime.date(2026, 7, 10), "seq": 1,
              "name": "Typhoon Bavi (Taipei work suspension)", "status": "closed",
              "early_close_time": None, "source_url": "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"},

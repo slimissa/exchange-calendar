@@ -69,8 +69,12 @@ class TestXSGOProperties:
         assert xsgo["timezone"] == "America/Santiago"
 
     def test_regular_hours(self, xsgo):
-        assert xsgo["regular_hours"]["open"] == "09:30"
-        assert xsgo["regular_hours"]["close"] == "16:00"
+        """4c10: kept as one dated entry, unconfirmed (exchange_calendars has
+        a 16:00 winter / 17:00 summer close; no Bolsa de Santiago schedule
+        was read; see the note)."""
+        assert xsgo["regular_hours"] == [
+            {"close": "16:00", "effective_from": "2010-01-01", "open": "09:30"}]
+        assert "2010-01-01" in xsgo["verification"]["coverage"]["sources"][0]["unconfirmed"]
 
     def test_lunch_break(self, xsgo):
         lunch = [s for s in xsgo.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -83,10 +87,17 @@ class TestXSGOProperties:
 
     def test_generation_range(self, xsgo):
         assert "generation_range" in xsgo
-        assert xsgo["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xsgo["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c10 backfill
 
-    def test_ad_hoc_closures_empty(self, xsgo):
-        assert xsgo.get("ad_hoc_closures", []) == []
+    def test_ad_hoc_closures_are_the_backfill_one_offs(self, xsgo):
+        """4c10: exchange_calendars' six 2010-2022 one-off closures, each
+        unconfirmed."""
+        dates = [c["date"] for c in xsgo["ad_hoc_closures"]]
+        assert dates == ["2010-09-17", "2010-09-20", "2017-01-02", "2017-04-19",
+                         "2018-01-16", "2022-09-16"]
+        assert {c["status"] for c in xsgo["ad_hoc_closures"]} == {"closed"}
+        unconfirmed = set(xsgo["verification"]["coverage"]["sources"][0]["unconfirmed"])
+        assert set(dates) <= unconfirmed
 
 
 # ──────────────────────────────────────────────────────────────
@@ -232,18 +243,31 @@ class TestXSGOChristmas:
 
 class TestXSGOEarlyCloses:
     def test_no_other_early_closes(self, explicit_dates):
-        """Only Christmas Eve and the last trading day of 2025 are early closes
-        (31 December is a closure)."""
-        early_closes = [e for e in explicit_dates.values() if e.get("status") == "early_close"]
+        """Scoped to 2025-2029: only Christmas Eve and the last trading day of
+        2025 are early closes (31 December is a closure)."""
+        early_closes = [e for d, e in explicit_dates.items()
+                        if e.get("status") == "early_close" and d >= "2025"]
         early_close_names = {e["name"] for e in early_closes}
         assert early_close_names == {"Christmas Eve",
                                      "Last Trading Day of the Year (early close)"}
 
     def test_all_early_closes_have_early_close_time(self, explicit_dates):
-        for entry in explicit_dates.values():
+        for d, entry in explicit_dates.items():
             if entry.get("status") == "early_close":
                 assert "early_close_time" in entry
-                assert entry["early_close_time"] == "13:00"
+                if d >= "2025":
+                    assert entry["early_close_time"] == "13:00"
+
+    def test_backfill_early_closes_keep_exchange_calendars_times(self, explicit_dates):
+        """4c10: 43 early closes 2010-2024 at exchange_calendars' times, 21 at
+        12:30 (24/30 December) and 22 at 13:30 (Maundy Thursday, 17 September)."""
+        early = {d: e["early_close_time"] for d, e in explicit_dates.items()
+                 if d < "2025" and e.get("status") == "early_close"}
+        assert len(early) == 43
+        assert sorted(d for d, t in early.items() if t == "12:30") == sorted(
+            d for d in early if d[5:] in ("12-24", "12-30"))
+        assert sum(1 for t in early.values() if t == "12:30") == 21
+        assert sum(1 for t in early.values() if t == "13:30") == 22
 
     def test_closed_entries_no_early_close_time(self, explicit_dates):
         for entry in explicit_dates.values():
@@ -354,6 +378,9 @@ class TestXSGOStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if date_str < "2025":  # 4c10 backfill cites exchange_calendars
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -374,11 +401,16 @@ class TestXSGOStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~65-80 entries: 15 holidays × 5 years (minus weekends, plus substitutes)."""
-        assert 60 <= len(explicit_dates) <= 80, f"Unexpected count: {len(explicit_dates)}"
+        """Scoped to 2025-2029: 65 (unchanged by 4c10). 2010-2024 backfill:
+        171 closures + 43 early closes = 214 (the six one-offs are in
+        ad_hoc_closures)."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 65
+        assert len([d for d in explicit_dates if d < "2025"]) == 214
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
+            if entry["date"] < "2025":
+                continue  # 4c10 backfill cites exchange_calendars
             assert entry["source_url"].startswith("https://")
             if entry["date"] <= "2026-12-31":
                 assert "bolsadesantiago.com" in entry["source_url"]

@@ -9815,6 +9815,220 @@ XSES	2029-11-05	Deepavali	closed	explicit	1					https://www.sgx.com/trading/trad
 XSES	2029-12-24	Christmas Eve (predicted)	early_close	explicit	1	12:06		true		https://www.sgx.com/trading/trading-hours
 XSES	2029-12-25	Christmas Day	closed	explicit	1					https://www.sgx.com/trading/trading-hours
 XSES	2029-12-31	New Year's Eve (predicted)	early_close	explicit	1	12:06		true		https://www.sgx.com/trading/trading-hours
+XSGO	2010-01-01	New Year's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2010-04-01	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2010-04-02	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2010-05-21	Navy Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2010-06-28	Saint Peter and Saint Paul Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2010-07-16	Our Lady of Mount Carmel's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2010-10-11	Dia de la Raza	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2010-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2010-12-08	Immaculate Conception	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2010-12-24	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2010-12-30	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2010-12-31	New Year's Eve	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2011-04-21	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2011-04-22	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2011-06-27	Saint Peter and Saint Paul Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2011-08-15	Assumption Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2011-09-19	Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2011-10-10	Dia de la Raza	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2011-10-31	Evangelical Church Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2011-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2011-12-08	Immaculate Conception	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2011-12-30	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2012-04-05	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2012-04-06	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-05-01	Labour Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-05-21	Navy Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-07-02	Saint Peter and Saint Paul Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-07-16	Our Lady of Mount Carmel's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-08-15	Assumption Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-09-17	Public Holiday Preceeding a Tuesday Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-09-18	Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-09-19	Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-10-15	Dia de la Raza	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-11-02	Evangelical Church Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-12-24	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2012-12-25	Christmas	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2012-12-31	New Year's Eve	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-01-01	New Year's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-03-28	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2013-03-29	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-05-01	Labour Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-05-21	Navy Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-07-16	Our Lady of Mount Carmel's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-08-15	Assumption Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-09-17	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2013-09-18	Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-09-19	Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-09-20	Public Holiday Following a Thursday Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-10-31	Evangelical Church Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-12-24	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2013-12-25	Christmas	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2013-12-30	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2013-12-31	New Year's Eve	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-01-01	New Year's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-04-17	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2014-04-18	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-05-01	Labour Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-05-21	Navy Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-07-16	Our Lady of Mount Carmel's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-08-15	Assumption Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-09-17	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2014-09-18	Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-09-19	Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-10-31	Evangelical Church Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-12-08	Immaculate Conception	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-12-24	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2014-12-25	Christmas	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2014-12-30	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2014-12-31	New Year's Eve	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2015-01-01	New Year's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2015-04-02	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2015-04-03	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2015-05-01	Labour Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2015-05-21	Navy Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2015-06-29	Saint Peter and Saint Paul Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2015-07-16	Our Lady of Mount Carmel's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2015-09-17	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2015-09-18	Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2015-10-12	Dia de la Raza	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2015-12-08	Immaculate Conception	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2015-12-24	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2015-12-25	Christmas	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2015-12-30	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2015-12-31	New Year's Eve	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2016-01-01	New Year's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2016-03-24	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2016-03-25	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2016-06-27	Saint Peter and Saint Paul Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2016-08-15	Assumption Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2016-09-19	Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2016-10-10	Dia de la Raza	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2016-10-31	Evangelical Church Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2016-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2016-12-08	Immaculate Conception	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2016-12-30	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2017-04-13	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2017-04-14	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2017-05-01	Labour Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2017-06-26	Saint Peter and Saint Paul Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2017-08-15	Assumption Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2017-09-18	Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2017-09-19	Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2017-10-09	Dia de la Raza	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2017-10-27	Evangelical Church Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2017-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2017-12-08	Immaculate Conception	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2017-12-25	Christmas	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-01-01	New Year's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-03-29	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2018-03-30	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-05-01	Labour Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-05-21	Navy Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-07-02	Saint Peter and Saint Paul Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-07-16	Our Lady of Mount Carmel's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-08-15	Assumption Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-09-17	Public Holiday Preceeding a Tuesday Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-09-18	Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-09-19	Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-10-15	Dia de la Raza	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-11-02	Evangelical Church Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-12-24	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2018-12-25	Christmas	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2018-12-31	New Year's Eve	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-01-01	New Year's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-04-18	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2019-04-19	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-05-01	Labour Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-05-21	Navy Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-07-16	Our Lady of Mount Carmel's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-08-15	Assumption Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-09-17	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2019-09-18	Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-09-19	Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-09-20	Public Holiday Following a Thursday Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-10-31	Evangelical Church Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-12-24	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2019-12-25	Christmas	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2019-12-30	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2019-12-31	New Year's Eve	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2020-01-01	New Year's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2020-04-09	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2020-04-10	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2020-05-01	Labour Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2020-05-21	Navy Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2020-06-29	Saint Peter and Saint Paul Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2020-07-16	Our Lady of Mount Carmel's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2020-09-17	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2020-09-18	Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2020-10-12	Dia de la Raza	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2020-12-08	Immaculate Conception	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2020-12-24	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2020-12-25	Christmas	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2020-12-30	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2020-12-31	New Year's Eve	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2021-01-01	New Year's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2021-04-01	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2021-04-02	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2021-05-21	Navy Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2021-06-21	National Day of Indigenous Peoples	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2021-06-28	Saint Peter and Saint Paul Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2021-07-16	Our Lady of Mount Carmel's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2021-09-17	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2021-10-11	Dia de la Raza	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2021-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2021-12-08	Immaculate Conception	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2021-12-24	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2021-12-30	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2021-12-31	New Year's Eve	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2022-04-14	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2022-04-15	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2022-06-21	National Day of Indigenous Peoples	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2022-06-27	Saint Peter and Saint Paul Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2022-08-15	Assumption Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2022-09-19	Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2022-10-10	Dia de la Raza	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2022-10-31	Evangelical Church Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2022-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2022-12-08	Immaculate Conception	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2022-12-30	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2023-04-06	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2023-04-07	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2023-05-01	Labour Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2023-06-21	National Day of Indigenous Peoples	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2023-06-26	Saint Peter and Saint Paul Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2023-08-15	Assumption Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2023-09-18	Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2023-09-19	Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2023-10-09	Dia de la Raza	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2023-10-27	Evangelical Church Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2023-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2023-12-08	Immaculate Conception	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2023-12-25	Christmas	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-01-01	New Year's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-03-28	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2024-03-29	Good Friday	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-05-01	Labour Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-05-21	Navy Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-06-20	National Day of Indigenous Peoples	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-07-16	Our Lady of Mount Carmel's Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-08-15	Assumption Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-09-17	Historical Early Close	early_close	explicit	1	13:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2024-09-18	Independence Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-09-19	Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-09-20	Public Holiday Following a Thursday Army Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-10-31	Evangelical Church Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-11-01	All Saints Day	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-12-24	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2024-12-25	Christmas	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
+XSGO	2024-12-30	Historical Early Close	early_close	explicit	1	12:30				github.com/gerrymanoim/exchange_calendars
+XSGO	2024-12-31	New Year's Eve	closed	explicit	1					github.com/gerrymanoim/exchange_calendars
 XSGO	2025-01-01	New Year's Day	closed	explicit	1					https://www.bolsadesantiago.com/horarios
 XSGO	2025-04-18	Good Friday	closed	explicit	1					https://www.bolsadesantiago.com/horarios
 XSGO	2025-05-01	Labour Day	closed	explicit	1					https://www.bolsadesantiago.com/horarios

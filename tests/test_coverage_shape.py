@@ -88,7 +88,8 @@ def test_some_exchanges_have_coverage():
     # Each 4c9 backfill adds one; update the count with the commit.
     # 31: + XNZE (4c9). 32: + XKLS (4c9). 33: + XBKK (4c9). 34: + XLUX (4c9). 35: + XLIT (4c9).
     # 36: + XTAL (4c10). 37: + XBOG (4c10). 38: + XLIM (4c10).
-    assert len(with_cov) == 38
+    # 39: + XSGO (4c10).
+    assert len(with_cov) == 39
 
 
 def _xetr_without_bounds():
