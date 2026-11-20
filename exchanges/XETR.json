@@ -1216,6 +1216,10 @@
     "basis": "divergence_report",
     "class": "reference_compared",
     "coverage": {
+      "from": "2010-01-01",
+      "ranges": [
+        "trading_days"
+      ],
       "sources": [
         {
           "from": "2010-01-01",
@@ -1235,7 +1239,8 @@
             "2026-12-30"
           ]
         }
-      ]
+      ],
+      "to": "2029-12-31"
     },
     "last_checked": "2026-11-08",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
