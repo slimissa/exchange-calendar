@@ -173,6 +173,7 @@ dmypy.json
 [Ss]cripts/*.pyo
 pyvenv.cfg
 .venv
+.venv-divergence/
 pip-selfcheck.json
 
 # =============================================================================

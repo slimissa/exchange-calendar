@@ -29,8 +29,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install -r requirements-dev.txt
+          # constraints-divergence.txt locks every package, not only the two
+          # reference libraries: pandas also moves the counts (session 4c-R5).
+          pip install -r requirements.txt -r requirements-dev.txt -c constraints-divergence.txt
 
       - name: Run divergence test
         run: python3 tools/divergence_test.py --exchanges all --year 2024-2029

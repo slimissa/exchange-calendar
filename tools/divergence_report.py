@@ -461,6 +461,19 @@ def render(report, triage=None, sessions=None, calendar=None):
     w("python3 tools/divergence_report.py")
     w("```")
     w("")
+    w("Run them in the locked environment (Python 3.11, as the workflow uses):")
+    w("")
+    w("```")
+    w("python3.11 -m venv .venv-divergence")
+    w(".venv-divergence/bin/pip install -r requirements.txt -r requirements-dev.txt "
+      "-c constraints-divergence.txt")
+    w("```")
+    w("")
+    w("The tools refuse to run unless the two reference libraries match "
+      "`requirements-dev.txt`; `constraints-divergence.txt` locks every other "
+      "package, because a package outside the two pins (pandas) also changes "
+      "the counts.")
+    w("")
     w("This file is regenerated automatically every Monday at 08:00 UTC by the "
       "Divergence workflow (`.github/workflows/divergence.yml`), which opens a "
       "pull request when it changes. Manual edits will be overwritten; record "

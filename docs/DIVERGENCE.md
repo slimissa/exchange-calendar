@@ -8,6 +8,15 @@ python3 tools/divergence_test.py --mode sessions --exchanges XASX,XHKG,XLON,XNAS
 python3 tools/divergence_report.py
 ```
 
+Run them in the locked environment (Python 3.11, as the workflow uses):
+
+```
+python3.11 -m venv .venv-divergence
+.venv-divergence/bin/pip install -r requirements.txt -r requirements-dev.txt -c constraints-divergence.txt
+```
+
+The tools refuse to run unless the two reference libraries match `requirements-dev.txt`; `constraints-divergence.txt` locks every other package, because a package outside the two pins (pandas) also changes the counts.
+
 This file is regenerated automatically every Monday at 08:00 UTC by the Divergence workflow (`.github/workflows/divergence.yml`), which opens a pull request when it changes. Manual edits will be overwritten; record verdicts in `docs/divergence_triage.json` instead.
 
 Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.0. PMC is `pandas_market_calendars`, EC is `exchange_calendars`.
@@ -35,7 +44,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XBEY | 1265 | No reference data | No reference data | n/a | n/a |
 | XBKK | 727 | 727 | 727 | 0 | 100.0% |
 | XBOG | 1217 | 1216 | 1216 | 1 | 99.9% |
-| XBOM | 1484 | 1519 | 739* | 35 | 97.7% |
+| XBOM | 1484 | 1519 | 737* | 35 | 97.7% |
 | XBRU | 1535 | 1535 | 1535 | 0 | 100.0% |
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
 | XBSP | 1241 | No reference data | No reference data | n/a | n/a |
@@ -70,7 +79,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XMAD | 1535 | 1535 | 1535 | 0 | 100.0% |
 | XMAL | 1242 | No reference data | No reference data | n/a | n/a |
 | XMEX | 1509 | 1509 | 1509 | 0 | 100.0% |
-| XMOS | 759 | 755 | 758 | 4 | 99.5% |
+| XMOS | 759 | 755 | 755 | 4 | 99.5% |
 | XMUS | 1265 | No reference data | No reference data | n/a | n/a |
 | XNAI | 1257 | No reference data | No reference data | n/a | n/a |
 | XNAS | 1506 | No reference data | 1506 | 0 | 100.0% |

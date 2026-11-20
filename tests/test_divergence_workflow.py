@@ -41,8 +41,8 @@ def test_steps_in_order(text):
     order = [
         "actions/checkout@v4",
         "python-version: '3.11'",
-        "pip install -r requirements.txt",
-        "pip install -r requirements-dev.txt",
+        # One install, locked by constraints-divergence.txt (4c-R5).
+        "pip install -r requirements.txt -r requirements-dev.txt -c constraints-divergence.txt",
         "python3 tools/divergence_test.py --exchanges all --year 2024-2029",
         "python3 tools/divergence_report.py",
         "peter-evans/create-pull-request@v6",
@@ -69,3 +69,23 @@ def test_report_header_says_ci_regenerates_it():
     header = (REPO / "docs" / "DIVERGENCE.md").read_text(encoding="utf-8")[:1500]
     assert "regenerated automatically every Monday" in header
     assert "Manual edits will be overwritten" in header
+
+
+def test_constraints_lock_the_reference_libraries_and_pandas():
+    """constraints-divergence.txt must agree with the two pins in
+    requirements-dev.txt and lock pandas, the package that moved XBOM/XMOS
+    with the pins unchanged (4c-R5)."""
+    import sys
+    sys.path.insert(0, str(REPO / "tools"))
+    import divergence_pins
+    lines = (REPO / "constraints-divergence.txt").read_text(encoding="utf-8").splitlines()
+    locked = {}
+    for line in lines:
+        line = line.strip()
+        if line and not line.startswith("#"):
+            name, _, version = line.partition("==")
+            assert version, f"not an exact pin: {line}"
+            locked[name.lower().replace("_", "-")] = version
+    for name, version in divergence_pins.read_pins().items():
+        assert locked[name.lower().replace("_", "-")] == version
+    assert "pandas" in locked and "numpy" in locked
