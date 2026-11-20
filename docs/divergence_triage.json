@@ -1467,14 +1467,14 @@
     },
     {
       "exchange": "XRIS",
-      "verdict": "unpublished",
-      "status": "registry_unchanged",
-      "recheck_date": "2027-01-31",
+      "verdict": "registry_error",
+      "status": "fixed",
+      "fixed_in": "4c13 (unreleased)",
       "dates": [
         "2026-01-02"
       ],
-      "summary": "Cabinet transfer day. Nasdaq Baltic's trading-holiday calendar lists Friday 2 January 2026 as a trading holiday for RIG, and Riga closed on the transfer days counted in the May 2025, November 2025 and June 2026 bulletins; the registry closes it, unconfirmed (4c12). The libraries trade. Check the January 2026 bulletin's Riga trading-day count (21 if closed, 22 if open).",
-      "source_url": "https://nasdaqbaltic.com/statistics/en/calendar?holidays=1"
+      "summary": "Nasdaq Baltic's trading-holiday calendar listed Friday 2 January 2026 as a trading holiday for RIG and 4c12 closed it, unconfirmed. Nasdaq Baltic's January 2026 bulletin (maintainer's saved copy) gives Riga 21 equities trading days = 22 weekdays - 1 January, as for Tallinn and Vilnius, so the day traded. The registry now trades, as both libraries do. 1 date fixed.",
+      "source_url": "https://nasdaqbaltic.com/statistics/en/bulletins?bbid=451"
     },
     {
       "exchange": "XKAR",

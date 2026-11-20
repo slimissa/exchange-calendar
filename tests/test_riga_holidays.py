@@ -84,8 +84,8 @@ class TestXRISProperties:
         2018 and 2023 (exact list; sources pinned in the classes below)."""
         assert [c["date"] for c in xris["ad_hoc_closures"]] == [
             "2010-05-03", "2010-06-25", "2010-11-19", "2015-01-02", "2018-09-24",
-            "2023-05-05", "2023-05-29", "2024-12-23", "2024-12-30", "2025-05-02",
-            "2025-11-17", "2026-01-02", "2026-06-22"]
+            "2023-05-05", "2024-12-23", "2024-12-30", "2025-05-02",
+            "2025-11-17", "2026-06-22"]
         assert {c["status"] for c in xris["ad_hoc_closures"]} == {"closed"}
 
     def test_no_recurrence_rules(self, xris):
@@ -429,8 +429,9 @@ class TestXRISTradingDays2025And2026:
     and 18 November: transfer day and Proclamation Day) and 19 in June 2026
     (closed 22, 23 and 24 June). This replaces the 2025 counts taken from
     Nasdaq's Nordic and Baltic statistics summaries (19 and 19), which the
-    bulletins contradict. 2026-01-02 is closed on Nasdaq Baltic's calendar
-    only (unconfirmed, recheck 2027-01-31)."""
+    bulletins contradict. 4c13: the January 2026 bulletin (bbid=451) gives
+    Riga 21 = 22 weekdays - 1 January, so 2026-01-02 traded, although
+    Nasdaq Baltic's calendar listed it closed."""
 
     @staticmethod
     def _closed_set(xris, explicit_dates, year):
@@ -448,7 +449,7 @@ class TestXRISTradingDays2025And2026:
 
     def test_2026_closed_set(self, xris, explicit_dates):
         assert self._closed_set(xris, explicit_dates, 2026) == {
-            "2026-01-01", "2026-01-02", "2026-04-03", "2026-04-06", "2026-05-01",
+            "2026-01-01", "2026-04-03", "2026-04-06", "2026-05-01",
             "2026-05-04", "2026-05-14", "2026-06-22", "2026-06-23", "2026-06-24",
             "2026-11-18", "2026-12-24", "2026-12-25", "2026-12-31"}
 
@@ -458,11 +459,31 @@ class TestXRISTradingDays2025And2026:
         (c,) = [c for c in xris["ad_hoc_closures"] if c["date"] == day]
         assert c["source_url"] == f"https://nasdaqbaltic.com/statistics/en/bulletins?bbid={bbid}"
 
-    def test_2026_01_02_is_unconfirmed(self, xris):
+    def test_2026_01_02_is_a_trading_day(self, xris, explicit_dates):
+        """4c13: January 2026 bulletin (bbid=451): Riga 21 of 22 weekdays,
+        only 1 January closed. The 4c12 unconfirmed marker and its recheck
+        date are gone."""
         span = xris["verification"]["coverage"]["sources"][1]
         assert span["from"] == "2025-01-01" and span["to"] == "2026-12-31"
-        assert span["unconfirmed"] == ["2026-01-02"]
-        assert span["recheck_date"] == "2027-01-31"
+        assert "unconfirmed" not in span and "recheck_date" not in span
+        assert "2026-01-02" not in explicit_dates
+        assert "2026-01-02" not in {c["date"] for c in xris["ad_hoc_closures"]}
+
+    def test_may_2023_bulletin(self, xris, explicit_dates):
+        """4c13: May 2023 bulletin (bbid=413): Riga 19 = 23 weekdays - 1, 4,
+        5 and 18 May. Week 18/2023 calendar: 04-05.05.2023 trading holiday
+        RIG. Nasdaq Riga's notice of 29 May 2023: trading open that day."""
+        days = {d for d in explicit_dates if d.startswith("2023-05")}
+        days |= {c["date"] for c in xris["ad_hoc_closures"] if c["date"].startswith("2023-05")}
+        assert days == {"2023-05-01", "2023-05-04", "2023-05-05", "2023-05-18"}
+        (c,) = [c for c in xris["ad_hoc_closures"] if c["date"] == "2023-05-05"]
+        assert c["source_url"] == "https://view.news.eu.nasdaq.com/view?id=b13fe0b7d88c8b102a08c1045ffc13b9d&lang=en"
+
+    def test_december_2024_bulletin(self, xris):
+        """4c13: December 2024 bulletin (bbid=433): Riga 16 = 22 weekdays -
+        23, 24, 25, 26, 30 and 31 December."""
+        (c,) = [c for c in xris["ad_hoc_closures"] if c["date"] == "2024-12-30"]
+        assert c["source_url"] == "https://nasdaqbaltic.com/statistics/en/bulletins?bbid=433"
 
 
 class TestXRISTransferDays2010To2024:
@@ -488,4 +509,4 @@ class TestXRISTransferDays2010To2024:
             "2010-05-03", "2010-06-25", "2010-11-19", "2012-12-25", "2013-12-25",
             "2014-12-25", "2015-01-02", "2015-12-25", "2017-12-25", "2018-05-09",
             "2018-07-09", "2018-09-24", "2018-12-25", "2019-12-25", "2020-12-25",
-            "2023-05-29", "2024-12-25"]
+            "2024-12-25"]

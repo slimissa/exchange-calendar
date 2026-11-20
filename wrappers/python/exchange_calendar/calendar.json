@@ -69612,14 +69612,8 @@
         },
         {
           "date": "2023-05-05",
-          "name": "Cabinet transfer day (exchange_calendars ad hoc)",
-          "source_url": "github.com/gerrymanoim/exchange_calendars",
-          "status": "closed"
-        },
-        {
-          "date": "2023-05-29",
-          "name": "Ice hockey bronze medal day (public holiday by law)",
-          "source_url": "https://attachment.news.eu.nasdaq.com/a2444250b869f39cf46f64614238058ec",
+          "name": "Cabinet transfer day (Nasdaq Baltic investor calendar, week 18/2023)",
+          "source_url": "https://view.news.eu.nasdaq.com/view?id=b13fe0b7d88c8b102a08c1045ffc13b9d&lang=en",
           "status": "closed"
         },
         {
@@ -69630,8 +69624,8 @@
         },
         {
           "date": "2024-12-30",
-          "name": "Cabinet transfer day (exchange_calendars ad hoc)",
-          "source_url": "github.com/gerrymanoim/exchange_calendars",
+          "name": "Cabinet transfer day (Nasdaq Baltic monthly bulletin, December 2024)",
+          "source_url": "https://nasdaqbaltic.com/statistics/en/bulletins?bbid=433",
           "status": "closed"
         },
         {
@@ -69647,12 +69641,6 @@
           "status": "closed"
         },
         {
-          "date": "2026-01-02",
-          "name": "Cabinet transfer day (Nasdaq Baltic trading-holiday calendar; unconfirmed)",
-          "source_url": "https://nasdaqbaltic.com/statistics/en/calendar?holidays=1",
-          "status": "closed"
-        },
-        {
           "date": "2026-06-22",
           "name": "Cabinet transfer day (Nasdaq Baltic monthly bulletin, June 2026)",
           "source_url": "https://nasdaqbaltic.com/statistics/en/bulletins?bbid=456",
@@ -69664,91 +69652,91 @@
         "2010": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2011": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2012": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2013": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2014": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2015": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2016": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2017": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2018": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2019": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2020": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2021": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2022": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2023": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2024": {
           "last_verified": null,
           "level": "low",
-          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
+          "note": "backfilled (exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)); not independently verified",
           "source": "manual"
         },
         "2025": {
@@ -71079,7 +71067,7 @@
       },
       "mic": "XRIS",
       "name": "Nasdaq Riga",
-      "note": "2010-2024 sourced from exchange_calendars 4.13.2 (backfill; not independently verified): 153 closures (147 named) and no early closes, then 13 corrections (4c12). exchange_calendars' six one-offs are classified: 2023-12-25 is Christmas Day and 2023-07-10 the day off after the Song and Dance Celebration closing day (holidays.explicit, named); 2023-05-05, 2024-12-23 and 2024-12-30 are Cabinet transfer days (ad_hoc_closures); 2018-05-09 is removed. Corrections: (1) exchange_calendars has no Christmas Day for XRIS. Latvia's law On Public Holidays, Commemoration Days and Celebration Days, Section 1 (https://likumi.lv/ta/en/en/id/72608), lists 24, 25 and 26 December as Christmas, and a Riga Stock Exchange resolution of 11.11.2004 (https://nasdaqbaltic.com/statistics/en/news/archive/191105) makes a stock exchange day any business day, so 25 December 2012, 2013, 2014, 2015, 2017, 2018, 2019, 2020 and 2024 are closures (2024 cites Nasdaq Tallinn's investor calendar for week 52/2024, https://view.news.eu.nasdaq.com/view?id=b8c140bf1e1581552fce9817b148ea449&lang=en, which lists 24-26 December 2024 as trading holidays for TLN, RIG and VLN; the rest cite the law). (2) 2018-05-09 is a trading day: Nasdaq Baltic's monthly bulletin for May 2018 (https://nasdaqbaltic.com/statistics/en/bulletins?bbid=331; maintainer's saved copy) gives Riga 20 equities trading days = 23 weekdays - 1 May - 4 May - 10 May (Ascension), leaving no room for 9 May. (3) 2018-07-09: the law makes the closing day of the Song and Dance Celebration a holiday and, when it falls on a weekend, the following working day a day off; the 2018 closing day was Sunday 8 July (Latvijas Vestnesis' LV portals, https://lvportals.lv/skaidrojumi/297150-9-julijs-neapmaksata-vai-apmaksata-brivdiena-kados-gadijumos-so-dienu-apmaksa-2018). The July 2018 bulletin (bbid=334; maintainer's copy) gives Riga 21 trading days = 22 weekdays - 1: 9 July. (4) 2018-09-24, the day of Pope Francis' pastoral visit, is a public holiday by the law (amendment of 21 June 2018); the September 2018 bulletin (bbid=336; maintainer's copy) gives Riga 19 = 20 weekdays - 1: 24 September. (5) 2023-05-29, the ice hockey bronze medal day, is a public holiday by the law (amendment of 28 May 2023); Nasdaq's May 2023 statistics report (https://attachment.news.eu.nasdaq.com/a2444250b869f39cf46f64614238058ec) gives Riga 19 trading days = 23 weekdays - 1 May - 4 May - 5 May - 29 May. All 13 are contradicted_by on the 2010-2024 span (both libraries disagree). Ascension Day is a Nasdaq Baltic trading holiday, not a Latvian public holiday; exchange_calendars closes it every year and the May 2018 bulletin count agrees for 2018. 2025-2026: exchange_calendars + exchange_publications. 2027-2029: standing pattern. Checked 2026-11-20 (4c12). Last published year: Nasdaq Baltic's trading-holiday calendar (https://nasdaqbaltic.com/statistics/en/calendar?holidays=1) lists 2026 only; for RIG: 1 and 2 January, 3 and 6 April, 1 and 4 May, 14 May, 22, 23 and 24 June, 18 November, 24, 25 and 31 December. No shortened trading days are listed. Close (ADR 0013): Nasdaq Baltic's trading-day structure (https://nasdaqbaltic.com/market-information/trading-day/) gives the closing call 15:59:30-16:00:00 with a random uncross; the scheduled close is 16:00, unchanged. One dated entry from 2010-01-01 (unconfirmed: the 16:00 end dates from 2 February 2009 per Nasdaq OMX's release of 19 November 2008, https://nasdaqbaltic.com/news/nasdaq-omx-baltic-market-to-extend-trading-hours/, but the 2010 closing-call structure was not read). Transfer days (4c12, maintainer decision): Nasdaq Riga closes on the working days the Cabinet transfers to a Saturday, through 2026. Added to ad_hoc_closures, each on the exchange's own word: 2010-05-03, 2010-06-25 and 2010-11-19 (Nasdaq OMX Riga's notice of 30 December 2009, https://www.globenewswire.com/news-release/2009/12/30/149176/0/en/Changes-in-the-NASDAQ-OMX-Riga-Trading-holidays-2010.html); 2015-01-02 (investor calendar week 1/2015); 2025-05-02 (May 2025 bulletin, bbid=440: Riga 18 = 22 weekdays - 1 May - 5 May - 29 May - 2 May; Tallinn and Vilnius 20 = 22 - 1 May - 29 May); 2025-11-17 (November 2025 bulletin, bbid=448: Riga 18 = 20 weekdays - 18 November - 17 November; Tallinn and Vilnius 20); 2026-06-22 (June 2026 bulletin, bbid=456: Riga 19 = 22 weekdays - 23 June - 24 June - 22 June; Tallinn 20, Vilnius 21). Bulletins are the maintainer's saved copies of https://nasdaqbaltic.com/statistics/en/bulletins?bbid=N. 2026-01-02 is closed on Nasdaq Baltic's trading-holiday calendar only and is unconfirmed (recheck 2027-01-31, against the January 2026 bulletin). Nasdaq's Nordic and Baltic statistics summaries for January and June 2026 state that Riga traded as many days as the other exchanges; the June 2026 bulletin contradicts the June summary, so the summaries' Riga counts are not used for 2025-2026. exchange_calendars' transfer days 2023-05-05 and 2024-12-30 keep its citation; 2024-12-23 cites the week 52/2024 calendar. Transfer days 2012-04-30, 2014-05-02, 2014-11-17, 2015-06-22, 2017-05-05, 2018-04-30, 2020-06-22, 2021-05-03, 2021-06-25 and 2021-11-19, and any in 2013, 2016 and 2022, are leads: no Cabinet order or exchange notice for them was read in full, so the file follows exchange_calendars (open).",
+      "note": "2010-2024 sourced from exchange_calendars 4.13.2 (backfill; not independently verified): 153 closures (147 named) and no early closes, then 13 corrections (4c12; one withdrawn in 4c13). exchange_calendars' six one-offs are classified: 2023-12-25 is Christmas Day and 2023-07-10 the day off after the Song and Dance Celebration closing day (holidays.explicit, named); 2023-05-05, 2024-12-23 and 2024-12-30 are Cabinet transfer days (ad_hoc_closures); 2018-05-09 is removed. Corrections: (1) exchange_calendars has no Christmas Day for XRIS. Latvia's law On Public Holidays, Commemoration Days and Celebration Days, Section 1 (https://likumi.lv/ta/en/en/id/72608), lists 24, 25 and 26 December as Christmas, and a Riga Stock Exchange resolution of 11.11.2004 (https://nasdaqbaltic.com/statistics/en/news/archive/191105) makes a stock exchange day any business day, so 25 December 2012, 2013, 2014, 2015, 2017, 2018, 2019, 2020 and 2024 are closures (2024 cites Nasdaq Tallinn's investor calendar for week 52/2024, https://view.news.eu.nasdaq.com/view?id=b8c140bf1e1581552fce9817b148ea449&lang=en, which lists 24-26 December 2024 as trading holidays for TLN, RIG and VLN; the rest cite the law). (2) 2018-05-09 is a trading day: Nasdaq Baltic's monthly bulletin for May 2018 (https://nasdaqbaltic.com/statistics/en/bulletins?bbid=331; maintainer's saved copy) gives Riga 20 equities trading days = 23 weekdays - 1 May - 4 May - 10 May (Ascension), leaving no room for 9 May. (3) 2018-07-09: the law makes the closing day of the Song and Dance Celebration a holiday and, when it falls on a weekend, the following working day a day off; the 2018 closing day was Sunday 8 July (Latvijas Vestnesis' LV portals, https://lvportals.lv/skaidrojumi/297150-9-julijs-neapmaksata-vai-apmaksata-brivdiena-kados-gadijumos-so-dienu-apmaksa-2018). The July 2018 bulletin (bbid=334; maintainer's copy) gives Riga 21 trading days = 22 weekdays - 1: 9 July. (4) 2018-09-24, the day of Pope Francis' pastoral visit, is a public holiday by the law (amendment of 21 June 2018); the September 2018 bulletin (bbid=336; maintainer's copy) gives Riga 19 = 20 weekdays - 1: 24 September. (5) withdrawn in 4c13: 2023-05-29, the ice hockey bronze medal day, is a public holiday by the law (amendment of 28 May 2023), but Nasdaq Riga announced 'Trading on Nasdaq Riga is open on May 29, 2023' that morning (https://view.news.eu.nasdaq.com/view?id=b2208d309a9891d68bf0271cb2da26778&lang=en), and the May 2023 bulletin (https://nasdaqbaltic.com/statistics/en/bulletins?bbid=413; maintainer's saved copy) gives Riga 19 equities trading days = 23 weekdays - 1 May - 4 May - 5 May - 18 May (Ascension); 2023-05-29 is a trading day, as in both libraries. The remaining 12 are contradicted_by on the 2010-2024 span (both libraries disagree). Ascension Day is a Nasdaq Baltic trading holiday, not a Latvian public holiday; exchange_calendars closes it every year and the May 2018 bulletin count agrees for 2018. 2025-2026: exchange_calendars + exchange_publications. 2027-2029: standing pattern. Checked 2026-11-20 (4c12). Last published year: Nasdaq Baltic's trading-holiday calendar (https://nasdaqbaltic.com/statistics/en/calendar?holidays=1) lists 2026 only; for RIG: 1 and 2 January, 3 and 6 April, 1 and 4 May, 14 May, 22, 23 and 24 June, 18 November, 24, 25 and 31 December. No shortened trading days are listed. Close (ADR 0013): Nasdaq Baltic's trading-day structure (https://nasdaqbaltic.com/market-information/trading-day/) gives the closing call 15:59:30-16:00:00 with a random uncross; the scheduled close is 16:00, unchanged. One dated entry from 2010-01-01 (unconfirmed: the 16:00 end dates from 2 February 2009 per Nasdaq OMX's release of 19 November 2008, https://nasdaqbaltic.com/news/nasdaq-omx-baltic-market-to-extend-trading-hours/, but the 2010 closing-call structure was not read). Transfer days (4c12, maintainer decision): Nasdaq Riga closes on the working days the Cabinet transfers to a Saturday, through 2026. Added to ad_hoc_closures, each on the exchange's own word: 2010-05-03, 2010-06-25 and 2010-11-19 (Nasdaq OMX Riga's notice of 30 December 2009, https://www.globenewswire.com/news-release/2009/12/30/149176/0/en/Changes-in-the-NASDAQ-OMX-Riga-Trading-holidays-2010.html); 2015-01-02 (investor calendar week 1/2015); 2025-05-02 (May 2025 bulletin, bbid=440: Riga 18 = 22 weekdays - 1 May - 5 May - 29 May - 2 May; Tallinn and Vilnius 20 = 22 - 1 May - 29 May); 2025-11-17 (November 2025 bulletin, bbid=448: Riga 18 = 20 weekdays - 18 November - 17 November; Tallinn and Vilnius 20); 2026-06-22 (June 2026 bulletin, bbid=456: Riga 19 = 22 weekdays - 23 June - 24 June - 22 June; Tallinn 20, Vilnius 21). Bulletins are the maintainer's saved copies of https://nasdaqbaltic.com/statistics/en/bulletins?bbid=N. 2026-01-02 is a trading day (4c13): Nasdaq Baltic's trading-holiday calendar listed it closed for RIG, but the January 2026 bulletin (bbid=451; maintainer's saved copy) gives Riga 21 equities trading days = 22 weekdays - 1 January, and Tallinn and Vilnius 21. Nasdaq's Nordic and Baltic statistics summaries are not used for Riga counts (they contradict the bulletins). 2023-05-05 cites Nasdaq Baltic's investor calendar for week 18/2023 (https://view.news.eu.nasdaq.com/view?id=b13fe0b7d88c8b102a08c1045ffc13b9d&lang=en: trading holiday 04.05.2023-05.05.2023, RIG); 2024-12-23 cites the week 52/2024 calendar; 2024-12-30 cites the December 2024 bulletin (bbid=433: Riga 16 = 22 weekdays - 23, 24, 25, 26, 30 and 31 December; Tallinn and Vilnius 18). Transfer days 2012-04-30, 2014-05-02, 2014-11-17, 2015-06-22, 2017-05-05, 2018-04-30, 2020-06-22, 2021-05-03, 2021-06-25 and 2021-11-19, and any in 2013, 2016 and 2022, are leads: no Cabinet order or exchange notice for them was read in full, so the file follows exchange_calendars (open).",
       "regular_hours": [
         {
           "close": "16:00",
@@ -71121,12 +71109,11 @@
                 "2018-12-25",
                 "2019-12-25",
                 "2020-12-25",
-                "2023-05-29",
                 "2024-12-25"
               ],
               "from": "2010-01-01",
               "sampled": null,
-              "source": "exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018; Nasdaq Riga notices for the 2010 and 2015 transfer days)",
+              "source": "exchange_calendars (+ Latvian holidays law for 25 December and the 2018/2023 public holidays; Nasdaq Baltic monthly bulletins for May, July and September 2018, May 2023 and December 2024; Nasdaq Riga notices for the 2010 and 2015 transfer days)",
               "to": "2024-12-31",
               "unconfirmed": [
                 "2010-01-01"
@@ -71134,12 +71121,8 @@
             },
             {
               "from": "2025-01-01",
-              "recheck_date": "2027-01-31",
-              "source": "exchange_calendars + exchange_publications (Nasdaq Baltic trading-holiday calendar; Nasdaq Baltic monthly bulletins for May 2025, November 2025 and June 2026)",
-              "to": "2026-12-31",
-              "unconfirmed": [
-                "2026-01-02"
-              ]
+              "source": "exchange_calendars + exchange_publications (Nasdaq Baltic trading-holiday calendar; Nasdaq Baltic monthly bulletins for May 2025, November 2025, January 2026 and June 2026)",
+              "to": "2026-12-31"
             },
             {
               "from": "2027-01-01",
