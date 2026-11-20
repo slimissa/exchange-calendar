@@ -24,6 +24,8 @@ from pathlib import Path
 
 import pytest
 
+import ad_hoc_expected
+
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "tools"))
 
@@ -225,9 +227,10 @@ def test_normalise_turns_dates_into_iso_strings():
 
 def test_expected_counts_match_the_exporters_rows(counts, tables):
     assert counts == {t: len(rows) for t, rows in tables.items()}
-    # ad_hoc_closures is live since 4c10: XLIM's eight and XSGO's six
-    # one-off closures (backfill) and XTAI's two 2026 typhoon closures.
-    assert counts["ad_hoc_closures"] == 16
+    # ad_hoc_closures is live since 4c10; 4c11 derives the expectation from
+    # exchanges/*.json and keeps the one count pin in ad_hoc_expected.py.
+    assert counts["ad_hoc_closures"] == len(ad_hoc_expected.expected_rows())
+    assert counts["ad_hoc_closures"] == ad_hoc_expected.AD_HOC_ROW_COUNT
 
 
 # ---------------------------------------------------------------------------
@@ -260,9 +263,9 @@ class TestVerify:
         engine.conn.execute("INSERT INTO ad_hoc_closures (exchange_code, date, seq, name, status, source_url) "
                             "VALUES ('XNYS', '2099-01-01', 1, 'x', 'closed', 'u')")
         problems = csd.verify(engine, tables, counts)
-        # 4c10: the live table holds 16 rows (XLIM 8, XSGO 6, XTAI 2), so
-        # one extra row makes 17 stored against 16.
-        assert any("ad_hoc_closures: 17 rows stored, calendar.json has 16" in p for p in problems)
+        # One extra row makes N + 1 stored against the N live rows.
+        n = ad_hoc_expected.AD_HOC_ROW_COUNT
+        assert any(f"ad_hoc_closures: {n + 1} rows stored, calendar.json has {n}" in p for p in problems)
 
     def test_unenforced_foreign_keys_are_detected(self, engine, tables, counts):
         engine.conn.execute("PRAGMA foreign_keys=OFF")

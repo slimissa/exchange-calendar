@@ -43,6 +43,8 @@ from pathlib import Path
 
 import pytest
 
+import ad_hoc_expected
+
 import pyarrow as pa
 import pyarrow.parquet as pq
 
@@ -304,6 +306,16 @@ class TestCrossFormat:
         for table in TABLES:
             for fmt, (_, rows) in loaded[table].items():
                 assert len(rows) == want[table], f"{table} {fmt}"
+
+    @pytest.mark.parametrize("fmt", ["sqlite", "csv", "parquet"])
+    def test_ad_hoc_closures_match_the_source_files_exactly(self, loaded, fmt):
+        """4c11: each format's normalised ad_hoc_closures rows equal the rows
+        derived from exchanges/*.json (tests/ad_hoc_expected.py), in order."""
+        names, rows = loaded["ad_hoc_closures"][fmt]
+        assert tuple(names) == ad_hoc_expected.COLUMNS
+        kinds = KINDS["ad_hoc_closures"]
+        ad_hoc_expected.assert_rows_match(
+            [tuple(NORMALIZERS[fmt](kind, cell) for (_, kind), cell in zip(kinds, r)) for r in rows])
 
     def test_the_comparison_is_not_vacuous(self, loaded):
         for table in ("exchanges", "sessions", "holidays", "confidence"):

@@ -33,6 +33,8 @@ from pathlib import Path
 
 import pytest
 
+import ad_hoc_expected
+
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "tools"))
 
@@ -271,53 +273,45 @@ class TestSqliteLoad:
 
 
 class TestAdHocClosures:
-    """Empty today (0 rows). A synthetic insert covers its PK, FK and CHECKs."""
+    """Live since 4c10. Expected rows come from exchanges/*.json (4c11,
+    tests/ad_hoc_expected.py); a synthetic insert covers PK, FK and CHECKs."""
 
     def test_table_holds_exactly_the_live_rows(self, sqlite_base):
-        """Live since 4c10 (was empty): XLIM's eight and XSGO's six one-off
-        closures (backfill) and XTAI's two 2026 typhoon closures."""
         rows = sqlite_base.execute(
             "SELECT exchange_code, date, seq, name, status, early_close_time, source_url "
-            "FROM ad_hoc_closures ORDER BY exchange_code, date").fetchall()
-        assert rows == [
-            ("XLIM", "2012-10-01", 1, "ASPA Summit (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XLIM", "2012-10-02", 1, "ASPA Summit (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XLIM", "2015-01-02", 1, "National non-working day (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XLIM", "2015-07-27", 1, "Exchange holiday (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XLIM", "2015-10-09", 1, "Exchange holiday (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XLIM", "2016-11-17", 1, "APEC Summit (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XLIM", "2016-11-18", 1, "APEC Summit (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XLIM", "2018-04-13", 1, "Eighth Summit of the Americas (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XSGO", "2010-09-17", 1, "Bicentennial celebration (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XSGO", "2010-09-20", 1, "Bicentennial celebration (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XSGO", "2017-01-02", 1, "New Year's Day observed (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XSGO", "2017-04-19", 1, "Census Day (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XSGO", "2018-01-16", 1, "Papal visit (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XSGO", "2022-09-16", 1, "National Day bridge holiday (exchange_calendars ad hoc)", "closed", None,
-             "https://github.com/gerrymanoim/exchange_calendars"),
-            ("XTAI", "2026-07-10", 1, "Typhoon Bavi (Taipei work suspension)", "closed", None,
-             "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"),
-            ("XTAI", "2026-10-23", 1, "Typhoon Champi (Taipei work suspension)", "closed", None,
-             "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"),
-        ]
+            "FROM ad_hoc_closures ORDER BY exchange_code, date, seq").fetchall()
+        ad_hoc_expected.assert_rows_match(rows)
+
+    def test_row_count_sanity_pin(self, sqlite_base):
+        """The one fixed pin: AD_HOC_ROW_COUNT, kept in ad_hoc_expected.py."""
+        assert len(ad_hoc_expected.expected_rows()) == ad_hoc_expected.AD_HOC_ROW_COUNT
+        assert sqlite_base.execute(
+            "SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == ad_hoc_expected.AD_HOC_ROW_COUNT
+
+    def test_file_order_is_the_export_order(self):
+        """The SQL file inserts the rows in the expected order, not just the set."""
+        sql = _read("exchange_calendar.sqlite.sql")
+        keys = re.findall(r"INSERT INTO ad_hoc_closures [^;]*?VALUES \('(X[A-Z0-9]{3})', '(\d{4}-\d{2}-\d{2})', (\d+)", sql)
+        assert [(c, d, int(q)) for c, d, q in keys] == [r[:3] for r in ad_hoc_expected.expected_rows()]
+
+    @pytest.mark.parametrize("mutation", sorted(ad_hoc_expected.MUTATIONS))
+    def test_negative_an_exporter_that_drops_adds_or_alters_a_row_fails(self, registry, mutation):
+        """The comparison catches an exporter whose ad hoc rows differ from
+        exchanges/*.json: feed build_tables a registry that makes it drop, add
+        or alter one row, and the derived expectation rejects the output."""
+        bad = copy.deepcopy(registry)
+        ad_hoc_expected.MUTATIONS[mutation](bad)
+        rows = export_sql.build_tables(bad)["ad_hoc_closures"]
+        assert ad_hoc_expected.diff(rows, ad_hoc_expected.expected_rows())
+        with pytest.raises(AssertionError):
+            ad_hoc_expected.assert_rows_match(rows)
+        # and the unmutated registry passes the same check
+        ad_hoc_expected.assert_rows_match(export_sql.build_tables(registry)["ad_hoc_closures"])
 
     def test_valid_row_accepted(self, db):
         db.execute(AD_HOC_SQL, AD_HOC_OK)
-        # 4c10: 16 live rows (XLIM 8, XSGO 6, XTAI 2) + the 1 inserted here.
-        assert db.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == 17
+        assert db.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == (
+            ad_hoc_expected.AD_HOC_ROW_COUNT + 1)
 
     def test_primary_key_rejects_duplicate_and_allows_next_seq(self, db):
         db.execute(AD_HOC_SQL, AD_HOC_OK)
@@ -428,16 +422,13 @@ class TestCrossDialect:
             assert from_ast[table] == executed, f"{name}: {table}"
 
     def test_ad_hoc_closures_is_compared_across_dialects(self, parsed, sqlite_base):
-        """Live since 4c10 (was empty): every dialect inserts the same
-        sixteen rows (XLIM 8, XSGO 6, XTAI 2), and SQLite stores exactly
-        sixteen."""
-        first = _insert_rows(parsed[next(iter(PARSE_DIALECTS))])["ad_hoc_closures"]
-        assert sum(first.values()) == 16
-        assert sorted(v[1] for (cols, v) in first) == [
-            "2010-09-17", "2010-09-20", "2012-10-01", "2012-10-02", "2015-01-02", "2015-07-27", "2015-10-09", "2016-11-17", "2016-11-18", "2017-01-02", "2017-04-19", "2018-01-16", "2018-04-13", "2022-09-16", "2026-07-10", "2026-10-23"]
+        """Every dialect inserts exactly the expected rows (derived from
+        exchanges/*.json), with the same columns and values."""
+        want = Counter((ad_hoc_expected.COLUMNS, r) for r in ad_hoc_expected.expected_rows())
         for name in PARSE_DIALECTS:
-            assert _insert_rows(parsed[name])["ad_hoc_closures"] == first, name
-        assert sqlite_base.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == 16
+            assert _insert_rows(parsed[name])["ad_hoc_closures"] == want, name
+        assert sqlite_base.execute("SELECT COUNT(*) FROM ad_hoc_closures").fetchone()[0] == len(
+            ad_hoc_expected.expected_rows())
 
 
 def export_sql_cols(table):
@@ -773,7 +764,9 @@ class TestGuards:
         first = _exchange(registry, "XNYS")["holidays"]["explicit"][0]["date"]
         seqs = sorted(r[5] for r in tables["holidays"] if r[0] == "XNYS" and r[1] == first and r[4] == "explicit")
         assert seqs == [1, 2]
-        # 4c10: XLIM's eight live rows (seq 1 each) precede the XNYS
-        # duplicates; XSGO's six and XTAI's two (seq 1 each) follow them.
-        assert [(r[0], r[2]) for r in tables["ad_hoc_closures"]] == [("XLIM", 1)] * 8 + [
-            ("XNYS", 1), ("XNYS", 2)] + [("XSGO", 1)] * 6 + [("XTAI", 1), ("XTAI", 1)]
+        # 4c11: the live rows (derived from exchanges/*.json) plus the two
+        # injected XNYS rows, which get seq 1 and 2, in export order.
+        want = ad_hoc_expected.expected_with([
+            ("XNYS", "2099-06-01", 1, "A", "closed", None, "https://e.org/a"),
+            ("XNYS", "2099-06-01", 2, "B", "closed", None, "https://e.org/b")])
+        assert tables["ad_hoc_closures"] == want

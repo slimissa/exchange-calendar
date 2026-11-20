@@ -34,6 +34,8 @@ from pathlib import Path
 
 import pytest
 
+import ad_hoc_expected
+
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "tools"))
 
@@ -67,6 +69,11 @@ def _parse(table, dialect_key):
     delimiter, bom = SPEC[dialect_key]
     text = _path(table, dialect).read_bytes().decode("utf-8-sig" if bom else "utf-8")
     return list(csv.reader(io.StringIO(text, newline=""), delimiter=delimiter))
+
+
+def _csv_rows_to_tuples(rows):
+    """CSV cells -> export row tuples: seq to int, an empty field to None."""
+    return [(r[0], r[1], int(r[2]), r[3], r[4], r[5] or None, r[6]) for r in rows]
 
 
 @pytest.fixture(scope="module")
@@ -198,33 +205,34 @@ class TestRoundTrip:
         assert _parse(table, "rfc")[1:] == want
 
     def test_ad_hoc_closures_files_are_a_header_and_the_live_rows(self):
-        """ad_hoc_closures is live since 4c10: exactly XLIM's eight and XSGO's
-        six one-off closures (backfill) and XTAI's two 2026 typhoon closures
-        follow the header (was header-only)."""
+        """Every dialect holds the header then exactly the expected rows,
+        derived from exchanges/*.json (4c11, tests/ad_hoc_expected.py), with
+        seq as an integer and a null early_close_time as an empty field."""
         header = _adr_columns()["ad_hoc_closures"]
-        rows = [
-            ["XLIM", "2012-10-01", "1", "ASPA Summit (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XLIM", "2012-10-02", "1", "ASPA Summit (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XLIM", "2015-01-02", "1", "National non-working day (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XLIM", "2015-07-27", "1", "Exchange holiday (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XLIM", "2015-10-09", "1", "Exchange holiday (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XLIM", "2016-11-17", "1", "APEC Summit (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XLIM", "2016-11-18", "1", "APEC Summit (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XLIM", "2018-04-13", "1", "Eighth Summit of the Americas (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XSGO", "2010-09-17", "1", "Bicentennial celebration (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XSGO", "2010-09-20", "1", "Bicentennial celebration (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XSGO", "2017-01-02", "1", "New Year's Day observed (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XSGO", "2017-04-19", "1", "Census Day (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XSGO", "2018-01-16", "1", "Papal visit (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XSGO", "2022-09-16", "1", "National Day bridge holiday (exchange_calendars ad hoc)", "closed", "", "https://github.com/gerrymanoim/exchange_calendars"],
-            ["XTAI", "2026-07-10", "1", "Typhoon Bavi (Taipei work suspension)", "closed", "", "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"],
-            ["XTAI", "2026-10-23", "1", "Typhoon Champi (Taipei work suspension)", "closed", "", "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"],
-        ]
+        assert tuple(header) == ad_hoc_expected.COLUMNS
         for d in DIALECTS:
-            data = _path("ad_hoc_closures", d).read_bytes()
-            body = data[3:] if _bom(d) else data
-            expected = "".join(_delim(d).join(r) + "\n" for r in [header] + rows)
-            assert body == expected.encode("utf-8")
+            parsed = _parse("ad_hoc_closures", d.key)
+            assert parsed[0] == header, d.key
+            ad_hoc_expected.assert_rows_match(_csv_rows_to_tuples(parsed[1:]))
+            assert len(parsed) - 1 == ad_hoc_expected.AD_HOC_ROW_COUNT, d.key
+
+    @pytest.mark.parametrize("mutation", sorted(ad_hoc_expected.MUTATIONS))
+    def test_negative_an_exporter_that_drops_adds_or_alters_a_row_fails(self, tmp_path, registry, mutation):
+        """Generate the CSV files from a registry that makes the exporter
+        drop, add or alter one ad hoc row: the derived expectation rejects
+        every dialect's output; the unmutated registry passes."""
+        for data, should_fail in ((_mutated(registry, ad_hoc_expected.MUTATIONS[mutation]), True),
+                                  (registry, False)):
+            files, _ = export_csv.generate(_write_registry(tmp_path, data))
+            for d in DIALECTS:
+                delimiter, bom = SPEC[d.key]
+                text = files[export_csv.filename("ad_hoc_closures", d)].decode("utf-8-sig" if bom else "utf-8")
+                rows = _csv_rows_to_tuples(list(csv.reader(io.StringIO(text, newline=""), delimiter=delimiter))[1:])
+                if should_fail:
+                    with pytest.raises(AssertionError):
+                        ad_hoc_expected.assert_rows_match(rows)
+                else:
+                    ad_hoc_expected.assert_rows_match(rows)
 
     def test_non_ascii_names_survive_every_dialect(self):
         for d in DIALECTS:
