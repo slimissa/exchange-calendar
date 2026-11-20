@@ -1439,13 +1439,42 @@
       "verdict": "library_error",
       "status": "registry_verified",
       "dates": [
-        "2025-05-02",
-        "2025-11-17",
         "2025-12-25",
         "2026-12-25"
       ],
-      "summary": "Nasdaq's statistics reports give Riga 19 trading days in May 2025 (closed 1, 5 and 29 May, so 2 May traded), 19 in November 2025 against 20 for every other exchange (only 18 November closed, so 17 November traded) and 19 in December 2025 as for every exchange (24, 25, 26 and 31 December closed). exchange_calendars and pandas_market_calendars close 2 May and 17 November 2025 and trade on 25 December 2025 and 2026. The registry is right on all four. The 25 December 2026 closure rests on the 2025 count and Nasdaq Baltic's yearly pattern; no 2026 statistics exist yet.",
+      "summary": "Nasdaq's statistics report gives Riga 19 trading days in December 2025, as for every exchange (24, 25, 26 and 31 December closed). exchange_calendars and pandas_market_calendars trade on 25 December 2025 and 2026. The registry closes both; 25 December is Christmas in Latvia's holidays law. 2025-05-02 and 2025-11-17, formerly in this entry, were moved out in 4c12: Nasdaq Baltic's monthly bulletins give Riga 18 trading days in May and in November 2025, so both were transfer-day closures and the registry now closes them, as the libraries do.",
       "source_url": "https://attachment.news.eu.nasdaq.com/a73c2732fa3004542058f223e2e1b83f1"
+    },
+    {
+      "exchange": "XRIS",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2024-12-25"
+      ],
+      "summary": "exchange_calendars and pandas_market_calendars have no Christmas Day for Nasdaq Riga and trade on Wednesday 25 December 2024. Nasdaq's investor calendar for week 52/2024 lists 24-26 December 2024 as trading holidays for TLN, RIG and VLN; the registry closes it (4c12).",
+      "source_url": "https://view.news.eu.nasdaq.com/view?id=b8c140bf1e1581552fce9817b148ea449&lang=en"
+    },
+    {
+      "exchange": "XRIS",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2026-06-22"
+      ],
+      "summary": "Cabinet transfer day. Nasdaq Baltic's monthly bulletin for June 2026 (maintainer's saved copy) gives Riga 19 equities trading days = 22 weekdays - 22, 23 and 24 June; Tallinn 20 and Vilnius 21 reconcile exactly. Nasdaq Baltic's trading-holiday calendar also lists 22 June 2026 for RIG. The libraries trade; the registry closes it (4c12).",
+      "source_url": "https://nasdaqbaltic.com/statistics/en/bulletins?bbid=456"
+    },
+    {
+      "exchange": "XRIS",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "recheck_date": "2027-01-31",
+      "dates": [
+        "2026-01-02"
+      ],
+      "summary": "Cabinet transfer day. Nasdaq Baltic's trading-holiday calendar lists Friday 2 January 2026 as a trading holiday for RIG, and Riga closed on the transfer days counted in the May 2025, November 2025 and June 2026 bulletins; the registry closes it, unconfirmed (4c12). The libraries trade. Check the January 2026 bulletin's Riga trading-day count (21 if closed, 22 if open).",
+      "source_url": "https://nasdaqbaltic.com/statistics/en/calendar?holidays=1"
     },
     {
       "exchange": "XKAR",

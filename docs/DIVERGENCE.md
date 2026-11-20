@@ -89,9 +89,9 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XNZE | 1500 | 1500 | 1500 | 0 | 100.0% |
 | XOSL | 1504 | 1504 | 1504 | 0 | 100.0% |
 | XPAR | 1535 | 1535 | 1535 | 0 | 100.0% |
-| XPHS | 1231 | 1230 | 1230 | 7 | 99.4% |
+| XPHS | 1477 | 1476 | 1476 | 7 | 99.5% |
 | XPRA | 1500 | 1500 | 1500 | 0 | 100.0% |
-| XRIS | 1249 | 1250 | 1250 | 7 | 99.4% |
+| XRIS | 1493 | 1499 | 1499 | 8 | 99.5% |
 | XSAU | 1007 | 998 | 998 | 17 | 98.3% |
 | XSES | 1508 | 1537 | 755* | 29 | 98.1% |
 | XSGO | 1489 | No reference data | 1490 | 1 | 99.9% |
@@ -113,7 +113,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 28 of 50.
-- Trading days on which all available sources agree: 72460 of 72746 (99.6%).
+- Trading days on which all available sources agree: 72952 of 73239 (99.6%).
 
 ## Disagreements by year
 
@@ -135,8 +135,8 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XLIT | 0 | 1 | 1 | 0 | 1 | 1 |
 | XMOS | 0 | 2 | 2 | - | - | - |
 | XNSE | 1 | 1 | 0 | 8 | 12 | 15 |
-| XPHS | - | 0 | 1 | 3 | 2 | 1 |
-| XRIS | - | 3 | 1 | 0 | 2 | 1 |
+| XPHS | 0 | 0 | 1 | 3 | 2 | 1 |
+| XRIS | 1 | 1 | 3 | 0 | 2 | 1 |
 | XSAU | - | 4 | 0 | 5 | 8 | - |
 | XSES | 0 | 0 | 0 | 8 | 10 | 11 |
 | XSGO | 0 | 0 | 0 | 1 | 0 | 0 |
@@ -148,9 +148,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2024 | 3 | 0 | 1 | 0 | 0 | 2 |
-| 2025 | 22 | 0 | 20 | 1 | 1 | 0 |
-| 2026 | 23 | 0 | 18 | 0 | 0 | 5 |
+| 2024 | 4 | 0 | 2 | 0 | 0 | 2 |
+| 2025 | 20 | 0 | 18 | 1 | 1 | 0 |
+| 2026 | 25 | 0 | 21 | 0 | 1 | 3 |
 | 2027 | 71 | 0 | 12 | 0 | 54 | 5 |
 | 2028 | 85 | 0 | 6 | 0 | 79 | 0 |
 | 2029 | 82 | 0 | 5 | 0 | 77 | 0 |
@@ -198,7 +198,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 ### XBKK (2)
 
-- registry closed, PMC open, EC open (2): 2026-10-16 Fr, 2026-12-16 We
+- registry closed, PMC open, EC open (2): 2026-10-16 Fr [library error], 2026-12-16 We [library error]
 
 ### XBOG (1)
 
@@ -262,10 +262,10 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry open, PMC closed, EC closed (4): 2027-03-10 We [unpublished], 2027-05-17 Mo [unpublished], 2028-01-26 We [unpublished], 2029-02-13 Tu [unpublished]
 - registry closed, PMC open, EC open (3): 2026-11-02 Mo [library error], 2027-11-02 Tu [unpublished], 2028-11-02 Th [unpublished]
 
-### XRIS (7)
+### XRIS (8)
 
-- registry closed, PMC open, EC open (4): 2025-12-25 Th [library error], 2026-12-25 Fr [library error], 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
-- registry open, PMC closed, EC closed (3): 2025-05-02 Fr [library error], 2025-11-17 Mo [library error], 2028-07-10 Mo [unpublished]
+- registry closed, PMC open, EC open (7): 2024-12-25 We [library error], 2025-12-25 Th [library error], 2026-01-02 Fr [unpublished], 2026-06-22 Mo [library error], 2026-12-25 Fr [library error], 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
+- registry open, PMC closed, EC closed (1): 2028-07-10 Mo [unpublished]
 
 ### XSAU (17)
 
@@ -297,7 +297,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 63 dates; Registry error: 410 dates; Unpublished: 213 dates.
+- Convention difference: 1 dates; Library error: 65 dates; Registry error: 410 dates; Unpublished: 214 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -322,6 +322,14 @@ Bermuda's Public Holidays Act sets Emancipation Day on the Thursday before the f
 Dates: 2028-07-27, 2028-07-28, 2028-08-03, 2028-08-04.
 
 Source: https://www.gov.bm/print/html/node/504821
+
+### XBKK: Library error (2, registry verified, no change)
+
+SET's own holiday page (2026 tab; read in 4c11 from the maintainer's copy printed on 2026-11-20) lists Friday 16 October 2026 and Wednesday 16 December 2026 as 'Additional special holiday', amended by SET's notifications of 16 June 2026 and 19 November 2026. The registry closes both (ad_hoc_closures); exchange_calendars and pandas_market_calendars show them open.
+
+Dates: 2026-10-16, 2026-12-16.
+
+Source: https://www.set.or.th/en/about/event-calendar/holiday
 
 ### XBKK: Registry error (6, fixed in 2.23.6)
 
@@ -987,13 +995,29 @@ Dates: 2028-12-25, 2029-12-25.
 
 Source: https://nasdaqcsd.com/latvia/en/calendar-working-hours/
 
-### XRIS: Library error (4, registry verified, no change)
+### XRIS: Library error (2, registry verified, no change)
 
-Nasdaq's statistics reports give Riga 19 trading days in May 2025 (closed 1, 5 and 29 May, so 2 May traded), 19 in November 2025 against 20 for every other exchange (only 18 November closed, so 17 November traded) and 19 in December 2025 as for every exchange (24, 25, 26 and 31 December closed). exchange_calendars and pandas_market_calendars close 2 May and 17 November 2025 and trade on 25 December 2025 and 2026. The registry is right on all four. The 25 December 2026 closure rests on the 2025 count and Nasdaq Baltic's yearly pattern; no 2026 statistics exist yet.
+Nasdaq's statistics report gives Riga 19 trading days in December 2025, as for every exchange (24, 25, 26 and 31 December closed). exchange_calendars and pandas_market_calendars trade on 25 December 2025 and 2026. The registry closes both; 25 December is Christmas in Latvia's holidays law. 2025-05-02 and 2025-11-17, formerly in this entry, were moved out in 4c12: Nasdaq Baltic's monthly bulletins give Riga 18 trading days in May and in November 2025, so both were transfer-day closures and the registry now closes them, as the libraries do.
 
-Dates: 2025-05-02, 2025-11-17, 2025-12-25, 2026-12-25.
+Dates: 2025-12-25, 2026-12-25.
 
 Source: https://attachment.news.eu.nasdaq.com/a73c2732fa3004542058f223e2e1b83f1
+
+### XRIS: Library error (1, registry verified, no change)
+
+exchange_calendars and pandas_market_calendars have no Christmas Day for Nasdaq Riga and trade on Wednesday 25 December 2024. Nasdaq's investor calendar for week 52/2024 lists 24-26 December 2024 as trading holidays for TLN, RIG and VLN; the registry closes it (4c12).
+
+Dates: 2024-12-25.
+
+Source: https://view.news.eu.nasdaq.com/view?id=b8c140bf1e1581552fce9817b148ea449&lang=en
+
+### XRIS: Library error (1, registry verified, no change)
+
+Cabinet transfer day. Nasdaq Baltic's monthly bulletin for June 2026 (maintainer's saved copy) gives Riga 19 equities trading days = 22 weekdays - 22, 23 and 24 June; Tallinn 20 and Vilnius 21 reconcile exactly. Nasdaq Baltic's trading-holiday calendar also lists 22 June 2026 for RIG. The libraries trade; the registry closes it (4c12).
+
+Dates: 2026-06-22.
+
+Source: https://nasdaqbaltic.com/statistics/en/bulletins?bbid=456
 
 ### XRIS: Registry error (8, fixed in 2.23.5)
 
@@ -1018,6 +1042,14 @@ Exchange_calendars carries 10 July 2028 as a day off for the Latvian Song and Da
 Dates: 2028-07-10.
 
 Source: https://www.nasdaqbaltic.com/trading-calendar
+
+### XRIS: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2027-01-31)
+
+Cabinet transfer day. Nasdaq Baltic's trading-holiday calendar lists Friday 2 January 2026 as a trading holiday for RIG, and Riga closed on the transfer days counted in the May 2025, November 2025 and June 2026 bulletins; the registry closes it, unconfirmed (4c12). The libraries trade. Check the January 2026 bulletin's Riga trading-day count (21 if closed, 22 if open).
+
+Dates: 2026-01-02.
+
+Source: https://nasdaqbaltic.com/statistics/en/calendar?holidays=1
 
 ### XSAU: Library error (4, registry verified, no change)
 
