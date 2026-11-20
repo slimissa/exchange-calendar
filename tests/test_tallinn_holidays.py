@@ -64,8 +64,10 @@ class TestXTALProperties:
         assert xtal["timezone"] == "Europe/Tallinn"
 
     def test_regular_hours(self, xtal):
-        assert xtal["regular_hours"]["open"] == "10:00"
-        assert xtal["regular_hours"]["close"] == "16:00"
+        """4c10, ADR 0013: closing call 15:59:30-16:00:00 with a random
+        uncross (Nasdaq Baltic trading-day structure); 16:00, one dated entry."""
+        assert xtal["regular_hours"] == [
+            {"close": "16:00", "effective_from": "2010-01-01", "open": "10:00"}]
 
     def test_no_lunch_break(self, xtal):
         lunch = [s for s in xtal.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -76,7 +78,7 @@ class TestXTALProperties:
 
     def test_generation_range(self, xtal):
         assert "generation_range" in xtal
-        assert xtal["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xtal["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c10 backfill
 
     def test_ad_hoc_closures_empty(self, xtal):
         assert xtal.get("ad_hoc_closures", []) == []
@@ -230,6 +232,9 @@ class TestXTALStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if entry["source_url"] == "github.com/gerrymanoim/exchange_calendars":
+                assert date_str < "2025"  # 4c10 backfill (repository convention)
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -255,11 +260,37 @@ class TestXTALStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~45-60 entries."""
-        assert 44 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
+        """Scoped to 2025-2029: 53 (unchanged by 4c10). 2010-2024 backfill:
+        139 exchange_calendars closures + 9 Christmas Days (4c10) = 148."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 53
+        assert len([d for d in explicit_dates if d < "2025"]) == 148
+
+    def test_christmas_day_2010_2024(self, explicit_dates):
+        """4c10: exchange_calendars has no Christmas Day for XTAL. The
+        Public Holidays and Days of National Importance Act lists 25 December;
+        every weekday 25 December 2010-2024 is closed and named so."""
+        xmas = sorted(d for d, e in explicit_dates.items()
+                      if d < "2025" and d.endswith("-12-25"))
+        assert xmas == ["2012-12-25", "2013-12-25", "2014-12-25", "2015-12-25",
+                        "2017-12-25", "2018-12-25", "2019-12-25", "2020-12-25",
+                        "2023-12-25", "2024-12-25"]
+        assert {explicit_dates[d]["name"] for d in xmas} == {"Christmas Day"}
+
+    def test_christmas_corrections_are_contradicted_by(self, xtal):
+        span = xtal["verification"]["coverage"]["sources"][0]
+        assert span["from"] == "2010-01-01" and span["to"] == "2024-12-31"
+        assert span["contradicted_by"] == [
+            "2012-12-25", "2013-12-25", "2014-12-25", "2015-12-25", "2017-12-25",
+            "2018-12-25", "2019-12-25", "2020-12-25", "2024-12-25"]
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
+        for d, entry in explicit_dates.items():
+            if d < "2025":
+                if d.endswith("-12-25"):
+                    assert entry["source_url"].startswith("https://")
+                else:  # 4c10 backfill cites exchange_calendars
+                    assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert "nasdaqbaltic.com" in entry["source_url"]
 
 
