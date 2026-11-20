@@ -1519,7 +1519,7 @@
   },
   "mic": "XCSE",
   "name": "Nasdaq Copenhagen",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (Nasdaq's calendar, published to 2027). 2028-2029: predicted from exchange_calendars and the exchange's unchanged pattern; not yet published. Rechecked 2026-11-20 (4c-R4). Closures: Nasdaq's European Markets Trading Hours page (https://www.nasdaq.com/european-market-activity/trading-hours) lists Copenhagen equity closures for 2026 (Jan 1, Apr 2, Apr 3, Apr 6, May 14, May 15, May 25, Jun 5, Dec 24, Dec 25, Dec 31) and 2027 (Jan 1, Mar 25, Mar 26, Mar 29, May 6, May 7, May 17, Dec 24, Dec 31); the registry matches both years exactly. Half days: the page lists no Copenhagen half trading days for 2026 or 2027, and the registry has none; 2010-2025 was not checked against a Nasdaq document. Close (ADR 0013): the Nasdaq Nordic Market Model 2026:03, section 3.1 (https://www.nasdaq.com/docs/2026/06/17/Nasdaq_Nordic_Market_Model_2026_03_Clean.pdf), schedules Copenhagen equities with continuous trading 09:00-16:55, pre-close 16:55 and the closing uncross at 17:00 (followed by Trading@Closing Price 17:00-17:10 and post-trade to 17:20); the trading-hours page gives equities 09:00-17:00 with no matching in the last five minutes. regular_hours.close 17:00 is therefore already the end of the closing auction (the model's 30-second randomisation of the closing call is ignored, per ADR 0013). Close times before the current model were not checked against a Nasdaq document. No Saturday sessions or one-off closures found in the 2026-2027 sources. The Nasdaq Nordic fetcher cannot reach nasdaq.com from this sandbox; the sources were read by hand.",
   "regular_hours": {
     "close": "17:00",
     "open": "09:00"
@@ -1559,7 +1559,12 @@
         },
         {
           "from": "2025-01-01",
-          "source": "exchange_calendars + exchange_publications",
+          "source": "exchange_calendars + exchange_publications (Nasdaq European Markets Trading Hours page, Copenhagen calendar published to 2027)",
+          "to": "2027-12-31"
+        },
+        {
+          "from": "2028-01-01",
+          "source": "exchange_calendars + standing Nasdaq Copenhagen holiday pattern (Nasdaq has published only to 2027)",
           "to": "2029-12-31"
         }
       ],
