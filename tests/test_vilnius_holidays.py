@@ -66,8 +66,10 @@ class TestXLITProperties:
         assert xlit["timezone"] == "Europe/Vilnius"
 
     def test_regular_hours(self, xlit):
-        assert xlit["regular_hours"]["open"] == "10:00"
-        assert xlit["regular_hours"]["close"] == "16:00"
+        """4c9, ADR 0013: closing call 15:59:30-16:00:00 with a random
+        uncross (Nasdaq Baltic trading-day structure); 16:00, one dated entry."""
+        assert xlit["regular_hours"] == [
+            {"close": "16:00", "effective_from": "2010-01-01", "open": "10:00"}]
 
     def test_no_lunch_break(self, xlit):
         lunch = [s for s in xlit.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -78,7 +80,7 @@ class TestXLITProperties:
 
     def test_generation_range(self, xlit):
         assert "generation_range" in xlit
-        assert xlit["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xlit["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c9 backfill
 
     def test_ad_hoc_closures_empty(self, xlit):
         assert xlit.get("ad_hoc_closures", []) == []
@@ -211,6 +213,9 @@ class TestXLITStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if date_str < "2025":  # 4c9 backfill cites exchange_calendars
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -236,11 +241,15 @@ class TestXLITStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~55-70 entries."""
-        assert 50 <= len(explicit_dates) <= 70, f"Unexpected count: {len(explicit_dates)}"
+        """Scoped to 2025-2029: 62 (unchanged by 4c9). 2010-2024 backfill:
+        175 closures."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 62
+        assert len([d for d in explicit_dates if d < "2025"]) == 175
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
+        for d, entry in explicit_dates.items():
+            if d < "2025":
+                continue  # 4c9 backfill cites exchange_calendars
             assert "nasdaqbaltic.com" in entry["source_url"]
 
 
@@ -302,8 +311,22 @@ class TestXLITNasdaqBalticList:
         assert "2025-11-02" not in e          # a Sunday
 
     def test_all_souls_day_not_before_2020(self):
-        """The holiday dates from a 2019 law, first observed in 2020."""
-        assert all(not d.startswith(("2019", "2018")) for d in _explicit("XLIT"))
+        """The holiday dates from a 2019 law, first observed in 2020.
+
+        4c9: the 2010-2024 backfill from exchange_calendars, which applies
+        All Souls' Day with no start date, adds 2 November closures for
+        2010-2018. No Nasdaq Vilnius document for those years was read, so
+        they stay (lesson 10 needs the exchange's own source) but must be
+        marked unconfirmed, and no All Souls' Day may appear in 2019 or in
+        2025-2029 except on 2 November from 2020 on."""
+        e = _explicit("XLIT")
+        pre = sorted(d for d in e if d[5:] == "11-02" and d < "2020")
+        assert pre == ["2010-11-02", "2011-11-02", "2012-11-02", "2015-11-02",
+                       "2016-11-02", "2017-11-02", "2018-11-02"]
+        xlit = json.loads((Path(__file__).parent.parent / "exchanges" / "XLIT.json").read_text())
+        unconfirmed = set(xlit["verification"]["coverage"]["sources"][0]["unconfirmed"])
+        assert set(pre) <= unconfirmed
+        assert not [d for d in e if d.startswith("2019") and d[5:] == "11-02"]
 
 
 # ──────────────────────────────────────────────────────────────
