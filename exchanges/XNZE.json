@@ -1361,6 +1361,14 @@
         "status": "closed"
       },
       {
+        "date": "2026-12-24",
+        "early_close_time": "13:00",
+        "name": "Business Day Prior to Christmas Day (abbreviated trading) (predicted)",
+        "predicted": true,
+        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "status": "early_close"
+      },
+      {
         "date": "2026-12-25",
         "name": "Christmas Day",
         "source_url": "https://www.nzx.com/trading-calendar",
@@ -1371,6 +1379,14 @@
         "name": "Boxing Day (observed)",
         "source_url": "https://www.nzx.com/trading-calendar",
         "status": "closed"
+      },
+      {
+        "date": "2026-12-31",
+        "early_close_time": "13:00",
+        "name": "Business Day Prior to New Year's Day (abbreviated trading) (predicted)",
+        "predicted": true,
+        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "status": "early_close"
       },
       {
         "date": "2027-01-01",
@@ -1427,6 +1443,14 @@
         "status": "closed"
       },
       {
+        "date": "2027-12-24",
+        "early_close_time": "13:00",
+        "name": "Business Day Prior to Christmas Day (abbreviated trading) (predicted)",
+        "predicted": true,
+        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "status": "early_close"
+      },
+      {
         "date": "2027-12-27",
         "name": "Christmas Day (observed)",
         "source_url": "https://www.nzx.com/trading-calendar",
@@ -1437,6 +1461,14 @@
         "name": "Boxing Day (observed)",
         "source_url": "https://www.nzx.com/trading-calendar",
         "status": "closed"
+      },
+      {
+        "date": "2027-12-31",
+        "early_close_time": "13:00",
+        "name": "Business Day Prior to New Year's Day (abbreviated trading) (predicted)",
+        "predicted": true,
+        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "status": "early_close"
       },
       {
         "date": "2028-01-03",
@@ -1493,6 +1525,14 @@
         "status": "closed"
       },
       {
+        "date": "2028-12-22",
+        "early_close_time": "13:00",
+        "name": "Business Day Prior to Christmas Day (abbreviated trading) (predicted)",
+        "predicted": true,
+        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "status": "early_close"
+      },
+      {
         "date": "2028-12-25",
         "name": "Christmas Day",
         "source_url": "https://www.nzx.com/trading-calendar",
@@ -1503,6 +1543,14 @@
         "name": "Boxing Day",
         "source_url": "https://www.nzx.com/trading-calendar",
         "status": "closed"
+      },
+      {
+        "date": "2028-12-29",
+        "early_close_time": "13:00",
+        "name": "Business Day Prior to New Year's Day (abbreviated trading) (predicted)",
+        "predicted": true,
+        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "status": "early_close"
       },
       {
         "date": "2029-01-01",
@@ -1559,6 +1607,14 @@
         "status": "closed"
       },
       {
+        "date": "2029-12-24",
+        "early_close_time": "13:00",
+        "name": "Business Day Prior to Christmas Day (abbreviated trading) (predicted)",
+        "predicted": true,
+        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "status": "early_close"
+      },
+      {
         "date": "2029-12-25",
         "name": "Christmas Day",
         "source_url": "https://www.nzx.com/trading-calendar",
@@ -1569,13 +1625,21 @@
         "name": "Boxing Day",
         "source_url": "https://www.nzx.com/trading-calendar",
         "status": "closed"
+      },
+      {
+        "date": "2029-12-31",
+        "early_close_time": "13:00",
+        "name": "Business Day Prior to New Year's Day (abbreviated trading) (predicted)",
+        "predicted": true,
+        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "status": "early_close"
       }
     ],
     "recurrence_rules": []
   },
   "mic": "XNZE",
   "name": "New Zealand Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified): 150 closures (146 named) and 28 early closes at 12:45 on the business days before Christmas Day and New Year's Day, 2011-2024 (exchange_calendars' value, the end of continuous trading; ADR 0013 would give 13:00, see below). exchange_calendars has no 2010 abbreviated days; an NZX holiday-period notice for 24 and 31 December 2010 (nzx attachment 131349, seen only as a search snippet) gives abbreviated hours with pre-close to 16:00, not read in full, so 2010 is unchanged. 2025-2027: exchange_calendars + exchange_publications. 2028-2029: standing pattern. Checked 2026-11-20 (4c9). Last published year: NZX's memo 'NZX Market Holidays - 2025/2027' (https://www.nzx.com/announcements/463713, 1 December 2025) lists the holidays and abbreviated days in an attachment that is robots-blocked to this sandbox (api.nzx.com), so the 2027 closures were not compared against it. Close (ADR 0013): NZX's 'Anatomy of a trading day' (https://www.nzx.com/services/nzx-trading/anatomy-of-a-trading-day) gives Normal Trading 10:00-16:45, Pre-Close from 16:45, and the closing auction at a random time 30 seconds either side of 5:00pm, then Adjust to 5:30pm. The scheduled close is therefore 17:00 (was 16:45, the end of continuous trading; exchange_calendars has 16:45), as one dated entry from 2010-01-01 (unconfirmed: no earlier schedule was read). Abbreviated trading days: NZX's trading-hours page gives abbreviated days as Normal Trading 10:00-12:45, Pre-Close 12:45-13:00, Adjust 13:00-13:30 (read only as a search snippet of beta.nzx.com's Hours & Boards page; the page itself refuses this sandbox). NZX's 2024/2026 holiday memo (announcement 443000, snippet) lists 31 December 2025 as abbreviated trading, and NZX's announcement 463815 (https://announcements.nzx.com/announcement/463815) says NZX markets operate abbreviated hours on 24 and 31 December 2025. So 2025-12-24 and 2025-12-31 are early closes at 13:00 (the file had none; exchange_calendars has 12:45). Not changed (4c9 stop rule: 11 corrections in all): the business days before Christmas Day and New Year's Day in 2026 (Dec 24, Dec 31) and 2027 (Dec 24, Dec 31) are expected abbreviated days at 13:00 but NZX's 2025/2027 memo attachment could not be read; they stay full days and are marked unconfirmed. The predicted 2028 (Dec 22, Dec 29) and 2029 (Dec 24, Dec 31) abbreviated days are not added. Listed for 4c10.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified): 150 closures (146 named) and 28 early closes at 12:45 on the business days before Christmas Day and New Year's Day, 2011-2024 (exchange_calendars' value, the end of continuous trading; ADR 0013 would give 13:00, see below). exchange_calendars has no 2010 abbreviated days; an NZX holiday-period notice for 24 and 31 December 2010 (nzx attachment 131349, seen only as a search snippet) gives abbreviated hours with pre-close to 16:00, not read in full, so 2010 is unchanged. 2025-2027: exchange_calendars + exchange_publications. 2028-2029: standing pattern. Checked 2026-11-20 (4c9). Last published year: NZX's memo 'NZX Market Holidays - 2025/2027' (https://www.nzx.com/announcements/463713, 1 December 2025) lists the holidays and abbreviated days in an attachment that is robots-blocked to this sandbox (api.nzx.com), so the 2027 closures were not compared against it. Close (ADR 0013): NZX's 'Anatomy of a trading day' (https://www.nzx.com/services/nzx-trading/anatomy-of-a-trading-day) gives Normal Trading 10:00-16:45, Pre-Close from 16:45, and the closing auction at a random time 30 seconds either side of 5:00pm, then Adjust to 5:30pm. The scheduled close is therefore 17:00 (was 16:45, the end of continuous trading; exchange_calendars has 16:45), as one dated entry from 2010-01-01 (unconfirmed: no earlier schedule was read). Abbreviated trading days: NZX's trading-hours page gives abbreviated days as Normal Trading 10:00-12:45, Pre-Close 12:45-13:00, Adjust 13:00-13:30 (read only as a search snippet of beta.nzx.com's Hours & Boards page; the page itself refuses this sandbox). NZX's 2024/2026 holiday memo (announcement 443000, snippet) lists 31 December 2025 as abbreviated trading, and NZX's announcement 463815 (https://announcements.nzx.com/announcement/463815) says NZX markets operate abbreviated hours on 24 and 31 December 2025. So 2025-12-24 and 2025-12-31 are early closes at 13:00 (the file had none; exchange_calendars has 12:45). 4c10: NZX's own pages re-read. 'Anatomy of a trading day' (https://www.nzx.com/services/nzx-trading/anatomy-of-a-trading-day) again gives the closing auction at a random time between 16:59:30 and 17:00:30, so the 17:00 close stands (ADR 0013). For abbreviated days NZX's own notices (https://announcements.nzx.com/attachment/433988.pdf, 11 December 2024; https://announcements.nzx.com/announcement/463815, 2 December 2025) say NZX markets operate abbreviated hours 'closing at 1.30pm'. That is the end of the session (the Adjust end; on a normal day the same point is 17:30), an upper bound under ADR 0013. The abbreviated-day closing auction at 13:00 rests on NZX's Hours & Boards table (Pre-Close 12:45-13:00), read only as a search snippet because the page renders client-side, so 13:00 is kept as the ADR 0013 convention for 2025-2029 and the 2025 dates are marked unconfirmed for the time. exchange_calendars' 12:45 (end of continuous trading) stays for 2011-2024 as an ADR 0013 exception. The 2026 and 2027 abbreviated days (Dec 24, Dec 31) are in NZX's memo 'NZX Market Holidays - 2025/2027' (https://www.nzx.com/announcements/463713), but its attachment is robots-blocked (api.nzx.com) and was not read. They are therefore added as predicted early closes at 13:00 (dates as in exchange_calendars, which has all of 2025-2029 at 12:45) and stay unconfirmed. 2028 (Dec 22, Dec 29) and 2029 (Dec 24, Dec 31) are added as predicted on the same pattern. Recheck after NZX's 2026/2028 holiday memo (expected early December 2026).",
   "regular_hours": [
     {
       "close": "17:00",
@@ -1611,9 +1675,12 @@
         },
         {
           "from": "2025-01-01",
+          "recheck_date": "2026-12-15",
           "source": "exchange_calendars + exchange_publications (NZX trading-hours pages; NZX market-holiday memos 443000 and 463713)",
           "to": "2027-12-31",
           "unconfirmed": [
+            "2025-12-24",
+            "2025-12-31",
             "2026-12-24",
             "2026-12-31",
             "2027-12-24",

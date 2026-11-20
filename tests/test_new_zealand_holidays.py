@@ -331,13 +331,24 @@ class TestXNZEStructure:
     def test_abbreviated_trading_days(self, explicit_dates):
         """Corrected in 4c9: NZX has abbreviated trading days (the business
         days before Christmas Day and New Year's Day). 2025's two are early
-        closes at 13:00 (end of the abbreviated pre-close, ADR 0013). The
-        2011-2024 backfill keeps exchange_calendars' 12:45. The old test
+        closes at 13:00 (ADR 0013 convention; NZX's own notices give 'closing
+        at 1.30pm', the session end). 4c10: 2026-2029 are predicted early
+        closes at 13:00 (NZX's 2025/2027 memo attachment could not be read).
+        The 2011-2024 backfill keeps exchange_calendars' 12:45. The old test
         asserted there were none."""
         early = {d: e["early_close_time"] for d, e in explicit_dates.items()
                  if e["status"] == "early_close"}
         assert {d: t for d, t in early.items() if d >= "2025"} == {
-            "2025-12-24": "13:00", "2025-12-31": "13:00"}
+            "2025-12-24": "13:00", "2025-12-31": "13:00",
+            "2026-12-24": "13:00", "2026-12-31": "13:00",
+            "2027-12-24": "13:00", "2027-12-31": "13:00",
+            "2028-12-22": "13:00", "2028-12-29": "13:00",
+            "2029-12-24": "13:00", "2029-12-31": "13:00"}
+        predicted = sorted(d for d, e in explicit_dates.items() if e.get("predicted"))
+        assert predicted == ["2026-12-24", "2026-12-31", "2027-12-24", "2027-12-31",
+                             "2028-12-22", "2028-12-29", "2029-12-24", "2029-12-31"]
+        for d in predicted:
+            assert explicit_dates[d]["name"].endswith("(predicted)")
         old = {t for d, t in early.items() if d < "2025"}
         assert old == {"12:45"} and len([d for d in early if d < "2025"]) == 28
 
@@ -350,14 +361,19 @@ class TestXNZEStructure:
 
     def test_holiday_count_reasonable(self, explicit_dates):
         """Scoped to 2025-2029: 55 before 4c9 + the two 2025 abbreviated days
-        = 57. 2010-2024 backfill: 150 closures + 28 early closes = 178."""
-        assert len([d for d in explicit_dates if d >= "2025"]) == 57
+        = 57, + 8 predicted abbreviated days 2026-2029 (4c10) = 65.
+        2010-2024 backfill: 150 closures + 28 early closes = 178."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 65
         assert len([d for d in explicit_dates if d < "2025"]) == 178
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
             if entry["date"] < "2025":
                 continue  # 4c9 backfill cites exchange_calendars
+            if entry.get("predicted"):
+                # 4c10: dates as in exchange_calendars, time per ADR 0013.
+                assert entry["source_url"] == "https://github.com/gerrymanoim/exchange_calendars"
+                continue
             if entry["name"] == "Matariki" and entry["date"] >= "2027":
                 # The dates come from the Matariki Public Holiday Act 2022.
                 assert entry["source_url"].startswith("https://")
