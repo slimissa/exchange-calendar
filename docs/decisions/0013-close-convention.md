@@ -59,11 +59,22 @@ time the exchange's own documents give as the close of the trading day.
 | XOSL full day | 16:30 | 16:25 Oslo from 2012-08-06 (4c8; 2012-08-06 to 2026-08-02 unconfirmed) | Euronext's Appendix to Instructions 4-01/4-03 (effective 2026-08-03): Oslo equities continuous to 16:20, closing uncross '16:25 Random', Trading at Last 16:25-16:30 |
 | XBUD | 17:00 | 17:05 Budapest (4c-R4), 2010-2029 | BSE Resolution 550/2013 (Xetra trading parameters): continuous until 17:00, closing auction call 17:00-17:05, price determination 17:05 + random end; versions effective 2015-02-27, 2018-01-02 and 2026-04-08. 2010 to 2015-02-26 unconfirmed (4c-R5) |
 | XBUD 2019-11-29 | full day | early close 14:05 (4c-R4) | BSE CEO Resolution 387/2019: closing call 14:00-14:05, price determination 14:05 |
+| XETR | 17:30 | 17:35 Frankfurt (4c8), 2010-2029; 2010-01-01 to 2025-11-30 unconfirmed | Deutsche Börse, Xetra trading parameters as of 2025-12-01: closing auction call 17:30, closing auction price 17:35; the auction schedule says auctions have a random end and the stated times are the earliest ends |
+| XETR last trading day | 14:00 (exchange_calendars) | early close 14:05 (4c8): 2025-12-30 confirmed; 2026-12-30 unconfirmed (recheck 2026-12-15); 2027-2029 predicted | Deutsche Börse, Final trading session 2025: closing auction call from 14:00, earliest price determination 14:05. The 2010-2024 backfill keeps 14:00 (see exceptions) |
+| XSES | 17:00 | 17:06 Singapore (4c8), 2010-2029; 2010-01-01 to 2011-07-31 unconfirmed | SGX-ST Regulatory Notice 8.2.1: Pre-Close 17:00 to 17:04-05 (random), Non-Cancel to 17:06; para 3.6(a): the Closing Routine ends at 17:06. 4c9 confirmed 17:06 is fixed, not the end of a random window |
+| XSES half days | 12:30 | 12:06 Singapore: 2025-2027 (4c8), 2028-2029 predicted (4c9) | same notice: half-day Pre-Close 12:00 to 12:04-05, Closing Routine ends at 12:06; SGX-ST rule amendments of 2017-11-13 moved it from 12:30-12:36 |
+| XWBO | 17:30 | 17:35 Vienna (4c8), 2010-2029; 2010-01-01 unconfirmed | Wiener Börse trading hours: equity closing auction 17:30-17:35 ("earliest end"), trade at close 17:35-17:45 |
+| XWBO last trading day | none for 2025-2029 | early close 14:20 (4c8, derived): 2025-12-30; 2026-12-30 unconfirmed (recheck 2026-12-15); 2027-2029 predicted | Wiener Börse news, 30 December 2025: closing auction starts at 14:15; 14:20 adds the 5-minute auction of the trading-hours page, so the end time is derived, not stated |
+| XJSE early closes | none | 12:00 Johannesburg on 24 and 31 December (4c8) | JSE Service Hotline 130/2025: closing auction call 11:50-12:00, close of trading 12:00 |
 
 Already conforming: XSTO (17:30 / 13:00), XHEL (18:30), XDUB full day
 (16:30; confirmed in 4c8 by Euronext's Appendix to Instructions 4-01/4-03: Dublin
 equities close call 17:28-17:30 CET, uncross '17:30 Random' = 16:30 Dublin) and half days 2022+ (12:30), Euronext core half days (14:05 CET),
-XSWX (17:30). Confirmed in 4c-R4 against the exchange's own document:
+XSWX (17:30). Confirmed and kept in 4c8: XTAI (13:30; TWSE trading-system
+page, closing call 13:25-13:30 and closing match at 13:30; the 13:33 closing
+delay applies only to flagged securities) and XJSE (17:00; JSE Volume 00E
+closing auction call 16:50-17:00, Market Notice 2719 earliest close 17:00:00
+with a random uncross to 17:01). Confirmed in 4c-R4 against the exchange's own document:
 XCSE (17:00; Nasdaq Nordic Market Model 2026:03, closing uncross 17:00),
 XICE (15:30 Reykjavik; same model, closing uncross 16:30 CET standard),
 XWAR (17:00 from 2026-10-05; GPW WATS Detailed Exchange Trading Rules,
@@ -79,6 +90,8 @@ Trading-hours.pdf, closing auction 16:10-16:15).
 | XWAR before 2013-04-15 | 17:00 | Warset era. Broker reports of GPW Resolution 933/2010 give a 17:20-17:30 closing call from 2011-01-03, but the resolution was not found on gpw.pl. The UTP era (2013-04-15 to 2026-10-02) has the WATS schedule only in republished GPW announcements. |
 | XPRA from 2027-01-04 | 16:55 (unconfirmed, recheck 2027-01-04) | PSE's notice of 2026-07-31 confirms the date and the 17:00 end of day; the phase schedule is an image that could not be read, and 16:55 comes from a press transcription. |
 | XBUD 2010 to 2015-02-26 | 17:05 (unconfirmed) | No BSE trading-parameter document found before the 550/2013 schedule effective 2015-02-27. |
+| XETR last trading day 2010-2024 | 14:00 (exchange_calendars) | 4c8 backfill; the end of continuous trading, not the auction end. No Deutsche Börse final-session notice before 2025 was read. |
+| XWBO last trading day 2017-2024 | 14:15 (exchange_calendars) | 4c8 backfill; the start of the shortened closing auction. Wiener Börse's 2017-2024 notices give the same 14:15 start, so ADR 0013 would give 14:20; not changed in 4c8. |
 
 Each exception is also in the exchange's `note`. Exchanges not yet
 rechecked (4c-R4, 4c-R5 and the non-backfilled exchanges) are brought to
