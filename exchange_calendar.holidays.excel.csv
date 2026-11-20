@@ -603,18 +603,176 @@ XBAH,2029-05-14,Islamic New Year (predicted),closed,explicit,1,,,true,,https://w
 XBAH,2029-07-24,Prophet's Birthday (predicted),closed,explicit,1,,,true,,https://www.bahrainbourse.com/trading-calendar
 XBAH,2029-12-16,National Day,closed,explicit,1,,,,,https://www.bahrainbourse.com/trading-calendar
 XBAH,2029-12-17,Accession Day,closed,explicit,1,,,,,https://www.bahrainbourse.com/trading-calendar
+XBDA,2010-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2010-04-02,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2010-05-24,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2010-07-29,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2010-07-30,Somers Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2010-09-06,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2010-11-11,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2010-12-24,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2010-12-27,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2010-12-28,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2011-01-03,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2011-04-22,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2011-05-24,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2011-07-28,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2011-07-29,Somers Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2011-09-05,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2011-11-11,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2011-12-23,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2011-12-26,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2011-12-27,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2012-01-02,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2012-04-06,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2012-05-24,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2012-08-02,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2012-08-03,Somers Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2012-09-03,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2012-11-12,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2012-12-24,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2012-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2012-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2013-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2013-03-29,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2013-05-24,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2013-08-01,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2013-08-02,Somers Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2013-09-02,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2013-11-11,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2013-12-24,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2013-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2013-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2014-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2014-04-18,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2014-05-26,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2014-07-31,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2014-08-01,Somers Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2014-09-01,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2014-11-11,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2014-12-24,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2014-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2014-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2015-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2015-04-03,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2015-05-25,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2015-07-30,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2015-07-31,Somers Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2015-09-07,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2015-11-11,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2015-12-24,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2015-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2015-12-28,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2016-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2016-03-25,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2016-05-24,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2016-07-28,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2016-07-29,Somers Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2016-09-05,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2016-11-11,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2016-12-23,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2016-12-26,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2016-12-27,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2017-01-02,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2017-04-14,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2017-05-24,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2017-08-03,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2017-08-04,Somers Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2017-09-04,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2017-11-13,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2017-12-22,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2017-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2017-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2018-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2018-03-30,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2018-05-25,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2018-06-18,National Heroes Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2018-08-02,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2018-08-03,Somers Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2018-09-03,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2018-11-12,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2018-12-24,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2018-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2018-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2019-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2019-04-19,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2019-05-24,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2019-06-17,National Heroes Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2019-08-01,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2019-08-02,Somers Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2019-09-02,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2019-11-11,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2019-12-24,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2019-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2019-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2020-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2020-04-10,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2020-05-29,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2020-06-15,National Heroes Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2020-07-30,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2020-07-31,Mary Prince Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2020-09-07,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2020-11-11,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2020-12-24,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2020-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2020-12-28,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2021-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2021-04-02,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2021-05-28,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2021-06-21,National Heroes Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2021-07-29,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2021-07-30,Mary Prince Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2021-09-06,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2021-11-11,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2021-12-24,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2021-12-27,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2021-12-28,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2022-01-03,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2022-04-15,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2022-05-27,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2022-06-20,National Heroes Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2022-07-28,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2022-07-29,Mary Prince Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2022-09-05,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2022-11-11,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2022-12-23,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2022-12-26,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2022-12-27,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2023-01-02,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2023-04-07,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2023-05-26,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2023-06-19,National Heroes Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2023-08-03,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2023-08-04,Mary Prince Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2023-09-04,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2023-11-13,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2023-12-22,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2023-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2023-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2024-01-01,New Year's Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2024-03-29,Good Friday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2024-05-24,Bermuda Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2024-06-17,National Heroes Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2024-08-01,Emancipation Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2024-08-02,Mary Prince Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2024-09-02,Labour Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2024-11-11,Remembrance Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2024-12-24,Historical Early Close,early_close,explicit,1,14:00,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2024-12-25,Christmas,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
+XBDA,2024-12-26,Boxing Day,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
 XBDA,2025-01-01,New Year's Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
+XBDA,2025-01-09,Delayed open to commemorate President Jimmy Carter (price discovery 09:00-09:30),delayed_open,explicit,1,,09:30,,,https://www.bsx.com/article/1100804633
 XBDA,2025-04-18,Good Friday,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2025-05-23,Bermuda Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2025-06-16,National Heroes' Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2025-07-31,Cup Match (Day 1),closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2025-08-01,Cup Match (Day 2),closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2025-09-01,Labour Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
+XBDA,2025-10-02,"Hurricane Imelda (BSX amended schedule: price discovery 12:00-12:15, trading from 12:15)",delayed_open,explicit,1,,12:15,,,https://www.bsx.com/article/1100805973
 XBDA,2025-11-11,Remembrance Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
-XBDA,2025-12-24,Christmas Eve,early_close,explicit,1,13:00,,,,https://www.bsx.com/trading-calendar
+XBDA,2025-12-24,Christmas Eve,early_close,explicit,1,14:00,,,,https://www.bsx.com/bermuda-stock-exchange-20252026-festive-holiday-closure-notice
 XBDA,2025-12-25,Christmas Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2025-12-26,Boxing Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
-XBDA,2025-12-31,New Year's Eve,early_close,explicit,1,13:00,,,,https://www.bsx.com/trading-calendar
 XBDA,2026-01-01,New Year's Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2026-04-03,Good Friday,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2026-05-22,Bermuda Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
@@ -623,10 +781,9 @@ XBDA,2026-07-30,Cup Match (Day 1),closed,explicit,1,,,,,https://www.bsx.com/trad
 XBDA,2026-07-31,Cup Match (Day 2),closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2026-09-07,Labour Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2026-11-11,Remembrance Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
-XBDA,2026-12-24,Christmas Eve,early_close,explicit,1,13:00,,,,https://www.bsx.com/trading-calendar
+XBDA,2026-12-24,Christmas Eve (predicted),early_close,explicit,1,14:00,,true,,https://www.bsx.com/trading-calendar
 XBDA,2026-12-25,Christmas Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2026-12-28,Boxing Day (substitute),closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
-XBDA,2026-12-31,New Year's Eve,early_close,explicit,1,13:00,,,,https://www.bsx.com/trading-calendar
 XBDA,2027-01-01,New Year's Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2027-03-26,Good Friday,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2027-05-28,Bermuda Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
@@ -635,10 +792,9 @@ XBDA,2027-07-29,Cup Match (Day 1),closed,explicit,1,,,,,https://www.bsx.com/trad
 XBDA,2027-07-30,Cup Match (Day 2),closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2027-09-06,Labour Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2027-11-11,Remembrance Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
-XBDA,2027-12-24,Christmas Eve,early_close,explicit,1,13:00,,,,https://www.bsx.com/trading-calendar
+XBDA,2027-12-24,Christmas Eve (predicted),early_close,explicit,1,14:00,,true,,https://www.bsx.com/trading-calendar
 XBDA,2027-12-27,Christmas Day (substitute),closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2027-12-28,Boxing Day (substitute),closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
-XBDA,2027-12-31,New Year's Eve,early_close,explicit,1,13:00,,,,https://www.bsx.com/trading-calendar
 XBDA,2028-01-03,New Year's Day (substitute),closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2028-04-14,Good Friday,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2028-05-26,Bermuda Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
@@ -657,10 +813,9 @@ XBDA,2029-08-02,Cup Match (Day 1),closed,explicit,1,,,,,https://www.bsx.com/trad
 XBDA,2029-08-03,Cup Match (Day 2),closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2029-09-03,Labour Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2029-11-12,Remembrance Day (substitute),closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
-XBDA,2029-12-24,Christmas Eve,early_close,explicit,1,13:00,,,,https://www.bsx.com/trading-calendar
+XBDA,2029-12-24,Christmas Eve (predicted),early_close,explicit,1,14:00,,true,,https://www.bsx.com/trading-calendar
 XBDA,2029-12-25,Christmas Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
 XBDA,2029-12-26,Boxing Day,closed,explicit,1,,,,,https://www.bsx.com/trading-calendar
-XBDA,2029-12-31,New Year's Eve,early_close,explicit,1,13:00,,,,https://www.bsx.com/trading-calendar
 XBEY,2025-01-01,New Year's Day,closed,explicit,1,,,,,https://www.bse.com.lb/trading-calendar
 XBEY,2025-05-01,Labour Day,closed,explicit,1,,,,,https://www.bse.com.lb/trading-calendar
 XBEY,2025-06-26,Islamic New Year,closed,explicit,1,,,false,,https://www.bse.com.lb/trading-calendar

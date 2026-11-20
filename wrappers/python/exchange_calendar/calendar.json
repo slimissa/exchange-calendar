@@ -4419,9 +4419,137 @@
       ]
     },
     {
-      "ad_hoc_closures": [],
+      "ad_hoc_closures": [
+        {
+          "date": "2019-11-04",
+          "name": "Portuguese Welcome 170th Anniversary (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        },
+        {
+          "date": "2021-10-18",
+          "name": "Flora Duffy Day (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        },
+        {
+          "date": "2022-09-19",
+          "name": "Funeral of Queen Elizabeth II (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        },
+        {
+          "date": "2022-09-23",
+          "name": "Hurricane Fiona (BSX closed; not a trading or settlement day)",
+          "source_url": "https://www.bsx.com/article/1100801631",
+          "status": "closed"
+        },
+        {
+          "date": "2023-05-08",
+          "name": "Coronation of King Charles III (exchange_calendars ad hoc)",
+          "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+          "status": "closed"
+        },
+        {
+          "date": "2025-10-01",
+          "early_close_time": "13:00",
+          "name": "Hurricane Imelda (BSX amended schedule: early close at 13:00)",
+          "source_url": "https://www.bsx.com/article/1100805973",
+          "status": "early_close"
+        }
+      ],
       "code": "XBDA",
       "confidence": {
+        "2010": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2011": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2012": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2013": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2014": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2015": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2016": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2017": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2018": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2019": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2020": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2021": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2022": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2023": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
+        "2024": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)); not independently verified",
+          "source": "manual"
+        },
         "2025": {
           "last_verified": null,
           "level": "medium",
@@ -4456,16 +4584,980 @@
       "extended_hours": {},
       "fetcher_status": "implemented",
       "generation_range": [
-        "2025-01-01",
+        "2010-01-01",
         "2029-12-31"
       ],
       "holidays": {
         "explicit": [
           {
+            "date": "2010-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-02",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-05-24",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-07-29",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-07-30",
+            "name": "Somers Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-09-06",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-11-11",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-24",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2010-12-27",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-28",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-01-03",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-04-22",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-05-24",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-07-28",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-07-29",
+            "name": "Somers Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-09-05",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-11-11",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-12-23",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2011-12-26",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-12-27",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-01-02",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-06",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-05-24",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-08-02",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-08-03",
+            "name": "Somers Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-09-03",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-11-12",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-24",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2012-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-03-29",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-05-24",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-08-01",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-08-02",
+            "name": "Somers Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-09-02",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-11-11",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-24",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2013-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-04-18",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-26",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-07-31",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-08-01",
+            "name": "Somers Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-09-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-11-11",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-24",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2014-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-03",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-25",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-07-30",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-07-31",
+            "name": "Somers Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-09-07",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-11-11",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-24",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2015-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-28",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-03-25",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-05-24",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-07-28",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-07-29",
+            "name": "Somers Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-09-05",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-11-11",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-12-23",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2016-12-26",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-12-27",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-01-02",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-14",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-05-24",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-08-03",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-08-04",
+            "name": "Somers Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-09-04",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-11-13",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-22",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2017-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-03-30",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-25",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-06-18",
+            "name": "National Heroes Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-08-02",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-08-03",
+            "name": "Somers Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-09-03",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-11-12",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-24",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2018-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-04-19",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-24",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-06-17",
+            "name": "National Heroes Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-08-01",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-08-02",
+            "name": "Somers Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-09-02",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-11-11",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-24",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2019-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-10",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-29",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-06-15",
+            "name": "National Heroes Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-07-30",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-07-31",
+            "name": "Mary Prince Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-09-07",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-11-11",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-24",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2020-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-28",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-02",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-05-28",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-06-21",
+            "name": "National Heroes Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-07-29",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-07-30",
+            "name": "Mary Prince Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-09-06",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-11-11",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-12-24",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2021-12-27",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-12-28",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-01-03",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-15",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-27",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-06-20",
+            "name": "National Heroes Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-07-28",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-07-29",
+            "name": "Mary Prince Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-09-05",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-11-11",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-12-23",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2022-12-26",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-12-27",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-01-02",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-07",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-05-26",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-06-19",
+            "name": "National Heroes Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-08-03",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-08-04",
+            "name": "Mary Prince Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-09-04",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-11-13",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-22",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2023-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-03-29",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-24",
+            "name": "Bermuda Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-06-17",
+            "name": "National Heroes Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-08-01",
+            "name": "Emancipation Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-08-02",
+            "name": "Mary Prince Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-09-02",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-11-11",
+            "name": "Remembrance Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-24",
+            "early_close_time": "14:00",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2024-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-26",
+            "name": "Boxing Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
             "date": "2025-01-01",
             "name": "New Year's Day",
             "source_url": "https://www.bsx.com/trading-calendar",
             "status": "closed"
+          },
+          {
+            "date": "2025-01-09",
+            "delayed_open_time": "09:30",
+            "name": "Delayed open to commemorate President Jimmy Carter (price discovery 09:00-09:30)",
+            "source_url": "https://www.bsx.com/article/1100804633",
+            "status": "delayed_open"
           },
           {
             "date": "2025-04-18",
@@ -4504,6 +5596,13 @@
             "status": "closed"
           },
           {
+            "date": "2025-10-02",
+            "delayed_open_time": "12:15",
+            "name": "Hurricane Imelda (BSX amended schedule: price discovery 12:00-12:15, trading from 12:15)",
+            "source_url": "https://www.bsx.com/article/1100805973",
+            "status": "delayed_open"
+          },
+          {
             "date": "2025-11-11",
             "name": "Remembrance Day",
             "source_url": "https://www.bsx.com/trading-calendar",
@@ -4511,9 +5610,9 @@
           },
           {
             "date": "2025-12-24",
-            "early_close_time": "13:00",
+            "early_close_time": "14:00",
             "name": "Christmas Eve",
-            "source_url": "https://www.bsx.com/trading-calendar",
+            "source_url": "https://www.bsx.com/bermuda-stock-exchange-20252026-festive-holiday-closure-notice",
             "status": "early_close"
           },
           {
@@ -4527,13 +5626,6 @@
             "name": "Boxing Day",
             "source_url": "https://www.bsx.com/trading-calendar",
             "status": "closed"
-          },
-          {
-            "date": "2025-12-31",
-            "early_close_time": "13:00",
-            "name": "New Year's Eve",
-            "source_url": "https://www.bsx.com/trading-calendar",
-            "status": "early_close"
           },
           {
             "date": "2026-01-01",
@@ -4585,8 +5677,9 @@
           },
           {
             "date": "2026-12-24",
-            "early_close_time": "13:00",
-            "name": "Christmas Eve",
+            "early_close_time": "14:00",
+            "name": "Christmas Eve (predicted)",
+            "predicted": true,
             "source_url": "https://www.bsx.com/trading-calendar",
             "status": "early_close"
           },
@@ -4601,13 +5694,6 @@
             "name": "Boxing Day (substitute)",
             "source_url": "https://www.bsx.com/trading-calendar",
             "status": "closed"
-          },
-          {
-            "date": "2026-12-31",
-            "early_close_time": "13:00",
-            "name": "New Year's Eve",
-            "source_url": "https://www.bsx.com/trading-calendar",
-            "status": "early_close"
           },
           {
             "date": "2027-01-01",
@@ -4659,8 +5745,9 @@
           },
           {
             "date": "2027-12-24",
-            "early_close_time": "13:00",
-            "name": "Christmas Eve",
+            "early_close_time": "14:00",
+            "name": "Christmas Eve (predicted)",
+            "predicted": true,
             "source_url": "https://www.bsx.com/trading-calendar",
             "status": "early_close"
           },
@@ -4675,13 +5762,6 @@
             "name": "Boxing Day (substitute)",
             "source_url": "https://www.bsx.com/trading-calendar",
             "status": "closed"
-          },
-          {
-            "date": "2027-12-31",
-            "early_close_time": "13:00",
-            "name": "New Year's Eve",
-            "source_url": "https://www.bsx.com/trading-calendar",
-            "status": "early_close"
           },
           {
             "date": "2028-01-03",
@@ -4793,8 +5873,9 @@
           },
           {
             "date": "2029-12-24",
-            "early_close_time": "13:00",
-            "name": "Christmas Eve",
+            "early_close_time": "14:00",
+            "name": "Christmas Eve (predicted)",
+            "predicted": true,
             "source_url": "https://www.bsx.com/trading-calendar",
             "status": "early_close"
           },
@@ -4809,27 +5890,24 @@
             "name": "Boxing Day",
             "source_url": "https://www.bsx.com/trading-calendar",
             "status": "closed"
-          },
-          {
-            "date": "2029-12-31",
-            "early_close_time": "13:00",
-            "name": "New Year's Eve",
-            "source_url": "https://www.bsx.com/trading-calendar",
-            "status": "early_close"
           }
         ],
         "generated": []
       },
       "mic": "XBDA",
       "name": "Bermuda Stock Exchange",
-      "regular_hours": {
-        "close": "16:00",
-        "open": "10:00"
-      },
+      "note": "2010-2024 sourced from exchange_calendars (backfill; not independently verified): 142 recurring closures (all named) and 15 Christmas Eve early closes at 14:00 (on the previous Friday when 24 December is a weekend day, exchange_calendars' rule; BSX's 2024 festive notice, https://www.bsx.com/article/1100804577, confirms 24 December 2024 as an early closure, 9:00am-2:00pm, and 31 December 2024 as a normal day). Four exchange_calendars one-offs are moved to ad_hoc_closures (lesson 13), unconfirmed (no BSX notice was read): 4 November 2019 (Portuguese Welcome 170th anniversary), 18 October 2021 (Flora Duffy Day), 19 September 2022 (funeral of Queen Elizabeth II) and 8 May 2023 (coronation of King Charles III). Corrections (lesson 12), each on BSX's own word: 23 September 2022 closed for Hurricane Fiona (https://www.bsx.com/article/1100801631: 'Friday will not be a trading or settlement day'), ad hoc; 1 October 2025 early close at 13:00 (ad hoc) and 2 October 2025 delayed open, price discovery 12:00-12:15 and trading from 12:15, for Hurricane Imelda (https://www.bsx.com/article/1100805973, 30 September 2025; the notice calls the schedule provisional, subject to EMO advice, so both dates are unconfirmed); 9 January 2025 delayed open, price discovery 9:00-9:30 and continuous trading from 9:30, to commemorate President Jimmy Carter (https://www.bsx.com/article/1100804633). The two delayed opens are in holidays.explicit (status delayed_open) because ad_hoc_closures has no delayed-open status. Lead, not acted on (lesson 14): Bermuda's Public Holidays Act 1947 (consolidated, https://www.bermudalaws.bm/Laws/Consolidated%20Law/1947/Public%20Holidays%20Act%201947, read only as a search snippet) has had National Heroes Day on the third Monday in June since amendment 2009:21 (effective 3 June 2009). exchange_calendars' own observance function moves it to June from 2009, but the holiday starts only in 2018 (and Queen's Birthday ends 2008), so 2010-2017 have no June holiday and are trading days in both libraries. No BSX notice for those days was read, and a public holiday is not an exchange closure without the exchange's word, so the eight dates (21 June 2010 ... 19 June 2017) are not added; recent BSX notices do close the exchange 'in observance of' each public holiday. 2025-2026: exchange_calendars + exchange_publications. 2027-2029: standing pattern. Checked 2026-11-20 (4c11). Last published year: BSX's festive notice for 2025/2026 (https://www.bsx.com/bermuda-stock-exchange-20252026-festive-holiday-closure-notice, 18 December 2025) gives 24 December 2025 as an early closure 9:00am-2:00pm and 31 December 2025 as normal operating hours (9:00am-5:00pm). The registry had both as early closes at 13:00: 2025-12-24 now closes at 14:00 and cites the notice, the 31 December early closes for 2025, 2026, 2027 and 2029 are removed (2024 and 2025 were both normal days), and 24 December 2026, 2027 and 2029 are predicted early closes at 14:00. 24 December 2026 is unconfirmed with recheck_date 2026-12-22 (the 2025 notice came on 18 December). BSX's holiday notices for 2025-2026 (Bermuda Day, Remembrance Day, Good Friday, Cup Match) match the registry. Close (ADR 0013): BSX's trading page (https://www.bsx.com/trading/trading) says 'Trading Hours are Monday through Friday 9:00 a.m. - 4:30 p.m. (Atlantic Time)'; BSX trades continuously after an 08:30-09:00 price discovery phase (hurricane and Carter notices) with no closing auction, so the close is the end of continuous trading, 16:30. regular_hours is 09:00-16:30 (was 10:00-16:00; exchange_calendars has 09:00-16:30), one dated entry from 2010-01-01, unconfirmed: press (Bernews, 23 September 2016) reports the 16:30 close took effect on 28 September 2016, after an earlier close; BSX's own announcement was not read, so no earlier entry is dated. Price discovery is not modelled.",
+      "regular_hours": [
+        {
+          "close": "16:30",
+          "effective_from": "2010-01-01",
+          "open": "09:00"
+        }
+      ],
       "sessions": [
         {
-          "close": "16:00",
-          "open": "10:00",
+          "close": "16:30",
+          "open": "09:00",
           "type": "regular"
         }
       ],
@@ -4837,6 +5915,44 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
+        "coverage": {
+          "from": "2010-01-01",
+          "ranges": [
+            "trading_days"
+          ],
+          "sources": [
+            {
+              "from": "2010-01-01",
+              "sampled": null,
+              "source": "exchange_calendars (+ BSX notices for 2022-09-23 and the 2024 Christmas Eve early closure)",
+              "to": "2024-12-31",
+              "unconfirmed": [
+                "2010-01-01",
+                "2019-11-04",
+                "2021-10-18",
+                "2022-09-19",
+                "2023-05-08"
+              ]
+            },
+            {
+              "from": "2025-01-01",
+              "recheck_date": "2026-12-22",
+              "source": "exchange_calendars + exchange_publications (BSX trading page; holiday, festive and hurricane notices)",
+              "to": "2026-12-31",
+              "unconfirmed": [
+                "2025-10-01",
+                "2025-10-02",
+                "2026-12-24"
+              ]
+            },
+            {
+              "from": "2027-01-01",
+              "source": "exchange_calendars + standing Bermuda public-holiday pattern (Public Holidays Act 1947; BSX closes on each public holiday)",
+              "to": "2029-12-31"
+            }
+          ],
+          "to": "2029-12-31"
+        },
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

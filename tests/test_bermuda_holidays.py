@@ -11,8 +11,10 @@ Key facts verified:
     - Cup Match (Thursday-Friday before first Monday in August)
     - Labour Day (first Monday in September)
     - Remembrance Day (Nov 11) with substitution
-    - Christmas Eve (Dec 24) — early close at 13:00
-    - New Year's Eve (Dec 31) — early close at 13:00
+    - Christmas Eve (Dec 24) — early close at 14:00 (BSX festive notices
+      2024 and 2025; corrected in 4c11, was 13:00)
+    - New Year's Eve (Dec 31) — a normal day (same notices; the 13:00 early
+      closes were removed in 4c11)
     - No recurrence rules — all dates explicit
 
 If any test fails, either:
@@ -65,8 +67,14 @@ class TestXBDAProperties:
         assert xbda["timezone"] == "Atlantic/Bermuda"
 
     def test_regular_hours(self, xbda):
-        assert xbda["regular_hours"]["open"] == "10:00"
-        assert xbda["regular_hours"]["close"] == "16:00"
+        """4c11: BSX's trading page, 'Trading Hours are Monday through Friday
+        9:00 a.m. - 4:30 p.m.' (was 10:00-16:00); continuous trading, no
+        closing auction, so ADR 0013 gives 16:30. One dated entry,
+        2010-01-01 unconfirmed."""
+        assert xbda["regular_hours"] == [
+            {"close": "16:30", "effective_from": "2010-01-01", "open": "09:00"}]
+        assert xbda["sessions"] == [{"close": "16:30", "open": "09:00", "type": "regular"}]
+        assert "2010-01-01" in xbda["verification"]["coverage"]["sources"][0]["unconfirmed"]
 
     def test_no_lunch_break(self, xbda):
         lunch = [s for s in xbda.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -77,10 +85,18 @@ class TestXBDAProperties:
 
     def test_generation_range(self, xbda):
         assert "generation_range" in xbda
-        assert xbda["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xbda["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c11 backfill
 
-    def test_ad_hoc_closures_empty(self, xbda):
-        assert xbda.get("ad_hoc_closures", []) == []
+    def test_ad_hoc_closures(self, xbda):
+        """4c11: four exchange_calendars one-offs (unconfirmed) and two BSX
+        notices: Hurricane Fiona (closed) and Hurricane Imelda (early close)."""
+        assert [(c["date"], c["status"], c.get("early_close_time")) for c in xbda["ad_hoc_closures"]] == [
+            ("2019-11-04", "closed", None), ("2021-10-18", "closed", None),
+            ("2022-09-19", "closed", None), ("2022-09-23", "closed", None),
+            ("2023-05-08", "closed", None), ("2025-10-01", "early_close", "13:00")]
+        by_date = {c["date"]: c["source_url"] for c in xbda["ad_hoc_closures"]}
+        assert by_date["2022-09-23"] == "https://www.bsx.com/article/1100801631"
+        assert by_date["2025-10-01"] == "https://www.bsx.com/article/1100805973"
 
     def test_no_recurrence_rules(self, xbda):
         """Bermuda uses explicit dates only."""
@@ -145,11 +161,20 @@ class TestXBDABermudaDay:
         assert "2029-05-25" in explicit_dates
 
     def test_bermuda_day_always_friday(self, explicit_dates):
-        """Bermuda Day must always be Friday."""
+        """Bermuda Day is a Friday from 2018 (the 2010-2024 backfill, 4c11,
+        holds the earlier 24 May rule; see the next test)."""
         for entry in explicit_dates.values():
-            if entry["name"] == "Bermuda Day":
+            if entry["name"] == "Bermuda Day" and entry["date"] >= "2018":
                 d = date.fromisoformat(entry["date"])
                 assert d.weekday() == 4, f"Bermuda Day should be Friday: {entry['date']}"
+
+    def test_bermuda_day_2010_2017_is_24_may_or_the_next_monday(self, explicit_dates):
+        """4c11 backfill (exchange_calendars): before 2018, 24 May, moved to
+        the Monday after when it fell on a weekend."""
+        days = sorted(d for d, e in explicit_dates.items()
+                      if e["name"] == "Bermuda Day" and d < "2018")
+        assert days == ["2010-05-24", "2011-05-24", "2012-05-24", "2013-05-24",
+                        "2014-05-26", "2015-05-25", "2016-05-24", "2017-05-24"]
 
 
 # ──────────────────────────────────────────────────────────────
@@ -288,18 +313,25 @@ class TestXBDAGoodFriday:
 
 class TestXBDAChristmas:
     def test_christmas_eve_2025(self, explicit_dates):
-        """Dec 24, 2025 is Wednesday — early close at 13:00."""
+        """4c11: BSX's 2025/2026 festive notice, 'Christmas Eve - Early
+        Closure, 9:00am - 2:00pm' (the registry had 13:00)."""
         entry = explicit_dates.get("2025-12-24")
         assert entry is not None
         assert entry["status"] == "early_close"
-        assert entry["early_close_time"] == "13:00"
+        assert entry["early_close_time"] == "14:00"
+        assert entry["source_url"] == (
+            "https://www.bsx.com/bermuda-stock-exchange-20252026-festive-holiday-closure-notice")
 
-    def test_christmas_eve_2026(self, explicit_dates):
-        """Dec 24, 2026 is Thursday — early close at 13:00."""
+    def test_christmas_eve_2026(self, explicit_dates, xbda):
+        """Dec 24, 2026 is Thursday: predicted early close at 14:00 (the 2024
+        and 2025 pattern), unconfirmed until the 2026 festive notice."""
         entry = explicit_dates.get("2026-12-24")
         assert entry is not None
         assert entry["status"] == "early_close"
-        assert entry["early_close_time"] == "13:00"
+        assert entry["early_close_time"] == "14:00"
+        assert entry["predicted"] is True
+        span = xbda["verification"]["coverage"]["sources"][1]
+        assert "2026-12-24" in span["unconfirmed"] and span["recheck_date"] == "2026-12-22"
 
     def test_christmas_day_2025(self, explicit_dates):
         """Dec 25, 2025 is Thursday."""
@@ -322,17 +354,14 @@ class TestXBDAChristmas:
         assert "2026-12-28" in explicit_dates
 
     def test_new_years_eve_2025(self, explicit_dates):
-        """Dec 31, 2025 is Wednesday — early close at 13:00."""
-        entry = explicit_dates.get("2025-12-31")
-        assert entry is not None
-        assert entry["status"] == "early_close"
-        assert entry["early_close_time"] == "13:00"
+        """4c11: BSX's 2025/2026 festive notice gives Wednesday 31 December
+        2025 normal operating hours, so it is a full trading day (the
+        registry had an early close at 13:00)."""
+        assert "2025-12-31" not in explicit_dates
 
     def test_new_years_eve_2029(self, explicit_dates):
-        """Dec 31, 2029 is Monday — early close at 13:00."""
-        entry = explicit_dates.get("2029-12-31")
-        assert entry is not None
-        assert entry["status"] == "early_close"
+        """Dec 31, 2029 is Monday: a normal day on the 2024 and 2025 pattern."""
+        assert "2029-12-31" not in explicit_dates
 
 
 # ──────────────────────────────────────────────────────────────
@@ -341,16 +370,28 @@ class TestXBDAChristmas:
 
 class TestXBDAEarlyCloses:
     def test_no_other_early_closes(self, explicit_dates):
-        """Only Christmas Eve and New Year's Eve are early closes."""
-        early_closes = [e for e in explicit_dates.values() if e.get("status") == "early_close"]
-        early_close_names = {e["name"] for e in early_closes}
-        assert early_close_names == {"Christmas Eve", "New Year's Eve"}
+        """Scoped to 2025-2029: only Christmas Eve is an early close (4c11)."""
+        early = sorted(d for d, e in explicit_dates.items()
+                       if e.get("status") == "early_close" and d >= "2025")
+        assert early == ["2025-12-24", "2026-12-24", "2027-12-24", "2029-12-24"]
+        assert {explicit_dates[d]["name"] for d in early} == {
+            "Christmas Eve", "Christmas Eve (predicted)"}
 
     def test_all_early_closes_have_early_close_time(self, explicit_dates):
-        for entry in explicit_dates.values():
-            if entry.get("status") == "early_close":
-                assert "early_close_time" in entry
-                assert entry["early_close_time"] == "13:00"
+        """All early closes are at 14:00: BSX's festive notices for 2025-2029,
+        exchange_calendars' Christmas Eve early close for the backfill."""
+        early = {d: e for d, e in explicit_dates.items() if e.get("status") == "early_close"}
+        assert len([d for d in early if d < "2025"]) == 15
+        assert {e["early_close_time"] for e in early.values()} == {"14:00"}
+
+    def test_delayed_opens_on_bsx_notices(self, explicit_dates, xbda):
+        """4c11: two one-off delayed opens, in explicit (ad_hoc_closures has no
+        delayed-open status): 9 January 2025 (Carter, from 09:30) and
+        2 October 2025 (Hurricane Imelda, from 12:15, unconfirmed)."""
+        delayed = {d: e["delayed_open_time"] for d, e in explicit_dates.items()
+                   if e["status"] == "delayed_open"}
+        assert delayed == {"2025-01-09": "09:30", "2025-10-02": "12:15"}
+        assert {"2025-10-01", "2025-10-02"} <= set(xbda["verification"]["coverage"]["sources"][1]["unconfirmed"])
 
     def test_closed_entries_no_early_close_time(self, explicit_dates):
         for entry in explicit_dates.values():
@@ -376,6 +417,9 @@ class TestXBDAStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if date_str < "2025":  # 4c11 backfill cites exchange_calendars
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -386,7 +430,7 @@ class TestXBDAStructure:
     def test_all_entries_have_status(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "status" in entry, f"Missing status: {date_str}"
-            assert entry["status"] in ["closed", "early_close"]
+            assert entry["status"] in ["closed", "early_close", "delayed_open"]
 
     def test_dates_within_generation_range(self, xbda, explicit_dates):
         start = date.fromisoformat(xbda["generation_range"][0])
@@ -396,11 +440,16 @@ class TestXBDAStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~50-65 entries."""
-        assert 50 <= len(explicit_dates) <= 70, f"Unexpected count: {len(explicit_dates)}"
+        """Scoped to 2025-2029: 58 before 4c11, less the four 31 December
+        early closes (2025, 2026, 2027, 2029), plus the two 2025 delayed opens
+        = 56. 2010-2024 backfill: 142 closures + 15 early closes = 157."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 56
+        assert len([d for d in explicit_dates if d < "2025"]) == 157
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
+        for d, entry in explicit_dates.items():
+            if d < "2025":
+                continue  # 4c11 backfill cites exchange_calendars
             assert "bsx.com" in entry["source_url"]
 
 

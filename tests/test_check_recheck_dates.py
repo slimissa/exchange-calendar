@@ -78,6 +78,7 @@ def test_registry_dates_today():
     # XWBO 2026-12-15 from 4c8: Wiener Börse's 2026 last-trading-day notice.
     # XNZE 2026-12-15 from 4c10: NZX's 2026/2028 holiday memo (abbreviated days).
     assert found == {("XPRA", "2027-01-04"), ("XDUB", "2027-11-30"), ("XETR", "2026-12-15"),
-                     ("XJSE", "2026-12-15"), ("XWBO", "2026-12-15"), ("XNZE", "2026-12-15")}
+                     ("XJSE", "2026-12-15"), ("XWBO", "2026-12-15"), ("XNZE", "2026-12-15"),
+                     ("XBDA", "2026-12-22")}
     assert crd.main(["--today", "2026-11-20"]) == 0
     assert crd.main(["--today", "2027-01-05"]) == 1
