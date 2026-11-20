@@ -5,7 +5,7 @@
 -- Dialect: PostgreSQL. The INSERT block runs in one transaction.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 167, holidays 13138, ad_hoc_closures 16, confidence 1149
+-- Rows: exchanges 74, sessions 167, holidays 13138, ad_hoc_closures 18, confidence 1149
 
 DROP TABLE IF EXISTS confidence;
 DROP TABLE IF EXISTS ad_hoc_closures;
@@ -13491,6 +13491,8 @@ INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_clos
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XZAG', '2029-12-25', 'Christmas Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://zse.hr/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XZAG', '2029-12-26', 'St. Stephen''s Day', 'closed', 'explicit', 1, NULL, NULL, NULL, NULL, 'https://zse.hr/trading-calendar');
 INSERT INTO holidays (exchange_code, date, name, status, origin, seq, early_close_time, delayed_open_time, predicted, weekend_exception, source_url) VALUES ('XZAG', '2029-12-31', 'New Year''s Eve (predicted)', 'closed', 'explicit', 1, NULL, NULL, 1, NULL, 'https://zse.hr/en/non-trading-days/110');
+INSERT INTO ad_hoc_closures (exchange_code, date, seq, name, status, early_close_time, source_url) VALUES ('XBKK', '2026-10-16', 1, 'Additional special holiday (SET notification of 16 June 2026)', 'closed', NULL, 'https://www.set.or.th/en/about/event-calendar/holiday');
+INSERT INTO ad_hoc_closures (exchange_code, date, seq, name, status, early_close_time, source_url) VALUES ('XBKK', '2026-12-16', 1, 'Additional special holiday (SET notification of 19 November 2026)', 'closed', NULL, 'https://www.set.or.th/en/about/event-calendar/holiday');
 INSERT INTO ad_hoc_closures (exchange_code, date, seq, name, status, early_close_time, source_url) VALUES ('XLIM', '2012-10-01', 1, 'ASPA Summit (exchange_calendars ad hoc)', 'closed', NULL, 'https://github.com/gerrymanoim/exchange_calendars');
 INSERT INTO ad_hoc_closures (exchange_code, date, seq, name, status, early_close_time, source_url) VALUES ('XLIM', '2012-10-02', 1, 'ASPA Summit (exchange_calendars ad hoc)', 'closed', NULL, 'https://github.com/gerrymanoim/exchange_calendars');
 INSERT INTO ad_hoc_closures (exchange_code, date, seq, name, status, early_close_time, source_url) VALUES ('XLIM', '2015-01-02', 1, 'National non-working day (exchange_calendars ad hoc)', 'closed', NULL, 'https://github.com/gerrymanoim/exchange_calendars');
@@ -14662,5 +14664,5 @@ COMMIT;
 --   exchanges: 74
 --   sessions: 167
 --   holidays: 13138
---   ad_hoc_closures: 16
+--   ad_hoc_closures: 18
 --   confidence: 1149

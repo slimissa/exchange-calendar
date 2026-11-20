@@ -1,4 +1,6 @@
 exchange_code;date;seq;name;status;early_close_time;source_url
+XBKK;2026-10-16;1;Additional special holiday (SET notification of 16 June 2026);closed;;https://www.set.or.th/en/about/event-calendar/holiday
+XBKK;2026-12-16;1;Additional special holiday (SET notification of 19 November 2026);closed;;https://www.set.or.th/en/about/event-calendar/holiday
 XLIM;2012-10-01;1;ASPA Summit (exchange_calendars ad hoc);closed;;https://github.com/gerrymanoim/exchange_calendars
 XLIM;2012-10-02;1;ASPA Summit (exchange_calendars ad hoc);closed;;https://github.com/gerrymanoim/exchange_calendars
 XLIM;2015-01-02;1;National non-working day (exchange_calendars ad hoc);closed;;https://github.com/gerrymanoim/exchange_calendars

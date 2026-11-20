@@ -83,8 +83,26 @@ class TestXBKKProperties:
         # 4c9: backfilled from 2010-01-01; the end stays 2027-12-31.
         assert xbkk["generation_range"] == ["2010-01-01", "2027-12-31"]
 
-    def test_ad_hoc_closures_empty(self, xbkk):
-        assert xbkk.get("ad_hoc_closures", []) == []
+    def test_ad_hoc_closures_are_the_2026_special_holidays(self, xbkk):
+        """4c11: SET's own holiday page lists two one-off additional special
+        holidays in 2026 (SET notifications of 16 June and 19 November 2026)."""
+        assert [(c["date"], c["status"]) for c in xbkk["ad_hoc_closures"]] == [
+            ("2026-10-16", "closed"), ("2026-12-16", "closed")]
+        assert {c["source_url"] for c in xbkk["ad_hoc_closures"]} == {
+            "https://www.set.or.th/en/about/event-calendar/holiday"}
+
+    def test_2026_closures_match_set_holiday_page(self, xbkk):
+        """4c11: the 21 SET holidays of 2026, from SET's own page."""
+        explicit = {h["date"] for h in xbkk["holidays"]["explicit"]
+                    if h["date"].startswith("2026") and h["status"] == "closed"}
+        adhoc = {c["date"] for c in xbkk["ad_hoc_closures"] if c["date"].startswith("2026")}
+        assert explicit | adhoc == {
+            "2026-01-01", "2026-01-02", "2026-03-03", "2026-04-06", "2026-04-13",
+            "2026-04-14", "2026-04-15", "2026-05-01", "2026-05-04", "2026-06-01",
+            "2026-06-03", "2026-07-28", "2026-07-29", "2026-08-12", "2026-10-13",
+            "2026-10-16", "2026-10-23", "2026-12-07", "2026-12-10", "2026-12-16",
+            "2026-12-31"}
+        assert not explicit & adhoc
 
     def test_no_recurrence_rules(self, xbkk):
         """Thailand uses explicit dates only."""
