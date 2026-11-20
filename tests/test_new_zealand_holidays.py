@@ -64,8 +64,11 @@ class TestXNZEProperties:
         assert xnze["timezone"] == "Pacific/Auckland"
 
     def test_regular_hours(self, xnze):
-        assert xnze["regular_hours"]["open"] == "10:00"
-        assert xnze["regular_hours"]["close"] == "16:45"
+        """4c9, ADR 0013: the closing auction runs at a random time 30
+        seconds either side of 17:00 (NZX 'Anatomy of a trading day'), so the
+        scheduled close is 17:00, not 16:45 (end of continuous trading)."""
+        assert xnze["regular_hours"] == [
+            {"close": "17:00", "effective_from": "2010-01-01", "open": "10:00"}]
 
     def test_no_lunch_break(self, xnze):
         lunch = [s for s in xnze.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -76,7 +79,7 @@ class TestXNZEProperties:
 
     def test_generation_range(self, xnze):
         assert "generation_range" in xnze
-        assert xnze["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xnze["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c9 backfill
 
     def test_ad_hoc_closures_empty(self, xnze):
         assert xnze.get("ad_hoc_closures", []) == []
@@ -310,6 +313,9 @@ class TestXNZEStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if date_str < "2025":  # 4c9 backfill cites exchange_calendars
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -322,10 +328,18 @@ class TestXNZEStructure:
             assert "status" in entry, f"Missing status: {date_str}"
             assert entry["status"] in ["closed", "early_close"]
 
-    def test_all_statuses_closed(self, explicit_dates):
-        """NZ has no early closes — all holidays are full closures."""
-        for entry in explicit_dates.values():
-            assert entry["status"] == "closed"
+    def test_abbreviated_trading_days(self, explicit_dates):
+        """Corrected in 4c9: NZX has abbreviated trading days (the business
+        days before Christmas Day and New Year's Day). 2025's two are early
+        closes at 13:00 (end of the abbreviated pre-close, ADR 0013). The
+        2011-2024 backfill keeps exchange_calendars' 12:45. The old test
+        asserted there were none."""
+        early = {d: e["early_close_time"] for d, e in explicit_dates.items()
+                 if e["status"] == "early_close"}
+        assert {d: t for d, t in early.items() if d >= "2025"} == {
+            "2025-12-24": "13:00", "2025-12-31": "13:00"}
+        old = {t for d, t in early.items() if d < "2025"}
+        assert old == {"12:45"} and len([d for d in early if d < "2025"]) == 28
 
     def test_dates_within_generation_range(self, xnze, explicit_dates):
         start = date.fromisoformat(xnze["generation_range"][0])
@@ -335,11 +349,15 @@ class TestXNZEStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~50-60 entries."""
-        assert 50 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
+        """Scoped to 2025-2029: 55 before 4c9 + the two 2025 abbreviated days
+        = 57. 2010-2024 backfill: 150 closures + 28 early closes = 178."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 57
+        assert len([d for d in explicit_dates if d < "2025"]) == 178
 
     def test_source_url_consistency(self, explicit_dates):
         for entry in explicit_dates.values():
+            if entry["date"] < "2025":
+                continue  # 4c9 backfill cites exchange_calendars
             if entry["name"] == "Matariki" and entry["date"] >= "2027":
                 # The dates come from the Matariki Public Holiday Act 2022.
                 assert entry["source_url"].startswith("https://")

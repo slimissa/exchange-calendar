@@ -86,7 +86,8 @@ def test_some_exchanges_have_coverage():
     # 30 at d0344f7: the backfilled exchanges except the six sessions-mode
     # ones (XASX, XHKG, XLON, XNAS, XNYS, XTKS), which carry no coverage.
     # Each 4c9 backfill adds one; update the count with the commit.
-    assert len(with_cov) == 30
+    # 31: + XNZE (4c9).
+    assert len(with_cov) == 31
 
 
 def _xetr_without_bounds():
