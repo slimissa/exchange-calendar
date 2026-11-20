@@ -152,6 +152,11 @@ ALLOWLIST = {
     "https://www.euronext.com/news/euronext-announces-2019-holiday-calendar-its-cash-and-derivatives-markets": "2027-06-01",
     "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2020-holiday-calendar-its-cash-and": "2027-06-01",
     "https://www.euronext.com/en/about/media/euronext-press-releases/euronext-announces-2021-holiday-calendar-for-its-cash-and": "2027-06-01",
+    # XWAR 2027 and 2028 entries (4c-R4): GPW resolutions listing each year's
+    # non-session days, adopted two years ahead. Historical citations once
+    # the year has passed; the checker cannot tell them apart.
+    "https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf": "2028-03-31",
+    "https://www.gpw.pl/pub/GPW/uchwaly/2026/1089_2026_EN.pdf": "2029-03-31",
 }
 
 
