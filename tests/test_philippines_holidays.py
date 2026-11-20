@@ -224,8 +224,22 @@ class TestXPHSStructure:
             assert entry["status"] == "closed"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~65-85 entries: 15+ holidays × 5 years."""
-        assert 60 <= len(explicit_dates) <= 90
+        """Scoped to 2025-2029: 73 (unchanged by 4c12). 2010-2024 backfill:
+        249 exchange_calendars closures (4c12)."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 73
+        assert len([d for d in explicit_dates if d < "2025"]) == 249
+
+    def test_backfill_2010_2024(self, xphs, explicit_dates):
+        """4c12: generation starts 2010; every 2010-2024 entry cites
+        exchange_calendars; no one-off is moved to ad_hoc_closures without
+        PSE's own word."""
+        assert xphs["generation_range"] == ["2010-01-01", "2029-12-31"]
+        assert {e["source_url"] for d, e in explicit_dates.items() if d < "2025"} == {
+            "github.com/gerrymanoim/exchange_calendars"}
+        assert xphs.get("ad_hoc_closures", []) == []
+        span = xphs["verification"]["coverage"]["sources"][0]
+        assert (span["from"], span["to"], span["source"]) == (
+            "2010-01-01", "2024-12-31", "exchange_calendars")
 
 
 # ──────────────────────────────────────────────────────────────

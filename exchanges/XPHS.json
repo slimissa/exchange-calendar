@@ -2,6 +2,96 @@
   "ad_hoc_closures": [],
   "code": "XPHS",
   "confidence": {
+    "2010": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2011": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2012": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2013": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2014": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2015": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2016": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2017": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2018": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2019": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2020": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2021": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2022": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2023": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
+    "2024": {
+      "last_verified": null,
+      "level": "low",
+      "note": "backfilled from exchange_calendars; not independently verified",
+      "source": "manual"
+    },
     "2025": {
       "last_verified": null,
       "level": "medium",
@@ -45,11 +135,1505 @@
   },
   "fetcher_status": "none",
   "generation_range": [
-    "2025-01-01",
+    "2010-01-01",
     "2029-12-31"
   ],
   "holidays": {
     "explicit": [
+      {
+        "date": "2010-01-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-04-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-04-02",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-04-09",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-05-03",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-05-10",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-06-14",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-06-30",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-08-30",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-09-10",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-10-25",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-11-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-11-16",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-11-29",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-12-24",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-12-27",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2010-12-31",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-04-21",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-04-22",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-06-20",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-08-29",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-08-30",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-09-27",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-10-31",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-11-01",
+        "name": "All Saints Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-11-07",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-11-30",
+        "name": "Bonifacio Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2011-12-30",
+        "name": "Rizal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-01-23",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-04-05",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-04-06",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-04-09",
+        "name": "Araw Ng Kagitingan",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-06-12",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-08-07",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-08-20",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-08-21",
+        "name": "Ninoy Aquino Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-08-27",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-10-26",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-11-01",
+        "name": "All Saints Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-11-02",
+        "name": "Friday after All Saint's Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-11-30",
+        "name": "Bonifacio Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-12-24",
+        "name": "Christmas Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-12-25",
+        "name": "Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2012-12-31",
+        "name": "New Year's Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-01-01",
+        "name": "New Year's Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-03-28",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-03-29",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-04-09",
+        "name": "Araw Ng Kagitingan",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-05-13",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-06-12",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-08-09",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-08-19",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-08-20",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-08-21",
+        "name": "Ninoy Aquino Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-08-26",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-10-15",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-10-28",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-11-01",
+        "name": "All Saints Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-12-24",
+        "name": "Christmas Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-12-25",
+        "name": "Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-12-30",
+        "name": "Rizal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2013-12-31",
+        "name": "New Year's Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-01-01",
+        "name": "New Year's Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-01-31",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-04-09",
+        "name": "Araw Ng Kagitingan",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-04-17",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-04-18",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-06-12",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-07-16",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-07-29",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-08-21",
+        "name": "Ninoy Aquino Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-08-25",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-09-19",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-10-06",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-12-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-12-24",
+        "name": "Christmas Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-12-25",
+        "name": "Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-12-26",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-12-30",
+        "name": "Rizal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2014-12-31",
+        "name": "New Year's Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-01-01",
+        "name": "New Year's Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-01-02",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-01-15",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-01-16",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-02-19",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-04-02",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-04-03",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-04-09",
+        "name": "Araw Ng Kagitingan",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-06-12",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-07-17",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-08-21",
+        "name": "Ninoy Aquino Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-08-31",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-09-25",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-11-18",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-11-19",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-11-30",
+        "name": "Bonifacio Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-12-24",
+        "name": "Christmas Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-12-25",
+        "name": "Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-12-30",
+        "name": "Rizal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2015-12-31",
+        "name": "New Year's Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-01-01",
+        "name": "New Year's Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-02-08",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-02-25",
+        "name": "People Power Revolution",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-03-24",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-03-25",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-05-09",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-07-06",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-08-29",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-09-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-10-31",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-11-01",
+        "name": "All Saints Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-11-30",
+        "name": "Bonifacio Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-12-26",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2016-12-30",
+        "name": "Rizal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-01-02",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-04-13",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-04-14",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-04-28",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-06-12",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-06-26",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-08-21",
+        "name": "Ninoy Aquino Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-08-28",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-09-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-09-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-10-16",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-10-31",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-11-01",
+        "name": "All Saints Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-11-30",
+        "name": "Bonifacio Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-12-08",
+        "name": "Immaculate Conception",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-12-25",
+        "name": "Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2017-12-26",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-01-01",
+        "name": "New Year's Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-01-02",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-02-16",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-03-29",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-03-30",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-04-09",
+        "name": "Araw Ng Kagitingan",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-05-14",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-06-12",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-06-15",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-08-21",
+        "name": "Ninoy Aquino Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-08-27",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-11-01",
+        "name": "All Saints Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-11-02",
+        "name": "Friday after All Saint's Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-11-30",
+        "name": "Bonifacio Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-12-24",
+        "name": "Christmas Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-12-25",
+        "name": "Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2018-12-31",
+        "name": "New Year's Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-01-01",
+        "name": "New Year's Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-02-05",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-02-25",
+        "name": "People Power Revolution",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-04-09",
+        "name": "Araw Ng Kagitingan",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-04-18",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-04-19",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-05-13",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-06-05",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-06-12",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-08-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-08-21",
+        "name": "Ninoy Aquino Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-08-26",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-11-01",
+        "name": "All Saints Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-12-24",
+        "name": "Christmas Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-12-25",
+        "name": "Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-12-30",
+        "name": "Rizal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2019-12-31",
+        "name": "New Year's Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-01-01",
+        "name": "New Year's Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-02-25",
+        "name": "People Power Revolution",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-04-09",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-04-10",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-05-25",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-06-12",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-07-31",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-08-21",
+        "name": "Ninoy Aquino Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-08-31",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-11-02",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-11-30",
+        "name": "Bonifacio Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-12-08",
+        "name": "Immaculate Conception",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-12-24",
+        "name": "Christmas Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-12-25",
+        "name": "Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-12-30",
+        "name": "Rizal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2020-12-31",
+        "name": "New Year's Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-01-01",
+        "name": "New Year's Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-02-12",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-02-25",
+        "name": "People Power Revolution",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-04-01",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-04-02",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-04-09",
+        "name": "Araw Ng Kagitingan",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-05-13",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-07-20",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-08-30",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-11-01",
+        "name": "All Saints Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-11-30",
+        "name": "Bonifacio Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-12-08",
+        "name": "Immaculate Conception",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-12-24",
+        "name": "Christmas Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-12-30",
+        "name": "Rizal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2021-12-31",
+        "name": "New Year's Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-02-01",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-04-14",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-04-15",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-03",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-05-09",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-08-29",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-10-31",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-11-01",
+        "name": "All Saints Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-11-30",
+        "name": "Bonifacio Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-12-08",
+        "name": "Immaculate Conception",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2022-12-30",
+        "name": "Rizal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-01-02",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-02-24",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-06",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-07",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-10",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-04-21",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-06-12",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-06-28",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-08-21",
+        "name": "Ninoy Aquino Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-08-28",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-10-30",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-11-01",
+        "name": "All Saints Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-11-02",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-11-27",
+        "name": "Bonifacio Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-12-08",
+        "name": "Immaculate Conception",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-12-25",
+        "name": "Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2023-12-26",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-01-01",
+        "name": "New Year's Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-02-09",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-03-28",
+        "name": "Maundy Thursday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-03-29",
+        "name": "Good Friday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-04-09",
+        "name": "Araw Ng Kagitingan",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-04-10",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-05-01",
+        "name": "Labour Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-06-12",
+        "name": "Independence Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-06-17",
+        "name": "Historical Holiday",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-08-23",
+        "name": "Ninoy Aquino Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-08-26",
+        "name": "National Heroes Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-11-01",
+        "name": "All Saints Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-12-24",
+        "name": "Christmas Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-12-25",
+        "name": "Christmas",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-12-30",
+        "name": "Rizal Day",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
+      {
+        "date": "2024-12-31",
+        "name": "New Year's Eve",
+        "source_url": "github.com/gerrymanoim/exchange_calendars",
+        "status": "closed"
+      },
       {
         "date": "2025-01-01",
         "name": "New Year's Day",
@@ -572,6 +2156,7 @@
   },
   "mic": "XPHS",
   "name": "Philippine Stock Exchange",
+  "note": "2010-2024 sourced from exchange_calendars 4.13.2 (backfill; not independently verified): 249 closures (160 named; the 89 unnamed are exchange_calendars' one-offs and lunar or proclaimed holidays it lists ad hoc: Chinese New Year, Eid al-Fitr, Eid al-Adha, elections, typhoon and event closures) and no early closes. None is moved to ad_hoc_closures: no PSE notice for them was read (4c12 rule: one-off closures go to ad_hoc_closures only on PSE's own word). No corrections. 2025-2026: exchange_calendars + exchange_publications. 2027-2029: standing pattern. Checked 2026-11-20 (4c12). Last published year: PSE's trading-holidays page (https://www.pse.com.ph/trading-holidays/) was not readable this session; Malacanang's Proclamation No. 1427 sets the 2027 national holidays, but PSE's own 2027 list was not read. Close (ADR 0013), finding not applied: PSE's notice CN-2022-0009 of 17 February 2022 (https://documents.pse.com.ph/CircularOPSPDF/CN-2022-0009.pdf; same schedule as CN-2021-0059, effective 6 December 2021) gives pre-open 09:00, market open 09:30, market recess 12:00, resumption 13:00, pre-close 14:45, pre-close no-cancel 14:48, run-off/trading at last 14:50, market close 15:00. Under ADR 0013 the close is the end of the closing auction, 14:50, with 14:50-15:00 as post_market and a 12:00-13:00 lunch break; the file holds 09:30-15:00 continuous with post_market 15:00-15:10. Earlier schedules differ again (PSE Memorandum 2010-0340, effective 26 July 2010: recess 12:00-14:00, pre-close 15:47-15:50, run-off 15:50-16:00; later 13:30-15:30 and the 2020-2022 shortened and half-day schedules). The dated hours history needs more PSE notices than this session's limits allow, so regular_hours, sessions and extended_hours are unchanged and are wrong for 2010-2029 as documented here. Half-day schedules (for example 24 and 31 December 2021, CN-2021-0063: run-off 12:00-12:10) are not modelled as early closes.",
   "regular_hours": {
     "close": "15:00",
     "open": "09:30"
@@ -597,7 +2182,35 @@
   "verification": {
     "basis": "divergence_report",
     "class": "reference_compared",
-    "last_checked": "2026-11-08",
+    "coverage": {
+      "from": "2010-01-01",
+      "ranges": [
+        "trading_days"
+      ],
+      "sources": [
+        {
+          "from": "2010-01-01",
+          "sampled": null,
+          "source": "exchange_calendars",
+          "to": "2024-12-31",
+          "unconfirmed": [
+            "2010-01-01"
+          ]
+        },
+        {
+          "from": "2025-01-01",
+          "source": "exchange_calendars + exchange_publications (PSE trading-holidays page)",
+          "to": "2026-12-31"
+        },
+        {
+          "from": "2027-01-01",
+          "source": "exchange_calendars + standing Philippine holiday pattern (PSE's 2027 list not read)",
+          "to": "2029-12-31"
+        }
+      ],
+      "to": "2029-12-31"
+    },
+    "last_checked": "2026-11-20",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },
   "weekend_days": [
