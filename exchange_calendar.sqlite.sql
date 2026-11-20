@@ -7,7 +7,7 @@
 -- the setting is per connection and a no-op inside a transaction.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 167, holidays 13883, ad_hoc_closures 40, confidence 1209
+-- Rows: exchanges 74, sessions 168, holidays 13883, ad_hoc_closures 40, confidence 1209
 
 PRAGMA foreign_keys=ON;
 
@@ -167,7 +167,7 @@ INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, w
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XNZE', 'New Zealand Exchange', 'XNZE', 'NZ', 'Pacific/Auckland', 5, 6, '10:00', '17:00', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XOSL', 'Oslo Børs', 'XOSL', 'NO', 'Europe/Oslo', 5, 6, '09:00', '16:25', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XPAR', 'Euronext Paris', 'XPAR', 'FR', 'Europe/Paris', 5, 6, '09:00', '17:35', '2010-01-01', '2029-12-31');
-INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XPHS', 'Philippine Stock Exchange', 'XPHS', 'PH', 'Asia/Manila', 5, 6, '09:30', '15:00', '2010-01-01', '2029-12-31');
+INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XPHS', 'Philippine Stock Exchange', 'XPHS', 'PH', 'Asia/Manila', 5, 6, '09:30', '14:50', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XPRA', 'Prague Stock Exchange', 'XPRA', 'CZ', 'Europe/Prague', 5, 6, '09:00', '16:55', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XRIS', 'Nasdaq Riga', 'XRIS', 'LV', 'Europe/Riga', 5, 6, '10:00', '16:00', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XSAU', 'Saudi Stock Exchange (Tadawul)', 'XSAU', 'SA', 'Asia/Riyadh', 4, 5, '10:00', '15:00', '2025-01-01', '2029-09-23');
@@ -303,9 +303,10 @@ INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XPAR',
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XPAR', 'post_market', 1, '17:35', '17:40', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XPAR', 'pre_market', 1, '07:15', '09:00', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XPAR', 'regular', 1, '09:00', '17:35', NULL);
-INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XPHS', 'post_market', 1, '15:00', '15:10', NULL);
+INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XPHS', 'lunch_break', 1, '12:00', '13:00', NULL);
+INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XPHS', 'post_market', 1, '14:50', '15:00', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XPHS', 'pre_market', 1, '09:00', '09:30', NULL);
-INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XPHS', 'regular', 1, '09:30', '15:00', NULL);
+INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XPHS', 'regular', 1, '09:30', '14:50', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XPRA', 'regular', 1, '09:00', '16:55', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XRIS', 'regular', 1, '10:00', '16:00', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XSAU', 'post_market', 1, '15:00', '15:20', NULL);
@@ -15490,7 +15491,7 @@ COMMIT;
 
 -- Row counts
 --   exchanges: 74
---   sessions: 167
+--   sessions: 168
 --   holidays: 13883
 --   ad_hoc_closures: 40
 --   confidence: 1209

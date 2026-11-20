@@ -3,9 +3,9 @@
 test_philippines_holidays.py — Ground truth tests for XPHS (Philippine Stock Exchange).
 
 Key facts verified:
-    - No lunch break (continuous trading since market hours expansion)
-    - Regular hours: 09:30-15:00
-    - After-hours: 15:00-15:10 (Run-Off / Trade-at-Last)
+    - Market recess 12:00-13:00 (CN-2022-0009, 4c13)
+    - Regular hours: 09:30-14:50 from 2022-03-01 (close = end of pre-close auction, ADR 0013)
+    - Run-off / trading at last 14:50-15:00 (post_market)
     - Maundy Thursday (Easter - 3) is a market closure
     - Ninoy Aquino Day (Aug 21) is a statutory holiday
     - All Saints' Day (Nov 1) and All Souls' Day (Nov 2) are closures
@@ -64,19 +64,32 @@ class TestXPHSProperties:
         assert xphs["timezone"] == "Asia/Manila"
 
     def test_regular_hours(self, xphs):
-        assert xphs["regular_hours"]["open"] == "09:30"
-        assert xphs["regular_hours"]["close"] == "15:00"
+        """4c13, ADR 0013: PSE CN-2022-0009 (effective 2022-03-01): pre-close
+        14:45-14:50, run-off/trading at last 14:50-15:00, so the close is
+        14:50. The 2010 entry is the pre-4c13 value, unconfirmed."""
+        assert xphs["regular_hours"] == [
+            {"close": "15:00", "effective_from": "2010-01-01", "open": "09:30"},
+            {"close": "14:50", "effective_from": "2022-03-01", "open": "09:30"}]
+        assert "2010-01-01" in xphs["verification"]["coverage"]["sources"][0]["unconfirmed"]
 
-    def test_no_lunch_break(self, xphs):
-        """PSE is continuous trading — NO lunch break."""
+    def test_lunch_break(self, xphs):
+        """4c13: CN-2022-0009 gives a market recess 12:00-13:00 (replaces the
+        pre-4c13 'continuous trading, no lunch break' pin, which PSE's own
+        notice contradicts)."""
         lunch = [s for s in xphs.get("sessions", []) if s["type"] == "lunch_break"]
-        assert lunch == []
+        assert lunch == [{"close": "13:00", "open": "12:00", "type": "lunch_break"}]
+
+    def test_sessions(self, xphs):
+        assert xphs["sessions"] == [
+            {"close": "09:30", "open": "09:00", "type": "pre_market"},
+            {"close": "14:50", "open": "09:30", "type": "regular"},
+            {"close": "13:00", "open": "12:00", "type": "lunch_break"},
+            {"close": "15:00", "open": "14:50", "type": "post_market"}]
 
     def test_after_hours(self, xphs):
-        assert xphs["extended_hours"]["after_hours"]["open"] == "15:00"
-        assert xphs["extended_hours"]["after_hours"]["close"] == "15:10"
+        """Run-off / trading at last 14:50-15:00 (CN-2022-0009)."""
+        assert xphs["extended_hours"]["after_hours"] == {"close": "15:00", "open": "14:50"}
 
-    
 class TestXPHSFixedHolidays:
     def test_new_year_2025(self, explicit_dates):
         assert "2025-01-01" in explicit_dates

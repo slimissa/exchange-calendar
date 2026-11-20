@@ -125,8 +125,8 @@
   "country_code": "PH",
   "extended_hours": {
     "after_hours": {
-      "close": "15:10",
-      "open": "15:00"
+      "close": "15:00",
+      "open": "14:50"
     },
     "pre_market": {
       "close": "09:30",
@@ -2156,11 +2156,19 @@
   },
   "mic": "XPHS",
   "name": "Philippine Stock Exchange",
-  "note": "2010-2024 sourced from exchange_calendars 4.13.2 (backfill; not independently verified): 249 closures (160 named; the 89 unnamed are exchange_calendars' one-offs and lunar or proclaimed holidays it lists ad hoc: Chinese New Year, Eid al-Fitr, Eid al-Adha, elections, typhoon and event closures) and no early closes. None is moved to ad_hoc_closures: no PSE notice for them was read (4c12 rule: one-off closures go to ad_hoc_closures only on PSE's own word). No corrections. 2025-2026: exchange_calendars + exchange_publications. 2027-2029: standing pattern. Checked 2026-11-20 (4c12). Last published year: PSE's trading-holidays page (https://www.pse.com.ph/trading-holidays/) was not readable this session; Malacanang's Proclamation No. 1427 sets the 2027 national holidays, but PSE's own 2027 list was not read. Close (ADR 0013), finding not applied: PSE's notice CN-2022-0009 of 17 February 2022 (https://documents.pse.com.ph/CircularOPSPDF/CN-2022-0009.pdf; same schedule as CN-2021-0059, effective 6 December 2021) gives pre-open 09:00, market open 09:30, market recess 12:00, resumption 13:00, pre-close 14:45, pre-close no-cancel 14:48, run-off/trading at last 14:50, market close 15:00. Under ADR 0013 the close is the end of the closing auction, 14:50, with 14:50-15:00 as post_market and a 12:00-13:00 lunch break; the file holds 09:30-15:00 continuous with post_market 15:00-15:10. Earlier schedules differ again (PSE Memorandum 2010-0340, effective 26 July 2010: recess 12:00-14:00, pre-close 15:47-15:50, run-off 15:50-16:00; later 13:30-15:30 and the 2020-2022 shortened and half-day schedules). The dated hours history needs more PSE notices than this session's limits allow, so regular_hours, sessions and extended_hours are unchanged and are wrong for 2010-2029 as documented here. Half-day schedules (for example 24 and 31 December 2021, CN-2021-0063: run-off 12:00-12:10) are not modelled as early closes.",
-  "regular_hours": {
-    "close": "15:00",
-    "open": "09:30"
-  },
+  "note": "2010-2024 sourced from exchange_calendars 4.13.2 (backfill; not independently verified): 249 closures (160 named; the 89 unnamed are exchange_calendars' one-offs and lunar or proclaimed holidays it lists ad hoc: Chinese New Year, Eid al-Fitr, Eid al-Adha, elections, typhoon and event closures) and no early closes. None is moved to ad_hoc_closures: no PSE notice for them was read (4c12 rule: one-off closures go to ad_hoc_closures only on PSE's own word). No corrections. 2025-2026: exchange_calendars + exchange_publications. 2027-2029: standing pattern. Checked 2026-11-20 (4c12). Last published year: PSE's trading-holidays page (https://www.pse.com.ph/trading-holidays/) was not readable this session; Malacanang's Proclamation No. 1427 sets the 2027 national holidays, but PSE's own 2027 list was not read. Hours (4c13): PSE's notice CN-2022-0009 of 17 February 2022 (https://documents.pse.com.ph/CircularOPSPDF/CN-2022-0009.pdf), effective 1 March 2022 'until further notice', gives pre-open 09:00, pre-open no-cancel 09:15, market open 09:30, market recess 12:00, market resumption 13:00, pre-close 14:45, pre-close no-cancel 14:48, run-off/trading at last 14:50, market close 15:00. CN-2021-0059 of 22 November 2021 (https://documents.pse.com.ph/CircularOPSPDF/CN-2021-0059.pdf) gave the same schedule from 6 December 2021, but shortened hours applied from 14 January 2022 (CN-2022-0004, not read), so the dated entry starts 2022-03-01, the date both notices support without a break. Under ADR 0013 the close is 14:50, the end of the pre-close (closing) auction; run-off/trading at last 14:50-15:00 is post_market; the 12:00-13:00 recess is a lunch_break; pre-open 09:00-09:30 is pre_market. The earlier entry (09:30-15:00 from 2010-01-01, continuous) is the file's value before 4c13 and is unconfirmed: PSE's schedules before 2022-03-01 differ and are leads, not sourced here: Memorandum 2010-0340 (effective 26 July 2010: recess 12:00-14:00, pre-close 15:47-15:50, run-off 15:50-16:00), a later 13:30 resumption and 15:15-15:20 pre-close (2013), the move to a 13:00 resumption, the 2020-2022 shortened and half-day schedules (CN-2021-0063 for 24 and 31 December 2021). Undated sessions describe the 2022-03-01 entry. Half days are not modelled as early closes.",
+  "regular_hours": [
+    {
+      "close": "15:00",
+      "effective_from": "2010-01-01",
+      "open": "09:30"
+    },
+    {
+      "close": "14:50",
+      "effective_from": "2022-03-01",
+      "open": "09:30"
+    }
+  ],
   "sessions": [
     {
       "close": "09:30",
@@ -2168,13 +2176,18 @@
       "type": "pre_market"
     },
     {
-      "close": "15:00",
+      "close": "14:50",
       "open": "09:30",
       "type": "regular"
     },
     {
-      "close": "15:10",
-      "open": "15:00",
+      "close": "13:00",
+      "open": "12:00",
+      "type": "lunch_break"
+    },
+    {
+      "close": "15:00",
+      "open": "14:50",
       "type": "post_market"
     }
   ],

@@ -53,7 +53,7 @@ XNYS,New York Stock Exchange,XNYS,US,America/New_York,5,6,09:30,16:00,1990-01-01
 XNZE,New Zealand Exchange,XNZE,NZ,Pacific/Auckland,5,6,10:00,17:00,2010-01-01,2029-12-31
 XOSL,Oslo Børs,XOSL,NO,Europe/Oslo,5,6,09:00,16:25,2010-01-01,2029-12-31
 XPAR,Euronext Paris,XPAR,FR,Europe/Paris,5,6,09:00,17:35,2010-01-01,2029-12-31
-XPHS,Philippine Stock Exchange,XPHS,PH,Asia/Manila,5,6,09:30,15:00,2010-01-01,2029-12-31
+XPHS,Philippine Stock Exchange,XPHS,PH,Asia/Manila,5,6,09:30,14:50,2010-01-01,2029-12-31
 XPRA,Prague Stock Exchange,XPRA,CZ,Europe/Prague,5,6,09:00,16:55,2010-01-01,2029-12-31
 XRIS,Nasdaq Riga,XRIS,LV,Europe/Riga,5,6,10:00,16:00,2010-01-01,2029-12-31
 XSAU,Saudi Stock Exchange (Tadawul),XSAU,SA,Asia/Riyadh,4,5,10:00,15:00,2025-01-01,2029-09-23
