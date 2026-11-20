@@ -31828,6 +31828,96 @@
       "ad_hoc_closures": [],
       "code": "XKLS",
       "confidence": {
+        "2010": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2011": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2012": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2013": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2014": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2015": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2016": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2017": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2018": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2019": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2020": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2021": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2022": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2023": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
+        "2024": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled from exchange_calendars; not independently verified",
+          "source": "manual"
+        },
         "2025": {
           "last_verified": null,
           "level": "medium",
@@ -31862,7 +31952,7 @@
       "extended_hours": {
         "after_hours": {
           "close": "17:15",
-          "open": "17:00"
+          "open": "16:50"
         },
         "pre_market": {
           "close": "09:00",
@@ -31871,11 +31961,1512 @@
       },
       "fetcher_status": "none",
       "generation_range": [
-        "2025-01-01",
+        "2010-01-01",
         "2029-12-31"
       ],
       "holidays": {
         "explicit": [
+          {
+            "date": "2010-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-02-15",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-02-16",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-02-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-05-28",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-08-31",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-09-09",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2010-09-10",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-09-16",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-11-05",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-11-17",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-07",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-31",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-01-20",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-02-02",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2011-02-03",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-02-04",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-02-15",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-05-02",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-05-17",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-08-29",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2011-08-30",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-08-31",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-09-01",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-09-16",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-10-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-11-07",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-11-28",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-12-26",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-01-02",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-01-23",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-01-24",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-02-06",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-02-07",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-11",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-08-20",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-08-21",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-08-31",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-09-17",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-10-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-11-13",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-11-15",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-24",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-28",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-02-11",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-02-12",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-05-24",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-08-07",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2013-08-08",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-08-09",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-09-16",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-10-15",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-11-05",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-14",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-17",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-30",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2014-01-31",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-02-03",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-13",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-07-15",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-07-28",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-07-29",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-09-01",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-09-16",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-10-06",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-10-22",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-02-02",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-02-03",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-02-18",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2015-02-19",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-02-20",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-04",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-07-16",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2015-07-17",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-08-31",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-09-16",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-09-24",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-10-14",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-11-10",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-24",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-01-25",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-02-08",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-02-09",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-05-02",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-06-22",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-07-05",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2016-07-06",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-07-07",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-08-31",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-09-12",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-09-16",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-10-03",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-12-12",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-12-26",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-01-02",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-01-27",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2017-01-30",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-02-09",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-24",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-05-10",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-06-12",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-06-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-06-27",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-08-31",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-09-01",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-09-04",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-09-22",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-10-18",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-01",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-01-31",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-02-15",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2018-02-16",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-09",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-10",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-11",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-29",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-06-14",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2018-06-15",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-08-22",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-08-31",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-09-10",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-09-11",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-09-17",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-11-06",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-11-20",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-01-21",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-02-04",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2019-02-05",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-02-06",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-20",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-22",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-06-04",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2019-06-05",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-06-06",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-07-30",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-08-12",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-09-02",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-09-09",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-09-16",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-10-28",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-01-24",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2020-01-27",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-07",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-11",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-25",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-06-08",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-07-31",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-08-20",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-08-31",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-09-16",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-10-29",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-01-28",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-02-11",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2021-02-12",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-29",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-05-12",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2021-05-13",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-05-14",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-05-26",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-06-07",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-07-20",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-08-10",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-08-31",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-09-16",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-10-19",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-11-04",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-01-18",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-01-31",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2022-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-02-02",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-19",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-02",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-03",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-04",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-06-06",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-07-11",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-08-31",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-09-16",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-10-10",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-10-24",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-12-26",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-01-02",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-01-23",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-01-24",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-21",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-24",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-05-04",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-06-05",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-06-29",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-07-19",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-08-31",
+            "name": "National Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-09-28",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-11-13",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-01-25",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-02-01",
+            "name": "Federal Territory Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-02-09",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2024-02-12",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-03-27",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-04-09",
+            "early_close_time": "12:30",
+            "name": "Historical Early Close",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "early_close"
+          },
+          {
+            "date": "2024-04-10",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-04-11",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-01",
+            "name": "Labour Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-22",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-06-03",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-06-17",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-07-08",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-09-16",
+            "name": "Malaysia Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-10-31",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
           {
             "date": "2025-01-01",
             "name": "New Year's Day",
@@ -31999,13 +33590,13 @@
           {
             "date": "2026-03-20",
             "name": "Hari Raya Puasa",
-            "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
+            "source_url": "https://www.bursamalaysia.com/sites/5bb54be15f36ca0af339077a/content_entry5c11a9db758f8d31544574c6/69ba6ea5e6414a853f606e2c/files/180326_MEDIA_NOTIFICATION_CLOSURE_OF_BURSA_MALAYSIA_IN_CONJUNCTION_WITH_HARI_RAYA_AIDILFITRI_PUBLIC_HOLIDAY.pdf",
             "status": "closed"
           },
           {
             "date": "2026-03-23",
             "name": "Hari Raya Puasa Day 2 (observed)",
-            "source_url": "https://www.bursamalaysia.com/market_information/market_holidays",
+            "source_url": "https://www.bursamalaysia.com/sites/5bb54be15f36ca0af339077a/content_entry5c11a9db758f8d31544574c6/69ba6ea5e6414a853f606e2c/files/180326_MEDIA_NOTIFICATION_CLOSURE_OF_BURSA_MALAYSIA_IN_CONJUNCTION_WITH_HARI_RAYA_AIDILFITRI_PUBLIC_HOLIDAY.pdf",
             "status": "closed"
           },
           {
@@ -32355,10 +33946,14 @@
       },
       "mic": "XKLS",
       "name": "Bursa Malaysia",
-      "regular_hours": {
-        "close": "17:00",
-        "open": "09:00"
-      },
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified): 228 closures (77 with exchange_calendars' names) and 19 half days at 12:30 (morning session only, on the eves of Chinese New Year and Hari Raya, 2010-2024; exchange_calendars' value, the end of Trading at Last). Bursa's own half-day notices (e.g. Chinese New Year 2015, https://www.bursamalaysia.com/sites/5bb54be15f36ca0af339077a/assets/5bb55aa65f36ca0c3028d89b/Closure_of_The_Exchange_for_Chinese_New_Year.pdf) give the morning session with Pre-Closing 12:15, Closing 12:20 and Trading At Last 12:20-12:30, so ADR 0013 would give 12:20; the backfill keeps 12:30 (a convention difference, like the XETR and XWBO backfills). 2025-2027: exchange_calendars + exchange_publications. 2028-2029: standing pattern; the Islamic-calendar holidays are estimates until gazetted. Checked 2026-11-20 (4c9). Last published year: Bursa's market-holidays page (bursamalaysia.com/market_information/market_holidays) refuses this sandbox, so 2027 was not compared against it. Half days now: the registry has none for 2025-2029, and Bursa's media notification of 18 March 2026 (https://www.bursamalaysia.com/sites/5bb54be15f36ca0af339077a/content_entry5c11a9db758f8d31544574c6/69ba6ea5e6414a853f606e2c/files/180326_MEDIA_NOTIFICATION_CLOSURE_OF_BURSA_MALAYSIA_IN_CONJUNCTION_WITH_HARI_RAYA_AIDILFITRI_PUBLIC_HOLIDAY.pdf) says both markets operated under normal trading hours on 19 March 2026, the eve of Hari Raya Aidilfitri, and that Bursa closed on 20 and 23 March 2026 (both in the file; they now cite it). Close (ADR 0013): Bursa's equities trading-sessions page (https://www.bursamalaysia.com/trade/trading_resources/equities/trading_sessions, read only as a search snippet; the page refuses this sandbox) gives the 2nd session as Pre-Closing 4:45pm, Closing 4:50pm and Trading at Last 4:50-5:00pm; the PO Trading Manual says the last Theoretical Closing Price calculated in Pre-Closing is the closing price. The close is therefore 16:50 (was 17:00, the end of Trading at Last; exchange_calendars has 17:00), as one dated entry from 2010-01-01 (unconfirmed: the 2nd-session timing has been 4:45/4:50/5:00 since at least 26 October 2009 per Bursa's announcement then, but that was read only through a republication). post_market and extended_hours.after_hours now open at 16:50 (Trading at Last 16:50-17:00) and keep their 17:15 end (the trading manual's end of market day for one segment). The lunch break (12:30-14:30, with the 2nd-session pre-opening from 14:00) is unchanged.",
+      "regular_hours": [
+        {
+          "close": "16:50",
+          "effective_from": "2010-01-01",
+          "open": "09:00"
+        }
+      ],
       "sessions": [
         {
           "close": "09:00",
@@ -32366,7 +33961,7 @@
           "type": "pre_market"
         },
         {
-          "close": "17:00",
+          "close": "16:50",
           "open": "09:00",
           "type": "regular"
         },
@@ -32377,7 +33972,7 @@
         },
         {
           "close": "17:15",
-          "open": "17:00",
+          "open": "16:50",
           "type": "post_market"
         }
       ],
@@ -32385,6 +33980,34 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
+        "coverage": {
+          "from": "2010-01-01",
+          "ranges": [
+            "trading_days"
+          ],
+          "sources": [
+            {
+              "from": "2010-01-01",
+              "sampled": null,
+              "source": "exchange_calendars",
+              "to": "2024-12-31",
+              "unconfirmed": [
+                "2010-01-01"
+              ]
+            },
+            {
+              "from": "2025-01-01",
+              "source": "exchange_calendars + exchange_publications (Bursa Malaysia trading-sessions page; media notifications)",
+              "to": "2027-12-31"
+            },
+            {
+              "from": "2028-01-01",
+              "source": "exchange_calendars + standing gazetted-holiday pattern (Islamic and lunar holidays are estimates until gazetted)",
+              "to": "2029-12-31"
+            }
+          ],
+          "to": "2029-12-31"
+        },
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

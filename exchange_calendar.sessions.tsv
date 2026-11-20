@@ -64,9 +64,9 @@ XJSE	pre_market	1	08:30	09:00
 XJSE	regular	1	09:00	17:00	
 XKAR	regular	1	09:30	15:30	
 XKLS	lunch_break	1	12:30	14:30	
-XKLS	post_market	1	17:00	17:15	
+XKLS	post_market	1	16:50	17:15	
 XKLS	pre_market	1	08:30	09:00	
-XKLS	regular	1	09:00	17:00	
+XKLS	regular	1	09:00	16:50	
 XKRX	auction	1			09:00
 XKRX	auction	2			15:30
 XKRX	post_market	1	15:30	16:00	

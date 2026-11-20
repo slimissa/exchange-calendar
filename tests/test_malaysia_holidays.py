@@ -62,8 +62,10 @@ class TestXKLSProperties:
         assert xkls["timezone"] == "Asia/Kuala_Lumpur"
 
     def test_regular_hours(self, xkls):
-        assert xkls["regular_hours"]["open"] == "09:00"
-        assert xkls["regular_hours"]["close"] == "17:00"
+        """4c9, ADR 0013: Bursa's 2nd session is Pre-Closing 4:45pm, Closing
+        4:50pm, Trading at Last 4:50-5:00pm, so the close is 16:50."""
+        assert xkls["regular_hours"] == [
+            {"close": "16:50", "effective_from": "2010-01-01", "open": "09:00"}]
 
     def test_lunch_break(self, xkls):
         lunch = [s for s in xkls.get("sessions", []) if s["type"] == "lunch_break"]
@@ -73,7 +75,7 @@ class TestXKLSProperties:
 
     def test_extended_hours(self, xkls):
         assert xkls["extended_hours"]["pre_market"]["open"] == "08:30"
-        assert xkls["extended_hours"]["after_hours"]["close"] == "17:15"
+        assert xkls["extended_hours"]["after_hours"] == {"close": "17:15", "open": "16:50"}
 
 
 # ──────────────────────────────────────────────────────────────
@@ -271,14 +273,23 @@ class TestXKLSStructure:
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source: {date_str}"
 
-    def test_all_statuses_closed(self, explicit_dates):
-        """Malaysia has no early closes — all holidays are full closures."""
-        for entry in explicit_dates.values():
-            assert entry["status"] == "closed"
+    def test_no_early_closes_2025_onwards(self, explicit_dates):
+        """Bursa ran normal trading hours on the eve of Hari Raya 2026 (media
+        notification of 18 March 2026); 2025-2029 have no half days. The
+        2010-2024 backfill has exchange_calendars' 19 half days at 12:30
+        (scoped out here, 4c9)."""
+        for d, entry in explicit_dates.items():
+            if d >= "2025":
+                assert entry["status"] == "closed", d
+        early = [d for d, e in explicit_dates.items() if e["status"] == "early_close"]
+        assert len(early) == 19 and max(early) < "2025"
+        assert {explicit_dates[d]["early_close_time"] for d in early} == {"12:30"}
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~70-90 entries: multiple holidays × 5 years."""
-        assert 60 <= len(explicit_dates) <= 100
+        """Scoped to 2025-2029: 79 (unchanged by 4c9). 2010-2024 backfill:
+        228 closures + 19 half days = 247."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 79
+        assert len([d for d in explicit_dates if d < "2025"]) == 247
         
 
 
