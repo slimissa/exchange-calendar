@@ -63,6 +63,9 @@ jobs:
       - name: Check expiring sources
         run: python3 tools/check_expiring_sources.py
 
+      - name: Check recheck dates
+        run: python3 tools/check_recheck_dates.py
+
       - name: Check doc facts
         run: python3 tools/update_facts.py --check && python3 tools/check_doc_facts.py
 
