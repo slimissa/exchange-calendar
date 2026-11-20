@@ -78,6 +78,7 @@ Trading-hours.pdf, closing auction 16:10-16:15).
 | XWAR before 2013-04-15 | 17:00 | Warset era. Broker reports of GPW Resolution 933/2010 give a 17:20-17:30 closing call from 2011-01-03, but the resolution was not found on gpw.pl. The UTP era (2013-04-15 to 2026-10-02) has the WATS schedule only in republished GPW announcements. |
 | XPRA from 2027-01-04 | 16:55 (unconfirmed, recheck 2027-01-04) | PSE's notice of 2026-07-31 confirms the date and the 17:00 end of day; the phase schedule is an image that could not be read, and 16:55 comes from a press transcription. |
 | XBUD 2010 to 2015-02-26 | 17:05 (unconfirmed) | No BSE trading-parameter document found before the 550/2013 schedule effective 2015-02-27. |
+| XDUB from 2019-02-04 (Optiq) | 16:30 full days, 12:30 half days (unconfirmed) | Euronext states Dublin equities close in a two-minute window (12:28-12:30 on half days). Its Optiq Trading Manual (section 3.1) says uncrossings are random over a period set in the Appendix; if that period is 12:28-12:30 / 16:28-16:30, ADR 0013 gives 12:28 / 16:28. The Appendix (xlsx) could not be read in 4c-R5, so the window ends are kept. |
 
 Each exception is also in the exchange's `note`. Exchanges not yet
 rechecked (4c-R4, 4c-R5 and the non-backfilled exchanges) are brought to
