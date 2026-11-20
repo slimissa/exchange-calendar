@@ -314,10 +314,17 @@ impl Registry {
             // The regular session follows the hours in force on this date
             // (regular_hours may be a dated list).
             let dated = (s.session_type == "regular").then(|| ex.regular_hours_on(date).ok()).flatten();
-            let (o, cl) = match &dated {
+            let (mut o, cl) = match &dated {
                 Some(h) => (Some(h.open.as_str()), Some(h.close.as_str())),
                 None => (s.open.as_deref(), s.close.as_deref()),
             };
+            // On a delayed_open day the regular session opens at
+            // delayed_open_time (the data is authoritative).
+            if s.session_type == "regular" {
+                if let Some(t) = ex.delayed_open_time(date) {
+                    o = Some(t);
+                }
+            }
             if let (Some(o), Some(cl)) = (o, cl) {
                 if o <= time && time < cl {
                     return true;
@@ -815,6 +822,11 @@ mod tests {
         assert!(!xbsp.is_open("2026-02-18", Some("12:59")));
         assert!(xbsp.is_open("2026-02-18", Some("13:00")));
         assert!(xbsp.is_open("2026-02-18", Some("14:00")));
+        // Registry::is_open (the interval-session query) agrees.
+        assert!(!r.is_open("XBSP", "2026-02-18", "11:00"));
+        assert!(r.is_open("XBSP", "2026-02-18", "13:00"));
+        assert!(!r.is_open("XBDA", "2025-10-02", "12:14"));
+        assert!(r.is_open("XBDA", "2025-10-02", "12:15"));
         let xbda = r.get("XBDA").unwrap();
         assert!(!xbda.is_open("2025-10-02", Some("10:00")));
         assert!(!xbda.is_open("2025-10-02", Some("12:14")));
