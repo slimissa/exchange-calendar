@@ -66,6 +66,11 @@ time the exchange's own documents give as the close of the trading day.
 | XWBO | 17:30 | 17:35 Vienna (4c8), 2010-2029; 2010-01-01 unconfirmed | Wiener Börse trading hours: equity closing auction 17:30-17:35 ("earliest end"), trade at close 17:35-17:45 |
 | XWBO last trading day | none for 2025-2029 | early close 14:20 (4c8, derived): 2025-12-30; 2026-12-30 unconfirmed (recheck 2026-12-15); 2027-2029 predicted | Wiener Börse news, 30 December 2025: closing auction starts at 14:15; 14:20 adds the 5-minute auction of the trading-hours page, so the end time is derived, not stated |
 | XJSE early closes | none | 12:00 Johannesburg on 24 and 31 December (4c8) | JSE Service Hotline 130/2025: closing auction call 11:50-12:00, close of trading 12:00 |
+| XNZE | 16:45 | 17:00 Auckland (4c9; re-read in 4c10), 2010-2029; 2010-01-01 unconfirmed | NZX, Anatomy of a trading day: Pre-Close from 16:45, closing auction at a random time between 16:59:30 and 17:00:30, Adjust to 17:30; the random window is ignored and 17:00 is its scheduled time |
+| XNZE abbreviated days | none for 2025-2029 | 13:00 Auckland (4c9, 4c10): 2025-12-24 and 2025-12-31 (dates confirmed, time unconfirmed); 2026-2029 predicted (2026-2027 unconfirmed, recheck 2026-12-15) | NZX notices of 2024-12-11 and 2025-12-02: abbreviated hours "closing at 1.30pm", the session end (an upper bound, like 17:30 on a normal day). The 13:00 closing auction (Pre-Close 12:45-13:00) is from NZX's Hours & Boards table, read only as a search snippet |
+| XKLS | 17:00 | 16:50 Kuala Lumpur (4c9), 2010-2029; unconfirmed (4c10: Bursa's own page still not read) | Bursa Malaysia equities trading-sessions page, read only as a search snippet: Pre-Closing 16:45, Closing 16:50, Trading at Last 16:50-17:00; Bursa's pages refuse this sandbox and only broker republications were found in 4c10 |
+| XBKK | 16:30 | 16:35 Bangkok (4c9), 2010-2029 | SET, opening/closing price calculation: pre-close from 16:30, closing time randomly selected between 16:35 and 16:40; the scheduled close is the start of the random window |
+| XLUX | 17:30 | 17:35 Luxembourg (4c9), 2010-2029 | LuxSE trading-hours page: continuous trading 09:00-17:30, closing call 17:30-17:35, trading at last 17:35-17:40 (exchange_calendars has 17:40) |
 
 Already conforming: XSTO (17:30 / 13:00), XHEL (18:30), XDUB full day
 (16:30; confirmed in 4c8 by Euronext's Appendix to Instructions 4-01/4-03: Dublin
@@ -79,7 +84,9 @@ XCSE (17:00; Nasdaq Nordic Market Model 2026:03, closing uncross 17:00),
 XICE (15:30 Reykjavik; same model, closing uncross 16:30 CET standard),
 XWAR (17:00 from 2026-10-05; GPW WATS Detailed Exchange Trading Rules,
 closing auction 16:50-17:00) and XPRA (16:15 until 2027-01-03; PSE
-Trading-hours.pdf, closing auction 16:10-16:15).
+Trading-hours.pdf, closing auction 16:10-16:15). Confirmed in 4c9: XLIT (16:00; Nasdaq Baltic
+trading-day structure, closing call 15:59:30-16:00:00 with a random uncross,
+so the scheduled close is 16:00).
 
 ## Exceptions left in place
 
@@ -91,7 +98,9 @@ Trading-hours.pdf, closing auction 16:10-16:15).
 | XPRA from 2027-01-04 | 16:55 (unconfirmed, recheck 2027-01-04) | PSE's notice of 2026-07-31 confirms the date and the 17:00 end of day; the phase schedule is an image that could not be read, and 16:55 comes from a press transcription. |
 | XBUD 2010 to 2015-02-26 | 17:05 (unconfirmed) | No BSE trading-parameter document found before the 550/2013 schedule effective 2015-02-27. |
 | XETR last trading day 2010-2024 | 14:00 (exchange_calendars) | 4c8 backfill; the end of continuous trading, not the auction end. No Deutsche Börse final-session notice before 2025 was read. |
-| XWBO last trading day 2017-2024 | 14:15 (exchange_calendars) | 4c8 backfill; the start of the shortened closing auction. Wiener Börse's 2017-2024 notices give the same 14:15 start, so ADR 0013 would give 14:20; not changed in 4c8. |
+| XWBO last trading day 2017-2024 | 14:15 (exchange_calendars) | 4c8 backfill; the start of the shortened closing auction. The Wiener Börse notices actually seen cover 2018-2024 (corrected in 4c10; this row said 2017-2024) and give the same 14:15 start, so ADR 0013 would give 14:20; 2017 rests on exchange_calendars alone. Not changed. |
+| XNZE abbreviated days 2011-2024 | 12:45 (exchange_calendars) | 4c9 backfill; the end of continuous trading. ADR 0013 would give 13:00 (the convention applied from 2025). exchange_calendars has no 2010 abbreviated days. |
+| XKLS half days 2010-2024 | 12:30 (exchange_calendars) | 4c9 backfill; the end of Trading at Last. Bursa's own half-day notices (e.g. Chinese New Year 2015) give Closing 12:20, so ADR 0013 would give 12:20. |
 
 Each exception is also in the exchange's `note`. Exchanges not yet
 rechecked (4c-R4, 4c-R5 and the non-backfilled exchanges) are brought to
