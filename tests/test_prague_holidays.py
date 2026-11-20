@@ -86,6 +86,16 @@ class TestXPRAProperties:
         regular = [s for s in xpra["sessions"] if s["type"] == "regular"]
         assert regular == [{"type": "regular", "open": "09:00", "close": "16:55"}]
 
+    def test_2027_close_is_marked_unconfirmed(self, xpra):
+        """PSE's notice confirms 2027-01-04 and the 17:00 end of day; the
+        16:55 auction end comes from press transcriptions of the notice's
+        schedule image (4c-R4), so it stays unconfirmed until rechecked."""
+        span = [s for s in xpra["verification"]["coverage"]["sources"]
+                if s["from"] == "2025-01-01"][0]
+        assert span["to"] == "2027-12-31"
+        assert span["unconfirmed"] == ["2027-01-04"]
+        assert span["recheck_date"] == "2027-01-04"
+
     def test_no_lunch_break(self, xpra):
         lunch = [s for s in xpra.get("sessions", []) if s.get("type") == "lunch_break"]
         assert lunch == []
