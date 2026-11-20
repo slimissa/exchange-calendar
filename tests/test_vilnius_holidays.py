@@ -242,9 +242,10 @@ class TestXLITStructure:
 
     def test_holiday_count_reasonable(self, explicit_dates):
         """Scoped to 2025-2029: 62 (unchanged by 4c9). 2010-2024 backfill:
-        175 closures."""
+        175 closures less the seven pre-2020 All Souls' Days removed in
+        4c10 = 168."""
         assert len([d for d in explicit_dates if d >= "2025"]) == 62
-        assert len([d for d in explicit_dates if d < "2025"]) == 175
+        assert len([d for d in explicit_dates if d < "2025"]) == 168
 
     def test_source_url_consistency(self, explicit_dates):
         for d, entry in explicit_dates.items():
@@ -313,20 +314,18 @@ class TestXLITNasdaqBalticList:
     def test_all_souls_day_not_before_2020(self):
         """The holiday dates from a 2019 law, first observed in 2020.
 
-        4c9: the 2010-2024 backfill from exchange_calendars, which applies
-        All Souls' Day with no start date, adds 2 November closures for
-        2010-2018. No Nasdaq Vilnius document for those years was read, so
-        they stay (lesson 10 needs the exchange's own source) but must be
-        marked unconfirmed, and no All Souls' Day may appear in 2019 or in
-        2025-2029 except on 2 November from 2020 on."""
+        Law No. XIII-2415 (Labour Code art. 123 amendment, adopted
+        2019-08-20, in force 2020-01-01) added 2 November. 4c10 removed the
+        seven pre-2020 closures exchange_calendars backdates (lesson 10),
+        so no 2 November closure exists before 2020, and every 2 November
+        weekday from 2020 on is closed."""
         e = _explicit("XLIT")
-        pre = sorted(d for d in e if d[5:] == "11-02" and d < "2020")
-        assert pre == ["2010-11-02", "2011-11-02", "2012-11-02", "2015-11-02",
-                       "2016-11-02", "2017-11-02", "2018-11-02"]
-        xlit = json.loads((Path(__file__).parent.parent / "exchanges" / "XLIT.json").read_text())
-        unconfirmed = set(xlit["verification"]["coverage"]["sources"][0]["unconfirmed"])
-        assert set(pre) <= unconfirmed
-        assert not [d for d in e if d.startswith("2019") and d[5:] == "11-02"]
+        assert [d for d in e if d[5:] == "11-02" and d < "2020"] == []
+        nov2 = sorted(d for d in e if d[5:] == "11-02")
+        assert nov2 == ["2020-11-02", "2021-11-02", "2022-11-02", "2023-11-02",
+                        "2026-11-02", "2027-11-02", "2028-11-02", "2029-11-02"]
+        for d in nov2:
+            assert e[d]["name"] == "All Souls' Day", d
 
 
 # ──────────────────────────────────────────────────────────────
