@@ -63,8 +63,10 @@ class TestXRISProperties:
         assert xris["timezone"] == "Europe/Riga"
 
     def test_regular_hours(self, xris):
-        assert xris["regular_hours"]["open"] == "10:00"
-        assert xris["regular_hours"]["close"] == "16:00"
+        """4c12, ADR 0013: closing call 15:59:30-16:00:00 with a random
+        uncross (Nasdaq Baltic trading-day structure); 16:00, one dated entry."""
+        assert xris["regular_hours"] == [
+            {"close": "16:00", "effective_from": "2010-01-01", "open": "10:00"}]
 
     def test_no_lunch_break(self, xris):
         lunch = [s for s in xris.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -75,10 +77,19 @@ class TestXRISProperties:
 
     def test_generation_range(self, xris):
         assert "generation_range" in xris
-        assert xris["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xris["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c12 backfill
 
-    def test_ad_hoc_closures_empty(self, xris):
-        assert xris.get("ad_hoc_closures", []) == []
+    def test_ad_hoc_closures(self, xris):
+        """4c12: exchange_calendars' three Cabinet transfer days (2010-2024
+        backfill) and the two one-off public holidays of 2018 and 2023."""
+        ec = "github.com/gerrymanoim/exchange_calendars"
+        assert [(c["date"], c["source_url"], c["status"]) for c in xris["ad_hoc_closures"]] == [
+            ("2018-09-24", "https://nasdaqbaltic.com/statistics/en/bulletins?bbid=336", "closed"),
+            ("2023-05-05", ec, "closed"),
+            ("2023-05-29", "https://attachment.news.eu.nasdaq.com/a2444250b869f39cf46f64614238058ec", "closed"),
+            ("2024-12-23", ec, "closed"),
+            ("2024-12-30", ec, "closed"),
+        ]
 
     def test_no_recurrence_rules(self, xris):
         """Latvia uses explicit dates only."""
@@ -234,6 +245,9 @@ class TestXRISStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if entry["source_url"] == "github.com/gerrymanoim/exchange_calendars":
+                assert date_str < "2025"  # 4c12 backfill (repository convention)
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -259,11 +273,55 @@ class TestXRISStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~45-60 entries."""
-        assert 44 <= len(explicit_dates) <= 65, f"Unexpected count: {len(explicit_dates)}"
+        """Scoped to 2025-2029: 55 (unchanged by 4c12). 2010-2024 backfill:
+        153 exchange_calendars closures - 2018-05-09 - 3 transfer days moved
+        to ad_hoc_closures + 9 Christmas Days + 2018-07-09 = 159."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 55
+        assert len([d for d in explicit_dates if d < "2025"]) == 159
+
+    def test_christmas_day_2010_2024(self, explicit_dates):
+        """4c12: exchange_calendars has no Christmas Day for XRIS. Latvia's
+        holidays law lists 25 December; every weekday 25 December 2010-2024
+        is closed and named so."""
+        xmas = sorted(d for d, e in explicit_dates.items()
+                      if d < "2025" and d.endswith("-12-25"))
+        assert xmas == ["2012-12-25", "2013-12-25", "2014-12-25", "2015-12-25",
+                        "2017-12-25", "2018-12-25", "2019-12-25", "2020-12-25",
+                        "2023-12-25", "2024-12-25"]
+        assert {explicit_dates[d]["name"] for d in xmas} == {"Christmas Day"}
+
+    def test_2018_bulletin_counts(self, explicit_dates):
+        """4c12: Nasdaq Baltic's May 2018 bulletin (Riga 20 = 23 - 1, 4, 10
+        May) leaves no room for exchange_calendars' 2018-05-09; the July 2018
+        bulletin (21 of 22) leaves 9 July, the day off after the Song and
+        Dance Celebration closing day."""
+        assert "2018-05-09" not in explicit_dates
+        assert sorted(d for d in explicit_dates if d.startswith("2018-05")) == [
+            "2018-05-01", "2018-05-04", "2018-05-10"]
+        assert sorted(d for d in explicit_dates if d.startswith("2018-07")) == ["2018-07-09"]
+
+    def test_corrections_are_contradicted_by(self, xris):
+        span = xris["verification"]["coverage"]["sources"][0]
+        assert span["from"] == "2010-01-01" and span["to"] == "2024-12-31"
+        assert span["contradicted_by"] == [
+            "2012-12-25", "2013-12-25", "2014-12-25", "2015-12-25", "2017-12-25",
+            "2018-05-09", "2018-07-09", "2018-09-24", "2018-12-25", "2019-12-25",
+            "2020-12-25", "2023-05-29", "2024-12-25"]
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
+        law = "https://likumi.lv/ta/en/en/id/72608"
+        for d, entry in explicit_dates.items():
+            if d < "2025":
+                if d in ("2012-12-25", "2013-12-25", "2014-12-25", "2015-12-25", "2017-12-25",
+                         "2018-12-25", "2019-12-25", "2020-12-25"):
+                    assert entry["source_url"] == law
+                elif d == "2024-12-25":
+                    assert entry["source_url"].startswith("https://view.news.eu.nasdaq.com/")
+                elif d == "2018-07-09":
+                    assert entry["source_url"] == "https://nasdaqbaltic.com/statistics/en/bulletins?bbid=334"
+                else:  # 4c12 backfill cites exchange_calendars
+                    assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert "nasdaqbaltic.com" in entry["source_url"]
 
 

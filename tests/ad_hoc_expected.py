@@ -23,8 +23,8 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 EXCHANGES = REPO / "exchanges"
 
-# 4c11: XBDA 6, XBKK 2, XLIM 8, XSGO 6, XTAI 2, XZAG 3. Update when a session adds or removes rows.
-AD_HOC_ROW_COUNT = 27
+# 4c12: XBDA 6, XBKK 2, XLIM 8, XRIS 5, XSGO 6, XTAI 2, XZAG 3. Update when a session adds or removes rows.
+AD_HOC_ROW_COUNT = 32
 
 COLUMNS = ("exchange_code", "date", "seq", "name", "status", "early_close_time", "source_url")
 
