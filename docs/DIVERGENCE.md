@@ -43,7 +43,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XBDA | 1254 | 1254 | 1254 | 0 | 100.0% |
 | XBEY | 1265 | No reference data | No reference data | n/a | n/a |
 | XBKK | 970 | 970 | 970 | 0 | 100.0% |
-| XBOG | 1217 | 1216 | 1216 | 1 | 99.9% |
+| XBOG | 1462 | 1461 | 1461 | 1 | 99.9% |
 | XBOM | 1484 | 1519 | 737* | 35 | 97.7% |
 | XBRU | 1535 | 1535 | 1535 | 0 | 100.0% |
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
@@ -71,7 +71,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XKLS | 1472 | 1479 | 1479 | 13 | 99.1% |
 | XKRX | 1461 | 1468 | 1468 | 7 | 99.5% |
 | XKUW | 1017 | No reference data | No reference data | n/a | n/a |
-| XLIM | 1241 | 1243 | 1243 | 6 | 99.5% |
+| XLIM | 1490 | 1492 | 1492 | 6 | 99.6% |
 | XLIS | 1535 | 1535 | 1535 | 0 | 100.0% |
 | XLIT | 1491 | 1495 | 1495 | 4 | 99.7% |
 | XLON | 1518 | 1518 | 1518 | 0 | 100.0% |
@@ -94,7 +94,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XRIS | 1249 | 1250 | 1250 | 7 | 99.4% |
 | XSAU | 1007 | 998 | 998 | 17 | 98.3% |
 | XSES | 1508 | 1537 | 755* | 29 | 98.1% |
-| XSGO | 1241 | No reference data | 1242 | 1 | 99.9% |
+| XSGO | 1489 | No reference data | 1490 | 1 | 99.9% |
 | XSHE | 970 | No reference data | No reference data | n/a | n/a |
 | XSHG | 1464 | 1509 | 727* | 45 | 97.0% |
 | XSTC | 1006 | No reference data | No reference data | n/a | n/a |
@@ -102,7 +102,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XSWX | 1505 | 1505 | 1505 | 0 | 100.0% |
 | XTAD | 1272 | No reference data | No reference data | n/a | n/a |
 | XTAI | 1458 | 1464 | 1464 | 20 | 98.6% |
-| XTAL | 1251 | 1255 | 1255 | 4 | 99.7% |
+| XTAL | 1502 | 1507 | 1507 | 5 | 99.7% |
 | XTKS | 1464 | 1464 | 1464 | 0 | 100.0% |
 | XTSE | 1506 | 1506 | 1506 | 0 | 100.0% |
 | XTUN | 1253 | No reference data | No reference data | n/a | n/a |
@@ -113,7 +113,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 29 of 50.
-- Trading days on which all available sources agree: 70969 of 71252 (99.6%).
+- Trading days on which all available sources agree: 71962 of 72246 (99.6%).
 
 ## Disagreements by year
 
@@ -121,7 +121,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 
 | Exchange | 2024 | 2025 | 2026 | 2027 | 2028 | 2029 |
 |---|---:|---:|---:|---:|---:|---:|
-| XBOG | - | 0 | 0 | 0 | 1 | 0 |
+| XBOG | 0 | 0 | 0 | 0 | 1 | 0 |
 | XBOM | 0 | 0 | 0 | 8 | 12 | 15 |
 | XBUD | 0 | 0 | 0 | 0 | 0 | 4 |
 | XBUE | 0 | 8 | 5 | 3 | 1 | 1 |
@@ -130,7 +130,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XKAR | - | 2 | 3 | 4 | 4 | 6 |
 | XKLS | 0 | 0 | 2 | 4 | 5 | 2 |
 | XKRX | 0 | 0 | 2 | 2 | 2 | 1 |
-| XLIM | - | 0 | 0 | 3 | 3 | 0 |
+| XLIM | 0 | 0 | 0 | 3 | 3 | 0 |
 | XLIT | 0 | 1 | 1 | 0 | 1 | 1 |
 | XMOS | 0 | 2 | 2 | - | - | - |
 | XNSE | 1 | 1 | 0 | 8 | 12 | 15 |
@@ -138,16 +138,16 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XRIS | - | 3 | 1 | 0 | 2 | 1 |
 | XSAU | - | 4 | 0 | 5 | 8 | - |
 | XSES | 0 | 0 | 0 | 8 | 10 | 11 |
-| XSGO | - | 0 | 0 | 1 | 0 | 0 |
+| XSGO | 0 | 0 | 0 | 1 | 0 | 0 |
 | XSHG | 0 | 0 | 0 | 18 | 14 | 13 |
 | XTAI | 0 | 0 | 2 | 4 | 7 | 7 |
-| XTAL | - | 1 | 1 | 0 | 1 | 1 |
+| XTAL | 1 | 1 | 1 | 0 | 1 | 1 |
 
 Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2024 | 2 | 0 | 0 | 0 | 0 | 2 |
+| 2024 | 3 | 0 | 0 | 0 | 0 | 3 |
 | 2025 | 22 | 0 | 20 | 1 | 1 | 0 |
 | 2026 | 21 | 0 | 18 | 0 | 0 | 3 |
 | 2027 | 71 | 0 | 12 | 0 | 54 | 5 |
@@ -284,9 +284,9 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 - registry closed, PMC open, EC open (13): 2026-07-10 Fr, 2026-10-23 Fr, 2027-02-02 Tu, 2027-02-03 We [unpublished], 2027-04-06 Tu, 2027-12-24 Fr, 2028-01-31 Mo [unpublished], 2028-02-01 Tu [unpublished], 2028-04-05 We [unpublished], 2028-09-25 Mo [unpublished], 2029-02-08 Th [unpublished], 2029-02-16 Fr [unpublished], 2029-06-18 Mo [unpublished]
 - registry open, PMC closed, EC closed (7): 2028-04-03 Mo [unpublished], 2028-05-29 Mo [unpublished], 2028-10-03 Tu [unpublished], 2029-04-03 Tu [unpublished], 2029-06-15 Fr [unpublished], 2029-09-21 Fr [unpublished], 2029-12-31 Mo [unpublished]
 
-### XTAL (4)
+### XTAL (5)
 
-- registry closed, PMC open, EC open (4): 2025-12-25 Th [library error], 2026-12-25 Fr [library error], 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
+- registry closed, PMC open, EC open (5): 2024-12-25 We, 2025-12-25 Th [library error], 2026-12-25 Fr [library error], 2028-12-25 Mo [library error], 2029-12-25 Tu [library error]
 
 ## Triage
 
