@@ -76,8 +76,14 @@ class TestXBUDProperties:
         """BSE Resolution 550/2013: continuous trading until 17:00, closing
         auction call 17:00-17:05, price determination 17:05 + random end.
         ADR 0013 puts the close at the auction end (4c-R4; was 17:00)."""
-        assert xbud["regular_hours"]["open"] == "09:00"
-        assert xbud["regular_hours"]["close"] == "17:05"
+        # Dated list since 4c-R5: same hours, split where BSE's own documents
+        # begin (2015-02-27); 2010-01-01 is marked unconfirmed.
+        assert xbud["regular_hours"] == [
+            {"close": "17:05", "effective_from": "2010-01-01", "open": "09:00"},
+            {"close": "17:05", "effective_from": "2015-02-27", "open": "09:00"},
+        ]
+        span = xbud["verification"]["coverage"]["sources"][0]
+        assert (span["from"], span["unconfirmed"]) == ("2010-01-01", ["2010-01-01"])
         regular = [s for s in xbud["sessions"] if s["type"] == "regular"]
         assert regular == [{"type": "regular", "open": "09:00", "close": "17:05"}]
 
