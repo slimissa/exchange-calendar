@@ -1577,6 +1577,16 @@
       "source_url": "https://attachment.news.eu.nasdaq.com/a73c2732fa3004542058f223e2e1b83f1"
     },
     {
+      "exchange": "XTAL",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2024-12-25"
+      ],
+      "summary": "Nasdaq Tallinn's investor calendar for week 52/2024 lists 24-26 December 2024 as trading holidays for TLN, RIG and VLN. The registry closes 25 December 2024 (4c10 backfill correction); exchange_calendars and pandas_market_calendars have no Christmas Day for this market and show it open.",
+      "source_url": "https://view.news.eu.nasdaq.com/view?id=b8c140bf1e1581552fce9817b148ea449&lang=en"
+    },
+    {
       "exchange": "XPRA",
       "verdict": "registry_error",
       "status": "fixed",
