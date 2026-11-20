@@ -1143,6 +1143,21 @@ XWBO,2026,high,fetcher,2026-10-03,
 XWBO,2027,medium,manual,,predicted
 XWBO,2028,medium,manual,,predicted
 XWBO,2029,medium,manual,,predicted
+XZAG,2010,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2011,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2012,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2013,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2014,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2015,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2016,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2017,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2018,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2019,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2020,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2021,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2022,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2023,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
+XZAG,2024,low,manual,,backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified
 XZAG,2025,medium,manual,,
 XZAG,2026,medium,manual,,
 XZAG,2027,medium,manual,,predicted

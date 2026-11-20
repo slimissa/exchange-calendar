@@ -167,6 +167,17 @@ ALLOWLIST = {
     # checker sees is "2015" (from "%20" + "15 December"); the notice is a
     # historical citation for a 2023 closure.
     "https://clientportal.jse.co.za/Content/JSENoticesandCircularsItems/JSE%20Market%20Notice%2038623%20All%20Derivative%20Markets%20-%20Public%20Holiday%2015%20December%202023.pdf": "2027-06-01",
+    # XZAG ad hoc closures (4c11): ZSE's resolutions for the 2022 euro
+    # changeover days and the 2024 election day. Historical citations for
+    # one-off closures; the checker cannot tell them from stale sources.
+    "https://zse.hr/en/resolution-on-amendments-to-the-trading-calendar-in-2022/2503": "2028-03-31",
+    "https://zse.hr/en/resolution-on-amending-the-resolution-on-the-trading-calendar-in-2024/2810": "2028-03-31",
+    # XZAG 2027 entries (4c11): ZSE's "Trading calendar in 2027" post
+    # (opaque news ID). Unblock: cite the 2028 post when ZSE publishes it.
+    "https://zse.hr/en/trading-calendar-in-2027/3574": "2028-03-31",
+    # XZAG note (4c11): the Trading Manual in force from 2026-01-22, the
+    # source of the 16:00 close. Unblock: cite the newer manual if replaced.
+    "https://zse.hr/UserDocsImages/docs/trading/manuals/Trading_Manual_2026-01-14.pdf": "2027-12-31",
 }
 
 

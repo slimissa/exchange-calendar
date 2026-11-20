@@ -69,8 +69,12 @@ class TestXZAGProperties:
         assert xzag["timezone"] == "Europe/Zagreb"
 
     def test_regular_hours(self, xzag):
-        assert xzag["regular_hours"]["open"] == "09:30"
-        assert xzag["regular_hours"]["close"] == "16:00"
+        """4c11, ADR 0013: ZSE Trading Manual of 2026-01-14, closing auction
+        15:55-16:00 (earliest ending, random up to 15 s later): 16:00, one
+        dated entry, 2010-01-01 unconfirmed."""
+        assert xzag["regular_hours"] == [
+            {"close": "16:00", "effective_from": "2010-01-01", "open": "09:30"}]
+        assert "2010-01-01" in xzag["verification"]["coverage"]["sources"][0]["unconfirmed"]
 
     def test_no_lunch_break(self, xzag):
         lunch = [s for s in xzag.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -81,10 +85,16 @@ class TestXZAGProperties:
 
     def test_generation_range(self, xzag):
         assert "generation_range" in xzag
-        assert xzag["generation_range"] == ["2025-01-01", "2029-12-31"]
+        assert xzag["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c11 backfill
 
-    def test_ad_hoc_closures_empty(self, xzag):
-        assert xzag.get("ad_hoc_closures", []) == []
+    def test_ad_hoc_closures_are_the_zse_one_offs(self, xzag):
+        """4c11: the euro changeover days (ZSE resolution of 2022-09-08) and
+        the 2024 parliamentary election day (ZSE resolution amending the 2024
+        calendar), each citing ZSE's own page."""
+        assert [(c["date"], c["status"]) for c in xzag["ad_hoc_closures"]] == [
+            ("2022-12-29", "closed"), ("2022-12-30", "closed"), ("2024-04-17", "closed")]
+        assert all(c["source_url"].startswith("https://zse.hr/en/resolution-")
+                   for c in xzag["ad_hoc_closures"])
 
     def test_no_recurrence_rules(self, xzag):
         """Croatia uses explicit dates only."""
@@ -242,6 +252,9 @@ class TestXZAGStructure:
     def test_all_entries_have_source(self, explicit_dates):
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source_url: {date_str}"
+            if date_str < "2025":  # 4c11 backfill cites exchange_calendars
+                assert entry["source_url"] == "github.com/gerrymanoim/exchange_calendars"
+                continue
             assert entry["source_url"].startswith("http")
 
     def test_all_entries_have_name(self, explicit_dates):
@@ -267,11 +280,26 @@ class TestXZAGStructure:
             assert start <= d <= end
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~60-70 entries."""
-        assert 55 <= len(explicit_dates) <= 75, f"Unexpected count: {len(explicit_dates)}"
+        """Scoped to 2025-2029: 61 (unchanged by 4c11). 2010-2024 backfill:
+        185 exchange_calendars closures less the 3 one-offs moved to
+        ad_hoc_closures = 182."""
+        assert len([d for d in explicit_dates if d >= "2025"]) == 61
+        assert len([d for d in explicit_dates if d < "2025"]) == 182
+
+    def test_2024_matches_zse_resolution(self, explicit_dates, xzag):
+        """4c11: ZSE's resolution amending the 2024 calendar lists 14 weekday
+        closures; 13 recurring plus the 17 April election day (ad hoc)."""
+        closed = {d for d in explicit_dates if d.startswith("2024")}
+        closed |= {c["date"] for c in xzag["ad_hoc_closures"] if c["date"].startswith("2024")}
+        assert closed == {
+            "2024-01-01", "2024-03-29", "2024-04-01", "2024-04-17", "2024-05-01",
+            "2024-05-30", "2024-08-05", "2024-08-15", "2024-11-01", "2024-11-18",
+            "2024-12-24", "2024-12-25", "2024-12-26", "2024-12-31"}
 
     def test_source_url_consistency(self, explicit_dates):
-        for entry in explicit_dates.values():
+        for d, entry in explicit_dates.items():
+            if d < "2025":
+                continue  # 4c11 backfill cites exchange_calendars
             assert "zse.hr" in entry["source_url"]
 
 
