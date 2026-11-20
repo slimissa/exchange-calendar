@@ -255,6 +255,21 @@ XDUB	2026	medium	manual
 XDUB	2027	medium	manual		predicted
 XDUB	2028	medium	manual		predicted
 XDUB	2029	medium	manual		predicted
+XETR	2010	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2011	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2012	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2013	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2014	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2015	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2016	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2017	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2018	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2019	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2020	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2021	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2022	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2023	low	manual		backfilled from exchange_calendars; not independently verified
+XETR	2024	low	manual		backfilled from exchange_calendars; not independently verified
 XETR	2025	medium	manual		
 XETR	2026	medium	manual		
 XETR	2027	medium	manual		predicted
@@ -840,6 +855,21 @@ XTAD	2026	medium	manual
 XTAD	2027	medium	manual		predicted
 XTAD	2028	medium	manual		predicted
 XTAD	2029	medium	manual		predicted
+XTAI	2010	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2011	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2012	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2013	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2014	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2015	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2016	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2017	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2018	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2019	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2020	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2021	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2022	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2023	low	manual		backfilled from exchange_calendars; not independently verified
+XTAI	2024	low	manual		backfilled from exchange_calendars; not independently verified
 XTAI	2025	medium	manual		
 XTAI	2026	medium	manual		
 XTAI	2027	medium	manual		predicted

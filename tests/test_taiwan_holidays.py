@@ -61,8 +61,11 @@ class TestXTAIProperties:
         assert xtai["timezone"] == "Asia/Taipei"
 
     def test_regular_hours(self, xtai):
-        assert xtai["regular_hours"]["open"] == "09:00"
-        assert xtai["regular_hours"]["close"] == "13:30"
+        """One dated entry from 2010-01-01 (4c8). TWSE's trading-system page
+        gives matching 9:00-13:30 with the closing call 13:25-13:30 and the
+        closing match at 13:30 (ADR 0013)."""
+        assert xtai["regular_hours"] == [
+            {"close": "13:30", "effective_from": "2010-01-01", "open": "09:00"}]
 
     def test_no_lunch_break(self, xtai):
         lunch = [s for s in xtai.get("sessions", []) if s["type"] == "lunch_break"]
@@ -91,9 +94,13 @@ class TestXTAIPreCNY:
         assert "Settlement" in explicit_dates["2026-02-12"]["name"]
 
     def test_2027_settlement_days(self, explicit_dates):
-        """CNY Eve is Feb 5, 2027 — settlement Feb 3-4."""
-        assert "2027-02-03" in explicit_dates
-        assert "2027-02-04" in explicit_dates
+        """TWSE ROC 116 schedule (4c8): last trading day Feb 1, 2027; Feb 2
+        and Feb 3 have no trading (settlement only); Feb 4-10 is the Lunar
+        New Year holiday."""
+        assert "Settlement" in explicit_dates["2027-02-02"]["name"]
+        assert "Settlement" in explicit_dates["2027-02-03"]["name"]
+        assert "Settlement" not in explicit_dates["2027-02-04"]["name"]
+        assert "2027-02-01" not in explicit_dates
 
     def test_2028_settlement_days(self, explicit_dates):
         """CNY Eve is Jan 26, 2028 — settlement Jan 24-25."""
@@ -250,8 +257,17 @@ class TestXTAIStructure:
             assert entry["status"] == "closed"
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~84 entries: multiple holidays per year + settlement days."""
-        assert 60 <= len(explicit_dates) <= 100
+        """Scoped to 2025-2029 (the 4c8 backfill adds 2010-2024): 87 entries
+        (84 before 4c8, plus 2027-02-02, 2027-04-06 and 2027-12-24)."""
+        window = [d for d in explicit_dates if "2025" <= d[:4] <= "2029"]
+        assert len(window) == 87
+
+    def test_backfill_2010_2024(self, xtai, explicit_dates):
+        """4c8: 243 closures from exchange_calendars 4.13.2, no early closes."""
+        old = [d for d in explicit_dates if d[:4] <= "2024"]
+        assert len(old) == 243
+        assert min(old) == "2010-01-01"
+        assert xtai["generation_range"][0] == "2010-01-01"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -289,3 +305,17 @@ class TestXTAITwseCalendar2025And2026:
         "2026-04-06", "2026-09-28", "2026-10-26", "2026-12-25"])
     def test_added_closures(self, explicit_dates, day):
         assert explicit_dates[day]["status"] == "closed"
+
+    def test_2027_closed_set_matches_twse(self, explicit_dates):
+        """TWSE holiday-schedule open data, ROC 116 (read 2026-11-20, 4c8):
+        every 2027 weekday closure, settlement-only days included."""
+        assert self._closed_set(explicit_dates, 2027) == {
+            "2027-01-01", "2027-02-02", "2027-02-03", "2027-02-04", "2027-02-05",
+            "2027-02-08", "2027-02-09", "2027-02-10", "2027-03-01", "2027-04-05",
+            "2027-04-06", "2027-04-30", "2027-06-09", "2027-09-15", "2027-09-28",
+            "2027-10-11", "2027-10-25", "2027-12-24", "2027-12-31"}
+
+    def test_2027_cites_twse(self, explicit_dates):
+        for d, e in explicit_dates.items():
+            if d.startswith("2027"):
+                assert e["source_url"].startswith("https://www.twse.com.tw/"), d
