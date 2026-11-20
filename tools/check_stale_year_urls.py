@@ -163,6 +163,10 @@ ALLOWLIST = {
     # XETR 2025-12-30 (4c8): Deutsche Börse's announcement for the final
     # trading session of 2025. A historical citation once the year passed.
     "https://www.cashmarket.deutsche-boerse.com/resource/blob/4580834/14d7f01321cb1d949020067efd2ee174/data/Final%20trading%20session%202025.pdf": "2027-06-01",
+    # XJSE 2023-12-15 (4c8): JSE Market Notice 386/2023. The year token the
+    # checker sees is "2015" (from "%20" + "15 December"); the notice is a
+    # historical citation for a 2023 closure.
+    "https://clientportal.jse.co.za/Content/JSENoticesandCircularsItems/JSE%20Market%20Notice%2038623%20All%20Derivative%20Markets%20-%20Public%20Holiday%2015%20December%202023.pdf": "2027-06-01",
 }
 
 

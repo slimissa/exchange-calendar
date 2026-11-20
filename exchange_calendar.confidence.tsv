@@ -385,6 +385,21 @@ XJKT	2026	medium	manual
 XJKT	2027	medium	manual		predicted
 XJKT	2028	medium	manual		predicted
 XJKT	2029	medium	manual		predicted
+XJSE	2010	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2011	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2012	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2013	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2014	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2015	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2016	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2017	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2018	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2019	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2020	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2021	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2022	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2023	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
+XJSE	2024	low	manual		backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified
 XJSE	2025	medium	manual		
 XJSE	2026	medium	manual		
 XJSE	2027	medium	manual		predicted

@@ -231,7 +231,8 @@ class TestFormatting:
         predicted = Counter(r[header.index("predicted")] for r in rows)
         # 246: 243 after XSTO (4c-R2/4c-R3) + XETR's predicted 2027-2029
         # shortened last trading days (4c8).
-        assert predicted["true"] == 246 and predicted["false"] == 73
+        # 250: 246 + XJSE's predicted 2027/2029 Dec 24/31 early closes (4c8)
+        assert predicted["true"] == 250 and predicted["false"] == 73
 
     def test_dates_times_and_integers_are_plain_text(self):
         checks = {

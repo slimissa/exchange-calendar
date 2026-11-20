@@ -29802,6 +29802,96 @@
       "ad_hoc_closures": [],
       "code": "XJSE",
       "confidence": {
+        "2010": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2011": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2012": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2013": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2014": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2015": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2016": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2017": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2018": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2019": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2020": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2021": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2022": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2023": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
+        "2024": {
+          "last_verified": null,
+          "level": "low",
+          "note": "backfilled (exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)); not independently verified",
+          "source": "manual"
+        },
         "2025": {
           "last_verified": null,
           "level": "medium",
@@ -29845,11 +29935,1043 @@
       },
       "fetcher_status": "none",
       "generation_range": [
-        "2025-01-01",
+        "2010-01-01",
         "2029-12-31"
       ],
       "holidays": {
         "explicit": [
+          {
+            "date": "2010-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-03-22",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-02",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-05",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-04-27",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-06-16",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-09-24",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-16",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-24",
+            "early_close_time": "12:00",
+            "name": "Christmas Eve (early close)",
+            "source_url": "https://clientportal.jse.co.za/Content/JSENoticesandCircularsItems/Y555.pdf",
+            "status": "early_close"
+          },
+          {
+            "date": "2010-12-27",
+            "name": "Day of Goodwill",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2010-12-31",
+            "early_close_time": "12:00",
+            "name": "New Year's Eve (early close)",
+            "source_url": "https://clientportal.jse.co.za/Content/JSENoticesandCircularsItems/Y555.pdf",
+            "status": "early_close"
+          },
+          {
+            "date": "2011-03-21",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-04-22",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-04-25",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-04-27",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-05-02",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-05-18",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-06-16",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-12-16",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-12-23",
+            "early_close_time": "12:00",
+            "name": "Christmas Eve (early close, moved from Saturday)",
+            "source_url": "https://clientportal.jse.co.za/Content/JSENoticesandCircularsItems/NoteA1537.pdf",
+            "status": "early_close"
+          },
+          {
+            "date": "2011-12-26",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-12-27",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2011-12-30",
+            "early_close_time": "12:00",
+            "name": "New Year's Eve (early close, moved from Saturday)",
+            "source_url": "https://clientportal.jse.co.za/Content/JSENoticesandCircularsItems/NoteA1537.pdf",
+            "status": "early_close"
+          },
+          {
+            "date": "2012-01-02",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-03-21",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-06",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-09",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-04-27",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-05-01",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-09-24",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-17",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2012-12-26",
+            "name": "Day of Goodwill",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-03-21",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-03-29",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-04-01",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-05-01",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-06-17",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-09-24",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-16",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2013-12-26",
+            "name": "Day of Goodwill",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-03-21",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-04-18",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-04-21",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-04-28",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-01",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-05-07",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-06-16",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-09-24",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-16",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2014-12-26",
+            "name": "Day of Goodwill",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-03",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-06",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-04-27",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-05-01",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-06-16",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-08-10",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-09-24",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-16",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2015-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-03-21",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-03-25",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-03-28",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-04-27",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-05-02",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-06-16",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-08-03",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-12-16",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-12-26",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2016-12-27",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-01-02",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-03-21",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-14",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-17",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-04-27",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-05-01",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-06-16",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-09-25",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2017-12-26",
+            "name": "Day of Goodwill",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-03-21",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-03-30",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-04-02",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-04-27",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-05-01",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-09-24",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-17",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2018-12-26",
+            "name": "Day of Goodwill",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-03-21",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-04-19",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-04-22",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-01",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-05-08",
+            "name": "Historical Holiday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-06-17",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-09-24",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-16",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2019-12-26",
+            "name": "Day of Goodwill",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-10",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-13",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-04-27",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-05-01",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-06-16",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-08-10",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-09-24",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-16",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2020-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-03-22",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-02",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-05",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-04-27",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-06-16",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-09-24",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-12-16",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2021-12-27",
+            "name": "Day of Goodwill",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-03-21",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-15",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-18",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-04-27",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-05-02",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-06-16",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-12-16",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-12-26",
+            "name": "Day of Goodwill",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2022-12-27",
+            "name": "Public Holiday (declared)",
+            "source_url": "https://clientportal.jse.co.za/Content/JSENoticesandCircularsItems/JSE%20Market%20Notice%2060022%20All%20Markets%20-%20Public%20Holiday%2027%20December%202022.pdf",
+            "status": "closed"
+          },
+          {
+            "date": "2023-01-02",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-03-21",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-07",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-10",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-04-27",
+            "name": "Freedom Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-05-01",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-06-16",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-09-25",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-15",
+            "name": "Public Holiday (declared)",
+            "source_url": "https://clientportal.jse.co.za/Content/JSENoticesandCircularsItems/JSE%20Market%20Notice%2038623%20All%20Derivative%20Markets%20-%20Public%20Holiday%2015%20December%202023.pdf",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2023-12-26",
+            "name": "Day of Goodwill",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-01-01",
+            "name": "New Year's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-03-21",
+            "name": "Human Rights Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-03-29",
+            "name": "Good Friday",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-04-01",
+            "name": "Family Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-01",
+            "name": "Workers' Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-05-29",
+            "name": "National and Provincial Elections",
+            "source_url": "https://clientportal.jse.co.za/Content/JSEHotlinesItems/JSE%20Service%20Hotline%2005724%20All%20Markets%20-%20Public%20Holiday%20-%20Wednesday%20-%2029%20May%202024.pdf",
+            "status": "closed"
+          },
+          {
+            "date": "2024-06-17",
+            "name": "Youth Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-08-09",
+            "name": "National Women's Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-09-24",
+            "name": "Heritage Day",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-16",
+            "name": "Day of Reconciliation",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-24",
+            "early_close_time": "12:00",
+            "name": "Christmas Eve (early close)",
+            "source_url": "https://clientportal.jse.co.za/Content/JSEHotlinesItems/JSE%20Service%20Hotline%2015024%20-%20All%20Markets%20-%20Trading%20Clearing%20and%20Settlement%20Market%20Schedule%20-%20December%202024%20and%20January%202025.pdf",
+            "status": "early_close"
+          },
+          {
+            "date": "2024-12-25",
+            "name": "Christmas",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-26",
+            "name": "Day of Goodwill",
+            "source_url": "github.com/gerrymanoim/exchange_calendars",
+            "status": "closed"
+          },
+          {
+            "date": "2024-12-31",
+            "early_close_time": "12:00",
+            "name": "New Year's Eve (early close)",
+            "source_url": "https://clientportal.jse.co.za/Content/JSEHotlinesItems/JSE%20Service%20Hotline%2015024%20-%20All%20Markets%20-%20Trading%20Clearing%20and%20Settlement%20Market%20Schedule%20-%20December%202024%20and%20January%202025.pdf",
+            "status": "early_close"
+          },
           {
             "date": "2025-01-01",
             "name": "New Year's Day",
@@ -29905,6 +31027,13 @@
             "status": "closed"
           },
           {
+            "date": "2025-12-24",
+            "early_close_time": "12:00",
+            "name": "Christmas Eve (early close)",
+            "source_url": "https://clientportal.jse.co.za/Content/JSEHotlinesItems/JSE%20Service%20Hotline%2013025%20All%20Markets%20-%20Trading%20Clearing%20and%20Settlement%20Market%20Schedule%20-%20December%202025%20and%20January%202026.pdf",
+            "status": "early_close"
+          },
+          {
             "date": "2025-12-25",
             "name": "Christmas Day",
             "source_url": "https://www.jse.co.za/market-data/trading-hours",
@@ -29915,6 +31044,13 @@
             "name": "Day of Goodwill",
             "source_url": "https://www.jse.co.za/market-data/trading-hours",
             "status": "closed"
+          },
+          {
+            "date": "2025-12-31",
+            "early_close_time": "12:00",
+            "name": "New Year's Eve (early close)",
+            "source_url": "https://clientportal.jse.co.za/Content/JSEHotlinesItems/JSE%20Service%20Hotline%2013025%20All%20Markets%20-%20Trading%20Clearing%20and%20Settlement%20Market%20Schedule%20-%20December%202025%20and%20January%202026.pdf",
+            "status": "early_close"
           },
           {
             "date": "2026-01-01",
@@ -29959,16 +31095,36 @@
             "status": "closed"
           },
           {
+            "date": "2026-11-04",
+            "name": "Local Government Elections",
+            "source_url": "https://www.gov.za/news/media-statements/president-cyril-ramaphosa-declares-election-day",
+            "status": "closed"
+          },
+          {
             "date": "2026-12-16",
             "name": "Day of Reconciliation",
             "source_url": "https://www.jse.co.za/market-data/trading-hours",
             "status": "closed"
           },
           {
+            "date": "2026-12-24",
+            "early_close_time": "12:00",
+            "name": "Christmas Eve (early close)",
+            "source_url": "https://www.jse.co.za/market-data/trading-hours",
+            "status": "early_close"
+          },
+          {
             "date": "2026-12-25",
             "name": "Christmas Day",
             "source_url": "https://www.jse.co.za/market-data/trading-hours",
             "status": "closed"
+          },
+          {
+            "date": "2026-12-31",
+            "early_close_time": "12:00",
+            "name": "New Year's Eve (early close)",
+            "source_url": "https://www.jse.co.za/market-data/trading-hours",
+            "status": "early_close"
           },
           {
             "date": "2027-01-01",
@@ -30025,10 +31181,26 @@
             "status": "closed"
           },
           {
+            "date": "2027-12-24",
+            "early_close_time": "12:00",
+            "name": "Christmas Eve (early close) (predicted)",
+            "predicted": true,
+            "source_url": "https://www.jse.co.za/market-data/trading-hours",
+            "status": "early_close"
+          },
+          {
             "date": "2027-12-27",
             "name": "Day of Goodwill (observed)",
             "source_url": "https://www.jse.co.za/market-data/trading-hours",
             "status": "closed"
+          },
+          {
+            "date": "2027-12-31",
+            "early_close_time": "12:00",
+            "name": "New Year's Eve (early close) (predicted)",
+            "predicted": true,
+            "source_url": "https://www.jse.co.za/market-data/trading-hours",
+            "status": "early_close"
           },
           {
             "date": "2028-03-21",
@@ -30133,6 +31305,14 @@
             "status": "closed"
           },
           {
+            "date": "2029-12-24",
+            "early_close_time": "12:00",
+            "name": "Christmas Eve (early close) (predicted)",
+            "predicted": true,
+            "source_url": "https://www.jse.co.za/market-data/trading-hours",
+            "status": "early_close"
+          },
+          {
             "date": "2029-12-25",
             "name": "Christmas Day",
             "source_url": "https://www.jse.co.za/market-data/trading-hours",
@@ -30143,6 +31323,14 @@
             "name": "Day of Goodwill",
             "source_url": "https://www.jse.co.za/market-data/trading-hours",
             "status": "closed"
+          },
+          {
+            "date": "2029-12-31",
+            "early_close_time": "12:00",
+            "name": "New Year's Eve (early close) (predicted)",
+            "predicted": true,
+            "source_url": "https://www.jse.co.za/market-data/trading-hours",
+            "status": "early_close"
           }
         ],
         "generated": [
@@ -30165,10 +31353,14 @@
       },
       "mic": "XJSE",
       "name": "Johannesburg Stock Exchange",
-      "regular_hours": {
-        "close": "17:00",
-        "open": "09:00"
-      },
+      "note": "2010-2024 sourced from exchange_calendars (backfill; not independently verified): 162 closures (156 with exchange_calendars' names, 6 'Historical Holiday'). exchange_calendars has no early closes for XJSE and misses three declared public holidays. Backfill corrected to JSE's own notices (4c8): 2022-12-27 closed (Market Notice 600/2022), 2023-12-15 closed (Market Notice 386/2023, 'all JSE Markets will be closed'), 2024-05-29 closed (Service Hotline 057/2024); exchange_calendars has all three as trading days. Early closes at 12:00 (equity 'Market Close 12:00') added where a JSE notice was read: 2010-12-24 and 2010-12-31 (notice Y555), 2011-12-23 and 2011-12-30 (notice A1537; 24 and 31 December 2011 were Saturdays, so the early closes moved to the Fridays), 2024-12-24 and 2024-12-31 (Service Hotline 150/2024). The 2012-2023 Dec 24/31 early closes were not read and are absent; 2021-11-01 (Local Government Elections, a declared public holiday) is a trading day in exchange_calendars and in the registry, but no JSE notice was read, so it is marked unconfirmed rather than changed. 2025-2027: exchange_calendars + exchange_publications. 2028-2029: standing pattern. Checked 2026-11-20 (4c8). Last published year: no JSE 2027 calendar was readable (the client-portal calendar and hotline index refuse this sandbox); the 2027 closures follow the Public Holidays Act (Sunday holidays move to Monday). One-off closure: 2026-11-04 was declared a public holiday for the Local Government Elections (https://www.gov.za/news/media-statements/president-cyril-ramaphosa-declares-election-day). JSE closes all markets on declared public holidays (Hotline 130/2025 and 057/2024 say so), so it is added as closed; JSE's own notice for that day was not read, so it is unconfirmed. Early closes: Service Hotline 130/2025 gives the 24 and 31 December 2025 equity schedule (continuous trading to 11:50, closing auction call 11:50-12:00, 'Close of Trading will be at 12:00'), so both are early closes at 12:00 (ADR 0013). 2026-12-24 and 2026-12-31 follow at 12:00, unconfirmed with recheck_date 2026-12-15 until JSE's December 2026 hotline is read; 2027-12-24, 2027-12-31, 2029-12-24 and 2029-12-31 are predicted at 12:00. In 2028 both days fall on a Sunday; the 2011 precedent moved Saturday early closes to the Friday, but no rule for Sundays was read, so 2028 has none. Close (ADR 0013): the JSE's Trading and Information Overview for the Equity Market (Volume 00E, https://www.jse.co.za/sites/default/files/media/documents/2020-02/Volume%2000E%20-%20Trading%20and%20Information%20Overview%20for%20Equity%20Market.pdf) gives the closing auction call 16:50-17:00, and Market Notice 2719 says the earliest close is 17:00:00, with a random uncross up to 17:01:00 (ignored per ADR 0013). regular_hours.close stays 17:00, as one dated entry from 2010-01-01 (unconfirmed: no pre-2013 schedule was read). The post-close sessions (closing price publication 17:00-17:02, closing price cross 17:02-17:10 per the JSE equity factsheet) were not changed.",
+      "regular_hours": [
+        {
+          "close": "17:00",
+          "effective_from": "2010-01-01",
+          "open": "09:00"
+        }
+      ],
       "sessions": [
         {
           "close": "09:00",
@@ -30190,6 +31382,41 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
+        "coverage": {
+          "from": "2010-01-01",
+          "ranges": [
+            "trading_days"
+          ],
+          "sources": [
+            {
+              "from": "2010-01-01",
+              "sampled": null,
+              "source": "exchange_calendars (+ JSE market notices for 3 closures and 6 early closes)",
+              "to": "2024-12-31",
+              "unconfirmed": [
+                "2010-01-01",
+                "2021-11-01"
+              ]
+            },
+            {
+              "from": "2025-01-01",
+              "recheck_date": "2026-12-15",
+              "source": "exchange_calendars + exchange_publications (JSE service hotlines; government holiday declaration for 2026-11-04)",
+              "to": "2027-12-31",
+              "unconfirmed": [
+                "2026-11-04",
+                "2026-12-24",
+                "2026-12-31"
+              ]
+            },
+            {
+              "from": "2028-01-01",
+              "source": "exchange_calendars + standing Public Holidays Act pattern; Dec 24/31 early closes predicted at 12:00",
+              "to": "2029-12-31"
+            }
+          ],
+          "to": "2029-12-31"
+        },
         "last_checked": "2026-11-08",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

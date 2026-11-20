@@ -62,8 +62,10 @@ class TestXJSEProperties:
         assert xjse["timezone"] == "Africa/Johannesburg"
 
     def test_regular_hours(self, xjse):
-        assert xjse["regular_hours"]["open"] == "09:00"
-        assert xjse["regular_hours"]["close"] == "17:00"
+        """4c8, ADR 0013: closing auction call 16:50-17:00 (Volume 00E);
+        earliest close 17:00:00 (Market Notice 2719). One dated entry."""
+        assert xjse["regular_hours"] == [
+            {"close": "17:00", "effective_from": "2010-01-01", "open": "09:00"}]
 
     def test_no_lunch_break(self, xjse):
         lunch = [s for s in xjse.get("sessions", []) if s["type"] == "lunch_break"]
@@ -259,14 +261,39 @@ class TestXJSEStructure:
         for date_str, entry in explicit_dates.items():
             assert "source_url" in entry, f"Missing source: {date_str}"
 
-    def test_all_statuses_closed(self, explicit_dates):
-        """JSE has no early closes — all holidays are full closures."""
-        for entry in explicit_dates.values():
-            assert entry["status"] == "closed"
+    def test_early_closes_are_dec_24_31_at_noon(self, explicit_dates):
+        """Corrected in 4c8: the JSE does have early closes. Service Hotlines
+        150/2024 and 130/2025 (and notices Y555 and A1537 for 2010-2011) give
+        the equity market's close of trading at 12:00 on 24 and 31 December;
+        the old test asserted there were none."""
+        early = {d: e for d, e in explicit_dates.items() if e["status"] == "early_close"}
+        assert set(early) == {
+            "2010-12-24", "2010-12-31", "2011-12-23", "2011-12-30",
+            "2024-12-24", "2024-12-31", "2025-12-24", "2025-12-31",
+            "2026-12-24", "2026-12-31", "2027-12-24", "2027-12-31",
+            "2029-12-24", "2029-12-31"}
+        assert all(e["early_close_time"] == "12:00" for e in early.values())
+        assert {d for d, e in early.items() if e.get("predicted")} == {
+            "2027-12-24", "2027-12-31", "2029-12-24", "2029-12-31"}
+
+    def test_declared_public_holidays(self, explicit_dates):
+        """4c8: closures exchange_calendars misses, from JSE notices (and the
+        2026-11-04 government declaration)."""
+        for d in ("2022-12-27", "2023-12-15", "2024-05-29", "2026-11-04"):
+            assert explicit_dates[d]["status"] == "closed", d
 
     def test_holiday_count_reasonable(self, explicit_dates):
-        """~60-70 entries: 12 holidays × 5 years."""
-        assert 45 <= len(explicit_dates) <= 65
+        """Scoped to 2025-2029 (the 4c8 backfill adds 2010-2024): 56 before
+        4c8, plus 2026-11-04 and eight Dec 24/31 early closes = 58."""
+        window = [d for d in explicit_dates if "2025" <= d[:4] <= "2029"]
+        assert len(window) == 58
+
+    def test_backfill_2010_2024(self, xjse, explicit_dates):
+        """162 closures from exchange_calendars 4.13.2 + 3 from JSE notices,
+        + 6 early closes from JSE notices."""
+        old = [d for d in explicit_dates if d[:4] <= "2024"]
+        assert len(old) == 171
+        assert xjse["generation_range"][0] == "2010-01-01"
 
 
 # ──────────────────────────────────────────────────────────────
