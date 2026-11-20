@@ -10652,6 +10652,13 @@
             "status": "closed"
           },
           {
+            "date": "2019-11-29",
+            "early_close_time": "14:05",
+            "name": "Shortened trading day (Xetra-T7 migration)",
+            "source_url": "https://bet.hu/newkibdata/128325694/Xetra-T7%20version%20change%20-%20Order%20deletion%20and%20Shortened%20trading%20hours_EN.pdf",
+            "status": "early_close"
+          },
+          {
             "date": "2019-12-24",
             "name": "Historical Holiday",
             "source_url": "https://github.com/gerrymanoim/exchange_calendars",
@@ -10996,151 +11003,151 @@
           {
             "date": "2025-01-01",
             "name": "New Year's Day",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-04-18",
             "name": "Good Friday",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-04-21",
             "name": "Easter Monday",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-05-01",
             "name": "Labour Day",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-05-02",
             "name": "Rest Day (bridge day for 17 May working Saturday)",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-06-09",
             "name": "Whit Monday",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-08-20",
             "name": "St. Stephen's Day",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-10-23",
             "name": "Republic Day",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-10-24",
             "name": "Rest Day (bridge day for 18 October working Saturday)",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-12-24",
             "name": "Christmas Eve",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-12-25",
             "name": "Christmas Day",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-12-26",
             "name": "Boxing Day",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2025-12-31",
             "name": "New Year's Eve",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf",
             "status": "closed"
           },
           {
             "date": "2026-01-01",
             "name": "New Year's Day",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
             "date": "2026-01-02",
             "name": "Rest Day (bridge day for 10 January working Saturday)",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
             "date": "2026-04-03",
             "name": "Good Friday",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
             "date": "2026-04-06",
             "name": "Easter Monday",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
             "date": "2026-05-01",
             "name": "Labour Day",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
             "date": "2026-05-25",
             "name": "Whit Monday",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
             "date": "2026-08-20",
             "name": "St. Stephen's Day",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
             "date": "2026-08-21",
             "name": "Rest Day (bridge day for 8 August working Saturday)",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
             "date": "2026-10-23",
             "name": "Republic Day",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
             "date": "2026-12-24",
             "name": "Christmas Eve",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
             "date": "2026-12-25",
             "name": "Christmas Day",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
             "date": "2026-12-31",
             "name": "New Year's Eve",
-            "source_url": "https://www.bse.hu/trading-hours",
+            "source_url": "https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026",
             "status": "closed"
           },
           {
@@ -11332,14 +11339,14 @@
       },
       "mic": "XBUD",
       "name": "Budapest Stock Exchange",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. The 4 disputed days in contradicted_by (2029-03-16, 2029-04-30, 2029-10-22, 2029-11-02) are bridge days: each sits between a Tuesday or Thursday holiday (15 Mar, 1 May, 23 Oct, 1 Nov 2029) and the weekend. exchange_calendars and pandas_market_calendars close them by rule; the registry keeps them open because a bridge day exists only once the government's annual work-schedule decree names it, and the 2029 decree is not yet published (the 2025 and 2026 bridge days in the registry come from published decrees via bse.hu). bse.hu does not cover 2029 either, so neither side is confirmed. Re-check when the 2029 decree appears (expected during 2028).",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2026: exchange_calendars + exchange_publications (BSE trading-holiday resolutions). 2027-2029: predicted from exchange_calendars and the exchange's pattern; BSE has not yet resolved 2027. The 4 disputed days in contradicted_by (2029-03-16, 2029-04-30, 2029-10-22, 2029-11-02) are bridge days: each sits between a Tuesday or Thursday holiday (15 Mar, 1 May, 23 Oct, 1 Nov 2029) and the weekend. exchange_calendars and pandas_market_calendars close them by rule; the registry keeps them open because a bridge day exists only once the government's annual work-schedule decree names it, and the 2029 decree is not yet published (the 2025 and 2026 bridge days in the registry come from published decrees via BSE's resolutions). bse.hu does not cover 2029 either, so neither side is confirmed. Re-check when the 2029 decree appears (expected during 2028). Rechecked 2026-11-20 (4c-R4). Trading holidays: Resolution 311/2024 (https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf) for 2025 and Resolution 380/2025 (https://www.bse.hu/pfile/file?path=/site/Angol/Documents/Products_And_Services/trading-information/trading-holidays-2026) for 2026; the registry matches both exactly and those entries now cite them. No 2027 resolution was found (BSE published 2026 on 5 November 2025). Saturdays: the resolutions list Hungary's declared working Saturdays (2025: 17 May, 18 Oct, 13 Dec; 2026: 10 Jan, 8 Aug, 12 Dec) as non-trading days, so BSE holds no Saturday sessions and nothing needs encoding. Close (ADR 0013): BSE Resolution 550/2013 (Xetra trading parameters), consolidated extract effective 8 April 2026 (https://www.bse.hu/newkibdata/129432789/20260407_550_2013_EN.pdf), gives the Continuous Trading with Auctions model for equities as continuous trading until 17:00, closing auction call 17:00-17:05, closing price determination 17:05 + random end (max. 30 seconds), trade-at-close to 17:15 and post-trading to 17:20; the version effective 2 January 2018 (https://www.bse.hu/pfile/file?path=%2Fsite%2FMagyar%2FDokumentumok%2FTozsdetagoknak%2FMIFID-II%2F550_2013_EN_jan_2-tol_clean.pdf1) has the same closing auction. regular_hours.close is therefore 17:05 (was 17:00, the continuous-trading end); the random end is ignored per ADR 0013. Close times before 2018 were not checked against a BSE document, so 17:05 is applied from the start of the registry. Early close: CEO Resolution 387/2019 (https://bet.hu/newkibdata/128325694/Xetra-T7%20version%20change%20-%20Order%20deletion%20and%20Shortened%20trading%20hours_EN.pdf) shortened 29 November 2019, the last Xetra Classic day before the Xetra T7 upgrade of 2 December 2019, to continuous trading until 14:00, closing auction call 14:00-14:05 and price determination 14:05 + random end; encoded as an early close at 14:05. No other shortened day was found in 2010-2029. The BSE fetcher cannot reach bse.hu from this sandbox; the sources were read by hand.",
       "regular_hours": {
-        "close": "17:00",
+        "close": "17:05",
         "open": "09:00"
       },
       "sessions": [
         {
-          "close": "17:00",
+          "close": "17:05",
           "open": "09:00",
           "type": "regular"
         }
@@ -11361,14 +11368,19 @@
               "to": "2024-12-31"
             },
             {
+              "from": "2025-01-01",
+              "source": "exchange_calendars + exchange_publications (BSE trading-holiday resolutions, published to 2026: 311/2024 for 2025, 380/2025 for 2026)",
+              "to": "2026-12-31"
+            },
+            {
               "contradicted_by": [
                 "2029-03-16",
                 "2029-04-30",
                 "2029-10-22",
                 "2029-11-02"
               ],
-              "from": "2025-01-01",
-              "source": "exchange_calendars + exchange_publications",
+              "from": "2027-01-01",
+              "source": "exchange_calendars + standing BSE trading-holiday pattern (BSE has resolved only to 2026; bridge days follow the government's annual work-schedule decree)",
               "to": "2029-12-31"
             }
           ],

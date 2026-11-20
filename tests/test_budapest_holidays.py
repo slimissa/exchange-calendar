@@ -3,7 +3,7 @@
 test_budapest_holidays.py — Ground truth tests for XBUD (Budapest Stock Exchange).
 
 Key facts verified:
-    - Regular hours: 09:00-17:00
+    - Regular hours: 09:00-17:05 (close = closing price determination, ADR 0013)
     - No lunch break (continuous trading)
     - No extended hours sessions
     - Hungary uses weekend substitution (Sat→Mon, Sun→Mon)
@@ -73,8 +73,22 @@ class TestXBUDProperties:
         assert xbud["timezone"] == "Europe/Budapest"
 
     def test_regular_hours(self, xbud):
+        """BSE Resolution 550/2013: continuous trading until 17:00, closing
+        auction call 17:00-17:05, price determination 17:05 + random end.
+        ADR 0013 puts the close at the auction end (4c-R4; was 17:00)."""
         assert xbud["regular_hours"]["open"] == "09:00"
-        assert xbud["regular_hours"]["close"] == "17:00"
+        assert xbud["regular_hours"]["close"] == "17:05"
+        regular = [s for s in xbud["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "09:00", "close": "17:05"}]
+
+    def test_2019_11_29_shortened_day(self, xbud):
+        """CEO Resolution 387/2019: last Xetra Classic day, closing auction
+        call 14:00-14:05, price determination 14:05 (4c-R4)."""
+        entry = [h for h in xbud["holidays"]["explicit"] if h["date"] == "2019-11-29"]
+        assert len(entry) == 1
+        assert entry[0]["status"] == "early_close"
+        assert entry[0]["early_close_time"] == "14:05"
+        assert "bet.hu" in entry[0]["source_url"]
 
     def test_no_lunch_break(self, xbud):
         lunch = [s for s in xbud.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -380,10 +394,15 @@ class TestXBUDStructure:
         assert 50 <= len(window) <= 65, f"Unexpected count: {len(window)}"
 
     def test_source_url_consistency(self, explicit_dates):
-        """All source URLs should be from bse.hu."""
+        """2025+ cite BSE's own hosts (bse.hu, or bet.hu for the 2025
+        resolution, 4c-R4); 2010-2024 is the exchange_calendars backfill,
+        except 2019-11-29, which cites CEO Resolution 387/2019 on bet.hu."""
         for date_, entry in explicit_dates.items():
+            host = entry["source_url"].split("/")[2]
             if date_ >= "2025-01-01":
-                assert "bse.hu" in entry["source_url"], f"Unexpected source: {entry['source_url']}"
+                assert host in ("www.bse.hu", "bse.hu", "bet.hu"), f"Unexpected source: {entry['source_url']}"
+            elif date_ == "2019-11-29":
+                assert host == "bet.hu", entry["source_url"]
             else:  # 2010-2024 backfill
                 assert "exchange_calendars" in entry["source_url"]
 

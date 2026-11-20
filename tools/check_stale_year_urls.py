@@ -157,6 +157,9 @@ ALLOWLIST = {
     # the year has passed; the checker cannot tell them apart.
     "https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf": "2028-03-31",
     "https://www.gpw.pl/pub/GPW/uchwaly/2026/1089_2026_EN.pdf": "2029-03-31",
+    # XBUD 2025 entries (4c-R4): BSE Resolution 311/2024, the 2025
+    # trading-holiday list. A historical citation; the year has passed.
+    "https://bet.hu/newkibdata/129148019/Trading%20holidays_2025_ENG.pdf": "2027-06-01",
 }
 
 
