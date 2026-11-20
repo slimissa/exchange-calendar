@@ -558,7 +558,11 @@ func TestRealRegistryDelayedOpen(t *testing.T) {
 			t.Errorf("%s %s %s: IsOpen = %v, want %v", c.mic, c.date, c.at, got, c.open)
 		}
 	}
-	if got := r.Get("XBSP").DelayedOpenTime("2026-02-18"); got != "13:00" {
+	xbsp, err := r.Get("XBSP")
+	if err != nil {
+		t.Fatalf("get XBSP: %v", err)
+	}
+	if got := xbsp.DelayedOpenTime("2026-02-18"); got != "13:00" {
 		t.Errorf("XBSP DelayedOpenTime = %q, want 13:00", got)
 	}
 }
