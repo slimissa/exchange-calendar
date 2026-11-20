@@ -80,16 +80,13 @@ class TestXRISProperties:
         assert xris["generation_range"] == ["2010-01-01", "2029-12-31"]  # 4c12 backfill
 
     def test_ad_hoc_closures(self, xris):
-        """4c12: exchange_calendars' three Cabinet transfer days (2010-2024
-        backfill) and the two one-off public holidays of 2018 and 2023."""
-        ec = "github.com/gerrymanoim/exchange_calendars"
-        assert [(c["date"], c["source_url"], c["status"]) for c in xris["ad_hoc_closures"]] == [
-            ("2018-09-24", "https://nasdaqbaltic.com/statistics/en/bulletins?bbid=336", "closed"),
-            ("2023-05-05", ec, "closed"),
-            ("2023-05-29", "https://attachment.news.eu.nasdaq.com/a2444250b869f39cf46f64614238058ec", "closed"),
-            ("2024-12-23", ec, "closed"),
-            ("2024-12-30", ec, "closed"),
-        ]
+        """4c12: Cabinet transfer days and the two one-off public holidays of
+        2018 and 2023 (exact list; sources pinned in the classes below)."""
+        assert [c["date"] for c in xris["ad_hoc_closures"]] == [
+            "2010-05-03", "2010-06-25", "2010-11-19", "2015-01-02", "2018-09-24",
+            "2023-05-05", "2023-05-29", "2024-12-23", "2024-12-30", "2025-05-02",
+            "2025-11-17", "2026-01-02", "2026-06-22"]
+        assert {c["status"] for c in xris["ad_hoc_closures"]} == {"closed"}
 
     def test_no_recurrence_rules(self, xris):
         """Latvia uses explicit dates only."""
@@ -300,14 +297,6 @@ class TestXRISStructure:
             "2018-05-01", "2018-05-04", "2018-05-10"]
         assert sorted(d for d in explicit_dates if d.startswith("2018-07")) == ["2018-07-09"]
 
-    def test_corrections_are_contradicted_by(self, xris):
-        span = xris["verification"]["coverage"]["sources"][0]
-        assert span["from"] == "2010-01-01" and span["to"] == "2024-12-31"
-        assert span["contradicted_by"] == [
-            "2012-12-25", "2013-12-25", "2014-12-25", "2015-12-25", "2017-12-25",
-            "2018-05-09", "2018-07-09", "2018-09-24", "2018-12-25", "2019-12-25",
-            "2020-12-25", "2023-05-29", "2024-12-25"]
-
     def test_source_url_consistency(self, explicit_dates):
         law = "https://likumi.lv/ta/en/en/id/72608"
         for d, entry in explicit_dates.items():
@@ -433,29 +422,70 @@ class TestLatvianProclamationDayCarryOver:
 # ──────────────────────────────────────────────────────────────
 
 class TestXRISTradingDays2025And2026:
-    """Nasdaq's monthly statistics give Riga's trading days: 19 in May 2025
-    (Riga closed 1, 5 and 29 May: Labour Day, the Monday after Restoration of
-    Independence Day, and Ascension Day, which every Baltic exchange observes),
-    19 in November 2025 (Riga closed on 18 November only) and 19 in December
-    2025 (24, 25, 26 and 31 December)."""
+    """Nasdaq Baltic's monthly bulletins (maintainer's saved copies, 4c12)
+    give Riga's equities trading days: 18 in May 2025 (closed 1, 2, 5 and 29
+    May: Labour Day, the Cabinet transfer day, the Monday after Restoration
+    of Independence Day, and Ascension Day), 18 in November 2025 (closed 17
+    and 18 November: transfer day and Proclamation Day) and 19 in June 2026
+    (closed 22, 23 and 24 June). This replaces the 2025 counts taken from
+    Nasdaq's Nordic and Baltic statistics summaries (19 and 19), which the
+    bulletins contradict. 2026-01-02 is closed on Nasdaq Baltic's calendar
+    only (unconfirmed, recheck 2027-01-31)."""
 
     @staticmethod
-    def _closed_set(explicit_dates, year):
-        return {d for d, e in explicit_dates.items()
+    def _closed_set(xris, explicit_dates, year):
+        days = {d for d, e in explicit_dates.items()
                 if d.startswith(str(year)) and e["status"] == "closed"}
+        days |= {c["date"] for c in xris["ad_hoc_closures"]
+                 if c["date"].startswith(str(year)) and c["status"] == "closed"}
+        return days
 
-    def test_2025_closed_set(self, explicit_dates):
-        assert self._closed_set(explicit_dates, 2025) == {
-            "2025-01-01", "2025-04-18", "2025-04-21", "2025-05-01", "2025-05-05",
-            "2025-05-29", "2025-06-23", "2025-06-24", "2025-11-18", "2025-12-24",
-            "2025-12-25", "2025-12-26", "2025-12-31"}
+    def test_2025_closed_set(self, xris, explicit_dates):
+        assert self._closed_set(xris, explicit_dates, 2025) == {
+            "2025-01-01", "2025-04-18", "2025-04-21", "2025-05-01", "2025-05-02",
+            "2025-05-05", "2025-05-29", "2025-06-23", "2025-06-24", "2025-11-17",
+            "2025-11-18", "2025-12-24", "2025-12-25", "2025-12-26", "2025-12-31"}
 
-    def test_2026_closed_set(self, explicit_dates):
-        assert self._closed_set(explicit_dates, 2026) == {
-            "2026-01-01", "2026-04-03", "2026-04-06", "2026-05-01", "2026-05-04",
-            "2026-05-14", "2026-06-23", "2026-06-24", "2026-11-18", "2026-12-24",
-            "2026-12-25", "2026-12-31"}
+    def test_2026_closed_set(self, xris, explicit_dates):
+        assert self._closed_set(xris, explicit_dates, 2026) == {
+            "2026-01-01", "2026-01-02", "2026-04-03", "2026-04-06", "2026-05-01",
+            "2026-05-04", "2026-05-14", "2026-06-22", "2026-06-23", "2026-06-24",
+            "2026-11-18", "2026-12-24", "2026-12-25", "2026-12-31"}
 
-    @pytest.mark.parametrize("day", ["2025-05-02", "2025-11-17"])
-    def test_trading_days(self, explicit_dates, day):
+    @pytest.mark.parametrize("day,bbid", [("2025-05-02", 440), ("2025-11-17", 448),
+                                          ("2026-06-22", 456)])
+    def test_transfer_days_cite_the_bulletins(self, xris, day, bbid):
+        (c,) = [c for c in xris["ad_hoc_closures"] if c["date"] == day]
+        assert c["source_url"] == f"https://nasdaqbaltic.com/statistics/en/bulletins?bbid={bbid}"
+
+    def test_2026_01_02_is_unconfirmed(self, xris):
+        span = xris["verification"]["coverage"]["sources"][1]
+        assert span["from"] == "2025-01-01" and span["to"] == "2026-12-31"
+        assert span["unconfirmed"] == ["2026-01-02"]
+        assert span["recheck_date"] == "2027-01-31"
+
+
+class TestXRISTransferDays2010To2024:
+    """4c12: transfer days on the exchange's own word (2010 notice; investor
+    calendars for weeks 1/2015 and 52/2024), plus exchange_calendars' 2023
+    and 2024 ones. Others are leads and stay open."""
+
+    def test_transfer_days(self, xris):
+        assert sorted(c["date"] for c in xris["ad_hoc_closures"]
+                      if c["name"].startswith("Cabinet transfer day") and c["date"] < "2025") == [
+            "2010-05-03", "2010-06-25", "2010-11-19", "2015-01-02", "2023-05-05",
+            "2024-12-23", "2024-12-30"]
+
+    @pytest.mark.parametrize("day", ["2012-04-30", "2014-05-02", "2014-11-17", "2015-06-22",
+                                     "2017-05-05", "2018-04-30", "2020-06-22", "2021-05-03",
+                                     "2021-06-25", "2021-11-19"])
+    def test_unread_transfer_days_stay_open(self, xris, explicit_dates, day):
         assert day not in explicit_dates
+        assert day not in {c["date"] for c in xris["ad_hoc_closures"]}
+
+    def test_contradicted_by(self, xris):
+        assert xris["verification"]["coverage"]["sources"][0]["contradicted_by"] == [
+            "2010-05-03", "2010-06-25", "2010-11-19", "2012-12-25", "2013-12-25",
+            "2014-12-25", "2015-01-02", "2015-12-25", "2017-12-25", "2018-05-09",
+            "2018-07-09", "2018-09-24", "2018-12-25", "2019-12-25", "2020-12-25",
+            "2023-05-29", "2024-12-25"]

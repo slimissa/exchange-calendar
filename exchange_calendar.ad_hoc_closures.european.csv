@@ -15,11 +15,19 @@ XLIM;2015-10-09;1;Exchange holiday (exchange_calendars ad hoc);closed;;https://g
 XLIM;2016-11-17;1;APEC Summit (exchange_calendars ad hoc);closed;;https://github.com/gerrymanoim/exchange_calendars
 XLIM;2016-11-18;1;APEC Summit (exchange_calendars ad hoc);closed;;https://github.com/gerrymanoim/exchange_calendars
 XLIM;2018-04-13;1;Eighth Summit of the Americas (exchange_calendars ad hoc);closed;;https://github.com/gerrymanoim/exchange_calendars
+XRIS;2010-05-03;1;Cabinet transfer day (Nasdaq OMX Riga notice of 30 December 2009);closed;;https://www.globenewswire.com/news-release/2009/12/30/149176/0/en/Changes-in-the-NASDAQ-OMX-Riga-Trading-holidays-2010.html
+XRIS;2010-06-25;1;Cabinet transfer day (Nasdaq OMX Riga notice of 30 December 2009);closed;;https://www.globenewswire.com/news-release/2009/12/30/149176/0/en/Changes-in-the-NASDAQ-OMX-Riga-Trading-holidays-2010.html
+XRIS;2010-11-19;1;Cabinet transfer day (Nasdaq OMX Riga notice of 30 December 2009);closed;;https://www.globenewswire.com/news-release/2009/12/30/149176/0/en/Changes-in-the-NASDAQ-OMX-Riga-Trading-holidays-2010.html
+XRIS;2015-01-02;1;Cabinet transfer day (Nasdaq Baltic investor calendar, week 1/2015);closed;;http://www.globenewswire.com/news-release/2014/12/29/693999/0/en/Nasdaq-Baltic-investor-calendar-week-1-2015.html?parent=694847
 XRIS;2018-09-24;1;Day of the pastoral visit of Pope Francis (public holiday by law);closed;;https://nasdaqbaltic.com/statistics/en/bulletins?bbid=336
 XRIS;2023-05-05;1;Cabinet transfer day (exchange_calendars ad hoc);closed;;github.com/gerrymanoim/exchange_calendars
 XRIS;2023-05-29;1;Ice hockey bronze medal day (public holiday by law);closed;;https://attachment.news.eu.nasdaq.com/a2444250b869f39cf46f64614238058ec
-XRIS;2024-12-23;1;Cabinet transfer day (exchange_calendars ad hoc);closed;;github.com/gerrymanoim/exchange_calendars
+XRIS;2024-12-23;1;Cabinet transfer day (Nasdaq Baltic investor calendar, week 52/2024);closed;;https://view.news.eu.nasdaq.com/view?id=b8c140bf1e1581552fce9817b148ea449&lang=en
 XRIS;2024-12-30;1;Cabinet transfer day (exchange_calendars ad hoc);closed;;github.com/gerrymanoim/exchange_calendars
+XRIS;2025-05-02;1;Cabinet transfer day (Nasdaq Baltic monthly bulletin, May 2025);closed;;https://nasdaqbaltic.com/statistics/en/bulletins?bbid=440
+XRIS;2025-11-17;1;Cabinet transfer day (Nasdaq Baltic monthly bulletin, November 2025);closed;;https://nasdaqbaltic.com/statistics/en/bulletins?bbid=448
+XRIS;2026-01-02;1;"Cabinet transfer day (Nasdaq Baltic trading-holiday calendar; unconfirmed)";closed;;https://nasdaqbaltic.com/statistics/en/calendar?holidays=1
+XRIS;2026-06-22;1;Cabinet transfer day (Nasdaq Baltic monthly bulletin, June 2026);closed;;https://nasdaqbaltic.com/statistics/en/bulletins?bbid=456
 XSGO;2010-09-17;1;Bicentennial celebration (exchange_calendars ad hoc);closed;;https://github.com/gerrymanoim/exchange_calendars
 XSGO;2010-09-20;1;Bicentennial celebration (exchange_calendars ad hoc);closed;;https://github.com/gerrymanoim/exchange_calendars
 XSGO;2017-01-02;1;New Year's Day observed (exchange_calendars ad hoc);closed;;https://github.com/gerrymanoim/exchange_calendars
