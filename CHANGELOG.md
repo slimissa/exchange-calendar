@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [2.29.0] - 2026-11-21
 
 Phase 4d (the `verification` audit after Phase 4c), session 4d.1 (every coverage-span finding resolved; the check blocks), session 4d2 (`in_session`, two primary documents, the recheck-date cap) and session 4b1 (hours evidence, schema 2.3.0). Proposed as 2.29.0: minor, no breaking change.
 
