@@ -828,10 +828,10 @@
         {
           "from": "2027-01-01",
           "source": "exchange_calendars + exchange_publications (Saudi Exchange's published Eid schedule, 'According to the UMM AL-QURA calendar'); Founding Day and National Day predicted",
-          "to": "2029-12-31"
+          "to": "2029-09-23"
         }
       ],
-      "to": "2029-12-31"
+      "to": "2029-09-23"
     },
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."

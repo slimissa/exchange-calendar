@@ -2073,7 +2073,7 @@
   },
   "mic": "XSHE",
   "name": "Shenzhen Stock Exchange",
-  "note": "2010-2024 inferred from XSHG's exchange_calendars sessions (exchange_calendars has no XSHE); not independently verified. 2025-2026: the exchange's own page (szse.cn trading calendar). 2027: the State Council's 2027 holiday notice (国办发明电〔2026〕10号, published 2026-11-05 via Xinhua); SZSE's 2027 schedule was not found. 2028-2029 not covered: generation_range ends 2027. Rechecked 2026-11-19 (4c-R1), fixed: (1) regular_hours and the regular session closed at 11:30, the start of the lunch break; SZSE trades 09:30-11:30 and 13:00-15:00, so the close is 15:00 with the 11:30-13:00 lunch_break session, as for XSHG. (2) 2026-01-02 was open; SZSE's 2026 schedule closes the market 1-2 January and resumes on 5 January. (3) 2026-10-08 and 2027-10-08 were closed; SZSE's 2026 schedule resumes trading on 8 October, and the 2027 notice ends National Day on 7 October (9 October is a make-up working Saturday, not a trading day). The September 2026 data had copied 2025's 1-8 October holiday into later years, and the file had never been reconciled with SZSEFetcher, which parses the 2026 page correctly. These were 3 of the 5 dates where XSHE and XSHG differed in 2025-2027; the other 2 (2027-05-04, 2027-05-05) were XSHG's errors, fixed there. The two now agree for 2010-2027. The 2010-2024 inference from XSHG holds for 2024, which matches SZSE's 2024 schedule.",
+  "note": "2010-2024 inferred from XSHG's exchange_calendars sessions (exchange_calendars has no XSHE); not independently verified. 2025-2026: the exchange's own page (szse.cn trading calendar). 2027: the State Council's 2027 holiday notice (国办发明电〔2026〕10号, published 2026-11-05 via Xinhua); SZSE's 2027 schedule was not found. 2028-2029: outside generation_range, which ends 2027-12-31; the coverage spans stop there too (4d.1). Rechecked 2026-11-19 (4c-R1), fixed: (1) regular_hours and the regular session closed at 11:30, the start of the lunch break; SZSE trades 09:30-11:30 and 13:00-15:00, so the close is 15:00 with the 11:30-13:00 lunch_break session, as for XSHG. (2) 2026-01-02 was open; SZSE's 2026 schedule closes the market 1-2 January and resumes on 5 January. (3) 2026-10-08 and 2027-10-08 were closed; SZSE's 2026 schedule resumes trading on 8 October, and the 2027 notice ends National Day on 7 October (9 October is a make-up working Saturday, not a trading day). The September 2026 data had copied 2025's 1-8 October holiday into later years, and the file had never been reconciled with SZSEFetcher, which parses the 2026 page correctly. These were 3 of the 5 dates where XSHE and XSHG differed in 2025-2027; the other 2 (2027-05-04, 2027-05-05) were XSHG's errors, fixed there. The two now agree for 2010-2027. The 2010-2024 inference from XSHG holds for 2024, which matches SZSE's 2024 schedule.",
   "regular_hours": {
     "close": "15:00",
     "open": "09:30"
@@ -2115,11 +2115,6 @@
           "from": "2027-01-01",
           "source": "State Council holiday notice (国办发明电〔2026〕10号, 2026-11-05)",
           "to": "2027-12-31"
-        },
-        {
-          "from": "2028-01-01",
-          "source": "not covered",
-          "to": "2029-12-31"
         }
       ],
       "to": "2027-12-31"

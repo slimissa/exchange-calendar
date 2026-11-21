@@ -2079,7 +2079,7 @@
   },
   "mic": "XBUE",
   "name": "Buenos Aires Stock Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. Caution: for 2025-2029 the registry disagrees with exchange_calendars on 18 days, 14 of them triaged as library errors (the other 4 as unpublished) in docs/DIVERGENCE.md (Argentina moves some holidays by decree and adds bridge days), so the 2010-2024 backfill is likely to carry similar errors; pandas_market_calendars mirrors exchange_calendars and cannot catch them.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2026: exchange_calendars + exchange_publications. 2027-2029: exchange_calendars + standing pattern; BYMA's calendar page shows 2026 only (read 2026-11-21), so Holy Thursday 2027-2029 (a non-working day, the registry trades) is a prediction (4d.1). Caution: for 2025-2029 the registry disagrees with exchange_calendars on 18 days, 14 of them triaged as library errors (the other 4 as unpublished) in docs/DIVERGENCE.md (Argentina moves some holidays by decree and adds bridge days), so the 2010-2024 backfill is likely to carry similar errors; pandas_market_calendars mirrors exchange_calendars and cannot catch them.",
   "regular_hours": {
     "close": "17:00",
     "open": "11:00"
@@ -2110,6 +2110,11 @@
         {
           "from": "2025-01-01",
           "source": "exchange_calendars + exchange_publications",
+          "to": "2026-12-31"
+        },
+        {
+          "from": "2027-01-01",
+          "source": "exchange_calendars + standing Argentine holiday pattern (BYMA publishes each year's calendar; 2027-2029 not yet published); Holy Thursday predicted as a trading day",
           "to": "2029-12-31"
         }
       ],
