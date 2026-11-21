@@ -267,7 +267,9 @@ class TestFormatting:
         # 2028-2029 half days (4c9)
         # 297: + XNZE's 8 predicted 2026-2029 abbreviated days (4c10)
         # 300: + XBDA's 3 predicted 2026/2027/2029 Christmas Eve early closes (4c11)
-        assert predicted["true"] == 300 and predicted["false"] == 73
+        # 284 / 103 (4c-final): XSAU's 16 predicted 2027-2029 Eid and Islamic New
+        # Year entries replaced by 30 published Eid closures (predicted=false)
+        assert predicted["true"] == 284 and predicted["false"] == 103
 
     def test_dates_times_and_integers_are_plain_text(self):
         checks = {

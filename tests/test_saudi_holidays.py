@@ -248,39 +248,24 @@ class TestXSAUIslamicHolidays:
     exchange. Dates sourced from the Umm al-Qura calendar; days that
     fall on XSAU's Friday/Saturday weekend are intentionally absent."""
 
-    EID_FITR_DAY1 = {
-        2025: "2025-03-30", 2027: "2027-03-09", 2029: "2029-02-14",
-    }
+    EID_FITR_DAY1 = {2025: "2025-03-30"}
+    # 4c-final: 2027-2029 follow the Saudi Exchange's published schedule
+    # (events page, "According to the UMM AL-QURA calendar"); the closed
+    # days are pinned exactly in EID_CLOSURES below.
     EID_FITR_ANY_YEAR_KEPT = {
         2025: ["2025-03-30", "2025-03-31", "2025-04-01"],
-        2026: ["2026-03-22"],  # day1 (Fri) and day2 (Sat) fall on the weekend
-        2027: ["2027-03-09", "2027-03-10", "2027-03-11"],
-        2028: ["2028-02-27", "2028-02-28"],  # day1 (Sat) falls on the weekend
-        2029: ["2029-02-14", "2029-02-15"],  # day3 (Fri) falls on the weekend
+        2026: ["2026-03-22"],
     }
     EID_ADHA_ANY_YEAR_KEPT = {
-        2025: ["2025-06-08"],  # day1 (Fri) and day2 (Sat) fall on the weekend
-        2026: ["2026-05-27", "2026-05-28"],  # day3 (Fri) falls on the weekend
-        2027: ["2027-05-16", "2027-05-17", "2027-05-18"],
-        2028: ["2028-05-04"],  # day2 (Fri) and day3 (Sat) fall on the weekend
-        2029: ["2029-04-24", "2029-04-25", "2029-04-26"],
-    }
-    ISLAMIC_NEW_YEAR = {
-        2025: "2025-06-26", 2026: "2026-06-16", 2027: "2027-06-06",
-        2029: "2029-05-14",
-        # 2028-05-26 is a Friday — no entry expected for that year.
+        2025: ["2025-06-08"],
+        2026: ["2026-05-27", "2026-05-28"],
     }
 
     def test_eid_al_fitr_day1_uses_bare_name(self, explicit_dates):
-        """Civil day 1 gets the bare holiday name; later days get the
-        'Holiday' suffix — but only when day 1 itself isn't dropped for
-        falling on the weekend (see 2026, 2028 in EID_FITR_ANY_YEAR_KEPT).
-        M7: 2025 is reconciled (confirmed, no longer predicted), so its
-        bare name drops the '(predicted)' suffix; 2027/2029 keep it."""
+        """2025 day 1 keeps the bare name; 2026-2029 entries, entered from
+        the exchange's announcements, are all named '... Holiday'."""
         for year, d in self.EID_FITR_DAY1.items():
-            expected = "Eid al-Fitr" if year == 2025 else "Eid al-Fitr (predicted)"
-            assert explicit_dates[d]["name"] == expected, \
-                f"{year} Eid al-Fitr day 1 ({d}) should be {expected!r}"
+            assert explicit_dates[d]["name"] == "Eid al-Fitr"
 
     def test_eid_al_fitr_weekend_days_excluded(self, explicit_dates):
         assert "2026-03-20" not in explicit_dates  # Friday
@@ -311,27 +296,24 @@ class TestXSAUIslamicHolidays:
             assert "Prophet" not in entry["name"], \
                 f"Unexpected Mawlid entry: {entry['date']} ({entry['name']})"
 
-    def test_all_islamic_entries_marked_predicted(self, explicit_dates):
-        """M7: 2025 entries are reconciled (confirmed) and no longer
-        carry '(predicted)'; all other years still do."""
+    def test_no_predicted_islamic_entries(self, explicit_dates):
+        """4c-final: every Eid entry 2025-2029 is published by the Saudi
+        Exchange; no '(predicted)' Islamic entry remains, and the exchange
+        lists no Islamic New Year closure (2027-06-06 and 2029-05-14
+        removed)."""
         islamic_keywords = ("Eid al-Fitr", "Eid al-Adha", "Islamic New Year", "Prophet's Birthday")
         for date_str, entry in explicit_dates.items():
-            if date_str.startswith(("2025", "2026")):
-                continue  # announced by the Saudi Exchange, not predicted
             if any(k in entry["name"] for k in islamic_keywords):
-                assert "(predicted)" in entry["name"], \
-                    f"{date_str} ({entry['name']}) should be marked predicted"
+                assert "(predicted)" not in entry["name"], date_str
+                assert entry.get("predicted") is not True, date_str
+        assert not any("Islamic New Year" in e["name"] for e in explicit_dates.values())
 
-    def test_all_islamic_entries_use_umm_al_qura_source(self, explicit_dates):
-        islamic_keywords = ("Eid al-Fitr", "Eid al-Adha", "Islamic New Year", "Prophet's Birthday")
+    def test_all_islamic_entries_cite_the_exchange(self, explicit_dates):
         announced = ("https://www.saudiexchange.sa/wps/portal/saudiexchange/"
                      "about-saudi-exchange/exchange-media-centre/events")
         for date_str, entry in explicit_dates.items():
-            if any(k in entry["name"] for k in islamic_keywords):
-                expected = (announced if date_str.startswith(("2025", "2026"))
-                            else "https://www.ummulqura.org.sa/")
-                assert entry["source_url"] == expected, \
-                    f"{date_str} has unexpected source_url: {entry['source_url']}"
+            if date_str >= "2025" and any(k in entry["name"] for k in ("Eid al-Fitr", "Eid al-Adha")):
+                assert entry["source_url"] == announced, date_str
 
     def test_2025_entries_use_structured_predicted_field(self, explicit_dates):
         """M6/M7: reconciled 2025 entries should set predicted=false
@@ -339,7 +321,7 @@ class TestXSAUIslamicHolidays:
         and the (now-absent) name suffix agree -- verifying the M6
         consistency check has something real to check against."""
         for date_str, entry in explicit_dates.items():
-            if date_str.startswith(("2025", "2026")) and any(
+            if date_str >= "2025" and any(
                     k in entry["name"] for k in ("Eid al-Fitr", "Eid al-Adha")):
                 assert entry.get("predicted") is False, \
                     f"{date_str} should explicitly set predicted=false"
@@ -374,6 +356,13 @@ EID_CLOSURES = {
                          "2026-03-22", "2026-03-23"],
     "Eid al-Adha 2026": ["2026-05-24", "2026-05-25", "2026-05-26",
                          "2026-05-27", "2026-05-28"],
+    # 4c-final: the exchange's published 2027-2029 schedule
+    "Eid al-Fitr 2027": ["2027-03-07", "2027-03-08", "2027-03-09", "2027-03-10", "2027-03-11"],
+    "Eid al-Adha 2027": ["2027-05-16", "2027-05-17", "2027-05-18", "2027-05-19", "2027-05-20"],
+    "Eid al-Fitr 2028": ["2028-02-27", "2028-02-28", "2028-02-29", "2028-03-01", "2028-03-02"],
+    "Eid al-Adha 2028": ["2028-05-03", "2028-05-04", "2028-05-07", "2028-05-08", "2028-05-09"],
+    "Eid al-Fitr 2029": ["2029-02-12", "2029-02-13", "2029-02-14", "2029-02-15", "2029-02-18"],
+    "Eid al-Adha 2029": ["2029-04-22", "2029-04-23", "2029-04-24", "2029-04-25", "2029-04-26"],
 }
 # (last trading day, first day back) per announcement
 EID_BOUNDARIES = {
@@ -381,6 +370,12 @@ EID_BOUNDARIES = {
     "Eid al-Adha 2025": ("2025-06-04", "2025-06-11"),
     "Eid al-Fitr 2026": ("2026-03-16", "2026-03-24"),
     "Eid al-Adha 2026": ("2026-05-21", "2026-05-31"),
+    "Eid al-Fitr 2027": ("2027-03-04", "2027-03-14"),
+    "Eid al-Adha 2027": ("2027-05-13", "2027-05-23"),
+    "Eid al-Fitr 2028": ("2028-02-24", "2028-03-05"),
+    "Eid al-Adha 2028": ("2028-05-02", "2028-05-10"),
+    "Eid al-Fitr 2029": ("2029-02-11", "2029-02-19"),
+    "Eid al-Adha 2029": ("2029-04-19", "2029-04-29"),
 }
 
 

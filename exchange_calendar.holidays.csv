@@ -10391,26 +10391,40 @@ XSAU,2026-05-27,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudi
 XSAU,2026-05-28,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
 XSAU,2026-09-23,Saudi National Day,closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar
 XSAU,2027-02-22,Saudi Founding Day,closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar
-XSAU,2027-03-09,Eid al-Fitr (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2027-03-10,Eid al-Fitr Holiday (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2027-03-11,Eid al-Fitr Holiday (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2027-05-16,Eid al-Adha (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2027-05-17,Eid al-Adha Holiday (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2027-05-18,Eid al-Adha Holiday (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2027-06-06,Islamic New Year (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
+XSAU,2027-03-07,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2027-03-08,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2027-03-09,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2027-03-10,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2027-03-11,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2027-05-16,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2027-05-17,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2027-05-18,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2027-05-19,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2027-05-20,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
 XSAU,2027-09-23,Saudi National Day,closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar
 XSAU,2028-02-22,Saudi Founding Day,closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar
-XSAU,2028-02-27,Eid al-Fitr Holiday (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2028-02-28,Eid al-Fitr Holiday (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2028-05-04,Eid al-Adha (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
+XSAU,2028-02-27,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2028-02-28,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2028-02-29,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2028-03-01,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2028-03-02,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2028-05-03,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2028-05-04,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2028-05-07,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2028-05-08,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2028-05-09,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
 XSAU,2028-09-24,Saudi National Day (observed),closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar
-XSAU,2029-02-14,Eid al-Fitr (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2029-02-15,Eid al-Fitr Holiday (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
+XSAU,2029-02-12,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2029-02-13,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2029-02-14,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2029-02-15,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2029-02-18,Eid al-Fitr Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
 XSAU,2029-02-22,Saudi Founding Day,closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar
-XSAU,2029-04-24,Eid al-Adha (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2029-04-25,Eid al-Adha Holiday (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2029-04-26,Eid al-Adha Holiday (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
-XSAU,2029-05-14,Islamic New Year (predicted),closed,explicit,1,,,true,,https://www.ummulqura.org.sa/
+XSAU,2029-04-22,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2029-04-23,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2029-04-24,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2029-04-25,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
+XSAU,2029-04-26,Eid al-Adha Holiday,closed,explicit,1,,,false,,https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events
 XSAU,2029-09-23,Saudi National Day,closed,explicit,1,,,,,https://www.saudiexchange.sa/wps/portal/tadawul/markets/equities/market-information/trading-calendar
 XSES,2010-01-01,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
 XSES,2010-02-15,Historical Holiday,closed,explicit,1,,,,,github.com/gerrymanoim/exchange_calendars
