@@ -927,3 +927,30 @@ describe('registry isOpen contract (b1)', () => {
         }
     });
 });
+
+describe('registry inSession alias (4d2)', () => {
+    test('inSession equals isOpen on the b1 cases', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        // [mic, date, time, expected]; isOpen becomes regular hours in 3.0.0.
+        const cases = [
+            ['XNYS', '2025-11-26', '08:00', true], // pre_market
+            ['XNYS', '2025-11-26', '17:00', true], // post_market
+            ['XNYS', '2025-11-28', '14:00', true], // early close ignored
+            ['XTKS', '2025-07-03', '12:00', true], // lunch spanned
+            ['XBDA', '2025-10-01', '10:00', true], // ad hoc early close
+            ['XBDA', '2025-10-01', '14:00', true], // ad hoc early close, after it
+            ['XRIS', '2025-11-17', '11:00', false], // ad hoc closed
+            ['XRIS', '2025-11-19', '11:00', true], // ordinary day
+            ['XBDA', '2025-10-02', '12:14', false], // before delayed open
+            ['XBDA', '2025-10-02', '12:15', true], // at delayed open
+            ['XNYS', '2026-01-01', '10:00', false], // holiday
+            ['XNYS', '2026-01-03', '10:00', false], // weekend
+            ['XNYS', '2026-01-02', '23:00', false], // after post_market
+            ['XKUW', '2025-06-02', '12:45', false], // b1 closed case
+        ];
+        for (const [mic, date, at, expected] of cases) {
+            assert.equal(r.inSession(mic, date, at), expected, `inSession ${mic} ${date} ${at}`);
+            assert.equal(r.isOpen(mic, date, at), expected, `isOpen ${mic} ${date} ${at}`);
+        }
+    });
+});

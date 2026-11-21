@@ -57,7 +57,31 @@ var intervalSessionTypes = map[string]bool{"pre_market": true, "regular": true, 
 // ignored and lunch_break is spanned (it is not an interval). On a
 // delayed_open day the regular session opens at delayed_open_time. For
 // regular hours with early closes and lunch breaks, use Exchange.IsOpen.
+//
+// Deprecated meaning: in 3.0.0 the registry-level IsOpen will mean regular
+// hours (what Exchange.IsOpen returns today). Callers who want "in any
+// session" should call InSession, which returns the same as this method in
+// 2.x. No warning is emitted; the change is documented in the README and
+// CHANGELOG.
 func (r *Registry) IsOpen(mic, date, timeStr string) bool {
+	return r.inAnySession(mic, date, timeStr)
+}
+
+// InSession reports whether the exchange is in any interval session
+// (pre_market, regular or post_market) at the given local time on the
+// given date.
+//
+// Same signature and same result as IsOpen for every input in 2.x (both
+// delegate to one function); in 3.0.0 InSession keeps this meaning while
+// IsOpen becomes regular hours. The contract is the one documented on
+// IsOpen.
+func (r *Registry) InSession(mic, date, timeStr string) bool {
+	return r.inAnySession(mic, date, timeStr)
+}
+
+// inAnySession is the registry-level any-session query behind IsOpen and
+// InSession; see IsOpen for the contract.
+func (r *Registry) inAnySession(mic, date, timeStr string) bool {
 	ex, err := r.Get(mic)
 	if err != nil {
 		return false

@@ -11,6 +11,7 @@ for (const q of fixture.queries) {
   if (q.op === "sessions") v = r.sessions(a).map(s => ({ type: s.type, open: s.open ?? null, close: s.close ?? null, at: s.at ?? null }));
   else if (q.op === "confidence") v = r.confidence(a, b);
   else if (q.op === "is_open") v = r.isOpen(a, b, c);
+  else if (q.op === "in_session") v = r.inSession(a, b, c);
   else if (q.op === "as_of") { const rec = r.asOf(a, b); v = { confidence: rec.confidence, _as_of: rec._as_of }; }
   else if (q.op === "is_holiday") v = r.get(a).isHoliday(b);
   else if (q.op === "holiday_entry") v = r.get(a).listHolidays().find(h => h.date === b) ?? null;

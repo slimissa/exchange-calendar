@@ -340,6 +340,19 @@
         
         verification(mic: string): Verification | null;
         confidence(mic: string, year: number): ConfidenceEntry | null;
+
+        /**
+         * True if the exchange is in any interval session (pre_market,
+         * regular or post_market) at the local time on the date. In 3.0.0
+         * this becomes regular hours; use inSession for "any session".
+         */
+        isOpen(mic: string, date: string, time: string): boolean;
+
+        /**
+         * True if the exchange is in any interval session. Same result as
+         * isOpen in 2.x; keeps this meaning in 3.0.0.
+         */
+        inSession(mic: string, date: string, time: string): boolean;
         asOf(mic: string, date: string): Record<string, unknown>;
         
         /**

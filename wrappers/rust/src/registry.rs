@@ -296,7 +296,30 @@ impl Registry {
     /// an interval). On a `delayed_open` day the regular session opens at
     /// `delayed_open_time`. For regular hours with early closes and lunch
     /// breaks, use `Exchange::is_open`.
+    ///
+    /// Deprecated meaning: in 3.0.0 the registry-level `is_open` will mean
+    /// regular hours (what `Exchange::is_open` returns today). Callers who
+    /// want "in any session" should call `in_session`, which returns the same
+    /// as this method in 2.x. No warning is emitted (no `#[deprecated]`
+    /// attribute); the change is documented in the README and CHANGELOG.
     pub fn is_open(&self, code: &str, date: &str, time: &str) -> bool {
+        self.in_any_session(code, date, time)
+    }
+
+    /// True if the exchange is in any interval session (`pre_market`,
+    /// `regular` or `post_market`) at the given local time on the given date.
+    ///
+    /// Same signature and same result as `is_open` for every input in 2.x
+    /// (both delegate to one function); in 3.0.0 `in_session` keeps this
+    /// meaning while `is_open` becomes regular hours. The contract is the one
+    /// documented on `is_open`.
+    pub fn in_session(&self, code: &str, date: &str, time: &str) -> bool {
+        self.in_any_session(code, date, time)
+    }
+
+    /// The registry-level any-session query behind `is_open` and
+    /// `in_session`; see `is_open` for the contract.
+    fn in_any_session(&self, code: &str, date: &str, time: &str) -> bool {
         let ex = match self.exchange(code) {
             Some(e) => e,
             None => return false,
@@ -882,6 +905,33 @@ mod tests {
             assert_eq!(r.is_open(mic, date, at), registry_open, "registry {mic} {date} {at}");
             let ex = r.get(mic).unwrap();
             assert_eq!(ex.is_open(date, Some(at)), exchange_open, "exchange {mic} {date} {at}");
+        }
+    }
+
+    /// (4d2) `in_session` is the any-session alias of the registry-level
+    /// `is_open` (same function); `is_open` becomes regular hours in 3.0.0.
+    #[test]
+    fn test_in_session_equals_is_open_b1() {
+        let r = load_real_registry();
+        let cases = [
+            ("XNYS", "2025-11-26", "08:00", true), // pre_market
+            ("XNYS", "2025-11-26", "17:00", true), // post_market
+            ("XNYS", "2025-11-28", "14:00", true), // early close ignored
+            ("XTKS", "2025-07-03", "12:00", true), // lunch spanned
+            ("XBDA", "2025-10-01", "10:00", true), // ad hoc early close
+            ("XBDA", "2025-10-01", "14:00", true), // ad hoc early close, after it
+            ("XRIS", "2025-11-17", "11:00", false), // ad hoc closed
+            ("XRIS", "2025-11-19", "11:00", true), // ordinary day
+            ("XBDA", "2025-10-02", "12:14", false), // before delayed open
+            ("XBDA", "2025-10-02", "12:15", true), // at delayed open
+            ("XNYS", "2026-01-01", "10:00", false), // holiday
+            ("XNYS", "2026-01-03", "10:00", false), // weekend
+            ("XNYS", "2026-01-02", "23:00", false), // after post_market
+            ("XKUW", "2025-06-02", "12:45", false), // b1 closed case
+        ];
+        for (mic, date, at, want) in cases {
+            assert_eq!(r.in_session(mic, date, at), want, "in_session {mic} {date} {at}");
+            assert_eq!(r.is_open(mic, date, at), want, "is_open {mic} {date} {at}");
         }
     }
 

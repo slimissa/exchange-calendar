@@ -600,3 +600,39 @@ func TestRegistryIsOpenContractB1(t *testing.T) {
 		}
 	}
 }
+
+// (4d2) InSession is the any-session alias of the registry-level IsOpen (same
+// function); IsOpen becomes regular hours in 3.0.0.
+func TestRegistryInSessionEqualsIsOpenB1(t *testing.T) {
+	r, err := exchangecalendar.LoadRegistry(filepath.Join("..", "..", "..", "calendar.json"))
+	if err != nil {
+		t.Fatalf("load calendar.json: %v", err)
+	}
+	cases := []struct {
+		mic, date, at string
+		want          bool
+	}{
+		{"XNYS", "2025-11-26", "08:00", true}, // pre_market
+		{"XNYS", "2025-11-26", "17:00", true}, // post_market
+		{"XNYS", "2025-11-28", "14:00", true}, // early close ignored
+		{"XTKS", "2025-07-03", "12:00", true}, // lunch spanned
+		{"XBDA", "2025-10-01", "10:00", true}, // ad hoc early close
+		{"XBDA", "2025-10-01", "14:00", true}, // ad hoc early close, after it
+		{"XRIS", "2025-11-17", "11:00", false}, // ad hoc closed
+		{"XRIS", "2025-11-19", "11:00", true}, // ordinary day
+		{"XBDA", "2025-10-02", "12:14", false}, // before delayed open
+		{"XBDA", "2025-10-02", "12:15", true}, // at delayed open
+		{"XNYS", "2026-01-01", "10:00", false}, // holiday
+		{"XNYS", "2026-01-03", "10:00", false}, // weekend
+		{"XNYS", "2026-01-02", "23:00", false}, // after post_market
+		{"XKUW", "2025-06-02", "12:45", false}, // b1 closed case
+	}
+	for _, c := range cases {
+		if got := r.InSession(c.mic, c.date, c.at); got != c.want {
+			t.Errorf("InSession %s %s %s = %v, want %v", c.mic, c.date, c.at, got, c.want)
+		}
+		if got := r.IsOpen(c.mic, c.date, c.at); got != c.want {
+			t.Errorf("IsOpen %s %s %s = %v, want %v", c.mic, c.date, c.at, got, c.want)
+		}
+	}
+}

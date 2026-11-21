@@ -1884,5 +1884,15 @@
     {"file": "wrappers/go/registry.go", "contains": "var intervalSessionTypes = map[string]bool{\"pre_market\": true, \"regular\": true, \"post_market\": true}"},
     {"file": "wrappers/rust/src/registry.rs", "contains": "pub const INTERVAL_SESSION_TYPES: [&str; 3] = [\"pre_market\", \"regular\", \"post_market\"];"},
     {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"is_open_xbda_adhoc_early_close_after\""}
+  ],
+  "2.29.0": [
+    {"file": "wrappers/python/exchange_calendar/registry.py", "contains": "def in_session(self, mic: str, date: str, time: str) -> bool:"},
+    {"file": "wrappers/javascript/src/registry.js", "contains": "inSession(mic, date, time) {"},
+    {"file": "wrappers/go/registry.go", "contains": "func (r *Registry) InSession(mic, date, timeStr string) bool {"},
+    {"file": "wrappers/rust/src/registry.rs", "contains": "pub fn in_session(&self, code: &str, date: &str, time: &str) -> bool {"},
+    {"file": "wrappers/javascript/src/index.d.ts", "contains": "inSession(mic: string, date: string, time: string): boolean;"},
+    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xnys_pre_market\""},
+    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xbda_adhoc_early_close_after\""},
+    {"file": "tools/cross_lang/check_in_session_twins.py"}
   ]
 }

@@ -48,6 +48,7 @@ fn main() {
                 }
             }
             "is_open" => json!(registry.is_open(s(0), s(1), s(2))),
+            "in_session" => json!(registry.in_session(s(0), s(1), s(2))),
             "as_of" => {
                 let rec = registry.as_of(s(0), s(1)).unwrap_or(Value::Null);
                 json!({

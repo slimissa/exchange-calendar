@@ -51,6 +51,14 @@ for lang in javascript rust go; do
     fi
 done
 
+# Every is_open probe has an in_session twin with the same answer (4d2),
+# checked in each runner's own output.
+outputs=()
+for lang in python javascript rust go; do
+    [[ -f "$TMP/$lang.json" ]] && outputs+=("$TMP/$lang.json")
+done
+python3 tools/cross_lang/check_in_session_twins.py "${outputs[@]}" || status=1
+
 if (( status == 0 )); then
     echo "OK: all four wrappers agree on every fixture query"
 fi

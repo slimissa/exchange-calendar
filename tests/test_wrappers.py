@@ -734,6 +734,28 @@ class TestDelayedOpen:
         assert registry.is_open(mic, day, at) is registry_open
         assert registry.get(mic).is_open(day, at) is exchange_open
 
+    # 4d2: in_session is the any-session alias of the registry-level is_open
+    # (same function); is_open becomes regular hours in 3.0.0.
+    @pytest.mark.parametrize("mic,day,at,expected", [
+        ("XNYS", "2025-11-26", "08:00", True),  # pre_market
+        ("XNYS", "2025-11-26", "17:00", True),  # post_market
+        ("XNYS", "2025-11-28", "14:00", True),  # early close ignored
+        ("XTKS", "2025-07-03", "12:00", True),  # lunch spanned
+        ("XBDA", "2025-10-01", "10:00", True),  # ad hoc early close
+        ("XBDA", "2025-10-01", "14:00", True),  # ad hoc early close, after it
+        ("XRIS", "2025-11-17", "11:00", False),  # ad hoc closed
+        ("XRIS", "2025-11-19", "11:00", True),  # ordinary day
+        ("XBDA", "2025-10-02", "12:14", False),  # before delayed open
+        ("XBDA", "2025-10-02", "12:15", True),  # at delayed open
+        ("XNYS", "2026-01-01", "10:00", False),  # holiday
+        ("XNYS", "2026-01-03", "10:00", False),  # weekend
+        ("XNYS", "2026-01-02", "23:00", False),  # after post_market
+        ("XKUW", "2025-06-02", "12:45", False),  # b1 closed case
+    ])
+    def test_in_session_equals_is_open_b1(self, registry, mic, day, at, expected):
+        assert registry.in_session(mic, day, at) is expected
+        assert registry.is_open(mic, day, at) is expected
+
     def test_cross_language_fixture_probes_delayed_open(self):
         q = json.loads((Path(__file__).parent / "cross_language_queries.json").read_text())
         labels = {x["label"]: x["args"] for x in q["queries"]}

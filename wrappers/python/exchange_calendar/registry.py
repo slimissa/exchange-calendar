@@ -323,7 +323,28 @@ class CalendarRegistry:
         closure. ``early_close_time`` is ignored and ``lunch_break`` is
         spanned (it is not an interval). On a ``delayed_open`` day the
         regular session opens at ``delayed_open_time``. For regular hours
-        with early closes and lunch breaks, use ``exchange(mic).is_open``."""
+        with early closes and lunch breaks, use ``exchange(mic).is_open``.
+
+        Deprecated meaning: in 3.0.0 the registry-level ``is_open`` will
+        mean regular hours (what ``exchange(mic).is_open`` returns today).
+        Callers who want "in any session" should call ``in_session``,
+        which returns the same as this method in 2.x. No warning is
+        emitted; the change is documented in the README and CHANGELOG."""
+        return self._in_any_session(mic, date, time)
+
+    def in_session(self, mic: str, date: str, time: str) -> bool:
+        """True if the exchange is in any interval session (pre_market,
+        regular or post_market) at the given local time on the given date.
+
+        Same signature and same result as ``is_open`` for every input in
+        2.x (both delegate to one function); in 3.0.0 ``in_session`` keeps
+        this meaning while ``is_open`` becomes regular hours. The contract
+        is the one documented on ``is_open``."""
+        return self._in_any_session(mic, date, time)
+
+    def _in_any_session(self, mic: str, date: str, time: str) -> bool:
+        """The registry-level any-session query behind ``is_open`` and
+        ``in_session``; see ``is_open`` for the contract."""
         from datetime import date as _date
 
         ex = self.exchange(mic)

@@ -325,8 +325,36 @@ class CalendarRegistry {
      * `delayed_open` day the regular session opens at `delayed_open_time`.
      * For regular hours with early closes and lunch breaks, use
      * `registry.get(mic).isOpen(date, time)`.
+     *
+     * Deprecated meaning: in 3.0.0 the registry-level `isOpen` will mean
+     * regular hours (what `registry.get(mic).isOpen(date, time)` returns
+     * today). Callers who want "in any session" should call `inSession`,
+     * which returns the same as this method in 2.x. No warning is emitted;
+     * the change is documented in the README and CHANGELOG.
      */
     isOpen(mic, date, time) {
+        return this._inAnySession(mic, date, time);
+    }
+
+    /**
+     * True if the exchange is in any interval session (pre_market, regular or
+     * post_market) at the given local time on the given date.
+     *
+     * Same signature and same result as `isOpen` for every input in 2.x (both
+     * delegate to one function); in 3.0.0 `inSession` keeps this meaning while
+     * `isOpen` becomes regular hours. The contract is the one documented on
+     * `isOpen`.
+     */
+    inSession(mic, date, time) {
+        return this._inAnySession(mic, date, time);
+    }
+
+    /**
+     * The registry-level any-session query behind `isOpen` and `inSession`;
+     * see `isOpen` for the contract.
+     * @private
+     */
+    _inAnySession(mic, date, time) {
         const ex = this.get(mic);
         if (ex.isHoliday(date)) {
             return false;

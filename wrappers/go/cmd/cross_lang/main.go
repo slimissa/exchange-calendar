@@ -108,6 +108,8 @@ func main() {
 			}
 		case "is_open":
 			v = r.IsOpen(str(q.Args[0]), str(q.Args[1]), str(q.Args[2]))
+		case "in_session":
+			v = r.InSession(str(q.Args[0]), str(q.Args[1]), str(q.Args[2]))
 		case "as_of":
 			conf := map[string]any{}
 			var asOf any

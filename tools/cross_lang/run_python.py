@@ -14,6 +14,8 @@ for q in fixture["queries"]:
         v = r.confidence(args[0], args[1])
     elif op == "is_open":
         v = r.is_open(args[0], args[1], args[2])
+    elif op == "in_session":
+        v = r.in_session(args[0], args[1], args[2])
     elif op == "as_of":
         rec = r.as_of(args[0], args[1])
         v = {"confidence": rec.get("confidence", {}), "_as_of": rec.get("_as_of")}
