@@ -45,9 +45,14 @@ Checks, for every exchanges/*.json:
      entry's effective_from, or generation_range[0] for a single object), no
      item without an entry, the item's open/close equal to the entry's, and
      an `unconfirmed` item carries a recheck_date at most RECHECK_CAP_DAYS
-     (92) after verification.last_checked. Reported as "hours evidence: N of
-     74 (M of 48 reference_compared)", N being the exchanges whose evidence
-     passes. NON-BLOCKING in Phase 4b-lite (findings print as "WARNING hours:";
+     (92) after verification.last_checked. A `schema_limited` item (schema
+     2.3.1: the exchange's own document gives hours regular_hours cannot
+     express, such as a weekday schedule) carries `limitation` and a
+     `backlog_item` naming a bold item title in
+     docs/phase-4f-schema-backlog.md; it has no recheck cap. Reported as
+     "hours evidence: N of 74 (M of 48 reference_compared); items: V
+     verified, S schema_limited, U unconfirmed", N being the exchanges whose
+     evidence passes. NON-BLOCKING in Phase 4b-lite (findings print as "WARNING hours:";
      --strict-hours fails on them); it becomes blocking for every
      reference_compared exchange at the end of 4b-lite (ADR 0014).
 --date YYYY-MM-DD additionally requires last_checked to be exactly that date.
@@ -300,6 +305,21 @@ def check(root: Path, want_date: str | None = None) -> tuple[list[str], Counter,
     return problems, counts, coverage
 
 
+BACKLOG = REPO_ROOT / "docs" / "phase-4f-schema-backlog.md"
+HOURS_STATUSES = ("verified", "schema_limited", "unconfirmed")
+
+
+def backlog_titles(path: Path = BACKLOG) -> set[str]:
+    """Bold item titles of the 4f backlog ("- **Title.**"), without the final
+    full stop: the values a schema_limited item's backlog_item may take."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return set()
+    return {m.group(1).rstrip(".").strip()
+            for m in re.finditer(r"^- \*\*(.+?)\*\*", text, re.MULTILINE)}
+
+
 def hours_entries(d: dict) -> list[tuple[str, dict]]:
     """[(effective_from the evidence must name, entry)] for regular_hours.
 
@@ -312,9 +332,10 @@ def hours_entries(d: dict) -> list[tuple[str, dict]]:
     return []
 
 
-def hours_problems(d: dict) -> list[str]:
+def hours_problems(d: dict, backlog: set[str] | None = None) -> list[str]:
     """Check 6 for one exchange; [] when it has no verification.hours or the
-    evidence is complete and consistent."""
+    evidence is complete and consistent. backlog: the 4f backlog titles
+    (default: read from docs/phase-4f-schema-backlog.md)."""
     v = d.get("verification") or {}
     items = v.get("hours")
     if items is None:
@@ -348,6 +369,17 @@ def hours_problems(d: dict) -> list[str]:
             elif checked is None or (recheck - checked).days > RECHECK_CAP_DAYS:
                 out.append(f"{code}: hours evidence from {key}: recheck_date {item.get('recheck_date')} "
                            f"is more than {RECHECK_CAP_DAYS} days after last_checked {v.get('last_checked')}")
+        elif item.get("status") == "schema_limited":
+            if not (item.get("limitation") or "").strip():
+                out.append(f"{code}: schema_limited hours evidence from {key} has no limitation")
+            ref = (item.get("backlog_item") or "").strip().rstrip(".")
+            if not ref:
+                out.append(f"{code}: schema_limited hours evidence from {key} has no backlog_item")
+            else:
+                titles = backlog_titles() if backlog is None else backlog
+                if ref not in titles:
+                    out.append(f"{code}: schema_limited hours evidence from {key}: backlog_item "
+                               f"{item.get('backlog_item')!r} is not an item of docs/phase-4f-schema-backlog.md")
         elif item.get("status") != "verified":
             out.append(f"{code}: hours evidence from {key} has status {item.get('status')!r}")
     for key in by_date:
@@ -392,6 +424,18 @@ def hours_report(root: Path) -> tuple[list[str], int, int, int, int]:
     return findings, n, m, total, total_rc
 
 
+def hours_status_counts(root: Path) -> dict[str, int]:
+    """Evidence items by status across all exchanges (check 6 report)."""
+    counts = {k: 0 for k in HOURS_STATUSES}
+    for f in sorted((root / "exchanges").glob("*.json")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        for item in (d.get("verification") or {}).get("hours") or []:
+            st = item.get("status")
+            if st in counts:
+                counts[st] += 1
+    return counts
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     p.add_argument("--root", type=Path, default=REPO_ROOT)
@@ -414,7 +458,10 @@ def main(argv: list[str] | None = None) -> int:
     tag = "" if args.strict_hours else "WARNING "
     for line in hours:
         print(f"{tag}hours: {line}")
-    print(f"hours evidence: {n} of {total} ({m} of {total_rc} reference_compared)"
+    sc = hours_status_counts(args.root)
+    print(f"hours evidence: {n} of {total} ({m} of {total_rc} reference_compared); "
+          f"items: {sc['verified']} verified, {sc['schema_limited']} schema_limited, "
+          f"{sc['unconfirmed']} unconfirmed"
           + ("" if args.strict_hours else "; non-blocking until the end of Phase 4b-lite"))
     if args.strict_hours:
         problems = problems + [f"hours: {line}" for line in hours]

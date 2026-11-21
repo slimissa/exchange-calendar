@@ -8,7 +8,7 @@ verification audit; the schema and API items below go to 4f (schema v3).
 
 - **4d**: audit `verification` against Phase 4c; coverage spans checkable; housekeeping.
 - **4d2**: `in_session` alias in the four wrappers; the `is_open` 3.0.0 meaning change documented (no run-time warning, for parity and to spare per-minute callers).
-- **4b-lite**: current regular hours verified against each exchange's own page (ADR 0013, ADR 0014), evidence in `verification.hours` (schema 2.3.0, since 4b1). `check_verification.py` check 6 reports it non-blocking during 4b-lite and **turns blocking for every `reference_compared` exchange at the end of 4b-lite**.
+- **4b-lite**: current regular hours verified against each exchange's own page (ADR 0013, ADR 0014), evidence in `verification.hours` (schema 2.3.0, since 4b1; `schema_limited` for hours the schema cannot express since 2.3.1, 4b2). `check_verification.py` check 6 reports it non-blocking during 4b-lite and **turns blocking for every `reference_compared` exchange at the end of 4b-lite**; `schema_limited` items do not block (ADR 0014 section 6).
 - **4e**: predictions.
 - **4f**: schema v3 / API (major 3.0.0); this file's "Schema and tooling" items.
 - **4g**: consumer alignment (QLF, DeBou) and a CLI.
@@ -62,7 +62,9 @@ trigger.
 - **Weekday-specific sessions.** PSX (XKAR) runs two Friday sessions
   (09:17-12:00 and 14:32-16:30, post-close 16:35-16:50) against one
   Monday-Thursday session; `sessions` and `regular_hours` have no weekday.
-  (4c13)
+  (4c13) Hours evidence for such an entry is `schema_limited` with
+  `backlog_item: "Weekday-specific sessions"` (ADR 0014 section 6, 4b2);
+  lifting this item means migrating those items.
 - **Seasonal (Ramadan) hours.** PSX (XKAR) and the Saudi Exchange (XSAU)
   publish Ramadan schedules each year; there is no seasonal or dated-range
   session entry. (4c13)

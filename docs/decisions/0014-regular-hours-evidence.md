@@ -2,7 +2,7 @@
 
 **Status:** Accepted
 **Date:** 2026-11-21
-**Decided by:** the CTO (Phase 4b-lite brief, session 4b1)
+**Decided by:** the CTO (Phase 4b-lite brief, session 4b1; section 6 added in session 4b2)
 
 ## Context
 
@@ -78,8 +78,9 @@ list (`effective_from`) when the hours changed inside the registry window
 | `close_rule` | `closing_auction_end` or `continuous_end` |
 | `source_url`, `source_title` | The document (for `unconfirmed`, the best lead) |
 | `checked_on` | When it was read |
-| `status` | `verified` or `unconfirmed` |
+| `status` | `verified`, `schema_limited` (schema 2.3.1, section 6) or `unconfirmed` |
 | `recheck_date` | Required when `unconfirmed` |
+| `limitation`, `backlog_item` | Required when `schema_limited` (section 6) |
 | `note` | Optional: the quoted line, the lead, what would settle it |
 
 `tools/check_verification.py` check 6 tests it for every exchange that has
@@ -94,6 +95,34 @@ cap. `tools/derive_verification.py` keeps `hours` on rewrite, like
 reference_compared)") without enforcing it; a test keeps N from shrinking.
 At the end of Phase 4b-lite check 6 becomes blocking for every
 `reference_compared` exchange.
+
+### 6. Hours the schema cannot express (`schema_limited`, session 4b2)
+
+Some exchanges publish hours that `regular_hours` cannot hold: a weekday
+schedule (PSX, XKAR: two Friday sessions against one Monday-Thursday
+session), a seasonal schedule. Neither `verified` (the entry does not say
+what the exchange says) nor `unconfirmed` (nothing is in doubt, and no
+recheck will settle it) fits.
+
+- `status: "schema_limited"` (schema 2.3.1) means: the exchange's own
+  document was read (same standard as `verified`, section 3), `open` and
+  `close` repeat the part `regular_hours` can express, and the rest is
+  stated in `limitation`, in the document's terms.
+- `backlog_item` names the item of `docs/phase-4f-schema-backlog.md` (its
+  bold title) whose schema change would lift the limitation. Check 6 fails
+  an item whose `backlog_item` is not a title there, so removing the
+  backlog item without migrating the evidence is caught.
+- No recheck cap: the item is settled until the schema changes.
+  `recheck_date` is optional and not capped.
+- Counting: a `schema_limited` item is evidence, not verification. It
+  completes an exchange's evidence (it counts toward "hours evidence: N of
+  74") and **does not block** at the end of Phase 4b-lite. It does **not**
+  count as verified: `exchanges_hours_verified` and the README count stay
+  verified-only. Check 6 reports items as "V verified, S schema_limited, U
+  unconfirmed".
+- The entry's value still follows the exchange: a `schema_limited` entry
+  holds the hours the exchange gives for the days it can describe, never a
+  compromise between two schedules.
 
 ## Consequences
 

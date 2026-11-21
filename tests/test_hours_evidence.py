@@ -1,4 +1,4 @@
-"""verification.hours (schema 2.3.0, ADR 0014) and check 6 of
+"""verification.hours (schema 2.3.0; schema_limited since 2.3.1; ADR 0014) and check 6 of
 tools/check_verification.py.
 
 Unit tests use synthetic exchanges; the tree tests read the real files.
@@ -103,14 +103,89 @@ def test_current_entry_verified():
     assert cv.current_hours_verified(_ex(DATED, GOOD[1:])) is False
 
 
+# --- schema_limited (schema 2.3.1) ------------------------------------------
+
+LIMITED = _item("2010-01-01", "09:30", "15:30", "schema_limited",
+                limitation="Fridays: two sessions, 09:17-12:00 and 14:32-16:30",
+                backlog_item="Weekday-specific sessions")
+SINGLE = {"open": "09:30", "close": "15:30"}
+TITLES = {"Weekday-specific sessions", "Seasonal (Ramadan) hours"}
+
+
+def test_schema_limited_complete_has_no_problem():
+    assert cv.hours_problems(_ex(SINGLE, [LIMITED]), TITLES) == []
+
+
+def test_schema_limited_needs_a_limitation():
+    item = dict(LIMITED, limitation=" ")
+    assert cv.hours_problems(_ex(SINGLE, [item]), TITLES) == [
+        "XTST: schema_limited hours evidence from 2010-01-01 has no limitation"]
+
+
+def test_schema_limited_needs_a_backlog_item():
+    item = dict(LIMITED)
+    del item["backlog_item"]
+    assert cv.hours_problems(_ex(SINGLE, [item]), TITLES) == [
+        "XTST: schema_limited hours evidence from 2010-01-01 has no backlog_item"]
+
+
+def test_schema_limited_backlog_item_must_exist():
+    item = dict(LIMITED, backlog_item="Weekday schedules")
+    out = cv.hours_problems(_ex(SINGLE, [item]), TITLES)
+    assert len(out) == 1 and "is not an item of docs/phase-4f-schema-backlog.md" in out[0]
+
+
+def test_schema_limited_backlog_item_ignores_final_full_stop():
+    item = dict(LIMITED, backlog_item="Weekday-specific sessions.")
+    assert cv.hours_problems(_ex(SINGLE, [item]), TITLES) == []
+
+
+def test_schema_limited_has_no_recheck_cap():
+    item = dict(LIMITED, recheck_date="2028-01-01")
+    assert cv.hours_problems(_ex(SINGLE, [item]), TITLES) == []
+
+
+def test_schema_limited_must_still_match_the_entry():
+    item = dict(LIMITED, open="09:17")
+    out = cv.hours_problems(_ex(SINGLE, [item]), TITLES)
+    assert out == ["XTST: hours evidence from 2010-01-01 says 09:17-15:30, regular_hours says 09:30-15:30"]
+
+
+def test_schema_limited_is_not_verified():
+    # ADR 0014 section 6: evidence, not verification; facts do not count it.
+    assert cv.current_hours_verified(_ex(SINGLE, [LIMITED])) is False
+
+
+def test_real_backlog_has_the_weekday_item():
+    assert "Weekday-specific sessions" in cv.backlog_titles()
+
+
+def test_schema_accepts_schema_limited():
+    jsonschema.validate([LIMITED], HOURS_SCHEMA)
+
+
+@pytest.mark.parametrize("key", ["limitation", "backlog_item"])
+def test_schema_requires_limitation_and_backlog_item(key):
+    bad = dict(LIMITED)
+    del bad[key]
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.validate([bad], HOURS_SCHEMA)
+
+
+def test_status_counts_on_the_tree():
+    sc = cv.hours_status_counts(ROOT)
+    assert set(sc) == {"verified", "schema_limited", "unconfirmed"}
+    assert sc["verified"] >= HOURS_EVIDENCE_FLOOR
+
+
 # --- schema 2.3.0 ------------------------------------------------------------
 
 SCHEMA = json.loads((ROOT / "schema.json").read_text(encoding="utf-8"))
 HOURS_SCHEMA = SCHEMA["properties"]["verification"]["properties"]["hours"]
 
 
-def test_schema_version_is_2_3_0():
-    assert SCHEMA["version"] == "2.3.0"
+def test_schema_version_is_2_3_1():
+    assert SCHEMA["version"] == "2.3.1"
 
 
 def test_schema_accepts_good_evidence():
@@ -155,3 +230,4 @@ def test_tool_reports_the_hours_line(capsys):
     assert cv.main(["--root", str(ROOT)]) == 0
     out = capsys.readouterr().out
     assert "hours evidence: " in out and " of 74 (" in out and " of 48 reference_compared)" in out
+    assert " verified, " in out and " schema_limited, " in out and " unconfirmed" in out

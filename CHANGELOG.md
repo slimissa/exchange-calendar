@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+Phase 4b-lite, session 4b2: the head of the hours queue and XBUE's year-end rows.
+
+### Added
+- `verification.hours` status `schema_limited` (schema 2.3.1, ADR 0014 section 6): the exchange's own document gives hours that `regular_hours` cannot express (a weekday schedule, for example). The item repeats the part the entry can hold and requires `limitation` (the rest, in the document's terms) and `backlog_item` (the bold title of the `docs/phase-4f-schema-backlog.md` item that would lift it). No recheck cap. It completes an exchange's evidence and does not block at the end of Phase 4b-lite, but it is not verified: `exchanges_hours_verified` stays verified-only.
+
+### Changed
+- `tools/check_verification.py` check 6 checks `schema_limited` items (a `limitation`; a `backlog_item` that is a title in the 4f backlog) and reports evidence items by status: "hours evidence: N of 74 (M of 48 reference_compared); items: V verified, S schema_limited, U unconfirmed".
+
 ## [2.29.0] - 2026-11-21
 
 Phase 4d (the `verification` audit after Phase 4c), session 4d.1 (every coverage-span finding resolved; the check blocks), session 4d2 (`in_session`, two primary documents, the recheck-date cap) and session 4b1 (hours evidence, schema 2.3.0). Proposed as 2.29.0: minor, no breaking change.

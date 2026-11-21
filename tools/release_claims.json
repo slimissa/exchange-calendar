@@ -1903,5 +1903,13 @@
     {"file": "docs/facts.json", "contains": "\"exchanges_hours_verified\""},
     {"file": "exchanges/XBUE.json", "contains": "\"source_title\": \"BYMA Comunicado Nº 19031"},
     {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xbue_2026_11_04_1730\""}
+  ],
+  "2.30.0": [
+    {"file": "schema.json", "contains": "\"version\": \"2.3.1\""},
+    {"file": "schema.json", "contains": "\"schema_limited\""},
+    {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "### 6. Hours the schema cannot express (`schema_limited`, session 4b2)"},
+    {"file": "tools/check_verification.py", "contains": "def backlog_titles(path: Path = BACKLOG) -> set[str]:"},
+    {"file": "tools/check_verification.py", "contains": "def hours_status_counts(root: Path) -> dict[str, int]:"},
+    {"file": "tests/test_hours_evidence.py", "contains": "def test_schema_limited_backlog_item_must_exist():"}
   ]
 }

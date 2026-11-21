@@ -413,7 +413,12 @@ lists a reference library for the exchange (the 50 with at least one):
   `segment`, `close_rule` (`closing_auction_end` or `continuous_end`),
   `source_url`, `source_title`, `checked_on`, `status` (`verified` only on the
   exchange's own document or page; else `unconfirmed`, which requires a
-  `recheck_date` no more than 92 days after `last_checked`) and an optional
+  `recheck_date` no more than 92 days after `last_checked`; or, since schema
+  2.3.1, `schema_limited`: the exchange's own document gives hours that
+  `regular_hours` cannot express, such as a weekday schedule, stated in a
+  required `limitation`, with a required `backlog_item` naming the bold title
+  of the `docs/phase-4f-schema-backlog.md` item that would lift it; no
+  recheck cap; evidence but not verified, ADR 0014 section 6) and an optional
   `note`. `tools/check_verification.py` check 6 tests it, non-blocking until
   the end of Phase 4b-lite; `tools/derive_verification.py` keeps it on rewrite.
 - `coverage` (optional, authored) says which sources back which date ranges.
