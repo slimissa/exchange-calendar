@@ -8,6 +8,8 @@ real inputs, which are only read.
 """
 import json
 import shutil
+
+import pytest
 import sys
 from pathlib import Path
 
@@ -22,13 +24,13 @@ NO_END = {"exchange_calendars": {}, "pandas_market_calendars": {}}
 
 
 def _ex(spans, gr=("2010-01-01", "2029-12-31"), cov_from=None, cov_to=None,
-        explicit=(), ad_hoc=()):
+        explicit=(), ad_hoc=(), last_checked="2026-11-21"):
     return {
         "code": "XTST",
         "generation_range": list(gr),
         "holidays": {"explicit": list(explicit)},
         "ad_hoc_closures": list(ad_hoc),
-        "verification": {"coverage": {
+        "verification": {"last_checked": last_checked, "coverage": {
             "from": cov_from or gr[0], "to": cov_to or gr[1], "sources": spans}},
     }
 
@@ -148,6 +150,41 @@ def test_unconfirmed_covers_only_the_dates_it_lists():
                                       {"date": "2026-12-31", "predicted": True}])
     out = _problems(ex)
     assert len(out) == 1 and "(2026-12-31)" in out[0]
+
+
+# --- 5b: the recheck-date cap behind the unconfirmed exception (4d2) ------
+
+@pytest.mark.parametrize("recheck,days", [("2027-02-20", 91), ("2027-02-21", 92)])
+def test_recheck_within_92_days_of_last_checked_is_fine(recheck, days):
+    ex = _ex(_doubt_span(recheck_date=recheck),
+             explicit=[{"date": "2026-12-24", "predicted": True}])
+    assert cv.RECHECK_CAP_DAYS == 92
+    assert _problems(ex) == [], days
+
+
+def test_recheck_93_days_after_last_checked_fails():
+    ex = _ex(_doubt_span(recheck_date="2027-02-22"),
+             explicit=[{"date": "2026-12-24", "predicted": True}])
+    out = _problems(ex)
+    assert len(out) == 1
+    assert "recheck_date 2027-02-22 is more than 92 days after last_checked 2026-11-21" in out[0]
+
+
+def test_recheck_cap_applies_to_unpublished_dates_too():
+    out = _problems(_ex(_doubt_span(recheck_date="2027-02-22")), unpublished={"2026-12-24"})
+    assert len(out) == 1 and "more than 92 days" in out[0]
+
+
+def test_recheck_cap_needs_a_last_checked():
+    ex = _ex(_doubt_span(), explicit=[{"date": "2026-12-24", "predicted": True}],
+             last_checked=None)
+    assert len(_problems(ex)) == 1
+
+
+def test_far_recheck_without_a_doubtful_date_is_not_flagged():
+    """XDUB keeps a recheck 374 days out for a date that is neither predicted
+    nor triaged unpublished: the cap only bounds the exception."""
+    assert _problems(_ex(_doubt_span(recheck_date="2027-11-30"))) == []
 
 
 def test_not_covered_span_may_hold_predictions():

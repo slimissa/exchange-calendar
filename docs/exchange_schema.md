@@ -415,7 +415,8 @@ lists a reference library for the exchange (the 50 with at least one):
   `contradicted_by` and `unconfirmed` dates lie inside their span. A predicted
   or unpublished date may also sit under a label that does not say predicted
   when it is held on doubt: listed in the span's `unconfirmed`, with a
-  `recheck_date`, under a label that says "unconfirmed". The findings fail the
+  `recheck_date` no more than 92 days after `verification.last_checked`
+  (since 4d2), under a label that says "unconfirmed". The findings fail the
   tool (blocking since session 4d.1); see its docstring.
 
 ---

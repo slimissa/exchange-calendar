@@ -25,8 +25,11 @@ Checks, for every exchanges/*.json:
           (predict, pattern or estimat), or be labelled "not covered",
           or be a date held on doubt: listed in that span's `unconfirmed`,
           the span carrying a YYYY-MM-DD `recheck_date` (which
-          tools/check_recheck_dates.py fails once it passes) and a label
-          that says "unconfirmed" (Phase 4d.1);
+          tools/check_recheck_dates.py fails once it passes) no more than
+          RECHECK_CAP_DAYS (92) days after the file's
+          `verification.last_checked`, and a label that says
+          "unconfirmed" (Phase 4d.1; the cap since 4d2, so a far-off
+          recheck date cannot park a guess under a publications label);
         - a span naming exchange_calendars or pandas_market_calendars must
           not cover an exchange that library has no data for, nor years
           after the last one docs/DIVERGENCE.md says it records;
@@ -72,6 +75,10 @@ EXPECTED = (
     ("none", False, "single_source", "BLOCKED.md"),
 )
 CLASSES = ("reference_compared", "source_verified", "single_source", "ci_unreachable")
+
+# Check 5b: the unconfirmed exception holds only while the span's recheck_date
+# is at most this many days after verification.last_checked (4d2).
+RECHECK_CAP_DAYS = 92
 
 # Coverage-span label vocabulary (check 5b).
 PREDICTED_LABEL = re.compile(r"predict|pattern|estimat", re.IGNORECASE)
@@ -159,13 +166,28 @@ def coverage_problems(d: dict, libraries: tuple[str, ...], lib_end: dict[str, di
     entries = list((d.get("holidays") or {}).get("explicit", [])) + list(d.get("ad_hoc_closures", []))
     predicted = sorted(e["date"] for e in entries if e.get("predicted"))
     unpub = sorted(unpublished)
+    checked = _day((d.get("verification") or {}).get("last_checked"))
     for _, _, s in parsed:
         lo, hi, label = s["from"], s["to"], s.get("source", "")
         where = f"{lo}..{hi}"
-        # A date held on doubt, said so: listed unconfirmed, with a recheck date,
-        # under a label that says "unconfirmed" (4d.1).
-        on_doubt = set(s.get("unconfirmed") or []) if (
-            _day(s.get("recheck_date")) and re.search(r"unconfirmed", label, re.IGNORECASE)) else set()
+        # A date held on doubt, said so: listed unconfirmed, with a recheck date
+        # at most RECHECK_CAP_DAYS after last_checked (4d2), under a label that
+        # says "unconfirmed" (4d.1).
+        recheck = _day(s.get("recheck_date"))
+        honest = bool(re.search(r"unconfirmed", label, re.IGNORECASE))
+        capped = (recheck is not None and checked is not None
+                  and (recheck - checked).days <= RECHECK_CAP_DAYS)
+        on_doubt = set(s.get("unconfirmed") or []) if (recheck and honest and capped) else set()
+        if recheck and honest and not capped:
+            # Reported once, with the reason: the cap, not the label.
+            leaning = [x for x in (s.get("unconfirmed") or [])
+                       if lo <= x <= hi and (x in predicted or x in unpub)]
+            on_doubt = set(leaning)
+            if leaning:
+                problems.append(
+                    f"{code}: span {where} holds {', '.join(leaning)} on doubt, but its recheck_date "
+                    f"{s['recheck_date']} is more than {RECHECK_CAP_DAYS} days after last_checked "
+                    f"{(d.get('verification') or {}).get('last_checked')}")
         inside = [x for x in predicted if lo <= x <= hi and x not in on_doubt]
         if inside and not (PREDICTED_LABEL.search(label) or NOT_COVERED_LABEL.match(label)):
             problems.append(f"{code}: span {where} holds {len(inside)} predicted entr"
