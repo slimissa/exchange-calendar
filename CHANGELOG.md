@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [2.28.0] - 2026-11-21
 
-Phase 4c (sessions 4c1-4c13, the 4c-R1 to 4c-R5 rechecks and 4c-final). Proposed as 2.28.0: minor, no breaking change.
+Phase 4c (sessions 4c1-4c13, the 4c-R1 to 4c-R5 rechecks and 4c-final).
 
 ### Added
 - 2010-2024 backfills from `exchange_calendars` 4.13.2 for 44 exchanges, so 50 of 74 now have data from 2010 (XASX, XHKG, XLON, XNAS, XNYS from 1990 and XTKS from 1997 already did): XAMS, XBDA, XBKK, XBOG, XBOM, XBRU, XBUD, XBUE, XCSE, XDUB, XETR, XHEL, XICE, XIST, XJSE, XKAR, XKLS, XKRX, XLIM, XLIS, XLIT, XLUX, XMAD, XMEX, XMOS, XNSE (inferred from XBOM), XNZE, XOSL, XPAR, XPHS, XPRA, XRIS, XSES, XSGO, XSHE (inferred from XSHG), XSHG, XSTO, XSWX, XTAI, XTAL, XTSE, XWAR, XWBO, XZAG. XSAU starts in 2021, where `exchange_calendars` starts it. Each backfill keeps the library's dates except the ones its note lists as corrected against the exchange's own documents.
