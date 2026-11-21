@@ -407,6 +407,13 @@ lists a reference library for the exchange (the 50 with at least one):
 - `last_checked` is `YYYY-MM-DD`, the date the class was derived.
 - `reference_note` is a sentence naming the input: the reference libraries, or
   the `BLOCKED.md` verdict, or the fetcher.
+- `coverage` (optional, authored) says which sources back which date ranges.
+  `tools/check_verification.py` checks that its spans tile `generation_range`
+  exactly, that a span holding predicted entries or dates triaged `unpublished`
+  says so in its label (or is labelled "not covered"), that a span naming a
+  reference library stays within the years that library records, and that
+  `contradicted_by` and `unconfirmed` dates lie inside their span. These findings
+  are warnings until `--strict-coverage`; see the tool's docstring.
 
 ---
 
