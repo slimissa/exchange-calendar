@@ -5,7 +5,7 @@ tools/check_doc_facts.py checks the sentences that state them. This test
 checks what a count cannot: the 23 MICs the README lists as having data from
 2025 only are exactly the exchanges whose generation_range starts on
 2025-01-01, none of them has a reference library, and the Phase 4h section of
-docs/phase-4d-backlog.md lists the same MICs.
+docs/phase-4f-schema-backlog.md lists the same MICs.
 """
 import json
 import re
@@ -34,7 +34,7 @@ def test_readme_lists_the_2025_only_exchanges():
 
 
 def test_backlog_phase_4h_lists_the_same_exchanges():
-    text = (ROOT / "docs" / "phase-4d-backlog.md").read_text(encoding="utf-8")
+    text = (ROOT / "docs" / "phase-4f-schema-backlog.md").read_text(encoding="utf-8")
     section = text[text.index("## Phase 4h"):]
     found = sorted(set(re.findall(r"\b(?:X[A-Z]{3}|DSMD)\b", section.split("\n## ")[0])) - {"XSAU"})
     assert found == _from_2025()

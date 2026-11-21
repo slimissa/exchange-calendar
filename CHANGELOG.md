@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+Phase 4d (the `verification` audit after Phase 4c).
+
+### Added
+- `tools/check_verification.py` checks `verification.coverage`: the spans tile `generation_range` exactly (no gap, overlap or span outside it); a span holding `predicted` entries or dates triaged `unpublished` says predicted/pattern in its label (or is "not covered"); a span naming a reference library stays within the years that library records; `contradicted_by` and `unconfirmed` dates lie inside their span. Non-blocking for now (`--strict-coverage` makes it fail): 13 exchanges fail it (XBDA, XBOM, XBUE, XETR, XJSE, XKLS, XNSE, XNZE, XSAU, XSES, XSHE, XTAI, XWBO), and a test keeps that set from growing.
+- `tools/derive_verification.py --all` records a re-derivation that changed no class, stamping every file with one `last_checked`.
+- `tests/test_check_verification.py`: the coverage rules, and checks 1-4 of `check_verification.py` on the real tree (no CI step or test ran the tool before).
+
+### Fixed
+- `verification.last_checked` was split across files (70 at 2026-11-08, XKAR, XPHS, XRIS and XSAU at 2026-11-20), so `check_verification.py` failed; all 74 now carry 2026-11-21, the date of the audit. Classes unchanged: `reference_compared` 48, `source_verified` 9, `single_source` 14, `ci_unreachable` 3.
+- `docs/divergence_triage.json`: the XSHG "unpublished" verdict for 2027 is removed. The State Council published the 2027 schedule on 2026-11-05 and the registry's 18 closures cite it (`contradicted_by`); the stale verdict had `docs/DIVERGENCE.md` count 16 of them as predictions.
+- `tests/test_cairo_holidays.py`: the class-scoped fixture is a `classmethod` (pytest 10 removes the instance-method form).
+
+### Changed
+- `docs/phase-4d-backlog.md` is renamed `docs/phase-4f-schema-backlog.md` and opens with the post-4c roadmap (4d, 4d2, 4b-lite, 4e, 4f, 4g, 4b full, 5, 6, with 4h interleaved). The old path keeps a pointer because the v2.28.0 release claims name it.
+- `tools/check_stale_year_urls.py`: four zse.hr allowlist entries that matched no scanned URL are deleted.
+
 ## [2.28.0] - 2026-11-21
 
 Phase 4c (sessions 4c1-4c13, the 4c-R1 to 4c-R5 rechecks and 4c-final).
@@ -14,7 +32,7 @@ Phase 4c (sessions 4c1-4c13, the 4c-R1 to 4c-R5 rechecks and 4c-final).
 - Divergence: the comparison covers 2010-2029; `docs/DIVERGENCE.md` has a 2010-2029 triage-coverage table (fourth pass, `--output /tmp/divergence_history.json`, also in the weekly workflow), and `tests/test_divergence_classified.py` fails if any disagreement has neither a triage verdict nor a `contradicted_by` entry. Every disagreement 2010-2029 is classified.
 - The reference libraries are pinned and the whole divergence environment is locked (`constraints-divergence.txt`); the tools refuse to run unpinned.
 - `docs/facts.json`: `exchanges_from_2010`, `exchanges_from_2021`, `exchanges_from_2025`, checked in the README by `check_doc_facts.py`.
-- ADR 0013 (close convention: the scheduled end of the closing auction) with its applied and exceptions tables; `docs/phase-4d-backlog.md` with the Phase 4d and Phase 4h items.
+- ADR 0013 (close convention: the scheduled end of the closing auction) with its applied and exceptions tables; `docs/phase-4d-backlog.md` with the Phase 4d and Phase 4h items (renamed `docs/phase-4f-schema-backlog.md` in Phase 4d).
 
 ### Fixed
 - `delayed_open` is honoured in all four wrappers: on a `delayed_open` day the market opens at `delayed_open_time` (exchange-level `is_open`/`status_at` in Python, JavaScript, Go and Rust; registry-level `is_open` in Python and Rust).
@@ -30,7 +48,7 @@ Phase 4c (sessions 4c1-4c13, the 4c-R1 to 4c-R5 rechecks and 4c-final).
 - Backfilled years have `low` confidence, not `medium`.
 
 ### Known limitation
-- Registry-level `is_open` answers "in any session" (pre-market, regular, post-market), not "in regular hours", and it ignores early closes and lunch breaks; the exchange-level call gives regular hours. Splitting the two into separate registry calls is a breaking change, planned in `docs/phase-4d-backlog.md` (Phase 4d).
+- Registry-level `is_open` answers "in any session" (pre-market, regular, post-market), not "in regular hours", and it ignores early closes and lunch breaks; the exchange-level call gives regular hours. Splitting the two into separate registry calls is a breaking change, planned in `docs/phase-4f-schema-backlog.md` (an `in_session` alias in 4d2, the split in 4f).
 
 ## [2.27.0] - 2026-11-10
 

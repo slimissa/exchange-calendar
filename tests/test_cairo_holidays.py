@@ -444,12 +444,16 @@ class TestXCAIThursdayObservance:
     to Thursday, Saturday stays. Never forward to Sunday."""
 
     @pytest.fixture(scope="class")
-    def built_dates(self):
+    @classmethod
+    def built_dates(cls):
+        # A class-scoped fixture is a classmethod that sets its state on cls
+        # (pytest 9 deprecates the instance-method form; pytest 10 removes it).
         root = Path(__file__).resolve().parent.parent
         built = json.loads((root / "calendar.json").read_text())["exchanges"]
         e = next(x for x in built if x["code"] == "XCAI")
-        return {h["date"]: h["name"]
-                for k in ("explicit", "generated") for h in e["holidays"][k]}
+        cls.dates = {h["date"]: h["name"]
+                     for k in ("explicit", "generated") for h in e["holidays"][k]}
+        return cls.dates
 
     def test_friday_sinai_2025_moves_back_to_thursday(self, built_dates):
         """EGX notice: Thursday Apr 24 instead of Friday Apr 25, 2025."""
