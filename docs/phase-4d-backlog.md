@@ -39,6 +39,43 @@ trigger.
   close_times; press; DCV 2014). `regular_hours` has no season, so the
   registry keeps one 09:30-16:00 entry, unconfirmed. (4c10)
 
+- **Weekday-specific sessions.** PSX (XKAR) runs two Friday sessions
+  (09:17-12:00 and 14:32-16:30, post-close 16:35-16:50) against one
+  Monday-Thursday session; `sessions` and `regular_hours` have no weekday.
+  (4c13)
+- **Seasonal (Ramadan) hours.** PSX (XKAR) and the Saudi Exchange (XSAU)
+  publish Ramadan schedules each year; there is no seasonal or dated-range
+  session entry. (4c13)
+- **Half days as early closes.** PSE (XPHS) half days (for example 24 and
+  31 December 2021 under CN-2021-0063) are not modelled; the 2010-2022 PSE
+  schedule history is not built either. (4c12, 4c13)
+- **Dated weekend.** The Saudi weekend moved from Thursday-Friday to
+  Friday-Saturday in 2013; `weekend_days` has no `effective_from`. Needed only
+  if XSAU 2010-2020 is backfilled (Phase 4h). (4c13)
+- **Continuous close (ADR 0013).** See the continuous-close field above:
+  4c13's XSAU (15:00 continuous, 15:10 auction end) and XPHS (14:45 / 14:50)
+  are two more cases.
+- **API: split registry `is_open`** into `is_open` (regular session) and
+  `in_session` (any interval); breaking for Python/Rust, needs a major
+  version and a deprecation period. (4c13, 4c-final)
+- **Registry `is_open` on an ad hoc early-close day.** Python's
+  `CalendarRegistry.is_open` treats any `ad_hoc_closures` row as a full
+  closure, so XBDA 2025-10-01 (ad hoc `early_close` at 13:00) is closed all
+  day; Rust's `Registry::is_open` ignores the early close and returns open at
+  10:00 and 14:00. This blocked aligning JavaScript and Go with the 2.11.0
+  contract in 4c-final (maintainer decision pending). (4c-final)
+
+## Phase 4h (backfill without a reference library)
+
+No reference library covers these, so a 2010-2024 backfill must come from
+the exchange's own archives, by hand. Their `generation_range` starts
+2025-01-01 (README, Known limitations):
+
+- DSMD, XATH, XBAH, XBEY, XBRV, XBSP, XBUL, XCAI, XCAS, XCAY, XCOL, XDFM,
+  XDHA, XGSE, XJKT, XKUW, XMAL, XMUS, XNAI, XNSA, XSTC, XTAD, XTUN (23).
+- XSAU 2010-2020: exchange_calendars starts XSAU in 2021; 2010-2020 also
+  crosses the 2013 weekend change (dated weekend, above).
+
 ## Data leads (no exchange document read yet)
 
 - **XICE pre_market:** the Nasdaq Nordic Market Model row puts the pre-open

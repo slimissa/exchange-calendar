@@ -26,6 +26,9 @@ Derived facts
     exchanges_blocked_total  blocked + none (every exchange BLOCKED.md files)
     sql_files, csv_tsv_files, parquet_files
     test_files_count         files matching tests/test_*_holidays.py
+    exchanges_from_2010      generation_range starts on or before 2010-01-01
+    exchanges_from_2021      generation_range starts after 2010-01-01 and before 2025-01-01
+    exchanges_from_2025      generation_range starts on 2025-01-01 (no backfill)
     tests_total
 
 calendar.json must be current: run tools/build.py first. tests_total comes
@@ -97,12 +100,18 @@ def derive(root: Path = REPO_ROOT, with_tests: bool = True) -> dict:
             raise FactsError(f"{ex.get('code')}: fetcher_status {status!r} not in {STATUSES}")
         counts[status] += 1
 
+    # Exchanges without a generation_range (minimal test trees) are not counted.
+    starts = [ex["generation_range"][0] for ex in exchanges if ex.get("generation_range")]
+
     def n(pattern: str) -> int:
         return len(list(root.glob(pattern)))
 
     facts = {
         "csv_tsv_files": n("*.csv") + n("*.tsv"),
         "exchanges_blocked_total": counts["blocked"] + counts["none"],
+        "exchanges_from_2010": sum(1 for g in starts if g <= "2010-01-01"),
+        "exchanges_from_2021": sum(1 for g in starts if "2010-01-01" < g < "2025-01-01"),
+        "exchanges_from_2025": sum(1 for g in starts if g == "2025-01-01"),
         "exchanges_no_fetcher": counts["none"],
         "exchanges_total": len(exchanges),
         "fetchers_blocked": counts["blocked"],

@@ -86,7 +86,13 @@ XWAR (17:00 from 2026-10-05; GPW WATS Detailed Exchange Trading Rules,
 closing auction 16:50-17:00) and XPRA (16:15 until 2027-01-03; PSE
 Trading-hours.pdf, closing auction 16:10-16:15). Confirmed in 4c9: XLIT (16:00; Nasdaq Baltic
 trading-day structure, closing call 15:59:30-16:00:00 with a random uncross,
-so the scheduled close is 16:00).
+so the scheduled close is 16:00). Confirmed in 4c11-4c13 (value unchanged): XTAL
+and XRIS (16:00; the same Nasdaq Baltic structure; one dated entry from
+2010-01-01, unconfirmed for 2010), XZAG (16:00; ZSE Trading Manual of
+2026-01-14, closing auction 15:55-16:00 with a random end up to 15 seconds
+later) and XKAR (15:30; PSX trading-hours page, Monday-Thursday continuous
+trading to 15:30 and no closing auction; one dated entry from 2010-01-01,
+unconfirmed).
 
 ## Exceptions left in place
 
@@ -98,11 +104,14 @@ so the scheduled close is 16:00).
 | XPRA from 2027-01-04 | 16:55 (unconfirmed, recheck 2027-01-04) | PSE's notice of 2026-07-31 confirms the date and the 17:00 end of day; the phase schedule is an image that could not be read, and 16:55 comes from a press transcription. |
 | XBUD 2010 to 2015-02-26 | 17:05 (unconfirmed) | No BSE trading-parameter document found before the 550/2013 schedule effective 2015-02-27. |
 | XETR last trading day 2010-2024 | 14:00 (exchange_calendars) | 4c8 backfill; the end of continuous trading, not the auction end. No Deutsche Börse final-session notice before 2025 was read. |
+| XLIM | 13:30 (unconfirmed) | No BVL document read; exchange_calendars has 09:00-16:00 with no break and press reports a schedule proposal (4c10). |
+| XSGO early closes 2010-2024 | 13:30 (exchange_calendars) | 4c10 backfill; Bolsa de Santiago's closing-auction schedule for those years was not read (convention difference against the registry's 2025 13:00 early closes). |
 | XWBO last trading day 2017-2024 | 14:15 (exchange_calendars) | 4c8 backfill; the start of the shortened closing auction. The Wiener Börse notices actually seen cover 2018-2024 (corrected in 4c10; this row said 2017-2024) and give the same 14:15 start, so ADR 0013 would give 14:20; 2017 rests on exchange_calendars alone. Not changed. |
 | XNZE abbreviated days 2011-2024 | 12:45 (exchange_calendars) | 4c9 backfill; the end of continuous trading. ADR 0013 would give 13:00 (the convention applied from 2025). exchange_calendars has no 2010 abbreviated days. |
 | XKLS half days 2010-2024 | 12:30 (exchange_calendars) | 4c9 backfill; the end of Trading at Last. Bursa's own half-day notices (e.g. Chinese New Year 2015) give Closing 12:20, so ADR 0013 would give 12:20. |
 | XPHS full day | 15:00 (continuous) | 14:50 Manila from 2022-03-01 (4c13); 2010 entry unchanged, unconfirmed | PSE CN-2022-0009 (effective 1 March 2022): pre-close 14:45-14:50, run-off/trading at last 14:50-15:00 (post_market), recess 12:00-13:00 |
 | XSAU full day | 15:00 | 15:10 Riyadh (4c13), from 2021-01-01, unconfirmed before 2026-11-20 | Saudi Exchange trading cycle and times page (read 2026-11-20; no effective date): market open 10:00-15:00, closing auction 15:00-15:10, trade at last 15:10-15:20 (post_market); close randomised within 30 seconds after 15:10, ignored |
+| XBDA | 16:00 | 16:30 Atlantic (4c11), from 2010-01-01, unconfirmed | BSX trading page: 'Trading Hours are Monday through Friday 9:00 a.m. - 4:30 p.m.'; continuous trading after an 08:30-09:00 price discovery, no closing auction, so the close is the end of continuous trading (press dates the 16:30 close from 2016-09-28; BSX's announcement not read) |
 
 Each exception is also in the exchange's `note`. Exchanges not yet
 rechecked (4c-R4, 4c-R5 and the non-backfilled exchanges) are brought to

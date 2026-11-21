@@ -123,6 +123,9 @@ CLAIMS: list[tuple[str, str, str]] = [
      r"\b" + NUM + r" " + TICK + r"exchange_calendar\.TABLE\*\.csv" + TICK + r" and " + TICK + r"\.tsv" + TICK + r" files"),
     ("csv_tsv_files", "csv_tsv_files", r"\bdialects, " + NUM + r" files"),
     ("test_files_count", "test_files_count", r"\b" + NUM + r" exchange test files\b"),
+    ("exchanges_from_2010", "exchanges_from_2010", r"\b" + NUM + r" exchanges have data from 2010\b"),
+    ("exchanges_from_2021", "exchanges_from_2021", r"\b" + NUM + r" exchange has data from 2021\b"),
+    ("exchanges_from_2025", "exchanges_from_2025", r"\b" + NUM + r" exchanges have data from 2025 only\b"),
     ("parquet_files", "parquet_files",
      r"\b" + NUM + r" " + TICK + r"exchange_calendar\.TABLE\.parquet" + TICK + r" files"),
 ]

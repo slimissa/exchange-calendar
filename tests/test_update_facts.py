@@ -93,7 +93,8 @@ class TestCheck:
         self.write(root)
         assert uf.main(["--root", str(root), "--check"]) == 0
         out = capsys.readouterr().out
-        assert "(12 facts)" in out and "not compared" not in out
+        # 15: + exchanges_from_2010, _2021, _2025 (4c-final)
+        assert "(15 facts)" in out and "not compared" not in out
 
     def test_fails_when_tree_moves(self, tmp_path, capsys):
         root = make_tree(tmp_path)
@@ -127,7 +128,8 @@ class TestCheck:
         p = root / "docs" / "facts.json"
         d = json.loads(p.read_text()); d["tests_total"] = 1; p.write_text(json.dumps(d))
         assert uf.main(["--root", str(root), "--check", "--no-tests"]) == 0
-        assert "(11 facts) (tests_total not compared: --no-tests)" in capsys.readouterr().out
+        # 14: + exchanges_from_2010, _2021, _2025 (4c-final)
+        assert "(14 facts) (tests_total not compared: --no-tests)" in capsys.readouterr().out
 
     def test_with_tests_is_a_no_op_alias(self, tmp_path):
         root = make_tree(tmp_path)
