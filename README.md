@@ -776,12 +776,12 @@ Four wrappers, one contract.
 
 | Language | Package | Source | Import | Tests |
 |----------|---------|--------|--------|------:|
-| Python | `exchange-calendar-registry` | [`wrappers/python`](./wrappers/python) | `from exchange_calendar import CalendarRegistry` | 95 (in the root suite, `tests/test_wrappers.py`) |
-| JavaScript | `exchange-calendar-registry` | [`wrappers/javascript`](./wrappers/javascript) | `require('exchange-calendar-registry')` | 100 |
-| Go | `github.com/slimissa/exchange-calendar/wrappers/go` | [`wrappers/go`](./wrappers/go) | `import exchangecalendar "..."` | 86 declarations |
-| Rust | `exchange-calendar-registry` | [`wrappers/rust`](./wrappers/rust) | `use exchange_calendar::Registry;` | 83 declarations |
+| Python | `exchange-calendar-registry` | [`wrappers/python`](./wrappers/python) | `from exchange_calendar import CalendarRegistry` | 103 declarations (root suite, `tests/test_wrappers.py`) |
+| JavaScript | `exchange-calendar-registry` | [`wrappers/javascript`](./wrappers/javascript) | `require('exchange-calendar-registry')` | 105 declarations |
+| Go | `github.com/slimissa/exchange-calendar/wrappers/go` | [`wrappers/go`](./wrappers/go) | `import exchangecalendar "..."` | 93 declarations |
+| Rust | `exchange-calendar-registry` | [`wrappers/rust`](./wrappers/rust) | `use exchange_calendar::Registry;` | 89 declarations |
 
-None is published ([Section 4](#4-quick-start)). The JavaScript and Python counts come from running the suites; Go and Rust are static counts of `func Test` and `#[test]`, because the audit environment had no `go` or `cargo`. The Python wrapper bundles `calendar.json` (`make package` keeps it current).
+None is published ([Section 4](#4-quick-start)). The counts are test declarations, counted statically the same way for all four (`def test_`, `test(`/`it(`, `func Test`, `#[test]`) by `tools/wrapper_test_counts.py`, which the CI and the local gate run with `--check`; parametrized cases, Go subtests and Rust doctests make the number of tests run larger. CI runs every suite. The Python wrapper bundles `calendar.json` (`make package` keeps it current).
 
 ### One API, four spellings
 
