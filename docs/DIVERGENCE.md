@@ -481,7 +481,7 @@ Source: https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto
 
 ### XBUE: Library error (4, registry verified, no change)
 
-BYMA's 2026 trading calendar lists Monday 15 June (Guemes, moved back from Wednesday 17 June by Ley 27.399 art. 6) and Monday 9 and Tuesday 10 November (papal visit, Decree 1103/26) as days without trading, and does not list 17 June. exchange_calendars and pandas_market_calendars close 17 June and trade on 15 June, 9 and 10 November. The registry follows BYMA (15 June, 9 and 10 November closed; 17 June open). The registry's closures of 15 June, 9 and 10 November 2026 were added in 2.23.9.
+BYMA's 2026 trading calendar lists Monday 15 June (Guemes, moved back from Wednesday 17 June by Ley 27.399 art. 6; reference 2, a holiday) and Monday 9 and Tuesday 10 November ('Visita de Su Santidad el Papa León XIV', reference 5: 'Fecha con el criterio dispuesto en el Decreto 1103/26'; the decree makes 9 November a national holiday and 10 November a holiday in the City of Buenos Aires, where BYMA operates, and Córdoba), and does not list 17 June. The page's own words for 9 and 10 November are reference 5, not 'sin negociación' (4d2). exchange_calendars and pandas_market_calendars close 17 June and trade on 15 June, 9 and 10 November. The registry follows BYMA (15 June, 9 and 10 November closed; 17 June open). The registry's closures of 15 June, 9 and 10 November 2026 were added in 2.23.9.
 
 Dates: 2026-06-15, 2026-06-17, 2026-11-09, 2026-11-10.
 

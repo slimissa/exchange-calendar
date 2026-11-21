@@ -334,6 +334,10 @@ class TestXNZEStructure:
         closes at 13:00 (ADR 0013 convention; NZX's own notices give 'closing
         at 1.30pm', the session end). 4c10: 2026-2029 are predicted early
         closes at 13:00 (NZX's 2025/2027 memo attachment could not be read).
+        4d2: the memo (read from the maintainer's copy) gives 24 and 31
+        December 2026 as Abbreviated Trading, so they are no longer
+        predicted; it stops at 4 January 2027, so every later 2027 row is
+        predicted, closures included.
         The 2011-2024 backfill keeps exchange_calendars' 12:45. The old test
         asserted there were none."""
         early = {d: e["early_close_time"] for d, e in explicit_dates.items()
@@ -345,7 +349,9 @@ class TestXNZEStructure:
             "2028-12-22": "13:00", "2028-12-29": "13:00",
             "2029-12-24": "13:00", "2029-12-31": "13:00"}
         predicted = sorted(d for d, e in explicit_dates.items() if e.get("predicted"))
-        assert predicted == ["2026-12-24", "2026-12-31", "2027-12-24", "2027-12-31",
+        assert predicted == ["2027-02-08", "2027-03-26", "2027-03-29", "2027-04-26",
+                             "2027-06-07", "2027-06-25", "2027-10-25", "2027-12-24",
+                             "2027-12-27", "2027-12-28", "2027-12-31",
                              "2028-12-22", "2028-12-29", "2029-12-24", "2029-12-31"]
         for d in predicted:
             assert explicit_dates[d]["name"].endswith("(predicted)")
@@ -370,11 +376,17 @@ class TestXNZEStructure:
         for entry in explicit_dates.values():
             if entry["date"] < "2025":
                 continue  # 4c9 backfill cites exchange_calendars
-            if entry.get("predicted"):
+            if entry.get("predicted") and entry["status"] == "early_close":
                 # 4c10: dates as in exchange_calendars, time per ADR 0013.
                 assert entry["source_url"] == "https://github.com/gerrymanoim/exchange_calendars"
                 continue
-            if entry["name"] == "Matariki" and entry["date"] >= "2027":
+            if entry["date"] in ("2026-12-24", "2026-12-31"):
+                # 4d2: confirmed by NZX's 2025/2027 holiday memo.
+                assert entry["source_url"] == "https://www.nzx.com/announcements/463713"
+                continue
+            # 4d2: the 2027 closures after the memo's last row are predicted but
+            # keep the source of their dates (NZX's calendar, the Matariki Act).
+            if entry["name"].removesuffix(" (predicted)") == "Matariki" and entry["date"] >= "2027":
                 # The dates come from the Matariki Public Holiday Act 2022.
                 assert entry["source_url"].startswith("https://")
             else:
@@ -436,8 +448,10 @@ class TestMatarikiFutureYears:
 
     @pytest.mark.parametrize("year,day", sorted(DATES.items()))
     def test_matariki_date(self, explicit_dates, year, day):
+        # 2027's row is "Matariki (predicted)" since 4d2: the date is fixed by the
+        # Act, but NZX's holiday memo for 2027 is not published yet.
         hits = [d for d, e in explicit_dates.items()
-                if d.startswith(str(year)) and e["name"] == "Matariki"]
+                if d.startswith(str(year)) and e["name"].removesuffix(" (predicted)") == "Matariki"]
         assert hits == [day]
         assert date.fromisoformat(day).weekday() == 4
 
