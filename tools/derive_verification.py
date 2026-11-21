@@ -73,6 +73,9 @@ class DeriveError(Exception):
     pass
 
 
+# Authored verification keys that a rewrite keeps as they are.
+AUTHORED_KEYS = ("coverage", "hours")
+
 def reference_libraries(text: str, expected_codes: set[str]) -> dict[str, tuple[str, ...]]:
     """Exchanges with at least one reference library -> the libraries."""
     start = text.find("## Summary")
@@ -207,9 +210,12 @@ def main(argv: list[str] | None = None) -> int:
             if not same:
                 drift.append(d["code"])
             if not args.check:
-                if isinstance(old, dict) and "coverage" in old:
-                    # coverage is authored, not derived: keep it on rewrite.
-                    new = {**new, "coverage": old["coverage"]}
+                if isinstance(old, dict):
+                    # coverage and hours (schema 2.3.0, ADR 0014) are authored,
+                    # not derived: keep them on rewrite.
+                    for key in AUTHORED_KEYS:
+                        if key in old:
+                            new = {**new, key: old[key]}
                 d["verification"] = new
                 f.write_text(json.dumps(d, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
                              encoding="utf-8")

@@ -407,6 +407,15 @@ lists a reference library for the exchange (the 50 with at least one):
 - `last_checked` is `YYYY-MM-DD`, the date the class was derived.
 - `reference_note` is a sentence naming the input: the reference libraries, or
   the `BLOCKED.md` verdict, or the fetcher.
+- `hours` (optional, authored; schema 2.3.0, ADR 0014) is the evidence for
+  `regular_hours`: one item per entry (`effective_from` = the entry's, or
+  `generation_range[0]` for a single object), repeating `open`/`close`, with
+  `segment`, `close_rule` (`closing_auction_end` or `continuous_end`),
+  `source_url`, `source_title`, `checked_on`, `status` (`verified` only on the
+  exchange's own document or page; else `unconfirmed`, which requires a
+  `recheck_date` no more than 92 days after `last_checked`) and an optional
+  `note`. `tools/check_verification.py` check 6 tests it, non-blocking until
+  the end of Phase 4b-lite; `tools/derive_verification.py` keeps it on rewrite.
 - `coverage` (optional, authored) says which sources back which date ranges.
   `tools/check_verification.py` checks that its spans tile `generation_range`
   exactly, that a span holding predicted entries or dates triaged `unpublished`

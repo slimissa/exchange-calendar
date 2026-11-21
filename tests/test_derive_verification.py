@@ -86,3 +86,44 @@ def test_without_all_an_undrifted_file_keeps_its_date(tmp_path):
 def test_all_and_check_exclude_each_other(tmp_path):
     root = _tree(tmp_path)
     assert dv.main(["--root", str(root), "--all", "--check"]) == 2
+
+
+HOURS = [{
+    "effective_from": "2010-01-01", "open": "09:30", "close": "16:00",
+    "segment": "TSX equities, continuous trading", "close_rule": "closing_auction_end",
+    "source_url": "https://example.org/hours", "source_title": "Trading hours",
+    "checked_on": "2026-11-21", "status": "unconfirmed", "recheck_date": "2026-12-22",
+}]
+
+
+def test_hours_survive_a_drift_rewrite(tmp_path):
+    """verification.hours (schema 2.3.0, ADR 0014) is authored: a rewrite forced
+    by class drift keeps it, next to coverage."""
+    root = _tree(tmp_path)
+    path = root / "exchanges" / "XTSE.json"
+    data = _load(root, "XTSE")
+    right_class = data["verification"]["class"]
+    data["verification"]["class"] = "single_source"  # force drift
+    data["verification"]["coverage"] = COVERAGE
+    data["verification"]["hours"] = HOURS
+    path.write_text(json.dumps(data, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+                    encoding="utf-8")
+
+    assert dv.main(["--root", str(root), "--date", "2026-11-21"]) == 0
+
+    after = _load(root, "XTSE")["verification"]
+    assert after["class"] == right_class
+    assert after["hours"] == HOURS
+    assert after["coverage"] == COVERAGE
+
+
+def test_hours_survive_all(tmp_path):
+    root = _tree(tmp_path)
+    path = root / "exchanges" / "XTSE.json"
+    data = _load(root, "XTSE")
+    data["verification"]["hours"] = HOURS
+    path.write_text(json.dumps(data, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+                    encoding="utf-8")
+    assert dv.main(["--root", str(root), "--all", "--date", "2026-11-21"]) == 0
+    assert _load(root, "XTSE")["verification"]["hours"] == HOURS
+    assert dv.main(["--root", str(root), "--check"]) == 0

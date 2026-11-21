@@ -15,6 +15,18 @@ Usage:
     python3 tools/check_release_claims.py 1.6.5 --list
     python3 tools/check_release_claims.py 1.6.5 --json
 
+Claims are a snapshot, not a permanent check on the tree
+---------------------------------------------------------
+Each version's claims record what that release shipped. scripts/release.sh
+checks them for the version being released, at release time. Later work may
+legitimately break an older release's claims (a schema bump changes
+schema.json's "version"; a renamed file moves), so many older versions fail
+on today's tree, and that is expected. Do not run an already released
+version's claims in the per-commit gate, and do not edit released claims to
+make them pass: the gate runs only the claims of the next, unreleased
+version. (Decided in session 4b1, after a brief asked the gate to keep
+v2.28.0's claims passing across the schema 2.3.0 bump.)
+
 Exit codes:
     0  all claims verified
     1  at least one claim failed

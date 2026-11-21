@@ -126,6 +126,8 @@ CLAIMS: list[tuple[str, str, str]] = [
     ("exchanges_from_2010", "exchanges_from_2010", r"\b" + NUM + r" exchanges have data from 2010\b"),
     ("exchanges_from_2021", "exchanges_from_2021", r"\b" + NUM + r" exchange has data from 2021\b"),
     ("exchanges_from_2025", "exchanges_from_2025", r"\b" + NUM + r" exchanges have data from 2025 only\b"),
+    ("exchanges_hours_verified", "exchanges_hours_verified",
+     r"verified against the exchange's own document \(ADR 0014\): " + NUM + r" of\b"),
     ("parquet_files", "parquet_files",
      r"\b" + NUM + r" " + TICK + r"exchange_calendar\.TABLE\.parquet" + TICK + r" files"),
 ]

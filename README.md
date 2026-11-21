@@ -8,7 +8,7 @@ One JSON file per exchange is the source of truth. Everything else — `calendar
 [![Update](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/update-exchange.yml)
 [![Divergence](https://github.com/slimissa/exchange-calendar/actions/workflows/divergence.yml/badge.svg)](https://github.com/slimissa/exchange-calendar/actions/workflows/divergence.yml)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Schema Version](https://img.shields.io/badge/schema-2.2.3-green.svg)](./schema.json)
+[![Schema Version](https://img.shields.io/badge/schema-2.3.0-green.svg)](./schema.json)
 [![Registry Version](https://img.shields.io/badge/registry-2.28.0-orange.svg)](./CHANGELOG.md)
 [![Tests](https://img.shields.io/badge/tests-5625-green.svg)](./tests/)
 [![Exchanges](https://img.shields.io/badge/exchanges-74-blue.svg)](./exchanges/)
@@ -68,7 +68,7 @@ Every number below comes from a one-line command in the audit that accompanies t
 | **Wrappers** | 4: Python, JavaScript, Go, Rust. One shared fixture of 24 queries. |
 | **Tests** | 5,625 in the root suite (includes the 95 Python wrapper tests); JavaScript 100 more; Go 86 and Rust 83 declarations, counted statically |
 | **Release gate** | 18 local checks in `scripts/release.sh`, plus 3 static preflight checks |
-| **Version** | 2.23.13 (schema 2.2.3) |
+| **Version** | 2.23.13 (schema 2.3.0) |
 | **Sources** | Many: each exchange's own publication, one primary per exchange. This is a many-source registry, not a one-source registry like the ISO family. |
 | **Runtime dependencies** | None. The JSON is the contract. Tool time: `jsonschema`, `pyarrow`, `sqlglot`, and the fetchers' own libraries. |
 | **License** | Apache 2.0 |
@@ -356,7 +356,7 @@ Counts are over the 74 exchange files. No top-level field is `null` in any file.
 
 **`confidence[year].level`**: `medium` (560) and `high` (4). **`.source`**: `manual` (560) and `fetcher` (4).
 
-The field-level schema is [`schema.json`](./schema.json) (schema 2.2.3), documented in [`docs/exchange_schema.md`](./docs/exchange_schema.md). Design decisions are in [`docs/decisions/`](./docs/decisions).
+The field-level schema is [`schema.json`](./schema.json) (schema 2.3.0), documented in [`docs/exchange_schema.md`](./docs/exchange_schema.md). Design decisions are in [`docs/decisions/`](./docs/decisions).
 
 ---
 
@@ -922,7 +922,7 @@ One registry version, the Semantic Versioning of the **data** and tooling togeth
 
 That is eight kinds of site, thirteen files. **There is no single consistency script**: the CI `version-consistency` job checks `VERSION` against the CHANGELOG, the README badge and `build.py` output; the others are checked by the tool that writes them. The wrapper package versions (`wrappers/javascript/package.json` is `1.0.0`) do **not** track the registry version. Go has no version site; the version is the git tag.
 
-**Schema axis:** `schema.json` `version` (2.2.3), shown in the schema badge. It moves separately: a schema change bumps it without moving the registry axis alone, and CI and tooling changes do not bump the registry version by rule 8 of [`RELEASE_PATTERN.md`](./RELEASE_PATTERN.md).
+**Schema axis:** `schema.json` `version` (2.3.0), shown in the schema badge. It moves separately: a schema change bumps it without moving the registry axis alone, and CI and tooling changes do not bump the registry version by rule 8 of [`RELEASE_PATTERN.md`](./RELEASE_PATTERN.md).
 
 **Semantic Versioning:** major for breaking schema changes, minor for new exchanges, new optional fields or new exports, patch for data corrections. Release notes are in [`CHANGELOG.md`](./CHANGELOG.md).
 
@@ -1083,6 +1083,7 @@ Stated plainly, because a calendar is a claim and a claim needs its edges drawn.
 - **`confidence` is coarse.** 560 of 564 rows are `medium` / `manual` with `last_verified` null; 4 are `high` / `fetcher`. It does not say which dates are verified.
 - **The 2010-2024 backfills come from `exchange_calendars`** (1990-2023 for XNYS, XNAS, XLON, XASX, XHKG; 1997-2023 for XTKS) and are not independently verified, except the dates each exchange's note lists as corrected against its own documents. Every disagreement with the libraries in 2010-2029 is classified in [`docs/DIVERGENCE.md`](./docs/DIVERGENCE.md) (triage verdict or `contradicted_by`); agreement there is still agreement with a library.
 - **Coverage is uneven in time.** 50 exchanges have data from 2010 (six of them from 1990 or 1997); 1 exchange has data from 2021 (XSAU: `exchange_calendars` starts it in 2021; 2010-2020 is Phase 4h); 23 exchanges have data from 2025 only, with no reference library to compare them against: DSMD, XATH, XBAH, XBEY, XBRV, XBSP, XBUL, XCAI, XCAS, XCAY, XCOL, XDFM, XDHA, XGSE, XJKT, XKUW, XMAL, XMUS, XNAI, XNSA, XSTC, XTAD, XTUN (Phase 4h; [`docs/phase-4f-schema-backlog.md`](./docs/phase-4f-schema-backlog.md)). `generation_range` ends 2029-12-31; outside it the registry does not answer.
+- **Regular hours are mostly unverified.** Regular hours in force today, verified against the exchange's own document (ADR 0014): 0 of 74 exchanges. The rest were entered by hand; `is_open` and `in_session` are only as good as them. Evidence lives in `verification.hours` (schema 2.3.0) and `tools/check_verification.py` reports it as check 6, non-blocking until the end of Phase 4b-lite, when it becomes blocking for every `reference_compared` exchange.
 - **The registry is a snapshot, not a history.** Holidays are not versioned per release; replaying a past state means checking out a tag.
 - **5 fetchers do not run in CI as reliable checks:** XHKG, XNSA and XSHG are CI-unreachable; XKUW and XSAU are blocked (HTTP 403 on 2026-09-17).
 - **29 exchanges are blocked** or have no fetcher ([`BLOCKED.md`](./BLOCKED.md)): 7 JS-rendered, 14 bot-walled, 3 PDF-grid, 5 dead-source, none behind a closed API. Of these, 7 were probed with the render fetcher (see [`BLOCKED.md`](./BLOCKED.md) for the per-exchange result); an eighth probe, XSWX, was resolved by it and is no longer blocked. Findings are dated snapshots, not permanent facts.

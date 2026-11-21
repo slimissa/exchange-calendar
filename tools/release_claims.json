@@ -1893,6 +1893,13 @@
     {"file": "wrappers/javascript/src/index.d.ts", "contains": "inSession(mic: string, date: string, time: string): boolean;"},
     {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xnys_pre_market\""},
     {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xbda_adhoc_early_close_after\""},
-    {"file": "tools/cross_lang/check_in_session_twins.py"}
+    {"file": "tools/cross_lang/check_in_session_twins.py"},
+    {"file": "schema.json", "contains": "\"version\": \"2.3.0\""},
+    {"file": "schema.json", "contains": "\"close_rule\": {"},
+    {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "# ADR 0014"},
+    {"file": "tools/check_verification.py", "contains": "def hours_problems(d: dict) -> list[str]:"},
+    {"file": "tools/check_verification.py", "contains": "hours evidence: {n} of {total} ({m} of {total_rc} reference_compared)"},
+    {"file": "tools/derive_verification.py", "contains": "AUTHORED_KEYS = (\"coverage\", \"hours\")"},
+    {"file": "docs/facts.json", "contains": "\"exchanges_hours_verified\""}
   ]
 }

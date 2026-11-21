@@ -725,6 +725,89 @@
           ],
           "type": "object"
         },
+        "hours": {
+          "description": "Evidence for regular_hours (schema 2.3.0, ADR 0014). Optional and authored, not derived: tools/derive_verification.py keeps it on rewrite. One item per regular_hours entry: effective_from is the entry's effective_from, or generation_range[0] when regular_hours is a single object; open and close repeat the entry's hours. verified means the exchange's own document or page gives them (never press, a broker or a reference library); unconfirmed items carry a recheck_date. tools/check_verification.py check 6 tests it.",
+          "items": {
+            "additionalProperties": false,
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "unconfirmed"
+                }
+              }
+            },
+            "properties": {
+              "checked_on": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "type": "string"
+              },
+              "close": {
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+                "type": "string"
+              },
+              "close_rule": {
+                "description": "ADR 0013/0014: closing_auction_end where the segment has a closing auction, else continuous_end.",
+                "enum": [
+                  "closing_auction_end",
+                  "continuous_end"
+                ]
+              },
+              "effective_from": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "type": "string"
+              },
+              "note": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "open": {
+                "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$",
+                "type": "string"
+              },
+              "recheck_date": {
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "type": "string"
+              },
+              "segment": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "source_title": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "source_url": {
+                "format": "uri",
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "verified",
+                  "unconfirmed"
+                ]
+              }
+            },
+            "required": [
+              "effective_from",
+              "open",
+              "close",
+              "segment",
+              "close_rule",
+              "source_url",
+              "source_title",
+              "checked_on",
+              "status"
+            ],
+            "then": {
+              "required": [
+                "recheck_date"
+              ]
+            },
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
         "last_checked": {
           "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
           "type": "string"
@@ -760,5 +843,5 @@
   ],
   "title": "Exchange Calendar Entry",
   "type": "object",
-  "version": "2.2.3"
+  "version": "2.3.0"
 }

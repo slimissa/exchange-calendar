@@ -8,7 +8,7 @@ verification audit; the schema and API items below go to 4f (schema v3).
 
 - **4d**: audit `verification` against Phase 4c; coverage spans checkable; housekeeping.
 - **4d2**: `in_session` alias in the four wrappers; the `is_open` 3.0.0 meaning change documented (no run-time warning, for parity and to spare per-minute callers).
-- **4b-lite**: current regular hours verified against each exchange's own page (ADR 0013), evidence in `verification.hours`.
+- **4b-lite**: current regular hours verified against each exchange's own page (ADR 0013, ADR 0014), evidence in `verification.hours` (schema 2.3.0, since 4b1). `check_verification.py` check 6 reports it non-blocking during 4b-lite and **turns blocking for every `reference_compared` exchange at the end of 4b-lite**.
 - **4e**: predictions.
 - **4f**: schema v3 / API (major 3.0.0); this file's "Schema and tooling" items.
 - **4g**: consumer alignment (QLF, DeBou) and a CLI.

@@ -40,6 +40,16 @@ Checks, for every exchanges/*.json:
      Coverage findings fail the tool (blocking since session 4d.1; Phase 4d
      added them as warnings while 13 exchanges failed). --strict-coverage is
      still accepted and has no further effect.
+  6. hours evidence (exchanges that have verification.hours; schema 2.3.0,
+     ADR 0014): one item per regular_hours entry (effective_from = the
+     entry's effective_from, or generation_range[0] for a single object), no
+     item without an entry, the item's open/close equal to the entry's, and
+     an `unconfirmed` item carries a recheck_date at most RECHECK_CAP_DAYS
+     (92) after verification.last_checked. Reported as "hours evidence: N of
+     74 (M of 48 reference_compared)", N being the exchanges whose evidence
+     passes. NON-BLOCKING in Phase 4b-lite (findings print as "WARNING hours:";
+     --strict-hours fails on them); it becomes blocking for every
+     reference_compared exchange at the end of 4b-lite (ADR 0014).
 --date YYYY-MM-DD additionally requires last_checked to be exactly that date.
 A date fixed in the tool would fail on the first regeneration after it, so
 the default is the consistency rules above.
@@ -63,6 +73,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import derive_verification as dv  # noqa: E402
+import regular_hours as rh  # noqa: E402
 
 # (fetcher_status, has reference library) -> (class, basis); None matches any
 EXPECTED = (
@@ -289,6 +300,98 @@ def check(root: Path, want_date: str | None = None) -> tuple[list[str], Counter,
     return problems, counts, coverage
 
 
+def hours_entries(d: dict) -> list[tuple[str, dict]]:
+    """[(effective_from the evidence must name, entry)] for regular_hours.
+
+    A single object is backed by one item dated generation_range[0]."""
+    rh_value = d.get("regular_hours")
+    if isinstance(rh_value, list):
+        return [(e.get("effective_from"), e) for e in rh.history(rh_value)]
+    if isinstance(rh_value, dict):
+        return [((d.get("generation_range") or [None])[0], rh_value)]
+    return []
+
+
+def hours_problems(d: dict) -> list[str]:
+    """Check 6 for one exchange; [] when it has no verification.hours or the
+    evidence is complete and consistent."""
+    v = d.get("verification") or {}
+    items = v.get("hours")
+    if items is None:
+        return []
+    code = d.get("code", "?")
+    if not isinstance(items, list) or not items:
+        return [f"{code}: verification.hours is not a non-empty list"]
+    out: list[str] = []
+    checked = _day(v.get("last_checked"))
+    by_date: dict = {}
+    for item in items:
+        key = item.get("effective_from")
+        if key in by_date:
+            out.append(f"{code}: two hours items for effective_from {key}")
+        by_date[key] = item
+    entries = hours_entries(d)
+    wanted = {k for k, _ in entries}
+    for key, entry in entries:
+        item = by_date.get(key)
+        if item is None:
+            out.append(f"{code}: regular_hours entry from {key} "
+                       f"({entry.get('open')}-{entry.get('close')}) has no hours evidence")
+            continue
+        if (item.get("open"), item.get("close")) != (entry.get("open"), entry.get("close")):
+            out.append(f"{code}: hours evidence from {key} says {item.get('open')}-{item.get('close')}, "
+                       f"regular_hours says {entry.get('open')}-{entry.get('close')}")
+        if item.get("status") == "unconfirmed":
+            recheck = _day(item.get("recheck_date"))
+            if recheck is None:
+                out.append(f"{code}: unconfirmed hours evidence from {key} has no recheck_date")
+            elif checked is None or (recheck - checked).days > RECHECK_CAP_DAYS:
+                out.append(f"{code}: hours evidence from {key}: recheck_date {item.get('recheck_date')} "
+                           f"is more than {RECHECK_CAP_DAYS} days after last_checked {v.get('last_checked')}")
+        elif item.get("status") != "verified":
+            out.append(f"{code}: hours evidence from {key} has status {item.get('status')!r}")
+    for key in by_date:
+        if key not in wanted:
+            out.append(f"{code}: hours evidence from {key} backs no regular_hours entry")
+    return out
+
+
+def current_hours_verified(d: dict) -> bool:
+    """True when the regular_hours entry in force on last_checked has
+    verified evidence (docs/facts.json exchanges_hours_verified)."""
+    v = d.get("verification") or {}
+    items = v.get("hours")
+    if not isinstance(items, list) or hours_problems(d):
+        return False
+    day = v.get("last_checked") or date.today().isoformat()
+    entries = hours_entries(d)
+    in_force = entries[0][0]
+    for key, _ in entries:
+        if key is not None and key <= day:
+            in_force = key
+    return any(i.get("effective_from") == in_force and i.get("status") == "verified" for i in items)
+
+
+def hours_report(root: Path) -> tuple[list[str], int, int, int, int]:
+    """(findings, N passing, M passing among reference_compared, total, total
+    reference_compared) for check 6."""
+    findings: list[str] = []
+    n = m = total = total_rc = 0
+    for f in sorted((root / "exchanges").glob("*.json")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        total += 1
+        rc = (d.get("verification") or {}).get("class") == "reference_compared"
+        total_rc += rc
+        if (d.get("verification") or {}).get("hours") is None:
+            continue
+        found = hours_problems(d)
+        findings += found
+        if not found:
+            n += 1
+            m += rc
+    return findings, n, m, total, total_rc
+
+
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     p.add_argument("--root", type=Path, default=REPO_ROOT)
@@ -296,6 +399,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--date", default=None, help="require last_checked to be this date")
     p.add_argument("--strict-coverage", action="store_true",
                    help="accepted for compatibility; coverage findings block by default (4d.1)")
+    p.add_argument("--strict-hours", action="store_true",
+                   help="fail on hours-evidence findings (check 6; non-blocking in 4b-lite)")
     args = p.parse_args(argv)
     try:
         problems, counts, coverage = check(args.root, args.date)
@@ -305,6 +410,14 @@ def main(argv: list[str] | None = None) -> int:
     summary = ", ".join(f"{c} {counts[c]}" for c in CLASSES)
     if coverage:
         problems = problems + [f"coverage: {line}" for line in coverage]
+    hours, n, m, total, total_rc = hours_report(args.root)
+    tag = "" if args.strict_hours else "WARNING "
+    for line in hours:
+        print(f"{tag}hours: {line}")
+    print(f"hours evidence: {n} of {total} ({m} of {total_rc} reference_compared)"
+          + ("" if args.strict_hours else "; non-blocking until the end of Phase 4b-lite"))
+    if args.strict_hours:
+        problems = problems + [f"hours: {line}" for line in hours]
     if problems:
         for line in problems:
             print(line)
