@@ -52,6 +52,12 @@
     {"op": "is_open", "args": ["XNYS", "2025-11-26", "17:00"], "label": "is_open_xnys_post_market"},
     {"op": "in_session", "args": ["XNYS", "2025-11-26", "17:00"], "label": "in_session_xnys_post_market"},
     {"op": "is_open", "args": ["XKUW", "2025-06-02", "12:45"], "label": "is_open_xkuw_lunch_after_regular"},
-    {"op": "in_session", "args": ["XKUW", "2025-06-02", "12:45"], "label": "in_session_xkuw_lunch_after_regular"}
+    {"op": "in_session", "args": ["XKUW", "2025-06-02", "12:45"], "label": "in_session_xkuw_lunch_after_regular"},
+    {"op": "is_open", "args": ["XBUE", "2026-11-04", "10:45"], "label": "is_open_xbue_2026_11_04_1045"},
+    {"op": "in_session", "args": ["XBUE", "2026-11-04", "10:45"], "label": "in_session_xbue_2026_11_04_1045"},
+    {"op": "is_open", "args": ["XBUE", "2026-11-04", "17:30"], "label": "is_open_xbue_2026_11_04_1730"},
+    {"op": "in_session", "args": ["XBUE", "2026-11-04", "17:30"], "label": "in_session_xbue_2026_11_04_1730"},
+    {"op": "is_open", "args": ["XBUE", "2026-10-14", "10:45"], "label": "is_open_xbue_2026_10_14_1045"},
+    {"op": "in_session", "args": ["XBUE", "2026-10-14", "10:45"], "label": "in_session_xbue_2026_10_14_1045"}
   ]
 }

@@ -106,6 +106,7 @@ At the end of Phase 4b-lite check 6 becomes blocking for every
 
 ## Applied (filled as 4b-lite proceeds)
 
-None yet: rows are added here as exchanges get `verification.hours`,
-with the columns Exchange, Entry, Hours, Segment, Close rule, Status,
-Source.
+| Exchange | Entry | Hours | Segment | Close rule | Status | Source |
+|----------|-------|-------|---------|------------|--------|--------|
+| XBUE | from 2010-01-01 | 11:00-17:00 | Renta Variable, standard settlement (period names not checked) | continuous_end | unconfirmed (recheck 2026-12-22) | No BYMA document read. Lead: La Nación, 18 July 2025, a 10:30 open from 2025-07-28; settled by BYMA's July 2025 hours communiqué |
+| XBUE | from 2026-11-02 | 10:30-18:00 | Negociación Regular con modalidad de cierre VWAP Renta Variable - Contado 24 hs. | continuous_end (VWAP close, no equity closing auction) | verified | BYMA Comunicado Nº 19031, 28 October 2026, in force 2 November 2026 (supersedes 19024); BYMA Clearing's Cronograma diario v1.10 agrees on the 10:30 open |

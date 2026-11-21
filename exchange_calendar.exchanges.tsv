@@ -13,7 +13,7 @@ XBRU	Euronext Brussels	XBRU	BE	Europe/Brussels	5	6	09:00	17:35	2010-01-01	2029-1
 XBRV	BRVM (West Africa Regional Stock Exchange)	XBRV	CI	Africa/Abidjan	5	6	09:00	14:00	2025-01-01	2029-12-31
 XBSP	B3 (São Paulo Stock Exchange)	XBSP	BR	America/Sao_Paulo	5	6	10:00	17:00	2025-01-01	2029-12-31
 XBUD	Budapest Stock Exchange	XBUD	HU	Europe/Budapest	5	6	09:00	17:05	2010-01-01	2029-12-31
-XBUE	Buenos Aires Stock Exchange	XBUE	AR	America/Argentina/Buenos_Aires	5	6	11:00	17:00	2010-01-01	2029-12-31
+XBUE	Buenos Aires Stock Exchange	XBUE	AR	America/Argentina/Buenos_Aires	5	6	10:30	18:00	2010-01-01	2029-12-31
 XBUL	Bulgarian Stock Exchange	XBUL	BG	Europe/Sofia	5	6	09:30	14:00	2025-01-01	2029-12-31
 XCAI	Egyptian Exchange	XCAI	EG	Africa/Cairo	4	5	10:00	14:30	2025-01-01	2029-07-24
 XCAS	Casablanca Stock Exchange	XCAS	MA	Africa/Casablanca	5	6	09:30	15:30	2025-01-01	2029-12-31

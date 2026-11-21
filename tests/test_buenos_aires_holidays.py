@@ -63,8 +63,11 @@ class TestXBUEProperties:
         assert xbue["timezone"] == "America/Argentina/Buenos_Aires"
 
     def test_regular_hours(self, xbue):
-        assert xbue["regular_hours"]["open"] == "11:00"
-        assert xbue["regular_hours"]["close"] == "17:00"
+        # 4b1: a dated list. The 2010 entry keeps 11:00-17:00 (unconfirmed);
+        # BYMA Comunicado 19031 gives 10:30-18:00 from 2026-11-02.
+        first, current = xbue["regular_hours"][0], xbue["regular_hours"][-1]
+        assert (first["effective_from"], first["open"], first["close"]) == ("2010-01-01", "11:00", "17:00")
+        assert (current["effective_from"], current["open"], current["close"]) == ("2026-11-02", "10:30", "18:00")
 
     def test_no_lunch_break(self, xbue):
         lunch = [s for s in xbue.get("sessions", []) if s.get("type") == "lunch_break"]
@@ -482,3 +485,40 @@ class TestBymaCalendar2025And2026:
             "2025-01-01", "2025-03-03", "2025-03-04", "2025-03-24", "2025-04-02",
             "2025-04-18", "2025-05-01", "2025-06-16", "2025-06-20", "2025-07-09",
             "2025-11-24", "2025-12-08", "2025-12-25", "2025-12-31"}
+
+
+class TestXBUERegularHours:
+    """4b1 (ADR 0014): XBUE's regular hours are a dated list. From 2026-11-02,
+    10:30-18:00, verified by BYMA Comunicado 19031 (equities, Contado 24 hs,
+    VWAP close, so the close is the end of continuous trading). Before, the
+    11:00-17:00 the file held is unconfirmed: no BYMA document was read, and
+    press dates a 10:30 open from 2025-07-28 (a lead, not a source)."""
+
+    def test_regular_hours_dated_list(self, xbue):
+        assert xbue["regular_hours"] == [
+            {"effective_from": "2010-01-01", "open": "11:00", "close": "17:00"},
+            {"effective_from": "2026-11-02", "open": "10:30", "close": "18:00"},
+        ]
+        assert xbue["sessions"] == [{"close": "18:00", "open": "10:30", "type": "regular"}]
+
+    def test_hours_evidence(self, xbue):
+        items = {i["effective_from"]: i for i in xbue["verification"]["hours"]}
+        assert set(items) == {"2010-01-01", "2026-11-02"}
+        old, new = items["2010-01-01"], items["2026-11-02"]
+        assert (old["status"], old["recheck_date"]) == ("unconfirmed", "2026-12-22")
+        assert "La Nación" in old["note"] and "2025-07-28" in old["note"]
+        assert new["status"] == "verified" and new["close_rule"] == "continuous_end"
+        assert "Comunicado Nº 19031" in new["source_title"]
+        assert "10:30 hs. a 18:00 hs." in new["note"]
+
+    def test_wrapper_answers(self):
+        import sys
+        sys.path.insert(0, str(Path(__file__).parent.parent / "wrappers" / "python"))
+        from exchange_calendar import CalendarRegistry
+        r = CalendarRegistry(Path(__file__).parent.parent / "calendar.json")
+        for day, at, want in [("2026-11-04", "10:45", True), ("2026-11-04", "17:30", True),
+                              ("2026-11-04", "18:00", False), ("2026-10-14", "10:45", False),
+                              ("2026-10-14", "11:00", True), ("2026-10-14", "17:00", False)]:
+            assert r.is_open("XBUE", day, at) is want, (day, at)
+            assert r.in_session("XBUE", day, at) is want, (day, at)
+            assert r.get("XBUE").is_open(day, at) is want, (day, at)

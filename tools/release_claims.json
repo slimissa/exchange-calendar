@@ -1900,6 +1900,8 @@
     {"file": "tools/check_verification.py", "contains": "def hours_problems(d: dict) -> list[str]:"},
     {"file": "tools/check_verification.py", "contains": "hours evidence: {n} of {total} ({m} of {total_rc} reference_compared)"},
     {"file": "tools/derive_verification.py", "contains": "AUTHORED_KEYS = (\"coverage\", \"hours\")"},
-    {"file": "docs/facts.json", "contains": "\"exchanges_hours_verified\""}
+    {"file": "docs/facts.json", "contains": "\"exchanges_hours_verified\""},
+    {"file": "exchanges/XBUE.json", "contains": "\"source_title\": \"BYMA Comunicado Nº 19031"},
+    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xbue_2026_11_04_1730\""}
   ]
 }

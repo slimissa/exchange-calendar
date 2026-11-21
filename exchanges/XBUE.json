@@ -2079,15 +2079,23 @@
   },
   "mic": "XBUE",
   "name": "Buenos Aires Stock Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2026: exchange_calendars + exchange_publications. BYMA's 'Calendario bursátil' page (https://www.byma.com.ar/mercado/calendario-bursatil, 2026 only; printed by the maintainer on 21 November 2026 and read in 4d2) lists 21 dates for 2026 under five references: (1) 'Feriado Nacional Inamovible / Ley 27.399 - Art. 1', (2) 'Feriado Nacional Trasladable / Ley 27.399 - Art. 1 y 6', (3) 'Jornada sin Liquidación | Jornada con Negociación', (4) 'Fechas con el criterio dispuesto en el Comunicado 18897 de BYMA', (5) 'Fecha con el criterio dispuesto en el Decreto 1103/26'. Every (1) and (2) date is closed in the registry; the (3) dates (Monday 23 March, Friday 10 July, Friday 6 November, Monday 7 December) trade; 31 December, 'Jornada sin Negociación ni Liquidación (4)', is closed. The two papal-visit rows, 'Visita de Su Santidad el Papa León XIV (5)' on Monday 9 and Tuesday 10 November, do not themselves say 'sin negociación': reference (5) points to Decree 1103/2026, which makes 9 November a national holiday and 10 November a holiday in the City of Buenos Aires and Córdoba, and the registry closes both, as for the (1) and (2) holidays. The page does not list 1 January. Thursday 24 December, 'Nochebuena (3)', is a day with trading and without settlement; the registry's 13:00 early close on it dates from the file's creation (v2.2.0, f0dbbf5, cited to byma.com.ar/calendario) and no BYMA document gives it, so it is unconfirmed with recheck_date 2026-12-22, settled by BYMA's 'Horarios' page (linked under 'Mercado' on the calendar page) or its December 2026 communique on the end-of-year schedule (4d2). 2025-04-17 (Holy Thursday, a non-working day) is unconfirmed (span recheck_date 2026-12-22 since 4d2, shared with 24 December 2026; its triage entry keeps 2026-12-31): the registry trades it, both libraries close it, BYMA's calendar page now serves 2026 only and no BYMA communique for Semana Santa 2025 was found; a market-data history (rava.com, BYMA share, April 2025) lists 19 sessions and none on 17 April, which points to a closure but is not BYMA's word. As context, not proof: BYMA's 2026 calendar trades on the 'días no laborables' (reference 3) without settlement, which would fit a trading Holy Thursday 2025; Holy Thursday 2026 coincides with Malvinas Day (2 April), so the 2026 page says nothing about it. The Wayback Machine holds captures of the calendar page from 23 June 2025 (the maintainer's a18 printout of its capture calendar; web.archive.org refuses this sandbox), which would show BYMA's own 2025 calendar. It is settled by BYMA's 2025 calendar or its April 2025 communique (byma.com.ar/comunicados) (4d.1). 2027-2029: exchange_calendars + standing pattern; BYMA's calendar page shows 2026 only (read 2026-11-21), so Holy Thursday 2027-2029 (a non-working day, the registry trades) is a prediction (4d.1). Caution: for 2025-2029 the registry disagrees with exchange_calendars on 18 days, 14 of them triaged as library errors (the other 4 as unpublished) in docs/DIVERGENCE.md (Argentina moves some holidays by decree and adds bridge days), so the 2010-2024 backfill is likely to carry similar errors; pandas_market_calendars mirrors exchange_calendars and cannot catch them.",
-  "regular_hours": {
-    "close": "17:00",
-    "open": "11:00"
-  },
-  "sessions": [
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2026: exchange_calendars + exchange_publications. BYMA's 'Calendario bursátil' page (https://www.byma.com.ar/mercado/calendario-bursatil, 2026 only; printed by the maintainer on 21 November 2026 and read in 4d2) lists 21 dates for 2026 under five references: (1) 'Feriado Nacional Inamovible / Ley 27.399 - Art. 1', (2) 'Feriado Nacional Trasladable / Ley 27.399 - Art. 1 y 6', (3) 'Jornada sin Liquidación | Jornada con Negociación', (4) 'Fechas con el criterio dispuesto en el Comunicado 18897 de BYMA', (5) 'Fecha con el criterio dispuesto en el Decreto 1103/26'. Every (1) and (2) date is closed in the registry; the (3) dates (Monday 23 March, Friday 10 July, Friday 6 November, Monday 7 December) trade; 31 December, 'Jornada sin Negociación ni Liquidación (4)', is closed. The two papal-visit rows, 'Visita de Su Santidad el Papa León XIV (5)' on Monday 9 and Tuesday 10 November, do not themselves say 'sin negociación': reference (5) points to Decree 1103/2026, which makes 9 November a national holiday and 10 November a holiday in the City of Buenos Aires and Córdoba, and the registry closes both, as for the (1) and (2) holidays. The page does not list 1 January. Thursday 24 December, 'Nochebuena (3)', is a day with trading and without settlement; the registry's 13:00 early close on it dates from the file's creation (v2.2.0, f0dbbf5, cited to byma.com.ar/calendario) and no BYMA document gives it, so it is unconfirmed with recheck_date 2026-12-22, settled by BYMA's 'Horarios' page (linked under 'Mercado' on the calendar page) or its December 2026 communique on the end-of-year schedule (4d2). 2025-04-17 (Holy Thursday, a non-working day) is unconfirmed (span recheck_date 2026-12-22 since 4d2, shared with 24 December 2026; its triage entry keeps 2026-12-31): the registry trades it, both libraries close it, BYMA's calendar page now serves 2026 only and no BYMA communique for Semana Santa 2025 was found; a market-data history (rava.com, BYMA share, April 2025) lists 19 sessions and none on 17 April, which points to a closure but is not BYMA's word. As context, not proof: BYMA's 2026 calendar trades on the 'días no laborables' (reference 3) without settlement, which would fit a trading Holy Thursday 2025; Holy Thursday 2026 coincides with Malvinas Day (2 April), so the 2026 page says nothing about it. The Wayback Machine holds captures of the calendar page from 23 June 2025 (the maintainer's a18 printout of its capture calendar; web.archive.org refuses this sandbox), which would show BYMA's own 2025 calendar. It is settled by BYMA's 2025 calendar or its April 2025 communique (byma.com.ar/comunicados) (4d.1). 2027-2029: exchange_calendars + standing pattern; BYMA's calendar page shows 2026 only (read 2026-11-21), so Holy Thursday 2027-2029 (a non-working day, the registry trades) is a prediction (4d.1). Caution: for 2025-2029 the registry disagrees with exchange_calendars on 18 days, 14 of them triaged as library errors (the other 4 as unpublished) in docs/DIVERGENCE.md (Argentina moves some holidays by decree and adds bridge days), so the 2010-2024 backfill is likely to carry similar errors; pandas_market_calendars mirrors exchange_calendars and cannot catch them. Regular hours (4b1, ADR 0014): from 2026-11-02, 10:30-18:00, verified by BYMA Comunicado Nº 19031 (28 October 2026, in force 2 November 2026, superseding Comunicado 19024): 'Negociación Regular con modalidad de cierre VWAP Renta Variable - Contado 24 hs. 10:30 hs. a 18:00 hs.', after an opening auction 10:25-10:30; the equity close is a VWAP, not an auction, so the close is the end of continuous trading; 'Negociación a Precio de Cierre' 18:05-18:15 is post-close. Before that, 11:00-17:00 (the value the file held since its creation) is unconfirmed: no BYMA document was read, and press (La Nación, 18 July 2025) reports a 10:30 open from 28 July 2025, so 10:30-11:00 from 2025-07-28 to 2026-11-01 may be wrongly closed; settled by BYMA's July 2025 hours communiqué (recheck 2026-12-22). Evidence in verification.hours.",
+  "regular_hours": [
     {
       "close": "17:00",
-      "open": "11:00",
+      "effective_from": "2010-01-01",
+      "open": "11:00"
+    },
+    {
+      "close": "18:00",
+      "effective_from": "2026-11-02",
+      "open": "10:30"
+    }
+  ],
+  "sessions": [
+    {
+      "close": "18:00",
+      "open": "10:30",
       "type": "regular"
     }
   ],
@@ -2125,6 +2133,33 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-21",
+        "close": "17:00",
+        "close_rule": "continuous_end",
+        "effective_from": "2010-01-01",
+        "note": "No BYMA document read for 2010 to 2026-11-01. Lead (press, not a source): La Nación, 18 July 2025, reports that BYMA moved the open to 10:30 from 28 July 2025 with the close at 17:00. If BYMA's July 2025 hours communiqué confirms it, a 2025-07-28 entry at 10:30-17:00 is needed and the registry has reported XBUE closed 10:30-11:00 from 28 July 2025 to 1 November 2026. Settled by that communiqué (BYMA's communiqués section) or a 2025 capture of BYMA's 'Horarios' page.",
+        "open": "11:00",
+        "recheck_date": "2026-12-22",
+        "segment": "Renta Variable, standard-settlement continuous trading (segment names of the period not checked)",
+        "source_title": "exchange_calendars XBUE calendar (a library, not BYMA's word; the value the registry held)",
+        "source_url": "https://github.com/gerrymanoim/exchange_calendars",
+        "status": "unconfirmed"
+      },
+      {
+        "checked_on": "2026-11-21",
+        "close": "18:00",
+        "close_rule": "continuous_end",
+        "effective_from": "2026-11-02",
+        "note": "Read from the copy saved by the maintainer (BYMA refuses this sandbox); its direct URL was not recorded, source_url is BYMA's communiqués section as given in the 4b1 brief. The table, 'vigente a partir del 2 de noviembre 2026': 'Subasta de Apertura – Contado estándar 10:25 hs. a 10:30 hs.'; 'Negociación Regular con modalidad de cierre VWAP Renta Variable - Contado 24 hs. 10:30 hs. a 18:00 hs.'; 'Negociación a Precio de Cierre 18:05 hs. a 18:15 hs.'. VIGENCIA: 'entran en vigor el 02 de Noviembre de 2026, dejando sin efecto el Comunicado N°19024'. The equity segment closes by VWAP; the closing auctions the communiqué lists (16:57-17:00) are for fixed income and Contado Inmediato only, so the close is the end of continuous trading (ADR 0013, ADR 0014). BYMA Clearing's 'Cronograma diario' (v1.10, 30 October 2026, also saved by the maintainer) agrees: '10:30 Negociación — Inicio sesión de negociación'.",
+        "open": "10:30",
+        "segment": "Negociación Regular con modalidad de cierre VWAP Renta Variable - Contado 24 hs. (PPT)",
+        "source_title": "BYMA Comunicado Nº 19031, 'Horarios de Negociación, liquidación y recepción de información', Buenos Aires, 28 de Octubre de 2026",
+        "source_url": "https://www.byma.com.ar/en/comunicados/communiqu-17466",
+        "status": "verified"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },
