@@ -4,10 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-Phase 4d (the `verification` audit after Phase 4c).
+Phase 4d (the `verification` audit after Phase 4c) and session 4d.1 (every coverage-span finding resolved; the check blocks).
 
 ### Added
-- `tools/check_verification.py` checks `verification.coverage`: the spans tile `generation_range` exactly (no gap, overlap or span outside it); a span holding `predicted` entries or dates triaged `unpublished` says predicted/pattern in its label (or is "not covered"); a span naming a reference library stays within the years that library records; `contradicted_by` and `unconfirmed` dates lie inside their span. Non-blocking for now (`--strict-coverage` makes it fail): 13 exchanges fail it (XBDA, XBOM, XBUE, XETR, XJSE, XKLS, XNSE, XNZE, XSAU, XSES, XSHE, XTAI, XWBO), and a test keeps that set from growing.
+- `tools/check_verification.py` checks `verification.coverage`: the spans tile `generation_range` exactly (no gap, overlap or span outside it); a span holding `predicted` entries or dates triaged `unpublished` says predicted/pattern in its label (or is "not covered"); a span naming a reference library stays within the years that library records; `contradicted_by` and `unconfirmed` dates lie inside their span. A predicted or unpublished date may stay under a publications label only when it is listed `unconfirmed` with a `recheck_date` and the label says "unconfirmed". Blocking (4d.1): added in 4d as warnings with 15 findings on 13 exchanges, all resolved in 4d.1; `tests/test_check_verification.py` requires none.
 - `tools/derive_verification.py --all` records a re-derivation that changed no class, stamping every file with one `last_checked`.
 - `tests/test_check_verification.py`: the coverage rules, and checks 1-4 of `check_verification.py` on the real tree (no CI step or test ran the tool before).
 
@@ -15,6 +15,8 @@ Phase 4d (the `verification` audit after Phase 4c).
 - `verification.last_checked` was split across files (70 at 2026-11-08, XKAR, XPHS, XRIS and XSAU at 2026-11-20), so `check_verification.py` failed; all 74 now carry 2026-11-21, the date of the audit. Classes unchanged: `reference_compared` 48, `source_verified` 9, `single_source` 14, `ci_unreachable` 3.
 - `docs/divergence_triage.json`: the XSHG "unpublished" verdict for 2027 is removed. The State Council published the 2027 schedule on 2026-11-05 and the registry's 18 closures cite it (`contradicted_by`); the stale verdict had `docs/DIVERGENCE.md` count 16 of them as predictions.
 - `tests/test_cairo_holidays.py`: the class-scoped fixture is a `classmethod` (pytest 10 removes the instance-method form).
+- Coverage spans (4d.1, no date changed): XSAU coverage cut to its `generation_range` end, 2029-09-23 (the range end is the predicted National Day 2029 set in v2.2.0, not a published boundary; not extended); XSHE's 2028-2029 span past its range removed; XSES no longer names `exchange_calendars` after 2026. Future years the exchange has not published are labelled as predictions: XBOM and XNSE 2027-2029, XBUE 2027-2029, XKLS 2027 (matches the Cabinet's 2027 schedule; Bursa's list is not out), XJSE 2027, and the last-trading-day early closes of XETR 2027-2029 (set by circular each year; non-trading days published to 2032) and XWBO 2027-12-30 (not in Wiener Börse's 2027 schedule).
+- Doubtful dates checked against the exchanges' documents (4d.1): XTAI 2027-02-03 confirmed by TWSE's ROC 116 schedule, its stale "unpublished" verdict merged into the `library_error` verdict for 2027-02-02. Left `unconfirmed` with a recheck date, the document named: XBUE 2025-04-17 (Holy Thursday; BYMA's 2025 calendar not reachable, recheck 2026-12-31), the XNZE abbreviated days 2026-2027 (NZX memo 463713's attachment), XBDA 2026-12-24 (BSX's 2026 festive notice). XKLS's 2027 triage text no longer says the government had not published.
 
 ### Changed
 - `docs/phase-4d-backlog.md` is renamed `docs/phase-4f-schema-backlog.md` and opens with the post-4c roadmap (4d, 4d2, 4b-lite, 4e, 4f, 4g, 4b full, 5, 6, with 4h interleaved). The old path keeps a pointer because the v2.28.0 release claims name it.

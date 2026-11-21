@@ -22,7 +22,11 @@ Checks, for every exchanges/*.json:
         - a span holding an explicit entry or ad hoc closure with
           `predicted: true`, or a date that docs/divergence_triage.json
           gives the verdict `unpublished`, must say so in its label
-          (predict, pattern or estimat), or be labelled "not covered";
+          (predict, pattern or estimat), or be labelled "not covered",
+          or be a date held on doubt: listed in that span's `unconfirmed`,
+          the span carrying a YYYY-MM-DD `recheck_date` (which
+          tools/check_recheck_dates.py fails once it passes) and a label
+          that says "unconfirmed" (Phase 4d.1);
         - a span naming exchange_calendars or pandas_market_calendars must
           not cover an exchange that library has no data for, nor years
           after the last one docs/DIVERGENCE.md says it records;
@@ -30,9 +34,9 @@ Checks, for every exchanges/*.json:
         that span.
      Whether every disagreement has a verdict or a contradicted_by is
      tests/test_divergence_classified.py's job, not this tool's.
-     Coverage findings are WARNINGS and do not change the exit code unless
-     --strict-coverage is given: 13 exchanges failed them when the check was
-     added (Phase 4d), more than the session could fix mechanically.
+     Coverage findings fail the tool (blocking since session 4d.1; Phase 4d
+     added them as warnings while 13 exchanges failed). --strict-coverage is
+     still accepted and has no further effect.
 --date YYYY-MM-DD additionally requires last_checked to be exactly that date.
 A date fixed in the tool would fail on the first regeneration after it, so
 the default is the consistency rules above.
@@ -158,13 +162,17 @@ def coverage_problems(d: dict, libraries: tuple[str, ...], lib_end: dict[str, di
     for _, _, s in parsed:
         lo, hi, label = s["from"], s["to"], s.get("source", "")
         where = f"{lo}..{hi}"
-        inside = [x for x in predicted if lo <= x <= hi]
+        # A date held on doubt, said so: listed unconfirmed, with a recheck date,
+        # under a label that says "unconfirmed" (4d.1).
+        on_doubt = set(s.get("unconfirmed") or []) if (
+            _day(s.get("recheck_date")) and re.search(r"unconfirmed", label, re.IGNORECASE)) else set()
+        inside = [x for x in predicted if lo <= x <= hi and x not in on_doubt]
         if inside and not (PREDICTED_LABEL.search(label) or NOT_COVERED_LABEL.match(label)):
             problems.append(f"{code}: span {where} holds {len(inside)} predicted entr"
                             f"{'y' if len(inside) == 1 else 'ies'} ({', '.join(inside[:4])}"
                             f"{', ...' if len(inside) > 4 else ''}) but its label "
                             f"does not say predicted/pattern: {label[:80]!r}")
-        inside = [x for x in unpub if lo <= x <= hi]
+        inside = [x for x in unpub if lo <= x <= hi and x not in on_doubt]
         if inside and not (PREDICTED_LABEL.search(label) or NOT_COVERED_LABEL.match(label)):
             problems.append(f"{code}: span {where} holds {len(inside)} date"
                             f"{'' if len(inside) == 1 else 's'} triaged unpublished "
@@ -265,7 +273,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--check", action="store_true", help="accepted for symmetry; no effect")
     p.add_argument("--date", default=None, help="require last_checked to be this date")
     p.add_argument("--strict-coverage", action="store_true",
-                   help="fail on coverage-span findings (default: print them as warnings)")
+                   help="accepted for compatibility; coverage findings block by default (4d.1)")
     args = p.parse_args(argv)
     try:
         problems, counts, coverage = check(args.root, args.date)
@@ -274,15 +282,7 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     summary = ", ".join(f"{c} {counts[c]}" for c in CLASSES)
     if coverage:
-        failing = sorted({line.split(":", 1)[0] for line in coverage})
-        tag = "" if args.strict_coverage else "WARNING "
-        for line in coverage:
-            print(f"{tag}coverage: {line}")
-        print(f"{tag}coverage: {len(coverage)} finding(s) in {len(failing)} exchange(s): "
-              f"{', '.join(failing)}"
-              + ("" if args.strict_coverage else " (non-blocking; --strict-coverage fails on them)"))
-        if args.strict_coverage:
-            problems = problems + [f"coverage: {line}" for line in coverage]
+        problems = problems + [f"coverage: {line}" for line in coverage]
     if problems:
         for line in problems:
             print(line)

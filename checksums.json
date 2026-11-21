@@ -92,7 +92,7 @@
     "tools/check_sql_dialects.py": "0658914a85c08707bdae1e2c8191f6eda84f74a3a78c09ef985ebf738a29ea65",
     "tools/check_stale_verifications.py": "6ebfa1d432cd7bb7d6cc333d3043a5c2606a7203883ac6ec8cd7284faadc5ca8",
     "tools/check_stale_year_urls.py": "c966de0d51d7075b92566eba4bfcf37417f28434671050e093af4244538426f5",
-    "tools/check_verification.py": "01e8da22b202774e05f1a9fa98961f83be693ab4bcf3c0267b6cfe4863bb5950",
+    "tools/check_verification.py": "2bdc094e264737e9911bc05587827ffb5afba487e699711eee88585c516a2711",
     "tools/check_wrapper_snapshot.py": "1fa8df6f8035a5969885a82403166ea1fe7833e7ef05771fc8f0b41f6496f99c",
     "tools/derive_confidence.py": "76bde084bbea896dd9179caa5f3d1d8a2d427dd7567468e41c29c8512e36d755",
     "tools/derive_verification.py": "b97e88c9cd10fa4149a504115cb4e94c29327645cf06510482ca44e1f11eb142",

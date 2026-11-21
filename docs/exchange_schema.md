@@ -412,8 +412,11 @@ lists a reference library for the exchange (the 50 with at least one):
   exactly, that a span holding predicted entries or dates triaged `unpublished`
   says so in its label (or is labelled "not covered"), that a span naming a
   reference library stays within the years that library records, and that
-  `contradicted_by` and `unconfirmed` dates lie inside their span. These findings
-  are warnings until `--strict-coverage`; see the tool's docstring.
+  `contradicted_by` and `unconfirmed` dates lie inside their span. A predicted
+  or unpublished date may also sit under a label that does not say predicted
+  when it is held on doubt: listed in the span's `unconfirmed`, with a
+  `recheck_date`, under a label that says "unconfirmed". The findings fail the
+  tool (blocking since session 4d.1); see its docstring.
 
 ---
 

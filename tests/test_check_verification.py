@@ -19,12 +19,6 @@ import check_verification as cv  # noqa: E402
 LIBS = ("exchange_calendars", "pandas_market_calendars")
 NO_END = {"exchange_calendars": {}, "pandas_market_calendars": {}}
 
-# The exchanges failing check 5 when it was added (Phase 4d), non-blocking.
-# The set may shrink as the data is fixed; it must not grow.
-KNOWN_FAILING = {
-    "XBDA", "XBOM", "XBUE", "XETR", "XJSE", "XKLS", "XNSE",
-    "XNZE", "XSAU", "XSES", "XSHE", "XTAI", "XWBO",
-}
 
 
 def _ex(spans, gr=("2010-01-01", "2029-12-31"), cov_from=None, cov_to=None,
@@ -123,6 +117,39 @@ def test_unpublished_triage_date_in_publication_span():
     assert len(out) == 1 and "triaged unpublished (2026-03-10)" in out[0]
 
 
+def _doubt_span(**over):
+    s = GOOD[1] | {"unconfirmed": ["2026-12-24"], "recheck_date": "2026-12-22",
+                   "source": "exchange_calendars + exchange_publications; "
+                             "2026-12-24 early close unconfirmed"}
+    s.update(over)
+    return [GOOD[0], s, GOOD[2]]
+
+
+def test_unconfirmed_date_with_recheck_and_honest_label_is_fine():
+    ex = _ex(_doubt_span(), explicit=[{"date": "2026-12-24", "predicted": True}])
+    assert _problems(ex) == []
+    assert _problems(_ex(_doubt_span()), unpublished={"2026-12-24"}) == []
+
+
+def test_unconfirmed_needs_a_recheck_date():
+    spans = _doubt_span()
+    del spans[1]["recheck_date"]
+    assert len(_problems(_ex(spans), unpublished={"2026-12-24"})) == 1
+
+
+def test_unconfirmed_needs_a_label_that_says_so():
+    spans = _doubt_span(source="exchange_calendars + exchange_publications")
+    ex = _ex(spans, explicit=[{"date": "2026-12-24", "predicted": True}])
+    assert len(_problems(ex)) == 1
+
+
+def test_unconfirmed_covers_only_the_dates_it_lists():
+    ex = _ex(_doubt_span(), explicit=[{"date": "2026-12-24", "predicted": True},
+                                      {"date": "2026-12-31", "predicted": True}])
+    out = _problems(ex)
+    assert len(out) == 1 and "(2026-12-31)" in out[0]
+
+
 def test_not_covered_span_may_hold_predictions():
     spans = GOOD[:2] + [_span("2027-01-01", "2029-12-31",
                               "not covered (exchange_calendars stops at 2026)")]
@@ -185,13 +212,14 @@ def test_real_tree_classes_and_dates_are_consistent():
     assert problems == []
 
 
-def test_real_tree_failing_set_does_not_grow():
+def test_real_tree_has_no_coverage_finding():
+    """Check 5 blocks since 4d.1, when the last of the 15 Phase 4d findings
+    was resolved."""
     _, _, coverage = cv.check(ROOT)
-    failing = {line.split(":", 1)[0] for line in coverage}
-    assert failing <= KNOWN_FAILING, f"new coverage failures: {sorted(failing - KNOWN_FAILING)}"
+    assert coverage == []
 
 
-def test_coverage_findings_warn_by_default_and_fail_when_strict(tmp_path, capsys):
+def test_coverage_findings_fail_the_tool(tmp_path, capsys):
     root = _tree(tmp_path)
     path = root / "exchanges" / "XTSE.json"
     data = json.loads(path.read_text(encoding="utf-8"))
@@ -201,6 +229,7 @@ def test_coverage_findings_warn_by_default_and_fail_when_strict(tmp_path, capsys
         "sources": [{"from": gr[0], "to": "2020-12-31", "source": "exchange_calendars"}]}
     path.write_text(json.dumps(data, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
                     encoding="utf-8")
-    assert cv.main(["--root", str(root)]) == 0
-    assert "WARNING coverage: XTSE: gap 2021-01-01" in capsys.readouterr().out
+    assert cv.main(["--root", str(root)]) == 1
+    assert "coverage: XTSE: gap 2021-01-01" in capsys.readouterr().out
     assert cv.main(["--root", str(root), "--strict-coverage"]) == 1
+    assert cv.main(["--root", str(ROOT)]) == 0
