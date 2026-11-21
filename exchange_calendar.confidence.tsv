@@ -207,21 +207,21 @@ XBUD	2026	high	fetcher	2026-10-03
 XBUD	2027	medium	manual		predicted
 XBUD	2028	medium	manual		predicted
 XBUD	2029	medium	manual		predicted
-XBUE	2010	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2011	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2012	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2013	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2014	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2015	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2016	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2017	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2018	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2019	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2020	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2021	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2022	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2023	low	manual		backfilled from exchange_calendars; not independently verified
-XBUE	2024	low	manual		backfilled from exchange_calendars; not independently verified
+XBUE	2010	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2011	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2012	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2013	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2014	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2015	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2016	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2017	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2018	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2019	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2020	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2021	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2022	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2023	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
+XBUE	2024	low	manual		backfilled (exchange_calendars; except 2024-12-24 (early close 15:00) and 2024-12-31 (closed), from BYMA Comunicado N° 18674 (13 December 2024), which contradicts the library's 13:00 early closes); not independently verified
 XBUE	2025	medium	manual		
 XBUE	2026	medium	manual		
 XBUE	2027	medium	manual		predicted

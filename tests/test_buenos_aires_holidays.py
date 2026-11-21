@@ -3,14 +3,17 @@
 test_buenos_aires_holidays.py — Ground truth tests for XBUE (Buenos Aires Stock Exchange / BYMA).
 
 Key facts verified:
-    - Regular hours: 11:00-17:00 (single session)
+    - Regular hours: 10:30-18:00 from 2026-11-02 (BYMA Comunicado 19031);
+      11:00-17:00 before (unconfirmed)
     - No lunch break
     - Weekend is Saturday-Sunday (Western weekend)
     - Argentina uses "next Monday" rule for some holidays
     - Carnival Monday/Tuesday (movable)
     - Good Friday (movable)
-    - Christmas Eve (Dec 24) — early close at 13:00
-    - New Year's Eve (Dec 31) — early close at 13:00
+    - Christmas Eve (Dec 24) — early close at 15:00 (BYMA Comunicado 18674
+      for 2024, BYMA newsroom 24/12/2025 for 2025; predicted after)
+    - New Year's Eve (Dec 31) — closed, no trading or settlement (same
+      notices; BYMA's 2026 calendar; predicted after)
     - No recurrence rules — all dates explicit
 
 If any test fails, either:
@@ -250,19 +253,56 @@ class TestXBUEGoodFriday:
 # ──────────────────────────────────────────────────────────────
 
 class TestXBUEChristmas:
-    def test_christmas_eve_2025(self, explicit_dates):
-        """Dec 24, 2025 is Wednesday — early close at 13:00."""
-        entry = explicit_dates.get("2025-12-24")
-        assert entry is not None
-        assert entry["status"] == "early_close"
-        assert entry["early_close_time"] == "13:00"
+    A25 = ("https://data-widgets.byma.com.ar/wp-content/uploads/2024/12/"
+           "BYMA-COM-18674-Actividades-en-BYMA-24-y-31-de-diciembre.pdf")
+    A24 = "https://www.byma.com.ar/newsroom/24-y-31-de-diciembre-en-byma"
 
-    def test_christmas_eve_2026(self, explicit_dates):
-        """Dec 24, 2026 is Thursday — early close at 13:00."""
-        entry = explicit_dates.get("2026-12-24")
-        assert entry is not None
+    def test_christmas_eve_2024(self, explicit_dates):
+        """BYMA Comunicado 18674: 'concertación de operaciones hasta las 15:00
+        hs' on Tuesday 24 December 2024 (not 13:00, the library's value)."""
+        entry = explicit_dates["2024-12-24"]
         assert entry["status"] == "early_close"
-        assert entry["early_close_time"] == "13:00"
+        assert entry["early_close_time"] == "15:00"
+        assert entry["source_url"] == self.A25
+        assert not entry.get("predicted")
+
+    def test_year_end_2024_is_closed(self, explicit_dates):
+        """BYMA Comunicado 18674: 'Martes 31 de diciembre no habrá
+        actividades de negociación ni liquidación'."""
+        entry = explicit_dates["2024-12-31"]
+        assert entry["status"] == "closed"
+        assert "early_close_time" not in entry
+        assert entry["source_url"] == self.A25
+
+    def test_christmas_eve_2025(self, explicit_dates):
+        """BYMA newsroom, 24/12/2025: 'habrá negociación hasta las 15:00 hs.,
+        pero no se realizará liquidación'."""
+        entry = explicit_dates["2025-12-24"]
+        assert entry["status"] == "early_close"
+        assert entry["early_close_time"] == "15:00"
+        assert entry["source_url"] == self.A24
+        assert not entry.get("predicted")
+
+    def test_christmas_eve_2026_is_a_predicted_1500_close(self, explicit_dates):
+        """BYMA's 2026 calendar lists 24 December as trading without
+        settlement but gives no hours: 15:00 from BYMA's 2024 and 2025
+        notices, predicted and unconfirmed (recheck 2026-12-22)."""
+        entry = explicit_dates["2026-12-24"]
+        assert entry["status"] == "early_close"
+        assert entry["early_close_time"] == "15:00"
+        assert entry["predicted"] is True
+
+    @pytest.mark.parametrize("day", ["2027-12-24", "2029-12-24"])
+    def test_later_christmas_eves_are_predicted_1500(self, explicit_dates, day):
+        entry = explicit_dates[day]
+        assert (entry["status"], entry["early_close_time"], entry["predicted"]) == (
+            "early_close", "15:00", True)
+
+    @pytest.mark.parametrize("day", ["2027-12-31", "2029-12-31"])
+    def test_later_year_ends_are_predicted_closed(self, explicit_dates, day):
+        entry = explicit_dates[day]
+        assert entry["status"] == "closed" and entry["predicted"] is True
+        assert "early_close_time" not in entry
 
     def test_christmas_day_2025(self, explicit_dates):
         """Dec 25, 2025 is Thursday."""
@@ -275,17 +315,21 @@ class TestXBUEChristmas:
 
     def test_year_end_2025_and_2026_are_closed(self, explicit_dates):
         """BYMA lists 31 December as a day without trading or settlement
-        (2025 communique, 2026 trading calendar): a closure, not an early close."""
+        (2025 newsroom notice, 2026 trading calendar): a closure, not an
+        early close."""
         for day in ("2025-12-31", "2026-12-31"):
             entry = explicit_dates[day]
             assert entry["status"] == "closed"
             assert "early_close_time" not in entry
 
-    def test_new_years_eve_2029(self, explicit_dates):
-        """Dec 31, 2029 is Monday — early close at 13:00."""
-        entry = explicit_dates.get("2029-12-31")
-        assert entry is not None
-        assert entry["status"] == "early_close"
+    def test_year_end_unconfirmed_2026_christmas_eve(self, xbue):
+        span = xbue["verification"]["coverage"]["sources"][1]
+        assert "2026-12-24" in span["unconfirmed"]
+        assert span["recheck_date"] == "2026-12-22"
+
+    def test_2024_rows_are_recorded_as_contradicting_the_library(self, xbue):
+        span = xbue["verification"]["coverage"]["sources"][0]
+        assert span["contradicted_by"] == ["2024-12-24", "2024-12-31"]
 
 
 # ──────────────────────────────────────────────────────────────
@@ -293,19 +337,30 @@ class TestXBUEChristmas:
 # ──────────────────────────────────────────────────────────────
 
 class TestXBUEarlyCloses:
-    def test_no_other_early_closes(self, explicit_dates):
-        """Only Christmas Eve and New Year's Eve are early closes in 2025-2029.
-        2010-2024 is a backfill whose half days are "Historical Early Close"."""
-        early_closes = [e for d, e in explicit_dates.items()
-                        if e.get("status") == "early_close" and d >= "2025-01-01"]
-        early_close_names = {e["name"] for e in early_closes}
-        assert early_close_names == {"Christmas Eve", "New Year's Eve"}
+    def test_early_closes_from_2024_are_christmas_eve_at_1500(self, explicit_dates):
+        """From 2024 (BYMA's own notices) the only early close is 24 December,
+        at 15:00; 31 December is closed."""
+        late = {d: e for d, e in explicit_dates.items()
+                if e.get("status") == "early_close" and d >= "2024-01-01"}
+        assert late and all(d[5:] == "12-24" for d in late)
+        assert {e["early_close_time"] for e in late.values()} == {"15:00"}
+
+    def test_library_backfill_early_closes_stay_1300(self, explicit_dates):
+        """2010-2023 24/31 December rows are exchange_calendars values, left
+        unchanged as leads for Phase 4b full (BYMA's 2024-2025 practice
+        differs)."""
+        early = {d: e for d, e in explicit_dates.items()
+                 if e.get("status") == "early_close" and d < "2024-01-01"}
+        assert early
+        for d, e in early.items():
+            assert e["early_close_time"] == "13:00"
+            assert e["name"] == "Historical Early Close"
+            assert e["source_url"] == "https://github.com/gerrymanoim/exchange_calendars"
 
     def test_all_early_closes_have_early_close_time(self, explicit_dates):
         for entry in explicit_dates.values():
             if entry.get("status") == "early_close":
                 assert "early_close_time" in entry
-                assert entry["early_close_time"] == "13:00"
 
     def test_closed_entries_no_early_close_time(self, explicit_dates):
         for entry in explicit_dates.values():
@@ -361,6 +416,9 @@ class TestXBUEStructure:
 
     def test_source_url_consistency(self, explicit_dates):
         for date_, entry in explicit_dates.items():
+            if date_ in ("2024-12-24", "2024-12-31"):  # BYMA Comunicado 18674 (4b2)
+                assert "data-widgets.byma.com.ar" in entry["source_url"], date_
+                continue
             if date_ < "2025-01-01":  # 2010-2024 backfill
                 assert "exchange_calendars" in entry["source_url"], date_
                 continue
@@ -518,7 +576,27 @@ class TestXBUERegularHours:
         r = CalendarRegistry(Path(__file__).parent.parent / "calendar.json")
         for day, at, want in [("2026-11-04", "10:45", True), ("2026-11-04", "17:30", True),
                               ("2026-11-04", "18:00", False), ("2026-10-14", "10:45", False),
-                              ("2026-10-14", "11:00", True), ("2026-10-14", "17:00", False)]:
+                              ("2026-10-14", "11:00", True), ("2026-10-14", "17:00", False),
+                              ("2024-12-24", "14:30", True), ("2024-12-31", "12:00", False)]:
             assert r.is_open("XBUE", day, at) is want, (day, at)
             assert r.in_session("XBUE", day, at) is want, (day, at)
             assert r.get("XBUE").is_open(day, at) is want, (day, at)
+
+    def test_wrapper_answers_year_end(self):
+        """4b2, BYMA's December notices: 24 December 2024 and 2025 trade to
+        15:00. The exchange-level is_open applies the early close; the
+        registry-level is_open / in_session ignore early_close_time by
+        contract (all four wrappers, until 3.0.0), so they stay open."""
+        import sys
+        sys.path.insert(0, str(Path(__file__).parent.parent / "wrappers" / "python"))
+        from exchange_calendar import CalendarRegistry
+        r = CalendarRegistry(Path(__file__).parent.parent / "calendar.json")
+        ex = r.get("XBUE")
+        for day in ("2024-12-24", "2025-12-24"):
+            assert ex.early_close_time(day) == "15:00"
+            assert ex.is_open(day, "14:59") is True
+            assert ex.is_open(day, "15:00") is False
+            assert ex.is_open(day, "15:30") is False
+            assert r.is_open("XBUE", day, "15:30") is True  # registry contract
+            assert r.in_session("XBUE", day, "15:30") is True
+        assert ex.is_open("2024-12-31", "12:00") is False

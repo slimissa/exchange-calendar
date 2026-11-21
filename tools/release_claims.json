@@ -1910,6 +1910,9 @@
     {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "### 6. Hours the schema cannot express (`schema_limited`, session 4b2)"},
     {"file": "tools/check_verification.py", "contains": "def backlog_titles(path: Path = BACKLOG) -> set[str]:"},
     {"file": "tools/check_verification.py", "contains": "def hours_status_counts(root: Path) -> dict[str, int]:"},
-    {"file": "tests/test_hours_evidence.py", "contains": "def test_schema_limited_backlog_item_must_exist():"}
+    {"file": "tests/test_hours_evidence.py", "contains": "def test_schema_limited_backlog_item_must_exist():"},
+    {"file": "exchanges/XBUE.json", "contains": "\"name\": \"Christmas Eve (BYMA Comunicado 18674: trading to 15:00, no settlement)\""},
+    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"holiday_entry_xbue_2024_12_24\""},
+    {"file": "docs/divergence_triage.json", "contains": "\"recheck_date\": \"2029-01-31\""}
   ]
 }

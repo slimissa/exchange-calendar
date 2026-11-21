@@ -1679,7 +1679,39 @@
         "2025-12-31",
         "2026-12-31"
       ],
-      "summary": "BYMA's 2026 trading calendar lists Thursday 31 December 2026 as a day without trading or settlement, and BYMA's communique for the end of 2025 (reported by iProUP and Bloomberg Linea) says the market does not operate on Wednesday 31 December 2025. The registry had a 13:00 early close on both days and now closes them (2.23.13). exchange_calendars and pandas_market_calendars trade on both days. The registry is right. The 31 December 2027 and 2029 early closes were not reviewed in this phase.",
+      "summary": "BYMA's 2026 trading calendar lists Thursday 31 December 2026 as a day without trading or settlement, and BYMA's own newsroom notice for the end of 2025 ('Actividad de BYMA durante el 24 y 31 de diciembre', 24/12/2025, https://www.byma.com.ar/newsroom/24-y-31-de-diciembre-en-byma, saved by the maintainer in 4b2) says 'no habrá actividad bursátil en BYMA, ni tampoco en Caja de Valores' on 31 December 2025 (its body calls the day a 'jueves', its index 'Miércoles'; 31 December 2025 was a Wednesday). The registry had a 13:00 early close on both days and now closes them (2.23.13). exchange_calendars and pandas_market_calendars trade on both days. The registry is right. 31 December 2027 and 2029 are predicted closures since 4b2 (classified below).",
+      "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2024-12-31"
+      ],
+      "summary": "BYMA Comunicado N° 18674 ('Actividad en BYMA 24 y 31 de diciembre 2024', 13 December 2024, saved by the maintainer in 4b2): 'Martes 31 de diciembre no habrá actividades de negociación ni liquidación'. The registry's 2010-2024 backfill from exchange_calendars had a 13:00 early close; 4b2 closes the day. Both libraries trade it (an early close). The same communiqué puts 24 December 2024 at 15:00 ('habrá concertación de operaciones hasta las 15:00 hs'), not the library's 13:00; that is a half-day time, not a trading-day disagreement.",
+      "source_url": "https://data-widgets.byma.com.ar/wp-content/uploads/2024/12/BYMA-COM-18674-Actividades-en-BYMA-24-y-31-de-diciembre.pdf"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "recheck_date": "2027-01-31",
+      "dates": [
+        "2027-12-31"
+      ],
+      "summary": "31 December 2027 is predicted closed (4b2): BYMA closed 31 December in 2024 (Comunicado 18674), 2025 (newsroom notice, 24/12/2025) and lists it 'sin Negociación ni Liquidación' in its 2026 calendar. The registry had a 13:00 early close, the libraries trade it. BYMA has not published 2027; check its 2027 calendar and December 2027 notice.",
+      "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
+    },
+    {
+      "exchange": "XBUE",
+      "verdict": "unpublished",
+      "status": "registry_unchanged",
+      "recheck_date": "2029-01-31",
+      "dates": [
+        "2029-12-31"
+      ],
+      "summary": "31 December 2029 is predicted closed (4b2), on the same three BYMA publications as 31 December 2027. The registry had a 13:00 early close, the libraries trade it. BYMA has not published 2029; check its 2029 calendar and December 2029 notice.",
       "source_url": "https://www.byma.com.ar/mercado/calendario-bursatil"
     },
     {

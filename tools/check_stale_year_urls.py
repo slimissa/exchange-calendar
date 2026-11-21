@@ -111,6 +111,12 @@ DYNAMIC_PLACEHOLDER_RE = re.compile(r"\{|%Y|%y|%d")
 # stale at once, and none can be made dynamic (opaque IDs) or is wrong to
 # keep (JSON entries cite the 2026 circular for 2026 dates).
 ALLOWLIST = {
+    # XBUE.json entries for 2024-12-24 and 2024-12-31 (4b2): BYMA Comunicado
+    # N° 18674 on the 24/31 December 2024 schedule. A 2024 document cited for
+    # 2024 dates; there is no later version to move to. Saved by the
+    # maintainer (BYMA refuses the fetcher). Unblock: renew, or give the
+    # scanner a rule for documents that only date past entries.
+    "https://data-widgets.byma.com.ar/wp-content/uploads/2024/12/BYMA-COM-18674-Actividades-en-BYMA-24-y-31-de-diciembre.pdf": "2027-06-01",
     # XWBO fetcher (tools/update_from_exchange.py). The PDF name carries
     # the year; the file for the next year is not verifiable ahead of time.
     # Unblock: update source_url when Wiener Boerse publishes the new PDF.

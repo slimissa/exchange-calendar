@@ -271,7 +271,9 @@ class TestFormatting:
         # Year entries replaced by 30 published Eid closures (predicted=false)
         # 291 (4d2): - XNZE 2026-12-24/31 (confirmed by NZX memo 463713)
         # + XNZE's 9 2027 closures after the memo's last row, 2027-01-04
-        assert predicted["true"] == 291 and predicted["false"] == 103
+        # 296 (4b2): + XBUE's predicted 24 December 2026, 2027, 2029 (15:00)
+        # and 31 December 2027, 2029 (closed), from BYMA's December notices
+        assert predicted["true"] == 296 and predicted["false"] == 103
 
     def test_dates_times_and_integers_are_plain_text(self):
         checks = {

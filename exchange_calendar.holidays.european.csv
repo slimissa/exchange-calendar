@@ -2493,9 +2493,9 @@ XBUE;2024-07-09;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerr
 XBUE;2024-08-19;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
 XBUE;2024-10-14;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
 XBUE;2024-11-18;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
-XBUE;2024-12-24;Historical Early Close;early_close;explicit;1;13:00;;;;https://github.com/gerrymanoim/exchange_calendars
+XBUE;2024-12-24;Christmas Eve (BYMA Comunicado 18674: trading to 15:00, no settlement);early_close;explicit;1;15:00;;;;https://data-widgets.byma.com.ar/wp-content/uploads/2024/12/BYMA-COM-18674-Actividades-en-BYMA-24-y-31-de-diciembre.pdf
 XBUE;2024-12-25;Historical Holiday;closed;explicit;1;;;;;https://github.com/gerrymanoim/exchange_calendars
-XBUE;2024-12-31;Historical Early Close;early_close;explicit;1;13:00;;;;https://github.com/gerrymanoim/exchange_calendars
+XBUE;2024-12-31;Year-end (BYMA Comunicado 18674: no trading or settlement);closed;explicit;1;;;;;https://data-widgets.byma.com.ar/wp-content/uploads/2024/12/BYMA-COM-18674-Actividades-en-BYMA-24-y-31-de-diciembre.pdf
 XBUE;2025-01-01;New Year's Day;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
 XBUE;2025-03-03;Carnival Monday;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
 XBUE;2025-03-04;Carnival Tuesday;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
@@ -2508,7 +2508,7 @@ XBUE;2025-06-20;National Flag Day (observed);closed;explicit;1;;;;;https://www.b
 XBUE;2025-07-09;Independence Day;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
 XBUE;2025-11-24;National Sovereignty Day (moved from Thursday 20 November);closed;explicit;1;;;;;https://www.bcra.gob.ar/archivos/Pdfs/comytexord/C99321.pdf
 XBUE;2025-12-08;Immaculate Conception;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
-XBUE;2025-12-24;Christmas Eve;early_close;explicit;1;13:00;;;;https://www.byma.com.ar/calendario
+XBUE;2025-12-24;Christmas Eve (BYMA newsroom, 24/12/2025: trading to 15:00, no settlement);early_close;explicit;1;15:00;;;;https://www.byma.com.ar/newsroom/24-y-31-de-diciembre-en-byma
 XBUE;2025-12-25;Christmas Day;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
 XBUE;2025-12-31;Year-end (no trading or settlement);closed;explicit;1;;;;;https://www.byma.com.ar/mercado/calendario-bursatil
 XBUE;2026-01-01;New Year's Day;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
@@ -2527,7 +2527,7 @@ XBUE;2026-11-09;Papal visit (no trading or settlement);closed;explicit;1;;;;;htt
 XBUE;2026-11-10;Papal visit (no trading or settlement);closed;explicit;1;;;;;https://www.byma.com.ar/mercado/calendario-bursatil
 XBUE;2026-11-23;National Sovereignty Day (moved from Friday 20 November);closed;explicit;1;;;;;https://www.byma.com.ar/mercado/calendario-bursatil
 XBUE;2026-12-08;Immaculate Conception;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
-XBUE;2026-12-24;Christmas Eve;early_close;explicit;1;13:00;;;;https://www.byma.com.ar/calendario
+XBUE;2026-12-24;Christmas Eve, 15:00 per BYMA's 2024 and 2025 December notices (predicted);early_close;explicit;1;15:00;;true;;https://www.byma.com.ar/newsroom/24-y-31-de-diciembre-en-byma
 XBUE;2026-12-25;Christmas Day;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
 XBUE;2026-12-31;Year-end (no trading or settlement);closed;explicit;1;;;;;https://www.byma.com.ar/mercado/calendario-bursatil
 XBUE;2027-01-01;New Year's Day;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
@@ -2543,8 +2543,8 @@ XBUE;2027-08-16;Anniversary of San Martín's Death (observed);closed;explicit;1;
 XBUE;2027-10-11;Day of Respect for Cultural Diversity (observed);closed;explicit;1;;;;;https://www.byma.com.ar/calendario
 XBUE;2027-11-22;National Sovereignty Day (observed);closed;explicit;1;;;;;https://www.byma.com.ar/calendario
 XBUE;2027-12-08;Immaculate Conception;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
-XBUE;2027-12-24;Christmas Eve;early_close;explicit;1;13:00;;;;https://www.byma.com.ar/calendario
-XBUE;2027-12-31;New Year's Eve;early_close;explicit;1;13:00;;;;https://www.byma.com.ar/calendario
+XBUE;2027-12-24;Christmas Eve, 15:00 per BYMA's 2024 and 2025 December notices (predicted);early_close;explicit;1;15:00;;true;;https://www.byma.com.ar/newsroom/24-y-31-de-diciembre-en-byma
+XBUE;2027-12-31;Year-end, no trading or settlement, per BYMA's 2024 and 2025 December notices and its 2026 calendar (predicted);closed;explicit;1;;;true;;https://www.byma.com.ar/newsroom/24-y-31-de-diciembre-en-byma
 XBUE;2028-02-28;Carnival Monday;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
 XBUE;2028-02-29;Carnival Tuesday;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
 XBUE;2028-03-24;Day of Remembrance for Truth and Justice;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
@@ -2569,9 +2569,9 @@ XBUE;2029-07-09;Independence Day;closed;explicit;1;;;;;https://www.byma.com.ar/c
 XBUE;2029-08-20;Anniversary of San Martín's Death (observed);closed;explicit;1;;;;;https://www.byma.com.ar/calendario
 XBUE;2029-10-15;Day of Respect for Cultural Diversity (observed);closed;explicit;1;;;;;https://www.byma.com.ar/calendario
 XBUE;2029-11-19;National Sovereignty Day (observed);closed;explicit;1;;;;;https://www.byma.com.ar/calendario
-XBUE;2029-12-24;Christmas Eve;early_close;explicit;1;13:00;;;;https://www.byma.com.ar/calendario
+XBUE;2029-12-24;Christmas Eve, 15:00 per BYMA's 2024 and 2025 December notices (predicted);early_close;explicit;1;15:00;;true;;https://www.byma.com.ar/newsroom/24-y-31-de-diciembre-en-byma
 XBUE;2029-12-25;Christmas Day;closed;explicit;1;;;;;https://www.byma.com.ar/calendario
-XBUE;2029-12-31;New Year's Eve;early_close;explicit;1;13:00;;;;https://www.byma.com.ar/calendario
+XBUE;2029-12-31;Year-end, no trading or settlement, per BYMA's 2024 and 2025 December notices and its 2026 calendar (predicted);closed;explicit;1;;;true;;https://www.byma.com.ar/newsroom/24-y-31-de-diciembre-en-byma
 XBUL;2025-01-01;New Year's Day;closed;explicit;1;;;;;https://www.bse-sofia.bg/trading-calendar
 XBUL;2025-03-03;Liberation Day;closed;explicit;1;;;;;https://www.bse-sofia.bg/trading-calendar
 XBUL;2025-04-18;Good Friday (Orthodox);closed;explicit;1;;;;;https://www.bse-sofia.bg/trading-calendar

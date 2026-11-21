@@ -50,7 +50,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 | XBRV | 1268 | No reference data | No reference data | n/a | n/a |
 | XBSP | 1241 | No reference data | No reference data | n/a | n/a |
 | XBUD | 1495 | 1491 | 1491 | 4 | 99.7% |
-| XBUE | 1482 | 1480 | 1480 | 18 | 98.8% |
+| XBUE | 1479 | 1480 | 1480 | 21 | 98.6% |
 | XBUL | 1251 | No reference data | No reference data | n/a | n/a |
 | XCAI | 1001 | No reference data | No reference data | n/a | n/a |
 | XCAS | 1253 | No reference data | No reference data | n/a | n/a |
@@ -114,7 +114,7 @@ Reference libraries: `exchange_calendars` 4.13.2, `pandas_market_calendars` 5.6.
 - Exchanges in the registry: 74.
 - Exchanges with at least one reference library: 50; with none: 24.
 - Exchanges with no disagreement: 28 of 50.
-- Trading days on which all available sources agree: 73443 of 73724 (99.6%).
+- Trading days on which all available sources agree: 73440 of 73724 (99.6%).
 
 ## Disagreements by year
 
@@ -126,7 +126,7 @@ Trading-day disagreements per year, for the exchanges that have any. `-` means t
 | XBOG | 0 | 0 | 0 | 0 | 1 | 0 |
 | XBOM | 0 | 0 | 0 | 8 | 12 | 15 |
 | XBUD | 0 | 0 | 0 | 0 | 0 | 4 |
-| XBUE | 0 | 8 | 5 | 3 | 1 | 1 |
+| XBUE | 1 | 8 | 5 | 4 | 1 | 2 |
 | XHKG | 0 | 0 | 0 | 0 | 0 | 3 |
 | XJSE | 1 | 0 | 1 | 0 | 0 | 0 |
 | XKAR | 0 | 2 | 6 | 4 | 4 | 6 |
@@ -149,12 +149,12 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 
 | Year | Disagreements | Registry error | Library error | Convention difference | Unpublished | Unclassified |
 |---|---:|---:|---:|---:|---:|---:|
-| 2024 | 8 | 0 | 7 | 0 | 0 | 1 |
+| 2024 | 9 | 0 | 8 | 0 | 0 | 1 |
 | 2025 | 20 | 0 | 18 | 1 | 1 | 0 |
 | 2026 | 27 | 0 | 27 | 0 | 0 | 0 |
-| 2027 | 66 | 0 | 16 | 0 | 32 | 18 |
+| 2027 | 67 | 0 | 16 | 0 | 33 | 18 |
 | 2028 | 78 | 0 | 6 | 0 | 72 | 0 |
-| 2029 | 82 | 0 | 5 | 0 | 77 | 0 |
+| 2029 | 83 | 0 | 5 | 0 | 78 | 0 |
 
 ## Triage coverage 2010-2029
 
@@ -176,12 +176,12 @@ Every disagreement in these years, from `divergence_test.py --exchanges all --ye
 | 2021 | 2 | 0 | 0 | 0 | 0 | 2 | 0 |
 | 2022 | 21 | 0 | 2 | 0 | 0 | 19 | 0 |
 | 2023 | 6 | 0 | 1 | 0 | 0 | 5 | 0 |
-| 2024 | 8 | 0 | 7 | 0 | 0 | 1 | 0 |
+| 2024 | 9 | 0 | 8 | 0 | 0 | 1 | 0 |
 | 2025 | 20 | 0 | 18 | 1 | 1 | 0 | 0 |
 | 2026 | 27 | 0 | 27 | 0 | 0 | 0 | 0 |
-| 2027 | 66 | 0 | 16 | 0 | 32 | 18 | 0 |
+| 2027 | 67 | 0 | 16 | 0 | 33 | 18 | 0 |
 | 2028 | 78 | 0 | 6 | 0 | 72 | 0 | 0 |
-| 2029 | 82 | 0 | 5 | 0 | 77 | 0 | 0 |
+| 2029 | 83 | 0 | 5 | 0 | 78 | 0 | 0 |
 
 ## No reference data
 
@@ -240,10 +240,10 @@ Every disagreement in these years, from `divergence_test.py --exchanges all --ye
 
 - registry open, PMC closed, EC closed (4): 2029-03-16 Fr [unpublished], 2029-04-30 Mo [unpublished], 2029-10-22 Mo [unpublished], 2029-11-02 Fr [unpublished]
 
-### XBUE (18)
+### XBUE (21)
 
+- registry closed, PMC open, EC open (11): 2024-12-31 Tu [library error], 2025-06-16 Mo [library error], 2025-11-24 Mo [library error], 2025-12-31 We [library error], 2026-06-15 Mo [library error], 2026-11-09 Mo [library error], 2026-11-10 Tu [library error], 2026-12-31 Th [library error], 2027-06-21 Mo [library error], 2027-12-31 Fr [unpublished], 2029-12-31 Mo [unpublished]
 - registry open, PMC closed, EC closed (10): 2025-04-17 Th [unpublished], 2025-06-17 Tu [library error], 2025-08-18 Mo [library error], 2025-10-13 Mo [library error], 2025-11-17 Mo [library error], 2026-06-17 We [library error], 2027-03-25 Th [unpublished], 2027-06-17 Th [library error], 2028-04-13 Th [unpublished], 2029-03-29 Th [unpublished]
-- registry closed, PMC open, EC open (8): 2025-06-16 Mo [library error], 2025-11-24 Mo [library error], 2025-12-31 We [library error], 2026-06-15 Mo [library error], 2026-11-09 Mo [library error], 2026-11-10 Tu [library error], 2026-12-31 Th [library error], 2027-06-21 Mo [library error]
 
 ### XHKG (3)
 
@@ -325,7 +325,7 @@ Every disagreement in these years, from `divergence_test.py --exchanges all --ye
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 90 dates; Registry error: 411 dates; Unpublished: 196 dates.
+- Convention difference: 1 dates; Library error: 91 dates; Registry error: 411 dates; Unpublished: 198 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -497,11 +497,19 @@ Source: https://www.argentina.gob.ar/normativa/nacional/ley-27399-281835/texto
 
 ### XBUE: Library error (2, registry verified, no change)
 
-BYMA's 2026 trading calendar lists Thursday 31 December 2026 as a day without trading or settlement, and BYMA's communique for the end of 2025 (reported by iProUP and Bloomberg Linea) says the market does not operate on Wednesday 31 December 2025. The registry had a 13:00 early close on both days and now closes them (2.23.13). exchange_calendars and pandas_market_calendars trade on both days. The registry is right. The 31 December 2027 and 2029 early closes were not reviewed in this phase.
+BYMA's 2026 trading calendar lists Thursday 31 December 2026 as a day without trading or settlement, and BYMA's own newsroom notice for the end of 2025 ('Actividad de BYMA durante el 24 y 31 de diciembre', 24/12/2025, https://www.byma.com.ar/newsroom/24-y-31-de-diciembre-en-byma, saved by the maintainer in 4b2) says 'no habrá actividad bursátil en BYMA, ni tampoco en Caja de Valores' on 31 December 2025 (its body calls the day a 'jueves', its index 'Miércoles'; 31 December 2025 was a Wednesday). The registry had a 13:00 early close on both days and now closes them (2.23.13). exchange_calendars and pandas_market_calendars trade on both days. The registry is right. 31 December 2027 and 2029 are predicted closures since 4b2 (classified below).
 
 Dates: 2025-12-31, 2026-12-31.
 
 Source: https://www.byma.com.ar/mercado/calendario-bursatil
+
+### XBUE: Library error (1, registry verified, no change)
+
+BYMA Comunicado N° 18674 ('Actividad en BYMA 24 y 31 de diciembre 2024', 13 December 2024, saved by the maintainer in 4b2): 'Martes 31 de diciembre no habrá actividades de negociación ni liquidación'. The registry's 2010-2024 backfill from exchange_calendars had a 13:00 early close; 4b2 closes the day. Both libraries trade it (an early close). The same communiqué puts 24 December 2024 at 15:00 ('habrá concertación de operaciones hasta las 15:00 hs'), not the library's 13:00; that is a half-day time, not a trading-day disagreement.
+
+Dates: 2024-12-31.
+
+Source: https://data-widgets.byma.com.ar/wp-content/uploads/2024/12/BYMA-COM-18674-Actividades-en-BYMA-24-y-31-de-diciembre.pdf
 
 ### XBUE: Registry error (6, fixed in 2.23.5)
 
@@ -524,6 +532,22 @@ Source: https://www.byma.com.ar/mercado/calendario-bursatil
 Holy Thursday 2025 is a non-working day (the BCRA's 2025 list marks banks closed). Both libraries close it and the registry trades. BYMA's page for 2025 could not be retrieved, and BYMA has treated other non-working days as trading days without settlement (6 and 21 November 2025, Comunicado 18859). A flat Merval quote on 17 April 2025 in a market-data history suggests no session, but that is not a BYMA publication. The registry value is not confirmed; check BYMA's 2025 trading calendar or the Semana Santa communique.
 
 Dates: 2025-04-17.
+
+Source: https://www.byma.com.ar/mercado/calendario-bursatil
+
+### XBUE: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2027-01-31)
+
+31 December 2027 is predicted closed (4b2): BYMA closed 31 December in 2024 (Comunicado 18674), 2025 (newsroom notice, 24/12/2025) and lists it 'sin Negociación ni Liquidación' in its 2026 calendar. The registry had a 13:00 early close, the libraries trade it. BYMA has not published 2027; check its 2027 calendar and December 2027 notice.
+
+Dates: 2027-12-31.
+
+Source: https://www.byma.com.ar/mercado/calendario-bursatil
+
+### XBUE: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2029-01-31)
+
+31 December 2029 is predicted closed (4b2), on the same three BYMA publications as 31 December 2027. The registry had a 13:00 early close, the libraries trade it. BYMA has not published 2029; check its 2029 calendar and December 2029 notice.
+
+Dates: 2029-12-31.
 
 Source: https://www.byma.com.ar/mercado/calendario-bursatil
 
