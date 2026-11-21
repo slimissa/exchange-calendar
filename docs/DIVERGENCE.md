@@ -1119,7 +1119,7 @@ Dates: 2025-05-05, 2025-05-29, 2026-05-14.
 
 Source: https://attachment.news.eu.nasdaq.com/aab5896ed129b436acc32b21a545fcddf
 
-### XRIS: Registry error (1, fixed in 4c13 (unreleased))
+### XRIS: Registry error (1, fixed in 2.28.0)
 
 Nasdaq Baltic's trading-holiday calendar listed Friday 2 January 2026 as a trading holiday for RIG and 4c12 closed it, unconfirmed. Nasdaq Baltic's January 2026 bulletin (maintainer's saved copy) gives Riga 21 equities trading days = 22 weekdays - 1 January, as for Tallinn and Vilnius, so the day traded. The registry now trades, as both libraries do. 1 date fixed.
 

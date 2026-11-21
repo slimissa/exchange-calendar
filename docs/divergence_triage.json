@@ -1469,7 +1469,7 @@
       "exchange": "XRIS",
       "verdict": "registry_error",
       "status": "fixed",
-      "fixed_in": "4c13 (unreleased)",
+      "fixed_in": "2.28.0",
       "dates": [
         "2026-01-02"
       ],
