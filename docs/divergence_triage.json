@@ -1260,7 +1260,7 @@
         "2026-07-28",
         "2026-07-30"
       ],
-      "summary": "SET and TFEX holidays follow the Bank of Thailand's announcements (tfex.co.th holiday page). BoT FPG. 5/2567 (2025) and 31/2568 (2026) are the closing lists, with the additional holidays of 2 June and 11 August 2025 from BoT 15/2567. The registry wrongly closed 2 January 2025, 16 April 2025 (the Cabinet's Songkran substitute, a government holiday only), 11 July 2025 and 30 July 2026 (Khao Phansa, public sector only) and Visakha Bucha on 25 May 2026 (it falls on Sunday 31 May; BoT gives Monday 1 June). It missed 2 June, 28 July and 11 August 2025, and 1 June and 28 July 2026. 10 dates fixed. Daily SET market reports show the exchange trading on 30 July 2026 and not on 28 or 29 July. Not applied: Friday 16 October 2026, a BoT special holiday for financial institutions in Bangkok only (BoT 26/2569); whether SET closed that day was not verified.",
+      "summary": "SET and TFEX holidays follow the Bank of Thailand's announcements (tfex.co.th holiday page). BoT FPG. 5/2567 (2025) and 31/2568 (2026) are the closing lists, with the additional holidays of 2 June and 11 August 2025 from BoT 15/2567. The registry wrongly closed 2 January 2025, 16 April 2025 (the Cabinet's Songkran substitute, a government holiday only), 11 July 2025 and 30 July 2026 (Khao Phansa, public sector only) and Visakha Bucha on 25 May 2026 (it falls on Sunday 31 May; BoT gives Monday 1 June). It missed 2 June, 28 July and 11 August 2025, and 1 June and 28 July 2026. 10 dates fixed. Daily SET market reports show the exchange trading on 30 July 2026 and not on 28 or 29 July. Not applied: Friday 16 October 2026, a BoT special holiday for financial institutions in Bangkok only (BoT 26/2569); whether SET closed that day was not verified here; 4c12 later verified it from SET's own holiday page, and 16 October and 16 December 2026 are now library errors with the registry closed (separate entry).",
       "source_url": "https://www.bot.or.th/content/dam/bot/fipcs/documents/FPG/2568/EngPDF/25680162.pdf"
     },
     {
@@ -1431,7 +1431,7 @@
         "2025-05-29",
         "2026-05-14"
       ],
-      "summary": "Nasdaq's May 2025 statistics report give Riga 19 trading days against 22 weekdays, and Tallinn and Vilnius 20: the two Baltic exchanges with no May holiday but Labour Day were closed on 1 May and on Ascension Day (29 May), so every Baltic exchange observes Ascension. Riga's third closure is Monday 5 May, the day Latvia gives off when 4 May (Restoration of Independence) falls on a Sunday. The registry traded on both days and, for the same reason, on Ascension Day 14 May 2026 (the registry already closes Ascension in 2027-2029). 3 dates fixed. The May 2026 report was not read: 14 May 2026 rests on the pattern of 2024 and 2025.",
+      "summary": "Nasdaq Baltic's May 2025 bulletin gives Riga 18 equities trading days against 22 weekdays, and Tallinn and Vilnius 20 (corrected in 4c-final: this entry first quoted 19 from Nasdaq's Nordic and Baltic statistics summary; the fourth Riga closure is the Cabinet transfer day 2 May, fixed in 4c12; the three fixes below stand): the two Baltic exchanges with no May holiday but Labour Day were closed on 1 May and on Ascension Day (29 May), so every Baltic exchange observes Ascension. Riga's third closure is Monday 5 May, the day Latvia gives off when 4 May (Restoration of Independence) falls on a Sunday. The registry traded on both days and, for the same reason, on Ascension Day 14 May 2026 (the registry already closes Ascension in 2027-2029). 3 dates fixed. The May 2026 report was not read: 14 May 2026 rests on the pattern of 2024 and 2025.",
       "source_url": "https://attachment.news.eu.nasdaq.com/aab5896ed129b436acc32b21a545fcddf"
     },
     {
@@ -1874,6 +1874,95 @@
       ],
       "summary": "Saudi Exchange's holiday events page: Eid Al Fiter 2024, 'Trading will resume after the holiday on 14/04/2024'; Eid Al Adha 2024, 'Trading will discontinue at the end of trading day 13/06/2024' and 'Trading will resume after the holiday on 23/06/2024'. exchange_calendars closes all four (and pandas_market_calendars agrees); the registry trades on them (4c13). The 2021-2023 corrections of the same backfill lie outside the 2024-2029 report window.",
       "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/about-saudi-exchange/exchange-media-centre/events"
+    },
+    {
+      "exchange": "XLIT",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2010-11-02",
+        "2011-11-02",
+        "2012-11-02",
+        "2015-11-02",
+        "2016-11-02",
+        "2017-11-02",
+        "2018-11-02"
+      ],
+      "summary": "exchange_calendars applies All Souls' Day (2 November) to every year. It became a Lithuanian public holiday only through the Labour Code art. 123 amendment, law No. XIII-2415 of 20 August 2019 (TAR 2019-08-30 No. 2019-13753), in force from 1 January 2020. The registry trades on the seven weekday 2 Novembers before 2020; 4c10 removed them from the exchange_calendars backfill (2 November 2013, 2014 and 2019 fell on weekends).",
+      "source_url": "https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/2a8f4d62c57911e993cff47c25bfa28c"
+    },
+    {
+      "exchange": "XBDA",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2022-09-23"
+      ],
+      "summary": "Hurricane Fiona: BSX announced that Friday 23 September 2022 'will not be a trading or settlement day'. Both libraries trade; the registry closes it (ad_hoc_closures, 4c11).",
+      "source_url": "https://www.bsx.com/article/1100801631"
+    },
+    {
+      "exchange": "XJSE",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2022-12-27"
+      ],
+      "summary": "JSE Market Notice 600/2022: all markets closed on Tuesday 27 December 2022, a declared public holiday. exchange_calendars trades; the registry closes it (4c8).",
+      "source_url": "https://clientportal.jse.co.za/Content/JSENoticesandCircularsItems/JSE%20Market%20Notice%2060022%20All%20Markets%20-%20Public%20Holiday%2027%20December%202022.pdf"
+    },
+    {
+      "exchange": "XJSE",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2023-12-15"
+      ],
+      "summary": "JSE Market Notice 386/2023: 'all JSE Markets will be closed' on Friday 15 December 2023, a declared public holiday. exchange_calendars trades; the registry closes it (4c8).",
+      "source_url": "https://clientportal.jse.co.za/Content/JSENoticesandCircularsItems/JSE%20Market%20Notice%2038623%20All%20Derivative%20Markets%20-%20Public%20Holiday%2015%20December%202023.pdf"
+    },
+    {
+      "exchange": "XJSE",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2024-05-29"
+      ],
+      "summary": "JSE Service Hotline 057/2024: all markets closed on Wednesday 29 May 2024, the National and Provincial Elections public holiday. exchange_calendars trades; the registry closes it (4c8).",
+      "source_url": "https://clientportal.jse.co.za/Content/JSEHotlinesItems/JSE%20Service%20Hotline%2005724%20All%20Markets%20-%20Public%20Holiday%20-%20Wednesday%20-%2029%20May%202024.pdf"
+    },
+    {
+      "exchange": "XJSE",
+      "verdict": "library_error",
+      "status": "registry_unchanged",
+      "dates": [
+        "2026-11-04"
+      ],
+      "summary": "The President declared Wednesday 4 November 2026 a public holiday for the Local Government Elections, and JSE closes all markets on declared public holidays (Service Hotlines 130/2025 and 057/2024). The libraries trade; the registry closes it. The date stays unconfirmed in the registry's coverage (recheck 2026-12-15, the 8-14 December session) until JSE's own notice for the day is read.",
+      "source_url": "https://www.gov.za/news/media-statements/president-cyril-ramaphosa-declares-election-day"
+    },
+    {
+      "exchange": "XTAI",
+      "verdict": "library_error",
+      "status": "registry_unchanged",
+      "dates": [
+        "2026-07-10",
+        "2026-10-23"
+      ],
+      "summary": "TWSE's rule (trading-system page) closes the centralized market when the Mayor of Taipei suspends work for Taipei's public agencies after a natural disaster. The Taipei City Government Department of Personnel's list records 'stop work and classes' for 10 July 2026 (Typhoon Bavi) and 23 October 2026 (Typhoon Champi). The libraries trade; the registry closes both (ad_hoc_closures). Both stay unconfirmed in the registry's coverage until TWSE's own closure notices can be read.",
+      "source_url": "https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB"
+    },
+    {
+      "exchange": "XTAI",
+      "verdict": "library_error",
+      "status": "registry_verified",
+      "dates": [
+        "2027-02-02",
+        "2027-04-06",
+        "2027-12-24"
+      ],
+      "summary": "TWSE's holiday-schedule open data for ROC 116 (2027) lists 2 February 2027 as a no-trading settlement day before Lunar New Year, 6 April 2027 as Children's Day (observed) and 24 December 2027 as Constitution Day (observed). The libraries trade; the registry closes all three (4c9).",
+      "source_url": "https://www.twse.com.tw/holidaySchedule/holidaySchedule?response=open_data"
     }
   ]
 }

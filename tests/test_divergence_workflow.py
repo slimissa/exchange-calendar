@@ -44,6 +44,8 @@ def test_steps_in_order(text):
         # One install, locked by constraints-divergence.txt (4c-R5).
         "pip install -r requirements.txt -r requirements-dev.txt -c constraints-divergence.txt",
         "python3 tools/divergence_test.py --exchanges all --year 2024-2029",
+        # 4c-final: the 2010-2029 pass feeds the triage-coverage section.
+        "python3 tools/divergence_test.py --exchanges all --year 2010-2029 --output /tmp/divergence_history.json",
         "python3 tools/divergence_report.py",
         "peter-evans/create-pull-request@v6",
     ]

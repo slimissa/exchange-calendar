@@ -9,6 +9,12 @@ Hand-checked verdicts are read from docs/divergence_triage.json (when it
 exists) and shown next to the dates they cover, so a verified library error is
 not mistaken for an open registry bug.
 
+When a 2010-2029 trading-day run (`divergence_test.py --year 2010-2029
+--output /tmp/divergence_history.json`) exists, a "Triage coverage 2010-2029"
+section counts every disagreement in those years as covered by a triage
+verdict, by a `contradicted_by` entry in the exchange's coverage, or as
+unclassified (4c-final).
+
 When a sessions file from `divergence_test.py --mode sessions` exists, a
 "Session Times" section (open, close, half-day and break agreement per
 exchange) is added to the report. Without it the section is left out.
@@ -16,6 +22,7 @@ exchange) is added to the report. Without it the section is left out.
 Usage:
     python3 tools/divergence_test.py --exchanges all --year 2024-2029
     python3 tools/divergence_test.py --mode sessions --exchanges XNYS,XLON,XTKS,XASX
+    python3 tools/divergence_test.py --exchanges all --year 2010-2029 --output /tmp/divergence_history.json
     python3 tools/divergence_report.py
     python3 tools/divergence_report.py --input /tmp/divergence.json \\
         --triage docs/divergence_triage.json --output docs/DIVERGENCE.md
@@ -37,6 +44,7 @@ import divergence_pins  # noqa: E402  (tools/divergence_pins.py)
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_INPUT = "/tmp/divergence.json"
 DEFAULT_SESSIONS = "/tmp/divergence_sessions.json"
+DEFAULT_HISTORY = "/tmp/divergence_history.json"
 DEFAULT_OUTPUT = REPO_ROOT / "docs" / "DIVERGENCE.md"
 DEFAULT_TRIAGE = REPO_ROOT / "docs" / "divergence_triage.json"
 
@@ -436,7 +444,71 @@ def _triage_coverage(report, years, triage_index):
     return out
 
 
-def render(report, triage=None, sessions=None, calendar=None):
+def _contradicted_index(calendar):
+    """{(exchange, date)} for every date listed in a coverage source's
+    contradicted_by (the registry's sourced value against both libraries)."""
+    index = set()
+    for e in (calendar or {}).get("exchanges", []):
+        cov = (e.get("verification") or {}).get("coverage") or {}
+        for src in cov.get("sources", []):
+            for day in src.get("contradicted_by", []):
+                index.add((e["code"], day))
+    return index
+
+
+def classify_history(history, triage_index, contradicted):
+    """{year: {"total": n, verdict: n, "contradicted_by": n, "unclassified": [(code, date)]}}."""
+    out = {}
+    years = [str(y) for y in history["years"]]
+    for y in years:
+        out[y] = {"total": 0, "contradicted_by": 0, "unclassified": []}
+    for code, e in sorted(history["exchanges"].items()):
+        if "years" not in e:
+            continue
+        for y in years:
+            r = e["years"].get(y)
+            if not r or REGISTRY not in r["sources_compared"] \
+                    or len(r["sources_compared"]) < 2:
+                continue
+            for item in r.get("disagreements", []):
+                row = out[y]
+                row["total"] += 1
+                verdict = triage_index.get((code, item["date"]))
+                if verdict:
+                    row[verdict] = row.get(verdict, 0) + 1
+                elif (code, item["date"]) in contradicted:
+                    row["contradicted_by"] += 1
+                else:
+                    row["unclassified"].append((code, item["date"]))
+    return out
+
+
+def render_history_triage(history, triage_index, calendar):
+    years = [str(y) for y in history["years"]]
+    rows = classify_history(history, triage_index, _contradicted_index(calendar))
+    out = [f"## Triage coverage {years[0]}-{years[-1]}", "",
+           "Every disagreement in these years, from "
+           f"`divergence_test.py --exchanges all --year {years[0]}-{years[-1]} "
+           "--output /tmp/divergence_history.json`, is covered by a verdict in "
+           "`docs/divergence_triage.json` or by a `contradicted_by` entry in the "
+           "exchange's `verification.coverage` (a date the registry's source "
+           "supports against both libraries). Unclassified must be 0.", "",
+           "| Year | Disagreements | " + " | ".join(VERDICT_LABEL[v] for v in VERDICT_LABEL)
+           + " | contradicted_by | Unclassified |",
+           "|---|---:|" + "---:|" * (len(VERDICT_LABEL) + 2)]
+    for y in years:
+        r = rows[y]
+        out.append(f"| {y} | {r['total']} | "
+                   + " | ".join(str(r.get(v, 0)) for v in VERDICT_LABEL)
+                   + f" | {r['contradicted_by']} | {len(r['unclassified'])} |")
+    out.append("")
+    left = [f"{c} {d}" for y in years for c, d in rows[y]["unclassified"]]
+    if left:
+        out += ["Unclassified: " + ", ".join(left) + ".", ""]
+    return out
+
+
+def render(report, triage=None, sessions=None, calendar=None, history=None):
     triage_index = _triage_index(triage)
     exchanges = report["exchanges"]
     years = report["years"]
@@ -458,6 +530,10 @@ def render(report, triage=None, sessions=None, calendar=None):
         w(f"python3 tools/divergence_test.py --mode sessions --exchanges "
           f"{','.join(sorted(sessions['exchanges']))} "
           f"--year {sessions['years'][0]}-{sessions['years'][-1]}")
+    if history is not None:
+        w(f"python3 tools/divergence_test.py --exchanges all "
+          f"--year {history['years'][0]}-{history['years'][-1]} "
+          f"--output /tmp/divergence_history.json")
     w("python3 tools/divergence_report.py")
     w("```")
     w("")
@@ -563,6 +639,8 @@ def render(report, triage=None, sessions=None, calendar=None):
     w("")
 
     out.extend(render_by_year(report, triage_index))
+    if history is not None:
+        out.extend(render_history_triage(history, triage_index, calendar))
 
     # ---- no reference data ------------------------------------------------
     w("## No reference data")
@@ -722,6 +800,11 @@ def main(argv=None):
                         help="JSON from divergence_test.py --mode sessions; the "
                              "Session Times section is added when it exists "
                              "(default: %(default)s)")
+    parser.add_argument("--history", default=DEFAULT_HISTORY,
+                        help="JSON from divergence_test.py --year 2010-2029 --output "
+                             "/tmp/divergence_history.json; the 2010-2029 triage "
+                             "coverage section is added when it exists "
+                             "(default: %(default)s)")
     parser.add_argument("--triage", default=str(DEFAULT_TRIAGE),
                         help="Hand-checked verdicts, optional (default: %(default)s)")
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT),
@@ -773,7 +856,22 @@ def main(argv=None):
     if Path(args.calendar).exists():
         calendar = json.loads(Path(args.calendar).read_text(encoding="utf-8"))
 
-    text = render(report, triage, sessions, calendar)
+    history = None
+    if Path(args.history).exists():
+        try:
+            history = json.loads(Path(args.history).read_text(encoding="utf-8"))
+            if not isinstance(history.get("exchanges"), dict) or "years" not in history \
+                    or history.get("mode", "trading_days") != "trading_days":
+                raise ValueError("not a trading-day divergence report")
+        except (OSError, ValueError) as exc:
+            print(f"ERROR: cannot read {args.history}: {exc}", file=sys.stderr)
+            return 2
+        rc = divergence_pins.check(found=history.get("libraries") or {},
+                                   what=f"recorded in {Path(args.history).name}")
+        if rc:
+            return rc
+
+    text = render(report, triage, sessions, calendar, history)
     Path(args.output).write_text(text, encoding="utf-8")
     print(f"Wrote {args.output} ({len(text.splitlines())} lines)")
     return 0
