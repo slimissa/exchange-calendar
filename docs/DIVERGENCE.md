@@ -152,7 +152,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 | 2024 | 8 | 0 | 7 | 0 | 0 | 1 |
 | 2025 | 20 | 0 | 18 | 1 | 1 | 0 |
 | 2026 | 27 | 0 | 27 | 0 | 0 | 0 |
-| 2027 | 66 | 0 | 15 | 0 | 33 | 18 |
+| 2027 | 66 | 0 | 16 | 0 | 32 | 18 |
 | 2028 | 78 | 0 | 6 | 0 | 72 | 0 |
 | 2029 | 82 | 0 | 5 | 0 | 77 | 0 |
 
@@ -179,7 +179,7 @@ Every disagreement in these years, from `divergence_test.py --exchanges all --ye
 | 2024 | 8 | 0 | 7 | 0 | 0 | 1 | 0 |
 | 2025 | 20 | 0 | 18 | 1 | 1 | 0 | 0 |
 | 2026 | 27 | 0 | 27 | 0 | 0 | 0 | 0 |
-| 2027 | 66 | 0 | 15 | 0 | 33 | 18 | 0 |
+| 2027 | 66 | 0 | 16 | 0 | 32 | 18 | 0 |
 | 2028 | 78 | 0 | 6 | 0 | 72 | 0 | 0 |
 | 2029 | 82 | 0 | 5 | 0 | 77 | 0 | 0 |
 
@@ -314,7 +314,7 @@ Every disagreement in these years, from `divergence_test.py --exchanges all --ye
 
 ### XTAI (20)
 
-- registry closed, PMC open, EC open (13): 2026-07-10 Fr [library error], 2026-10-23 Fr [library error], 2027-02-02 Tu [library error], 2027-02-03 We [unpublished], 2027-04-06 Tu [library error], 2027-12-24 Fr [library error], 2028-01-31 Mo [unpublished], 2028-02-01 Tu [unpublished], 2028-04-05 We [unpublished], 2028-09-25 Mo [unpublished], 2029-02-08 Th [unpublished], 2029-02-16 Fr [unpublished], 2029-06-18 Mo [unpublished]
+- registry closed, PMC open, EC open (13): 2026-07-10 Fr [library error], 2026-10-23 Fr [library error], 2027-02-02 Tu [library error], 2027-02-03 We [library error], 2027-04-06 Tu [library error], 2027-12-24 Fr [library error], 2028-01-31 Mo [unpublished], 2028-02-01 Tu [unpublished], 2028-04-05 We [unpublished], 2028-09-25 Mo [unpublished], 2029-02-08 Th [unpublished], 2029-02-16 Fr [unpublished], 2029-06-18 Mo [unpublished]
 - registry open, PMC closed, EC closed (7): 2028-04-03 Mo [unpublished], 2028-05-29 Mo [unpublished], 2028-10-03 Tu [unpublished], 2029-04-03 Tu [unpublished], 2029-06-15 Fr [unpublished], 2029-09-21 Fr [unpublished], 2029-12-31 Mo [unpublished]
 
 ### XTAL (5)
@@ -325,7 +325,7 @@ Every disagreement in these years, from `divergence_test.py --exchanges all --ye
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 89 dates; Registry error: 411 dates; Unpublished: 197 dates.
+- Convention difference: 1 dates; Library error: 90 dates; Registry error: 411 dates; Unpublished: 196 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -753,7 +753,7 @@ Source: https://www.bursamalaysia.com/market_information/market_holidays
 
 ### XKLS: Unpublished (4, calendar not yet published, registry value is a prediction, recheck 2027-01-15)
 
-Hari Raya Puasa, Maulidur Rasul and Chinese New Year replacement days 2027. The Islamic dates depend on moon sighting and the Malaysian government gazettes the year's holidays and replacement days late in the year before, so neither side can know them yet.
+Hari Raya Puasa, Maulidur Rasul and Chinese New Year replacement days 2027. The Cabinet published the 2027 public holidays on 27 August 2026 (Chinese New Year 6-7 February, both at the weekend, so 8-9 February in lieu; Hari Raya Puasa 10-11 March, subject to change; Prophet Muhammad's Birthday Sunday 15 August, so 16 August in lieu); the registry matches it and the libraries do not. Bursa's own 2027 closures are not published and the Islamic dates still depend on moon sighting, so the registry values stay predictions until Bursa announces them.
 
 Dates: 2027-02-09, 2027-03-09, 2027-03-11, 2027-08-16.
 
@@ -1295,11 +1295,11 @@ Dates: 2026-07-10, 2026-10-23.
 
 Source: https://dop.gov.taipei/cp.aspx?n=EFE42F770DFD63FB
 
-### XTAI: Library error (3, registry verified, no change)
+### XTAI: Library error (4, registry verified, no change)
 
-TWSE's holiday-schedule open data for ROC 116 (2027) lists 2 February 2027 as a no-trading settlement day before Lunar New Year, 6 April 2027 as Children's Day (observed) and 24 December 2027 as Constitution Day (observed). The libraries trade; the registry closes all three (4c9).
+TWSE's holiday-schedule open data for ROC 116 (2027) lists 2 and 3 February 2027 as no-trading settlement days before Lunar New Year, 6 April 2027 as Children's Day (observed) and 24 December 2027 as Constitution Day (observed). The libraries trade; the registry closes all four (4c9; 3 February moved here from an 'unpublished' verdict in 4d.1, the schedule being out).
 
-Dates: 2027-02-02, 2027-04-06, 2027-12-24.
+Dates: 2027-02-02, 2027-02-03, 2027-04-06, 2027-12-24.
 
 Source: https://www.twse.com.tw/holidaySchedule/holidaySchedule?response=open_data
 
@@ -1318,14 +1318,6 @@ TWSE's open/closed calendars follow the government calendar. The TAIFEX notice f
 Dates: 2025-01-27, 2025-09-29, 2025-10-24, 2025-12-25, 2026-04-06, 2026-09-28, 2026-10-26, 2026-12-25.
 
 Source: https://www.twse.com.tw/en/page/trading/exchange.html
-
-### XTAI: Unpublished (1, calendar not yet published, registry value is a prediction, recheck 2026-12-31)
-
-2027-02-03 is the registry's pre-Chinese-New-Year settlement day. DGPA's calendar starts the holiday on 4 Feb; whether TWSE and the depository also close on the 3rd is announced in TWSE's own yearly schedule, which is not out yet.
-
-Dates: 2027-02-03.
-
-Source: https://www.taiwannews.com.tw/zh/news/6106736
 
 ### XTAI: Unpublished (7, calendar not yet published, registry value is a prediction, recheck 2027-06-30)
 

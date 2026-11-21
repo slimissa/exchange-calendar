@@ -2079,7 +2079,7 @@
   },
   "mic": "XBUE",
   "name": "Buenos Aires Stock Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2026: exchange_calendars + exchange_publications. 2027-2029: exchange_calendars + standing pattern; BYMA's calendar page shows 2026 only (read 2026-11-21), so Holy Thursday 2027-2029 (a non-working day, the registry trades) is a prediction (4d.1). Caution: for 2025-2029 the registry disagrees with exchange_calendars on 18 days, 14 of them triaged as library errors (the other 4 as unpublished) in docs/DIVERGENCE.md (Argentina moves some holidays by decree and adds bridge days), so the 2010-2024 backfill is likely to carry similar errors; pandas_market_calendars mirrors exchange_calendars and cannot catch them.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2026: exchange_calendars + exchange_publications; 2025-04-17 (Holy Thursday, a non-working day) is unconfirmed with recheck_date 2026-12-31: the registry trades it, both libraries close it, BYMA's calendar page now serves 2026 only and no BYMA communique for Semana Santa 2025 was found; a market-data history (rava.com, BYMA share, April 2025) lists 19 sessions and none on 17 April, which points to a closure but is not BYMA's word. It is settled by BYMA's 2025 calendar or its April 2025 communique (byma.com.ar/comunicados) (4d.1). 2027-2029: exchange_calendars + standing pattern; BYMA's calendar page shows 2026 only (read 2026-11-21), so Holy Thursday 2027-2029 (a non-working day, the registry trades) is a prediction (4d.1). Caution: for 2025-2029 the registry disagrees with exchange_calendars on 18 days, 14 of them triaged as library errors (the other 4 as unpublished) in docs/DIVERGENCE.md (Argentina moves some holidays by decree and adds bridge days), so the 2010-2024 backfill is likely to carry similar errors; pandas_market_calendars mirrors exchange_calendars and cannot catch them.",
   "regular_hours": {
     "close": "17:00",
     "open": "11:00"
@@ -2109,8 +2109,12 @@
         },
         {
           "from": "2025-01-01",
-          "source": "exchange_calendars + exchange_publications",
-          "to": "2026-12-31"
+          "recheck_date": "2026-12-31",
+          "source": "exchange_calendars + exchange_publications; 2025-04-17 (Holy Thursday) unconfirmed: BYMA's 2025 calendar or Semana Santa communique not read",
+          "to": "2026-12-31",
+          "unconfirmed": [
+            "2025-04-17"
+          ]
         },
         {
           "from": "2027-01-01",

@@ -1516,7 +1516,7 @@
         {
           "from": "2025-01-01",
           "recheck_date": "2026-12-22",
-          "source": "exchange_calendars + exchange_publications (BSX trading page; holiday, festive and hurricane notices)",
+          "source": "exchange_calendars + exchange_publications (BSX trading page; holiday, festive and hurricane notices); the 2026-12-24 early close is unconfirmed until BSX's 2026 festive notice is read",
           "to": "2026-12-31",
           "unconfirmed": [
             "2025-10-01",

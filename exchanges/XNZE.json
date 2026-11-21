@@ -1676,7 +1676,7 @@
         {
           "from": "2025-01-01",
           "recheck_date": "2026-12-15",
-          "source": "exchange_calendars + exchange_publications (NZX trading-hours pages; NZX market-holiday memos 443000 and 463713)",
+          "source": "exchange_calendars + exchange_publications (NZX trading-hours pages; NZX market-holiday memos 443000 and 463713); the 24/31 December abbreviated days are unconfirmed (NZX lists them in memo 463713's attachment, not readable here)",
           "to": "2027-12-31",
           "unconfirmed": [
             "2025-12-24",
