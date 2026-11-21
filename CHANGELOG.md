@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+Phase 4c (sessions 4c1-4c13, the 4c-R1 to 4c-R5 rechecks and 4c-final). Proposed as 2.28.0: minor, no breaking change.
+
+### Added
+- 2010-2024 backfills from `exchange_calendars` 4.13.2 for 44 exchanges, so 50 of 74 now have data from 2010 (XASX, XHKG, XLON, XNAS, XNYS from 1990 and XTKS from 1997 already did): XAMS, XBDA, XBKK, XBOG, XBOM, XBRU, XBUD, XBUE, XCSE, XDUB, XETR, XHEL, XICE, XIST, XJSE, XKAR, XKLS, XKRX, XLIM, XLIS, XLIT, XLUX, XMAD, XMEX, XMOS, XNSE (inferred from XBOM), XNZE, XOSL, XPAR, XPHS, XPRA, XRIS, XSES, XSGO, XSHE (inferred from XSHG), XSHG, XSTO, XSWX, XTAI, XTAL, XTSE, XWAR, XWBO, XZAG. XSAU starts in 2021, where `exchange_calendars` starts it. Each backfill keeps the library's dates except the ones its note lists as corrected against the exchange's own documents.
+- `verification.coverage` (`from`, `to`, `ranges`, `sources` with `contradicted_by`, `unconfirmed` and `recheck_date`) and `note` on the backfilled exchanges; `note` is carried into `calendar.json`, and the Rust and Go wrappers expose `coverage`.
+- `ad_hoc_closures` in use: 38 rows for XBDA, XBKK, XLIM, XRIS, XSGO, XTAI and XZAG.
+- Recheck-date gate: `tools/check_recheck_dates.py` fails CI the day after a `recheck_date` passes.
+- Divergence: the comparison covers 2010-2029; `docs/DIVERGENCE.md` has a 2010-2029 triage-coverage table (fourth pass, `--output /tmp/divergence_history.json`, also in the weekly workflow), and `tests/test_divergence_classified.py` fails if any disagreement has neither a triage verdict nor a `contradicted_by` entry. Every disagreement 2010-2029 is classified.
+- The reference libraries are pinned and the whole divergence environment is locked (`constraints-divergence.txt`); the tools refuse to run unpinned.
+- `docs/facts.json`: `exchanges_from_2010`, `exchanges_from_2021`, `exchanges_from_2025`, checked in the README by `check_doc_facts.py`.
+- ADR 0013 (close convention: the scheduled end of the closing auction) with its applied and exceptions tables; `docs/phase-4d-backlog.md` with the Phase 4d and Phase 4h items.
+
+### Fixed
+- `delayed_open` is honoured in all four wrappers: on a `delayed_open` day the market opens at `delayed_open_time` (exchange-level `is_open`/`status_at` in Python, JavaScript, Go and Rust; registry-level `is_open` in Python and Rust).
+- Closes moved to the end of the closing auction (ADR 0013): XAMS, XPAR and XBRU 17:35 CET; XLIS 16:35 Lisbon; XBUD 17:05; XETR 17:35; XWBO 17:35; XLUX 17:35; XSES 17:06 (half days 12:06); XNZE 17:00 (abbreviated days 13:00); XBKK 16:35; XKLS 16:50 (unconfirmed); XOSL 16:25 from 2012-08-06 (half days 13:05); XDUB half days 12:30 from 2019; XPRA 16:15, then 16:55 from 2027-01-04 (unconfirmed); XPHS 14:50 with a 12:00-13:00 recess from 2022-03-01; XSAU 15:10 (closing auction 15:00-15:10). XBDA is 09:00-16:30 (continuous trading, no auction).
+- Hours history: XKRX (15:00 before 2016-08-01), XOSL (17:30 before 2012-08-06), XBOM and XNSE opening times from 2010, XLIS 08:00-16:30 Lisbon, XHEL open 10:00, XSHE close 15:00.
+- Data corrections against the exchanges' own documents (dates and sources in each file's note), among them: XLIT pre-2020 All Souls' Day removed (law XIII-2415); XRIS Christmas Day 2012-2024, the 2018 song-festival and papal-visit days, Cabinet transfer days through 2026 and the 2023/2026 dates settled by Nasdaq Baltic's bulletins; XTAL nine missing Christmas Days; XJSE three declared public holidays and Dec 24/31 early closes; XTAI the 2027 ROC 116 schedule and the 2026 typhoon closures; XBKK 16 October and 16 December 2026; XKAR Ashura and Eid Milad-un-Nabi 2026; XSAU twelve 2021-2024 days and the published 2027-2029 Eid closures (Islamic New Year predictions removed); half days added for XAMS, XBRU, XLIS, XSTO, XOSL and XDUB; XSHG and XSHE dates against the exchanges.
+- `tools/update_facts.py --check` compares `tests_total` (a stale count passed before).
+- Fetchers: XIST raises `FetchError` on a non-PDF response and tries the next year's URL; `SourceMissingError` makes a gone source a failure, not a warning.
+
+### Changed
+- Schema 2.2.3: `coverage` and `note` (2.2.1), `effective_from` required on every recurrence rule (2.2.2), `coverage.from`/`to` required (2.2.3).
+- Backfilled years have `low` confidence, not `medium`.
+
+### Known issue
+- Registry-level `is_open` differs between wrappers: Python and Rust count pre- and post-market as open (the 2.11.0 contract), JavaScript and Go return the regular session only; and on an ad hoc early-close day Python reports closed all day while Rust ignores the early close. Recorded in `docs/phase-4d-backlog.md`; not changed in this release.
+
 ## [2.27.0] - 2026-11-10
 
 ### Added

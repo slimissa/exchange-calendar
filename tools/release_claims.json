@@ -1861,5 +1861,23 @@
     {"file": "tools/gen_readme_table.py", "contains": "def generate"},
     {"file": "scripts/release.sh", "contains": "gen_readme_table.py --check"},
     {"file": "README.md", "contains": "| reference_compared |"}
+  ],
+  "2.28.0": [
+    {"file": "tools/check_recheck_dates.py"},
+    {"file": "constraints-divergence.txt"},
+    {"file": "tests/test_divergence_classified.py", "contains": "def test_no_unclassified_disagreement"},
+    {"file": "tools/divergence_report.py", "contains": "def render_history_triage"},
+    {"file": "docs/DIVERGENCE.md", "contains": "## Triage coverage 2010-2029"},
+    {"file": ".github/workflows/divergence.yml", "contains": "--year 2010-2029 --output /tmp/divergence_history.json"},
+    {"file": "docs/decisions/0013-close-convention.md", "contains": "| XSAU full day |"},
+    {"file": "docs/phase-4d-backlog.md", "contains": "## Phase 4h"},
+    {"file": "schema.json", "contains": "\"version\": \"2.2.3\""},
+    {"file": "wrappers/python/exchange_calendar/exchange.py", "contains": "def delayed_open_time"},
+    {"file": "wrappers/javascript/src/exchange.js", "contains": "delayedOpenTime(dateStr)"},
+    {"file": "wrappers/go/exchange.go", "contains": "func (e *Exchange) DelayedOpenTime"},
+    {"file": "wrappers/rust/src/exchange.rs", "contains": "pub fn delayed_open_time"},
+    {"file": "tools/update_facts.py", "contains": "exchanges_from_2010"},
+    {"file": "README.md", "contains": "50 exchanges have data from 2010"},
+    {"file": "exchanges/XSAU.json", "contains": "\"effective_from\": \"2021-01-01\""}
   ]
 }
