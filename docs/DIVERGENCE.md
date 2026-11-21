@@ -152,7 +152,7 @@ Triage coverage (disagreements with a verdict in `docs/divergence_triage.json`):
 | 2024 | 8 | 0 | 7 | 0 | 0 | 1 |
 | 2025 | 20 | 0 | 18 | 1 | 1 | 0 |
 | 2026 | 27 | 0 | 27 | 0 | 0 | 0 |
-| 2027 | 66 | 0 | 15 | 0 | 49 | 2 |
+| 2027 | 66 | 0 | 15 | 0 | 33 | 18 |
 | 2028 | 78 | 0 | 6 | 0 | 72 | 0 |
 | 2029 | 82 | 0 | 5 | 0 | 77 | 0 |
 
@@ -179,7 +179,7 @@ Every disagreement in these years, from `divergence_test.py --exchanges all --ye
 | 2024 | 8 | 0 | 7 | 0 | 0 | 1 | 0 |
 | 2025 | 20 | 0 | 18 | 1 | 1 | 0 | 0 |
 | 2026 | 27 | 0 | 27 | 0 | 0 | 0 | 0 |
-| 2027 | 66 | 0 | 15 | 0 | 49 | 2 | 0 |
+| 2027 | 66 | 0 | 15 | 0 | 33 | 18 | 0 |
 | 2028 | 78 | 0 | 6 | 0 | 72 | 0 | 0 |
 | 2029 | 82 | 0 | 5 | 0 | 77 | 0 | 0 |
 
@@ -310,7 +310,7 @@ Every disagreement in these years, from `divergence_test.py --exchanges all --ye
 
 ### XSHG (45)
 
-- registry closed, PMC open (45): 2027-01-01 Fr [unpublished], 2027-02-05 Fr [unpublished], 2027-02-08 Mo [unpublished], 2027-02-09 Tu [unpublished], 2027-02-10 We [unpublished], 2027-02-11 Th [unpublished], 2027-02-12 Fr [unpublished], 2027-04-05 Mo [unpublished], 2027-05-03 Mo [unpublished], 2027-05-04 Tu, 2027-05-05 We, 2027-06-09 We [unpublished], 2027-09-15 We [unpublished], 2027-10-01 Fr [unpublished], 2027-10-04 Mo [unpublished], 2027-10-05 Tu [unpublished], 2027-10-06 We [unpublished], 2027-10-07 Th [unpublished], 2028-01-03 Mo [unpublished], 2028-01-26 We [unpublished], 2028-01-27 Th [unpublished], 2028-01-28 Fr [unpublished], 2028-01-31 Mo [unpublished], 2028-02-01 Tu [unpublished], 2028-04-04 Tu [unpublished], 2028-05-01 Mo [unpublished], 2028-06-19 Mo [unpublished], 2028-10-02 Mo [unpublished], 2028-10-03 Tu [unpublished], 2028-10-04 We [unpublished], 2028-10-05 Th [unpublished], 2028-10-06 Fr [unpublished], 2029-01-01 Mo [unpublished], 2029-02-13 Tu [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-02-16 Fr [unpublished], 2029-02-19 Mo [unpublished], 2029-04-05 Th [unpublished], 2029-05-01 Tu [unpublished], 2029-10-01 Mo [unpublished], 2029-10-02 Tu [unpublished], 2029-10-03 We [unpublished], 2029-10-04 Th [unpublished], 2029-10-05 Fr [unpublished]
+- registry closed, PMC open (45): 2027-01-01 Fr, 2027-02-05 Fr, 2027-02-08 Mo, 2027-02-09 Tu, 2027-02-10 We, 2027-02-11 Th, 2027-02-12 Fr, 2027-04-05 Mo, 2027-05-03 Mo, 2027-05-04 Tu, 2027-05-05 We, 2027-06-09 We, 2027-09-15 We, 2027-10-01 Fr, 2027-10-04 Mo, 2027-10-05 Tu, 2027-10-06 We, 2027-10-07 Th, 2028-01-03 Mo [unpublished], 2028-01-26 We [unpublished], 2028-01-27 Th [unpublished], 2028-01-28 Fr [unpublished], 2028-01-31 Mo [unpublished], 2028-02-01 Tu [unpublished], 2028-04-04 Tu [unpublished], 2028-05-01 Mo [unpublished], 2028-06-19 Mo [unpublished], 2028-10-02 Mo [unpublished], 2028-10-03 Tu [unpublished], 2028-10-04 We [unpublished], 2028-10-05 Th [unpublished], 2028-10-06 Fr [unpublished], 2029-01-01 Mo [unpublished], 2029-02-13 Tu [unpublished], 2029-02-14 We [unpublished], 2029-02-15 Th [unpublished], 2029-02-16 Fr [unpublished], 2029-02-19 Mo [unpublished], 2029-04-05 Th [unpublished], 2029-05-01 Tu [unpublished], 2029-10-01 Mo [unpublished], 2029-10-02 Tu [unpublished], 2029-10-03 We [unpublished], 2029-10-04 Th [unpublished], 2029-10-05 Fr [unpublished]
 
 ### XTAI (20)
 
@@ -325,7 +325,7 @@ Every disagreement in these years, from `divergence_test.py --exchanges all --ye
 
 Verdicts checked by hand against each exchange's own publication. Dates marked in the list above are the ones still disagreeing; "fixed" entries are already corrected in the registry, so their dates no longer appear there. "Unpublished" entries are disagreements that cannot be checked yet because the exchange or its government has not published that year; the registry value is a prediction, and each entry carries a recheck date.
 
-- Convention difference: 1 dates; Library error: 89 dates; Registry error: 411 dates; Unpublished: 213 dates.
+- Convention difference: 1 dates; Library error: 89 dates; Registry error: 411 dates; Unpublished: 197 dates.
 
 ### XAMS: Registry error (9, fixed in 2.21.2)
 
@@ -1262,14 +1262,6 @@ The Shanghai Stock Exchange's notice on its 2026 holiday closures (SSE announcem
 Dates: 2026-01-02.
 
 Source: https://www.sse.com.cn/services/hkexsc/disclo/announ/c/c_20251222_10802519.shtml
-
-### XSHG: Unpublished (16, calendar not yet published, registry value is a prediction, recheck 2026-12-31)
-
-Both libraries stop at 2026 (exchange_calendars holds no 2027 holidays), so the 16 2027 disagreements are an empty reference, not a different date. The SSE publishes its holiday notice for a year in the last weeks of the year before (the newest notice on its list covers 2026), after the State Council sets the public-holiday arrangement. The registry values for 2027 are predictions (confidence note: predicted) and stay as they are until the exchange publishes 2027.
-
-Dates: 2027-01-01, 2027-02-05, 2027-02-08, 2027-02-09, 2027-02-10, 2027-02-11, 2027-02-12, 2027-04-05, 2027-05-03, 2027-06-09, 2027-09-15, 2027-10-01, 2027-10-04, 2027-10-05, 2027-10-06, 2027-10-07.
-
-Source: https://www.sse.com.cn/disclosure/dealinstruc/closed/list/
 
 ### XSHG: Unpublished (14, calendar not yet published, registry value is a prediction, recheck 2027-12-31)
 

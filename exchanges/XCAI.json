@@ -371,7 +371,7 @@
   "verification": {
     "basis": "BLOCKED.md",
     "class": "single_source",
-    "last_checked": "2026-11-08",
+    "last_checked": "2026-11-21",
     "reference_note": "BLOCKED (data staleness, not inaccessibility)."
   },
   "weekend_days": [

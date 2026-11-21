@@ -33,12 +33,17 @@ reference_note
     fetcher may still have an old, superseded verdict in BLOCKED.md; it is not used).
 
 last_checked is the date the class was derived (--date, default today). It is
-not part of --check: a stale date alone is not drift.
+not part of --check: a stale date alone is not drift. A normal run writes only
+the files whose class, basis or note changed, so it cannot record a
+re-derivation that changed nothing; --all writes every file and stamps them
+all with the same last_checked (an audit that re-derived every class, as in
+Phase 4d). tools/check_verification.py requires one date across all files.
 
 Usage:
     derive_verification.py                   # write all exchanges/*.json
     derive_verification.py --check           # exit 1 if any file would change
     derive_verification.py --date 2026-11-08
+    derive_verification.py --all --date 2026-11-21   # restamp every file
 
 Exit codes: 0 ok, 1 --check found drift, 2 fatal (missing input, bad format).
 """
@@ -178,7 +183,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--root", type=Path, default=REPO_ROOT)
     p.add_argument("--check", action="store_true", help="exit 1 if any file would change")
     p.add_argument("--date", default=None, help="last_checked to write (default: today)")
+    p.add_argument("--all", action="store_true",
+                   help="write every file, not only drifted ones (stamps last_checked on all)")
     args = p.parse_args(argv)
+    if args.all and args.check:
+        print("error: --all and --check exclude each other", file=sys.stderr)
+        return 2
     last_checked = args.date or date.today().isoformat()
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", last_checked):
         print(f"error: --date {last_checked!r} is not YYYY-MM-DD", file=sys.stderr)
@@ -192,9 +202,10 @@ def main(argv: list[str] | None = None) -> int:
             same = isinstance(old, dict) and all(old.get(k) == new[k]
                                                  for k in ("class", "basis", "reference_note")) \
                 and re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(old.get("last_checked", ""))) is not None
-            if same:
+            if same and not args.all:
                 continue
-            drift.append(d["code"])
+            if not same:
+                drift.append(d["code"])
             if not args.check:
                 if isinstance(old, dict) and "coverage" in old:
                     # coverage is authored, not derived: keep it on rewrite.

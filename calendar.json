@@ -293,7 +293,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (dead URL: HTTP 404; site reachable)."
       },
       "weekend_days": [
@@ -1254,7 +1254,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -3659,7 +3659,7 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -4068,7 +4068,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (visual-grid PDF)."
       },
       "weekend_days": [
@@ -4410,7 +4410,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED."
       },
       "weekend_days": [
@@ -5953,7 +5953,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -6275,7 +6275,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED."
       },
       "weekend_days": [
@@ -8377,7 +8377,7 @@
           ],
           "to": "2027-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -10613,7 +10613,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -12530,7 +12530,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -13491,7 +13491,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -13778,7 +13778,7 @@
       "verification": {
         "basis": "fetcher:implemented",
         "class": "source_verified",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
       },
       "weekend_days": [
@@ -14281,7 +14281,7 @@
       "verification": {
         "basis": "fetcher:implemented",
         "class": "source_verified",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
       },
       "weekend_days": [
@@ -15858,7 +15858,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -17984,7 +17984,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -18373,7 +18373,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (robots.txt disallows all paths; the fetcher respects it)."
       },
       "weekend_days": [
@@ -18769,7 +18769,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (data staleness, not inaccessibility)."
       },
       "weekend_days": [
@@ -19163,7 +19163,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (by design, not by inability)."
       },
       "weekend_days": [
@@ -19620,7 +19620,7 @@
       "verification": {
         "basis": "fetcher:implemented",
         "class": "source_verified",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
       },
       "weekend_days": [
@@ -19897,7 +19897,7 @@
       "verification": {
         "basis": "fetcher:implemented",
         "class": "source_verified",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
       },
       "weekend_days": [
@@ -21399,7 +21399,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -21744,7 +21744,7 @@
       "verification": {
         "basis": "fetcher:implemented",
         "class": "source_verified",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
       },
       "weekend_days": [
@@ -22086,7 +22086,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (by design, not by inability)."
       },
       "weekend_days": [
@@ -23371,7 +23371,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -24560,7 +24560,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -24973,7 +24973,7 @@
       "verification": {
         "basis": "fetcher:implemented",
         "class": "source_verified",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
       },
       "weekend_days": [
@@ -26340,7 +26340,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -30512,7 +30512,7 @@
       "verification": {
         "basis": "ci_network",
         "class": "ci_unreachable",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "CI-UNREACHABLE (not a block on the source)."
       },
       "weekend_days": [
@@ -32140,7 +32140,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -33831,7 +33831,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -34256,7 +34256,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (Cloudflare, HTTP 503/403)."
       },
       "weekend_days": [
@@ -35883,7 +35883,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -37604,7 +37604,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-20",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -39796,7 +39796,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -41831,7 +41831,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -42131,7 +42131,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (HTTP 403 on 2026-09-17)."
       },
       "weekend_days": [
@@ -43669,7 +43669,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -44630,7 +44630,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -46203,7 +46203,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -48991,7 +48991,7 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -49956,7 +49956,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -50930,7 +50930,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -51373,7 +51373,7 @@
       "verification": {
         "basis": "fetcher:implemented",
         "class": "source_verified",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
       },
       "weekend_days": [
@@ -52687,7 +52687,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -53979,7 +53979,7 @@
           ],
           "to": "2026-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -54308,7 +54308,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "The Verdict in BLOCKED.md is marked superseded; see the entry for the current finding."
       },
       "weekend_days": [
@@ -54666,7 +54666,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (dead URL: HTTP 404; calendar page not located)."
       },
       "weekend_days": [
@@ -57716,7 +57716,7 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars."
       },
       "weekend_days": [
@@ -58090,7 +58090,7 @@
       "verification": {
         "basis": "ci_network",
         "class": "ci_unreachable",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "CI-UNREACHABLE (not a parser bug, not permanently blocked)."
       },
       "weekend_days": [
@@ -60008,7 +60008,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with pandas_market_calendars."
       },
       "weekend_days": [
@@ -63058,7 +63058,7 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -64764,7 +64764,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -66311,7 +66311,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -67296,7 +67296,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -69450,7 +69450,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-20",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -70897,7 +70897,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -72459,7 +72459,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-20",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -73285,7 +73285,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-20",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -74803,7 +74803,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -76785,7 +76785,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars."
       },
       "weekend_days": [
@@ -78920,7 +78920,7 @@
           ],
           "to": "2027-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
       },
       "weekend_days": [
@@ -81272,7 +81272,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "CI-UNREACHABLE (not permanently blocked)."
       },
       "weekend_days": [
@@ -81624,7 +81624,7 @@
       "verification": {
         "basis": "fetcher:implemented",
         "class": "source_verified",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
       },
       "weekend_days": [
@@ -83620,7 +83620,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -84975,7 +84975,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -85256,7 +85256,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (no holiday endpoint: _next/data files have no holiday keys)."
       },
       "weekend_days": [
@@ -87497,7 +87497,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -88907,7 +88907,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -92287,7 +92287,7 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -93794,7 +93794,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -94189,7 +94189,7 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (empty response: 39-byte body on every URL tried)."
       },
       "weekend_days": [
@@ -95703,7 +95703,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -97178,7 +97178,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [
@@ -98852,7 +98852,7 @@
           ],
           "to": "2029-12-31"
         },
-        "last_checked": "2026-11-08",
+        "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
       "weekend_days": [

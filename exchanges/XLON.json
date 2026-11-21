@@ -2832,7 +2832,7 @@
   "verification": {
     "basis": "divergence_report",
     "class": "reference_compared",
-    "last_checked": "2026-11-08",
+    "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },
   "weekend_days": [

@@ -191,32 +191,6 @@
       "verdict": "unpublished",
       "status": "registry_unchanged",
       "dates": [
-        "2027-01-01",
-        "2027-02-05",
-        "2027-02-08",
-        "2027-02-09",
-        "2027-02-10",
-        "2027-02-11",
-        "2027-02-12",
-        "2027-04-05",
-        "2027-05-03",
-        "2027-06-09",
-        "2027-09-15",
-        "2027-10-01",
-        "2027-10-04",
-        "2027-10-05",
-        "2027-10-06",
-        "2027-10-07"
-      ],
-      "recheck_date": "2026-12-31",
-      "summary": "Both libraries stop at 2026 (exchange_calendars holds no 2027 holidays), so the 16 2027 disagreements are an empty reference, not a different date. The SSE publishes its holiday notice for a year in the last weeks of the year before (the newest notice on its list covers 2026), after the State Council sets the public-holiday arrangement. The registry values for 2027 are predictions (confidence note: predicted) and stay as they are until the exchange publishes 2027.",
-      "source_url": "https://www.sse.com.cn/disclosure/dealinstruc/closed/list/"
-    },
-    {
-      "exchange": "XSHG",
-      "verdict": "unpublished",
-      "status": "registry_unchanged",
-      "dates": [
         "2028-01-03",
         "2028-01-26",
         "2028-01-27",

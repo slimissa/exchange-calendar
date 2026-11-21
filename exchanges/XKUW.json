@@ -308,7 +308,7 @@
   "verification": {
     "basis": "BLOCKED.md",
     "class": "single_source",
-    "last_checked": "2026-11-08",
+    "last_checked": "2026-11-21",
     "reference_note": "BLOCKED (HTTP 403 on 2026-09-17)."
   },
   "weekend_days": [

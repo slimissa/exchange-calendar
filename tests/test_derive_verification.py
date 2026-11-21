@@ -58,3 +58,31 @@ def test_coverage_alone_is_not_drift(tmp_path):
     path.write_text(json.dumps(data, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
                     encoding="utf-8")
     assert dv.main(["--root", str(root), "--check"]) == 0
+
+
+def test_all_restamps_every_file_and_keeps_coverage(tmp_path):
+    """--all records a re-derivation that changed no class (Phase 4d)."""
+    root = _tree(tmp_path)
+    before = {f.stem: json.loads(f.read_text(encoding="utf-8"))["verification"]
+              for f in (root / "exchanges").glob("*.json")}
+    assert dv.main(["--root", str(root), "--all", "--date", "2026-11-21"]) == 0
+    for f in (root / "exchanges").glob("*.json"):
+        after = json.loads(f.read_text(encoding="utf-8"))["verification"]
+        old = before[f.stem]
+        assert after["last_checked"] == "2026-11-21"
+        assert {k: after[k] for k in ("class", "basis", "reference_note")} == \
+            {k: old[k] for k in ("class", "basis", "reference_note")}
+        assert after.get("coverage") == old.get("coverage")
+    assert dv.main(["--root", str(root), "--check"]) == 0
+
+
+def test_without_all_an_undrifted_file_keeps_its_date(tmp_path):
+    root = _tree(tmp_path)
+    old = _load(root, "XTSE")["verification"]["last_checked"]
+    assert dv.main(["--root", str(root), "--date", "2026-11-21"]) == 0
+    assert _load(root, "XTSE")["verification"]["last_checked"] == old
+
+
+def test_all_and_check_exclude_each_other(tmp_path):
+    root = _tree(tmp_path)
+    assert dv.main(["--root", str(root), "--all", "--check"]) == 2
