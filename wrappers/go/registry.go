@@ -42,12 +42,48 @@ func (r *Registry) Sessions(mic string) []Session {
 	return ex.Sessions
 }
 
+// intervalSessionTypes are the session types the registry-level IsOpen
+// counts as trading intervals. lunch_break is spanned, not an interval;
+// auction and halt are points.
+var intervalSessionTypes = map[string]bool{"pre_market": true, "regular": true, "post_market": true}
+
+// IsOpen reports whether the exchange is in any interval session
+// (pre_market, regular or post_market) at the given local time on the
+// given date.
+//
+// The registry contract, the same in all four wrappers: weekends, closed
+// holidays and ad hoc rows whose status is "closed" are closed; an ad hoc
+// early close or delayed open is not a full closure. early_close_time is
+// ignored and lunch_break is spanned (it is not an interval). On a
+// delayed_open day the regular session opens at delayed_open_time. For
+// regular hours with early closes and lunch breaks, use Exchange.IsOpen.
 func (r *Registry) IsOpen(mic, date, timeStr string) bool {
 	ex, err := r.Get(mic)
 	if err != nil {
 		return false
 	}
-	return ex.IsOpen(date, timeStr)
+	if validateDateFormat(date) != nil || ex.IsHoliday(date) {
+		return false
+	}
+	for _, s := range ex.Sessions {
+		if !intervalSessionTypes[s.Type] {
+			continue
+		}
+		open, cl := s.Open, s.Close
+		if s.Type == "regular" {
+			// The regular session follows the hours in force on this date
+			// (regular_hours may be a dated list).
+			hours := ex.hoursOn(date)
+			open, cl = hours.Open, hours.Close
+			if d := ex.DelayedOpenTime(date); d != "" {
+				open = d
+			}
+		}
+		if open != "" && cl != "" && open <= timeStr && timeStr < cl {
+			return true
+		}
+	}
+	return false
 }
 
 // LoadRegistry loads and parses the registry from a JSON file.

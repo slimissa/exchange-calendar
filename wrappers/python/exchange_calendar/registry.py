@@ -29,6 +29,10 @@ from .exchange import Exchange
 from dataclasses import dataclass
 from datetime import date as _date
 
+# Session types the registry-level is_open counts as trading intervals.
+# lunch_break is spanned, not an interval; auction and halt are points.
+INTERVAL_SESSION_TYPES = ("pre_market", "regular", "post_market")
+
 
 @dataclass(frozen=True)
 class Session:
@@ -310,10 +314,16 @@ class CalendarRegistry:
         return dict(v) if isinstance(v, dict) else None
 
     def is_open(self, mic: str, date: str, time: str) -> bool:
-        """True if the exchange is in any interval session at the given
-        local time on the given date. Includes pre_market and post_market
-        windows; callers wanting regular-hours-only should filter
-        sessions() themselves."""
+        """True if the exchange is in any interval session (pre_market,
+        regular or post_market) at the given local time on the given date.
+
+        The registry contract, the same in all four wrappers: weekends,
+        closed holidays and ad hoc rows whose status is ``closed`` are
+        closed; an ad hoc early close or delayed open is not a full
+        closure. ``early_close_time`` is ignored and ``lunch_break`` is
+        spanned (it is not an interval). On a ``delayed_open`` day the
+        regular session opens at ``delayed_open_time``. For regular hours
+        with early closes and lunch breaks, use ``exchange(mic).is_open``."""
         from datetime import date as _date
 
         ex = self.exchange(mic)
@@ -331,13 +341,16 @@ class CalendarRegistry:
 
         for c in (getattr(ex, "_ad_hoc", None) or []):
             cd = c.get("date") if isinstance(c, dict) else getattr(c, "date", None)
-            if cd == date:
+            status = c.get("status") if isinstance(c, dict) else getattr(c, "status", None)
+            if cd == date and status == "closed":
                 return False
 
         for s in (getattr(ex, "sessions", None) or []):
             o = s.get("open") if isinstance(s, dict) else getattr(s, "open", None)
             cl = s.get("close") if isinstance(s, dict) else getattr(s, "close", None)
             stype = s.get("type") if isinstance(s, dict) else getattr(s, "type", None)
+            if stype not in INTERVAL_SESSION_TYPES:
+                continue
             if stype == "regular" and hasattr(ex, "regular_hours_on"):
                 # The regular session follows the hours in force on this date
                 # (regular_hours may be a dated list).

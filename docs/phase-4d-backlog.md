@@ -56,14 +56,17 @@ trigger.
   4c13's XSAU (15:00 continuous, 15:10 auction end) and XPHS (14:45 / 14:50)
   are two more cases.
 - **API: split registry `is_open`** into `is_open` (regular session) and
-  `in_session` (any interval); breaking for Python/Rust, needs a major
-  version and a deprecation period. (4c13, 4c-final)
-- **Registry `is_open` on an ad hoc early-close day.** Python's
-  `CalendarRegistry.is_open` treats any `ad_hoc_closures` row as a full
-  closure, so XBDA 2025-10-01 (ad hoc `early_close` at 13:00) is closed all
-  day; Rust's `Registry::is_open` ignores the early close and returns open at
-  10:00 and 14:00. This blocked aligning JavaScript and Go with the 2.11.0
-  contract in 4c-final (maintainer decision pending). (4c-final)
+  `in_session` (any interval); breaking for all four wrappers, needs a major
+  version and a deprecation period. Until then the registry call follows the
+  (b1) contract settled in 4c-final-1: any pre_market/regular/post_market
+  interval, `early_close_time` ignored, `lunch_break` spanned, ad hoc rows
+  closing the day only when `closed`. (4c13, 4c-final, 4c-final-1)
+- **`lunch_break` after the regular close:** XKUW (09:00-12:30, break
+  12:30-13:00), XLIM (09:00-13:30, break 13:30-14:30) and XSTC (09:00-11:30,
+  break 11:30-13:00) have a `lunch_break` session with no trading interval
+  after it, so the session data does not describe an afternoon session (or
+  the "break" is not one). No exchange document read; data unchanged.
+  (4c-final-1)
 
 ## Phase 4h (backfill without a reference library)
 

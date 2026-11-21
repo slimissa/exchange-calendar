@@ -566,3 +566,37 @@ func TestRealRegistryDelayedOpen(t *testing.T) {
 		t.Errorf("XBSP DelayedOpenTime = %q, want 13:00", got)
 	}
 }
+
+// (b1) registry contract: any pre_market/regular/post_market interval;
+// early_close_time ignored; lunch_break spanned; an ad hoc row closes the day
+// only when its status is "closed". Exchange.IsOpen stays the regular session.
+func TestRegistryIsOpenContractB1(t *testing.T) {
+	r, err := exchangecalendar.LoadRegistry(filepath.Join("..", "..", "..", "calendar.json"))
+	if err != nil {
+		t.Fatalf("load calendar.json: %v", err)
+	}
+	cases := []struct {
+		mic, date, at              string
+		registryOpen, exchangeOpen bool
+	}{
+		{"XBDA", "2025-10-01", "10:00", true, true},
+		{"XBDA", "2025-10-01", "14:00", true, false},
+		{"XNYS", "2025-11-28", "14:00", true, false},
+		{"XTKS", "2025-07-03", "12:00", true, false},
+		{"XNYS", "2025-11-26", "08:00", true, false},
+		{"XNYS", "2025-11-26", "17:00", true, false},
+		{"XKUW", "2025-06-02", "12:45", false, false},
+	}
+	for _, c := range cases {
+		if got := r.IsOpen(c.mic, c.date, c.at); got != c.registryOpen {
+			t.Errorf("registry %s %s %s: IsOpen = %v, want %v", c.mic, c.date, c.at, got, c.registryOpen)
+		}
+		ex, err := r.Get(c.mic)
+		if err != nil {
+			t.Fatalf("get %s: %v", c.mic, err)
+		}
+		if got := ex.IsOpen(c.date, c.at); got != c.exchangeOpen {
+			t.Errorf("exchange %s %s %s: IsOpen = %v, want %v", c.mic, c.date, c.at, got, c.exchangeOpen)
+		}
+	}
+}

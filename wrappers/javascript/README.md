@@ -110,6 +110,8 @@ console.log(xlon.isOpen('2025-12-24', '12:45'));    // false (after early close)
 | `.names()` | Array of all exchange names, sorted |
 | `.toJSON()` | Summary object with version, count, codes |
 | `.toString()` | Human-readable summary |
+
+`registry.isOpen(mic, date, time)` counts pre- and post-market and ignores early closes and lunch breaks; for regular hours, use the exchange-level call, `registry.get(mic).isOpen(date, time)`.
 | `.size` / `.length` | Number of exchanges |
 | `for...of registry` | Iterate over exchanges |
 

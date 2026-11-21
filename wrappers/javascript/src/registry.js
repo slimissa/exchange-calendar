@@ -28,6 +28,10 @@ const fs = require('fs');
 const path = require('path');
 const { Exchange } = require('./exchange');
 
+// Session types the registry-level isOpen counts as trading intervals.
+// lunch_break is spanned, not an interval; auction and halt are points.
+const INTERVAL_SESSION_TYPES = ['pre_market', 'regular', 'post_market'];
+
 class CalendarRegistry {
     /**
      * Load and parse the registry from a JSON file.
@@ -310,9 +314,41 @@ class CalendarRegistry {
         }));
     }
 
+    /**
+     * True if the exchange is in any interval session (pre_market, regular or
+     * post_market) at the given local time on the given date.
+     *
+     * The registry contract, the same in all four wrappers: weekends, closed
+     * holidays and ad hoc rows whose status is `closed` are closed; an ad hoc
+     * early close or delayed open is not a full closure. `early_close_time` is
+     * ignored and `lunch_break` is spanned (it is not an interval). On a
+     * `delayed_open` day the regular session opens at `delayed_open_time`.
+     * For regular hours with early closes and lunch breaks, use
+     * `registry.get(mic).isOpen(date, time)`.
+     */
     isOpen(mic, date, time) {
         const ex = this.get(mic);
-        return ex.isOpen(date, time);
+        if (ex.isHoliday(date)) {
+            return false;
+        }
+        for (const s of ex.sessions || []) {
+            if (!INTERVAL_SESSION_TYPES.includes(s.type)) {
+                continue;
+            }
+            let open = s.open;
+            let close = s.close;
+            if (s.type === 'regular') {
+                // The regular session follows the hours in force on this date
+                // (regular_hours may be a dated list).
+                const hours = ex.regularHoursOn(date);
+                open = ex.delayedOpenTime(date) || hours.open;
+                close = hours.close;
+            }
+            if (open && close && open <= time && time < close) {
+                return true;
+            }
+        }
+        return false;
     }
     /**
      * Return the verification object for `mic`, or null if the MIC is unknown.

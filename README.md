@@ -793,11 +793,13 @@ None is published ([Section 4](#4-quick-start)). The JavaScript and Python count
 | Confidence of a year | `.confidence(mic, year)` | `.confidence(mic, year)` | `Confidence` | `.confidence` |
 | As of a date | `.as_of(mic, date)` | `.asOf(mic, date)` | `AsOf` | `.as_of` |
 
+The registry-level call (`registry.is_open(mic, date, time)` and its spellings) counts pre- and post-market and ignores early closes and lunch breaks, with the same answer in all four wrappers; for regular hours, use the exchange-level call (`registry.get(mic).is_open(date, time)`).
+
 Method names for the less common operations are in each wrapper's README. A wrapper accepts `regular_hours` as an object or as a list with `effective_from`, so the shape change did not break callers.
 
 ### The shared fixture
 
-[`tests/cross_language_queries.json`](./tests/cross_language_queries.json) holds 24 queries. `tools/check_cross_language.sh` runs the Python and JavaScript runners (`tools/cross_lang/`), the Rust runner (`wrappers/rust/examples/cross_lang.rs`) and the Go runner (`wrappers/go/cmd/cross_lang`), and diffs each against the Python output. A missing runner prints `SKIP` and does not fail the script; `tools/check_fixture_labels.py` fails first on duplicate labels. The release gate runs the script; in this audit environment the Go and Rust legs could not run.
+[`tests/cross_language_queries.json`](./tests/cross_language_queries.json) holds 35 queries. `tools/check_cross_language.sh` runs the Python and JavaScript runners (`tools/cross_lang/`), the Rust runner (`wrappers/rust/examples/cross_lang.rs`) and the Go runner (`wrappers/go/cmd/cross_lang`), and diffs each against the Python output. A missing runner prints `SKIP` and does not fail the script; `tools/check_fixture_labels.py` fails first on duplicate labels. The release gate runs the script; in this audit environment the Go and Rust legs could not run.
 
 ### What the wrappers do not expose
 

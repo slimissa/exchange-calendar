@@ -118,6 +118,8 @@ impl Registry {
 }
 ```
 
+`registry.is_open(mic, date, time)` counts pre- and post-market and ignores early closes and lunch breaks; for regular hours, use the exchange-level call, `Exchange::is_open(date, Some(time))`.
+
 ### Exchange
 
 ```rust

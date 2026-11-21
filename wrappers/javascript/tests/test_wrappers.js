@@ -907,3 +907,23 @@ describe('delayed_open (4c12)', () => {
         }
     });
 });
+
+describe('registry isOpen contract (b1)', () => {
+    test('any interval session; early closes ignored; lunch spanned; ad hoc closes only when closed', () => {
+        const r = new CalendarRegistry(getRegistryPath());
+        // [mic, date, time, registry isOpen, exchange-level isOpen]
+        const cases = [
+            ['XBDA', '2025-10-01', '10:00', true, true],
+            ['XBDA', '2025-10-01', '14:00', true, false],
+            ['XNYS', '2025-11-28', '14:00', true, false],
+            ['XTKS', '2025-07-03', '12:00', true, false],
+            ['XNYS', '2025-11-26', '08:00', true, false],
+            ['XNYS', '2025-11-26', '17:00', true, false],
+            ['XKUW', '2025-06-02', '12:45', false, false],
+        ];
+        for (const [mic, date, at, registryOpen, exchangeOpen] of cases) {
+            assert.equal(r.isOpen(mic, date, at), registryOpen, `registry ${mic} ${date} ${at}`);
+            assert.equal(r.get(mic).isOpen(date, at), exchangeOpen, `exchange ${mic} ${date} ${at}`);
+        }
+    });
+});

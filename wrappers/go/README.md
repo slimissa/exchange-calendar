@@ -110,6 +110,8 @@ fmt.Println(codes[len(codes)-3:])   // [XWAR XWBO XZAG]
 | `.Len() int` | Number of exchanges |
 | `.String() string` | Human-readable summary |
 
+`registry.IsOpen(mic, date, time)` counts pre- and post-market and ignores early closes and lunch breaks; for regular hours, use the exchange-level call, `Exchange.IsOpen(date, time)`.
+
 ### Exchange
 
 | Method | Description |

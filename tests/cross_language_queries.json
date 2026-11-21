@@ -28,6 +28,13 @@
     {"op": "is_open", "args": ["XBSP", "2026-02-18", "11:00"], "label": "is_open_xbsp_before_delayed_open"},
     {"op": "is_open", "args": ["XBSP", "2026-02-18", "14:00"], "label": "is_open_xbsp_after_delayed_open"},
     {"op": "is_open", "args": ["XBDA", "2025-10-02", "10:00"], "label": "is_open_xbda_before_delayed_open"},
-    {"op": "is_open", "args": ["XBDA", "2025-10-02", "12:15"], "label": "is_open_xbda_at_delayed_open"}
+    {"op": "is_open", "args": ["XBDA", "2025-10-02", "12:15"], "label": "is_open_xbda_at_delayed_open"},
+    {"op": "is_open", "args": ["XBDA", "2025-10-01", "10:00"], "label": "is_open_xbda_adhoc_early_close_before"},
+    {"op": "is_open", "args": ["XBDA", "2025-10-01", "14:00"], "label": "is_open_xbda_adhoc_early_close_after"},
+    {"op": "is_open", "args": ["XNYS", "2025-11-28", "14:00"], "label": "is_open_xnys_after_early_close"},
+    {"op": "is_open", "args": ["XTKS", "2025-07-03", "12:00"], "label": "is_open_xtks_lunch_break"},
+    {"op": "is_open", "args": ["XNYS", "2025-11-26", "08:00"], "label": "is_open_xnys_pre_market"},
+    {"op": "is_open", "args": ["XNYS", "2025-11-26", "17:00"], "label": "is_open_xnys_post_market"},
+    {"op": "is_open", "args": ["XKUW", "2025-06-02", "12:45"], "label": "is_open_xkuw_lunch_after_regular"}
   ]
 }

@@ -97,6 +97,10 @@ pub struct Registry {
 impl Exchange {
 }
 
+/// Session types the registry-level `is_open` counts as trading intervals.
+/// `lunch_break` is spanned, not an interval; `auction` and `halt` are points.
+pub const INTERVAL_SESSION_TYPES: [&str; 3] = ["pre_market", "regular", "post_market"];
+
 impl Registry {
     /// Load the registry from a JSON file.
     ///
@@ -282,13 +286,16 @@ impl Registry {
             .unwrap_or_default()
     }
 
-    /// True if the exchange is in any interval session at the given
-    /// local time on the given date.
+    /// True if the exchange is in any interval session (`pre_market`,
+    /// `regular` or `post_market`) at the given local time on the given date.
     ///
-    /// Checks weekend_days, holidays.explicit, ad_hoc_closures, then
-    /// any session where `open <= time < close`. Includes pre_market
-    /// and post_market windows; callers wanting regular-hours-only
-    /// should filter `sessions()` themselves.
+    /// The registry contract, the same in all four wrappers: weekends,
+    /// closed holidays and ad hoc rows whose status is `closed` are closed;
+    /// an ad hoc early close or delayed open is not a full closure.
+    /// `early_close_time` is ignored and `lunch_break` is spanned (it is not
+    /// an interval). On a `delayed_open` day the regular session opens at
+    /// `delayed_open_time`. For regular hours with early closes and lunch
+    /// breaks, use `Exchange::is_open`.
     pub fn is_open(&self, code: &str, date: &str, time: &str) -> bool {
         let ex = match self.exchange(code) {
             Some(e) => e,
@@ -311,6 +318,9 @@ impl Registry {
         }
 
         for s in &ex.sessions {
+            if !INTERVAL_SESSION_TYPES.contains(&s.session_type.as_str()) {
+                continue;
+            }
             // The regular session follows the hours in force on this date
             // (regular_hours may be a dated list).
             let dated = (s.session_type == "regular").then(|| ex.regular_hours_on(date).ok()).flatten();
@@ -850,6 +860,29 @@ mod tests {
         let types: Vec<&str> = sessions.iter()
             .map(|s| s.session_type.as_str()).collect();
         assert!(types.contains(&"regular"));
+    }
+
+    /// (b1) registry contract: any pre_market/regular/post_market interval;
+    /// early_close_time ignored; lunch_break spanned; an ad hoc row closes the
+    /// day only when its status is "closed". Exchange::is_open stays the
+    /// regular session.
+    #[test]
+    fn test_registry_is_open_contract_b1() {
+        let r = load_real_registry();
+        let cases = [
+            ("XBDA", "2025-10-01", "10:00", true, true),
+            ("XBDA", "2025-10-01", "14:00", true, false),
+            ("XNYS", "2025-11-28", "14:00", true, false),
+            ("XTKS", "2025-07-03", "12:00", true, false),
+            ("XNYS", "2025-11-26", "08:00", true, false),
+            ("XNYS", "2025-11-26", "17:00", true, false),
+            ("XKUW", "2025-06-02", "12:45", false, false),
+        ];
+        for (mic, date, at, registry_open, exchange_open) in cases {
+            assert_eq!(r.is_open(mic, date, at), registry_open, "registry {mic} {date} {at}");
+            let ex = r.get(mic).unwrap();
+            assert_eq!(ex.is_open(date, Some(at)), exchange_open, "exchange {mic} {date} {at}");
+        }
     }
 
     #[test]

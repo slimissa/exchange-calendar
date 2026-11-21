@@ -22,14 +22,15 @@ Phase 4c (sessions 4c1-4c13, the 4c-R1 to 4c-R5 rechecks and 4c-final). Proposed
 - Hours history: XKRX (15:00 before 2016-08-01), XOSL (17:30 before 2012-08-06), XBOM and XNSE opening times from 2010, XLIS 08:00-16:30 Lisbon, XHEL open 10:00, XSHE close 15:00.
 - Data corrections against the exchanges' own documents (dates and sources in each file's note), among them: XLIT pre-2020 All Souls' Day removed (law XIII-2415); XRIS Christmas Day 2012-2024, the 2018 song-festival and papal-visit days, Cabinet transfer days through 2026 and the 2023/2026 dates settled by Nasdaq Baltic's bulletins; XTAL nine missing Christmas Days; XJSE three declared public holidays and Dec 24/31 early closes; XTAI the 2027 ROC 116 schedule and the 2026 typhoon closures; XBKK 16 October and 16 December 2026; XKAR Ashura and Eid Milad-un-Nabi 2026; XSAU twelve 2021-2024 days and the published 2027-2029 Eid closures (Islamic New Year predictions removed); half days added for XAMS, XBRU, XLIS, XSTO, XOSL and XDUB; XSHG and XSHE dates against the exchanges.
 - `tools/update_facts.py --check` compares `tests_total` (a stale count passed before).
+- Registry-level `is_open` now gives the same answer in all four wrappers: any pre-market, regular or post-market interval; `early_close_time` ignored; `lunch_break` spanned; an ad hoc row counts as a closure only when its status is `closed`; `delayed_open` honoured. Python no longer treats an ad hoc early close as a full-day closure (XBDA 2025-10-01); JavaScript and Go no longer return the exchange-level (regular-session) answer; Python and Rust no longer count a `lunch_break` session lying outside the regular hours as open (XKUW, XLIM, XSTC). Seven probes added to `tests/cross_language_queries.json`.
 - Fetchers: XIST raises `FetchError` on a non-PDF response and tries the next year's URL; `SourceMissingError` makes a gone source a failure, not a warning.
 
 ### Changed
 - Schema 2.2.3: `coverage` and `note` (2.2.1), `effective_from` required on every recurrence rule (2.2.2), `coverage.from`/`to` required (2.2.3).
 - Backfilled years have `low` confidence, not `medium`.
 
-### Known issue
-- Registry-level `is_open` differs between wrappers: Python and Rust count pre- and post-market as open (the 2.11.0 contract), JavaScript and Go return the regular session only; and on an ad hoc early-close day Python reports closed all day while Rust ignores the early close. Recorded in `docs/phase-4d-backlog.md`; not changed in this release.
+### Known limitation
+- Registry-level `is_open` answers "in any session" (pre-market, regular, post-market), not "in regular hours", and it ignores early closes and lunch breaks; the exchange-level call gives regular hours. Splitting the two into separate registry calls is a breaking change, planned in `docs/phase-4d-backlog.md` (Phase 4d).
 
 ## [2.27.0] - 2026-11-10
 

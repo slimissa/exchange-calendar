@@ -1878,6 +1878,11 @@
     {"file": "wrappers/rust/src/exchange.rs", "contains": "pub fn delayed_open_time"},
     {"file": "tools/update_facts.py", "contains": "exchanges_from_2010"},
     {"file": "README.md", "contains": "50 exchanges have data from 2010"},
-    {"file": "exchanges/XSAU.json", "contains": "\"effective_from\": \"2021-01-01\""}
+    {"file": "exchanges/XSAU.json", "contains": "\"effective_from\": \"2021-01-01\""},
+    {"file": "wrappers/python/exchange_calendar/registry.py", "contains": "INTERVAL_SESSION_TYPES = (\"pre_market\", \"regular\", \"post_market\")"},
+    {"file": "wrappers/javascript/src/registry.js", "contains": "const INTERVAL_SESSION_TYPES = ['pre_market', 'regular', 'post_market'];"},
+    {"file": "wrappers/go/registry.go", "contains": "var intervalSessionTypes = map[string]bool{\"pre_market\": true, \"regular\": true, \"post_market\": true}"},
+    {"file": "wrappers/rust/src/registry.rs", "contains": "pub const INTERVAL_SESSION_TYPES: [&str; 3] = [\"pre_market\", \"regular\", \"post_market\"];"},
+    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"is_open_xbda_adhoc_early_close_after\""}
   ]
 }

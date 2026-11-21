@@ -98,6 +98,8 @@ print(registry.codes()[-3:])                  # ['XWAR', 'XWBO', 'XZAG']
 | `"XNYS" in registry` | Membership test |
 | `for ex in registry:` | Iterate over exchanges |
 
+`registry.is_open(mic, date, time)` counts pre- and post-market and ignores early closes and lunch breaks; for regular hours, use the exchange-level call, `registry.get(mic).is_open(date, time)`.
+
 ### Exchange
 
 | Method | Description |

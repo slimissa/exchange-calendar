@@ -717,6 +717,23 @@ class TestDelayedOpen:
     def test_registry_is_open_around_delayed_open(self, registry, mic, day, at, expected):
         assert registry.is_open(mic, day, at) is expected
 
+    # (b1) registry contract: any pre_market/regular/post_market interval;
+    # early_close_time ignored; lunch_break spanned; an ad hoc row closes the
+    # day only when its status is "closed". Exchange-level is_open is the
+    # regular session with early closes and lunch breaks.
+    @pytest.mark.parametrize("mic,day,at,registry_open,exchange_open", [
+        ("XBDA", "2025-10-01", "10:00", True, True),
+        ("XBDA", "2025-10-01", "14:00", True, False),
+        ("XNYS", "2025-11-28", "14:00", True, False),
+        ("XTKS", "2025-07-03", "12:00", True, False),
+        ("XNYS", "2025-11-26", "08:00", True, False),
+        ("XNYS", "2025-11-26", "17:00", True, False),
+        ("XKUW", "2025-06-02", "12:45", False, False),
+    ])
+    def test_registry_is_open_contract_b1(self, registry, mic, day, at, registry_open, exchange_open):
+        assert registry.is_open(mic, day, at) is registry_open
+        assert registry.get(mic).is_open(day, at) is exchange_open
+
     def test_cross_language_fixture_probes_delayed_open(self):
         q = json.loads((Path(__file__).parent / "cross_language_queries.json").read_text())
         labels = {x["label"]: x["args"] for x in q["queries"]}
