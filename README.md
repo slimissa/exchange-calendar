@@ -789,11 +789,20 @@ None is published ([Section 4](#4-quick-start)). The JavaScript and Python count
 |-----------|--------|------------|----|------|
 | Load | `CalendarRegistry()` | `new CalendarRegistry()` | `LoadRegistry(path)` | `Registry` |
 | Open at a time | `.is_open(date, time)` | `.isOpen(date, time)` | `IsOpen` | `.is_open` |
+| In any session (registry) | `.in_session(mic, date, time)` | `.inSession(mic, date, time)` | `InSession` | `.in_session` |
 | Next trading day | `.next_trading_day(d)` | `.nextTradingDay(d)` | `NextTradingDay` | `.next_trading_day` |
 | Confidence of a year | `.confidence(mic, year)` | `.confidence(mic, year)` | `Confidence` | `.confidence` |
 | As of a date | `.as_of(mic, date)` | `.asOf(mic, date)` | `AsOf` | `.as_of` |
 
 The registry-level call (`registry.is_open(mic, date, time)` and its spellings) counts pre- and post-market and ignores early closes and lunch breaks, with the same answer in all four wrappers; for regular hours, use the exchange-level call (`registry.get(mic).is_open(date, time)`).
+
+**The registry-level `is_open` changes meaning in 3.0.0.** In 2.x it means "in any session" (pre-market, regular or post-market). In 3.0.0 it will mean regular hours, the answer the exchange-level call gives today, and `in_session` will keep the any-session meaning. `in_session` exists now (since 2.29.0) with the same signature and the same result as the registry-level `is_open` for every input, so callers who want "in any session" should switch to it now; callers who want regular hours can use the exchange-level call today. Nothing is emitted at run time (no deprecation warning in any language); the change is recorded here and in the CHANGELOG.
+
+| Meaning | Python | JavaScript | Go | Rust |
+|---------|--------|------------|----|------|
+| Any session, 2.x and 3.0.0 | `registry.in_session(mic, date, time)` | `registry.inSession(mic, date, time)` | `registry.InSession(mic, date, time)` | `registry.in_session(mic, date, time)` |
+| Regular hours, today | `registry.get(mic).is_open(date, time)` | `registry.get(mic).isOpen(date, time)` | `ex, _ := registry.Get(mic); ex.IsOpen(date, time)` | `registry.get(mic).unwrap().is_open(date, Some(time))` |
+| Registry `is_open` | any session in 2.x; regular hours from 3.0.0 | same | same | same |
 
 Method names for the less common operations are in each wrapper's README. A wrapper accepts `regular_hours` as an object or as a list with `effective_from`, so the shape change did not break callers.
 

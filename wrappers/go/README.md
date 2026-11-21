@@ -112,6 +112,8 @@ fmt.Println(codes[len(codes)-3:])   // [XWAR XWBO XZAG]
 
 `registry.IsOpen(mic, date, time)` counts pre- and post-market and ignores early closes and lunch breaks; for regular hours, use the exchange-level call, `Exchange.IsOpen(date, time)`.
 
+**Coming in 3.0.0:** the registry-level `registry.IsOpen(mic, date, time)` will mean regular hours, and `registry.InSession(mic, date, time)` (added in 2.29.0, same signature and same result as `registry.IsOpen(mic, date, time)` in 2.x) keeps the any-session meaning. If you want "in any session", call `registry.InSession(mic, date, time)` now; for regular hours today, use `Exchange.IsOpen(date, time)` (from `registry.Get(mic)`). No warning is emitted at run time.
+
 ### Exchange
 
 | Method | Description |

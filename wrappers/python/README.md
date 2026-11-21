@@ -100,6 +100,8 @@ print(registry.codes()[-3:])                  # ['XWAR', 'XWBO', 'XZAG']
 
 `registry.is_open(mic, date, time)` counts pre- and post-market and ignores early closes and lunch breaks; for regular hours, use the exchange-level call, `registry.get(mic).is_open(date, time)`.
 
+**Coming in 3.0.0:** the registry-level `registry.is_open(mic, date, time)` will mean regular hours, and `registry.in_session(mic, date, time)` (added in 2.29.0, same signature and same result as `registry.is_open(mic, date, time)` in 2.x) keeps the any-session meaning. If you want "in any session", call `registry.in_session(mic, date, time)` now; for regular hours today, use `registry.get(mic).is_open(date, time)`. No warning is emitted at run time.
+
 ### Exchange
 
 | Method | Description |

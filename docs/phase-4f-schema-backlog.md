@@ -7,7 +7,7 @@ verification audit; the schema and API items below go to 4f (schema v3).
 ## Roadmap after Phase 4c (maintainer decision)
 
 - **4d**: audit `verification` against Phase 4c; coverage spans checkable; housekeeping.
-- **4d2**: `in_session` alias in the four wrappers; `is_open` 3.0.0 deprecation warning.
+- **4d2**: `in_session` alias in the four wrappers; the `is_open` 3.0.0 meaning change documented (no run-time warning, for parity and to spare per-minute callers).
 - **4b-lite**: current regular hours verified against each exchange's own page (ADR 0013), evidence in `verification.hours`.
 - **4e**: predictions.
 - **4f**: schema v3 / API (major 3.0.0); this file's "Schema and tooling" items.
@@ -76,11 +76,17 @@ trigger.
   4c13's XSAU (15:00 continuous, 15:10 auction end) and XPHS (14:45 / 14:50)
   are two more cases.
 - **API: split registry `is_open`** into `is_open` (regular session) and
-  `in_session` (any interval); breaking for all four wrappers, needs a major
-  version and a deprecation period. Until then the registry call follows the
-  (b1) contract settled in 4c-final-1: any pre_market/regular/post_market
-  interval, `early_close_time` ignored, `lunch_break` spanned, ad hoc rows
-  closing the day only when `closed`. (4c13, 4c-final, 4c-final-1)
+  `in_session` (any interval). The alias exists since 4d2 (2.29.0): Python
+  `in_session`, JS `inSession`, Go `InSession`, Rust `in_session`, each
+  delegating to the same function as the registry-level `is_open`, with a
+  cross-language twin for every `is_open` probe. 3.0.0 only flips the meaning
+  of the registry-level `is_open` to regular hours (what the exchange-level
+  `is_open` returns today); `in_session` keeps the any-session meaning. The
+  deprecation is documented (README, wrapper READMEs, CHANGELOG), not emitted.
+  Until 3.0.0 both registry calls follow the (b1) contract settled in
+  4c-final-1: any pre_market/regular/post_market interval,
+  `early_close_time` ignored, `lunch_break` spanned, ad hoc rows closing the
+  day only when `closed`. (4c13, 4c-final, 4c-final-1, 4d2)
 - **`lunch_break` after the regular close:** XKUW (09:00-12:30, break
   12:30-13:00), XLIM (09:00-13:30, break 13:30-14:30) and XSTC (09:00-11:30,
   break 11:30-13:00) have a `lunch_break` session with no trading interval

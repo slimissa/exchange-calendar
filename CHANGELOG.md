@@ -4,23 +4,29 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-Phase 4d (the `verification` audit after Phase 4c) and session 4d.1 (every coverage-span finding resolved; the check blocks).
+Phase 4d (the `verification` audit after Phase 4c), session 4d.1 (every coverage-span finding resolved; the check blocks) and session 4d2 (`in_session`, two primary documents). Proposed as 2.29.0: minor, no breaking change.
 
 ### Added
 - `tools/check_verification.py` checks `verification.coverage`: the spans tile `generation_range` exactly (no gap, overlap or span outside it); a span holding `predicted` entries or dates triaged `unpublished` says predicted/pattern in its label (or is "not covered"); a span naming a reference library stays within the years that library records; `contradicted_by` and `unconfirmed` dates lie inside their span. A predicted or unpublished date may stay under a publications label only when it is listed `unconfirmed` with a `recheck_date` and the label says "unconfirmed". Blocking (4d.1): added in 4d as warnings with 15 findings on 13 exchanges, all resolved in 4d.1; `tests/test_check_verification.py` requires none.
 - `tools/derive_verification.py --all` records a re-derivation that changed no class, stamping every file with one `last_checked`.
 - `tests/test_check_verification.py`: the coverage rules, and checks 1-4 of `check_verification.py` on the real tree (no CI step or test ran the tool before).
+- `in_session` on the registry, in all four wrappers (4d2): Python `CalendarRegistry.in_session(mic, date, time)`, JS `CalendarRegistry.inSession(mic, date, time)` (also declared in `index.d.ts`, with the registry-level `isOpen`, which was missing there), Go `(*Registry).InSession(mic, date, time)`, Rust `Registry::in_session(code, date, time)`. Same signature and same result as the registry-level `is_open` for every input: both delegate to one function per wrapper. The cross-language fixture gives each of its 17 `is_open` probes an `in_session` twin, and `tools/cross_lang/check_in_session_twins.py` checks every runner's output for equal answers.
 
 ### Fixed
 - `verification.last_checked` was split across files (70 at 2026-11-08, XKAR, XPHS, XRIS and XSAU at 2026-11-20), so `check_verification.py` failed; all 74 now carry 2026-11-21, the date of the audit. Classes unchanged: `reference_compared` 48, `source_verified` 9, `single_source` 14, `ci_unreachable` 3.
 - `docs/divergence_triage.json`: the XSHG "unpublished" verdict for 2027 is removed. The State Council published the 2027 schedule on 2026-11-05 and the registry's 18 closures cite it (`contradicted_by`); the stale verdict had `docs/DIVERGENCE.md` count 16 of them as predictions.
 - `tests/test_cairo_holidays.py`: the class-scoped fixture is a `classmethod` (pytest 10 removes the instance-method form).
 - Coverage spans (4d.1, no date changed): XSAU coverage cut to its `generation_range` end, 2029-09-23 (the range end is the predicted National Day 2029 set in v2.2.0, not a published boundary; not extended); XSHE's 2028-2029 span past its range removed; XSES no longer names `exchange_calendars` after 2026. Future years the exchange has not published are labelled as predictions: XBOM and XNSE 2027-2029, XBUE 2027-2029, XKLS 2027 (matches the Cabinet's 2027 schedule; Bursa's list is not out), XJSE 2027, and the last-trading-day early closes of XETR 2027-2029 (set by circular each year; non-trading days published to 2032) and XWBO 2027-12-30 (not in Wiener Börse's 2027 schedule).
+- XNZE against NZX's memo "NZX Market Holidays - 2025/2027" (announcement 463713, 1 December 2025; read from the maintainer's copy) (4d2): its 19 rows, 24 December 2025 to 4 January 2027, all match. 24 and 31 December 2026 (abbreviated trading) are confirmed, no longer predicted, and cite the memo; the 13:00 end stays on the NZX trading-hours source (the memo gives no hours). The 11 later 2027 rows are predicted (the memo stops at 4 January 2027), with the coverage span split there. The 2026-12-15 recheck is cleared.
+- XBUE against BYMA's 2026 "Calendario bursátil" page (read from the maintainer's printout) (4d2): its 21 dates all match the registry's statuses. The 13:00 early close on 24 December 2026, a day "sin liquidación, con negociación" for which the page gives no hours, has no BYMA source: kept, unconfirmed, recheck 2026-12-22. The papal-visit triage text now quotes the page (reference 5, Decree 1103/2026). Holy Thursday 2025-04-17 stays a lead.
 - Doubtful dates checked against the exchanges' documents (4d.1): XTAI 2027-02-03 confirmed by TWSE's ROC 116 schedule, its stale "unpublished" verdict merged into the `library_error` verdict for 2027-02-02. Left `unconfirmed` with a recheck date, the document named: XBUE 2025-04-17 (Holy Thursday; BYMA's 2025 calendar not reachable, recheck 2026-12-31), the XNZE abbreviated days 2026-2027 (NZX memo 463713's attachment), XBDA 2026-12-24 (BSX's 2026 festive notice). XKLS's 2027 triage text no longer says the government had not published.
 
 ### Changed
 - `docs/phase-4d-backlog.md` is renamed `docs/phase-4f-schema-backlog.md` and opens with the post-4c roadmap (4d, 4d2, 4b-lite, 4e, 4f, 4g, 4b full, 5, 6, with 4h interleaved). The old path keeps a pointer because the v2.28.0 release claims name it.
 - `tools/check_stale_year_urls.py`: four zse.hr allowlist entries that matched no scanned URL are deleted.
+
+### Deprecated
+- The meaning of the registry-level `is_open` (Python `registry.is_open`, JS `registry.isOpen`, Go `Registry.IsOpen`, Rust `Registry::is_open`): it means "in any session" (pre-market, regular or post-market) in 2.x and will mean regular hours in 3.0.0, the answer the exchange-level call (`registry.get(mic).is_open(date, time)` and its spellings) gives today. Callers who want "in any session" should switch to `in_session` now. Documented only: no run-time warning in any language, since a warning on a call made every minute floods callers and a Python-only warning would break parity.
 
 ## [2.28.0] - 2026-11-21
 
