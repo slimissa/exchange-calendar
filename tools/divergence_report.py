@@ -273,6 +273,12 @@ def render_sessions(sessions):
       "dated list where they did (Tokyo's close moved from 15:00 to 15:30 on "
       "2024-11-05, Hong Kong's open from 10:00 to 09:30 on 2011-03-07), and "
       "each date is compared against the hours in force that day.")
+    w("- The registry's close is the end of the closing auction (ADR 0013); "
+      "the libraries publish the end of continuous trading. Where an exchange's "
+      "closing auction runs past its continuous close, the close column shows "
+      "that difference on every day, not a registry error: Hong Kong from "
+      "2016-07-25 (registry 16:10, the end of HKEX's Closing Auction Session; "
+      "libraries 16:00).")
     w("- A half-day mismatch normally appears with a close mismatch on the same "
       "date, so the two columns are not independent.")
     w("- Years: the registry only has data inside each exchange's "

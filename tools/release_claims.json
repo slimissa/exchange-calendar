@@ -1915,6 +1915,8 @@
     {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"holiday_entry_xbue_2024_12_24\""},
     {"file": "docs/divergence_triage.json", "contains": "\"recheck_date\": \"2029-01-31\""},
     {"file": "wrappers/rust/src/registry.rs", "contains": "fn weekday_from_iso_matches_chrono()"},
-    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xsau_2026_11_22_sunday_1100\""}
+    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xsau_2026_11_22_sunday_1100\""},
+    {"file": "exchanges/XHKG.json", "contains": "\"effective_from\": \"2016-07-25\""},
+    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xhkg_2016_07_25_1605\""}
   ]
 }

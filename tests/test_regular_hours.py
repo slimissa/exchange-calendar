@@ -98,8 +98,23 @@ class TestData:
 
     def test_xhkg_open_moved_on_2011_03_07(self):
         hours = exchange("XHKG")["regular_hours"]
-        assert [(h["effective_from"], h["open"], h["close"]) for h in hours] == [
+        assert [(h["effective_from"], h["open"], h["close"]) for h in hours][:2] == [
             ("1990-01-01", "10:00", "16:00"), ("2011-03-07", "09:30", "16:00")]
+
+    def test_xhkg_close_is_the_closing_auction_end_from_2016_07_25(self):
+        """4b2, ADR 0013/0014: HKEX's Closing Auction Session ends at a
+        random time between 16:08 and 16:10 (HKEX trading-hours page); it
+        started on 25 July 2016 (HKEX news release of that date)."""
+        ex = exchange("XHKG")
+        hours = ex["regular_hours"]
+        assert (hours[-1]["effective_from"], hours[-1]["open"], hours[-1]["close"]) == (
+            "2016-07-25", "09:30", "16:10")
+        assert len(hours) == 3
+        items = {i["effective_from"]: i for i in ex["verification"]["hours"]}
+        assert items["2016-07-25"]["status"] == "verified"
+        assert items["2016-07-25"]["close_rule"] == "closing_auction_end"
+        assert items["2011-03-07"]["status"] == "verified"
+        assert items["1990-01-01"]["status"] == "unconfirmed"
 
     def test_other_exchanges_keep_a_single_object(self):
         for code in ("XNYS", "XLON", "XASX"):
@@ -154,6 +169,9 @@ class TestDivergenceEngineUsesDatedHours:
         days = dv.registry_sessions(xhkg, dt.date(2011, 3, 3), dt.date(2011, 3, 8))
         assert days[dt.date(2011, 3, 4)]["open"] == "10:00"
         assert days[dt.date(2011, 3, 7)]["open"] == "09:30"
+        days = dv.registry_sessions(xhkg, dt.date(2016, 7, 21), dt.date(2016, 7, 26))
+        assert days[dt.date(2016, 7, 22)]["close"] == "16:00"
+        assert days[dt.date(2016, 7, 25)]["close"] == "16:10"
 
     def test_break_counts_only_if_the_market_reopens_after_it(self):
         import divergence_test as dv

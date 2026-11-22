@@ -30547,6 +30547,11 @@
           "close": "16:00",
           "effective_from": "2011-03-07",
           "open": "09:30"
+        },
+        {
+          "close": "16:10",
+          "effective_from": "2016-07-25",
+          "open": "09:30"
         }
       ],
       "sessions": [
@@ -30555,7 +30560,7 @@
           "type": "auction"
         },
         {
-          "close": "16:00",
+          "close": "16:10",
           "open": "09:30",
           "type": "regular"
         },
@@ -30573,6 +30578,45 @@
       "verification": {
         "basis": "ci_network",
         "class": "ci_unreachable",
+        "hours": [
+          {
+            "checked_on": "2026-11-21",
+            "close": "16:00",
+            "close_rule": "continuous_end",
+            "effective_from": "1990-01-01",
+            "note": "HKEx's November 2010 consultation conclusions describe the then Continuous Trading Sessions as 'the morning session from 10:00 to 12:30 and the afternoon session from 14:30 to 16:00' (read through a search result in 4b2, not fetched in full). That gives the hours as of 2010, not since 1990 (the registry window's start); no HKEX document dating 10:00-16:00 back to 1990 was read. Settled by HKEX's historical trading-hours notices for the 1990s.",
+            "open": "10:00",
+            "recheck_date": "2027-02-19",
+            "segment": "Securities market continuous trading sessions (Main Board and GEM)",
+            "source_title": "HKEx, Consultation Conclusions: Proposed Changes to Trading Hours, November 2010",
+            "source_url": "https://www.hkex.com.hk/eng/newsconsul/mktconsul/Documents/cp2010093cc.pdf",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-21",
+            "close": "16:00",
+            "close_rule": "continuous_end",
+            "effective_from": "2011-03-07",
+            "note": "Trading Hours, Phase 1, effective 7 March 2011: 'Pre-opening Session 09:00-09:30', 'Morning Session 09:30-12:00', 'Extended Morning Session*/ Lunch Break 12:00-13:30', 'Afternoon Session 13:30-16:00'; '* Extended Morning Session is for the trading of Extended Trading Securities which currently include iShares Korea (4362) and iShares Taiwan (4363).' No closing auction until 25 July 2016, so the close is the end of continuous trading. HKEx's news release of 3 March 2011 agrees (9:30 am to 12:00 noon, 1:30 pm until 4:00 pm). The lunch break shortened to 12:00-13:00 on 5 March 2012 (news release of 24 January 2011); lunch breaks are outside 4b-lite.",
+            "open": "09:30",
+            "segment": "Securities market continuous trading (Morning Session, Afternoon Session)",
+            "source_title": "SEHK circular CMD/TMO/011/11, 'Changes to Trading Hours and Operational Arrangements Effective 7 March 2011 - Reminder', 3 March 2011",
+            "source_url": "https://www.hkex.com.hk/-/media/hkex-market/services/circulars-and-notices/participant-and-members-circulars/sehk/2011/ctmo01111e",
+            "status": "verified"
+          },
+          {
+            "checked_on": "2026-11-21",
+            "close": "16:10",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2016-07-25",
+            "note": "HKEX's page: 'Continuous Trading Session: Morning Session 9:30 a.m. - 12:00 noon; Extended Morning Session 12:00 noon - 1:00 p.m. [Extended Trading Securities only]; Afternoon Session 1:00 p.m. - 4:00 p.m.'; 'Auction Session: Closing Auction Session 4:00 p.m. to a random closing between 4:08 p.m. and 4:10 p.m.' (half day: 12:00 noon to a random closing between 12:08 p.m. and 12:10 p.m.). ADR 0013: the close is the end of the random window, 16:10. Dated by HKEX's news release of 25 July 2016 (https://www.hkex.com.hk/News/Market-Communications/2016/160725news?sc_lang=en): 'For CAS securities, the market close is between 4:08 pm and 4:10 pm on a normal trading day; for other securities, it is 4:00 pm on a normal trading day.' CAS securities are not every equity: Phase 1 (25 July 2016) covered the Hang Seng Composite LargeCap and MidCap constituents, H shares with A shares and ETFs; Phase 2 (24 July 2017, HKEX news release of that date) added the SmallCap constituents. Non-CAS securities still close at 16:00. The registry takes the CAS close for the main book from Phase 1, which covered its index constituents (ADR 0014, segment named here).",
+            "open": "09:30",
+            "segment": "Securities market Continuous Trading Session followed by the Closing Auction Session (CAS securities)",
+            "source_title": "HKEX, Trading Hours & Severe Weather Arrangements, Securities Market (table 'Updated 16 Sep 2017'); HKEX news release 'HKEX Successfully Launches Closing Auction Session for its Securities Market', 25 July 2016",
+            "source_url": "https://www.hkex.com.hk/Services/Trading-hours-and-Severe-Weather-Arrangements/Trading-Hours/Securities-Market?sc_lang=en",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "CI-UNREACHABLE (not a block on the source)."
       },

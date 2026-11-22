@@ -48,7 +48,7 @@ XHEL;regular;1;10:00;18:30;
 XHKG;auction;1;;;09:20
 XHKG;auction;2;;;16:10
 XHKG;lunch_break;1;12:00;13:00;
-XHKG;regular;1;09:30;16:00;
+XHKG;regular;1;09:30;16:10;
 XICE;post_market;1;15:30;15:45;
 XICE;pre_market;1;09:00;09:30;
 XICE;regular;1;09:30;15:30;

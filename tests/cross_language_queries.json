@@ -74,6 +74,12 @@
     {"op": "is_open", "args": ["XSAU", "2026-11-22", "11:00"], "label": "is_open_xsau_2026_11_22_sunday_1100"},
     {"op": "in_session", "args": ["XSAU", "2026-11-22", "11:00"], "label": "in_session_xsau_2026_11_22_sunday_1100"},
     {"op": "is_open", "args": ["XSAU", "2026-11-20", "11:00"], "label": "is_open_xsau_2026_11_20_friday_1100"},
-    {"op": "in_session", "args": ["XSAU", "2026-11-20", "11:00"], "label": "in_session_xsau_2026_11_20_friday_1100"}
+    {"op": "in_session", "args": ["XSAU", "2026-11-20", "11:00"], "label": "in_session_xsau_2026_11_20_friday_1100"},
+    {"op": "is_open", "args": ["XHKG", "2026-11-04", "16:05"], "label": "is_open_xhkg_2026_11_04_1605"},
+    {"op": "in_session", "args": ["XHKG", "2026-11-04", "16:05"], "label": "in_session_xhkg_2026_11_04_1605"},
+    {"op": "is_open", "args": ["XHKG", "2016-07-22", "16:05"], "label": "is_open_xhkg_2016_07_22_1605"},
+    {"op": "in_session", "args": ["XHKG", "2016-07-22", "16:05"], "label": "in_session_xhkg_2016_07_22_1605"},
+    {"op": "is_open", "args": ["XHKG", "2016-07-25", "16:05"], "label": "is_open_xhkg_2016_07_25_1605"},
+    {"op": "in_session", "args": ["XHKG", "2016-07-25", "16:05"], "label": "in_session_xhkg_2016_07_25_1605"}
   ]
 }

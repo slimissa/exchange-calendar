@@ -82,6 +82,9 @@ def test_registry_dates_today():
     # 2026-12-22 in 4d2 for the 24 December 2026 13:00 early close it now shares.
     assert found == {("XPRA", "2027-01-04"), ("XDUB", "2027-11-30"), ("XETR", "2026-12-15"),
                      ("XJSE", "2026-12-15"), ("XWBO", "2026-12-15"),
-                     ("XBDA", "2026-12-22"), ("XBUE", "2026-12-22")}
+                     ("XBDA", "2026-12-22"), ("XBUE", "2026-12-22"),
+                     # XHKG 2027-02-19 (4b2): the 1990-2011 hours (10:00-16:00),
+                     # read only for 2010 (HKEx consultation conclusions).
+                     ("XHKG", "2027-02-19")}
     assert crd.main(["--today", "2026-11-20"]) == 0
     assert crd.main(["--today", "2027-01-05"]) == 1

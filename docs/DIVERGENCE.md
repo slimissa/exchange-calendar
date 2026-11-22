@@ -1448,13 +1448,14 @@ Open time, close time, half-day status and intraday break, compared between the 
 - Registry: the regular session, with `early_close_time` and `delayed_open_time` applied on those dates; a half day is a date with status `early_close`. Libraries: a half day is a close earlier than that library's usual close in the same calendar year.
 - A break (Tokyo's and Hong Kong's lunch break) is part of one session. It is compared as a single `HH:MM-HH:MM` value and is `none` for exchanges without one. A break that ends at or after the day's close is no break, for every source: on a half day that closes before the lunch break ends, `pandas_market_calendars` reports a clipped break and `exchange_calendars` reports none.
 - Regular hours can change over time. The registry stores them as a dated list where they did (Tokyo's close moved from 15:00 to 15:30 on 2024-11-05, Hong Kong's open from 10:00 to 09:30 on 2011-03-07), and each date is compared against the hours in force that day.
+- The registry's close is the end of the closing auction (ADR 0013); the libraries publish the end of continuous trading. Where an exchange's closing auction runs past its continuous close, the close column shows that difference on every day, not a registry error: Hong Kong from 2016-07-25 (registry 16:10, the end of HKEX's Closing Auction Session; libraries 16:00).
 - A half-day mismatch normally appears with a close mismatch on the same date, so the two columns are not independent.
 - Years: the registry only has data inside each exchange's `generation_range`, so only years where the registry and a library both have data are counted. PMC and EC are not independent for exchanges PMC mirrors from EC, so agreement with both is agreement with one reference.
 
 | Exchange | Years | Trading days agree | Open agree | Close agree | Half-days agree | Break agree | Notes |
 |---|---|---:|---:|---:|---:|---:|---|
 | XASX | 1990-2029 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
-| XHKG | 1990-2029 | 99.9% | 100.0% | 100.0% | 100.0% | 100.0% | 2029-04-04 trading day; 2029-04-05 trading day; 2029-09-24 trading day |
+| XHKG | 1990-2029 | 99.9% | 100.0% | 66.7% | 100.0% | 100.0% | 2029-04-04 trading day; 2029-04-05 trading day; 2029-09-24 trading day; close 2016-07-25 to 2029-12-28, 3281 days (registry 16:10, PMC 16:00, EC 16:00) |
 | XLON | 1990-2029 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
 | XNAS | 1990-2029 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
 | XNYS | 1990-2029 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
