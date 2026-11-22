@@ -67,6 +67,7 @@ recorded close (XDUB half days 12:28-12:30, XHKG 16:08-16:10).
 Applied in 4b5 (random-closing rule, exchange documents attached):
 
 - XKUW: 13:10 from 2025-10-12 (Boursa Kuwait: closing auction 13:00-13:10, random close in the last 30 seconds -> the stated minute).
+- XBRV: 14:31 UTC from 2026-11-22 (BRVM: closing fixing at 14:30 with "une période aléatoire de +/- 60 secondes", a two-minute window 14:29-14:31 -> its end; the only window so far that straddles the stated time, so the maintainer may want to confirm this reading).
 
 ## Why
 
