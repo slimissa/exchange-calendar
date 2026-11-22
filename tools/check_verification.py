@@ -55,6 +55,18 @@ Checks, for every exchanges/*.json:
      evidence passes. NON-BLOCKING in Phase 4b-lite (findings print as "WARNING hours:";
      --strict-hours fails on them); it becomes blocking for every
      reference_compared exchange at the end of 4b-lite (ADR 0014).
+     A `verified` item carries `verified_from` (schema 2.3.2): the earliest
+     date its cited document proves those hours, never before the entry's
+     effective_from. Two facts follow (ADR 0014 section 7):
+       Current hours verified: the entry in force on the exchange's
+         evaluation day (the later of last_checked and the item's
+         checked_on) is verified with verified_from on or before that day.
+       History verified: every entry is verified with verified_from equal
+         to its effective_from.
+     Printed as "Current hours verified: N of 74" and "History verified: M
+     of 74" (docs/facts.json exchanges_hours_verified and
+     exchanges_hours_history_verified). The end-of-4b-lite blocking rule
+     applies to current hours; history is Phase 4b full.
 --date YYYY-MM-DD additionally requires last_checked to be exactly that date.
 A date fixed in the tool would fail on the first regeneration after it, so
 the default is the consistency rules above.
@@ -380,28 +392,82 @@ def hours_problems(d: dict, backlog: set[str] | None = None) -> list[str]:
                 if ref not in titles:
                     out.append(f"{code}: schema_limited hours evidence from {key}: backlog_item "
                                f"{item.get('backlog_item')!r} is not an item of docs/phase-4f-schema-backlog.md")
-        elif item.get("status") != "verified":
+        elif item.get("status") == "verified":
+            vf = _day(item.get("verified_from"))
+            eff = _day(key)
+            if vf is None:
+                out.append(f"{code}: verified hours evidence from {key} has no verified_from")
+            elif eff is not None and vf < eff:
+                out.append(f"{code}: hours evidence from {key}: verified_from {item.get('verified_from')} "
+                           f"is before the entry's effective_from")
+        else:
             out.append(f"{code}: hours evidence from {key} has status {item.get('status')!r}")
+        if item.get("status") != "verified" and "verified_from" in item:
+            out.append(f"{code}: hours evidence from {key}: verified_from on a "
+                       f"{item.get('status')!r} item (verified only)")
     for key in by_date:
         if key not in wanted:
             out.append(f"{code}: hours evidence from {key} backs no regular_hours entry")
     return out
 
 
-def current_hours_verified(d: dict) -> bool:
-    """True when the regular_hours entry in force on last_checked has
-    verified evidence (docs/facts.json exchanges_hours_verified)."""
-    v = d.get("verification") or {}
-    items = v.get("hours")
-    if not isinstance(items, list) or hours_problems(d):
-        return False
-    day = v.get("last_checked") or date.today().isoformat()
-    entries = hours_entries(d)
+def _in_force(entries: list[tuple[str, dict]], day: str) -> str:
     in_force = entries[0][0]
     for key, _ in entries:
         if key is not None and key <= day:
             in_force = key
-    return any(i.get("effective_from") == in_force and i.get("status") == "verified" for i in items)
+    return in_force
+
+
+def current_hours_verified(d: dict) -> bool:
+    """Current hours verified (docs/facts.json exchanges_hours_verified,
+    ADR 0014 section 7): the regular_hours entry in force on the evaluation
+    day has a verified item whose verified_from is on or before that day.
+    The evaluation day is the later of verification.last_checked and the
+    item's checked_on: a document read on a day proves the hours of that
+    day, and last_checked can lag behind the read. Both are recorded dates,
+    so the fact does not move with the clock."""
+    v = d.get("verification") or {}
+    items = v.get("hours")
+    if not isinstance(items, list) or hours_problems(d):
+        return False
+    last = v.get("last_checked") or "0000-00-00"
+    entries = hours_entries(d)
+    for item in items:
+        if item.get("status") != "verified":
+            continue
+        day = max(last, item.get("checked_on") or last)
+        if item.get("effective_from") == _in_force(entries, day) and item.get("verified_from", "9999") <= day:
+            return True
+    return False
+
+
+def history_hours_verified(d: dict) -> bool:
+    """History verified (docs/facts.json exchanges_hours_history_verified):
+    every regular_hours entry has a verified item whose verified_from equals
+    its effective_from (the cited documents prove the hours from the day the
+    entry starts)."""
+    v = d.get("verification") or {}
+    items = v.get("hours")
+    if not isinstance(items, list) or hours_problems(d):
+        return False
+    by_date = {i.get("effective_from"): i for i in items}
+    for key, _ in hours_entries(d):
+        item = by_date.get(key) or {}
+        if item.get("status") != "verified" or item.get("verified_from") != key:
+            return False
+    return True
+
+
+def hours_facts(root: Path) -> tuple[int, int, int]:
+    """(current hours verified, history verified, total exchanges)."""
+    cur = hist = total = 0
+    for f in sorted((root / "exchanges").glob("*.json")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        total += 1
+        cur += current_hours_verified(d)
+        hist += history_hours_verified(d)
+    return cur, hist, total
 
 
 def hours_report(root: Path) -> tuple[list[str], int, int, int, int]:
@@ -463,6 +529,9 @@ def main(argv: list[str] | None = None) -> int:
           f"items: {sc['verified']} verified, {sc['schema_limited']} schema_limited, "
           f"{sc['unconfirmed']} unconfirmed"
           + ("" if args.strict_hours else "; non-blocking until the end of Phase 4b-lite"))
+    cur, hist, _ = hours_facts(args.root)
+    print(f"Current hours verified: {cur} of {total} (blocking for reference_compared at the end of 4b-lite)")
+    print(f"History verified: {hist} of {total} (Phase 4b full)")
     if args.strict_hours:
         problems = problems + [f"hours: {line}" for line in hours]
     if problems:

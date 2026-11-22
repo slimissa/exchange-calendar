@@ -29,9 +29,14 @@ Derived facts
     exchanges_from_2010      generation_range starts on or before 2010-01-01
     exchanges_from_2021      generation_range starts after 2010-01-01 and before 2025-01-01
     exchanges_from_2025      generation_range starts on 2025-01-01 (no backfill)
-    exchanges_hours_verified the regular_hours entry in force on last_checked has
-                             `verified` evidence in verification.hours (ADR 0014;
-                             the same test as check 6 of check_verification.py)
+    exchanges_hours_verified Current hours verified: the regular_hours entry in
+                             force on the evaluation day has `verified` evidence
+                             with verified_from on or before that day (ADR 0014
+                             section 7; the same test as check 6)
+    exchanges_hours_history_verified
+                             History verified: every regular_hours entry has
+                             `verified` evidence with verified_from equal to its
+                             effective_from (schema 2.3.2, 4b3)
     tests_total
 
 calendar.json must be current: run tools/build.py first. tests_total comes
@@ -98,6 +103,13 @@ def _hours_verified(exchange: dict) -> bool:
     return check_verification.current_hours_verified(exchange)
 
 
+def _hours_history_verified(exchange: dict) -> bool:
+    """Every regular_hours entry verified from its own effective_from (4b3)."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import check_verification  # noqa: E402
+    return check_verification.history_hours_verified(exchange)
+
+
 def derive(root: Path = REPO_ROOT, with_tests: bool = True) -> dict:
     try:
         exchanges = json.loads((root / "calendar.json").read_text(encoding="utf-8"))["exchanges"]
@@ -122,6 +134,7 @@ def derive(root: Path = REPO_ROOT, with_tests: bool = True) -> dict:
         "exchanges_from_2010": sum(1 for g in starts if g <= "2010-01-01"),
         "exchanges_from_2021": sum(1 for g in starts if "2010-01-01" < g < "2025-01-01"),
         "exchanges_from_2025": sum(1 for g in starts if g == "2025-01-01"),
+        "exchanges_hours_history_verified": sum(1 for ex in exchanges if _hours_history_verified(ex)),
         "exchanges_hours_verified": sum(1 for ex in exchanges if _hours_verified(ex)),
         "exchanges_no_fetcher": counts["none"],
         "exchanges_total": len(exchanges),

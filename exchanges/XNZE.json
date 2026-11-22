@@ -1704,12 +1704,13 @@
         "close": "17:00",
         "close_rule": "closing_auction_end",
         "effective_from": "2010-01-01",
-        "note": "Normal Trading 10:00-16:45, Pre-Close from 16:45, closing auction at a random time 30 seconds either side of 5:00pm, then Adjust to 5:30pm. Open 10:00, close 17:00 (scheduled time, random window ignored, ADR 0013). Current entry; no earlier NZX schedule read (XNZE note).",
+        "note": "Normal Trading 10:00-16:45, Pre-Close from 16:45, closing auction at a random time 30 seconds either side of 5:00pm, then Adjust to 5:30pm. Open 10:00, close 17:00 (scheduled time, random window ignored, ADR 0013). Current entry; no earlier NZX schedule read (XNZE note). verified_from 2026-11-20: NZX's page states no date: the read date (4c10).",
         "open": "10:00",
         "segment": "NZX Main Board, Normal Trading",
         "source_title": "NZX, Anatomy of a trading day (read in 4c9, re-read in 4c10; the site refuses this sandbox)",
         "source_url": "https://www.nzx.com/services/nzx-trading/anatomy-of-a-trading-day",
-        "status": "verified"
+        "status": "verified",
+        "verified_from": "2026-11-20"
       }
     ],
     "last_checked": "2026-11-21",

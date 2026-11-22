@@ -1545,12 +1545,13 @@
         "close": "16:15",
         "close_rule": "closing_auction_end",
         "effective_from": "2010-01-01",
-        "note": "Row 'Prime and Standard (regulated), continuous trading': 08:00:00, 08:50:00, 09:00:00, 16:10:00, 16:15:00, 16:25:00, 17:00:00, under the headers 'Pre-trading, Opening auction, Cont. Phase, Cont. Auction, Single auction, Closing auction, Trading at Close, Post-trading, End of trading'. The table gives start times ('Starts of trading procedures'); the continuous row has no 'Cont. Auction' or 'Single auction' phase (those are the single-auction row's: 08:00, 11:10, 16:20, 17:00), so its seven times are pre-trading 08:00, opening auction 08:50, continuous 09:00, closing auction 16:10, trading at close 16:15, post-trading 16:25, end 17:00. The 4c-R4 reading and pse.cz's instrument pages (closing auction 16:10, trade at close 16:15) agree. Open 09:00, close 16:15 (ADR 0013). Current entry until 2027-01-03; the 16:15 regime's start (after the 2012 Xetra launch) is undated.",
+        "note": "Row 'Prime and Standard (regulated), continuous trading': 08:00:00, 08:50:00, 09:00:00, 16:10:00, 16:15:00, 16:25:00, 17:00:00, under the headers 'Pre-trading, Opening auction, Cont. Phase, Cont. Auction, Single auction, Closing auction, Trading at Close, Post-trading, End of trading'. The table gives start times ('Starts of trading procedures'); the continuous row has no 'Cont. Auction' or 'Single auction' phase (those are the single-auction row's: 08:00, 11:10, 16:20, 17:00), so its seven times are pre-trading 08:00, opening auction 08:50, continuous 09:00, closing auction 16:10, trading at close 16:15, post-trading 16:25, end 17:00. The 4c-R4 reading and pse.cz's instrument pages (closing auction 16:10, trade at close 16:15) agree. Open 09:00, close 16:15 (ADR 0013). Current entry until 2027-01-03; the 16:15 regime's start (after the 2012 Xetra launch) is undated. verified_from 2026-11-22: the PDF states no date: the read date.",
         "open": "09:00",
         "segment": "PSE shares, Prime and Standard (regulated), continuous trading (Xetra)",
         "source_title": "PSE, Trading hours ('Starts of trading procedures for instruments in the trading system')",
         "source_url": "https://www.pse.cz/userfiles/related_documents/en/Trading-hours.pdf",
-        "status": "verified"
+        "status": "verified",
+        "verified_from": "2026-11-22"
       },
       {
         "checked_on": "2026-11-22",

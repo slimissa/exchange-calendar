@@ -1260,12 +1260,13 @@
             "close": "17:35",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Appendix row (Trading Venue RM, Market Amsterdam, Gr. J0, Type 'Equities AEX', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Amsterdam local time: 09:00-17:35. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026.",
+            "note": "Appendix row (Trading Venue RM, Market Amsterdam, Gr. J0, Type 'Equities AEX', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Amsterdam local time: 09:00-17:35. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026. verified_from 2026-11-23: the appendix edition read takes effect on 23 November 2026. source_url is the edition effective 3 August 2026 (read in 4c8), not the edition read here.",
             "open": "09:00",
             "segment": "Euronext Amsterdam regulated market, 'Equities AEX' (group J0), continuous mode C",
-            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, edition effective 23 November 2026, sheet 'Appendix to 4-01 Manual OPTQ' (the edition read in 4b2, saved by the maintainer; no URL given for it)",
             "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-23"
           }
         ],
         "last_checked": "2026-11-21",
@@ -5973,12 +5974,13 @@
             "close": "16:30",
             "close_rule": "continuous_end",
             "effective_from": "2010-01-01",
-            "note": "'Trading Hours are Monday through Friday 9:00 a.m. - 4:30 p.m. (Atlantic Time)'; continuous trading after an 08:30-09:00 price discovery phase, no closing auction (ADR 0013: continuous_end). Current entry; press (Bernews, 23 September 2016) dates the 16:30 close to 28 September 2016, so years before are not covered by this page (XBDA note).",
+            "note": "'Trading Hours are Monday through Friday 9:00 a.m. - 4:30 p.m. (Atlantic Time)'; continuous trading after an 08:30-09:00 price discovery phase, no closing auction (ADR 0013: continuous_end). Current entry; press (Bernews, 23 September 2016) dates the 16:30 close to 28 September 2016, so years before are not covered by this page (XBDA note). verified_from 2026-11-20: BSX's page states no date: the read date (4c11).",
             "open": "09:00",
             "segment": "BSX equities, continuous trading",
             "source_title": "BSX, Trading (read in 4c11; the site refuses this sandbox)",
             "source_url": "https://www.bsx.com/trading/trading",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-20"
           }
         ],
         "last_checked": "2026-11-21",
@@ -13530,12 +13532,13 @@
             "close": "17:35",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Appendix row (Trading Venue RM, Market Brussels, Gr. A0, Type 'Equities BEL20', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Brussels local time: 09:00-17:35. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026.",
+            "note": "Appendix row (Trading Venue RM, Market Brussels, Gr. A0, Type 'Equities BEL20', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Brussels local time: 09:00-17:35. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026. verified_from 2026-11-23: the appendix edition read takes effect on 23 November 2026. source_url is the edition effective 3 August 2026 (read in 4c8), not the edition read here.",
             "open": "09:00",
             "segment": "Euronext Brussels regulated market, 'Equities BEL20' (group A0), continuous mode C",
-            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, edition effective 23 November 2026, sheet 'Appendix to 4-01 Manual OPTQ' (the edition read in 4b2, saved by the maintainer; no URL given for it)",
             "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-23"
           }
         ],
         "last_checked": "2026-11-21",
@@ -15924,12 +15927,13 @@
             "close": "17:05",
             "close_rule": "closing_auction_end",
             "effective_from": "2015-02-27",
-            "note": "'Pre-Trading Phase (PRETR) 8.15-8.30'; 'Auction Call Sub-Phase (OCALL) 8.30-9.00'; 'Price Determination and matching 9.00 + Random End'; 'Continuous Trading Phase (TRADE)' from the end of the opening auction 'until 17.00'; 'Auction Call Sub-Phase (CCALL) 17.00-17.05'; 'Price Determination and matching 17.05 + Random End' ('Random End max. 30 sec.'); trade-at-close until 17:15; post-trading until 17.20. Open 09:00, close 17:05 (ADR 0013). Dated by the 550/2013 extract of 25 September 2017 (https://www.bet.hu/newkibdata/124142063/550_2013_EN.pdf), whose schedule is stated as effective 27 February 2015 (4c-R5).",
+            "note": "'Pre-Trading Phase (PRETR) 8.15-8.30'; 'Auction Call Sub-Phase (OCALL) 8.30-9.00'; 'Price Determination and matching 9.00 + Random End'; 'Continuous Trading Phase (TRADE)' from the end of the opening auction 'until 17.00'; 'Auction Call Sub-Phase (CCALL) 17.00-17.05'; 'Price Determination and matching 17.05 + Random End' ('Random End max. 30 sec.'); trade-at-close until 17:15; post-trading until 17.20. Open 09:00, close 17:05 (ADR 0013). Dated by the 550/2013 extract of 25 September 2017 (https://www.bet.hu/newkibdata/124142063/550_2013_EN.pdf), whose schedule is stated as effective 27 February 2015 (4c-R5). verified_from 2015-02-27: the 550/2013 extract of 25 September 2017 states its schedule effective 27 February 2015 (4c-R5).",
             "open": "09:00",
             "segment": "BSE Equities Prime/Standard Market, Continuous Trading with Auctions (Xetra)",
             "source_title": "BSE Resolution 550/2013 (Xetra trading parameters), consolidated version effective 8 April 2026",
             "source_url": "https://www.bse.hu/newkibdata/129432789/20260407_550_2013_EN.pdf",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2015-02-27"
           }
         ],
         "last_checked": "2026-11-21",
@@ -18101,12 +18105,13 @@
             "close": "18:00",
             "close_rule": "continuous_end",
             "effective_from": "2026-11-02",
-            "note": "Read from the copy saved by the maintainer (BYMA refuses this sandbox); its direct URL was not recorded, source_url is BYMA's communiqués section as given in the 4b1 brief. The table, 'vigente a partir del 2 de noviembre 2026': 'Subasta de Apertura – Contado estándar 10:25 hs. a 10:30 hs.'; 'Negociación Regular con modalidad de cierre VWAP Renta Variable - Contado 24 hs. 10:30 hs. a 18:00 hs.'; 'Negociación a Precio de Cierre 18:05 hs. a 18:15 hs.'. VIGENCIA: 'entran en vigor el 02 de Noviembre de 2026, dejando sin efecto el Comunicado N°19024'. The equity segment closes by VWAP; the closing auctions the communiqué lists (16:57-17:00) are for fixed income and Contado Inmediato only, so the close is the end of continuous trading (ADR 0013, ADR 0014). BYMA Clearing's 'Cronograma diario' (v1.10, 30 October 2026, also saved by the maintainer) agrees: '10:30 Negociación — Inicio sesión de negociación'. BYMA's /comunicados/comunicado-19031 and /en/comunicados/comunicado-19031 both return 404 (checked by the maintainer, 4b2).",
+            "note": "Read from the copy saved by the maintainer (BYMA refuses this sandbox); its direct URL was not recorded, source_url is BYMA's communiqués section as given in the 4b1 brief. The table, 'vigente a partir del 2 de noviembre 2026': 'Subasta de Apertura – Contado estándar 10:25 hs. a 10:30 hs.'; 'Negociación Regular con modalidad de cierre VWAP Renta Variable - Contado 24 hs. 10:30 hs. a 18:00 hs.'; 'Negociación a Precio de Cierre 18:05 hs. a 18:15 hs.'. VIGENCIA: 'entran en vigor el 02 de Noviembre de 2026, dejando sin efecto el Comunicado N°19024'. The equity segment closes by VWAP; the closing auctions the communiqué lists (16:57-17:00) are for fixed income and Contado Inmediato only, so the close is the end of continuous trading (ADR 0013, ADR 0014). BYMA Clearing's 'Cronograma diario' (v1.10, 30 October 2026, also saved by the maintainer) agrees: '10:30 Negociación — Inicio sesión de negociación'. BYMA's /comunicados/comunicado-19031 and /en/comunicados/comunicado-19031 both return 404 (checked by the maintainer, 4b2). verified_from 2026-11-02: Comunicado 19031 enters into force on 2 November 2026.",
             "open": "10:30",
             "segment": "Negociación Regular con modalidad de cierre VWAP Renta Variable - Contado 24 hs. (PPT)",
             "source_title": "BYMA Comunicado Nº 19031, 'Horarios de Negociación, liquidación y recepción de información', Buenos Aires, 28 de Octubre de 2026",
             "source_url": "https://www.byma.com.ar/en/comunicados/communiqu-17466",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-02"
           }
         ],
         "last_checked": "2026-11-21",
@@ -21530,12 +21535,13 @@
             "close": "17:00",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Page: Copenhagen equities '09:00-17:00'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds of this five-minute period'; 'All times are local.' The Nasdaq Nordic Market Model 2026:03, section 3.1 (https://www.nasdaq.com/docs/2026/06/17/Nasdaq_Nordic_Market_Model_2026_03_Clean.pdf, read in 4c-R4) schedules continuous trading 09:00-16:55, pre-close 16:55 and the closing uncross at 17:00. Close 17:00 (ADR 0013). No effective date on either; read as the current entry.",
+            "note": "Page: Copenhagen equities '09:00-17:00'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds of this five-minute period'; 'All times are local.' The Nasdaq Nordic Market Model 2026:03, section 3.1 (https://www.nasdaq.com/docs/2026/06/17/Nasdaq_Nordic_Market_Model_2026_03_Clean.pdf, read in 4c-R4) schedules continuous trading 09:00-16:55, pre-close 16:55 and the closing uncross at 17:00. Close 17:00 (ADR 0013). No effective date on either; read as the current entry. verified_from 2026-11-22: the page states no effective date: the read date.",
             "open": "09:00",
             "segment": "Nasdaq Copenhagen equities, Main Market continuous trading",
             "source_title": "Nasdaq, European Markets Trading Hours (equities)",
             "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-22"
           }
         ],
         "last_checked": "2026-11-21",
@@ -23516,12 +23522,13 @@
             "close": "16:30",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Appendix row (Trading Venue RM, Market Dublin, Gr. 9A, Type 'Shares - ISEQ 20 - XMSM', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:28 Continuous Random', CU '17:30 Random', TAL '17:30  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. Dublin is one hour behind CET all year: 09:00-17:30 CET = 08:00-16:30 Dublin. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). 4c8 read the same 17:28-17:30 CET close in the 3 August 2026 edition (ADR 0013); earlier years not read.",
+            "note": "Appendix row (Trading Venue RM, Market Dublin, Gr. 9A, Type 'Shares - ISEQ 20 - XMSM', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:28 Continuous Random', CU '17:30 Random', TAL '17:30  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. Dublin is one hour behind CET all year: 09:00-17:30 CET = 08:00-16:30 Dublin. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). 4c8 read the same 17:28-17:30 CET close in the 3 August 2026 edition (ADR 0013); earlier years not read. verified_from 2026-08-03: 4c8 read the same Dublin rows (continuous '09:00 Random - 17:28', closing uncross '17:30 Random') in the edition effective 3 August 2026, at source_url. source_url is the edition effective 3 August 2026 (read in 4c8), not the edition read here.",
             "open": "08:00",
             "segment": "Euronext Dublin regulated market, 'Shares - ISEQ 20 - XMSM' (group 9A), continuous mode C",
-            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, edition effective 23 November 2026, sheet 'Appendix to 4-01 Manual OPTQ' (the edition read in 4b2, saved by the maintainer; no URL given for it)",
             "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-08-03"
           }
         ],
         "last_checked": "2026-11-21",
@@ -24737,12 +24744,13 @@
             "close": "17:35",
             "close_rule": "closing_auction_end",
             "effective_from": "2025-12-01",
-            "note": "Trading parameters (4c8): closing auction call at 17:30, closing auction price at 17:35; the auction schedule (https://cashmarket.deutsche-boerse.com/cash-en/trading/Xetra/continuous-trading-with-auctions/auctionschedule) says the stated times are the earliest ends (random end ignored, ADR 0013). Trading-hours page (4b2): 'Trading on Xetra takes place from Mondays to Fridays from 9 until 17:30 CET.' Open 09:00, close 17:35.",
+            "note": "Trading parameters (4c8): closing auction call at 17:30, closing auction price at 17:35; the auction schedule (https://cashmarket.deutsche-boerse.com/cash-en/trading/Xetra/continuous-trading-with-auctions/auctionschedule) says the stated times are the earliest ends (random end ignored, ADR 0013). Trading-hours page (4b2): 'Trading on Xetra takes place from Mondays to Fridays from 9 until 17:30 CET.' Open 09:00, close 17:35. verified_from 2025-12-01: the trading parameters are 'as of 1 December 2025'.",
             "open": "09:00",
             "segment": "Xetra, Continuous Trading with Auctions (equities)",
             "source_title": "Deutsche Börse, Xetra trading parameters as of 1 December 2025 (read in 4c8); Deutsche Börse, Trading calendar and trading hours (read in 4b2)",
             "source_url": "https://cashmarket.deutsche-boerse.com/resource/blob/250890/43c50e657b0ff5fb58132fbf6e063517/data/trading-parameters-xetra.pdf",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2025-12-01"
           }
         ],
         "last_checked": "2026-11-21",
@@ -26531,12 +26539,13 @@
             "close": "18:30",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Page: Helsinki equities '10:00-18:30'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds of this five-minute period'; 'All times are local.' Close 18:30 (ADR 0013). No effective date; read as the current entry.",
+            "note": "Page: Helsinki equities '10:00-18:30'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds of this five-minute period'; 'All times are local.' Close 18:30 (ADR 0013). No effective date; read as the current entry. verified_from 2026-11-22: the page states no effective date: the read date.",
             "open": "10:00",
             "segment": "Nasdaq Helsinki equities, Main Market continuous trading",
             "source_title": "Nasdaq, European Markets Trading Hours (equities)",
             "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-22"
           }
         ],
         "last_checked": "2026-11-21",
@@ -30735,24 +30744,26 @@
             "close": "16:00",
             "close_rule": "continuous_end",
             "effective_from": "2011-03-07",
-            "note": "Trading Hours, Phase 1, effective 7 March 2011: 'Pre-opening Session 09:00-09:30', 'Morning Session 09:30-12:00', 'Extended Morning Session*/ Lunch Break 12:00-13:30', 'Afternoon Session 13:30-16:00'; '* Extended Morning Session is for the trading of Extended Trading Securities which currently include iShares Korea (4362) and iShares Taiwan (4363).' No closing auction until 25 July 2016, so the close is the end of continuous trading. HKEx's news release of 3 March 2011 agrees (9:30 am to 12:00 noon, 1:30 pm until 4:00 pm). The lunch break shortened to 12:00-13:00 on 5 March 2012 (news release of 24 January 2011); lunch breaks are outside 4b-lite.",
+            "note": "Trading Hours, Phase 1, effective 7 March 2011: 'Pre-opening Session 09:00-09:30', 'Morning Session 09:30-12:00', 'Extended Morning Session*/ Lunch Break 12:00-13:30', 'Afternoon Session 13:30-16:00'; '* Extended Morning Session is for the trading of Extended Trading Securities which currently include iShares Korea (4362) and iShares Taiwan (4363).' No closing auction until 25 July 2016, so the close is the end of continuous trading. HKEx's news release of 3 March 2011 agrees (9:30 am to 12:00 noon, 1:30 pm until 4:00 pm). The lunch break shortened to 12:00-13:00 on 5 March 2012 (news release of 24 January 2011); lunch breaks are outside 4b-lite. verified_from 2011-03-07: the circular's hours are effective 7 March 2011.",
             "open": "09:30",
             "segment": "Securities market continuous trading (Morning Session, Afternoon Session)",
             "source_title": "SEHK circular CMD/TMO/011/11, 'Changes to Trading Hours and Operational Arrangements Effective 7 March 2011 - Reminder', 3 March 2011",
             "source_url": "https://www.hkex.com.hk/-/media/hkex-market/services/circulars-and-notices/participant-and-members-circulars/sehk/2011/ctmo01111e",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2011-03-07"
           },
           {
             "checked_on": "2026-11-21",
             "close": "16:10",
             "close_rule": "closing_auction_end",
             "effective_from": "2016-07-25",
-            "note": "HKEX's page: 'Continuous Trading Session: Morning Session 9:30 a.m. - 12:00 noon; Extended Morning Session 12:00 noon - 1:00 p.m. [Extended Trading Securities only]; Afternoon Session 1:00 p.m. - 4:00 p.m.'; 'Auction Session: Closing Auction Session 4:00 p.m. to a random closing between 4:08 p.m. and 4:10 p.m.' (half day: 12:00 noon to a random closing between 12:08 p.m. and 12:10 p.m.). ADR 0013: the close is the end of the random window, 16:10. Dated by HKEX's news release of 25 July 2016 (https://www.hkex.com.hk/News/Market-Communications/2016/160725news?sc_lang=en): 'For CAS securities, the market close is between 4:08 pm and 4:10 pm on a normal trading day; for other securities, it is 4:00 pm on a normal trading day.' CAS securities are not every equity: Phase 1 (25 July 2016) covered the Hang Seng Composite LargeCap and MidCap constituents, H shares with A shares and ETFs; Phase 2 (24 July 2017, HKEX news release of that date) added the SmallCap constituents. Non-CAS securities still close at 16:00. The registry takes the CAS close for the main book from Phase 1, which covered its index constituents (ADR 0014, segment named here). Security groups (ADR 0014, 4b3): CAS Phase 1 covered the Hang Seng Composite LargeCap and MidCap constituents, the group holding the main index, so the rule gives the CAS close, 16:10, from 2016-07-25; securities outside CAS closed at 16:00.",
+            "note": "HKEX's page: 'Continuous Trading Session: Morning Session 9:30 a.m. - 12:00 noon; Extended Morning Session 12:00 noon - 1:00 p.m. [Extended Trading Securities only]; Afternoon Session 1:00 p.m. - 4:00 p.m.'; 'Auction Session: Closing Auction Session 4:00 p.m. to a random closing between 4:08 p.m. and 4:10 p.m.' (half day: 12:00 noon to a random closing between 12:08 p.m. and 12:10 p.m.). ADR 0013: the close is the end of the random window, 16:10. Dated by HKEX's news release of 25 July 2016 (https://www.hkex.com.hk/News/Market-Communications/2016/160725news?sc_lang=en): 'For CAS securities, the market close is between 4:08 pm and 4:10 pm on a normal trading day; for other securities, it is 4:00 pm on a normal trading day.' CAS securities are not every equity: Phase 1 (25 July 2016) covered the Hang Seng Composite LargeCap and MidCap constituents, H shares with A shares and ETFs; Phase 2 (24 July 2017, HKEX news release of that date) added the SmallCap constituents. Non-CAS securities still close at 16:00. The registry takes the CAS close for the main book from Phase 1, which covered its index constituents (ADR 0014, segment named here). Security groups (ADR 0014, 4b3): CAS Phase 1 covered the Hang Seng Composite LargeCap and MidCap constituents, the group holding the main index, so the rule gives the CAS close, 16:10, from 2016-07-25; securities outside CAS closed at 16:00. verified_from 2016-07-25: the news release dates the Closing Auction Session to 25 July 2016; the 09:30 open is the 2011 circular's.",
             "open": "09:30",
             "segment": "Securities market Continuous Trading Session followed by the Closing Auction Session (CAS securities)",
             "source_title": "HKEX, Trading Hours & Severe Weather Arrangements, Securities Market (table 'Updated 16 Sep 2017'); HKEX news release 'HKEX Successfully Launches Closing Auction Session for its Securities Market', 25 July 2016",
             "source_url": "https://www.hkex.com.hk/Services/Trading-hours-and-Severe-Weather-Arrangements/Trading-Hours/Securities-Market?sc_lang=en",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2016-07-25"
           }
         ],
         "last_checked": "2026-11-21",
@@ -32389,12 +32400,13 @@
             "close": "15:30",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Page: Iceland equities '09.30-15:30'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds of this five-minute period'; 'All times are local.' The Nasdaq Nordic Market Model 2026:03, section 3.1 (https://www.nasdaq.com/docs/2026/06/17/Nasdaq_Nordic_Market_Model_2026_03_Clean.pdf, read in 4c-R4) schedules Iceland in CET with the closing uncross at 16:30 CET, 15:30 Reykjavik. Close 15:30 (ADR 0013). No effective date; read as the current entry.",
+            "note": "Page: Iceland equities '09.30-15:30'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds of this five-minute period'; 'All times are local.' The Nasdaq Nordic Market Model 2026:03, section 3.1 (https://www.nasdaq.com/docs/2026/06/17/Nasdaq_Nordic_Market_Model_2026_03_Clean.pdf, read in 4c-R4) schedules Iceland in CET with the closing uncross at 16:30 CET, 15:30 Reykjavik. Close 15:30 (ADR 0013). No effective date; read as the current entry. verified_from 2026-11-22: the page states no effective date: the read date.",
             "open": "09:30",
             "segment": "Nasdaq Iceland equities, Main Market continuous trading",
             "source_title": "Nasdaq, European Markets Trading Hours (equities)",
             "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-22"
           }
         ],
         "last_checked": "2026-11-21",
@@ -36146,12 +36158,13 @@
             "close": "17:00",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Normal Day, 'ZA01 07:00 - 08:30 08:30 - 09:00 09:00 - 16:50 16:50 - 17:00 17:00 - 17:05 17:05 - 17:10 17:10 - 17:15 17:15 - 18:15': opening auction call 08:30-09:00, continuous trading 09:00-16:50, closing auction call 16:50-17:00 (ZA02 and ZA06 the same). Market Notice 2719: earliest close 17:00:00 with a random uncross up to 17:01:00 (ignored, ADR 0013). Open 09:00, close 17:00. Current entry; no pre-2013 schedule read (XJSE note).",
+            "note": "Normal Day, 'ZA01 07:00 - 08:30 08:30 - 09:00 09:00 - 16:50 16:50 - 17:00 17:00 - 17:05 17:05 - 17:10 17:10 - 17:15 17:15 - 18:15': opening auction call 08:30-09:00, continuous trading 09:00-16:50, closing auction call 16:50-17:00 (ZA02 and ZA06 the same). Market Notice 2719: earliest close 17:00:00 with a random uncross up to 17:01:00 (ignored, ADR 0013). Open 09:00, close 17:00. Current entry; no pre-2013 schedule read (XJSE note). verified_from 2019-07-23: Volume 00E v3.06 is dated 23 July 2019 and states no earlier date for its schedule.",
             "open": "09:00",
             "segment": "JSE equity market, Central Order Book, segment ZA01 (Top Companies), Normal Day",
             "source_title": "JSE Specification Document, Volume 00E - Trading and Information Overview, Version 3.06, 23 July 2019",
             "source_url": "https://www.jse.co.za/sites/default/files/media/documents/2020-02/Volume%2000E%20-%20Trading%20and%20Information%20Overview%20for%20Equity%20Market.pdf",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2019-07-23"
           }
         ],
         "last_checked": "2026-11-21",
@@ -44927,12 +44940,13 @@
             "close": "16:35",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Appendix row (Trading Venue RM, Market Lisbon, Gr. P0, Type 'Equities PSI', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. Lisbon is one hour behind CET all year (both observe EU summer time): 09:00-17:35 CET = 08:00-16:35 Lisbon. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026.",
+            "note": "Appendix row (Trading Venue RM, Market Lisbon, Gr. P0, Type 'Equities PSI', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. Lisbon is one hour behind CET all year (both observe EU summer time): 09:00-17:35 CET = 08:00-16:35 Lisbon. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026. verified_from 2026-11-23: the appendix edition read takes effect on 23 November 2026. source_url is the edition effective 3 August 2026 (read in 4c8), not the edition read here.",
             "open": "08:00",
             "segment": "Euronext Lisbon regulated market, 'Equities PSI' (group P0), continuous mode C",
-            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, edition effective 23 November 2026, sheet 'Appendix to 4-01 Manual OPTQ' (the edition read in 4b2, saved by the maintainer; no URL given for it)",
             "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-23"
           }
         ],
         "last_checked": "2026-11-21",
@@ -46514,12 +46528,13 @@
             "close": "16:00",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Page (Nasdaq Baltic as a whole, no venue split): Pre-Open 09:00 to ~10:00; Opening Call Auction 10:00:00-10:00:05 (random uncross); Continuous Trading ~10:00 to 15:55; Pre-Close 15:55 to ~16:00; Closing Call Auction 15:59:30-16:00:00 (random uncross); Post-Trading ~16:00-16:30. Open 10:00 (the five-second call is ignored), close 16:00 (ADR 0013). No effective date (page modified 2026-05-05); read as the current entry. The 16:00 end dates from 2 February 2009 (Nasdaq OMX release of 19 November 2008); the 2010 call structure was not read.",
+            "note": "Page (Nasdaq Baltic as a whole, no venue split): Pre-Open 09:00 to ~10:00; Opening Call Auction 10:00:00-10:00:05 (random uncross); Continuous Trading ~10:00 to 15:55; Pre-Close 15:55 to ~16:00; Closing Call Auction 15:59:30-16:00:00 (random uncross); Post-Trading ~16:00-16:30. Open 10:00 (the five-second call is ignored), close 16:00 (ADR 0013). No effective date (page modified 2026-05-05); read as the current entry. The 16:00 end dates from 2 February 2009 (Nasdaq OMX release of 19 November 2008); the 2010 call structure was not read. verified_from 2026-05-05: the page states no effective date; it was last modified on 5 May 2026.",
             "open": "10:00",
             "segment": "Nasdaq Baltic equities (Vilnius), continuous trading with opening and closing calls",
             "source_title": "Nasdaq Baltic, Trading day",
             "source_url": "https://nasdaqbaltic.com/market-information/trading-day/",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-05-05"
           }
         ],
         "last_checked": "2026-11-21",
@@ -50281,12 +50296,13 @@
             "close": "17:35",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Page: 'Pre-opening phase (call): 07:30 – 09:00 CET'; 'Continuous trading phase: 09:00 – 17:30 CET'; 'Closing phase (call): 17:30 – 17:35 CET'; 'Trading at last phase: 17:35 – 17:40 CET'; 'After market phase (call): 17:40 – 18:00 CET'. Open 09:00, close 17:35 (ADR 0013; trading at last is not regular). No effective date; read as the current entry.",
+            "note": "Page: 'Pre-opening phase (call): 07:30 – 09:00 CET'; 'Continuous trading phase: 09:00 – 17:30 CET'; 'Closing phase (call): 17:30 – 17:35 CET'; 'Trading at last phase: 17:35 – 17:40 CET'; 'After market phase (call): 17:40 – 18:00 CET'. Open 09:00, close 17:35 (ADR 0013; trading at last is not regular). No effective date; read as the current entry. verified_from 2026-11-22: the page states no effective date: the read date.",
             "open": "09:00",
             "segment": "LuxSE regulated market, continuous trading",
             "source_title": "LuxSE, Opening hours, closing days and market status",
             "source_url": "https://luxse.com/trading/opening-hours-and-closing-days",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-22"
           }
         ],
         "last_checked": "2026-11-21",
@@ -54354,48 +54370,52 @@
             "close": "18:50",
             "close_rule": "closing_auction_end",
             "effective_from": "2013-09-02",
-            "note": "Notice of 23 August 2013: 'Moscow Exchange is to introduce the Closing Auction from 2 September'; 'The closing auction will run from 18.40-18.50 pm MSK.' MOEX's Closing Auction page (start date 'September 02, 2013') gives the main trading session as '09:50:00 — 09:59:(30-59)* - Opening auction', '10:00:00 — 18:39:59 - Main trading period', '18:40:01 — 18:50:00 - Closing auction'. ADR 0013: close 18:50; ADR 0014: open 10:00, the start of continuous trading after the main session's opening auction. Security groups (ADR 0014, 4b3): no share had a morning session for most of this entry, so the main session opened with its auction for the whole book. From 6 December 2021 MOEX ran a morning session for IMOEX shares (notice n37664: 'На первом этапе в рамках утренней сессии будет предоставлена возможность совершать сделки с акциями из индекса МосБиржи (IMOEX)'), whose main session then started at 09:50 with its trading period; no MOEX document read gives when that session stopped (MOEX's notice of 22 January 2025 says it 'возобновляет', resumes, the morning session from 27 January 2025), so that window is a lead, not an entry. From 27 January to 20 March 2025 the morning list held only part of the index ('в том числе из Индекса МосБиржи'), so the rule does not decide and this entry's 10:00 stands.",
+            "note": "Notice of 23 August 2013: 'Moscow Exchange is to introduce the Closing Auction from 2 September'; 'The closing auction will run from 18.40-18.50 pm MSK.' MOEX's Closing Auction page (start date 'September 02, 2013') gives the main trading session as '09:50:00 — 09:59:(30-59)* - Opening auction', '10:00:00 — 18:39:59 - Main trading period', '18:40:01 — 18:50:00 - Closing auction'. ADR 0013: close 18:50; ADR 0014: open 10:00, the start of continuous trading after the main session's opening auction. Security groups (ADR 0014, 4b3): no share had a morning session for most of this entry, so the main session opened with its auction for the whole book. From 6 December 2021 MOEX ran a morning session for IMOEX shares (notice n37664: 'На первом этапе в рамках утренней сессии будет предоставлена возможность совершать сделки с акциями из индекса МосБиржи (IMOEX)'), whose main session then started at 09:50 with its trading period; no MOEX document read gives when that session stopped (MOEX's notice of 22 January 2025 says it 'возобновляет', resumes, the morning session from 27 January 2025), so that window is a lead, not an entry. From 27 January to 20 March 2025 the morning list held only part of the index ('в том числе из Индекса МосБиржи'), so the rule does not decide and this entry's 10:00 stands. verified_from 2013-09-02: the notice introduces the closing auction from 2 September 2013; the Closing Auction page gives the same start date.",
             "open": "10:00",
             "segment": "Main Trading Mode T+ (T+1 order book, settlement code Y1): main session opening auction, continuous trading period, closing auction",
             "source_title": "Moscow Exchange, 'Moscow Exchange introduces Closing Auction on Equities Market', 23 August 2013; MOEX 'Closing Auction' page (https://moex.com/s1851)",
             "source_url": "https://moex.com/n3770?nt=201",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2013-09-02"
           },
           {
             "checked_on": "2026-11-22",
             "close": "18:50",
             "close_rule": "closing_auction_end",
             "effective_from": "2025-03-21",
-            "note": "Notice of 18 March 2025: from 21 March 2025 the morning session covers '85 акций, в том числе все 49 из Индекса МосБиржи'. Notice of 22 January 2025 (morning session resumed 27 January 2025): 'с 9:50 – основная торговая сессия для ценных бумаг, допущенных к утренним торгам; с 9:50 – аукцион открытия для ценных бумаг, не допущенных к утренним торгам'. Under ADR 0014's security-group rule the registry follows the admitted shares: continuous trading in the main session from 09:50; the 07:00-09:50 morning session is additional and excluded. Close 18:50 (closing auction 18:40-18:50, notice of 23 August 2013, unchanged until 23 March 2026).",
+            "note": "Notice of 18 March 2025: from 21 March 2025 the morning session covers '85 акций, в том числе все 49 из Индекса МосБиржи'. Notice of 22 January 2025 (morning session resumed 27 January 2025): 'с 9:50 – основная торговая сессия для ценных бумаг, допущенных к утренним торгам; с 9:50 – аукцион открытия для ценных бумаг, не допущенных к утренним торгам'. Under ADR 0014's security-group rule the registry follows the admitted shares: continuous trading in the main session from 09:50; the 07:00-09:50 morning session is additional and excluded. Close 18:50 (closing auction 18:40-18:50, notice of 23 August 2013, unchanged until 23 March 2026). verified_from 2025-03-21: the notice of 18 March 2025 admits all 49 index shares from 21 March 2025.",
             "open": "09:50",
             "segment": "Main Trading Mode T+ (T+1 order book, settlement code Y1), shares admitted to the morning session, which include all MOEX Index constituents (ADR 0014 security-group rule): main session trading period and closing auction",
             "source_title": "Moscow Exchange, 'Московская биржа расширяет список доступных акций на утренних и вечерних торгах', 18 March 2025; notice of 22 January 2025 (https://www.moex.com/n77059)",
             "source_url": "https://www.moex.com/n78591",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2025-03-21"
           },
           {
             "checked_on": "2026-11-22",
             "close": "19:00",
             "close_rule": "closing_auction_end",
             "effective_from": "2026-03-23",
-            "note": "'с 23 марта регламент проведения аукциона закрытия на фондовом рынке будет следующим: 18:55 – окончание торгового периода; 18:55–19:00 – аукцион закрытия.' The notice changes only the close; the admitted shares' main session still started at 09:50 (notice of 22 January 2025, entry 2025-03-21). MOEX's schedule page now gives the auction end as 18:59:30; the registry keeps the notice's 19:00 (ADR 0014 section 2).",
+            "note": "'с 23 марта регламент проведения аукциона закрытия на фондовом рынке будет следующим: 18:55 – окончание торгового периода; 18:55–19:00 – аукцион закрытия.' The notice changes only the close; the admitted shares' main session still started at 09:50 (notice of 22 January 2025, entry 2025-03-21). MOEX's schedule page now gives the auction end as 18:59:30; the registry keeps the notice's 19:00 (ADR 0014 section 2). verified_from 2026-03-23: the notice's schedule applies from 23 March 2026.",
             "open": "09:50",
             "segment": "Main Trading Mode T+ (T+1 order book, settlement code Y1), shares admitted to the morning session, which include all MOEX Index constituents (ADR 0014 security-group rule): main session trading period and closing auction",
             "source_title": "Moscow Exchange, 'Московская биржа расширяет время основной торговой сессии на фондовом рынке', 11 February 2026",
             "source_url": "https://www.moex.com/n97596",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-03-23"
           },
           {
             "checked_on": "2026-11-22",
             "close": "19:00",
             "close_rule": "closing_auction_end",
             "effective_from": "2026-09-14",
-            "note": "Notice: 'С 14 сентября 2026 года основная торговая сессия на фондовом, срочном, валютном рынках и рынке драгоценных металлов Московской биржи будет начинаться в 9:00'; '9:00–19:00 – основная торговая сессия (9:00–9:10 – аукцион открытия – для ценных бумаг, недопущенных к утренней сессии)'. Schedule page (read 2026-11-22), shares admitted to the morning session, 'Стакан Т+1 (RUB), Y1': morning '06:50:00 — 08:59:59' (АО '06:50:00 — 06:59:(31-59)*', ТП '07:00:00 — 08:59:59'); main '09:00:00 — 18:59:30', ТП '09:00:00 — 18:54:59', АЗ '18:55:00 — 18:59:30'. Not admitted: АО '09:00:00 — 09:09:(31-59)*', ТП '09:10:00 — 18:54:59'. ADR 0014 security-group rule (4b3): the admitted group holds all MOEX Index shares (notice of 18 March 2025), so open 09:00 (was 09:10 in 4b2, which followed the non-admitted shares); close 19:00 (section 2). The morning (06:50-09:00) and evening (19:00-23:50) sessions are additional ('доп.') and not regular hours.",
+            "note": "Notice: 'С 14 сентября 2026 года основная торговая сессия на фондовом, срочном, валютном рынках и рынке драгоценных металлов Московской биржи будет начинаться в 9:00'; '9:00–19:00 – основная торговая сессия (9:00–9:10 – аукцион открытия – для ценных бумаг, недопущенных к утренней сессии)'. Schedule page (read 2026-11-22), shares admitted to the morning session, 'Стакан Т+1 (RUB), Y1': morning '06:50:00 — 08:59:59' (АО '06:50:00 — 06:59:(31-59)*', ТП '07:00:00 — 08:59:59'); main '09:00:00 — 18:59:30', ТП '09:00:00 — 18:54:59', АЗ '18:55:00 — 18:59:30'. Not admitted: АО '09:00:00 — 09:09:(31-59)*', ТП '09:10:00 — 18:54:59'. ADR 0014 security-group rule (4b3): the admitted group holds all MOEX Index shares (notice of 18 March 2025), so open 09:00 (was 09:10 in 4b2, which followed the non-admitted shares); close 19:00 (section 2). The morning (06:50-09:00) and evening (19:00-23:50) sessions are additional ('доп.') and not regular hours. verified_from 2026-09-14: the notice's schedule applies from 14 September 2026.",
             "open": "09:00",
             "segment": "Main Trading Mode T+ (T+1 order book, settlement code Y1), shares admitted to the morning session, which include all MOEX Index constituents (ADR 0014 security-group rule): main session trading period and closing auction",
             "source_title": "Moscow Exchange, 'Московская биржа расширяет время проведения торгов', 14 August 2026; MOEX trading schedule page (https://www.moex.com/s1167)",
             "source_url": "https://www.moex.com/n103379",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-09-14"
           }
         ],
         "last_checked": "2026-11-21",
@@ -63488,12 +63508,13 @@
             "close": "16:00",
             "close_rule": "closing_auction_end",
             "effective_from": "1990-01-01",
-            "note": "NYSE section, Tape A: 'Pre-Opening Session: 6:30 a.m. ET'; orders 'queued until the Opening Auction at 9:30 a.m. ET'; 'Core Trading Session: 9:30 a.m. to 4:00 p.m. ET'; '4:00 p.m. ET - Closing Auction'. Open 09:30, close 16:00 (the closing auction prints at 16:00, ADR 0013). Read on the page itself (4b1 used a search snippet). No effective date; read as the current entry.",
+            "note": "NYSE section, Tape A: 'Pre-Opening Session: 6:30 a.m. ET'; orders 'queued until the Opening Auction at 9:30 a.m. ET'; 'Core Trading Session: 9:30 a.m. to 4:00 p.m. ET'; '4:00 p.m. ET - Closing Auction'. Open 09:30, close 16:00 (the closing auction prints at 16:00, ADR 0013). Read on the page itself (4b1 used a search snippet). No effective date; read as the current entry. verified_from 2026-11-22: the page states no effective date: the read date.",
             "open": "09:30",
             "segment": "NYSE (Tape A) Core Trading Session",
             "source_title": "NYSE, Hours & Calendars",
             "source_url": "https://www.nyse.com/trade/hours-calendars",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-22"
           }
         ],
         "last_checked": "2026-11-21",
@@ -65211,12 +65232,13 @@
             "close": "17:00",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Normal Trading 10:00-16:45, Pre-Close from 16:45, closing auction at a random time 30 seconds either side of 5:00pm, then Adjust to 5:30pm. Open 10:00, close 17:00 (scheduled time, random window ignored, ADR 0013). Current entry; no earlier NZX schedule read (XNZE note).",
+            "note": "Normal Trading 10:00-16:45, Pre-Close from 16:45, closing auction at a random time 30 seconds either side of 5:00pm, then Adjust to 5:30pm. Open 10:00, close 17:00 (scheduled time, random window ignored, ADR 0013). Current entry; no earlier NZX schedule read (XNZE note). verified_from 2026-11-20: NZX's page states no date: the read date (4c10).",
             "open": "10:00",
             "segment": "NZX Main Board, Normal Trading",
             "source_title": "NZX, Anatomy of a trading day (read in 4c9, re-read in 4c10; the site refuses this sandbox)",
             "source_url": "https://www.nzx.com/services/nzx-trading/anatomy-of-a-trading-day",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-20"
           }
         ],
         "last_checked": "2026-11-21",
@@ -66798,12 +66820,13 @@
             "close": "16:25",
             "close_rule": "closing_auction_end",
             "effective_from": "2026-08-03",
-            "note": "Appendix row (Trading Venue RM, Market Oslo, Gr. OA, Type 'Equities - OBX', Mode C): OU '09:00 Random', Trading '09:00 Random - 16:20 Continuous Random', CU '16:25 Random', TAL '16:25  - 16:30 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Oslo local time: 09:00-16:25. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). The entry's date is the 3 August 2026 edition's, which 4c8 read with the same Oslo rows.",
+            "note": "Appendix row (Trading Venue RM, Market Oslo, Gr. OA, Type 'Equities - OBX', Mode C): OU '09:00 Random', Trading '09:00 Random - 16:20 Continuous Random', CU '16:25 Random', TAL '16:25  - 16:30 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Oslo local time: 09:00-16:25. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). The entry's date is the 3 August 2026 edition's, which 4c8 read with the same Oslo rows. verified_from 2026-08-03: 4c8 read the same Oslo rows (continuous '09:00 Random - 16:20', closing uncross '16:25 Random') in the edition effective 3 August 2026, at source_url. source_url is the edition effective 3 August 2026 (read in 4c8), not the edition read here.",
             "open": "09:00",
             "segment": "Euronext Oslo Børs regulated market, 'Equities - OBX' (group OA), continuous mode C",
-            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, edition effective 23 November 2026, sheet 'Appendix to 4-01 Manual OPTQ' (the edition read in 4b2, saved by the maintainer; no URL given for it)",
             "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-08-03"
           }
         ],
         "last_checked": "2026-11-21",
@@ -67797,12 +67820,13 @@
             "close": "17:35",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Appendix row (Trading Venue RM, Market Paris, Gr. F1, Type 'Equities CAC40 - Group 1', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Paris local time: 09:00-17:35. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026.",
+            "note": "Appendix row (Trading Venue RM, Market Paris, Gr. F1, Type 'Equities CAC40 - Group 1', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Paris local time: 09:00-17:35. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026. verified_from 2026-11-23: the appendix edition read takes effect on 23 November 2026. source_url is the edition effective 3 August 2026 (read in 4c8), not the edition read here.",
             "open": "09:00",
             "segment": "Euronext Paris regulated market, 'Equities CAC40 - Group 1' (group F1), continuous mode C",
-            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, edition effective 23 November 2026, sheet 'Appendix to 4-01 Manual OPTQ' (the edition read in 4b2, saved by the maintainer; no URL given for it)",
             "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-23"
           }
         ],
         "last_checked": "2026-11-21",
@@ -71412,12 +71436,13 @@
             "close": "16:15",
             "close_rule": "closing_auction_end",
             "effective_from": "2010-01-01",
-            "note": "Row 'Prime and Standard (regulated), continuous trading': 08:00:00, 08:50:00, 09:00:00, 16:10:00, 16:15:00, 16:25:00, 17:00:00, under the headers 'Pre-trading, Opening auction, Cont. Phase, Cont. Auction, Single auction, Closing auction, Trading at Close, Post-trading, End of trading'. The table gives start times ('Starts of trading procedures'); the continuous row has no 'Cont. Auction' or 'Single auction' phase (those are the single-auction row's: 08:00, 11:10, 16:20, 17:00), so its seven times are pre-trading 08:00, opening auction 08:50, continuous 09:00, closing auction 16:10, trading at close 16:15, post-trading 16:25, end 17:00. The 4c-R4 reading and pse.cz's instrument pages (closing auction 16:10, trade at close 16:15) agree. Open 09:00, close 16:15 (ADR 0013). Current entry until 2027-01-03; the 16:15 regime's start (after the 2012 Xetra launch) is undated.",
+            "note": "Row 'Prime and Standard (regulated), continuous trading': 08:00:00, 08:50:00, 09:00:00, 16:10:00, 16:15:00, 16:25:00, 17:00:00, under the headers 'Pre-trading, Opening auction, Cont. Phase, Cont. Auction, Single auction, Closing auction, Trading at Close, Post-trading, End of trading'. The table gives start times ('Starts of trading procedures'); the continuous row has no 'Cont. Auction' or 'Single auction' phase (those are the single-auction row's: 08:00, 11:10, 16:20, 17:00), so its seven times are pre-trading 08:00, opening auction 08:50, continuous 09:00, closing auction 16:10, trading at close 16:15, post-trading 16:25, end 17:00. The 4c-R4 reading and pse.cz's instrument pages (closing auction 16:10, trade at close 16:15) agree. Open 09:00, close 16:15 (ADR 0013). Current entry until 2027-01-03; the 16:15 regime's start (after the 2012 Xetra launch) is undated. verified_from 2026-11-22: the PDF states no date: the read date.",
             "open": "09:00",
             "segment": "PSE shares, Prime and Standard (regulated), continuous trading (Xetra)",
             "source_title": "PSE, Trading hours ('Starts of trading procedures for instruments in the trading system')",
             "source_url": "https://www.pse.cz/userfiles/related_documents/en/Trading-hours.pdf",
-            "status": "verified"
+            "status": "verified",
+            "verified_from": "2026-11-22"
           },
           {
             "checked_on": "2026-11-22",

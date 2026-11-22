@@ -960,12 +960,13 @@
         "close": "17:35",
         "close_rule": "closing_auction_end",
         "effective_from": "2010-01-01",
-        "note": "Page: 'Pre-opening phase (call): 07:30 – 09:00 CET'; 'Continuous trading phase: 09:00 – 17:30 CET'; 'Closing phase (call): 17:30 – 17:35 CET'; 'Trading at last phase: 17:35 – 17:40 CET'; 'After market phase (call): 17:40 – 18:00 CET'. Open 09:00, close 17:35 (ADR 0013; trading at last is not regular). No effective date; read as the current entry.",
+        "note": "Page: 'Pre-opening phase (call): 07:30 – 09:00 CET'; 'Continuous trading phase: 09:00 – 17:30 CET'; 'Closing phase (call): 17:30 – 17:35 CET'; 'Trading at last phase: 17:35 – 17:40 CET'; 'After market phase (call): 17:40 – 18:00 CET'. Open 09:00, close 17:35 (ADR 0013; trading at last is not regular). No effective date; read as the current entry. verified_from 2026-11-22: the page states no effective date: the read date.",
         "open": "09:00",
         "segment": "LuxSE regulated market, continuous trading",
         "source_title": "LuxSE, Opening hours, closing days and market status",
         "source_url": "https://luxse.com/trading/opening-hours-and-closing-days",
-        "status": "verified"
+        "status": "verified",
+        "verified_from": "2026-11-22"
       }
     ],
     "last_checked": "2026-11-21",

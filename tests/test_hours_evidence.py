@@ -27,6 +27,10 @@ def _item(eff, open_="10:30", close="18:00", status="verified", **extra):
             "segment": "Renta Variable, Contado 24 hs", "close_rule": "continuous_end",
             "source_url": "https://www.byma.com.ar/", "source_title": "Comunicado",
             "checked_on": "2026-11-21", "status": status}
+    if status == "verified":
+        # schema 2.3.2: verified items carry verified_from (default: the
+        # entry's own date, i.e. the document proves the entry from its start).
+        item["verified_from"] = eff
     item.update(extra)
     return item
 
@@ -98,7 +102,10 @@ def test_unconfirmed_needs_a_recheck_date():
 def test_current_entry_verified():
     assert cv.current_hours_verified(_ex(DATED, GOOD)) is True
     # Before the dated change, the entry in force is the unconfirmed one.
-    assert cv.current_hours_verified(_ex(DATED, GOOD, last_checked="2026-10-01")) is False
+    # (4b3: the evaluation day is the later of last_checked and checked_on,
+    # so the read must also predate the change for this case.)
+    early = [dict(i, checked_on="2026-10-01") for i in GOOD]
+    assert cv.current_hours_verified(_ex(DATED, early, last_checked="2026-10-01")) is False
     # Incomplete evidence never counts.
     assert cv.current_hours_verified(_ex(DATED, GOOD[1:])) is False
 
@@ -185,7 +192,7 @@ HOURS_SCHEMA = SCHEMA["properties"]["verification"]["properties"]["hours"]
 
 
 def test_schema_version_is_2_3_1():
-    assert SCHEMA["version"] == "2.3.1"
+    assert SCHEMA["version"] == "2.3.2"
 
 
 def test_schema_accepts_good_evidence():
@@ -236,13 +243,19 @@ def test_tool_reports_the_hours_line(capsys):
 def test_4b2_current_entries_verified():
     """4b2: the current entry of each exchange documented in this session is
     verified; XKAR's is unconfirmed (no PSX notice dates its 09:32 open)."""
-    verified = {"XBUE", "XHKG", "XMOS", "XAMS", "XBRU", "XPAR", "XLIS", "XDUB", "XOSL",
+    # 4b3 (verified_from): XAMS, XBRU, XPAR and XLIS keep verified evidence,
+    # but the edition read takes effect on 2026-11-23, after their evaluation
+    # day, so their current hours are not verified yet.
+    verified = {"XBUE", "XHKG", "XMOS", "XDUB", "XOSL",
                 "XCSE", "XETR", "XHEL", "XICE", "XLIT", "XLUX", "XNYS", "XPRA",
                 "XBDA", "XBUD", "XJSE", "XNZE"}
-    for code in sorted(verified | {"XKAR"}):
+    later = {"XAMS", "XBRU", "XPAR", "XLIS"}
+    for code in sorted(verified | later | {"XKAR"}):
         d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
         assert cv.hours_problems(d) == [], code
-        assert cv.current_hours_verified(d) is (code != "XKAR"), code
+        assert cv.current_hours_verified(d) is (code in verified), code
+        if code in later:
+            assert d["verification"]["hours"][-1]["status"] == "verified", code
 
 
 def test_euronext_items_name_the_appendix_and_local_times():
@@ -254,4 +267,69 @@ def test_euronext_items_name_the_appendix_and_local_times():
         assert (cur["open"], cur["close"]) == hours, code
         assert "Appendix of Trading Manual 4-01" in cur["source_title"], code
         assert cur["close_rule"] == "closing_auction_end", code
+
+
+# --- verified_from (schema 2.3.2, ADR 0014 section 7) ------------------------
+
+def test_verified_needs_verified_from():
+    it = _item("2026-11-02")
+    del it["verified_from"]
+    assert cv.hours_problems(_ex(DATED, [GOOD[0], it])) == [
+        "XTST: verified hours evidence from 2026-11-02 has no verified_from"]
+
+
+def test_verified_from_not_before_effective_from():
+    out = cv.hours_problems(_ex(DATED, [GOOD[0], _item("2026-11-02", verified_from="2026-11-01")]))
+    assert out == ["XTST: hours evidence from 2026-11-02: verified_from 2026-11-01 is before the entry's effective_from"]
+
+
+def test_verified_from_only_on_verified_items():
+    bad = _item("2010-01-01", "11:00", "17:00", "unconfirmed", recheck_date="2026-12-22",
+                verified_from="2010-01-01")
+    out = cv.hours_problems(_ex(DATED, [bad, GOOD[1]]))
+    assert out == ["XTST: hours evidence from 2010-01-01: verified_from on a 'unconfirmed' item (verified only)"]
+
+
+def test_schema_requires_verified_from_on_verified_only():
+    jsonschema.validate([_item("2026-11-02")], HOURS_SCHEMA)
+    it = _item("2026-11-02")
+    del it["verified_from"]
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.validate([it], HOURS_SCHEMA)
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.validate([_item("2010-01-01", status="unconfirmed", recheck_date="2026-12-22",
+                                   verified_from="2010-01-01")], HOURS_SCHEMA)
+
+
+def test_current_needs_verified_from_on_or_before_the_evaluation_day():
+    single = {"open": "09:00", "close": "17:35"}
+    # Read on 22 Nov, document effective 23 Nov: not current yet (Euronext, 4b3).
+    future = [_item("2010-01-01", "09:00", "17:35", checked_on="2026-11-22", verified_from="2026-11-23")]
+    assert cv.hours_problems(_ex(single, future)) == []
+    assert cv.current_hours_verified(_ex(single, future)) is False
+    # A later last_checked makes the same evidence current.
+    assert cv.current_hours_verified(_ex(single, future, last_checked="2026-11-23")) is True
+    # A page read after last_checked proves the read day (evaluation day = checked_on).
+    page = [_item("2010-01-01", "09:00", "17:35", checked_on="2026-11-22", verified_from="2026-11-22")]
+    assert cv.current_hours_verified(_ex(single, page, last_checked="2026-11-21")) is True
+
+
+def test_history_verified_needs_every_entry_from_its_own_date():
+    both = [_item("2010-01-01", "11:00", "17:00"), _item("2026-11-02")]
+    assert cv.history_hours_verified(_ex(DATED, both)) is True
+    late = [_item("2010-01-01", "11:00", "17:00", verified_from="2019-07-23"), _item("2026-11-02")]
+    assert cv.history_hours_verified(_ex(DATED, late)) is False
+    assert cv.current_hours_verified(_ex(DATED, late)) is True
+    assert cv.history_hours_verified(_ex(DATED, GOOD)) is False  # 2010 unconfirmed
+
+
+def test_real_tree_facts_4b3():
+    cur, hist, total = cv.hours_facts(ROOT)
+    assert total == 74
+    # 4b3: 17 current (Euronext AMS/BRU/PAR/LIS read only in the edition
+    # effective 23 November 2026); no exchange's whole history is proven.
+    assert cur >= 17 and hist >= 0
+    for code in ("XAMS", "XBRU", "XPAR", "XLIS"):
+        d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+        assert d["verification"]["hours"][-1]["verified_from"] == "2026-11-23", code
 

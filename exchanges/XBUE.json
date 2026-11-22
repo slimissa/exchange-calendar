@@ -2158,12 +2158,13 @@
         "close": "18:00",
         "close_rule": "continuous_end",
         "effective_from": "2026-11-02",
-        "note": "Read from the copy saved by the maintainer (BYMA refuses this sandbox); its direct URL was not recorded, source_url is BYMA's communiqués section as given in the 4b1 brief. The table, 'vigente a partir del 2 de noviembre 2026': 'Subasta de Apertura – Contado estándar 10:25 hs. a 10:30 hs.'; 'Negociación Regular con modalidad de cierre VWAP Renta Variable - Contado 24 hs. 10:30 hs. a 18:00 hs.'; 'Negociación a Precio de Cierre 18:05 hs. a 18:15 hs.'. VIGENCIA: 'entran en vigor el 02 de Noviembre de 2026, dejando sin efecto el Comunicado N°19024'. The equity segment closes by VWAP; the closing auctions the communiqué lists (16:57-17:00) are for fixed income and Contado Inmediato only, so the close is the end of continuous trading (ADR 0013, ADR 0014). BYMA Clearing's 'Cronograma diario' (v1.10, 30 October 2026, also saved by the maintainer) agrees: '10:30 Negociación — Inicio sesión de negociación'. BYMA's /comunicados/comunicado-19031 and /en/comunicados/comunicado-19031 both return 404 (checked by the maintainer, 4b2).",
+        "note": "Read from the copy saved by the maintainer (BYMA refuses this sandbox); its direct URL was not recorded, source_url is BYMA's communiqués section as given in the 4b1 brief. The table, 'vigente a partir del 2 de noviembre 2026': 'Subasta de Apertura – Contado estándar 10:25 hs. a 10:30 hs.'; 'Negociación Regular con modalidad de cierre VWAP Renta Variable - Contado 24 hs. 10:30 hs. a 18:00 hs.'; 'Negociación a Precio de Cierre 18:05 hs. a 18:15 hs.'. VIGENCIA: 'entran en vigor el 02 de Noviembre de 2026, dejando sin efecto el Comunicado N°19024'. The equity segment closes by VWAP; the closing auctions the communiqué lists (16:57-17:00) are for fixed income and Contado Inmediato only, so the close is the end of continuous trading (ADR 0013, ADR 0014). BYMA Clearing's 'Cronograma diario' (v1.10, 30 October 2026, also saved by the maintainer) agrees: '10:30 Negociación — Inicio sesión de negociación'. BYMA's /comunicados/comunicado-19031 and /en/comunicados/comunicado-19031 both return 404 (checked by the maintainer, 4b2). verified_from 2026-11-02: Comunicado 19031 enters into force on 2 November 2026.",
         "open": "10:30",
         "segment": "Negociación Regular con modalidad de cierre VWAP Renta Variable - Contado 24 hs. (PPT)",
         "source_title": "BYMA Comunicado Nº 19031, 'Horarios de Negociación, liquidación y recepción de información', Buenos Aires, 28 de Octubre de 2026",
         "source_url": "https://www.byma.com.ar/en/comunicados/communiqu-17466",
-        "status": "verified"
+        "status": "verified",
+        "verified_from": "2026-11-02"
       }
     ],
     "last_checked": "2026-11-21",

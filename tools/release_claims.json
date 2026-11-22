@@ -1928,6 +1928,10 @@
   "2.31.0": [
     {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "**Security groups (session 4b3; replaces 4b2's"},
     {"file": "exchanges/XMOS.json", "contains": "\"effective_from\": \"2025-03-21\""},
-    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xmos_2025_03_21_0955\""}
+    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xmos_2025_03_21_0955\""},
+    {"file": "schema.json", "contains": "\"version\": \"2.3.2\""},
+    {"file": "tools/check_verification.py", "contains": "def history_hours_verified(d: dict) -> bool:"},
+    {"file": "docs/facts.json", "contains": "\"exchanges_hours_history_verified\": 0"},
+    {"file": "README.md", "contains": "Current hours verified (ADR 0014): 17 of 74"}
   ]
 }

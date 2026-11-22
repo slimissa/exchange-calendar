@@ -124,7 +124,7 @@ cap. `tools/derive_verification.py` keeps `hours` on rewrite, like
 4b1 reports check 6 ("hours evidence: N of 74 (M of 48
 reference_compared)") without enforcing it; a test keeps N from shrinking.
 At the end of Phase 4b-lite check 6 becomes blocking for every
-`reference_compared` exchange.
+`reference_compared` exchange, for current hours (section 7, 4b3).
 
 ### 6. Hours the schema cannot express (`schema_limited`, session 4b2)
 
@@ -154,10 +154,39 @@ recheck will settle it) fits.
   holds the hours the exchange gives for the days it can describe, never a
   compromise between two schedules.
 
+### 7. What the evidence proves: `verified_from`, current and history (session 4b3)
+
+4b2 marked an entry `verified` when a document read in 2026 gave its hours,
+even where the entry started in 2010: for 17 exchanges the evidence said
+more than the document proved.
+
+- A `verified` item carries `verified_from` (schema 2.3.2): the earliest
+  date its cited document proves those hours. That is the document's
+  effective date, or the earliest date it states (a release date, a
+  version date, a page's last-modified date), or the read date when it
+  states none. It is never before the entry's `effective_from`; it may be
+  after `checked_on` when the document read takes effect later (Euronext's
+  appendix edition effective 23 November 2026, read on 22 November).
+  Entries are not split to make history look verified.
+- **Current hours verified** (`docs/facts.json` `exchanges_hours_verified`):
+  the entry in force on the evaluation day has a `verified` item with
+  `verified_from` on or before that day. The evaluation day is the later of
+  `verification.last_checked` and the item's `checked_on`: a document read
+  on a day proves that day's hours, and `last_checked` can lag behind the
+  read. Both are recorded dates, so the fact does not move with the clock.
+- **History verified** (`exchanges_hours_history_verified`): every entry has
+  a `verified` item with `verified_from` equal to its `effective_from`.
+- The end-of-4b-lite blocking rule (section 5) applies to current hours.
+  History is Phase 4b full.
+- Check 6 prints both ("Current hours verified: N of 74", "History
+  verified: M of 74"); the README states both and `tools/check_doc_facts.py`
+  checks them.
+
 ## Consequences
 
 - `docs/facts.json` `exchanges_hours_verified` counts exchanges whose
-  current entry (the one in force on `last_checked`) is `verified`; the
+  current hours are verified (section 7: `verified_from` on or before the
+  evaluation day; 4b2 counted the entry in force on `last_checked`); the
   README states it.
 - Wrappers do not read `verification.hours` yet (unknown keys are ignored
   by all four); exposing it is a 4f question.

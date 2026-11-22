@@ -419,7 +419,10 @@ lists a reference library for the exchange (the 50 with at least one):
   required `limitation`, with a required `backlog_item` naming the bold title
   of the `docs/phase-4f-schema-backlog.md` item that would lift it; no
   recheck cap; evidence but not verified, ADR 0014 section 6) and an optional
-  `note`. `tools/check_verification.py` check 6 tests it, non-blocking until
+  `note`. Since schema 2.3.2 a `verified` item requires `verified_from`, the
+  earliest date its cited document proves the hours (on or after
+  `effective_from`; only on `verified` items); it separates current hours
+  verified from history verified (ADR 0014 section 7). `tools/check_verification.py` check 6 tests it, non-blocking until
   the end of Phase 4b-lite; `tools/derive_verification.py` keeps it on rewrite.
 - `coverage` (optional, authored) says which sources back which date ranges.
   `tools/check_verification.py` checks that its spans tile `generation_range`

@@ -1538,12 +1538,13 @@
         "close": "16:30",
         "close_rule": "continuous_end",
         "effective_from": "2010-01-01",
-        "note": "'Trading Hours are Monday through Friday 9:00 a.m. - 4:30 p.m. (Atlantic Time)'; continuous trading after an 08:30-09:00 price discovery phase, no closing auction (ADR 0013: continuous_end). Current entry; press (Bernews, 23 September 2016) dates the 16:30 close to 28 September 2016, so years before are not covered by this page (XBDA note).",
+        "note": "'Trading Hours are Monday through Friday 9:00 a.m. - 4:30 p.m. (Atlantic Time)'; continuous trading after an 08:30-09:00 price discovery phase, no closing auction (ADR 0013: continuous_end). Current entry; press (Bernews, 23 September 2016) dates the 16:30 close to 28 September 2016, so years before are not covered by this page (XBDA note). verified_from 2026-11-20: BSX's page states no date: the read date (4c11).",
         "open": "09:00",
         "segment": "BSX equities, continuous trading",
         "source_title": "BSX, Trading (read in 4c11; the site refuses this sandbox)",
         "source_url": "https://www.bsx.com/trading/trading",
-        "status": "verified"
+        "status": "verified",
+        "verified_from": "2026-11-20"
       }
     ],
     "last_checked": "2026-11-21",

@@ -3140,12 +3140,13 @@
         "close": "16:00",
         "close_rule": "closing_auction_end",
         "effective_from": "1990-01-01",
-        "note": "NYSE section, Tape A: 'Pre-Opening Session: 6:30 a.m. ET'; orders 'queued until the Opening Auction at 9:30 a.m. ET'; 'Core Trading Session: 9:30 a.m. to 4:00 p.m. ET'; '4:00 p.m. ET - Closing Auction'. Open 09:30, close 16:00 (the closing auction prints at 16:00, ADR 0013). Read on the page itself (4b1 used a search snippet). No effective date; read as the current entry.",
+        "note": "NYSE section, Tape A: 'Pre-Opening Session: 6:30 a.m. ET'; orders 'queued until the Opening Auction at 9:30 a.m. ET'; 'Core Trading Session: 9:30 a.m. to 4:00 p.m. ET'; '4:00 p.m. ET - Closing Auction'. Open 09:30, close 16:00 (the closing auction prints at 16:00, ADR 0013). Read on the page itself (4b1 used a search snippet). No effective date; read as the current entry. verified_from 2026-11-22: the page states no effective date: the read date.",
         "open": "09:30",
         "segment": "NYSE (Tape A) Core Trading Session",
         "source_title": "NYSE, Hours & Calendars",
         "source_url": "https://www.nyse.com/trade/hours-calendars",
-        "status": "verified"
+        "status": "verified",
+        "verified_from": "2026-11-22"
       }
     ],
     "last_checked": "2026-11-21",

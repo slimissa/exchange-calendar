@@ -1651,12 +1651,13 @@
         "close": "16:25",
         "close_rule": "closing_auction_end",
         "effective_from": "2026-08-03",
-        "note": "Appendix row (Trading Venue RM, Market Oslo, Gr. OA, Type 'Equities - OBX', Mode C): OU '09:00 Random', Trading '09:00 Random - 16:20 Continuous Random', CU '16:25 Random', TAL '16:25  - 16:30 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Oslo local time: 09:00-16:25. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). The entry's date is the 3 August 2026 edition's, which 4c8 read with the same Oslo rows.",
+        "note": "Appendix row (Trading Venue RM, Market Oslo, Gr. OA, Type 'Equities - OBX', Mode C): OU '09:00 Random', Trading '09:00 Random - 16:20 Continuous Random', CU '16:25 Random', TAL '16:25  - 16:30 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Oslo local time: 09:00-16:25. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). The entry's date is the 3 August 2026 edition's, which 4c8 read with the same Oslo rows. verified_from 2026-08-03: 4c8 read the same Oslo rows (continuous '09:00 Random - 16:20', closing uncross '16:25 Random') in the edition effective 3 August 2026, at source_url. source_url is the edition effective 3 August 2026 (read in 4c8), not the edition read here.",
         "open": "09:00",
         "segment": "Euronext Oslo Børs regulated market, 'Equities - OBX' (group OA), continuous mode C",
-        "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+        "source_title": "Euronext, Appendix of Trading Manual 4-01, edition effective 23 November 2026, sheet 'Appendix to 4-01 Manual OPTQ' (the edition read in 4b2, saved by the maintainer; no URL given for it)",
         "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
-        "status": "verified"
+        "status": "verified",
+        "verified_from": "2026-08-03"
       }
     ],
     "last_checked": "2026-11-21",

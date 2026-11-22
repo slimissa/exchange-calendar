@@ -726,7 +726,7 @@
           "type": "object"
         },
         "hours": {
-          "description": "Evidence for regular_hours (schema 2.3.0, ADR 0014; schema_limited since 2.3.1). Optional and authored, not derived: tools/derive_verification.py keeps it on rewrite. One item per regular_hours entry: effective_from is the entry's effective_from, or generation_range[0] when regular_hours is a single object; open and close repeat the entry's hours. verified means the exchange's own document or page gives them (never press, a broker or a reference library); schema_limited means the exchange's own document gives hours that regular_hours cannot fully express (open and close repeat the part it can); it carries limitation and backlog_item and no recheck cap. unconfirmed items carry a recheck_date. tools/check_verification.py check 6 tests it.",
+          "description": "Evidence for regular_hours (schema 2.3.0, ADR 0014; schema_limited since 2.3.1; verified_from since 2.3.2). Optional and authored, not derived: tools/derive_verification.py keeps it on rewrite. One item per regular_hours entry: effective_from is the entry's effective_from, or generation_range[0] when regular_hours is a single object; open and close repeat the entry's hours. verified means the exchange's own document or page gives them (never press, a broker or a reference library); schema_limited means the exchange's own document gives hours that regular_hours cannot fully express (open and close repeat the part it can); it carries limitation and backlog_item and no recheck cap. unconfirmed items carry a recheck_date. verified items carry verified_from, the earliest date the cited document proves those hours (never before effective_from); current hours verified and history verified (ADR 0014 section 7) follow from it. tools/check_verification.py check 6 tests it.",
           "items": {
             "additionalProperties": false,
             "allOf": [
@@ -757,6 +757,27 @@
                     "limitation",
                     "backlog_item"
                   ]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "status": {
+                      "const": "verified"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "verified_from"
+                  ]
+                },
+                "else": {
+                  "not": {
+                    "required": [
+                      "verified_from"
+                    ]
+                  }
                 }
               }
             ],
@@ -820,6 +841,11 @@
                   "schema_limited",
                   "unconfirmed"
                 ]
+              },
+              "verified_from": {
+                "description": "verified only (schema 2.3.2): the earliest date the cited document proves these hours: its effective date, or the earliest date it states, or the read date if it states none. On or after effective_from (check 6).",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                "type": "string"
               }
             },
             "required": [
@@ -873,5 +899,5 @@
   ],
   "title": "Exchange Calendar Entry",
   "type": "object",
-  "version": "2.3.1"
+  "version": "2.3.2"
 }
