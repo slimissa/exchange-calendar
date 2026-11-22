@@ -158,6 +158,30 @@ class HolidayEntry:
         return result
 
 
+
+def merge_holiday_rows(rows: List["HolidayEntry"], mic: str) -> List["HolidayEntry"]:
+    """Merge rows that a source lists more than once (4b3, XMAD).
+
+    Identical rows (same date, status and early_close_time) become one; the
+    first is kept. Two rows for one date that differ (a closure and an early
+    close, or two early-close times) are a conflict: ParseError naming the
+    date and both rows. A conflict is never resolved by picking one.
+    """
+    kept: Dict[str, HolidayEntry] = {}
+    order: List[str] = []
+    for row in rows:
+        seen = kept.get(row.date)
+        if seen is None:
+            kept[row.date] = row
+            order.append(row.date)
+            continue
+        if (seen.status, seen.early_close_time) != (row.status, row.early_close_time):
+            raise ParseError(
+                f"{mic}: conflicting rows for {row.date}: "
+                f"{seen.status}{' ' + seen.early_close_time if seen.early_close_time else ''} ({seen.name}) "
+                f"vs {row.status}{' ' + row.early_close_time if row.early_close_time else ''} ({row.name})")
+    return [kept[d] for d in order]
+
 @dataclass
 class ExchangeData:
     """Complete exchange data structure"""
@@ -3367,8 +3391,11 @@ class BMEMadridFetcher(ExchangeFetcher):
     current_year_only = True
 
     YEAR_RE = re.compile(r'trading calendar for\s+(\d{4})')
-    DATE_RE = re.compile(r'(\d{1,2})(?:st|nd|rd|th)\s+of\s+([A-Z][a-z]+)')
-    EARLY_CLOSE_MARKER_RE = re.compile(r'trade until\s+\d{1,2}:\d{2}', re.IGNORECASE)
+    DATE_RE = re.compile(
+        r'(\d{1,2})(?:st|nd|rd|th)\s+of\s+([A-Z][a-z]+)'
+        r'(?:\s+(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\b)?')
+    EARLY_CLOSE_MARKER_RE = re.compile(r'trade until\s+(\d{1,2}:\d{2})', re.IGNORECASE)
+    WEEKDAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
     def __init__(self):
         super().__init__(
@@ -3378,39 +3405,66 @@ class BMEMadridFetcher(ExchangeFetcher):
             rate_limit=2.0
         )
 
+    def _parse_block(self, text: str, year: int) -> List[HolidayEntry]:
+        """One "has set the trading calendar for YYYY" block: closures
+        before its "will trade until HH:MM" sentence, early closes after it.
+        Each date's stated weekday must fall on that date in YEAR; a block
+        whose weekdays contradict its year is the page contradicting itself,
+        and raises ParseError naming the dates (and the year they fit)."""
+        marker = self.EARLY_CLOSE_MARKER_RE.search(text)
+        split_pos = marker.start() if marker else len(text)
+        early_time = marker.group(1).zfill(5) if marker else None
+        rows: List[HolidayEntry] = []
+        wrong: List[tuple] = []
+        for match in self.DATE_RE.finditer(text):
+            day, month_name, weekday = match.groups()
+            try:
+                date_obj = datetime.strptime(f"{month_name} {day} {year}", "%B %d %Y")
+            except ValueError:
+                continue
+            if weekday and self.WEEKDAYS[date_obj.weekday()] != weekday:
+                wrong.append((int(day), month_name, weekday))
+            is_early_close = match.start() > split_pos
+            rows.append(HolidayEntry(
+                date=date_obj.strftime('%Y-%m-%d'),
+                name="BME Early Trading Close" if is_early_close else "BME Non-Trading Day",
+                status="early_close" if is_early_close else "closed",
+                early_close_time=early_time if is_early_close else None,
+                source_url=self.source_url,
+                note="Source page gives no holiday name for this date -- generic label used"
+            ))
+        if wrong:
+            fits = [y for y in range(year - 2, year + 3)
+                    if all(self.WEEKDAYS[datetime.strptime(f"{m} {d} {y}", "%B %d %Y").weekday()] == w
+                           for d, m, w in wrong)]
+            listed = ", ".join(f"{d} {m} ({w})" for d, m, w in wrong)
+            raise ParseError(
+                f"XMAD: a block says 'trading calendar for {year}' but its weekdays do not fall in {year}: "
+                f"{listed}" + (f"; they fit {', '.join(map(str, fits))}" if fits else "")
+                + ". The page contradicts itself; no row is taken from it.")
+        return rows
+
     def parse_html(self, html: str) -> List[HolidayEntry]:
+        """Each "has set the trading calendar for YYYY" sentence opens a block
+        parsed with its own year and its own early-close sentence (4b3: the
+        page carried two blocks, and dates from the second were read with the
+        first block's year and split at its marker, so 2026-01-01 appeared as
+        both a closure and an early close). Rows listed in more than one block
+        are merged by merge_holiday_rows (identical: one; differing: ParseError)."""
         if not html:
             return []
 
         soup = BeautifulSoup(html, 'html.parser')
         page_text = soup.get_text("\n", strip=True)
 
-        year_match = self.YEAR_RE.search(page_text)
-        if not year_match:
+        starts = list(self.YEAR_RE.finditer(page_text))
+        if not starts:
             return []
-        year = int(year_match.group(1))
-
-        marker_match = self.EARLY_CLOSE_MARKER_RE.search(page_text)
-        split_pos = marker_match.start() if marker_match else len(page_text)
-
-        holidays = []
-        for match in self.DATE_RE.finditer(page_text):
-            day, month_name = match.groups()
-            try:
-                date_obj = datetime.strptime(f"{month_name} {day} {year}", "%B %d %Y")
-            except ValueError:
-                continue
-
-            is_early_close = match.start() > split_pos
-            holidays.append(HolidayEntry(
-                date=date_obj.strftime('%Y-%m-%d'),
-                name="BME Early Trading Close" if is_early_close else "BME Non-Trading Day",
-                status="early_close" if is_early_close else "closed",
-                source_url=self.source_url,
-                note="Source page gives no holiday name for this date -- generic label used"
-            ))
-
-        return holidays
+        rows: List[HolidayEntry] = []
+        for i, m in enumerate(starts):
+            end = starts[i + 1].start() if i + 1 < len(starts) else len(page_text)
+            rows += self._parse_block(page_text[m.start():end], int(m.group(1)))
+        return merge_holiday_rows(rows, "XMAD")
 
     @retry(max_attempts=3, delay=2.0, backoff=2.0, exceptions=(FetchError,))
     def fetch(self) -> Optional[ExchangeData]:
