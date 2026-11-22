@@ -278,13 +278,22 @@
       },
       "mic": "DSMD",
       "name": "Qatar Stock Exchange",
-      "regular_hours": {
-        "close": "13:15",
-        "open": "09:30"
-      },
-      "sessions": [
+      "note": "Regular hours (4b5): 09:30-13:10 Doha from 2026-11-22, under ADR 0014 section 8 (QSE General Overview, undated: continuous 09:30-13:00, closing auction between 13:09 and 13:10, trading at last 13:10-13:15). The 09:30-13:15 entry is kept and unconfirmed.",
+      "regular_hours": [
         {
           "close": "13:15",
+          "effective_from": "2025-01-01",
+          "open": "09:30"
+        },
+        {
+          "close": "13:10",
+          "effective_from": "2026-11-22",
+          "open": "09:30"
+        }
+      ],
+      "sessions": [
+        {
+          "close": "13:10",
           "open": "09:30",
           "type": "regular"
         }
@@ -293,6 +302,34 @@
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "13:15",
+            "close_rule": "continuous_end",
+            "effective_from": "2025-01-01",
+            "note": "QSE's General Overview read on 2026-11-22 ends the closing auction at 13:10, with trading at last to 13:15; the registry's 13:15 is the end of trading at last, and when it might have been the ADR 0013 close is unknown. Settled by a QSE notice dating the current session schedule.",
+            "open": "09:30",
+            "recheck_date": "2027-02-19",
+            "segment": "QSE, one daily trading session for all listed securities: continuous trading period and closing auction",
+            "source_title": "Qatar Stock Exchange, General Overview (saved by the maintainer as a PDF print, 2026-11-22)",
+            "source_url": "https://www.qe.com.qa/general-overview",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-22",
+            "close": "13:10",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2026-11-22",
+            "note": "'Trading Characteristics': 'Trading hours: One daily Trading Session for all listed securities. From 09:00 am until 01:15 pm'; 'Pre-opening period From 09:00 am until 09:30 am'; 'Opening Auction Between 09:29-09:30 am*'; 'Continous Trading period From 09:30 am until 01:00 pm'; 'Pre-closing period From 01:00 pm until 01:10 pm'; 'Closing Auction Between 01:09-01:10 pm*'; 'Trading at last period From 01:10 pm until 01:15 pm'; '*The last minute of the pre-opening and pre-closing is the auction randomization period.' Open 09:30; close 13:10, the end of the one-minute random closing window (ADR 0013 random-closing rule). Trading at last (13:10-13:15) is not regular hours. The page states no date. In force at least since 2026-11-22; start undated; earlier entry's end unknown (ADR 0014 section 8).",
+            "open": "09:30",
+            "segment": "QSE, one daily trading session for all listed securities: continuous trading period and closing auction",
+            "source_title": "Qatar Stock Exchange, General Overview (saved by the maintainer as a PDF print, 2026-11-22)",
+            "source_url": "https://www.qe.com.qa/general-overview",
+            "status": "verified",
+            "verified_from": "2026-11-22"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (dead URL: HTTP 404; site reachable)."
       },

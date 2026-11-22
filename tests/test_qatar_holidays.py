@@ -3,7 +3,7 @@
 test_qatar_holidays.py — Ground truth tests for DSMD (Qatar Stock Exchange).
 
 Key facts verified:
-    - Regular hours: 09:30-13:15
+    - Regular hours: 09:30-13:10 from 2026-11-22 (4b5); the 2025-01-01 entry 09:30-13:15 is kept
     - No lunch break
     - No extended hours sessions
     - Weekend is Friday-Saturday (not Saturday-Sunday)
@@ -70,8 +70,12 @@ class TestDSMDProperties:
         assert xqse["timezone"] == "Asia/Qatar"
 
     def test_regular_hours(self, xqse):
-        assert xqse["regular_hours"]["open"] == "09:30"
-        assert xqse["regular_hours"]["close"] == "13:15"
+        assert xqse["regular_hours"] == [
+            {"effective_from": "2025-01-01", "open": "09:30", "close": "13:15"},
+            {"effective_from": "2026-11-22", "open": "09:30", "close": "13:10"},
+        ]
+        regular = [s for s in xqse["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "09:30", "close": "13:10"}]
 
     def test_no_lunch_break(self, xqse):
         lunch = [s for s in xqse.get("sessions", []) if s.get("type") == "lunch_break"]

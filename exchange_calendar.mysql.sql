@@ -106,7 +106,7 @@ CREATE TABLE confidence (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 START TRANSACTION;
-INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('DSMD', 'Qatar Stock Exchange', 'DSMD', 'QA', 'Asia/Qatar', 4, 5, '09:30', '13:15', '2025-01-01', '2029-12-31');
+INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('DSMD', 'Qatar Stock Exchange', 'DSMD', 'QA', 'Asia/Qatar', 4, 5, '09:30', '13:10', '2025-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XAMS', 'Euronext Amsterdam', 'XAMS', 'NL', 'Europe/Amsterdam', 5, 6, '09:00', '17:35', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XASX', 'Australian Securities Exchange', 'XASX', 'AU', 'Australia/Sydney', 5, 6, '10:00', '16:00', '1990-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XATH', 'Athens Stock Exchange', 'XATH', 'GR', 'Europe/Athens', 5, 6, '10:30', '17:00', '2025-01-01', '2029-12-31');
@@ -180,7 +180,7 @@ INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, w
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XWAR', 'Warsaw Stock Exchange', 'XWAR', 'PL', 'Europe/Warsaw', 5, 6, '09:00', '17:00', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XWBO', 'Vienna Stock Exchange', 'XWBO', 'AT', 'Europe/Vienna', 5, 6, '09:00', '17:35', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XZAG', 'Zagreb Stock Exchange', 'XZAG', 'HR', 'Europe/Zagreb', 5, 6, '09:30', '16:00', '2010-01-01', '2029-12-31');
-INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('DSMD', 'regular', 1, '09:30', '13:15', NULL);
+INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('DSMD', 'regular', 1, '09:30', '13:10', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XAMS', 'regular', 1, '09:00', '17:35', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XASX', 'auction', 1, NULL, NULL, '10:00');
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XASX', 'auction', 2, NULL, NULL, '16:00');

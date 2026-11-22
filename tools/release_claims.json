@@ -1964,6 +1964,7 @@
     {"file": "CHANGELOG.md", "contains": "XKUW regular hours 09:00-13:10 from 2025-10-12 (4b5)"},
     {"file": "CHANGELOG.md", "contains": "XCAY regular hours 07:05-12:30 Cayman time from 2026-11-22"},
     {"file": "CHANGELOG.md", "contains": "XNSA regular hours 09:30-16:00 Lagos from 2026-11-22"},
-    {"file": "CHANGELOG.md", "contains": "XBRV regular hours 09:45-14:31 UTC from 2026-11-22"}
+    {"file": "CHANGELOG.md", "contains": "XBRV regular hours 09:45-14:31 UTC from 2026-11-22"},
+    {"file": "CHANGELOG.md", "contains": "DSMD regular hours 09:30-13:10 Doha from 2026-11-22"}
   ]
 }

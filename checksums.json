@@ -1,7 +1,7 @@
 {
   "algorithm": "sha256",
   "files": {
-    "exchanges/DSMD.json": "b76eececd3ff31972ad340c7a48888e85380297896bc2dd53e6e6a00378a06fa",
+    "exchanges/DSMD.json": "3bdf45c212ed39e305f1db913b54bacb96a238a88ff7a1296397fc32fd65418c",
     "exchanges/XAMS.json": "1c6a130eb19c3ba7a1230305d5bf15edcf3ecd985afe8112fae71d9a9cad017a",
     "exchanges/XASX.json": "1baba66c6cd6ab7a5dbd3e1641f68fd878cbf3cd24f58af5fa31210499164469",
     "exchanges/XATH.json": "22ead19655794ed3269f40f942af4900f63c2558a7c0308921862adf90fee56c",

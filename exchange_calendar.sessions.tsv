@@ -1,5 +1,5 @@
 exchange_code	type	seq	open	close	at
-DSMD	regular	1	09:30	13:15	
+DSMD	regular	1	09:30	13:10	
 XAMS	regular	1	09:00	17:35	
 XASX	auction	1			10:00
 XASX	auction	2			16:00
