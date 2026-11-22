@@ -3,8 +3,10 @@
 test_kuwait_holidays.py — Ground truth tests for XKUW (Bursa Kuwait).
 
 Key facts verified:
-    - Regular hours: 09:00-12:30 (morning), 13:00-14:30 (afternoon)
-    - Lunch break: 12:30-13:00
+    - Regular hours: 09:00-13:10 from 2025-10-12 (Boursa Kuwait's extension
+      page: continuous 9:00-1:00, closing auction 1:00-1:10); the 2025-01-01
+      entry 09:00-12:30 is kept (4b5)
+    - No lunch break: continuous trading runs 9:00 to 1:00
     - Weekend is Friday-Saturday
     - New Year's Day with substitution
     - National Day (Feb 25) with substitution
@@ -69,14 +71,18 @@ class TestXKUWProperties:
         assert xkuw["timezone"] == "Asia/Kuwait"
 
     def test_regular_hours(self, xkuw):
-        assert xkuw["regular_hours"]["open"] == "09:00"
-        assert xkuw["regular_hours"]["close"] == "12:30"
+        assert xkuw["regular_hours"] == [
+            {"effective_from": "2025-01-01", "open": "09:00", "close": "12:30"},
+            {"effective_from": "2025-10-12", "open": "09:00", "close": "13:10"},
+        ]
+        regular = [s for s in xkuw["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "09:00", "close": "13:10"}]
 
-    def test_lunch_break(self, xkuw):
+    def test_no_lunch_break(self, xkuw):
+        """Boursa Kuwait's extension page (12 October 2025): the continuous
+        session runs from 9:00 a.m. to 1:00 p.m., so no break inside it."""
         lunch = [s for s in xkuw.get("sessions", []) if s.get("type") == "lunch_break"]
-        assert len(lunch) == 1
-        assert lunch[0]["open"] == "12:30"
-        assert lunch[0]["close"] == "13:00"
+        assert lunch == []
 
     def test_no_afternoon_session_type(self, xkuw):
         """Schema only allows lunch_break and auction session types.

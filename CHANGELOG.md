@@ -26,6 +26,10 @@ All notable changes to this project will be documented in this file.
 - ADR 0013: random closing windows (maintainer decision, 4b5). A random window of one minute or more ends the auction at the window's end (XHKG 16:08-16:10 -> 16:10, SET 16:35-16:40 -> 16:40, QSE 13:09-13:10 -> 13:10); seconds of jitter after a stated time leave the stated minute (Euronext, LSE, KRX, TSE, Boursa Kuwait). The earlier wording, applied two ways in the table (XDUB half days took a window's end, XBKK and XNZE its start), is replaced, and every row was audited: XBKK (16:40), XNZE (17:00 or 17:01) and XJSE (17:01) would change, and XETR, XWBO, XBUD and XSWX depend on a random-end length their cited documents do not give. None is changed without an exchange document.
 - ADR 0014 section 8: undated current regimes (maintainer decision, 4b5). When an exchange's current page contradicts the registry and nothing dates the change, a new `regular_hours` entry starts on the page's read date (`verified`, `verified_from` = that date, "in force at least since the read date; start undated; earlier entry's end unknown"), the earlier entry's evidence becomes `unconfirmed`, earlier values are never rewritten, and a dated document always wins.
 
+### Fixed
+
+- XKUW regular hours 09:00-13:10 from 2025-10-12 (4b5), against Boursa Kuwait's "Extension of trading hours and amendments to the closing auction mechanism" page (starting October 12th, 2025): continuous trading 9:00 a.m. to 1:00 p.m., closing auction 1:00 to 1:10 p.m. with the random close in its last 30 seconds (the stated minute under ADR 0013), trade at last 1:10 to 1:15 p.m. (not regular hours). The 2025-01-01 entry (09:00-12:30) is kept, unconfirmed: the page says continuous trading ended 12:30 before the extension but not when the old auction ended. The 12:30-13:00 lunch break, which the page contradicts, is removed.
+
 ## [2.31.0] - 2026-11-22
 
 ### Added

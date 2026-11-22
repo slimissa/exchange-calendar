@@ -98,6 +98,8 @@ def test_registry_dates_today():
                      ("XTKS", "2027-02-19"), ("XPHS", "2027-02-19"),
                      ("XSES", "2027-02-19"),
                      # 4b4: XASX close 16:11 under ADR 0013, undated.
-                     ("XASX", "2027-02-19")}
+                     ("XASX", "2027-02-19"),
+                     # 4b5: XKUW earlier hours entry (ADR 0014 section 8 or dated split).
+                     ("XKUW", "2027-02-19")}
     assert crd.main(["--today", "2026-11-20"]) == 0
     assert crd.main(["--today", "2027-01-05"]) == 1

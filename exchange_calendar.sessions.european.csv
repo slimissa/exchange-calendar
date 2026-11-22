@@ -72,8 +72,7 @@ XKRX;auction;2;;;15:30
 XKRX;post_market;1;15:30;16:00;
 XKRX;pre_market;1;08:30;09:00;
 XKRX;regular;1;09:00;15:30;
-XKUW;lunch_break;1;12:30;13:00;
-XKUW;regular;1;09:00;12:30;
+XKUW;regular;1;09:00;13:10;
 XLIM;lunch_break;1;13:30;14:30;
 XLIM;regular;1;09:00;13:30;
 XLIS;regular;1;08:00;16:35;

@@ -19,7 +19,7 @@ import check_verification as cv  # noqa: E402
 # Check 6 is non-blocking in Phase 4b-lite. Its count of exchanges with
 # complete hours evidence may grow, never shrink: raise this floor when an
 # exchange gains evidence.
-HOURS_EVIDENCE_FLOOR = 37  # 4b4: + XMEX (schema_limited), XKLS, XASX
+HOURS_EVIDENCE_FLOOR = 38  # 4b5: + XKUW
 #   4b3: batch B (8), XPHS XSES XTAI XZAG
 
 
@@ -357,4 +357,3 @@ def test_4b4_saved_pages_evidence():
     # until a notice dates the timetable: evidence records the contradiction.
     assert item["status"] == "unconfirmed" and "16:10:00^ - 16:11:00" in item["note"]
     assert cv.hours_problems(asx) == []
-

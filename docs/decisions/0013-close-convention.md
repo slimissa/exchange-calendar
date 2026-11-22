@@ -45,8 +45,6 @@ XBKK and XNZE took its scheduled start.
   under ADR 0014 section 2 (the minute the exchange's own notice states,
   else the next whole minute).
 
-Applied in 4b5: listed below the audit as each exchange is fixed.
-
 ### Audit of the applied table against the random-closing rule (session 4b5)
 
 Every row of "Applied in 4c-R3.5", "Already conforming" and "Exceptions
@@ -65,6 +63,10 @@ recorded close (XDUB half days 12:28-12:30, XHKG 16:08-16:10).
 | XJSE | 17:00 | Market Notice 2719: "earliest close 17:00:00 with a random uncross to 17:01" (one minute) | 17:01 | No: no JSE document attached |
 | XETR, XWBO, XBUD | 17:35, 17:35, 17:05 | Xetra-type random end after the stated time; the documents cited give no length | the stated minute if the random end is seconds; the window's end if it is a minute or more | No: length to be read from the trading-parameter documents |
 | XSWX | 17:30 | SIX closing auction with a random end; length not cited | as for XETR | No: length to be read from SIX's trading provisions |
+
+Applied in 4b5 (random-closing rule, exchange documents attached):
+
+- XKUW: 13:10 from 2025-10-12 (Boursa Kuwait: closing auction 13:00-13:10, random close in the last 30 seconds -> the stated minute).
 
 ## Why
 

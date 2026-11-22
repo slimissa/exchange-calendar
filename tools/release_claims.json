@@ -1960,6 +1960,7 @@
   ],
   "2.33.0": [
     {"file": "docs/decisions/0013-close-convention.md", "contains": "### Random closing windows (maintainer decision, session 4b5)"},
-    {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "### 8. Undated current regimes (maintainer decision, session 4b5)"}
+    {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "### 8. Undated current regimes (maintainer decision, session 4b5)"},
+    {"file": "CHANGELOG.md", "contains": "XKUW regular hours 09:00-13:10 from 2025-10-12 (4b5)"}
   ]
 }

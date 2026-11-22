@@ -7,7 +7,7 @@
 -- after the CREATE statements and wraps the INSERT block.
 -- Drops and recreates these five tables. Not safe if other tables reference them.
 -- Tables: exchanges, sessions, holidays, ad_hoc_closures, confidence
--- Rows: exchanges 74, sessions 168, holidays 14142, ad_hoc_closures 38, confidence 1228
+-- Rows: exchanges 74, sessions 167, holidays 14142, ad_hoc_closures 38, confidence 1228
 
 DROP TABLE IF EXISTS confidence;
 DROP TABLE IF EXISTS ad_hoc_closures;
@@ -141,7 +141,7 @@ INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, w
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XKAR', 'Pakistan Stock Exchange', 'XKAR', 'PK', 'Asia/Karachi', 5, 6, '09:30', '15:30', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XKLS', 'Bursa Malaysia', 'XKLS', 'MY', 'Asia/Kuala_Lumpur', 5, 6, '09:00', '16:50', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XKRX', 'Korea Exchange', 'XKRX', 'KR', 'Asia/Seoul', 5, 6, '09:00', '15:30', '2010-01-01', '2029-12-31');
-INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XKUW', 'Bursa Kuwait', 'XKUW', 'KW', 'Asia/Kuwait', 4, 5, '09:00', '12:30', '2025-01-01', '2029-07-24');
+INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XKUW', 'Bursa Kuwait', 'XKUW', 'KW', 'Asia/Kuwait', 4, 5, '09:00', '13:10', '2025-01-01', '2029-07-24');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XLIM', 'Lima Stock Exchange', 'XLIM', 'PE', 'America/Lima', 5, 6, '09:00', '13:30', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XLIS', 'Euronext Lisbon', 'XLIS', 'PT', 'Europe/Lisbon', 5, 6, '08:00', '16:35', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XLIT', 'Nasdaq Vilnius', 'XLIT', 'LT', 'Europe/Vilnius', 5, 6, '10:00', '16:00', '2010-01-01', '2029-12-31');
@@ -253,8 +253,7 @@ INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XKRX',
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XKRX', 'post_market', 1, '15:30', '16:00', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XKRX', 'pre_market', 1, '08:30', '09:00', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XKRX', 'regular', 1, '09:00', '15:30', NULL);
-INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XKUW', 'lunch_break', 1, '12:30', '13:00', NULL);
-INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XKUW', 'regular', 1, '09:00', '12:30', NULL);
+INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XKUW', 'regular', 1, '09:00', '13:10', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XLIM', 'lunch_break', 1, '13:30', '14:30', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XLIM', 'regular', 1, '09:00', '13:30', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XLIS', 'regular', 1, '08:00', '16:35', NULL);
@@ -15760,7 +15759,7 @@ COMMIT;
 
 -- Row counts
 --   exchanges: 74
---   sessions: 168
+--   sessions: 167
 --   holidays: 14142
 --   ad_hoc_closures: 38
 --   confidence: 1228

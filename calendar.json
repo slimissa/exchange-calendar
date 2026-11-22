@@ -42445,26 +42445,58 @@
       },
       "mic": "XKUW",
       "name": "Bursa Kuwait",
-      "regular_hours": {
-        "close": "12:30",
-        "open": "09:00"
-      },
-      "sessions": [
+      "note": "Regular hours (4b5): 09:00-13:10 from 2025-10-12 (Boursa Kuwait's extension page: continuous 9:00-13:00, closing auction 13:00-13:10 with a random close in the last 30 seconds, trade at last 13:10-13:15). The 2025 entry (09:00-12:30) is kept and unconfirmed. The 12:30-13:00 lunch break the registry carried is removed: the page has continuous trading run from 9:00 to 1:00 without a break.",
+      "regular_hours": [
         {
           "close": "12:30",
-          "open": "09:00",
-          "type": "regular"
+          "effective_from": "2025-01-01",
+          "open": "09:00"
         },
         {
-          "close": "13:00",
-          "open": "12:30",
-          "type": "lunch_break"
+          "close": "13:10",
+          "effective_from": "2025-10-12",
+          "open": "09:00"
+        }
+      ],
+      "sessions": [
+        {
+          "close": "13:10",
+          "open": "09:00",
+          "type": "regular"
         }
       ],
       "timezone": "Asia/Kuwait",
       "verification": {
         "basis": "BLOCKED.md",
         "class": "single_source",
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "12:30",
+            "close_rule": "continuous_end",
+            "effective_from": "2025-01-01",
+            "note": "The extension page (https://www.boursakuwait.com.kw/TS-Extension-EN/) says the continuous session was extended by 30 minutes from 12 October 2025, so it ran 09:00-12:30 before, followed by a closing auction with a two-minute random close; it does not give that auction's times, so the ADR 0013 close before 2025-10-12 is not known (the registry's 12:30 is the end of continuous trading). Settled by a Boursa Kuwait document giving the pre-2025 closing auction schedule.",
+            "open": "09:00",
+            "recheck_date": "2027-02-19",
+            "segment": "Boursa Kuwait trading system: continuous trading session followed by the closing auction session",
+            "source_title": "Boursa Kuwait, 'Extension of trading hours and amendments to the closing auction mechanism' (starting October 12th, 2025; saved by the maintainer, 2026-11-22)",
+            "source_url": "https://www.boursakuwait.com.kw/TS-Extension-EN/",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-22",
+            "close": "13:10",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2025-10-12",
+            "note": "'Boursa Kuwait extended its continuous trading session by 30 minutes starting Sunday, October 12, 2025, with the session now running from 9:00 a.m. to 1:00 p.m. Accordingly, the closing auction session will now run from 1:00 p.m. to 1:10 p.m. while the trade at last session, which will now run from 1:10 p.m. to 1:15 p.m., will end trading for the day.' 'the random closing period has been reduced to the last 30 seconds instead of the last two minutes.' Open 09:00; close 13:10, the end of the closing auction: the random close falls in its last 30 seconds, seconds of jitter, so the stated minute (ADR 0013 random-closing rule). Trade at last 13:10-13:15 is not regular hours. Dated by the page itself (12 October 2025). The trading-sessions page (a35, https://www.boursakuwait.com.kw/en/securities/trading/trading-information) printed only its first tab, with no times.",
+            "open": "09:00",
+            "segment": "Boursa Kuwait trading system: continuous trading session followed by the closing auction session",
+            "source_title": "Boursa Kuwait, 'Extension of trading hours and amendments to the closing auction mechanism' (starting October 12th, 2025; saved by the maintainer, 2026-11-22)",
+            "source_url": "https://www.boursakuwait.com.kw/TS-Extension-EN/",
+            "status": "verified",
+            "verified_from": "2025-10-12"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "BLOCKED (HTTP 403 on 2026-09-17)."
       },
