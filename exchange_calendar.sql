@@ -121,7 +121,7 @@ INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, w
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XBUL', 'Bulgarian Stock Exchange', 'XBUL', 'BG', 'Europe/Sofia', 5, 6, '09:30', '14:00', '2025-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XCAI', 'Egyptian Exchange', 'XCAI', 'EG', 'Africa/Cairo', 4, 5, '10:00', '14:30', '2025-01-01', '2029-07-24');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XCAS', 'Casablanca Stock Exchange', 'XCAS', 'MA', 'Africa/Casablanca', 5, 6, '09:30', '15:30', '2025-01-01', '2029-12-31');
-INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XCAY', 'Cayman Islands Stock Exchange', 'XCAY', 'KY', 'America/Cayman', 5, 6, '10:00', '16:00', '2025-01-01', '2029-12-31');
+INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XCAY', 'Cayman Islands Stock Exchange', 'XCAY', 'KY', 'America/Cayman', 5, 6, '07:05', '12:30', '2025-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XCOL', 'Colombo Stock Exchange', 'XCOL', 'LK', 'Asia/Colombo', 5, 6, '09:30', '14:30', '2025-01-01', '2027-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XCSE', 'Nasdaq Copenhagen', 'XCSE', 'DK', 'Europe/Copenhagen', 5, 6, '09:00', '17:00', '2010-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XDFM', 'Dubai Financial Market', 'XDFM', 'AE', 'Asia/Dubai', 5, 6, '10:00', '15:00', '2025-01-01', '2029-12-31');
@@ -204,7 +204,7 @@ INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XBUE',
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XBUL', 'regular', 1, '09:30', '14:00', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XCAI', 'regular', 1, '10:00', '14:30', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XCAS', 'regular', 1, '09:30', '15:30', NULL);
-INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XCAY', 'regular', 1, '10:00', '16:00', NULL);
+INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XCAY', 'regular', 1, '07:05', '12:30', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XCOL', 'regular', 1, '09:30', '14:30', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XCSE', 'post_market', 1, '17:00', '17:20', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XCSE', 'pre_market', 1, '08:00', '09:00', NULL);

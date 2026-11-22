@@ -3,7 +3,7 @@
 test_cayman_holidays.py — Ground truth tests for XCAY (Cayman Islands Stock Exchange).
 
 Key facts verified:
-    - Regular hours: 10:00-16:00 (single session)
+    - Regular hours: 07:05-12:30 from 2026-11-22 (4b5); the 2025-01-01 entry 10:00-16:00 is kept (single session)
     - No lunch break
     - Weekend is Saturday-Sunday (Western weekend)
     - National Heroes' Day (fourth Monday in January)
@@ -66,8 +66,12 @@ class TestXCAYProperties:
         assert xcay["timezone"] == "America/Cayman"
 
     def test_regular_hours(self, xcay):
-        assert xcay["regular_hours"]["open"] == "10:00"
-        assert xcay["regular_hours"]["close"] == "16:00"
+        assert xcay["regular_hours"] == [
+            {"effective_from": "2025-01-01", "open": "10:00", "close": "16:00"},
+            {"effective_from": "2026-11-22", "open": "07:05", "close": "12:30"},
+        ]
+        regular = [s for s in xcay["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "07:05", "close": "12:30"}]
 
     def test_no_lunch_break(self, xcay):
         lunch = [s for s in xcay.get("sessions", []) if s.get("type") == "lunch_break"]

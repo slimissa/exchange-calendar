@@ -17,7 +17,7 @@ XBUE;Buenos Aires Stock Exchange;XBUE;AR;America/Argentina/Buenos_Aires;5;6;10:3
 XBUL;Bulgarian Stock Exchange;XBUL;BG;Europe/Sofia;5;6;09:30;14:00;2025-01-01;2029-12-31
 XCAI;Egyptian Exchange;XCAI;EG;Africa/Cairo;4;5;10:00;14:30;2025-01-01;2029-07-24
 XCAS;Casablanca Stock Exchange;XCAS;MA;Africa/Casablanca;5;6;09:30;15:30;2025-01-01;2029-12-31
-XCAY;Cayman Islands Stock Exchange;XCAY;KY;America/Cayman;5;6;10:00;16:00;2025-01-01;2029-12-31
+XCAY;Cayman Islands Stock Exchange;XCAY;KY;America/Cayman;5;6;07:05;12:30;2025-01-01;2029-12-31
 XCOL;Colombo Stock Exchange;XCOL;LK;Asia/Colombo;5;6;09:30;14:30;2025-01-01;2027-12-31
 XCSE;Nasdaq Copenhagen;XCSE;DK;Europe/Copenhagen;5;6;09:00;17:00;2010-01-01;2029-12-31
 XDFM;Dubai Financial Market;XDFM;AE;Asia/Dubai;5;6;10:00;15:00;2025-01-01;2029-12-31

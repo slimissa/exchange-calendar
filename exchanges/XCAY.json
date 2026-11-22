@@ -431,14 +431,23 @@
   },
   "mic": "XCAY",
   "name": "Cayman Islands Stock Exchange",
-  "regular_hours": {
-    "close": "16:00",
-    "open": "10:00"
-  },
-  "sessions": [
+  "note": "Regular hours (4b5): 07:05-12:30 Cayman time from 2026-11-22, under ADR 0014 section 8 (CSX Trading Procedures, undated: continuous 7.05 a.m. to 12:25 p.m., closing auction 12.25 to 12.30 p.m.). The 10:00-16:00 entry is kept and unconfirmed.",
+  "regular_hours": [
     {
       "close": "16:00",
-      "open": "10:00",
+      "effective_from": "2025-01-01",
+      "open": "10:00"
+    },
+    {
+      "close": "12:30",
+      "effective_from": "2026-11-22",
+      "open": "07:05"
+    }
+  ],
+  "sessions": [
+    {
+      "close": "12:30",
+      "open": "07:05",
       "type": "regular"
     }
   ],
@@ -446,6 +455,34 @@
   "verification": {
     "basis": "fetcher:implemented",
     "class": "source_verified",
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "16:00",
+        "close_rule": "continuous_end",
+        "effective_from": "2025-01-01",
+        "note": "The CSX Trading Procedures read on 2026-11-22 give 07:05-12:30 Cayman time and no date; the registry's 10:00-16:00 is backed by no CSX document, and when it stopped applying, if it ever did, is unknown. Settled by a CSX notice dating the Xetra trading hours.",
+        "open": "10:00",
+        "recheck_date": "2027-02-19",
+        "segment": "CSX Xetra main trading session (continuous trading and closing auction)",
+        "source_title": "Cayman Islands Stock Exchange, Trading Procedures (saved by the maintainer as a PDF print, 2026-11-22)",
+        "source_url": "https://www.csx.ky/documents/CSX-Trading-Procedures.pdf",
+        "status": "unconfirmed"
+      },
+      {
+        "checked_on": "2026-11-22",
+        "close": "12:30",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2026-11-22",
+        "note": "Section 5.1 'Trading hours': 'Pre-trading: 6.30 a.m. to 7 a.m. Cayman Islands time'; 'Opening auction: 7 a.m. to 7.05 a.m.'; 'Continuous trading: 7.05 a.m. to 12:25 p.m. Cayman Islands time (12.05 p.m. to 5.25 p.m. GMT)'; 'Closing auction: 12.25 p.m. to 12.30 p.m. Cayman Islands time (5.25 p.m. to 5.30 p.m. GMT)'; 'Post trading: 12.30 p.m. to 12.45 p.m.'. Open 07:05 (start of continuous trading); close 12:30, the end of the closing auction (ADR 0013). The document opens 'On 25 March the Cayman Islands Stock Exchange ... went live with its CSX Xetra trading platform' without a year and states no effective date. In force at least since 2026-11-22; start undated; earlier entry's end unknown (ADR 0014 section 8).",
+        "open": "07:05",
+        "segment": "CSX Xetra main trading session (continuous trading and closing auction)",
+        "source_title": "Cayman Islands Stock Exchange, Trading Procedures (saved by the maintainer as a PDF print, 2026-11-22)",
+        "source_url": "https://www.csx.ky/documents/CSX-Trading-Procedures.pdf",
+        "status": "verified",
+        "verified_from": "2026-11-22"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
   },
