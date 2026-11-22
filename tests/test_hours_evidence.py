@@ -19,7 +19,7 @@ import check_verification as cv  # noqa: E402
 # Check 6 is non-blocking in Phase 4b-lite. Its count of exchanges with
 # complete hours evidence may grow, never shrink: raise this floor when an
 # exchange gains evidence.
-HOURS_EVIDENCE_FLOOR = 34  # 4b1: XBUE; 4b2: XHKG, XMOS, Euronext (6), batch A (8), XBDA XBUD XJSE XNZE, XKAR;
+HOURS_EVIDENCE_FLOOR = 35  # 4b4: + XMEX (schema_limited)
 #   4b3: batch B (8), XPHS XSES XTAI XZAG
 
 
@@ -333,4 +333,17 @@ def test_real_tree_facts_4b3():
     for code in ("XAMS", "XBRU", "XPAR", "XLIS"):
         d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
         assert d["verification"]["hours"][-1]["verified_from"] == "2026-11-23", code
+
+
+def test_xmex_seasonal_hours_are_schema_limited():
+    """4b4: BMV runs 07:30-14:00 during US daylight saving time and
+    08:30-15:00 otherwise (Manual Operativo 1.1.3); regular_hours keeps the
+    latter and the evidence says the schema cannot express the season."""
+    d = json.loads((ROOT / "exchanges" / "XMEX.json").read_text(encoding="utf-8"))
+    assert d["regular_hours"] == {"open": "08:30", "close": "15:00"}
+    (item,) = d["verification"]["hours"]
+    assert item["status"] == "schema_limited" and "verified_from" not in item
+    assert item["backlog_item"] == "Sessions that follow another market's daylight saving time"
+    assert "7:30-14:00" in item["limitation"] and item["close_rule"] == "continuous_end"
+    assert cv.hours_problems(d) == [] and cv.current_hours_verified(d) is False
 

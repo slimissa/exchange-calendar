@@ -1327,7 +1327,7 @@
   },
   "mic": "XMEX",
   "name": "Mexican Stock Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. Regular hours (4b4, ADR 0013/0014): 08:30-15:00 per BMV's Manual Operativo (continuous trading; no closing auction, close = 15:00). BMV runs 07:30-14:00 while the US is on daylight saving time (Manual 1.1.3); regular_hours cannot express that, so the evidence is schema_limited (4f backlog: sessions that follow another market's daylight saving time).",
   "regular_hours": {
     "close": "15:00",
     "open": "08:30"
@@ -1373,6 +1373,22 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "backlog_item": "Sessions that follow another market's daylight saving time",
+        "checked_on": "2026-11-22",
+        "close": "15:00",
+        "close_rule": "continuous_end",
+        "effective_from": "2010-01-01",
+        "limitation": "BMV moves the whole session one hour earlier while the United States is on daylight saving time, to stay aligned with New York: 7:30-14:00 Mexico City then, 8:30-15:00 otherwise (Mexico abolished its own daylight saving time in 2022). regular_hours has no season, so the entry holds the 8:30-15:00 schedule and is_open and in_session are an hour wrong from the second Sunday of March to the first Sunday of November.",
+        "note": "Manual Operativo 1.1.2 c): 'Mercado contínuo para títulos de renta variable, de renta fija y warrants de 8:30 a 15:00 horas.'; 1.1.2 (seasonal clause): 'El horario de la Sesión de Remate durante el horario de verano (estacional) en Estados Unidos, ... para fines de mantener homologado el horario de la sesión de remate de la BMV con el horario del mercado de Nueva York', with 'Mercado continuo ... de 7:30 a 14:00 horas'; 1.1.3: 'de 8:30 a 15:00 horas (7:30 a 14:00 horas durante el horario de verano EUA)'. Those quotes came through WebFetch; the search index holds the same manual's text verbatim ('d) Subastas Continuas de 8:00 a 15:00 horas.'; Precio de Cierre Etapa 1 orders 'de 8:00 horas a 14:40 horas con ejecución de Operaciones a las 15:00 horas'), and the maintainer's saved tab (read in full) gives the US-summer table: 'Mercado Continuo 7:30 a 14:00', 'Cálculo del PPP 13:40 a 14:00', 'Operaciones después del cierre y al INAV etapa 2 14:01:00 a 14:19:59', under a heading 'Anterior' (the English tab labels 8:30-15:00 'Previous', so the heading dates nothing). BMV's avisos page (15 October 2025, 'Homologación de los horarios de operación del Mercado de Capitales con los de EUA'): from Monday 3 November the session 'iniciará a las 8:30 horas para concluir a las 15:00 horas'. Close (ADR 0013): BMV has no closing auction; the closing price is calculated from 'los precios de los últimos 20 minutos de la Sesión de Remate' (1.3.6.6.2) and closing-price orders execute at 15:00; trades at the closing price 15:01-15:19:59 are not regular hours. So close 15:00, the end of continuous trading. Open 08:30 (opening auction 8:00-8:29:59). History: BMV's 2019 manual (V1.67) already gives 8:30-15:00; before 2023 Mexico kept daylight saving time, and BMV shifted only in the weeks the two countries' changes differed (aviso of 15 October 2021: 7:30-14:00 from 1 to 5 November 2021). No BMV document read dates the first full-season shift (the US summer of 2023).",
+        "open": "08:30",
+        "segment": "BMV Mercado de Capitales, Sesión de Remate: mercado continuo para títulos de renta variable, de renta fija y warrants",
+        "source_title": "BMV Manual Operativo, Versión 1.97/2026, vigente a partir del 23 de julio 2026 (read through WebFetch: the sandbox cannot download bmv.com.mx); BMV 'Horarios de Negociación' tab saved by the maintainer on 2026-11-22 (https://www.bmv.com.mx/es/Grupo_BMV/Calendario_de_dias_festivos/_rid/662/_mod/TAB_HORARIOS_NEG)",
+        "source_url": "https://bmv.com.mx/docs-pub/MARCO_NORMATIVO/CTEN_MERMO/20260723_V1.97_Clarif_Dto.Aranceles_Ambiente_Pruerbas.pdf",
+        "status": "schema_limited"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

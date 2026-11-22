@@ -54,6 +54,10 @@ trigger.
   registry's single 09:30-15:00 America/Bogota mixes the two (EST open, EDT
   close); it is kept, unconfirmed, until a timezone or seasonal-entry model
   exists and a BVC document is read. (4c10)
+  XMEX is a confirmed case (4b4): BMV's Manual Operativo (v1.97, in force
+  23 July 2026) gives 8:30-15:00 and "7:30 a 14:00 horas durante el horario
+  de verano EUA"; its hours evidence is `schema_limited` with this item as
+  `backlog_item`.
 - **Seasonal closes.** The Santiago exchange (XSGO) closes equities at
   16:00 in the southern winter and 17:00 in summer (exchange_calendars'
   close_times; press; DCV 2014). `regular_hours` has no season, so the
