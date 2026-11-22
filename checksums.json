@@ -3,7 +3,7 @@
   "files": {
     "exchanges/DSMD.json": "b76eececd3ff31972ad340c7a48888e85380297896bc2dd53e6e6a00378a06fa",
     "exchanges/XAMS.json": "1c6a130eb19c3ba7a1230305d5bf15edcf3ecd985afe8112fae71d9a9cad017a",
-    "exchanges/XASX.json": "453374de7a5d4922071bb6ad2ae87e57bbc0e6e0aef57b4b9eb2d96f4eaf9acf",
+    "exchanges/XASX.json": "1baba66c6cd6ab7a5dbd3e1641f68fd878cbf3cd24f58af5fa31210499164469",
     "exchanges/XATH.json": "22ead19655794ed3269f40f942af4900f63c2558a7c0308921862adf90fee56c",
     "exchanges/XBAH.json": "f53cb0eebbccd89d215ad1a8d60f55742be6f93cbee58450a4aa262b659ff47e",
     "exchanges/XBDA.json": "c388f984464174e759eb7ca6d07ba7faac275a10b0df5617f71347dcd1567723",
@@ -34,7 +34,7 @@
     "exchanges/XJKT.json": "701e7a8eac18f13d05d3fccc3bb73aa4efc4cdf6b96a5a7f77a714d9c92275e0",
     "exchanges/XJSE.json": "a0ce2cb70f8b6117578e5bb87baa7ed9e85fc224bcce04de7db489c8b761f43b",
     "exchanges/XKAR.json": "ef859d76ed36efa546b7294459ad2ad5e16b2ea6956bd46c761473522191ea66",
-    "exchanges/XKLS.json": "980f5e5d0c3c67063361b496f41f0377b3273aae609189dad3140a706ef55041",
+    "exchanges/XKLS.json": "49e7b3f1179b39f85e26ae9f1f406fdc7d23932710fe9231b6e166ad9f450e1e",
     "exchanges/XKRX.json": "56a65470fd9deac5739369eebad7aa7fd0938538ae5e36144480f461b462efac",
     "exchanges/XKUW.json": "c52fb6cd7b6e9498fe626d7a7820bb6ec3e6fb5c804609772a593544748dca12",
     "exchanges/XLIM.json": "4b96633e3f25ce5b475fe861366aff647e439ab3076e3b5d522f725ceb48fd31",

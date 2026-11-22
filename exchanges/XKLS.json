@@ -2228,6 +2228,21 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "16:50",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "'EQUITIES MARKET TIMING', 'Normal Market and Odd Lot Market': 1st Session 'Pre-Opening 8:30 am', 'Opening and Continuous Trading 9:00 am', 'Closing 12:30 pm'; 2nd Session 'Pre-Opening 2:00 pm', 'Opening and Continuous Trading 2:30 pm', 'Pre-Closing 4:45 pm', 'Closing 4:50 pm', 'Trading at Last 4:50 pm - 5:00 pm'. Open 09:00; close 16:50, the Closing after the 16:45 Pre-Closing (ADR 0013); Trading at Last is not regular hours; the 12:30-14:30 break is a lunch break, out of scope. 4c9 took 16:50 from a search snippet of this page; this is the page itself. verified_from 2026-11-22: the page states no effective date (the print's date).",
+        "open": "09:00",
+        "segment": "Bursa Malaysia equities, Normal Market and Odd Lot Market: 2nd session continuous trading and closing",
+        "source_title": "Bursa Malaysia, Trading Sessions (saved by the maintainer as a PDF print, 2026-11-22)",
+        "source_url": "https://www.bursamalaysia.com/trade/trading_resources/equities/trading_sessions",
+        "status": "verified",
+        "verified_from": "2026-11-22"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

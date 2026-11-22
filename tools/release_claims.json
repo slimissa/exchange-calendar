@@ -1955,6 +1955,7 @@
     {"file": ".github/workflows/live-fetcher-check.yml", "contains": "TIER9_MICS_BUILT: 'XIST,XSWX,XBUL'"},
     {"file": "tools/check_tier_coverage.py", "contains": "print(f\"::error::Listed in more than one tier: {dupes}\")"},
     {"file": "exchanges/XMEX.json", "contains": "\"backlog_item\": \"Sessions that follow another market's daylight saving time\""},
-    {"file": "docs/phase-4f-schema-backlog.md", "contains": "XMEX is a confirmed case (4b4)"}
+    {"file": "docs/phase-4f-schema-backlog.md", "contains": "XMEX is a confirmed case (4b4)"},
+    {"file": "CHANGELOG.md", "contains": "Hours evidence 35 -> 37 of 74"}
   ]
 }

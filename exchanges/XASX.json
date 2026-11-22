@@ -2459,6 +2459,21 @@
   "verification": {
     "basis": "divergence_report",
     "class": "reference_compared",
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "16:00",
+        "close_rule": "continuous_end",
+        "effective_from": "1990-01-01",
+        "note": "'Equity market phases (Sydney times)': '09:59:00 - 09:59:45* Opening Single Price Auction'; '09:59:45* - 16:00:00 Open/Normal Trading'; '16:00:00 - 16:10:00 Pre CSPA'; '16:10:00^ - 16:11:00 Closing Single Price Auction'; '16:11:00 - 16:21:30 Post Close' ('*Random 15 secs', '^Random 30 secs'); 'The Closing Single Price Auction takes place between 16:10:00^ (randomised 30 seconds) to 16:11:00, Sydney time. ASX Trade calculates closing prices during this phase.' Open 10:00 matches (continuous trading starts by 10:00:00). The close does not: ADR 0013 takes the end of the closing auction, 16:11 by ASX's own statement, while the registry holds 16:00, the end of Normal Trading. The page states no effective date and no ASX notice dating the 16:10-16:11 auction was read, so under the 4b rule the value stays and this evidence is unconfirmed; a mismatch listed for a dated fix. Settled by an ASX notice dating the current closing auction timetable.",
+        "open": "10:00",
+        "recheck_date": "2027-02-19",
+        "segment": "ASX Trade equity market (cash market): Open/Normal Trading and the Closing Single Price Auction",
+        "source_title": "ASX, Cash market trading hours (saved by the maintainer as HTML and PDF, 2026-11-22)",
+        "source_url": "https://www.asx.com.au/markets/market-resources/trading-hours-calendar/cash-market-trading-hours",
+        "status": "unconfirmed"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },
