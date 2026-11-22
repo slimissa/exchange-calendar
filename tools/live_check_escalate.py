@@ -55,7 +55,7 @@ def next_state(results: list[dict], previous: dict) -> dict:
     streaks: dict = {}
     for r in results:
         st = r.get("status")
-        if st not in ("TRANSIENT", "FAIL"):
+        if st not in ("TRANSIENT", "FAIL"):  # PASS, SKIP and KNOWN (4b4) carry no streak
             continue
         old = prev.get(r["mic"]) or {}
         count = old.get("count", 0) + 1 if old.get("kind") == st else 1
@@ -70,8 +70,9 @@ def decide(results: list[dict], state: dict, issue_open: bool) -> dict:
     all_green = not streaks
     escalate = bool(failing or repeated)
     action = "close" if all_green and issue_open else "none" if all_green else "upsert"
+    known = sorted(r["mic"] for r in results if r.get("status") == "KNOWN")
     return {"escalate": escalate, "all_green": all_green, "action": action,
-            "failing": failing, "repeated_transient": repeated}
+            "failing": failing, "repeated_transient": repeated, "known": known}
 
 
 def render_body(results: list[dict], state: dict, decision: dict, run_url: str = "", run_at: str = "") -> str:
@@ -84,6 +85,15 @@ def render_body(results: list[dict], state: dict, decision: dict, run_url: str =
     if decision["repeated_transient"]:
         lines.append("Transient in two or more consecutive scheduled runs: "
                      + ", ".join(decision["repeated_transient"]))
+    known = [r for r in results if r.get("status") == "KNOWN"]
+    if known:
+        lines.append("Known source faults (shown, not escalated; tools/known_source_faults.json):")
+        for r in known:
+            kf = r.get("known_fault") or {}
+            lines.append(f"- {r['mic']}: {kf.get('reason')} (opened {kf.get('opened')}, expires {kf.get('expires')})")
+    cleared = [r for r in results if r.get("warning")]
+    for r in cleared:
+        lines.append(f"Warning: {r['mic']}: {r['warning']}")
     if run_url or run_at:
         lines.append(f"Run: {run_url or '-'} ({run_at or '-'})")
     lines += ["", "| MIC | Status | Attempts | Detail |", "|-----|--------|----------|--------|"]

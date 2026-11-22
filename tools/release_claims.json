@@ -1949,6 +1949,8 @@
   ],
   "2.32.0": [
     {"file": "tools/update_from_exchange.py", "contains": "def _is_hidden(tag) -> bool:"},
-    {"file": "tests/test_update_from_exchange.py", "contains": "def test_real_page_gives_the_visible_2026_block(self):"}
+    {"file": "tests/test_update_from_exchange.py", "contains": "def test_real_page_gives_the_visible_2026_block(self):"},
+    {"file": "tools/known_source_faults.py", "contains": "MAX_DAYS = 70"},
+    {"file": ".github/workflows/validate.yml", "contains": "run: python3 tools/known_source_faults.py --check"}
   ]
 }

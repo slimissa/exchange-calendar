@@ -19,7 +19,8 @@ def step(results, body=""):
 
 def test_all_green_no_issue():
     d, _ = step([R("XNYS", "PASS"), R("XXXX", "SKIP")])
-    assert d == {"escalate": False, "all_green": True, "action": "none", "failing": [], "repeated_transient": []}
+    assert d == {"escalate": False, "all_green": True, "action": "none", "failing": [], "repeated_transient": [],
+                 "known": []}
 
 
 def test_one_transient_watches_without_failing():
@@ -83,3 +84,21 @@ def test_main_writes_body_and_decision(tmp_path):
                      "--decision-out", str(dec), "--run-url", "https://example.invalid/run/1"]) == 0
     assert json.loads(dec.read_text())["action"] == "upsert"
     assert "https://example.invalid/run/1" in body.read_text()
+
+
+def test_known_faults_are_listed_but_never_escalate_or_streak():
+    known = dict(R("XMAD", "KNOWN", 1, "ParseError: x"),
+                 known_fault={"reason": "BME page lists 2027 under 2026", "opened": "2026-11-22",
+                              "expires": "2027-01-31"})
+    _, b1 = step([known, R("XCAY", "TRANSIENT")])
+    d, b2 = step([known], b1)
+    assert d["escalate"] is False and d["known"] == ["XMAD"]
+    assert "XMAD" not in esc.parse_state(b2)["streaks"]
+    assert "Known source faults" in b1 and "BME page lists 2027 under 2026" in b1
+
+
+def test_fault_cleared_warning_reaches_the_body():
+    r = dict(R("XMAD", "PASS"), warning="fault cleared, remove the entry for XMAD")
+    _, body = step([r, R("XCAY", "FAIL")])
+    assert "Warning: XMAD: fault cleared, remove the entry" in body
+

@@ -1,0 +1,4 @@
+{
+  "_doc": "Known faults in an exchange's own source page (4b4). Each entry: mic, match (a regular expression searched in the live check's failure reason), reason (why the source is wrong, not the fetcher), evidence (the page quoted, with its URL), opened and expires (ISO dates; expires at most 70 days after opened). Until expires, a matching failure is reported KNOWN (shown, not escalated, not failing the job); after it, FAIL. A different failure of a listed MIC is FAIL; a listed MIC that passes gives a 'fault cleared, remove the entry' warning. Validated by tools/known_source_faults.py --check.",
+  "faults": []
+}

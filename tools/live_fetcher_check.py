@@ -21,6 +21,11 @@ Statuses (4b3):
                ValidationError, conflicting rows, SourceMissingError (404,
                robots.txt), any other ParseError (or "no holidays") on a page
                that returned content, HTTP 4xx, any unexpected exception
+    KNOWN      a failure matching an active entry of
+               tools/known_source_faults.json (a defect in the exchange's own
+               page): shown, not escalated, not failing the job, until the
+               entry expires (then FAIL); a listed MIC that passes gets a
+               "fault cleared, remove the entry" warning (4b4)
     SKIP       no fetcher registered
 
 ParseError, ValidationError and SourceMissingError subclass FetchError, so
@@ -47,6 +52,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from update_from_exchange import (
     ExchangeFetcherRegistry, FetchError, ParseError, SourceMissingError, ValidationError,
 )
+import known_source_faults
 
 ATTEMPTS = 3
 RETRY_DELAY = 30.0  # seconds; attempt n waits RETRY_DELAY * n before it
@@ -172,7 +178,17 @@ def main(argv=None):
     parser.add_argument("--retry-delay", type=float, default=RETRY_DELAY,
                         help="seconds; attempt n+1 waits this x n (default 30)")
     parser.add_argument("--json-out", default="", help="write the results as JSON to this path")
+    parser.add_argument("--known-faults", default=str(known_source_faults.PATH),
+                        help="known-source-fault entries (default tools/known_source_faults.json)")
+    parser.add_argument("--today", default="", help="ISO date for expiry checks (default: today, UTC)")
     args = parser.parse_args(argv)
+    faults = known_source_faults.load(Path(args.known_faults))
+    bad = known_source_faults.problems(faults)
+    if bad:
+        print("Invalid known-source-fault entries:\n  " + "\n  ".join(bad))
+        return 2
+    today = (datetime.fromisoformat(args.today).date() if args.today
+             else datetime.now(timezone.utc).date())
 
     registry = ExchangeFetcherRegistry()
     mics = args.mic or sorted(registry.list_available())
@@ -196,6 +212,7 @@ def main(argv=None):
             continue
         print(f"  -> {mic} ({fetcher.name}) ... ", end="", flush=True)
         r = check_fetcher(mic, fetcher, attempts=args.attempts, retry_delay=args.retry_delay)
+        r = known_source_faults.apply(r, faults, today)
         results.append(r)
         print(f"{r['status']} ({r['attempts']} attempt{'s' if r['attempts'] != 1 else ''})")
 
@@ -204,7 +221,8 @@ def main(argv=None):
         Path(args.json_out).write_text(json.dumps({
             "run_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "results": [{k: r.get(k) for k in ("mic", "status", "attempts", "reason",
-                                                  "holiday_count", "sample_date")} for r in results],
+                                                  "holiday_count", "sample_date", "known_fault", "warning")}
+                        for r in results],
         }, indent=2) + "\n", encoding="utf-8")
     return 1 if any(r["status"] == "FAIL" for r in results) else 0
 
@@ -214,13 +232,18 @@ def summary_table(results) -> str:
     for r in results:
         if r["status"] == "PASS":
             detail = f"{r.get('holiday_count', '?')} holidays, first={r.get('sample_date', '?')}"
+            if r.get("warning"):
+                detail += f" -- WARNING: {r['warning']}"
+        elif r["status"] == "KNOWN":
+            kf = r.get("known_fault") or {}
+            detail = f"{r.get('reason', '')} [known source fault until {kf.get('expires')}: {kf.get('reason')}]"
         else:
             detail = r.get("reason", "")
         lines.append(f"{r['mic']:<8}{r['status']:<11}{r.get('attempts', 0):<7}{detail}")
     lines.append("=" * 78)
-    count = {k: sum(1 for r in results if r["status"] == k) for k in ("PASS", "TRANSIENT", "FAIL", "SKIP")}
+    count = {k: sum(1 for r in results if r["status"] == k) for k in ("PASS", "TRANSIENT", "FAIL", "KNOWN", "SKIP")}
     lines.append(f"\n{count['PASS']}/{len(results)} passed, {count['TRANSIENT']} transient, "
-                 f"{count['FAIL']} failed, {count['SKIP']} skipped")
+                 f"{count['FAIL']} failed, {count['KNOWN']} known source fault(s), {count['SKIP']} skipped")
     if count["TRANSIENT"]:
         lines.append("TRANSIENT: " + ", ".join(r["mic"] for r in results if r["status"] == "TRANSIENT")
                      + " -- source unreliable today; fails the scheduled workflow only if it repeats next run")

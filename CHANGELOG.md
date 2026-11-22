@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Known source faults (4b4): `tools/known_source_faults.json` (entries: mic, match, reason, evidence, opened, expires at most 70 days after opened) and `tools/known_source_faults.py --check` (gate and `validate.yml`). The live check reports a failure matching an active entry as KNOWN (shown, not escalated, not failing the job) until `expires`, then FAIL; a different failure of a listed MIC is FAIL; a listed MIC that passes gets a "fault cleared, remove the entry" warning; the escalation issue lists KNOWN entries and the warnings, and KNOWN carries no streak. The list is empty: XMAD's page needed a fetcher fix, not an entry. Tests for each rule and for validation.
+
 ### Fixed
 
 - XMAD fetcher, settled on the real page (4b4). 4b3 read BME's page through a WebFetch paraphrase and concluded that a second block "headed 2026" with 2027 weekdays was published; the maintainer's raw save (2026-11-22) shows that block inside `<div id="container-a8cccbd951" class="cmp-container hidden ...">`: a draft readers never see (the print shows one block). It also says "has set the trading calendar for 2026"; its closures carry 2027 weekdays (1 January Friday, 26 March Friday, 29 March Monday) and its 24/31 December still say Thursday; no "2027" appears anywhere in the source. The fetcher now drops hidden elements (class token `hidden`, the `hidden` attribute, `aria-hidden="true"`, inline `display:none`; a collapsible FAQ panel is not hidden content) before reading blocks; the weekday guard stays and would still refuse the draft if it were shown unchanged. On the real page it returns the seven visible rows (1 January, 3 and 6 April, 1 May, 25 December closed; 24 and 31 December until 14:00), which agree with `exchanges/XMAD.json`. The WebFetch-derived fixtures are replaced by a trimmed real excerpt (`tests/fixtures/xmad_calendar_2026-11-22.html`, 20 KB, both blocks). No known-fault entry needed.
