@@ -1227,7 +1227,7 @@
   },
   "mic": "XMOS",
   "name": "Moscow Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2026: exchange_calendars + exchange_publications. Weekend sessions are not modelled: exchange_calendars has 16 Russian make-up Saturdays in 2010-2024 (e.g. 2012-04-28, 2018-12-29, 2024-12-28) that the registry leaves out, as for every exchange (divergence_test skips weekend_days). 2022 equity-market suspension: the library treats 2022-02-28 to 2022-03-23 as normal sessions, but the Moscow Exchange equity market was closed by Bank of Russia decision from 28 February and resumed on 24 March 2022 (33 MOEX Russia Index stocks, 09:50-14:00; not encoded). The 16 closed weekdays are in holidays.explicit (as one-off closures are elsewhere, e.g. XNYS 2025-01-09), citing moex.com notices n43337 (28 Feb), n43882 (1 Mar) and n45535 (resumption on 24 Mar), and are listed in contradicted_by on the exchange_calendars span. Regular hours (4b2, ADR 0013/0014; morning and evening sessions are additional sessions, not regular hours): 10:00-18:45 from 2010 (unconfirmed), closing auction to 18:50 from 2013-09-02 (MOEX notice of 23 August 2013), closing auction to 19:00 from 2026-03-23 (notice of 11 February 2026), main session from 09:00 with continuous trading from 09:10 for shares without a morning session from 2026-09-14 (notice of 14 August 2026). Evidence in verification.hours.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2026: exchange_calendars + exchange_publications. Weekend sessions are not modelled: exchange_calendars has 16 Russian make-up Saturdays in 2010-2024 (e.g. 2012-04-28, 2018-12-29, 2024-12-28) that the registry leaves out, as for every exchange (divergence_test skips weekend_days). 2022 equity-market suspension: the library treats 2022-02-28 to 2022-03-23 as normal sessions, but the Moscow Exchange equity market was closed by Bank of Russia decision from 28 February and resumed on 24 March 2022 (33 MOEX Russia Index stocks, 09:50-14:00; not encoded). The 16 closed weekdays are in holidays.explicit (as one-off closures are elsewhere, e.g. XNYS 2025-01-09), citing moex.com notices n43337 (28 Feb), n43882 (1 Mar) and n45535 (resumption on 24 Mar), and are listed in contradicted_by on the exchange_calendars span. Regular hours (4b2, ADR 0013/0014; morning and evening sessions are additional sessions, not regular hours): 10:00-18:45 from 2010 (unconfirmed), closing auction to 18:50 from 2013-09-02 (MOEX notice of 23 August 2013), closing auction to 19:00 from 2026-03-23 (notice of 11 February 2026), 09:50 open from 2025-03-21, when all MOEX Index shares were admitted to the morning session and their main session started at 09:50 (notices of 18 March and 22 January 2025), and 09:00 from 2026-09-14 (notice of 14 August 2026); ADR 0014's security-group rule, 4b3: the registry follows the group holding the index. Evidence in verification.hours.",
   "regular_hours": [
     {
       "close": "18:45",
@@ -1240,20 +1240,25 @@
       "open": "10:00"
     },
     {
+      "close": "18:50",
+      "effective_from": "2025-03-21",
+      "open": "09:50"
+    },
+    {
       "close": "19:00",
       "effective_from": "2026-03-23",
-      "open": "10:00"
+      "open": "09:50"
     },
     {
       "close": "19:00",
       "effective_from": "2026-09-14",
-      "open": "09:10"
+      "open": "09:00"
     }
   ],
   "sessions": [
     {
       "close": "19:00",
-      "open": "09:10",
+      "open": "09:00",
       "type": "regular"
     }
   ],
@@ -1318,11 +1323,23 @@
         "close": "18:50",
         "close_rule": "closing_auction_end",
         "effective_from": "2013-09-02",
-        "note": "Notice of 23 August 2013: 'Moscow Exchange is to introduce the Closing Auction from 2 September'; 'The closing auction will run from 18.40-18.50 pm MSK.' MOEX's Closing Auction page (start date 'September 02, 2013') gives the main trading session as '09:50:00 — 09:59:(30-59)* - Opening auction', '10:00:00 — 18:39:59 - Main trading period', '18:40:01 — 18:50:00 - Closing auction'. ADR 0013: close 18:50; ADR 0014: open 10:00, the start of continuous trading after the main session's opening auction. From 6 December 2021 shares admitted to a morning session (MOEX calls it additional, 'доп.') ran continuous trading straight into the main session at 09:50 (notice n38448); the registry follows the shares without a morning session, whose regular session is the main session alone (ADR 0014 section 1, additional sessions).",
+        "note": "Notice of 23 August 2013: 'Moscow Exchange is to introduce the Closing Auction from 2 September'; 'The closing auction will run from 18.40-18.50 pm MSK.' MOEX's Closing Auction page (start date 'September 02, 2013') gives the main trading session as '09:50:00 — 09:59:(30-59)* - Opening auction', '10:00:00 — 18:39:59 - Main trading period', '18:40:01 — 18:50:00 - Closing auction'. ADR 0013: close 18:50; ADR 0014: open 10:00, the start of continuous trading after the main session's opening auction. Security groups (ADR 0014, 4b3): no share had a morning session for most of this entry, so the main session opened with its auction for the whole book. From 6 December 2021 MOEX ran a morning session for IMOEX shares (notice n37664: 'На первом этапе в рамках утренней сессии будет предоставлена возможность совершать сделки с акциями из индекса МосБиржи (IMOEX)'), whose main session then started at 09:50 with its trading period; no MOEX document read gives when that session stopped (MOEX's notice of 22 January 2025 says it 'возобновляет', resumes, the morning session from 27 January 2025), so that window is a lead, not an entry. From 27 January to 20 March 2025 the morning list held only part of the index ('в том числе из Индекса МосБиржи'), so the rule does not decide and this entry's 10:00 stands.",
         "open": "10:00",
-        "segment": "Main Trading Mode T+ (T+1 order book, settlement code Y1), shares and DRs not admitted to the morning session: main session opening auction, continuous trading period, closing auction",
+        "segment": "Main Trading Mode T+ (T+1 order book, settlement code Y1): main session opening auction, continuous trading period, closing auction",
         "source_title": "Moscow Exchange, 'Moscow Exchange introduces Closing Auction on Equities Market', 23 August 2013; MOEX 'Closing Auction' page (https://moex.com/s1851)",
         "source_url": "https://moex.com/n3770?nt=201",
+        "status": "verified"
+      },
+      {
+        "checked_on": "2026-11-22",
+        "close": "18:50",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2025-03-21",
+        "note": "Notice of 18 March 2025: from 21 March 2025 the morning session covers '85 акций, в том числе все 49 из Индекса МосБиржи'. Notice of 22 January 2025 (morning session resumed 27 January 2025): 'с 9:50 – основная торговая сессия для ценных бумаг, допущенных к утренним торгам; с 9:50 – аукцион открытия для ценных бумаг, не допущенных к утренним торгам'. Under ADR 0014's security-group rule the registry follows the admitted shares: continuous trading in the main session from 09:50; the 07:00-09:50 morning session is additional and excluded. Close 18:50 (closing auction 18:40-18:50, notice of 23 August 2013, unchanged until 23 March 2026).",
+        "open": "09:50",
+        "segment": "Main Trading Mode T+ (T+1 order book, settlement code Y1), shares admitted to the morning session, which include all MOEX Index constituents (ADR 0014 security-group rule): main session trading period and closing auction",
+        "source_title": "Moscow Exchange, 'Московская биржа расширяет список доступных акций на утренних и вечерних торгах', 18 March 2025; notice of 22 January 2025 (https://www.moex.com/n77059)",
+        "source_url": "https://www.moex.com/n78591",
         "status": "verified"
       },
       {
@@ -1330,9 +1347,9 @@
         "close": "19:00",
         "close_rule": "closing_auction_end",
         "effective_from": "2026-03-23",
-        "note": "'с 23 марта регламент проведения аукциона закрытия на фондовом рынке будет следующим: 18:55 – окончание торгового периода; 18:55–19:00 – аукцион закрытия.' The notice gives no open change; MOEX's notice of 14 August 2026 (n103379) says the 14 September change lengthens the main session by one hour to ten hours, so it ran 9 hours (10:00-19:00) before; its notice of 28 September 2026 (n104620): 'Ранее интервал 9:00–10:00 относился к дополнительной утренней сессии'. MOEX's schedule page now gives the auction end as 18:59:30; the registry keeps the notice's 19:00 (HH:MM; the random and sub-minute ends are ignored, ADR 0013).",
-        "open": "10:00",
-        "segment": "Main Trading Mode T+ (T+1 order book, settlement code Y1), shares and DRs not admitted to the morning session: main session opening auction, continuous trading period, closing auction",
+        "note": "'с 23 марта регламент проведения аукциона закрытия на фондовом рынке будет следующим: 18:55 – окончание торгового периода; 18:55–19:00 – аукцион закрытия.' The notice changes only the close; the admitted shares' main session still started at 09:50 (notice of 22 January 2025, entry 2025-03-21). MOEX's schedule page now gives the auction end as 18:59:30; the registry keeps the notice's 19:00 (ADR 0014 section 2).",
+        "open": "09:50",
+        "segment": "Main Trading Mode T+ (T+1 order book, settlement code Y1), shares admitted to the morning session, which include all MOEX Index constituents (ADR 0014 security-group rule): main session trading period and closing auction",
         "source_title": "Moscow Exchange, 'Московская биржа расширяет время основной торговой сессии на фондовом рынке', 11 February 2026",
         "source_url": "https://www.moex.com/n97596",
         "status": "verified"
@@ -1342,9 +1359,9 @@
         "close": "19:00",
         "close_rule": "closing_auction_end",
         "effective_from": "2026-09-14",
-        "note": "Notice: 'С 14 сентября 2026 года основная торговая сессия на фондовом, срочном, валютном рынках и рынке драгоценных металлов Московской биржи будет начинаться в 9:00'; '9:00–19:00 – основная торговая сессия (9:00–9:10 – аукцион открытия – для ценных бумаг, недопущенных к утренней сессии)'. Schedule page, shares not admitted to the morning session: 'Основная сессия 09:00:00 — 18:59:30', 'АО: 09:00:00 — 09:09:(31-59)*', 'ТП: 09:10:00 — 18:54:59', 'АЗ: 18:55:00 — 18:59:30'; shares admitted to the morning session trade continuously from 07:00 (morning session 06:50:00 — 08:59:59, then the main session's trading period from 09:00:00). Open 09:10 (ADR 0014: start of continuous trading in the main session for shares without a morning session); close 19:00 (ADR 0013; the page's 18:59:30 is a sub-minute end). The morning (06:50-09:00) and evening (19:00-23:50) sessions are additional sessions in MOEX's own words ('утренняя (доп.) сессия', 'вечерняя (доп.) сессия') and are not regular hours.",
-        "open": "09:10",
-        "segment": "Main Trading Mode T+ (T+1 order book, settlement code Y1), shares and DRs not admitted to the morning session: main session opening auction, continuous trading period, closing auction",
+        "note": "Notice: 'С 14 сентября 2026 года основная торговая сессия на фондовом, срочном, валютном рынках и рынке драгоценных металлов Московской биржи будет начинаться в 9:00'; '9:00–19:00 – основная торговая сессия (9:00–9:10 – аукцион открытия – для ценных бумаг, недопущенных к утренней сессии)'. Schedule page (read 2026-11-22), shares admitted to the morning session, 'Стакан Т+1 (RUB), Y1': morning '06:50:00 — 08:59:59' (АО '06:50:00 — 06:59:(31-59)*', ТП '07:00:00 — 08:59:59'); main '09:00:00 — 18:59:30', ТП '09:00:00 — 18:54:59', АЗ '18:55:00 — 18:59:30'. Not admitted: АО '09:00:00 — 09:09:(31-59)*', ТП '09:10:00 — 18:54:59'. ADR 0014 security-group rule (4b3): the admitted group holds all MOEX Index shares (notice of 18 March 2025), so open 09:00 (was 09:10 in 4b2, which followed the non-admitted shares); close 19:00 (section 2). The morning (06:50-09:00) and evening (19:00-23:50) sessions are additional ('доп.') and not regular hours.",
+        "open": "09:00",
+        "segment": "Main Trading Mode T+ (T+1 order book, settlement code Y1), shares admitted to the morning session, which include all MOEX Index constituents (ADR 0014 security-group rule): main session trading period and closing auction",
         "source_title": "Moscow Exchange, 'Московская биржа расширяет время проведения торгов', 14 August 2026; MOEX trading schedule page (https://www.moex.com/s1167)",
         "source_url": "https://www.moex.com/n103379",
         "status": "verified"

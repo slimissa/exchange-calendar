@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- One security-group rule for regular hours (ADR 0014, 4b3, the maintainer's decision): where an exchange's schedule differs by security group, the registry follows the group holding the main index's constituents; sessions the exchange calls additional stay excluded. Replaces 4b2's XMOS wording ("the rest of the book").
+  - XHKG: no value change (CAS Phase 1 covered the Hang Seng Composite LargeCap and MidCap constituents); the rule is recorded in the 2016-07-25 evidence.
+  - XMOS: open 09:00 from 2026-09-14 (was 09:10). MOEX's schedule page: admitted shares, Y1 main session ТП '09:00:00 — 18:54:59'. Also a new entry 2025-03-21 09:50-18:50, and 2026-03-23 opens 09:50 (was 10:00): MOEX's notice of 18 March 2025 admits 'все 49 из Индекса МосБиржи' to the morning session from 21 March 2025, and its notice of 22 January 2025 starts their main session at 9:50. The 2021-2022 morning session (IMOEX shares from 6 December 2021) is a lead: no document read gives its end. Probes and twins for 2025-03-20/21 09:55; the 2026-09-14 09:05 probe now answers open.
+
 ## [2.30.0] - 2026-11-22
 
 Phase 4b-lite, session 4b2: the head of the hours queue and XBUE's year-end rows.

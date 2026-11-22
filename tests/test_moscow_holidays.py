@@ -77,21 +77,24 @@ class TestXMOSProperties:
         assert [(h["effective_from"], h["open"], h["close"]) for h in xmos["regular_hours"]] == [
             ("2010-01-01", "10:00", "18:45"),
             ("2013-09-02", "10:00", "18:50"),
-            ("2026-03-23", "10:00", "19:00"),
-            ("2026-09-14", "09:10", "19:00"),
+            ("2025-03-21", "09:50", "18:50"),
+            ("2026-03-23", "09:50", "19:00"),
+            ("2026-09-14", "09:00", "19:00"),
         ]
         regular = [s for s in xmos["sessions"] if s["type"] == "regular"]
-        assert [(s["open"], s["close"]) for s in regular] == [("09:10", "19:00")]
+        assert [(s["open"], s["close"]) for s in regular] == [("09:00", "19:00")]
 
     def test_hours_evidence(self, xmos):
         items = {i["effective_from"]: i for i in xmos["verification"]["hours"]}
-        assert sorted(items) == ["2010-01-01", "2013-09-02", "2026-03-23", "2026-09-14"]
+        assert sorted(items) == ["2010-01-01", "2013-09-02", "2025-03-21", "2026-03-23", "2026-09-14"]
         assert items["2010-01-01"]["status"] == "unconfirmed"
-        for day in ("2013-09-02", "2026-03-23", "2026-09-14"):
+        for day in ("2013-09-02", "2025-03-21", "2026-03-23", "2026-09-14"):
             assert items[day]["status"] == "verified"
             assert items[day]["close_rule"] == "closing_auction_end"
             assert "moex.com" in items[day]["source_url"]
-        assert "not admitted to the morning session" in items["2026-09-14"]["segment"]
+        # ADR 0014 security-group rule (4b3): the group holding the MOEX Index.
+        for day in ("2025-03-21", "2026-03-23", "2026-09-14"):
+            assert "admitted to the morning session, which include all MOEX Index" in items[day]["segment"]
 
     def test_no_lunch_break(self, xmos):
         lunch = [s for s in xmos.get("sessions", []) if s.get("type") == "lunch_break"]

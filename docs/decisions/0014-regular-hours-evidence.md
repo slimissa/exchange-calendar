@@ -34,19 +34,30 @@ auction-only segments.
 When an exchange runs several equity books with different hours, the
 evidence item names the segment it used, in the exchange's own words.
 
-**Additional sessions (session 4b2).** A session the exchange itself calls
-additional, morning or evening (MOEX's "утренняя (доп.) сессия" and
-"вечерняя (доп.) сессия") is not regular, even where the main book trades
-in it; where modelled it is `pre_market` or `post_market`. When the main
-book splits into securities admitted to such a session, which trade
-continuously from it straight into the main session, and securities whose
-day starts with the main session's own opening auction, `open` is the start
-of continuous trading for the second group: it is the one start of the
-regular session that does not depend on which securities the exchange
-admits to the additional session, or on whether that session runs at all.
-The evidence item names the group. Applied to XMOS: 10:00 until
-2026-09-13, 09:10 from 2026-09-14 (shares not admitted to the morning
-session); the admitted shares trade continuously from 07:00.
+**Security groups (session 4b3; replaces 4b2's "additional sessions"
+wording).** When an exchange's schedule differs by security group, the
+registry follows the group that holds the constituents of the exchange's
+main index, as the exchange's own document identifies them. Sessions the
+exchange calls additional, morning or evening (MOEX's "утренняя (доп.)
+сессия" and "вечерняя (доп.) сессия") stay outside regular hours even for
+that group; where modelled they are `pre_market` or `post_market`. Reason:
+one principle for every split. 4b2 had followed different groups at two
+exchanges: HKEX's Closing Auction Session (index constituents) and MOEX's
+shares without a morning session (not the index). The index group is also
+the one the registry's users trade. Where the index's constituents fall
+into more than one group, the rule does not decide and the entry is
+`unconfirmed`. The evidence item names the group and cites the document
+placing the index in it.
+
+Applied: XHKG closes at 16:10 from 2016-07-25 (CAS Phase 1 covered the
+Hang Seng Composite LargeCap and MidCap constituents). XMOS opens at 09:50
+from 2025-03-21 (MOEX notice of 18 March 2025: all 49 MOEX Index shares
+admitted to the morning session; the admitted shares' main session
+starts at 9:50 with its trading period) and at 09:00 from 2026-09-14
+(schedule page: admitted shares, main session ТП "09:00:00 — 18:54:59").
+The morning session (06:50-09:00) stays excluded. MOEX's 2021-2022
+morning session (also IMOEX shares, from 6 December 2021) is a lead: no
+MOEX document read gives its end.
 
 ### 2. Close rule (ADR 0013)
 
@@ -162,9 +173,10 @@ recheck will settle it) fits.
 | XHKG | from 2011-03-07 | 09:30-16:00 | Morning Session, Afternoon Session | continuous_end (no closing auction until 2016-07-25) | verified | SEHK circular CMD/TMO/011/11, 3 March 2011 |
 | XHKG | from 2016-07-25 | 09:30-16:10 | Continuous Trading Session followed by the Closing Auction Session (CAS securities) | closing_auction_end (random end 16:08-16:10) | verified | HKEX trading-hours page; HKEX news release of 25 July 2016 dates the CAS |
 | XMOS | from 2010-01-01 | 10:00-18:45 | Main trading mode, Russian equities | continuous_end (post-trade auction, not a closing auction) | unconfirmed (recheck 2027-02-19) | MOEX notice of 23 August 2013 gives the 18:45 end of trading as of 2013 only |
-| XMOS | from 2013-09-02 | 10:00-18:50 | Main Trading Mode T+, shares not admitted to the morning session | closing_auction_end | verified | MOEX notice of 23 August 2013; MOEX Closing Auction page (start date 2 September 2013) |
-| XMOS | from 2026-03-23 | 10:00-19:00 | as above | closing_auction_end | verified | MOEX notice of 11 February 2026 (closing auction 18:55-19:00 from 23 March) |
-| XMOS | from 2026-09-14 | 09:10-19:00 | as above (opening auction 09:00-09:10) | closing_auction_end (18:59:30 on the page) | verified | MOEX notice of 14 August 2026; MOEX trading schedule page |
+| XMOS | from 2013-09-02 | 10:00-18:50 | Main Trading Mode T+, Y1 order book (no morning session for any share in most of this period) | closing_auction_end | verified | MOEX notice of 23 August 2013; MOEX Closing Auction page (start date 2 September 2013) |
+| XMOS | from 2025-03-21 | 09:50-18:50 | Main Trading Mode T+, Y1, shares admitted to the morning session (all 49 MOEX Index shares) | closing_auction_end | verified | MOEX notices of 18 March 2025 (admission) and 22 January 2025 (09:50 main session for admitted shares) |
+| XMOS | from 2026-03-23 | 09:50-19:00 | as above | closing_auction_end | verified | MOEX notice of 11 February 2026 (closing auction 18:55-19:00 from 23 March) |
+| XMOS | from 2026-09-14 | 09:00-19:00 | as above (main session trading period from 09:00:00) | closing_auction_end (18:59:30 on the page) | verified | MOEX notice of 14 August 2026; MOEX trading schedule page |
 | XAMS | from 2010-01-01 | 09:00-17:35 | Euronext Amsterdam regulated market, 'Equities AEX' (group J0), continuous mode C | closing_auction_end | verified | Euronext, Appendix of Trading Manual 4-01, effective 23 November 2026 (saved by the maintainer) |
 | XBRU | from 2010-01-01 | 09:00-17:35 | Euronext Brussels regulated market, 'Equities BEL20' (group A0), continuous mode C | closing_auction_end | verified | Euronext, Appendix of Trading Manual 4-01, effective 23 November 2026 (saved by the maintainer) |
 | XPAR | from 2010-01-01 | 09:00-17:35 | Euronext Paris regulated market, 'Equities CAC40 - Group 1' (group F1), continuous mode C | closing_auction_end | verified | Euronext, Appendix of Trading Manual 4-01, effective 23 November 2026 (saved by the maintainer) |

@@ -94,6 +94,10 @@
     {"op": "is_open", "args": ["XMOS", "2026-09-14", "09:30"], "label": "is_open_xmos_2026_09_14_0930"},
     {"op": "in_session", "args": ["XMOS", "2026-09-14", "09:30"], "label": "in_session_xmos_2026_09_14_0930"},
     {"op": "is_open", "args": ["XMOS", "2026-09-11", "09:30"], "label": "is_open_xmos_2026_09_11_0930"},
-    {"op": "in_session", "args": ["XMOS", "2026-09-11", "09:30"], "label": "in_session_xmos_2026_09_11_0930"}
+    {"op": "in_session", "args": ["XMOS", "2026-09-11", "09:30"], "label": "in_session_xmos_2026_09_11_0930"},
+    {"op": "is_open", "args": ["XMOS", "2025-03-20", "09:55"], "label": "is_open_xmos_2025_03_20_0955"},
+    {"op": "in_session", "args": ["XMOS", "2025-03-20", "09:55"], "label": "in_session_xmos_2025_03_20_0955"},
+    {"op": "is_open", "args": ["XMOS", "2025-03-21", "09:55"], "label": "is_open_xmos_2025_03_21_0955"},
+    {"op": "in_session", "args": ["XMOS", "2025-03-21", "09:55"], "label": "in_session_xmos_2025_03_21_0955"}
   ]
 }
