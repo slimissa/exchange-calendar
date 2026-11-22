@@ -1938,6 +1938,8 @@
     {"file": ".github/workflows/validate.yml", "contains": "run: python3 tools/gen_cross_lang_probes.py --check"},
     {"file": "tests/test_hours_evidence.py", "contains": "HOURS_EVIDENCE_FLOOR = 34"},
     {"file": "exchanges/XTSE.json", "contains": "ADR 0013 applied to the MOC facility"},
-    {"file": "exchanges/XTKS.json", "contains": "\"verified_from\": \"2024-11-05\""}
+    {"file": "exchanges/XTKS.json", "contains": "\"verified_from\": \"2024-11-05\""},
+    {"file": "tools/check_glued_words.py", "contains": "def findings_in(name: str, text: str) -> list[str]:"},
+    {"file": ".github/workflows/validate.yml", "contains": "run: python3 tools/check_glued_words.py"}
   ]
 }

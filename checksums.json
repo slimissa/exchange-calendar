@@ -83,6 +83,7 @@
     "tools/check_expiring_sources.py": "4494a1ecfdcb71f1e342c9b3cc0b5976165cfa2d39ffec30350a8a4c831b03e9",
     "tools/check_fetcher_freshness.py": "c3c7ac36c11dba5b2a697f299391e071c9e07305a342e71b199d50a7d7efca3f",
     "tools/check_fixture_labels.py": "4d86cba5ff9377a168019e0ea0b34f7ed70246e462d4c716e846dcc2d1bf11eb",
+    "tools/check_glued_words.py": "5e9745e65ebe98c257b1a49840d4f4c441a240773f572d673036d0bb923ccf92",
     "tools/check_mic_codes.py": "5bbcdb2f1b133536c47798cf8ac62ea9a037fc06e6569efb08d074964736be97",
     "tools/check_mojibake.py": "951b4b527d55fb0f87c25f4aa704d5c736189c511c01b2478cfd48484efa234a",
     "tools/check_recheck_dates.py": "bd36a568b7d558c498ceb6dde7e9edce4810fd3b2e9e7286d3377c86c1ec8122",
