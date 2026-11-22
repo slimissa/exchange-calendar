@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [2.30.0] - 2026-11-22
 
 Phase 4b-lite, session 4b2: the head of the hours queue and XBUE's year-end rows.
 
