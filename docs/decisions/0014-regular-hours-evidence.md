@@ -62,8 +62,10 @@ MOEX document read gives its end.
 ### 2. Close rule (ADR 0013)
 
 - The segment has a closing auction: `close` is the end of the closing
-  auction (the published uncross time, or the end of a random window).
-  `close_rule: "closing_auction_end"`.
+  auction (the published uncross time, read under ADR 0013's
+  random-closing rule: a random window of one minute or more ends the
+  auction at the window's end; seconds of jitter after a stated time
+  leave the stated minute). `close_rule: "closing_auction_end"`.
 - The segment has no closing auction (a VWAP or last-trade close, or
   continuous trading to the end): `close` is the end of continuous
   trading. `close_rule: "continuous_end"`. This is the rule already applied
@@ -181,6 +183,26 @@ more than the document proved.
 - Check 6 prints both ("Current hours verified: N of 74", "History
   verified: M of 74"); the README states both and `tools/check_doc_facts.py`
   checks them.
+
+### 8. Undated current regimes (maintainer decision, session 4b5)
+
+When an exchange's own current page contradicts the registry and no
+document dates the change:
+
+- a new `regular_hours` entry is added with `effective_from` = the page's
+  read date (its print date); its evidence is `verified`, with
+  `verified_from` = that date and the note "in force at least since
+  the read date; start undated; earlier entry's end unknown";
+- the earlier entry's evidence becomes `unconfirmed` (with a
+  `recheck_date` within the 92-day cap) if it is not already;
+- an earlier entry's values are never rewritten;
+- a dated document always wins over this rule: when one exists, the new
+  entry starts on its effective date instead.
+
+Reason: the registry should give today's hours as the exchange gives
+them, without inventing a start date. The split is honest about what is
+known: the new regime is proven from the read date, the old one is no
+longer proven to its end, and nothing earlier is touched.
 
 ## Consequences
 

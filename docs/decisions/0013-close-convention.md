@@ -19,15 +19,52 @@ already been set to the auction end in 4c5, 4c7 and 4c-R1.
 ## Decision
 
 `regular_hours.close` and `early_close_time` hold the **end of the
-closing auction**: the uncross time the exchange publishes. Where the
-uncross has a random end inside a window (Euronext Dublin's 12:28-12:30
-on half days), the registry holds the end of the window. Trading at Last
+closing auction**: the uncross time the exchange publishes, read under
+the random-closing rule below. Trading at Last
 and other post-close phases are not part of the regular session; where
 modelled they are a `post_market` session.
 
 A dated `regular_hours` list (`effective_from`) is used when the auction
 end changed inside the registry window; a single object when it held
 throughout.
+
+### Random closing windows (maintainer decision, session 4b5)
+
+This replaces the earlier wording ("the end of the window"), which the
+table below applied two ways: XDUB half days took the end of a window,
+XBKK and XNZE took its scheduled start.
+
+- **A random window of one minute or more:** the close is the window's
+  end. XHKG 16:08-16:10 -> 16:10; SET 16:35-16:40 -> 16:40; QSE
+  13:09-13:10 -> 13:10; Euronext Dublin half days 12:28-12:30 -> 12:30.
+- **Random jitter of seconds after a stated time:** the close is the
+  stated minute. Euronext 17:35:00-17:35:30 -> 17:35; likewise LSE, KRX,
+  TSE (15:29:30-15:30:00 from 2027-10-12 -> 15:30) and Boursa Kuwait's
+  last 30 seconds of the closing auction.
+- A window that ends on a second rather than a whole minute is recorded
+  under ADR 0014 section 2 (the minute the exchange's own notice states,
+  else the next whole minute).
+
+Applied in 4b5: listed below the audit as each exchange is fixed.
+
+### Audit of the applied table against the random-closing rule (session 4b5)
+
+Every row of "Applied in 4c-R3.5", "Already conforming" and "Exceptions
+left in place" was re-read against the rule. Rows not listed here do not
+change: their close is a fixed uncross time, the end of continuous
+trading, or a seconds-long random end after the stated minute (Euronext
+core and Lisbon 17:35, XDUB full day "17:30 Random", XOSL "16:25 Random",
+XLIT, XTAL and XRIS 15:59:30-16:00:00, XZAG up to 15 seconds after 16:00,
+XSAU within 30 seconds after 15:10), or a window that already ends at the
+recorded close (XDUB half days 12:28-12:30, XHKG 16:08-16:10).
+
+| Row | Recorded | Window as cited | Under the rule | Changed in 4b5 |
+|-----|----------|-----------------|----------------|----------------|
+| XBKK | 16:35 | "closing time randomly selected between 16:35 and 16:40" | 16:40 | No: no SET page attached (listed for 4b6) |
+| XNZE | 17:00 | "random time between 16:59:30 and 17:00:30" (one minute) | the window's end, 17:00:30: 17:00 if NZX's own notice states that minute, else 17:01 (ADR 0014 section 2) | No: NZX's page refuses the fetcher and none was attached |
+| XJSE | 17:00 | Market Notice 2719: "earliest close 17:00:00 with a random uncross to 17:01" (one minute) | 17:01 | No: no JSE document attached |
+| XETR, XWBO, XBUD | 17:35, 17:35, 17:05 | Xetra-type random end after the stated time; the documents cited give no length | the stated minute if the random end is seconds; the window's end if it is a minute or more | No: length to be read from the trading-parameter documents |
+| XSWX | 17:30 | SIX closing auction with a random end; length not cited | as for XETR | No: length to be read from SIX's trading provisions |
 
 ## Why
 

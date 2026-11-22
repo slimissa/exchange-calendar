@@ -1957,5 +1957,9 @@
     {"file": "exchanges/XMEX.json", "contains": "\"backlog_item\": \"Sessions that follow another market's daylight saving time\""},
     {"file": "docs/phase-4f-schema-backlog.md", "contains": "XMEX is a confirmed case (4b4)"},
     {"file": "CHANGELOG.md", "contains": "Hours evidence 35 -> 37 of 74"}
+  ],
+  "2.33.0": [
+    {"file": "docs/decisions/0013-close-convention.md", "contains": "### Random closing windows (maintainer decision, session 4b5)"},
+    {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "### 8. Undated current regimes (maintainer decision, session 4b5)"}
   ]
 }
