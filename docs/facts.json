@@ -4,7 +4,7 @@
   "exchanges_from_2010": 50,
   "exchanges_from_2021": 1,
   "exchanges_from_2025": 23,
-  "exchanges_hours_verified": 2,
+  "exchanges_hours_verified": 3,
   "exchanges_no_fetcher": 26,
   "exchanges_total": 74,
   "fetchers_blocked": 3,
@@ -14,5 +14,5 @@
   "parquet_files": 5,
   "sql_files": 4,
   "test_files_count": 74,
-  "tests_total": 6035
+  "tests_total": 6036
 }

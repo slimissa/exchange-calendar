@@ -27,8 +27,8 @@ def test_real_fixture_has_a_twin_for_every_is_open_probe():
     n_is_open = sum(1 for q in FIXTURE["queries"] if q["op"] == "is_open")
     # 17 in 4d2; + 3 XBUE regular-hours probes in 4b1; + 3 XBUE year-end
     # probes in 4b2; + 4 weekday probes in 4b2 (the Rust weekday fix);
-    # + 3 XHKG closing-auction probes in 4b2.
-    assert len(found) == n_is_open == 30
+    # + 3 XHKG closing-auction probes in 4b2; + 7 XMOS regular-hours probes in 4b2.
+    assert len(found) == n_is_open == 37
 
 
 def test_real_fixture_twins_answer_the_same_in_python():

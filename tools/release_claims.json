@@ -1917,6 +1917,9 @@
     {"file": "wrappers/rust/src/registry.rs", "contains": "fn weekday_from_iso_matches_chrono()"},
     {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xsau_2026_11_22_sunday_1100\""},
     {"file": "exchanges/XHKG.json", "contains": "\"effective_from\": \"2016-07-25\""},
-    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xhkg_2016_07_25_1605\""}
+    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xhkg_2016_07_25_1605\""},
+    {"file": "exchanges/XMOS.json", "contains": "\"effective_from\": \"2026-09-14\""},
+    {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "**Additional sessions (session 4b2).**"},
+    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xmos_2026_09_14_0905\""}
   ]
 }

@@ -34,6 +34,20 @@ auction-only segments.
 When an exchange runs several equity books with different hours, the
 evidence item names the segment it used, in the exchange's own words.
 
+**Additional sessions (session 4b2).** A session the exchange itself calls
+additional, morning or evening (MOEX's "утренняя (доп.) сессия" and
+"вечерняя (доп.) сессия") is not regular, even where the main book trades
+in it; where modelled it is `pre_market` or `post_market`. When the main
+book splits into securities admitted to such a session, which trade
+continuously from it straight into the main session, and securities whose
+day starts with the main session's own opening auction, `open` is the start
+of continuous trading for the second group: it is the one start of the
+regular session that does not depend on which securities the exchange
+admits to the additional session, or on whether that session runs at all.
+The evidence item names the group. Applied to XMOS: 10:00 until
+2026-09-13, 09:10 from 2026-09-14 (shares not admitted to the morning
+session); the admitted shares trade continuously from 07:00.
+
 ### 2. Close rule (ADR 0013)
 
 - The segment has a closing auction: `close` is the end of the closing
@@ -43,6 +57,11 @@ evidence item names the segment it used, in the exchange's own words.
   continuous trading to the end): `close` is the end of continuous
   trading. `close_rule: "continuous_end"`. This is the rule already applied
   to XKAR and XBDA in ADR 0013.
+- Times are HH:MM. A close the exchange gives with seconds is recorded at
+  the minute its own notice states (MOEX: schedule page 18:59:30, notice
+  "18:55–19:00 – аукцион закрытия", recorded 19:00); with no such notice,
+  at the next whole minute, since a query at HH:MM means HH:MM:00 and is
+  still inside the auction.
 
 ### 3. What "verified" means
 
@@ -139,3 +158,10 @@ recheck will settle it) fits.
 |----------|-------|-------|---------|------------|--------|--------|
 | XBUE | from 2010-01-01 | 11:00-17:00 | Renta Variable, standard settlement (period names not checked) | continuous_end | unconfirmed (recheck 2026-12-22) | No BYMA document read. Lead: La Nación, 18 July 2025, a 10:30 open from 2025-07-28; settled by BYMA's July 2025 hours communiqué |
 | XBUE | from 2026-11-02 | 10:30-18:00 | Negociación Regular con modalidad de cierre VWAP Renta Variable - Contado 24 hs. | continuous_end (VWAP close, no equity closing auction) | verified | BYMA Comunicado Nº 19031, 28 October 2026, in force 2 November 2026 (supersedes 19024); BYMA Clearing's Cronograma diario v1.10 agrees on the 10:30 open |
+| XHKG | from 1990-01-01 | 10:00-16:00 | Securities market continuous trading sessions (Main Board and GEM) | continuous_end | unconfirmed (recheck 2027-02-19) | HKEx consultation conclusions, November 2010, give these hours as of 2010 only (read through a search result) |
+| XHKG | from 2011-03-07 | 09:30-16:00 | Morning Session, Afternoon Session | continuous_end (no closing auction until 2016-07-25) | verified | SEHK circular CMD/TMO/011/11, 3 March 2011 |
+| XHKG | from 2016-07-25 | 09:30-16:10 | Continuous Trading Session followed by the Closing Auction Session (CAS securities) | closing_auction_end (random end 16:08-16:10) | verified | HKEX trading-hours page; HKEX news release of 25 July 2016 dates the CAS |
+| XMOS | from 2010-01-01 | 10:00-18:45 | Main trading mode, Russian equities | continuous_end (post-trade auction, not a closing auction) | unconfirmed (recheck 2027-02-19) | MOEX notice of 23 August 2013 gives the 18:45 end of trading as of 2013 only |
+| XMOS | from 2013-09-02 | 10:00-18:50 | Main Trading Mode T+, shares not admitted to the morning session | closing_auction_end | verified | MOEX notice of 23 August 2013; MOEX Closing Auction page (start date 2 September 2013) |
+| XMOS | from 2026-03-23 | 10:00-19:00 | as above | closing_auction_end | verified | MOEX notice of 11 February 2026 (closing auction 18:55-19:00 from 23 March) |
+| XMOS | from 2026-09-14 | 09:10-19:00 | as above (opening auction 09:00-09:10) | closing_auction_end (18:59:30 on the page) | verified | MOEX notice of 14 August 2026; MOEX trading schedule page |

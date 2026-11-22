@@ -69,8 +69,29 @@ class TestXMOSProperties:
         assert xmos["timezone"] == "Europe/Moscow"
 
     def test_regular_hours(self, xmos):
-        assert xmos["regular_hours"]["open"] == "10:00"
-        assert xmos["regular_hours"]["close"] == "18:45"
+        """4b2, ADR 0013/0014: dated by MOEX's own notices. 2013-09-02 closing
+        auction to 18:50 (notice of 23 August 2013); 2026-03-23 closing auction
+        18:55-19:00 (notice of 11 February 2026); 2026-09-14 main session from
+        09:00, opening auction 09:00-09:10 for shares not admitted to the
+        morning session (notice of 14 August 2026)."""
+        assert [(h["effective_from"], h["open"], h["close"]) for h in xmos["regular_hours"]] == [
+            ("2010-01-01", "10:00", "18:45"),
+            ("2013-09-02", "10:00", "18:50"),
+            ("2026-03-23", "10:00", "19:00"),
+            ("2026-09-14", "09:10", "19:00"),
+        ]
+        regular = [s for s in xmos["sessions"] if s["type"] == "regular"]
+        assert [(s["open"], s["close"]) for s in regular] == [("09:10", "19:00")]
+
+    def test_hours_evidence(self, xmos):
+        items = {i["effective_from"]: i for i in xmos["verification"]["hours"]}
+        assert sorted(items) == ["2010-01-01", "2013-09-02", "2026-03-23", "2026-09-14"]
+        assert items["2010-01-01"]["status"] == "unconfirmed"
+        for day in ("2013-09-02", "2026-03-23", "2026-09-14"):
+            assert items[day]["status"] == "verified"
+            assert items[day]["close_rule"] == "closing_auction_end"
+            assert "moex.com" in items[day]["source_url"]
+        assert "not admitted to the morning session" in items["2026-09-14"]["segment"]
 
     def test_no_lunch_break(self, xmos):
         lunch = [s for s in xmos.get("sessions", []) if s.get("type") == "lunch_break"]

@@ -85,6 +85,8 @@ def test_registry_dates_today():
                      ("XBDA", "2026-12-22"), ("XBUE", "2026-12-22"),
                      # XHKG 2027-02-19 (4b2): the 1990-2011 hours (10:00-16:00),
                      # read only for 2010 (HKEx consultation conclusions).
-                     ("XHKG", "2027-02-19")}
+                     ("XHKG", "2027-02-19"),
+                     # XMOS 2027-02-19 (4b2): 10:00-18:45 back to 2010.
+                     ("XMOS", "2027-02-19")}
     assert crd.main(["--today", "2026-11-20"]) == 0
     assert crd.main(["--today", "2027-01-05"]) == 1

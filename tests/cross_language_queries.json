@@ -80,6 +80,20 @@
     {"op": "is_open", "args": ["XHKG", "2016-07-22", "16:05"], "label": "is_open_xhkg_2016_07_22_1605"},
     {"op": "in_session", "args": ["XHKG", "2016-07-22", "16:05"], "label": "in_session_xhkg_2016_07_22_1605"},
     {"op": "is_open", "args": ["XHKG", "2016-07-25", "16:05"], "label": "is_open_xhkg_2016_07_25_1605"},
-    {"op": "in_session", "args": ["XHKG", "2016-07-25", "16:05"], "label": "in_session_xhkg_2016_07_25_1605"}
+    {"op": "in_session", "args": ["XHKG", "2016-07-25", "16:05"], "label": "in_session_xhkg_2016_07_25_1605"},
+    {"op": "is_open", "args": ["XMOS", "2013-08-30", "18:47"], "label": "is_open_xmos_2013_08_30_1847"},
+    {"op": "in_session", "args": ["XMOS", "2013-08-30", "18:47"], "label": "in_session_xmos_2013_08_30_1847"},
+    {"op": "is_open", "args": ["XMOS", "2013-09-02", "18:47"], "label": "is_open_xmos_2013_09_02_1847"},
+    {"op": "in_session", "args": ["XMOS", "2013-09-02", "18:47"], "label": "in_session_xmos_2013_09_02_1847"},
+    {"op": "is_open", "args": ["XMOS", "2026-03-20", "18:55"], "label": "is_open_xmos_2026_03_20_1855"},
+    {"op": "in_session", "args": ["XMOS", "2026-03-20", "18:55"], "label": "in_session_xmos_2026_03_20_1855"},
+    {"op": "is_open", "args": ["XMOS", "2026-03-23", "18:55"], "label": "is_open_xmos_2026_03_23_1855"},
+    {"op": "in_session", "args": ["XMOS", "2026-03-23", "18:55"], "label": "in_session_xmos_2026_03_23_1855"},
+    {"op": "is_open", "args": ["XMOS", "2026-09-14", "09:05"], "label": "is_open_xmos_2026_09_14_0905"},
+    {"op": "in_session", "args": ["XMOS", "2026-09-14", "09:05"], "label": "in_session_xmos_2026_09_14_0905"},
+    {"op": "is_open", "args": ["XMOS", "2026-09-14", "09:30"], "label": "is_open_xmos_2026_09_14_0930"},
+    {"op": "in_session", "args": ["XMOS", "2026-09-14", "09:30"], "label": "in_session_xmos_2026_09_14_0930"},
+    {"op": "is_open", "args": ["XMOS", "2026-09-11", "09:30"], "label": "is_open_xmos_2026_09_11_0930"},
+    {"op": "in_session", "args": ["XMOS", "2026-09-11", "09:30"], "label": "in_session_xmos_2026_09_11_0930"}
   ]
 }
