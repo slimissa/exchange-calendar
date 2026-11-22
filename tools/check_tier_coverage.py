@@ -8,8 +8,9 @@ then on the step checked nothing). The tier lists are read from the TIER*_MICS
 lines of .github/workflows/live-fetcher-check.yml, so the workflow stays the
 one place they are written.
 
-Exit 1 if a tier MIC is neither registered nor blocked; a registered fetcher
-missing from every tier is a warning.
+Exit 1 if a tier MIC is neither registered nor blocked, if a registered
+fetcher is in no tier, or if a MIC is listed in more than one tier (4b4: the
+last two were warnings, and XBUL, XIST and XSWX sat in no tier).
 """
 from __future__ import annotations
 
@@ -23,8 +24,17 @@ WORKFLOW = ROOT / ".github" / "workflows" / "live-fetcher-check.yml"
 TIER_RE = re.compile(r"^\s*TIER\d+_MICS(?:_BUILT)?:\s*'([^']*)'", re.M)
 
 
+def tier_lists(workflow_text: str) -> list[list[str]]:
+    return [[m.strip() for m in chunk.split(",") if m.strip()] for chunk in TIER_RE.findall(workflow_text)]
+
+
 def tier_mics(workflow_text: str) -> set[str]:
-    return {m.strip() for chunk in TIER_RE.findall(workflow_text) for m in chunk.split(",") if m.strip()}
+    return {m for tier in tier_lists(workflow_text) for m in tier}
+
+
+def duplicates(workflow_text: str) -> list[str]:
+    seen: list[str] = [m for tier in tier_lists(workflow_text) for m in tier]
+    return sorted({m for m in seen if seen.count(m) > 1})
 
 
 def blocked_mics(blocked_text: str) -> set[str]:
@@ -46,12 +56,17 @@ def main(argv: list[str] | None = None) -> int:
     blocked = blocked_mics((ROOT / "BLOCKED.md").read_text(encoding="utf-8"))
     registered = set(ExchangeFetcherRegistry().list_available())
     missing, unexpected = check(documented, registered, blocked)
+    dupes = duplicates(WORKFLOW.read_text(encoding="utf-8"))
     if missing:
         print(f"::error::Documented in a tier but neither registered nor in BLOCKED.md: {missing}")
     if unexpected:
-        print(f"::warning::Registered but not listed in any tier env var (verify intentional): {unexpected}")
+        print(f"::error::Registered but listed in no tier env var: {unexpected}")
+    if dupes:
+        print(f"::error::Listed in more than one tier: {dupes}")
     print(f"registered={len(registered)} blocked={len(blocked)} documented={len(documented)}")
-    return 1 if missing else 0
+    if not (missing or unexpected or dupes):
+        print("OK: every registered fetcher is in exactly one tier; every tier MIC is registered or blocked")
+    return 1 if (missing or unexpected or dupes) else 0
 
 
 if __name__ == "__main__":

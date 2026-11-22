@@ -62,6 +62,13 @@ env:
   # Tier 8 fetchers built (2026-09-06, FINAL TIER): XBDA, XCAY, XLUX,
   # XMAL, XZAG, plus XGSE (resolves the Tier 7 carryover).
   TIER8_MICS_BUILT: 'XBDA,XCAY,XLUX,XMAL,XZAG,XGSE'
+  # Tier 9 (4b4): fetchers added after Tier 8 by resolving BLOCKED.md
+  # entries. XIST (2026-11-02, implemented; stable job), XSWX (2026-11-07,
+  # implemented; CI-unreachable job, in STABLE_EXCLUDE), XBUL (2026-11-10,
+  # fetcher_status blocked: robots.txt; CI-unreachable job, in
+  # STABLE_EXCLUDE). Since 4b4 the guard fails on a registered MIC in no
+  # tier or in more than one.
+  TIER9_MICS_BUILT: 'XIST,XSWX,XBUL'
 
 jobs:
   verify-coverage:

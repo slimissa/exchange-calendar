@@ -10,7 +10,8 @@ sys.path.insert(0, str(ROOT / "tools"))
 import check_tier_coverage as tc  # noqa: E402
 
 WF = ROOT / ".github" / "workflows"
-LIVE = yaml.safe_load((WF / "live-fetcher-check.yml").read_text(encoding="utf-8"))
+LIVE_TEXT = (WF / "live-fetcher-check.yml").read_text(encoding="utf-8")
+LIVE = yaml.safe_load(LIVE_TEXT)
 
 
 def _steps(job):
@@ -57,3 +58,27 @@ def test_tier_coverage_rules():
 
 def test_tier_coverage_passes_on_the_tree():
     assert tc.main([]) == 0
+
+
+def test_tier_guard_fails_on_no_tier_and_on_two_tiers(monkeypatch, tmp_path, capsys):
+    # 4b4: both were warnings (XBUL, XIST and XSWX sat in no tier).
+    two = "  TIER1_MICS: 'XNYS,XLON'\n  TIER9_MICS_BUILT: 'XLON'\n"
+    assert tc.duplicates(two) == ["XLON"]
+    wf = tmp_path / "wf.yml"
+    wf.write_text("env:\n  TIER1_MICS: 'XNYS'\n")
+    monkeypatch.setattr(tc, "WORKFLOW", wf)
+    assert tc.main([]) == 1  # every other registered fetcher is in no tier
+    assert "Registered but listed in no tier" in capsys.readouterr().out
+    wf.write_text(LIVE_TEXT.replace("TIER9_MICS_BUILT: 'XIST,XSWX,XBUL'", "TIER9_MICS_BUILT: 'XIST,XSWX,XBUL,XNYS'"))
+    assert tc.main([]) == 1
+    assert "more than one tier: ['XNYS']" in capsys.readouterr().out
+
+
+def test_xbul_xist_xswx_are_placed_once():
+    lists = tc.tier_lists(LIVE_TEXT)
+    for mic in ("XBUL", "XIST", "XSWX"):
+        assert sum(t.count(mic) for t in lists) == 1, mic
+    stable_exclude = LIVE["jobs"]["live-check-stable"]["env"]["STABLE_EXCLUDE"].split(",")
+    assert "XIST" not in stable_exclude  # a stable implemented fetcher
+    assert {"XSWX", "XBUL"} <= set(stable_exclude)
+
