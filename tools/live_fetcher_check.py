@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 live_fetcher_check.py — Run every registered fetcher against its LIVE source
-and report pass/fail per fetcher.
+and report one status per fetcher.
 
 This is a read-only health check: it never writes to exchanges/, never opens
 a PR, and never modifies calendar.json. Its only job is to answer "is each
@@ -9,30 +9,38 @@ fetcher's live parser still working today", since a page's HTML structure
 can drift at any time regardless of how well-tested the fetcher's fixtures
 are.
 
-Statuses:
-    PASS   the fetcher returned holidays
-    WARN   FetchError (or RateLimitError) after the fetcher's own retries: the
-           source was unreliable today (network, WAF or error page, not a
-           PDF). The job still passes; the warning is printed.
-    FAIL   ParseError / ValidationError (the page changed and the parser
-           needs a fix), SourceMissingError (the source is gone: 404,
-           robots.txt), no holidays, or an unexpected exception.
-    SKIP   no fetcher registered
+Statuses (4b3):
+    PASS       the fetcher returned holidays
+    TRANSIENT  the source had a bad day, after ATTEMPTS tries within this
+               run (3 by default, delays RETRY_DELAY x 1, x 2): FetchError
+               or RateLimitError (the fetcher's request failed: timeout,
+               connection error, HTTP error incl. 5xx), a requests timeout,
+               connection error or HTTP 5xx raised directly, or "no
+               holidays" on a page that came back empty or in maintenance
+    FAIL       deterministic, reported at once without retrying:
+               ValidationError, conflicting rows, SourceMissingError (404,
+               robots.txt), any other ParseError (or "no holidays") on a page
+               that returned content, HTTP 4xx, any unexpected exception
+    SKIP       no fetcher registered
 
 ParseError, ValidationError and SourceMissingError subclass FetchError, so
 they are tested first.
 
-Exit code is 1 if any fetcher FAILs, 0 otherwise (WARN does not fail the job)
--- suitable for use as a CI gate that surfaces drift without silently
-ignoring it.
+Exit code is 1 if any fetcher FAILs, 0 otherwise. A TRANSIENT does not fail
+this tool; tools/live_check_escalate.py fails the scheduled workflow when a
+fetcher is TRANSIENT in two consecutive scheduled runs (or FAILs once).
 
 Usage:
-    python3 tools/live_fetcher_check.py [--mic MIC ...]
+    python3 tools/live_fetcher_check.py [--mic MIC ...] [--only A,B] [--exclude A,B]
+        [--attempts 3] [--retry-delay 30] [--json-out results.json]
 """
 
 import argparse
+import json
+import re
 import sys
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -40,45 +48,131 @@ from update_from_exchange import (
     ExchangeFetcherRegistry, FetchError, ParseError, SourceMissingError, ValidationError,
 )
 
+ATTEMPTS = 3
+RETRY_DELAY = 30.0  # seconds; attempt n waits RETRY_DELAY * n before it
+# Text that marks a maintenance or holding page (several languages).
+MAINTENANCE_RE = re.compile(
+    r"maintenance|mantenimiento|manutenzione|maintenance en cours|bak[ıi]m|przerwa techniczna"
+    r"|temporarily unavailable|service unavailable|under construction|be right back",
+    re.IGNORECASE)
+MIN_CONTENT_CHARS = 400  # visible text shorter than this counts as an empty page
+# No page was recorded (the fetcher does not read through _make_request /
+# _make_binary_request): whether the page was empty is unknown, so "no
+# holidays" stays a FAIL rather than being excused as transient.
+UNKNOWN = object()
 
-def check_fetcher(mic: str, fetcher) -> dict:
-    """Run one fetcher live and return a result dict. Never raises."""
+
+def _visible_text(page) -> str:
+    if page is None:
+        return ""
+    if isinstance(page, (bytes, bytearray)):
+        return "x" * len(page) if page.startswith(b"%PDF") else page.decode("utf-8", "replace")
+    text = re.sub(r"(?is)<(script|style)\b.*?</\1>", " ", page)
+    text = re.sub(r"(?s)<[^>]+>", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def page_is_empty_or_maintenance(page) -> bool:
+    """True when the page the fetcher read is missing, nearly empty, or a
+    maintenance/holding page."""
+    if page is UNKNOWN:
+        return False
+    text = _visible_text(page)
+    return len(text) < MIN_CONTENT_CHARS or bool(MAINTENANCE_RE.search(text[:5000]))
+
+
+def classify(exc, page) -> str:
+    """'TRANSIENT' or 'FAIL' for an exception raised by fetch(); page is the
+    last content _make_request/_make_binary_request returned (None when the
+    request failed; UNKNOWN when nothing was recorded)."""
+    try:
+        import requests
+        timeouts = (requests.exceptions.Timeout, requests.exceptions.ConnectionError)
+        http_error = requests.exceptions.HTTPError
+    except ImportError:  # pragma: no cover
+        timeouts, http_error = (), ()
+    if isinstance(exc, (ValidationError, SourceMissingError)):
+        return "FAIL"
+    if isinstance(exc, ParseError):
+        msg = str(exc)
+        if "conflicting rows" in msg:
+            return "FAIL"
+        if "no holidays" in msg.lower() and page_is_empty_or_maintenance(page):
+            return "TRANSIENT"
+        return "FAIL"
+    if isinstance(exc, FetchError):  # incl. RateLimitError: the request itself failed
+        return "TRANSIENT"
+    if timeouts and isinstance(exc, timeouts):
+        return "TRANSIENT"
+    if http_error and isinstance(exc, http_error):
+        code = getattr(getattr(exc, "response", None), "status_code", None)
+        return "TRANSIENT" if code is not None and code >= 500 else "FAIL"
+    return "FAIL"
+
+
+def _record_pages(fetcher, store: list) -> None:
+    """Wrap the fetcher's request methods so the last page read is kept."""
+    for name in ("_make_request", "_make_binary_request"):
+        orig = getattr(fetcher, name, None)
+        if orig is None or getattr(orig, "_recording", False):
+            continue
+
+        def wrapper(*a, _orig=orig, **k):
+            page = _orig(*a, **k)
+            store.append(page)
+            return page
+        wrapper._recording = True
+        setattr(fetcher, name, wrapper)
+
+
+def _attempt(fetcher, pages: list) -> dict:
     start = time.monotonic()
-    result = {"mic": mic, "name": fetcher.name, "source_url": fetcher.source_url}
-
+    pages.clear()
     try:
         data = fetcher.fetch()
         elapsed = time.monotonic() - start
         if data is None or not data.holidays:
-            result.update(status="FAIL", reason="fetch() returned no holidays", elapsed=elapsed)
-        else:
-            result.update(
-                status="PASS",
-                holiday_count=len(data.holidays),
-                sample_date=data.holidays[0].date if data.holidays else None,
-                elapsed=elapsed,
-            )
-    except (ParseError, ValidationError, SourceMissingError) as e:
-        # Subclasses of FetchError, caught before it. ParseError/ValidationError:
-        # the source answered but the content is not what the parser expects.
-        # SourceMissingError: the source is gone (404, robots.txt).
-        result.update(status="FAIL", reason=f"{type(e).__name__}: {e}", elapsed=time.monotonic() - start)
-    except FetchError as e:
-        # The fetcher already retried; the source is flaky today.
-        result.update(status="WARN", reason=f"{type(e).__name__}: {e}", elapsed=time.monotonic() - start)
-    except Exception as e:  # noqa: BLE001 -- deliberately broad: this is a health check,
-        # an unexpected exception is itself a signal the live page changed shape
-        result.update(status="FAIL", reason=f"Unexpected {type(e).__name__}: {e}", elapsed=time.monotonic() - start)
+            page = pages[-1] if pages else UNKNOWN
+            status = "TRANSIENT" if page_is_empty_or_maintenance(page) else "FAIL"
+            return {"status": status, "reason": "fetch() returned no holidays", "elapsed": elapsed}
+        return {"status": "PASS", "holiday_count": len(data.holidays),
+                "sample_date": data.holidays[0].date, "elapsed": elapsed}
+    except Exception as e:  # noqa: BLE001 -- a health check: every exception is a result
+        page = pages[-1] if pages else UNKNOWN
+        kind = classify(e, page)
+        prefix = "" if isinstance(e, FetchError) else "Unexpected " if kind == "FAIL" else ""
+        return {"status": kind, "reason": f"{prefix}{type(e).__name__}: {e}",
+                "elapsed": time.monotonic() - start}
 
+
+def check_fetcher(mic: str, fetcher, attempts: int = ATTEMPTS, retry_delay: float = RETRY_DELAY,
+                  sleep=time.sleep) -> dict:
+    """Run one fetcher live and return a result dict. Never raises.
+    TRANSIENT outcomes are retried up to `attempts` times in all, waiting
+    retry_delay x n before attempt n+1; PASS and FAIL end the loop at once."""
+    result = {"mic": mic, "name": fetcher.name, "source_url": fetcher.source_url}
+    pages: list = []
+    _record_pages(fetcher, pages)
+    for n in range(1, max(1, attempts) + 1):
+        outcome = _attempt(fetcher, pages)
+        if outcome["status"] != "TRANSIENT" or n == attempts:
+            break
+        sleep(retry_delay * n)
+    result.update(outcome, attempts=n)
     return result
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--mic", action="append", help="Only check this MIC (repeatable)")
     parser.add_argument("--only", default="", help="Comma-separated MICs to include")
     parser.add_argument("--exclude", default="", help="Comma-separated MICs to skip")
-    args = parser.parse_args()
+    parser.add_argument("--attempts", type=int, default=ATTEMPTS,
+                        help="tries per fetcher for transient failures (default 3)")
+    parser.add_argument("--retry-delay", type=float, default=RETRY_DELAY,
+                        help="seconds; attempt n+1 waits this x n (default 30)")
+    parser.add_argument("--json-out", default="", help="write the results as JSON to this path")
+    args = parser.parse_args(argv)
 
     registry = ExchangeFetcherRegistry()
     mics = args.mic or sorted(registry.list_available())
@@ -91,44 +185,46 @@ def main():
         mics = [m for m in mics if m not in unwanted]
     if not mics:
         print("No MICs selected after --only/--exclude filtering.")
-        sys.exit(2)
+        return 2
 
     print(f"Checking {len(mics)} fetcher(s) against LIVE sources...\n")
     results = []
     for mic in mics:
         fetcher = registry.get(mic)
         if fetcher is None:
-            results.append({"mic": mic, "status": "SKIP", "reason": "no fetcher registered"})
+            results.append({"mic": mic, "status": "SKIP", "reason": "no fetcher registered", "attempts": 0})
             continue
         print(f"  -> {mic} ({fetcher.name}) ... ", end="", flush=True)
-        r = check_fetcher(mic, fetcher)
+        r = check_fetcher(mic, fetcher, attempts=args.attempts, retry_delay=args.retry_delay)
         results.append(r)
-        print(r["status"])
+        print(f"{r['status']} ({r['attempts']} attempt{'s' if r['attempts'] != 1 else ''})")
 
-    print("\n" + "=" * 70)
-    print(f"{'MIC':<8}{'STATUS':<8}{'DETAIL'}")
-    print("=" * 70)
-    failures = warnings = 0
+    print(summary_table(results))
+    if args.json_out:
+        Path(args.json_out).write_text(json.dumps({
+            "run_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "results": [{k: r.get(k) for k in ("mic", "status", "attempts", "reason",
+                                                  "holiday_count", "sample_date")} for r in results],
+        }, indent=2) + "\n", encoding="utf-8")
+    return 1 if any(r["status"] == "FAIL" for r in results) else 0
+
+
+def summary_table(results) -> str:
+    lines = ["", "=" * 78, f"{'MIC':<8}{'STATUS':<11}{'TRIES':<7}DETAIL", "=" * 78]
     for r in results:
         if r["status"] == "PASS":
             detail = f"{r.get('holiday_count', '?')} holidays, first={r.get('sample_date', '?')}"
-        elif r["status"] == "SKIP":
-            detail = r.get("reason", "")
-        elif r["status"] == "WARN":
-            detail = r.get("reason", "source unreliable")
-            warnings += 1
         else:
-            detail = r.get("reason", "unknown failure")
-            failures += 1
-        print(f"{r['mic']:<8}{r['status']:<8}{detail}")
-    print("=" * 70)
-    passed = sum(1 for r in results if r["status"] == "PASS")
-    print(f"\n{passed}/{len(results)} fetchers passed, {warnings} warned, {failures} failed")
-    if warnings:
-        print("WARN: " + ", ".join(r["mic"] for r in results if r["status"] == "WARN")
-              + " -- source unreliable today; does not fail the job")
-
-    return 1 if failures else 0
+            detail = r.get("reason", "")
+        lines.append(f"{r['mic']:<8}{r['status']:<11}{r.get('attempts', 0):<7}{detail}")
+    lines.append("=" * 78)
+    count = {k: sum(1 for r in results if r["status"] == k) for k in ("PASS", "TRANSIENT", "FAIL", "SKIP")}
+    lines.append(f"\n{count['PASS']}/{len(results)} passed, {count['TRANSIENT']} transient, "
+                 f"{count['FAIL']} failed, {count['SKIP']} skipped")
+    if count["TRANSIENT"]:
+        lines.append("TRANSIENT: " + ", ".join(r["mic"] for r in results if r["status"] == "TRANSIENT")
+                     + " -- source unreliable today; fails the scheduled workflow only if it repeats next run")
+    return "\n".join(lines)
 
 
 if __name__ == "__main__":

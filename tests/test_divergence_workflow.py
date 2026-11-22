@@ -39,7 +39,7 @@ def test_job_setup(parsed):
 
 def test_steps_in_order(text):
     order = [
-        "actions/checkout@v4",
+        "actions/checkout@v5",  # Node 24 (4b3)
         "python-version: '3.11'",
         # One install, locked by constraints-divergence.txt (4c-R5).
         "pip install -r requirements.txt -r requirements-dev.txt -c constraints-divergence.txt",

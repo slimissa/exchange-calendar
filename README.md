@@ -847,7 +847,9 @@ Every check that runs in CI or the release gate, one row each.
 | `python3 -m pytest tests/` | 5,625 tests, including the 74 per-exchange holiday suites | CI, release gate |
 | Wrapper suites (JavaScript, Go, Rust) | Each wrapper's own tests | CI, release gate |
 | `tools/divergence_test.py` + `divergence_report.py` | Disagreement with reference libraries | Weekly workflow (opens a PR); `tests/test_divergence*.py` run in pytest |
-| `tools/live_fetcher_check.py` | A fetcher failing against its live source | Weekly workflow |
+| `tools/live_fetcher_check.py` | A fetcher failing against its live source: PASS, FAIL (deterministic) or TRANSIENT (retried 3 times in the run) | Weekly workflow |
+| `tools/live_check_escalate.py` | The weekly check failing deterministically, or transiently in two consecutive scheduled runs (one `live-check` issue, closed on the next green run) | Weekly workflow |
+| `tools/check_tier_coverage.py` | A tier MIC in the live-check workflow that is neither registered nor in BLOCKED.md | Weekly workflow |
 | `tools/verify_predicted_dates.py --check` | Predicted Islamic dates past due | CI, non-blocking (`|| echo`) |
 | Version consistency (CI job) | `VERSION`, `CHANGELOG.md` top entry, README badge and `build.py` output disagreeing | CI |
 | Workflow coverage, orphan variables, manifest precondition | Static preflight of `release.sh` | release gate |

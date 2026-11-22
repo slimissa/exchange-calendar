@@ -1942,6 +1942,9 @@
     {"file": "tools/check_glued_words.py", "contains": "def findings_in(name: str, text: str) -> list[str]:"},
     {"file": ".github/workflows/validate.yml", "contains": "run: python3 tools/check_glued_words.py"},
     {"file": "tools/update_from_exchange.py", "contains": "def merge_holiday_rows(rows: List[\"HolidayEntry\"], mic: str) -> List[\"HolidayEntry\"]:"},
-    {"file": "tests/test_update_from_exchange.py", "contains": "class TestBMEMadridDuplicates:"}
+    {"file": "tests/test_update_from_exchange.py", "contains": "class TestBMEMadridDuplicates:"},
+    {"file": "tools/live_check_escalate.py", "contains": "TITLE = \"Live fetcher check failing\""},
+    {"file": ".github/workflows/live-fetcher-check.yml", "contains": "run: python3 tools/check_tier_coverage.py"},
+    {"file": ".github/workflows/validate.yml", "contains": "actions/setup-python@v6"}
   ]
 }

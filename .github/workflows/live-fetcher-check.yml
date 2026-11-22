@@ -7,12 +7,16 @@ name: Live Fetcher Health Check
 # fixture says nothing about whether the live page still has that shape.
 #
 # NOTE: this job does not mock network calls -- it makes real HTTP requests
-# to third-party sites (nyse.com, jpx.co.jp, etc). Expect occasional false
-# failures from transient outages, rate limiting, or bot-detection changes
-# on the target sites, not just from actual fetcher bugs. A single failure
-# is a signal to investigate, not necessarily a broken fetcher -- see the
-# per-exchange notes in docs/fetcher_verification.md before assuming the
-# parser itself is wrong.
+# to third-party sites (nyse.com, jpx.co.jp, etc). Since 4b3 the check
+# classifies each fetcher (tools/live_fetcher_check.py): TRANSIENT (the site
+# had a bad day: fetch errors, timeouts, 5xx, an empty or maintenance page;
+# retried 3 times in the run) or FAIL (deterministic: validation errors,
+# conflicting rows, a parse error on a page with content). On the schedule,
+# tools/live_check_escalate.py fails the workflow when a fetcher FAILs, or is
+# TRANSIENT in two consecutive scheduled runs, and keeps one issue (label
+# `live-check`, title "Live fetcher check failing") with the summary table and
+# the per-MIC streaks; the next fully green scheduled run closes it. The
+# issue body is the only state: no commits from CI.
 
 on:
   schedule:
@@ -64,34 +68,80 @@ jobs:
     name: Verify tier coverage matches the registry
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: |
           python -m pip install --upgrade pip
           pip install -r tools/requirements.txt
       - name: Verify tier coverage matches the registry
-        run: |
-          python3 -c "
-          # ... existing guard script, unchanged ...
-          "
+        # Restored in 4b3 (commit 2994f2c had left a placeholder comment here,
+        # so the step checked nothing).
+        run: python3 tools/check_tier_coverage.py
 
   live-check-stable:
     name: Live check — stable fetchers (blocking)
     needs: verify-coverage
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      STABLE_EXCLUDE: XHKG,XSHG,XNSA,XKUW,XSAU,XSWX,XBUL
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: |
           python -m pip install --upgrade pip
           pip install -r tools/requirements.txt
-      - name: Run live fetcher check (stable set)
+      - name: Run live fetcher check (single MIC, manual run)
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mic != ''
+        run: python tools/live_fetcher_check.py --mic "${{ github.event.inputs.mic }}"
+      - name: Run live fetcher check (stable set, manual run)
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.mic == ''
+        run: python tools/live_fetcher_check.py --exclude "$STABLE_EXCLUDE"
+      - name: Run live fetcher check (stable set, scheduled)
+        if: github.event_name == 'schedule'
+        # Exit status is decided by the escalation step, not here: a single
+        # transient failure does not fail the scheduled run.
         run: |
-          python tools/live_fetcher_check.py --exclude XHKG,XSHG,XNSA,XKUW,XSAU,XSWX,XBUL
+          set +e
+          python tools/live_fetcher_check.py --exclude "$STABLE_EXCLUDE" --json-out live-results.json
+          echo "check exit code: $?"
+          test -s live-results.json
+      - name: Escalate across scheduled runs (one issue, label live-check)
+        if: github.event_name == 'schedule'
+        run: |
+          set -euo pipefail
+          title="Live fetcher check failing"
+          num="$(gh issue list --label live-check --state open --limit 20 --json number,title \
+                  --jq ".[] | select(.title == \"$title\") | .number" | head -n1)"
+          if [ -n "$num" ]; then gh issue view "$num" --json body --jq .body > prev-body.md; else : > prev-body.md; fi
+          python tools/live_check_escalate.py --results live-results.json --previous-body prev-body.md \
+            --body-out body.md --decision-out decision.json --run-url "$RUN_URL"
+          action="$(python -c "import json; print(json.load(open('decision.json'))['action'])")"
+          escalate="$(python -c "import json; print(str(json.load(open('decision.json'))['escalate']).lower())")"
+          if [ "$action" = close ] && [ -n "$num" ]; then
+            gh issue close "$num" --comment "Fully green scheduled run: $RUN_URL"
+          elif [ "$action" = upsert ]; then
+            gh label create live-check --color B60205 --description "Weekly live fetcher check" 2>/dev/null || true
+            if [ -n "$num" ]; then
+              gh issue edit "$num" --body-file body.md
+            else
+              gh issue create --title "$title" --label live-check --body-file body.md
+            fi
+          fi
+          cat body.md >> "$GITHUB_STEP_SUMMARY"
+          if [ "$escalate" = true ]; then
+            echo "::error::Live fetcher check escalated: a deterministic failure, or a transient failure in two consecutive scheduled runs"
+            exit 1
+          fi
 
   live-check-ci-unreachable:
     name: Live check — CI-unreachable (informational)
@@ -99,8 +149,8 @@ jobs:
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: |
@@ -127,8 +177,8 @@ jobs:
     continue-on-error: true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - run: |
