@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- Generated cross-language probes (`tools/gen_cross_lang_probes.py`, 4b3): for XNYS, XLON, XTKS, XHKG, XSAU, XCAI (Friday-Saturday weekend) and XBUE, every day Monday to Sunday of the first ordinary week of 2026, one minute before and at the open and the close, the first full holiday, and the first early close at the exchange level (`status_at`, `exchange_is_open`: `Exchange` honours early closes, unlike the registry contract). 325 probes written into `tests/cross_language_queries.json` as `<op>_gen_<suffix>`; every registry-level probe keeps its `in_session` twin (127 twins). The four runners gain the `status_at` and `exchange_is_open` ops. `--check` fails on drift (gate and `validate.yml`). `tests/test_cross_lang_coverage.py` fails if any weekday is missing for any of these MICs. All four wrappers agreed on every generated probe; XTKS, XSAU and XCAI have no early close in their data, so the exchange-level early-close probes cover XNYS, XLON, XHKG and XBUE.
+
 ### Changed
 
 - One security-group rule for regular hours (ADR 0014, 4b3, the maintainer's decision): where an exchange's schedule differs by security group, the registry follows the group holding the main index's constituents; sessions the exchange calls additional stay excluded. Replaces 4b2's XMOS wording ("the rest of the book").

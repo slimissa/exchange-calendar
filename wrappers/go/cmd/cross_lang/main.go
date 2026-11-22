@@ -126,6 +126,23 @@ func main() {
 				die("exchange: %v", err)
 			}
 			v = ex.IsHoliday(str(q.Args[1]))
+		case "status_at":
+			ex, err := r.Get(str(q.Args[0]))
+			if err != nil {
+				die("exchange: %v", err)
+			}
+			st, err := ex.StatusAt(str(q.Args[1]), str(q.Args[2]))
+			if err != nil {
+				v = "error"
+			} else {
+				v = string(st)
+			}
+		case "exchange_is_open":
+			ex, err := r.Get(str(q.Args[0]))
+			if err != nil {
+				die("exchange: %v", err)
+			}
+			v = ex.IsOpen(str(q.Args[1]), str(q.Args[2]))
 		case "holiday_entry":
 			ex, err := r.Get(str(q.Args[0]))
 			if err != nil {

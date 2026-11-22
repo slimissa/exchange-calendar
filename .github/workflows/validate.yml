@@ -76,6 +76,9 @@ jobs:
       - name: Check README wrapper test counts
         run: python3 tools/wrapper_test_counts.py --check
 
+      - name: Check generated cross-language probes are current
+        run: python3 tools/gen_cross_lang_probes.py --check
+
       - name: Check Python wrapper's bundled calendar.json is current
         run: |
           python3 tools/check_wrapper_snapshot.py

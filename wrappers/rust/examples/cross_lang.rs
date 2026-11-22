@@ -57,6 +57,13 @@ fn main() {
                 })
             }
             "is_holiday" => json!(registry.get(s(0)).expect("exchange").is_holiday(s(1))),
+            "status_at" => json!(registry
+                .get(s(0))
+                .expect("exchange")
+                .status_at(s(1), s(2))
+                .map(|st| st.as_str())
+                .unwrap_or("error")),
+            "exchange_is_open" => json!(registry.get(s(0)).expect("exchange").is_open(s(1), Some(s(2)))),
             "holiday_entry" => {
                 let ex = registry.get(s(0)).expect("exchange");
                 match ex.list_holidays(None).into_iter().find(|h| h.date == s(1)) {

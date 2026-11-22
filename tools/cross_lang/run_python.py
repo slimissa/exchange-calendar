@@ -21,6 +21,10 @@ for q in fixture["queries"]:
         v = {"confidence": rec.get("confidence", {}), "_as_of": rec.get("_as_of")}
     elif op == "is_holiday":
         v = r.get(args[0]).is_holiday(args[1])
+    elif op == "status_at":
+        v = r.get(args[0]).status_at(args[1], args[2]).value
+    elif op == "exchange_is_open":
+        v = r.get(args[0]).is_open(args[1], args[2])
     elif op == "holiday_entry":
         v = next((h for h in r.get(args[0]).list_holidays() if h["date"] == args[1]), None)
     else:
