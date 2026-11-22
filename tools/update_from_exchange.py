@@ -3405,6 +3405,21 @@ class BMEMadridFetcher(ExchangeFetcher):
             rate_limit=2.0
         )
 
+    @staticmethod
+    def _is_hidden(tag) -> bool:
+        """An element the page hides from readers: the class token `hidden`
+        (BME's AEM containers), the `hidden` attribute, aria-hidden="true",
+        or an inline display:none. Class tokens that merely contain the word
+        (cmp-accordion__panel--hidden, a collapsed FAQ panel a reader can
+        open) are not hidden content."""
+        if not getattr(tag, "attrs", None):
+            return False
+        if "hidden" in (tag.get("class") or []):
+            return True
+        if tag.has_attr("hidden") or (tag.get("aria-hidden") or "").lower() == "true":
+            return True
+        return bool(re.search(r"display\s*:\s*none", tag.get("style") or "", re.I))
+
     def _parse_block(self, text: str, year: int) -> List[HolidayEntry]:
         """One "has set the trading calendar for YYYY" block: closures
         before its "will trade until HH:MM" sentence, early closes after it.
@@ -3455,6 +3470,14 @@ class BMEMadridFetcher(ExchangeFetcher):
             return []
 
         soup = BeautifulSoup(html, 'html.parser')
+        # 4b4: read only what the page shows. BME's markup (2026-11-22) holds
+        # a second calendar block inside <div id="container-a8cccbd951"
+        # class="cmp-container hidden ...">, also saying "trading calendar for
+        # 2026" but with 2027 weekdays: a draft readers never see (the
+        # maintainer's print shows one block). Hidden elements are dropped
+        # before the blocks are read; the weekday guard stays for what remains.
+        for el in soup.find_all(self._is_hidden):
+            el.decompose()
         page_text = soup.get_text("\n", strip=True)
 
         starts = list(self.YEAR_RE.finditer(page_text))

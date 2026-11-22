@@ -1792,26 +1792,16 @@ It has agreed to consider the following days as non-trading days for operational
 </body></html>
 """
 
-# 4b3: the live page on 2026-11-22 (structure as read through WebFetch; the
-# sandbox cannot reach bolsasymercados.es): two blocks, both introduced as the
-# "trading calendar for 2026", the second listing dates whose weekdays fall in
-# 2027 (1 January a Friday, 26 March a Friday, 29 March a Monday).
-BME_MADRID_TWO_BLOCKS_HTML = BME_MADRID_SAMPLE_HTML.replace("</body></html>", "") + """
-<p>BME, operator of the equity, fixed income and derivatives markets in Spain, has set the trading calendar for 2026.
-It has agreed to consider the following days as non-trading days for operational purposes:</p>
-<p>1st of January</p><p>Friday</p>
-<p>26th of March</p><p>Friday</p>
-<p>29th of March</p><p>Monday</p>
-<p>On 24 and 31 December the BME markets will trade until 14:00 hrs CET.</p>
-<p>24th of December</p><p>Friday</p>
-<p>31st of December</p><p>Friday</p>
-</body></html>
-"""
-
-# The same page with the second block labelled 2027, as its weekdays say.
-BME_MADRID_2026_2027_HTML = BME_MADRID_TWO_BLOCKS_HTML.replace(
-    "has set the trading calendar for 2026.\nIt has agreed to consider the following days as non-trading days for operational purposes:</p>\n<p>1st of January</p><p>Friday</p>",
-    "has set the trading calendar for 2027.\nIt has agreed to consider the following days as non-trading days for operational purposes:</p>\n<p>1st of January</p><p>Friday</p>")
+# 4b4: BME's real page as saved by the maintainer in Firefox on 2026-11-22
+# (raw source; the <main> element with scripts and styles removed). It holds
+# the visible 2026 block and a second block inside
+# <div id="container-a8cccbd951" class="cmp-container hidden ...">, also
+# saying "trading calendar for 2026", whose closures carry 2027 weekdays.
+# (4b3 built a fixture from a WebFetch paraphrase of this page; replaced.)
+BME_MADRID_REAL_HTML = (Path(__file__).resolve().parent / "fixtures" / "xmad_calendar_2026-11-22.html").read_text(encoding="utf-8")
+# The same markup with the draft unhidden, as if BME published it unchanged.
+BME_MADRID_REAL_UNHIDDEN_HTML = BME_MADRID_REAL_HTML.replace(
+    'id="container-a8cccbd951" class="cmp-container hidden ', 'id="container-a8cccbd951" class="cmp-container ')
 
 # The first block twice (a page repeating its own block): identical rows.
 BME_MADRID_REPEATED_HTML = BME_MADRID_SAMPLE_HTML.replace("</body></html>", "") + \
@@ -1930,41 +1920,66 @@ class TestBMEMadridFetcher:
 
 
 class TestBMEMadridDuplicates:
-    """4b3: XMAD's live check failed on 2026-11-22 with 'Duplicate holiday date:
-    2026-01-01, 2026-12-24, 2026-12-31'."""
+    """XMAD: the live check failed on 2026-11-22 with 'Duplicate holiday date:
+    2026-01-01, 2026-12-24, 2026-12-31' (4b3); settled on the real page (4b4)."""
 
-    def test_live_page_shape_fails_loudly_naming_the_mislabelled_block(self):
-        assert "2027" not in BME_MADRID_TWO_BLOCKS_HTML
-        with pytest.raises(ParseError) as exc:
-            BMEMadridFetcher().parse_html(BME_MADRID_TWO_BLOCKS_HTML)
-        msg = str(exc.value)
-        assert "trading calendar for 2026" in msg
-        assert "1 January (Friday)" in msg and "29 March (Monday)" in msg
-        assert "they fit 2027" in msg
-        assert "no row is taken" in msg
+    def test_real_page_gives_the_visible_2026_block(self):
+        rows = BMEMadridFetcher().parse_html(BME_MADRID_REAL_HTML)
+        assert [(h.date, h.status, h.early_close_time) for h in rows] == [
+            ("2026-01-01", "closed", None), ("2026-04-03", "closed", None),
+            ("2026-04-06", "closed", None), ("2026-05-01", "closed", None),
+            ("2026-12-25", "closed", None),
+            ("2026-12-24", "early_close", "14:00"), ("2026-12-31", "early_close", "14:00")]
 
-    def test_before_the_fix_the_page_gave_duplicates_and_wrong_dates(self):
-        # What the single-year parser produced: the duplicates the live check
-        # reported, plus two rows that silently put 2027's Easter in 2026.
+    def test_real_page_hides_a_second_block_labelled_2026(self):
+        assert BME_MADRID_REAL_HTML.count("has set the trading calendar for 2026") == 2
+        assert "2027" not in BME_MADRID_REAL_HTML
+        assert 'id="container-a8cccbd951" class="cmp-container hidden ' in BME_MADRID_REAL_HTML
+
+    def test_before_the_fix_the_real_page_gave_the_reported_duplicates(self):
+        # Reading every block (hidden included) with the first year, as the
+        # pre-4b3 parser did, reproduces the live check's three duplicates.
         import re as _re
         from bs4 import BeautifulSoup
-        text = BeautifulSoup(BME_MADRID_TWO_BLOCKS_HTML, "html.parser").get_text("\n", strip=True)
+        text = BeautifulSoup(BME_MADRID_REAL_HTML, "html.parser").get_text("\n", strip=True)
         dates = [f"2026-{datetime.strptime(m, '%B').month:02d}-{int(d):02d}"
                  for d, m in _re.findall(r"(\d{1,2})(?:st|nd|rd|th)\s+of\s+([A-Z][a-z]+)", text)]
-        dupes = sorted({d for d in dates if dates.count(d) > 1})
-        assert dupes == ["2026-01-01", "2026-12-24", "2026-12-31"]
-        assert "2026-03-29" in dates  # a Sunday
+        assert sorted({d for d in dates if dates.count(d) > 1}) == ["2026-01-01", "2026-12-24", "2026-12-31"]
 
-    def test_blocks_parse_with_their_own_year_and_early_close_time(self):
-        rows = BMEMadridFetcher().parse_html(BME_MADRID_2026_2027_HTML)
-        by = {(h.date, h.status, h.early_close_time) for h in rows}
-        assert ("2026-01-01", "closed", None) in by
-        assert ("2027-01-01", "closed", None) in by
-        assert ("2027-03-26", "closed", None) in by
-        assert ("2027-03-29", "closed", None) in by
-        assert ("2026-12-24", "early_close", "14:00") in by
-        assert ("2027-12-31", "early_close", "14:00") in by
-        assert len(rows) == len({h.date for h in rows})
+    def test_weekday_guard_still_refuses_the_draft_if_it_were_shown(self):
+        with pytest.raises(ParseError) as exc:
+            BMEMadridFetcher().parse_html(BME_MADRID_REAL_UNHIDDEN_HTML)
+        msg = str(exc.value)
+        assert "1 January (Friday)" in msg and "29 March (Monday)" in msg and "they fit 2027" in msg
+
+    def test_a_correctly_labelled_second_block_parses_with_its_own_year(self):
+        html = BME_MADRID_REAL_UNHIDDEN_HTML
+        i = html.index('id="container-a8cccbd951"')
+        html = html[:i] + html[i:].replace("trading calendar for 2026", "trading calendar for 2027", 1)
+        # The draft's 24/31 December carry 2026 weekdays (Thursday): still refused.
+        with pytest.raises(ParseError, match="24 December \\(Thursday\\)"):
+            BMEMadridFetcher().parse_html(html)
+        j = html.index('id="container-a8cccbd951"')
+        tail = html[j:].replace("<div class=\"fact-or-figure__description\">Thursday</div>",
+                                "<div class=\"fact-or-figure__description\">Friday</div>")
+        rows = BMEMadridFetcher().parse_html(html[:j] + tail)
+        got = {(h.date, h.status, h.early_close_time) for h in rows}
+        assert {("2027-01-01", "closed", None), ("2027-03-26", "closed", None), ("2027-03-29", "closed", None),
+                ("2027-12-24", "early_close", "14:00"), ("2027-12-31", "early_close", "14:00"),
+                ("2026-01-01", "closed", None)} <= got
+
+    @pytest.mark.parametrize("markup,hidden", [
+        ('<div class="cmp-container hidden x">', True),
+        ('<div hidden>', True),
+        ('<div aria-hidden="true">', True),
+        ('<div style="display: none">', True),
+        ('<div class="cmp-accordion__panel cmp-accordion__panel--hidden">', False),
+        ('<div class="cmp-container">', False),
+    ])
+    def test_hidden_detection(self, markup, hidden):
+        from bs4 import BeautifulSoup
+        tag = BeautifulSoup(markup + "x</div>", "html.parser").div
+        assert BMEMadridFetcher._is_hidden(tag) is hidden
 
     def test_identical_rows_merge_to_one(self):
         rows = BMEMadridFetcher().parse_html(BME_MADRID_REPEATED_HTML)
@@ -1990,21 +2005,19 @@ class TestBMEMadridDuplicates:
 
     @patch('time.sleep')
     @patch('requests.get')
-    def test_fetch_on_the_live_page_shape_is_a_parse_error(self, mock_get, _sleep):
+    def test_fetch_passes_on_the_real_page(self, mock_get, _sleep):
         mock_response = Mock()
-        mock_response.text = BME_MADRID_TWO_BLOCKS_HTML
+        mock_response.text = BME_MADRID_REAL_HTML
         mock_response.raise_for_status = Mock()
         mock_get.return_value = mock_response
-        with pytest.raises(ParseError, match="they fit 2027"):
-            BMEMadridFetcher().fetch()
+        data = BMEMadridFetcher().fetch()
+        assert len(data.holidays) == 7
 
-    def test_rows_agree_with_the_registry_2026_2027(self):
-        """The fetched rows (2026 block; the second block read as 2027, as its
-        weekdays say) agree with exchanges/XMAD.json: no data lead."""
+    def test_real_rows_agree_with_the_registry(self):
         sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "wrappers" / "python"))
         from exchange_calendar import CalendarRegistry
         ex = CalendarRegistry().get("XMAD")
-        for h in BMEMadridFetcher().parse_html(BME_MADRID_2026_2027_HTML):
+        for h in BMEMadridFetcher().parse_html(BME_MADRID_REAL_HTML):
             if h.status == "closed":
                 assert ex.is_holiday(h.date), h.date
             else:

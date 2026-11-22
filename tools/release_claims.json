@@ -1946,5 +1946,9 @@
     {"file": "tools/live_check_escalate.py", "contains": "TITLE = \"Live fetcher check failing\""},
     {"file": ".github/workflows/live-fetcher-check.yml", "contains": "run: python3 tools/check_tier_coverage.py"},
     {"file": ".github/workflows/validate.yml", "contains": "actions/setup-python@v6"}
+  ],
+  "2.32.0": [
+    {"file": "tools/update_from_exchange.py", "contains": "def _is_hidden(tag) -> bool:"},
+    {"file": "tests/test_update_from_exchange.py", "contains": "def test_real_page_gives_the_visible_2026_block(self):"}
   ]
 }
