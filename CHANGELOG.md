@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Tier coverage guard blocking (4b4): `tools/check_tier_coverage.py` now fails on a registered fetcher in no tier list or a MIC in more than one (both were warnings). XIST, XSWX and XBUL, whose fetchers came after Tier 8 by resolving BLOCKED.md entries (2026-11-02, 2026-11-07, 2026-11-10), are placed in a new `TIER9_MICS_BUILT`; the comment records each one's job set (XIST stable; XSWX and XBUL CI-unreachable, in `STABLE_EXCLUDE`; XBUL's fetcher_status is blocked).
+- XTKS random closing read (4b4): TSE's outline of rule revisions (6 August 2026) puts the afternoon close Itayose at a random time between 15:29:30 and 15:30:00 from 12 October 2027. ADR 0013 holds the end of a random window, so `regular_hours` stays 15:30 and no 2027 entry is added; the XTKS hours evidence note records the document (read from the search index's text of the PDF, matched by WebFetch).
 
 ### Fixed
 
