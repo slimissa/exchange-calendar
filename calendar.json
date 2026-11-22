@@ -32671,7 +32671,7 @@
       "extended_hours": {
         "after_hours": {
           "close": "18:10",
-          "open": "18:00"
+          "open": "18:07"
         },
         "pre_market": {
           "close": "10:00",
@@ -34180,11 +34180,19 @@
       },
       "mic": "XIST",
       "name": "Borsa Istanbul",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. Half-day closes in 2010-2024 are exchange_calendars' 12:30; the 2025-2029 half days carry 13:00, which this backfill does not change.",
-      "regular_hours": {
-        "close": "18:00",
-        "open": "10:00"
-      },
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. Half-day closes in 2010-2024 are exchange_calendars' 12:30; the 2025-2029 half days carry 13:00, which this backfill does not change. Regular hours (4b5): 10:00-18:07 from 2026-11-22, under ADR 0014 section 8 (Borsa Istanbul closing-session page: price determination and closing session transactions 18:05-18:07; trades at closing price 18:08-18:10, post-market). The page dates the closing session's introduction (2 March 2012) but not its current times. The 2010 entry (10:00-18:00) is kept and unconfirmed.",
+      "regular_hours": [
+        {
+          "close": "18:00",
+          "effective_from": "2010-01-01",
+          "open": "10:00"
+        },
+        {
+          "close": "18:07",
+          "effective_from": "2026-11-22",
+          "open": "10:00"
+        }
+      ],
       "sessions": [
         {
           "close": "10:00",
@@ -34192,13 +34200,13 @@
           "type": "pre_market"
         },
         {
-          "close": "18:00",
+          "close": "18:07",
           "open": "10:00",
           "type": "regular"
         },
         {
           "close": "18:10",
-          "open": "18:00",
+          "open": "18:07",
           "type": "post_market"
         }
       ],
@@ -34226,6 +34234,34 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "18:00",
+            "close_rule": "continuous_end",
+            "effective_from": "2010-01-01",
+            "note": "Borsa Istanbul's closing-session page read on 2026-11-22 ends the closing session at 18:07 and dates the closing session from 2 March 2012, but not these times; the registry's 18:00 is the end of continuous trading. Leads: the equity session was 09:35-17:30 with trades at closing price to 17:40 until 14 November 2016 (a bank notice, not a Borsa document), so this 2010 entry's hours are also unproven for 2010-2016. Settled by Borsa Istanbul announcements dating the 2012 closing session times and the 2016 move.",
+            "open": "10:00",
+            "recheck_date": "2027-02-19",
+            "segment": "Borsa Istanbul Equity Market: main trading session (continuous auction) followed by the closing session",
+            "source_title": "Borsa Istanbul, Closing Session (saved by the maintainer as a PDF print, 2026-11-22)",
+            "source_url": "https://www.borsaistanbul.com/en/closing-session",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-22",
+            "close": "18:07",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2026-11-22",
+            "note": "'On March 2, 2012, Borsa İstanbul introduced \"closing session\".' 'Phases of Closing Session: Order collection phase – (4 minutes, 18:01 – 18:05); Price determination & closing session transactions phase – (2 minutes, 18:05–18:07); Trades at closing price/ single price phase – (2 minutes, 18:08 – 18:10)'. 'The determined closing session price is the closing price for the relevant equity.' Close 18:07, the end of the price-determination and closing-session-transactions phase (ADR 0013); the 18:08-18:10 phase trades only at the closing price and is not regular hours. Warrants, ETFs and rights coupons are not in the closing session; shares are, so the main index's group follows it (ADR 0014 security groups). The page does not give the continuous session; the open stays 10:00. The page dates the closing session's introduction (2 March 2012), not these times: the equity session was moved by an hour in November 2016 (a bank notice lead, 09:35-17:30 before), so 18:01-18:07 cannot be carried back to 2012. In force at least since 2026-11-22; start undated; earlier entry's end unknown (ADR 0014 section 8). Modelled post-market: 18:07-18:10 (extended_hours.after_hours and the post_market session start at the regular close, as the validator requires; the trades-at-closing-price phase itself runs 18:08-18:10).",
+            "open": "10:00",
+            "segment": "Borsa Istanbul Equity Market: main trading session (continuous auction) followed by the closing session",
+            "source_title": "Borsa Istanbul, Closing Session (saved by the maintainer as a PDF print, 2026-11-22)",
+            "source_url": "https://www.borsaistanbul.com/en/closing-session",
+            "status": "verified",
+            "verified_from": "2026-11-22"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

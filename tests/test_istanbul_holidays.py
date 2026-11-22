@@ -63,8 +63,12 @@ class TestXISTProperties:
         assert xist["timezone"] == "Europe/Istanbul"
 
     def test_regular_hours(self, xist):
-        assert xist["regular_hours"]["open"] == "10:00"
-        assert xist["regular_hours"]["close"] == "18:00"
+        assert xist["regular_hours"] == [
+            {"effective_from": "2010-01-01", "open": "10:00", "close": "18:00"},
+            {"effective_from": "2026-11-22", "open": "10:00", "close": "18:07"},
+        ]
+        regular = [s for s in xist["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "10:00", "close": "18:07"}]
 
     def test_no_lunch_break(self, xist):
         lunch = [s for s in xist.get("sessions", []) if s["type"] == "lunch_break"]
@@ -73,6 +77,9 @@ class TestXISTProperties:
     def test_extended_hours(self, xist):
         assert xist["extended_hours"]["pre_market"]["open"] == "09:40"
         assert xist["extended_hours"]["after_hours"]["close"] == "18:10"
+        # Borsa Istanbul's closing session ends at 18:07 (4b5); the post-market
+        # (trades at closing price) is modelled from the regular close.
+        assert xist["extended_hours"]["after_hours"]["open"] == "18:07"
 
 
 # ──────────────────────────────────────────────────────────────
