@@ -92,6 +92,10 @@ def test_registry_dates_today():
                      # and 2012-08-06, XETR 2010, XBUD 2010; XKAR (09:32 open
                      # undated). XPRA's 2027-01-04 is the date it already had.
                      ("XOSL", "2027-02-19"), ("XETR", "2027-02-19"),
-                     ("XBUD", "2027-02-19"), ("XKAR", "2027-02-19")}
+                     ("XBUD", "2027-02-19"), ("XKAR", "2027-02-19"),
+                     # 4b3 hours evidence, unconfirmed older entries: XTKS
+                     # 1997, XPHS 2010, XSES 2010.
+                     ("XTKS", "2027-02-19"), ("XPHS", "2027-02-19"),
+                     ("XSES", "2027-02-19")}
     assert crd.main(["--today", "2026-11-20"]) == 0
     assert crd.main(["--today", "2027-01-05"]) == 1

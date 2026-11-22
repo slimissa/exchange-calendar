@@ -1399,6 +1399,21 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "16:00",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "Page (Nasdaq Baltic as a whole, no venue split, read 2026-11-22 in 4b2 and 4b3): Pre-Open 09:00 to ~10:00; Opening Call Auction 10:00:00-10:00:05 (random uncross); Continuous Trading ~10:00 to 15:55; Pre-Close 15:55 to ~16:00; Closing Call Auction 15:59:30-16:00:00 (random uncross); Post-Trading ~16:00-16:30. Open 10:00 (five-second call ignored), close 16:00 (ADR 0013). verified_from 2026-05-05: the page states no effective date; it was last modified on 5 May 2026. The 16:00 end dates from 2 February 2009 (Nasdaq OMX release of 19 November 2008); the 2010 call structure was not read.",
+        "open": "10:00",
+        "segment": "Nasdaq Baltic equities (Tallinn), continuous trading with opening and closing calls",
+        "source_title": "Nasdaq Baltic, Trading day",
+        "source_url": "https://nasdaqbaltic.com/market-information/trading-day/",
+        "status": "verified",
+        "verified_from": "2026-05-05"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

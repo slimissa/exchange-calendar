@@ -1663,6 +1663,21 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-20",
+        "close": "16:00",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "4c11: pre-trading 08:00-09:00, opening auction 09:00-09:30, continuous trading 09:30-12:00, intraday auction 12:00-12:10, continuous trading 12:10-15:55, closing auction 15:55-16:00 (earliest ending; random up to 15 seconds later), trading at close 16:00-16:10. Open 09:30, close 16:00 (ADR 0013). verified_from 2026-01-22: the manual's entry into force; no earlier manual read.",
+        "open": "09:30",
+        "segment": "ZSE Continuous Trading: opening auction, continuous trading, closing auction",
+        "source_title": "ZSE Trading Manual of 14 January 2026, in force 22 January 2026 (read in 4c11)",
+        "source_url": "https://zse.hr/UserDocsImages/docs/trading/manuals/Trading_Manual_2026-01-14.pdf",
+        "status": "verified",
+        "verified_from": "2026-01-22"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

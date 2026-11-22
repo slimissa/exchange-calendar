@@ -301,8 +301,12 @@ class TestExchangeProperties:
         r = CalendarRegistry()
         v = r.verification("XSWX")
         assert v is not None
-        # coverage is optional (authored on backfilled exchanges, not derived)
-        assert set(v) - {"coverage"} == {"class", "basis", "last_checked", "reference_note"}
+        # coverage and hours are optional (authored, not derived; hours is the
+        # regular-hours evidence of schema 2.3.0, present on XSWX since 4b3)
+        assert set(v) - {"coverage", "hours"} == {"class", "basis", "last_checked", "reference_note"}
+        if "hours" in v:
+            assert isinstance(v["hours"], list) and v["hours"]
+            assert all(i["status"] in {"verified", "schema_limited", "unconfirmed"} for i in v["hours"])
         assert v["class"] in {"reference_compared", "source_verified",
                               "single_source", "ci_unreachable"}
         # the copy is detached from the registry

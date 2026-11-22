@@ -1932,9 +1932,12 @@
     {"file": "schema.json", "contains": "\"version\": \"2.3.2\""},
     {"file": "tools/check_verification.py", "contains": "def history_hours_verified(d: dict) -> bool:"},
     {"file": "docs/facts.json", "contains": "\"exchanges_hours_history_verified\": 0"},
-    {"file": "README.md", "contains": "Current hours verified (ADR 0014): 17 of 74"},
+    {"file": "README.md", "contains": "Current hours verified (ADR 0014): 29 of 74"},
     {"file": "tools/gen_cross_lang_probes.py", "contains": "MICS = (\"XNYS\", \"XLON\", \"XTKS\", \"XHKG\", \"XSAU\", \"XCAI\", \"XBUE\")"},
     {"file": "tests/test_cross_lang_coverage.py", "contains": "def test_every_weekday_is_probed(mic, op):"},
-    {"file": ".github/workflows/validate.yml", "contains": "run: python3 tools/gen_cross_lang_probes.py --check"}
+    {"file": ".github/workflows/validate.yml", "contains": "run: python3 tools/gen_cross_lang_probes.py --check"},
+    {"file": "tests/test_hours_evidence.py", "contains": "HOURS_EVIDENCE_FLOOR = 34"},
+    {"file": "exchanges/XTSE.json", "contains": "ADR 0013 applied to the MOC facility"},
+    {"file": "exchanges/XTKS.json", "contains": "\"verified_from\": \"2024-11-05\""}
   ]
 }

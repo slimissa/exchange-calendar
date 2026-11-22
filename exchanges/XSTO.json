@@ -2072,6 +2072,21 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "17:30",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "Page: equities row, Stockholm column '09:00-17:30'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds'; 'All times are local.' Open 09:00, close 17:30 (ADR 0013, random window ignored). verified_from 2026-11-22: the page states no effective date (read date).",
+        "open": "09:00",
+        "segment": "Nasdaq Stockholm equities, Main Market continuous trading",
+        "source_title": "Nasdaq, European Markets Trading Hours (equities)",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "status": "verified",
+        "verified_from": "2026-11-22"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

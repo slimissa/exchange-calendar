@@ -1514,6 +1514,21 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "17:35",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "Prime market: opening auction '08:55 - 09:00' (earliest end); continuous trading '09:00 - 12:00'; intraday auction '12:00 - 12:03'; continuous trading '12:03 - 17:30'; closing auction '17:30 - 17:35' (earliest end); trade at close '17:35 - 17:45'. Open 09:00, close 17:35 (ADR 0013). verified_from 2026-11-22: no effective date (read date); no earlier schedule read.",
+        "open": "09:00",
+        "segment": "Wiener Börse equities, prime market, Continuous Trading with Auctions",
+        "source_title": "Wiener Börse, Trading hours",
+        "source_url": "https://wienerboerse.at/en/trading/trading-information/trading-hours/",
+        "status": "verified",
+        "verified_from": "2026-11-22"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

@@ -1438,6 +1438,21 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "17:30",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "Opening scheduled 09:00: 'The Exchange System determines when each segment opens by selecting a random time within a two-minute slot'; closing: 'In the trading segments Shares and Investment Funds an auction is conducted from 17.20 to 17.30', 'ended by means of the random time procedure'; Trading-At-Last to 17:40 for Blue Chip and Mid-/Small-Cap Shares (not regular hours). Open 09:00, close 17:30 (ADR 0013, random times ignored). verified_from 2026-11-22: no effective date (read date).",
+        "open": "09:00",
+        "segment": "SIX Swiss Exchange, trading segments Shares and Investment Funds (incl. Blue Chip Shares)",
+        "source_title": "SIX, Trading Hours",
+        "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/trading/trading-provisions/trading-hours.html",
+        "status": "verified",
+        "verified_from": "2026-11-22"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

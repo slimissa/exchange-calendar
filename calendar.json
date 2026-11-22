@@ -69983,6 +69983,34 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "15:00",
+            "close_rule": "continuous_end",
+            "effective_from": "2010-01-01",
+            "note": "The 09:30-15:00 value predates 4c13 and is unconfirmed: PSE's schedules before 1 March 2022 differ (Memorandum 2010-0340, the 2013 schedule, the 2020-2022 shortened schedules; XPHS note) and are leads. Settled by those PSE memoranda.",
+            "open": "09:30",
+            "recheck_date": "2027-02-19",
+            "segment": "PSE equities (schedules before 1 March 2022)",
+            "source_title": "PSE (no schedule for 2010 to 2022-02-28 read)",
+            "source_url": "https://documents.pse.com.ph/CircularOPSPDF/CN-2022-0009.pdf",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-22",
+            "close": "14:50",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2022-03-01",
+            "note": "Notice of 'February 17, 2022', 'effective Tuesday, March 1, 2022': '09:30 a.m. – Market Open', '12:00 p.m. – Market Recess', '01:00 p.m – Market Resumption', '02:45 p.m. – Pre-Close', '02:48 p.m. – Pre-Close No Cancel', '02:50 p.m. – Run-Off / Trading at Last', '03:00 p.m. – Market Close'. ADR 0013: close 14:50, the end of the pre-close auction; run-off/trading at last is not regular hours. Re-read in 4b3 (4c13 first read it). verified_from 2022-03-01: the notice's effective date.",
+            "open": "09:30",
+            "segment": "PSE equities: market open to the pre-close (closing) auction",
+            "source_title": "PSE notice CN-2022-0009, 17 February 2022",
+            "source_url": "https://documents.pse.com.ph/CircularOPSPDF/CN-2022-0009.pdf",
+            "status": "verified",
+            "verified_from": "2022-03-01"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -73020,6 +73048,21 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "16:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Page (Nasdaq Baltic as a whole, no venue split, read 2026-11-22 in 4b2 and 4b3): Pre-Open 09:00 to ~10:00; Opening Call Auction 10:00:00-10:00:05 (random uncross); Continuous Trading ~10:00 to 15:55; Pre-Close 15:55 to ~16:00; Closing Call Auction 15:59:30-16:00:00 (random uncross); Post-Trading ~16:00-16:30. Open 10:00 (five-second call ignored), close 16:00 (ADR 0013). verified_from 2026-05-05: the page states no effective date; it was last modified on 5 May 2026. The 16:00 end dates from 2 February 2009 (Nasdaq OMX release of 19 November 2008); the 2010 call structure was not read.",
+            "open": "10:00",
+            "segment": "Nasdaq Baltic equities (Riga), continuous trading with opening and closing calls",
+            "source_title": "Nasdaq Baltic, Trading day",
+            "source_url": "https://nasdaqbaltic.com/market-information/trading-day/",
+            "status": "verified",
+            "verified_from": "2026-05-05"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -75369,6 +75412,47 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-20",
+            "close": "17:06",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "No SGX schedule before 1 August 2011 was read (a 12:30-14:00 lunch break applied then, XSES note). Settled by an SGX-ST schedule of 2010-2011.",
+            "open": "09:00",
+            "recheck_date": "2027-02-19",
+            "segment": "SGX-ST securities market (before all-day trading)",
+            "source_title": "SGX (no pre-2011 schedule read)",
+            "source_url": "https://investorrelations.sgx.com/static-files/9ef0a612-b4bb-4c44-9632-d01f40f206fd",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-20",
+            "close": "17:06",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2011-08-01",
+            "note": "4c8: the release dates all-day trading from 1 August 2011; the 2011 Practice Note version gives the Closing Routine's Non-Cancel 17:05-17:06, so the close (end of the Closing Routine, ADR 0013) is 17:06; open 09:00. verified_from 2011-08-01: the release's date for the schedule.",
+            "open": "09:00",
+            "segment": "SGX-ST securities market, normal day: trading and the Closing Routine",
+            "source_title": "SGX release 'SGX securities market trades all day from 1 August' (2011); SGX-ST Practice Note, 2011 version (read in 4c8)",
+            "source_url": "https://investorrelations.sgx.com/static-files/9ef0a612-b4bb-4c44-9632-d01f40f206fd",
+            "status": "verified",
+            "verified_from": "2011-08-01"
+          },
+          {
+            "checked_on": "2026-11-20",
+            "close": "17:06",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2017-11-13",
+            "note": "Notice 8.2.1 (4c8): normal days, trading 09:00-12:00 and 13:00-17:00, Mid-Day Break 12:00-13:00, Closing Routine with Pre-Close 17:00 to 17:04-05 (random end) and Non-Cancel to 17:06, then Trade at Close 17:06-17:16 (not regular). The closing price is set at the end of the Closing Routine: close 17:06 (ADR 0013). The amendments of 13 November 2017 (https://rulebook.sgx.com/sites/default/files/net_file_store/SGX-ST_November_13_2017.pdf) date the Mid-Day Break and the half-day Closing Routine. verified_from 2017-11-13: the amendments' effective date.",
+            "open": "09:00",
+            "segment": "SGX-ST securities market, normal day: trading 09:00-12:00 and 13:00-17:00, Closing Routine",
+            "source_title": "SGX-ST Regulatory Notice 8.2.1 (read in 4c8); SGX-ST rule amendments of 13 November 2017",
+            "source_url": "https://rulebook.sgx.com/node/9044",
+            "status": "verified",
+            "verified_from": "2017-11-13"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -81833,6 +81917,21 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "15:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Main Board stocks: opening call auction '9:15-9:25'; continuous auction '9:30-11:30' and '13:00-14:57'; closing call auction '14:57-15:00'. Open 09:30, close 15:00 (ADR 0013: the end of the closing call). The 11:30-13:00 break is a lunch break, out of scope here. verified_from 2026-11-22: no effective date on the page (it sits under the '2025' trading-calendar heading), so the read date.",
+            "open": "09:30",
+            "segment": "SSE Main Board stocks: continuous auction and closing call auction",
+            "source_title": "SSE, Trading Schedule",
+            "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+            "status": "verified",
+            "verified_from": "2026-11-22"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "CI-UNREACHABLE (not permanently blocked)."
       },
@@ -84181,6 +84280,21 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:30",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Page: equities row, Stockholm column '09:00-17:30'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds'; 'All times are local.' Open 09:00, close 17:30 (ADR 0013, random window ignored). verified_from 2026-11-22: the page states no effective date (read date).",
+            "open": "09:00",
+            "segment": "Nasdaq Stockholm equities, Main Market continuous trading",
+            "source_title": "Nasdaq, European Markets Trading Hours (equities)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "verified",
+            "verified_from": "2026-11-22"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -85536,6 +85650,21 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:30",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Opening scheduled 09:00: 'The Exchange System determines when each segment opens by selecting a random time within a two-minute slot'; closing: 'In the trading segments Shares and Investment Funds an auction is conducted from 17.20 to 17.30', 'ended by means of the random time procedure'; Trading-At-Last to 17:40 for Blue Chip and Mid-/Small-Cap Shares (not regular hours). Open 09:00, close 17:30 (ADR 0013, random times ignored). verified_from 2026-11-22: no effective date (read date).",
+            "open": "09:00",
+            "segment": "SIX Swiss Exchange, trading segments Shares and Investment Funds (incl. Blue Chip Shares)",
+            "source_title": "SIX, Trading Hours",
+            "source_url": "https://www.six-group.com/en/products-services/the-swiss-stock-exchange/trading/trading-provisions/trading-hours.html",
+            "status": "verified",
+            "verified_from": "2026-11-22"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -88058,6 +88187,21 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-20",
+            "close": "13:30",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "4c8: matching 9:00-13:30 with a closing call auction 13:25-13:30 and the closing match at 13:30; only securities hitting the closing-delay threshold close at 13:33 (ignored, ADR 0013). Open 09:00, close 13:30. verified_from 2026-11-20: the page states no date (read date, 4c8); exchange_calendars agrees for 2010-2024 but is not the exchange.",
+            "open": "09:00",
+            "segment": "TWSE securities market, matching and closing call auction",
+            "source_title": "TWSE, trading system page (read in 4c8; TWSE refuses this sandbox)",
+            "source_url": "https://www.twse.com.tw/zh/products/system/trading.html",
+            "status": "verified",
+            "verified_from": "2026-11-20"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -89468,6 +89612,21 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "16:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Page (Nasdaq Baltic as a whole, no venue split, read 2026-11-22 in 4b2 and 4b3): Pre-Open 09:00 to ~10:00; Opening Call Auction 10:00:00-10:00:05 (random uncross); Continuous Trading ~10:00 to 15:55; Pre-Close 15:55 to ~16:00; Closing Call Auction 15:59:30-16:00:00 (random uncross); Post-Trading ~16:00-16:30. Open 10:00 (five-second call ignored), close 16:00 (ADR 0013). verified_from 2026-05-05: the page states no effective date; it was last modified on 5 May 2026. The 16:00 end dates from 2 February 2009 (Nasdaq OMX release of 19 November 2008); the 2010 call structure was not read.",
+            "open": "10:00",
+            "segment": "Nasdaq Baltic equities (Tallinn), continuous trading with opening and closing calls",
+            "source_title": "Nasdaq Baltic, Trading day",
+            "source_url": "https://nasdaqbaltic.com/market-information/trading-day/",
+            "status": "verified",
+            "verified_from": "2026-05-05"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -92848,6 +93007,34 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "15:00",
+            "close_rule": "continuous_end",
+            "effective_from": "1997-01-01",
+            "note": "The 2023 decision extends 'the closing time of the afternoon session for arrowhead trading ... by 30 minutes to 12:30 - 15:30', so the close was 15:00 as of 2023; no TSE document for 1997-2023 was read. Before 2024-11-05 there was no closing auction session (introduced with the extension). Settled by an earlier TSE trading-hours document.",
+            "open": "09:00",
+            "recheck_date": "2027-02-19",
+            "segment": "TSE cash equities (arrowhead), morning and afternoon sessions",
+            "source_title": "Tokyo Stock Exchange, 'Final Decision for Extension of Trading Hours', 20 September 2023",
+            "source_url": "https://www.jpx.co.jp/english/corporate/news/news-releases/1030/20230920-01.html",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-22",
+            "close": "15:30",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2024-11-05",
+            "note": "Release of 5 November 2024: TSE 'has implemented its planned changes to the cash market today, including the 30-minute extension to trading hours and the introduction of a closing auction session at the end of the afternoon trading session'. Decision of 20 September 2023: 'the closing time of the afternoon session for arrowhead trading will be extended by 30 minutes to 12:30 - 15:30'. JPX page: 'Morning session is from 9:00 am to 11:30 am, while afternoon session is from 12:30 pm to 3:30 pm.' TSE's rule outline: zaraba ends at 15:25 and the Closing Auction takes place at 15:30. Open 09:00, close 15:30 (ADR 0013). Lead: JPX lists an 'Outline of Random Closing (from October 12, 2027)'; not read. verified_from 2024-11-05: the release dates the change.",
+            "open": "09:00",
+            "segment": "TSE cash equities (arrowhead): morning session, afternoon session ending with the Closing Auction",
+            "source_title": "Tokyo Stock Exchange news release of 5 November 2024; TSE 'Final Decision for Extension of Trading Hours', 20 September 2023; JPX trading-hours page (https://www.jpx.co.jp/english/equities/trading/domestic/01.html, updated 4 November 2024)",
+            "source_url": "https://www.jpx.co.jp/english/corporate/news/news-releases/1030/20241105-01.html",
+            "status": "verified",
+            "verified_from": "2024-11-05"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -94355,6 +94542,21 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "16:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Page (ET): pre-open 7:00-9:30; opening 9:30 ('All matching orders are executed at a single opening trade price'); continuous trading '9:30 AM - 4:00 PM'; MOC imbalance and order entry 3:50 PM; 'The Freeze Period begins simultaneously across all symbols at a random point between 3:56 pm and 3:57 pm'; closing price calculation 4:00 PM: 'Trades publish at 4:00 unless a Price Movement Extension is required'; extended trading session 4:15-5:00 at the last sale price (not regular). ADR 0013 applied to the MOC facility: the closing call prints at 16:00, which is also the end of continuous trading, so close 16:00 either way; close_rule closing_auction_end (the MOC call). Price Movement Extensions are event-driven and ignored. verified_from 2026-11-22: no effective date (read date).",
+            "open": "09:30",
+            "segment": "Toronto Stock Exchange equities: continuous trading and the Market on Close (MOC) facility",
+            "source_title": "TMX, Trading hours",
+            "source_url": "https://tsx.com/en/trading/calendars-and-trading-hours/trading-hours",
+            "status": "verified",
+            "verified_from": "2026-11-22"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -97744,6 +97946,21 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:35",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Prime market: opening auction '08:55 - 09:00' (earliest end); continuous trading '09:00 - 12:00'; intraday auction '12:00 - 12:03'; continuous trading '12:03 - 17:30'; closing auction '17:30 - 17:35' (earliest end); trade at close '17:35 - 17:45'. Open 09:00, close 17:35 (ADR 0013). verified_from 2026-11-22: no effective date (read date); no earlier schedule read.",
+            "open": "09:00",
+            "segment": "Wiener Börse equities, prime market, Continuous Trading with Auctions",
+            "source_title": "Wiener Börse, Trading hours",
+            "source_url": "https://wienerboerse.at/en/trading/trading-information/trading-hours/",
+            "status": "verified",
+            "verified_from": "2026-11-22"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -99418,6 +99635,21 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-20",
+            "close": "16:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "4c11: pre-trading 08:00-09:00, opening auction 09:00-09:30, continuous trading 09:30-12:00, intraday auction 12:00-12:10, continuous trading 12:10-15:55, closing auction 15:55-16:00 (earliest ending; random up to 15 seconds later), trading at close 16:00-16:10. Open 09:30, close 16:00 (ADR 0013). verified_from 2026-01-22: the manual's entry into force; no earlier manual read.",
+            "open": "09:30",
+            "segment": "ZSE Continuous Trading: opening auction, continuous trading, closing auction",
+            "source_title": "ZSE Trading Manual of 14 January 2026, in force 22 January 2026 (read in 4c11)",
+            "source_url": "https://zse.hr/UserDocsImages/docs/trading/manuals/Trading_Manual_2026-01-14.pdf",
+            "status": "verified",
+            "verified_from": "2026-01-22"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

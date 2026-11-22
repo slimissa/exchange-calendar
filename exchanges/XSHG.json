@@ -2342,6 +2342,21 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "15:00",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "Main Board stocks: opening call auction '9:15-9:25'; continuous auction '9:30-11:30' and '13:00-14:57'; closing call auction '14:57-15:00'. Open 09:30, close 15:00 (ADR 0013: the end of the closing call). The 11:30-13:00 break is a lunch break, out of scope here. verified_from 2026-11-22: no effective date on the page (it sits under the '2025' trading-calendar heading), so the read date.",
+        "open": "09:30",
+        "segment": "SSE Main Board stocks: continuous auction and closing call auction",
+        "source_title": "SSE, Trading Schedule",
+        "source_url": "https://english.sse.com.cn/start/trading/schedule/",
+        "status": "verified",
+        "verified_from": "2026-11-22"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "CI-UNREACHABLE (not permanently blocked)."
   },

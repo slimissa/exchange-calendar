@@ -1573,6 +1573,21 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "16:00",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "Page (ET): pre-open 7:00-9:30; opening 9:30 ('All matching orders are executed at a single opening trade price'); continuous trading '9:30 AM - 4:00 PM'; MOC imbalance and order entry 3:50 PM; 'The Freeze Period begins simultaneously across all symbols at a random point between 3:56 pm and 3:57 pm'; closing price calculation 4:00 PM: 'Trades publish at 4:00 unless a Price Movement Extension is required'; extended trading session 4:15-5:00 at the last sale price (not regular). ADR 0013 applied to the MOC facility: the closing call prints at 16:00, which is also the end of continuous trading, so close 16:00 either way; close_rule closing_auction_end (the MOC call). Price Movement Extensions are event-driven and ignored. verified_from 2026-11-22: no effective date (read date).",
+        "open": "09:30",
+        "segment": "Toronto Stock Exchange equities: continuous trading and the Market on Close (MOC) facility",
+        "source_title": "TMX, Trading hours",
+        "source_url": "https://tsx.com/en/trading/calendars-and-trading-hours/trading-hours",
+        "status": "verified",
+        "verified_from": "2026-11-22"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

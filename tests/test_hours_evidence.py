@@ -19,7 +19,8 @@ import check_verification as cv  # noqa: E402
 # Check 6 is non-blocking in Phase 4b-lite. Its count of exchanges with
 # complete hours evidence may grow, never shrink: raise this floor when an
 # exchange gains evidence.
-HOURS_EVIDENCE_FLOOR = 22  # 4b1: XBUE; 4b2: XHKG, XMOS, Euronext (6), batch A (8), XBDA XBUD XJSE XNZE, XKAR
+HOURS_EVIDENCE_FLOOR = 34  # 4b1: XBUE; 4b2: XHKG, XMOS, Euronext (6), batch A (8), XBDA XBUD XJSE XNZE, XKAR;
+#   4b3: batch B (8), XPHS XSES XTAI XZAG
 
 
 def _item(eff, open_="10:30", close="18:00", status="verified", **extra):
@@ -328,7 +329,7 @@ def test_real_tree_facts_4b3():
     assert total == 74
     # 4b3: 17 current (Euronext AMS/BRU/PAR/LIS read only in the edition
     # effective 23 November 2026); no exchange's whole history is proven.
-    assert cur >= 17 and hist >= 0
+    assert cur >= 29 and hist >= 0  # 4b3: 17 after verified_from; + batch B (8) and XPHS XSES XTAI XZAG
     for code in ("XAMS", "XBRU", "XPAR", "XLIS"):
         d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
         assert d["verification"]["hours"][-1]["verified_from"] == "2026-11-23", code

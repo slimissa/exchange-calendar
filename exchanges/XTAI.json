@@ -2272,6 +2272,21 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-20",
+        "close": "13:30",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "4c8: matching 9:00-13:30 with a closing call auction 13:25-13:30 and the closing match at 13:30; only securities hitting the closing-delay threshold close at 13:33 (ignored, ADR 0013). Open 09:00, close 13:30. verified_from 2026-11-20: the page states no date (read date, 4c8); exchange_calendars agrees for 2010-2024 but is not the exchange.",
+        "open": "09:00",
+        "segment": "TWSE securities market, matching and closing call auction",
+        "source_title": "TWSE, trading system page (read in 4c8; TWSE refuses this sandbox)",
+        "source_url": "https://www.twse.com.tw/zh/products/system/trading.html",
+        "status": "verified",
+        "verified_from": "2026-11-20"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

@@ -869,9 +869,14 @@ describe('verification(mic)', () => {
     test('returns the verification object for a known MIC', () => {
         const r = new CalendarRegistry(getRegistryPath());
         const v = r.verification('XSWX');
-        // coverage is optional (authored on backfilled exchanges, not derived)
-        assert.deepEqual(Object.keys(v).filter((k) => k !== 'coverage').sort(),
+        // coverage and hours are optional (authored, not derived; hours is the
+        // regular-hours evidence of schema 2.3.0, present on XSWX since 4b3)
+        assert.deepEqual(Object.keys(v).filter((k) => k !== 'coverage' && k !== 'hours').sort(),
             ['basis', 'class', 'last_checked', 'reference_note']);
+        if (v.hours !== undefined) {
+            assert.ok(Array.isArray(v.hours) && v.hours.length > 0);
+            assert.ok(v.hours.every((i) => ['verified', 'schema_limited', 'unconfirmed'].includes(i.status)));
+        }
         assert.ok(['reference_compared', 'source_verified', 'single_source', 'ci_unreachable']
             .includes(v.class));
         // a copy: changing it does not change the registry

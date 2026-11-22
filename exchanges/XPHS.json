@@ -2223,6 +2223,34 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "15:00",
+        "close_rule": "continuous_end",
+        "effective_from": "2010-01-01",
+        "note": "The 09:30-15:00 value predates 4c13 and is unconfirmed: PSE's schedules before 1 March 2022 differ (Memorandum 2010-0340, the 2013 schedule, the 2020-2022 shortened schedules; XPHS note) and are leads. Settled by those PSE memoranda.",
+        "open": "09:30",
+        "recheck_date": "2027-02-19",
+        "segment": "PSE equities (schedules before 1 March 2022)",
+        "source_title": "PSE (no schedule for 2010 to 2022-02-28 read)",
+        "source_url": "https://documents.pse.com.ph/CircularOPSPDF/CN-2022-0009.pdf",
+        "status": "unconfirmed"
+      },
+      {
+        "checked_on": "2026-11-22",
+        "close": "14:50",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2022-03-01",
+        "note": "Notice of 'February 17, 2022', 'effective Tuesday, March 1, 2022': '09:30 a.m. – Market Open', '12:00 p.m. – Market Recess', '01:00 p.m – Market Resumption', '02:45 p.m. – Pre-Close', '02:48 p.m. – Pre-Close No Cancel', '02:50 p.m. – Run-Off / Trading at Last', '03:00 p.m. – Market Close'. ADR 0013: close 14:50, the end of the pre-close auction; run-off/trading at last is not regular hours. Re-read in 4b3 (4c13 first read it). verified_from 2022-03-01: the notice's effective date.",
+        "open": "09:30",
+        "segment": "PSE equities: market open to the pre-close (closing) auction",
+        "source_title": "PSE notice CN-2022-0009, 17 February 2022",
+        "source_url": "https://documents.pse.com.ph/CircularOPSPDF/CN-2022-0009.pdf",
+        "status": "verified",
+        "verified_from": "2022-03-01"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },
