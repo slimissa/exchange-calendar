@@ -118,7 +118,7 @@
     "tools/schema_audit.py": "8917e67fb81a5a167888e1aac17bfa6240391f5dc0fd4608192ff83ea30b7bc7",
     "tools/summarize_blocked.py": "f254a99299359c380398b5debe714f77747d967a3543cc39dd6eca0d8a4f6c26",
     "tools/update_facts.py": "8d400d57c73ab9753f53e7f29c173cb381dd5015d18ccfd4b4032ac22e403a23",
-    "tools/update_from_exchange.py": "9b9ed082dbc20e4deeabc2aa0791fe20d72011af0a1fbdac9c809f447534dbc8",
+    "tools/update_from_exchange.py": "c1f699f28a709371b9b5263498cb15216f69ee3846c6369ed828902aa37b7d11",
     "tools/validate.py": "427f992c8f359878ac8e13a956c5d168474aba5218658d9264c39af859460c92",
     "tools/verify_checksums.py": "ce94243ab814f1f44cb9c35a3aee998a14ced75aaaaf08d8c037d87440beb78d",
     "tools/verify_predicted_dates.py": "a3f0f12f5f6d05ba89cd7b8c8aee7ab96dad867ad5e4bb69d778df214b4d709a",
