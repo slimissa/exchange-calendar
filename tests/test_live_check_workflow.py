@@ -81,4 +81,3 @@ def test_xbul_xist_xswx_are_placed_once():
     stable_exclude = LIVE["jobs"]["live-check-stable"]["env"]["STABLE_EXCLUDE"].split(",")
     assert "XIST" not in stable_exclude  # a stable implemented fetcher
     assert {"XSWX", "XBUL"} <= set(stable_exclude)
-

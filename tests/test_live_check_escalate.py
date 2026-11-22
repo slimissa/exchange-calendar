@@ -101,4 +101,3 @@ def test_fault_cleared_warning_reaches_the_body():
     r = dict(R("XMAD", "PASS"), warning="fault cleared, remove the entry for XMAD")
     _, body = step([r, R("XCAY", "FAIL")])
     assert "Warning: XMAD: fault cleared, remove the entry" in body
-
