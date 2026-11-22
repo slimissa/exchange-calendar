@@ -1710,6 +1710,21 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "15:30",
+        "close_rule": "continuous_end",
+        "effective_from": "2010-01-01",
+        "note": "PSX's page, Monday to Thursday: '(Pre-Open) 09:15 AM to 09:30 AM'; 'Break (Order Matching & Confirmation Period) 09:30 AM to 09:32 AM'; 'Open 09:32 AM to 03:30 PM'; 'Break / Close 03:30 PM'; 'Post-Close Session 03:35 PM to 03:50 PM'; no closing auction. Friday: 1st session open 09:17 AM to 12:00 PM, 2nd session open 02:32 PM to 04:30 PM (two sessions: Weekday-specific sessions, 4f backlog). Under ADR 0014 the current Monday-Thursday open is 09:32, not the registry's 09:30, but no PSX notice dating this schedule was found (PSX/N-460 of 31 March 2020 gave a COVID schedule with a 10:32 open; press reports PSX schedules from 13 July 2020 and from 25 October 2021, Monday-Thursday to 16:00, neither read as a PSX notice). The 4b2 rule keeps the value without a dated document, so this entry stays 09:30-15:30 and a 09:32 entry (Fridays schema_limited) waits for the PSX notice that set today's schedule. Settled by that notice (dps.psx.com.pk).",
+        "open": "09:30",
+        "recheck_date": "2027-02-19",
+        "segment": "PSX Regular Market (Ready), Monday to Thursday",
+        "source_title": "PSX, Trading Hours (no effective date)",
+        "source_url": "https://psx.com.pk/psx/exchange/general/trading-hours",
+        "status": "unconfirmed"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

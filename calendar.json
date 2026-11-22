@@ -1254,6 +1254,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:35",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Appendix row (Trading Venue RM, Market Amsterdam, Gr. J0, Type 'Equities AEX', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Amsterdam local time: 09:00-17:35. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026.",
+            "open": "09:00",
+            "segment": "Euronext Amsterdam regulated market, 'Equities AEX' (group J0), continuous mode C",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -5953,6 +5967,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-20",
+            "close": "16:30",
+            "close_rule": "continuous_end",
+            "effective_from": "2010-01-01",
+            "note": "'Trading Hours are Monday through Friday 9:00 a.m. - 4:30 p.m. (Atlantic Time)'; continuous trading after an 08:30-09:00 price discovery phase, no closing auction (ADR 0013: continuous_end). Current entry; press (Bernews, 23 September 2016) dates the 16:30 close to 28 September 2016, so years before are not covered by this page (XBDA note).",
+            "open": "09:00",
+            "segment": "BSX equities, continuous trading",
+            "source_title": "BSX, Trading (read in 4c11; the site refuses this sandbox)",
+            "source_url": "https://www.bsx.com/trading/trading",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -13496,6 +13524,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:35",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Appendix row (Trading Venue RM, Market Brussels, Gr. A0, Type 'Equities BEL20', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Brussels local time: 09:00-17:35. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026.",
+            "open": "09:00",
+            "segment": "Euronext Brussels regulated market, 'Equities BEL20' (group A0), continuous mode C",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -15863,6 +15905,33 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:05",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "No BSE document for 2010 to 2015-02-26 was found (4c-R5; Xetra launched on 6 December 2013 per BSE's 2013 annual report). Settled by a BSE trading-hours resolution of that period.",
+            "open": "09:00",
+            "recheck_date": "2027-02-19",
+            "segment": "BSE equities (pre-Xetra MMTS era and Xetra's first months)",
+            "source_title": "BSE Resolution 550/2013 extract of 25 September 2017 (schedule effective 27 February 2015; nothing earlier found, 4c-R5)",
+            "source_url": "https://www.bet.hu/newkibdata/124142063/550_2013_EN.pdf",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:05",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2015-02-27",
+            "note": "'Pre-Trading Phase (PRETR) 8.15-8.30'; 'Auction Call Sub-Phase (OCALL) 8.30-9.00'; 'Price Determination and matching 9.00 + Random End'; 'Continuous Trading Phase (TRADE)' from the end of the opening auction 'until 17.00'; 'Auction Call Sub-Phase (CCALL) 17.00-17.05'; 'Price Determination and matching 17.05 + Random End' ('Random End max. 30 sec.'); trade-at-close until 17:15; post-trading until 17.20. Open 09:00, close 17:05 (ADR 0013). Dated by the 550/2013 extract of 25 September 2017 (https://www.bet.hu/newkibdata/124142063/550_2013_EN.pdf), whose schedule is stated as effective 27 February 2015 (4c-R5).",
+            "open": "09:00",
+            "segment": "BSE Equities Prime/Standard Market, Continuous Trading with Auctions (Xetra)",
+            "source_title": "BSE Resolution 550/2013 (Xetra trading parameters), consolidated version effective 8 April 2026",
+            "source_url": "https://www.bse.hu/newkibdata/129432789/20260407_550_2013_EN.pdf",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -21455,6 +21524,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Page: Copenhagen equities '09:00-17:00'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds of this five-minute period'; 'All times are local.' The Nasdaq Nordic Market Model 2026:03, section 3.1 (https://www.nasdaq.com/docs/2026/06/17/Nasdaq_Nordic_Market_Model_2026_03_Clean.pdf, read in 4c-R4) schedules continuous trading 09:00-16:55, pre-close 16:55 and the closing uncross at 17:00. Close 17:00 (ADR 0013). No effective date on either; read as the current entry.",
+            "open": "09:00",
+            "segment": "Nasdaq Copenhagen equities, Main Market continuous trading",
+            "source_title": "Nasdaq, European Markets Trading Hours (equities)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -23427,6 +23510,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "16:30",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Appendix row (Trading Venue RM, Market Dublin, Gr. 9A, Type 'Shares - ISEQ 20 - XMSM', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:28 Continuous Random', CU '17:30 Random', TAL '17:30  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. Dublin is one hour behind CET all year: 09:00-17:30 CET = 08:00-16:30 Dublin. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). 4c8 read the same 17:28-17:30 CET close in the 3 August 2026 edition (ADR 0013); earlier years not read.",
+            "open": "08:00",
+            "segment": "Euronext Dublin regulated market, 'Shares - ISEQ 20 - XMSM' (group 9A), continuous mode C",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -24621,6 +24718,33 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:35",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "No Deutsche Börse schedule for 2010 to 2025-11-30 was read (ADR 0013). Settled by an earlier Xetra trading-parameters sheet or auction schedule.",
+            "open": "09:00",
+            "recheck_date": "2027-02-19",
+            "segment": "Xetra, Continuous Trading with Auctions (equities)",
+            "source_title": "Deutsche Börse (no Xetra schedule before 2025-12-01 read)",
+            "source_url": "https://cashmarket.deutsche-boerse.com/cash-en/trading/trading-calendar-and-trading-hours",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-20",
+            "close": "17:35",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2025-12-01",
+            "note": "Trading parameters (4c8): closing auction call at 17:30, closing auction price at 17:35; the auction schedule (https://cashmarket.deutsche-boerse.com/cash-en/trading/Xetra/continuous-trading-with-auctions/auctionschedule) says the stated times are the earliest ends (random end ignored, ADR 0013). Trading-hours page (4b2): 'Trading on Xetra takes place from Mondays to Fridays from 9 until 17:30 CET.' Open 09:00, close 17:35.",
+            "open": "09:00",
+            "segment": "Xetra, Continuous Trading with Auctions (equities)",
+            "source_title": "Deutsche Börse, Xetra trading parameters as of 1 December 2025 (read in 4c8); Deutsche Börse, Trading calendar and trading hours (read in 4b2)",
+            "source_url": "https://cashmarket.deutsche-boerse.com/resource/blob/250890/43c50e657b0ff5fb58132fbf6e063517/data/trading-parameters-xetra.pdf",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -26401,6 +26525,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "18:30",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Page: Helsinki equities '10:00-18:30'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds of this five-minute period'; 'All times are local.' Close 18:30 (ADR 0013). No effective date; read as the current entry.",
+            "open": "10:00",
+            "segment": "Nasdaq Helsinki equities, Main Market continuous trading",
+            "source_title": "Nasdaq, European Markets Trading Hours (equities)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -32245,6 +32383,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "15:30",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Page: Iceland equities '09.30-15:30'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds of this five-minute period'; 'All times are local.' The Nasdaq Nordic Market Model 2026:03, section 3.1 (https://www.nasdaq.com/docs/2026/06/17/Nasdaq_Nordic_Market_Model_2026_03_Clean.pdf, read in 4c-R4) schedules Iceland in CET with the closing uncross at 16:30 CET, 15:30 Reykjavik. Close 15:30 (ADR 0013). No effective date; read as the current entry.",
+            "open": "09:30",
+            "segment": "Nasdaq Iceland equities, Main Market continuous trading",
+            "source_title": "Nasdaq, European Markets Trading Hours (equities)",
+            "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -35988,6 +36140,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Normal Day, 'ZA01 07:00 - 08:30 08:30 - 09:00 09:00 - 16:50 16:50 - 17:00 17:00 - 17:05 17:05 - 17:10 17:10 - 17:15 17:15 - 18:15': opening auction call 08:30-09:00, continuous trading 09:00-16:50, closing auction call 16:50-17:00 (ZA02 and ZA06 the same). Market Notice 2719: earliest close 17:00:00 with a random uncross up to 17:01:00 (ignored, ADR 0013). Open 09:00, close 17:00. Current entry; no pre-2013 schedule read (XJSE note).",
+            "open": "09:00",
+            "segment": "JSE equity market, Central Order Book, segment ZA01 (Top Companies), Normal Day",
+            "source_title": "JSE Specification Document, Volume 00E - Trading and Information Overview, Version 3.06, 23 July 2019",
+            "source_url": "https://www.jse.co.za/sites/default/files/media/documents/2020-02/Volume%2000E%20-%20Trading%20and%20Information%20Overview%20for%20Equity%20Market.pdf",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -37709,6 +37875,21 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "15:30",
+            "close_rule": "continuous_end",
+            "effective_from": "2010-01-01",
+            "note": "PSX's page, Monday to Thursday: '(Pre-Open) 09:15 AM to 09:30 AM'; 'Break (Order Matching & Confirmation Period) 09:30 AM to 09:32 AM'; 'Open 09:32 AM to 03:30 PM'; 'Break / Close 03:30 PM'; 'Post-Close Session 03:35 PM to 03:50 PM'; no closing auction. Friday: 1st session open 09:17 AM to 12:00 PM, 2nd session open 02:32 PM to 04:30 PM (two sessions: Weekday-specific sessions, 4f backlog). Under ADR 0014 the current Monday-Thursday open is 09:32, not the registry's 09:30, but no PSX notice dating this schedule was found (PSX/N-460 of 31 March 2020 gave a COVID schedule with a 10:32 open; press reports PSX schedules from 13 July 2020 and from 25 October 2021, Monday-Thursday to 16:00, neither read as a PSX notice). The 4b2 rule keeps the value without a dated document, so this entry stays 09:30-15:30 and a 09:32 entry (Fridays schema_limited) waits for the PSX notice that set today's schedule. Settled by that notice (dps.psx.com.pk).",
+            "open": "09:30",
+            "recheck_date": "2027-02-19",
+            "segment": "PSX Regular Market (Ready), Monday to Thursday",
+            "source_title": "PSX, Trading Hours (no effective date)",
+            "source_url": "https://psx.com.pk/psx/exchange/general/trading-hours",
+            "status": "unconfirmed"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -44740,6 +44921,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "16:35",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Appendix row (Trading Venue RM, Market Lisbon, Gr. P0, Type 'Equities PSI', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. Lisbon is one hour behind CET all year (both observe EU summer time): 09:00-17:35 CET = 08:00-16:35 Lisbon. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026.",
+            "open": "08:00",
+            "segment": "Euronext Lisbon regulated market, 'Equities PSI' (group P0), continuous mode C",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -46313,6 +46508,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "16:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Page (Nasdaq Baltic as a whole, no venue split): Pre-Open 09:00 to ~10:00; Opening Call Auction 10:00:00-10:00:05 (random uncross); Continuous Trading ~10:00 to 15:55; Pre-Close 15:55 to ~16:00; Closing Call Auction 15:59:30-16:00:00 (random uncross); Post-Trading ~16:00-16:30. Open 10:00 (the five-second call is ignored), close 16:00 (ADR 0013). No effective date (page modified 2026-05-05); read as the current entry. The 16:00 end dates from 2 February 2009 (Nasdaq OMX release of 19 November 2008); the 2010 call structure was not read.",
+            "open": "10:00",
+            "segment": "Nasdaq Baltic equities (Vilnius), continuous trading with opening and closing calls",
+            "source_title": "Nasdaq Baltic, Trading day",
+            "source_url": "https://nasdaqbaltic.com/market-information/trading-day/",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -50066,6 +50275,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:35",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Page: 'Pre-opening phase (call): 07:30 – 09:00 CET'; 'Continuous trading phase: 09:00 – 17:30 CET'; 'Closing phase (call): 17:30 – 17:35 CET'; 'Trading at last phase: 17:35 – 17:40 CET'; 'After market phase (call): 17:40 – 18:00 CET'. Open 09:00, close 17:35 (ADR 0013; trading at last is not regular). No effective date; read as the current entry.",
+            "open": "09:00",
+            "segment": "LuxSE regulated market, continuous trading",
+            "source_title": "LuxSE, Opening hours, closing days and market status",
+            "source_url": "https://luxse.com/trading/opening-hours-and-closing-days",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -63242,6 +63465,20 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "16:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "1990-01-01",
+            "note": "NYSE section, Tape A: 'Pre-Opening Session: 6:30 a.m. ET'; orders 'queued until the Opening Auction at 9:30 a.m. ET'; 'Core Trading Session: 9:30 a.m. to 4:00 p.m. ET'; '4:00 p.m. ET - Closing Auction'. Open 09:30, close 16:00 (the closing auction prints at 16:00, ADR 0013). Read on the page itself (4b1 used a search snippet). No effective date; read as the current entry.",
+            "open": "09:30",
+            "segment": "NYSE (Tape A) Core Trading Session",
+            "source_title": "NYSE, Hours & Calendars",
+            "source_url": "https://www.nyse.com/trade/hours-calendars",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -64951,6 +65188,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-20",
+            "close": "17:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Normal Trading 10:00-16:45, Pre-Close from 16:45, closing auction at a random time 30 seconds either side of 5:00pm, then Adjust to 5:30pm. Open 10:00, close 17:00 (scheduled time, random window ignored, ADR 0013). Current entry; no earlier NZX schedule read (XNZE note).",
+            "open": "10:00",
+            "segment": "NZX Main Board, Normal Trading",
+            "source_title": "NZX, Anatomy of a trading day (read in 4c9, re-read in 4c10; the site refuses this sandbox)",
+            "source_url": "https://www.nzx.com/services/nzx-trading/anatomy-of-a-trading-day",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -66498,6 +66749,46 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:30",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "17:30 before 2012-08-06 is inferred from Oslo Børs's one-hour cut on 6 August 2012 (XOSL note); no Oslo Børs schedule of 2010-2012 was read. Settled by Oslo Børs's 2012 trading-hours notice.",
+            "open": "09:00",
+            "recheck_date": "2027-02-19",
+            "segment": "Oslo Børs equities (period names not checked)",
+            "source_title": "Euronext/Oslo Børs (no document for 2010-2012 read)",
+            "source_url": "https://www.euronext.com/en/markets/oslo",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-22",
+            "close": "16:25",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2012-08-06",
+            "note": "16:25 (continuous to 16:20, closing uncross 16:25) is read for 2026 only (ADR 0013: 2012-08-06 to 2026-08-02 unconfirmed); whether the 2012 cut left a 16:20/16:25 structure or a 16:30 close was not read. Settled by Oslo Børs's 2012 trading-hours notice.",
+            "open": "09:00",
+            "recheck_date": "2027-02-19",
+            "segment": "Oslo Børs equities, continuous trading and closing auction",
+            "source_title": "Euronext/Oslo Børs (no document for 2012-2026 read)",
+            "source_url": "https://www.euronext.com/en/markets/oslo",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-22",
+            "close": "16:25",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2026-08-03",
+            "note": "Appendix row (Trading Venue RM, Market Oslo, Gr. OA, Type 'Equities - OBX', Mode C): OU '09:00 Random', Trading '09:00 Random - 16:20 Continuous Random', CU '16:25 Random', TAL '16:25  - 16:30 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Oslo local time: 09:00-16:25. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). The entry's date is the 3 August 2026 edition's, which 4c8 read with the same Oslo rows.",
+            "open": "09:00",
+            "segment": "Euronext Oslo Børs regulated market, 'Equities - OBX' (group OA), continuous mode C",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -67483,6 +67774,20 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "17:35",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Appendix row (Trading Venue RM, Market Paris, Gr. F1, Type 'Equities CAC40 - Group 1', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Paris local time: 09:00-17:35. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026.",
+            "open": "09:00",
+            "segment": "Euronext Paris regulated market, 'Equities CAC40 - Group 1' (group F1), continuous mode C",
+            "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+            "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
+            "status": "verified"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -71084,6 +71389,33 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-22",
+            "close": "16:15",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "Row 'Prime and Standard (regulated), continuous trading': 08:00:00, 08:50:00, 09:00:00, 16:10:00, 16:15:00, 16:25:00, 17:00:00, under the headers 'Pre-trading, Opening auction, Cont. Phase, Cont. Auction, Single auction, Closing auction, Trading at Close, Post-trading, End of trading'. The table gives start times ('Starts of trading procedures'); the continuous row has no 'Cont. Auction' or 'Single auction' phase (those are the single-auction row's: 08:00, 11:10, 16:20, 17:00), so its seven times are pre-trading 08:00, opening auction 08:50, continuous 09:00, closing auction 16:10, trading at close 16:15, post-trading 16:25, end 17:00. The 4c-R4 reading and pse.cz's instrument pages (closing auction 16:10, trade at close 16:15) agree. Open 09:00, close 16:15 (ADR 0013). Current entry until 2027-01-03; the 16:15 regime's start (after the 2012 Xetra launch) is undated.",
+            "open": "09:00",
+            "segment": "PSE shares, Prime and Standard (regulated), continuous trading (Xetra)",
+            "source_title": "PSE, Trading hours ('Starts of trading procedures for instruments in the trading system')",
+            "source_url": "https://www.pse.cz/userfiles/related_documents/en/Trading-hours.pdf",
+            "status": "verified"
+          },
+          {
+            "checked_on": "2026-11-22",
+            "close": "16:55",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2027-01-04",
+            "note": "The notice confirms the date and that the trading day ends at 17:00 instead of 16:30; its phase schedule is an image not read (4c-R4). 16:55 (closing auction end) is from press transcriptions (Kurzy.cz: continuous 09:00-16:45, closing auction 16:45-16:55), a lead. Settled by PSE's trading-hours PDF once updated for 2027.",
+            "open": "09:00",
+            "recheck_date": "2027-01-04",
+            "segment": "PSE shares, continuous trading (Xetra)",
+            "source_title": "PSE notice of 31 July 2026, extension of trading hours",
+            "source_url": "https://www.pse.cz/en/news/prodlouzeni-obchodnich-hodin-na-prazske-burze",
+            "status": "unconfirmed"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

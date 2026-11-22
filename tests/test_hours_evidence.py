@@ -19,7 +19,7 @@ import check_verification as cv  # noqa: E402
 # Check 6 is non-blocking in Phase 4b-lite. Its count of exchanges with
 # complete hours evidence may grow, never shrink: raise this floor when an
 # exchange gains evidence.
-HOURS_EVIDENCE_FLOOR = 3  # 4b1: XBUE; 4b2: XHKG, XMOS
+HOURS_EVIDENCE_FLOOR = 22  # 4b1: XBUE; 4b2: XHKG, XMOS, Euronext (6), batch A (8), XBDA XBUD XJSE XNZE, XKAR
 
 
 def _item(eff, open_="10:30", close="18:00", status="verified", **extra):
@@ -231,3 +231,27 @@ def test_tool_reports_the_hours_line(capsys):
     out = capsys.readouterr().out
     assert "hours evidence: " in out and " of 74 (" in out and " of 48 reference_compared)" in out
     assert " verified, " in out and " schema_limited, " in out and " unconfirmed" in out
+
+
+def test_4b2_current_entries_verified():
+    """4b2: the current entry of each exchange documented in this session is
+    verified; XKAR's is unconfirmed (no PSX notice dates its 09:32 open)."""
+    verified = {"XBUE", "XHKG", "XMOS", "XAMS", "XBRU", "XPAR", "XLIS", "XDUB", "XOSL",
+                "XCSE", "XETR", "XHEL", "XICE", "XLIT", "XLUX", "XNYS", "XPRA",
+                "XBDA", "XBUD", "XJSE", "XNZE"}
+    for code in sorted(verified | {"XKAR"}):
+        d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+        assert cv.hours_problems(d) == [], code
+        assert cv.current_hours_verified(d) is (code != "XKAR"), code
+
+
+def test_euronext_items_name_the_appendix_and_local_times():
+    for code, hours in {"XAMS": ("09:00", "17:35"), "XBRU": ("09:00", "17:35"),
+                        "XPAR": ("09:00", "17:35"), "XLIS": ("08:00", "16:35"),
+                        "XDUB": ("08:00", "16:30"), "XOSL": ("09:00", "16:25")}.items():
+        d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+        cur = d["verification"]["hours"][-1]
+        assert (cur["open"], cur["close"]) == hours, code
+        assert "Appendix of Trading Manual 4-01" in cur["source_title"], code
+        assert cur["close_rule"] == "closing_auction_end", code
+

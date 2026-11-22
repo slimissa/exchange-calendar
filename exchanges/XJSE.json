@@ -1696,6 +1696,20 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "17:00",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "Normal Day, 'ZA01 07:00 - 08:30 08:30 - 09:00 09:00 - 16:50 16:50 - 17:00 17:00 - 17:05 17:05 - 17:10 17:10 - 17:15 17:15 - 18:15': opening auction call 08:30-09:00, continuous trading 09:00-16:50, closing auction call 16:50-17:00 (ZA02 and ZA06 the same). Market Notice 2719: earliest close 17:00:00 with a random uncross up to 17:01:00 (ignored, ADR 0013). Open 09:00, close 17:00. Current entry; no pre-2013 schedule read (XJSE note).",
+        "open": "09:00",
+        "segment": "JSE equity market, Central Order Book, segment ZA01 (Top Companies), Normal Day",
+        "source_title": "JSE Specification Document, Volume 00E - Trading and Information Overview, Version 3.06, 23 July 2019",
+        "source_url": "https://www.jse.co.za/sites/default/files/media/documents/2020-02/Volume%2000E%20-%20Trading%20and%20Information%20Overview%20for%20Equity%20Market.pdf",
+        "status": "verified"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

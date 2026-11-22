@@ -1619,6 +1619,46 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "17:30",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "17:30 before 2012-08-06 is inferred from Oslo Børs's one-hour cut on 6 August 2012 (XOSL note); no Oslo Børs schedule of 2010-2012 was read. Settled by Oslo Børs's 2012 trading-hours notice.",
+        "open": "09:00",
+        "recheck_date": "2027-02-19",
+        "segment": "Oslo Børs equities (period names not checked)",
+        "source_title": "Euronext/Oslo Børs (no document for 2010-2012 read)",
+        "source_url": "https://www.euronext.com/en/markets/oslo",
+        "status": "unconfirmed"
+      },
+      {
+        "checked_on": "2026-11-22",
+        "close": "16:25",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2012-08-06",
+        "note": "16:25 (continuous to 16:20, closing uncross 16:25) is read for 2026 only (ADR 0013: 2012-08-06 to 2026-08-02 unconfirmed); whether the 2012 cut left a 16:20/16:25 structure or a 16:30 close was not read. Settled by Oslo Børs's 2012 trading-hours notice.",
+        "open": "09:00",
+        "recheck_date": "2027-02-19",
+        "segment": "Oslo Børs equities, continuous trading and closing auction",
+        "source_title": "Euronext/Oslo Børs (no document for 2012-2026 read)",
+        "source_url": "https://www.euronext.com/en/markets/oslo",
+        "status": "unconfirmed"
+      },
+      {
+        "checked_on": "2026-11-22",
+        "close": "16:25",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2026-08-03",
+        "note": "Appendix row (Trading Venue RM, Market Oslo, Gr. OA, Type 'Equities - OBX', Mode C): OU '09:00 Random', Trading '09:00 Random - 16:20 Continuous Random', CU '16:25 Random', TAL '16:25  - 16:30 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. CET is Oslo local time: 09:00-16:25. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). The entry's date is the 3 August 2026 edition's, which 4c8 read with the same Oslo rows.",
+        "open": "09:00",
+        "segment": "Euronext Oslo Børs regulated market, 'Equities - OBX' (group OA), continuous mode C",
+        "source_title": "Euronext, Appendix of Trading Manual 4-01, sheet 'Appendix to 4-01 Manual OPTQ', effective 23 November 2026 (saved by the maintainer in 4b2, no URL given); source_url is the 3 August 2026 edition read in 4c8",
+        "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
+        "status": "verified"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

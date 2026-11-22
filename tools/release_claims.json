@@ -1920,6 +1920,9 @@
     {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xhkg_2016_07_25_1605\""},
     {"file": "exchanges/XMOS.json", "contains": "\"effective_from\": \"2026-09-14\""},
     {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "**Additional sessions (session 4b2).**"},
-    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xmos_2026_09_14_0905\""}
+    {"file": "tests/cross_language_queries.json", "contains": "\"label\": \"in_session_xmos_2026_09_14_0905\""},
+    {"file": "tests/test_hours_evidence.py", "contains": "HOURS_EVIDENCE_FLOOR = 22"},
+    {"file": "exchanges/XPAR.json", "contains": "Appendix of Trading Manual 4-01"},
+    {"file": "exchanges/XKAR.json", "contains": "a 09:32 entry (Fridays schema_limited) waits for the PSX notice"}
   ]
 }

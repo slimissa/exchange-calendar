@@ -1570,6 +1570,20 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "17:00",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "Page: Copenhagen equities '09:00-17:00'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds of this five-minute period'; 'All times are local.' The Nasdaq Nordic Market Model 2026:03, section 3.1 (https://www.nasdaq.com/docs/2026/06/17/Nasdaq_Nordic_Market_Model_2026_03_Clean.pdf, read in 4c-R4) schedules continuous trading 09:00-16:55, pre-close 16:55 and the closing uncross at 17:00. Close 17:00 (ADR 0013). No effective date on either; read as the current entry.",
+        "open": "09:00",
+        "segment": "Nasdaq Copenhagen equities, Main Market continuous trading",
+        "source_title": "Nasdaq, European Markets Trading Hours (equities)",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "status": "verified"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

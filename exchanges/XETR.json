@@ -1247,6 +1247,33 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "17:35",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "No Deutsche Börse schedule for 2010 to 2025-11-30 was read (ADR 0013). Settled by an earlier Xetra trading-parameters sheet or auction schedule.",
+        "open": "09:00",
+        "recheck_date": "2027-02-19",
+        "segment": "Xetra, Continuous Trading with Auctions (equities)",
+        "source_title": "Deutsche Börse (no Xetra schedule before 2025-12-01 read)",
+        "source_url": "https://cashmarket.deutsche-boerse.com/cash-en/trading/trading-calendar-and-trading-hours",
+        "status": "unconfirmed"
+      },
+      {
+        "checked_on": "2026-11-20",
+        "close": "17:35",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2025-12-01",
+        "note": "Trading parameters (4c8): closing auction call at 17:30, closing auction price at 17:35; the auction schedule (https://cashmarket.deutsche-boerse.com/cash-en/trading/Xetra/continuous-trading-with-auctions/auctionschedule) says the stated times are the earliest ends (random end ignored, ADR 0013). Trading-hours page (4b2): 'Trading on Xetra takes place from Mondays to Fridays from 9 until 17:30 CET.' Open 09:00, close 17:35.",
+        "open": "09:00",
+        "segment": "Xetra, Continuous Trading with Auctions (equities)",
+        "source_title": "Deutsche Börse, Xetra trading parameters as of 1 December 2025 (read in 4c8); Deutsche Börse, Trading calendar and trading hours (read in 4b2)",
+        "source_url": "https://cashmarket.deutsche-boerse.com/resource/blob/250890/43c50e657b0ff5fb58132fbf6e063517/data/trading-parameters-xetra.pdf",
+        "status": "verified"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

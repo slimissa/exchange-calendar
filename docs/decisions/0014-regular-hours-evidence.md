@@ -165,3 +165,27 @@ recheck will settle it) fits.
 | XMOS | from 2013-09-02 | 10:00-18:50 | Main Trading Mode T+, shares not admitted to the morning session | closing_auction_end | verified | MOEX notice of 23 August 2013; MOEX Closing Auction page (start date 2 September 2013) |
 | XMOS | from 2026-03-23 | 10:00-19:00 | as above | closing_auction_end | verified | MOEX notice of 11 February 2026 (closing auction 18:55-19:00 from 23 March) |
 | XMOS | from 2026-09-14 | 09:10-19:00 | as above (opening auction 09:00-09:10) | closing_auction_end (18:59:30 on the page) | verified | MOEX notice of 14 August 2026; MOEX trading schedule page |
+| XAMS | from 2010-01-01 | 09:00-17:35 | Euronext Amsterdam regulated market, 'Equities AEX' (group J0), continuous mode C | closing_auction_end | verified | Euronext, Appendix of Trading Manual 4-01, effective 23 November 2026 (saved by the maintainer) |
+| XBRU | from 2010-01-01 | 09:00-17:35 | Euronext Brussels regulated market, 'Equities BEL20' (group A0), continuous mode C | closing_auction_end | verified | Euronext, Appendix of Trading Manual 4-01, effective 23 November 2026 (saved by the maintainer) |
+| XPAR | from 2010-01-01 | 09:00-17:35 | Euronext Paris regulated market, 'Equities CAC40 - Group 1' (group F1), continuous mode C | closing_auction_end | verified | Euronext, Appendix of Trading Manual 4-01, effective 23 November 2026 (saved by the maintainer) |
+| XLIS | from 2010-01-01 | 08:00-16:35 | Euronext Lisbon regulated market, 'Equities PSI' (group P0), continuous mode C | closing_auction_end | verified | Euronext, Appendix of Trading Manual 4-01, effective 23 November 2026 (saved by the maintainer) |
+| XDUB | from 2010-01-01 | 08:00-16:30 | Euronext Dublin regulated market, 'Shares - ISEQ 20 - XMSM' (group 9A), continuous mode C | closing_auction_end | verified | Euronext, Appendix of Trading Manual 4-01, effective 23 November 2026 (saved by the maintainer) |
+| XOSL | from 2010-01-01 | 09:00-17:30 | Oslo Børs equities (period names not checked) | closing_auction_end | unconfirmed (recheck 2027-02-19) | Euronext/Oslo Børs |
+| XOSL | from 2012-08-06 | 09:00-16:25 | Oslo Børs equities, continuous trading and closing auction | closing_auction_end | unconfirmed (recheck 2027-02-19) | Euronext/Oslo Børs |
+| XOSL | from 2026-08-03 | 09:00-16:25 | Euronext Oslo Børs regulated market, 'Equities - OBX' (group OA), continuous mode C | closing_auction_end | verified | Euronext, Appendix of Trading Manual 4-01, effective 23 November 2026 (saved by the maintainer) |
+| XCSE | from 2010-01-01 | 09:00-17:00 | Nasdaq Copenhagen equities, Main Market continuous trading | closing_auction_end | verified | Nasdaq, European Markets Trading Hours |
+| XETR | from 2010-01-01 | 09:00-17:35 | Xetra, Continuous Trading with Auctions (equities) | closing_auction_end | unconfirmed (recheck 2027-02-19) | Deutsche Börse |
+| XETR | from 2025-12-01 | 09:00-17:35 | Xetra, Continuous Trading with Auctions (equities) | closing_auction_end | verified | Deutsche Börse, Xetra trading parameters as of 1 December 2025 |
+| XHEL | from 2010-01-01 | 10:00-18:30 | Nasdaq Helsinki equities, Main Market continuous trading | closing_auction_end | verified | Nasdaq, European Markets Trading Hours |
+| XICE | from 2010-01-01 | 09:30-15:30 | Nasdaq Iceland equities, Main Market continuous trading | closing_auction_end | verified | Nasdaq, European Markets Trading Hours |
+| XLIT | from 2010-01-01 | 10:00-16:00 | Nasdaq Baltic equities (Vilnius), continuous trading with opening and closing calls | closing_auction_end | verified | Nasdaq Baltic, Trading day |
+| XLUX | from 2010-01-01 | 09:00-17:35 | LuxSE regulated market, continuous trading | closing_auction_end | verified | LuxSE, Opening hours, closing days and market status |
+| XNYS | from 1990-01-01 | 09:30-16:00 | NYSE (Tape A) Core Trading Session | closing_auction_end | verified | NYSE, Hours & Calendars |
+| XPRA | from 2010-01-01 | 09:00-16:15 | PSE shares, Prime and Standard (regulated), continuous trading (Xetra) | closing_auction_end | verified | PSE, Trading hours |
+| XPRA | from 2027-01-04 | 09:00-16:55 | PSE shares, continuous trading (Xetra) | closing_auction_end | unconfirmed (recheck 2027-01-04) | PSE notice of 31 July 2026, extension of trading hours |
+| XBDA | from 2010-01-01 | 09:00-16:30 | BSX equities, continuous trading | continuous_end | verified | BSX, Trading |
+| XBUD | from 2010-01-01 | 09:00-17:05 | BSE equities (pre-Xetra MMTS era and Xetra's first months) | closing_auction_end | unconfirmed (recheck 2027-02-19) | BSE Resolution 550/2013 extract of 25 September 2017 |
+| XBUD | from 2015-02-27 | 09:00-17:05 | BSE Equities Prime/Standard Market, Continuous Trading with Auctions (Xetra) | closing_auction_end | verified | BSE Resolution 550/2013 |
+| XJSE | from 2010-01-01 | 09:00-17:00 | JSE equity market, Central Order Book, segment ZA01 (Top Companies), Normal Day | closing_auction_end | verified | JSE Specification Document, Volume 00E - Trading and Information Overview, Version 3.06, 23 July 2019 |
+| XNZE | from 2010-01-01 | 10:00-17:00 | NZX Main Board, Normal Trading | closing_auction_end | verified | NZX, Anatomy of a trading day |
+| XKAR | from 2010-01-01 | 09:30-15:30 | PSX Regular Market (Ready), Monday to Thursday | continuous_end | unconfirmed (recheck 2027-02-19) | PSX, Trading Hours |

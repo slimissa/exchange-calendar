@@ -1652,6 +1652,33 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "17:05",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "No BSE document for 2010 to 2015-02-26 was found (4c-R5; Xetra launched on 6 December 2013 per BSE's 2013 annual report). Settled by a BSE trading-hours resolution of that period.",
+        "open": "09:00",
+        "recheck_date": "2027-02-19",
+        "segment": "BSE equities (pre-Xetra MMTS era and Xetra's first months)",
+        "source_title": "BSE Resolution 550/2013 extract of 25 September 2017 (schedule effective 27 February 2015; nothing earlier found, 4c-R5)",
+        "source_url": "https://www.bet.hu/newkibdata/124142063/550_2013_EN.pdf",
+        "status": "unconfirmed"
+      },
+      {
+        "checked_on": "2026-11-22",
+        "close": "17:05",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2015-02-27",
+        "note": "'Pre-Trading Phase (PRETR) 8.15-8.30'; 'Auction Call Sub-Phase (OCALL) 8.30-9.00'; 'Price Determination and matching 9.00 + Random End'; 'Continuous Trading Phase (TRADE)' from the end of the opening auction 'until 17.00'; 'Auction Call Sub-Phase (CCALL) 17.00-17.05'; 'Price Determination and matching 17.05 + Random End' ('Random End max. 30 sec.'); trade-at-close until 17:15; post-trading until 17.20. Open 09:00, close 17:05 (ADR 0013). Dated by the 550/2013 extract of 25 September 2017 (https://www.bet.hu/newkibdata/124142063/550_2013_EN.pdf), whose schedule is stated as effective 27 February 2015 (4c-R5).",
+        "open": "09:00",
+        "segment": "BSE Equities Prime/Standard Market, Continuous Trading with Auctions (Xetra)",
+        "source_title": "BSE Resolution 550/2013 (Xetra trading parameters), consolidated version effective 8 April 2026",
+        "source_url": "https://www.bse.hu/newkibdata/129432789/20260407_550_2013_EN.pdf",
+        "status": "verified"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

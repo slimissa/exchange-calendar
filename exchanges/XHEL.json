@@ -1422,6 +1422,20 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "18:30",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "Page: Helsinki equities '10:00-18:30'. Footnote: 'Last five minutes: no order matching; final uncross takes place randomly during the last 30 seconds of this five-minute period'; 'All times are local.' Close 18:30 (ADR 0013). No effective date; read as the current entry.",
+        "open": "10:00",
+        "segment": "Nasdaq Helsinki equities, Main Market continuous trading",
+        "source_title": "Nasdaq, European Markets Trading Hours (equities)",
+        "source_url": "https://www.nasdaq.com/european-market-activity/trading-hours",
+        "status": "verified"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },
