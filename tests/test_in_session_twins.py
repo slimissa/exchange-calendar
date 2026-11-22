@@ -25,8 +25,9 @@ def test_real_fixture_has_a_twin_for_every_is_open_probe():
     found, problems = tw.pairs(FIXTURE["queries"])
     assert problems == []
     n_is_open = sum(1 for q in FIXTURE["queries"] if q["op"] == "is_open")
-    # 17 in 4d2; + 3 XBUE regular-hours probes in 4b1.
-    assert len(found) == n_is_open == 23
+    # 17 in 4d2; + 3 XBUE regular-hours probes in 4b1; + 3 XBUE year-end
+    # probes in 4b2; + 4 weekday probes in 4b2 (the Rust weekday fix).
+    assert len(found) == n_is_open == 27
 
 
 def test_real_fixture_twins_answer_the_same_in_python():

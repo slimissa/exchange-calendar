@@ -439,8 +439,10 @@ fn weekday_from_iso(date: &str) -> Option<i64> {
     let d: i64 = date.get(8..10)?.parse().ok()?;
     let t = [0_i64, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4];
     let yy = if m < 3 { y - 1 } else { y };
-    let sak = (yy + yy / 4 - yy / 100 + yy / 400 + t[(m - 1) as usize] + d - 1)
-        .rem_euclid(7); // 0=Sunday .. 6=Saturday
+    // Sakamoto's method: 0=Sunday .. 6=Saturday. (Until 4b2 this added
+    // `d - 1`, shifting every date back a day: Mondays read as Sundays.)
+    let sak = (yy + yy / 4 - yy / 100 + yy / 400 + t[(m - 1) as usize] + d)
+        .rem_euclid(7);
     // Convert to Python's 0=Monday .. 6=Sunday.
     Some(if sak == 0 { 6 } else { sak - 1 })
 }
@@ -479,6 +481,35 @@ impl<'a> std::iter::IntoIterator for &'a Registry {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// 4b2: weekday_from_iso agrees with chrono on every date 1990-2030
+    /// (it was a day behind on every date from schema 2.1 to 4b2).
+    #[test]
+    fn weekday_from_iso_matches_chrono() {
+        use chrono::{Datelike, NaiveDate};
+        let mut d = NaiveDate::from_ymd_opt(1990, 1, 1).unwrap();
+        let end = NaiveDate::from_ymd_opt(2030, 12, 31).unwrap();
+        while d <= end {
+            let iso = d.format("%Y-%m-%d").to_string();
+            assert_eq!(
+                weekday_from_iso(&iso),
+                Some(d.weekday().num_days_from_monday() as i64),
+                "{iso}"
+            );
+            d = d.succ_opt().unwrap();
+        }
+    }
+
+    /// 4b2: a Monday is a trading day and a Saturday is not (XNYS).
+    #[test]
+    fn registry_in_session_monday_open_saturday_closed() {
+        let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../calendar.json");
+        let r = Registry::load(path.to_str().unwrap()).expect("calendar.json");
+        assert!(r.in_session("XNYS", "2026-11-23", "10:00"));
+        assert!(!r.in_session("XNYS", "2026-11-21", "10:00"));
+        assert!(r.is_open("XNYS", "2026-11-23", "10:00"));
+        assert!(!r.is_open("XNYS", "2026-11-21", "10:00"));
+    }
     use crate::exchange::{HolidaysData, RegularHours};
 
     fn load_real_registry() -> Registry {

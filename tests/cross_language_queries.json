@@ -66,6 +66,14 @@
     {"op": "is_open", "args": ["XBUE", "2024-12-31", "12:00"], "label": "is_open_xbue_2024_12_31_1200"},
     {"op": "in_session", "args": ["XBUE", "2024-12-31", "12:00"], "label": "in_session_xbue_2024_12_31_1200"},
     {"op": "holiday_entry", "args": ["XBUE", "2024-12-24"], "label": "holiday_entry_xbue_2024_12_24"},
-    {"op": "holiday_entry", "args": ["XBUE", "2024-12-31"], "label": "holiday_entry_xbue_2024_12_31"}
+    {"op": "holiday_entry", "args": ["XBUE", "2024-12-31"], "label": "holiday_entry_xbue_2024_12_31"},
+    {"op": "is_open", "args": ["XNYS", "2026-11-23", "10:00"], "label": "is_open_xnys_2026_11_23_monday_1000"},
+    {"op": "in_session", "args": ["XNYS", "2026-11-23", "10:00"], "label": "in_session_xnys_2026_11_23_monday_1000"},
+    {"op": "is_open", "args": ["XNYS", "2026-11-21", "10:00"], "label": "is_open_xnys_2026_11_21_saturday_1000"},
+    {"op": "in_session", "args": ["XNYS", "2026-11-21", "10:00"], "label": "in_session_xnys_2026_11_21_saturday_1000"},
+    {"op": "is_open", "args": ["XSAU", "2026-11-22", "11:00"], "label": "is_open_xsau_2026_11_22_sunday_1100"},
+    {"op": "in_session", "args": ["XSAU", "2026-11-22", "11:00"], "label": "in_session_xsau_2026_11_22_sunday_1100"},
+    {"op": "is_open", "args": ["XSAU", "2026-11-20", "11:00"], "label": "is_open_xsau_2026_11_20_friday_1100"},
+    {"op": "in_session", "args": ["XSAU", "2026-11-20", "11:00"], "label": "in_session_xsau_2026_11_20_friday_1100"}
   ]
 }
