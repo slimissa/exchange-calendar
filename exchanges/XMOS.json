@@ -1,114 +1,23 @@
 {
-  "ad_hoc_closures": [],
   "code": "XMOS",
-  "confidence": {
-    "2010": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2011": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2012": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2013": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2014": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2015": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2016": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2017": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2018": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2019": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2020": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2021": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2022": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2023": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2024": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2025": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2026": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    }
+  "name": "Moscow Exchange",
+  "mic": "XMOS",
+  "timezone": "Europe/Moscow",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "10:00",
+    "close": "18:40"
   },
-  "country": "Russian Federation",
-  "country_code": "RU",
-  "fetcher_status": "implemented",
-  "generation_range": [
-    "2010-01-01",
-    "2026-12-31"
+  "extended_hours": {},
+  "sessions": [
+    {
+      "close": "18:45",
+      "open": "10:00",
+      "type": "regular"
+    }
   ],
   "holidays": {
     "explicit": [
@@ -1176,116 +1085,94 @@
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-01-02",
-        "name": "New Year Holiday",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
+      },
+      {
+        "date": "2026-01-03",
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
+      },
+      {
+        "date": "2026-01-04",
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-01-07",
-        "name": "Orthodox Christmas",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-02-23",
-        "name": "Defender of the Fatherland Day",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
+      },
+      {
+        "date": "2026-03-08",
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
+      },
+      {
+        "date": "2026-05-09",
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-06-12",
-        "name": "Russia Day",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-11-04",
-        "name": "National Unity Day",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       },
       {
         "date": "2026-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://www.moex.com/trading-calendar",
-        "status": "closed"
+        "name": "Russian Public Holiday",
+        "status": "closed",
+        "source_url": "https://www.moex.com/n94207",
+        "note": "Source gives no per-day holiday name, only a combined closure-date list"
       }
     ],
     "recurrence_rules": []
   },
-  "mic": "XMOS",
-  "name": "Moscow Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2026: exchange_calendars + exchange_publications. Weekend sessions are not modelled: exchange_calendars has 16 Russian make-up Saturdays in 2010-2024 (e.g. 2012-04-28, 2018-12-29, 2024-12-28) that the registry leaves out, as for every exchange (divergence_test skips weekend_days). 2022 equity-market suspension: the library treats 2022-02-28 to 2022-03-23 as normal sessions, but the Moscow Exchange equity market was closed by Bank of Russia decision from 28 February and resumed on 24 March 2022 (33 MOEX Russia Index stocks, 09:50-14:00; not encoded). The 16 closed weekdays are in holidays.explicit (as one-off closures are elsewhere, e.g. XNYS 2025-01-09), citing moex.com notices n43337 (28 Feb), n43882 (1 Mar) and n45535 (resumption on 24 Mar), and are listed in contradicted_by on the exchange_calendars span.",
-  "regular_hours": {
-    "close": "18:45",
-    "open": "10:00"
-  },
-  "sessions": [
-    {
-      "close": "18:45",
-      "open": "10:00",
-      "type": "regular"
-    }
-  ],
-  "timezone": "Europe/Moscow",
-  "verification": {
-    "basis": "divergence_report",
-    "class": "reference_compared",
-    "coverage": {
-      "from": "2010-01-01",
-      "ranges": [
-        "trading_days"
-      ],
-      "sources": [
-        {
-          "contradicted_by": [
-            "2022-02-28",
-            "2022-03-01",
-            "2022-03-02",
-            "2022-03-03",
-            "2022-03-04",
-            "2022-03-09",
-            "2022-03-10",
-            "2022-03-11",
-            "2022-03-14",
-            "2022-03-15",
-            "2022-03-16",
-            "2022-03-17",
-            "2022-03-18",
-            "2022-03-21",
-            "2022-03-22",
-            "2022-03-23"
-          ],
-          "from": "2010-01-01",
-          "sampled": null,
-          "source": "exchange_calendars",
-          "to": "2024-12-31"
-        },
-        {
-          "from": "2025-01-01",
-          "source": "exchange_calendars + exchange_publications",
-          "to": "2026-12-31"
-        }
-      ],
-      "to": "2026-12-31"
-    },
-    "last_checked": "2026-11-21",
-    "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
-  },
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2010-01-01",
+    "2026-12-31"
   ]
 }

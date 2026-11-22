@@ -1,151 +1,26 @@
 {
-  "ad_hoc_closures": [
+  "code": "XZAG",
+  "name": "Zagreb Stock Exchange",
+  "mic": "XZAG",
+  "timezone": "Europe/Zagreb",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": [
     {
-      "date": "2022-12-29",
-      "name": "Euro changeover (no trading; ZSE resolution of 8 September 2022)",
-      "source_url": "https://zse.hr/en/resolution-on-amendments-to-the-trading-calendar-in-2022/2503",
-      "status": "closed"
-    },
-    {
-      "date": "2022-12-30",
-      "name": "Euro changeover (no trading; ZSE resolution of 8 September 2022)",
-      "source_url": "https://zse.hr/en/resolution-on-amendments-to-the-trading-calendar-in-2022/2503",
-      "status": "closed"
-    },
-    {
-      "date": "2024-04-17",
-      "name": "Parliamentary election day (ZSE resolution amending the 2024 trading calendar)",
-      "source_url": "https://zse.hr/en/resolution-on-amending-the-resolution-on-the-trading-calendar-in-2024/2810",
-      "status": "closed"
+      "close": "16:00",
+      "effective_from": "2010-01-01",
+      "open": "09:30"
     }
   ],
-  "code": "XZAG",
-  "confidence": {
-    "2010": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2011": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2012": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2013": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2014": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2015": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2016": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2017": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2018": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2019": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2020": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2021": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2022": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2023": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2024": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled (exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)); not independently verified",
-      "source": "manual"
-    },
-    "2025": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2026": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2027": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2028": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2029": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
+  "extended_hours": {},
+  "sessions": [
+    {
+      "close": "16:00",
+      "open": "09:30",
+      "type": "regular"
     }
-  },
-  "country": "Croatia",
-  "country_code": "HR",
-  "fetcher_status": "implemented",
-  "generation_range": [
-    "2010-01-01",
-    "2029-12-31"
   ],
   "holidays": {
     "explicit": [
@@ -1328,74 +1203,74 @@
       {
         "date": "2026-01-01",
         "name": "New Year's Day",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2026-01-06",
         "name": "Epiphany",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2026-04-03",
         "name": "Good Friday",
-        "source_url": "https://zse.hr/en/non-trading-days/110",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2026-04-06",
         "name": "Easter Monday",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
+        "name": "International Workers' Day",
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2026-06-04",
         "name": "Corpus Christi",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2026-06-22",
         "name": "Anti-Fascist Struggle Day",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2026-08-05",
-        "name": "Victory Day",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
+        "name": "Victory and Homeland Thanksgiving Day and the Day of Croatian Defenders",
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2026-11-18",
-        "name": "Remembrance Day",
-        "source_url": "https://zse.hr/en/non-trading-days/110",
-        "status": "closed"
+        "name": "Remembrance Day for the Victims of the Homeland War and Remembrance Day for the Victims of Vukovar and \u0160kabrnja",
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2026-12-24",
         "name": "Christmas Eve",
-        "source_url": "https://zse.hr/en/non-trading-days/110",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2026-12-25",
-        "name": "Christmas Day",
-        "source_url": "https://zse.hr/trading-calendar",
-        "status": "closed"
+        "name": "Christmas",
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2026-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://zse.hr/en/non-trading-days/110",
-        "status": "closed"
+        "name": "New Year\u2019s Eve",
+        "status": "closed",
+        "source_url": "https://zse.hr/en/trading-calendar-in-2026/3260"
       },
       {
         "date": "2027-01-01",
@@ -1614,60 +1489,28 @@
     ],
     "recurrence_rules": []
   },
-  "mic": "XZAG",
-  "name": "Zagreb Stock Exchange",
-  "note": "2010-2024 sourced from exchange_calendars (backfill; not independently verified): 182 recurring closures (all named), no early closes, and 3 one-off closures moved to ad_hoc_closures (lesson 13), each confirmed by the exchange: 29 and 30 December 2022 (no trading on the euro changeover; ZSE's 'Resolution on amendments to the trading calendar in 2022' of 8 September 2022, https://zse.hr/en/resolution-on-amendments-to-the-trading-calendar-in-2022/2503) and 17 April 2024 (parliamentary election day; ZSE's 'Resolution on amending the resolution on the trading calendar in 2024', https://zse.hr/en/resolution-on-amending-the-resolution-on-the-trading-calendar-in-2024/2810, which also lists the full 2024 non-trading days, matching exchange_calendars' 14 weekday closures). Holiday creation dates: exchange_calendars follows the 2019 amendment of the Croatian holidays act (in force 2020): Independence Day (8 October) closes only to 2019, Statehood Day moves from 25 June (to 2019) to 30 May (first weekday 2022), and Remembrance Day (18 November) starts in 2020; nothing is closed before its law, so nothing is removed. The act itself was not re-read in 4c11. Corrections: 0. 2025-2027: exchange_calendars + exchange_publications. 2028-2029: standing pattern. Checked 2026-11-20 (4c11). Last published year: ZSE's non-trading days page (https://zse.hr/en/non-trading-days/110) lists 2026 and 2027, and the 'Trading calendar in 2027' post of 9 September 2026 (https://zse.hr/en/trading-calendar-in-2027/3574) lists the 2027 days; the registry's 2026 and 2027 weekday closures match both exactly (their existing citations are kept). Close (ADR 0013): ZSE's Trading Manual of 14 January 2026, in force 22 January 2026 (https://zse.hr/UserDocsImages/docs/trading/manuals/Trading_Manual_2026-01-14.pdf), gives for Continuous Trading: pre-trading 08:00-09:00, opening auction 09:00-09:30, continuous trading 09:30-12:00, intraday auction 12:00-12:10, continuous trading 12:10-15:55, closing auction 15:55-16:00 (earliest ending; the end is random, up to 15 seconds later), trading at close 16:00-16:10 and post-trading 16:10-16:25. ADR 0013 ignores the random window, so the close is 16:00, unchanged (the file and exchange_calendars both have 16:00); the open stays 09:30, the start of continuous trading (exchange_calendars has 09:00, the opening auction). One dated entry from 2010-01-01, unconfirmed: the manual is the 2026 version; the 2017 Xetra T7 migration and the December 2019 schedule were read only through custodian newsflashes. The intraday auction (12:00-12:10) and trading at close are not modelled. No shortened trading days are in the manual or the calendars.",
-  "regular_hours": [
+  "ad_hoc_closures": [
     {
-      "close": "16:00",
-      "effective_from": "2010-01-01",
-      "open": "09:30"
-    }
-  ],
-  "sessions": [
-    {
-      "close": "16:00",
-      "open": "09:30",
-      "type": "regular"
-    }
-  ],
-  "timezone": "Europe/Zagreb",
-  "verification": {
-    "basis": "divergence_report",
-    "class": "reference_compared",
-    "coverage": {
-      "from": "2010-01-01",
-      "ranges": [
-        "trading_days"
-      ],
-      "sources": [
-        {
-          "from": "2010-01-01",
-          "sampled": null,
-          "source": "exchange_calendars (+ ZSE resolutions for the 2022 and 2024 one-off closures)",
-          "to": "2024-12-31",
-          "unconfirmed": [
-            "2010-01-01"
-          ]
-        },
-        {
-          "from": "2025-01-01",
-          "source": "exchange_calendars + exchange_publications (ZSE non-trading days page; trading calendar 2027; Trading Manual 2026-01-14)",
-          "to": "2027-12-31"
-        },
-        {
-          "from": "2028-01-01",
-          "source": "exchange_calendars + standing Croatian holiday pattern (ZSE publishes each year's calendar in September of the year before)",
-          "to": "2029-12-31"
-        }
-      ],
-      "to": "2029-12-31"
+      "date": "2022-12-29",
+      "name": "Euro changeover (no trading; ZSE resolution of 8 September 2022)",
+      "source_url": "https://zse.hr/en/resolution-on-amendments-to-the-trading-calendar-in-2022/2503",
+      "status": "closed"
     },
-    "last_checked": "2026-11-21",
-    "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
-  },
-  "weekend_days": [
-    5,
-    6
+    {
+      "date": "2022-12-30",
+      "name": "Euro changeover (no trading; ZSE resolution of 8 September 2022)",
+      "source_url": "https://zse.hr/en/resolution-on-amendments-to-the-trading-calendar-in-2022/2503",
+      "status": "closed"
+    },
+    {
+      "date": "2024-04-17",
+      "name": "Parliamentary election day (ZSE resolution amending the 2024 trading calendar)",
+      "source_url": "https://zse.hr/en/resolution-on-amending-the-resolution-on-the-trading-calendar-in-2024/2810",
+      "status": "closed"
+    }
+  ],
+  "generation_range": [
+    "2010-01-01",
+    "2029-12-31"
   ]
 }

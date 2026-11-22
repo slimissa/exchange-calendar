@@ -1,132 +1,31 @@
 {
-  "ad_hoc_closures": [],
   "code": "XPRA",
-  "confidence": {
-    "2010": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
+  "name": "Prague Stock Exchange",
+  "mic": "XPRA",
+  "timezone": "Europe/Prague",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": [
+    {
+      "close": "16:15",
+      "effective_from": "2010-01-01",
+      "open": "09:00"
     },
-    "2011": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2012": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2013": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2014": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2015": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2016": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2017": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2018": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2019": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2020": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2021": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2022": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2023": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2024": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2025": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2026": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2027": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2028": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2029": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
+    {
+      "close": "16:55",
+      "effective_from": "2027-01-04",
+      "open": "09:00"
     }
-  },
-  "country": "Czechia",
-  "country_code": "CZ",
-  "fetcher_status": "implemented",
-  "generation_range": [
-    "2010-01-01",
-    "2029-12-31"
+  ],
+  "extended_hours": {},
+  "sessions": [
+    {
+      "close": "16:55",
+      "open": "09:00",
+      "type": "regular"
+    }
   ],
   "holidays": {
     "explicit": [
@@ -1117,134 +1016,134 @@
       {
         "date": "2026-01-01",
         "name": "New Year's Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2026-04-03",
         "name": "Good Friday",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2026-04-06",
         "name": "Easter Monday",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2026-05-01",
         "name": "Labour Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2026-05-08",
-        "name": "Victory Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "name": "Liberation Day",
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2026-07-06",
-        "name": "Saints Cyril and Methodius Day (observed)",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "name": "Burning at Stake of Jan Hus",
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2026-09-28",
         "name": "Czech Statehood Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2026-10-28",
-        "name": "Independent Czechoslovak State Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "name": "Establishment of the Czechoslovak Republic",
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2026-11-17",
-        "name": "Struggle for Freedom and Democracy Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "name": "Freedom and Democracy Day",
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2026-12-24",
         "name": "Christmas Eve",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2026-12-25",
         "name": "Christmas Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2026-12-31",
-        "name": "New Year's Eve (non-trading day)",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "name": "New Year's Eve",
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2027-01-01",
         "name": "New Year's Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2027-03-26",
         "name": "Good Friday",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2027-03-29",
         "name": "Easter Monday",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2027-07-05",
-        "name": "Saints Cyril and Methodius Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "name": "St. Cyril and St. Methodius Day",
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2027-07-06",
-        "name": "Jan Hus Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "name": "Burning at Stake of Jan Hus",
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2027-09-28",
         "name": "Czech Statehood Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2027-10-28",
-        "name": "Independent Czechoslovak State Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "name": "Establishment of the Czechoslovak Republic",
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2027-11-17",
-        "name": "Struggle for Freedom and Democracy Day",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "name": "Freedom and Democracy Day",
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2027-12-24",
         "name": "Christmas Eve",
-        "source_url": "https://www.pse.cz/en/trading/trading-calendar",
-        "status": "closed"
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2027-12-31",
-        "name": "New Year's Eve (non-trading day)",
-        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar",
-        "status": "closed"
+        "name": "New Year's Eve",
+        "status": "closed",
+        "source_url": "https://www.pse.cz/en/trading/trading-information/trading-calendar"
       },
       {
         "date": "2028-04-14",
@@ -1484,66 +1383,9 @@
       }
     ]
   },
-  "mic": "XPRA",
-  "name": "Prague Stock Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2027: exchange_calendars + exchange_publications (PSE's trading calendar, published to 2027). 2028-2029: predicted from exchange_calendars and the exchange's unchanged pattern; not yet published. regular_hours: close is the end of the closing auction (ADR 0013). Until 2027-01-03: PSE's trading-hours schedule (https://www.pse.cz/userfiles/related_documents/en/Trading-hours.pdf) gives equities in continuous trading pre-trading 08:00, opening auction 08:50-09:00, continuous 09:00-16:10, closing auction 16:10-16:15, trading at close 16:15-16:25 and post-trading to 17:00 (the pse.cz instrument pages agree: closing auction 16:10, trade at close 16:15), so 16:15 is the auction end. exchange_calendars has 16:20, the continuous-trading end at the 2012 Xetra launch, which PSE later moved to 16:10 on an undated change; the 16:15 entry is therefore dated from the start of the registry, not from a notice, and 2010-2012 pre-Xetra hours are not encoded. From 2027-01-04: PSE's notice of 31 July 2026 (https://www.pse.cz/en/news/prodlouzeni-obchodnich-hodin-na-prazske-burze) confirms the date and that the trading day ends at 17:00 instead of 16:30 (price list at 17:30 instead of 17:15). The phase-by-phase schedule is only an image in that notice, which could not be read in 4c-R4; press transcriptions of it (Kurzy.cz) give continuous 09:00-16:45, closing auction 16:45-16:55, trading at close 16:55-17:00. Sessions (4c-R5): the schema cannot date a session (sessions entries allow only type/open/close/at), and the repository rule, enforced by tests/test_exchange_schema.py, tools/migrate_sessions.py and tools/schema_audit.py and used by the SQL export, is that an undated session describes the latest dated regular_hours entry. The regular session therefore shows 09:00-16:55 (the 2027-01-04 entry) while 16:15 is in force until 2027-01-03; regular_hours carries both. Dated sessions are a Phase 4d schema item. 16:55 is kept as the closing-auction end but is unconfirmed: verification.coverage marks 2027-01-04 unconfirmed with recheck_date 2027-01-04 (re-read PSE's trading-hours page once the new schedule is live). The registry had 16:30 before 4c-R2. Rechecked 2026-11-20 (4c-R4): PSE's trading calendar (https://www.pse.cz/en/trading/trading-information/trading-calendar) lists 2026 (Jan 1, Apr 3, Apr 6, May 1, May 8, Jul 6, Sep 28, Oct 28, Nov 17, Dec 24, Dec 25, Dec 31) and 2027 (Jan 1, Mar 26, Mar 29, Jul 5, Jul 6, Sep 28, Oct 28, Nov 17, Dec 24, Dec 31); the registry matches both exactly. Half days: none listed and none in the registry. No Saturday sessions or one-off closures found. The exchange rule 'III. Single auction and continuous trading' (effective 2026-09-01) defines the phases but no clock times; the copy found was on PSE's test host and is not cited. The PSE fetcher cannot reach pse.cz from this sandbox; the sources were read by hand.",
-  "regular_hours": [
-    {
-      "close": "16:15",
-      "effective_from": "2010-01-01",
-      "open": "09:00"
-    },
-    {
-      "close": "16:55",
-      "effective_from": "2027-01-04",
-      "open": "09:00"
-    }
-  ],
-  "sessions": [
-    {
-      "close": "16:55",
-      "open": "09:00",
-      "type": "regular"
-    }
-  ],
-  "timezone": "Europe/Prague",
-  "verification": {
-    "basis": "divergence_report",
-    "class": "reference_compared",
-    "coverage": {
-      "from": "2010-01-01",
-      "ranges": [
-        "trading_days"
-      ],
-      "sources": [
-        {
-          "from": "2010-01-01",
-          "sampled": null,
-          "source": "exchange_calendars",
-          "to": "2024-12-31"
-        },
-        {
-          "from": "2025-01-01",
-          "recheck_date": "2027-01-04",
-          "source": "exchange_calendars + exchange_publications (PSE trading calendar, published to 2027)",
-          "to": "2027-12-31",
-          "unconfirmed": [
-            "2027-01-04"
-          ]
-        },
-        {
-          "from": "2028-01-01",
-          "source": "exchange_calendars + standing PSE non-trading-day pattern (PSE has published only to 2027)",
-          "to": "2029-12-31"
-        }
-      ],
-      "to": "2029-12-31"
-    },
-    "last_checked": "2026-11-21",
-    "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
-  },
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2010-01-01",
+    "2029-12-31"
   ]
 }
