@@ -1,128 +1,16 @@
 {
-  "ad_hoc_closures": [],
   "code": "XWAR",
-  "confidence": {
-    "2010": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2011": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2012": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2013": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2014": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2015": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2016": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2017": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2018": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2019": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2020": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2021": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2022": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2023": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2024": {
-      "last_verified": null,
-      "level": "low",
-      "note": "backfilled from exchange_calendars; not independently verified",
-      "source": "manual"
-    },
-    "2025": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2026": {
-      "last_verified": null,
-      "level": "medium",
-      "source": "manual"
-    },
-    "2027": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2028": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    },
-    "2029": {
-      "last_verified": null,
-      "level": "medium",
-      "note": "predicted",
-      "source": "manual"
-    }
+  "name": "Warsaw Stock Exchange",
+  "mic": "XWAR",
+  "timezone": "Europe/Warsaw",
+  "weekend_days": [
+    5,
+    6
+  ],
+  "regular_hours": {
+    "open": "09:00",
+    "close": "17:00"
   },
-  "country": "Poland",
-  "country_code": "PL",
   "extended_hours": {
     "after_hours": {
       "close": "17:10",
@@ -133,10 +21,22 @@
       "open": "08:30"
     }
   },
-  "fetcher_status": "implemented",
-  "generation_range": [
-    "2010-01-01",
-    "2029-12-31"
+  "sessions": [
+    {
+      "close": "09:00",
+      "open": "08:30",
+      "type": "pre_market"
+    },
+    {
+      "close": "17:00",
+      "open": "09:00",
+      "type": "regular"
+    },
+    {
+      "close": "17:10",
+      "open": "17:00",
+      "type": "post_market"
+    }
   ],
   "holidays": {
     "explicit": [
@@ -1126,189 +1026,227 @@
       },
       {
         "date": "2025-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-01-06",
-        "name": "Epiphany",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-04-18",
-        "name": "Good Friday",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-04-21",
-        "name": "Easter Monday",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-06-19",
-        "name": "Corpus Christi",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-08-15",
-        "name": "Assumption Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-11-11",
-        "name": "Independence Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-12-25",
-        "name": "Christmas Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-12-26",
-        "name": "Boxing Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2025-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-01-06",
-        "name": "Epiphany",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-04-03",
-        "name": "Good Friday",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-04-06",
-        "name": "Easter Monday",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-05-01",
-        "name": "Labour Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-06-04",
-        "name": "Corpus Christi",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-11-11",
-        "name": "Independence Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-12-25",
-        "name": "Christmas Day",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2026-12-31",
-        "name": "New Year's Eve",
-        "source_url": "https://www.gpw.pl/trading-hours",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-01-01",
-        "name": "New Year's Day",
-        "source_url": "https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-01-06",
-        "name": "Epiphany",
-        "source_url": "https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-03-26",
-        "name": "Good Friday",
-        "source_url": "https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-03-29",
-        "name": "Easter Monday",
-        "source_url": "https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-05-03",
-        "name": "Constitution Day",
-        "source_url": "https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-05-27",
-        "name": "Corpus Christi",
-        "source_url": "https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-11-01",
-        "name": "All Saints' Day",
-        "source_url": "https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-11-11",
-        "name": "Independence Day",
-        "source_url": "https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2027-12-24",
-        "name": "Christmas Eve",
-        "source_url": "https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf",
-        "status": "closed"
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
+      },
+      {
+        "date": "2027-12-31",
+        "name": "Warsaw Stock Exchange Holiday",
+        "status": "closed",
+        "source_url": "https://www.gpw.pl/session-details",
+        "note": "Source page gives no holiday name -- generic label used"
       },
       {
         "date": "2028-01-06",
@@ -1555,64 +1493,9 @@
       }
     ]
   },
-  "mic": "XWAR",
-  "name": "Warsaw Stock Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2028: exchange_calendars + exchange_publications (GPW Management Board resolutions on non-session days). 2029: predicted from exchange_calendars and the exchange's unchanged pattern; GPW has not yet resolved it. Rechecked 2026-11-20 (4c-R4). Non-session days: Resolution 754/2025 of 12 June 2025 (https://www.gpw.pl/pub/GPW/uchwaly/2025/754_2025.pdf) lists 2027 (Jan 1, Jan 6, Mar 26, Mar 29, May 3, May 27, Nov 1, Nov 11, Dec 24, Dec 31) and Resolution 1089/2026 of 20 July 2026 (https://www.gpw.pl/pub/GPW/uchwaly/2026/1089_2026_EN.pdf) lists 2028 (Jan 6, Apr 14, Apr 17, May 1, May 3, Jun 15, Aug 15, Nov 1, Dec 25, Dec 26); the registry matches both exactly, and the 2027 and 2028 entries now cite those resolutions. 2026 was not re-read: Resolution 753/2025 (2026) could not be retrieved in this session. Close (ADR 0013): GPW WATS went live on 5 October 2026 (Resolution 941/2026, https://www.gpw.pl/pub/GPW/uchwaly/2026/941_2026_EN.pdf). The WATS Detailed Exchange Trading Rules (https://www.gpw.pl/pub/GPW/files/PDF/regulacje/SZOG_GPW_WATS_en.pdf), Division IV, Chapter 3, Section 1, schedule the continuous trading system as opening auction 08:30-09:00, continuous trading 09:00-16:50, closing auction 16:50-17:00 (including determination of the closing price) and trading at last 17:00-17:05; under WATS the scheduled times are the earliest and latest times of each phase including the random-end parameter (Resolution 1252/2025). regular_hours.close 17:00 is therefore the end of the closing auction from 2026-10-05; WATS did not change the share schedule. 2013-04-15 to 2026-10-02 (UTP): the same 16:50-17:00 closing auction is reported in republished GPW announcements, but GPW's own UTP rules text was not read. Before 2013-04-15 (Warset) the registry's 17:00 is unconfirmed: GPW Resolution 933/2010 (from 3 January 2011) is reported to set a 17:20-17:30 closing call, but the resolution itself was not found on gpw.pl, so the close was not changed. Half days: none. The WATS schedule has no shortened-session provision and the 2027 and 2028 resolutions list only full non-session days (Dec 24 and Dec 31 are closures). No Saturday sessions. One-off closure: 2013-04-16 (day after the UTP migration) is closed, from exchange_calendars. The GPW fetcher cannot reach gpw.pl from this sandbox; the sources were read by hand.",
-  "regular_hours": {
-    "close": "17:00",
-    "open": "09:00"
-  },
-  "sessions": [
-    {
-      "close": "09:00",
-      "open": "08:30",
-      "type": "pre_market"
-    },
-    {
-      "close": "17:00",
-      "open": "09:00",
-      "type": "regular"
-    },
-    {
-      "close": "17:10",
-      "open": "17:00",
-      "type": "post_market"
-    }
-  ],
-  "timezone": "Europe/Warsaw",
-  "verification": {
-    "basis": "divergence_report",
-    "class": "reference_compared",
-    "coverage": {
-      "from": "2010-01-01",
-      "ranges": [
-        "trading_days"
-      ],
-      "sources": [
-        {
-          "from": "2010-01-01",
-          "sampled": null,
-          "source": "exchange_calendars",
-          "to": "2024-12-31"
-        },
-        {
-          "from": "2025-01-01",
-          "source": "exchange_calendars + exchange_publications (GPW Management Board resolutions on non-session days, published to 2028: 754/2025 for 2027, 1089/2026 for 2028)",
-          "to": "2028-12-31"
-        },
-        {
-          "from": "2029-01-01",
-          "source": "exchange_calendars + standing GPW non-session-day pattern (GPW has resolved only to 2028)",
-          "to": "2029-12-31"
-        }
-      ],
-      "to": "2029-12-31"
-    },
-    "last_checked": "2026-11-21",
-    "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
-  },
-  "weekend_days": [
-    5,
-    6
+  "ad_hoc_closures": [],
+  "generation_range": [
+    "2010-01-01",
+    "2029-12-31"
   ]
 }
