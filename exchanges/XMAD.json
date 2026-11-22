@@ -936,7 +936,7 @@
   },
   "mic": "XMAD",
   "name": "Bolsa de Madrid",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. Lead for 2027 (4b5, not data): BME's trading-calendar page (https://www.bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html, saved 2026-11-22) holds a hidden block (class 'cmp-container hidden'), also headed 'has set the trading calendar for 2026', listing non-trading days '1st of January Friday', '26th of March Friday', '29th of March Monday' (weekdays of 2027) and the 14:00 early closes '24th of December Thursday', '31st of December Thursday' (weekdays of 2026: in 2027 both are Fridays). A draft that mixes years, not a publication; the fetcher skips hidden blocks. Its 2027 dates agree with the registry: 2027-01-01 and 2027-03-26 closed (explicit rows), 2027-03-29 closed by the Easter Monday recurrence rule (no explicit row), 24 and 31 December 2027 early close 14:00. 2027 rows change only when BME publishes its 2027 calendar.",
   "regular_hours": {
     "close": "17:30",
     "open": "09:00"
