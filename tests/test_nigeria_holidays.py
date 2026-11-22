@@ -3,7 +3,7 @@
 test_nigeria_holidays.py — Ground truth tests for XNSA (Nigerian Stock Exchange).
 
 Key facts verified:
-    - Regular hours: 10:00-14:30 (single session)
+    - Regular hours: 09:30-16:00 from 2026-11-22 (4b5); the 2025-01-01 entry 10:00-14:30 is kept (single session)
     - No lunch break
     - Weekend is Saturday-Sunday (Western weekend)
     - Democracy Day (Jun 12)
@@ -62,8 +62,12 @@ class TestXNSAProperties:
         assert xnsa["timezone"] == "Africa/Lagos"
 
     def test_regular_hours(self, xnsa):
-        assert xnsa["regular_hours"]["open"] == "10:00"
-        assert xnsa["regular_hours"]["close"] == "14:30"
+        assert xnsa["regular_hours"] == [
+            {"effective_from": "2025-01-01", "open": "10:00", "close": "14:30"},
+            {"effective_from": "2026-11-22", "open": "09:30", "close": "16:00"},
+        ]
+        regular = [s for s in xnsa["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "09:30", "close": "16:00"}]
 
     def test_no_lunch_break(self, xnsa):
         lunch = [s for s in xnsa.get("sessions", []) if s.get("type") == "lunch_break"]

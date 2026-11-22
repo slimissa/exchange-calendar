@@ -47,7 +47,7 @@ XMOS,Moscow Exchange,XMOS,RU,Europe/Moscow,5,6,09:00,19:00,2010-01-01,2026-12-31
 XMUS,Muscat Stock Exchange,XMUS,OM,Asia/Muscat,4,5,10:00,13:00,2025-01-01,2029-12-31
 XNAI,Nairobi Securities Exchange,XNAI,KE,Africa/Nairobi,5,6,09:30,15:00,2025-01-01,2029-12-31
 XNAS,NASDAQ,XNAS,US,America/New_York,5,6,09:30,16:00,1990-01-01,2029-12-31
-XNSA,Nigerian Stock Exchange,XNSA,NG,Africa/Lagos,5,6,10:00,14:30,2025-01-01,2029-12-31
+XNSA,Nigerian Stock Exchange,XNSA,NG,Africa/Lagos,5,6,09:30,16:00,2025-01-01,2029-12-31
 XNSE,National Stock Exchange of India,XNSE,IN,Asia/Kolkata,5,6,09:15,15:30,2010-01-01,2029-12-31
 XNYS,New York Stock Exchange,XNYS,US,America/New_York,5,6,09:30,16:00,1990-01-01,2029-12-31
 XNZE,New Zealand Exchange,XNZE,NZ,Pacific/Auckland,5,6,10:00,17:00,2010-01-01,2029-12-31

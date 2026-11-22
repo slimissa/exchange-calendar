@@ -19,7 +19,7 @@ import check_verification as cv  # noqa: E402
 # Check 6 is non-blocking in Phase 4b-lite. Its count of exchanges with
 # complete hours evidence may grow, never shrink: raise this floor when an
 # exchange gains evidence.
-HOURS_EVIDENCE_FLOOR = 39  # 4b5: + XCAY
+HOURS_EVIDENCE_FLOOR = 40  # 4b5: + XNSA
 #   4b3: batch B (8), XPHS XSES XTAI XZAG
 
 

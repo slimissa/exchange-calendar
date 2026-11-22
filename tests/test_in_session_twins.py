@@ -32,7 +32,8 @@ def test_real_fixture_has_a_twin_for_every_is_open_probe():
     # (tools/gen_cross_lang_probes.py: week, boundaries, holiday, early close).
     # + 4 XKUW regular-hours probes in 4b5 (old and new open/close).
     # + 4 XCAY regular-hours probes in 4b5 (old and new open/close).
-    assert len(found) == n_is_open == 135
+    # + 4 XNSA regular-hours probes in 4b5 (old and new open/close).
+    assert len(found) == n_is_open == 139
 
 
 def test_real_fixture_twins_answer_the_same_in_python():

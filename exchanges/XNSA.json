@@ -348,14 +348,23 @@
   },
   "mic": "XNSA",
   "name": "Nigerian Stock Exchange",
-  "regular_hours": {
-    "close": "14:30",
-    "open": "10:00"
-  },
-  "sessions": [
+  "note": "Regular hours (4b5): 09:30-16:00 Lagos from 2026-11-22, under ADR 0014 section 8 (NGX Trading Market Structure, undated: continuous trading from 9:30am, pre-close 3:50pm, close 4:00pm). The 10:00-14:30 entry is kept and unconfirmed.",
+  "regular_hours": [
     {
       "close": "14:30",
-      "open": "10:00",
+      "effective_from": "2025-01-01",
+      "open": "10:00"
+    },
+    {
+      "close": "16:00",
+      "effective_from": "2026-11-22",
+      "open": "09:30"
+    }
+  ],
+  "sessions": [
+    {
+      "close": "16:00",
+      "open": "09:30",
       "type": "regular"
     }
   ],
@@ -363,6 +372,34 @@
   "verification": {
     "basis": "ci_network",
     "class": "ci_unreachable",
+    "hours": [
+      {
+        "checked_on": "2026-11-22",
+        "close": "14:30",
+        "close_rule": "continuous_end",
+        "effective_from": "2025-01-01",
+        "note": "NGX's market structure page read on 2026-11-22 gives 09:30-16:00 and no date; the registry's 10:00-14:30 is backed by no NGX document, and its end is unknown (a press lead dates the move to 9:00-4:00 market hours on 27 April 2026). Settled by an NGX notice dating the extension.",
+        "open": "10:00",
+        "recheck_date": "2027-02-19",
+        "segment": "NGX equities, Automated Trading System central order book: continuous trading and pre-close",
+        "source_title": "Nigerian Exchange Limited, Trading Market Structure (saved by the maintainer as a PDF print, 2026-11-22)",
+        "source_url": "https://ngxgroup.com/exchange/trade/equities/trading-market-structure",
+        "status": "unconfirmed"
+      },
+      {
+        "checked_on": "2026-11-22",
+        "close": "16:00",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2026-11-22",
+        "note": "'Market hours: 9.00 to 4.00'; session table: 'Pre-Open 9:00am', 'Pre-Open IO 9:25am', 'Continuous Trading 9:30am', 'Pre-Close 3:50pm' (Calculate TCP/TOV), 'Pre-Close IO 3:55pm' (Publish TOP/TOV/Order Imbalance), 'Close 4:00pm'. Open 09:30, the start of continuous trading (the 9:00 pre-open is not regular hours); close 16:00, the end of the pre-close call that sets the closing price (ADR 0013). The page states no date (a press lead gives 2026-04-27, not an NGX document). In force at least since 2026-11-22; start undated; earlier entry's end unknown (ADR 0014 section 8).",
+        "open": "09:30",
+        "segment": "NGX equities, Automated Trading System central order book: continuous trading and pre-close",
+        "source_title": "Nigerian Exchange Limited, Trading Market Structure (saved by the maintainer as a PDF print, 2026-11-22)",
+        "source_url": "https://ngxgroup.com/exchange/trade/equities/trading-market-structure",
+        "status": "verified",
+        "verified_from": "2026-11-22"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "CI-UNREACHABLE (not a parser bug, not permanently blocked)."
   },

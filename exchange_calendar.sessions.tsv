@@ -98,7 +98,7 @@ XNAI	regular	1	09:30	15:00
 XNAS	post_market	1	16:00	20:00	
 XNAS	pre_market	1	04:00	09:30	
 XNAS	regular	1	09:30	16:00	
-XNSA	regular	1	10:00	14:30	
+XNSA	regular	1	09:30	16:00	
 XNSE	post_market	1	15:30	16:00	
 XNSE	pre_market	1	09:00	09:15	
 XNSE	regular	1	09:15	15:30	
