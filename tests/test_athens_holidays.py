@@ -3,7 +3,7 @@
 test_athens_holidays.py — Ground truth tests for XATH (Athens Stock Exchange).
 
 Key facts verified:
-    - Regular hours: 10:30-17:00
+    - Regular hours: 10:30-17:10 from 2026-11-23 (4b5); the 2025-01-01 entry 10:30-17:00 is kept
     - No lunch break (continuous trading)
     - No extended hours sessions
     - Orthodox Easter calendar (different from Western)
@@ -69,8 +69,12 @@ class TestXATHProperties:
         assert xath["timezone"] == "Europe/Athens"
 
     def test_regular_hours(self, xath):
-        assert xath["regular_hours"]["open"] == "10:30"
-        assert xath["regular_hours"]["close"] == "17:00"
+        assert xath["regular_hours"] == [
+            {"effective_from": "2025-01-01", "open": "10:30", "close": "17:00"},
+            {"effective_from": "2026-11-23", "open": "10:30", "close": "17:10"},
+        ]
+        regular = [s for s in xath["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "10:30", "close": "17:10"}]
 
     def test_no_lunch_break(self, xath):
         lunch = [s for s in xath.get("sessions", []) if s.get("type") == "lunch_break"]

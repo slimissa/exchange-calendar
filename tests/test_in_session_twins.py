@@ -39,7 +39,8 @@ def test_real_fixture_has_a_twin_for_every_is_open_probe():
     # + 1 XBRV probe in 4b6 (14:30, the corrected close).
     # + 2 XMAD regular-hours probes in 4b6.
     # + 2 XBKK regular-hours probes in 4b6.
-    assert len(found) == n_is_open == 154
+    # + 2 XATH regular-hours probes in 4b6.
+    assert len(found) == n_is_open == 156
 
 
 def test_real_fixture_twins_answer_the_same_in_python():
