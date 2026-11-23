@@ -50649,8 +50649,8 @@
       "country_code": "ES",
       "extended_hours": {
         "after_hours": {
-          "close": "17:35",
-          "open": "17:30"
+          "close": "17:45",
+          "open": "17:35"
         },
         "pre_market": {
           "close": "09:00",
@@ -51434,11 +51434,19 @@
       },
       "mic": "XMAD",
       "name": "Bolsa de Madrid",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. Lead for 2027 (4b5, not data): BME's trading-calendar page (https://www.bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html, saved 2026-11-22) holds a hidden block (class 'cmp-container hidden'), also headed 'has set the trading calendar for 2026', listing non-trading days '1st of January Friday', '26th of March Friday', '29th of March Monday' (weekdays of 2027) and the 14:00 early closes '24th of December Thursday', '31st of December Thursday' (weekdays of 2026: in 2027 both are Fridays). A draft that mixes years, not a publication; the fetcher skips hidden blocks. Its 2027 dates agree with the registry: 2027-01-01 and 2027-03-26 closed (explicit rows), 2027-03-29 closed by the Easter Monday recurrence rule (no explicit row), 24 and 31 December 2027 early close 14:00. 2027 rows change only when BME publishes its 2027 calendar.",
-      "regular_hours": {
-        "close": "17:30",
-        "open": "09:00"
-      },
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars + exchange_publications. Lead for 2027 (4b5, not data): BME's trading-calendar page (https://www.bolsasymercados.es/en/bme-exchange/trading/trading-calendar.html, saved 2026-11-22) holds a hidden block (class 'cmp-container hidden'), also headed 'has set the trading calendar for 2026', listing non-trading days '1st of January Friday', '26th of March Friday', '29th of March Monday' (weekdays of 2027) and the 14:00 early closes '24th of December Thursday', '31st of December Thursday' (weekdays of 2026: in 2027 both are Fridays). A draft that mixes years, not a publication; the fetcher skips hidden blocks. Its 2027 dates agree with the registry: 2027-01-01 and 2027-03-26 closed (explicit rows), 2027-03-29 closed by the Easter Monday recurrence rule (no explicit row), 24 and 31 December 2027 early close 14:00. 2027 rows change only when BME publishes its 2027 calendar. Regular hours (4b6): 09:00-17:35 from 2026-11-23, under ADR 0014 section 8 (BME Spanish Stock Exchange Hours and Circular 1/2026: open session 9:00-17:30, closing auction 17:30-17:35 with a random end of at most 30 seconds, trading at last 17:35-17:45). The 2010 entry (09:00-17:30) is kept and unconfirmed. Post-market (sessions and extended_hours) is now the trading-at-last phase, 17:35-17:45.",
+      "regular_hours": [
+        {
+          "close": "17:30",
+          "effective_from": "2010-01-01",
+          "open": "09:00"
+        },
+        {
+          "close": "17:35",
+          "effective_from": "2026-11-23",
+          "open": "09:00"
+        }
+      ],
       "sessions": [
         {
           "close": "09:00",
@@ -51446,7 +51454,7 @@
           "type": "pre_market"
         },
         {
-          "close": "17:30",
+          "close": "17:35",
           "open": "09:00",
           "type": "regular"
         },
@@ -51455,13 +51463,13 @@
           "type": "auction"
         },
         {
-          "close": "17:35",
-          "open": "17:30",
-          "type": "post_market"
-        },
-        {
           "at": "17:30",
           "type": "auction"
+        },
+        {
+          "close": "17:45",
+          "open": "17:35",
+          "type": "post_market"
         }
       ],
       "timezone": "Europe/Madrid",
@@ -51488,6 +51496,34 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-23",
+            "close": "17:30",
+            "close_rule": "continuous_end",
+            "effective_from": "2010-01-01",
+            "note": "BME's hours page and Circular 1/2026 (read 2026-11-23) end the SIBE closing auction at 17:35; the registry's 17:30 is the end of the open session, and no BME document read gives when the 17:30-17:35 closing auction began. Settled by the Sociedad de Bolsas circular that introduced it.",
+            "open": "09:00",
+            "recheck_date": "2027-02-19",
+            "segment": "SIBE main trading (Bolsa de Madrid equities, IBEX 35 constituents): open session and closing auction",
+            "source_title": "BME Exchange, Spanish Stock Exchange Hours (SIBE tab; saved by the maintainer as a PDF print, 2026-11-23); BME Circular 1/2026, Operating rules of the Spanish Stock Exchange Interconnection (Madrid, 12 January 2026)",
+            "source_url": "https://www.bolsasymercados.es/en/bme-exchange/trading-hours.html",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-23",
+            "close": "17:35",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2026-11-23",
+            "note": "SIBE 'Open': 'Opening Auction From 8:30 h to 9:00 h'; 'Market Open From 9:00 h to 17:30 h'; 'Closing Auction From 17:30 h to 17:35 h'; 'Trading At Last From 17:35 h to 17:45 h'. BME Circular 1/2026, 'Operating rules of the Spanish Stock Exchange Interconnection' (Madrid, 12 January 2026), 3.2.1.2: 'From 9am to 5.30pm when continuous trading is carried out'; 3.2.1.4: 'From 5.30pm to 5.35pm ... The auction shall end at any time within a random period of at most 30 seconds from 5.35pm.'; 3.2.1.5: Trading at Last 'lasting for 10 minutes until 17:45'. Open 09:00; close 17:35: seconds of jitter after a stated time give the stated minute (ADR 0013). Trading at Last is not regular hours. Neither document dates the schedule: the circular consolidates Circular 1/2021 of 17 March and later amendments, and its 'THIRD. Date of application' leaves entry into force to an Operating Instruction. In force at least since 2026-11-23; start undated; earlier entry's end unknown (ADR 0014 section 8).",
+            "open": "09:00",
+            "segment": "SIBE main trading (Bolsa de Madrid equities, IBEX 35 constituents): open session and closing auction",
+            "source_title": "BME Exchange, Spanish Stock Exchange Hours (SIBE tab; saved by the maintainer as a PDF print, 2026-11-23); BME Circular 1/2026, Operating rules of the Spanish Stock Exchange Interconnection (Madrid, 12 January 2026)",
+            "source_url": "https://www.bolsasymercados.es/en/bme-exchange/trading-hours.html",
+            "status": "verified",
+            "verified_from": "2026-11-23"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

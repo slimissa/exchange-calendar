@@ -1970,6 +1970,8 @@
   ],
   "2.34.0": [
     {"file": "tools/check_changelog_order.py", "contains": "def problems(text):"},
-    {"file": "CHANGELOG.md", "contains": "XBRV close 14:30 UTC (was 14:31)"}
+    {"file": "CHANGELOG.md", "contains": "XBRV close 14:30 UTC (was 14:31)"},
+    {"file": "CHANGELOG.md", "contains": "XMAD regular hours 09:00-17:35 from 2026-11-23"},
+    {"file": "CHANGELOG.md", "contains": "ADR 0014 restored (4b6)"}
   ]
 }

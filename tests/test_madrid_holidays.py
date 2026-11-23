@@ -67,8 +67,12 @@ class TestXMADProperties:
         assert xmad["timezone"] == "Europe/Madrid"
 
     def test_regular_hours(self, xmad):
-        assert xmad["regular_hours"]["open"] == "09:00"
-        assert xmad["regular_hours"]["close"] == "17:30"
+        assert xmad["regular_hours"] == [
+            {"effective_from": "2010-01-01", "open": "09:00", "close": "17:30"},
+            {"effective_from": "2026-11-23", "open": "09:00", "close": "17:35"},
+        ]
+        regular = [s for s in xmad["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "09:00", "close": "17:35"}]
 
     def test_no_lunch_break(self, xmad):
         lunch = [s for s in xmad.get("sessions", []) if s["type"] == "lunch_break"]

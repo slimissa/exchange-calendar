@@ -85,9 +85,9 @@ XLON	regular	1	08:00	16:30
 XLUX	regular	1	09:00	17:35	
 XMAD	auction	1			09:00
 XMAD	auction	2			17:30
-XMAD	post_market	1	17:30	17:35	
+XMAD	post_market	1	17:35	17:45	
 XMAD	pre_market	1	08:30	09:00	
-XMAD	regular	1	09:00	17:30	
+XMAD	regular	1	09:00	17:35	
 XMAL	regular	1	09:00	15:30	
 XMEX	post_market	1	15:00	15:30	
 XMEX	pre_market	1	07:30	08:30	

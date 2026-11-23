@@ -3506,7 +3506,7 @@ class BMEMadridFetcher(ExchangeFetcher):
             name=self.name,
             timezone="Europe/Madrid",
             regular_open="09:00",
-            regular_close="17:30",
+            regular_close="17:35",
             holidays=holidays,
             source_urls=[self.source_url],
             currency="EUR",

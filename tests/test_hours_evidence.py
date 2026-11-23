@@ -19,7 +19,7 @@ import check_verification as cv  # noqa: E402
 # Check 6 is non-blocking in Phase 4b-lite. Its count of exchanges with
 # complete hours evidence may grow, never shrink: raise this floor when an
 # exchange gains evidence.
-HOURS_EVIDENCE_FLOOR = 43  # 4b5: + XIST
+HOURS_EVIDENCE_FLOOR = 44  # 4b6: + XMAD
 #   4b3: batch B (8), XPHS XSES XTAI XZAG
 
 
@@ -357,3 +357,20 @@ def test_4b4_saved_pages_evidence():
     # until a notice dates the timetable: evidence records the contradiction.
     assert item["status"] == "unconfirmed" and "16:10:00^ - 16:11:00" in item["note"]
     assert cv.hours_problems(asx) == []
+
+
+def test_adr_0014_keeps_its_sections_and_a_row_per_evidenced_exchange():
+    # 4b6: a session script truncated ADR 0014 to one table row (14e2fc6) and
+    # no check noticed. Every exchange with hours evidence has a row in the
+    # applied tables, and the ADR keeps its decision sections.
+    import re
+    adr = (ROOT / "docs" / "decisions" / "0014-regular-hours-evidence.md").read_text(encoding="utf-8")
+    for heading in ("## Decision", "### 2.", "### 7.", "### 8.", "## Consequences"):
+        assert heading in adr, heading
+    rows = set(re.findall(r"^\| ([A-Z]{4}) \|", adr, re.M))
+    evidenced = set()
+    for path in sorted((ROOT / "exchanges").glob("*.json")):
+        d = json.loads(path.read_text(encoding="utf-8"))
+        if d["verification"].get("hours"):
+            evidenced.add(path.stem)
+    assert evidenced and evidenced <= rows, sorted(evidenced - rows)

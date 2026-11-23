@@ -11,6 +11,8 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - XBRV close 14:30 UTC (was 14:31) for the 2026-11-22 entry (4b6). Maintainer decision written into ADR 0013: a stated time with jitter around it ("T +/- N seconds") gives the stated time; only a window written as a range gives its end. BRVM's "+/- 60 secondes" applies to every time on its page, the opening fixing included, so its closing fixing "14 h 30 mn" gives 14:30. The open (09:45) is unchanged.
+- XMAD regular hours 09:00-17:35 from 2026-11-23 (4b6, ADR 0014 section 8), against BME's "Spanish Stock Exchange Hours" page (SIBE: market open 9:00-17:30, closing auction 17:30-17:35, trading at last 17:35-17:45) and BME Circular 1/2026 (12 January 2026; the closing auction "shall end at any time within a random period of at most 30 seconds from 5.35pm", so the stated minute under ADR 0013). Neither document dates the schedule (the circular leaves its date of application to an Operating Instruction); the 2010 entry (09:00-17:30) is kept, unconfirmed. Post-market (sessions, extended_hours) is now trading at last, 17:35-17:45. XMAD joins the weekly session-time divergence run; its 17:35 vs the libraries' 17:30 from 2026-11-23 is a `convention_difference`.
+- ADR 0014 restored (4b6): the session script that added XMAD's applied row opened the file for writing before reading it, and commit 14e2fc6 left ADR 0014 as that single row. The full text is back, with the XMAD row. A new test checks that ADR 0014 keeps its decision sections and has an applied-table row for every exchange with hours evidence; it fails on the truncated file.
 
 ## [2.33.0] - 2026-11-22
 

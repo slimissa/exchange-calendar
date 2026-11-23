@@ -278,9 +278,10 @@ def render_sessions(sessions):
       "closing auction runs past its continuous close, the close column shows "
       "that difference on every day, not a registry error: Hong Kong from "
       "2016-07-25 (registry 16:10, the end of HKEX's Closing Auction Session; "
-      "libraries 16:00) and Istanbul from 2026-11-22 (registry 18:07, the end "
-      "of Borsa Istanbul's closing session; libraries 18:00). Both are "
-      "classified `convention_difference`.")
+      "libraries 16:00), Istanbul from 2026-11-22 (registry 18:07, the end "
+      "of Borsa Istanbul's closing session; libraries 18:00) and Madrid from "
+      "2026-11-23 (registry 17:35, the end of BME's closing auction; "
+      "libraries 17:30). All are classified `convention_difference`.")
     w("- A half-day mismatch normally appears with a close mismatch on the same "
       "date, so the two columns are not independent.")
     w("- Years: the registry only has data inside each exchange's "
