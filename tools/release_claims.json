@@ -1967,5 +1967,8 @@
     {"file": "CHANGELOG.md", "contains": "XBRV regular hours 09:45-14:31 UTC from 2026-11-22"},
     {"file": "CHANGELOG.md", "contains": "DSMD regular hours 09:30-13:10 Doha from 2026-11-22"},
     {"file": "CHANGELOG.md", "contains": "XIST regular hours 10:00-18:07 from 2026-11-22"}
+  ],
+  "2.34.0": [
+    {"file": "tools/check_changelog_order.py", "contains": "def problems(text):"}
   ]
 }

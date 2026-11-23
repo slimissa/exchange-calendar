@@ -77,6 +77,7 @@
     "exchanges/XZAG.json": "a548946dc34e39907729deb0dcf05b5e9ed0cb2cd60c86c3ebbdb21d99f42a80",
     "schema.json": "4b0103ae629028407895076fdea16d8da2e8284ec4158893477d7be4b53dd72f",
     "tools/build.py": "d1be6d026737d77779bb13f482369f670bc9185dbc0a52cdaf406a18ee724a1f",
+    "tools/check_changelog_order.py": "4dc422915ec17652085695e963c98c3141bbf3f91762a569dd58dc5d77d72052",
     "tools/check_country_codes.py": "3ab402d13e9d94a804ab899e86ed217aa1a65b29fc215d2fae0d9c0d91dd68d1",
     "tools/check_doc_facts.py": "8da6267012653756f21730958388e39898091a24cb1858eaf6a06d693fc7aead",
     "tools/check_doc_links.py": "87e27afb48e813d697bd496de8fad21dc9b17fd4ac0cbb8cb176b90979980b34",

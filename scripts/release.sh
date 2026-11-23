@@ -301,6 +301,10 @@ ok "no orphan variables in release.sh"
 check_workflows_covered
 check_manifest_has_version
 
+# [Unreleased] first, released headings strictly descending, no duplicates.
+run python3 tools/check_changelog_order.py
+ok "CHANGELOG heading order"
+
 # ── preconditions ──────────────────────────────────────────────────
 say "Checking preconditions"
 

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- `tools/check_changelog_order.py` (4b6): `## [Unreleased]`, if present, must be the first `## [` heading, released headings must be strictly descending by version (compared numerically), and no version may appear twice. Run by the session gate, by CI (`validate.yml`) and by `release.sh`'s static preflight; 12 tests cover the real file and each failure. 4b5 had appended its entries under an `[Unreleased]` heading below `[2.32.0]`, which broke the release.
+
 ## [2.33.0] - 2026-11-22
 
 ### Changed

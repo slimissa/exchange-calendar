@@ -82,6 +82,9 @@ jobs:
       - name: Check prose for glued words
         run: python3 tools/check_glued_words.py
 
+      - name: Check CHANGELOG heading order
+        run: python3 tools/check_changelog_order.py
+
       - name: Check known-source-fault entries
         run: python3 tools/known_source_faults.py --check
 
