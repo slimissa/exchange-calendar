@@ -417,6 +417,7 @@
   },
   "mic": "XMAL",
   "name": "Malta Stock Exchange",
+  "note": "Regular hours evidence (4b6): MSE's Trading page (2026-11-23) gives pre-trading 09:00-09:30, continuous 09:30-15:30 and post-trading 15:30-16:00, with a closing auction it does not time; unconfirmed, values unchanged.",
   "regular_hours": {
     "close": "15:30",
     "open": "09:00"
@@ -432,6 +433,21 @@
   "verification": {
     "basis": "fetcher:implemented",
     "class": "source_verified",
+    "hours": [
+      {
+        "checked_on": "2026-11-23",
+        "close": "15:30",
+        "close_rule": "continuous_end",
+        "effective_from": "2025-01-01",
+        "note": "'Trading Time Table', 'ALL MARKETS': 'Pre-trading 09:00 - 09:30'; 'Continuous 09:30 - 15:30'; 'Post-trading 15:30 - 16:00'; 'Note: Trading commences with an Opening Auction and ends with a Closing Auction'. The registry's open (09:00) is the start of pre-trading, and ADR 0014 would put the open at 09:30. The close cannot be settled from the page: it says trading ends with a closing auction but gives that auction no time, so it is not clear whether the auction ends at 15:30 or runs into the 15:30-16:00 post-trading phase. Under the 4b6 stop condition (a page ambiguous on what ends the session) the values are not changed. Settled by MSE's trading rules or a market notice giving the closing auction's times.",
+        "open": "09:00",
+        "recheck_date": "2027-02-19",
+        "segment": "Malta Stock Exchange, all markets (Regulated Main Market and Prospects MTF)",
+        "source_title": "Malta Stock Exchange, Trading (saved by the maintainer as a PDF print, 2026-11-23)",
+        "source_url": "https://borzamalta.com.mt/trading",
+        "status": "unconfirmed"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
   },

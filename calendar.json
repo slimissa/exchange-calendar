@@ -52041,6 +52041,7 @@
       },
       "mic": "XMAL",
       "name": "Malta Stock Exchange",
+      "note": "Regular hours evidence (4b6): MSE's Trading page (2026-11-23) gives pre-trading 09:00-09:30, continuous 09:30-15:30 and post-trading 15:30-16:00, with a closing auction it does not time; unconfirmed, values unchanged.",
       "regular_hours": {
         "close": "15:30",
         "open": "09:00"
@@ -52056,6 +52057,21 @@
       "verification": {
         "basis": "fetcher:implemented",
         "class": "source_verified",
+        "hours": [
+          {
+            "checked_on": "2026-11-23",
+            "close": "15:30",
+            "close_rule": "continuous_end",
+            "effective_from": "2025-01-01",
+            "note": "'Trading Time Table', 'ALL MARKETS': 'Pre-trading 09:00 - 09:30'; 'Continuous 09:30 - 15:30'; 'Post-trading 15:30 - 16:00'; 'Note: Trading commences with an Opening Auction and ends with a Closing Auction'. The registry's open (09:00) is the start of pre-trading, and ADR 0014 would put the open at 09:30. The close cannot be settled from the page: it says trading ends with a closing auction but gives that auction no time, so it is not clear whether the auction ends at 15:30 or runs into the 15:30-16:00 post-trading phase. Under the 4b6 stop condition (a page ambiguous on what ends the session) the values are not changed. Settled by MSE's trading rules or a market notice giving the closing auction's times.",
+            "open": "09:00",
+            "recheck_date": "2027-02-19",
+            "segment": "Malta Stock Exchange, all markets (Regulated Main Market and Prospects MTF)",
+            "source_title": "Malta Stock Exchange, Trading (saved by the maintainer as a PDF print, 2026-11-23)",
+            "source_url": "https://borzamalta.com.mt/trading",
+            "status": "unconfirmed"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
       },
@@ -53373,15 +53389,15 @@
         "hours": [
           {
             "backlog_item": "Sessions that follow another market's daylight saving time",
-            "checked_on": "2026-11-22",
+            "checked_on": "2026-11-23",
             "close": "15:00",
             "close_rule": "continuous_end",
             "effective_from": "2010-01-01",
             "limitation": "BMV moves the whole session one hour earlier while the United States is on daylight saving time, to stay aligned with New York: 7:30-14:00 Mexico City then, 8:30-15:00 otherwise (Mexico abolished its own daylight saving time in 2022). regular_hours has no season, so the entry holds the 8:30-15:00 schedule and is_open and in_session are an hour wrong from the second Sunday of March to the first Sunday of November.",
-            "note": "Manual Operativo 1.1.2 c): 'Mercado contínuo para títulos de renta variable, de renta fija y warrants de 8:30 a 15:00 horas.'; 1.1.2 (seasonal clause): 'El horario de la Sesión de Remate durante el horario de verano (estacional) en Estados Unidos, ... para fines de mantener homologado el horario de la sesión de remate de la BMV con el horario del mercado de Nueva York', with 'Mercado continuo ... de 7:30 a 14:00 horas'; 1.1.3: 'de 8:30 a 15:00 horas (7:30 a 14:00 horas durante el horario de verano EUA)'. Those quotes came through WebFetch; the search index holds the same manual's text verbatim ('d) Subastas Continuas de 8:00 a 15:00 horas.'; Precio de Cierre Etapa 1 orders 'de 8:00 horas a 14:40 horas con ejecución de Operaciones a las 15:00 horas'), and the maintainer's saved tab (read in full) gives the US-summer table: 'Mercado Continuo 7:30 a 14:00', 'Cálculo del PPP 13:40 a 14:00', 'Operaciones después del cierre y al INAV etapa 2 14:01:00 a 14:19:59', under a heading 'Anterior' (the English tab labels 8:30-15:00 'Previous', so the heading dates nothing). BMV's avisos page (15 October 2025, 'Homologación de los horarios de operación del Mercado de Capitales con los de EUA'): from Monday 3 November the session 'iniciará a las 8:30 horas para concluir a las 15:00 horas'. Close (ADR 0013): BMV has no closing auction; the closing price is calculated from 'los precios de los últimos 20 minutos de la Sesión de Remate' (1.3.6.6.2) and closing-price orders execute at 15:00; trades at the closing price 15:01-15:19:59 are not regular hours. So close 15:00, the end of continuous trading. Open 08:30 (opening auction 8:00-8:29:59). History: BMV's 2019 manual (V1.67) already gives 8:30-15:00; before 2023 Mexico kept daylight saving time, and BMV shifted only in the weeks the two countries' changes differed (aviso of 15 October 2021: 7:30-14:00 from 1 to 5 November 2021). No BMV document read dates the first full-season shift (the US summer of 2023).",
+            "note": "Manual Operativo, 'Versión 1.97/2026', 'Vigencia a partir del 23 de julio de 2026' (the maintainer's PDF, 107 pages, read directly in 4b6), 1.1.2 'Horario de la Sesión de Remate': 'c) Mercado contínuo para títulos de renta variable, de renta fija y warrants de 8:30 a 15:00 horas.'; 'b) Subastas de Apertura ... de 8:00 a 8:29:59 horas.'; then 'El horario de la Sesión de Remate durante el horario de verano (estacional) en Estados Unidos, para fines de mantener homologado el horario de la sesión de remate de la BMV con el horario del mercado de Nueva York, será el siguiente:' with 'c) Mercado continuo para títulos de renta variable, de renta fija y warrants de 7:30 a 14:00 horas.'; 'Los horarios de inicio de cada etapa ... se aplicarán de manera aleatoria entre la hora señalada y el segundo inmediato siguiente' (seconds of jitter: the stated times). 1.1.3: 'durante el horario de 8:30 a 15:00 horas (7:30 a 14:00 horas durante el horario de verano EUA) de la Sesión de Remate'. Close (ADR 0013): the manual has no closing auction; 1.3.6.6.2 sets the closing price as the 'PPP' of 'los precios de los últimos 20 minutos de la Sesión de Remate', closing-price orders (HC) execute 'a las 15:00 horas', and orders after the close (HD) run 15:01:00-15:19:59 (not regular hours). So close 15:00, the end of continuous trading; open 08:30. 4b4 read the same manual through WebFetch; this replaces that reading. The maintainer's saved 'Horarios de Negociación' tab gives the US-summer table 'Mercado Continuo 7:30 a 14:00' under a heading 'Anterior' (the English tab labels 8:30-15:00 'Previous', so the heading dates nothing). BMV's avisos page (15 October 2025, 'Homologación de los horarios de operación del Mercado de Capitales con los de EUA'): from Monday 3 November the session 'iniciará a las 8:30 horas para concluir a las 15:00 horas'. Close (ADR 0013): BMV has no closing auction; the closing price is calculated from 'los precios de los últimos 20 minutos de la Sesión de Remate' (1.3.6.6.2) and closing-price orders execute at 15:00; trades at the closing price 15:01-15:19:59 are not regular hours. So close 15:00, the end of continuous trading. Open 08:30 (opening auction 8:00-8:29:59). History: BMV's 2019 manual (V1.67) already gives 8:30-15:00; before 2023 Mexico kept daylight saving time, and BMV shifted only in the weeks the two countries' changes differed (aviso of 15 October 2021: 7:30-14:00 from 1 to 5 November 2021). No BMV document read dates the first full-season shift (the US summer of 2023).",
             "open": "08:30",
             "segment": "BMV Mercado de Capitales, Sesión de Remate: mercado continuo para títulos de renta variable, de renta fija y warrants",
-            "source_title": "BMV Manual Operativo, Versión 1.97/2026, vigente a partir del 23 de julio 2026 (read through WebFetch: the sandbox cannot download bmv.com.mx); BMV 'Horarios de Negociación' tab saved by the maintainer on 2026-11-22 (https://www.bmv.com.mx/es/Grupo_BMV/Calendario_de_dias_festivos/_rid/662/_mod/TAB_HORARIOS_NEG)",
+            "source_title": "BMV Manual Operativo, Reglas operativas del Sistema Electrónico de Negociación, Versión 1.97/2026, vigente a partir del 23 de julio 2026 (PDF saved by the maintainer, read in 4b6); BMV 'Horarios de Negociación' tab saved by the maintainer on 2026-11-22 (https://www.bmv.com.mx/es/Grupo_BMV/Calendario_de_dias_festivos/_rid/662/_mod/TAB_HORARIOS_NEG)",
             "source_url": "https://bmv.com.mx/docs-pub/MARCO_NORMATIVO/CTEN_MERMO/20260723_V1.97_Clarif_Dto.Aranceles_Ambiente_Pruerbas.pdf",
             "status": "schema_limited"
           }
@@ -79906,7 +79922,7 @@
       },
       "mic": "XSHE",
       "name": "Shenzhen Stock Exchange",
-      "note": "2010-2024 inferred from XSHG's exchange_calendars sessions (exchange_calendars has no XSHE); not independently verified. 2025-2026: the exchange's own page (szse.cn trading calendar). 2027: the State Council's 2027 holiday notice (国办发明电〔2026〕10号, published 2026-11-05 via Xinhua); SZSE's 2027 schedule was not found. 2028-2029: outside generation_range, which ends 2027-12-31; the coverage spans stop there too (4d.1). Rechecked 2026-11-19 (4c-R1), fixed: (1) regular_hours and the regular session closed at 11:30, the start of the lunch break; SZSE trades 09:30-11:30 and 13:00-15:00, so the close is 15:00 with the 11:30-13:00 lunch_break session, as for XSHG. (2) 2026-01-02 was open; SZSE's 2026 schedule closes the market 1-2 January and resumes on 5 January. (3) 2026-10-08 and 2027-10-08 were closed; SZSE's 2026 schedule resumes trading on 8 October, and the 2027 notice ends National Day on 7 October (9 October is a make-up working Saturday, not a trading day). The September 2026 data had copied 2025's 1-8 October holiday into later years, and the file had never been reconciled with SZSEFetcher, which parses the 2026 page correctly. These were 3 of the 5 dates where XSHE and XSHG differed in 2025-2027; the other 2 (2027-05-04, 2027-05-05) were XSHG's errors, fixed there. The two now agree for 2010-2027. The 2010-2024 inference from XSHG holds for 2024, which matches SZSE's 2024 schedule.",
+      "note": "2010-2024 inferred from XSHG's exchange_calendars sessions (exchange_calendars has no XSHE); not independently verified. 2025-2026: the exchange's own page (szse.cn trading calendar). 2027: the State Council's 2027 holiday notice (国办发明电〔2026〕10号, published 2026-11-05 via Xinhua); SZSE's 2027 schedule was not found. 2028-2029: outside generation_range, which ends 2027-12-31; the coverage spans stop there too (4d.1). Rechecked 2026-11-19 (4c-R1), fixed: (1) regular_hours and the regular session closed at 11:30, the start of the lunch break; SZSE trades 09:30-11:30 and 13:00-15:00, so the close is 15:00 with the 11:30-13:00 lunch_break session, as for XSHG. (2) 2026-01-02 was open; SZSE's 2026 schedule closes the market 1-2 January and resumes on 5 January. (3) 2026-10-08 and 2027-10-08 were closed; SZSE's 2026 schedule resumes trading on 8 October, and the 2027 notice ends National Day on 7 October (9 October is a make-up working Saturday, not a trading day). The September 2026 data had copied 2025's 1-8 October holiday into later years, and the file had never been reconciled with SZSEFetcher, which parses the 2026 page correctly. These were 3 of the 5 dates where XSHE and XSHG differed in 2025-2027; the other 2 (2027-05-04, 2027-05-05) were XSHG's errors, fixed there. The two now agree for 2010-2027. The 2010-2024 inference from XSHG holds for 2024, which matches SZSE's 2024 schedule. Regular hours evidence (4b6): SZSE Overview, printed 2026-11-23: continuous auction 9:30-11:30 and 13:00-14:57, closing call auction 14:57-15:00; the registry's 09:30-15:00 and 11:30-13:00 lunch break match.",
       "regular_hours": {
         "close": "15:00",
         "open": "09:30"
@@ -79952,6 +79968,21 @@
           ],
           "to": "2027-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-23",
+            "close": "15:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2010-01-01",
+            "note": "'Trading Hours': 'Opening call auction: 9:15-9:25'; 'Continuous auction: 9:30-11:30' and '13:00-14:57'; 'Closing call auction: 14:57-15:00'. Open 09:30 (start of continuous auction); close 15:00, the end of the closing call auction (ADR 0013). The 11:30-13:00 gap matches the registry's lunch break. Block trades (to 15:30) and after-hours fixed-price block trading (15:05-15:30) are not regular hours. The page states no date, so verified_from is its read date; earlier years are not proven by it (SZSE's closing call auction started in 2006, before the registry window, but no SZSE document read says so).",
+            "open": "09:30",
+            "segment": "SZSE auction trading of securities (A shares): continuous auction and closing call auction",
+            "source_title": "Shenzhen Stock Exchange, Overview (Trading; saved by the maintainer as a PDF print, 2026-11-23)",
+            "source_url": "https://www.szse.cn/English/services/trading/tradOverview/",
+            "status": "verified",
+            "verified_from": "2026-11-23"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "fetcher_status is implemented: CI checks the registry against the exchange's own page on every run; no reference library covers it."
       },

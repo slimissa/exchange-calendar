@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - `tools/check_changelog_order.py` (4b6): `## [Unreleased]`, if present, must be the first `## [` heading, released headings must be strictly descending by version (compared numerically), and no version may appear twice. Run by the session gate, by CI (`validate.yml`) and by `release.sh`'s static preflight; 12 tests cover the real file and each failure. 4b5 had appended its entries under an `[Unreleased]` heading below `[2.32.0]`, which broke the release.
+- Hours evidence for XMEX, XMAL and XSHE (4b6). XMEX: the `schema_limited` item is re-read from the BMV Manual Operativo itself (Versión 1.97/2026, in force from 23 July 2026; 4b4 had read it through WebFetch): continuous market 8:30-15:00, 7:30-14:00 during US daylight saving time, no closing auction (closing price from the last 20 minutes), so close 15:00. XSHE: verified from SZSE's Overview (continuous auction 9:30-11:30 and 13:00-14:57, closing call auction 14:57-15:00; close 15:00 under ADR 0013, lunch 11:30-13:00 as in the registry). XMAL: unconfirmed, values held: MSE's Trading page gives continuous trading 09:30-15:30 (so the open would be 09:30) and says trading "ends with a Closing Auction" without timing it, so what ends the session is ambiguous (stop condition). Hours evidence 46 -> 48 of 74; current hours verified 39 -> 40.
 
 ### Changed
 

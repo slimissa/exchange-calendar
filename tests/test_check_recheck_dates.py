@@ -99,6 +99,8 @@ def test_registry_dates_today():
                      ("XSES", "2027-02-19"),
                      # 4b4: XASX close 16:11 under ADR 0013, undated.
                      ("XASX", "2027-02-19"),
+                     # 4b6: XMAL hours held, closing auction untimed (stop condition).
+                     ("XMAL", "2027-02-19"),
                      # 4b6: XATH earlier hours entry (ADR 0014 section 8).
                      ("XATH", "2027-02-19"),
                      # 4b6: XBKK earlier hours entry (ADR 0014 section 8).
