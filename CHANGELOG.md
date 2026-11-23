@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - `tools/check_changelog_order.py` (4b6): `## [Unreleased]`, if present, must be the first `## [` heading, released headings must be strictly descending by version (compared numerically), and no version may appear twice. Run by the session gate, by CI (`validate.yml`) and by `release.sh`'s static preflight; 12 tests cover the real file and each failure. 4b5 had appended its entries under an `[Unreleased]` heading below `[2.32.0]`, which broke the release.
 
+### Changed
+
+- XKUW hours evidence (4b6): the 2025-10-12 entry (09:00-13:10) now also cites Boursa Kuwait's Trading Hours tab (continuous trading 09:00:00-01:00:00 PM, closing auction 01:00:00-01:10:00 PM, trade at last 01:10:00-01:15:00 PM), which agrees with the extension page. The tab shows only the current schedule, so the 2025-01-01 entry stays unconfirmed. No value changes.
+
 ### Fixed
 
 - XBRV close 14:30 UTC (was 14:31) for the 2026-11-22 entry (4b6). Maintainer decision written into ADR 0013: a stated time with jitter around it ("T +/- N seconds") gives the stated time; only a window written as a range gives its end. BRVM's "+/- 60 secondes" applies to every time on its page, the opening fixing included, so its closing fixing "14 h 30 mn" gives 14:30. The open (09:45) is unchanged.

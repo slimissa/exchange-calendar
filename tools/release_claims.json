@@ -1975,6 +1975,7 @@
     {"file": "CHANGELOG.md", "contains": "ADR 0014 restored (4b6)"},
     {"file": "CHANGELOG.md", "contains": "XBKK regular hours 10:00-16:40 from 2026-11-23"},
     {"file": "CHANGELOG.md", "contains": "XATH regular hours 10:30-17:10 from 2026-11-23"},
-    {"file": "CHANGELOG.md", "contains": "XKAR regular hours 09:32-15:30 from 2026-11-23"}
+    {"file": "CHANGELOG.md", "contains": "XKAR regular hours 09:32-15:30 from 2026-11-23"},
+    {"file": "CHANGELOG.md", "contains": "XKUW hours evidence (4b6)"}
   ]
 }
