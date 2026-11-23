@@ -68,7 +68,8 @@ trigger.
   Monday-Thursday session; `sessions` and `regular_hours` have no weekday.
   (4c13) Hours evidence for such an entry is `schema_limited` with
   `backlog_item: "Weekday-specific sessions"` (ADR 0014 section 6, 4b2);
-  lifting this item means migrating those items.
+  lifting this item means migrating those items. XKAR's 2026-11-23 entry
+  (Monday-Thursday 09:32-15:30) is the first such item (4b6).
 - **Seasonal (Ramadan) hours.** PSX (XKAR) and the Saudi Exchange (XSAU)
   publish Ramadan schedules each year; there is no seasonal or dated-range
   session entry. (4c13)

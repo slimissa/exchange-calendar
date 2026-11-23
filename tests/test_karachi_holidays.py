@@ -3,7 +3,7 @@
 test_karachi_holidays.py — Ground truth tests for XKAR (Pakistan Stock Exchange).
 
 Key facts verified:
-    - Regular hours: 09:30-15:30 (single session)
+    - Regular hours: 09:32-15:30 Monday-Thursday from 2026-11-23 (4b6); the 2010 entry 09:30-15:30 is kept
     - No lunch break
     - Weekend is Saturday-Sunday (Western weekend)
     - Kashmir Day (Feb 5)
@@ -69,7 +69,15 @@ class TestXKARProperties:
         continuous trading to 15:30 and no closing auction; one dated entry
         from 2010-01-01, unconfirmed."""
         assert xkar["regular_hours"] == [
-            {"close": "15:30", "effective_from": "2010-01-01", "open": "09:30"}]
+            {"close": "15:30", "effective_from": "2010-01-01", "open": "09:30"},
+            # 4b6, ADR 0014 section 8: Monday-Thursday 09:32-15:30 (PSX's
+            # print of 2026-11-23); Fridays' two sessions are schema_limited.
+            {"close": "15:30", "effective_from": "2026-11-23", "open": "09:32"}]
+        regular = [s for s in xkar["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "09:32", "close": "15:30"}]
+        items = xkar["verification"]["hours"]
+        assert [i["status"] for i in items] == ["unconfirmed", "schema_limited"]
+        assert items[1]["backlog_item"] == "Weekday-specific sessions"
         assert xkar["verification"]["coverage"]["sources"][0]["unconfirmed"] == ["2010-01-01"]
 
     def test_no_lunch_break(self, xkar):

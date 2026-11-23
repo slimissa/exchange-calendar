@@ -38068,18 +38068,23 @@
       },
       "mic": "XKAR",
       "name": "Pakistan Stock Exchange",
-      "note": "2010-2024 sourced from exchange_calendars 4.13.2 (backfill; not independently verified): 197 closures (57 named; the 140 unnamed are exchange_calendars' Islamic holidays, which it lists ad hoc by year: Eid-ul-Fitr, Eid-ul-Azha, Ashura, Eid Milad-un-Nabi, plus 2010-01-01) and no early closes. None is moved to ad_hoc_closures: they are scheduled moon-dated holidays, not unscheduled closures. No 2010-2024 corrections. Iqbal Day: exchange_calendars closes 9 November 2010-2012 and from 2022, matching its removal from the federal list in 2015 and restoration in 2022 (lead; the notifications were not read); 9 November 2013 and 2014 were weekends. Checked 2026-11-20 (4c13). Last published year: PSX Public Notice PSX/N-89 of 20 January 2026 (https://dps.psx.com.pk/download/attachment/268947-1.pdf), 'Holiday Calendar - 2026', 17 days, the Islamic ones subject to the moon. Corrections (3; both libraries and the pre-4c13 file trade on them): Ashura 2026 is Thursday 25 and Friday 26 June per PSX/N-732 of 16 June 2026 (https://dps.psx.com.pk/download/attachment/278691-1.pdf: 'Ashura holidays on June 25 and June 26, 2026', non-trading days; N-89 had listed 24 and 25 June); Eid Milad-un-Nabi 2026 (12th Rabi-ul-Awwal, a PSX holiday in N-89, listed for 25 August subject to the moon) fell on Wednesday 26 August per the State Bank of Pakistan's circular of 24 August 2026 (https://www.sbp.org.pk/circulars/bprd-circular-letter-no-18-of-2026: 26 August 2026 'i.e. 12th Rabi-ul-Awwal, 1448 A.H.'). Eid-ul-Azha 2026 is 26-28 May per PSX/N-628 of 20 May 2026 (https://dps.psx.com.pk/download/attachment/277567-1.pdf), as the file already had. No 2027 calendar is published; 2027-2029 is the standing pattern with predicted Islamic dates. Hours (ADR 0013): PSX's trading-hours page (https://psx.com.pk/psx/exchange/general/trading-hours; no effective date) gives Monday to Thursday pre-open 09:15-09:30, order matching and confirmation 09:30-09:32, open 09:32-15:30, close 15:30, post-close session 15:35-15:50; it describes no closing auction, so the close is the end of continuous trading, 15:30, as in the file. The registry keeps open 09:30 (the end of the pre-open; continuous trading starts 09:32). Friday runs two sessions (09:17-12:00 and 14:32-16:30, post-close 16:35-16:50) and Ramadan has its own schedule each year (PSX notices); the schema has no weekday-specific or seasonal sessions, so neither is modelled (Phase 4d). The single regular_hours entry from 2010-01-01 is unconfirmed: PSX's schedule changed with the new trading system on 25 October 2021 and at other dates (leads, not read; PSX/N-413 of 2020 and its successor for the 2020 COVID hours).",
+      "note": "2010-2024 sourced from exchange_calendars 4.13.2 (backfill; not independently verified): 197 closures (57 named; the 140 unnamed are exchange_calendars' Islamic holidays, which it lists ad hoc by year: Eid-ul-Fitr, Eid-ul-Azha, Ashura, Eid Milad-un-Nabi, plus 2010-01-01) and no early closes. None is moved to ad_hoc_closures: they are scheduled moon-dated holidays, not unscheduled closures. No 2010-2024 corrections. Iqbal Day: exchange_calendars closes 9 November 2010-2012 and from 2022, matching its removal from the federal list in 2015 and restoration in 2022 (lead; the notifications were not read); 9 November 2013 and 2014 were weekends. Checked 2026-11-20 (4c13). Last published year: PSX Public Notice PSX/N-89 of 20 January 2026 (https://dps.psx.com.pk/download/attachment/268947-1.pdf), 'Holiday Calendar - 2026', 17 days, the Islamic ones subject to the moon. Corrections (3; both libraries and the pre-4c13 file trade on them): Ashura 2026 is Thursday 25 and Friday 26 June per PSX/N-732 of 16 June 2026 (https://dps.psx.com.pk/download/attachment/278691-1.pdf: 'Ashura holidays on June 25 and June 26, 2026', non-trading days; N-89 had listed 24 and 25 June); Eid Milad-un-Nabi 2026 (12th Rabi-ul-Awwal, a PSX holiday in N-89, listed for 25 August subject to the moon) fell on Wednesday 26 August per the State Bank of Pakistan's circular of 24 August 2026 (https://www.sbp.org.pk/circulars/bprd-circular-letter-no-18-of-2026: 26 August 2026 'i.e. 12th Rabi-ul-Awwal, 1448 A.H.'). Eid-ul-Azha 2026 is 26-28 May per PSX/N-628 of 20 May 2026 (https://dps.psx.com.pk/download/attachment/277567-1.pdf), as the file already had. No 2027 calendar is published; 2027-2029 is the standing pattern with predicted Islamic dates. Hours (ADR 0013): PSX's trading-hours page (https://psx.com.pk/psx/exchange/general/trading-hours; no effective date) gives Monday to Thursday pre-open 09:15-09:30, order matching and confirmation 09:30-09:32, open 09:32-15:30, close 15:30, post-close session 15:35-15:50; it describes no closing auction, so the close is the end of continuous trading, 15:30, as in the file. The registry keeps open 09:30 (the end of the pre-open; continuous trading starts 09:32). Friday runs two sessions (09:17-12:00 and 14:32-16:30, post-close 16:35-16:50) and Ramadan has its own schedule each year (PSX notices); the schema has no weekday-specific or seasonal sessions, so neither is modelled (Phase 4d). The single regular_hours entry from 2010-01-01 is unconfirmed: PSX's schedule changed with the new trading system on 25 October 2021 and at other dates (leads, not read; PSX/N-413 of 2020 and its successor for the 2020 COVID hours). Regular hours (4b6): 09:32-15:30 from 2026-11-23, Monday-Thursday, under ADR 0014 section 8 (PSX Trading Hours: order matching 09:30-09:32, open 09:32-15:30). Fridays run two sessions (09:17-12:00, 14:32-16:30), which the schema cannot hold: evidence schema_limited, backlog item 'Weekday-specific sessions'. The 2010 entry (09:30-15:30) is kept and stays unconfirmed.",
       "regular_hours": [
         {
           "close": "15:30",
           "effective_from": "2010-01-01",
           "open": "09:30"
+        },
+        {
+          "close": "15:30",
+          "effective_from": "2026-11-23",
+          "open": "09:32"
         }
       ],
       "sessions": [
         {
           "close": "15:30",
-          "open": "09:30",
+          "open": "09:32",
           "type": "regular"
         }
       ],
@@ -38126,13 +38131,27 @@
             "close": "15:30",
             "close_rule": "continuous_end",
             "effective_from": "2010-01-01",
-            "note": "PSX's page, Monday to Thursday: '(Pre-Open) 09:15 AM to 09:30 AM'; 'Break (Order Matching & Confirmation Period) 09:30 AM to 09:32 AM'; 'Open 09:32 AM to 03:30 PM'; 'Break / Close 03:30 PM'; 'Post-Close Session 03:35 PM to 03:50 PM'; no closing auction. Friday: 1st session open 09:17 AM to 12:00 PM, 2nd session open 02:32 PM to 04:30 PM (two sessions: Weekday-specific sessions, 4f backlog). Under ADR 0014 the current Monday-Thursday open is 09:32, not the registry's 09:30, but no PSX notice dating this schedule was found (PSX/N-460 of 31 March 2020 gave a COVID schedule with a 10:32 open; press reports PSX schedules from 13 July 2020 and from 25 October 2021, Monday-Thursday to 16:00, neither read as a PSX notice). The 4b2 rule keeps the value without a dated document, so this entry stays 09:30-15:30 and a 09:32 entry (Fridays schema_limited) waits for the PSX notice that set today's schedule. Settled by that notice (dps.psx.com.pk).",
+            "note": "PSX's page, Monday to Thursday: '(Pre-Open) 09:15 AM to 09:30 AM'; 'Break (Order Matching & Confirmation Period) 09:30 AM to 09:32 AM'; 'Open 09:32 AM to 03:30 PM'; 'Break / Close 03:30 PM'; 'Post-Close Session 03:35 PM to 03:50 PM'; no closing auction. Friday: 1st session open 09:17 AM to 12:00 PM, 2nd session open 02:32 PM to 04:30 PM (two sessions: Weekday-specific sessions, 4f backlog). Under ADR 0014 the current Monday-Thursday open is 09:32, not the registry's 09:30, but no PSX notice dating this schedule was found (PSX/N-460 of 31 March 2020 gave a COVID schedule with a 10:32 open; press reports PSX schedules from 13 July 2020 and from 25 October 2021, Monday-Thursday to 16:00, neither read as a PSX notice). The 4b2 rule keeps the value without a dated document, so this entry stays 09:30-15:30 and a 09:32 entry (Fridays schema_limited) waits for the PSX notice that set today's schedule. Settled by that notice (dps.psx.com.pk). 4b6: the maintainer's print of 2026-11-23 shows the same tables; under ADR 0014 section 8 the 09:32-15:30 Monday-Thursday schedule now has its own entry from 2026-11-23 (schema_limited for Fridays), and this entry stays unconfirmed with its value unchanged.",
             "open": "09:30",
             "recheck_date": "2027-02-19",
             "segment": "PSX Regular Market (Ready), Monday to Thursday",
             "source_title": "PSX, Trading Hours (no effective date)",
             "source_url": "https://psx.com.pk/psx/exchange/general/trading-hours",
             "status": "unconfirmed"
+          },
+          {
+            "backlog_item": "Weekday-specific sessions",
+            "checked_on": "2026-11-23",
+            "close": "15:30",
+            "close_rule": "continuous_end",
+            "effective_from": "2026-11-23",
+            "limitation": "PSX runs a different schedule on Fridays: two sessions, 09:17-12:00 and 14:32-16:30 (pre-open 09:00-09:15 and 14:15-14:30, order matching 09:15-09:17 and 14:30-14:32, post-close 16:35-16:50). regular_hours and sessions have no weekday, so the entry holds the Monday-Thursday schedule and is_open and in_session are wrong on Fridays from 09:17 to 09:32, from 12:00 to 14:32 and from 15:30 to 16:30.",
+            "note": "'Monday to Thursday', 'Regular Market': '(Pre-Open) 09:15 AM to 09:30 AM'; 'Break (Order Matching & Confirmation Period) 09:30 AM to 09:32 AM'; 'Open 09:32 AM to 03:30 PM'; 'Break / Close 03:30 PM'; 'Post-Close Session 03:35 PM to 03:50 PM'. 'Friday', '1st Session' / '2nd Session': '(Pre-Open) 09:00 AM to 09:15 AM' / '02:15 PM to 02:30 PM'; 'Break (Order Matching & Confirmation Period) 09:15 AM to 09:17 AM' / '02:30 PM to 02:32 PM'; 'Open 09:17 AM to 12:00 PM' / '02:32 PM to 04:30 PM'; 'Break / Close 12:00 PM' / '04:30 PM'; 'Post-Close Session' '-' / '04:35 PM to 04:50 PM'. Open 09:32, the start of continuous trading after the order-matching break; close 15:30, the end of continuous trading (no closing auction on the page; the post-close session is not regular hours). The page states no date. In force at least since 2026-11-23; start undated; earlier entry's end unknown (ADR 0014 section 8).",
+            "open": "09:32",
+            "segment": "PSX Regular Market, Monday to Thursday",
+            "source_title": "Pakistan Stock Exchange, Trading Hours (saved by the maintainer as a PDF print, 2026-11-23)",
+            "source_url": "https://psx.com.pk/psx/exchange/general/trading-hours",
+            "status": "schema_limited"
           }
         ],
         "last_checked": "2026-11-21",
