@@ -17,7 +17,7 @@ XBOM	post_market	1	15:30	16:00
 XBOM	pre_market	1	09:00	09:15	
 XBOM	regular	1	09:15	15:30	
 XBRU	regular	1	09:00	17:35	
-XBRV	regular	1	09:45	14:31	
+XBRV	regular	1	09:45	14:30	
 XBSP	post_market	1	17:00	17:30	
 XBSP	pre_market	1	09:45	10:00	
 XBSP	regular	1	10:00	17:00	

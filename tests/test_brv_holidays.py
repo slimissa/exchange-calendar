@@ -3,7 +3,7 @@
 test_brv_holidays.py — Ground truth tests for XBRV (BRVM - West Africa Regional Stock Exchange).
 
 Key facts verified:
-    - Regular hours: 09:45-14:31 from 2026-11-22 (4b5); the 2025-01-01 entry 09:00-14:00 is kept (single session)
+    - Regular hours: 09:45-14:30 from 2026-11-22 (4b5); the 2025-01-01 entry 09:00-14:00 is kept (single session)
     - No lunch break
     - Weekend is Saturday-Sunday (Western weekend)
     - Easter Monday, Ascension, Whit Monday (movable)
@@ -65,10 +65,10 @@ class TestXBRVProperties:
     def test_regular_hours(self, xbrvm):
         assert xbrvm["regular_hours"] == [
             {"effective_from": "2025-01-01", "open": "09:00", "close": "14:00"},
-            {"effective_from": "2026-11-22", "open": "09:45", "close": "14:31"},
+            {"effective_from": "2026-11-22", "open": "09:45", "close": "14:30"},
         ]
         regular = [s for s in xbrvm["sessions"] if s["type"] == "regular"]
-        assert regular == [{"type": "regular", "open": "09:45", "close": "14:31"}]
+        assert regular == [{"type": "regular", "open": "09:45", "close": "14:30"}]
 
     def test_no_lunch_break(self, xbrvm):
         lunch = [s for s in xbrvm.get("sessions", []) if s.get("type") == "lunch_break"]

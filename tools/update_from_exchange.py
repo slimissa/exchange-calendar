@@ -4962,7 +4962,7 @@ class BRVMFetcher(ExchangeFetcher):
             name=self.name,
             timezone="Africa/Abidjan",
             regular_open="09:45",
-            regular_close="14:31",
+            regular_close="14:30",
             holidays=holidays,
             source_urls=[self.source_url],
             currency="XOF",

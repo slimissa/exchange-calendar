@@ -44,6 +44,12 @@ XBKK and XNZE took its scheduled start.
 - A window that ends on a second rather than a whole minute is recorded
   under ADR 0014 section 2 (the minute the exchange's own notice states,
   else the next whole minute).
+- **A stated time with jitter around it ("T +/- N seconds"):** the close
+  is the stated time T. Only a window written as a range (from-to) gives
+  its end. Example: BRVM attaches "une période aléatoire de +/- 60
+  secondes" to every time on its page, the opening fixing included; its
+  closing fixing "14 h 30 mn" gives 14:30, not 14:31 (maintainer decision,
+  session 4b6).
 
 ### Audit of the applied table against the random-closing rule (session 4b5)
 
@@ -67,7 +73,7 @@ recorded close (XDUB half days 12:28-12:30, XHKG 16:08-16:10).
 Applied in 4b5 (random-closing rule, exchange documents attached):
 
 - XKUW: 13:10 from 2025-10-12 (Boursa Kuwait: closing auction 13:00-13:10, random close in the last 30 seconds -> the stated minute).
-- XBRV: 14:31 UTC from 2026-11-22 (BRVM: closing fixing at 14:30 with "une période aléatoire de +/- 60 secondes", a two-minute window 14:29-14:31 -> its end; the only window so far that straddles the stated time, so the maintainer may want to confirm this reading).
+- XBRV: 14:30 UTC from 2026-11-22 (BRVM: closing fixing "14 h 30 mn" with "une période aléatoire de +/- 60 secondes", a stated time with jitter -> the stated time; 4b5 recorded 14:31 as the end of a two-minute window, corrected in 4b6).
 
 ## Why
 

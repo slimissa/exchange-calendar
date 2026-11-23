@@ -13865,7 +13865,7 @@
       },
       "mic": "XBRV",
       "name": "BRVM (West Africa Regional Stock Exchange)",
-      "note": "Regular hours (4b5): 09:45-14:31 UTC from 2026-11-22, under ADR 0014 section 8 (BRVM Horaires de cotation, undated: continuous 09h45-14h00, closing fixing 14h30 with a +/- 60 s random period, so the window ends 14:31). The 09:00-14:00 entry is kept and unconfirmed.",
+      "note": "Regular hours (4b5, close corrected in 4b6): 09:45-14:30 UTC from 2026-11-22, under ADR 0014 section 8 (BRVM Horaires de cotation, undated: continuous 09h45-14h00, closing fixing 14h30 with a +/- 60 s random period, a stated time with jitter, so 14:30 under ADR 0013). The 09:00-14:00 entry is kept and unconfirmed.",
       "regular_hours": [
         {
           "close": "14:00",
@@ -13873,14 +13873,14 @@
           "open": "09:00"
         },
         {
-          "close": "14:31",
+          "close": "14:30",
           "effective_from": "2026-11-22",
           "open": "09:45"
         }
       ],
       "sessions": [
         {
-          "close": "14:31",
+          "close": "14:30",
           "open": "09:45",
           "type": "regular"
         }
@@ -13905,10 +13905,10 @@
           },
           {
             "checked_on": "2026-11-22",
-            "close": "14:31",
+            "close": "14:30",
             "close_rule": "closing_auction_end",
             "effective_from": "2026-11-22",
-            "note": "'Horaire Normal', 'Horaires* (UTC)': '1 Pré-ouverture 09 h 00 mn à 09 h 45 mn'; '2 Fixing d'ouverture 09 h 45 mn'; '3 Négociation en continu 09 h 45 mn à 14 h 00 mn'; '4 Pré-clôture 14 h 00 mn à 14 h 30 mn'; '5 Fixing de clôture 14 h 30 mn'; '6 Négociation au dernier cours 14 h 30 mn à 15 h 00 mn'; '*Ces différents horaires sont assortis d'une période aléatoire de +/- 60 secondes.' Open 09:45 (start of continuous trading). Close: the closing fixing at 14:30 +/- 60 seconds is a two-minute random window (14:29-14:31), so under ADR 0013's random-closing rule the close is the window's end, 14:31. Trading at the last price (14:30-15:00) is not regular hours. The page states no date. In force at least since 2026-11-22; start undated; earlier entry's end unknown (ADR 0014 section 8).",
+            "note": "'Horaire Normal', 'Horaires* (UTC)': '1 Pré-ouverture 09 h 00 mn à 09 h 45 mn'; '2 Fixing d'ouverture 09 h 45 mn'; '3 Négociation en continu 09 h 45 mn à 14 h 00 mn'; '4 Pré-clôture 14 h 00 mn à 14 h 30 mn'; '5 Fixing de clôture 14 h 30 mn'; '6 Négociation au dernier cours 14 h 30 mn à 15 h 00 mn'; '*Ces différents horaires sont assortis d'une période aléatoire de +/- 60 secondes.' Open 09:45 (start of continuous trading). Close 14:30: the closing fixing '14 h 30 mn' carries the +/- 60 seconds the page attaches to every time (the opening fixing included), a stated time with jitter, so ADR 0013 gives the stated time (maintainer decision, 4b6; 4b5 had recorded 14:31 as the end of a two-minute window). Trading at the last price (14:30-15:00) is not regular hours. The page states no date. In force at least since 2026-11-22; start undated; earlier entry's end unknown (ADR 0014 section 8).",
             "open": "09:45",
             "segment": "BRVM, journée de cotation, horaire normal: négociation en continu, pré-clôture et fixing de clôture",
             "source_title": "BRVM, Horaires de cotation (saved by the maintainer as a PDF print, 2026-11-22)",
