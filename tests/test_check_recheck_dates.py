@@ -99,6 +99,8 @@ def test_registry_dates_today():
                      ("XSES", "2027-02-19"),
                      # 4b4: XASX close 16:11 under ADR 0013, undated.
                      ("XASX", "2027-02-19"),
+                     # 4b6: XBKK earlier hours entry (ADR 0014 section 8).
+                     ("XBKK", "2027-02-19"),
                      # 4b6: XMAD earlier hours entry (ADR 0014 section 8).
                      ("XMAD", "2027-02-19"),
                      # 4b5: XIST earlier hours entry (ADR 0014 section 8 or dated split).

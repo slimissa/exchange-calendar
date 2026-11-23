@@ -64,7 +64,7 @@ recorded close (XDUB half days 12:28-12:30, XHKG 16:08-16:10).
 
 | Row | Recorded | Window as cited | Under the rule | Changed in 4b5 |
 |-----|----------|-----------------|----------------|----------------|
-| XBKK | 16:35 | "closing time randomly selected between 16:35 and 16:40" | 16:40 | No: no SET page attached (listed for 4b6) |
+| XBKK | 16:35 | "closing time randomly selected between 16:35 and 16:40" | 16:40 | 4b6: 16:40 from 2026-11-23 (SET pages attached; ADR 0014 section 8); the 2010 entry keeps 16:35 |
 | XNZE | 17:00 | "random time between 16:59:30 and 17:00:30" (one minute) | the window's end, 17:00:30: 17:00 if NZX's own notice states that minute, else 17:01 (ADR 0014 section 2) | No: NZX's page refuses the fetcher and none was attached |
 | XJSE | 17:00 | Market Notice 2719: "earliest close 17:00:00 with a random uncross to 17:01" (one minute) | 17:01 | No: no JSE document attached |
 | XETR, XWBO, XBUD | 17:35, 17:35, 17:05 | Xetra-type random end after the stated time; the documents cited give no length | the stated minute if the random end is seconds; the window's end if it is a minute or more | No: length to be read from the trading-parameter documents |
@@ -74,6 +74,7 @@ Applied in 4b5 (random-closing rule, exchange documents attached):
 
 - XKUW: 13:10 from 2025-10-12 (Boursa Kuwait: closing auction 13:00-13:10, random close in the last 30 seconds -> the stated minute).
 - XMAD: 17:35 from 2026-11-23 (BME Circular 1/2026: closing auction 17:30-17:35, "shall end at any time within a random period of at most 30 seconds from 5.35pm" -> the stated minute; 4b6).
+- XBKK: 16:40 from 2026-11-23 (SET: "randomly select a closing time between 16:35 - 16:40", a range -> its end; 4b6).
 - XBRV: 14:30 UTC from 2026-11-22 (BRVM: closing fixing "14 h 30 mn" with "une période aléatoire de +/- 60 secondes", a stated time with jitter -> the stated time; 4b5 recorded 14:31 as the end of a two-minute window, corrected in 4b6).
 
 ## Why
@@ -116,7 +117,7 @@ time the exchange's own documents give as the close of the trading day.
 | XNZE | 16:45 | 17:00 Auckland (4c9; re-read in 4c10), 2010-2029; 2010-01-01 unconfirmed | NZX, Anatomy of a trading day: Pre-Close from 16:45, closing auction at a random time between 16:59:30 and 17:00:30, Adjust to 17:30; the random window is ignored and 17:00 is its scheduled time |
 | XNZE abbreviated days | none for 2025-2029 | 13:00 Auckland (4c9, 4c10): 2025-12-24 and 2025-12-31 (dates confirmed, time unconfirmed); 2026-2029 predicted (2026-2027 unconfirmed, recheck 2026-12-15) | NZX notices of 2024-12-11 and 2025-12-02: abbreviated hours "closing at 1.30pm", the session end (an upper bound, like 17:30 on a normal day). The 13:00 closing auction (Pre-Close 12:45-13:00) is from NZX's Hours & Boards table, read only as a search snippet |
 | XKLS | 17:00 | 16:50 Kuala Lumpur (4c9), 2010-2029; unconfirmed (4c10: Bursa's own page still not read) | Bursa Malaysia equities trading-sessions page, read only as a search snippet: Pre-Closing 16:45, Closing 16:50, Trading at Last 16:50-17:00; Bursa's pages refuse this sandbox and only broker republications were found in 4c10 |
-| XBKK | 16:30 | 16:35 Bangkok (4c9), 2010-2029 | SET, opening/closing price calculation: pre-close from 16:30, closing time randomly selected between 16:35 and 16:40; the scheduled close is the start of the random window |
+| XBKK | 16:30 | 16:35 Bangkok (4c9), 2010-2029 | SET, opening/closing price calculation: pre-close from 16:30, closing time randomly selected between 16:35 and 16:40; the scheduled close is the start of the random window (superseded: 16:40 from 2026-11-23 under the random-window rule, 4b6) |
 | XLUX | 17:30 | 17:35 Luxembourg (4c9), 2010-2029 | LuxSE trading-hours page: continuous trading 09:00-17:30, closing call 17:30-17:35, trading at last 17:35-17:40 (exchange_calendars has 17:40) |
 
 Already conforming: XSTO (17:30 / 13:00), XHEL (18:30), XDUB full day

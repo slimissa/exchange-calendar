@@ -279,9 +279,15 @@ def render_sessions(sessions):
       "that difference on every day, not a registry error: Hong Kong from "
       "2016-07-25 (registry 16:10, the end of HKEX's Closing Auction Session; "
       "libraries 16:00), Istanbul from 2026-11-22 (registry 18:07, the end "
-      "of Borsa Istanbul's closing session; libraries 18:00) and Madrid from "
+      "of Borsa Istanbul's closing session; libraries 18:00) Madrid from "
       "2026-11-23 (registry 17:35, the end of BME's closing auction; "
-      "libraries 17:30). All are classified `convention_difference`.")
+      "libraries 17:30) and Bangkok from 2026-11-23 (registry 16:40, the end "
+      "of SET's random closing window; libraries 16:30; before it the registry's "
+      "16:35, the window's start, against the same 16:30). All are classified "
+      "`convention_difference`. Bangkok's break column is a library gap: SET's "
+      "Trading Session I ends at 12:30 and Session II starts at a random time "
+      "between 13:55 and 14:00 (SET, Trading hours), which the registry holds "
+      "as a 12:30-14:00 lunch break; neither library models it.")
     w("- A half-day mismatch normally appears with a close mismatch on the same "
       "date, so the two columns are not independent.")
     w("- Years: the registry only has data inside each exchange's "

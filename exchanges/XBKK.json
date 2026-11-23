@@ -2044,17 +2044,22 @@
   },
   "mic": "XBKK",
   "name": "Stock Exchange of Thailand",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified): 262 closures (198 with exchange_calendars' names), no early closes. 2025-2027: exchange_calendars + exchange_publications; generation_range ends 2027. Checked 2026-11-20 (4c9). Last published year: SET's holiday page could not be located and read from this sandbox, so 2027 was not compared against it. 4c11: SET's own holiday page (https://www.set.or.th/en/about/event-calendar/holiday, 2026 tab; read from the maintainer's copy, printed to PDF on 20 November 2026) lists 21 SET holidays for 2026. It adds two that the registry and exchange_calendars both had as trading days: Friday 16 October 2026 and Wednesday 16 December 2026, each an 'Additional special holiday'. The page's footnotes say they were amended by SET's notifications regarding the 2026 holidays dated 16 June 2026 and 19 November 2026, and that changes to SET holidays are in line with the announcements of the Bank of Thailand and the SEC. Both are one-off closures, so they are filed in ad_hoc_closures (lesson 13). The other 19 dates match the registry's 2026 closures exactly, including 2 January 2026, an additional special holiday already in the file. The Bank of Thailand notices (news 46/2026 for 16 December; 26/2569 for 16 October) remain leads, not the source. SET's word is the source; the 28 September 2026 government flood holiday, on which SET traded, is not on SET's page. Close (ADR 0013): SET's opening/closing price page (https://www.set.or.th/en/market/information/trading-procedure/opening-closing-price-calculation) says the pre-close runs from 16:30 and the trading system 'will randomly select a closing time between 16:35 - 16:40 hours'. ADR 0013 ignores the random window, so the scheduled close is 16:35 (was 16:30, the end of continuous trading; exchange_calendars has 16:30), one dated entry from 2010-01-01 (unconfirmed: no earlier SET schedule was read). The off-hour session (trade reports from the closing time to 17:00, https://www.set.or.th/en/market/information/trading-procedure/off-hour-trading) is not modelled. Hours history not dated: the afternoon session moved 30 minutes earlier on 2024-03-25 (pre-open II 13:30-14:00, trading II 14:00-16:30; before, 14:00-14:30 and 14:30-16:30), read only through a republished SET release (aseanexchanges.org), so the lunch break (12:30-14:00 in the undated sessions, the current schedule) is not dated; the open and close did not change.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified): 262 closures (198 with exchange_calendars' names), no early closes. 2025-2027: exchange_calendars + exchange_publications; generation_range ends 2027. Checked 2026-11-20 (4c9). Last published year: SET's holiday page could not be located and read from this sandbox, so 2027 was not compared against it. 4c11: SET's own holiday page (https://www.set.or.th/en/about/event-calendar/holiday, 2026 tab; read from the maintainer's copy, printed to PDF on 20 November 2026) lists 21 SET holidays for 2026. It adds two that the registry and exchange_calendars both had as trading days: Friday 16 October 2026 and Wednesday 16 December 2026, each an 'Additional special holiday'. The page's footnotes say they were amended by SET's notifications regarding the 2026 holidays dated 16 June 2026 and 19 November 2026, and that changes to SET holidays are in line with the announcements of the Bank of Thailand and the SEC. Both are one-off closures, so they are filed in ad_hoc_closures (lesson 13). The other 19 dates match the registry's 2026 closures exactly, including 2 January 2026, an additional special holiday already in the file. The Bank of Thailand notices (news 46/2026 for 16 December; 26/2569 for 16 October) remain leads, not the source. SET's word is the source; the 28 September 2026 government flood holiday, on which SET traded, is not on SET's page. Close (ADR 0013): SET's opening/closing price page (https://www.set.or.th/en/market/information/trading-procedure/opening-closing-price-calculation) says the pre-close runs from 16:30 and the trading system 'will randomly select a closing time between 16:35 - 16:40 hours'. ADR 0013 ignores the random window, so the scheduled close is 16:35 (was 16:30, the end of continuous trading; exchange_calendars has 16:30), one dated entry from 2010-01-01 (unconfirmed: no earlier SET schedule was read). The off-hour session (trade reports from the closing time to 17:00, https://www.set.or.th/en/market/information/trading-procedure/off-hour-trading) is not modelled. Hours history not dated: the afternoon session moved 30 minutes earlier on 2024-03-25 (pre-open II 13:30-14:00, trading II 14:00-16:30; before, 14:00-14:30 and 14:30-16:30), read only through a republished SET release (aseanexchanges.org), so the lunch break (12:30-14:00 in the undated sessions, the current schedule) is not dated; the open and close did not change. Regular hours (4b6): 10:00-16:40 from 2026-11-23, under ADR 0014 section 8 (SET Trading hours and Opening and closing price calculation: random closing time between 16:35 and 16:40, the window's end under ADR 0013). The 2010 entry (10:00-16:35) is kept and unconfirmed.",
   "regular_hours": [
     {
       "close": "16:35",
       "effective_from": "2010-01-01",
       "open": "10:00"
+    },
+    {
+      "close": "16:40",
+      "effective_from": "2026-11-23",
+      "open": "10:00"
     }
   ],
   "sessions": [
     {
-      "close": "16:35",
+      "close": "16:40",
       "open": "10:00",
       "type": "regular"
     },
@@ -2091,6 +2096,34 @@
       ],
       "to": "2027-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-23",
+        "close": "16:35",
+        "close_rule": "continuous_end",
+        "effective_from": "2010-01-01",
+        "note": "SET's pages read on 2026-11-23 give a random closing time between 16:35 and 16:40, so 16:40 under ADR 0013; the registry's 16:35 took the window's start (ADR 0013's former table), and when SET's random close began is not on these pages. Settled by the SET notice that introduced the random close.",
+        "open": "10:00",
+        "recheck_date": "2027-02-19",
+        "segment": "SET equities main board: Trading Session I and II (board lot, automated order matching) and the pre-close",
+        "source_title": "The Stock Exchange of Thailand, Trading hours (saved by the maintainer as a PDF print, 2026-11-23); Opening and closing price calculation (https://www.set.or.th/en/market/information/trading-procedure/opening-closing-price-calculation, same date)",
+        "source_url": "https://www.set.or.th/en/market/information/trading-procedure/trading-hours",
+        "status": "unconfirmed"
+      },
+      {
+        "checked_on": "2026-11-23",
+        "close": "16:40",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2026-11-23",
+        "note": "Trading hours, first table (SET trading, two sessions per day): 'Pre-open Session I 9.30 a.m. - T1'; 'Trading Session I T1 - 12.30 p.m.'; 'Intermission'; 'Pre-open Session II 1.30 p.m. - T2'; 'Trading Session II T2 - 4.30 p.m.'; 'Pre-close 4.30 p.m. - T3'; 'Off-hour T3 - 5.00 p.m.' (trade reports only); 'T1 is the random opening time between 9:55 a.m. - 10:00 a.m.'; 'T2 ... between 1:55 p.m. - 2:00 p.m.'; 'T3 is the random closing time between 4:35 p.m. - 4:40 p.m.'. The price-calculation page: 'the SET's trading system will randomly select a closing time between 16:35 - 16:40 hours'. Close 16:40: a random window written as a range gives its end (ADR 0013). Open 10:00, the end of T1's window (continuous trading has begun by then); the registry's 12:30-14:00 lunch break matches Session I's end and T2's window end. The tables for foreign-underlying securities and for European and US depositary receipts (7.50 a.m., night session) are other segments. The pages state no date. In force at least since 2026-11-23; start undated; earlier entry's end unknown (ADR 0014 section 8).",
+        "open": "10:00",
+        "segment": "SET equities main board: Trading Session I and II (board lot, automated order matching) and the pre-close",
+        "source_title": "The Stock Exchange of Thailand, Trading hours (saved by the maintainer as a PDF print, 2026-11-23); Opening and closing price calculation (https://www.set.or.th/en/market/information/trading-procedure/opening-closing-price-calculation, same date)",
+        "source_url": "https://www.set.or.th/en/market/information/trading-procedure/trading-hours",
+        "status": "verified",
+        "verified_from": "2026-11-23"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

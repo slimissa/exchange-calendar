@@ -61,11 +61,15 @@ class TestXBKKProperties:
         assert xbkk["timezone"] == "Asia/Bangkok"
 
     def test_regular_hours(self, xbkk):
-        """4c9, ADR 0013: SET randomly selects the closing time between
-        16:35 and 16:40 after a pre-close from 16:30; the random window is
-        ignored, so the scheduled close is 16:35."""
+        """4c9 recorded 16:35, the start of SET's random closing window
+        (16:35-16:40). ADR 0013's random-window rule (4b5/4b6) gives the
+        window's end: 16:40 from 2026-11-23 under ADR 0014 section 8 (SET's
+        pages are undated); the 2010 entry is kept."""
         assert xbkk["regular_hours"] == [
-            {"close": "16:35", "effective_from": "2010-01-01", "open": "10:00"}]
+            {"close": "16:35", "effective_from": "2010-01-01", "open": "10:00"},
+            {"close": "16:40", "effective_from": "2026-11-23", "open": "10:00"}]
+        regular = [s for s in xbkk["sessions"] if s["type"] == "regular"]
+        assert regular == [{"type": "regular", "open": "10:00", "close": "16:40"}]
 
     def test_lunch_break(self, xbkk):
         lunch = [s for s in xbkk.get("sessions", []) if s.get("type") == "lunch_break"]
