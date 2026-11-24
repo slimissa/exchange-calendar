@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 
-# Set to 1 once the release has been tagged and pushed.
-# The failure trap reads this: a non-zero exit after this point is a
-# post-success informational hiccup and must NOT trigger a revert.
+# State this run sets, read by the failure trap (4b7). The trap acts only on
+# what THIS run did, never on what HEAD looks like:
+#   TREE_MUTATED=1  once this run starts writing version sites/artifacts;
+#   RELEASE_SHA     the release commit this run created (empty before);
+#   RELEASE_PUSHED=1 once this run pushed RELEASE_SHA to origin/main;
+#   RELEASE_COMPLETE=1 once the release has been tagged and pushed: a
+#   non-zero exit after that is a post-success hiccup and must NOT revert.
+TREE_MUTATED=0
+RELEASE_SHA=""
+RELEASE_PUSHED=0
 RELEASE_COMPLETE=0
 #
 # release.sh — cut a release for the exchange-calendar registry.
@@ -18,7 +25,8 @@ RELEASE_COMPLETE=0
 #
 # Preconditions (all enforced):
 #   - on main, clean tree, up to date with origin
-#   - VERSION differs from the target
+#   - VERSION differs from the target, and tag v<target> exists neither
+#     locally nor on origin (checked first)
 #   - CHANGELOG.md already has a "## [<target>]" section
 #
 # Refuses on any failure. Does not force-push. Never tags a commit whose
@@ -53,14 +61,21 @@ cleanup_on_failure() {
     files="$files exchange_calendar.holidays.parquet exchange_calendar.ad_hoc_closures.parquet"
     files="$files exchange_calendar.confidence.parquet"
 
-    if git log -1 --format=%s 2>/dev/null | grep -q '^Release v'; then
-        if git branch -r --contains HEAD 2>/dev/null | grep -q 'origin/main'; then
-            printf '\033[1;33m==>\033[0m release commit was pushed; reverting it\n' >&2
+    # 4b7: decide from this run's own state. Until 4b7 this branch read
+    # HEAD's subject ("Release v...") and origin/main's contents, so a run
+    # that failed a precondition on an already released tree reverted the
+    # existing release commit and pushed the revert (5010ff7, 2026-11-24).
+    if [[ -n "${RELEASE_SHA:-}" ]]; then
+        if [[ "$(git rev-parse HEAD 2>/dev/null)" != "$RELEASE_SHA" ]]; then
+            printf '\033[1;31m==>\033[0m HEAD is no longer the release commit this run made (%s); not touching history, manual recovery needed\n' "$RELEASE_SHA" >&2
+            exit $rc
+        fi
+        if [[ "${RELEASE_PUSHED:-0}" == "1" ]]; then
+            printf '\033[1;33m==>\033[0m this run pushed release commit %s; reverting it\n' "$RELEASE_SHA" >&2
             # Discard working-tree changes before reverting; `git revert`
-            # refuses on a dirty tree, and the release script may have
-            # left a VERSION write behind after the release commit.
+            # refuses on a dirty tree.
             git reset --hard HEAD 2>/dev/null || true
-            git revert HEAD --no-edit || {
+            git revert "$RELEASE_SHA" --no-edit || {
                 printf '\033[1;31m==>\033[0m revert failed; manual recovery needed\n' >&2
                 exit $rc
             }
@@ -69,13 +84,16 @@ cleanup_on_failure() {
                 exit $rc
             }
         else
-            printf '\033[1;33m==>\033[0m release commit was local-only; resetting\n' >&2
+            printf '\033[1;33m==>\033[0m the release commit this run made (%s) was local-only; resetting\n' "$RELEASE_SHA" >&2
             git reset --hard HEAD~1
         fi
-    else
+    elif [[ "${TREE_MUTATED:-0}" == "1" ]]; then
         for f in $files; do
             git checkout HEAD -- "$f" 2>/dev/null || true
         done
+    else
+        printf '\033[1;33m==>\033[0m failed before any change; nothing to restore, history untouched\n' >&2
+        exit $rc
     fi
     printf '\033[1;33m==>\033[0m Restored version sites and artifacts on failure\n' >&2
 
@@ -308,6 +326,17 @@ ok "CHANGELOG heading order"
 # ── preconditions ──────────────────────────────────────────────────
 say "Checking preconditions"
 
+# 4b7: refuse an already released version before anything else, plainly.
+CURRENT="$(cat VERSION)"
+[[ "$CURRENT" != "$VERSION" ]] || die "VERSION is already $VERSION: v$VERSION looks released; nothing to do"
+if git rev-parse -q --verify "refs/tags/v$VERSION" >/dev/null; then
+    die "tag v$VERSION already exists locally; refusing to release it again"
+fi
+if git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" >/dev/null 2>&1; then
+    die "tag v$VERSION already exists on origin; refusing to release it again"
+fi
+ok "v$VERSION is not tagged locally or on origin; VERSION is $CURRENT"
+
 [[ "$(git branch --show-current)" == "main" ]] || die "not on main"
 ok "on main"
 
@@ -320,9 +349,6 @@ REMOTE="$(git rev-parse origin/main)"
 [[ "$LOCAL" == "$REMOTE" ]] || die "local main ($LOCAL) is not origin/main ($REMOTE)"
 ok "main is up to date with origin"
 
-CURRENT="$(cat VERSION)"
-[[ "$CURRENT" != "$VERSION" ]] || die "VERSION is already $VERSION"
-ok "VERSION currently $CURRENT, target $VERSION"
 
 grep -q "^## \[$VERSION\]" CHANGELOG.md \
     || die "CHANGELOG.md has no '## [$VERSION]' section — write it first"
@@ -330,6 +356,9 @@ ok "CHANGELOG has [${VERSION}] section"
 
 # ── version bump ───────────────────────────────────────────────────
 say "Bumping version sites"
+
+# From here on a failure restores the version sites and artifacts.
+[[ "$DRY_RUN" == "1" ]] || TREE_MUTATED=1
 
 run bash -c "echo '$VERSION' > VERSION"
 ok "VERSION → $VERSION"
@@ -460,9 +489,11 @@ fi
 
 git commit -m "Release v$VERSION"
 SHA="$(git rev-parse HEAD)"
+RELEASE_SHA="$SHA"
 say "Commit: $SHA"
 
 git push origin main
+RELEASE_PUSHED=1
 ok "pushed to origin/main"
 
 # ── poll CI ────────────────────────────────────────────────────────

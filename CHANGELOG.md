@@ -9,6 +9,11 @@ All notable changes to this project will be documented in this file.
 - ADR 0014 section 8 (maintainer decision, 4b7): "in force at least since" is the latest date the evidence proves: the document's own date when it states the schedule as current on that date (a "Last update" naming a month gives that month's last day), otherwise the read date; a document that defers its own entry into force (BME Circular 1/2026) dates nothing. XATH's 10:30-17:10 entry moves from 2026-11-23 to 2025-08-31 (ATHEX's Cash Markets Schedule, "Last update: Aug 2025"; `verified_from` 2025-08-31), so the 2025-01-01 entry ends on 2025-08-30; XMAD is unchanged.
 - ADR guard (4b7): every ADR in `docs/decisions/` keeps its title line and its "#", "##" and "###" headings; a test fails on a truncated or emptied ADR (it generalises 4b6's ADR 0014 check, which stays).
 
+### Fixed
+
+- `scripts/release.sh` failure trap (4b7): it now acts only on what the run itself did. It records the release commit it creates (`RELEASE_SHA`) and whether it pushed it (`RELEASE_PUSHED`); it reverts only that commit, and only after its own push. A failure before the version bump touches nothing; a failure after the bump and before the commit restores the version sites and artifacts only. Before, the trap read HEAD's subject ("Release v...") and origin/main's contents, so on 2026-11-24 a re-run of `release.sh 2.34.0` on the released tree failed its "VERSION is already" precondition and then reverted and pushed away the real release commit (restored by hand in a18ab08). A new first precondition refuses, before any change, a target that VERSION already holds or whose tag `v<version>` exists locally or on origin.
+- `tests/test_release_trap.py` (4b7): runs the real `release.sh` in a scratch repository with a bare "origin", stub tools and a stub `gh`, without network: a normal release succeeds; a re-run on a released tree (with and without its tag) reverts and pushes nothing; an existing tag (on origin only, or local only) stops the run before any change; a CI failure after the run's own commit and push reverts that commit; a gate failure before the commit restores files only. Against the old script the incident test fails with "release commit was pushed; reverting it".
+
 ## [2.34.0] - 2026-11-23
 
 ### Added

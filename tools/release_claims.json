@@ -1980,6 +1980,7 @@
     {"file": "CHANGELOG.md", "contains": "Hours evidence for XMEX, XMAL and XSHE (4b6)"}
   ],
   "2.35.0": [
-    {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "\"in force at least since\" is the latest date the evidence proves"}
+    {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "\"in force at least since\" is the latest date the evidence proves"},
+    {"file": "scripts/release.sh", "contains": "RELEASE_PUSHED=1"}
   ]
 }
