@@ -72,3 +72,140 @@ def test_accepted_adrs_have_no_placeholders(path: Path):
         f"{path.name}: status is {status!r} but contains placeholders: "
         f"{hits}. Fill them in or set status to 'Draft'."
     )
+
+
+# 4b7: every ADR keeps its title line and the "#", "##" and "###" headings
+# it had when this guard was written. In 4b6 a session script truncated
+# ADR 0014 to one table row and the gate passed; this test fails on a
+# truncated or emptied ADR. Headings may be added; none may disappear.
+ADR_HEADINGS = {
+    "0008-removal-guard-semantics.md": [
+        "# ADR 0008 — Removal Guard Semantics",
+        "## Context",
+        "## Decisions",
+        "## Consequences"
+    ],
+    "0009-playwright-fetcher-category.md": [
+        "# ADR 0009 — Playwright as a fetcher category",
+        "## Context",
+        "## Decisions",
+        "### 1. Adopt Playwright, fetch mode first",
+        "### 2. Defer render+OCR to ADR 0010",
+        "### 3. CI cost is bounded and named",
+        "### 4. Maintenance model: same as any other fetcher",
+        "### 5. Playwright is EC-local, not shared",
+        "## Consequences",
+        "### Positive",
+        "### Negative",
+        "### Neutral",
+        "## Alternatives considered",
+        "### A. Do nothing — leave all five blocked",
+        "### B. Adopt Playwright for both modes at once",
+        "### C. Use a lighter headless tool (e.g. requests-html, pyppeteer)",
+        "### D. Proxy or mirror the source",
+        "## Open questions",
+        "## Amendment — 2026-10-04",
+        "## Related"
+    ],
+    "0010-render-mode.md": [
+        "# ADR 0010 — Render mode and OCR for remaining blocked exchanges",
+        "## Context",
+        "## Reconnaissance",
+        "### XKRX",
+        "### XATH",
+        "### XBKK",
+        "## Decisions",
+        "### D1 — XKRX",
+        "### D2 — XATH",
+        "### D3 — XBKK",
+        "### D4 — CI cost",
+        "### D5 — Generalization",
+        "## Consequences",
+        "### Positive",
+        "### Negative",
+        "### Neutral",
+        "## Non-goals",
+        "## Amendment — 2026-10-04 (v2.12.3)",
+        "## Amendment — 2026-10-04 (v2.12.4)",
+        "## Amendment — 2026-10-04 (v2.12.5)",
+        "## Related"
+    ],
+    "0011-mic-lei-connector.md": [
+        "# ADR 0011 — MIC→LEI connector",
+        "## Context",
+        "## Reconnaissance",
+        "## Decision",
+        "## Consequences",
+        "### Positive",
+        "### Negative",
+        "### Neutral",
+        "## Reopen condition",
+        "## Related"
+    ],
+    "0012-export-shapes.md": [
+        "# ADR 0012 — Export shapes (SQL, CSV, Parquet)",
+        "## Context",
+        "## Decisions",
+        "### 1. One shape, three formats",
+        "### 2. SQL",
+        "### 2a. SQL types and CHECKs",
+        "### 3. CSV",
+        "### 4. Parquet",
+        "### 5. Column order",
+        "### 6. Dates and times",
+        "### 7. Null handling",
+        "### 8. Generated holidays",
+        "## Prerequisite: `country_code`",
+        "## Consequences",
+        "## Rejected alternatives"
+    ],
+    "0013-close-convention.md": [
+        "# ADR 0013 — Close time = end of the closing auction",
+        "## Context",
+        "## Decision",
+        "### Random closing windows (maintainer decision, session 4b5)",
+        "### Audit of the applied table against the random-closing rule (session 4b5)",
+        "## Why",
+        "## Consequences",
+        "## Applied in 4c-R3.5",
+        "## Exceptions left in place",
+        "## Phase 4d plan"
+    ],
+    "0014-regular-hours-evidence.md": [
+        "# ADR 0014 — Regular hours: segment, close rule, evidence",
+        "## Context",
+        "## Decision",
+        "### 1. Which segment is \"regular\"",
+        "### 2. Close rule (ADR 0013)",
+        "### 3. What \"verified\" means",
+        "### 4. Where the evidence lives",
+        "### 5. Ratchet",
+        "### 6. Hours the schema cannot express (`schema_limited`, session 4b2)",
+        "### 7. What the evidence proves: `verified_from`, current and history (session 4b3)",
+        "### 8. Undated current regimes (maintainer decision, session 4b5)",
+        "## Consequences",
+        "## Applied (filled as 4b-lite proceeds)"
+    ]
+}
+
+
+def test_every_adr_keeps_its_title_and_headings():
+    present = {p.name for p in DECISIONS_DIR.glob("[0-9][0-9][0-9][0-9]-*.md")}
+    assert set(ADR_HEADINGS) <= present, sorted(set(ADR_HEADINGS) - present)
+    for name, headings in ADR_HEADINGS.items():
+        lines = (DECISIONS_DIR / name).read_text(encoding="utf-8").splitlines()
+        assert lines and lines[0] == headings[0], (name, "title line")
+        missing = [h for h in headings if h not in lines]
+        assert not missing, (name, missing)
+
+
+def test_adr_heading_guard_catches_truncation(tmp_path, monkeypatch):
+    # A copy of the decisions folder with ADR 0014 cut to one line fails.
+    import shutil
+    import sys
+    for p in DECISIONS_DIR.glob("*.md"):
+        shutil.copy(p, tmp_path / p.name)
+    (tmp_path / "0014-regular-hours-evidence.md").write_text("| XMAD | row |\n", encoding="utf-8")
+    monkeypatch.setattr(sys.modules[__name__], "DECISIONS_DIR", tmp_path)
+    with pytest.raises(AssertionError):
+        test_every_adr_keeps_its_title_and_headings()

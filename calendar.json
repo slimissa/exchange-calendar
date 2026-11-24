@@ -4120,7 +4120,7 @@
       },
       "mic": "XATH",
       "name": "Athens Stock Exchange",
-      "note": "Regular hours (4b6): 10:30-17:10 from 2026-11-23, under ADR 0014 section 8 (ATHEX Cash Markets Schedule, last update Aug 2025: continuous 10:30-17:00, closing auction 17:00-17:10 with a random time period 17:09-17:10). The 2025 entry (10:30-17:00) is kept and unconfirmed.",
+      "note": "Regular hours (4b6, re-dated in 4b7): 10:30-17:10 from 2025-08-31 (the schedule's 'Last update: Aug 2025'), under ADR 0014 section 8 (ATHEX Cash Markets Schedule, last update Aug 2025: continuous 10:30-17:00, closing auction 17:00-17:10 with a random time period 17:09-17:10). The 2025 entry (10:30-17:00) is kept and unconfirmed.",
       "regular_hours": [
         {
           "close": "17:00",
@@ -4129,7 +4129,7 @@
         },
         {
           "close": "17:10",
-          "effective_from": "2026-11-23",
+          "effective_from": "2025-08-31",
           "open": "10:30"
         }
       ],
@@ -4150,7 +4150,7 @@
             "close": "17:00",
             "close_rule": "continuous_end",
             "effective_from": "2025-01-01",
-            "note": "ATHEX's cash markets schedule (Last update: Aug 2025, read 2026-11-23) ends the Main Market's closing auction at 17:10; the registry's 17:00 is the end of continuous trading, and no ATHEX document read dates the closing auction. Settled by the ATHEX announcement that set the current schedule.",
+            "note": "ATHEX's cash markets schedule (Last update: Aug 2025, read 2026-11-23) ends the Main Market's closing auction at 17:10; the registry's 17:00 is the end of continuous trading, and no ATHEX document read dates the closing auction. Settled by the ATHEX announcement that set the current schedule. 4b7: the 10:30-17:10 entry now starts 2025-08-31, so this entry ends 2025-08-30.",
             "open": "10:30",
             "recheck_date": "2027-02-19",
             "segment": "ATHEX Main Market (Market ID M, Venue ID XATH): continuous trading and the closing auction",
@@ -4159,17 +4159,17 @@
             "status": "unconfirmed"
           },
           {
-            "checked_on": "2026-11-23",
+            "checked_on": "2026-11-24",
             "close": "17:10",
             "close_rule": "closing_auction_end",
-            "effective_from": "2026-11-23",
-            "note": "Main Market (Market ID:M / Venue ID: XATH) timeline, read from the rendered page: CAM (call auction) 10:15-10:30 with RTP at 10:29; CAMM (continuous) 10:30-13:45; CAM 13:45-14:00 with RTP at 13:59; CAMM 14:00-17:00; CAM 17:00-17:10 with RTP 17:09-17:10; ATC 17:10-17:20. 'Closing Price: Closing auction'; 'RTP: 1min' (random time period). Open 10:30, the start of continuous trading; close 17:10: the closing auction's one-minute random window 17:09-17:10 is drawn as a range, so its end (ADR 0013). ATC (at the close, 17:10-17:20) is not regular hours. The 13:45-14:00 intraday auction is trading, not a break; it is not modelled. 'Last update: Aug 2025' is the document's date, not an effective date. In force at least since 2026-11-23; start undated; earlier entry's end unknown (ADR 0014 section 8).",
+            "effective_from": "2025-08-31",
+            "note": "Main Market (Market ID:M / Venue ID: XATH) timeline, read from the rendered page: CAM (call auction) 10:15-10:30 with RTP at 10:29; CAMM (continuous) 10:30-13:45; CAM 13:45-14:00 with RTP at 13:59; CAMM 14:00-17:00; CAM 17:00-17:10 with RTP 17:09-17:10; ATC 17:10-17:20. 'Closing Price: Closing auction'; 'RTP: 1min' (random time period). Open 10:30, the start of continuous trading; close 17:10: the closing auction's one-minute random window 17:09-17:10 is drawn as a range, so its end (ADR 0013). ATC (at the close, 17:10-17:20) is not regular hours. The 13:45-14:00 intraday auction is trading, not a break; it is not modelled. In force at least since 2025-08-31: the schedule states itself current as of 'Last update: Aug 2025', the last day of that month under ADR 0014 section 8 as refined in 4b7 (4b6 had used the read date, 2026-11-23); start undated; earlier entry's end unknown.",
             "open": "10:30",
             "segment": "ATHEX Main Market (Market ID M, Venue ID XATH): continuous trading and the closing auction",
             "source_title": "ATHEX's Cash Markets Schedule, 'Last update: Aug 2025' (PRD_OASIS Cash & Der Markets Schedule_Aug2025_ver 3; PDF saved by the maintainer, 2026-11-23)",
             "source_url": "https://www.athexgroup.gr/sites/default/files/2025-07/PRD_OASIS_Cash_Markets_Schedule_Aug2025_ver3.pdf",
             "status": "verified",
-            "verified_from": "2026-11-23"
+            "verified_from": "2025-08-31"
           }
         ],
         "last_checked": "2026-11-21",

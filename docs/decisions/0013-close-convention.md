@@ -75,7 +75,7 @@ Applied in 4b5 (random-closing rule, exchange documents attached):
 - XKUW: 13:10 from 2025-10-12 (Boursa Kuwait: closing auction 13:00-13:10, random close in the last 30 seconds -> the stated minute).
 - XMAD: 17:35 from 2026-11-23 (BME Circular 1/2026: closing auction 17:30-17:35, "shall end at any time within a random period of at most 30 seconds from 5.35pm" -> the stated minute; 4b6).
 - XBKK: 16:40 from 2026-11-23 (SET: "randomly select a closing time between 16:35 - 16:40", a range -> its end; 4b6).
-- XATH: 17:10 from 2026-11-23 (ATHEX Cash Markets Schedule: Main Market closing auction 17:00-17:10 with the random time period drawn 17:09-17:10, a range -> its end; 4b6).
+- XATH: 17:10 from 2025-08-31 (re-dated in 4b7; ATHEX Cash Markets Schedule: Main Market closing auction 17:00-17:10 with the random time period drawn 17:09-17:10, a range -> its end; 4b6).
 - XBRV: 14:30 UTC from 2026-11-22 (BRVM: closing fixing "14 h 30 mn" with "une période aléatoire de +/- 60 secondes", a stated time with jitter -> the stated time; 4b5 recorded 14:31 as the end of a two-minute window, corrected in 4b6).
 
 ## Why

@@ -1978,5 +1978,8 @@
     {"file": "CHANGELOG.md", "contains": "XKAR regular hours 09:32-15:30 from 2026-11-23"},
     {"file": "CHANGELOG.md", "contains": "XKUW hours evidence (4b6)"},
     {"file": "CHANGELOG.md", "contains": "Hours evidence for XMEX, XMAL and XSHE (4b6)"}
+  ],
+  "2.35.0": [
+    {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "\"in force at least since\" is the latest date the evidence proves"}
   ]
 }

@@ -189,10 +189,18 @@ more than the document proved.
 When an exchange's own current page contradicts the registry and no
 document dates the change:
 
-- a new `regular_hours` entry is added with `effective_from` = the page's
-  read date (its print date); its evidence is `verified`, with
+- a new `regular_hours` entry is added with `effective_from` = the
+  "in force at least since" date; its evidence is `verified`, with
   `verified_from` = that date and the note "in force at least since
-  the read date; start undated; earlier entry's end unknown";
+  that date; start undated; earlier entry's end unknown";
+- "in force at least since" is the latest date the evidence proves
+  (maintainer decision, session 4b7): the document's own date when the
+  document states the schedule as current on that date (a dated
+  schedule; a "Last update" naming a month and year, such as
+  "Last update: Aug 2025", gives the last day of that month), otherwise the read date (the page's print date). A document
+  that defers its own entry into force (BME Circular 1/2026, "THIRD.
+  Date of application", leaves it to an Operating Instruction) dates
+  nothing, so the read date applies;
 - the earlier entry's evidence becomes `unconfirmed` (with a
   `recheck_date` within the 92-day cap) if it is not already;
 - an earlier entry's values are never rewritten;
@@ -201,8 +209,10 @@ document dates the change:
 
 Reason: the registry should give today's hours as the exchange gives
 them, without inventing a start date. The split is honest about what is
-known: the new regime is proven from the read date, the old one is no
-longer proven to its end, and nothing earlier is touched.
+known: the new regime is proven from the earliest date the evidence
+itself fixes, the old one is no longer proven to its end, and nothing
+earlier is touched. Applied in 4b7: XATH from 2025-08-31 (ATHEX's
+schedule, "Last update: Aug 2025"); XMAD stays at its read date.
 
 ## Consequences
 
@@ -279,7 +289,7 @@ longer proven to its end, and nothing earlier is touched.
 | XIST | from 2026-11-22 (2010-01-01 entry kept) | 10:00-18:07 | Borsa Istanbul Equity Market: main session and closing session | closing_auction_end | verified, verified_from 2026-11-22 (section 8: the page dates the closing session from 2012, not these times); earlier entry unconfirmed | Borsa Istanbul, Closing Session (maintainer's print) |
 | XMAD | from 2026-11-23 (2010-01-01 entry kept) | 09:00-17:35 | SIBE main trading: open session and closing auction | closing_auction_end (random end within 30 s after 17:35 -> 17:35) | verified, verified_from 2026-11-23 (section 8: Circular 1/2026 leaves its date of application to an Operating Instruction); earlier entry unconfirmed | BME, Spanish Stock Exchange Hours; BME Circular 1/2026 |
 | XBKK | from 2026-11-23 (2010-01-01 entry kept) | 10:00-16:40 | SET main board: Trading Sessions I and II and pre-close | closing_auction_end (random close 16:35-16:40 -> 16:40) | verified, verified_from 2026-11-23 (section 8: undated); earlier entry unconfirmed | SET, Trading hours; SET, Opening and closing price calculation |
-| XATH | from 2026-11-23 (2025-01-01 entry kept) | 10:30-17:10 | ATHEX Main Market: continuous trading and closing auction | closing_auction_end (RTP 17:09-17:10 -> 17:10) | verified, verified_from 2026-11-23 (section 8: 'Last update: Aug 2025' is not an effective date); earlier entry unconfirmed | ATHEX, Cash Markets Schedule Aug 2025 ver 3 |
+| XATH | from 2025-08-31 (2025-01-01 entry kept; re-dated in 4b7) | 10:30-17:10 | ATHEX Main Market: continuous trading and closing auction | closing_auction_end (RTP 17:09-17:10 -> 17:10) | verified, verified_from 2025-08-31 (section 8 as refined in 4b7: 'Last update: Aug 2025' -> 2025-08-31); earlier entry unconfirmed | ATHEX, Cash Markets Schedule Aug 2025 ver 3 |
 | XKAR | from 2026-11-23 (2010-01-01 entry kept) | 09:32-15:30 | PSX Regular Market, Monday-Thursday | continuous_end | schema_limited (Friday's two sessions; backlog 'Weekday-specific sessions'); earlier entry unconfirmed | PSX, Trading Hours (maintainer's print) |
 | XSHE | from 2010-01-01 | 09:30-15:00 | SZSE auction trading: continuous auction and closing call auction | closing_auction_end (closing call 14:57-15:00) | verified, verified_from 2026-11-23 (undated page) | SZSE, Overview (maintainer's print) |
 | XMAL | from 2025-01-01 | 09:00-15:30 (held) | Malta Stock Exchange, all markets | continuous_end (held) | unconfirmed (recheck 2027-02-19): open would be 09:30; the closing auction is not timed, so what ends the session is ambiguous; no change (4b6 stop condition) | MSE, Trading (maintainer's print) |

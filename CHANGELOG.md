@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- ADR 0014 section 8 (maintainer decision, 4b7): "in force at least since" is the latest date the evidence proves: the document's own date when it states the schedule as current on that date (a "Last update" naming a month gives that month's last day), otherwise the read date; a document that defers its own entry into force (BME Circular 1/2026) dates nothing. XATH's 10:30-17:10 entry moves from 2026-11-23 to 2025-08-31 (ATHEX's Cash Markets Schedule, "Last update: Aug 2025"; `verified_from` 2025-08-31), so the 2025-01-01 entry ends on 2025-08-30; XMAD is unchanged.
+- ADR guard (4b7): every ADR in `docs/decisions/` keeps its title line and its "#", "##" and "###" headings; a test fails on a truncated or emptied ADR (it generalises 4b6's ADR 0014 check, which stays).
+
 ## [2.34.0] - 2026-11-23
 
 ### Added
