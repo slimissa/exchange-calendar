@@ -952,17 +952,17 @@
     },
     "hours": [
       {
-        "checked_on": "2026-11-22",
+        "checked_on": "2026-11-24",
         "close": "16:35",
         "close_rule": "closing_auction_end",
         "effective_from": "2010-01-01",
-        "note": "Appendix row (Trading Venue RM, Market Lisbon, Gr. P0, Type 'Equities PSI', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; the closing uncross occurs randomly within 30 seconds of the stated time. ADR 0014: open = start of continuous trading after the opening uncross; ADR 0013: close = the closing uncross, random window ignored; Trading at Last is not regular hours. Lisbon is one hour behind CET all year (both observe EU summer time): 09:00-17:35 CET = 08:00-16:35 Lisbon. The appendix takes effect on 23 November 2026, the day after this check; it gives the hours in force from that date and is read here as the current entry (4b2 brief). Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010-2026. verified_from 2026-11-23: the appendix edition read takes effect on 23 November 2026. source_url is the edition effective 3 August 2026 (read in 4c8), not the edition read here.",
+        "note": "Appendix row (Trading Venue RM, Market Lisbon, Gr. P0, Type 'Equities PSI', Mode C): OU '09:00 Random', Trading '09:00 Random  -  17:30 Continuous Random', CU '17:35 Random', TAL '17:35  -  17:40 Continuous TAL Random'. Notes: 'Trading hours in CET'; 'The opening uncrossing will occur randomly between CET 09:00:00 and 09:00:30'; 'The closing uncrossing will occur randomly between CET 17:35:00 and 17:35:30'. ADR 0014 section 1: open = start of continuous trading, which the row states as '09:00 Random' (the stated minute; no ADR rule moves an open for seconds of jitter); ADR 0013: seconds of jitter after a stated time give the stated minute ('Euronext 17:35:00-17:35:30 -> 17:35'); Trading at Last is not regular hours. The appendix states the Lisbon row in CET ('Trading hours in CET'); Lisbon (Europe/Lisbon) is one hour behind CET all year, both observing EU summer time: 09:00-17:35 CET = 08:00-16:35 Lisbon. verified_from 2026-08-03: the sheet states 'Effective date : 3 August 2026' (ADR 0014 section 7, the document's effective date; the workbook's file properties and the '2026-07' URL folder are not used). The edition effective 23 November 2026 (read on 2026-11-22 in 4b2, saved by the maintainer without a URL) gives the same row, so the hours hold from 3 August 2026 through the current edition. Earlier years: the 17:35 close dates from Euronext's announcement of 16 February 2007 (ADR 0013); the 09:00 open was not read for 2010 to 2026-08-02. Values unchanged in 4b8.",
         "open": "08:00",
         "segment": "Euronext Lisbon regulated market, 'Equities PSI' (group P0), continuous mode C",
-        "source_title": "Euronext, Appendix of Trading Manual 4-01, edition effective 23 November 2026, sheet 'Appendix to 4-01 Manual OPTQ' (the edition read in 4b2, saved by the maintainer; no URL given for it)",
+        "source_title": "Euronext, 'Appendix of Trading Manual 4-01' ('Effective date : 3 August 2026'), workbook 'appendix to Euronext Instructions 4-01 4-03 Trading Manuals', sheets 'Appendix to 4-01 Manual OPTQ' and 'Note for readers - 4-01 OPTQ' (downloaded by the maintainer on 2026-11-24)",
         "source_url": "https://www.euronext.com/sites/default/files/2026-07/appendix%20to%20Euronext%20Instructions%204-01%204-03%20Trading%20Manuals_0.xlsx",
         "status": "verified",
-        "verified_from": "2026-11-23"
+        "verified_from": "2026-08-03"
       }
     ],
     "last_checked": "2026-11-21",

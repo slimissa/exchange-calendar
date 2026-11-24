@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- Euronext hours evidence for XAMS, XBRU, XPAR and XLIS (4b8): re-read from the Appendix of Trading Manual 4-01 workbook served at the cited Euronext URL, downloaded by the maintainer on 2026-11-24 ("Effective date : 3 August 2026"). Rows used: Amsterdam J0 'Equities AEX', Brussels A0 'Equities BEL20', Paris F1 'Equities CAC40 - Group 1' (F2, Group 2, gives the same times), Lisbon P0 'Equities PSI'; each reads OU '09:00 Random', continuous trading '09:00 Random - 17:30', closing uncross '17:35 Random' (random within 30 seconds, so 17:35 under ADR 0013), Trading at Last 17:35-17:40 excluded. Times are CET; Lisbon converts to 08:00-16:35 local. Values unchanged; `verified_from` moves from 2026-11-23 (the edition effective 23 November 2026, read a day early in 4b2) to 2026-08-03 (ADR 0014 section 7, the date the sheet states; not the file properties or the "2026-07" URL folder), and `checked_on` to 2026-11-24. Current hours verified 40 -> 44 of 74; hours evidence unchanged at 48 of 74.
+- XWAR holidays cross-checked (4b8) against GPW's Session details page, "Exchange holidays" tab, printed 2026-11-24: the 12 dates of 2025 and the 10 of 2026 match the registry in both directions (2027's ten listed dates match too). No change. XWAR hours are unchanged: the timetable tab printed without times and no screenshot was attached.
+
 ## [2.35.0] - 2026-11-24
 
 ### Changed

@@ -244,12 +244,13 @@ def test_tool_reports_the_hours_line(capsys):
 def test_4b2_current_entries_verified():
     """4b2: the current entry of each exchange documented in this session is
     verified; XKAR's is unconfirmed (no PSX notice dates its 09:32 open)."""
-    # 4b3 (verified_from): XAMS, XBRU, XPAR and XLIS keep verified evidence,
-    # but the edition read takes effect on 2026-11-23, after their evaluation
-    # day, so their current hours are not verified yet.
+    # 4b3 (verified_from): XAMS, XBRU, XPAR and XLIS kept verified evidence,
+    # but the edition read took effect on 2026-11-23, after their evaluation
+    # day. 4b8: the edition effective 3 August 2026, read on 2026-11-24, makes
+    # their current hours verified.
     verified = {"XBUE", "XHKG", "XMOS", "XDUB", "XOSL",
                 "XCSE", "XETR", "XHEL", "XICE", "XLIT", "XLUX", "XNYS", "XPRA",
-                "XBDA", "XBUD", "XJSE", "XNZE"}
+                "XBDA", "XBUD", "XJSE", "XNZE", "XAMS", "XBRU", "XPAR", "XLIS"}
     later = {"XAMS", "XBRU", "XPAR", "XLIS"}
     for code in sorted(verified | later | {"XKAR"}):
         d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
@@ -329,10 +330,15 @@ def test_real_tree_facts_4b3():
     assert total == 74
     # 4b3: 17 current (Euronext AMS/BRU/PAR/LIS read only in the edition
     # effective 23 November 2026); no exchange's whole history is proven.
-    assert cur >= 29 and hist >= 0  # 4b3: 17 after verified_from; + batch B (8) and XPHS XSES XTAI XZAG
+    # 4b8: the four count, from the edition effective 3 August 2026.
+    assert cur >= 44 and hist >= 0  # 4b3: 17 after verified_from; + batch B (8) and XPHS XSES XTAI XZAG; 4b8: 44
     for code in ("XAMS", "XBRU", "XPAR", "XLIS"):
         d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
-        assert d["verification"]["hours"][-1]["verified_from"] == "2026-11-23", code
+        item = d["verification"]["hours"][-1]
+        assert item["verified_from"] == "2026-08-03", code
+        assert item["checked_on"] == "2026-11-24", code
+        assert "'Effective date : 3 August 2026'" in item["source_title"], code
+        assert cv.current_hours_verified(d) is True, code
 
 
 def test_xmex_seasonal_hours_are_schema_limited():

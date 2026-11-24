@@ -1983,5 +1983,10 @@
     {"file": "docs/decisions/0014-regular-hours-evidence.md", "contains": "\"in force at least since\" is the latest date the evidence proves"},
     {"file": "scripts/release.sh", "contains": "RELEASE_PUSHED=1"},
     {"file": "docs/phase-4f-schema-backlog.md", "contains": "## Roadmap after 4b-lite (maintainer decision, session 4b7)"}
+  ],
+  "2.36.0": [
+    {"file": "exchanges/XPAR.json", "contains": "\"verified_from\": \"2026-08-03\""},
+    {"file": "CHANGELOG.md", "contains": "Euronext hours evidence for XAMS, XBRU, XPAR and XLIS (4b8)"},
+    {"file": "README.md", "contains": "Current hours verified (ADR 0014): 44 of 74"}
   ]
 }
