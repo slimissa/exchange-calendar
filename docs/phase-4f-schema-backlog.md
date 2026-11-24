@@ -4,19 +4,22 @@ Renamed from `docs/phase-4d-backlog.md` in Phase 4d (the old path keeps a
 pointer, because the v2.28.0 release claims name it). Phase 4d became the
 verification audit; the schema and API items below go to 4f (schema v3).
 
-## Roadmap after Phase 4c (maintainer decision)
+## Roadmap after 4b-lite (maintainer decision, session 4b7)
 
-- **4d**: audit `verification` against Phase 4c; coverage spans checkable; housekeeping.
-- **4d2**: `in_session` alias in the four wrappers; the `is_open` 3.0.0 meaning change documented (no run-time warning, for parity and to spare per-minute callers).
-- **4b-lite**: current regular hours verified against each exchange's own page (ADR 0013, ADR 0014), evidence in `verification.hours` (schema 2.3.0, since 4b1; `schema_limited` for hours the schema cannot express since 2.3.1, 4b2). `check_verification.py` check 6 reports it non-blocking during 4b-lite and **turns blocking for every `reference_compared` exchange at the end of 4b-lite**; `schema_limited` items do not block (ADR 0014 section 6).
-- **4e**: predictions.
-- **4f**: schema v3 / API (major 3.0.0); this file's "Schema and tooling" items.
-- **4g**: consumer alignment (QLF, DeBou) and a CLI.
-- **4b full**: session-time verification.
-- **5**: verification contract.
-- **6**: publication.
-- **4h**: the 23 exchanges without a reference library ("Phase 4h" below); interleaved from 4e on, finished before 6.
-- **December rechecks** (8-14 Dec, 18-22 Dec): separate sessions, fixed in the calendar.
+Done before it: 4d (verification audit), 4d2 (`in_session` alias).
+
+1. **4b-lite**: current regular hours verified against each exchange's own page (ADR 0013, ADR 0014), evidence in `verification.hours`. `check_verification.py` check 6 is non-blocking during 4b-lite and **turns blocking for every `reference_compared` exchange at the end of 4b-lite**; `schema_limited` items do not block (ADR 0014 section 6).
+2. **4e**: predictions.
+3. **4f**: schema v3 / API (major 3.0.0); this file's "Schema and tooling" items. It ends with a consumer smoke test: one QLF-style and one DeBou-style fixture calling the v3 API.
+4. **4h**: backfill of the 23 exchanges without a reference library ("Phase 4h" below).
+5. **4b full**: session-time history.
+6. **5**: verification contract.
+7. **4g**: consumer alignment (QLF, DeBou, Tempus) and the `ecal` CLI.
+8. **6**: publication.
+
+Why this order: 4g follows Phase 5 so consumers align once, to the final contract, and precedes 6 so no API ships unused by a real consumer; 4h follows 4f so new data is written once, in the v3 shape.
+
+December recheck sessions (8-14 Dec, 18-22 Dec) stay fixed in the calendar, outside this order.
 
 ## Backlog
 

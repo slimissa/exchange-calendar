@@ -1125,7 +1125,7 @@ No external adopter is recorded. *Using this registry? Open a pull request to ad
 
 ## 25. What's next
 
-Nothing is scheduled. Each item starts when its trigger fires.
+Each item starts when its trigger fires. The phase order (4b-lite, 4e, 4f, 4h, 4b full, 5, 4g, 6) is in [`docs/phase-4f-schema-backlog.md`](./docs/phase-4f-schema-backlog.md); a trigger that names a phase follows that order.
 
 | Deferred item | Trigger to start |
 |---------------|------------------|
@@ -1135,13 +1135,13 @@ Nothing is scheduled. Each item starts when its trigger fires.
 | **Divergence for session times beyond nine exchanges** | The weekly `--mode sessions` run is extended and its output joined to the report |
 | **Formalise predicted Islamic and lunar dates** | An exchange publishes a year the registry predicts; `recheck_date` is the prompt |
 | **`ad_hoc_closures` content** | The first unscheduled closure after v2.23.13 |
-| **A CLI** | A consumer asks for shell queries, or the sibling registries' CLIs are mirrored here |
+| **A CLI** (`ecal`) | Phase 4g, with consumer alignment (QLF, DeBou, Tempus), after the Phase 5 verification contract (roadmap in [`docs/phase-4f-schema-backlog.md`](./docs/phase-4f-schema-backlog.md)) |
 | **A companion example** (a fact table joined to the calendar) | The example is written; the ISO 4217 and ISO 10383 registries have one each |
 | **A snapshot generator for ISO 3166 and ISO 10383, and refreshed snapshots** | A sibling release the snapshots depend on, or `review_by` (2027-03-01) approaching |
 | **A single version-consistency script covering every site** | A fourth implementation of the release pattern, or a drift the CI job misses |
 | **Per-release verification reports** | Adopting the ISO family's `docs/v<version>-verification.md` |
-| **Publication to PyPI, npm, crates.io and a Go proxy** | A downstream consumer needs a package-registry install rather than a clone |
-| **Phase 4f: the schema and data items from the 4c rechecks** ([`docs/phase-4f-schema-backlog.md`](./docs/phase-4f-schema-backlog.md), which also lists the post-4c roadmap): dated sessions, unconfirmed hours, continuous close, timed special sessions, and data leads | Schema v3 (4f), or a consumer needs one of the fields earlier |
+| **Publication to PyPI, npm, crates.io and a Go proxy** | Phase 6, the last phase of the roadmap, after 4g has a real consumer on the API |
+| **Phase 4f: the schema and data items from the 4c rechecks** ([`docs/phase-4f-schema-backlog.md`](./docs/phase-4f-schema-backlog.md), which also holds the roadmap after 4b-lite: 4e, 4f, 4h, 4b full, 5, 4g, 6): dated sessions, unconfirmed hours, continuous close, timed special sessions, and data leads | Schema v3 (4f), or a consumer needs one of the fields earlier |
 
 See [`CHANGELOG.md`](./CHANGELOG.md) for release history and [`docs/decisions/`](./docs/decisions) for locked decisions.
 
