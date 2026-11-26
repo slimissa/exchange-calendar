@@ -1988,5 +1988,10 @@
     {"file": "exchanges/XPAR.json", "contains": "\"verified_from\": \"2026-08-03\""},
     {"file": "CHANGELOG.md", "contains": "Euronext hours evidence for XAMS, XBRU, XPAR and XLIS (4b8)"},
     {"file": "README.md", "contains": "Current hours verified (ADR 0014): 44 of 74"}
+  ],
+  "2.37.0": [
+    {"file": "exchanges/XKRX.json", "contains": "\"verified_from\": \"2026-11-26\""},
+    {"file": "CHANGELOG.md", "contains": "Hours evidence for XKRX, XNAS and XSAU (4b9)"},
+    {"file": "README.md", "contains": "Current hours verified (ADR 0014): 47 of 74"}
   ]
 }

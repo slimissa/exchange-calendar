@@ -833,6 +833,21 @@
       ],
       "to": "2029-09-23"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-26",
+        "close": "15:10",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2021-01-01",
+        "note": "'Opening Auction 9:30 AM 10:00 AM'; 'Market Open - Trading 10:00 AM 3:00 PM'; 'Closing Auction (except for Sukuk & Bonds and ETFs Trading) 3:00 PM 3:10 PM'; 'Trade at Last ... 3:10 PM 3:20 PM'; 'Additional Negotiated Deals Sessions ... 3:20 PM 4:00 PM'; '* Note: the market opens and closes on a variable basis within 30 seconds after 10:00 AM and after 3:10 PM.' Open 10:00, the stated minute (no ADR rule moves an open for seconds of jitter). Close: seconds of jitter after a stated time give the stated minute, 15:10 (ADR 0013, which names XSAU). Trade at Last and the negotiated-deal sessions are not regular hours. Trading days 'Sunday to Thursday'. The page states no date (the '26 Nov' above it is the market-status date): verified_from is the read date (ADR 0014 section 7). The 2021-01-01 start rests on the 4c13 backfill, not on this page.",
+        "open": "10:00",
+        "segment": "Saudi Exchange equities: Market Open - Trading and the Closing Auction (except for Sukuk & Bonds and ETFs Trading)",
+        "source_title": "Saudi Exchange, Trading Cycle and Times (maintainer's print, 2026-11-26)",
+        "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/rules-guidance/capital-market-overview/trading-cycle-and-times?locale=en",
+        "status": "verified",
+        "verified_from": "2026-11-26"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

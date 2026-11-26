@@ -3717,7 +3717,7 @@
             "close": "16:00",
             "close_rule": "continuous_end",
             "effective_from": "1990-01-01",
-            "note": "'Equity market phases (Sydney times)': '09:59:00 - 09:59:45* Opening Single Price Auction'; '09:59:45* - 16:00:00 Open/Normal Trading'; '16:00:00 - 16:10:00 Pre CSPA'; '16:10:00^ - 16:11:00 Closing Single Price Auction'; '16:11:00 - 16:21:30 Post Close' ('*Random 15 secs', '^Random 30 secs'); 'The Closing Single Price Auction takes place between 16:10:00^ (randomised 30 seconds) to 16:11:00, Sydney time. ASX Trade calculates closing prices during this phase.' Open 10:00 matches (continuous trading starts by 10:00:00). The close does not: ADR 0013 takes the end of the closing auction, 16:11 by ASX's own statement, while the registry holds 16:00, the end of Normal Trading. The page states no effective date and no ASX notice dating the 16:10-16:11 auction was read, so under the 4b rule the value stays and this evidence is unconfirmed; a mismatch listed for a dated fix. Settled by an ASX notice dating the current closing auction timetable.",
+            "note": "'Equity market phases (Sydney times)': '09:59:00 - 09:59:45* Opening Single Price Auction'; '09:59:45* - 16:00:00 Open/Normal Trading'; '16:00:00 - 16:10:00 Pre CSPA'; '16:10:00^ - 16:11:00 Closing Single Price Auction'; '16:11:00 - 16:21:30 Post Close' ('*Random 15 secs', '^Random 30 secs'); 'The Closing Single Price Auction takes place between 16:10:00^ (randomised 30 seconds) to 16:11:00, Sydney time. ASX Trade calculates closing prices during this phase.' Open 10:00 matches (continuous trading starts by 10:00:00). The close does not: ADR 0013 takes the end of the closing auction, 16:11 by ASX's own statement, while the registry holds 16:00, the end of Normal Trading. The page states no effective date and no ASX notice dating the 16:10-16:11 auction was read, so under the 4b rule the value stays and this evidence is unconfirmed; a mismatch listed for a dated fix. Settled by an ASX notice dating the current closing auction timetable. 4b9: ASX blog 'Changes to equity market structure - opening and closing the market' (https://www.asx.com.au/blog/listed-at-asx/changes-to-equity-market-structure), dated 19 June 2025, read 2026-11-26: 'Presently market open state finishes at 4:00pm, with a Closing Single Price Auction ... taking place between 4.10 and 4.11pm'; the SR15 changes ('Both the closing and opening changes come into effect on 23 June 2025') add a single open and a Post Close trading session. It gives the auction's timing only before 23 June 2025 and does not say whether it changed, so it dates nothing for the current timetable; the evidence stays unconfirmed (recheck_date unchanged, at the cap).",
             "open": "10:00",
             "recheck_date": "2027-02-19",
             "segment": "ASX Trade equity market (cash market): Open/Normal Trading and the Closing Single Price Auction",
@@ -42339,7 +42339,7 @@
       },
       "mic": "XKRX",
       "name": "Korea Exchange",
-      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars (no exchange publications). No fetcher. Rechecked 2026-11-19 (4c-R1). Hours: the regular_hours cut at 2016-08-01 (15:00 -> 15:30) is confirmed by KRX's announcement (reported 2016-05-24 and 2016-07-31); open stays 09:00. Dec 31 is a full year-end closure, not an early close; every weekday Dec 31 in 2010-2024 is closed here. Election days (2017-05-09, 2018-06-13, 2020-04-15, 2022-03-09, 2022-06-01, 2024-04-10) and the temporary holidays 2017-10-02, 2023-10-02 and 2024-10-01 are closed. Known gap, not encoded: KRX shifts its regular session on two kinds of day every year. On the first trading day of the year the market opens at 10:00 (closing at the normal time) for the opening ceremony, and on the college entrance exam (CSAT) day it runs 10:00-16:30 (KRX notices reported e.g. for 2021-11-18, 2022-11-17, 2023-11-16, 2024-11-14, 2025-11-13, 2026-11-19). Neither the registry nor exchange_calendars 4.13.2 has these days; the schema can express the first-day 10:00 open (delayed_open) but not the CSAT day's later close, and the per-year dates for 2010-2024 have not been sourced.",
+      "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars (no exchange publications). No fetcher. Rechecked 2026-11-19 (4c-R1). Hours: the regular_hours cut at 2016-08-01 (15:00 -> 15:30) is confirmed by KRX's announcement (reported 2016-05-24 and 2016-07-31); open stays 09:00. Dec 31 is a full year-end closure, not an early close; every weekday Dec 31 in 2010-2024 is closed here. Election days (2017-05-09, 2018-06-13, 2020-04-15, 2022-03-09, 2022-06-01, 2024-04-10) and the temporary holidays 2017-10-02, 2023-10-02 and 2024-10-01 are closed. Known gap, not encoded: KRX shifts its regular session on two kinds of day every year. On the first trading day of the year the market opens at 10:00 (closing at the normal time) for the opening ceremony, and on the college entrance exam (CSAT) day it runs 10:00-16:30 (KRX notices reported e.g. for 2021-11-18, 2022-11-17, 2023-11-16, 2024-11-14, 2025-11-13, 2026-11-19). Neither the registry nor exchange_calendars 4.13.2 has these days; the schema can express the first-day 10:00 open (delayed_open) but not the CSAT day's later close, and the per-year dates for 2010-2024 have not been sourced. Known gap (4b9): KRX's Trading Hours page (read 2026-11-26) gives a pre-market session (off-hours block and basket trading 08:00-09:00) and a post-market session (after-market 16:00-20:00, off-hours block and basket trading 15:40-20:00) beyond the modelled 08:30-09:00 and 15:30-16:00, so the registry-level is_open / in_session answer false at 08:00-08:29 and 16:00-19:59 on a normal day. Not changed: a session cannot carry a date (backlog 'Dated sessions') and the page does not date these sessions, so a change would apply to every year from 2010.",
       "regular_hours": [
         {
           "close": "15:00",
@@ -42401,6 +42401,34 @@
           ],
           "to": "2029-12-31"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-26",
+            "close": "15:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2000-05-22",
+            "note": "KRX's page gives only the current regular session (09:00-15:30); no KRX document read gives the hours before 2016-08-01. The 15:30 extension from 2016-08-01 is known from press reports of KRX's announcement (2016-05-24, 2016-07-31), a lead. Settled by KRX's 2016 notice on the extension of trading hours, which would also give the earlier 15:00 close.",
+            "open": "09:00",
+            "recheck_date": "2027-02-19",
+            "segment": "KRX securities market, Regular market session (continuous auction between the opening and closing single price auctions)",
+            "source_title": "KRX, Trading Hours (maintainer's print, 2026-11-26)",
+            "source_url": "https://global.krx.co.kr/contents/GLB/06/0602/0602020204/GLB0602020204T1.jsp",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-26",
+            "close": "15:30",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2016-08-01",
+            "note": "Trading Hours: 'Regular market session' Order receipt '08:30 - 15:30', Trading '09:00 - 15:30'. Periodic call auction (https://global.krx.co.kr/contents/GLB/06/0602/0602020202/GLB0602020202T6.jsp): 'Every periodic call auction is closed at the random time that KRX decides within 30 seconds from the closing point'; it applies to the 'opening single price' and the 'Closing price of normal stock( closing single price )'; continuous auction runs 'from opening after before-hours single price transaction to closing before after-hours single price transaction'. Open: continuous trading starts at 09:00, the stated minute (no ADR rule moves an open for seconds of jitter; maintainer, 4b9 brief). Close: the closing single price auction ends the regular session at 15:30 with random jitter of up to 30 seconds after it, so ADR 0013's 'stated minute' rule gives 15:30 (ADR 0013 names KRX). Off-hours closing price trading (15:40-16:00), the after-market (16:00-20:00) and off-hours block and basket trading are not regular hours. The page states no date: verified_from is the read date (ADR 0014 section 7). The page is the stock market's: its sessions are equity sessions (block and basket trading, closing price trading) and its sibling page on the periodic call auction concerns common stock.",
+            "open": "09:00",
+            "segment": "KRX securities market, Regular market session (continuous auction between the opening and closing single price auctions)",
+            "source_title": "KRX, Trading Hours; KRX, Periodic call auction (maintainer's prints, 2026-11-26)",
+            "source_url": "https://global.krx.co.kr/contents/GLB/06/0602/0602020204/GLB0602020204T1.jsp",
+            "status": "verified",
+            "verified_from": "2026-11-26"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
@@ -58521,6 +58549,21 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
+        "hours": [
+          {
+            "checked_on": "2026-11-26",
+            "close": "16:00",
+            "close_rule": "closing_auction_end",
+            "effective_from": "1990-01-01",
+            "note": "Schedule: 'Trading Hours for All Nasdaq U.S. Markets': 'The Nasdaq Stock Market 9:30 am - 4:00 pm (ET)'; 'System 4:00 am - 8:00 pm (ET)'. Crosses (https://www.nasdaqtrader.com/Trader.aspx?id=OpenClose): '9:30 a.m. The Opening Cross occurs'; 'Closing Cross Net Order Imbalance information between 3:50 and 4:00 p.m., ET'; imbalance-only close orders 'only execute at or above/below the 4:00 p.m., ET, bid/ask'. The print's Closing Cross column shows only its first row (3:50 p.m.), so the cross time itself is not printed: the close is 16:00 because the market's trading hours end at 4:00 pm and the cross follows continuous trading to the 4:00 p.m. bid/ask, a fixed time with no random window (ADR 0013). Open: continuous trading starts after the 9:30 Opening Cross. Pre-market and post-market (system hours 4:00 am-8:00 pm) are not regular hours. Neither page states a date for these hours: verified_from is the read date (ADR 0014 section 7).",
+            "open": "09:30",
+            "segment": "The Nasdaq Stock Market: Opening Cross, continuous trading and Closing Cross",
+            "source_title": "Nasdaq, US & Nordic Stock Market Schedule; Nasdaq Trader, The NASDAQ Opening and Closing Crosses (maintainer's prints, 2026-11-26)",
+            "source_url": "https://www.nasdaq.com/market-activity/stock-market-holiday-schedule",
+            "status": "verified",
+            "verified_from": "2026-11-26"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars."
       },
@@ -74292,6 +74335,21 @@
           ],
           "to": "2029-09-23"
         },
+        "hours": [
+          {
+            "checked_on": "2026-11-26",
+            "close": "15:10",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2021-01-01",
+            "note": "'Opening Auction 9:30 AM 10:00 AM'; 'Market Open - Trading 10:00 AM 3:00 PM'; 'Closing Auction (except for Sukuk & Bonds and ETFs Trading) 3:00 PM 3:10 PM'; 'Trade at Last ... 3:10 PM 3:20 PM'; 'Additional Negotiated Deals Sessions ... 3:20 PM 4:00 PM'; '* Note: the market opens and closes on a variable basis within 30 seconds after 10:00 AM and after 3:10 PM.' Open 10:00, the stated minute (no ADR rule moves an open for seconds of jitter). Close: seconds of jitter after a stated time give the stated minute, 15:10 (ADR 0013, which names XSAU). Trade at Last and the negotiated-deal sessions are not regular hours. Trading days 'Sunday to Thursday'. The page states no date (the '26 Nov' above it is the market-status date): verified_from is the read date (ADR 0014 section 7). The 2021-01-01 start rests on the 4c13 backfill, not on this page.",
+            "open": "10:00",
+            "segment": "Saudi Exchange equities: Market Open - Trading and the Closing Auction (except for Sukuk & Bonds and ETFs Trading)",
+            "source_title": "Saudi Exchange, Trading Cycle and Times (maintainer's print, 2026-11-26)",
+            "source_url": "https://www.saudiexchange.sa/wps/portal/saudiexchange/rules-guidance/capital-market-overview/trading-cycle-and-times?locale=en",
+            "status": "verified",
+            "verified_from": "2026-11-26"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },

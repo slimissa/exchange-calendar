@@ -19,7 +19,8 @@ import check_verification as cv  # noqa: E402
 # Check 6 is non-blocking in Phase 4b-lite. Its count of exchanges with
 # complete hours evidence may grow, never shrink: raise this floor when an
 # exchange gains evidence.
-HOURS_EVIDENCE_FLOOR = 48  # 4b6: + XSHE, XMAL
+HOURS_EVIDENCE_FLOOR = 51  # 4b9: + XKRX, XNAS, XSAU
+#   4b6: + XSHE, XMAL
 #   4b3: batch B (8), XPHS XSES XTAI XZAG
 
 
@@ -331,7 +332,7 @@ def test_real_tree_facts_4b3():
     # 4b3: 17 current (Euronext AMS/BRU/PAR/LIS read only in the edition
     # effective 23 November 2026); no exchange's whole history is proven.
     # 4b8: the four count, from the edition effective 3 August 2026.
-    assert cur >= 44 and hist >= 0  # 4b3: 17 after verified_from; + batch B (8) and XPHS XSES XTAI XZAG; 4b8: 44
+    assert cur >= 47 and hist >= 0  # 4b3: 17 after verified_from; + batch B (8) and XPHS XSES XTAI XZAG; 4b8: 44; 4b9: 47
     for code in ("XAMS", "XBRU", "XPAR", "XLIS"):
         d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
         item = d["verification"]["hours"][-1]
@@ -380,3 +381,35 @@ def test_adr_0014_keeps_its_sections_and_a_row_per_evidenced_exchange():
         if d["verification"].get("hours"):
             evidenced.add(path.stem)
     assert evidenced and evidenced <= rows, sorted(evidenced - rows)
+
+
+def test_4b9_saved_pages_evidence():
+    """4b9: KRX, Nasdaq and Saudi Exchange pages printed on 2026-11-26 verify the
+    current entry (undated pages: verified_from is the read date); XKRX's
+    2000 entry and XASX stay unconfirmed."""
+    expected = {"XKRX": ("2016-08-01", "09:00", "15:30"), "XNAS": ("1990-01-01", "09:30", "16:00"),
+                "XSAU": ("2021-01-01", "10:00", "15:10")}
+    for code, (eff, open_, close) in expected.items():
+        d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
+        item = d["verification"]["hours"][-1]
+        assert (item["effective_from"], item["open"], item["close"]) == (eff, open_, close), code
+        assert item["status"] == "verified" and item["verified_from"] == "2026-11-26", code
+        assert item["checked_on"] == "2026-11-26" and item["close_rule"] == "closing_auction_end", code
+        assert cv.hours_problems(d) == [] and cv.current_hours_verified(d) is True, code
+    krx = json.loads((ROOT / "exchanges" / "XKRX.json").read_text(encoding="utf-8"))
+    first = krx["verification"]["hours"][0]
+    assert (first["effective_from"], first["status"]) == ("2000-05-22", "unconfirmed")
+    assert "Known gap (4b9)" in krx["note"] and "16:00-19:59" in krx["note"]
+    asx = json.loads((ROOT / "exchanges" / "XASX.json").read_text(encoding="utf-8"))
+    (item,) = asx["verification"]["hours"]
+    assert item["status"] == "unconfirmed" and "19 June 2025" in item["note"]
+    assert cv.current_hours_verified(asx) is False
+
+
+def test_adr_0014_euronext_rows_match_verified_from():
+    """4b9: the Applied rows of XAMS, XBRU, XPAR and XLIS name the edition
+    their verified_from comes from (4b8)."""
+    adr = (ROOT / "docs" / "decisions" / "0014-regular-hours-evidence.md").read_text(encoding="utf-8")
+    for code in ("XAMS", "XBRU", "XPAR", "XLIS"):
+        (row,) = [l for l in adr.splitlines() if l.startswith(f"| {code} | from 2010-01-01 |")]
+        assert "verified_from 2026-08-03" in row and "effective 3 August 2026" in row, code

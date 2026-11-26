@@ -118,6 +118,8 @@ def test_registry_dates_today():
                      # 4b5: XCAY earlier hours entry (ADR 0014 section 8 or dated split).
                      ("XCAY", "2027-02-19"),
                      # 4b5: XKUW earlier hours entry (ADR 0014 section 8 or dated split).
-                     ("XKUW", "2027-02-19")}
+                     ("XKUW", "2027-02-19"),
+                     # 4b9: XKRX 2000-05-22 hours entry (09:00-15:00), no KRX document read.
+                     ("XKRX", "2027-02-19")}
     assert crd.main(["--today", "2026-11-20"]) == 0
     assert crd.main(["--today", "2027-01-05"]) == 1

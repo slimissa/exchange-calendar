@@ -37,6 +37,14 @@ trigger.
 - **Dated sessions.** A `sessions` entry cannot carry `effective_from`, so an
   undated session describes the latest dated `regular_hours` entry (repository
   rule). XPRA shows its 2027 regular session today. (4c-R5)
+  XKRX (4b9): KRX's Trading Hours page gives a pre-market session from 08:00
+  and a post-market session to 20:00 (after-market 16:00-20:00); the registry
+  models 08:30-09:00 and 15:30-16:00, so the registry-level `is_open` /
+  `in_session` answer false at 08:00-08:29 and 16:00-19:59. The page dates
+  neither session, and an undated change would rewrite every year from 2010.
+  XNAS (4b9): Nasdaq's announced 9:00 pm-4:00 am ET night session from
+  6 December 2026 (not yet read from Nasdaq's own page) needs a dated session
+  that also crosses midnight and starts on Sunday, a weekend day here.
 - **A field for unconfirmed hours.** `coverage.unconfirmed` holds dates whose
   status is in doubt. XPRA (2027-01-04), XBUD (2010-01-01) and XOSL
   (2012-08-06) reuse it, with an effective date, for an hours entry. XDUB

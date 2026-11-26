@@ -3134,6 +3134,21 @@
   "verification": {
     "basis": "divergence_report",
     "class": "reference_compared",
+    "hours": [
+      {
+        "checked_on": "2026-11-26",
+        "close": "16:00",
+        "close_rule": "closing_auction_end",
+        "effective_from": "1990-01-01",
+        "note": "Schedule: 'Trading Hours for All Nasdaq U.S. Markets': 'The Nasdaq Stock Market 9:30 am - 4:00 pm (ET)'; 'System 4:00 am - 8:00 pm (ET)'. Crosses (https://www.nasdaqtrader.com/Trader.aspx?id=OpenClose): '9:30 a.m. The Opening Cross occurs'; 'Closing Cross Net Order Imbalance information between 3:50 and 4:00 p.m., ET'; imbalance-only close orders 'only execute at or above/below the 4:00 p.m., ET, bid/ask'. The print's Closing Cross column shows only its first row (3:50 p.m.), so the cross time itself is not printed: the close is 16:00 because the market's trading hours end at 4:00 pm and the cross follows continuous trading to the 4:00 p.m. bid/ask, a fixed time with no random window (ADR 0013). Open: continuous trading starts after the 9:30 Opening Cross. Pre-market and post-market (system hours 4:00 am-8:00 pm) are not regular hours. Neither page states a date for these hours: verified_from is the read date (ADR 0014 section 7).",
+        "open": "09:30",
+        "segment": "The Nasdaq Stock Market: Opening Cross, continuous trading and Closing Cross",
+        "source_title": "Nasdaq, US & Nordic Stock Market Schedule; Nasdaq Trader, The NASDAQ Opening and Closing Crosses (maintainer's prints, 2026-11-26)",
+        "source_url": "https://www.nasdaq.com/market-activity/stock-market-holiday-schedule",
+        "status": "verified",
+        "verified_from": "2026-11-26"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars."
   },

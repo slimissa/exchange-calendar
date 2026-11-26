@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- Hours evidence for XKRX, XNAS and XSAU (4b9), from the maintainer's prints of 2026-11-26; values unchanged.
+  - XKRX: KRX Trading Hours, 'Regular market session' Trading '09:00 - 15:30', plus KRX Periodic call auction ('closed at the random time that KRX decides within 30 seconds from the closing point'). This gives 09:00-15:30 under ADR 0013's stated-minute rule: the 2016-08-01 entry is verified from 2026-11-26 (undated page); the 2000-05-22 entry is unconfirmed.
+  - XNAS: Nasdaq's schedule ('The Nasdaq Stock Market 9:30 am - 4:00 pm (ET)') and Nasdaq Trader's crosses page (Opening Cross at 9:30, closing imbalance 3:50-4:00 p.m.). Verified 09:30-16:00 from 2026-11-26.
+  - XSAU: Saudi Exchange Trading Cycle and Times (Market Open 10:00-15:00, Closing Auction 15:00-15:10, 'closes on a variable basis within 30 seconds ... after 3:10 PM'). Verified 10:00-15:10 from 2026-11-26.
+  - Current hours verified 44 -> 47 of 74; hours evidence 48 -> 51 of 74 (41 of 48 reference_compared).
+- XASX hours evidence stays unconfirmed (4b9): ASX's blog of 19 June 2025 gives the 4.10-4.11pm Closing Single Price Auction only as the timing before the SR15 changes of 23 June 2025, and does not say whether it changed; its note records the reading.
+- Known gaps recorded, no session changed (4b9). The schema cannot date a session (backlog 'Dated sessions'), so nothing was rewritten.
+  - XKRX: KRX's after-market (16:00-20:00) and pre-market (from 08:00) sessions are not modelled, so the registry-level `is_open` / `in_session` answer false at 16:00-19:59 and 08:00-08:29 KST.
+  - XNAS: the night session from 6 December 2026 is not assessed against Nasdaq's page, which was not attached.
+- Holiday cross-checks, no mismatch (4b9):
+  - XNAS 2026 against Nasdaq's 2026 schedule (10 closed days; 13:00 early closes on 27 November and 24 December).
+  - XLON from 24 December 2026 to 1 January 2029 against LSE's Business days page (19 non-trading days, six 12:30 half days). The page lists nothing earlier in 2026.
+- ADR 0014 Applied rows (records only, no rule text): XAMS, XBRU, XPAR and XLIS now give verified_from 2026-08-03 and the 3 August 2026 appendix edition (4b8). New rows for XKRX, XNAS and XSAU; XASX's row cites the blog.
+
 ## [2.36.0] - 2026-11-24
 
 ### Changed

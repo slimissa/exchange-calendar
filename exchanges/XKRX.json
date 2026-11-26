@@ -1963,7 +1963,7 @@
   },
   "mic": "XKRX",
   "name": "Korea Exchange",
-  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars (no exchange publications). No fetcher. Rechecked 2026-11-19 (4c-R1). Hours: the regular_hours cut at 2016-08-01 (15:00 -> 15:30) is confirmed by KRX's announcement (reported 2016-05-24 and 2016-07-31); open stays 09:00. Dec 31 is a full year-end closure, not an early close; every weekday Dec 31 in 2010-2024 is closed here. Election days (2017-05-09, 2018-06-13, 2020-04-15, 2022-03-09, 2022-06-01, 2024-04-10) and the temporary holidays 2017-10-02, 2023-10-02 and 2024-10-01 are closed. Known gap, not encoded: KRX shifts its regular session on two kinds of day every year. On the first trading day of the year the market opens at 10:00 (closing at the normal time) for the opening ceremony, and on the college entrance exam (CSAT) day it runs 10:00-16:30 (KRX notices reported e.g. for 2021-11-18, 2022-11-17, 2023-11-16, 2024-11-14, 2025-11-13, 2026-11-19). Neither the registry nor exchange_calendars 4.13.2 has these days; the schema can express the first-day 10:00 open (delayed_open) but not the CSAT day's later close, and the per-year dates for 2010-2024 have not been sourced.",
+  "note": "2010-2024 sourced from exchange_calendars only (backfill; not independently verified). 2025-2029: exchange_calendars (no exchange publications). No fetcher. Rechecked 2026-11-19 (4c-R1). Hours: the regular_hours cut at 2016-08-01 (15:00 -> 15:30) is confirmed by KRX's announcement (reported 2016-05-24 and 2016-07-31); open stays 09:00. Dec 31 is a full year-end closure, not an early close; every weekday Dec 31 in 2010-2024 is closed here. Election days (2017-05-09, 2018-06-13, 2020-04-15, 2022-03-09, 2022-06-01, 2024-04-10) and the temporary holidays 2017-10-02, 2023-10-02 and 2024-10-01 are closed. Known gap, not encoded: KRX shifts its regular session on two kinds of day every year. On the first trading day of the year the market opens at 10:00 (closing at the normal time) for the opening ceremony, and on the college entrance exam (CSAT) day it runs 10:00-16:30 (KRX notices reported e.g. for 2021-11-18, 2022-11-17, 2023-11-16, 2024-11-14, 2025-11-13, 2026-11-19). Neither the registry nor exchange_calendars 4.13.2 has these days; the schema can express the first-day 10:00 open (delayed_open) but not the CSAT day's later close, and the per-year dates for 2010-2024 have not been sourced. Known gap (4b9): KRX's Trading Hours page (read 2026-11-26) gives a pre-market session (off-hours block and basket trading 08:00-09:00) and a post-market session (after-market 16:00-20:00, off-hours block and basket trading 15:40-20:00) beyond the modelled 08:30-09:00 and 15:30-16:00, so the registry-level is_open / in_session answer false at 08:00-08:29 and 16:00-19:59 on a normal day. Not changed: a session cannot carry a date (backlog 'Dated sessions') and the page does not date these sessions, so a change would apply to every year from 2010.",
   "regular_hours": [
     {
       "close": "15:00",
@@ -2025,6 +2025,34 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-26",
+        "close": "15:00",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2000-05-22",
+        "note": "KRX's page gives only the current regular session (09:00-15:30); no KRX document read gives the hours before 2016-08-01. The 15:30 extension from 2016-08-01 is known from press reports of KRX's announcement (2016-05-24, 2016-07-31), a lead. Settled by KRX's 2016 notice on the extension of trading hours, which would also give the earlier 15:00 close.",
+        "open": "09:00",
+        "recheck_date": "2027-02-19",
+        "segment": "KRX securities market, Regular market session (continuous auction between the opening and closing single price auctions)",
+        "source_title": "KRX, Trading Hours (maintainer's print, 2026-11-26)",
+        "source_url": "https://global.krx.co.kr/contents/GLB/06/0602/0602020204/GLB0602020204T1.jsp",
+        "status": "unconfirmed"
+      },
+      {
+        "checked_on": "2026-11-26",
+        "close": "15:30",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2016-08-01",
+        "note": "Trading Hours: 'Regular market session' Order receipt '08:30 - 15:30', Trading '09:00 - 15:30'. Periodic call auction (https://global.krx.co.kr/contents/GLB/06/0602/0602020202/GLB0602020202T6.jsp): 'Every periodic call auction is closed at the random time that KRX decides within 30 seconds from the closing point'; it applies to the 'opening single price' and the 'Closing price of normal stock( closing single price )'; continuous auction runs 'from opening after before-hours single price transaction to closing before after-hours single price transaction'. Open: continuous trading starts at 09:00, the stated minute (no ADR rule moves an open for seconds of jitter; maintainer, 4b9 brief). Close: the closing single price auction ends the regular session at 15:30 with random jitter of up to 30 seconds after it, so ADR 0013's 'stated minute' rule gives 15:30 (ADR 0013 names KRX). Off-hours closing price trading (15:40-16:00), the after-market (16:00-20:00) and off-hours block and basket trading are not regular hours. The page states no date: verified_from is the read date (ADR 0014 section 7). The page is the stock market's: its sessions are equity sessions (block and basket trading, closing price trading) and its sibling page on the periodic call auction concerns common stock.",
+        "open": "09:00",
+        "segment": "KRX securities market, Regular market session (continuous auction between the opening and closing single price auctions)",
+        "source_title": "KRX, Trading Hours; KRX, Periodic call auction (maintainer's prints, 2026-11-26)",
+        "source_url": "https://global.krx.co.kr/contents/GLB/06/0602/0602020204/GLB0602020204T1.jsp",
+        "status": "verified",
+        "verified_from": "2026-11-26"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },
