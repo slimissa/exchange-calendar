@@ -3109,6 +3109,7 @@
   },
   "mic": "XNAS",
   "name": "NASDAQ",
+  "note": "Known gap (4b10): Nasdaq's 23/5 Trading Information Hub (https://www.nasdaq.com/23-5-trading, printed 2026-11-26) gives new trading hours of 9:00 pm-3:55 am ET from 6 December 2026, part of its Global Trading Session with the extended hours 4:00-9:30 am and 4:00-8:00 pm ET. Not modelled: the registry-level is_open / in_session return false 21:00-03:55 ET on those nights. A session cannot carry a date, cross midnight or start on a weekend day (the first night is Sunday 6 December 2026); backlog 'Dated sessions', first item of Phase 4f. Sessions unchanged.",
   "regular_hours": {
     "close": "16:00",
     "open": "09:30"

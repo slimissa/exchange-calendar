@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- Known limitation stated (4b10), README section 23 "Extended sessions are modelled only in part": the registry-level `is_open` / `in_session` (contract b1) count only the sessions the registry models.
+  - XNAS: Nasdaq's 23/5 Trading Information Hub (https://www.nasdaq.com/23-5-trading, printed 2026-11-26) gives new trading hours of 9:00 pm-3:55 am ET from 6 December 2026, part of its Global Trading Session with 4:00-9:30 am and 4:00-8:00 pm ET. The registry does not model it, so `is_open` / `in_session` return false 21:00-03:55 ET on those nights.
+  - XKRX: the off-hours sessions 08:00-09:00 and 15:40/16:00-20:00 KST are only partly modelled, so the same calls return false 08:00-08:29 and 16:00-19:59 KST.
+  - Cause: sessions cannot be dated, cross midnight or start on a weekend day. Planned fix: "Dated sessions", now the first item of Phase 4f in `docs/phase-4f-schema-backlog.md`. That entry now cites Nasdaq's page instead of the 4b9 lead ("9:00 pm-4:00 am"), and records the midnight crossing and the Sunday-evening start (6 December 2026).
+  - XNAS gains a note recording the gap. No session data changed.
+
 ## [2.37.0] - 2026-11-26
 
 ### Changed

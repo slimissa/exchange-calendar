@@ -31,9 +31,6 @@ trigger.
 
 ## Schema and tooling
 
-- **`regular_hours.current()` returns a future-dated entry.** XPRA's undated
-  sessions and the SQL export show 16:55 before the 2027-01-04 change takes
-  effect, because "current" means the latest entry. (4c-R5)
 - **Dated sessions.** A `sessions` entry cannot carry `effective_from`, so an
   undated session describes the latest dated `regular_hours` entry (repository
   rule). XPRA shows its 2027 regular session today. (4c-R5)
@@ -42,9 +39,18 @@ trigger.
   models 08:30-09:00 and 15:30-16:00, so the registry-level `is_open` /
   `in_session` answer false at 08:00-08:29 and 16:00-19:59. The page dates
   neither session, and an undated change would rewrite every year from 2010.
-  XNAS (4b9): Nasdaq's announced 9:00 pm-4:00 am ET night session from
-  6 December 2026 (not yet read from Nasdaq's own page) needs a dated session
-  that also crosses midnight and starts on Sunday, a weekend day here.
+  XNAS (4b10): Nasdaq's 23/5 Trading Information Hub
+  (https://www.nasdaq.com/23-5-trading, printed 2026-11-26) gives new trading
+  hours of 9:00 pm-3:55 am ET from 6 December 2026, part of the Global
+  Trading Session with the extended hours 4:00-9:30 am and 4:00-8:00 pm ET;
+  the registry returns false 21:00-03:55 ET on those nights. Besides a date,
+  this session needs two things the schema lacks: an interval that crosses
+  midnight (21:00 to 03:55 the next day), and a start on a weekend day (the
+  first night, 6 December 2026, is a Sunday evening ET; `weekend_days` closes
+  Sunday). The fix must cover all three. First item of Phase 4f (4b10).
+- **`regular_hours.current()` returns a future-dated entry.** XPRA's undated
+  sessions and the SQL export show 16:55 before the 2027-01-04 change takes
+  effect, because "current" means the latest entry. (4c-R5)
 - **A field for unconfirmed hours.** `coverage.unconfirmed` holds dates whose
   status is in doubt. XPRA (2027-01-04), XBUD (2010-01-01) and XOSL
   (2012-08-06) reuse it, with an effective date, for an hours entry. XDUB

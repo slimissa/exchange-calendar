@@ -413,3 +413,23 @@ def test_adr_0014_euronext_rows_match_verified_from():
     for code in ("XAMS", "XBRU", "XPAR", "XLIS"):
         (row,) = [l for l in adr.splitlines() if l.startswith(f"| {code} | from 2010-01-01 |")]
         assert "verified_from 2026-08-03" in row and "effective 3 August 2026" in row, code
+
+
+def test_4b10_known_limitation_for_unmodelled_sessions():
+    """4b10: README states the XNAS 23/5 and XKRX off-hours gaps, the backlog
+    puts 'Dated sessions' first in Phase 4f, and no session was modelled."""
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert "Extended sessions are modelled only in part." in readme
+    assert "9:00 pm-3:55 am ET" in readme and "21:00-03:55 ET" in readme
+    assert "08:00-08:29 and 16:00-19:59 KST" in readme
+    backlog = (ROOT / "docs" / "phase-4f-schema-backlog.md").read_text(encoding="utf-8")
+    section = backlog.split("## Schema and tooling", 1)[1].lstrip()
+    assert section.startswith("- **Dated sessions.**")
+    assert "9:00 pm-3:55 am ET" in section and "crosses\n  midnight" in section
+    assert "9:00 pm-4:00 am" not in backlog and "not yet read" not in backlog
+    nas = json.loads((ROOT / "exchanges" / "XNAS.json").read_text(encoding="utf-8"))
+    assert nas["sessions"] == [{"close": "09:30", "open": "04:00", "type": "pre_market"},
+                               {"close": "16:00", "open": "09:30", "type": "regular"},
+                               {"close": "20:00", "open": "16:00", "type": "post_market"}]
+    krx = json.loads((ROOT / "exchanges" / "XKRX.json").read_text(encoding="utf-8"))
+    assert [s.get("open", s.get("at")) for s in krx["sessions"]] == ["08:30", "09:00", "09:00", "15:30", "15:30"]

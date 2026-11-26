@@ -1993,5 +1993,11 @@
     {"file": "exchanges/XKRX.json", "contains": "\"verified_from\": \"2026-11-26\""},
     {"file": "CHANGELOG.md", "contains": "Hours evidence for XKRX, XNAS and XSAU (4b9)"},
     {"file": "README.md", "contains": "Current hours verified (ADR 0014): 47 of 74"}
+  ],
+  "2.38.0": [
+    {"file": "README.md", "contains": "Extended sessions are modelled only in part."},
+    {"file": "README.md", "contains": "return false 21:00-03:55 ET on those nights"},
+    {"file": "docs/phase-4f-schema-backlog.md", "contains": "## Schema and tooling\n\n- **Dated sessions.**"},
+    {"file": "CHANGELOG.md", "contains": "Known limitation stated (4b10)"}
   ]
 }
