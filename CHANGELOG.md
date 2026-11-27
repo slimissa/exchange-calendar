@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- `DRY_RUN=1 scripts/release.sh` runs the read-only checks for real (4b12): static preflight, the CHANGELOG order, the preconditions and `tools/local_gate.sh` on the current tree. It skips only the version bump, rebuild writes, commit, push, CI poll and tag. Before, a dry run printed the gate without running it, so it could not catch a failing check (4b11: `migrate_sessions --check`). New tests in `tests/test_release_trap.py`: a dry run runs the gate and changes nothing, and a failing gate check or a broken CHANGELOG order fails it.
+- `wrappers/javascript/package-lock.json` is committed and no longer gitignored (4b12). The gate's `npm ci` now works on a fresh clone, and the CI `local-gate` job drops its lock-generation step.
+- `docs/phase-4f-schema-backlog.md`, "Dated sessions": records the 4b11 lesson. `validate.py` ties the undated `extended_hours.after_hours.open` to the latest dated close, so every dated close change forces an undated edit.
+
 ## [2.39.0] - 2026-11-27
 
 ### Changed

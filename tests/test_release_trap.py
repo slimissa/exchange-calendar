@@ -112,10 +112,10 @@ def repo(tmp_path):
     return {"work": work, "origin": origin, "bin": bin_, "ci": tmp_path / "ci.json"}
 
 
-def release(r, version, ci="success"):
+def release(r, version, ci="success", dry=False):
     r["ci"].write_text(json.dumps([{"status": "completed", "conclusion": ci, "databaseId": 7}]))
     env = dict(os.environ, PATH=f"{r['bin']}:{os.environ['PATH']}", GH_STUB_JSON=str(r["ci"]),
-               POLL_TIMEOUT="5", DRY_RUN="0")
+               POLL_TIMEOUT="5", DRY_RUN="1" if dry else "0")
     env.pop("GIT_DIR", None)
     return subprocess.run(["bash", "scripts/release.sh", version], cwd=r["work"], env=env,
                           capture_output=True, text=True, timeout=300)
@@ -219,3 +219,45 @@ def test_release_runs_the_shared_local_gate():
             assert line.strip() not in release_sh, line
     assert "run python3 tools/migrate_sessions.py --check --quiet" in gate
     assert "bash tools/local_gate.sh" in (ROOT / ".github" / "workflows" / "validate.yml").read_text(encoding="utf-8")
+
+
+
+def test_dry_run_runs_the_gate_and_changes_nothing(repo):
+    """4b12: a dry run executes the read-only checks (the gate's stub tools
+    run and leave a mark) and changes neither the tree nor origin."""
+    write(repo["work"] / "tools" / "migrate_sessions.py",
+          "open('gate-ran.marker', 'w').write('x')\n")
+    write(repo["work"] / ".gitignore", "__pycache__/\n.pytest_cache/\ngate-ran.marker\n")
+    git(repo["work"], "commit", "-q", "-am", "mark gate runs")
+    git(repo["work"], "push", "-q", "origin", "main")
+    before = snapshot(repo)
+    p = release(repo, "1.1.0", dry=True)
+    assert p.returncode == 0, p.stderr
+    assert (repo["work"] / "gate-ran.marker").exists()
+    assert "DRY RUN — stopping before commit" in p.stdout
+    assert snapshot(repo) == before
+
+
+def test_failing_gate_check_fails_a_dry_run(repo):
+    """4b12: before, DRY_RUN=1 only printed the gate, so a failing check
+    passed a dry run (4b11: migrate_sessions --check). Now it fails it, and
+    nothing changes."""
+    write(repo["work"] / "tools" / "migrate_sessions.py", "raise SystemExit(4)\n")
+    git(repo["work"], "commit", "-q", "-am", "make migrate_sessions fail")
+    git(repo["work"], "push", "-q", "origin", "main")
+    before = snapshot(repo)
+    p = release(repo, "1.1.0", dry=True)
+    assert p.returncode != 0
+    assert "DRY RUN — stopping before commit" not in p.stdout
+    assert "nothing to restore" in p.stderr
+    assert snapshot(repo) == before
+
+
+def test_failing_changelog_order_fails_a_dry_run(repo):
+    """4b12: the CHANGELOG order check runs in a dry run (it was printed only)."""
+    write(repo["work"] / "CHANGELOG.md", changelog("1.0.0", "1.1.0"))
+    git(repo["work"], "commit", "-q", "-am", "break the order")
+    git(repo["work"], "push", "-q", "origin", "main")
+    p = release(repo, "1.1.0", dry=True)
+    assert p.returncode != 0
+    assert "DRY RUN — stopping before commit" not in p.stdout

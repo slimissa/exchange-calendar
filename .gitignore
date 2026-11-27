@@ -220,7 +220,7 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
+# package-lock.json is committed (4b12): the gate runs `npm ci`.
 pnpm-lock.yaml
 .pnpm-debug.log*
 .npm

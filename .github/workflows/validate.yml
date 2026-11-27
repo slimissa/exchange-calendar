@@ -173,12 +173,6 @@ jobs:
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Create the JavaScript lock file
-        # package-lock.json is gitignored, and the gate runs `npm ci`, which
-        # needs one; release machines have it locally.
-        working-directory: wrappers/javascript
-        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
-
       - name: Run tools/local_gate.sh
         run: bash tools/local_gate.sh
 

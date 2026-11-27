@@ -48,6 +48,16 @@ trigger.
   midnight (21:00 to 03:55 the next day), and a start on a weekend day (the
   first night, 6 December 2026, is a Sunday evening ET; `weekend_days` closes
   Sunday). The fix must cover all three. First item of Phase 4f (4b10).
+  Lesson of 4b11 (XASX): `tools/validate.py` ties the undated
+  `extended_hours.after_hours.open` (and `pre_market.close`) to the latest
+  dated `regular_hours` entry, so every dated close change forces an undated
+  edit: XASX's after_hours moved 16:00 -> 16:10, and on every earlier day
+  `status_at` 16:00-16:09 reads closed where it read after_hours. The
+  registry-level answers held only because the undated `sessions` were left
+  spanning both regimes, and since 4b11.1
+  `migrate_sessions.py` projects `extended_hours` from them clipped at the
+  latest close. Dated sessions must carry `extended_hours` with them, so a
+  close change is one dated edit and no undated one.
 - **`regular_hours.current()` returns a future-dated entry.** XPRA's undated
   sessions and the SQL export show 16:55 before the 2027-01-04 change takes
   effect, because "current" means the latest entry. (4c-R5)

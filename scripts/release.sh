@@ -23,6 +23,12 @@ RELEASE_COMPLETE=0
 #   scripts/release.sh 2.3.0
 #   DRY_RUN=1 scripts/release.sh 2.3.0
 #
+# DRY_RUN=1 (4b12) runs every read-only check for real: static preflight,
+# CHANGELOG order, preconditions and tools/local_gate.sh on the current tree.
+# It skips only what changes the tree or the remote: version bump, rebuild
+# writes, commit, push, CI poll and tag. A dry run that passes means the gate
+# passes; a failing check fails the dry run.
+#
 # Preconditions (all enforced):
 #   - on main, clean tree, up to date with origin
 #   - VERSION differs from the target, and tag v<target> exists neither
@@ -320,7 +326,8 @@ check_workflows_covered
 check_manifest_has_version
 
 # [Unreleased] first, released headings strictly descending, no duplicates.
-run python3 tools/check_changelog_order.py
+# Read-only: runs in a dry run too (4b12).
+python3 tools/check_changelog_order.py
 ok "CHANGELOG heading order"
 
 # ── preconditions ──────────────────────────────────────────────────
@@ -410,9 +417,10 @@ fi
 
 # ── local gate ─────────────────────────────────────────────────────
 # tools/local_gate.sh holds the gate (4b11.1): the same file runs in CI
-# (validate.yml, job local-gate) and in work sessions. It honours DRY_RUN
-# itself (prints each command), so it is not wrapped in run().
-DRY_RUN="$DRY_RUN" bash tools/local_gate.sh "$VERSION"
+# (validate.yml, job local-gate) and in work sessions. Every check in it is
+# read-only, so it runs for real in a dry run too (4b12): a dry run checks
+# the current tree; a release checks the bumped and rebuilt one.
+DRY_RUN=0 bash tools/local_gate.sh "$VERSION"
 
 # ── commit + push ──────────────────────────────────────────────────
 say "Committing release"
