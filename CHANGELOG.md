@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- XASX close: maintainer ruling recorded, entry held (4b11). The ruling: the uncross is at the randomised start of the Closing Single Price Auction, so ADR 0013's stated-minute rule gives 16:10. ASX's SR15 FAQ ("Updated: 1/08/2026") says "CSPA times will be 16:10:00 +30seconds randomised"; the Post Close Trading Session Guide (20 June 2025) says the CSPA state "will allow order cancellation following the uncross/match". These readings are now in the 1990 entry's evidence note and in ADR 0014's Applied row; no value changed. A 10:00-16:10 entry from 2026-11-22 is not applied, because `extended_hours.after_hours` must start at the latest regular close. That field is undated, so the change would turn `status_at` 16:00-16:09 from `after_hours` to `closed` on every earlier day (stop condition). The full change ships as optional step 02 in the session package.
+
 ## [2.38.0] - 2026-11-26
 
 ### Changed

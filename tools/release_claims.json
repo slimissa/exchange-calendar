@@ -1999,5 +1999,9 @@
     {"file": "README.md", "contains": "return false 21:00-03:55 ET on those nights"},
     {"file": "docs/phase-4f-schema-backlog.md", "contains": "## Schema and tooling\n\n- **Dated sessions.**"},
     {"file": "CHANGELOG.md", "contains": "Known limitation stated (4b10)"}
+  ],
+  "2.39.0": [
+    {"file": "exchanges/XASX.json", "contains": "CSPA times will be 16:10:00 +30seconds randomised."},
+    {"file": "CHANGELOG.md", "contains": "XASX close: maintainer ruling recorded, entry held (4b11)"}
   ]
 }

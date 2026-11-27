@@ -433,3 +433,18 @@ def test_4b10_known_limitation_for_unmodelled_sessions():
                                {"close": "20:00", "open": "16:00", "type": "post_market"}]
     krx = json.loads((ROOT / "exchanges" / "XKRX.json").read_text(encoding="utf-8"))
     assert [s.get("open", s.get("at")) for s in krx["sessions"]] == ["08:30", "09:00", "09:00", "15:30", "15:30"]
+
+
+def test_4b11_xasx_ruling_recorded_and_entry_held():
+    """4b11: the 16:10 ruling and its sources are recorded; the 1990 entry is
+    not rewritten. (Optional step 02 adds the 2026-11-22 entry.)"""
+    d = json.loads((ROOT / "exchanges" / "XASX.json").read_text(encoding="utf-8"))
+    first = d["verification"]["hours"][0]
+    assert (first["effective_from"], first["open"], first["close"], first["status"]) == (
+        "1990-01-01", "10:00", "16:00", "unconfirmed")
+    assert "CSPA times will be 16:10:00 +30seconds randomised." in first["note"]
+    assert "order cancellation following the uncross/match" in first["note"]
+    assert "Presently market open state finishes at 4:00pm" in first["note"]
+    hours = d["regular_hours"]
+    head = hours[0] if isinstance(hours, list) else hours
+    assert (head["open"], head["close"]) == ("10:00", "16:00")
