@@ -65,8 +65,11 @@ class TestXASXProperties:
         assert xasx["timezone"] == "Australia/Sydney"
 
     def test_regular_hours(self, xasx):
-        assert xasx["regular_hours"]["open"] == "10:00"
-        assert xasx["regular_hours"]["close"] == "16:00"
+        # 4b11: dated list; the 1990 entry keeps 16:00, the close is 16:10 from
+        # 2026-11-22 (ADR 0013 / ADR 0014 section 8).
+        assert xasx["regular_hours"] == [
+            {"effective_from": "1990-01-01", "open": "10:00", "close": "16:00"},
+            {"effective_from": "2026-11-22", "open": "10:00", "close": "16:10"}]
 
     def test_no_lunch_break(self, xasx):
         lunch = [s for s in xasx.get("sessions", []) if s["type"] == "lunch_break"]

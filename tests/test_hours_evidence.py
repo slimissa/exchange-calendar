@@ -332,7 +332,7 @@ def test_real_tree_facts_4b3():
     # 4b3: 17 current (Euronext AMS/BRU/PAR/LIS read only in the edition
     # effective 23 November 2026); no exchange's whole history is proven.
     # 4b8: the four count, from the edition effective 3 August 2026.
-    assert cur >= 47 and hist >= 0  # 4b3: 17 after verified_from; + batch B (8) and XPHS XSES XTAI XZAG; 4b8: 44; 4b9: 47
+    assert cur >= 48 and hist >= 0  # 4b3: 17 after verified_from; + batch B (8) and XPHS XSES XTAI XZAG; 4b8: 44; 4b9: 47; 4b11: 48
     for code in ("XAMS", "XBRU", "XPAR", "XLIS"):
         d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
         item = d["verification"]["hours"][-1]
@@ -359,10 +359,11 @@ def test_4b4_saved_pages_evidence():
     kls = json.loads((ROOT / "exchanges" / "XKLS.json").read_text(encoding="utf-8"))
     assert cv.current_hours_verified(kls) is True
     asx = json.loads((ROOT / "exchanges" / "XASX.json").read_text(encoding="utf-8"))
-    (item,) = asx["verification"]["hours"]
-    # ASX's closing auction ends 16:11 (ADR 0013); the registry holds 16:00
-    # until a notice dates the timetable: evidence records the contradiction.
+    item, new = asx["verification"]["hours"]
+    # 4b4 recorded the contradiction on the 1990 entry; 4b11 (step 02) adds
+    # the 16:10 entry from 2026-11-22 under ADR 0014 section 8.
     assert item["status"] == "unconfirmed" and "16:10:00^ - 16:11:00" in item["note"]
+    assert (new["effective_from"], new["close"], new["status"]) == ("2026-11-22", "16:10", "verified")
     assert cv.hours_problems(asx) == []
 
 
@@ -401,9 +402,10 @@ def test_4b9_saved_pages_evidence():
     assert (first["effective_from"], first["status"]) == ("2000-05-22", "unconfirmed")
     assert "Known gap (4b9)" in krx["note"] and "16:00-19:59" in krx["note"]
     asx = json.loads((ROOT / "exchanges" / "XASX.json").read_text(encoding="utf-8"))
-    (item,) = asx["verification"]["hours"]
+    item = asx["verification"]["hours"][0]
     assert item["status"] == "unconfirmed" and "19 June 2025" in item["note"]
-    assert cv.current_hours_verified(asx) is False
+    # 4b11 (step 02): current from the 2026-11-22 entry.
+    assert cv.current_hours_verified(asx) is True
 
 
 def test_adr_0014_euronext_rows_match_verified_from():
@@ -437,7 +439,7 @@ def test_4b10_known_limitation_for_unmodelled_sessions():
 
 def test_4b11_xasx_ruling_recorded_and_entry_held():
     """4b11: the 16:10 ruling and its sources are recorded; the 1990 entry is
-    not rewritten. (Optional step 02 adds the 2026-11-22 entry.)"""
+    not rewritten. (Step 02 adds the 2026-11-22 entry.)"""
     d = json.loads((ROOT / "exchanges" / "XASX.json").read_text(encoding="utf-8"))
     first = d["verification"]["hours"][0]
     assert (first["effective_from"], first["open"], first["close"], first["status"]) == (
@@ -448,3 +450,17 @@ def test_4b11_xasx_ruling_recorded_and_entry_held():
     hours = d["regular_hours"]
     head = hours[0] if isinstance(hours, list) else hours
     assert (head["open"], head["close"]) == ("10:00", "16:00")
+
+
+def test_4b11_xasx_entry_from_2026_11_22():
+    """4b11 step 02: 10:00-16:10 from 2026-11-22 (ADR 0014 section 8, maintainer
+    ruling on ADR 0013); the 1990 entry keeps 16:00 and stays unconfirmed."""
+    d = json.loads((ROOT / "exchanges" / "XASX.json").read_text(encoding="utf-8"))
+    assert d["regular_hours"] == [{"effective_from": "1990-01-01", "open": "10:00", "close": "16:00"},
+                                  {"effective_from": "2026-11-22", "open": "10:00", "close": "16:10"}]
+    old, new = d["verification"]["hours"]
+    assert (old["status"], old["recheck_date"]) == ("unconfirmed", "2027-02-19")
+    assert (new["status"], new["verified_from"], new["close_rule"]) == ("verified", "2026-11-22", "closing_auction_end")
+    assert new["note"].startswith("In force at least since that date; start undated; earlier entry's end unknown")
+    assert d["extended_hours"]["after_hours"] == {"open": "16:10", "close": "16:12"}
+    assert cv.hours_problems(d) == [] and cv.current_hours_verified(d) is True

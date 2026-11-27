@@ -266,5 +266,15 @@ class TestAgainstTheLibraries:
 
     @pytest.mark.parametrize("code", ["XNYS", "XNAS", "XLON", "XASX", "XTKS"])
     def test_2027_to_2029_sessions(self, code):
+        # 4b11: XASX closes at 16:10 (end of the closing auction, ADR 0013)
+        # from 2026-11-22; both libraries keep 16:00. That is the only
+        # disagreement allowed, on every trading day.
+        expected = {"XASX": {2027: 252, 2028: 250, 2029: 251}}.get(code)
         for year in (2027, 2028, 2029):
-            assert dv.run_exchange_sessions(code, year)["disagreements"] == []
+            found = dv.run_exchange_sessions(code, year)["disagreements"]
+            if expected is None:
+                assert found == []
+                continue
+            assert len(found) == expected[year]
+            assert {(d["type"], d["registry"], d["pmc"], d["xc"]) for d in found} == {
+                ("close_time", "16:10", "16:00", "16:00")}

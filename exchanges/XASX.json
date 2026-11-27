@@ -211,7 +211,7 @@
   "extended_hours": {
     "after_hours": {
       "close": "16:12",
-      "open": "16:00"
+      "open": "16:10"
     },
     "pre_market": {
       "close": "10:00",
@@ -2426,10 +2426,18 @@
   },
   "mic": "XASX",
   "name": "Australian Securities Exchange",
-  "regular_hours": {
-    "close": "16:00",
-    "open": "10:00"
-  },
+  "regular_hours": [
+    {
+      "close": "16:00",
+      "effective_from": "1990-01-01",
+      "open": "10:00"
+    },
+    {
+      "close": "16:10",
+      "effective_from": "2026-11-22",
+      "open": "10:00"
+    }
+  ],
   "sessions": [
     {
       "close": "10:00",
@@ -2437,7 +2445,7 @@
       "type": "pre_market"
     },
     {
-      "close": "16:00",
+      "close": "16:10",
       "open": "10:00",
       "type": "regular"
     },
@@ -2465,13 +2473,26 @@
         "close": "16:00",
         "close_rule": "continuous_end",
         "effective_from": "1990-01-01",
-        "note": "'Equity market phases (Sydney times)': '09:59:00 - 09:59:45* Opening Single Price Auction'; '09:59:45* - 16:00:00 Open/Normal Trading'; '16:00:00 - 16:10:00 Pre CSPA'; '16:10:00^ - 16:11:00 Closing Single Price Auction'; '16:11:00 - 16:21:30 Post Close' ('*Random 15 secs', '^Random 30 secs'); 'The Closing Single Price Auction takes place between 16:10:00^ (randomised 30 seconds) to 16:11:00, Sydney time. ASX Trade calculates closing prices during this phase.' Open 10:00 matches (continuous trading starts by 10:00:00). The close does not: ADR 0013 takes the end of the closing auction, 16:11 by ASX's own statement, while the registry holds 16:00, the end of Normal Trading. The page states no effective date and no ASX notice dating the 16:10-16:11 auction was read, so under the 4b rule the value stays and this evidence is unconfirmed; a mismatch listed for a dated fix. Settled by an ASX notice dating the current closing auction timetable. 4b9: ASX blog 'Changes to equity market structure - opening and closing the market' (https://www.asx.com.au/blog/listed-at-asx/changes-to-equity-market-structure), dated 19 June 2025, read 2026-11-26: 'Presently market open state finishes at 4:00pm, with a Closing Single Price Auction ... taking place between 4.10 and 4.11pm'; the SR15 changes ('Both the closing and opening changes come into effect on 23 June 2025') add a single open and a Post Close trading session. It gives the auction's timing only before 23 June 2025 and does not say whether it changed, so it dates nothing for the current timetable; the evidence stays unconfirmed (recheck_date unchanged, at the cap). 4b11: ASX 'ASX Trade - Service Release FAQs' (https://www.asx.com.au/content/dam/asx/markets/trade-our-cash-market/equity-markets-working-groups/asx-equity-market-working-group-f-a-q.pdf), 'Updated: 1/08/2026': 'Will there be any changes to existing CSPA times? Yes. CSPA times will be 16:10:00 +30seconds randomised.'; SR15 'Target IWT & Go Live dates' include 'Go live - Monday 23 June 2025'. ASX 'Post Close Trading Session Guide', 'Version 1.0 - 20 June 2025' (maintainer's save, URL not recorded): 'Changes to CSPA ... Current window - 16:10 to 16:12 (60 second random) / New window - 16:10 to 16:11 (30 second random)'; 'The CSPA session state will allow order cancellation following the uncross/match'; 'all functionality and timing is subject to test and regulatory approval'. Before SR15 the two ASX documents differ (blog: 4.10-4.11pm 'presently'; guide: 16:10-16:12, 60-second random window): for Phase 4b full. Maintainer ruling (4b11): the uncross is at the randomised start of the CSPA, so ADR 0013's stated-minute rule gives 16:10. A 10:00-16:10 entry from 2026-11-22 is held: extended_hours.after_hours must start at the latest regular close, and that undated change would turn status_at 16:00-16:09 from after_hours to closed on every earlier day.",
+        "note": "'Equity market phases (Sydney times)': '09:59:00 - 09:59:45* Opening Single Price Auction'; '09:59:45* - 16:00:00 Open/Normal Trading'; '16:00:00 - 16:10:00 Pre CSPA'; '16:10:00^ - 16:11:00 Closing Single Price Auction'; '16:11:00 - 16:21:30 Post Close' ('*Random 15 secs', '^Random 30 secs'); 'The Closing Single Price Auction takes place between 16:10:00^ (randomised 30 seconds) to 16:11:00, Sydney time. ASX Trade calculates closing prices during this phase.' Open 10:00 matches (continuous trading starts by 10:00:00). The close does not: ADR 0013 takes the end of the closing auction, 16:11 by ASX's own statement, while the registry holds 16:00, the end of Normal Trading. The page states no effective date and no ASX notice dating the 16:10-16:11 auction was read, so under the 4b rule the value stays and this evidence is unconfirmed; a mismatch listed for a dated fix. Settled by an ASX notice dating the current closing auction timetable. 4b9: ASX blog 'Changes to equity market structure - opening and closing the market' (https://www.asx.com.au/blog/listed-at-asx/changes-to-equity-market-structure), dated 19 June 2025, read 2026-11-26: 'Presently market open state finishes at 4:00pm, with a Closing Single Price Auction ... taking place between 4.10 and 4.11pm'; the SR15 changes ('Both the closing and opening changes come into effect on 23 June 2025') add a single open and a Post Close trading session. It gives the auction's timing only before 23 June 2025 and does not say whether it changed, so it dates nothing for the current timetable; the evidence stays unconfirmed (recheck_date unchanged, at the cap). 4b11: ASX 'ASX Trade - Service Release FAQs' (https://www.asx.com.au/content/dam/asx/markets/trade-our-cash-market/equity-markets-working-groups/asx-equity-market-working-group-f-a-q.pdf), 'Updated: 1/08/2026': 'Will there be any changes to existing CSPA times? Yes. CSPA times will be 16:10:00 +30seconds randomised.'; SR15 'Target IWT & Go Live dates' include 'Go live - Monday 23 June 2025'. ASX 'Post Close Trading Session Guide', 'Version 1.0 - 20 June 2025' (maintainer's save, URL not recorded): 'Changes to CSPA ... Current window - 16:10 to 16:12 (60 second random) / New window - 16:10 to 16:11 (30 second random)'; 'The CSPA session state will allow order cancellation following the uncross/match'; 'all functionality and timing is subject to test and regulatory approval'. Before SR15 the two ASX documents differ (blog: 4.10-4.11pm 'presently'; guide: 16:10-16:12, 60-second random window): for Phase 4b full. Maintainer ruling (4b11): the uncross is at the randomised start of the CSPA, so ADR 0013's stated-minute rule gives 16:10. Applied in 4b11 step 02: a 10:00-16:10 entry from 2026-11-22 (ADR 0014 section 8); this entry's end is unknown.",
         "open": "10:00",
         "recheck_date": "2027-02-19",
         "segment": "ASX Trade equity market (cash market): Open/Normal Trading and the Closing Single Price Auction",
         "source_title": "ASX, Cash market trading hours (saved by the maintainer as HTML and PDF, 2026-11-22)",
         "source_url": "https://www.asx.com.au/markets/market-resources/trading-hours-calendar/cash-market-trading-hours",
         "status": "unconfirmed"
+      },
+      {
+        "checked_on": "2026-11-22",
+        "close": "16:10",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2026-11-22",
+        "note": "In force at least since that date; start undated; earlier entry's end unknown (ADR 0014 section 8). Trading hours page: '09:59:45* - 16:00:00 Open/Normal Trading'; '16:00:00 - 16:10:00 Pre CSPA'; '16:10:00^ - 16:11:00 Closing Single Price Auction'; '16:11:00 - 16:21:30 Post Close'; '^Random 30 secs'. SR15 FAQ: 'CSPA times will be 16:10:00 +30seconds randomised.' Post Close guide: 'The CSPA session state will allow order cancellation following the uncross/match'. Maintainer ruling (4b11): the uncross is at the randomised start of the CSPA, so the end of the closing auction is 16:10 plus up to 30 seconds and ADR 0013's stated-minute rule gives 16:10; Pre CSPA lies inside the regular window. Open 10:00: continuous trading starts at 09:59:45 (random 15 s), so by 10:00:00. Post Close (16:11-16:21:30) is not regular hours and is not modelled. Dated at the read date: the guide is 'subject to test and regulatory approval' and the FAQ gives only target go-live dates ('Go live - Monday 23 June 2025') in the future tense, so no document states the change's effective date (section 8). Early closes: the stored 14:10 on every half day matches the same reading (the half-day CSPA uncross at its start); no ASX document read gives half-day times, so they keep their status. extended_hours.after_hours now starts at 16:10, undated, so status_at 16:00-16:09 reads closed, not after_hours, on days before 2026-11-22 (accepted with this step).",
+        "open": "10:00",
+        "segment": "ASX Trade equity market (cash market): Open/Normal Trading, Pre CSPA and the Closing Single Price Auction",
+        "source_title": "ASX, Cash market trading hours (maintainer's save, HTML and PDF, printed 2026-11-22); ASX Trade - Service Release FAQs ('Updated: 1/08/2026'); ASX, Post Close Trading Session Guide (Version 1.0 - 20 June 2025)",
+        "source_url": "https://www.asx.com.au/markets/market-resources/trading-hours-calendar/cash-market-trading-hours",
+        "status": "verified",
+        "verified_from": "2026-11-22"
       }
     ],
     "last_checked": "2026-11-21",

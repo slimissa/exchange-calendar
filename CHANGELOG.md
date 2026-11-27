@@ -6,7 +6,16 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- XASX close: maintainer ruling recorded, entry held (4b11). The ruling: the uncross is at the randomised start of the Closing Single Price Auction, so ADR 0013's stated-minute rule gives 16:10. ASX's SR15 FAQ ("Updated: 1/08/2026") says "CSPA times will be 16:10:00 +30seconds randomised"; the Post Close Trading Session Guide (20 June 2025) says the CSPA state "will allow order cancellation following the uncross/match". These readings are now in the 1990 entry's evidence note and in ADR 0014's Applied row; no value changed. A 10:00-16:10 entry from 2026-11-22 is not applied, because `extended_hours.after_hours` must start at the latest regular close. That field is undated, so the change would turn `status_at` 16:00-16:09 from `after_hours` to `closed` on every earlier day (stop condition). The full change ships as optional step 02 in the session package.
+- XASX close: maintainer ruling recorded, entry held (4b11). The ruling: the uncross is at the randomised start of the Closing Single Price Auction, so ADR 0013's stated-minute rule gives 16:10. ASX's SR15 FAQ ("Updated: 1/08/2026") says "CSPA times will be 16:10:00 +30seconds randomised"; the Post Close Trading Session Guide (20 June 2025) says the CSPA state "will allow order cancellation following the uncross/match". These readings are now in the 1990 entry's evidence note and in ADR 0014's Applied row; no value changed. The 10:00-16:10 entry from 2026-11-22 was first held over its undated `extended_hours.after_hours` change; the maintainer accepted that change, and the entry is applied (next entry).
+- **XASX regular close 16:00 -> 16:10 from 2026-11-22 (4b11, value change).**
+  - What changes: `exchange("XASX").is_open` / `status_at` now report the market open 16:00-16:09 Sydney time on every trading day from 2026-11-22, where they reported after_hours before.
+  - Why: per ADR 0013, the close is the end of the closing auction. ASX's uncross is at the randomised start of the Closing Single Price Auction ("16:10:00^", "^Random 30 secs"; SR15 FAQ: "CSPA times will be 16:10:00 +30seconds randomised"). The Post Close guide confirms order cancellation "following the uncross/match". The maintainer's ruling applies ADR 0013's stated-minute rule, giving 16:10.
+  - Dating: under ADR 0014 section 8 the new entry starts at the read date of ASX's trading-hours page, 2026-11-22. The Post Close guide is "subject to test and regulatory approval" and the FAQ gives only future-tense target go-live dates, so no document dates the change. Evidence is verified, and current hours verified rises from 47 to 48 of 74.
+  - The 1990 entry (10:00-16:00) is not rewritten and stays unconfirmed.
+  - `extended_hours.after_hours` now starts at 16:10, the validator's rule for the latest close. It is undated, so on days before 2026-11-22 `status_at` 16:00-16:09 reads closed instead of after_hours.
+  - Registry-level `is_open` / `in_session` are unchanged (post_market 16:00-16:12 is unchanged).
+  - The 14:10 half-day closes match the same reading and are unchanged.
+  - Probes: 12 registry-level and 14 exchange-level queries pin all four wrappers.
 
 ## [2.38.0] - 2026-11-26
 

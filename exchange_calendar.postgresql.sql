@@ -114,7 +114,7 @@ CREATE TABLE confidence (
 BEGIN;
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('DSMD', 'Qatar Stock Exchange', 'DSMD', 'QA', 'Asia/Qatar', 4, 5, '09:30', '13:10', '2025-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XAMS', 'Euronext Amsterdam', 'XAMS', 'NL', 'Europe/Amsterdam', 5, 6, '09:00', '17:35', '2010-01-01', '2029-12-31');
-INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XASX', 'Australian Securities Exchange', 'XASX', 'AU', 'Australia/Sydney', 5, 6, '10:00', '16:00', '1990-01-01', '2029-12-31');
+INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XASX', 'Australian Securities Exchange', 'XASX', 'AU', 'Australia/Sydney', 5, 6, '10:00', '16:10', '1990-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XATH', 'Athens Stock Exchange', 'XATH', 'GR', 'Europe/Athens', 5, 6, '10:30', '17:10', '2025-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XBAH', 'Bahrain Bourse', 'XBAH', 'BH', 'Asia/Bahrain', 4, 5, '09:30', '13:00', '2025-01-01', '2029-12-31');
 INSERT INTO exchanges (code, name, mic, country_code, timezone, weekend_day_1, weekend_day_2, regular_open, regular_close, generation_start, generation_end) VALUES ('XBDA', 'Bermuda Stock Exchange', 'XBDA', 'BM', 'Atlantic/Bermuda', 5, 6, '09:00', '16:30', '2010-01-01', '2029-12-31');
@@ -192,7 +192,7 @@ INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XASX',
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XASX', 'auction', 2, NULL, NULL, '16:00');
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XASX', 'post_market', 1, '16:00', '16:12', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XASX', 'pre_market', 1, '07:00', '10:00', NULL);
-INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XASX', 'regular', 1, '10:00', '16:00', NULL);
+INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XASX', 'regular', 1, '10:00', '16:10', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XATH', 'regular', 1, '10:30', '17:10', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XBAH', 'regular', 1, '09:30', '13:00', NULL);
 INSERT INTO sessions (exchange_code, type, seq, open, close, at) VALUES ('XBDA', 'regular', 1, '09:00', '16:30', NULL);

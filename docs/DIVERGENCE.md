@@ -1457,7 +1457,7 @@ Open time, close time, half-day status and intraday break, compared between the 
 
 | Exchange | Years | Trading days agree | Open agree | Close agree | Half-days agree | Break agree | Notes |
 |---|---|---:|---:|---:|---:|---:|---|
-| XASX | 1990-2029 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | No disagreements |
+| XASX | 1990-2029 | 100.0% | 100.0% | 92.3% | 100.0% | 100.0% | close 2026-11-23 to 2029-12-28, 778 days (registry 16:10, PMC 16:00, EC 16:00) |
 | XBKK | 2010-2027 | 99.9% | 100.0% | 0.0% | 100.0% | 0.0% | 2026-10-16 trading day; 2026-12-16 trading day; close 2010-01-04 to 2026-11-20, 4108 days (registry 16:35, PMC 16:30, EC 16:30); break 2010-01-04 to 2027-12-30, 4376 days (registry 12:30-14:00, PMC none, EC none); close 2026-11-23 to 2027-12-30, 268 days (registry 16:40, PMC 16:30, EC 16:30) |
 | XHKG | 1990-2029 | 99.9% | 100.0% | 66.7% | 100.0% | 100.0% | 2029-04-04 trading day; 2029-04-05 trading day; 2029-09-24 trading day; close 2016-07-25 to 2029-12-28, 3281 days (registry 16:10, PMC 16:00, EC 16:00) |
 | XIST | 2010-2029 | 100.0% | 100.0% | 84.3% | 99.9% | 100.0% | close 2025-06-05 to 2029-02-13, 10 days (registry 13:00, PMC 12:30, EC 12:30); close 2026-11-23 to 2029-12-31, 775 days (registry 18:07, PMC 18:00, EC 18:00); 2028-10-27 close (registry 13:00, PMC 18:00, EC 18:00); 2029-10-26 close (registry 13:00, PMC 18:00, EC 18:00); 2028-10-27 half-day (registry True, PMC False, EC False); 2029-10-26 half-day (registry True, PMC False, EC False) |
