@@ -52,7 +52,10 @@ trigger.
   `extended_hours.after_hours.open` (and `pre_market.close`) to the latest
   dated `regular_hours` entry, so every dated close change forces an undated
   edit: XASX's after_hours moved 16:00 -> 16:10, and on every earlier day
-  `status_at` 16:00-16:09 reads closed where it read after_hours. The
+  `status_at` 16:00-16:09 reads closed where it read after_hours. XLON
+  (4b12) went further: its post_market session ends at the new 16:35 close,
+  so `after_hours` could only be dropped, and `status_at` 16:30-16:34 reads
+  closed on every earlier day. The
   registry-level answers held only because the undated `sessions` were left
   spanning both regimes, and since 4b11.1
   `migrate_sessions.py` projects `extended_hours` from them clipped at the

@@ -19,7 +19,8 @@ import check_verification as cv  # noqa: E402
 # Check 6 is non-blocking in Phase 4b-lite. Its count of exchanges with
 # complete hours evidence may grow, never shrink: raise this floor when an
 # exchange gains evidence.
-HOURS_EVIDENCE_FLOOR = 51  # 4b9: + XKRX, XNAS, XSAU
+HOURS_EVIDENCE_FLOOR = 52  # 4b12: + XLON
+#   4b9: + XKRX, XNAS, XSAU
 #   4b6: + XSHE, XMAL
 #   4b3: batch B (8), XPHS XSES XTAI XZAG
 
@@ -332,7 +333,7 @@ def test_real_tree_facts_4b3():
     # 4b3: 17 current (Euronext AMS/BRU/PAR/LIS read only in the edition
     # effective 23 November 2026); no exchange's whole history is proven.
     # 4b8: the four count, from the edition effective 3 August 2026.
-    assert cur >= 48 and hist >= 0  # 4b3: 17 after verified_from; + batch B (8) and XPHS XSES XTAI XZAG; 4b8: 44; 4b9: 47; 4b11: 48
+    assert cur >= 49 and hist >= 0  # 4b3: 17 after verified_from; + batch B (8) and XPHS XSES XTAI XZAG; 4b8: 44; 4b9: 47; 4b11: 48; 4b12: 49
     for code in ("XAMS", "XBRU", "XPAR", "XLIS"):
         d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
         item = d["verification"]["hours"][-1]
@@ -463,4 +464,24 @@ def test_4b11_xasx_entry_from_2026_11_22():
     assert (new["status"], new["verified_from"], new["close_rule"]) == ("verified", "2026-11-22", "closing_auction_end")
     assert new["note"].startswith("In force at least since that date; start undated; earlier entry's end unknown")
     assert d["extended_hours"]["after_hours"] == {"open": "16:10", "close": "16:12"}
+    assert cv.hours_problems(d) == [] and cv.current_hours_verified(d) is True
+
+
+def test_4b12_xlon_entry_from_2026_11_27():
+    """4b12: LSE Business Parameters (SETS-L1, segment SET1 'FTSE 100'): closing
+    auction 16:30 - *16:35 -> 16:35 from 2026-11-27 (ADR 0014 section 8, read
+    date); half days 12:35 from then on; the 1990 entry and earlier half days
+    are not rewritten; after_hours is dropped (post_market ends at the close)."""
+    d = json.loads((ROOT / "exchanges" / "XLON.json").read_text(encoding="utf-8"))
+    assert d["regular_hours"] == [{"effective_from": "1990-01-01", "open": "08:00", "close": "16:30"},
+                                  {"effective_from": "2026-11-27", "open": "08:00", "close": "16:35"}]
+    old, new = d["verification"]["hours"]
+    assert (old["status"], old["recheck_date"]) == ("unconfirmed", "2027-02-19")
+    assert (new["status"], new["verified_from"], new["close_rule"]) == ("verified", "2026-11-27", "closing_auction_end")
+    assert "'Closing Auction Call 16:30:00 *16:35:00'" in new["note"] and "SET1" in new["segment"]
+    assert "after_hours" not in d["extended_hours"]
+    assert {"close": "16:35", "open": "16:30", "type": "post_market"} in d["sessions"]
+    halves = {e["date"]: e["early_close_time"] for e in d["holidays"]["explicit"] if e["status"] == "early_close"}
+    assert all(t == ("12:30" if day < "2026-11-27" else "12:35") for day, t in halves.items())
+    assert sum(day >= "2026-11-27" for day in halves) == 8
     assert cv.hours_problems(d) == [] and cv.current_hours_verified(d) is True

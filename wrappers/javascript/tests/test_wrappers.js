@@ -290,7 +290,8 @@ describe('Exchange properties', () => {
         assert.equal(xlon.mic, 'XLON');
         assert.equal(xlon.name, 'London Stock Exchange');
         assert.equal(xlon.timezone, 'Europe/London');
-        assert.deepEqual(xlon.regularHours, { open: '08:00', close: '16:30' });
+        // 4b12: the latest dated entry (16:35 from 2026-11-27).
+        assert.deepEqual(xlon.regularHours, { open: '08:00', close: '16:35', effective_from: '2026-11-27' });
     });
 
     test('toString method', () => {
@@ -544,12 +545,16 @@ describe('Status at specific date/time', () => {
 
     test('XLON hours', () => {
         assert.equal(xlon.statusAt('2025-07-07', '08:30'), SessionStatus.OPEN);
-        // XLON declares pre_market 07:50-08:00, after_hours 16:30-16:35.
+        // XLON declares pre_market 07:50-08:00. 4b12: after_hours is removed
+        // (the post_market session ends at the 16:35 close from 2026-11-27).
         // Phase 2.1: only PRE_MARKET/AFTER_HOURS inside the declared windows.
         assert.equal(xlon.statusAt('2025-07-07', '07:00'), SessionStatus.CLOSED);
         assert.equal(xlon.statusAt('2025-07-07', '07:55'), SessionStatus.PRE_MARKET);
-        assert.equal(xlon.statusAt('2025-07-07', '16:32'), SessionStatus.AFTER_HOURS);
+        // Earlier day, after the 16:30 close: CLOSED (AFTER_HOURS before 4b12).
+        assert.equal(xlon.statusAt('2025-07-07', '16:32'), SessionStatus.CLOSED);
         assert.equal(xlon.statusAt('2025-07-07', '17:00'), SessionStatus.CLOSED);
+        assert.equal(xlon.statusAt('2026-11-30', '16:32'), SessionStatus.OPEN);
+        assert.equal(xlon.statusAt('2026-11-30', '16:35'), SessionStatus.CLOSED);
     });
 });
 

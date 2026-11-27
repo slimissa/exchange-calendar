@@ -81,7 +81,8 @@ class TestBoundaryTimes:
             assert close_time == "13:00", f"{date_str}: expected 13:00, got {close_time}"
 
     def test_lse_early_close_is_1230(self):
-        """All LSE early closes are exactly 12:30."""
+        """LSE early closes are 12:30 before 2026-11-27 and 12:35 from then on
+        (4b12: end of the half-day closing auction, LSE Business Parameters)."""
         early_closes = {}
         path = Path(__file__).parent.parent / "exchanges" / "XLON.json"
         with open(path) as f:
@@ -91,15 +92,16 @@ class TestBoundaryTimes:
                 early_closes[e["date"]] = e["early_close_time"]
 
         for date_str, close_time in early_closes.items():
-            assert close_time == "12:30", f"{date_str}: expected 12:30, got {close_time}"
+            want = "12:30" if date_str < "2026-11-27" else "12:35"
+            assert close_time == want, f"{date_str}: expected {want}, got {close_time}"
 
     def test_nyse_vs_lse_early_close_times_differ(self, xnys_early_closes, xlon_early_closes):
-        """NYSE closes at 13:00, LSE at 12:30 — 30 minutes apart."""
+        """NYSE closes at 13:00, LSE at 12:30 (12:35 from 2026-11-27, 4b12)."""
         nyse_time = set(xnys_early_closes.values())
         lse_time = set(xlon_early_closes.values())
 
         assert nyse_time == {"13:00"}
-        assert lse_time == {"12:30"}
+        assert lse_time == {"12:30", "12:35"}
         assert nyse_time != lse_time
 
     def test_early_close_time_parseable(self, xnys_early_closes, xlon_early_closes):
@@ -113,7 +115,10 @@ class TestBoundaryTimes:
     def test_early_close_before_regular_close(self, xnys, xlon):
         """Early close time is always before regular close time."""
         nyse_regular_close = xnys["regular_hours"]["close"]
-        lse_regular_close = xlon["regular_hours"]["close"]
+        # 4b12: XLON's regular_hours is a dated list; compare each early close
+        # with the close in force on its date.
+        lse_entries = xlon["regular_hours"]
+        lse_regular_close = None
 
         for e in xnys["holidays"]["explicit"]:
             if e["status"] == "early_close" and e["date"] >= "2025-01-01":
@@ -121,12 +126,14 @@ class TestBoundaryTimes:
 
         for e in xlon["holidays"]["explicit"]:
             if e["status"] == "early_close" and e["date"] >= "2025-01-01":
+                lse_regular_close = [x for x in lse_entries if x["effective_from"] <= e["date"]][-1]["close"]
                 assert e["early_close_time"] < lse_regular_close
 
     def test_early_close_after_regular_open(self, xnys, xlon):
         """Early close time is always after regular open time."""
         nyse_regular_open = xnys["regular_hours"]["open"]
-        lse_regular_open = xlon["regular_hours"]["open"]
+        lse_regular_open = xlon["regular_hours"][-1]["open"]
+        assert {x["open"] for x in xlon["regular_hours"]} == {lse_regular_open}
 
         for e in xnys["holidays"]["explicit"]:
             if e["status"] == "early_close" and e["date"] >= "2025-01-01":

@@ -264,7 +264,8 @@ class TestExchangeProperties:
         assert xlon.mic == "XLON"
         assert xlon.name == "London Stock Exchange"
         assert xlon.timezone == "Europe/London"
-        assert xlon.regular_hours == {"open": "08:00", "close": "16:30"}
+        # 4b12: the latest dated entry (16:35 from 2026-11-27).
+        assert xlon.regular_hours == {"open": "08:00", "close": "16:35", "effective_from": "2026-11-27"}
 
     def test_exchange_string_representation(self, xnys):
         s = str(xnys)
@@ -503,16 +504,20 @@ class TestStatusAt:
         assert xnys.is_open("2025-07-07") is True  # defaults to 10:00
 
     def test_xlon_hours(self, xlon):
-        # XLON declares pre_market 07:50-08:00 and after_hours 16:30-16:35.
+        # XLON declares pre_market 07:50-08:00. 4b12: after_hours is removed
+        # (the post_market session ends at the 16:35 close from 2026-11-27).
         assert xlon.status_at("2025-07-07", "08:30") == SessionStatus.OPEN
         # 07:00 is before the pre_market window -> CLOSED
         assert xlon.status_at("2025-07-07", "07:00") == SessionStatus.CLOSED
         # 07:55 is inside pre_market -> PRE_MARKET
         assert xlon.status_at("2025-07-07", "07:55") == SessionStatus.PRE_MARKET
-        # 17:00 is past after_hours (16:30-16:35) -> CLOSED
         assert xlon.status_at("2025-07-07", "17:00") == SessionStatus.CLOSED
-        # 16:32 is inside after_hours -> AFTER_HOURS
-        assert xlon.status_at("2025-07-07", "16:32") == SessionStatus.AFTER_HOURS
+        # 16:32: after the 16:30 close on an earlier day, no after_hours -> CLOSED
+        # (was AFTER_HOURS before 4b12; the accepted label change).
+        assert xlon.status_at("2025-07-07", "16:32") == SessionStatus.CLOSED
+        # From 2026-11-27 the regular session runs to 16:35.
+        assert xlon.status_at("2026-11-30", "16:32") == SessionStatus.OPEN
+        assert xlon.status_at("2026-11-30", "16:35") == SessionStatus.CLOSED
 
 
 # ──────────────────────────────────────────────────────────────

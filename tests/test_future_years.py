@@ -83,9 +83,10 @@ class TestXasxAndXlon:
     def test_lse_last_working_days_of_2028_close_at_1230(self):
         # Christmas Eve and New Year's Eve are Sundays in 2028, so the Fridays before
         # them close early (LSE Stock Exchange Notice N49/00 and 2023's equivalent).
+        # 4b12: the half-day closing auction ends at 12:35 from 2026-11-27.
         days = explicit("XLON")
         for day in ("2028-12-22", "2028-12-29"):
-            assert (days[day]["status"], days[day]["early_close_time"]) == ("early_close", "12:30")
+            assert (days[day]["status"], days[day]["early_close_time"]) == ("early_close", "12:35")
 
 
 class TestXtks:
@@ -269,12 +270,17 @@ class TestAgainstTheLibraries:
         # 4b11: XASX closes at 16:10 (end of the closing auction, ADR 0013)
         # from 2026-11-22; both libraries keep 16:00. That is the only
         # disagreement allowed, on every trading day.
-        expected = {"XASX": {2027: 252, 2028: 250, 2029: 251}}.get(code)
+        # 4b12: XLON closes at 16:35 (half days 12:35), the end of the closing
+        # auction, from 2026-11-27; both libraries keep 16:30 / 12:30.
+        expected = {"XASX": {2027: 252, 2028: 250, 2029: 251},
+                    "XLON": {2027: 253, 2028: 252, 2029: 253}}.get(code)
+        allowed = {"XASX": {("close_time", "16:10", "16:00", "16:00")},
+                   "XLON": {("close_time", "16:35", "16:30", "16:30"),
+                            ("close_time", "12:35", "12:30", "12:30")}}.get(code)
         for year in (2027, 2028, 2029):
             found = dv.run_exchange_sessions(code, year)["disagreements"]
             if expected is None:
                 assert found == []
                 continue
             assert len(found) == expected[year]
-            assert {(d["type"], d["registry"], d["pmc"], d["xc"]) for d in found} == {
-                ("close_time", "16:10", "16:00", "16:00")}
+            assert {(d["type"], d["registry"], d["pmc"], d["xc"]) for d in found} == allowed

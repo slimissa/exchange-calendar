@@ -127,7 +127,7 @@ class TestXLON2026:
     def test_christmas_eve_early_close(self, explicit_dates):
         assert "2026-12-24" in explicit_dates
         assert explicit_dates["2026-12-24"]["status"] == "early_close"
-        assert explicit_dates["2026-12-24"]["early_close_time"] == "12:30"
+        assert explicit_dates["2026-12-24"]["early_close_time"] == "12:35"  # 4b12: from 2026-11-27
 
     def test_christmas_day_closed(self, explicit_dates):
         assert "2026-12-25" in explicit_dates
@@ -142,7 +142,7 @@ class TestXLON2026:
     def test_new_years_eve_early_close(self, explicit_dates):
         assert "2026-12-31" in explicit_dates
         assert explicit_dates["2026-12-31"]["status"] == "early_close"
-        assert explicit_dates["2026-12-31"]["early_close_time"] == "12:30"
+        assert explicit_dates["2026-12-31"]["early_close_time"] == "12:35"  # 4b12: from 2026-11-27
 
 
 # ──────────────────────────────────────────────────────────────
@@ -177,7 +177,7 @@ class TestXLON2027:
     def test_christmas_eve_early_close(self, explicit_dates):
         assert "2027-12-24" in explicit_dates
         assert explicit_dates["2027-12-24"]["status"] == "early_close"
-        assert explicit_dates["2027-12-24"]["early_close_time"] == "12:30"
+        assert explicit_dates["2027-12-24"]["early_close_time"] == "12:35"  # 4b12: from 2026-11-27
 
     def test_christmas_day_substitute_closed(self, explicit_dates):
         """December 25, 2027 is Saturday — observed Monday December 27."""
@@ -192,7 +192,7 @@ class TestXLON2027:
     def test_new_years_eve_early_close(self, explicit_dates):
         assert "2027-12-31" in explicit_dates
         assert explicit_dates["2027-12-31"]["status"] == "early_close"
-        assert explicit_dates["2027-12-31"]["early_close_time"] == "12:30"
+        assert explicit_dates["2027-12-31"]["early_close_time"] == "12:35"  # 4b12: from 2026-11-27
 
 
 # ──────────────────────────────────────────────────────────────
@@ -278,7 +278,7 @@ class TestXLON2029:
     def test_christmas_eve_early_close(self, explicit_dates):
         assert "2029-12-24" in explicit_dates
         assert explicit_dates["2029-12-24"]["status"] == "early_close"
-        assert explicit_dates["2029-12-24"]["early_close_time"] == "12:30"
+        assert explicit_dates["2029-12-24"]["early_close_time"] == "12:35"  # 4b12: from 2026-11-27
 
     def test_christmas_day_closed(self, explicit_dates):
         assert "2029-12-25" in explicit_dates
@@ -291,7 +291,7 @@ class TestXLON2029:
     def test_new_years_eve_early_close(self, explicit_dates):
         assert "2029-12-31" in explicit_dates
         assert explicit_dates["2029-12-31"]["status"] == "early_close"
-        assert explicit_dates["2029-12-31"]["early_close_time"] == "12:30"
+        assert explicit_dates["2029-12-31"]["early_close_time"] == "12:35"  # 4b12: from 2026-11-27
 
 
 # ──────────────────────────────────────────────────────────────
@@ -315,7 +315,8 @@ class TestXLONStructure:
         for date_str, entry in explicit_dates.items():
             if entry["status"] == "early_close":
                 assert "early_close_time" in entry, f"Missing time for {date_str}"
-                assert entry["early_close_time"] == "12:30", f"Wrong time for {date_str}"
+                want = "12:30" if date_str < "2026-11-27" else "12:35"  # 4b12
+                assert entry["early_close_time"] == want, f"Wrong time for {date_str}"
 
     def test_no_weekend_dates(self, explicit_dates):
         """No explicit entry should fall on a Saturday or Sunday."""
@@ -325,8 +326,11 @@ class TestXLONStructure:
             assert d.weekday() < 5, f"Explicit date falls on weekend: {date_str} ({d.strftime('%A')})"
 
     def test_regular_hours_correct(self, xlon):
-        assert xlon["regular_hours"]["open"] == "08:00"
-        assert xlon["regular_hours"]["close"] == "16:30"
+        # 4b12: 16:35 (end of the closing auction) from 2026-11-27; the 1990
+        # entry keeps 16:30.
+        assert xlon["regular_hours"] == [
+            {"effective_from": "1990-01-01", "open": "08:00", "close": "16:30"},
+            {"effective_from": "2026-11-27", "open": "08:00", "close": "16:35"}]
 
     def test_timezone_correct(self, xlon):
         assert xlon["timezone"] == "Europe/London"

@@ -117,8 +117,9 @@ class TestData:
         assert items["1990-01-01"]["status"] == "unconfirmed"
 
     def test_other_exchanges_keep_a_single_object(self):
-        for code in ("XNYS", "XLON"):
-            assert isinstance(exchange(code)["regular_hours"], dict)
+        assert isinstance(exchange("XNYS")["regular_hours"], dict)
+        # 4b12: XLON gains a dated entry from 2026-11-27 (16:35 close).
+        assert [e["effective_from"] for e in exchange("XLON")["regular_hours"]] == ["1990-01-01", "2026-11-27"]
         # 4b11: XASX gains a dated entry from 2026-11-22 (16:10 close).
         assert [e["effective_from"] for e in exchange("XASX")["regular_hours"]] == ["1990-01-01", "2026-11-22"]
 

@@ -6,6 +6,21 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- **XLON regular close 16:30 -> 16:35 and half-day close 12:30 -> 12:35 from 2026-11-27 (4b12, value change).**
+  - What changes:
+    - from 2026-11-27, `exchange("XLON").is_open` / `status_at` report the market open 16:30-16:34 London time, where they read after_hours;
+    - the 8 half days from 2026-12-24 to 2029-12-31 close at 12:35.
+  - Earlier days (accepted, as in 4b11): `status_at` 16:30-16:34 reads closed instead of after_hours, because `extended_hours.after_hours` is removed. The undated post_market session (16:30-16:35) ends at the new close, so nothing of it lies after the latest close.
+  - Unchanged:
+    - registry-level `is_open` / `in_session` on every day (probes before and after);
+    - the 1990 entry (08:00-16:30) is not rewritten and becomes unconfirmed;
+    - the 71 earlier half days keep 12:30 (Phase 4b full).
+  - Source: LSE "Millennium Exchange and TRADEcho Business Parameters" (downloaded 2026-11-27).
+    - Sector Breakdown: segment SET1 "FTSE 100" is traded on trading cycle SETS-L1.
+    - Trading Cycles, SETS-L1: "Regular Trading *08:00:00 16:30:00"; "Closing Auction Call 16:30:00 *16:35:00" (early close "12:30:00 *12:35:00"); "* = subject to 30 second random periods".
+  - Rules: ADR 0013's stated-minute rule gives 16:35 and 12:35. The AVD / Closing Price Crossing Session (16:35-16:40) is not regular hours.
+  - Dating: ADR 0014 section 8, the read date 2026-11-27 (the workbook's "as at 23 October" names no year). Evidence is verified; current hours verified 48 -> 49 of 74.
+  - Other updates: the 2027-2029 library comparison pins the 16:35 / 12:35 disagreements, and DIVERGENCE.md is regenerated. The intraday EDSP auction on third Fridays (10:10-10:15) is not modelled. Probes pin all four wrappers.
 - `DRY_RUN=1 scripts/release.sh` runs the read-only checks for real (4b12): static preflight, the CHANGELOG order, the preconditions and `tools/local_gate.sh` on the current tree. It skips only the version bump, rebuild writes, commit, push, CI poll and tag. Before, a dry run printed the gate without running it, so it could not catch a failing check (4b11: `migrate_sessions --check`). New tests in `tests/test_release_trap.py`: a dry run runs the gate and changes nothing, and a failing gate check or a broken CHANGELOG order fails it.
 - `wrappers/javascript/package-lock.json` is committed and no longer gitignored (4b12). The gate's `npm ci` now works on a fresh clone, and the CI `local-gate` job drops its lock-generation step.
 - `docs/phase-4f-schema-backlog.md`, "Dated sessions": records the 4b11 lesson. `validate.py` ties the undated `extended_hours.after_hours.open` to the latest dated close, so every dated close change forces an undated edit.

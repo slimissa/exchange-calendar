@@ -47103,10 +47103,6 @@
       "country": "United Kingdom of Great Britain and Northern Ireland",
       "country_code": "GB",
       "extended_hours": {
-        "after_hours": {
-          "close": "16:35",
-          "open": "16:30"
-        },
         "pre_market": {
           "close": "08:00",
           "open": "07:50"
@@ -49424,7 +49420,7 @@
           },
           {
             "date": "2026-12-24",
-            "early_close_time": "12:30",
+            "early_close_time": "12:35",
             "name": "Christmas Eve",
             "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
             "status": "early_close"
@@ -49443,7 +49439,7 @@
           },
           {
             "date": "2026-12-31",
-            "early_close_time": "12:30",
+            "early_close_time": "12:35",
             "name": "New Year's Eve",
             "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
             "status": "early_close"
@@ -49486,7 +49482,7 @@
           },
           {
             "date": "2027-12-24",
-            "early_close_time": "12:30",
+            "early_close_time": "12:35",
             "name": "Christmas Eve",
             "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
             "status": "early_close"
@@ -49505,7 +49501,7 @@
           },
           {
             "date": "2027-12-31",
-            "early_close_time": "12:30",
+            "early_close_time": "12:35",
             "name": "New Year's Eve",
             "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
             "status": "early_close"
@@ -49548,7 +49544,7 @@
           },
           {
             "date": "2028-12-22",
-            "early_close_time": "12:30",
+            "early_close_time": "12:35",
             "name": "Christmas Eve (last working day)",
             "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
             "status": "early_close"
@@ -49567,7 +49563,7 @@
           },
           {
             "date": "2028-12-29",
-            "early_close_time": "12:30",
+            "early_close_time": "12:35",
             "name": "New Year's Eve (last working day)",
             "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
             "status": "early_close"
@@ -49610,7 +49606,7 @@
           },
           {
             "date": "2029-12-24",
-            "early_close_time": "12:30",
+            "early_close_time": "12:35",
             "name": "Christmas Eve",
             "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
             "status": "early_close"
@@ -49629,7 +49625,7 @@
           },
           {
             "date": "2029-12-31",
-            "early_close_time": "12:30",
+            "early_close_time": "12:35",
             "name": "New Year's Eve",
             "source_url": "https://www.londonstockexchange.com/market-data/trading-services/trading-hours",
             "status": "early_close"
@@ -49639,10 +49635,18 @@
       },
       "mic": "XLON",
       "name": "London Stock Exchange",
-      "regular_hours": {
-        "close": "16:30",
-        "open": "08:00"
-      },
+      "regular_hours": [
+        {
+          "close": "16:30",
+          "effective_from": "1990-01-01",
+          "open": "08:00"
+        },
+        {
+          "close": "16:35",
+          "effective_from": "2026-11-27",
+          "open": "08:00"
+        }
+      ],
       "sessions": [
         {
           "close": "08:00",
@@ -49650,7 +49654,7 @@
           "type": "pre_market"
         },
         {
-          "close": "16:30",
+          "close": "16:35",
           "open": "08:00",
           "type": "regular"
         },
@@ -49672,6 +49676,34 @@
       "verification": {
         "basis": "divergence_report",
         "class": "reference_compared",
+        "hours": [
+          {
+            "checked_on": "2026-11-27",
+            "close": "16:30",
+            "close_rule": "closing_auction_end",
+            "effective_from": "1990-01-01",
+            "note": "16:30 is the end of Regular Trading, the start of the closing auction call; ADR 0013 gives the end of the closing auction (16:35 in the workbook read). Not rewritten (ADR 0014 section 8); end unknown. The 71 early closes before 2026-11-27 keep 12:30, the start of the half-day closing auction call (workbook: 12:30:00 - *12:35:00): for Phase 4b full. Settled by an LSE document giving the closing auction times for earlier years.",
+            "open": "08:00",
+            "recheck_date": "2027-02-19",
+            "segment": "LSE SETS, segment SET1 'FTSE 100' (sectors FE10, FS10, FT10; market MAIN; MIC XLON), trading cycle SETS-L1",
+            "source_title": "London Stock Exchange, 'Millennium Exchange and TRADEcho Business Parameters' workbook ('Business Parameters as at 23 October'), sheets 'Summary', 'Sector Breakdown', 'Trading Service Breakdown' and 'Trading Cycles' (downloaded by the maintainer on 2026-11-27 from the link on the Business days page)",
+            "source_url": "https://www.londonstockexchange.com/en/resources/markets-products/business-days",
+            "status": "unconfirmed"
+          },
+          {
+            "checked_on": "2026-11-27",
+            "close": "16:35",
+            "close_rule": "closing_auction_end",
+            "effective_from": "2026-11-27",
+            "note": "In force at least since that date; start undated; earlier entry's end unknown (ADR 0014 section 8). Sector Breakdown: 'SETS', 'SET1', 'FTSE 100', sectors FE10/FS10/FT10, market 'MAIN', MIC 'XLON', trading cycle 'SETS-L1 & NE OB RFQ'. Trading Cycles, order book 'SETS-L1' (Segment/Sectors: 'AMSM, SET1, SET3, SFM1, SSMM, STMM, GES1'): 'Opening Auction Call 07:50:00 *08:00:00'; 'Regular Trading *08:00:00 16:30:00'; 'Closing Auction Call 16:30:00 *16:35:00' (Early Close Day '12:30:00 *12:35:00'); 'Auction Volume Discovery (AVD) execution' and 'Closing Price Crossing Session' '*16:35:00 ~16:40:00'; 'Post Close ~16:40:00 17:15:00'; '* = subject to 30 second random periods and any price or market order extensions'. Close: the closing auction ends at 16:35:00 plus a 30-second random period, so ADR 0013's stated-minute rule gives 16:35 (ADR 0013 names LSE); extensions are conditional, not the schedule; the AVD and Closing Price Crossing Session are closing-price phases, not regular hours. Open: Regular Trading starts at *08:00:00, the stated minute. Half days: 12:35 on early-close dates from 2026-11-27. Dated at the read date: the Summary's 'as at 23 October' names no year, and the workbook's file properties are not a statement (section 8). Expiry days ('SET1 & TSET 3rd Fri of each month'): EDSP Auction Call 10:10:00 - *10:15:00 inside Regular Trading, not modelled (the registry reads 10:10-10:15 as regular trading). extended_hours.after_hours is removed: the undated post_market session (16:30-16:35) ends at the new close, so its part after the latest close is empty (migrate_sessions); on days before 2026-11-27 status_at 16:30-16:34 reads closed where it read after_hours; registry-level answers are unchanged.",
+            "open": "08:00",
+            "segment": "LSE SETS, segment SET1 'FTSE 100' (sectors FE10, FS10, FT10; market MAIN; MIC XLON), trading cycle SETS-L1",
+            "source_title": "London Stock Exchange, 'Millennium Exchange and TRADEcho Business Parameters' workbook ('Business Parameters as at 23 October'), sheets 'Summary', 'Sector Breakdown', 'Trading Service Breakdown' and 'Trading Cycles' (downloaded by the maintainer on 2026-11-27 from the link on the Business days page)",
+            "source_url": "https://www.londonstockexchange.com/en/resources/markets-products/business-days",
+            "status": "verified",
+            "verified_from": "2026-11-27"
+          }
+        ],
         "last_checked": "2026-11-21",
         "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
       },
