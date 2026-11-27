@@ -2010,6 +2010,7 @@
   "2.40.0": [
     {"file": "scripts/release.sh", "contains": "DRY_RUN=0 bash tools/local_gate.sh \"$VERSION\""},
     {"file": "CHANGELOG.md", "contains": "`DRY_RUN=1 scripts/release.sh` runs the read-only checks for real (4b12)"},
-    {"file": "exchanges/XLON.json", "contains": "\"effective_from\": \"2026-11-27\""}
+    {"file": "exchanges/XLON.json", "contains": "\"effective_from\": \"2026-11-27\""},
+    {"file": "exchanges/XWAR.json", "contains": "\"verified_from\": \"2026-10-05\""}
   ]
 }

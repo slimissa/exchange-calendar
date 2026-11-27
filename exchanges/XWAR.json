@@ -1608,6 +1608,21 @@
       ],
       "to": "2029-12-31"
     },
+    "hours": [
+      {
+        "checked_on": "2026-11-27",
+        "close": "17:00",
+        "close_rule": "closing_auction_end",
+        "effective_from": "2010-01-01",
+        "note": "Section 5(1)(1), 'trading in the continuous trading system (except for derivatives, ETFs, ETCs and ETNs)': '8.30 - 9.00 Opening auction'; '9.00 - 16.50 Continuous trading'; '16.50 - 17.00 Closing auction'; '17.00 - 17.05 Trading at last'. Section 5(2): 'Hours set out in the trading schedule represent the earliest and the latest time when a given trading phase may start and end ... taking into account the parameter defining \"Random opening time\"'; section 5(2a) sets that parameter per trading segment in Chapter 8. Section 71(1), 'shares in the WIG20 index': 'Random opening time for the opening auction (+) 0-30 seconds'; 'Random opening time for the closing auction (-) 0-30 seconds'. Close: the closing auction ends between 16:59:30 and 17:00:00, a seconds-long random end at the stated minute, so 17:00 (ADR 0013: TSE 15:29:30-15:30:00 -> 15:30; XLIT, XTAL, XRIS 15:59:30-16:00:00 -> 16:00). Open: continuous trading starts after the opening auction ends at 9.00 plus up to 30 seconds, the stated minute 09:00. Trading at last is not regular hours. The text names neither UTP nor WATS ('the transaction system') and has no clause deferring a provision to a system roll-out; it is the consolidated text 'according to legal condition at 5 October 2026' (last amendment: Resolution No. 942/2026 of 22 June 2026), so verified_from is that date (ADR 0014 section 7). Values unchanged in 4b12. Not changed: the undated post_market session runs to 17:10, while this text gives trading at last to 17.05.",
+        "open": "09:00",
+        "segment": "GPW Main Market, continuous trading system, shares in the WIG20 index (Detailed Exchange Trading Rules, Division IV section 5(1)(1) and Chapter 8 section 71(1))",
+        "source_title": "WSE Detailed Exchange Trading Rules (text according to legal condition at 5 October 2026), English translation (maintainer's download, 2026-11-27)",
+        "source_url": "https://www.gpw.pl/pub/files/PDF/regulacje/rules-wse.pdf",
+        "status": "verified",
+        "verified_from": "2026-10-05"
+      }
+    ],
     "last_checked": "2026-11-21",
     "reference_note": "Compared in docs/DIVERGENCE.md with exchange_calendars and pandas_market_calendars."
   },

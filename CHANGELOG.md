@@ -21,6 +21,13 @@ All notable changes to this project will be documented in this file.
   - Rules: ADR 0013's stated-minute rule gives 16:35 and 12:35. The AVD / Closing Price Crossing Session (16:35-16:40) is not regular hours.
   - Dating: ADR 0014 section 8, the read date 2026-11-27 (the workbook's "as at 23 October" names no year). Evidence is verified; current hours verified 48 -> 49 of 74.
   - Other updates: the 2027-2029 library comparison pins the 16:35 / 12:35 disagreements, and DIVERGENCE.md is regenerated. The intraday EDSP auction on third Fridays (10:10-10:15) is not modelled. Probes pin all four wrappers.
+- XWAR hours evidence (4b12): the WSE Detailed Exchange Trading Rules ("text according to legal condition at 5 October 2026") verify 09:00-17:00 for WIG20 shares in the continuous trading system. Values unchanged.
+  - Section 5(1)(1): opening auction 8.30-9.00, continuous trading 9.00-16.50, closing auction 16.50-17.00, trading at last 17.00-17.05 (not regular hours).
+  - Section 71(1), WIG20 shares: random time "(-) 0-30 seconds" for the closing auction, so it ends 16:59:30-17:00:00, which gives 17:00 under ADR 0013. The opening auction's random time is "(+) 0-30 seconds", so the open is 09:00.
+  - `verified_from` is 2026-10-05 (ADR 0014 section 7).
+  - The text names neither UTP nor WATS and defers nothing to a system roll-out.
+  - Current hours verified 49 -> 50 of 74. The reference_compared gap is 5: XBOG, XBOM, XLIM, XNSE, XSGO.
+  - Not changed: the undated post_market session runs to 17:10, while the rules give trading at last to 17.05.
 - `DRY_RUN=1 scripts/release.sh` runs the read-only checks for real (4b12): static preflight, the CHANGELOG order, the preconditions and `tools/local_gate.sh` on the current tree. It skips only the version bump, rebuild writes, commit, push, CI poll and tag. Before, a dry run printed the gate without running it, so it could not catch a failing check (4b11: `migrate_sessions --check`). New tests in `tests/test_release_trap.py`: a dry run runs the gate and changes nothing, and a failing gate check or a broken CHANGELOG order fails it.
 - `wrappers/javascript/package-lock.json` is committed and no longer gitignored (4b12). The gate's `npm ci` now works on a fresh clone, and the CI `local-gate` job drops its lock-generation step.
 - `docs/phase-4f-schema-backlog.md`, "Dated sessions": records the 4b11 lesson. `validate.py` ties the undated `extended_hours.after_hours.open` to the latest dated close, so every dated close change forces an undated edit.

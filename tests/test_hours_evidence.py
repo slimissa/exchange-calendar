@@ -19,7 +19,7 @@ import check_verification as cv  # noqa: E402
 # Check 6 is non-blocking in Phase 4b-lite. Its count of exchanges with
 # complete hours evidence may grow, never shrink: raise this floor when an
 # exchange gains evidence.
-HOURS_EVIDENCE_FLOOR = 52  # 4b12: + XLON
+HOURS_EVIDENCE_FLOOR = 53  # 4b12: + XLON, XWAR
 #   4b9: + XKRX, XNAS, XSAU
 #   4b6: + XSHE, XMAL
 #   4b3: batch B (8), XPHS XSES XTAI XZAG
@@ -333,7 +333,7 @@ def test_real_tree_facts_4b3():
     # 4b3: 17 current (Euronext AMS/BRU/PAR/LIS read only in the edition
     # effective 23 November 2026); no exchange's whole history is proven.
     # 4b8: the four count, from the edition effective 3 August 2026.
-    assert cur >= 49 and hist >= 0  # 4b3: 17 after verified_from; + batch B (8) and XPHS XSES XTAI XZAG; 4b8: 44; 4b9: 47; 4b11: 48; 4b12: 49
+    assert cur >= 50 and hist >= 0  # 4b3: 17 after verified_from; + batch B (8) and XPHS XSES XTAI XZAG; 4b8: 44; 4b9: 47; 4b11: 48; 4b12: 49 (XLON), 50 (XWAR)
     for code in ("XAMS", "XBRU", "XPAR", "XLIS"):
         d = json.loads((ROOT / "exchanges" / f"{code}.json").read_text(encoding="utf-8"))
         item = d["verification"]["hours"][-1]
@@ -484,4 +484,17 @@ def test_4b12_xlon_entry_from_2026_11_27():
     halves = {e["date"]: e["early_close_time"] for e in d["holidays"]["explicit"] if e["status"] == "early_close"}
     assert all(t == ("12:30" if day < "2026-11-27" else "12:35") for day, t in halves.items())
     assert sum(day >= "2026-11-27" for day in halves) == 8
+    assert cv.hours_problems(d) == [] and cv.current_hours_verified(d) is True
+
+
+def test_4b12_xwar_verified_from_the_trading_rules():
+    """4b12: WSE Detailed Exchange Trading Rules (legal condition at 5 October
+    2026), WIG20 shares in the continuous system: 09:00-17:00, agreeing with
+    the registry; verified_from 2026-10-05 (ADR 0014 section 7)."""
+    d = json.loads((ROOT / "exchanges" / "XWAR.json").read_text(encoding="utf-8"))
+    assert d["regular_hours"] == {"close": "17:00", "open": "09:00"}
+    (item,) = d["verification"]["hours"]
+    assert (item["status"], item["verified_from"], item["checked_on"]) == ("verified", "2026-10-05", "2026-11-27")
+    assert "'Random opening time for the closing auction (-) 0-30 seconds'" in item["note"]
+    assert "WIG20" in item["segment"]
     assert cv.hours_problems(d) == [] and cv.current_hours_verified(d) is True
