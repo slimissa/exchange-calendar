@@ -211,7 +211,7 @@
   "extended_hours": {
     "after_hours": {
       "close": "16:12",
-      "open": "16:10"
+      "open": "16:00"
     },
     "pre_market": {
       "close": "10:00",
@@ -2426,18 +2426,10 @@
   },
   "mic": "XASX",
   "name": "Australian Securities Exchange",
-  "regular_hours": [
-    {
-      "close": "16:00",
-      "effective_from": "1990-01-01",
-      "open": "10:00"
-    },
-    {
-      "close": "16:10",
-      "effective_from": "2026-11-22",
-      "open": "10:00"
-    }
-  ],
+  "regular_hours": {
+    "close": "16:10",
+    "open": "10:00"
+  },
   "sessions": [
     {
       "close": "10:00",
