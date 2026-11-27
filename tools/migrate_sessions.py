@@ -15,6 +15,18 @@ sessions (auctions, lunch breaks). The scalar fields stay and are
 regenerated as derived projections of the interval sessions, so the
 two representations cannot disagree.
 
+Dated regular hours (session 4b11.1). ``regular_hours`` may be a dated
+list; sessions are undated. The list is never dropped, merged or
+rewritten: it is the source, and the ``regular`` session follows its
+latest entry (the entry tools/validate.py compares against). The
+``extended_hours`` projection of a pre_market / post_market session is
+the part of that session outside the latest regular window, so an
+undated session that spans several regimes (XASX: post_market 16:00-16:12
+across the 16:00 and 16:10 closes) projects to the hours in force now
+(after_hours 16:10-16:12), exactly what validate.py requires. For a
+single-object exchange the clip changes nothing: its sessions start at
+its own close.
+
 Exit codes:
     0  success (or --check passed)
     1  --check found files needing migration
@@ -140,8 +152,37 @@ def _derive_interval_sessions(d: dict, path: Path) -> Optional[list]:
     return out
 
 
-def _derive_scalars_from_sessions(sessions: list) -> dict:
-    """Regenerate regular_hours / extended_hours from interval sessions."""
+def _latest_regular(d: dict, sessions: list) -> Optional[dict]:
+    """The regular window extended hours align to: the latest entry of a
+    dated ``regular_hours`` list (as tools/validate.py uses), otherwise the
+    ``regular`` session."""
+    rh = d.get("regular_hours")
+    if isinstance(rh, list) and rh:
+        cur = regular_hours.current(rh)
+        return {"open": cur.get("open"), "close": cur.get("close")}
+    regular = next((s for s in sessions if s.get("type") == "regular"), None)
+    if regular and _is_time(regular.get("open")) and _is_time(regular.get("close")):
+        return {"open": regular["open"], "close": regular["close"]}
+    return None
+
+
+def _project_extended(s: dict, latest: Optional[dict]) -> Optional[dict]:
+    """The extended_hours block for one pre_market / post_market session:
+    the part of the session outside the latest regular window."""
+    o, c = s["open"], s["close"]
+    if latest and _is_time(latest.get("open")) and _is_time(latest.get("close")):
+        if s.get("type") == "post_market":
+            o = max(o, latest["close"])
+        elif s.get("type") == "pre_market":
+            c = min(c, latest["open"])
+    return {"open": o, "close": c} if o < c else None
+
+
+def _derive_scalars_from_sessions(sessions: list,
+                                  latest: Optional[dict] = None) -> dict:
+    """Regenerate regular_hours / extended_hours from interval sessions.
+    ``latest`` is the regular window extended hours align to (see
+    _latest_regular); without it, the ``regular`` session."""
     out: dict = {}
 
     regular = next((s for s in sessions if s.get("type") == "regular"), None)
@@ -150,6 +191,8 @@ def _derive_scalars_from_sessions(sessions: list) -> dict:
             "open": regular["open"],
             "close": regular["close"],
         }
+    if latest is None:
+        latest = out.get("regular_hours")
 
     ext: dict = {}
     for s in sessions:
@@ -158,7 +201,9 @@ def _derive_scalars_from_sessions(sessions: list) -> dict:
             continue
         if not (_is_time(s.get("open")) and _is_time(s.get("close"))):
             continue
-        ext[key] = {"open": s["open"], "close": s["close"]}
+        block = _project_extended(s, latest)
+        if block is not None:
+            ext[key] = block
     if ext:
         out["extended_hours"] = ext
 
@@ -191,12 +236,23 @@ def _canonical(d: dict, path: Path) -> Optional[dict]:
         if s["type"] not in have:
             sessions.append(s)
 
+    dated = isinstance(d.get("regular_hours"), list)
+    latest = _latest_regular(d, sessions)
+    if dated:
+        # The dated list is the source: the regular session follows its
+        # latest entry; the list itself is never rewritten.
+        for s in sessions:
+            if s.get("type") == "regular":
+                s["open"], s["close"] = latest["open"], latest["close"]
+
     sessions.sort(
         key=lambda s: (_sort_time(s), _TYPE_ORDER.get(s.get("type", ""), 99))
     )
     d["sessions"] = sessions
 
-    scalars = _derive_scalars_from_sessions(sessions)
+    scalars = _derive_scalars_from_sessions(sessions, latest)
+    if dated:
+        scalars.pop("regular_hours", None)
     for k, v in scalars.items():
         d[k] = v
     if "extended_hours" not in scalars and "extended_hours" in d:
@@ -218,7 +274,7 @@ def _needs_migration(d: dict) -> bool:
     if not any(s.get("type") == "regular" for s in sessions):
         return True
 
-    derived = _derive_scalars_from_sessions(sessions)
+    derived = _derive_scalars_from_sessions(sessions, _latest_regular(d, sessions))
     if "regular_hours" not in derived:
         return True
     for k, v in derived.items():

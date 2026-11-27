@@ -409,67 +409,10 @@ if [[ "$DRY_RUN" != "1" ]]; then
 fi
 
 # ── local gate ─────────────────────────────────────────────────────
-say "Running local gate"
-
-run python3 tools/validate.py
-ok "validate.py"
-
-run python3 tools/check_country_codes.py --quiet
-ok "check_country_codes.py"
-
-run python3 tools/check_release_claims.py "$VERSION"
-ok "check_release_claims.py"
-
-run python3 tools/check_mojibake.py
-ok "check_mojibake.py"
-
-run python3 tools/check_mic_codes.py
-ok "check_mic_codes.py"
-
-run python3 tools/check_snapshot_freshness.py
-ok "check_snapshot_freshness.py"
-
-run python3 tools/check_stale_verifications.py
-ok "check_stale_verifications.py"
-
-run python3 tools/check_stale_year_urls.py
-ok "check_stale_year_urls.py"
-
-run python3 tools/check_doc_links.py
-ok "check_doc_links.py"
-
-run python3 tools/gen_readme_table.py --check
-ok "gen_readme_table.py --check"
-
-run python3 tools/check_wrapper_snapshot.py
-ok "check_wrapper_snapshot.py"
-
-run bash tools/check_cross_language.sh
-ok "check_cross_language.sh"
-
-
-run python3 tools/migrate_sessions.py --check --quiet
-ok "migrate_sessions.py --check"
-
-run python3 tools/derive_confidence.py --check --quiet
-ok "derive_confidence.py --check"
-
-
-
-run python3 tools/check_fetcher_freshness.py
-ok "check_fetcher_freshness.py"
-
-run python3 -m pytest tests/ -q
-ok "pytest"
-
-run bash -c 'cd wrappers/javascript && npm ci && npm test'
-ok "JavaScript wrapper tests"
-
-run bash -c 'cd wrappers/go && go test ./...'
-ok "Go wrapper tests"
-
-run bash -c 'cd wrappers/rust && cargo test --quiet'
-ok "Rust wrapper tests"
+# tools/local_gate.sh holds the gate (4b11.1): the same file runs in CI
+# (validate.yml, job local-gate) and in work sessions. It honours DRY_RUN
+# itself (prints each command), so it is not wrapped in run().
+DRY_RUN="$DRY_RUN" bash tools/local_gate.sh "$VERSION"
 
 # ── commit + push ──────────────────────────────────────────────────
 say "Committing release"

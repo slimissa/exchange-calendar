@@ -127,6 +127,61 @@ jobs:
         run: |
           python3 -m pytest tests/ -v --tb=short
 
+  local-gate:
+    # 4b11.1: the gate scripts/release.sh runs, from the same file. Before
+    # this job CI never ran migrate_sessions --check, derive_confidence
+    # --check, gen_readme_table --check, check_cross_language.sh or the
+    # release-claims check, so a release could stop on a check CI had passed.
+    name: Local Gate (tools/local_gate.sh)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+          if [ -f requirements-dev.txt ]; then
+            pip install -r requirements-dev.txt
+          fi
+          if [ -f tools/requirements.txt ]; then
+            pip install -r tools/requirements.txt
+          fi
+
+      - name: Install Playwright Chromium
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Create the JavaScript lock file
+        # package-lock.json is gitignored, and the gate runs `npm ci`, which
+        # needs one; release machines have it locally.
+        working-directory: wrappers/javascript
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+
+      - name: Run tools/local_gate.sh
+        run: bash tools/local_gate.sh
+
   python-wrapper:
     name: Python Wrapper Tests
     runs-on: ubuntu-latest

@@ -77,6 +77,8 @@ def repo(tmp_path):
     shutil.copytree(ROOT / ".github" / "workflows", work / ".github" / "workflows")
     (work / "tools").mkdir()
     shutil.copy(ROOT / "tools" / "check_changelog_order.py", work / "tools" / "check_changelog_order.py")
+    # 4b11.1: release.sh runs the shared gate file.
+    shutil.copy(ROOT / "tools" / "local_gate.sh", work / "tools" / "local_gate.sh")
     for name in STUB_TOOLS:
         write(work / "tools" / name, "pass\n")
     write(work / "tools" / "build.py", BUILD)
@@ -203,3 +205,17 @@ def test_failure_before_the_commit_restores_files_only(repo):
     assert p.returncode != 0
     assert "Restored version sites and artifacts on failure" in p.stderr
     assert snapshot(repo) == before
+
+
+
+def test_release_runs_the_shared_local_gate():
+    """4b11.1: one gate. release.sh calls tools/local_gate.sh and keeps no
+    inline copy of its commands; CI's validate.yml runs the same file."""
+    release_sh = (ROOT / "scripts" / "release.sh").read_text(encoding="utf-8")
+    gate = (ROOT / "tools" / "local_gate.sh").read_text(encoding="utf-8")
+    assert 'bash tools/local_gate.sh "$VERSION"' in release_sh
+    for line in gate.splitlines():
+        if line.strip().startswith("run "):
+            assert line.strip() not in release_sh, line
+    assert "run python3 tools/migrate_sessions.py --check --quiet" in gate
+    assert "bash tools/local_gate.sh" in (ROOT / ".github" / "workflows" / "validate.yml").read_text(encoding="utf-8")

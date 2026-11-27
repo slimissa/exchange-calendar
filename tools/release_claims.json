@@ -2004,6 +2004,7 @@
     {"file": "exchanges/XASX.json", "contains": "CSPA times will be 16:10:00 +30seconds randomised."},
     {"file": "CHANGELOG.md", "contains": "XASX close: maintainer ruling recorded, entry held (4b11)"},
     {"file": "exchanges/XASX.json", "contains": "\"effective_from\": \"2026-11-22\""},
-    {"file": "CHANGELOG.md", "contains": "XASX regular close 16:00 -> 16:10 from 2026-11-22 (4b11, value change)."}
+    {"file": "CHANGELOG.md", "contains": "XASX regular close 16:00 -> 16:10 from 2026-11-22 (4b11, value change)."},
+    {"file": "tools/migrate_sessions.py", "contains": "The list is never dropped, merged or"}
   ]
 }

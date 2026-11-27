@@ -17,6 +17,17 @@ All notable changes to this project will be documented in this file.
   - The 14:10 half-day closes match the same reading and are unchanged.
   - Probes: 12 registry-level and 14 exchange-level queries pin all four wrappers.
 
+### Fixed
+
+- `tools/migrate_sessions.py` keeps dated `regular_hours` (4b11.1). `scripts/release.sh 2.39.0` stopped at `migrate_sessions.py --check` ("NEEDS exchanges/XASX.json"), and write mode broke XASX:
+  - Cause: the undated `post_market` session (16:00-16:12, spanning the 16:00 and 16:10 closes) was compared with `extended_hours.after_hours` (16:10-16:12) as if the two were the same field. Write mode then rebuilt `regular_hours` as one object (`_derive_scalars_from_sessions`), which collapses any dated list, and copied the session into `after_hours` (16:00), against `validate.py`.
+  - Exposure: on the old tool, write mode would have rewritten every one of the 39 files that hold a dated list. They escaped only because `--check` never flagged them.
+  - Fix: a dated list is never dropped, merged or rewritten. It is the source, and the `regular` session follows its latest entry. `extended_hours` is the part of each pre/post session outside the latest regular window, the entry `validate.py` uses, so the two tools cannot disagree.
+  - No data changed: all 74 files are canonical and write mode leaves every one byte-identical.
+  - Tests: a dated fixture round-trips and is idempotent, a real migration keeps every entry, the repo passes `--check` under pytest, and `migrate_sessions` and `validate.py` agree on extended-hours alignment for every MIC.
+- One local gate (4b11.1). `tools/local_gate.sh` holds the release gate's commands, in the same order. `scripts/release.sh` calls it (DRY_RUN unchanged), and CI's `validate.yml` runs it in a new `local-gate` job.
+  - CI gains `migrate_sessions.py --check`, `derive_confidence.py --check`, `gen_readme_table.py --check`, `check_cross_language.sh` (four-wrapper agreement and in_session twins) and `check_release_claims.py` for the top CHANGELOG version. `check_fetcher_freshness.py` already ran in CI.
+
 ## [2.38.0] - 2026-11-26
 
 ### Changed

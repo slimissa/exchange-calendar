@@ -114,7 +114,7 @@
     "tools/known_source_faults.py": "bc3d705298ed6a9de6f8c989e197a85825a8df39c7e4b3afc7d4dbe77f054085",
     "tools/live_check_escalate.py": "7a8264a1dd1c0785d636c0e2fa3b0c79696ce2f9ae7d5f86e8e7185e055ea99a",
     "tools/live_fetcher_check.py": "254acc63223801df71f0044e01cff174873fc363efc50bd290d35776d8345093",
-    "tools/migrate_sessions.py": "7fd0b4331294f9998e504b23e0a9d2ed492cd0cec43007f46ed216c56b7b9079",
+    "tools/migrate_sessions.py": "2248bf2d9239c860615f9433844e1db306f92539ea06522aca62eddd41de7843",
     "tools/regular_hours.py": "4e4bd5bdc84c8afebbe06cea777a7e107d82598ddc20774881355fbfdeb2df90",
     "tools/schema_audit.py": "8917e67fb81a5a167888e1aac17bfa6240391f5dc0fd4608192ff83ea30b7bc7",
     "tools/summarize_blocked.py": "f254a99299359c380398b5debe714f77747d967a3543cc39dd6eca0d8a4f6c26",
