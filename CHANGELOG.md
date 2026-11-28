@@ -23,6 +23,7 @@ All notable changes to this project will be documented in this file.
   - A recheck date 14 days away or less prints a warning; the exit code is unchanged.
   - New red dates on the real data: 2026-12-16 (XETR, XJSE, XWBO, recheck 2026-12-15), 2026-12-23 (XBDA, XBUE, recheck 2026-12-22), 2027-01-05 (XPRA, 2027-01-04) and 2027-02-20 (23 hours items, 2027-02-19), unless each recheck is done first.
 - Retired (ADR 0016 R10, 4e2): `tools/verify_predicted_dates.py`, `docs/predicted_dates_pending.md` and CI's non-blocking `verify-predicted-dates` job. `tools/validate.py` M7's warning and grace replace them; README, the docs index and the per-exchange test docstrings point to ADR 0016. No release claim named either file.
+- Tooling fixes from 4e1 (4e2): `requirements-dev.txt` installs `requirements.txt` first (`-r requirements.txt`), so it alone is enough for the gate (pyarrow was missing); `tools/generate_checksums.py` parses its arguments: `--help` prints help and writes nothing, any other argument exits 2 and writes nothing (it used to ignore them and rewrite `checksums.json`).
 
 ## [2.41.0] - 2026-11-28
 

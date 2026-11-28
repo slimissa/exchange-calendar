@@ -24,7 +24,13 @@ Output: checksums.json at the repo root, in the form:
 
 Usage:
   python3 tools/generate_checksums.py
+  python3 tools/generate_checksums.py --help   # prints help, writes nothing
+
+It takes no arguments. Any argument other than -h/--help is an error: exit 2,
+and checksums.json is not written (session 4e2; before it, every argument was
+ignored and the manifest was rewritten).
 """
+import argparse
 import hashlib
 import json
 import sys
@@ -49,7 +55,16 @@ def collect_files() -> list[Path]:
     return files
 
 
-def main() -> int:
+def parse_args(argv=None) -> argparse.Namespace:
+    """No options besides -h/--help; argparse exits 2 on anything else, before
+    any file is written."""
+    parser = argparse.ArgumentParser(
+        description="Write checksums.json: SHA-256 of exchanges/*.json, schema.json and tools/*.py.")
+    return parser.parse_args(argv)
+
+
+def main(argv=None) -> int:
+    parse_args(argv)
     files = collect_files()
     manifest = {
         "algorithm": "sha256",

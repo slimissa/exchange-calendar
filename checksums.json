@@ -108,7 +108,7 @@
     "tools/fetch_render.py": "ac57492bde99fd1abcd67396961f0c33272a45d58a1ed817324879f9cda134eb",
     "tools/gen_cross_lang_probes.py": "965cef210a1e907b998464a4597c4d91f9ee6de78d4bf1f100f72763067ee503",
     "tools/gen_readme_table.py": "51a022bcf8311b49ac301370c241077517f188b932898dde808f4098533dfe8e",
-    "tools/generate_checksums.py": "99e53706305fabf92ce4e6960d2f1a32c1c06d5a5939ffeb2cc8facb5a631565",
+    "tools/generate_checksums.py": "e1c2dd168eeb8f6aff71c9b86c20b90eb57f4ac55894ce36700239144b3cf570",
     "tools/generate_dates.py": "277ee77d69011e6be00ba2995f11085c05a870aa58974bcae680460687a4124f",
     "tools/hours_evidence_exemptions.py": "be4e8c8017dd1f3475b7eb30a73c86606b9cdae36f850ba522ab3bc6553ea0ca",
     "tools/inspect_dom_calendar.py": "c8341f216b53361faa501b59e5ba0f88cd0fa41f24886f35bb78bddabf8634c6",

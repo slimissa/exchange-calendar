@@ -1,3 +1,6 @@
+# Runtime and test dependencies first (jsonschema, pyarrow, pytest, sqlglot):
+# installing this file alone is enough to run tools/local_gate.sh.
+-r requirements.txt
 psycopg2-binary>=2.9
 PyMySQL[rsa]>=1.1
 # Reference libraries for tools/divergence_test.py and divergence_report.py.
