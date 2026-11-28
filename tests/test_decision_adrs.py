@@ -185,6 +185,18 @@ ADR_HEADINGS = {
         "### 8. Undated current regimes (maintainer decision, session 4b5)",
         "## Consequences",
         "## Applied (filled as 4b-lite proceeds)"
+    ],
+    "0015-hours-evidence-exemptions.md": [
+        "# ADR 0015 — Hours-evidence exemptions",
+        "## Context",
+        "## Decision",
+        "### 1. Check 6 is blocking",
+        "### 2. What an exemption records",
+        "### 3. Lifetime",
+        "### 4. When the gate fails",
+        "### 5. When the gate warns",
+        "### 6. What an exemption is not",
+        "## Consequences"
     ]
 }
 

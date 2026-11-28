@@ -30,6 +30,7 @@ RELEASE_FILES = [
 ]
 STUB_TOOLS = [
     "check_country_codes.py", "check_doc_facts.py", "check_doc_links.py", "check_fetcher_freshness.py",
+    "check_verification.py",  # 4b13: in tools/local_gate.sh
     "check_mic_codes.py", "check_mojibake.py", "check_release_claims.py", "check_snapshot_freshness.py",
     "check_stale_verifications.py", "check_stale_year_urls.py", "check_wrapper_snapshot.py",
     "derive_confidence.py", "export_parquet.py", "export_sql.py", "gen_readme_table.py",

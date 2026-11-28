@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- ADR 0015 "Hours-evidence exemptions" (4b13).
+  - Rule: every reference_compared exchange needs verified current hours, a schema_limited item, or a valid exemption. An exemption records the MIC, the reason, the sources tried, unread leads, `added`, `expires` (at most 70 days later) and the next action. It is never evidence and raises no count.
+  - When the check fails: the exemption has expired, is stale, names a non-reference exchange, runs over 70 days, or is incomplete. It warns within 14 days of expiry.
+  - Tooling: `tools/hours_evidence_exemptions.json` with its loader and validator, and `check_verification.check6`, whose summary prints the exemption count and nearest expiry. `--today` fixes the date, and the tests inject it.
+  - `tools/check_verification.py` now runs in `tools/local_gate.sh`, and so in `release.sh` and CI. It ran in no gate before.
+  - The ADR heading guard protects ADR 0015.
+
 ## [2.40.0] - 2026-11-28
 
 ### Changed

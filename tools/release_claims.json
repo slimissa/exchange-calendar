@@ -2012,5 +2012,9 @@
     {"file": "CHANGELOG.md", "contains": "`DRY_RUN=1 scripts/release.sh` runs the read-only checks for real (4b12)"},
     {"file": "exchanges/XLON.json", "contains": "\"effective_from\": \"2026-11-27\""},
     {"file": "exchanges/XWAR.json", "contains": "\"verified_from\": \"2026-10-05\""}
+  ],
+  "2.41.0": [
+    {"file": "docs/decisions/0015-hours-evidence-exemptions.md", "contains": "# ADR 0015 — Hours-evidence exemptions"},
+    {"file": "tools/local_gate.sh", "contains": "run python3 tools/check_verification.py"}
   ]
 }

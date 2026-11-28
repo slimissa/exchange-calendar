@@ -1,0 +1,4 @@
+{
+  "_doc": "Hours-evidence exemptions for check 6 (ADR 0015, session 4b13). Each entry carries one reference_compared exchange whose official hours could not be read: mic, reason, sources_tried (source, tried, outcome), leads (label 'unread lead', pointer: never evidence), added and expires (ISO dates; expires at most 70 days after added, shorter where the registry value is suspected stale), next_action. tools/check_verification.py fails on an expired, stale (the MIC meets check 6 already), non-reference_compared, over-long or incomplete exemption and warns within 14 days of expiry. An exemption changes no data and raises no count. Validated by tools/hours_evidence_exemptions.py --check.",
+  "exemptions": []
+}

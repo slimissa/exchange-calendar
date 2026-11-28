@@ -67,6 +67,15 @@ Checks, for every exchanges/*.json:
      of 74" (docs/facts.json exchanges_hours_verified and
      exchanges_hours_history_verified). The end-of-4b-lite blocking rule
      applies to current hours; history is Phase 4b full.
+     Blocking rule (ADR 0015, session 4b13; on when CHECK6_BLOCKING): every
+     reference_compared exchange has verified current hours, a
+     schema_limited item for the entry in force, or a valid exemption in
+     tools/hours_evidence_exemptions.json; hours findings of any exchange
+     fail; the exemption rules of tools/hours_evidence_exemptions.py apply
+     (expired, stale, not reference_compared, over 70 days or incomplete
+     fail; within 14 days of expiry warns). The summary prints the
+     exemption count and the nearest expiry. --today fixes the date the
+     exemptions are checked against (default: the wall clock).
 --date YYYY-MM-DD additionally requires last_checked to be exactly that date.
 A date fixed in the tool would fail on the first regeneration after it, so
 the default is the consistency rules above.
@@ -90,7 +99,12 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import derive_verification as dv  # noqa: E402
+import hours_evidence_exemptions as hx  # noqa: E402
 import regular_hours as rh  # noqa: E402
+
+# Check 6 blocks for reference_compared exchanges (ADR 0015). Off until the
+# exemptions for the exchanges without readable official hours are in place.
+CHECK6_BLOCKING = False
 
 # (fetcher_status, has reference library) -> (class, basis); None matches any
 EXPECTED = (
@@ -459,6 +473,58 @@ def history_hours_verified(d: dict) -> bool:
     return True
 
 
+def schema_limited_in_force(d: dict) -> bool:
+    """The regular_hours entry in force on the evaluation day has a
+    schema_limited item (ADR 0014 section 6), evaluated as in
+    current_hours_verified."""
+    v = d.get("verification") or {}
+    items = v.get("hours")
+    if not isinstance(items, list) or hours_problems(d):
+        return False
+    last = v.get("last_checked") or "0000-00-00"
+    entries = hours_entries(d)
+    for item in items:
+        if item.get("status") != "schema_limited":
+            continue
+        day = max(last, item.get("checked_on") or last)
+        if item.get("effective_from") == _in_force(entries, day):
+            return True
+    return False
+
+
+def check6(data: list[dict], exemptions: list[dict], today: date) -> dict:
+    """The check 6 blocking rule (ADR 0015) over the exchanges' data.
+
+    Returns {"errors", "warnings", "verified", "schema_limited", "exempt",
+    "uncovered", "total_rc"}: errors and warnings are lines; the others are
+    sorted MIC lists (total_rc an int). An exemption covers a MIC only while
+    it has no error of its own."""
+    classes = {d.get("code"): (d.get("verification") or {}).get("class") for d in data}
+    verified, limited = set(), set()
+    for d in data:
+        if classes.get(d.get("code")) != "reference_compared":
+            continue
+        if current_hours_verified(d):
+            verified.add(d["code"])
+        elif schema_limited_in_force(d):
+            limited.add(d["code"])
+    errors, warnings = hx.problems(exemptions, today, classes, verified | limited)
+    # An exemption covers its MIC only if it is valid on its own and its MIC
+    # has no duplicate.
+    mics = [e.get("mic") for e in exemptions]
+    exempt = {e.get("mic") for e in exemptions
+              if mics.count(e.get("mic")) == 1
+              and not hx.problems([e], today, classes, verified | limited)[0]}
+    rc = sorted(c for c, k in classes.items() if k == "reference_compared")
+    uncovered = [c for c in rc if c not in verified | limited | exempt]
+    for c in uncovered:
+        errors.append(f"{c}: reference_compared exchange without verified current hours, a "
+                      f"schema_limited item or a valid exemption (ADR 0015)")
+    return {"errors": errors, "warnings": warnings, "verified": sorted(verified),
+            "schema_limited": sorted(limited), "exempt": sorted(exempt), "uncovered": uncovered,
+            "total_rc": len(rc)}
+
+
 def hours_facts(root: Path) -> tuple[int, int, int]:
     """(current hours verified, history verified, total exchanges)."""
     cur = hist = total = 0
@@ -510,8 +576,18 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--strict-coverage", action="store_true",
                    help="accepted for compatibility; coverage findings block by default (4d.1)")
     p.add_argument("--strict-hours", action="store_true",
-                   help="fail on hours-evidence findings (check 6; non-blocking in 4b-lite)")
+                   help="make check 6 blocking (the default once CHECK6_BLOCKING is on, ADR 0015)")
+    p.add_argument("--today", default=None,
+                   help="date the exemptions are checked against, YYYY-MM-DD (default: today)")
+    p.add_argument("--exemptions", type=Path, default=None,
+                   help="exemptions file (default: tools/hours_evidence_exemptions.json under --root)")
     args = p.parse_args(argv)
+    blocking = CHECK6_BLOCKING or args.strict_hours
+    try:
+        today = date.fromisoformat(args.today) if args.today else date.today()
+    except ValueError:
+        print(f"error: --today {args.today!r} is not YYYY-MM-DD", file=sys.stderr)
+        return 2
     try:
         problems, counts, coverage = check(args.root, args.date)
     except dv.DeriveError as exc:
@@ -521,19 +597,40 @@ def main(argv: list[str] | None = None) -> int:
     if coverage:
         problems = problems + [f"coverage: {line}" for line in coverage]
     hours, n, m, total, total_rc = hours_report(args.root)
-    tag = "" if args.strict_hours else "WARNING "
+    tag = "" if blocking else "WARNING "
     for line in hours:
         print(f"{tag}hours: {line}")
     sc = hours_status_counts(args.root)
     print(f"hours evidence: {n} of {total} ({m} of {total_rc} reference_compared); "
           f"items: {sc['verified']} verified, {sc['schema_limited']} schema_limited, "
           f"{sc['unconfirmed']} unconfirmed"
-          + ("" if args.strict_hours else "; non-blocking until the end of Phase 4b-lite"))
+          + ("" if blocking else "; non-blocking until the end of Phase 4b-lite"))
     cur, hist, _ = hours_facts(args.root)
-    print(f"Current hours verified: {cur} of {total} (blocking for reference_compared at the end of 4b-lite)")
+    print(f"Current hours verified: {cur} of {total}"
+          + (" (check 6 blocks for reference_compared, ADR 0015)" if blocking
+             else " (blocking for reference_compared at the end of 4b-lite)"))
     print(f"History verified: {hist} of {total} (Phase 4b full)")
-    if args.strict_hours:
-        problems = problems + [f"hours: {line}" for line in hours]
+    try:
+        ex_path = args.exemptions or (args.root / "tools" / "hours_evidence_exemptions.json")
+        exemptions = hx.load(ex_path) if ex_path.exists() else []
+    except (OSError, ValueError) as exc:
+        print(f"error: cannot read hours-evidence exemptions: {exc}", file=sys.stderr)
+        return 2
+    data6 = [json.loads(f.read_text(encoding="utf-8")) for f in sorted((args.root / "exchanges").glob("*.json"))]
+    c6 = check6(data6, exemptions, today)
+    first = hx.nearest(exemptions)
+    print(f"check 6 ({'blocking' if blocking else 'non-blocking'}): {c6['total_rc']} reference_compared = "
+          f"{len(c6['verified'])} verified + {len(c6['schema_limited'])} schema_limited + "
+          f"{len(c6['exempt'])} exempt" + (f" + {len(c6['uncovered'])} uncovered" if c6["uncovered"] else "")
+          + f"; exemptions {len(exemptions)}"
+          + (f", nearest expiry {first['expires']} ({first['mic']})" if first else "")
+          + f"; checked on {today}")
+    for line in c6["warnings"]:
+        print(f"WARNING check 6: {line}")
+    for line in c6["errors"]:
+        print(f"{'' if blocking else 'WARNING '}check 6: {line}")
+    if blocking:
+        problems = problems + [f"hours: {line}" for line in hours] + [f"check 6: {line}" for line in c6["errors"]]
     if problems:
         for line in problems:
             print(line)

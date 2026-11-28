@@ -88,6 +88,11 @@ ok "migrate_sessions.py --check"
 run python3 tools/derive_confidence.py --check --quiet
 ok "derive_confidence.py --check"
 
+# Check 6, hours evidence (ADR 0014; blocking for reference_compared under
+# ADR 0015). Added in 4b13: it ran in no gate before.
+run python3 tools/check_verification.py
+ok "check_verification.py"
+
 run python3 tools/check_fetcher_freshness.py
 ok "check_fetcher_freshness.py"
 
