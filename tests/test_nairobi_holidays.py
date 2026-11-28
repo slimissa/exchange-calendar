@@ -207,7 +207,7 @@ class TestXNAIIslamicHolidays:
     def test_islamic_holidays_contain_predicted(self, explicit_dates):
         """The (predicted) name suffix and the predicted field must
         agree -- entries get reconciled over time (see
-        tools/verify_predicted_dates.py), so this checks consistency
+        docs/decisions/0016-predicted-entries.md), so this checks consistency
         rather than asserting these holidays are forever predicted."""
         islamic_names = ["Eid al-Fitr", "Eid al-Adha"]
         for entry in explicit_dates.values():

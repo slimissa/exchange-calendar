@@ -850,7 +850,6 @@ Every check that runs in CI or the release gate, one row each.
 | `tools/live_fetcher_check.py` | A fetcher failing against its live source: PASS, FAIL (deterministic) or TRANSIENT (retried 3 times in the run) | Weekly workflow |
 | `tools/live_check_escalate.py` | The weekly check failing deterministically, or transiently in two consecutive scheduled runs (one `live-check` issue, closed on the next green run) | Weekly workflow |
 | `tools/check_tier_coverage.py` | A tier MIC in the live-check workflow that is neither registered nor in BLOCKED.md | Weekly workflow |
-| `tools/verify_predicted_dates.py --check` | Predicted Islamic dates past due | CI, non-blocking (`|| echo`) |
 | Version consistency (CI job) | `VERSION`, `CHANGELOG.md` top entry, README badge and `build.py` output disagreeing | CI |
 | Workflow coverage, orphan variables, manifest precondition | Static preflight of `release.sh` | release gate |
 | Data-integrity job | Weekend dates in explicit arrays, duplicate dates, entries without a source URL | CI |
@@ -865,7 +864,7 @@ Five active workflows in [`.github/workflows`](./.github/workflows) (a sixth, `p
 
 | Workflow | Runs on | Jobs | Guards |
 |----------|---------|------|--------|
-| **`validate.yml`** | push to `main`, pull requests to `main`, manual | 9: `python-core`, `python-wrapper`, `javascript`, `go`, `rust`, `data-integrity`, `verify-predicted-dates`, `version-consistency`, `check-sql-execution` | The data, the exports, the wrappers, the docs' counts and links |
+| **`validate.yml`** | push to `main`, pull requests to `main`, manual | 8: `python-core`, `python-wrapper`, `javascript`, `go`, `rust`, `data-integrity`, `version-consistency`, `check-sql-execution` | The data, the exports, the wrappers, the docs' counts and links |
 | **`rust-verify.yml`** | push touching `wrappers/rust/**`, `schema.json`, `exchanges/**`, `tools/build.py` or `VERSION`; manual | 1 | The Rust wrapper on real `calendar.json`, with clippy |
 | **`update-exchange.yml`** | Sundays 00:00 UTC; manual; push touching `exchanges/**` or the updater | 3: `validate`, `update`, `notify` | Fetches every fetcher and opens a pull request |
 | **`live-fetcher-check.yml`** | Sundays 00:00 UTC; manual | 5: coverage verification, stable fetchers (blocking), CI-unreachable (informational), blocked (informational), summary | A fetcher breaking against its live source |
@@ -974,7 +973,6 @@ exchange-calendar/
 │   ├── recurrence_rules.md       # Rule types and observance
 │   ├── status_at_semantics.md    # status_at / is_holiday behaviour
 │   ├── update_semantics.md       # How updates apply
-│   ├── predicted_dates_pending.md# Predicted Islamic dates awaiting confirmation
 │   ├── fetcher_verification.md   # How fetchers were verified
 │   ├── contributing_exchange.md  # Adding an exchange
 │   ├── las_shell_integration.md  # LAS_Shell consumer notes
@@ -1030,7 +1028,7 @@ There is no `examples/`, `bin/`, `docs/LAYERS.md` or `docs/v*-verification.md`.
 | [`docs/recurrence_rules.md`](./docs/recurrence_rules.md) | What do the recurrence rule types do, including observance? |
 | [`docs/status_at_semantics.md`](./docs/status_at_semantics.md) | What do `status_at` and `is_holiday` return on a weekend? |
 | [`docs/update_semantics.md`](./docs/update_semantics.md) | How does an update apply to existing data? |
-| [`docs/predicted_dates_pending.md`](./docs/predicted_dates_pending.md) | Which predicted Islamic dates are awaiting confirmation? |
+| [`docs/decisions/0016-predicted-entries.md`](./docs/decisions/0016-predicted-entries.md) | What does `predicted` mean, and what happens when a predicted date passes? |
 | [`docs/fetcher_verification.md`](./docs/fetcher_verification.md) | How was each fetcher verified? |
 | [`docs/contributing_exchange.md`](./docs/contributing_exchange.md) | How do I add an exchange? |
 | [`docs/CONSUMERS.md`](./docs/CONSUMERS.md) | Who depends on the registry, and what do they read? |
@@ -1094,7 +1092,7 @@ Stated plainly, because a calendar is a claim and a claim needs its edges drawn.
 - **The registry is a snapshot, not a history.** Holidays are not versioned per release; replaying a past state means checking out a tag.
 - **5 fetchers do not run in CI as reliable checks:** XHKG, XNSA and XSHG are CI-unreachable; XKUW and XSAU are blocked (HTTP 403 on 2026-09-17).
 - **29 exchanges are blocked** or have no fetcher ([`BLOCKED.md`](./BLOCKED.md)): 7 JS-rendered, 14 bot-walled, 3 PDF-grid, 5 dead-source, none behind a closed API. Of these, 7 were probed with the render fetcher (see [`BLOCKED.md`](./BLOCKED.md) for the per-exchange result); an eighth probe, XSWX, was resolved by it and is no longer blocked. Findings are dated snapshots, not permanent facts.
-- **Predicted Islamic and lunar dates.** 226 explicit entries are flagged `predicted`. Umm al-Qura dates (XSAU) can move by a day when the moon is sighted; `tools/verify_predicted_dates.py` tracks the pending ones.
+- **Predicted Islamic and lunar dates.** 226 explicit entries are flagged `predicted`. Umm al-Qura dates (XSAU) can move by a day when the moon is sighted; ADR 0016 governs them: `tools/validate.py` warns 14 days before a predicted date and fails a past-due one that is not held on doubt.
 - **Source URLs expire.** Several sources are year-stamped; `docs/FETCHERS.md` lists them, and the first expiries are 2027-03-31 (XWBO, XBUD, XZAG) and 2027-06-01 (XDFM, XCAI, XMAD URLs).
 - **Only four fetchers have a freshness entry** in `fetcher_manifest.json` (XBUD, XDFM, XIST, XWBO).
 - **Ad-hoc closures are recorded for 7 exchanges** (XBDA, XBKK, XLIM, XRIS, XSGO, XTAI, XZAG) in `ad_hoc_closures`; a future unscheduled closure still needs a release.

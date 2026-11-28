@@ -307,22 +307,6 @@ jobs:
                   assert "source_url" in entry, f"{path.name}: missing source_url for {entry['date']}"
               print(f"OK: {path.name}")
           EOF
-  verify-predicted-dates:
-    name: Verify Predicted Dates
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: "3.11"
-      
-      - name: Check predicted dates (warning only)
-        run: |
-          python3 tools/verify_predicted_dates.py --check || echo "⚠️ Predicted dates need verification (non-blocking)"
-          # Exit 0 always — verification is tracked separately
-          # The script still reports the count for visibility
   version-consistency:
     name: Version Consistency
     runs-on: ubuntu-latest

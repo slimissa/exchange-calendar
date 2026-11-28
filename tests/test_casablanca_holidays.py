@@ -192,7 +192,7 @@ class TestXCASEidAlFitr:
     def test_eid_al_fitr_names_contain_predicted(self, explicit_dates):
         """Name suffix and predicted field must agree; some Eid al-Fitr
         entries are now reconciled (predicted: false) -- see
-        tools/verify_predicted_dates.py."""
+        docs/decisions/0016-predicted-entries.md."""
         for entry in explicit_dates.values():
             if "Eid al-Fitr" in entry["name"]:
                 name_says_predicted = "(predicted)" in entry["name"]
@@ -272,7 +272,7 @@ class TestXCASIslamicHolidays:
     def test_islamic_holidays_contain_predicted(self, explicit_dates):
         """The (predicted) name suffix and the predicted field must
         agree -- entries get reconciled over time (see
-        tools/verify_predicted_dates.py), so this checks consistency
+        docs/decisions/0016-predicted-entries.md), so this checks consistency
         rather than asserting these holidays are forever predicted."""
         islamic_names = ["Islamic New Year", "Prophet"]
         for entry in explicit_dates.values():

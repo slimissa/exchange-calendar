@@ -123,7 +123,6 @@
     "tools/update_from_exchange.py": "1c5f7f359214552482236331b86f1089d56ccb7d4b2c8124480ddc0d7a8df86a",
     "tools/validate.py": "4611fa93098ebe5ed24e8ddfe06fc806718813902084746afadbe862ef5a0b1d",
     "tools/verify_checksums.py": "ce94243ab814f1f44cb9c35a3aee998a14ced75aaaaf08d8c037d87440beb78d",
-    "tools/verify_predicted_dates.py": "a3f0f12f5f6d05ba89cd7b8c8aee7ab96dad867ad5e4bb69d778df214b4d709a",
     "tools/wrapper_test_counts.py": "56bed51c5502493ad85f05235f4b28709559f23c0c3fd6c15320bcfeb54809c3"
   }
 }

@@ -270,7 +270,7 @@ class TestXDFMIslamicHolidays:
         """Name suffix and predicted field must agree; 2025's Islamic New
         Year and Eid al-Fitr entries were reconciled (v2.1.2) and no
         longer carry the (predicted) suffix -- see
-        tools/verify_predicted_dates.py."""
+        docs/decisions/0016-predicted-entries.md."""
         islamic_keywords = ("Eid al-Fitr", "Eid al-Adha", "Islamic New Year", "Prophet's Birthday")
         for date_str, entry in explicit_dates.items():
             if any(k in entry["name"] for k in islamic_keywords):
