@@ -2027,6 +2027,8 @@
     {"file": "docs/phase-4f-schema-backlog.md", "contains": "- **Predicted trading days.**"},
     {"file": "tools/validate.py", "contains": "PREDICTED_RECHECK_CAP_DAYS = 30"},
     {"file": "tools/check_verification.py", "contains": "def held_on_doubt(span: dict, last_checked) -> set[str]:"},
-    {"file": "tests/test_predicted_lifecycle.py"}
+    {"file": "tests/test_predicted_lifecycle.py"},
+    {"file": "tools/local_gate.sh", "contains": "run python3 tools/check_recheck_dates.py"},
+    {"file": "tools/check_recheck_dates.py", "contains": "WARN_DAYS = 14"}
   ]
 }

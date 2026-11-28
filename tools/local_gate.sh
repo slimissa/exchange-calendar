@@ -93,6 +93,11 @@ ok "derive_confidence.py --check"
 run python3 tools/check_verification.py
 ok "check_verification.py"
 
+# Recheck dates (ADR 0016 R14, session 4e2): an overdue recheck_date turns the
+# gate red; one 14 days away or less warns. It ran only as a CI step before.
+run python3 tools/check_recheck_dates.py
+ok "check_recheck_dates.py"
+
 run python3 tools/check_fetcher_freshness.py
 ok "check_fetcher_freshness.py"
 

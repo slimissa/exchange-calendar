@@ -42,6 +42,37 @@ def test_future_date_passes(tmp_path, capsys):
     assert "OK: 1 recheck date(s), none before 2026-11-20" in capsys.readouterr().out
 
 
+def test_due_in_14_days_warns(tmp_path, capsys):
+    _write(tmp_path, "XAAA", [_span(recheck_date="2026-12-15")])
+    assert crd.main(["--exchanges", str(tmp_path), "--today", "2026-12-01"]) == 0
+    out = capsys.readouterr().out
+    assert "WARNING: recheck due in 14 day(s): XAAA 2026-12-15" in out
+    assert "OK: 1 recheck date(s), none before 2026-12-01" in out
+
+
+def test_due_in_15_days_is_silent(tmp_path, capsys):
+    _write(tmp_path, "XAAA", [_span(recheck_date="2026-12-15")])
+    assert crd.main(["--exchanges", str(tmp_path), "--today", "2026-11-30"]) == 0
+    assert "WARNING" not in capsys.readouterr().out
+
+
+def test_due_today_warns_and_passes(tmp_path, capsys):
+    _write(tmp_path, "XAAA", [_span(recheck_date="2026-12-15")])
+    assert crd.main(["--exchanges", str(tmp_path), "--today", "2026-12-15"]) == 0
+    assert "WARNING: recheck due in 0 day(s)" in capsys.readouterr().out
+
+
+def test_overdue_does_not_also_warn(tmp_path, capsys):
+    _write(tmp_path, "XAAA", [_span(recheck_date="2026-12-15")])
+    assert crd.main(["--exchanges", str(tmp_path), "--today", "2026-12-16"]) == 1
+    assert "WARNING" not in capsys.readouterr().out
+
+
+def test_local_gate_runs_it():
+    gate = (Path(__file__).resolve().parent.parent / "tools" / "local_gate.sh").read_text()
+    assert "run python3 tools/check_recheck_dates.py" in gate
+
+
 def test_no_dates_passes(tmp_path, capsys):
     _write(tmp_path, "XAAA", [_span()])
     assert crd.main(["--exchanges", str(tmp_path), "--today", "2026-11-20"]) == 0

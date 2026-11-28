@@ -22,6 +22,15 @@ When a date has passed
 A recheck date D has passed when D is earlier than --today (default: today).
 On D itself the check still passes: the recheck is due that day, not overdue.
 
+A recheck date WARN_DAYS (14) days away or less prints a WARNING line; the
+exit code does not change (the horizon of ADR 0015 section 5).
+
+Where it runs
+-------------
+tools/local_gate.sh, so scripts/release.sh and CI's local-gate job (ADR 0016
+R14, session 4e2): an overdue recheck date turns the gate red. Before 4e2 it
+ran only as a separate CI step.
+
 Exit codes
 ----------
     0  no recheck date has passed (every date found is printed)
@@ -48,6 +57,8 @@ from pathlib import Path
 
 DEFAULT_DIR = Path(__file__).resolve().parent.parent / "exchanges"
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+# A recheck date this many days away or less warns (ADR 0016 R14, 4e2).
+WARN_DAYS = 14
 
 
 class RecheckError(ValueError):
@@ -117,6 +128,10 @@ def main(argv=None) -> int:
     for r in rechecks:
         state = "PASSED" if r in overdue else "due"
         print(f"{state}: {r.describe()}")
+    for r in rechecks:
+        days = (r.recheck - args.today).days
+        if 0 <= days <= WARN_DAYS:
+            print(f"WARNING: recheck due in {days} day(s): {r.describe()}")
     if overdue:
         print(f"FAIL: {len(overdue)} recheck date(s) before {args.today.isoformat()}; "
               "re-check the value against the exchange's own source, then update "

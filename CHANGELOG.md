@@ -18,6 +18,10 @@ All notable changes to this project will be documented in this file.
   - One predicate: `check_verification.held_on_doubt` serves check 5b and M7. One clock: `validate.clock()`; `--today` fixes the date for tests and simulated runs. M7 now also covers predicted ad hoc closures (none in the data).
   - `tests/test_no_stale_predictions.py` runs M7 over the real data; `tests/test_predicted_lifecycle.py` covers the rule with synthetic fixtures.
   - On the real data: green on 2026-11-28; warnings for XBDA and XBUE from 2026-12-10; red on 2026-12-25 (their recheck date 2026-12-22 has passed) unless the December recheck resolves them.
+- Recheck dates are blocking in the local gate (ADR 0016 R14, 4e2).
+  - `tools/check_recheck_dates.py` runs in `tools/local_gate.sh`, so in `release.sh` and CI's local-gate job; the separate CI step is removed, so it runs once. An overdue `recheck_date` turns the gate red.
+  - A recheck date 14 days away or less prints a warning; the exit code is unchanged.
+  - New red dates on the real data: 2026-12-16 (XETR, XJSE, XWBO, recheck 2026-12-15), 2026-12-23 (XBDA, XBUE, recheck 2026-12-22), 2027-01-05 (XPRA, 2027-01-04) and 2027-02-20 (23 hours items, 2027-02-19), unless each recheck is done first.
 
 ## [2.41.0] - 2026-11-28
 

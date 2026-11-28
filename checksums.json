@@ -87,7 +87,7 @@
     "tools/check_glued_words.py": "5e9745e65ebe98c257b1a49840d4f4c441a240773f572d673036d0bb923ccf92",
     "tools/check_mic_codes.py": "5bbcdb2f1b133536c47798cf8ac62ea9a037fc06e6569efb08d074964736be97",
     "tools/check_mojibake.py": "951b4b527d55fb0f87c25f4aa704d5c736189c511c01b2478cfd48484efa234a",
-    "tools/check_recheck_dates.py": "bd36a568b7d558c498ceb6dde7e9edce4810fd3b2e9e7286d3377c86c1ec8122",
+    "tools/check_recheck_dates.py": "8a77e987a499f3e95644e14626a66b8399795e4c5a93edd3712fe6ad990f2d42",
     "tools/check_release_claims.py": "fac3f8f611d289815b1864de1c282fbf0e71d4421c51bc332c5cec6a719d8b31",
     "tools/check_removed_entries.py": "ea0907ed3eb13cd0d01365d7632d89ee311bea2e62d1847042ed5630d68cc6eb",
     "tools/check_snapshot_freshness.py": "8e36ceca472ac24bc99d4ffe152eae4e01804342f80c07a46d228193542fca04",

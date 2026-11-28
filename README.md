@@ -831,7 +831,7 @@ Every check that runs in CI or the release gate, one row each.
 | `tools/check_stale_verifications.py` | Old `Last verified` dates in `BLOCKED.md` | CI, release gate |
 | `tools/check_stale_year_urls.py` | A year-stamped source URL past its allowlist expiry | CI, release gate |
 | `tools/check_expiring_sources.py` | A row of the `Expiring sources` table in `docs/FETCHERS.md` whose expiry has passed | CI only |
-| `tools/check_recheck_dates.py` | A `recheck_date` in `exchanges/*.json` (a value held on doubt, e.g. an `unconfirmed` span) that is earlier than today | CI only |
+| `tools/check_recheck_dates.py` | A `recheck_date` in `exchanges/*.json` (a value held on doubt, e.g. an `unconfirmed` span) that is earlier than today; warns 14 days ahead (ADR 0016 R14) | CI, release gate |
 | `tools/check_doc_facts.py` | A number in the prose of 5 documents (26 claims) that differs from `docs/facts.json` | CI only |
 | `tools/update_facts.py --check` | `docs/facts.json` out of step with the tree | CI only (through the facts step) |
 | `tools/check_doc_links.py` | A broken link or anchor; the README's 74-row table disagreeing with `fetcher_status` or `BLOCKED.md` | CI, release gate |
@@ -875,7 +875,7 @@ Five active workflows in [`.github/workflows`](./.github/workflows) (a sixth, `p
 
 They differ, and the reasons are structural:
 
-- **CI only:** `check_expiring_sources.py`, `check_recheck_dates.py`, `check_doc_facts.py`, the three export `--check` modes, `check_sql_dialects.py`, `verify_checksums.py`. `release.sh` has no database and does not re-run the export checks; it regenerates SQL and Parquet and relies on the pytest run and on CI for the drift checks. The CSV and TSV files carry no version and are not regenerated at release.
+- **CI only:** `check_expiring_sources.py`, `check_doc_facts.py`, the three export `--check` modes, `check_sql_dialects.py`, `verify_checksums.py`. `release.sh` has no database and does not re-run the export checks; it regenerates SQL and Parquet and relies on the pytest run and on CI for the drift checks. The CSV and TSV files carry no version and are not regenerated at release.
 - **Release gate only:** `migrate_sessions.py --check`, `derive_confidence.py --check`, `check_release_claims.py`, `check_cross_language.sh`.
 - **The release waits for `validate.yml` and `rust-verify.yml`**, the two workflows that fire on a push to `main` (`POLLED_WORKFLOWS`). The release poll cannot see the other three, which are scheduled or path-limited.
 
