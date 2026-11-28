@@ -2015,6 +2015,10 @@
   ],
   "2.41.0": [
     {"file": "docs/decisions/0015-hours-evidence-exemptions.md", "contains": "# ADR 0015 — Hours-evidence exemptions"},
-    {"file": "tools/local_gate.sh", "contains": "run python3 tools/check_verification.py"}
+    {"file": "tools/local_gate.sh", "contains": "run python3 tools/check_verification.py"},
+    {"file": "tools/check_verification.py", "contains": "CHECK6_BLOCKING = True"},
+    {"file": "tools/hours_evidence_exemptions.json", "contains": "\"expires\": \"2026-12-28\""},
+    {"file": "docs/phase-4f-schema-backlog.md", "contains": "1. **4b-lite: CLOSED on 2026-11-28 (session 4b13).**"},
+    {"file": "CHANGELOG.md", "contains": "**Phase 4b-lite closed: check 6 is blocking (4b13).**"}
   ]
 }

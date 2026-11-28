@@ -102,9 +102,9 @@ import derive_verification as dv  # noqa: E402
 import hours_evidence_exemptions as hx  # noqa: E402
 import regular_hours as rh  # noqa: E402
 
-# Check 6 blocks for reference_compared exchanges (ADR 0015). Off until the
-# exemptions for the exchanges without readable official hours are in place.
-CHECK6_BLOCKING = False
+# Check 6 blocks for reference_compared exchanges (ADR 0015): on since
+# session 4b13, which closed Phase 4b-lite with five expiring exemptions.
+CHECK6_BLOCKING = True
 
 # (fetcher_status, has reference library) -> (class, basis); None matches any
 EXPECTED = (
@@ -627,8 +627,9 @@ def main(argv: list[str] | None = None) -> int:
           + f"; checked on {today}")
     for line in c6["warnings"]:
         print(f"WARNING check 6: {line}")
-    for line in c6["errors"]:
-        print(f"{'' if blocking else 'WARNING '}check 6: {line}")
+    if not blocking:  # blocking: printed once below, with the other problems
+        for line in c6["errors"]:
+            print(f"WARNING check 6: {line}")
     if blocking:
         problems = problems + [f"hours: {line}" for line in hours] + [f"check 6: {line}" for line in c6["errors"]]
     if problems:

@@ -100,3 +100,13 @@ parameter, so tests fix the date rather than read the wall clock.
   renewed with a new record of what was tried.
 - Phase 4b-lite is closed. Phase 4b full (history) and the dated-sessions
   work of Phase 4f keep their own plans.
+
+## Applied (session 4b13)
+
+| MIC | added | expires | why |
+|---|---|---|---|
+| XNSE | 2026-11-28 | 2026-12-28 | 30 days: registry close suspected stale (unread lead: NSE closing auction session, 2026) |
+| XBOM | 2026-11-28 | 2027-02-06 | session timings page renders by script; print empty |
+| XSGO | 2026-11-28 | 2027-02-06 | no readable hours page found |
+| XLIM | 2026-11-28 | 2027-02-06 | no readable hours page found |
+| XBOG | 2026-11-28 | 2027-02-06 | no readable hours page found |

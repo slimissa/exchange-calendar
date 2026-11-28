@@ -1,4 +1,127 @@
 {
   "_doc": "Hours-evidence exemptions for check 6 (ADR 0015, session 4b13). Each entry carries one reference_compared exchange whose official hours could not be read: mic, reason, sources_tried (source, tried, outcome), leads (label 'unread lead', pointer: never evidence), added and expires (ISO dates; expires at most 70 days after added, shorter where the registry value is suspected stale), next_action. tools/check_verification.py fails on an expired, stale (the MIC meets check 6 already), non-reference_compared, over-long or incomplete exemption and warns within 14 days of expiry. An exemption changes no data and raises no count. Validated by tools/hours_evidence_exemptions.py --check.",
-  "exemptions": []
+  "exemptions": [
+    {
+      "mic": "XNSE",
+      "added": "2026-11-28",
+      "expires": "2026-12-28",
+      "reason": "Official hours could not be read: the market-timings page renders by script and prints empty, and the circular archive denies access from the maintainer's connection. 30 days, not 70: the registry close is suspected stale.",
+      "sources_tried": [
+        {
+          "source": "https://www.nseindia.com/static/market-data/market-timings",
+          "tried": "2026-11-28",
+          "outcome": "page renders by script; print empty"
+        },
+        {
+          "source": "https://nsearchives.nseindia.com/content/circulars/CMTR74466.zip",
+          "tried": "2026-11-28",
+          "outcome": "Access Denied (Akamai/edgesuite), no VPN; the maintainer's ISP connection is blocked"
+        },
+        {
+          "source": "https://nsearchives.nseindia.com/content/circulars/CMTR74969.zip",
+          "tried": "2026-11-28",
+          "outcome": "Access Denied (Akamai/edgesuite), no VPN; the maintainer's ISP connection is blocked"
+        }
+      ],
+      "leads": [
+        {
+          "label": "unread lead",
+          "pointer": "NSE circular NSE/CMTR/74466 dated 29 May 2026, 'Introduction of Closing Auction Session (CAS) in the Equity Cash segment - trading modalities' (maintainer-supplied title; not read)"
+        },
+        {
+          "label": "unread lead",
+          "pointer": "NSE circular NSE/CMTR/74969 dated 1 July 2026, pre-open call auction framework (maintainer-supplied description; not read)"
+        },
+        {
+          "label": "unread lead",
+          "pointer": "If a closing auction session is live, ADR 0013 would move XNSE's close from 15:30 (an inference from the unread titles, not a reading)"
+        }
+      ],
+      "next_action": "Obtain the CAS go-live circular and the trading-modalities circular; re-date per ADR 0014 section 8."
+    },
+    {
+      "mic": "XBOM",
+      "added": "2026-11-28",
+      "expires": "2027-02-06",
+      "reason": "Official hours could not be read: the session-timings page renders by script and prints empty.",
+      "sources_tried": [
+        {
+          "source": "https://bseindia.com/markets/equity/session_timings.aspx",
+          "tried": "2026-11-28",
+          "outcome": "renders by script; print empty"
+        }
+      ],
+      "leads": [
+        {
+          "label": "unread lead",
+          "pointer": "BSE may have adopted a closing auction alongside NSE (maintainer's note; not read)"
+        }
+      ],
+      "next_action": "BSE notices on the closing auction and the pre-open call auction (2026)."
+    },
+    {
+      "mic": "XSGO",
+      "added": "2026-11-28",
+      "expires": "2027-02-06",
+      "reason": "Official hours could not be read: no readable hours page was found on the exchange's site.",
+      "sources_tried": [
+        {
+          "source": "https://www.bolsadesantiago.com",
+          "tried": "2026-11-28",
+          "outcome": "no readable hours page found"
+        }
+      ],
+      "leads": [
+        {
+          "label": "unread lead",
+          "pointer": "A new trading platform from 20 July 2026 (maintainer's note; not read)"
+        },
+        {
+          "label": "unread lead",
+          "pointer": "The harmonised 'Manual de Operaciones en Acciones' (MOA) (maintainer's note; not read)"
+        }
+      ],
+      "next_action": "The MOA from the exchange's regulations section."
+    },
+    {
+      "mic": "XLIM",
+      "added": "2026-11-28",
+      "expires": "2027-02-06",
+      "reason": "Official hours could not be read: no readable hours page was found on the exchange's site.",
+      "sources_tried": [
+        {
+          "source": "https://www.bvl.com.pe",
+          "tried": "2026-11-28",
+          "outcome": "no readable hours page found"
+        }
+      ],
+      "leads": [
+        {
+          "label": "unread lead",
+          "pointer": "The harmonised equity trading rules (reglamento de operaciones en rueda de bolsa) (maintainer's note; not read)"
+        }
+      ],
+      "next_action": "That rulebook."
+    },
+    {
+      "mic": "XBOG",
+      "added": "2026-11-28",
+      "expires": "2027-02-06",
+      "reason": "Official hours could not be read: no readable hours page was found on the exchange's site.",
+      "sources_tried": [
+        {
+          "source": "https://www.bvc.com.co",
+          "tried": "2026-11-28",
+          "outcome": "no readable hours page found"
+        }
+      ],
+      "leads": [
+        {
+          "label": "unread lead",
+          "pointer": "2026 hours follow US daylight saving time; once sourced, XBOG would be schema_limited like XMEX (maintainer's note; not read)"
+        }
+      ],
+      "next_action": "BVC Reglamento General / Circular Unica, equities section."
+    }
+  ]
 }

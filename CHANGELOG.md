@@ -6,6 +6,11 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- **Phase 4b-lite closed: check 6 is blocking (4b13).**
+  - The rule: every `reference_compared` exchange must have verified current hours, a `schema_limited` item, or a valid exemption (ADR 0015).
+  - Result: 41 are verified and 2 are schema_limited (XKAR, XMEX). The other 5 are carried by expiring exemptions that record what was tried: XNSE until 2026-12-28 (30 days: its close may predate a closing-auction change NSE announced in 2026), and XBOM, XSGO, XLIM and XBOG until 2027-02-06.
+  - Nothing is marked verified, and no hours value changed. An expired or stale exemption turns the gate red. `check_verification.py` prints "check 6 (blocking): 48 reference_compared = 41 verified + 2 schema_limited + 5 exempt; exemptions 5, nearest expiry 2026-12-28 (XNSE)".
+  - README "Known limitations" lists the 5. The roadmap marks 4b-lite closed (next: 4e) and the backlog gains three lines: the XWAR recheck when WATS goes live, XWAR post_market 17:10 against trading at last 17:05, and the XLON Closing Price Crossing Session.
 - ADR 0015 "Hours-evidence exemptions" (4b13).
   - Rule: every reference_compared exchange needs verified current hours, a schema_limited item, or a valid exemption. An exemption records the MIC, the reason, the sources tried, unread leads, `added`, `expires` (at most 70 days later) and the next action. It is never evidence and raises no count.
   - When the check fails: the exemption has expired, is stale, names a non-reference exchange, runs over 70 days, or is incomplete. It warns within 14 days of expiry.

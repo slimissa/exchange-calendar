@@ -237,7 +237,8 @@ def test_real_tree_hours_evidence_ratchet():
 
 
 def test_tool_reports_the_hours_line(capsys):
-    assert cv.main(["--root", str(ROOT)]) == 0
+    # 4b13: check 6 blocks; the date is fixed so the exemptions do not expire under the test.
+    assert cv.main(["--root", str(ROOT), "--today", "2026-11-28"]) == 0
     out = capsys.readouterr().out
     assert "hours evidence: " in out and " of 74 (" in out and " of 48 reference_compared)" in out
     assert " verified, " in out and " schema_limited, " in out and " unconfirmed" in out

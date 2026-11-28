@@ -8,8 +8,8 @@ verification audit; the schema and API items below go to 4f (schema v3).
 
 Done before it: 4d (verification audit), 4d2 (`in_session` alias).
 
-1. **4b-lite**: current regular hours verified against each exchange's own page (ADR 0013, ADR 0014), evidence in `verification.hours`. `check_verification.py` check 6 is non-blocking during 4b-lite and **turns blocking for every `reference_compared` exchange at the end of 4b-lite**; `schema_limited` items do not block (ADR 0014 section 6).
-2. **4e**: predictions.
+1. **4b-lite: CLOSED on 2026-11-28 (session 4b13).** Current regular hours verified against each exchange's own page (ADR 0013, ADR 0014), evidence in `verification.hours`. `check_verification.py` check 6 is now **blocking for every `reference_compared` exchange** (ADR 0015): verified current hours, a `schema_limited` item (ADR 0014 section 6: XKAR, XMEX), or an expiring exemption. Exemptions at closure (`tools/hours_evidence_exemptions.json`): XNSE until 2026-12-28 (registry close suspected stale); XBOM, XSGO, XLIM and XBOG until 2027-02-06. An expired exemption turns the gate red.
+2. **4e**: predictions. **Next phase.**
 3. **4f**: schema v3 / API (major 3.0.0); this file's "Schema and tooling" items. It ends with a consumer smoke test: one QLF-style and one DeBou-style fixture calling the v3 API.
 4. **4h**: backfill of the 23 exchanges without a reference library ("Phase 4h" below).
 5. **4b full**: session-time history.
@@ -148,7 +148,18 @@ the exchange's own archives, by hand. Their `generation_range` starts
   at 09:00 CET standard, which is 08:00 Reykjavik; the registry has 09:00.
   (4c-R4)
 - **XWAR post_market:** WATS trading at last ends 17:05; the registry's
-  post-market ends 17:10. (4c-R4)
+  post-market ends 17:10. (4c-R4) The WSE Detailed Exchange Trading Rules
+  (legal condition at 5 October 2026) also give trading at last 17.00-17.05
+  (4b12). Changing the undated session would alter every year, so the fix
+  needs dated sessions (4b13).
+- **XWAR recheck when WATS goes live:** the hours verified in 4b12 come
+  from rules that name no trading system. Recheck them against GPW's rules
+  when the WATS system goes live. (4b13)
+- **XLON Closing Price Crossing Session:** the LSE Business Parameters give
+  AVD execution and the Closing Price Crossing Session at *16:35-~16:40 after
+  the closing auction (4b12). Not modelled: neither regular hours nor an
+  extended session, since modelling it would change earlier days'
+  registry-level answers. (4b13)
 - **XWAR close before 2013-04-15:** broker reports of GPW Resolution 933/2010
   give a 17:20-17:30 closing call from 2011-01-03; the resolution was not
   found on gpw.pl. The registry keeps 17:00. (4c-R4)

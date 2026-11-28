@@ -95,7 +95,7 @@
     "tools/check_stale_verifications.py": "6ebfa1d432cd7bb7d6cc333d3043a5c2606a7203883ac6ec8cd7284faadc5ca8",
     "tools/check_stale_year_urls.py": "19df3e94cdfe04e1ba65f8ac89e33d35ef501ed7c87c01344e732cd5b53c9359",
     "tools/check_tier_coverage.py": "f181154633bd01a0052581bfc3dabff590778c529bbdf4d15af5edad62f85e51",
-    "tools/check_verification.py": "2895d67d2d936fa6fd687f1607c81919c937a90b7c302355d4ae49e80ad723f6",
+    "tools/check_verification.py": "ef6d8daf258646a07cc4356575bd626034a83866cf76717247b7656e7193d86d",
     "tools/check_wrapper_snapshot.py": "1fa8df6f8035a5969885a82403166ea1fe7833e7ef05771fc8f0b41f6496f99c",
     "tools/derive_confidence.py": "76bde084bbea896dd9179caa5f3d1d8a2d427dd7567468e41c29c8512e36d755",
     "tools/derive_verification.py": "1592c6dff123a5f8d017af81d881b7dd655d87eb48b52e6696c209872a9dd3c8",

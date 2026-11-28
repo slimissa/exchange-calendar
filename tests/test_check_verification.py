@@ -269,4 +269,4 @@ def test_coverage_findings_fail_the_tool(tmp_path, capsys):
     assert cv.main(["--root", str(root)]) == 1
     assert "coverage: XTSE: gap 2021-01-01" in capsys.readouterr().out
     assert cv.main(["--root", str(root), "--strict-coverage"]) == 1
-    assert cv.main(["--root", str(ROOT)]) == 0
+    assert cv.main(["--root", str(ROOT), "--today", "2026-11-28"]) == 0  # 4b13: fixed date
