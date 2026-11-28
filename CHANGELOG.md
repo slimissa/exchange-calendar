@@ -12,6 +12,12 @@ All notable changes to this project will be documented in this file.
   - Kept in 2.x: the " (predicted)" suffix (R7), explicit `predicted: false` (R6), the year-level confidence wording (R9). No field or enum change before 4f (R11).
   - The 4f backlog gains five lines (4e2): predicted trading days, retiring the suffix, a basis field, renaming the year-level "predicted", and `predicted` in the wrapper API.
   - The ADR heading guard protects ADR 0016. No exchange data changed.
+- `tools/validate.py` M7 follows ADR 0016 R5(d) and R10 (4e2).
+  - A past-due predicted entry passes only while it is held on doubt: check 5b's condition (listed `unconfirmed`, label says "unconfirmed", recheck date within 92 days of `last_checked`), a recheck date that has not passed, and at most 30 days after the entry's date. Otherwise the gate is red, as before; the message names the R5 options and no longer says "or remove the entry" as a general instruction.
+  - A predicted entry due in 14 days or less prints a warning; the exit code is unchanged.
+  - One predicate: `check_verification.held_on_doubt` serves check 5b and M7. One clock: `validate.clock()`; `--today` fixes the date for tests and simulated runs. M7 now also covers predicted ad hoc closures (none in the data).
+  - `tests/test_no_stale_predictions.py` runs M7 over the real data; `tests/test_predicted_lifecycle.py` covers the rule with synthetic fixtures.
+  - On the real data: green on 2026-11-28; warnings for XBDA and XBUE from 2026-12-10; red on 2026-12-25 (their recheck date 2026-12-22 has passed) unless the December recheck resolves them.
 
 ## [2.41.0] - 2026-11-28
 

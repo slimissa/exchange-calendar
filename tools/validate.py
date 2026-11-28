@@ -8,7 +8,11 @@ Validates every exchange file in exchanges/ against:
     3. Cross-exchange consistency — no duplicate MICs, no duplicate dates
 
 Usage:
-    validate.py [exchanges_dir] [schema_path]
+    validate.py [exchanges_dir] [schema_path] [--today YYYY-MM-DD]
+
+--today fixes the date the predicted-entry checks (M7, ADR 0016) use; it
+exists for tests and simulated-date runs. Default: the wall clock, read once
+per run through clock().
 
 Defaults:
     exchanges_dir = "exchanges"
@@ -29,6 +33,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import regular_hours  # noqa: E402  (tools/regular_hours.py)
+import check_verification  # noqa: E402  (check 5b's held-on-doubt predicate)
 
 try:
     import jsonschema
@@ -40,6 +45,11 @@ except ImportError:
 WEEKDAYS = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}
 VALID_STATUSES = {"closed", "early_close", "delayed_open", "special_session"}
 VALID_RULES = {"fixed_date", "fixed_with_weekend_adjustment", "fixed_with_sunday_observance", "fixed_with_thursday_observance", "nth_weekday", "last_weekday", "easter_offset"}
+# ADR 0016: a past-due predicted entry held on doubt passes only while its
+# recheck_date is at most this many days after the entry's date (R5(d)), and
+# a predicted entry this many days away or less prints a warning (R10).
+PREDICTED_RECHECK_CAP_DAYS = 30
+PREDICTED_WARN_DAYS = 14
 VALID_TIMEZONE_PREFIXES = {"Africa", "America", "Antarctica", "Arctic", "Asia", "Atlantic", "Australia", "Europe", "Indian", "Pacific", "Etc", "UTC", "GMT"}
 
 
@@ -363,30 +373,100 @@ def check_predicted_consistency(exchange: dict, filename: str) -> list:
     return errors
 
 
-def check_past_due_predictions(exchange: dict, filename: str) -> list:
-    """M7 follow-up: any entry marked `predicted` whose date is in the
-    past is a silent-correctness bug -- callers get a confident answer
-    for a date that was never confirmed. Either reconcile the date
-    against an official source (and clear `predicted`) or remove the
-    entry entirely.
+def clock() -> date:
+    """The one clock of the predicted-entry checks: the wall clock's date.
+    main() reads it once per run unless --today is given; tests pass
+    ``today`` to the checks instead."""
+    return date.today()
 
-    Only checks the structured `predicted` field; the legacy
-    '(predicted)' name suffix is handled by check_predicted_consistency.
+
+def _predicted_entries(exchange: dict):
+    """Explicit holidays and ad hoc closures that carry predicted: true."""
+    for entry in list(exchange.get("holidays", {}).get("explicit", [])) + \
+            list(exchange.get("ad_hoc_closures", [])):
+        if entry.get("predicted"):
+            yield entry
+
+
+def _why_not_held(date_str: str, exchange: dict, today: date) -> str | None:
+    """None when a past-due predicted entry dated ``date_str`` meets ADR 0016
+    R5(d); otherwise the reason it does not."""
+    verification = exchange.get("verification") or {}
+    spans = (verification.get("coverage") or {}).get("sources") or []
+    span = next((s for s in spans
+                 if isinstance(s, dict) and str(s.get("from", "")) <= date_str <= str(s.get("to", ""))),
+                None)
+    if span is None:
+        return "no coverage span holds it, so it cannot be held on doubt"
+    where = f"{span.get('from')}..{span.get('to')}"
+    if date_str not in check_verification.held_on_doubt(span, verification.get("last_checked")):
+        return (f"is not held on doubt by span {where} (check 5b: listed in the span's "
+                f"unconfirmed, a label that says 'unconfirmed', a recheck_date at most "
+                f"{check_verification.RECHECK_CAP_DAYS} days after last_checked)")
+    recheck = date.fromisoformat(span["recheck_date"])
+    if recheck < today:
+        return f"its recheck_date {recheck.isoformat()} (span {where}) has passed"
+    entry_day = date.fromisoformat(date_str)
+    if (recheck - entry_day).days > PREDICTED_RECHECK_CAP_DAYS:
+        return (f"its recheck_date {recheck.isoformat()} (span {where}) is more than "
+                f"{PREDICTED_RECHECK_CAP_DAYS} days after the entry's date")
+    return None
+
+
+def check_past_due_predictions(exchange: dict, filename: str, today: date | None = None) -> list:
+    """M7 (ADR 0016 R5): a predicted entry whose date has passed is an error
+    unless it is held on doubt: check 5b's condition
+    (check_verification.held_on_doubt), a recheck_date that has not passed
+    (on the recheck date itself it still passes), and a recheck_date at most
+    PREDICTED_RECHECK_CAP_DAYS after the entry's date.
+
+    Covers explicit holidays and ad hoc closures that carry predicted: true.
+    The '(predicted)' name suffix is check_predicted_consistency's job (M6).
+    ``today`` defaults to clock().
     """
     errors = []
-    mic = exchange.get("mic", filename)
-    today = date.today().isoformat()
-    for holiday in exchange.get("holidays", {}).get("explicit", []):
-        if not holiday.get("predicted"):
+    today = today or clock()
+    today_str = today.isoformat()
+    code = exchange.get("code") or exchange.get("mic") or filename
+    for entry in _predicted_entries(exchange):
+        date_str = entry.get("date", "")
+        if not date_str or date_str >= today_str:
             continue
-        date_str = holiday.get("date", "")
-        if date_str and date_str < today:
-            errors.append(
-                f"{filename}: {mic} predicted holiday {date_str} "
-                f"({holiday.get('name', '?')}) is past-due. Either confirm "
-                f"the date (remove predicted) or remove the entry."
-            )
+        try:
+            why = _why_not_held(date_str, exchange, today)
+        except (TypeError, ValueError):
+            why = "its coverage span has no readable recheck_date"
+        if why is None:
+            continue
+        errors.append(
+            f"{filename}: {code} predicted entry {date_str} ({entry.get('name', '?')}) is "
+            f"past-due and {why}. ADR 0016 R5: (a) a notice confirms it: set predicted "
+            f"false and cite the notice; (b) the notice gives another date or time: "
+            f"correct the entry in place and cite the notice; (c) the notice shows a "
+            f"trading day: remove the entry and cite the notice in the coverage note and "
+            f"CHANGELOG; (d) no notice read yet: hold it on doubt with a recheck_date "
+            f"not passed and at most {PREDICTED_RECHECK_CAP_DAYS} days after its date."
+        )
     return errors
+
+
+def predicted_due_warnings(exchange: dict, filename: str, today: date | None = None) -> list:
+    """ADR 0016 R10: a predicted entry dated today to today + PREDICTED_WARN_DAYS
+    prints a warning. Warnings never change the exit code."""
+    warnings = []
+    today = today or clock()
+    code = exchange.get("code") or exchange.get("mic") or filename
+    for entry in _predicted_entries(exchange):
+        try:
+            days = (date.fromisoformat(entry.get("date", "")) - today).days
+        except (TypeError, ValueError):
+            continue  # a malformed date is reported by the schema check
+        if 0 <= days <= PREDICTED_WARN_DAYS:
+            warnings.append(
+                f"{filename}: {code} predicted entry {entry['date']} ({entry.get('name', '?')}) "
+                f"is due in {days} day(s); read the exchange's notice (ADR 0016 R5)"
+            )
+    return warnings
 
 
 def validate_cross_exchange(all_exchanges: dict, filenames: list) -> list:
@@ -414,9 +494,33 @@ def validate_cross_exchange(all_exchanges: dict, filenames: list) -> list:
     return errors
 
 
-def main():
-    exchanges_dir = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("exchanges")
-    schema_path = Path(sys.argv[2]) if len(sys.argv) > 2 else Path("schema.json")
+def _parse_args(argv: list) -> tuple[Path, Path, date]:
+    """[exchanges_dir] [schema_path] positionally, plus --today YYYY-MM-DD
+    (or --today=YYYY-MM-DD) anywhere."""
+    positional, today = [], None
+    i = 0
+    while i < len(argv):
+        arg = argv[i]
+        if arg == "--today" and i + 1 < len(argv):
+            today, i = argv[i + 1], i + 2
+            continue
+        if arg.startswith("--today="):
+            today, i = arg.split("=", 1)[1], i + 1
+            continue
+        positional.append(arg)
+        i += 1
+    try:
+        day = date.fromisoformat(today) if today else clock()
+    except ValueError:
+        print(f"ERROR: --today is not a YYYY-MM-DD date: {today!r}")
+        sys.exit(2)
+    exchanges_dir = Path(positional[0]) if len(positional) > 0 else Path("exchanges")
+    schema_path = Path(positional[1]) if len(positional) > 1 else Path("schema.json")
+    return exchanges_dir, schema_path, day
+
+
+def main(argv=None):
+    exchanges_dir, schema_path, today = _parse_args(sys.argv[1:] if argv is None else argv)
 
     if not exchanges_dir.exists():
         print(f"ERROR: Exchanges directory not found: {exchanges_dir}")
@@ -432,6 +536,7 @@ def main():
         sys.exit(2)
 
     all_errors = []
+    all_warnings = []
     all_exchanges = {}
     valid_filenames = []
 
@@ -456,11 +561,14 @@ def main():
         errors.extend(check_islamic_holidays(exchange, exchange_file.name))
         errors.extend(check_generation_range(exchange, exchange_file.name))
         errors.extend(check_predicted_consistency(exchange, exchange_file.name))
-        errors.extend(check_past_due_predictions(exchange, exchange_file.name))
+        errors.extend(check_past_due_predictions(exchange, exchange_file.name, today))
+        all_warnings.extend(predicted_due_warnings(exchange, exchange_file.name, today))
         all_errors.extend(errors)
 
     all_errors.extend(validate_cross_exchange(all_exchanges, valid_filenames))
 
+    for warning in all_warnings:
+        print(f"WARNING: {warning}")
     if all_errors:
         print(f"Validation failed with {len(all_errors)} error(s):")
         for error in all_errors:

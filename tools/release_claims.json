@@ -2024,6 +2024,9 @@
   "2.42.0": [
     {"file": "docs/decisions/0016-predicted-entries.md", "contains": "# ADR 0016 — Predicted entries"},
     {"file": "docs/decisions/0016-predicted-entries.md", "contains": "**Status:** Accepted"},
-    {"file": "docs/phase-4f-schema-backlog.md", "contains": "- **Predicted trading days.**"}
+    {"file": "docs/phase-4f-schema-backlog.md", "contains": "- **Predicted trading days.**"},
+    {"file": "tools/validate.py", "contains": "PREDICTED_RECHECK_CAP_DAYS = 30"},
+    {"file": "tools/check_verification.py", "contains": "def held_on_doubt(span: dict, last_checked) -> set[str]:"},
+    {"file": "tests/test_predicted_lifecycle.py"}
   ]
 }

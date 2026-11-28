@@ -95,7 +95,7 @@
     "tools/check_stale_verifications.py": "6ebfa1d432cd7bb7d6cc333d3043a5c2606a7203883ac6ec8cd7284faadc5ca8",
     "tools/check_stale_year_urls.py": "19df3e94cdfe04e1ba65f8ac89e33d35ef501ed7c87c01344e732cd5b53c9359",
     "tools/check_tier_coverage.py": "f181154633bd01a0052581bfc3dabff590778c529bbdf4d15af5edad62f85e51",
-    "tools/check_verification.py": "ef6d8daf258646a07cc4356575bd626034a83866cf76717247b7656e7193d86d",
+    "tools/check_verification.py": "4d27596b55b0b58171717843d78713b3fdc0a3ca05bb299a8f1f993177eb8c4d",
     "tools/check_wrapper_snapshot.py": "1fa8df6f8035a5969885a82403166ea1fe7833e7ef05771fc8f0b41f6496f99c",
     "tools/derive_confidence.py": "76bde084bbea896dd9179caa5f3d1d8a2d427dd7567468e41c29c8512e36d755",
     "tools/derive_verification.py": "1592c6dff123a5f8d017af81d881b7dd655d87eb48b52e6696c209872a9dd3c8",
@@ -121,7 +121,7 @@
     "tools/summarize_blocked.py": "f254a99299359c380398b5debe714f77747d967a3543cc39dd6eca0d8a4f6c26",
     "tools/update_facts.py": "8d400d57c73ab9753f53e7f29c173cb381dd5015d18ccfd4b4032ac22e403a23",
     "tools/update_from_exchange.py": "1c5f7f359214552482236331b86f1089d56ccb7d4b2c8124480ddc0d7a8df86a",
-    "tools/validate.py": "427f992c8f359878ac8e13a956c5d168474aba5218658d9264c39af859460c92",
+    "tools/validate.py": "4611fa93098ebe5ed24e8ddfe06fc806718813902084746afadbe862ef5a0b1d",
     "tools/verify_checksums.py": "ce94243ab814f1f44cb9c35a3aee998a14ced75aaaaf08d8c037d87440beb78d",
     "tools/verify_predicted_dates.py": "a3f0f12f5f6d05ba89cd7b8c8aee7ab96dad867ad5e4bb69d778df214b4d709a",
     "tools/wrapper_test_counts.py": "56bed51c5502493ad85f05235f4b28709559f23c0c3fd6c15320bcfeb54809c3"

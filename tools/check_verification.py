@@ -159,6 +159,32 @@ def _day(text: str) -> date | None:
         return None
 
 
+def doubt_state(span: dict, last_checked) -> tuple[date | None, bool, bool]:
+    """(recheck_date, honest, capped) of one coverage span, for check 5b.
+
+    honest: the span's label says "unconfirmed" (4d.1). capped: the span's
+    recheck_date is a YYYY-MM-DD date at most RECHECK_CAP_DAYS after
+    last_checked (a date or a YYYY-MM-DD string; 4d2)."""
+    recheck = _day(span.get("recheck_date"))
+    checked = last_checked if isinstance(last_checked, date) else _day(last_checked)
+    honest = bool(re.search(r"unconfirmed", span.get("source", "") or "", re.IGNORECASE))
+    capped = (recheck is not None and checked is not None
+              and (recheck - checked).days <= RECHECK_CAP_DAYS)
+    return recheck, honest, capped
+
+
+def held_on_doubt(span: dict, last_checked) -> set[str]:
+    """The dates a coverage span holds on doubt (check 5b): listed in its
+    `unconfirmed`, the span carrying a recheck_date at most RECHECK_CAP_DAYS
+    after last_checked, under a label that says "unconfirmed".
+
+    The one predicate for check 5b and for tools/validate.py M7, which
+    accepts a past-due predicted entry only while it is held on doubt
+    (ADR 0016 R5(d))."""
+    recheck, honest, capped = doubt_state(span, last_checked)
+    return set(span.get("unconfirmed") or []) if (recheck and honest and capped) else set()
+
+
 def coverage_problems(d: dict, libraries: tuple[str, ...], lib_end: dict[str, dict[str, int]],
                       unpublished: set[str]) -> list[str]:
     """Check 5 for one exchange; [] when it has no coverage or the coverage is consistent."""
@@ -215,11 +241,8 @@ def coverage_problems(d: dict, libraries: tuple[str, ...], lib_end: dict[str, di
         # A date held on doubt, said so: listed unconfirmed, with a recheck date
         # at most RECHECK_CAP_DAYS after last_checked (4d2), under a label that
         # says "unconfirmed" (4d.1).
-        recheck = _day(s.get("recheck_date"))
-        honest = bool(re.search(r"unconfirmed", label, re.IGNORECASE))
-        capped = (recheck is not None and checked is not None
-                  and (recheck - checked).days <= RECHECK_CAP_DAYS)
-        on_doubt = set(s.get("unconfirmed") or []) if (recheck and honest and capped) else set()
+        recheck, honest, capped = doubt_state(s, checked)
+        on_doubt = held_on_doubt(s, checked)
         if recheck and honest and not capped:
             # Reported once, with the reason: the cap, not the label.
             leaning = [x for x in (s.get("unconfirmed") or [])
