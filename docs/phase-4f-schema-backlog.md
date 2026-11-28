@@ -130,6 +130,21 @@ trigger.
   after it, so the session data does not describe an afternoon session (or
   the "break" is not one). No exchange document read; data unchanged.
   (4c-final-1)
+- **Predicted trading days.** A predicted trading day has no entry to carry
+  `predicted` (XBUE Holy Thursday 2027-2029); in 2.x the coverage label
+  states it. A structured form is needed (ADR 0016 R4). (4e2)
+- **Retire the " (predicted)" name suffix.** It stays in 2.x, required by
+  `tools/validate.py` M6; v3 drops it and keeps only the field (ADR 0016
+  R7). (4e2)
+- **Basis of a predicted entry.** No per-entry basis is recorded in 2.x;
+  191 predicted entries in 14 exchanges state none. A basis field is a v3
+  item (ADR 0016 R8). (4e2)
+- **Year-level "predicted" in confidence.** The confidence note
+  "predicted" (every year after the current one) and the reserved
+  confidence source "predicted" are not the entry flag; rename them in v3
+  (ADR 0016 R9). (4e2)
+- **API: expose `predicted`.** No wrapper offers predicted-ness as API; the
+  stored field passes through only (ADR 0016 R12). (4e2)
 
 ## Phase 4h (backfill without a reference library)
 

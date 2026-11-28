@@ -197,6 +197,28 @@ ADR_HEADINGS = {
         "### 5. When the gate warns",
         "### 6. What an exemption is not",
         "## Consequences"
+    ],
+    "0016-predicted-entries.md": [
+        "# ADR 0016 — Predicted entries",
+        "## Context",
+        "## Decision",
+        "### R1. Meaning",
+        "### R2. Independence",
+        "### R3. Every prediction carries the flag",
+        "### R4. Predicted trading days",
+        "### R5. Lifecycle",
+        "### R6. Explicit `predicted: false`",
+        "### R7. The name suffix",
+        "### R8. No per-entry basis in 4e",
+        "### R9. Year-level confidence",
+        "### R10. Retired tool, and a warning instead",
+        "### R11. Schema in 2.x",
+        "### R12. Wrapper API",
+        "### R13. Stale counts and examples",
+        "### R14. Recheck dates in the gate",
+        "## Consequences",
+        "## Applied (filled as Phase 4e proceeds)",
+        "## 4f backlog"
     ]
 }
 

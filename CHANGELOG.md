@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### Changed
+
+- ADR 0016 "Predicted entries" (Accepted; maintainer rulings R1-R14 of 2026-11-28, session 4e2).
+  - `predicted: true` means a date or time derived from a rule or a precedent, with no exchange notice for that year read (R1). It records how a value was produced; `unconfirmed` records the evidence; a predicted entry is never verified (R2).
+  - Lifecycle (R5): a notice confirms (set `predicted: false`), corrects (fix in place) or shows a trading day (remove, cited in the coverage note and here). A past-due entry with no notice read must be held on doubt, with a recheck date not passed and at most 30 days after the entry's date.
+  - Kept in 2.x: the " (predicted)" suffix (R7), explicit `predicted: false` (R6), the year-level confidence wording (R9). No field or enum change before 4f (R11).
+  - The 4f backlog gains five lines (4e2): predicted trading days, retiring the suffix, a basis field, renaming the year-level "predicted", and `predicted` in the wrapper API.
+  - The ADR heading guard protects ADR 0016. No exchange data changed.
+
 ## [2.41.0] - 2026-11-28
 
 ### Changed

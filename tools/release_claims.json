@@ -2020,5 +2020,10 @@
     {"file": "tools/hours_evidence_exemptions.json", "contains": "\"expires\": \"2026-12-28\""},
     {"file": "docs/phase-4f-schema-backlog.md", "contains": "1. **4b-lite: CLOSED on 2026-11-28 (session 4b13).**"},
     {"file": "CHANGELOG.md", "contains": "**Phase 4b-lite closed: check 6 is blocking (4b13).**"}
+  ],
+  "2.42.0": [
+    {"file": "docs/decisions/0016-predicted-entries.md", "contains": "# ADR 0016 — Predicted entries"},
+    {"file": "docs/decisions/0016-predicted-entries.md", "contains": "**Status:** Accepted"},
+    {"file": "docs/phase-4f-schema-backlog.md", "contains": "- **Predicted trading days.**"}
   ]
 }
